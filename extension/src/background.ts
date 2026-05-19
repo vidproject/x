@@ -30,15 +30,19 @@ import {
   clearActivity,
   clearAll,
   clearRunBuffer,
+  engagementSig,
   getAccounts,
   getActivity,
+  getCommittedIndex,
   getConnection,
   getCounters,
   getRunBuffer,
   getRunBuffers,
   getSettings,
+  pruneCommittedIndex,
   setAccounts,
   setBufferedCount,
+  setCommittedIndex,
   setConnection,
   setRunBuffer,
   type RunBuffer,
@@ -82,6 +86,10 @@ async function onWake(reason: string): Promise<void> {
     await ensureAlarms();
     await flushOrphanedBuffersIfStale();
     await reinjectIntoOpenTabs();
+    // Drop dedup-index entries older than 30 days so the store doesn't
+    // grow unbounded over months of capture sessions.
+    const pruned = await pruneCommittedIndex(30 * 24 * 60 * 60 * 1000);
+    if (pruned > 0) await info('pruned committed index', { pruned });
     const settings = await getSettings();
     if (settings.pat && settings.owner && settings.repo) {
       await verifyConnection(false);
@@ -226,6 +234,9 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
     case 'capture-all':
       await captureAll();
       return buildState();
+    case 'capture-this-page':
+      await captureThisPage();
+      return buildState();
     case 'flush-all':
       await flushAll('user');
       return buildState();
@@ -337,9 +348,34 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
 
   if (normalized.tweets.length === 0) return;
 
-  // Group tweets by author handle.
-  const byHandle = new Map<string, CanonicalTweet[]>();
+  // Cross-session dedup: drop tweets we've already committed with identical
+  // engagement counts. Likes/RTs/replies/quotes still trigger a recapture
+  // so engagement_history grows over time. view_count is intentionally
+  // excluded — it churns too fast to be useful as a freshness signal.
+  const committedIdx = await getCommittedIndex();
+  let dedupedSkipped = 0;
+  const liveTweets: typeof normalized.tweets = [];
   for (const t of normalized.tweets) {
+    const prev = committedIdx[t.account_handle]?.[t.tweet_id];
+    const sig = engagementSig(t.like_count, t.retweet_count, t.reply_count, t.quote_count);
+    if (prev && prev.sig === sig) {
+      dedupedSkipped += 1;
+      continue;
+    }
+    liveTweets.push(t);
+  }
+  if (dedupedSkipped > 0) {
+    await info('dedup: skipped unchanged tweets', {
+      endpoint,
+      skipped: dedupedSkipped,
+      remaining: liveTweets.length,
+    });
+  }
+  if (liveTweets.length === 0) return;
+
+  // Group surviving tweets by author handle.
+  const byHandle = new Map<string, CanonicalTweet[]>();
+  for (const t of liveTweets) {
     const arr = byHandle.get(t.account_handle) ?? [];
     arr.push(t);
     byHandle.set(t.account_handle, arr);
@@ -516,6 +552,21 @@ async function flushHandle(handle: string, reason: string): Promise<void> {
         bufferedCount: 0,
       });
     }
+    // Record commits in the dedup index so we don't re-commit them next
+    // browse with unchanged engagement.
+    {
+      const idx = await getCommittedIndex();
+      const inner = idx[handle] ?? {};
+      const nowIso = new Date().toISOString();
+      for (const t of tweets) {
+        inner[t.tweet_id] = {
+          ts: nowIso,
+          sig: engagementSig(t.like_count, t.retweet_count, t.reply_count, t.quote_count),
+        };
+      }
+      idx[handle] = inner;
+      await setCommittedIndex(idx);
+    }
     await info('flush committed', {
       handle,
       reason,
@@ -600,6 +651,68 @@ async function captureAll(): Promise<void> {
   await info('capture-all requested', { count: accounts.length });
   for (const a of accounts) {
     await captureNow(a.handle);
+  }
+}
+
+/**
+ * Capture whatever the user is currently looking at: ensures page-hook is
+ * patched into the active tab, then nudges the page with a programmatic
+ * scroll so X fires another batch of GraphQL requests we can intercept.
+ *
+ * Less disruptive than `Capture now` (no new tab, no navigation) and works
+ * for arbitrary X URLs (specific tweet threads, search results, lists)
+ * that don't map cleanly to one of the configured handles.
+ */
+async function captureThisPage(): Promise<void> {
+  let tabs: browser.tabs.Tab[];
+  try {
+    tabs = await browser.tabs.query({ active: true, currentWindow: true });
+  } catch (err) {
+    await warn('capture-this-page: could not query active tab', describeError(err));
+    return;
+  }
+  const tab = tabs[0];
+  if (!tab || typeof tab.id !== 'number' || !tab.url) {
+    await warn('capture-this-page: no active tab');
+    return;
+  }
+  if (!/^https:\/\/(x|twitter)\.com\//.test(tab.url)) {
+    await warn('capture-this-page: active tab is not on x.com / twitter.com', {
+      url: shortenUrl(tab.url),
+    });
+    return;
+  }
+  await info('capture-this-page requested', { url: shortenUrl(tab.url) });
+  // (Re-)inject the page-hook + isolated content script so fetch/XHR are
+  // patched even on tabs opened before the extension reloaded.
+  try {
+    await browser.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ['page-hook.js'],
+      world: 'MAIN' as 'ISOLATED',
+    });
+    await browser.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ['content.js'],
+    });
+  } catch (err) {
+    await warn('capture-this-page: re-inject failed', describeError(err));
+  }
+  // Nudge X to fire more GraphQL requests by scrolling. Most timeline /
+  // conversation views fetch on intersection-observer triggers.
+  try {
+    await browser.scripting.executeScript({
+      target: { tabId: tab.id },
+      world: 'MAIN' as 'ISOLATED',
+      func: () => {
+        const h = window.innerHeight;
+        window.scrollBy({ top: h * 1.5, behavior: 'smooth' });
+        setTimeout(() => window.scrollBy({ top: h * 1.5, behavior: 'smooth' }), 600);
+        setTimeout(() => window.scrollBy({ top: h * 1.5, behavior: 'smooth' }), 1200);
+      },
+    });
+  } catch (err) {
+    await warn('capture-this-page: scroll-nudge failed', describeError(err));
   }
 }
 

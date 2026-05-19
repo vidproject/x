@@ -164,6 +164,7 @@ export type RuntimeMessage =
   | { type: 'get-state' }
   | { type: 'capture-now'; handle: string }
   | { type: 'capture-all' }
+  | { type: 'capture-this-page' }
   | { type: 'flush-all' }
   | { type: 'flush-handle'; handle: string }
   | { type: 'toggle-auto-capture'; on: boolean }

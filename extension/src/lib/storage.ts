@@ -24,6 +24,14 @@ export interface RunBuffer {
   source_url: string | null;
 }
 
+/** Per-tweet committed-state index, keyed by handle then tweet_id.
+ * Used to skip re-capturing tweets we've already pushed with identical
+ * engagement counts — avoids generating one new raw/* file every browse. */
+export interface CommittedEntry {
+  ts: string; // ISO timestamp of the last commit
+  sig: string; // engagement signature: "like|rt|reply|quote"
+}
+
 interface StorageShape {
   settings: Settings;
   accounts: AccountConfig[];
@@ -31,6 +39,7 @@ interface StorageShape {
   counters: Record<string, AccountCounter>;
   runBuffers: Record<string, RunBuffer>;
   activity: LogEvent[];
+  committedIndex: Record<string, Record<string, CommittedEntry>>;
 }
 
 const DEFAULT_CONNECTION: ConnectionState = {
@@ -49,6 +58,7 @@ const DEFAULTS: StorageShape = {
   counters: {},
   runBuffers: {},
   activity: [],
+  committedIndex: {},
 };
 
 async function getRaw<K extends keyof StorageShape>(key: K): Promise<StorageShape[K]> {
@@ -179,6 +189,53 @@ export async function appendActivity(ev: LogEvent): Promise<LogEvent[]> {
 
 export async function clearActivity(): Promise<void> {
   await setRaw('activity', []);
+}
+
+// --- Committed-tweets dedup index ----------------------------------------
+
+export async function getCommittedIndex(): Promise<Record<string, Record<string, CommittedEntry>>> {
+  return getRaw('committedIndex');
+}
+
+export async function setCommittedIndex(
+  idx: Record<string, Record<string, CommittedEntry>>
+): Promise<void> {
+  await setRaw('committedIndex', idx);
+}
+
+/** Compute the engagement signature we use to decide whether a re-captured
+ * tweet is "materially different" from what we last committed. We omit
+ * view_count because it ticks up frequently on active tweets and would
+ * defeat the dedup. Likes / RTs / replies / quotes change rarely enough that
+ * each change is worth a re-commit (and an engagement_history snapshot). */
+export function engagementSig(
+  likes: number,
+  retweets: number,
+  replies: number,
+  quotes: number
+): string {
+  return `${likes}|${retweets}|${replies}|${quotes}`;
+}
+
+/** Drop entries older than `maxAgeMs`. Returns the number pruned. */
+export async function pruneCommittedIndex(maxAgeMs: number): Promise<number> {
+  const idx = await getCommittedIndex();
+  const cutoff = new Date(Date.now() - maxAgeMs).toISOString();
+  let pruned = 0;
+  for (const handle of Object.keys(idx)) {
+    const inner = idx[handle];
+    if (!inner) continue;
+    for (const tid of Object.keys(inner)) {
+      const e = inner[tid];
+      if (e && e.ts < cutoff) {
+        delete inner[tid];
+        pruned += 1;
+      }
+    }
+    if (Object.keys(inner).length === 0) delete idx[handle];
+  }
+  if (pruned > 0) await setCommittedIndex(idx);
+  return pruned;
 }
 
 // --- Full reset ----------------------------------------------------------

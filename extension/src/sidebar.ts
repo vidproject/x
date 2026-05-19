@@ -21,6 +21,7 @@ const accountList = $<HTMLUListElement>('account-list');
 const activityList = $<HTMLUListElement>('activity-list');
 const autoToggle = $<HTMLInputElement>('auto-capture');
 const captureAllBtn = $<HTMLButtonElement>('capture-all');
+const captureThisBtn = $<HTMLButtonElement>('capture-this');
 const flushBtn = $<HTMLButtonElement>('flush-all');
 const optionsLink = $<HTMLAnchorElement>('open-options');
 const viewerLink = $<HTMLAnchorElement>('open-viewer');
@@ -235,6 +236,15 @@ captureAllBtn.addEventListener('click', async () => {
     await send({ type: 'capture-all' });
   } finally {
     captureAllBtn.disabled = false;
+  }
+});
+
+captureThisBtn.addEventListener('click', async () => {
+  captureThisBtn.disabled = true;
+  try {
+    await send({ type: 'capture-this-page' });
+  } finally {
+    captureThisBtn.disabled = false;
   }
 });
 
