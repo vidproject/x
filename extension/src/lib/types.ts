@@ -40,6 +40,12 @@ export interface ConnectionState {
    * null = unknown / not probed yet. A non-default branch is fine as long
    * as it actually exists; this is what governs the sidebar warning. */
   configuredBranchExists: boolean | null;
+  /** When the current rate-limit window resets, as a Unix epoch in seconds.
+   * Set when the last GitHub call returned 403/429 with rate-limit headers.
+   * The background loops use this to back off until the window closes
+   * instead of hammering GitHub through the rate-limited period. null when
+   * we're not currently rate-limited or no reset time was reported. */
+  rateLimitResetAt: number | null;
 }
 
 export interface MediaItem {

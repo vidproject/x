@@ -69,6 +69,19 @@ async function paintConnDetail(): Promise<void> {
   if (conn.login) lines.push(`Logged in as: @${conn.login}`);
   lines.push(`Repository: ${s.owner || '?'}/${s.repo || '?'}@${s.branch || '?'}`);
   if (conn.checkedAt) lines.push(`Last checked: ${conn.checkedAt}`);
+  if (conn.status === 'rate-limited' && conn.rateLimitResetAt !== null) {
+    const resetIso = new Date(conn.rateLimitResetAt * 1000).toISOString();
+    const deltaSec = conn.rateLimitResetAt - Math.floor(Date.now() / 1000);
+    const inLabel =
+      deltaSec <= 0
+        ? 'momentarily'
+        : deltaSec < 60
+          ? `in ${deltaSec}s`
+          : deltaSec < 3600
+            ? `in ${Math.round(deltaSec / 60)}m`
+            : `in ${Math.round(deltaSec / 3600)}h`;
+    lines.push(`Rate limit resets: ${resetIso} (${inLabel})`);
+  }
   if (conn.error) lines.push(`Error: ${conn.error}`);
   connDetail.textContent = lines.join('\n');
 }

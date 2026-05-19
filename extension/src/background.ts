@@ -37,6 +37,7 @@ import {
   enqueueMediaCrawl,
   enqueueRefetch,
   getAccounts,
+  getAccountsRefreshedAt,
   getActivity,
   getAutoScrollSession,
   getCommittedIndex,
@@ -57,6 +58,7 @@ import {
   purgeUnrelatedState,
   refetchQueueTotal,
   setAccounts,
+  setAccountsRefreshedAt,
   setAutoScrollSession,
   setBufferedCount,
   setCommittedIndex,
@@ -122,6 +124,7 @@ async function onWake(reason: string): Promise<void> {
         error: null,
         defaultBranch: null,
         configuredBranchExists: null,
+        rateLimitResetAt: null,
       });
       await info('extension awake; settings incomplete', { reason });
     }
@@ -938,6 +941,7 @@ async function flushHandle(handle: string, reason: string): Promise<void> {
         error: null,
         defaultBranch: prev.defaultBranch,
         configuredBranchExists: prev.configuredBranchExists,
+        rateLimitResetAt: null,
       });
     }
   } catch (err) {
@@ -958,6 +962,8 @@ async function flushHandle(handle: string, reason: string): Promise<void> {
         error: err.message,
         defaultBranch: conn.defaultBranch,
         configuredBranchExists: conn.configuredBranchExists,
+        rateLimitResetAt:
+          err.category === 'rate-limit' ? err.rateLimitResetAt : conn.rateLimitResetAt,
       });
       await logErr('flush failed', {
         handle,
@@ -965,6 +971,7 @@ async function flushHandle(handle: string, reason: string): Promise<void> {
         category: err.category,
         status: err.status,
         message: err.message,
+        rateLimitResetAt: err.rateLimitResetAt,
       });
     } else {
       await logErr('flush failed', { handle, reason, ...describeError(err) });
@@ -1463,14 +1470,28 @@ async function verifyConnection(force: boolean): Promise<void> {
       error: null,
       defaultBranch: null,
       configuredBranchExists: null,
+      rateLimitResetAt: null,
     });
     await broadcastState();
     return;
   }
   const conn = await getConnection();
-  if (!force && conn.status === 'ok' && conn.checkedAt) {
-    const age = Date.now() - Date.parse(conn.checkedAt);
-    if (age < VERIFY_CONNECTION_INTERVAL_MS) return;
+  if (!force) {
+    // Skip if we're inside the reported rate-limit window — re-checking
+    // before reset just wastes more of the same exhausted quota and keeps
+    // the 403s coming.
+    if (conn.status === 'rate-limited' && conn.rateLimitResetAt !== null) {
+      const nowSec = Math.floor(Date.now() / 1000);
+      if (nowSec < conn.rateLimitResetAt) return;
+    }
+    // Apply the periodic-check gate to every status, not just 'ok'. The
+    // previous behavior re-verified on every wake whenever the connection
+    // wasn't 'ok', which during a rate-limit window meant 2 API calls per
+    // SW wake (verifyRepoAccess does GET /user + GET /repos/{o}/{r}).
+    if (conn.checkedAt) {
+      const age = Date.now() - Date.parse(conn.checkedAt);
+      if (age < VERIFY_CONNECTION_INTERVAL_MS) return;
+    }
   }
   try {
     const client = new GitHubClient(settings);
@@ -1489,6 +1510,7 @@ async function verifyConnection(force: boolean): Promise<void> {
       error: null,
       defaultBranch: r.default_branch,
       configuredBranchExists: branchOk,
+      rateLimitResetAt: null,
     });
     await info('connection verified', {
       login: r.login,
@@ -1514,6 +1536,8 @@ async function verifyConnection(force: boolean): Promise<void> {
           : cat === 'network'
             ? 'network-error'
             : 'auth-error';
+    const resetAt =
+      err instanceof GitHubError && cat === 'rate-limit' ? err.rateLimitResetAt : null;
     await setConnection({
       status,
       login: null,
@@ -1521,8 +1545,13 @@ async function verifyConnection(force: boolean): Promise<void> {
       error: describeError(err).message,
       defaultBranch: null,
       configuredBranchExists: null,
+      rateLimitResetAt: resetAt,
     });
-    await warn('connection check failed', { category: cat, ...describeError(err) });
+    await warn('connection check failed', {
+      category: cat,
+      rateLimitResetAt: resetAt,
+      ...describeError(err),
+    });
   }
   await broadcastState();
 }
@@ -1533,21 +1562,42 @@ async function refreshAccountsList(force: boolean): Promise<void> {
     await setAccounts([...FALLBACK_ACCOUNTS]);
     return;
   }
+  if (!force) {
+    // Skip while inside a known rate-limit window — accounts.yaml is fetched
+    // via authenticated raw.githubusercontent.com, which counts against the
+    // same quota.
+    const conn = await getConnection();
+    if (conn.status === 'rate-limited' && conn.rateLimitResetAt !== null) {
+      const nowSec = Math.floor(Date.now() / 1000);
+      if (nowSec < conn.rateLimitResetAt) return;
+    }
+    // Skip if we refreshed recently. accounts.yaml changes rarely — the old
+    // code re-fetched it on every SW wake, which during heavy browsing meant
+    // a GitHub call every few seconds even when nothing was being captured.
+    const lastRefreshed = await getAccountsRefreshedAt();
+    if (lastRefreshed) {
+      const age = Date.now() - Date.parse(lastRefreshed);
+      if (Number.isFinite(age) && age < VERIFY_CONNECTION_INTERVAL_MS) return;
+    }
+  }
   try {
     const client = new GitHubClient(settings);
     const text = await client.fetchRawText('config/accounts.yaml');
     if (!text) {
       if (force) await warn('accounts.yaml not found in repo; using fallback');
       await setAccounts([...FALLBACK_ACCOUNTS]);
+      await setAccountsRefreshedAt(new Date().toISOString());
       return;
     }
     const parsed = parseAccountsYaml(text);
     if (parsed.length === 0) {
       await warn('accounts.yaml parsed empty; keeping fallback');
       await setAccounts([...FALLBACK_ACCOUNTS]);
+      await setAccountsRefreshedAt(new Date().toISOString());
       return;
     }
     await setAccounts(parsed);
+    await setAccountsRefreshedAt(new Date().toISOString());
     if (force) await info('accounts list refreshed', { count: parsed.length });
   } catch (err) {
     await warn('refresh accounts failed; keeping current list', describeError(err));

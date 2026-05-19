@@ -22,6 +22,10 @@ export class GitHubError extends Error {
   body: unknown;
   retriable: boolean;
   category: 'auth' | 'rate-limit' | 'conflict' | 'not-found' | 'server' | 'network' | 'unknown';
+  /** When the GitHub rate-limit window for this token resets, as a Unix
+   * epoch in seconds. Populated from `X-RateLimit-Reset` on 403/429, or
+   * derived from `Retry-After` for secondary limits. null when unknown. */
+  rateLimitResetAt: number | null;
 
   constructor(opts: {
     status: number;
@@ -29,6 +33,7 @@ export class GitHubError extends Error {
     message: string;
     retriable: boolean;
     category: GitHubError['category'];
+    rateLimitResetAt?: number | null;
   }) {
     super(opts.message);
     this.name = 'GitHubError';
@@ -36,6 +41,7 @@ export class GitHubError extends Error {
     this.body = opts.body;
     this.retriable = opts.retriable;
     this.category = opts.category;
+    this.rateLimitResetAt = opts.rateLimitResetAt ?? null;
   }
 }
 
@@ -230,8 +236,33 @@ export class GitHubClient {
       message: `${label} → ${res.status}: ${msg}`,
       retriable,
       category,
+      rateLimitResetAt: category === 'rate-limit' ? parseRateLimitReset(res.headers) : null,
     });
   }
+}
+
+/**
+ * Best-effort parse of when the current rate-limit window ends. GitHub's
+ * primary limit reports `X-RateLimit-Reset` as a Unix epoch in seconds.
+ * Secondary / abuse limits use `Retry-After`, which is either an HTTP-date
+ * or a delta in seconds — we normalize both to epoch seconds.
+ */
+function parseRateLimitReset(headers: Headers): number | null {
+  const reset = headers.get('x-ratelimit-reset');
+  if (reset) {
+    const n = Number.parseInt(reset, 10);
+    if (Number.isFinite(n) && n > 0) return n;
+  }
+  const retryAfter = headers.get('retry-after');
+  if (retryAfter) {
+    const delta = Number.parseInt(retryAfter, 10);
+    if (Number.isFinite(delta) && delta >= 0) {
+      return Math.floor(Date.now() / 1000) + delta;
+    }
+    const asDate = Date.parse(retryAfter);
+    if (Number.isFinite(asDate)) return Math.floor(asDate / 1000);
+  }
+  return null;
 }
 
 function encodePath(path: string): string {

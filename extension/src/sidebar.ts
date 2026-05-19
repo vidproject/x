@@ -77,7 +77,10 @@ function setConnStatus(state: ExtensionState): void {
     text = `Auth error — check your PAT`;
   } else if (connection.status === 'rate-limited') {
     cls = 'warn';
-    text = 'GitHub rate-limited — captures will retry';
+    const resets = fmtRateLimitReset(connection.rateLimitResetAt);
+    text = resets
+      ? `GitHub rate-limited — resets ${resets}`
+      : 'GitHub rate-limited — captures will retry';
   } else if (connection.status === 'network-error') {
     cls = 'err';
     text = 'Network error — check connectivity';
@@ -106,6 +109,21 @@ function fmtRel(iso: string | null): string {
   if (hours < 24) return `${hours}h ago`;
   const days = Math.round(hours / 24);
   return `${days}d ago`;
+}
+
+function fmtRateLimitReset(epochSec: number | null): string {
+  if (epochSec === null) return '';
+  const deltaSec = epochSec - Math.floor(Date.now() / 1000);
+  if (deltaSec <= 0) return 'momentarily';
+  const wallClock = new Date(epochSec * 1000).toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+  if (deltaSec < 60) return `in ${deltaSec}s (${wallClock})`;
+  const mins = Math.round(deltaSec / 60);
+  if (mins < 60) return `in ${mins}m (${wallClock})`;
+  const hours = Math.round(mins / 60);
+  return `in ${hours}h (${wallClock})`;
 }
 
 function fmtNum(n: number): string {

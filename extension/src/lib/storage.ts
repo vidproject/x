@@ -62,6 +62,10 @@ export interface AutoScrollSession {
 interface StorageShape {
   settings: Settings;
   accounts: AccountConfig[];
+  /** ISO timestamp of the last successful accounts.yaml fetch from the repo.
+   * Used by `refreshAccountsList` to skip re-fetching on every SW wake — the
+   * file changes rarely and an authenticated raw fetch every wake adds up. */
+  accountsRefreshedAt: string | null;
   connection: ConnectionState;
   counters: Record<string, AccountCounter>;
   runBuffers: Record<string, RunBuffer>;
@@ -87,11 +91,13 @@ const DEFAULT_CONNECTION: ConnectionState = {
   error: null,
   defaultBranch: null,
   configuredBranchExists: null,
+  rateLimitResetAt: null,
 };
 
 const DEFAULTS: StorageShape = {
   settings: { ...DEFAULT_SETTINGS },
   accounts: [...FALLBACK_ACCOUNTS],
+  accountsRefreshedAt: null,
   connection: { ...DEFAULT_CONNECTION },
   counters: {},
   runBuffers: {},
@@ -159,6 +165,12 @@ export async function getAccounts(): Promise<AccountConfig[]> {
 export async function setAccounts(a: AccountConfig[]): Promise<void> {
   await setRaw('accounts', a);
 }
+export async function getAccountsRefreshedAt(): Promise<string | null> {
+  return getRaw('accountsRefreshedAt');
+}
+export async function setAccountsRefreshedAt(iso: string | null): Promise<void> {
+  await setRaw('accountsRefreshedAt', iso);
+}
 
 // --- Connection state ----------------------------------------------------
 
@@ -170,6 +182,7 @@ export async function getConnection(): Promise<ConnectionState> {
     defaultBranch: c.defaultBranch === undefined ? null : c.defaultBranch,
     configuredBranchExists:
       c.configuredBranchExists === undefined ? null : c.configuredBranchExists,
+    rateLimitResetAt: c.rateLimitResetAt === undefined ? null : c.rateLimitResetAt,
   };
   return out;
 }
