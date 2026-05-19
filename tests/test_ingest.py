@@ -186,6 +186,66 @@ def test_schema_version_mismatch_quarantined(tmp_repo: Path) -> None:
     assert moved, "future-schema file should have been quarantined"
 
 
+def test_archive_status_not_clobbered_by_pending_re_ingest(tmp_repo: Path) -> None:
+    """Regression: the archive workflow writes archive_status='archived'
+    into the parquet; the next extension capture re-supplies the same
+    media_id with archive_status='pending'. The merge must keep 'archived'
+    (anchored on `release_asset_url` presence) — otherwise the archive
+    workflow re-uploads the same bytes on every run."""
+    media_v1 = make_media(media_type="video", media_id="vid-1")
+    write_capture(
+        tmp_repo,
+        "test-handle",
+        "01.json",
+        make_capture([make_tweet("a1", media=[media_v1])]),
+    )
+    assert ingest.main([]) == 0
+
+    # Simulate archive workflow populating the row.
+    parquet = tmp_repo / "data" / "test-handle.parquet"
+    df = pl.read_parquet(parquet)
+    enriched = df.with_columns(
+        pl.col("media").list.eval(
+            pl.element().struct.with_fields(
+                release_asset_url=pl.lit("https://github.com/.../vid-1.mp4"),
+                sha256=pl.lit("deadbeef"),
+                bytes=pl.lit(987_654),
+                archive_status=pl.lit("archived"),
+                archive_attempts=pl.lit(1),
+                last_attempt_at=pl.lit("2025-04-12T15:00:00Z"),
+            )
+        )
+    )
+    enriched.write_parquet(parquet, compression="zstd")
+
+    # Extension re-captures the same tweet — its media struct has
+    # release_asset_url=None and archive_status='pending'.
+    write_capture(
+        tmp_repo,
+        "test-handle",
+        "02.json",
+        make_capture(
+            [
+                make_tweet(
+                    "a1",
+                    captured_at="2025-04-13T15:00:00Z",
+                    media=[make_media(media_type="video", media_id="vid-1")],
+                )
+            ]
+        ),
+    )
+    assert ingest.main([]) == 0
+
+    df_after = pl.read_parquet(parquet)
+    m = df_after["media"].to_list()[0][0]
+    assert m["release_asset_url"] == "https://github.com/.../vid-1.mp4"
+    assert m["sha256"] == "deadbeef"
+    assert m["archive_status"] == "archived", (
+        f"expected 'archived' to survive re-ingest, got {m['archive_status']!r}"
+    )
+    assert m["archive_attempts"] == 1
+
+
 def test_release_asset_url_preserved_across_reingest(tmp_repo: Path) -> None:
     media = make_media(media_type="video", media_id="v-keep")
     cap1 = make_capture([make_tweet("aa01", media=[media])])

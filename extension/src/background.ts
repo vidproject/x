@@ -186,7 +186,7 @@ let autoScrollTimer: ReturnType<typeof setInterval> | null = null;
 
 async function ensureAutoScrollAlarm(): Promise<void> {
   const s = await getSettings();
-  await configureAutoScroll(s.autoScroll, s.autoScrollIntervalSec);
+  await configureAutoScroll(s.enabled !== false && s.autoScroll, s.autoScrollIntervalSec);
 }
 
 async function configureAutoScroll(on: boolean, intervalSec: number): Promise<void> {
@@ -289,7 +289,31 @@ function isRuntimeMessage(m: unknown): m is RuntimeMessage {
   return !!m && typeof m === 'object' && typeof (m as { type?: unknown }).type === 'string';
 }
 
+/** Messages that drive the capture pipeline. When the master switch is OFF
+ * we ignore these but still respond to status / configuration queries. */
+const CAPTURE_PIPELINE_MESSAGES = new Set<RuntimeMessage['type']>([
+  'graphql-capture',
+  'capture-now',
+  'capture-all',
+  'capture-this-page',
+  'flush-all',
+  'flush-handle',
+  'start-refetch',
+]);
+
+async function isEnabled(): Promise<boolean> {
+  const s = await getSettings();
+  return s.enabled !== false;
+}
+
 async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
+  // Master switch: when the user has paused the extension we still need
+  // the meta-channels (get-state, toggle-enabled, open-options, …) so the
+  // sidebar stays functional, but anything that would actually capture,
+  // commit, or drive a tab is a no-op.
+  if (!(await isEnabled()) && CAPTURE_PIPELINE_MESSAGES.has(msg.type)) {
+    return { ok: true, paused: true };
+  }
   switch (msg.type) {
     case 'graphql-capture':
       await onGraphqlCapture(msg.endpoint, msg.url, msg.response);
@@ -330,6 +354,19 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
       await updateSettings({ autoCapture: msg.on });
       await info('auto-capture toggled', { on: msg.on });
       return buildState();
+    case 'toggle-enabled': {
+      const s = await updateSettings({ enabled: msg.on });
+      // Pausing while auto-scroll is on must actually stop the timer;
+      // resuming must rearm it if the auto-scroll toggle is still set.
+      await configureAutoScroll(s.enabled && s.autoScroll, s.autoScrollIntervalSec);
+      if (!msg.on) {
+        // Drop any in-flight refetch tick so the loop doesn't fire one
+        // last time after the user paused.
+        await browser.alarms.clear('refetch-tick');
+      }
+      await info('extension master switch toggled', { on: msg.on });
+      return buildState();
+    }
     case 'toggle-auto-scroll': {
       const s = await updateSettings({ autoScroll: msg.on });
       await configureAutoScroll(s.autoScroll, s.autoScrollIntervalSec);
@@ -1191,6 +1228,7 @@ function redactSettings(s: Settings): ExtensionState['settings'] {
     owner: s.owner,
     repo: s.repo,
     branch: s.branch,
+    enabled: s.enabled,
     autoCapture: s.autoCapture,
     configuredAt: s.configuredAt,
     autoScroll: s.autoScroll,

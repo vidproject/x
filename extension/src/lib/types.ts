@@ -8,6 +8,11 @@ export interface Settings {
   owner: string;
   repo: string;
   branch: string;
+  /** Master on/off switch. When false the extension still runs (sidebar,
+   * settings, connection check) but the capture pipeline is fully paused:
+   * graphql events are dropped, auto-scroll stops, the refetch loop pauses,
+   * and no buffers are flushed. Re-enabling resumes everything. */
+  enabled: boolean;
   autoCapture: boolean;
   configuredAt: number | null;
   /** When true, the background periodically scrolls all open x.com tabs to
@@ -73,6 +78,26 @@ export interface EngagementSnapshot {
 
 export type TweetType = 'original' | 'retweet' | 'quote' | 'reply';
 
+/** Per-author profile snapshot, attached to every tweet at capture time
+ * because the underlying values (display name, bio, follower counts,
+ * verification) drift slowly. Ingest aggregates the latest non-null
+ * values into `data/users.json` for the viewer to render. */
+export interface UserSnapshot {
+  display_name: string | null;
+  avatar_url: string | null;
+  verified: boolean | null;
+  is_blue_verified: boolean | null;
+  verified_type: string | null;
+  description: string | null;
+  location: string | null;
+  url: string | null;
+  followers_count: number | null;
+  friends_count: number | null;
+  statuses_count: number | null;
+  account_created_at: string | null;
+  protected: boolean | null;
+}
+
 export interface CommunityNote {
   /** ID of the Community Note (formerly Birdwatch note). */
   note_id: string | null;
@@ -88,6 +113,20 @@ export interface CommunityNote {
   observed_at: string;
 }
 
+/** Inline preview / "card" rendered when the tweet links to an unfurlable
+ * URL (article, YouTube video, …). X's source-of-truth for card content
+ * is the unfurled URL — when that URL is later removed by the destination
+ * site we lose the preview entirely, so the capture-time snapshot is the
+ * only durable record. */
+export interface TweetCard {
+  name: string | null;
+  card_url: string | null;
+  vendor_url: string | null;
+  title: string | null;
+  description: string | null;
+  image_url: string | null;
+}
+
 export interface CanonicalTweet {
   tweet_id: string;
   account_handle: string;
@@ -98,16 +137,32 @@ export interface CanonicalTweet {
   deletion_detected_at: string | null;
   tweet_url: string;
   tweet_type: TweetType;
+  /** ID of the root tweet that started this conversation thread. Needed to
+   * reconstruct reply chains; the timeline endpoint emits replies one at a
+   * time and only `conversation_id_str` ties them to a root. */
+  conversation_id: string | null;
   reply_to_tweet_id: string | null;
   reply_to_account: string | null;
+  reply_to_account_id: string | null;
   quoted_tweet_id: string | null;
   retweeted_tweet_id: string | null;
   text: string;
   text_resolved: string;
   lang: string | null;
+  /** X's own NSFW / violence flag for this tweet. Captured because users
+   * can toggle the flag for their own historical tweets; the at-capture
+   * value is the only reliable record. */
+  possibly_sensitive: boolean | null;
+  /** HTML-encoded client identifier from `legacy.source` (e.g. "Twitter
+   * for iPhone"). Sometimes stripped by X later. */
+  source: string | null;
+  /** Stringified place metadata when the tweet was geotagged ("San Diego,
+   * CA, US"); null otherwise. */
+  place_full_name: string | null;
   hashtags: string[];
   mentions: string[];
   urls: UrlEntity[];
+  card: TweetCard | null;
   media: MediaItem[];
   like_count: number;
   retweet_count: number;
@@ -116,6 +171,10 @@ export interface CanonicalTweet {
   view_count: number | null;
   bookmark_count: number | null;
   engagement_history: EngagementSnapshot[];
+  /** Author profile snapshot at capture time. Ingest aggregates the latest
+   * non-null fields per handle into `data/users.json` (which the viewer
+   * fetches to render avatars + display names inline). */
+  author: UserSnapshot;
   /** Reader-supplied context attached by X's Community Notes program.
    * `null` when no note is attached (the vast majority of tweets). */
   community_note: CommunityNote | null;
@@ -209,6 +268,7 @@ export type RuntimeMessage =
   | { type: 'flush-all' }
   | { type: 'flush-handle'; handle: string }
   | { type: 'toggle-auto-capture'; on: boolean }
+  | { type: 'toggle-enabled'; on: boolean }
   | { type: 'toggle-auto-scroll'; on: boolean }
   | { type: 'set-auto-scroll-interval'; seconds: number }
   | { type: 'start-refetch' }

@@ -62,6 +62,45 @@ body {
   font-weight: 600;
   font-size: 14px;
 }
+.master-row {
+  margin: 6px 0 0;
+  display: flex;
+  align-items: center;
+}
+.master-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.master-switch input[type='checkbox'] {
+  width: 14px;
+  height: 14px;
+  accent-color: #6ed47a;
+  cursor: pointer;
+}
+.master-label {
+  color: #6ed47a;
+}
+.master-switch input:not(:checked) ~ .master-label {
+  color: #e1b04a;
+}
+body.paused .controls,
+body.paused .refetch,
+body.paused .accounts {
+  opacity: 0.5;
+  pointer-events: none;
+}
+body.paused .acc-action,
+body.paused .acc-stats {
+  filter: grayscale(0.6);
+}
 .hdr-conn {
   display: flex;
   align-items: center;

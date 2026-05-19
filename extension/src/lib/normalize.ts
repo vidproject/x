@@ -1,5 +1,13 @@
 import { TWEET_URL_PREFIX } from './config.js';
-import type { CanonicalTweet, CommunityNote, MediaItem, TweetType, UrlEntity } from './types.js';
+import type {
+  CanonicalTweet,
+  CommunityNote,
+  MediaItem,
+  TweetCard,
+  TweetType,
+  UrlEntity,
+  UserSnapshot,
+} from './types.js';
 
 /**
  * Normalize GraphQL response payloads from X's internal API into
@@ -112,6 +120,7 @@ function buildTweet(raw: unknown, ctx: NormalizeContext): CanonicalTweet | null 
   // then the legacy `legacy.screen_name`, then a couple of older variants.
   const userCoreNew = obj(userResult?.core);
   const userLegacy = obj(userResult?.legacy);
+  const userAvatarObj = obj(userResult?.avatar);
   const handle =
     strOrNull(userCoreNew?.screen_name) ??
     strOrNull(userLegacy?.screen_name) ??
@@ -122,6 +131,12 @@ function buildTweet(raw: unknown, ctx: NormalizeContext): CanonicalTweet | null 
     strOrNull(userResult?.id_str) ??
     strOrNull(legacy.user_id_str);
   if (!handle || !accountId) return null;
+  // Author snapshot. Display name + avatar moved between `legacy` and the
+  // new `core` substructure over time; the rest (verification, follower
+  // counts, account_created_at) is still in `legacy`. We snapshot the
+  // whole UserSnapshot per tweet because these values drift over time
+  // and the at-capture state is the only reliable record.
+  const author = extractUserSnapshot(userResult, userCoreNew, userLegacy, userAvatarObj);
 
   const noteTweet = obj(obj(obj(t.note_tweet)?.note_tweet_results)?.result);
   const textFromNote = strOrNull(noteTweet?.text);
@@ -148,6 +163,9 @@ function buildTweet(raw: unknown, ctx: NormalizeContext): CanonicalTweet | null 
   const views = obj(t.views);
   const viewCount = numOrNull(views?.count) ?? numOrNull(strOrNull(views?.count));
 
+  const card = extractCard(t);
+  const place = obj(legacy.place);
+
   const tweet: CanonicalTweet = {
     tweet_id: restId,
     account_handle: handle,
@@ -158,8 +176,10 @@ function buildTweet(raw: unknown, ctx: NormalizeContext): CanonicalTweet | null 
     deletion_detected_at: null,
     tweet_url: `${TWEET_URL_PREFIX}/${handle}/status/${restId}`,
     tweet_type: tweetType,
+    conversation_id: strOrNull(legacy.conversation_id_str),
     reply_to_tweet_id: strOrNull(legacy.in_reply_to_status_id_str),
     reply_to_account: strOrNull(legacy.in_reply_to_screen_name),
+    reply_to_account_id: strOrNull(legacy.in_reply_to_user_id_str),
     quoted_tweet_id: strOrNull(legacy.quoted_status_id_str),
     retweeted_tweet_id: strOrNull(
       obj(obj(legacy.retweeted_status_result)?.result)?.rest_id ??
@@ -168,9 +188,13 @@ function buildTweet(raw: unknown, ctx: NormalizeContext): CanonicalTweet | null 
     text,
     text_resolved: resolveShortUrls(text, urls),
     lang: strOrNull(legacy.lang),
+    possibly_sensitive: boolOrNull(legacy.possibly_sensitive),
+    source: strOrNull(legacy.source) ?? strOrNull(t.source),
+    place_full_name: strOrNull(place?.full_name),
     hashtags,
     mentions,
     urls,
+    card,
     media,
     like_count: numOrZero(legacy.favorite_count),
     retweet_count: numOrZero(legacy.retweet_count),
@@ -189,6 +213,7 @@ function buildTweet(raw: unknown, ctx: NormalizeContext): CanonicalTweet | null 
         bookmarks: numOrNull(legacy.bookmark_count),
       },
     ],
+    author,
     community_note: communityNote,
     is_truncated: isTruncated,
     wayback_url: null,
@@ -334,6 +359,9 @@ function parseTwitterDate(s: string | null): string | null {
 function strOrNull(v: unknown): string | null {
   return typeof v === 'string' && v.length > 0 ? v : null;
 }
+function boolOrNull(v: unknown): boolean | null {
+  return typeof v === 'boolean' ? v : null;
+}
 function numOrNull(v: unknown): number | null {
   if (typeof v === 'number' && Number.isFinite(v)) return v;
   if (typeof v === 'string' && v.length > 0) {
@@ -410,5 +438,92 @@ function extractCommunityNote(
     summary,
     destination_url: destinationUrl,
     observed_at: observedAt,
+  };
+}
+
+/**
+ * Pull a per-author UserSnapshot from the tweet's user_results node. Every
+ * field defaults to null when missing so the schema stays stable across
+ * the legacy / core shape migrations X has been doing.
+ */
+function extractUserSnapshot(
+  userResult: Record<string, unknown> | null,
+  userCoreNew: Record<string, unknown> | null,
+  userLegacy: Record<string, unknown> | null,
+  userAvatarObj: Record<string, unknown> | null
+): UserSnapshot {
+  const verification = obj(userResult?.verification);
+  return {
+    display_name:
+      strOrNull(userCoreNew?.name) ?? strOrNull(userLegacy?.name) ?? strOrNull(userResult?.name),
+    avatar_url:
+      strOrNull(userAvatarObj?.image_url) ??
+      strOrNull(userLegacy?.profile_image_url_https) ??
+      strOrNull(userResult?.profile_image_url_https),
+    verified: boolOrNull(verification?.verified) ?? boolOrNull(userLegacy?.verified),
+    is_blue_verified: boolOrNull(userResult?.is_blue_verified),
+    verified_type: strOrNull(verification?.verified_type) ?? strOrNull(userLegacy?.verified_type),
+    description: strOrNull(userLegacy?.description),
+    location: strOrNull(obj(userResult?.location)?.location) ?? strOrNull(userLegacy?.location),
+    url: strOrNull(userLegacy?.url),
+    followers_count: numOrNull(userLegacy?.followers_count),
+    friends_count: numOrNull(userLegacy?.friends_count),
+    statuses_count: numOrNull(userLegacy?.statuses_count),
+    account_created_at:
+      parseTwitterDate(strOrNull(userCoreNew?.created_at)) ??
+      parseTwitterDate(strOrNull(userLegacy?.created_at)),
+    protected: boolOrNull(userLegacy?.protected),
+  };
+}
+
+/**
+ * Walk the tweet's `card.legacy.binding_values` (key/value array) into a
+ * flat TweetCard with title, description, and a representative image URL.
+ * Returns null when the tweet has no card.
+ */
+function extractCard(t: Record<string, unknown>): TweetCard | null {
+  const card = obj(t.card);
+  const cardLegacy = obj(card?.legacy);
+  if (!cardLegacy) return null;
+  const bindings = cardLegacy.binding_values;
+  const byKey: Record<string, unknown> = {};
+  if (Array.isArray(bindings)) {
+    for (const bv of bindings) {
+      if (typeof bv !== 'object' || bv === null) continue;
+      const o = bv as Record<string, unknown>;
+      const k = strOrNull(o.key);
+      const v = obj(o.value);
+      if (!k || !v) continue;
+      byKey[k] =
+        strOrNull(v.string_value) ??
+        strOrNull(obj(v.image_value)?.url) ??
+        strOrNull(obj(v.image_color_value)?.palette);
+    }
+  }
+  const name = strOrNull(cardLegacy.name);
+  const cardUrl = strOrNull(cardLegacy.url);
+  const vendorUrl =
+    typeof byKey['vanity_url'] === 'string' ? (byKey['vanity_url'] as string) : null;
+  const title = typeof byKey['title'] === 'string' ? (byKey['title'] as string) : null;
+  const description =
+    typeof byKey['description'] === 'string' ? (byKey['description'] as string) : null;
+  const imageUrl =
+    (typeof byKey['photo_image_full_size_original'] === 'string'
+      ? (byKey['photo_image_full_size_original'] as string)
+      : null) ??
+    (typeof byKey['thumbnail_image_original'] === 'string'
+      ? (byKey['thumbnail_image_original'] as string)
+      : null) ??
+    (typeof byKey['summary_photo_image_original'] === 'string'
+      ? (byKey['summary_photo_image_original'] as string)
+      : null);
+  if (!name && !title && !description && !imageUrl) return null;
+  return {
+    name,
+    card_url: cardUrl,
+    vendor_url: vendorUrl,
+    title,
+    description,
+    image_url: imageUrl,
   };
 }

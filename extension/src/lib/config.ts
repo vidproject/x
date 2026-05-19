@@ -7,6 +7,7 @@ export const DEFAULT_SETTINGS: Settings = {
   // The repo's current default branch is "master". If you fork or rename
   // it later, update Settings before the next capture.
   branch: 'master',
+  enabled: true,
   autoCapture: true,
   configuredAt: null,
   autoScroll: false,

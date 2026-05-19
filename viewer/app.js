@@ -10,6 +10,7 @@ import {
   parseVisibleColumns,
   renderColumnsMenu,
   renderTable,
+  setUserLookup,
 } from './table.js';
 import { closeSidepanel, openSidepanel } from './sidepanel.js';
 
@@ -60,7 +61,20 @@ const els = {
   spClose: $('sp-close'),
   colPop: $('col-pop'),
   errbar: $('errbar'),
+  loadErrorsBtn: $('load-errors-btn'),
+  loadErrorsCount: $('load-errors-count'),
+  loadErrors: $('load-errors'),
+  loadErrorsBody: $('load-errors-body'),
+  loadErrorsClose: $('load-errors-close'),
 };
+
+// Structured per-resource load failures. Surface them via the
+// "⚠ N load failures" button in the result-bar so the user can see what
+// actually broke (a 404 from Pages lag vs. a corrupted parquet vs.
+// network).
+let loadErrors = [];
+/** @type {Map<string, Record<string, unknown>>} */
+let users = new Map();
 
 // --- State ---
 const store = new Store();
@@ -71,7 +85,6 @@ let filteredRows = [];
 /** @type {Record<string, Set<string>>} */
 let colFilters = {};
 let selectedRowId = null;
-const LOADING = new Set();
 
 // --- Theme ---
 function loadTheme() {
@@ -119,16 +132,88 @@ async function loadManifest() {
     const res = await fetch('data/manifest.json', { cache: 'no-store' });
     if (!res.ok) throw new Error(`manifest: ${res.status}`);
     manifest = await res.json();
-  } catch {
+  } catch (err) {
     manifest = { accounts: [] };
+    pushLoadError({
+      resource: 'data/manifest.json',
+      status: null,
+      kind: 'manifest',
+      message: err.message ?? String(err),
+    });
     els.emptyDetail.textContent =
       'No data/manifest.json found yet. Once captures land and the ingest workflow runs, accounts will appear here.';
+  }
+  // Best-effort users.json — totally optional, viewer still works without
+  // avatars / display names.
+  try {
+    const res = await fetch('data/users.json', { cache: 'no-store' });
+    if (res.ok) {
+      const payload = await res.json();
+      const map = new Map();
+      for (const [handle, meta] of Object.entries(payload?.users ?? {})) {
+        map.set(handle, meta);
+      }
+      users = map;
+      setUserLookup(users);
+    } else if (res.status !== 404) {
+      pushLoadError({
+        resource: 'data/users.json',
+        status: res.status,
+        kind: 'users',
+        message: `HTTP ${res.status} ${res.statusText}`,
+      });
+    }
+  } catch (err) {
+    pushLoadError({
+      resource: 'data/users.json',
+      status: null,
+      kind: 'users',
+      message: err.message ?? String(err),
+    });
   }
   paintDlMenu();
   paintHdrStats();
   if ((manifest.accounts || []).length === 0) {
     els.empty.hidden = false;
   }
+}
+
+function pushLoadError(entry) {
+  loadErrors.push({
+    when: new Date().toISOString(),
+    ...entry,
+  });
+  paintLoadErrorsButton();
+}
+
+function paintLoadErrorsButton() {
+  if (loadErrors.length === 0) {
+    els.loadErrorsBtn.hidden = true;
+    return;
+  }
+  els.loadErrorsBtn.hidden = false;
+  els.loadErrorsCount.textContent = String(loadErrors.length);
+}
+
+function paintLoadErrorsPanel() {
+  els.loadErrorsBody.replaceChildren();
+  for (const err of loadErrors) {
+    const tr = document.createElement('tr');
+    const when = new Date(err.when).toLocaleTimeString('en-US', { hour12: false });
+    const httpCell = err.status === null ? '—' : String(err.status);
+    tr.innerHTML =
+      `<td>${escapeHtml(when)}</td>` +
+      `<td><code>${escapeHtml(err.resource)}</code></td>` +
+      `<td class="cell-num">${escapeHtml(httpCell)}</td>` +
+      `<td>${escapeHtml(err.message)}</td>`;
+    els.loadErrorsBody.append(tr);
+  }
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) =>
+    c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : c === '"' ? '&quot;' : '&#39;'
+  );
 }
 
 function paintHdrStats() {
@@ -213,13 +298,26 @@ async function loadAllAccounts() {
   const inFlight = new Set();
 
   async function loadOne(account) {
+    const resource = `data/${account.handle}.parquet`;
     try {
-      const rows = await loadParquetRows(`data/${account.handle}.parquet`);
+      const rows = await loadParquetRows(resource);
       // Push without triggering a rebuild per-account; we batch rebuilds
       // every PROGRESSIVE_REFRESH_EVERY completions for snappier display.
       store.byHandle.set(account.handle, rows);
     } catch (err) {
       loadProgress.failed += 1;
+      // Surface enough detail in the load-errors panel that the user can
+      // tell apart "404 because Pages hasn't redeployed yet" from "503
+      // network" from "parquet codec unsupported".
+      const msg = err?.message ?? String(err);
+      const statusMatch = /:\s*(\d{3})\s*(.*)$/.exec(msg);
+      pushLoadError({
+        resource,
+        status: statusMatch ? Number(statusMatch[1]) : null,
+        kind: 'parquet',
+        handle: account.handle,
+        message: msg,
+      });
       console.warn(`[viewer] failed to load ${account.handle}:`, err);
     } finally {
       loadProgress.completed += 1;
@@ -248,12 +346,21 @@ async function loadAllAccounts() {
   setSpinner(false);
   if (loadProgress.failed > 0) {
     showError(
-      `Loaded ${loadProgress.total - loadProgress.failed} of ${loadProgress.total} accounts; ${loadProgress.failed} failed (see devtools console).`,
-      10000
+      `Loaded ${loadProgress.total - loadProgress.failed} of ${loadProgress.total} accounts; ${loadProgress.failed} failed. Click "⚠ load failures" above for details.`,
+      15000
     );
   }
   paintHdrStats();
 }
+
+// Wire the load-errors panel: button toggles, X closes.
+els.loadErrorsBtn.addEventListener('click', () => {
+  paintLoadErrorsPanel();
+  els.loadErrors.hidden = !els.loadErrors.hidden;
+});
+els.loadErrorsClose.addEventListener('click', () => {
+  els.loadErrors.hidden = true;
+});
 
 function revealUi() {
   els.empty.hidden = true;
