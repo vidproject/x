@@ -18,6 +18,7 @@ import {
   FLUSH_TWEET_THRESHOLD,
   PROFILE_ENDPOINTS,
   TWEET_ENDPOINTS,
+  USER_PAGE_ENDPOINTS,
   VERIFY_CONNECTION_INTERVAL_MS,
 } from './lib/config.js';
 import { GitHubClient, GitHubError, toBase64 } from './lib/github.js';
@@ -271,7 +272,16 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
   // everything we've seen. Dropping captures here was hiding the user's
   // first browsing session entirely.
 
-  const allowed = new Set(accounts.map((a) => a.handle.toLowerCase()));
+  // On user-scoped endpoints (UserTweets, UserTweetsAndReplies, TweetDetail,
+  // …) we keep every tweet in the response, not just those authored by
+  // tracked handles — that way when a tracked account retweets / quotes /
+  // replies to a non-tracked account, the referenced tweet's content is
+  // archived too, bucketed under its actual author. For general-purpose
+  // endpoints (HomeTimeline, SearchTimeline, …) we still filter so casual
+  // browsing doesn't pull in arbitrary content from the user's feed.
+  const allowed = USER_PAGE_ENDPOINTS.has(endpoint)
+    ? new Set<string>() // empty = no handle filter
+    : new Set(accounts.map((a) => a.handle.toLowerCase()));
   const capturedAt = new Date().toISOString();
 
   let normalized;
@@ -490,13 +500,22 @@ async function flushHandle(handle: string, reason: string): Promise<void> {
       message: `seen: ${handle} ${day} ${seen.tweet_ids_observed.length} ids (run ${shortRunId(buf.run_id)})`,
     });
     await clearRunBuffer(handle);
-    await bumpCounter(handle, {
-      todayCount: (await getCounters())[handle]?.todayCount ?? 0,
-      todayDate: day,
-      lastCaptureAt: buf.last_capture_at,
-      totalCommitted: ((await getCounters())[handle]?.totalCommitted ?? 0) + tweets.length,
-      bufferedCount: 0,
-    });
+    {
+      // Counter bump: actually INCREMENT todayCount and totalCommitted by
+      // the number of tweets we just persisted (the previous code read the
+      // existing values and wrote them back, leaving the counter pegged at
+      // zero).
+      const prev = (await getCounters())[handle];
+      const today = new Date().toISOString().slice(0, 10);
+      const carriedToday = prev && prev.todayDate === today ? prev.todayCount : 0;
+      await bumpCounter(handle, {
+        todayCount: carriedToday + tweets.length,
+        todayDate: today,
+        lastCaptureAt: buf.last_capture_at,
+        totalCommitted: (prev?.totalCommitted ?? 0) + tweets.length,
+        bufferedCount: 0,
+      });
+    }
     await info('flush committed', {
       handle,
       reason,

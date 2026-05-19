@@ -44,6 +44,26 @@ export const TWEET_ENDPOINTS: ReadonlySet<string> = new Set([
 // to learn account_id <-> handle bindings).
 export const PROFILE_ENDPOINTS: ReadonlySet<string> = new Set(['UserByScreenName', 'UserByRestId']);
 
+// Endpoints whose responses are scoped to a particular account or
+// conversation — i.e. visiting `/<handle>` / `/<handle>/with_replies`,
+// looking at one tweet, etc. Every tweet returned by these endpoints is
+// either authored by the tracked account or directly referenced by them
+// (retweeted, quoted, replied to), so we keep everything we see rather
+// than dropping non-tracked authors. That way a retweet of a non-tracked
+// account still gets its original-tweet content archived.
+//
+// Endpoints NOT in this set (HomeTimeline, SearchTimeline, Likes, etc.)
+// still get filtered to tracked-handle authors — see the spec's
+// "Browsing my home timeline is ignored" rule.
+export const USER_PAGE_ENDPOINTS: ReadonlySet<string> = new Set([
+  'UserTweets',
+  'UserTweetsAndReplies',
+  'UserMedia',
+  'UserHighlightsTweets',
+  'TweetDetail',
+  'TweetResultByRestId',
+]);
+
 // Maximum tweets to buffer per handle before forcing a commit.
 export const FLUSH_TWEET_THRESHOLD = 200;
 
