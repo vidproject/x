@@ -128,6 +128,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@GovEvers` | GovEvers | 1 | 2026-04-02 | 2026-04-02 | 2026-05-19 | 0 | 0 |
 | `@GovTimWalz` | GovTimWalz | 3 | 2026-01-06 | 2026-05-04 | 2026-05-19 | 2 | 1 |
 | `@GuntherEagleman` | GuntherEagleman | 1 | 2026-04-30 | 2026-04-30 | 2026-05-19 | 1 | 1 |
+| `@HSISanJuan` | HSISanJuan | 2 | 2026-05-16 | 2026-05-19 | 2026-05-19 | 4 | 0 |
 | `@HSITampa` | HSITampa | 1 | 2025-05-02 | 2025-05-02 | 2026-05-19 | 1 | 0 |
 | `@HSI_HQ` | HSI_HQ | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 1 | 0 |
 | `@HarshThoughtful` | HarshThoughtful | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
@@ -264,7 +265,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@vlast98230` | vlast98230 | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 1 | 0 |
 | `@washingtonpost` | washingtonpost | 3 | 2026-05-08 | 2026-05-13 | 2026-05-19 | 1 | 1 |
 
-_Generated 2026-05-19T19:17:21Z._
+_Generated 2026-05-19T19:20:05Z._
 
 <!-- COVERAGE:END -->
 
