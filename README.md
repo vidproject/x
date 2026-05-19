@@ -173,6 +173,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@OffThePress1` | OffThePress1 | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 1 |
 | `@PatAdams96` | PatAdams96 | 4 | 2026-04-27 | 2026-04-29 | 2026-05-19 | 4 | 3 |
 | `@PattyMorin` | PattyMorin | 1 | 2026-05-09 | 2026-05-09 | 2026-05-19 | 1 | 0 |
+| `@PaulLoder54165` | PaulLoder54165 | 1 | 2026-03-19 | 2026-03-19 | 2026-05-19 | 0 | 0 |
 | `@PeteHegseth` | PeteHegseth | 1 | 2026-04-29 | 2026-04-29 | 2026-05-19 | 1 | 0 |
 | `@Plasticwasteguy` | Plasticwasteguy | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@PolkCoSheriff` | PolkCoSheriff | 1 | 2025-04-18 | 2025-04-18 | 2026-05-19 | 1 | 0 |
@@ -271,7 +272,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@vlast98230` | vlast98230 | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 1 | 0 |
 | `@washingtonpost` | washingtonpost | 3 | 2026-05-08 | 2026-05-13 | 2026-05-19 | 1 | 1 |
 
-_Generated 2026-05-19T19:46:41Z._
+_Generated 2026-05-19T19:50:01Z._
 
 <!-- COVERAGE:END -->
 
