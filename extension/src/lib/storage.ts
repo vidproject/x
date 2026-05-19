@@ -1,4 +1,5 @@
 import { DEFAULT_SETTINGS, FALLBACK_ACCOUNTS, ACTIVITY_TAIL_MAX } from './config.js';
+import { decryptPat, encryptPat, isEncryptedPat } from './crypto.js';
 import type {
   AccountConfig,
   AccountCounter,
@@ -32,6 +33,32 @@ export interface CommittedEntry {
   sig: string; // engagement signature: "like|rt|reply|quote"
 }
 
+/** Progress + inflight tracking for a queue-driven loop (refetch / media-crawl).
+ * The loop persists this so a SW eviction in the middle of a run preserves
+ * "X of Y processed" — and the wait-for-ingest guard knows what to expect.
+ */
+export interface LoopSession {
+  /** Initial queue size when the user clicked "Start". */
+  totalAtStart: number;
+  /** Tweets processed (ingested OR dropped after retries) so far. */
+  processed: number;
+  /** ISO of when this session started. */
+  startedAt: string;
+  /** Tweet currently inflight — we navigated to it and are waiting for the
+   * page-hook to capture the response before advancing. null between ticks
+   * (and once an ingest has been observed). */
+  inflight: { tweetId: string; navigatedAt: string } | null;
+}
+
+/** Auto-scroll session: counts of ticks and tweets ingested since the user
+ * clicked Start. Persisted so SW eviction during a run keeps progress. */
+export interface AutoScrollSession {
+  startedAt: string;
+  scrollCount: number;
+  ingestedCount: number;
+  expandedCount: number;
+}
+
 interface StorageShape {
   settings: Settings;
   accounts: AccountConfig[];
@@ -48,6 +75,9 @@ interface StorageShape {
    * "_unknown") → array of tweet ids. The user can drive a crawl that
    * opens each detail page to capture the real thing. */
   mediaCrawlQueue: Record<string, string[]>;
+  refetchSession: LoopSession | null;
+  mediaCrawlSession: LoopSession | null;
+  autoScrollSession: AutoScrollSession | null;
 }
 
 const DEFAULT_CONNECTION: ConnectionState = {
@@ -69,6 +99,9 @@ const DEFAULTS: StorageShape = {
   committedIndex: {},
   refetchQueue: {},
   mediaCrawlQueue: {},
+  refetchSession: null,
+  mediaCrawlSession: null,
+  autoScrollSession: null,
 };
 
 async function getRaw<K extends keyof StorageShape>(key: K): Promise<StorageShape[K]> {
@@ -89,12 +122,27 @@ async function setRaw<K extends keyof StorageShape>(key: K, value: StorageShape[
 export async function getSettings(): Promise<Settings> {
   // Backfill any keys the user's stored settings predate — readers can rely
   // on every Settings field being present rather than `?? defaulting` at
-  // every callsite.
+  // every callsite. The PAT is stored encrypted-at-rest as of v0.2.0; we
+  // decrypt transparently so callers continue to see plaintext.
   const stored = await getRaw('settings');
-  return { ...DEFAULT_SETTINGS, ...stored };
+  const merged = { ...DEFAULT_SETTINGS, ...stored };
+  if (merged.pat && isEncryptedPat(merged.pat)) {
+    try {
+      merged.pat = await decryptPat(merged.pat);
+    } catch {
+      merged.pat = '';
+    }
+  }
+  return merged;
 }
 export async function setSettings(s: Settings): Promise<void> {
-  await setRaw('settings', s);
+  // Encrypt the PAT before persisting; legacy plaintext PATs get upgraded
+  // on the next save.
+  const toWrite: Settings = { ...s };
+  if (toWrite.pat && !isEncryptedPat(toWrite.pat)) {
+    toWrite.pat = await encryptPat(toWrite.pat);
+  }
+  await setRaw('settings', toWrite);
 }
 export async function updateSettings(patch: Partial<Settings>): Promise<Settings> {
   const cur = await getSettings();
@@ -359,6 +407,113 @@ export async function isCommitted(tweetId: string): Promise<boolean> {
     if (inner && tweetId in inner) return true;
   }
   return false;
+}
+
+// --- Loop session state (progress + inflight gating) ---------------------
+
+export async function getRefetchSession(): Promise<LoopSession | null> {
+  return getRaw('refetchSession');
+}
+export async function setRefetchSession(s: LoopSession | null): Promise<void> {
+  await setRaw('refetchSession', s);
+}
+export async function getMediaCrawlSession(): Promise<LoopSession | null> {
+  return getRaw('mediaCrawlSession');
+}
+export async function setMediaCrawlSession(s: LoopSession | null): Promise<void> {
+  await setRaw('mediaCrawlSession', s);
+}
+export async function getAutoScrollSession(): Promise<AutoScrollSession | null> {
+  return getRaw('autoScrollSession');
+}
+export async function setAutoScrollSession(s: AutoScrollSession | null): Promise<void> {
+  await setRaw('autoScrollSession', s);
+}
+
+// --- Purge: unrelated buffers, counters, queue entries -------------------
+
+/**
+ * Drop every per-handle bit of state (counters, run buffer, committed-index
+ * entries, refetch / media-crawl queue entries) that doesn't correspond to a
+ * tracked account. Returns a summary describing what was cleared so the
+ * caller can log it.
+ *
+ * Tracked accounts are passed in (caller resolves from the live config).
+ */
+export async function purgeUnrelatedState(targeted: ReadonlySet<string>): Promise<{
+  countersRemoved: number;
+  buffersRemoved: number;
+  committedHandlesRemoved: number;
+  refetchHandlesRemoved: number;
+  mediaCrawlIdsRemoved: number;
+}> {
+  const targLower = new Set([...targeted].map((h) => h.toLowerCase()));
+  const isTargeted = (h: string): boolean => targLower.has(h.toLowerCase());
+
+  // Counters
+  const counters = await getCounters();
+  let countersRemoved = 0;
+  for (const h of Object.keys(counters)) {
+    if (!isTargeted(h)) {
+      delete counters[h];
+      countersRemoved += 1;
+    }
+  }
+  await setRaw('counters', counters);
+
+  // Run buffers
+  const buffers = await getRunBuffers();
+  let buffersRemoved = 0;
+  for (const h of Object.keys(buffers)) {
+    if (!isTargeted(h)) {
+      delete buffers[h];
+      buffersRemoved += 1;
+    }
+  }
+  await setRaw('runBuffers', buffers);
+
+  // Committed dedup index
+  const idx = await getCommittedIndex();
+  let committedHandlesRemoved = 0;
+  for (const h of Object.keys(idx)) {
+    if (!isTargeted(h)) {
+      delete idx[h];
+      committedHandlesRemoved += 1;
+    }
+  }
+  await setCommittedIndex(idx);
+
+  // Refetch queue: buckets are keyed by handle.
+  const rq = await getRefetchQueue();
+  let refetchHandlesRemoved = 0;
+  for (const h of Object.keys(rq)) {
+    if (!isTargeted(h)) {
+      delete rq[h];
+      refetchHandlesRemoved += 1;
+    }
+  }
+  await setRaw('refetchQueue', rq);
+
+  // Media-crawl queue: buckets are hint-handles (or "_unknown"). Drop
+  // entries whose bucket isn't targeted — including "_unknown" since we
+  // can't verify relation.
+  const mq = await getMediaCrawlQueue();
+  let mediaCrawlIdsRemoved = 0;
+  for (const h of Object.keys(mq)) {
+    if (!isTargeted(h)) {
+      mediaCrawlIdsRemoved += (mq[h] ?? []).length;
+      delete mq[h];
+    }
+  }
+  await setRaw('mediaCrawlQueue', mq);
+
+  return {
+    countersRemoved,
+    buffersRemoved,
+    committedHandlesRemoved,
+    refetchHandlesRemoved,
+    mediaCrawlIdsRemoved,
+  };
 }
 
 // --- Full reset ----------------------------------------------------------

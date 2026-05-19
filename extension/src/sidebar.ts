@@ -29,18 +29,23 @@ const clearActBtn = $<HTMLButtonElement>('clear-activity');
 const extVersionEl = $<HTMLSpanElement>('ext-version');
 const masterSwitch = $<HTMLInputElement>('master-switch');
 const masterLabel = $<HTMLSpanElement>('master-label');
-const autoScrollToggle = $<HTMLInputElement>('auto-scroll');
 const autoScrollInterval = $<HTMLInputElement>('auto-scroll-interval');
 const autoScrollSecsEl = $<HTMLSpanElement>('auto-scroll-secs');
 const autoScrollStatus = $<HTMLSpanElement>('auto-scroll-status');
+const autoScrollStartBtn = $<HTMLButtonElement>('auto-scroll-start');
+const autoScrollCancelBtn = $<HTMLButtonElement>('auto-scroll-cancel');
+const autoScrollProgress = $<HTMLSpanElement>('auto-scroll-progress');
 const refetchSection = $<HTMLElement>('refetch-section');
 const refetchCount = $<HTMLSpanElement>('refetch-count');
 const refetchStartBtn = $<HTMLButtonElement>('refetch-start');
 const refetchCancelBtn = $<HTMLButtonElement>('refetch-cancel');
+const refetchProgress = $<HTMLSpanElement>('refetch-progress');
 const mediaCrawlSection = $<HTMLElement>('media-crawl-section');
 const mediaCrawlCount = $<HTMLSpanElement>('media-crawl-count');
 const mediaCrawlStartBtn = $<HTMLButtonElement>('media-crawl-start');
 const mediaCrawlCancelBtn = $<HTMLButtonElement>('media-crawl-cancel');
+const mediaCrawlProgress = $<HTMLSpanElement>('media-crawl-progress');
+const purgeLink = $<HTMLAnchorElement>('purge-unrelated');
 
 let lastState: ExtensionState | null = null;
 
@@ -239,8 +244,9 @@ function paint(state: ExtensionState): void {
 }
 
 function paintMediaCrawl(state: ExtensionState): void {
-  const total = state.mediaCrawlQueue.total;
-  const running = state.mediaCrawlQueue.running;
+  const q = state.mediaCrawlQueue;
+  const total = q.total;
+  const running = q.running;
   mediaCrawlSection.hidden = total === 0 && !running;
   mediaCrawlCount.textContent =
     total === 0
@@ -251,6 +257,23 @@ function paintMediaCrawl(state: ExtensionState): void {
   mediaCrawlStartBtn.hidden = running;
   mediaCrawlStartBtn.disabled = total === 0;
   mediaCrawlCancelBtn.hidden = !running;
+  paintQueueProgress(mediaCrawlProgress, q);
+}
+
+function paintQueueProgress(
+  el: HTMLSpanElement,
+  q: { processed: number; total_at_start: number; running: boolean; total: number }
+): void {
+  if (!q.running && q.processed === 0) {
+    el.hidden = true;
+    return;
+  }
+  // Denominator: max of initial total and current processed+remaining so the
+  // bar still makes sense if new entries were enqueued mid-run.
+  const denom = Math.max(q.total_at_start, q.processed + q.total);
+  el.hidden = false;
+  el.textContent = `${fmtNum(q.processed)} / ${fmtNum(denom)} processed`;
+  el.className = q.running ? 'progress on' : 'progress';
 }
 
 function paintMasterSwitch(state: ExtensionState): void {
@@ -261,24 +284,37 @@ function paintMasterSwitch(state: ExtensionState): void {
 }
 
 function paintAutoScroll(state: ExtensionState): void {
-  autoScrollToggle.checked = state.settings.autoScroll;
   const secs = state.settings.autoScrollIntervalSec;
   autoScrollInterval.value = String(secs);
   autoScrollSecsEl.textContent = String(secs);
-  if (state.settings.autoScroll) {
-    const n = state.autoScroll.tabCount;
+  const as = state.autoScroll;
+  autoScrollStartBtn.hidden = as.active;
+  autoScrollCancelBtn.hidden = !as.active;
+  if (as.active) {
+    const n = as.tabCount;
     autoScrollStatus.textContent =
-      n === 0 ? 'on — no X tabs open' : `on — scrolling ${n} ${n === 1 ? 'tab' : 'tabs'}`;
-    autoScrollStatus.className = 'rate-info on';
+      n === 0 ? `running — no X tabs open` : `running — ${n} ${n === 1 ? 'tab' : 'tabs'}`;
+    autoScrollStatus.className = 'muted on';
   } else {
-    autoScrollStatus.textContent = 'off';
-    autoScrollStatus.className = 'rate-info';
+    autoScrollStatus.textContent = 'idle';
+    autoScrollStatus.className = 'muted';
+  }
+  if (as.active || as.scrollCount > 0 || as.ingestedCount > 0) {
+    autoScrollProgress.hidden = false;
+    autoScrollProgress.textContent =
+      `${fmtNum(as.scrollCount)} scrolls · ` +
+      `${fmtNum(as.ingestedCount)} tweets ingested · ` +
+      `${fmtNum(as.expandedCount)} expanded`;
+    autoScrollProgress.className = as.active ? 'progress on' : 'progress';
+  } else {
+    autoScrollProgress.hidden = true;
   }
 }
 
 function paintRefetch(state: ExtensionState): void {
-  const total = state.refetchQueue.total;
-  const running = state.refetchQueue.running;
+  const q = state.refetchQueue;
+  const total = q.total;
+  const running = q.running;
   refetchSection.hidden = total === 0 && !running;
   refetchCount.textContent =
     total === 0
@@ -289,6 +325,7 @@ function paintRefetch(state: ExtensionState): void {
   refetchStartBtn.hidden = running;
   refetchStartBtn.disabled = total === 0;
   refetchCancelBtn.hidden = !running;
+  paintQueueProgress(refetchProgress, q);
 }
 
 async function refreshActivity(): Promise<void> {
@@ -336,8 +373,17 @@ masterSwitch.addEventListener('change', () => {
   void send({ type: 'toggle-enabled', on: masterSwitch.checked });
 });
 
-autoScrollToggle.addEventListener('change', () => {
-  void send({ type: 'toggle-auto-scroll', on: autoScrollToggle.checked });
+autoScrollStartBtn.addEventListener('click', () => {
+  autoScrollStartBtn.disabled = true;
+  void send({ type: 'start-auto-scroll' }).finally(() => {
+    autoScrollStartBtn.disabled = false;
+  });
+});
+autoScrollCancelBtn.addEventListener('click', () => {
+  autoScrollCancelBtn.disabled = true;
+  void send({ type: 'cancel-auto-scroll' }).finally(() => {
+    autoScrollCancelBtn.disabled = false;
+  });
 });
 
 autoScrollInterval.addEventListener('input', () => {
@@ -348,6 +394,17 @@ autoScrollInterval.addEventListener('change', () => {
   if (Number.isFinite(seconds)) {
     void send({ type: 'set-auto-scroll-interval', seconds });
   }
+});
+
+purgeLink.addEventListener('click', (e: Event) => {
+  e.preventDefault();
+  const ok = window.confirm(
+    'Drop every counter, run buffer, refetch / media-crawl queue entry for accounts not in your tracked list?\n\n' +
+      'This only touches local extension state. Already-committed files in the GitHub repo are not affected — ' +
+      'run scripts/purge_unrelated.py separately if you also want to scrub the repo.'
+  );
+  if (!ok) return;
+  void send({ type: 'purge-unrelated' });
 });
 
 refetchStartBtn.addEventListener('click', () => {

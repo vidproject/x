@@ -458,28 +458,100 @@ function toArray(v: unknown): unknown[] {
 
 /**
  * Decide whether a tweet's archived `text` is the truncated head of a longer
- * body. Triggered when `note_tweet` is absent (long-tweet payload not
- * inlined) AND `display_text_range[1]` falls short of `full_text.length` —
- * i.e. X glued a trailing "show more" t.co URL onto the visible text.
+ * body. A truncated tweet has X's "Show more" t.co URL appended — that URL
+ * specifically expands to the tweet's own /i/web/status/<id> permalink, and
+ * is the only reliable distinguishing feature. Plenty of normal tweets have
+ * trailing t.co URLs (media, quotes, regular links), and their
+ * display_text_range also trims past full_text.length, so the old
+ * "display_text_range[1] < full_text.length" heuristic was overflagging
+ * essentially every tweet with a link in it.
  *
- * Conservative on purpose: re-fetching incorrectly flagged tweets is cheap;
- * missing genuinely-truncated ones permanently loses content.
+ * Rules:
+ *   - note_tweet present  → not truncated (we already have the full body).
+ *   - One of legacy.entities.urls has an expanded_url like
+ *     ".../i/web/status/<id>"  →  truncated.
+ *   - Otherwise → not truncated.
+ *
+ * The previous fallback ("trailing t.co URL + length ≥ 270") flagged every
+ * media tweet exactly at the 280-char limit. We drop it entirely; the only
+ * cost is missing genuinely-truncated tweets whose payload was so degraded
+ * it lacked entities — which is also where the refetch loop would fail
+ * anyway, so nothing is actually lost.
  */
 function detectTruncation(
   noteTweet: Record<string, unknown> | null,
   legacy: Record<string, unknown>,
   fullText: string
 ): boolean {
-  if (noteTweet) return false; // we have the long-form body already
+  if (noteTweet) return false;
   if (!fullText) return false;
-  const range = legacy.display_text_range;
-  if (Array.isArray(range) && range.length >= 2) {
-    const end = typeof range[1] === 'number' ? range[1] : null;
-    if (end !== null && end < fullText.length) return true;
+  const entities = obj(legacy.entities);
+  const urls = entities ? entities.urls : null;
+  if (Array.isArray(urls)) {
+    for (const u of urls) {
+      if (typeof u !== 'object' || u === null) continue;
+      const exp = (u as Record<string, unknown>).expanded_url;
+      // The "Show more" link expands to either of these self-permalink
+      // shapes:  https://x.com/i/web/status/<id>
+      //          https://twitter.com/i/web/status/<id>
+      if (typeof exp === 'string' && /\/i\/web\/status\/\d+/.test(exp)) {
+        return true;
+      }
+    }
   }
-  // Some payloads omit display_text_range; fall back to a trailing-URL probe.
-  // X always appends the "show more" t.co URL after a single space.
-  return / https?:\/\/t\.co\/[A-Za-z0-9]+$/.test(fullText) && fullText.length >= 270;
+  return false;
+}
+
+/**
+ * Filter `tweets` down to those related to a tracked account. A tweet is
+ * "related" if any of the following hold:
+ *
+ *   - its author is tracked (handle in `targeted`),
+ *   - it mentions a tracked handle,
+ *   - it replies to a tracked account,
+ *   - it quotes/retweets/replies-to a tweet that's also present in the
+ *     batch *and* authored by a tracked account (transitively related —
+ *     captures the quoted/RT'd content that appears as a sibling node in
+ *     the same GraphQL response).
+ *
+ * Anything else (random replies under a tracked account's tweet, random
+ * authors that happen to surface in a tracked account's thread) is dropped.
+ * Pass an empty `targeted` set to disable filtering entirely.
+ */
+export function filterRelated(
+  tweets: CanonicalTweet[],
+  targeted: ReadonlySet<string>
+): CanonicalTweet[] {
+  if (targeted.size === 0) return tweets;
+  // First pass: which tweet IDs do tracked-author tweets reference (the
+  // "forward" direction — tracked account quotes / RTs / replies to X)?
+  // And which tweet IDs ARE tracked-authored (the "reverse" direction —
+  // X quotes / RTs / replies to a tracked tweet)?
+  const referencedIds = new Set<string>();
+  const targetedTweetIds = new Set<string>();
+  for (const t of tweets) {
+    if (!targeted.has(t.account_handle.toLowerCase())) continue;
+    targetedTweetIds.add(t.tweet_id);
+    if (t.quoted_tweet_id) referencedIds.add(t.quoted_tweet_id);
+    if (t.retweeted_tweet_id) referencedIds.add(t.retweeted_tweet_id);
+    if (t.reply_to_tweet_id) referencedIds.add(t.reply_to_tweet_id);
+  }
+  return tweets.filter((t) => {
+    const h = t.account_handle.toLowerCase();
+    if (targeted.has(h)) return true;
+    // Forward: a tracked-author tweet pointed at this one.
+    if (referencedIds.has(t.tweet_id)) return true;
+    // Reverse: this tweet points at a tracked-author tweet in the batch.
+    if (t.quoted_tweet_id && targetedTweetIds.has(t.quoted_tweet_id)) return true;
+    if (t.retweeted_tweet_id && targetedTweetIds.has(t.retweeted_tweet_id)) return true;
+    if (t.reply_to_tweet_id && targetedTweetIds.has(t.reply_to_tweet_id)) return true;
+    // Reply-to-account or mentions a tracked handle.
+    if (t.reply_to_account && targeted.has(t.reply_to_account.toLowerCase())) return true;
+    for (const m of t.mentions) {
+      if (targeted.has(m.toLowerCase())) return true;
+    }
+    return false;
+  });
 }
 
 /**
