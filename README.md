@@ -42,12 +42,12 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 
 | Handle | Label | Tweets | First post | Latest post | Latest capture | Media | Videos |
 | ------ | ----- | -----: | ---------- | ----------- | -------------- | ----: | -----: |
-| `@DHSgov` | Department of Homeland Security | 700 | 2026-02-03 | 2026-05-19 | 2026-05-19 | 420 | 181 |
-| `@ICEgov` | U.S. Immigration and Customs Enforcement | 32 | 2026-03-04 | 2026-05-19 | 2026-05-19 | 25 | 6 |
+| `@DHSgov` | Department of Homeland Security | 717 | 2025-11-27 | 2026-05-19 | 2026-05-19 | 433 | 186 |
+| `@ICEgov` | U.S. Immigration and Customs Enforcement | 34 | 2025-11-28 | 2026-05-19 | 2026-05-19 | 27 | 7 |
 | `@CBP` | U.S. Customs and Border Protection | 25 | 2026-04-18 | 2026-05-19 | 2026-05-19 | 13 | 5 |
-| `@USCIS` | U.S. Citizenship and Immigration Services | 96 | 2026-01-21 | 2026-05-18 | 2026-05-19 | 52 | 5 |
-| `@WhiteHouse` | The White House | 160 | 2026-01-20 | 2026-05-19 | 2026-05-19 | 148 | 34 |
-| `@PressSec` | White House Press Secretary | 84 | 2026-04-10 | 2026-05-15 | 2026-05-19 | 10 | 3 |
+| `@USCIS` | U.S. Citizenship and Immigration Services | 207 | 2025-11-20 | 2026-05-18 | 2026-05-19 | 118 | 13 |
+| `@WhiteHouse` | The White House | 163 | 2025-12-04 | 2026-05-19 | 2026-05-19 | 151 | 35 |
+| `@PressSec` | White House Press Secretary | 89 | 2025-11-26 | 2026-05-15 | 2026-05-19 | 10 | 3 |
 | `@POTUS` | President of the United States | 81 | 2025-01-20 | 2026-05-15 | 2026-05-19 | 33 | 11 |
 | `@USDOL` | U.S. Department of Labor | 297 | 2026-01-21 | 2026-05-19 | 2026-05-19 | 137 | 19 |
 | `@10minutedrill` | 10minutedrill | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 1 | 1 |
@@ -100,6 +100,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@EROSeattle` | EROSeattle | 2 | 2026-04-03 | 2026-04-16 | 2026-05-19 | 2 | 0 |
 | `@EROWashington` | EROWashington | 1 | 2026-04-08 | 2026-04-08 | 2026-05-19 | 1 | 0 |
 | `@EdWorkforceCmte` | EdWorkforceCmte | 2 | 2026-04-21 | 2026-04-29 | 2026-05-19 | 2 | 1 |
+| `@EnvoyNoem` | EnvoyNoem | 1 | 2025-12-05 | 2025-12-05 | 2026-05-19 | 1 | 1 |
 | `@EricTrump` | EricTrump | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
 | `@FDRLST` | FDRLST | 2 | 2026-05-11 | 2026-05-12 | 2026-05-19 | 0 | 0 |
 | `@FLACommerce` | FLACommerce | 1 | 2026-05-03 | 2026-05-03 | 2026-05-19 | 1 | 0 |
@@ -149,7 +150,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@PattyMorin` | PattyMorin | 1 | 2026-05-09 | 2026-05-09 | 2026-05-19 | 1 | 0 |
 | `@PeteHegseth` | PeteHegseth | 1 | 2026-04-29 | 2026-04-29 | 2026-05-19 | 1 | 0 |
 | `@Plasticwasteguy` | Plasticwasteguy | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
-| `@RapidResponse47` | RapidResponse47 | 76 | 2026-02-09 | 2026-05-19 | 2026-05-19 | 64 | 50 |
+| `@RapidResponse47` | RapidResponse47 | 79 | 2025-12-04 | 2026-05-19 | 2026-05-19 | 66 | 50 |
 | `@RelentlesSheep` | RelentlesSheep | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@RoKhanna` | RoKhanna | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
 | `@SBA_Kelly` | SBA_Kelly | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 1 |
@@ -183,7 +184,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@USBPChiefELC` | USBPChiefELC | 1 | 2026-05-18 | 2026-05-18 | 2026-05-19 | 1 | 1 |
 | `@USCG` | USCG | 4 | 2026-03-30 | 2026-05-14 | 2026-05-19 | 8 | 1 |
 | `@USCGSoutheast` | USCGSoutheast | 3 | 2026-04-24 | 2026-05-12 | 2026-05-19 | 9 | 2 |
-| `@USCISJoe` | USCISJoe | 15 | 2026-03-24 | 2026-05-09 | 2026-05-19 | 13 | 13 |
+| `@USCISJoe` | USCISJoe | 17 | 2025-11-27 | 2026-05-09 | 2026-05-19 | 13 | 13 |
 | `@USLaborIG` | USLaborIG | 4 | 2026-02-04 | 2026-05-19 | 2026-05-19 | 3 | 2 |
 | `@USOPM` | USOPM | 1 | 2026-03-30 | 2026-03-30 | 2026-05-19 | 1 | 1 |
 | `@USTradeRep` | USTradeRep | 1 | 2026-02-22 | 2026-02-22 | 2026-05-19 | 1 | 1 |
@@ -228,7 +229,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@vlast98230` | vlast98230 | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 1 | 0 |
 | `@washingtonpost` | washingtonpost | 3 | 2026-05-08 | 2026-05-13 | 2026-05-19 | 1 | 1 |
 
-_Generated 2026-05-19T19:05:01Z._
+_Generated 2026-05-19T19:06:07Z._
 
 <!-- COVERAGE:END -->
 
