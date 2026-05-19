@@ -40,7 +40,18 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 
 <!-- COVERAGE:START -->
 
-_No captures yet. The Firefox extension hasn't committed any tweets._
+| Handle | Label | Tweets | First post | Latest post | Latest capture | Media | Videos |
+| ------ | ----- | -----: | ---------- | ----------- | -------------- | ----: | -----: |
+| `@DHSgov` | Department of Homeland Security | 213 | 2026-03-05 | 2026-05-19 | 2026-05-19 | 132 | 60 |
+| `@ICEgov` | U.S. Immigration and Customs Enforcement | 0 | — | — | — | 0 | 0 |
+| `@CBP` | U.S. Customs and Border Protection | 0 | — | — | — | 0 | 0 |
+| `@USCIS` | U.S. Citizenship and Immigration Services | 0 | — | — | — | 0 | 0 |
+| `@WhiteHouse` | The White House | 0 | — | — | — | 0 | 0 |
+| `@PressSec` | White House Press Secretary | 0 | — | — | — | 0 | 0 |
+| `@POTUS` | President of the United States | 0 | — | — | — | 0 | 0 |
+| `@USDOL` | U.S. Department of Labor | 0 | — | — | — | 0 | 0 |
+
+_Generated 2026-05-19T18:33:29Z._
 
 <!-- COVERAGE:END -->
 
