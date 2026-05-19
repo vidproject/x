@@ -297,37 +297,65 @@ async function loadAllAccounts() {
   const queue = [...accounts];
   const inFlight = new Set();
 
+  // Cache-bust per-parquet using manifest.generated_at, so a manifest
+  // update reliably invalidates the CDN-cached parquet body / 404.
+  const cacheKey = manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
+
+  async function fetchOnce(resource, suffix) {
+    return loadParquetRows(resource + suffix);
+  }
+
   async function loadOne(account) {
     const resource = `data/${account.handle}.parquet`;
     try {
-      const rows = await loadParquetRows(resource);
-      // Push without triggering a rebuild per-account; we batch rebuilds
-      // every PROGRESSIVE_REFRESH_EVERY completions for snappier display.
+      const rows = await fetchOnce(resource, cacheKey);
       store.byHandle.set(account.handle, rows);
+      return;
     } catch (err) {
-      loadProgress.failed += 1;
-      // Surface enough detail in the load-errors panel that the user can
-      // tell apart "404 because Pages hasn't redeployed yet" from "503
-      // network" from "parquet codec unsupported".
-      const msg = err?.message ?? String(err);
-      const statusMatch = /:\s*(\d{3})\s*(.*)$/.exec(msg);
-      const status = statusMatch ? Number(statusMatch[1]) : null;
-      // Rewrite the most common cause — Pages serving stale manifest that
-      // points at a file the new commit added but Pages hasn't deployed
-      // yet — to a less alarming explanation. The raw HTTP status stays in
-      // its own column.
-      const friendly =
-        status === 404
-          ? `${resource} is in the manifest but hasn't been deployed to Pages yet (manifest moved ahead of Pages). Refresh in ~60s.`
-          : msg;
-      pushLoadError({
-        resource,
-        status,
-        kind: 'parquet',
-        handle: account.handle,
-        message: friendly,
-      });
-      console.warn(`[viewer] failed to load ${account.handle}:`, err);
+      // Retry exactly once on a 404 after a 30s pause — Pages CDN takes a
+      // little while to catch up after a manifest+data commit pair.
+      const status = extractStatus(err);
+      if (status === 404) {
+        await new Promise((r) => setTimeout(r, 30_000));
+        try {
+          const rows = await fetchOnce(resource, `?v=retry-${Date.now()}`);
+          store.byHandle.set(account.handle, rows);
+          return;
+        } catch (retryErr) {
+          recordLoadFailure(resource, account.handle, retryErr, true);
+          return;
+        }
+      }
+      recordLoadFailure(resource, account.handle, err, false);
+    }
+  }
+
+  function extractStatus(err) {
+    const m = /:\s*(\d{3})\s*(.*)$/.exec(err?.message ?? String(err));
+    return m ? Number(m[1]) : null;
+  }
+
+  function recordLoadFailure(resource, handle, err, retried) {
+    loadProgress.failed += 1;
+    const status = extractStatus(err);
+    const raw = err?.message ?? String(err);
+    const friendly =
+      status === 404
+        ? `${resource} is in the manifest but hasn't been deployed to Pages yet (manifest commit beat the parquet commit through the CDN${retried ? '; still missing after a 30s retry' : ''}). Refresh in ~60s.`
+        : raw;
+    pushLoadError({
+      resource,
+      status,
+      kind: 'parquet',
+      handle,
+      message: friendly,
+    });
+    console.warn(`[viewer] failed to load ${handle}:`, err);
+  }
+
+  async function loadOneOuter(account) {
+    try {
+      await loadOne(account);
     } finally {
       loadProgress.completed += 1;
       els.emptyDetail.textContent = `Loading ${loadProgress.completed} / ${loadProgress.total} accounts…`;
@@ -346,7 +374,7 @@ async function loadAllAccounts() {
   while (queue.length > 0 || inFlight.size > 0) {
     while (inFlight.size < LOAD_CONCURRENCY && queue.length > 0) {
       const account = queue.shift();
-      const p = loadOne(account).finally(() => inFlight.delete(p));
+      const p = loadOneOuter(account).finally(() => inFlight.delete(p));
       inFlight.add(p);
     }
     if (inFlight.size > 0) await Promise.race(inFlight);
