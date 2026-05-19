@@ -52,17 +52,17 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 
 | Handle | Label | Tweets | First post | Latest post | Latest capture | Media | Videos |
 | ------ | ----- | -----: | ---------- | ----------- | -------------- | ----: | -----: |
+| `@POTUS` | President of the United States | 101 | 2025-01-20 | 2026-05-19 | 2026-05-19 | 40 | 13 |
+| `@USCIS` | U.S. Citizenship and Immigration Services | 743 | 2025-04-04 | 2026-05-18 | 2026-05-19 | 469 | 83 |
+| `@ICEgov` | U.S. Immigration and Customs Enforcement | 74 | 2025-04-16 | 2026-05-19 | 2026-05-19 | 46 | 11 |
+| `@USDOL` | U.S. Department of Labor | 490 | 2025-12-28 | 2026-05-19 | 2026-05-19 | 238 | 28 |
+| `@WhiteHouse` | The White House | 182 | 2025-06-09 | 2026-05-19 | 2026-05-19 | 170 | 39 |
+| `@CBP` | U.S. Customs and Border Protection | 202 | 2025-06-04 | 2026-05-19 | 2026-05-19 | 93 | 20 |
 | `@PressSec` | White House Press Secretary | 91 | 2025-09-17 | 2026-05-15 | 2026-05-19 | 10 | 3 |
 | `@DHSgov` | Department of Homeland Security | 973 | 2025-04-09 | 2026-05-19 | 2026-05-19 | 679 | 216 |
-| `@POTUS` | President of the United States | 101 | 2025-01-20 | 2026-05-19 | 2026-05-19 | 40 | 13 |
-| `@WhiteHouse` | The White House | 182 | 2025-06-09 | 2026-05-19 | 2026-05-19 | 170 | 39 |
-| `@ICEgov` | U.S. Immigration and Customs Enforcement | 74 | 2025-04-16 | 2026-05-19 | 2026-05-19 | 46 | 11 |
-| `@CBP` | U.S. Customs and Border Protection | 202 | 2025-06-04 | 2026-05-19 | 2026-05-19 | 93 | 20 |
-| `@USDOL` | U.S. Department of Labor | 490 | 2025-12-28 | 2026-05-19 | 2026-05-19 | 238 | 28 |
-| `@USCIS` | U.S. Citizenship and Immigration Services | 743 | 2025-04-04 | 2026-05-18 | 2026-05-19 | 469 | 83 |
-| `@_misc` | Miscellaneous (replies / quotes / retweets of non-tracked accounts) | 977 | 2020-07-29 | 2026-05-19 | 2026-05-19 | 706 | 238 |
+| `@_misc` | Miscellaneous (replies / quotes / retweets of non-tracked accounts) | 981 | 2020-07-29 | 2026-05-19 | 2026-05-19 | 706 | 238 |
 
-_Generated 2026-05-19T22:26:14Z._
+_Generated 2026-05-19T22:27:34Z._
 
 <!-- COVERAGE:END -->
 
