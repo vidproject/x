@@ -295,14 +295,27 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
   if (normalized.observed_ids.length === 0) {
     await info('graphql payload empty — shape probe', {
       endpoint,
-      key_paths: probeKeyPaths(response, 6).slice(0, 60),
       typenames: probeTypenames(response).slice(0, 30),
-      has_errors: hasErrorsField(response),
       tweet_keys: probeFirstTypeShape(response, 'Tweet'),
-      tweetvr_keys: probeFirstTypeShape(response, 'TweetWithVisibilityResults'),
-      timeline_tweet_keys: probeFirstTypeShape(response, 'TimelineTweet'),
-      tweet_results_shape: probeFirstWithKey(response, 'tweet_results'),
-      itemcontent_shape: probeFirstWithKey(response, 'itemContent'),
+      tweet_core_keys: probeTypedNested(response, 'Tweet', ['core']),
+      tweet_legacy_keys: probeTypedNested(response, 'Tweet', ['legacy']),
+      user_results_result_keys: probeTypedNested(response, 'Tweet', [
+        'core',
+        'user_results',
+        'result',
+      ]),
+      user_results_result_core_keys: probeTypedNested(response, 'Tweet', [
+        'core',
+        'user_results',
+        'result',
+        'core',
+      ]),
+      user_results_result_legacy_keys: probeTypedNested(response, 'Tweet', [
+        'core',
+        'user_results',
+        'result',
+        'legacy',
+      ]),
     });
   } else {
     await info('graphql payload seen', {
@@ -774,25 +787,6 @@ function viewerUrl(s: Settings): string {
  * to surface the structural skeleton of an unfamiliar GraphQL response
  * without including any data values.
  */
-function probeKeyPaths(node: unknown, maxDepth: number): string[] {
-  const out: string[] = [];
-  function walk(n: unknown, depth: number, prefix: string): void {
-    if (depth > maxDepth || n === null || typeof n !== 'object') return;
-    if (Array.isArray(n)) {
-      out.push(`${prefix}[len=${n.length}]`);
-      if (n.length > 0) walk(n[0], depth + 1, `${prefix}[0]`);
-      return;
-    }
-    for (const k of Object.keys(n as Record<string, unknown>)) {
-      const path = prefix ? `${prefix}.${k}` : k;
-      out.push(path);
-      walk((n as Record<string, unknown>)[k], depth + 1, path);
-    }
-  }
-  walk(node, 0, '');
-  return out;
-}
-
 /** Collect every distinct `__typename` value found anywhere in the tree. */
 function probeTypenames(node: unknown): string[] {
   const seen = new Set<string>();
@@ -841,14 +835,15 @@ function probeFirstTypeShape(node: unknown, typename: string): string[] | null {
 }
 
 /**
- * Find the first node anywhere in the tree that has a particular key and
- * return that key's value's top-level keys. Used to inspect known wrapper
- * containers (`tweet_results`, `itemContent`) without us knowing where in
- * the tree they live.
+ * Find the first node with `__typename === typename`, then descend through
+ * the given key path, and return the top-level keys of whatever is at the
+ * end. Returns a marker string when the path leads somewhere non-object so
+ * we can tell apart "absent" from "present but not an object".
  */
-function probeFirstWithKey(node: unknown, key: string): string[] | null {
+function probeTypedNested(node: unknown, typename: string, path: string[]): unknown {
   const visited = new WeakSet<object>();
   const stack: unknown[] = [node];
+  let found: Record<string, unknown> | null = null;
   while (stack.length > 0) {
     const n = stack.pop();
     if (n === null || typeof n !== 'object') continue;
@@ -858,27 +853,24 @@ function probeFirstWithKey(node: unknown, key: string): string[] | null {
       for (const v of n) stack.push(v);
     } else {
       const obj = n as Record<string, unknown>;
-      if (key in obj) {
-        const v = obj[key];
-        if (typeof v === 'object' && v !== null) {
-          return Object.keys(v as Record<string, unknown>).sort();
-        }
-        return [];
+      if (obj.__typename === typename) {
+        found = obj;
+        break;
       }
       for (const v of Object.values(obj)) stack.push(v);
     }
   }
-  return null;
-}
-
-/** True if the response has a top-level `errors` array, GraphQL-style. */
-function hasErrorsField(node: unknown): boolean {
-  return (
-    typeof node === 'object' &&
-    node !== null &&
-    Array.isArray((node as Record<string, unknown>).errors) &&
-    (node as { errors: unknown[] }).errors.length > 0
-  );
+  if (!found) return null;
+  let cur: unknown = found;
+  for (const seg of path) {
+    if (cur === null || typeof cur !== 'object') return `<${cur === null ? 'null' : typeof cur}>`;
+    cur = (cur as Record<string, unknown>)[seg];
+  }
+  if (cur === undefined) return '<missing>';
+  if (cur === null) return '<null>';
+  if (typeof cur !== 'object') return `<${typeof cur}>`;
+  if (Array.isArray(cur)) return `<array len=${cur.length}>`;
+  return Object.keys(cur as Record<string, unknown>).sort();
 }
 
 function shortenUrl(u: string): string {

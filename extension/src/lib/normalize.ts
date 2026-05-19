@@ -99,14 +99,28 @@ function buildTweet(raw: unknown, ctx: NormalizeContext): CanonicalTweet | null 
   if (t.__typename === 'TweetTombstone') return null;
 
   const restId = strOrNull(t.rest_id);
-  const legacy = obj(t.legacy);
-  if (!restId || !legacy) return null;
+  // `legacy` is still where most engagement / entities live in 2026-era X
+  // payloads, but as of recent schema migrations several fields previously
+  // there (notably the author handle) have moved to sibling locations. We
+  // tolerate a missing legacy here and look up everything via fallbacks.
+  const legacy = obj(t.legacy) ?? {};
+  if (!restId) return null;
 
   const core = obj(t.core);
   const userResult = obj(obj(core?.user_results)?.result);
+  // Author handle: try the new `core` substructure first (current X shape),
+  // then the legacy `legacy.screen_name`, then a couple of older variants.
+  const userCoreNew = obj(userResult?.core);
   const userLegacy = obj(userResult?.legacy);
-  const handle = strOrNull(userLegacy?.screen_name);
-  const accountId = strOrNull(userResult?.rest_id) ?? strOrNull(legacy.user_id_str);
+  const handle =
+    strOrNull(userCoreNew?.screen_name) ??
+    strOrNull(userLegacy?.screen_name) ??
+    strOrNull(userResult?.screen_name) ??
+    strOrNull(legacy.screen_name);
+  const accountId =
+    strOrNull(userResult?.rest_id) ??
+    strOrNull(userResult?.id_str) ??
+    strOrNull(legacy.user_id_str);
   if (!handle || !accountId) return null;
 
   const noteTweet = obj(obj(obj(t.note_tweet)?.note_tweet_results)?.result);
@@ -123,7 +137,10 @@ function buildTweet(raw: unknown, ctx: NormalizeContext): CanonicalTweet | null 
 
   const tweetType = classifyTweetType(t, legacy);
 
-  const postedAt = parseTwitterDate(strOrNull(legacy.created_at));
+  // posted_at: legacy.created_at remains the canonical location; if that's
+  // missing in a future schema we fall back to top-level created_at.
+  const postedAt =
+    parseTwitterDate(strOrNull(legacy.created_at)) ?? parseTwitterDate(strOrNull(t.created_at));
   if (!postedAt) return null;
 
   const views = obj(t.views);
