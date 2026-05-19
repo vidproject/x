@@ -6,7 +6,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "imm-archive-capture@vidproject.x",
-      "strict_min_version": "115.0"
+      "strict_min_version": "128.0"
     }
   },
   "permissions": ["storage", "alarms", "scripting", "tabs"],
@@ -26,6 +26,13 @@
       "js": ["content.js"],
       "run_at": "document_start",
       "all_frames": false
+    },
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["page-hook.js"],
+      "run_at": "document_start",
+      "all_frames": false,
+      "world": "MAIN"
     }
   ],
   "web_accessible_resources": [

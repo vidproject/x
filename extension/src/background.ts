@@ -148,6 +148,21 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
     case 'graphql-capture':
       await onGraphqlCapture(msg.endpoint, msg.url, msg.response);
       return { ok: true };
+    case 'content-alive':
+      await info('content script alive on page', { url: shortenUrl(msg.url) });
+      return { ok: true };
+    case 'page-hook-active':
+      await info('page hook patched fetch/XHR', { url: shortenUrl(msg.url) });
+      return { ok: true };
+    case 'log-content-event':
+      if (msg.level === 'warn') {
+        await warn(msg.msg, { url: shortenUrl(msg.url) });
+      } else if (msg.level === 'error') {
+        await logErr(msg.msg, { url: shortenUrl(msg.url) });
+      } else {
+        await info(msg.msg, { url: shortenUrl(msg.url) });
+      }
+      return { ok: true };
     case 'get-state':
       return buildState();
     case 'capture-now':
@@ -635,6 +650,20 @@ function isoCompact(iso: string): string {
 
 function viewerUrl(s: Settings): string {
   return `https://${s.owner}.github.io/${s.repo}/`;
+}
+
+function shortenUrl(u: string): string {
+  // Activity-tail context is more useful with just the path; full URLs become
+  // hard to read at the sidebar's width.
+  try {
+    const parsed = new URL(u);
+    const path = parsed.pathname + (parsed.search ? '?…' : '');
+    return parsed.host === 'x.com' || parsed.host === 'twitter.com'
+      ? path
+      : `${parsed.host}${path}`;
+  } catch {
+    return u.length > 80 ? `${u.slice(0, 80)}…` : u;
+  }
 }
 
 // --- Dev helpers exposed on globalThis for the devtools console ----------

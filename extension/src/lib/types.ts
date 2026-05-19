@@ -152,6 +152,9 @@ export interface ExtensionState {
 
 export type RuntimeMessage =
   | { type: 'graphql-capture'; endpoint: string; url: string; response: unknown }
+  | { type: 'content-alive'; url: string }
+  | { type: 'page-hook-active'; url: string }
+  | { type: 'log-content-event'; level: LogLevel; msg: string; url: string }
   | { type: 'get-state' }
   | { type: 'capture-now'; handle: string }
   | { type: 'capture-all' }

@@ -18,6 +18,19 @@
   w[TAG] = true;
 
   const TARGET = 'IMM_ARCHIVE_CAPTURE';
+  const READY = 'IMM_ARCHIVE_HOOK_READY';
+
+  // Tell the content script the hook actually loaded in the page world.
+  // The content script forwards this to the background as a log event so the
+  // sidebar's activity tail makes the bootstrap visible.
+  try {
+    window.postMessage(
+      { source: READY, at: new Date().toISOString(), url: location.href },
+      location.origin
+    );
+  } catch {
+    // ignore
+  }
 
   // Tweet-bearing endpoints we want to observe. Matched as substrings in the
   // request URL path so we don't have to maintain the rotating queryId values
