@@ -38,6 +38,39 @@
         <input type="checkbox" id="auto-capture" />
         <span>Auto-capture while browsing tracked accounts</span>
       </label>
+      <label class="toggle">
+        <input type="checkbox" id="auto-scroll" />
+        <span>Auto-scroll open X tabs (works around Replies-tab pagination stalling)</span>
+      </label>
+      <div class="row scroll-rate" id="scroll-rate-row">
+        <label class="rate-lbl" for="auto-scroll-interval">Every</label>
+        <input
+          class="rate-slider"
+          id="auto-scroll-interval"
+          type="range"
+          min="3"
+          max="60"
+          step="1"
+        />
+        <span class="rate-val"><span id="auto-scroll-secs">6</span>s</span>
+        <span class="rate-info" id="auto-scroll-status">—</span>
+      </div>
+    </section>
+
+    <section class="refetch" id="refetch-section" hidden>
+      <div class="section-head">
+        <h2 class="section-title">Truncated tweets</h2>
+        <span class="muted" id="refetch-count">0 queued</span>
+      </div>
+      <p class="muted refetch-blurb">
+        Long tweets show as a 280-char head with a “show more” link in timeline payloads. Click
+        below to walk a single tab through every queued tweet (one per auto-scroll tick) and capture
+        the full text.
+      </p>
+      <div class="row">
+        <button class="btn" id="refetch-start">Start refetch</button>
+        <button class="btn" id="refetch-cancel" hidden>Cancel</button>
+      </div>
     </section>
 
     <section class="accounts">

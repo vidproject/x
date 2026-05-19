@@ -247,6 +247,144 @@ def test_multiple_handles_each_get_parquet(tmp_repo: Path) -> None:
     assert handles == {"test-handle", "extra"}
 
 
+def test_media_never_dropped_when_later_payload_returns_fewer(tmp_repo: Path) -> None:
+    """An earlier capture had a 4-photo tweet; a later capture returns
+    just 1 photo (X stripped some media after rate-limit churn). The merged
+    parquet must still contain all 4 media_ids — re-captures are append-only
+    for media so the archive can't be silently shrunken by X."""
+    photos_full = [make_media(media_type="photo", media_id=f"p{i}") for i in range(4)]
+    cap_full = make_capture(
+        [make_tweet("media01", captured_at="2025-04-12T10:00:00Z", media=photos_full)]
+    )
+    write_capture(tmp_repo, "test-handle", "01-full.json", cap_full)
+    assert ingest.main([]) == 0
+
+    cap_partial = make_capture(
+        [
+            make_tweet(
+                "media01",
+                captured_at="2025-04-13T10:00:00Z",
+                media=[make_media(media_type="photo", media_id="p0")],
+            )
+        ]
+    )
+    write_capture(tmp_repo, "test-handle", "02-partial.json", cap_partial)
+    assert ingest.main([]) == 0
+
+    df = pl.read_parquet(tmp_repo / "data" / "test-handle.parquet")
+    media = df["media"].to_list()[0]
+    media_ids = sorted(m["media_id"] for m in media)
+    assert media_ids == ["p0", "p1", "p2", "p3"]
+
+
+def test_refetched_full_text_replaces_truncated(tmp_repo: Path) -> None:
+    """First capture is the 280-char head of a long tweet (is_truncated=True);
+    refetch via TweetDetail returns the full body (is_truncated=False). The
+    merged row must hold the full body and clear the truncation flag."""
+    head = "Lorem ipsum dolor sit amet… https://t.co/abc"
+    full = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " * 10
+    cap_head = make_capture(
+        [
+            make_tweet(
+                "trunc01",
+                captured_at="2025-04-12T10:00:00Z",
+                text=head,
+                is_truncated=True,
+            )
+        ]
+    )
+    cap_full = make_capture(
+        [
+            make_tweet(
+                "trunc01",
+                captured_at="2025-04-13T10:00:00Z",
+                text=full,
+                is_truncated=False,
+            )
+        ]
+    )
+    write_capture(tmp_repo, "test-handle", "01.json", cap_head)
+    write_capture(tmp_repo, "test-handle", "02.json", cap_full)
+    assert ingest.main([]) == 0
+
+    df = pl.read_parquet(tmp_repo / "data" / "test-handle.parquet")
+    row = df.row(0, named=True)
+    assert row["text"] == full
+    assert row["is_truncated"] is False
+
+
+def test_full_text_not_clobbered_by_later_truncated_scroll(tmp_repo: Path) -> None:
+    """Once we've archived the full body of a long tweet, a later timeline
+    scroll that returns only the truncated head must not overwrite it."""
+    full = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " * 10
+    cap_full = make_capture(
+        [
+            make_tweet(
+                "trunc02",
+                captured_at="2025-04-12T10:00:00Z",
+                text=full,
+                is_truncated=False,
+            )
+        ]
+    )
+    cap_head = make_capture(
+        [
+            make_tweet(
+                "trunc02",
+                captured_at="2025-04-13T10:00:00Z",
+                text="Lorem ipsum dolor sit amet… https://t.co/abc",
+                is_truncated=True,
+            )
+        ]
+    )
+    write_capture(tmp_repo, "test-handle", "01-full.json", cap_full)
+    write_capture(tmp_repo, "test-handle", "02-head.json", cap_head)
+    assert ingest.main([]) == 0
+
+    df = pl.read_parquet(tmp_repo / "data" / "test-handle.parquet")
+    row = df.row(0, named=True)
+    assert row["text"] == full
+    assert row["is_truncated"] is False
+
+
+def test_community_note_preserved_when_later_payload_lacks_pivot(tmp_repo: Path) -> None:
+    note = {
+        "note_id": "note-abc",
+        "title": "Readers added context",
+        "short_title": "Readers added context",
+        "summary": "This claim is missing context: …",
+        "destination_url": "https://x.com/i/birdwatch/n/note-abc",
+        "observed_at": "2025-04-12T10:00:00Z",
+    }
+    cap_with = make_capture(
+        [
+            make_tweet(
+                "cn01",
+                captured_at="2025-04-12T10:00:00Z",
+                community_note=note,
+            )
+        ]
+    )
+    cap_without = make_capture(
+        [
+            make_tweet(
+                "cn01",
+                captured_at="2025-04-13T10:00:00Z",
+                community_note=None,
+            )
+        ]
+    )
+    write_capture(tmp_repo, "test-handle", "01.json", cap_with)
+    write_capture(tmp_repo, "test-handle", "02.json", cap_without)
+    assert ingest.main([]) == 0
+
+    df = pl.read_parquet(tmp_repo / "data" / "test-handle.parquet")
+    cn = df["community_note"].to_list()[0]
+    assert cn is not None
+    assert cn["note_id"] == "note-abc"
+    assert cn["summary"].startswith("This claim is missing context")
+
+
 @pytest.mark.parametrize(
     "missing",
     ["tweet_id", "account_handle", "posted_at", "tweet_url", "tweet_type", "text"],

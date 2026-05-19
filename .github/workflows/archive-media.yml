@@ -1,0 +1,74 @@
+name: archive-media
+on:
+  # Run after every ingest commit so newly observed media gets pulled
+  # before twimg expires the original URL.
+  workflow_run:
+    workflows: ['ingest']
+    types: [completed]
+  # And on a fallback schedule so manually-dropped raw files still get
+  # picked up if the ingest workflow didn't fire (e.g. weekend lull).
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      handle:
+        description: 'Restrict to one handle (optional)'
+        required: false
+      max_items:
+        description: 'Max media items to download this run'
+        required: false
+        default: '200'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: archive-media
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    # Skip when the upstream ingest run failed — no fresh data to chase.
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+
+      - name: install python deps
+        run: uv sync
+
+      - name: archive media
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+        run: |
+          args=()
+          if [ -n "${{ inputs.handle }}" ]; then
+            args+=(--handle "${{ inputs.handle }}")
+          fi
+          if [ -n "${{ inputs.max_items }}" ]; then
+            args+=(--max-items "${{ inputs.max_items }}")
+          fi
+          uv run python -m scripts.archive_media "${args[@]}"
+
+      - name: commit parquet updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain data/)" ]; then
+            git add data/
+            archived_handles=$(git diff --cached --name-only data/ | wc -l | tr -d ' ')
+            git commit -m "[bot] archive: ${archived_handles} parquet(s) updated with media assets"
+            git push
+          else
+            echo "no media updates"
+          fi

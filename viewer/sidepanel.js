@@ -5,10 +5,13 @@ export function openSidepanel(panelEl, titleEl, bodyEl, row) {
   titleEl.textContent = `@${row.account_handle} · ${shortDate(row.posted_at)}`;
   bodyEl.replaceChildren();
   bodyEl.append(
-    section('Tweet', tweetText(row), tweetLinks(row)),
+    section('Tweet', tweetText(row), tweetLinks(row), truncationBadge(row)),
     section('Identifiers', grid(idRows(row))),
     section('Engagement', grid(engagementRows(row)))
   );
+  if (row.community_note) {
+    bodyEl.append(section('Community Note', communityNoteBlock(row.community_note)));
+  }
   if (Array.isArray(row.media) && row.media.length > 0) {
     bodyEl.append(section('Media', mediaGrid(row.media)));
   }
@@ -204,6 +207,52 @@ function para(text) {
   const p = document.createElement('p');
   p.textContent = text;
   return p;
+}
+
+function truncationBadge(row) {
+  if (!row.is_truncated) return document.createComment('');
+  const div = document.createElement('div');
+  div.className = 'sp-badge warn';
+  div.textContent =
+    'Text likely truncated — only the 280-char head was returned. Open the tweet to capture the full body.';
+  return div;
+}
+
+function communityNoteBlock(note) {
+  const wrap = document.createElement('div');
+  const head = document.createElement('div');
+  head.style.fontWeight = '600';
+  head.textContent = note.title || note.short_title || 'Readers added context';
+  wrap.append(head);
+  if (note.summary) {
+    const body = document.createElement('div');
+    body.className = 'sp-text';
+    body.style.marginTop = '4px';
+    body.textContent = note.summary;
+    wrap.append(body);
+  }
+  if (note.destination_url) {
+    const a = document.createElement('a');
+    a.href = note.destination_url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.className = 'sp-link';
+    a.style.display = 'block';
+    a.style.marginTop = '4px';
+    a.textContent = 'Open note on x.com ↗';
+    wrap.append(a);
+  }
+  if (note.note_id || note.observed_at) {
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.style.marginTop = '4px';
+    const bits = [];
+    if (note.note_id) bits.push(`note_id=${note.note_id}`);
+    if (note.observed_at) bits.push(`first seen ${shortDate(note.observed_at)}`);
+    meta.textContent = bits.join(' · ');
+    wrap.append(meta);
+  }
+  return wrap;
 }
 
 function shortDate(iso) {

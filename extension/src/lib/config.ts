@@ -9,7 +9,12 @@ export const DEFAULT_SETTINGS: Settings = {
   branch: 'master',
   autoCapture: true,
   configuredAt: null,
+  autoScroll: false,
+  autoScrollIntervalSec: 6,
 };
+
+export const AUTO_SCROLL_MIN_SEC = 3;
+export const AUTO_SCROLL_MAX_SEC = 60;
 
 // Built-in fallback if config/accounts.yaml cannot be fetched (e.g., before the
 // repo has been initialized or PAT misconfigured). Kept in sync with the file.
@@ -38,6 +43,13 @@ export const TWEET_ENDPOINTS: ReadonlySet<string> = new Set([
   'HomeLatestTimeline',
   'SearchTimeline',
   'ListLatestTweetsTimeline',
+]);
+
+// Endpoints that carry Community Note bodies — captured for completeness but
+// they don't introduce new tweets, so they don't need to be in TWEET_ENDPOINTS.
+export const BIRDWATCH_ENDPOINTS: ReadonlySet<string> = new Set([
+  'BirdwatchFetchOneNote',
+  'BirdwatchFetchNotes',
 ]);
 
 // Auxiliary endpoints we don't extract tweets from but use for context (e.g.,

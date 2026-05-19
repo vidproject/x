@@ -12,6 +12,8 @@
  */
 
 import {
+  AUTO_SCROLL_MAX_SEC,
+  AUTO_SCROLL_MIN_SEC,
   FALLBACK_ACCOUNTS,
   FLUSH_ALARM_MINUTES,
   FLUSH_IDLE_MS,
@@ -30,16 +32,21 @@ import {
   clearActivity,
   clearAll,
   clearRunBuffer,
+  dequeueRefetch,
   engagementSig,
+  enqueueRefetch,
   getAccounts,
   getActivity,
   getCommittedIndex,
   getConnection,
   getCounters,
+  getRefetchQueue,
   getRunBuffer,
   getRunBuffers,
   getSettings,
+  nextRefetchTarget,
   pruneCommittedIndex,
+  refetchQueueTotal,
   setAccounts,
   setBufferedCount,
   setCommittedIndex,
@@ -84,6 +91,7 @@ void onWake('module-load');
 async function onWake(reason: string): Promise<void> {
   try {
     await ensureAlarms();
+    await ensureAutoScrollAlarm();
     await flushOrphanedBuffersIfStale();
     await reinjectIntoOpenTabs();
     // Drop dedup-index entries older than 30 days so the store doesn't
@@ -170,11 +178,86 @@ async function ensureAlarms(): Promise<void> {
   });
 }
 
+// Firefox MV3 alarms have a 30s minimum period, but we want sub-minute
+// scrolling. The auto-scroll loop therefore runs on an in-SW interval,
+// re-armed on every wake. Keep the handle module-scoped so a fresh
+// SW instance can clear a stale one if it ever leaks.
+let autoScrollTimer: ReturnType<typeof setInterval> | null = null;
+
+async function ensureAutoScrollAlarm(): Promise<void> {
+  const s = await getSettings();
+  await configureAutoScroll(s.autoScroll, s.autoScrollIntervalSec);
+}
+
+async function configureAutoScroll(on: boolean, intervalSec: number): Promise<void> {
+  if (autoScrollTimer !== null) {
+    clearInterval(autoScrollTimer);
+    autoScrollTimer = null;
+  }
+  if (!on) return;
+  const clamped = Math.min(
+    AUTO_SCROLL_MAX_SEC,
+    Math.max(AUTO_SCROLL_MIN_SEC, Math.round(intervalSec))
+  );
+  autoScrollTimer = setInterval(() => {
+    void autoScrollTick().catch((err) => {
+      void warn('auto-scroll tick failed', describeError(err));
+    });
+  }, clamped * 1000);
+  await info('auto-scroll loop armed', { interval_sec: clamped });
+}
+
+async function autoScrollTick(): Promise<void> {
+  let tabs: browser.tabs.Tab[];
+  try {
+    tabs = await browser.tabs.query({ url: ['https://x.com/*', 'https://twitter.com/*'] });
+  } catch (err) {
+    await warn('auto-scroll: tab query failed', describeError(err));
+    return;
+  }
+  if (tabs.length === 0) return;
+  for (const tab of tabs) {
+    if (typeof tab.id !== 'number') continue;
+    if (tab.discarded) continue;
+    try {
+      await browser.scripting.executeScript({
+        target: { tabId: tab.id },
+        world: 'MAIN' as 'ISOLATED',
+        func: () => {
+          // Dispatch End key — many X surfaces (lists, search, replies) bind
+          // pagination triggers to it via React handlers, not just on the
+          // intersection observer. Belt-and-braces: also explicitly scroll.
+          const opts: KeyboardEventInit = {
+            key: 'End',
+            code: 'End',
+            keyCode: 35,
+            which: 35,
+            bubbles: true,
+            cancelable: true,
+          };
+          const target = (document.activeElement as HTMLElement | null) ?? document.body;
+          target.dispatchEvent(new KeyboardEvent('keydown', opts));
+          target.dispatchEvent(new KeyboardEvent('keyup', opts));
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'auto',
+          });
+        },
+      });
+    } catch {
+      // Tabs that disallow scripting (about:, discarded, mid-navigation)
+      // just get skipped — they'll be eligible on a later tick.
+    }
+  }
+}
+
 browser.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === 'flush-sweep') {
     void flushIdleBuffers();
   } else if (alarm.name === 'verify-connection') {
     void verifyConnection(false);
+  } else if (alarm.name === 'refetch-tick') {
+    void refetchTick();
   }
 });
 
@@ -246,6 +329,27 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
     case 'toggle-auto-capture':
       await updateSettings({ autoCapture: msg.on });
       await info('auto-capture toggled', { on: msg.on });
+      return buildState();
+    case 'toggle-auto-scroll': {
+      const s = await updateSettings({ autoScroll: msg.on });
+      await configureAutoScroll(s.autoScroll, s.autoScrollIntervalSec);
+      await info('auto-scroll toggled', { on: msg.on, interval_sec: s.autoScrollIntervalSec });
+      return buildState();
+    }
+    case 'set-auto-scroll-interval': {
+      const seconds = Math.min(
+        AUTO_SCROLL_MAX_SEC,
+        Math.max(AUTO_SCROLL_MIN_SEC, Math.round(msg.seconds))
+      );
+      const s = await updateSettings({ autoScrollIntervalSec: seconds });
+      await configureAutoScroll(s.autoScroll, s.autoScrollIntervalSec);
+      return buildState();
+    }
+    case 'start-refetch':
+      await startRefetchLoop();
+      return buildState();
+    case 'cancel-refetch':
+      await cancelRefetchLoop();
       return buildState();
     case 'refresh-accounts':
       await refreshAccountsList(true);
@@ -372,6 +476,18 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
     });
   }
   if (liveTweets.length === 0) return;
+
+  // Refetch queue housekeeping: a tweet that comes back here with
+  // is_truncated=false means we successfully grabbed its full body (e.g.
+  // from a TweetDetail capture), so drop it from the queue. The reverse —
+  // is_truncated=true — gets enqueued so the user can drive a refetch loop.
+  for (const t of liveTweets) {
+    if (t.is_truncated) {
+      await enqueueRefetch(t.account_handle, t.tweet_id);
+    } else {
+      await dequeueRefetch(t.account_handle, t.tweet_id);
+    }
+  }
 
   // Group surviving tweets by author handle.
   const byHandle = new Map<string, CanonicalTweet[]>();
@@ -716,6 +832,102 @@ async function captureThisPage(): Promise<void> {
   }
 }
 
+// --- Refetch loop ---------------------------------------------------------
+//
+// X truncates long tweets in timeline payloads — `note_tweet` is only
+// inlined for some endpoints. Re-opening each truncated tweet's detail page
+// causes the page-hook to capture the full `note_tweet` body. The loop
+// drives that by navigating a single dedicated tab through the queue, one
+// tweet every auto-scroll-interval seconds, so the user doesn't get a
+// tab-storm.
+
+const REFETCH_TAB_KEY = '__imm_archive_refetch_tab_id__';
+
+async function getRefetchTabId(): Promise<number | null> {
+  const stored = await browser.storage.local.get(REFETCH_TAB_KEY);
+  const id = stored[REFETCH_TAB_KEY];
+  return typeof id === 'number' ? id : null;
+}
+
+async function setRefetchTabId(id: number | null): Promise<void> {
+  if (id === null) {
+    await browser.storage.local.remove(REFETCH_TAB_KEY);
+  } else {
+    await browser.storage.local.set({ [REFETCH_TAB_KEY]: id });
+  }
+}
+
+async function startRefetchLoop(): Promise<void> {
+  const total = await refetchQueueTotal();
+  if (total === 0) {
+    await info('refetch: nothing queued');
+    return;
+  }
+  const s = await getSettings();
+  const seconds = Math.min(
+    AUTO_SCROLL_MAX_SEC,
+    Math.max(AUTO_SCROLL_MIN_SEC, Math.round(s.autoScrollIntervalSec))
+  );
+  await browser.alarms.clear('refetch-tick');
+  await browser.alarms.create('refetch-tick', {
+    when: Date.now() + 100,
+    periodInMinutes: Math.max(seconds / 60, 0.5), // 30s minimum per MV3
+  });
+  await info('refetch loop started', { queued: total, interval_sec: seconds });
+  await broadcastState();
+}
+
+async function cancelRefetchLoop(): Promise<void> {
+  await browser.alarms.clear('refetch-tick');
+  const tabId = await getRefetchTabId();
+  await setRefetchTabId(null);
+  await info('refetch loop cancelled', { had_tab: tabId !== null });
+  await broadcastState();
+}
+
+async function refetchTick(): Promise<void> {
+  const target = await nextRefetchTarget();
+  if (!target) {
+    await browser.alarms.clear('refetch-tick');
+    await setRefetchTabId(null);
+    await info('refetch loop complete');
+    await broadcastState();
+    return;
+  }
+  const url = `https://x.com/${target.handle}/status/${target.tweetId}`;
+  let tabId = await getRefetchTabId();
+  // Confirm the tab still exists; recreate if the user closed it.
+  if (tabId !== null) {
+    try {
+      await browser.tabs.get(tabId);
+    } catch {
+      tabId = null;
+    }
+  }
+  try {
+    if (tabId === null) {
+      const tab = await browser.tabs.create({ url, active: false });
+      if (typeof tab.id === 'number') await setRefetchTabId(tab.id);
+    } else {
+      await browser.tabs.update(tabId, { url });
+    }
+    await info('refetch tick', {
+      handle: target.handle,
+      tweet_id: target.tweetId,
+      remaining: await refetchQueueTotal(),
+    });
+  } catch (err) {
+    await warn('refetch navigate failed; dropping target', {
+      handle: target.handle,
+      tweet_id: target.tweetId,
+      ...describeError(err),
+    });
+    // Skip this one so we don't get stuck.
+    await dequeueRefetch(target.handle, target.tweetId);
+  }
+  await broadcastState();
+}
+
 // --- Quarantine -----------------------------------------------------------
 
 async function quarantine(
@@ -877,12 +1089,31 @@ async function buildState(): Promise<ExtensionState> {
   const conn = await getConnection();
   const accounts = await getAccounts();
   const counters = await getCounters();
+  let tabCount = 0;
+  try {
+    const tabs = await browser.tabs.query({ url: ['https://x.com/*', 'https://twitter.com/*'] });
+    tabCount = tabs.length;
+  } catch {
+    // tabs.query is allowed by the manifest but can transiently fail
+    // around extension startup; surfacing 0 is fine.
+  }
+  const refetchQueued = await refetchQueueTotal();
+  const refetchAlarm = await browser.alarms.get('refetch-tick');
   return {
     version: EXT_VERSION,
     settings: redactSettings(settings),
     connection: conn,
     accounts,
     counters,
+    autoScroll: {
+      active: settings.autoScroll && autoScrollTimer !== null,
+      tabCount,
+    },
+    refetchQueue: {
+      total: refetchQueued,
+      running: refetchAlarm !== undefined,
+      lastTickAt: null,
+    },
   };
 }
 
@@ -893,6 +1124,8 @@ function redactSettings(s: Settings): ExtensionState['settings'] {
     branch: s.branch,
     autoCapture: s.autoCapture,
     configuredAt: s.configuredAt,
+    autoScroll: s.autoScroll,
+    autoScrollIntervalSec: s.autoScrollIntervalSec,
     patSet: s.pat.length > 0,
     patSuffix: s.pat.length >= 4 ? s.pat.slice(-4) : '',
   };
@@ -1029,4 +1262,7 @@ function shortenUrl(u: string): string {
   buffers: getRunBuffers,
   flushAll: () => flushAll('devtools'),
   state: buildState,
+  refetchQueue: getRefetchQueue,
+  startRefetch: startRefetchLoop,
+  cancelRefetch: cancelRefetchLoop,
 };

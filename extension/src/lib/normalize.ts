@@ -1,5 +1,5 @@
 import { TWEET_URL_PREFIX } from './config.js';
-import type { CanonicalTweet, MediaItem, TweetType, UrlEntity } from './types.js';
+import type { CanonicalTweet, CommunityNote, MediaItem, TweetType, UrlEntity } from './types.js';
 
 /**
  * Normalize GraphQL response payloads from X's internal API into
@@ -127,6 +127,8 @@ function buildTweet(raw: unknown, ctx: NormalizeContext): CanonicalTweet | null 
   const textFromNote = strOrNull(noteTweet?.text);
   const textFromLegacy = strOrNull(legacy.full_text) ?? '';
   const text = textFromNote ?? textFromLegacy;
+  const isTruncated = detectTruncation(noteTweet, legacy, textFromLegacy);
+  const communityNote = extractCommunityNote(t, legacy, ctx.capturedAt);
 
   const entities = obj(legacy.entities) ?? {};
   const entitiesFromNote = obj(noteTweet?.entity_set);
@@ -187,6 +189,8 @@ function buildTweet(raw: unknown, ctx: NormalizeContext): CanonicalTweet | null 
         bookmarks: numOrNull(legacy.bookmark_count),
       },
     ],
+    community_note: communityNote,
+    is_truncated: isTruncated,
     wayback_url: null,
     wayback_submitted_at: null,
     capture_source: 'extension',
@@ -348,4 +352,63 @@ function obj(v: unknown): Record<string, unknown> | null {
 }
 function toArray(v: unknown): unknown[] {
   return Array.isArray(v) ? v : [];
+}
+
+/**
+ * Decide whether a tweet's archived `text` is the truncated head of a longer
+ * body. Triggered when `note_tweet` is absent (long-tweet payload not
+ * inlined) AND `display_text_range[1]` falls short of `full_text.length` —
+ * i.e. X glued a trailing "show more" t.co URL onto the visible text.
+ *
+ * Conservative on purpose: re-fetching incorrectly flagged tweets is cheap;
+ * missing genuinely-truncated ones permanently loses content.
+ */
+function detectTruncation(
+  noteTweet: Record<string, unknown> | null,
+  legacy: Record<string, unknown>,
+  fullText: string
+): boolean {
+  if (noteTweet) return false; // we have the long-form body already
+  if (!fullText) return false;
+  const range = legacy.display_text_range;
+  if (Array.isArray(range) && range.length >= 2) {
+    const end = typeof range[1] === 'number' ? range[1] : null;
+    if (end !== null && end < fullText.length) return true;
+  }
+  // Some payloads omit display_text_range; fall back to a trailing-URL probe.
+  // X always appends the "show more" t.co URL after a single space.
+  return / https?:\/\/t\.co\/[A-Za-z0-9]+$/.test(fullText) && fullText.length >= 270;
+}
+
+/**
+ * Pull the Community Note (formerly Birdwatch) block attached to a tweet, if
+ * any. The pivot can live at `tweet.legacy.birdwatch_pivot` (older shape) or
+ * `tweet.birdwatch_pivot` (current shape). The summary text is what readers
+ * actually see; we keep the surrounding metadata so downstream tooling can
+ * tell drafts apart from rated-helpful notes.
+ */
+function extractCommunityNote(
+  t: Record<string, unknown>,
+  legacy: Record<string, unknown>,
+  observedAt: string
+): CommunityNote | null {
+  const pivot = obj(t.birdwatch_pivot) ?? obj(legacy.birdwatch_pivot);
+  if (!pivot) return null;
+  const subtitle = obj(pivot.subtitle);
+  const note = obj(pivot.note);
+  const summary = strOrNull(subtitle?.text);
+  const title = strOrNull(pivot.title);
+  const shortTitle = strOrNull(pivot.shortTitle);
+  const destinationUrl = strOrNull(pivot.destinationUrl);
+  const noteId = strOrNull(pivot.noteId) ?? strOrNull(note?.rest_id);
+  // Skip empty shells that have no actual content.
+  if (!summary && !title && !noteId) return null;
+  return {
+    note_id: noteId,
+    title,
+    short_title: shortTitle,
+    summary,
+    destination_url: destinationUrl,
+    observed_at: observedAt,
+  };
 }

@@ -1,0 +1,50 @@
+name: pages
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - 'index.html'
+      - 'viewer/**'
+      - 'data/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+# Single in-flight deploy per ref; let new pushes cancel stale runs so the
+# live site stays close to HEAD.
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: stage viewer artifact
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+          cp -r viewer _site/viewer
+          if [ -d data ]; then cp -r data _site/data; fi
+          # 404 keeps deep-linked viewer URLs (with #hash filters) from
+          # showing a default GitHub 404 if a stray path drift sneaks in.
+          cp index.html _site/404.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

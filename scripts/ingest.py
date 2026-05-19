@@ -148,9 +148,16 @@ def merge_tweets(rows: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     """Reduce many captures of the same tweet into one canonical row.
 
     Strategy: keep the earliest `first_captured_at`, the latest `last_seen_at`,
-    union the `engagement_history`, and otherwise take the most recently
-    captured row's field values (so engagement counts and `text` reflect the
-    latest observed state).
+    union `engagement_history` and `media`, and otherwise take the most
+    recently captured row's field values (so engagement counts and `text`
+    reflect the latest observed state).
+
+    Re-captures are append-only with respect to media and community notes —
+    once we've archived a photo, video, or community note for a tweet,
+    subsequent captures cannot drop it. This protects the archive against
+    X reducing the data it returns in a later payload (deleted media,
+    revoked Community Note, etc.) while still letting fresh engagement
+    counts and full-text refetches win.
     """
     merged: dict[str, dict[str, Any]] = {}
     for row in rows:
@@ -178,14 +185,19 @@ def merge_tweets(rows: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]]:
             # with null on re-ingest.
             if cur.get("deletion_detected_at") and not row.get("deletion_detected_at"):
                 preserved["deletion_detected_at"] = cur["deletion_detected_at"]
-            # Preserve a previously-set wayback url / media archive states if
-            # the new row doesn't carry them.
+            # Preserve a previously-set wayback url if the new row doesn't carry it.
             if cur.get("wayback_url") and not row.get("wayback_url"):
                 preserved["wayback_url"] = cur["wayback_url"]
                 preserved["wayback_submitted_at"] = cur.get("wayback_submitted_at")
-            preserved_media = preserve_media(cur.get("media"), row.get("media"))
-            if preserved_media is not None:
-                preserved["media"] = preserved_media
+            preserved["media"] = union_media(cur.get("media"), row.get("media"))
+            preserved["text"], preserved["text_resolved"], preserved["is_truncated"] = pick_text(
+                cur, row
+            )
+            # Once we've seen a Community Note attached, hold onto it even
+            # if a later payload omits the pivot block. If the new row has
+            # one and old didn't, the default (row wins) is correct.
+            if cur.get("community_note") and not row.get("community_note"):
+                preserved["community_note"] = cur["community_note"]
             merged[tid] = {**row, **preserved}
         else:
             cur["last_seen_at"] = max(
@@ -196,33 +208,93 @@ def merge_tweets(rows: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]]:
                 cur.get("engagement_history") or [],
                 row.get("engagement_history") or [],
             )
+            # Even when row is older, it may carry media we don't yet have
+            # (e.g. a backfilled older raw file rebuilding history).
+            cur["media"] = union_media(cur.get("media"), row.get("media"))
+            cur["text"], cur["text_resolved"], cur["is_truncated"] = pick_text(cur, row)
+            if not cur.get("community_note") and row.get("community_note"):
+                cur["community_note"] = row["community_note"]
     return merged
 
 
-def preserve_media(
-    cur: list[dict[str, Any]] | None, new: list[dict[str, Any]] | None
-) -> list[dict[str, Any]] | None:
-    """If the newer row has matching media items without archive metadata,
-    backfill that metadata from the previous row so a re-ingest doesn't
-    clobber a populated `release_asset_url`.
+def pick_text(cur: dict[str, Any], row: dict[str, Any]) -> tuple[str | None, str | None, bool]:
+    """Pick the better text body between two captures of the same tweet.
+
+    A non-truncated capture always wins over a truncated one. When both have
+    the same truncation status, the longer text wins (covers the case where
+    X widened a long-tweet inline, or where we got more entities expanded).
     """
-    if not cur:
-        return None
-    if not new:
-        return cur
-    cur_by_id = {m.get("media_id"): m for m in cur if isinstance(m, dict)}
-    out: list[dict[str, Any]] = []
-    changed = False
+    cur_trunc = bool(cur.get("is_truncated"))
+    row_trunc = bool(row.get("is_truncated"))
+    cur_text = cur.get("text") or ""
+    row_text = row.get("text") or ""
+    if cur_trunc and not row_trunc:
+        winner = row
+    elif (row_trunc and not cur_trunc) or len(cur_text) >= len(row_text):
+        winner = cur
+    else:
+        winner = row
+    # Once we've ever seen the full body, the tweet is no longer truncated.
+    is_truncated = cur_trunc and row_trunc
+    return winner.get("text"), winner.get("text_resolved"), is_truncated
+
+
+def union_media(
+    cur: list[dict[str, Any]] | None, new: list[dict[str, Any]] | None
+) -> list[dict[str, Any]]:
+    """Union two media lists by ``media_id``, preferring fields from whichever
+    row carries a value (with archive metadata from the previous row winning
+    when present, and the newer row's CDN URL winning when populated).
+
+    No matching media_id from either side is ever dropped — once we've seen a
+    photo or video for a tweet it stays in the archive forever, even if X
+    later stops returning it. This is the property the user's data depends on.
+    """
+    cur = cur or []
+    new = new or []
+    by_id: dict[str, dict[str, Any]] = {}
+    order: list[str] = []
+
+    def key(m: dict[str, Any]) -> str | None:
+        mid = m.get("media_id")
+        return str(mid) if mid else None
+
+    for m in cur:
+        if not isinstance(m, dict):
+            continue
+        k = key(m)
+        if not k:
+            continue
+        by_id[k] = dict(m)
+        order.append(k)
     for m in new:
         if not isinstance(m, dict):
-            out.append(m)
             continue
-        prev = cur_by_id.get(m.get("media_id"))
-        if not prev:
-            out.append(m)
+        k = key(m)
+        if not k:
             continue
-        merged = dict(m)
-        for key in (
+        if k not in by_id:
+            by_id[k] = dict(m)
+            order.append(k)
+            continue
+        prev = by_id[k]
+        merged: dict[str, Any] = dict(prev)
+        # Latest non-empty CDN url / dimensions / alt text wins.
+        for fld in (
+            "media_type",
+            "original_url",
+            "duration_sec",
+            "width",
+            "height",
+            "alt_text",
+        ):
+            v = m.get(fld)
+            if v is not None and v != "":
+                merged[fld] = v
+        # Archive metadata: prefer whichever side has it. The archive
+        # workflow writes these into the parquet, so on re-ingest the
+        # extension-side capture (which has them null) must not clobber.
+        for fld in (
             "release_asset_url",
             "sha256",
             "bytes",
@@ -230,11 +302,14 @@ def preserve_media(
             "archive_attempts",
             "last_attempt_at",
         ):
-            if prev.get(key) and not m.get(key):
-                merged[key] = prev[key]
-                changed = True
-        out.append(merged)
-    return out if changed else None
+            prev_v = prev.get(fld)
+            new_v = m.get(fld)
+            if prev_v and not new_v:
+                merged[fld] = prev_v
+            elif new_v:
+                merged[fld] = new_v
+        by_id[k] = merged
+    return [by_id[k] for k in order]
 
 
 # --------------------------------------------------------------------------
@@ -264,6 +339,8 @@ def normalize_row(row: dict[str, Any]) -> dict[str, Any]:
     for int_col in ("like_count", "retweet_count", "reply_count", "quote_count"):
         if out[int_col] is None:
             out[int_col] = 0
+    if out["is_truncated"] is None:
+        out["is_truncated"] = False
     out["schema_version"] = SCHEMA_VERSION
     return out
 

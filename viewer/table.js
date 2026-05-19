@@ -120,6 +120,28 @@ export const COLUMNS = [
         : '—',
   },
   {
+    key: 'community_note',
+    label: 'Note',
+    default: false,
+    filterable: true,
+    sortable: false,
+    render: (r) =>
+      r.community_note
+        ? `<span class="pill cn" title="${escape(r.community_note.summary ?? '')}">CN</span>`
+        : '—',
+  },
+  {
+    key: 'is_truncated',
+    label: 'Trunc',
+    default: false,
+    filterable: true,
+    sortable: false,
+    render: (r) =>
+      r.is_truncated
+        ? '<span class="pill trunc" title="Only the 280-char head was returned">trunc</span>'
+        : '—',
+  },
+  {
     key: 'tweet_url',
     label: 'Link',
     default: true,
