@@ -25,6 +25,10 @@ export interface ConnectionState {
   login: string | null;
   checkedAt: string | null;
   error: string | null;
+  /** GitHub's reported default branch for the configured repo, when known.
+   * Used to surface a mismatch warning if the user picked a branch that
+   * doesn't actually exist. */
+  defaultBranch: string | null;
 }
 
 export interface MediaItem {

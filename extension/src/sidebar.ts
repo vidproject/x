@@ -37,9 +37,17 @@ function setConnStatus(state: ExtensionState): void {
   const { connection, settings } = state;
   let cls = '';
   let text = '';
+  const branchMismatch =
+    connection.status === 'ok' &&
+    connection.defaultBranch &&
+    settings.branch &&
+    connection.defaultBranch !== settings.branch;
   if (!settings.patSet) {
     cls = 'warn';
     text = 'Not configured — open Settings';
+  } else if (branchMismatch) {
+    cls = 'warn';
+    text = `Branch "${settings.branch}" not the default ("${connection.defaultBranch}") — commits may 422`;
   } else if (connection.status === 'ok') {
     cls = 'ok';
     text = `Connected as @${connection.login ?? '?'} to ${settings.owner}/${settings.repo} · …${settings.patSuffix}`;

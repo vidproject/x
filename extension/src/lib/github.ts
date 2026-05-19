@@ -52,6 +52,20 @@ export class GitHubClient {
     return (res as { login?: string }).login ?? '<unknown>';
   }
 
+  /** Returns true if the given branch exists on the configured repo. */
+  async branchExists(branch: string): Promise<boolean> {
+    try {
+      await this.fetchJson(
+        'GET',
+        `/repos/${this.settings.owner}/${this.settings.repo}/branches/${encodeURIComponent(branch)}`
+      );
+      return true;
+    } catch (err) {
+      if (err instanceof GitHubError && err.category === 'not-found') return false;
+      throw err;
+    }
+  }
+
   /** Verifies the PAT can see the configured repo. */
   async verifyRepoAccess(): Promise<{ login: string; full_name: string; default_branch: string }> {
     const me = await this.fetchJson('GET', '/user');

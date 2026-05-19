@@ -38,6 +38,7 @@ const DEFAULT_CONNECTION: ConnectionState = {
   login: null,
   checkedAt: null,
   error: null,
+  defaultBranch: null,
 };
 
 const DEFAULTS: StorageShape = {
@@ -89,7 +90,12 @@ export async function setAccounts(a: AccountConfig[]): Promise<void> {
 // --- Connection state ----------------------------------------------------
 
 export async function getConnection(): Promise<ConnectionState> {
-  return getRaw('connection');
+  const c = await getRaw('connection');
+  // Backfill fields added after the user's storage was written.
+  if (c.defaultBranch === undefined) {
+    return { ...c, defaultBranch: null };
+  }
+  return c;
 }
 export async function setConnection(c: ConnectionState): Promise<void> {
   await setRaw('connection', c);

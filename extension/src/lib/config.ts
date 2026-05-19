@@ -4,7 +4,9 @@ export const DEFAULT_SETTINGS: Settings = {
   pat: '',
   owner: 'vidproject',
   repo: 'x',
-  branch: 'main',
+  // The repo's current default branch is "master". If you fork or rename
+  // it later, update Settings before the next capture.
+  branch: 'master',
   autoCapture: true,
   configuredAt: null,
 };

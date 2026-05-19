@@ -90,6 +90,7 @@ async function onWake(reason: string): Promise<void> {
         login: null,
         checkedAt: new Date().toISOString(),
         error: null,
+        defaultBranch: null,
       });
       await info('extension awake; settings incomplete', { reason });
     }
@@ -210,12 +211,12 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
   if (PROFILE_ENDPOINTS.has(endpoint)) return; // not tweet-bearing
   if (!TWEET_ENDPOINTS.has(endpoint)) return;
 
-  const settings = await getSettings();
   const accounts = await getAccounts();
-  if (!settings.pat) {
-    await warn('capture ignored: PAT not configured', { endpoint });
-    return;
-  }
+  // We deliberately do NOT short-circuit when the PAT is missing. The
+  // normalize step is cheap, the buffer survives service-worker eviction,
+  // and once the PAT is set the next alarm or user-triggered flush commits
+  // everything we've seen. Dropping captures here was hiding the user's
+  // first browsing session entirely.
 
   const allowed = new Set(accounts.map((a) => a.handle.toLowerCase()));
   const capturedAt = new Date().toISOString();
@@ -412,12 +413,16 @@ async function flushHandle(handle: string, reason: string): Promise<void> {
       run: shortRunId(buf.run_id),
       path: rawPath,
     });
-    await setConnection({
-      status: 'ok',
-      login: (await getConnection()).login,
-      checkedAt: new Date().toISOString(),
-      error: null,
-    });
+    {
+      const prev = await getConnection();
+      await setConnection({
+        status: 'ok',
+        login: prev.login,
+        checkedAt: new Date().toISOString(),
+        error: null,
+        defaultBranch: prev.defaultBranch,
+      });
+    }
   } catch (err) {
     if (err instanceof GitHubError) {
       const conn = await getConnection();
@@ -434,6 +439,7 @@ async function flushHandle(handle: string, reason: string): Promise<void> {
         login: conn.login,
         checkedAt: new Date().toISOString(),
         error: err.message,
+        defaultBranch: conn.defaultBranch,
       });
       await logErr('flush failed', {
         handle,
@@ -454,9 +460,13 @@ async function flushHandle(handle: string, reason: string): Promise<void> {
 // --- Capture-now / capture-all -------------------------------------------
 
 async function captureNow(handle: string): Promise<void> {
-  await info('capture-now requested', { handle });
-  // Pre-seed an empty buffer so the activity tail reflects intent even before
-  // the first GraphQL response lands.
+  // Land on the Replies tab so X fetches via UserTweetsAndReplies — that
+  // endpoint returns both top-level posts and replies, which is the superset
+  // we want for the archive. The plain `/<handle>` URL hits UserTweets,
+  // which omits replies. The page-hook intercepts either endpoint, but
+  // forcing the broader tab on user-initiated captures is the right default.
+  const targetUrl = `https://x.com/${handle}/with_replies`;
+  await info('capture-now requested', { handle, tab: 'with_replies' });
   if (!(await getRunBuffer(handle))) {
     const now = new Date().toISOString();
     await setRunBuffer(handle, {
@@ -467,10 +477,10 @@ async function captureNow(handle: string): Promise<void> {
       tweets_by_id: {},
       tweet_ids_observed: [],
       endpoints_seen: [],
-      source_url: `https://x.com/${handle}`,
+      source_url: targetUrl,
     });
   }
-  await browser.tabs.create({ url: `https://x.com/${handle}`, active: true });
+  await browser.tabs.create({ url: targetUrl, active: true });
 }
 
 async function captureAll(): Promise<void> {
@@ -536,6 +546,7 @@ async function verifyConnection(force: boolean): Promise<void> {
       login: null,
       checkedAt: new Date().toISOString(),
       error: null,
+      defaultBranch: null,
     });
     await broadcastState();
     return;
@@ -553,8 +564,28 @@ async function verifyConnection(force: boolean): Promise<void> {
       login: r.login,
       checkedAt: new Date().toISOString(),
       error: null,
+      defaultBranch: r.default_branch,
     });
-    await info('connection verified', { login: r.login, repo: r.full_name });
+    await info('connection verified', {
+      login: r.login,
+      repo: r.full_name,
+      default_branch: r.default_branch,
+      configured_branch: settings.branch,
+    });
+    if (settings.branch && settings.branch !== r.default_branch) {
+      // The user may have intentionally chosen a non-default branch (e.g.
+      // for testing), but if their pick doesn't exist GitHub will 422 every
+      // commit. Probe the branch and warn loudly when it's missing — the
+      // user can either create it or switch back to the default in Settings.
+      const branchOk = await client.branchExists(settings.branch);
+      if (!branchOk) {
+        await warn('configured branch does not exist on remote', {
+          configured: settings.branch,
+          default_branch: r.default_branch,
+          fix: 'open Settings and change branch to ' + r.default_branch,
+        });
+      }
+    }
   } catch (err) {
     const cat = err instanceof GitHubError ? err.category : 'unknown';
     const status: ConnectionState['status'] =
@@ -570,6 +601,7 @@ async function verifyConnection(force: boolean): Promise<void> {
       login: null,
       checkedAt: new Date().toISOString(),
       error: describeError(err).message,
+      defaultBranch: null,
     });
     await warn('connection check failed', { category: cat, ...describeError(err) });
   }
