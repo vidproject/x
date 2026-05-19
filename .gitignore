@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Node
+node_modules/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Local build outputs only (committed artifacts are NOT here)
+extension/dist/
+extension/.web-ext-artifacts/
+
+# Local secrets — never commit
+.env
+.env.local
+.envrc
+
+# Coverage / temp
+htmlcov/
+coverage.xml
+.coverage
+tmp/
