@@ -43,6 +43,11 @@ interface StorageShape {
   /** Tweets the normalizer flagged as truncated and that we haven't seen a
    * full-text version of yet. Keyed by handle → array of tweet ids. */
   refetchQueue: Record<string, string[]>;
+  /** Tweet IDs seen via Media-tab / partial captures that couldn't be
+   * normalized into a full canonical tweet. Keyed by hint-handle (or
+   * "_unknown") → array of tweet ids. The user can drive a crawl that
+   * opens each detail page to capture the real thing. */
+  mediaCrawlQueue: Record<string, string[]>;
 }
 
 const DEFAULT_CONNECTION: ConnectionState = {
@@ -63,6 +68,7 @@ const DEFAULTS: StorageShape = {
   activity: [],
   committedIndex: {},
   refetchQueue: {},
+  mediaCrawlQueue: {},
 };
 
 async function getRaw<K extends keyof StorageShape>(key: K): Promise<StorageShape[K]> {
@@ -292,6 +298,67 @@ export async function nextRefetchTarget(): Promise<{
     if (ids.length > 0) return { handle, tweetId: ids[0]! };
   }
   return null;
+}
+
+// --- Media-crawl queue (partial captures awaiting detail-page fetch) ----
+
+export async function getMediaCrawlQueue(): Promise<Record<string, string[]>> {
+  return getRaw('mediaCrawlQueue');
+}
+
+export async function mediaCrawlQueueTotal(): Promise<number> {
+  const q = await getMediaCrawlQueue();
+  let total = 0;
+  for (const ids of Object.values(q)) total += ids.length;
+  return total;
+}
+
+export async function enqueueMediaCrawl(hintHandle: string | null, tweetId: string): Promise<void> {
+  const q = await getMediaCrawlQueue();
+  const bucket = hintHandle ?? '_unknown';
+  const ids = q[bucket] ?? [];
+  if (!ids.includes(tweetId)) {
+    ids.push(tweetId);
+    q[bucket] = ids;
+    await setRaw('mediaCrawlQueue', q);
+  }
+}
+
+export async function dequeueMediaCrawl(tweetId: string): Promise<void> {
+  const q = await getMediaCrawlQueue();
+  let changed = false;
+  for (const bucket of Object.keys(q)) {
+    const ids = q[bucket];
+    if (!ids) continue;
+    const filtered = ids.filter((id) => id !== tweetId);
+    if (filtered.length !== ids.length) {
+      changed = true;
+      if (filtered.length === 0) delete q[bucket];
+      else q[bucket] = filtered;
+    }
+  }
+  if (changed) await setRaw('mediaCrawlQueue', q);
+}
+
+export async function nextMediaCrawlTarget(): Promise<{
+  bucket: string;
+  tweetId: string;
+} | null> {
+  const q = await getMediaCrawlQueue();
+  for (const [bucket, ids] of Object.entries(q)) {
+    if (ids.length > 0) return { bucket, tweetId: ids[0]! };
+  }
+  return null;
+}
+
+/** Has this tweet id already been committed (any handle)? Used to skip
+ * enqueueing media-crawl targets we've already archived. */
+export async function isCommitted(tweetId: string): Promise<boolean> {
+  const idx = await getCommittedIndex();
+  for (const inner of Object.values(idx)) {
+    if (inner && tweetId in inner) return true;
+  }
+  return false;
 }
 
 // --- Full reset ----------------------------------------------------------

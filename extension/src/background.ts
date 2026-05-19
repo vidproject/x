@@ -32,18 +32,24 @@ import {
   clearActivity,
   clearAll,
   clearRunBuffer,
+  dequeueMediaCrawl,
   dequeueRefetch,
   engagementSig,
+  enqueueMediaCrawl,
   enqueueRefetch,
   getAccounts,
   getActivity,
   getCommittedIndex,
   getConnection,
   getCounters,
+  getMediaCrawlQueue,
   getRefetchQueue,
   getRunBuffer,
   getRunBuffers,
   getSettings,
+  isCommitted,
+  mediaCrawlQueueTotal,
+  nextMediaCrawlTarget,
   nextRefetchTarget,
   pruneCommittedIndex,
   refetchQueueTotal,
@@ -258,6 +264,8 @@ browser.alarms.onAlarm.addListener((alarm) => {
     void verifyConnection(false);
   } else if (alarm.name === 'refetch-tick') {
     void refetchTick();
+  } else if (alarm.name === 'media-crawl-tick') {
+    void mediaCrawlTick();
   }
 });
 
@@ -299,6 +307,7 @@ const CAPTURE_PIPELINE_MESSAGES = new Set<RuntimeMessage['type']>([
   'flush-all',
   'flush-handle',
   'start-refetch',
+  'start-media-crawl',
 ]);
 
 async function isEnabled(): Promise<boolean> {
@@ -387,6 +396,12 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
       return buildState();
     case 'cancel-refetch':
       await cancelRefetchLoop();
+      return buildState();
+    case 'start-media-crawl':
+      await startMediaCrawlLoop();
+      return buildState();
+    case 'cancel-media-crawl':
+      await cancelMediaCrawlLoop();
       return buildState();
     case 'refresh-accounts':
       await refreshAccountsList(true);
@@ -500,6 +515,24 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
     } else {
       await dequeueRefetch(t.account_handle, t.tweet_id);
     }
+    // Successfully built tweets are no longer "partial" — drop from the
+    // media-crawl queue regardless of which handle we'd hinted earlier.
+    await dequeueMediaCrawl(t.tweet_id);
+  }
+
+  // Media-crawl queue: tweet-shaped nodes the walker saw but couldn't turn
+  // into a full canonical tweet. Enqueue only IDs we haven't already
+  // committed (user-requested dedup against the archive).
+  for (const partial of normalized.partial_ids) {
+    if (await isCommitted(partial.tweet_id)) continue;
+    await enqueueMediaCrawl(partial.hint_handle, partial.tweet_id);
+  }
+  if (normalized.partial_ids.length > 0) {
+    await info('media-crawl: enqueued partial captures', {
+      endpoint,
+      partial: normalized.partial_ids.length,
+      queue_total: await mediaCrawlQueueTotal(),
+    });
   }
 
   // Cross-session dedup: drop tweets we've already committed with identical
@@ -1034,6 +1067,146 @@ async function refetchTick(): Promise<void> {
   await broadcastState();
 }
 
+// --- Media-crawl loop -----------------------------------------------------
+//
+// Mirrors the refetch loop but targets the media-crawl queue: tweets that
+// the normalizer observed via the Media tab / UserMedia endpoint with
+// insufficient data to build a full canonical tweet. The crawl loop walks
+// a dedicated tab through each tweet's detail page (handle-less URL form
+// when the hint-handle is missing), at the auto-scroll cadence, so the
+// page-hook can capture the real tweet shape.
+
+const MEDIA_CRAWL_TAB_KEY = '__imm_archive_media_crawl_tab_id__';
+const MEDIA_CRAWL_LAST_KEY = '__imm_archive_media_crawl_last__';
+const MEDIA_CRAWL_MAX_ATTEMPTS_PER_TARGET = 3;
+
+interface MediaCrawlLastAttempt {
+  tweetId: string;
+  attempts: number;
+}
+
+async function getMediaCrawlTabId(): Promise<number | null> {
+  const stored = await browser.storage.local.get(MEDIA_CRAWL_TAB_KEY);
+  const id = stored[MEDIA_CRAWL_TAB_KEY];
+  return typeof id === 'number' ? id : null;
+}
+
+async function setMediaCrawlTabId(id: number | null): Promise<void> {
+  if (id === null) await browser.storage.local.remove(MEDIA_CRAWL_TAB_KEY);
+  else await browser.storage.local.set({ [MEDIA_CRAWL_TAB_KEY]: id });
+}
+
+async function getMediaCrawlLast(): Promise<MediaCrawlLastAttempt | null> {
+  const stored = await browser.storage.local.get(MEDIA_CRAWL_LAST_KEY);
+  const v = stored[MEDIA_CRAWL_LAST_KEY];
+  return v && typeof v === 'object' ? (v as MediaCrawlLastAttempt) : null;
+}
+
+async function setMediaCrawlLast(v: MediaCrawlLastAttempt | null): Promise<void> {
+  if (v === null) await browser.storage.local.remove(MEDIA_CRAWL_LAST_KEY);
+  else await browser.storage.local.set({ [MEDIA_CRAWL_LAST_KEY]: v });
+}
+
+async function startMediaCrawlLoop(): Promise<void> {
+  const total = await mediaCrawlQueueTotal();
+  if (total === 0) {
+    await info('media-crawl: nothing queued');
+    return;
+  }
+  const s = await getSettings();
+  const seconds = Math.min(
+    AUTO_SCROLL_MAX_SEC,
+    Math.max(AUTO_SCROLL_MIN_SEC, Math.round(s.autoScrollIntervalSec))
+  );
+  await browser.alarms.clear('media-crawl-tick');
+  await browser.alarms.create('media-crawl-tick', {
+    when: Date.now() + 100,
+    periodInMinutes: Math.max(seconds / 60, 0.5),
+  });
+  await info('media-crawl loop started', { queued: total, interval_sec: seconds });
+  await broadcastState();
+}
+
+async function cancelMediaCrawlLoop(): Promise<void> {
+  await browser.alarms.clear('media-crawl-tick');
+  const tabId = await getMediaCrawlTabId();
+  await setMediaCrawlTabId(null);
+  await setMediaCrawlLast(null);
+  await info('media-crawl loop cancelled', { had_tab: tabId !== null });
+  await broadcastState();
+}
+
+async function mediaCrawlTick(): Promise<void> {
+  const target = await nextMediaCrawlTarget();
+  if (!target) {
+    await browser.alarms.clear('media-crawl-tick');
+    await setMediaCrawlTabId(null);
+    await setMediaCrawlLast(null);
+    await info('media-crawl loop complete');
+    await broadcastState();
+    return;
+  }
+  // Skip if already in the archive — partial captures can outlive a
+  // separate full capture path.
+  if (await isCommitted(target.tweetId)) {
+    await dequeueMediaCrawl(target.tweetId);
+    await setMediaCrawlLast(null);
+    await broadcastState();
+    return;
+  }
+  const last = await getMediaCrawlLast();
+  let attempts = 1;
+  if (last && last.tweetId === target.tweetId) attempts = last.attempts + 1;
+  if (attempts > MEDIA_CRAWL_MAX_ATTEMPTS_PER_TARGET) {
+    await warn('media-crawl: target stuck, dropping after retries', {
+      tweet_id: target.tweetId,
+      attempts: attempts - 1,
+    });
+    await dequeueMediaCrawl(target.tweetId);
+    await setMediaCrawlLast(null);
+    await broadcastState();
+    return;
+  }
+  await setMediaCrawlLast({ tweetId: target.tweetId, attempts });
+
+  // Use the handle-less status URL — `i/status/<id>` resolves to the
+  // canonical tweet regardless of hint accuracy.
+  const url =
+    target.bucket === '_unknown'
+      ? `https://x.com/i/status/${target.tweetId}`
+      : `https://x.com/${target.bucket}/status/${target.tweetId}`;
+  let tabId = await getMediaCrawlTabId();
+  if (tabId !== null) {
+    try {
+      await browser.tabs.get(tabId);
+    } catch {
+      tabId = null;
+    }
+  }
+  try {
+    if (tabId === null) {
+      const tab = await browser.tabs.create({ url, active: false });
+      if (typeof tab.id === 'number') await setMediaCrawlTabId(tab.id);
+    } else {
+      await browser.tabs.update(tabId, { url });
+    }
+    await info('media-crawl tick', {
+      tweet_id: target.tweetId,
+      hint_handle: target.bucket === '_unknown' ? null : target.bucket,
+      attempt: attempts,
+      remaining: await mediaCrawlQueueTotal(),
+    });
+  } catch (err) {
+    await warn('media-crawl navigate failed; dropping target', {
+      tweet_id: target.tweetId,
+      ...describeError(err),
+    });
+    await dequeueMediaCrawl(target.tweetId);
+    await setMediaCrawlLast(null);
+  }
+  await broadcastState();
+}
+
 // --- Quarantine -----------------------------------------------------------
 
 async function quarantine(
@@ -1205,6 +1378,8 @@ async function buildState(): Promise<ExtensionState> {
   }
   const refetchQueued = await refetchQueueTotal();
   const refetchAlarm = await browser.alarms.get('refetch-tick');
+  const mediaCrawlQueued = await mediaCrawlQueueTotal();
+  const mediaCrawlAlarm = await browser.alarms.get('media-crawl-tick');
   return {
     version: EXT_VERSION,
     settings: redactSettings(settings),
@@ -1219,6 +1394,10 @@ async function buildState(): Promise<ExtensionState> {
       total: refetchQueued,
       running: refetchAlarm !== undefined,
       lastTickAt: null,
+    },
+    mediaCrawlQueue: {
+      total: mediaCrawlQueued,
+      running: mediaCrawlAlarm !== undefined,
     },
   };
 }
@@ -1372,4 +1551,7 @@ function shortenUrl(u: string): string {
   refetchQueue: getRefetchQueue,
   startRefetch: startRefetchLoop,
   cancelRefetch: cancelRefetchLoop,
+  mediaCrawlQueue: getMediaCrawlQueue,
+  startMediaCrawl: startMediaCrawlLoop,
+  cancelMediaCrawl: cancelMediaCrawlLoop,
 };

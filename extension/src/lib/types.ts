@@ -245,6 +245,11 @@ export interface RefetchQueueState {
   lastTickAt: string | null;
 }
 
+export interface MediaCrawlQueueState {
+  total: number;
+  running: boolean;
+}
+
 export interface ExtensionState {
   version: string;
   settings: Omit<Settings, 'pat'> & { patSuffix: string; patSet: boolean };
@@ -254,6 +259,7 @@ export interface ExtensionState {
   /** Auto-scroll runtime state. Tab count comes from the SW's live tab query. */
   autoScroll: { active: boolean; tabCount: number };
   refetchQueue: RefetchQueueState;
+  mediaCrawlQueue: MediaCrawlQueueState;
 }
 
 export type RuntimeMessage =
@@ -273,6 +279,8 @@ export type RuntimeMessage =
   | { type: 'set-auto-scroll-interval'; seconds: number }
   | { type: 'start-refetch' }
   | { type: 'cancel-refetch' }
+  | { type: 'start-media-crawl' }
+  | { type: 'cancel-media-crawl' }
   | { type: 'refresh-accounts' }
   | { type: 'verify-connection' }
   | { type: 'clear-activity' }
