@@ -1,0 +1,44 @@
+name: build-extension
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'extension/**'
+      - 'scripts/build_extension.py'
+      - 'package.json'
+      - 'package-lock.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-extension
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm install --no-audit --no-fund
+      - run: python3 scripts/build_extension.py
+      - name: commit extension.zip if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain extension.zip)" ]; then
+            git add extension.zip
+            git commit -m "[bot] build extension.zip"
+            git push
+          else
+            echo "extension.zip unchanged"
+          fi

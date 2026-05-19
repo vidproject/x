@@ -1,0 +1,215 @@
+:root {
+  --bg: #ffffff;
+  --bg-2: #f4f6f9;
+  --bg-3: #eef1f6;
+  --fg: #1a1a1a;
+  --fg-2: #555;
+  --fg-3: #888;
+  --accent: #1a3a5c;
+  --accent-2: #2b6cb0;
+  --ok: #2e7d32;
+  --warn: #b26a00;
+  --err: #c0392b;
+  --border: #d8dde6;
+  --radius: 6px;
+  --font:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji';
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171c;
+    --bg-2: #1c2128;
+    --bg-3: #232932;
+    --fg: #e6e8eb;
+    --fg-2: #b3b8c0;
+    --fg-3: #8a929c;
+    --accent: #6ea7da;
+    --accent-2: #4d8dbf;
+    --ok: #6ed47a;
+    --warn: #e1b04a;
+    --err: #ef6f5e;
+    --border: #2a313b;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--fg);
+  background: var(--bg-2);
+}
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+h1 {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 600;
+}
+h2 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.muted {
+  color: var(--fg-2);
+  font-size: 13px;
+  margin: 4px 0 12px;
+}
+.warn {
+  background: rgba(178, 106, 0, 0.08);
+  border-left: 3px solid var(--warn);
+  color: var(--fg);
+  padding: 8px 10px;
+  font-size: 12px;
+  margin: 0 0 12px;
+  border-radius: 3px;
+}
+.field {
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.field label {
+  color: var(--fg-2);
+  font-size: 13px;
+}
+.field input {
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--fg);
+  border-radius: var(--radius);
+  font: inherit;
+  width: 100%;
+}
+.field input:focus {
+  outline: 2px solid var(--accent-2);
+  outline-offset: -1px;
+}
+.reveal-btn {
+  padding: 4px 8px;
+  font: inherit;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  color: var(--fg-2);
+}
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.actions {
+  margin-top: 12px;
+}
+.btn {
+  font: inherit;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--fg);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.btn:hover {
+  background: var(--bg-3);
+}
+.btn.primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.btn.primary:hover {
+  background: var(--accent-2);
+}
+.btn.danger {
+  color: var(--err);
+  border-color: var(--err);
+}
+.btn.danger:hover {
+  background: rgba(192, 57, 43, 0.08);
+}
+.status {
+  font-size: 13px;
+}
+.status.ok {
+  color: var(--ok);
+}
+.status.err {
+  color: var(--err);
+}
+.status.warn {
+  color: var(--warn);
+}
+.conn-detail {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--fg-2);
+  white-space: pre-wrap;
+}
+.account-readonly {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  font-size: 13px;
+}
+.account-readonly li {
+  padding: 4px 0;
+  border-bottom: 1px dashed var(--border);
+}
+.account-readonly li:last-child {
+  border: none;
+}
+.account-readonly .handle {
+  font-weight: 600;
+  color: var(--fg);
+}
+.account-readonly .label {
+  color: var(--fg-2);
+  margin-left: 6px;
+}
+textarea {
+  width: 100%;
+  font-family:
+    ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  font-size: 12px;
+  background: var(--bg-2);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px;
+  resize: vertical;
+}
+code {
+  font-family:
+    ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  background: var(--bg-2);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+a {
+  color: var(--accent-2);
+}

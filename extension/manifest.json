@@ -1,0 +1,64 @@
+{
+  "manifest_version": 3,
+  "name": "Immigration Archive Capture",
+  "version": "0.1.0",
+  "description": "Captures public X/Twitter posts from tracked federal accounts and commits structured JSON to a GitHub-backed archive.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "imm-archive-capture@vidproject.x",
+      "strict_min_version": "115.0"
+    }
+  },
+  "permissions": ["storage", "alarms", "scripting", "tabs"],
+  "host_permissions": [
+    "https://x.com/*",
+    "https://twitter.com/*",
+    "https://api.github.com/*",
+    "https://raw.githubusercontent.com/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["page-hook.js"],
+      "matches": ["https://x.com/*", "https://twitter.com/*"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    },
+    "default_title": "Immigration Archive — open sidebar"
+  },
+  "sidebar_action": {
+    "default_title": "Immigration Archive",
+    "default_panel": "sidebar.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true,
+    "browser_style": false
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

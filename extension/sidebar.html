@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Immigration Archive</title>
+    <link rel="stylesheet" href="styles/sidebar.css" />
+  </head>
+  <body>
+    <header class="hdr">
+      <div class="hdr-title">Immigration Archive</div>
+      <div class="hdr-conn" id="conn-status">
+        <span class="dot" id="conn-dot"></span>
+        <span class="conn-text" id="conn-text">Checking…</span>
+      </div>
+      <div class="hdr-row">
+        <a class="link" id="open-options" href="#">Settings</a>
+        <span class="sep">·</span>
+        <a class="link" id="open-viewer" target="_blank" rel="noopener" href="#">Open viewer</a>
+      </div>
+    </header>
+
+    <section class="controls">
+      <div class="row">
+        <button class="btn primary" id="capture-all">Capture all</button>
+        <button class="btn" id="flush-all" title="Commit any buffered captures now">
+          Flush pending
+        </button>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="auto-capture" />
+        <span>Auto-capture while browsing tracked accounts</span>
+      </label>
+    </section>
+
+    <section class="accounts">
+      <h2 class="section-title">Accounts</h2>
+      <ul class="account-list" id="account-list" aria-live="polite"></ul>
+    </section>
+
+    <section class="activity">
+      <div class="section-head">
+        <h2 class="section-title">Recent activity</h2>
+        <button class="btn-link" id="clear-activity" title="Clear local activity tail">
+          Clear
+        </button>
+      </div>
+      <ul class="activity-list" id="activity-list" aria-live="polite"></ul>
+    </section>
+
+    <footer class="ftr">
+      <span class="muted">Immigration Archive · v<span id="ext-version">0.0.0</span></span>
+    </footer>
+
+    <script type="module" src="sidebar.js"></script>
+  </body>
+</html>

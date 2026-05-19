@@ -1,0 +1,168 @@
+export interface AccountConfig {
+  handle: string;
+  label: string;
+}
+
+export interface Settings {
+  pat: string;
+  owner: string;
+  repo: string;
+  branch: string;
+  autoCapture: boolean;
+  configuredAt: number | null;
+}
+
+export type ConnectionStatus =
+  | 'unknown'
+  | 'not-configured'
+  | 'ok'
+  | 'auth-error'
+  | 'rate-limited'
+  | 'network-error';
+
+export interface ConnectionState {
+  status: ConnectionStatus;
+  login: string | null;
+  checkedAt: string | null;
+  error: string | null;
+}
+
+export interface MediaItem {
+  media_id: string;
+  media_type: 'photo' | 'video' | 'animated_gif';
+  original_url: string;
+  release_asset_url: string | null;
+  sha256: string | null;
+  bytes: number | null;
+  duration_sec: number | null;
+  width: number | null;
+  height: number | null;
+  alt_text: string | null;
+  archive_status: 'pending' | 'archived' | 'failed' | 'expired';
+  archive_attempts: number;
+  last_attempt_at: string | null;
+}
+
+export interface UrlEntity {
+  short: string;
+  expanded: string;
+  display: string;
+}
+
+export interface EngagementSnapshot {
+  captured_at: string;
+  likes: number;
+  retweets: number;
+  replies: number;
+  quotes: number;
+  views: number | null;
+  bookmarks: number | null;
+}
+
+export type TweetType = 'original' | 'retweet' | 'quote' | 'reply';
+
+export interface CanonicalTweet {
+  tweet_id: string;
+  account_handle: string;
+  account_id: string;
+  posted_at: string;
+  first_captured_at: string;
+  last_seen_at: string;
+  deletion_detected_at: string | null;
+  tweet_url: string;
+  tweet_type: TweetType;
+  reply_to_tweet_id: string | null;
+  reply_to_account: string | null;
+  quoted_tweet_id: string | null;
+  retweeted_tweet_id: string | null;
+  text: string;
+  text_resolved: string;
+  lang: string | null;
+  hashtags: string[];
+  mentions: string[];
+  urls: UrlEntity[];
+  media: MediaItem[];
+  like_count: number;
+  retweet_count: number;
+  reply_count: number;
+  quote_count: number;
+  view_count: number | null;
+  bookmark_count: number | null;
+  engagement_history: EngagementSnapshot[];
+  wayback_url: string | null;
+  wayback_submitted_at: string | null;
+  capture_source: 'extension' | 'manual';
+  capture_run_id: string;
+  schema_version: 1;
+}
+
+export interface CapturePayload {
+  schema_version: 1;
+  capture_run_id: string;
+  account_handle: string;
+  captured_at: string;
+  endpoint: string;
+  user_agent: string;
+  source_url: string | null;
+  tweets: CanonicalTweet[];
+}
+
+export interface SeenPayload {
+  schema_version: 1;
+  capture_run_id: string;
+  account_handle: string;
+  captured_at: string;
+  tweet_ids_observed: string[];
+}
+
+export interface QuarantinePayload {
+  schema_version: 1;
+  reason: string;
+  endpoint: string;
+  captured_at: string;
+  source_url: string | null;
+  error: { message: string; stack: string | null };
+  raw: unknown;
+}
+
+export type LogLevel = 'info' | 'warn' | 'error';
+
+export interface LogEvent {
+  ts: string;
+  level: LogLevel;
+  msg: string;
+  context: Record<string, unknown>;
+}
+
+export interface AccountCounter {
+  todayCount: number;
+  todayDate: string;
+  lastCaptureAt: string | null;
+  totalCommitted: number;
+  bufferedCount: number;
+}
+
+export interface ExtensionState {
+  version: string;
+  settings: Omit<Settings, 'pat'> & { patSuffix: string; patSet: boolean };
+  connection: ConnectionState;
+  accounts: AccountConfig[];
+  counters: Record<string, AccountCounter>;
+}
+
+export type RuntimeMessage =
+  | { type: 'graphql-capture'; endpoint: string; url: string; response: unknown }
+  | { type: 'get-state' }
+  | { type: 'capture-now'; handle: string }
+  | { type: 'capture-all' }
+  | { type: 'flush-all' }
+  | { type: 'flush-handle'; handle: string }
+  | { type: 'toggle-auto-capture'; on: boolean }
+  | { type: 'refresh-accounts' }
+  | { type: 'verify-connection' }
+  | { type: 'clear-activity' }
+  | { type: 'open-options' }
+  | { type: 'open-viewer' }
+  | { type: 'log-event'; event: LogEvent }
+  | { type: 'state-changed'; state: ExtensionState }
+  | { type: 'activity-tail'; events: LogEvent[] };

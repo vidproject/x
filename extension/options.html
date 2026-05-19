@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Immigration Archive — Settings</title>
+    <link rel="stylesheet" href="styles/options.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Immigration Archive — Settings</h1>
+
+      <section class="card">
+        <h2>GitHub connection</h2>
+        <p class="muted">
+          Paste a <strong>fine-grained</strong> Personal Access Token scoped to a single repo, with
+          <em>Contents: Read &amp; Write</em> and <em>Metadata: Read</em>. Generate one at
+          <a
+            href="https://github.com/settings/personal-access-tokens/new"
+            target="_blank"
+            rel="noopener"
+            >github.com/settings/personal-access-tokens/new</a
+          >.
+        </p>
+        <p class="warn">
+          The token is stored in <code>browser.storage.local</code> and is readable by anyone with
+          filesystem access to your Firefox profile. Never use a classic <code>repo</code>-scoped
+          token here.
+        </p>
+
+        <form id="settings-form" autocomplete="off">
+          <div class="field">
+            <label for="owner">Repository owner</label>
+            <input id="owner" name="owner" type="text" placeholder="vidproject" required />
+          </div>
+          <div class="field">
+            <label for="repo">Repository name</label>
+            <input id="repo" name="repo" type="text" placeholder="x" required />
+          </div>
+          <div class="field">
+            <label for="branch">Branch</label>
+            <input id="branch" name="branch" type="text" placeholder="main" required />
+          </div>
+          <div class="field">
+            <label for="pat">Personal access token</label>
+            <input
+              id="pat"
+              name="pat"
+              type="password"
+              placeholder="github_pat_…"
+              autocomplete="off"
+              spellcheck="false"
+              required
+            />
+            <button type="button" class="reveal-btn" id="reveal-pat">Show</button>
+          </div>
+          <div class="row actions">
+            <button type="submit" class="btn primary">Save &amp; verify</button>
+            <span class="status" id="save-status"></span>
+          </div>
+        </form>
+
+        <div class="conn-detail" id="conn-detail" aria-live="polite"></div>
+      </section>
+
+      <section class="card">
+        <h2>Tracked accounts</h2>
+        <p class="muted">
+          Loaded from <code>config/accounts.yaml</code> in the configured repo. Edit the YAML and
+          push to add or remove handles — the extension re-reads it on startup.
+        </p>
+        <ul class="account-readonly" id="account-readonly"></ul>
+        <button type="button" class="btn" id="refresh-accounts">Refresh from repo</button>
+      </section>
+
+      <section class="card">
+        <h2>Diagnostics</h2>
+        <p class="muted">
+          Copy the diagnostic dump below when reporting a problem. It contains your configured
+          owner/repo, the last connection result, recent activity, and a redacted indicator that a
+          PAT is set (the token itself is never included).
+        </p>
+        <textarea id="diagnostics" readonly rows="14" spellcheck="false"></textarea>
+        <div class="row actions">
+          <button type="button" class="btn" id="copy-diagnostics">Copy to clipboard</button>
+          <button type="button" class="btn danger" id="clear-storage">
+            Clear extension storage
+          </button>
+          <span class="status" id="diag-status"></span>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="options.js"></script>
+  </body>
+</html>
