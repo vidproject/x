@@ -42,51 +42,75 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 
 | Handle | Label | Tweets | First post | Latest post | Latest capture | Media | Videos |
 | ------ | ----- | -----: | ---------- | ----------- | -------------- | ----: | -----: |
-| `@DHSgov` | Department of Homeland Security | 365 | 2026-03-05 | 2026-05-19 | 2026-05-19 | 229 | 97 |
+| `@DHSgov` | Department of Homeland Security | 694 | 2026-03-05 | 2026-05-19 | 2026-05-19 | 416 | 180 |
 | `@ICEgov` | U.S. Immigration and Customs Enforcement | 5 | 2026-04-28 | 2026-05-19 | 2026-05-19 | 7 | 2 |
-| `@CBP` | U.S. Customs and Border Protection | 4 | 2026-05-11 | 2026-05-19 | 2026-05-19 | 3 | 3 |
+| `@CBP` | U.S. Customs and Border Protection | 6 | 2026-04-18 | 2026-05-19 | 2026-05-19 | 3 | 3 |
 | `@USCIS` | U.S. Citizenship and Immigration Services | 0 | — | — | — | 0 | 0 |
 | `@WhiteHouse` | The White House | 5 | 2026-04-27 | 2026-05-19 | 2026-05-19 | 4 | 1 |
-| `@PressSec` | White House Press Secretary | 5 | 2026-04-23 | 2026-04-30 | 2026-05-19 | 0 | 0 |
+| `@PressSec` | White House Press Secretary | 7 | 2026-04-10 | 2026-04-30 | 2026-05-19 | 0 | 0 |
 | `@POTUS` | President of the United States | 0 | — | — | — | 0 | 0 |
 | `@USDOL` | U.S. Department of Labor | 0 | — | — | — | 0 | 0 |
 | `@7NewsDC` | 7NewsDC | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
+| `@ABC7` | ABC7 | 1 | 2026-04-10 | 2026-04-10 | 2026-05-19 | 1 | 1 |
+| `@AJGuglielmi` | AJGuglielmi | 1 | 2026-04-26 | 2026-04-26 | 2026-05-19 | 1 | 0 |
+| `@AJInvestigates` | AJInvestigates | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 2 | 0 |
 | `@BLaw` | BLaw | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
+| `@BillMelugin_` | BillMelugin_ | 5 | 2026-04-16 | 2026-04-30 | 2026-05-19 | 4 | 0 |
 | `@BorderHawkNews` | BorderHawkNews | 1 | 2026-05-08 | 2026-05-08 | 2026-05-19 | 0 | 0 |
 | `@Brooketaylortv` | Brooketaylortv | 1 | 2026-05-13 | 2026-05-13 | 2026-05-19 | 1 | 0 |
-| `@CBPAMO` | CBPAMO | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 4 | 0 |
-| `@CBPCommissioner` | CBPCommissioner | 1 | 2026-05-05 | 2026-05-05 | 2026-05-19 | 1 | 0 |
+| `@CBPAMO` | CBPAMO | 2 | 2026-04-29 | 2026-05-12 | 2026-05-19 | 5 | 0 |
+| `@CBPCommissioner` | CBPCommissioner | 2 | 2026-04-21 | 2026-05-05 | 2026-05-19 | 1 | 0 |
+| `@CBSNews` | CBSNews | 3 | 2026-04-22 | 2026-04-30 | 2026-05-19 | 1 | 1 |
 | `@DFOBaltimore` | DFOBaltimore | 1 | 2026-05-05 | 2026-05-05 | 2026-05-19 | 1 | 0 |
+| `@DailyCaller` | DailyCaller | 2 | 2026-04-08 | 2026-04-24 | 2026-05-19 | 0 | 0 |
+| `@EROBoston` | EROBoston | 6 | 2026-04-12 | 2026-05-13 | 2026-05-19 | 6 | 0 |
 | `@ERODenver` | ERODenver | 1 | 2026-05-07 | 2026-05-07 | 2026-05-19 | 1 | 0 |
-| `@ERONewOrleans` | ERONewOrleans | 3 | 2026-05-11 | 2026-05-13 | 2026-05-19 | 2 | 0 |
+| `@EROLosAngeles` | EROLosAngeles | 3 | 2026-04-10 | 2026-04-29 | 2026-05-19 | 2 | 0 |
+| `@ERONewOrleans` | ERONewOrleans | 4 | 2026-04-14 | 2026-05-13 | 2026-05-19 | 3 | 0 |
 | `@ERONewark` | ERONewark | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
-| `@EROPhiladelphia` | EROPhiladelphia | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
+| `@EROPhiladelphia` | EROPhiladelphia | 2 | 2026-04-17 | 2026-05-11 | 2026-05-19 | 2 | 0 |
 | `@EROSanDiego` | EROSanDiego | 1 | 2026-05-07 | 2026-05-07 | 2026-05-19 | 1 | 0 |
+| `@EROSanFrancisco` | EROSanFrancisco | 4 | 2026-04-29 | 2026-05-12 | 2026-05-19 | 4 | 0 |
 | `@FDRLST` | FDRLST | 2 | 2026-05-11 | 2026-05-12 | 2026-05-19 | 0 | 0 |
 | `@FPSDHS` | FPSDHS | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
-| `@FoxNews` | FoxNews | 2 | 2026-05-09 | 2026-05-15 | 2026-05-19 | 5 | 1 |
-| `@GovTimWalz` | GovTimWalz | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 0 |
+| `@FoxNews` | FoxNews | 3 | 2026-04-10 | 2026-05-15 | 2026-05-19 | 6 | 1 |
+| `@GovTimWalz` | GovTimWalz | 2 | 2026-04-28 | 2026-05-04 | 2026-05-19 | 1 | 0 |
+| `@HSI_HQ` | HSI_HQ | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 1 | 0 |
 | `@Independent` | Independent | 1 | 2026-05-13 | 2026-05-13 | 2026-05-19 | 1 | 0 |
+| `@JDVance` | JDVance | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
 | `@JennieSTaer` | JennieSTaer | 1 | 2026-05-05 | 2026-05-05 | 2026-05-19 | 1 | 0 |
 | `@LongTimeHistory` | LongTimeHistory | 1 | 2026-05-06 | 2026-05-06 | 2026-05-19 | 1 | 1 |
 | `@MizellPreston` | MizellPreston | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 1 | 0 |
+| `@NBCNews` | NBCNews | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
 | `@OffThePress1` | OffThePress1 | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 1 |
 | `@PattyMorin` | PattyMorin | 1 | 2026-05-09 | 2026-05-09 | 2026-05-19 | 1 | 0 |
 | `@RapidResponse47` | RapidResponse47 | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 0 | 0 |
-| `@TSA` | TSA | 2 | 2026-05-06 | 2026-05-11 | 2026-05-19 | 2 | 1 |
+| `@RoKhanna` | RoKhanna | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
+| `@SecretSvcSpox` | SecretSvcSpox | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 0 |
+| `@SenEricSchmitt` | SenEricSchmitt | 1 | 2026-04-13 | 2026-04-13 | 2026-05-19 | 1 | 0 |
+| `@SenateGOP` | SenateGOP | 1 | 2026-04-23 | 2026-04-23 | 2026-05-19 | 1 | 1 |
+| `@TMZ` | TMZ | 1 | 2026-05-03 | 2026-05-03 | 2026-05-19 | 1 | 1 |
+| `@TSA` | TSA | 3 | 2026-05-04 | 2026-05-11 | 2026-05-19 | 2 | 1 |
 | `@TheBuffaloNews` | TheBuffaloNews | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 0 | 0 |
+| `@USBPChief` | USBPChief | 1 | 2026-05-01 | 2026-05-01 | 2026-05-19 | 1 | 1 |
 | `@USBPChiefDTM` | USBPChiefDTM | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 1 | 0 |
 | `@USCG` | USCG | 2 | 2026-05-13 | 2026-05-14 | 2026-05-19 | 2 | 1 |
-| `@USCGSoutheast` | USCGSoutheast | 2 | 2026-04-27 | 2026-05-12 | 2026-05-19 | 5 | 1 |
+| `@USCGSoutheast` | USCGSoutheast | 3 | 2026-04-24 | 2026-05-12 | 2026-05-19 | 9 | 2 |
+| `@UpdatingOnRome` | UpdatingOnRome | 1 | 2026-04-30 | 2026-04-30 | 2026-05-19 | 2 | 0 |
+| `@WBAY` | WBAY | 1 | 2026-04-22 | 2026-04-22 | 2026-05-19 | 0 | 0 |
 | `@WHTaskForceFIFA` | WHTaskForceFIFA | 1 | 2026-05-09 | 2026-05-09 | 2026-05-19 | 1 | 0 |
+| `@angeldadjoe` | angeldadjoe | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 2 | 0 |
 | `@denverpost` | denverpost | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 0 | 0 |
+| `@dlippman` | dlippman | 1 | 2026-04-12 | 2026-04-12 | 2026-05-19 | 0 | 0 |
 | `@news6wkmg` | news6wkmg | 1 | 2026-05-13 | 2026-05-13 | 2026-05-19 | 0 | 0 |
+| `@nicksortor` | nicksortor | 1 | 2026-04-21 | 2026-04-21 | 2026-05-19 | 1 | 1 |
 | `@nypost` | nypost | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 0 |
-| `@politico` | politico | 2 | 2026-04-27 | 2026-05-12 | 2026-05-19 | 0 | 0 |
+| `@politico` | politico | 3 | 2026-04-15 | 2026-05-12 | 2026-05-19 | 0 | 0 |
 | `@priscialva` | priscialva | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
+| `@theblaze` | theblaze | 1 | 2026-04-29 | 2026-04-29 | 2026-05-19 | 1 | 0 |
 | `@washingtonpost` | washingtonpost | 3 | 2026-05-08 | 2026-05-13 | 2026-05-19 | 1 | 1 |
 
-_Generated 2026-05-19T18:51:04Z._
+_Generated 2026-05-19T18:53:20Z._
 
 <!-- COVERAGE:END -->
 
