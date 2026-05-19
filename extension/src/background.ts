@@ -262,11 +262,10 @@ browser.alarms.onAlarm.addListener((alarm) => {
     void flushIdleBuffers();
   } else if (alarm.name === 'verify-connection') {
     void verifyConnection(false);
-  } else if (alarm.name === 'refetch-tick') {
-    void refetchTick();
-  } else if (alarm.name === 'media-crawl-tick') {
-    void mediaCrawlTick();
   }
+  // refetch / media-crawl previously ran via alarms; they now use
+  // setInterval to escape the 30s alarm floor. Leave the names listed
+  // nowhere so any orphaned alarms (from older builds) just no-op.
 });
 
 // --- Toolbar action: toggle the sidebar -----------------------------------
@@ -369,9 +368,12 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
       // resuming must rearm it if the auto-scroll toggle is still set.
       await configureAutoScroll(s.enabled && s.autoScroll, s.autoScrollIntervalSec);
       if (!msg.on) {
-        // Drop any in-flight refetch tick so the loop doesn't fire one
-        // last time after the user paused.
-        await browser.alarms.clear('refetch-tick');
+        // Pausing stops all in-flight loops so the user gets immediate
+        // quiet, not a "one more tick" surprise.
+        stopRefetchInterval();
+        stopMediaCrawlInterval();
+        await browser.alarms.clear('refetch-tick'); // legacy cleanup
+        await browser.alarms.clear('media-crawl-tick');
       }
       await info('extension master switch toggled', { on: msg.on });
       return buildState();
@@ -976,17 +978,37 @@ async function startRefetchLoop(): Promise<void> {
     AUTO_SCROLL_MAX_SEC,
     Math.max(AUTO_SCROLL_MIN_SEC, Math.round(s.autoScrollIntervalSec))
   );
-  await browser.alarms.clear('refetch-tick');
-  await browser.alarms.create('refetch-tick', {
-    when: Date.now() + 100,
-    periodInMinutes: Math.max(seconds / 60, 0.5), // 30s minimum per MV3
-  });
+  // Alarms have a 30s floor on Firefox; setInterval (driven by the
+  // sidebar keeping the SW alive while open) gives the configured 3-60s
+  // cadence the user expects. Trigger the first tick immediately so
+  // there's no upfront wait.
+  startRefetchInterval(seconds);
+  void refetchTick();
   await info('refetch loop started', { queued: total, interval_sec: seconds });
   await broadcastState();
 }
 
+let refetchIntervalHandle: ReturnType<typeof setInterval> | null = null;
+
+function startRefetchInterval(seconds: number): void {
+  if (refetchIntervalHandle !== null) clearInterval(refetchIntervalHandle);
+  refetchIntervalHandle = setInterval(() => {
+    void refetchTick().catch((err) => {
+      void warn('refetch tick failed', describeError(err));
+    });
+  }, seconds * 1000);
+}
+
+function stopRefetchInterval(): void {
+  if (refetchIntervalHandle !== null) {
+    clearInterval(refetchIntervalHandle);
+    refetchIntervalHandle = null;
+  }
+}
+
 async function cancelRefetchLoop(): Promise<void> {
-  await browser.alarms.clear('refetch-tick');
+  stopRefetchInterval();
+  await browser.alarms.clear('refetch-tick'); // legacy cleanup
   const tabId = await getRefetchTabId();
   await setRefetchTabId(null);
   await setRefetchLast(null);
@@ -1118,17 +1140,33 @@ async function startMediaCrawlLoop(): Promise<void> {
     AUTO_SCROLL_MAX_SEC,
     Math.max(AUTO_SCROLL_MIN_SEC, Math.round(s.autoScrollIntervalSec))
   );
-  await browser.alarms.clear('media-crawl-tick');
-  await browser.alarms.create('media-crawl-tick', {
-    when: Date.now() + 100,
-    periodInMinutes: Math.max(seconds / 60, 0.5),
-  });
+  startMediaCrawlInterval(seconds);
+  void mediaCrawlTick();
   await info('media-crawl loop started', { queued: total, interval_sec: seconds });
   await broadcastState();
 }
 
+let mediaCrawlIntervalHandle: ReturnType<typeof setInterval> | null = null;
+
+function startMediaCrawlInterval(seconds: number): void {
+  if (mediaCrawlIntervalHandle !== null) clearInterval(mediaCrawlIntervalHandle);
+  mediaCrawlIntervalHandle = setInterval(() => {
+    void mediaCrawlTick().catch((err) => {
+      void warn('media-crawl tick failed', describeError(err));
+    });
+  }, seconds * 1000);
+}
+
+function stopMediaCrawlInterval(): void {
+  if (mediaCrawlIntervalHandle !== null) {
+    clearInterval(mediaCrawlIntervalHandle);
+    mediaCrawlIntervalHandle = null;
+  }
+}
+
 async function cancelMediaCrawlLoop(): Promise<void> {
-  await browser.alarms.clear('media-crawl-tick');
+  stopMediaCrawlInterval();
+  await browser.alarms.clear('media-crawl-tick'); // legacy cleanup
   const tabId = await getMediaCrawlTabId();
   await setMediaCrawlTabId(null);
   await setMediaCrawlLast(null);
@@ -1377,9 +1415,7 @@ async function buildState(): Promise<ExtensionState> {
     // around extension startup; surfacing 0 is fine.
   }
   const refetchQueued = await refetchQueueTotal();
-  const refetchAlarm = await browser.alarms.get('refetch-tick');
   const mediaCrawlQueued = await mediaCrawlQueueTotal();
-  const mediaCrawlAlarm = await browser.alarms.get('media-crawl-tick');
   return {
     version: EXT_VERSION,
     settings: redactSettings(settings),
@@ -1392,12 +1428,12 @@ async function buildState(): Promise<ExtensionState> {
     },
     refetchQueue: {
       total: refetchQueued,
-      running: refetchAlarm !== undefined,
+      running: refetchIntervalHandle !== null,
       lastTickAt: null,
     },
     mediaCrawlQueue: {
       total: mediaCrawlQueued,
-      running: mediaCrawlAlarm !== undefined,
+      running: mediaCrawlIntervalHandle !== null,
     },
   };
 }

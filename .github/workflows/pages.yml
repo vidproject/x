@@ -38,6 +38,11 @@ jobs:
           cp index.html _site/
           cp -r viewer _site/viewer
           if [ -d data ]; then cp -r data _site/data; fi
+          # CRITICAL: .nojekyll disables Jekyll preprocessing on Pages.
+          # Without it, Pages silently drops any path starting with `_` —
+          # which means `data/_misc.parquet` and `data/users.json` would
+          # 404 from the viewer even though they're committed.
+          touch _site/.nojekyll
           # 404 keeps deep-linked viewer URLs (with #hash filters) from
           # showing a default GitHub 404 if a stray path drift sneaks in.
           cp index.html _site/404.html
