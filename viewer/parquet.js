@@ -1,7 +1,13 @@
 // Thin wrapper around hyparquet for loading data/<handle>.parquet files
 // straight from GitHub Pages.
+//
+// Hyparquet's core ships SNAPPY + GZIP support only; the ingest pipeline
+// writes ZSTD-compressed parquet (much better ratio for this data) so we
+// pull the codec table from `hyparquet-compressors`, which adds ZSTD,
+// BROTLI, and LZ4_RAW behind the same API.
 
 import { parquetReadObjects } from 'https://esm.sh/hyparquet@1.18.1?bundle';
+import { compressors } from 'https://esm.sh/hyparquet-compressors@1?bundle';
 
 /**
  * Load a parquet file into an array of plain JS objects.
@@ -38,6 +44,6 @@ export async function loadParquetRows(url, onProgress) {
   } else {
     bytes = new Uint8Array(await res.arrayBuffer());
   }
-  const rows = await parquetReadObjects({ file: bytes.buffer });
+  const rows = await parquetReadObjects({ file: bytes.buffer, compressors });
   return rows;
 }
