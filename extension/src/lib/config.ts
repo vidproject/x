@@ -10,7 +10,6 @@ export const DEFAULT_SETTINGS: Settings = {
   enabled: true,
   autoCapture: true,
   configuredAt: null,
-  autoScroll: false,
   autoScrollIntervalSec: 6,
 };
 
@@ -28,6 +27,7 @@ export const FALLBACK_ACCOUNTS: AccountConfig[] = [
   { handle: 'PressSec', label: 'White House Press Secretary' },
   { handle: 'POTUS', label: 'President of the United States' },
   { handle: 'USDOL', label: 'U.S. Department of Labor' },
+  { handle: 'RapidResponse47', label: 'Rapid Response 47' },
 ];
 
 // GraphQL endpoint names we care about (matched by substring against URL path).

@@ -92,7 +92,7 @@ body {
   color: #e1b04a;
 }
 body.paused .controls,
-body.paused .refetch,
+body.paused .loop,
 body.paused .accounts {
   opacity: 0.5;
   pointer-events: none;
@@ -229,15 +229,25 @@ body.paused .acc-stats {
   color: var(--ok);
 }
 
-.refetch {
+.loop {
   padding: 10px 12px;
   border-bottom: 1px solid var(--border);
   background: var(--bg-2);
 }
-.refetch-blurb {
+.loop-blurb {
   font-size: 11px;
   margin: 4px 0 8px;
   line-height: 1.4;
+}
+.progress {
+  font-size: 11px;
+  color: var(--fg-2);
+  font-variant-numeric: tabular-nums;
+  margin-left: 6px;
+}
+.progress.on {
+  color: var(--ok);
+  font-weight: 600;
 }
 
 .section-title {

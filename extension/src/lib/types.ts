@@ -15,11 +15,9 @@ export interface Settings {
   enabled: boolean;
   autoCapture: boolean;
   configuredAt: number | null;
-  /** When true, the background periodically scrolls all open x.com tabs to
-   * the bottom — works around X de-prioritizing deep pagination on the
-   * `with_replies` tab. */
-  autoScroll: boolean;
-  /** Seconds between auto-scroll ticks (clamped 3..60 in the UI). */
+  /** Seconds between auto-scroll / refetch / media-crawl ticks (clamped
+   * 3..60 in the UI). The loops themselves are now driven by per-loop
+   * Start/Cancel buttons; only the cadence lives in settings. */
   autoScrollIntervalSec: number;
 }
 
@@ -236,18 +234,31 @@ export interface AccountCounter {
   bufferedCount: number;
 }
 
-export interface RefetchQueueState {
-  /** Total tweets queued for full-text refetch across all handles. */
+export interface QueueProgress {
+  /** Total tweets in the queue right now (not yet processed). */
   total: number;
-  /** Whether a refetch loop is currently iterating. */
+  /** Whether a loop is currently running over this queue. */
   running: boolean;
-  /** ISO of the last refetch tick, if any. */
-  lastTickAt: string | null;
+  /** Tweets the loop has processed (ingested or dropped after retries)
+   * since the user clicked "Start". Zero when not running. */
+  processed: number;
+  /** Initial queue size at the moment the user started this run, used as the
+   * progress denominator. `processed + total` may exceed this if X surfaced
+   * more truncated tweets mid-run; the UI shows the larger of the two. */
+  total_at_start: number;
 }
 
-export interface MediaCrawlQueueState {
-  total: number;
-  running: boolean;
+export interface AutoScrollProgress {
+  /** Whether the auto-scroll loop is currently armed. */
+  active: boolean;
+  /** Live count of x.com tabs we'd scroll on the next tick. */
+  tabCount: number;
+  /** Scroll ticks issued since the user clicked "Start". */
+  scrollCount: number;
+  /** Tweets ingested across all handles since the user clicked "Start". */
+  ingestedCount: number;
+  /** "Show more" links clicked since the user clicked "Start". */
+  expandedCount: number;
 }
 
 export interface ExtensionState {
@@ -256,10 +267,9 @@ export interface ExtensionState {
   connection: ConnectionState;
   accounts: AccountConfig[];
   counters: Record<string, AccountCounter>;
-  /** Auto-scroll runtime state. Tab count comes from the SW's live tab query. */
-  autoScroll: { active: boolean; tabCount: number };
-  refetchQueue: RefetchQueueState;
-  mediaCrawlQueue: MediaCrawlQueueState;
+  autoScroll: AutoScrollProgress;
+  refetchQueue: QueueProgress;
+  mediaCrawlQueue: QueueProgress;
 }
 
 export type RuntimeMessage =
@@ -275,12 +285,14 @@ export type RuntimeMessage =
   | { type: 'flush-handle'; handle: string }
   | { type: 'toggle-auto-capture'; on: boolean }
   | { type: 'toggle-enabled'; on: boolean }
-  | { type: 'toggle-auto-scroll'; on: boolean }
+  | { type: 'start-auto-scroll' }
+  | { type: 'cancel-auto-scroll' }
   | { type: 'set-auto-scroll-interval'; seconds: number }
   | { type: 'start-refetch' }
   | { type: 'cancel-refetch' }
   | { type: 'start-media-crawl' }
   | { type: 'cancel-media-crawl' }
+  | { type: 'purge-unrelated' }
   | { type: 'refresh-accounts' }
   | { type: 'verify-connection' }
   | { type: 'clear-activity' }

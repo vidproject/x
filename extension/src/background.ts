@@ -20,12 +20,11 @@ import {
   FLUSH_TWEET_THRESHOLD,
   PROFILE_ENDPOINTS,
   TWEET_ENDPOINTS,
-  USER_PAGE_ENDPOINTS,
   VERIFY_CONNECTION_INTERVAL_MS,
 } from './lib/config.js';
 import { GitHubClient, GitHubError, toBase64 } from './lib/github.js';
 import { describeError, error as logErr, info, setBroadcaster, warn } from './lib/logger.js';
-import { normalize } from './lib/normalize.js';
+import { filterRelated, normalize } from './lib/normalize.js';
 import { newRunId, shortRunId } from './lib/runids.js';
 import {
   bumpCounter,
@@ -39,11 +38,14 @@ import {
   enqueueRefetch,
   getAccounts,
   getActivity,
+  getAutoScrollSession,
   getCommittedIndex,
   getConnection,
   getCounters,
   getMediaCrawlQueue,
+  getMediaCrawlSession,
   getRefetchQueue,
+  getRefetchSession,
   getRunBuffer,
   getRunBuffers,
   getSettings,
@@ -52,11 +54,15 @@ import {
   nextMediaCrawlTarget,
   nextRefetchTarget,
   pruneCommittedIndex,
+  purgeUnrelatedState,
   refetchQueueTotal,
   setAccounts,
+  setAutoScrollSession,
   setBufferedCount,
   setCommittedIndex,
   setConnection,
+  setMediaCrawlSession,
+  setRefetchSession,
   setRunBuffer,
   type RunBuffer,
   updateSettings,
@@ -185,22 +191,36 @@ async function ensureAlarms(): Promise<void> {
 }
 
 // Firefox MV3 alarms have a 30s minimum period, but we want sub-minute
-// scrolling. The auto-scroll loop therefore runs on an in-SW interval,
-// re-armed on every wake. Keep the handle module-scoped so a fresh
-// SW instance can clear a stale one if it ever leaks.
+// scrolling. The auto-scroll loop therefore runs on an in-SW interval.
+// `autoScrollSession` in storage is the source of truth for whether the loop
+// is meant to be running — the timer is just the local execution arm.
 let autoScrollTimer: ReturnType<typeof setInterval> | null = null;
 
+// Wait-for-ingest timeout: if a refetch / media-crawl tab navigation doesn't
+// produce an ingested capture within this many ms, advance anyway so we
+// don't deadlock on deleted / 404 / paywalled tweets.
+const INGEST_WAIT_MS = 25_000;
+
 async function ensureAutoScrollAlarm(): Promise<void> {
+  // Was the loop running before the SW eviction? Re-arm if so.
+  const sess = await getAutoScrollSession();
   const s = await getSettings();
-  await configureAutoScroll(s.enabled !== false && s.autoScroll, s.autoScrollIntervalSec);
+  if (sess !== null && s.enabled !== false) {
+    armAutoScrollTimer(s.autoScrollIntervalSec);
+  } else {
+    clearAutoScrollTimer();
+  }
 }
 
-async function configureAutoScroll(on: boolean, intervalSec: number): Promise<void> {
+function clearAutoScrollTimer(): void {
   if (autoScrollTimer !== null) {
     clearInterval(autoScrollTimer);
     autoScrollTimer = null;
   }
-  if (!on) return;
+}
+
+function armAutoScrollTimer(intervalSec: number): void {
+  clearAutoScrollTimer();
   const clamped = Math.min(
     AUTO_SCROLL_MAX_SEC,
     Math.max(AUTO_SCROLL_MIN_SEC, Math.round(intervalSec))
@@ -210,7 +230,33 @@ async function configureAutoScroll(on: boolean, intervalSec: number): Promise<vo
       void warn('auto-scroll tick failed', describeError(err));
     });
   }, clamped * 1000);
-  await info('auto-scroll loop armed', { interval_sec: clamped });
+}
+
+async function startAutoScrollLoop(): Promise<void> {
+  const s = await getSettings();
+  await setAutoScrollSession({
+    startedAt: new Date().toISOString(),
+    scrollCount: 0,
+    ingestedCount: 0,
+    expandedCount: 0,
+  });
+  armAutoScrollTimer(s.autoScrollIntervalSec);
+  await info('auto-scroll loop started', { interval_sec: s.autoScrollIntervalSec });
+  // Fire one immediate tick so the user sees motion right away.
+  void autoScrollTick();
+  await broadcastState();
+}
+
+async function cancelAutoScrollLoop(): Promise<void> {
+  clearAutoScrollTimer();
+  const sess = await getAutoScrollSession();
+  await setAutoScrollSession(null);
+  await info('auto-scroll loop cancelled', {
+    scrolls: sess?.scrollCount ?? 0,
+    ingested: sess?.ingestedCount ?? 0,
+    expanded: sess?.expandedCount ?? 0,
+  });
+  await broadcastState();
 }
 
 async function autoScrollTick(): Promise<void> {
@@ -222,17 +268,50 @@ async function autoScrollTick(): Promise<void> {
     return;
   }
   if (tabs.length === 0) return;
+  let scrollCount = 0;
+  let expandedCount = 0;
   for (const tab of tabs) {
     if (typeof tab.id !== 'number') continue;
     if (tab.discarded) continue;
     try {
-      await browser.scripting.executeScript({
+      const results = (await browser.scripting.executeScript({
         target: { tabId: tab.id },
         world: 'MAIN' as 'ISOLATED',
-        func: () => {
-          // Dispatch End key — many X surfaces (lists, search, replies) bind
-          // pagination triggers to it via React handlers, not just on the
-          // intersection observer. Belt-and-braces: also explicitly scroll.
+        // Cast: the @types/firefox-webext-browser type signature insists
+        // `func` returns void, but the API actually surfaces the return
+        // value via `result[0].result`. We use that for the expand count.
+        func: (() => {
+          // 1. Click any visible "Show more" links in long-tweet bodies so X
+          //    inlines the note_tweet body and our page-hook captures the
+          //    full text without the refetch detour. Try several selectors
+          //    because X rotates the testid label semi-regularly.
+          const SHOW_MORE_SELECTORS = [
+            '[data-testid="tweet-text-show-more-link"]',
+            'button[data-testid="tweet-text-show-more-link"]',
+            'div[data-testid="cellInnerDiv"] [role="button"][tabindex="0"]',
+          ];
+          const clicked = new Set<Element>();
+          let expanded = 0;
+          for (const sel of SHOW_MORE_SELECTORS) {
+            for (const el of Array.from(document.querySelectorAll(sel))) {
+              if (clicked.has(el)) continue;
+              // Confirm it's actually the show-more affordance by text.
+              const t = (el.textContent || '').trim().toLowerCase();
+              if (t !== 'show more' && t !== 'show this thread') continue;
+              const rect = el.getBoundingClientRect();
+              if (rect.width === 0 || rect.height === 0) continue;
+              clicked.add(el);
+              try {
+                (el as HTMLElement).click();
+                expanded += 1;
+              } catch {
+                // ignore
+              }
+            }
+          }
+          // 2. Scroll the page. Dispatch End key first since many X surfaces
+          //    (lists, search, replies) bind pagination triggers to it via
+          //    React handlers; then explicitly scroll the document.
           const opts: KeyboardEventInit = {
             key: 'End',
             code: 'End',
@@ -241,18 +320,31 @@ async function autoScrollTick(): Promise<void> {
             bubbles: true,
             cancelable: true,
           };
-          const target = (document.activeElement as HTMLElement | null) ?? document.body;
-          target.dispatchEvent(new KeyboardEvent('keydown', opts));
-          target.dispatchEvent(new KeyboardEvent('keyup', opts));
+          const focus = (document.activeElement as HTMLElement | null) ?? document.body;
+          focus.dispatchEvent(new KeyboardEvent('keydown', opts));
+          focus.dispatchEvent(new KeyboardEvent('keyup', opts));
           window.scrollTo({
             top: document.documentElement.scrollHeight,
             behavior: 'auto',
           });
-        },
-      });
+          return { expanded };
+        }) as () => void,
+      })) as Array<{ result?: unknown }>;
+      scrollCount += 1;
+      const r = results[0]?.result as { expanded?: number } | undefined;
+      if (r && typeof r.expanded === 'number') expandedCount += r.expanded;
     } catch {
       // Tabs that disallow scripting (about:, discarded, mid-navigation)
       // just get skipped — they'll be eligible on a later tick.
+    }
+  }
+  if (scrollCount > 0) {
+    const sess = await getAutoScrollSession();
+    if (sess !== null) {
+      sess.scrollCount += scrollCount;
+      sess.expandedCount += expandedCount;
+      await setAutoScrollSession(sess);
+      // No broadcast on every tick — the 15s sidebar refresh picks it up.
     }
   }
 }
@@ -307,6 +399,7 @@ const CAPTURE_PIPELINE_MESSAGES = new Set<RuntimeMessage['type']>([
   'flush-handle',
   'start-refetch',
   'start-media-crawl',
+  'start-auto-scroll',
 ]);
 
 async function isEnabled(): Promise<boolean> {
@@ -364,33 +457,39 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
       return buildState();
     case 'toggle-enabled': {
       const s = await updateSettings({ enabled: msg.on });
-      // Pausing while auto-scroll is on must actually stop the timer;
-      // resuming must rearm it if the auto-scroll toggle is still set.
-      await configureAutoScroll(s.enabled && s.autoScroll, s.autoScrollIntervalSec);
       if (!msg.on) {
         // Pausing stops all in-flight loops so the user gets immediate
         // quiet, not a "one more tick" surprise.
+        clearAutoScrollTimer();
         stopRefetchInterval();
         stopMediaCrawlInterval();
         await browser.alarms.clear('refetch-tick'); // legacy cleanup
         await browser.alarms.clear('media-crawl-tick');
+      } else {
+        // Resuming re-arms any loops whose session is still set.
+        const sess = await getAutoScrollSession();
+        if (sess !== null) armAutoScrollTimer(s.autoScrollIntervalSec);
       }
       await info('extension master switch toggled', { on: msg.on });
       return buildState();
     }
-    case 'toggle-auto-scroll': {
-      const s = await updateSettings({ autoScroll: msg.on });
-      await configureAutoScroll(s.autoScroll, s.autoScrollIntervalSec);
-      await info('auto-scroll toggled', { on: msg.on, interval_sec: s.autoScrollIntervalSec });
+    case 'start-auto-scroll':
+      await startAutoScrollLoop();
       return buildState();
-    }
+    case 'cancel-auto-scroll':
+      await cancelAutoScrollLoop();
+      return buildState();
     case 'set-auto-scroll-interval': {
       const seconds = Math.min(
         AUTO_SCROLL_MAX_SEC,
         Math.max(AUTO_SCROLL_MIN_SEC, Math.round(msg.seconds))
       );
-      const s = await updateSettings({ autoScrollIntervalSec: seconds });
-      await configureAutoScroll(s.autoScroll, s.autoScrollIntervalSec);
+      await updateSettings({ autoScrollIntervalSec: seconds });
+      // Re-arm any active loops with the new interval.
+      const sess = await getAutoScrollSession();
+      if (sess !== null) armAutoScrollTimer(seconds);
+      if (refetchIntervalHandle !== null) startRefetchInterval(seconds);
+      if (mediaCrawlIntervalHandle !== null) startMediaCrawlInterval(seconds);
       return buildState();
     }
     case 'start-refetch':
@@ -405,6 +504,13 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
     case 'cancel-media-crawl':
       await cancelMediaCrawlLoop();
       return buildState();
+    case 'purge-unrelated': {
+      const accs = await getAccounts();
+      const tracked = new Set(accs.map((a) => a.handle.toLowerCase()));
+      const summary = await purgeUnrelatedState(tracked);
+      await info('purged unrelated state', summary);
+      return buildState();
+    }
     case 'refresh-accounts':
       await refreshAccountsList(true);
       return buildState();
@@ -441,16 +547,16 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
   // everything we've seen. Dropping captures here was hiding the user's
   // first browsing session entirely.
 
-  // On user-scoped endpoints (UserTweets, UserTweetsAndReplies, TweetDetail,
-  // …) we keep every tweet in the response, not just those authored by
-  // tracked handles — that way when a tracked account retweets / quotes /
-  // replies to a non-tracked account, the referenced tweet's content is
-  // archived too, bucketed under its actual author. For general-purpose
-  // endpoints (HomeTimeline, SearchTimeline, …) we still filter so casual
-  // browsing doesn't pull in arbitrary content from the user's feed.
-  const allowed = USER_PAGE_ENDPOINTS.has(endpoint)
-    ? new Set<string>() // empty = no handle filter
-    : new Set(accounts.map((a) => a.handle.toLowerCase()));
+  // Two-stage filter:
+  //   1. Build EVERY canonical tweet we can find in the response (no handle
+  //      filter at the normalizer level — we still want quoted/RT'd parents
+  //      that appear as sibling nodes).
+  //   2. Apply `filterRelated` post-hoc to drop anything that has no
+  //      relationship to a tracked account. The old behaviour ("empty
+  //      allowed-set on user-page endpoints, full filter on home/search")
+  //      was way too permissive on the Replies tab: every random replier's
+  //      reply landed in a per-handle buffer keyed by their own handle.
+  const tracked = new Set(accounts.map((a) => a.handle.toLowerCase()));
   const capturedAt = new Date().toISOString();
 
   let normalized;
@@ -459,11 +565,28 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
       capturedAt,
       runId: 'pending',
       endpoint,
-      allowedHandles: allowed,
+      allowedHandles: new Set<string>(),
     });
   } catch (err) {
     await quarantine('normalize-threw', endpoint, url, response, err);
     return;
+  }
+  // Drop unrelated tweets. The filter is endpoint-aware:
+  //   - On the home / search timelines we'd already been filtering to
+  //     tracked authors only — keep that behaviour but go through the same
+  //     `filterRelated` helper so the rules are uniform.
+  //   - On user-page endpoints we now also drop anything that isn't either
+  //     authored-by, mentioning, replying-to, or referenced-by a tracked
+  //     account.
+  const beforeFilter = normalized.tweets.length;
+  normalized.tweets = filterRelated(normalized.tweets, tracked);
+  const droppedUnrelated = beforeFilter - normalized.tweets.length;
+  if (droppedUnrelated > 0) {
+    await info('dropped unrelated tweets', {
+      endpoint,
+      dropped: droppedUnrelated,
+      kept: normalized.tweets.length,
+    });
   }
 
   // Diagnostic: every tweet-endpoint payload gets a line in the activity
@@ -511,6 +634,12 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
   // only after the full text), so the dedup below would silently drop
   // it and the queue would never drain. Hoist the enqueue/dequeue here
   // so the loop reliably advances even when no commit happens.
+  //
+  // Also: if either loop's inflight target appears here, mark the loop
+  // as "ingested" so the next tick can advance. The wait-for-ingest
+  // guard otherwise blocks until the navigation-timeout fires.
+  const refetchSess = await getRefetchSession();
+  const mediaCrawlSess = await getMediaCrawlSession();
   for (const t of normalized.tweets) {
     if (t.is_truncated) {
       await enqueueRefetch(t.account_handle, t.tweet_id);
@@ -520,6 +649,16 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
     // Successfully built tweets are no longer "partial" — drop from the
     // media-crawl queue regardless of which handle we'd hinted earlier.
     await dequeueMediaCrawl(t.tweet_id);
+    if (refetchSess?.inflight?.tweetId === t.tweet_id) {
+      refetchSess.inflight = null;
+      refetchSess.processed += 1;
+      await setRefetchSession(refetchSess);
+    }
+    if (mediaCrawlSess?.inflight?.tweetId === t.tweet_id) {
+      mediaCrawlSess.inflight = null;
+      mediaCrawlSess.processed += 1;
+      await setMediaCrawlSession(mediaCrawlSess);
+    }
   }
 
   // Media-crawl queue: tweet-shaped nodes the walker saw but couldn't turn
@@ -618,6 +757,13 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
         added,
         total: Object.keys(buf.tweets_by_id).length,
       });
+      // Bump the auto-scroll progress so the user sees "X ingested" tick up
+      // in real time. We count actually-new tweets, not duplicates.
+      const asSess = await getAutoScrollSession();
+      if (asSess !== null) {
+        asSess.ingestedCount += added;
+        await setAutoScrollSession(asSess);
+      }
     }
     if (Object.keys(buf.tweets_by_id).length >= FLUSH_TWEET_THRESHOLD) {
       await flushHandle(handle, 'threshold');
@@ -665,6 +811,12 @@ async function flushIdleBuffers(): Promise<void> {
 async function flushOrphanedBuffersIfStale(): Promise<void> {
   // On worker wake, any buffer older than the idle threshold gets a chance to
   // commit immediately — useful when the worker was evicted before idle-flush.
+  // If the PAT/owner/repo aren't set we'd just emit "flush deferred" for every
+  // single handle in storage (the diagnostic showed this firing 300+ times in
+  // a row when the extension woke before settings load), so short-circuit
+  // here instead.
+  const settings = await getSettings();
+  if (!settings.pat || !settings.owner || !settings.repo) return;
   const all = await getRunBuffers();
   const now = Date.now();
   for (const [handle, buf] of Object.entries(all)) {
@@ -925,22 +1077,12 @@ async function captureThisPage(): Promise<void> {
 // inlined for some endpoints. Re-opening each truncated tweet's detail page
 // causes the page-hook to capture the full `note_tweet` body. The loop
 // drives that by navigating a single dedicated tab through the queue, one
-// tweet every auto-scroll-interval seconds, so the user doesn't get a
-// tab-storm.
+// tweet at a time, gated on the page-hook actually ingesting a response for
+// the tweet we just navigated to (so deleted / paywalled / 404'd tweets
+// don't make us spin and so we don't slam X with refreshes faster than the
+// tab can load).
 
 const REFETCH_TAB_KEY = '__imm_archive_refetch_tab_id__';
-const REFETCH_LAST_KEY = '__imm_archive_refetch_last__';
-// Hard cap on attempts against any single target. Even with the dequeue
-// hoisted above the engagement-sig dedup, a page that never lets the
-// page-hook see a TweetDetail payload (CSP weirdness, login wall,
-// extension reload) would otherwise spin forever on the same tweet.
-const REFETCH_MAX_ATTEMPTS_PER_TARGET = 3;
-
-interface RefetchLastAttempt {
-  handle: string;
-  tweetId: string;
-  attempts: number;
-}
 
 async function getRefetchTabId(): Promise<number | null> {
   const stored = await browser.storage.local.get(REFETCH_TAB_KEY);
@@ -956,17 +1098,6 @@ async function setRefetchTabId(id: number | null): Promise<void> {
   }
 }
 
-async function getRefetchLast(): Promise<RefetchLastAttempt | null> {
-  const stored = await browser.storage.local.get(REFETCH_LAST_KEY);
-  const v = stored[REFETCH_LAST_KEY];
-  return v && typeof v === 'object' ? (v as RefetchLastAttempt) : null;
-}
-
-async function setRefetchLast(v: RefetchLastAttempt | null): Promise<void> {
-  if (v === null) await browser.storage.local.remove(REFETCH_LAST_KEY);
-  else await browser.storage.local.set({ [REFETCH_LAST_KEY]: v });
-}
-
 async function startRefetchLoop(): Promise<void> {
   const total = await refetchQueueTotal();
   if (total === 0) {
@@ -978,10 +1109,12 @@ async function startRefetchLoop(): Promise<void> {
     AUTO_SCROLL_MAX_SEC,
     Math.max(AUTO_SCROLL_MIN_SEC, Math.round(s.autoScrollIntervalSec))
   );
-  // Alarms have a 30s floor on Firefox; setInterval (driven by the
-  // sidebar keeping the SW alive while open) gives the configured 3-60s
-  // cadence the user expects. Trigger the first tick immediately so
-  // there's no upfront wait.
+  await setRefetchSession({
+    totalAtStart: total,
+    processed: 0,
+    startedAt: new Date().toISOString(),
+    inflight: null,
+  });
   startRefetchInterval(seconds);
   void refetchTick();
   await info('refetch loop started', { queued: total, interval_sec: seconds });
@@ -1011,51 +1144,60 @@ async function cancelRefetchLoop(): Promise<void> {
   await browser.alarms.clear('refetch-tick'); // legacy cleanup
   const tabId = await getRefetchTabId();
   await setRefetchTabId(null);
-  await setRefetchLast(null);
-  await info('refetch loop cancelled', { had_tab: tabId !== null });
+  const sess = await getRefetchSession();
+  await setRefetchSession(null);
+  await info('refetch loop cancelled', {
+    had_tab: tabId !== null,
+    processed: sess?.processed ?? 0,
+  });
   await broadcastState();
 }
 
 async function refetchTick(): Promise<void> {
+  let sess = await getRefetchSession();
+  if (sess === null) {
+    // Loop was cancelled or never started; nothing to do.
+    stopRefetchInterval();
+    return;
+  }
+  // Wait-for-ingest guard: if we're still expecting a capture for the
+  // previously-navigated target, only advance once we've either seen the
+  // capture (onGraphqlCapture clears `inflight`) or hit the timeout.
+  if (sess.inflight !== null) {
+    const elapsed = Date.now() - Date.parse(sess.inflight.navigatedAt);
+    if (elapsed < INGEST_WAIT_MS) {
+      return; // still waiting — page-hook may yet capture the response.
+    }
+    // Timed out. Treat as "this target won't ingest" and drop it.
+    await warn('refetch: target timed out waiting for ingest', {
+      tweet_id: sess.inflight.tweetId,
+      waited_ms: elapsed,
+    });
+    // Find which handle this id is queued under so we can dequeue it.
+    const q = await getRefetchQueue();
+    for (const [handle, ids] of Object.entries(q)) {
+      if (ids.includes(sess.inflight.tweetId)) {
+        await dequeueRefetch(handle, sess.inflight.tweetId);
+        break;
+      }
+    }
+    sess.processed += 1;
+    sess.inflight = null;
+    await setRefetchSession(sess);
+  }
+
   const target = await nextRefetchTarget();
   if (!target) {
-    await browser.alarms.clear('refetch-tick');
+    stopRefetchInterval();
     await setRefetchTabId(null);
-    await setRefetchLast(null);
-    await info('refetch loop complete');
+    await setRefetchSession(null);
+    await info('refetch loop complete', { processed: sess.processed });
     await broadcastState();
     return;
   }
 
-  // Attempt-counter safeguard: if the queue head hasn't changed since the
-  // previous tick we're stuck. After REFETCH_MAX_ATTEMPTS_PER_TARGET tries
-  // we drop the target so the loop moves on instead of refreshing the same
-  // page indefinitely.
-  const last = await getRefetchLast();
-  let attempts = 1;
-  if (last && last.handle === target.handle && last.tweetId === target.tweetId) {
-    attempts = last.attempts + 1;
-  }
-  if (attempts > REFETCH_MAX_ATTEMPTS_PER_TARGET) {
-    await warn('refetch: target stuck, dropping after retries', {
-      handle: target.handle,
-      tweet_id: target.tweetId,
-      attempts: attempts - 1,
-    });
-    await dequeueRefetch(target.handle, target.tweetId);
-    await setRefetchLast(null);
-    await broadcastState();
-    return; // Next alarm tick picks the new head.
-  }
-  await setRefetchLast({
-    handle: target.handle,
-    tweetId: target.tweetId,
-    attempts,
-  });
-
   const url = `https://x.com/${target.handle}/status/${target.tweetId}`;
   let tabId = await getRefetchTabId();
-  // Confirm the tab still exists; recreate if the user closed it.
   if (tabId !== null) {
     try {
       await browser.tabs.get(tabId);
@@ -1070,11 +1212,18 @@ async function refetchTick(): Promise<void> {
     } else {
       await browser.tabs.update(tabId, { url });
     }
+    sess = (await getRefetchSession()) ?? sess;
+    sess.inflight = {
+      tweetId: target.tweetId,
+      navigatedAt: new Date().toISOString(),
+    };
+    await setRefetchSession(sess);
     await info('refetch tick', {
       handle: target.handle,
       tweet_id: target.tweetId,
-      attempt: attempts,
       remaining: await refetchQueueTotal(),
+      processed: sess.processed,
+      total_at_start: sess.totalAtStart,
     });
   } catch (err) {
     await warn('refetch navigate failed; dropping target', {
@@ -1082,9 +1231,10 @@ async function refetchTick(): Promise<void> {
       tweet_id: target.tweetId,
       ...describeError(err),
     });
-    // Skip this one so we don't get stuck.
     await dequeueRefetch(target.handle, target.tweetId);
-    await setRefetchLast(null);
+    sess.processed += 1;
+    sess.inflight = null;
+    await setRefetchSession(sess);
   }
   await broadcastState();
 }
@@ -1099,13 +1249,6 @@ async function refetchTick(): Promise<void> {
 // page-hook can capture the real tweet shape.
 
 const MEDIA_CRAWL_TAB_KEY = '__imm_archive_media_crawl_tab_id__';
-const MEDIA_CRAWL_LAST_KEY = '__imm_archive_media_crawl_last__';
-const MEDIA_CRAWL_MAX_ATTEMPTS_PER_TARGET = 3;
-
-interface MediaCrawlLastAttempt {
-  tweetId: string;
-  attempts: number;
-}
 
 async function getMediaCrawlTabId(): Promise<number | null> {
   const stored = await browser.storage.local.get(MEDIA_CRAWL_TAB_KEY);
@@ -1116,17 +1259,6 @@ async function getMediaCrawlTabId(): Promise<number | null> {
 async function setMediaCrawlTabId(id: number | null): Promise<void> {
   if (id === null) await browser.storage.local.remove(MEDIA_CRAWL_TAB_KEY);
   else await browser.storage.local.set({ [MEDIA_CRAWL_TAB_KEY]: id });
-}
-
-async function getMediaCrawlLast(): Promise<MediaCrawlLastAttempt | null> {
-  const stored = await browser.storage.local.get(MEDIA_CRAWL_LAST_KEY);
-  const v = stored[MEDIA_CRAWL_LAST_KEY];
-  return v && typeof v === 'object' ? (v as MediaCrawlLastAttempt) : null;
-}
-
-async function setMediaCrawlLast(v: MediaCrawlLastAttempt | null): Promise<void> {
-  if (v === null) await browser.storage.local.remove(MEDIA_CRAWL_LAST_KEY);
-  else await browser.storage.local.set({ [MEDIA_CRAWL_LAST_KEY]: v });
 }
 
 async function startMediaCrawlLoop(): Promise<void> {
@@ -1140,6 +1272,12 @@ async function startMediaCrawlLoop(): Promise<void> {
     AUTO_SCROLL_MAX_SEC,
     Math.max(AUTO_SCROLL_MIN_SEC, Math.round(s.autoScrollIntervalSec))
   );
+  await setMediaCrawlSession({
+    totalAtStart: total,
+    processed: 0,
+    startedAt: new Date().toISOString(),
+    inflight: null,
+  });
   startMediaCrawlInterval(seconds);
   void mediaCrawlTick();
   await info('media-crawl loop started', { queued: total, interval_sec: seconds });
@@ -1169,18 +1307,42 @@ async function cancelMediaCrawlLoop(): Promise<void> {
   await browser.alarms.clear('media-crawl-tick'); // legacy cleanup
   const tabId = await getMediaCrawlTabId();
   await setMediaCrawlTabId(null);
-  await setMediaCrawlLast(null);
-  await info('media-crawl loop cancelled', { had_tab: tabId !== null });
+  const sess = await getMediaCrawlSession();
+  await setMediaCrawlSession(null);
+  await info('media-crawl loop cancelled', {
+    had_tab: tabId !== null,
+    processed: sess?.processed ?? 0,
+  });
   await broadcastState();
 }
 
 async function mediaCrawlTick(): Promise<void> {
+  let sess = await getMediaCrawlSession();
+  if (sess === null) {
+    stopMediaCrawlInterval();
+    return;
+  }
+  if (sess.inflight !== null) {
+    const elapsed = Date.now() - Date.parse(sess.inflight.navigatedAt);
+    if (elapsed < INGEST_WAIT_MS) {
+      return; // still waiting on the page-hook
+    }
+    await warn('media-crawl: target timed out waiting for ingest', {
+      tweet_id: sess.inflight.tweetId,
+      waited_ms: elapsed,
+    });
+    await dequeueMediaCrawl(sess.inflight.tweetId);
+    sess.processed += 1;
+    sess.inflight = null;
+    await setMediaCrawlSession(sess);
+  }
+
   const target = await nextMediaCrawlTarget();
   if (!target) {
-    await browser.alarms.clear('media-crawl-tick');
+    stopMediaCrawlInterval();
     await setMediaCrawlTabId(null);
-    await setMediaCrawlLast(null);
-    await info('media-crawl loop complete');
+    await setMediaCrawlSession(null);
+    await info('media-crawl loop complete', { processed: sess.processed });
     await broadcastState();
     return;
   }
@@ -1188,27 +1350,17 @@ async function mediaCrawlTick(): Promise<void> {
   // separate full capture path.
   if (await isCommitted(target.tweetId)) {
     await dequeueMediaCrawl(target.tweetId);
-    await setMediaCrawlLast(null);
+    sess.processed += 1;
+    sess.inflight = null;
+    await setMediaCrawlSession(sess);
     await broadcastState();
     return;
   }
-  const last = await getMediaCrawlLast();
-  let attempts = 1;
-  if (last && last.tweetId === target.tweetId) attempts = last.attempts + 1;
-  if (attempts > MEDIA_CRAWL_MAX_ATTEMPTS_PER_TARGET) {
-    await warn('media-crawl: target stuck, dropping after retries', {
-      tweet_id: target.tweetId,
-      attempts: attempts - 1,
-    });
-    await dequeueMediaCrawl(target.tweetId);
-    await setMediaCrawlLast(null);
-    await broadcastState();
-    return;
-  }
-  await setMediaCrawlLast({ tweetId: target.tweetId, attempts });
 
-  // Use the handle-less status URL — `i/status/<id>` resolves to the
-  // canonical tweet regardless of hint accuracy.
+  // Always use the explicit handle URL when we know one. The handle-less
+  // `i/status/<id>` form has surfaced as "this page doesn't exist" in
+  // practice (X's router doesn't always resolve it for tweets that need a
+  // login wall or have author-context redirects).
   const url =
     target.bucket === '_unknown'
       ? `https://x.com/i/status/${target.tweetId}`
@@ -1228,11 +1380,18 @@ async function mediaCrawlTick(): Promise<void> {
     } else {
       await browser.tabs.update(tabId, { url });
     }
+    sess = (await getMediaCrawlSession()) ?? sess;
+    sess.inflight = {
+      tweetId: target.tweetId,
+      navigatedAt: new Date().toISOString(),
+    };
+    await setMediaCrawlSession(sess);
     await info('media-crawl tick', {
       tweet_id: target.tweetId,
       hint_handle: target.bucket === '_unknown' ? null : target.bucket,
-      attempt: attempts,
       remaining: await mediaCrawlQueueTotal(),
+      processed: sess.processed,
+      total_at_start: sess.totalAtStart,
     });
   } catch (err) {
     await warn('media-crawl navigate failed; dropping target', {
@@ -1240,7 +1399,9 @@ async function mediaCrawlTick(): Promise<void> {
       ...describeError(err),
     });
     await dequeueMediaCrawl(target.tweetId);
-    await setMediaCrawlLast(null);
+    sess.processed += 1;
+    sess.inflight = null;
+    await setMediaCrawlSession(sess);
   }
   await broadcastState();
 }
@@ -1416,6 +1577,9 @@ async function buildState(): Promise<ExtensionState> {
   }
   const refetchQueued = await refetchQueueTotal();
   const mediaCrawlQueued = await mediaCrawlQueueTotal();
+  const refetchSess = await getRefetchSession();
+  const mediaCrawlSess = await getMediaCrawlSession();
+  const autoScrollSess = await getAutoScrollSession();
   return {
     version: EXT_VERSION,
     settings: redactSettings(settings),
@@ -1423,17 +1587,23 @@ async function buildState(): Promise<ExtensionState> {
     accounts,
     counters,
     autoScroll: {
-      active: settings.autoScroll && autoScrollTimer !== null,
+      active: autoScrollSess !== null && autoScrollTimer !== null,
       tabCount,
+      scrollCount: autoScrollSess?.scrollCount ?? 0,
+      ingestedCount: autoScrollSess?.ingestedCount ?? 0,
+      expandedCount: autoScrollSess?.expandedCount ?? 0,
     },
     refetchQueue: {
       total: refetchQueued,
       running: refetchIntervalHandle !== null,
-      lastTickAt: null,
+      processed: refetchSess?.processed ?? 0,
+      total_at_start: refetchSess?.totalAtStart ?? 0,
     },
     mediaCrawlQueue: {
       total: mediaCrawlQueued,
       running: mediaCrawlIntervalHandle !== null,
+      processed: mediaCrawlSess?.processed ?? 0,
+      total_at_start: mediaCrawlSess?.totalAtStart ?? 0,
     },
   };
 }
@@ -1446,7 +1616,6 @@ function redactSettings(s: Settings): ExtensionState['settings'] {
     enabled: s.enabled,
     autoCapture: s.autoCapture,
     configuredAt: s.configuredAt,
-    autoScroll: s.autoScroll,
     autoScrollIntervalSec: s.autoScrollIntervalSec,
     patSet: s.pat.length > 0,
     patSuffix: s.pat.length >= 4 ? s.pat.slice(-4) : '',

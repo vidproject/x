@@ -8,7 +8,6 @@
   </head>
   <body>
     <header class="hdr">
-      <div class="hdr-title">Immigration Archive</div>
       <div class="master-row">
         <label class="master-switch" title="Master on/off for capture, auto-scroll, refetch">
           <input type="checkbox" id="master-switch" checked />
@@ -23,6 +22,14 @@
         <a class="link" id="open-options" href="#">Settings</a>
         <span class="sep">·</span>
         <a class="link" id="open-viewer" target="_blank" rel="noopener" href="#">Open viewer</a>
+        <span class="sep">·</span>
+        <a
+          class="link"
+          id="purge-unrelated"
+          href="#"
+          title="Drop counters, buffers, and queue entries for accounts not in the tracked list"
+          >Purge unrelated</a
+        >
       </div>
     </header>
 
@@ -44,12 +51,8 @@
         <input type="checkbox" id="auto-capture" />
         <span>Auto-capture while browsing tracked accounts</span>
       </label>
-      <label class="toggle">
-        <input type="checkbox" id="auto-scroll" />
-        <span>Auto-scroll open X tabs (works around Replies-tab pagination stalling)</span>
-      </label>
       <div class="row scroll-rate" id="scroll-rate-row">
-        <label class="rate-lbl" for="auto-scroll-interval">Every</label>
+        <label class="rate-lbl" for="auto-scroll-interval">Tick every</label>
         <input
           class="rate-slider"
           id="auto-scroll-interval"
@@ -59,39 +62,55 @@
           step="1"
         />
         <span class="rate-val"><span id="auto-scroll-secs">6</span>s</span>
-        <span class="rate-info" id="auto-scroll-status">—</span>
       </div>
     </section>
 
-    <section class="refetch" id="media-crawl-section" hidden>
+    <section class="loop" id="auto-scroll-section">
+      <div class="section-head">
+        <h2 class="section-title">Auto-scroll</h2>
+        <span class="muted" id="auto-scroll-status">idle</span>
+      </div>
+      <p class="muted loop-blurb">
+        Scrolls open X tabs to the bottom and clicks visible “Show more” links so long tweets unfold
+        in place. Stops on its own when you click Cancel.
+      </p>
+      <div class="row">
+        <button class="btn" id="auto-scroll-start">Start auto-scroll</button>
+        <button class="btn" id="auto-scroll-cancel" hidden>Cancel</button>
+        <span class="progress" id="auto-scroll-progress" hidden></span>
+      </div>
+    </section>
+
+    <section class="loop" id="media-crawl-section" hidden>
       <div class="section-head">
         <h2 class="section-title">Media-tab partial captures</h2>
         <span class="muted" id="media-crawl-count">0 queued</span>
       </div>
-      <p class="muted refetch-blurb">
-        Tweets the Media tab surfaced without enough data to fully capture (no author block,
-        thumbnail-only entries). We only stored the tweet IDs; click below to walk a tab through
-        each detail page and capture the real tweet. Already-archived IDs are skipped.
+      <p class="muted loop-blurb">
+        Tweets the Media tab surfaced without enough data to fully capture. The crawl walks a single
+        tab through each detail page, waits for the page-hook to ingest a response, then moves on.
+        Already-archived IDs and timeouts are skipped.
       </p>
       <div class="row">
         <button class="btn" id="media-crawl-start">Start crawl</button>
         <button class="btn" id="media-crawl-cancel" hidden>Cancel</button>
+        <span class="progress" id="media-crawl-progress" hidden></span>
       </div>
     </section>
 
-    <section class="refetch" id="refetch-section" hidden>
+    <section class="loop" id="refetch-section" hidden>
       <div class="section-head">
         <h2 class="section-title">Truncated tweets</h2>
         <span class="muted" id="refetch-count">0 queued</span>
       </div>
-      <p class="muted refetch-blurb">
-        Long tweets show as a 280-char head with a “show more” link in timeline payloads. Click
-        below to walk a single tab through every queued tweet (one per auto-scroll tick) and capture
-        the full text.
+      <p class="muted loop-blurb">
+        Long tweets show as a 280-char head with a “show more” link in timeline payloads. The
+        refetch walks one tab through each queued tweet, waits for the response, then advances.
       </p>
       <div class="row">
         <button class="btn" id="refetch-start">Start refetch</button>
         <button class="btn" id="refetch-cancel" hidden>Cancel</button>
+        <span class="progress" id="refetch-progress" hidden></span>
       </div>
     </section>
 
