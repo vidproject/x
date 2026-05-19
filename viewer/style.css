@@ -220,6 +220,20 @@ body {
   width: 0;
   transition: width 0.2s ease;
 }
+.dl-row-btn {
+  border: none;
+  background: transparent;
+  color: var(--fg);
+  width: 100%;
+  text-align: left;
+  font: inherit;
+}
+.dl-row-btn.active {
+  background: rgba(43, 108, 176, 0.12);
+}
+.dl-row-btn.active .handle {
+  color: var(--accent-2);
+}
 
 .tips {
   background: var(--bg-2);

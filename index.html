@@ -15,7 +15,7 @@
       <nav class="hdr-r">
         <div class="menu">
           <button class="btn" id="dl-btn" aria-haspopup="true" aria-expanded="false">
-            <span class="icon">📁</span> Database Downloads
+            <span class="icon">📁</span> Accounts
           </button>
           <div class="dropdown" id="dl-menu" role="menu" hidden></div>
         </div>
@@ -53,7 +53,9 @@
       <h2>Tips</h2>
       <ul>
         <li>
-          Pick one or more accounts under <em>Database Downloads</em>. Their data loads lazily.
+          Every tracked account loads automatically into a single unified view — there's no
+          per-account download to pick. <em>Accounts</em> in the header lists what's loaded and lets
+          you click a handle to filter the table to just that account.
         </li>
         <li>
           <kbd>?</kbd> in the search box matches any single character; <kbd>*</kbd> matches any run.
@@ -132,12 +134,12 @@
 
     <section class="empty" id="empty">
       <div class="empty-card">
-        <h2>No data loaded yet</h2>
+        <h2 id="empty-title">Loading archive…</h2>
         <p>
-          Open <em>Database Downloads</em> in the header and tick one or more accounts. Their
-          per-account Parquet files load directly in your browser.
+          Every tracked account's parquet file is fetched and merged into a single unified view. The
+          table appears as accounts come in.
         </p>
-        <p class="muted" id="empty-detail">Looking for accounts…</p>
+        <p class="muted" id="empty-detail">Fetching account manifest…</p>
       </div>
     </section>
 

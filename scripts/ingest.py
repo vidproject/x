@@ -37,6 +37,16 @@ CONFIG_PATH = REPO_ROOT / "config" / "accounts.yaml"
 QUARANTINE_DIR = RAW_DIR / "_quarantine"
 SCHEMA_VERSION = 1
 
+# Handle / label used for the consolidated "everyone else" parquet. Tweets
+# from accounts not in config/accounts.yaml — typically people the tracked
+# accounts replied to, quoted, or retweeted — land in `data/_misc.parquet`
+# instead of their own per-handle file. The viewer renders them as part of
+# the same unified table; the `reply_to_*`, `quoted_tweet_id`, and
+# `retweeted_tweet_id` columns still link them to the tracked tweet that
+# brought them in.
+MISC_HANDLE = "_misc"
+MISC_LABEL = "Miscellaneous (replies / quotes / retweets of non-tracked accounts)"
+
 
 # --------------------------------------------------------------------------
 # Config
@@ -414,14 +424,40 @@ def write_manifest(manifest: dict[str, Any]) -> None:
 # Per-handle pipeline
 
 
-def ingest_handle(handle: str) -> tuple[int, int, int]:
-    """Return (files_read, tweets_seen, tweets_after_dedup).
+def load_misc_rows_by_handle() -> dict[str, list[dict[str, Any]]]:
+    """Read `data/_misc.parquet` and bucket rows by their author handle.
 
-    Seeds the merge with the existing parquet (if any) so archive metadata
-    written by other workflows — ``release_asset_url``, ``sha256``,
-    ``wayback_url``, ``deletion_detected_at`` — survives a re-ingest. The
-    archive workflows always update parquet, never raw, so without this seed
-    a re-ingest would clobber their work.
+    Used to seed the per-handle merge with archive metadata for non-tracked
+    handles — and, when a handle gets promoted into accounts.yaml, to carry
+    its existing rows out of `_misc` and into the new per-handle parquet.
+    """
+    out: dict[str, list[dict[str, Any]]] = {}
+    misc_path = DATA_DIR / f"{MISC_HANDLE}.parquet"
+    if not misc_path.exists():
+        return out
+    try:
+        df = pl.read_parquet(misc_path)
+    except Exception:
+        LOG.exception("could not read _misc.parquet; treating as empty")
+        return out
+    for row in df.to_dicts():
+        h = str(row.get("account_handle") or "")
+        if not h:
+            continue
+        out.setdefault(h, []).append(row)
+    return out
+
+
+def ingest_handle_rows(
+    handle: str, *, seed_extra: list[dict[str, Any]] | None = None
+) -> tuple[int, int, dict[str, dict[str, Any]]]:
+    """Return (files_read, tweets_seen, merged_rows_by_id) for a handle.
+
+    Seeds the merge with the existing per-handle parquet (if any) plus any
+    rows supplied via ``seed_extra`` (typically the handle's slice of an
+    existing ``_misc.parquet``) so archive metadata — ``release_asset_url``,
+    ``sha256``, ``wayback_url``, ``deletion_detected_at`` — survives across
+    re-ingests AND across promotion/demotion between tracked and misc.
     """
     files_read = 0
     tweets_seen = 0
@@ -435,6 +471,9 @@ def ingest_handle(handle: str) -> tuple[int, int, int]:
         except Exception:
             LOG.exception("could not read existing parquet; rebuilding", handle=handle)
 
+    if seed_extra:
+        captures.extend(seed_extra)
+
     for raw_path in iter_raw_files(handle):
         if raw_path.parent.name == "_quarantine":
             continue
@@ -445,19 +484,26 @@ def ingest_handle(handle: str) -> tuple[int, int, int]:
         tweets_seen += len(tweets)
         captures.extend(tweets)
     merged = merge_tweets(captures)
-    df = build_dataframe(list(merged.values()))
-    df = df.sort("posted_at", descending=True)
-    out_path = DATA_DIR / f"{handle}.parquet"
-    atomic_write_parquet(df, out_path)
-    LOG.info(
-        "ingested handle",
-        handle=handle,
-        files_read=files_read,
-        tweets_seen=tweets_seen,
-        rows_written=df.height,
-        out=str(out_path.relative_to(REPO_ROOT)),
-    )
-    return files_read, tweets_seen, df.height
+    return files_read, tweets_seen, merged
+
+
+def discover_handles(restrict_to: str | None) -> set[str]:
+    """Every handle we have any data for: raw dirs, per-handle parquets,
+    or rows in `_misc.parquet`. Optionally restricted to a single handle for
+    debugging."""
+    if restrict_to:
+        return {restrict_to}
+    handles: set[str] = set()
+    if RAW_DIR.exists():
+        for d in RAW_DIR.iterdir():
+            if d.is_dir() and not d.name.startswith("_"):
+                handles.add(d.name)
+    for p in DATA_DIR.glob("*.parquet"):
+        h = p.stem
+        if not h.startswith("_"):
+            handles.add(h)
+    handles.update(load_misc_rows_by_handle().keys())
+    return handles
 
 
 # --------------------------------------------------------------------------
@@ -470,42 +516,100 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--accounts", type=Path, default=CONFIG_PATH)
     args = p.parse_args(argv)
 
-    accounts = load_accounts(args.accounts)
-    if args.handle:
-        accounts = [a for a in accounts if a["handle"] == args.handle]
-        # Also handle "ephemeral" handles that exist in raw/ but not config
-        # (e.g. test-handle in tests).
-        if not accounts and (RAW_DIR / args.handle).exists():
-            accounts = [{"handle": args.handle, "label": args.handle}]
+    tracked_accounts = load_accounts(args.accounts)
+    tracked_handles = {a["handle"] for a in tracked_accounts}
+    tracked_labels = {a["handle"]: a["label"] for a in tracked_accounts}
 
-    # Also include any handle directories present in raw/ that aren't in the
-    # configured list — useful for tests pushing raw/test-handle/.
-    seen_handles = {a["handle"] for a in accounts}
-    if RAW_DIR.exists():
-        for d in sorted(RAW_DIR.iterdir()):
-            if d.is_dir() and not d.name.startswith("_") and d.name not in seen_handles:
-                accounts.append({"handle": d.name, "label": d.name})
-                seen_handles.add(d.name)
+    # Bucket existing _misc rows so we can re-seed each handle's merge with
+    # the slice that previously lived in misc. Empty when the file doesn't
+    # exist yet (first run after this refactor).
+    misc_by_handle = load_misc_rows_by_handle()
 
-    if not accounts:
-        LOG.warning("no accounts configured; nothing to ingest")
+    handles = discover_handles(args.handle)
+    # On a --handle run we still want sane behavior even when the handle has
+    # no raw/ dir and no parquet yet (e.g. it's purely a misc reference). The
+    # set produced by discover_handles will include it iff it lives somewhere.
+    if not handles:
+        LOG.warning("no handles found; nothing to ingest")
         write_manifest(build_manifest([]))
         return 0
 
     totals = {"files": 0, "tweets": 0, "rows": 0}
-    for a in accounts:
-        try:
-            f, t, r = ingest_handle(a["handle"])
-            totals["files"] += f
-            totals["tweets"] += t
-            totals["rows"] += r
-        except Exception:
-            LOG.exception("ingest failed for handle", handle=a["handle"])
-            return 2
+    misc_rows: list[dict[str, Any]] = []
+    tracked_results: dict[str, dict[str, dict[str, Any]]] = {}
 
-    manifest = build_manifest(accounts)
+    for handle in sorted(handles):
+        seed = misc_by_handle.get(handle) if handle not in tracked_handles else None
+        if handle in tracked_handles and handle in misc_by_handle:
+            # The handle is newly tracked since the last run — its rows are
+            # currently in _misc.parquet. Seed the merge with them so they
+            # migrate over without losing any archive metadata.
+            seed = misc_by_handle.get(handle)
+        try:
+            f, t, merged = ingest_handle_rows(handle, seed_extra=seed)
+        except Exception:
+            LOG.exception("ingest failed for handle", handle=handle)
+            return 2
+        totals["files"] += f
+        totals["tweets"] += t
+        totals["rows"] += len(merged)
+        if handle in tracked_handles:
+            tracked_results[handle] = merged
+        else:
+            misc_rows.extend(merged.values())
+
+    # --- Write tracked parquets ------------------------------------------
+    for handle, merged in tracked_results.items():
+        df = build_dataframe(list(merged.values())).sort("posted_at", descending=True)
+        out_path = DATA_DIR / f"{handle}.parquet"
+        atomic_write_parquet(df, out_path)
+        LOG.info(
+            "ingested handle (tracked)",
+            handle=handle,
+            rows_written=df.height,
+            out=str(out_path.relative_to(REPO_ROOT)),
+        )
+
+    # --- Write consolidated _misc parquet --------------------------------
+    if not args.handle or args.handle not in tracked_handles:
+        # Skip the misc rewrite when the user asked for just one tracked
+        # handle: we don't have a complete view of misc rows in that path.
+        misc_df = build_dataframe(misc_rows).sort("posted_at", descending=True)
+        misc_path = DATA_DIR / f"{MISC_HANDLE}.parquet"
+        if misc_df.height > 0:
+            atomic_write_parquet(misc_df, misc_path)
+            LOG.info(
+                "ingested _misc",
+                rows_written=misc_df.height,
+                authors=len({str(r.get("account_handle") or "") for r in misc_rows}),
+            )
+        elif misc_path.exists():
+            misc_path.unlink()
+
+        # --- Remove legacy per-handle parquets for non-tracked handles ----
+        # This is what collapses the previous 200-ish per-author files into
+        # the single _misc bucket on the next ingest.
+        for parquet_path in sorted(DATA_DIR.glob("*.parquet")):
+            h = parquet_path.stem
+            if h.startswith("_") or h in tracked_handles:
+                continue
+            parquet_path.unlink()
+            LOG.info("collapsed legacy per-handle parquet into _misc", handle=h)
+
+    # --- Manifest --------------------------------------------------------
+    manifest_accounts: list[dict[str, str]] = [
+        {"handle": h, "label": tracked_labels.get(h, h)} for h in tracked_handles
+    ]
+    if (DATA_DIR / f"{MISC_HANDLE}.parquet").exists():
+        manifest_accounts.append({"handle": MISC_HANDLE, "label": MISC_LABEL})
+    manifest = build_manifest(manifest_accounts)
     write_manifest(manifest)
-    LOG.info("ingest complete", **totals, accounts=len(accounts))
+    LOG.info(
+        "ingest complete",
+        **totals,
+        tracked=len(tracked_results),
+        misc=len(misc_rows),
+    )
     return 0
 
 

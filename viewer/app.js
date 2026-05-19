@@ -98,7 +98,22 @@ els.tipsBtn.addEventListener('click', () => {
   els.tipsBtn.setAttribute('aria-pressed', next ? 'true' : 'false');
 });
 
-// --- Manifest + Database Downloads menu ---
+// --- Manifest + auto-load every account ---
+//
+// The viewer treats the archive as a single combined database — there is
+// no per-account opt-in download. On boot we fetch every parquet listed
+// in the manifest in parallel (bounded by `LOAD_CONCURRENCY`) and merge
+// them into one row set. The "Accounts" dropdown becomes a read-only
+// directory: clicking a handle adds it to the account-filter on the
+// table; clicking again clears it.
+
+const LOAD_CONCURRENCY = 6;
+// Re-render every N completed loads while loading, so the table fills in
+// progressively instead of waiting for the slowest parquet.
+const PROGRESSIVE_REFRESH_EVERY = 10;
+
+let loadProgress = { completed: 0, total: 0, failed: 0 };
+
 async function loadManifest() {
   try {
     const res = await fetch('data/manifest.json', { cache: 'no-store' });
@@ -124,7 +139,14 @@ function paintHdrStats() {
     els.hdrStats.textContent = '';
     return;
   }
-  els.hdrStats.textContent = `${fmtNum(totalRows)} tweets · ${fmtNum(totalMedia)} media · ${accounts.length} account${accounts.length === 1 ? '' : 's'}`;
+  const loading =
+    loadProgress.total > 0 && loadProgress.completed < loadProgress.total
+      ? ` · loading ${fmtNum(loadProgress.completed)} / ${fmtNum(loadProgress.total)}`
+      : '';
+  const failed = loadProgress.failed > 0 ? ` · ${loadProgress.failed} failed` : '';
+  els.hdrStats.textContent =
+    `${fmtNum(totalRows)} tweets · ${fmtNum(totalMedia)} media · ` +
+    `${accounts.length} account${accounts.length === 1 ? '' : 's'}${loading}${failed}`;
 }
 
 function paintDlMenu() {
@@ -138,16 +160,17 @@ function paintDlMenu() {
     els.dlMenu.append(empty);
     return;
   }
+  const heading = document.createElement('div');
+  heading.className = 'muted';
+  heading.style.padding = '4px 6px';
+  heading.style.fontSize = '11px';
+  heading.textContent = 'Click a handle to filter to it; click again to clear.';
+  els.dlMenu.append(heading);
   for (const a of accounts) {
-    const row = document.createElement('label');
-    row.className = 'dl-row';
-    const cb = document.createElement('input');
-    cb.type = 'checkbox';
-    cb.checked = urlState.accounts.includes(a.handle);
-    cb.addEventListener('change', () => {
-      if (cb.checked) selectAccount(a, row);
-      else unselectAccount(a.handle);
-    });
+    const row = document.createElement('button');
+    row.type = 'button';
+    row.className = 'dl-row dl-row-btn';
+    row.dataset.handle = a.handle;
     const handle = document.createElement('span');
     handle.className = 'handle';
     handle.textContent = `@${a.handle}`;
@@ -157,52 +180,79 @@ function paintDlMenu() {
     const count = document.createElement('span');
     count.className = 'count';
     count.textContent = fmtNum(a.row_count);
-    row.dataset.handle = a.handle;
-    row.append(cb, handle, label, count);
+    row.append(handle, label, count);
+    row.addEventListener('click', () => toggleAccountFilter(a.handle));
+    if (urlState.accounts.includes(a.handle)) row.classList.add('active');
     els.dlMenu.append(row);
   }
 }
 
-async function selectAccount(account, rowEl) {
-  if (store.has(account.handle) || LOADING.has(account.handle)) return;
-  LOADING.add(account.handle);
-  rowEl.classList.add('loading');
-  showError(null);
-  try {
-    setSpinner(true);
-    const rows = await loadParquetRows(`data/${account.handle}.parquet`);
-    store.setHandle(account.handle, rows);
-    if (!urlState.accounts.includes(account.handle)) {
-      urlState.accounts.push(account.handle);
-    }
-    applyToUrl(urlState);
-    revealUi();
-    refresh();
-  } catch (err) {
-    showError(`Failed to load ${account.handle}: ${err.message ?? err}`);
-    // Roll back the checkbox.
-    const cb = rowEl.querySelector('input[type=checkbox]');
-    if (cb) cb.checked = false;
-  } finally {
-    LOADING.delete(account.handle);
-    rowEl.classList.remove('loading');
-    setSpinner(false);
+function toggleAccountFilter(handle) {
+  const idx = urlState.accounts.indexOf(handle);
+  if (idx === -1) urlState.accounts.push(handle);
+  else urlState.accounts.splice(idx, 1);
+  urlState.page = 1;
+  applyToUrl(urlState);
+  // Refresh menu highlight + table.
+  for (const el of els.dlMenu.querySelectorAll('.dl-row-btn')) {
+    if (el.dataset.handle === handle) el.classList.toggle('active');
   }
+  refresh();
 }
 
-function unselectAccount(handle) {
-  store.removeHandle(handle);
-  urlState.accounts = urlState.accounts.filter((h) => h !== handle);
-  applyToUrl(urlState);
-  if (store.handles().length === 0) {
-    els.toolbar.hidden = true;
-    els.resultBar.hidden = true;
-    els.tableWrap.hidden = true;
-    els.pager.hidden = true;
-    els.empty.hidden = false;
-  } else {
-    refresh();
+async function loadAllAccounts() {
+  const accounts = manifest?.accounts ?? [];
+  if (accounts.length === 0) return;
+
+  loadProgress = { completed: 0, total: accounts.length, failed: 0 };
+  els.emptyDetail.textContent = `Loading 0 / ${accounts.length} accounts…`;
+  setSpinner(true);
+  paintHdrStats();
+
+  const queue = [...accounts];
+  const inFlight = new Set();
+
+  async function loadOne(account) {
+    try {
+      const rows = await loadParquetRows(`data/${account.handle}.parquet`);
+      // Push without triggering a rebuild per-account; we batch rebuilds
+      // every PROGRESSIVE_REFRESH_EVERY completions for snappier display.
+      store.byHandle.set(account.handle, rows);
+    } catch (err) {
+      loadProgress.failed += 1;
+      console.warn(`[viewer] failed to load ${account.handle}:`, err);
+    } finally {
+      loadProgress.completed += 1;
+      els.emptyDetail.textContent = `Loading ${loadProgress.completed} / ${loadProgress.total} accounts…`;
+      paintHdrStats();
+      if (
+        loadProgress.completed % PROGRESSIVE_REFRESH_EVERY === 0 ||
+        loadProgress.completed === loadProgress.total
+      ) {
+        store.rebuild();
+        revealUi();
+        refresh();
+      }
+    }
   }
+
+  while (queue.length > 0 || inFlight.size > 0) {
+    while (inFlight.size < LOAD_CONCURRENCY && queue.length > 0) {
+      const account = queue.shift();
+      const p = loadOne(account).finally(() => inFlight.delete(p));
+      inFlight.add(p);
+    }
+    if (inFlight.size > 0) await Promise.race(inFlight);
+  }
+
+  setSpinner(false);
+  if (loadProgress.failed > 0) {
+    showError(
+      `Loaded ${loadProgress.total - loadProgress.failed} of ${loadProgress.total} accounts; ${loadProgress.failed} failed (see devtools console).`,
+      10000
+    );
+  }
+  paintHdrStats();
 }
 
 function revealUi() {
@@ -483,26 +533,4 @@ function fmtNum(v) {
 
 // --- Boot ---
 loadTheme();
-loadManifest().then(async () => {
-  // If the URL pre-selected accounts, auto-load them.
-  if (urlState.accounts.length > 0 && manifest?.accounts) {
-    for (const handle of [...urlState.accounts]) {
-      const acc = manifest.accounts.find((a) => a.handle === handle);
-      if (!acc) continue;
-      // Find the matching dl-row for the loading indicator.
-      let rowEl = els.dlMenu.querySelector(`[data-handle="${cssEscape(handle)}"]`);
-      if (!rowEl) {
-        // Fallback synthetic element.
-        rowEl = document.createElement('div');
-      }
-      // Tick the checkbox to keep UI in sync.
-      const cb = rowEl.querySelector?.('input[type=checkbox]');
-      if (cb) cb.checked = true;
-      await selectAccount(acc, rowEl);
-    }
-  }
-});
-
-function cssEscape(s) {
-  return s.replace(/["\\]/g, '\\$&');
-}
+loadManifest().then(() => loadAllAccounts());

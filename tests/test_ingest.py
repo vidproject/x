@@ -224,27 +224,109 @@ def test_release_asset_url_preserved_across_reingest(tmp_repo: Path) -> None:
     assert media_after[0]["sha256"] == "deadbeef"
 
 
-def test_multiple_handles_each_get_parquet(tmp_repo: Path) -> None:
+def test_tracked_handle_gets_own_parquet_non_tracked_consolidates_into_misc(
+    tmp_repo: Path,
+) -> None:
     write_capture(
         tmp_repo,
         "test-handle",
         "a.json",
         make_capture([make_tweet("h1-1", handle="test-handle")]),
     )
-    # Drop a capture for a non-configured handle; ingest should still produce
-    # a parquet for it (handy for ad-hoc captures and tests).
+    # A non-configured handle's capture should be folded into _misc.parquet
+    # rather than getting its own per-handle file. Two non-tracked handles
+    # to confirm they share the same bucket.
     write_capture(
         tmp_repo,
         "extra",
         "a.json",
-        make_capture([make_tweet("h2-1", handle="extra")]),
+        make_capture([make_tweet("h2-1", handle="extra", text="reply A")]),
+    )
+    write_capture(
+        tmp_repo,
+        "another",
+        "a.json",
+        make_capture([make_tweet("h3-1", handle="another", text="reply B")]),
     )
     assert ingest.main([]) == 0
     assert (tmp_repo / "data" / "test-handle.parquet").exists()
-    assert (tmp_repo / "data" / "extra.parquet").exists()
+    assert not (tmp_repo / "data" / "extra.parquet").exists()
+    assert not (tmp_repo / "data" / "another.parquet").exists()
+    misc = pl.read_parquet(tmp_repo / "data" / "_misc.parquet")
+    assert misc.height == 2
+    assert set(misc["account_handle"].to_list()) == {"extra", "another"}
     manifest = json.loads((tmp_repo / "data" / "manifest.json").read_text())
     handles = {a["handle"] for a in manifest["accounts"]}
-    assert handles == {"test-handle", "extra"}
+    assert handles == {"test-handle", "_misc"}
+
+
+def test_legacy_per_handle_parquet_for_untracked_is_collapsed_into_misc(
+    tmp_repo: Path,
+) -> None:
+    """Once the consolidation lands, a stale per-handle parquet for a
+    handle that's not in accounts.yaml gets folded into _misc on the next
+    ingest. Confirms data is preserved across the migration."""
+    # Pre-seed: build an "extra.parquet" the old layout would have produced.
+    write_capture(
+        tmp_repo,
+        "extra",
+        "a.json",
+        make_capture([make_tweet("legacy-1", handle="extra", text="from legacy parquet")]),
+    )
+    assert ingest.main([]) == 0
+    # First run already routes it to _misc since the new code path doesn't
+    # write per-handle files for untracked authors. Hand-create the legacy
+    # parquet to simulate a repo state from before this change.
+    legacy_path = tmp_repo / "data" / "extra.parquet"
+    (tmp_repo / "raw" / "extra").rename(tmp_repo / "raw" / "_extra-stash")
+    misc_df = pl.read_parquet(tmp_repo / "data" / "_misc.parquet")
+    misc_df.write_parquet(legacy_path, compression="zstd")
+    (tmp_repo / "data" / "_misc.parquet").unlink()
+    # Restore raw dir for the next ingest to find.
+    (tmp_repo / "raw" / "_extra-stash").rename(tmp_repo / "raw" / "extra")
+
+    # Now run ingest again — the legacy extra.parquet should get consolidated.
+    assert ingest.main([]) == 0
+    assert not legacy_path.exists(), "legacy untracked parquet should have been removed"
+    misc = pl.read_parquet(tmp_repo / "data" / "_misc.parquet")
+    assert misc.height == 1
+    assert misc["account_handle"][0] == "extra"
+    assert misc["text"][0] == "from legacy parquet"
+
+
+def test_promoting_handle_to_tracked_migrates_rows_out_of_misc(tmp_repo: Path) -> None:
+    """When an account is added to accounts.yaml, its previously-misc rows
+    should migrate to its own parquet (with archive metadata intact)."""
+    # First run: "extra" is not tracked, lands in _misc.
+    write_capture(
+        tmp_repo,
+        "extra",
+        "a.json",
+        make_capture([make_tweet("e1", handle="extra", text="first sighting")]),
+    )
+    assert ingest.main([]) == 0
+    misc = pl.read_parquet(tmp_repo / "data" / "_misc.parquet")
+    assert misc.height == 1
+
+    # Promote: add "extra" to accounts.yaml.
+    (tmp_repo / "config" / "accounts.yaml").write_text(
+        "accounts:\n"
+        "  - handle: test-handle\n    label: Test Handle\n"
+        "  - handle: extra\n    label: Promoted Account\n",
+        encoding="utf-8",
+    )
+    assert ingest.main([]) == 0
+    assert (tmp_repo / "data" / "extra.parquet").exists()
+    extra_df = pl.read_parquet(tmp_repo / "data" / "extra.parquet")
+    assert extra_df.height == 1
+    assert extra_df["text"][0] == "first sighting"
+    # _misc should no longer contain the migrated handle's rows.
+    misc_after = (
+        pl.read_parquet(tmp_repo / "data" / "_misc.parquet")
+        if (tmp_repo / "data" / "_misc.parquet").exists()
+        else None
+    )
+    assert misc_after is None or "extra" not in misc_after["account_handle"].to_list()
 
 
 def test_media_never_dropped_when_later_payload_returns_fewer(tmp_repo: Path) -> None:
