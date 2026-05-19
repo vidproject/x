@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "01KS0T5887N910XERQX5",
+  "account_handle": "USBPChiefDTM",
+  "captured_at": "2026-05-19T19:07:43.055Z",
+  "endpoint": "UserTweets",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0",
+  "source_url": "https://x.com/i/api/graphql/D5eKzDa5ZoJuC1TCeAXbWA/UserTweetsAndReplies?variables=%7B%22userId%22%3A%2216613128%22%2C%22count%22%3A20%2C%22cursor%22%3A%22DAAHCgABHItFYxY__-sLAAIAAAATMjA1NDk0MDYzMjMzNDkyOTk3MAgAAwAAAAIAAA%22%2C%22includePromotedContent%22%3Atrue%2C%22withCommunity%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_video_screen_enabled%22%3Afalse%2C%22rweb_cashtags_enabled%22%3Atrue%2C%22profile_label_improvements_pcf_label_in_post_enabled%22%3Atrue%2C%22responsive_web_profile_redirect_enabled%22%3Afalse%2C%22rweb_tipjar_consumption_enabled%22%3Afalse%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22premium_content_api_read_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22responsive_web_grok_analyze_button_fetch_trends_enabled%22%3Afalse%2C%22responsive_web_grok_analyze_post_followups_enabled%22%3Atrue%2C%22rweb_cashtags_composer_attachment_enabled%22%3Atrue%2C%22responsive_web_jetfuel_frame%22%3Atrue%2C%22responsive_web_grok_share_attachment_enabled%22%3Atrue%2C%22responsive_web_grok_annotations_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22rweb_conversational_replies_downvote_enabled%22%3Afalse%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22content_disclosure_indicator_enabled%22%3Atrue%2C%22content_disclosure_ai_generated_indicator_enabled%22%3Atrue%2C%22responsive_web_grok_show_grok_translated_post%22%3Atrue%2C%22responsive_web_grok_analysis_button_from_backend%22%3Atrue%2C%22post_ctas_fetch_enabled%22%3Atrue%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Afalse%2C%22responsive_web_grok_image_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_imagine_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_community_note_auto_translation_is_enabled%22%3Atrue%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticlePlainText%22%3Afalse%7D",
+  "tweets": [
+    {
+      "tweet_id": "2053475211983413452",
+      "account_handle": "USBPChiefDTM",
+      "account_id": "1207053431447441409",
+      "posted_at": "2026-05-10T14:00:16.000Z",
+      "first_captured_at": "2026-05-19T19:07:17.415Z",
+      "last_seen_at": "2026-05-19T19:07:17.415Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/USBPChiefDTM/status/2053475211983413452",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Police Week 2026 Honoring Our Fallen https://t.co/p3w056VEYD",
+      "text_resolved": "Police Week 2026 Honoring Our Fallen https://t.co/p3w056VEYD",
+      "lang": "en",
+      "hashtags": [],
+      "mentions": [],
+      "urls": [],
+      "media": [
+        {
+          "media_id": "7_2053474027528753155",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/2053474027528753155/pu/vid/avc1/1280x720/oH5dUpuaS3Ul1O7A.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 53.041,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 27,
+      "retweet_count": 6,
+      "reply_count": 1,
+      "quote_count": 1,
+      "view_count": 6707,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T19:07:17.415Z",
+          "likes": 27,
+          "retweets": 6,
+          "replies": 1,
+          "quotes": 1,
+          "views": 6707,
+          "bookmarks": 1
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0T5887N910XERQX5",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2049912107089399991",
+      "account_handle": "USBPChiefDTM",
+      "account_id": "1207053431447441409",
+      "posted_at": "2026-04-30T18:01:46.000Z",
+      "first_captured_at": "2026-05-19T19:07:33.880Z",
+      "last_seen_at": "2026-05-19T19:07:33.880Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/USBPChiefDTM/status/2049912107089399991",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "A Detroit area restaurant owner has been indicted &amp; arrested for immigration fraud, and hiring &amp; harboring 17 illegal aliens.\n\nFull story:\nhttps://t.co/FikYv9syT5\n\n#DetroitSector #BorderPatrol #BorderSecurity https://t.co/Codaph3LGP",
+      "text_resolved": "A Detroit area restaurant owner has been indicted &amp; arrested for immigration fraud, and hiring &amp; harboring 17 illegal aliens.\n\nFull story:\nhttps://ow.ly/s0M250YR2gq\n\n#DetroitSector #BorderPatrol #BorderSecurity https://t.co/Codaph3LGP",
+      "lang": "en",
+      "hashtags": [
+        "DetroitSector",
+        "BorderPatrol",
+        "BorderSecurity"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/FikYv9syT5",
+          "expanded": "https://ow.ly/s0M250YR2gq",
+          "display": "ow.ly/s0M250YR2gq"
+        }
+      ],
+      "media": [
+        {
+          "media_id": "3_2049912104342237184",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HHLAMrAXsAAqpJz.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1350,
+          "height": 900,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 165,
+      "retweet_count": 44,
+      "reply_count": 18,
+      "quote_count": 2,
+      "view_count": 4434,
+      "bookmark_count": 3,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T19:07:33.880Z",
+          "likes": 165,
+          "retweets": 44,
+          "replies": 18,
+          "quotes": 2,
+          "views": 4434,
+          "bookmarks": 3
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0T5887N910XERQX5",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2039779984680558616",
+      "account_handle": "USBPChiefDTM",
+      "account_id": "1207053431447441409",
+      "posted_at": "2026-04-02T19:00:20.000Z",
+      "first_captured_at": "2026-05-19T19:07:43.055Z",
+      "last_seen_at": "2026-05-19T19:07:43.055Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/USBPChiefDTM/status/2039779984680558616",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "#TBT Inspecting freight trains in the Detroit area.\n\n#DetroitSector #BorderPatrol #BorderSecurity https://t.co/O4v644MLkt",
+      "text_resolved": "#TBT Inspecting freight trains in the Detroit area.\n\n#DetroitSector #BorderPatrol #BorderSecurity https://t.co/O4v644MLkt",
+      "lang": "en",
+      "hashtags": [
+        "TBT",
+        "DetroitSector",
+        "BorderPatrol",
+        "BorderSecurity"
+      ],
+      "mentions": [],
+      "urls": [],
+      "media": [
+        {
+          "media_id": "3_2039779982004637696",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HE7BFh9W0AAfQKg.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 2048,
+          "height": 1616,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 16,
+      "retweet_count": 2,
+      "reply_count": 0,
+      "quote_count": 1,
+      "view_count": 4718,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T19:07:43.055Z",
+          "likes": 16,
+          "retweets": 2,
+          "replies": 0,
+          "quotes": 1,
+          "views": 4718,
+          "bookmarks": 1
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0T5887N910XERQX5",
+      "schema_version": 1
+    }
+  ]
+}
