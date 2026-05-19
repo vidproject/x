@@ -215,14 +215,18 @@ export async function setCommittedIndex(
  * tweet is "materially different" from what we last committed. We omit
  * view_count because it ticks up frequently on active tweets and would
  * defeat the dedup. Likes / RTs / replies / quotes change rarely enough that
- * each change is worth a re-commit (and an engagement_history snapshot). */
+ * each change is worth a re-commit (and an engagement_history snapshot).
+ * `is_truncated` is folded in so a refetch that swaps the 280-char head for
+ * the full `note_tweet` body bypasses the dedup even when engagement counts
+ * haven't moved — otherwise the new body would be silently dropped. */
 export function engagementSig(
   likes: number,
   retweets: number,
   replies: number,
-  quotes: number
+  quotes: number,
+  isTruncated: boolean = false
 ): string {
-  return `${likes}|${retweets}|${replies}|${quotes}`;
+  return `${likes}|${retweets}|${replies}|${quotes}|${isTruncated ? 't' : 'f'}`;
 }
 
 /** Drop entries older than `maxAgeMs`. Returns the number pruned. */

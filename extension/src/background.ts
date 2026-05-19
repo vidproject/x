@@ -452,16 +452,37 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
 
   if (normalized.tweets.length === 0) return;
 
+  // Refetch queue housekeeping — runs BEFORE the dedup short-circuit. A
+  // refetch capture comes back with the same engagement counts (we're
+  // only after the full text), so the dedup below would silently drop
+  // it and the queue would never drain. Hoist the enqueue/dequeue here
+  // so the loop reliably advances even when no commit happens.
+  for (const t of normalized.tweets) {
+    if (t.is_truncated) {
+      await enqueueRefetch(t.account_handle, t.tweet_id);
+    } else {
+      await dequeueRefetch(t.account_handle, t.tweet_id);
+    }
+  }
+
   // Cross-session dedup: drop tweets we've already committed with identical
   // engagement counts. Likes/RTs/replies/quotes still trigger a recapture
   // so engagement_history grows over time. view_count is intentionally
   // excluded — it churns too fast to be useful as a freshness signal.
+  // `is_truncated` is part of the signature so a refetch that flips
+  // truncated→full is treated as a material change and gets committed.
   const committedIdx = await getCommittedIndex();
   let dedupedSkipped = 0;
   const liveTweets: typeof normalized.tweets = [];
   for (const t of normalized.tweets) {
     const prev = committedIdx[t.account_handle]?.[t.tweet_id];
-    const sig = engagementSig(t.like_count, t.retweet_count, t.reply_count, t.quote_count);
+    const sig = engagementSig(
+      t.like_count,
+      t.retweet_count,
+      t.reply_count,
+      t.quote_count,
+      t.is_truncated
+    );
     if (prev && prev.sig === sig) {
       dedupedSkipped += 1;
       continue;
@@ -476,18 +497,6 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
     });
   }
   if (liveTweets.length === 0) return;
-
-  // Refetch queue housekeeping: a tweet that comes back here with
-  // is_truncated=false means we successfully grabbed its full body (e.g.
-  // from a TweetDetail capture), so drop it from the queue. The reverse —
-  // is_truncated=true — gets enqueued so the user can drive a refetch loop.
-  for (const t of liveTweets) {
-    if (t.is_truncated) {
-      await enqueueRefetch(t.account_handle, t.tweet_id);
-    } else {
-      await dequeueRefetch(t.account_handle, t.tweet_id);
-    }
-  }
 
   // Group surviving tweets by author handle.
   const byHandle = new Map<string, CanonicalTweet[]>();
@@ -677,7 +686,13 @@ async function flushHandle(handle: string, reason: string): Promise<void> {
       for (const t of tweets) {
         inner[t.tweet_id] = {
           ts: nowIso,
-          sig: engagementSig(t.like_count, t.retweet_count, t.reply_count, t.quote_count),
+          sig: engagementSig(
+            t.like_count,
+            t.retweet_count,
+            t.reply_count,
+            t.quote_count,
+            t.is_truncated
+          ),
         };
       }
       idx[handle] = inner;
@@ -842,6 +857,18 @@ async function captureThisPage(): Promise<void> {
 // tab-storm.
 
 const REFETCH_TAB_KEY = '__imm_archive_refetch_tab_id__';
+const REFETCH_LAST_KEY = '__imm_archive_refetch_last__';
+// Hard cap on attempts against any single target. Even with the dequeue
+// hoisted above the engagement-sig dedup, a page that never lets the
+// page-hook see a TweetDetail payload (CSP weirdness, login wall,
+// extension reload) would otherwise spin forever on the same tweet.
+const REFETCH_MAX_ATTEMPTS_PER_TARGET = 3;
+
+interface RefetchLastAttempt {
+  handle: string;
+  tweetId: string;
+  attempts: number;
+}
 
 async function getRefetchTabId(): Promise<number | null> {
   const stored = await browser.storage.local.get(REFETCH_TAB_KEY);
@@ -855,6 +882,17 @@ async function setRefetchTabId(id: number | null): Promise<void> {
   } else {
     await browser.storage.local.set({ [REFETCH_TAB_KEY]: id });
   }
+}
+
+async function getRefetchLast(): Promise<RefetchLastAttempt | null> {
+  const stored = await browser.storage.local.get(REFETCH_LAST_KEY);
+  const v = stored[REFETCH_LAST_KEY];
+  return v && typeof v === 'object' ? (v as RefetchLastAttempt) : null;
+}
+
+async function setRefetchLast(v: RefetchLastAttempt | null): Promise<void> {
+  if (v === null) await browser.storage.local.remove(REFETCH_LAST_KEY);
+  else await browser.storage.local.set({ [REFETCH_LAST_KEY]: v });
 }
 
 async function startRefetchLoop(): Promise<void> {
@@ -881,6 +919,7 @@ async function cancelRefetchLoop(): Promise<void> {
   await browser.alarms.clear('refetch-tick');
   const tabId = await getRefetchTabId();
   await setRefetchTabId(null);
+  await setRefetchLast(null);
   await info('refetch loop cancelled', { had_tab: tabId !== null });
   await broadcastState();
 }
@@ -890,10 +929,38 @@ async function refetchTick(): Promise<void> {
   if (!target) {
     await browser.alarms.clear('refetch-tick');
     await setRefetchTabId(null);
+    await setRefetchLast(null);
     await info('refetch loop complete');
     await broadcastState();
     return;
   }
+
+  // Attempt-counter safeguard: if the queue head hasn't changed since the
+  // previous tick we're stuck. After REFETCH_MAX_ATTEMPTS_PER_TARGET tries
+  // we drop the target so the loop moves on instead of refreshing the same
+  // page indefinitely.
+  const last = await getRefetchLast();
+  let attempts = 1;
+  if (last && last.handle === target.handle && last.tweetId === target.tweetId) {
+    attempts = last.attempts + 1;
+  }
+  if (attempts > REFETCH_MAX_ATTEMPTS_PER_TARGET) {
+    await warn('refetch: target stuck, dropping after retries', {
+      handle: target.handle,
+      tweet_id: target.tweetId,
+      attempts: attempts - 1,
+    });
+    await dequeueRefetch(target.handle, target.tweetId);
+    await setRefetchLast(null);
+    await broadcastState();
+    return; // Next alarm tick picks the new head.
+  }
+  await setRefetchLast({
+    handle: target.handle,
+    tweetId: target.tweetId,
+    attempts,
+  });
+
   const url = `https://x.com/${target.handle}/status/${target.tweetId}`;
   let tabId = await getRefetchTabId();
   // Confirm the tab still exists; recreate if the user closed it.
@@ -914,6 +981,7 @@ async function refetchTick(): Promise<void> {
     await info('refetch tick', {
       handle: target.handle,
       tweet_id: target.tweetId,
+      attempt: attempts,
       remaining: await refetchQueueTotal(),
     });
   } catch (err) {
@@ -924,6 +992,7 @@ async function refetchTick(): Promise<void> {
     });
     // Skip this one so we don't get stuck.
     await dequeueRefetch(target.handle, target.tweetId);
+    await setRefetchLast(null);
   }
   await broadcastState();
 }
