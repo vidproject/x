@@ -42,11 +42,11 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 
 | Handle | Label | Tweets | First post | Latest post | Latest capture | Media | Videos |
 | ------ | ----- | -----: | ---------- | ----------- | -------------- | ----: | -----: |
-| `@DHSgov` | Department of Homeland Security | 717 | 2025-11-27 | 2026-05-19 | 2026-05-19 | 433 | 186 |
+| `@DHSgov` | Department of Homeland Security | 735 | 2025-09-24 | 2026-05-19 | 2026-05-19 | 452 | 188 |
 | `@ICEgov` | U.S. Immigration and Customs Enforcement | 34 | 2025-11-28 | 2026-05-19 | 2026-05-19 | 27 | 7 |
-| `@CBP` | U.S. Customs and Border Protection | 25 | 2026-04-18 | 2026-05-19 | 2026-05-19 | 13 | 5 |
-| `@USCIS` | U.S. Citizenship and Immigration Services | 207 | 2025-11-20 | 2026-05-18 | 2026-05-19 | 118 | 13 |
-| `@WhiteHouse` | The White House | 163 | 2025-12-04 | 2026-05-19 | 2026-05-19 | 151 | 35 |
+| `@CBP` | U.S. Customs and Border Protection | 200 | 2026-03-19 | 2026-05-19 | 2026-05-19 | 91 | 20 |
+| `@USCIS` | U.S. Citizenship and Immigration Services | 359 | 2025-09-15 | 2026-05-18 | 2026-05-19 | 220 | 34 |
+| `@WhiteHouse` | The White House | 166 | 2025-09-19 | 2026-05-19 | 2026-05-19 | 154 | 36 |
 | `@PressSec` | White House Press Secretary | 89 | 2025-11-26 | 2026-05-15 | 2026-05-19 | 10 | 3 |
 | `@POTUS` | President of the United States | 81 | 2025-01-20 | 2026-05-15 | 2026-05-19 | 33 | 11 |
 | `@USDOL` | U.S. Department of Labor | 297 | 2026-01-21 | 2026-05-19 | 2026-05-19 | 137 | 19 |
@@ -72,10 +72,14 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@BrasfieldAshley` | BrasfieldAshley | 1 | 2026-02-13 | 2026-02-13 | 2026-05-19 | 1 | 0 |
 | `@Breaking911` | Breaking911 | 1 | 2026-04-07 | 2026-04-07 | 2026-05-19 | 1 | 1 |
 | `@Brooketaylortv` | Brooketaylortv | 1 | 2026-05-13 | 2026-05-13 | 2026-05-19 | 1 | 0 |
-| `@CBPAMO` | CBPAMO | 2 | 2026-04-29 | 2026-05-12 | 2026-05-19 | 5 | 0 |
+| `@CBPAMO` | CBPAMO | 11 | 2026-03-19 | 2026-05-12 | 2026-05-19 | 17 | 4 |
 | `@CBPAMORegDirSE` | CBPAMORegDirSE | 1 | 2026-04-29 | 2026-04-29 | 2026-05-19 | 1 | 0 |
-| `@CBPCommissioner` | CBPCommissioner | 4 | 2026-04-11 | 2026-05-15 | 2026-05-19 | 2 | 1 |
+| `@CBPAMORegDirSW` | CBPAMORegDirSW | 4 | 2026-03-19 | 2026-04-29 | 2026-05-19 | 9 | 2 |
+| `@CBPChicago` | CBPChicago | 2 | 2026-03-30 | 2026-04-03 | 2026-05-19 | 4 | 0 |
+| `@CBPCommissioner` | CBPCommissioner | 10 | 2026-03-24 | 2026-05-15 | 2026-05-19 | 7 | 2 |
+| `@CBPJobs` | CBPJobs | 1 | 2026-04-08 | 2026-04-08 | 2026-05-19 | 1 | 1 |
 | `@CBPLSSAC` | CBPLSSAC | 1 | 2026-04-10 | 2026-04-10 | 2026-05-19 | 3 | 0 |
+| `@CBPPortDirNOG` | CBPPortDirNOG | 1 | 2026-04-13 | 2026-04-13 | 2026-05-19 | 1 | 1 |
 | `@CBPTradeGov` | CBPTradeGov | 2 | 2026-04-10 | 2026-05-13 | 2026-05-19 | 4 | 1 |
 | `@CBSMornings` | CBSMornings | 1 | 2026-04-29 | 2026-04-29 | 2026-05-19 | 1 | 1 |
 | `@CBSNews` | CBSNews | 3 | 2026-04-22 | 2026-04-30 | 2026-05-19 | 1 | 1 |
@@ -83,10 +87,12 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@Chaznolan` | Chaznolan | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 0 | 0 |
 | `@ChrisVanHollen` | ChrisVanHollen | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 2 | 0 |
 | `@Curt50542` | Curt50542 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
-| `@DFOBaltimore` | DFOBaltimore | 1 | 2026-05-05 | 2026-05-05 | 2026-05-19 | 1 | 0 |
+| `@DFOBaltimore` | DFOBaltimore | 2 | 2026-04-06 | 2026-05-05 | 2026-05-19 | 2 | 1 |
+| `@DFOChicago` | DFOChicago | 4 | 2026-03-23 | 2026-04-29 | 2026-05-19 | 14 | 0 |
 | `@DFODetroit` | DFODetroit | 1 | 2026-04-27 | 2026-04-27 | 2026-05-19 | 1 | 1 |
 | `@DFOLosAngeles` | DFOLosAngeles | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 1 | 1 |
 | `@DFONewYork` | DFONewYork | 4 | 2026-04-02 | 2026-05-04 | 2026-05-19 | 6 | 1 |
+| `@DFOSanDiegoCA` | DFOSanDiegoCA | 1 | 2026-03-20 | 2026-03-20 | 2026-05-19 | 1 | 1 |
 | `@DOLOIG` | DOLOIG | 3 | 2026-05-02 | 2026-05-14 | 2026-05-19 | 3 | 3 |
 | `@DOWResponse` | DOWResponse | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 1 | 0 |
 | `@DailyCaller` | DailyCaller | 2 | 2026-04-08 | 2026-04-24 | 2026-05-19 | 0 | 0 |
@@ -152,7 +158,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@NWS` | NWS | 1 | 2026-01-23 | 2026-01-23 | 2026-05-19 | 1 | 0 |
 | `@NickMinock` | NickMinock | 2 | 2026-03-31 | 2026-04-23 | 2026-05-19 | 1 | 1 |
 | `@OANN` | OANN | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 1 |
-| `@OFOEAC` | OFOEAC | 4 | 2026-05-14 | 2026-05-18 | 2026-05-19 | 8 | 2 |
+| `@OFOEAC` | OFOEAC | 12 | 2026-03-18 | 2026-05-18 | 2026-05-19 | 21 | 6 |
 | `@OSHA_DOL` | OSHA_DOL | 2 | 2026-01-23 | 2026-04-28 | 2026-05-19 | 1 | 0 |
 | `@OffThePress1` | OffThePress1 | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 1 |
 | `@PatAdams96` | PatAdams96 | 4 | 2026-04-27 | 2026-04-29 | 2026-05-19 | 4 | 3 |
@@ -189,15 +195,18 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@TheBuffaloNews` | TheBuffaloNews | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 0 | 0 |
 | `@TheJusticeDept` | TheJusticeDept | 1 | 2026-04-30 | 2026-04-30 | 2026-05-19 | 2 | 0 |
 | `@USAO_SDFL` | USAO_SDFL | 1 | 2026-03-17 | 2026-03-17 | 2026-05-19 | 1 | 0 |
-| `@USBPChief` | USBPChief | 1 | 2026-05-01 | 2026-05-01 | 2026-05-19 | 1 | 1 |
+| `@USBPChief` | USBPChief | 7 | 2026-03-28 | 2026-05-01 | 2026-05-19 | 7 | 6 |
 | `@USBPChiefDTM` | USBPChiefDTM | 5 | 2026-04-02 | 2026-05-19 | 2026-05-19 | 5 | 1 |
 | `@USBPChiefELC` | USBPChiefELC | 2 | 2026-04-19 | 2026-05-18 | 2026-05-19 | 3 | 1 |
+| `@USBPChiefEPT` | USBPChiefEPT | 3 | 2026-03-26 | 2026-04-27 | 2026-05-19 | 3 | 3 |
+| `@USBPChiefLRT` | USBPChiefLRT | 1 | 2026-03-25 | 2026-03-25 | 2026-05-19 | 1 | 0 |
 | `@USBPChiefRGV` | USBPChiefRGV | 1 | 2026-04-22 | 2026-04-22 | 2026-05-19 | 1 | 1 |
 | `@USBPChiefSDC` | USBPChiefSDC | 3 | 2026-04-02 | 2026-04-27 | 2026-05-19 | 3 | 2 |
 | `@USBPChiefSPW` | USBPChiefSPW | 3 | 2026-04-13 | 2026-05-11 | 2026-05-19 | 3 | 0 |
+| `@USBPChiefYUM` | USBPChiefYUM | 1 | 2026-04-13 | 2026-04-13 | 2026-05-19 | 1 | 0 |
 | `@USCG` | USCG | 4 | 2026-03-30 | 2026-05-14 | 2026-05-19 | 8 | 1 |
-| `@USCGSoutheast` | USCGSoutheast | 3 | 2026-04-24 | 2026-05-12 | 2026-05-19 | 9 | 2 |
-| `@USCISJoe` | USCISJoe | 17 | 2025-11-27 | 2026-05-09 | 2026-05-19 | 13 | 13 |
+| `@USCGSoutheast` | USCGSoutheast | 4 | 2026-03-21 | 2026-05-12 | 2026-05-19 | 10 | 2 |
+| `@USCISJoe` | USCISJoe | 21 | 2025-09-09 | 2026-05-09 | 2026-05-19 | 18 | 13 |
 | `@USDOJ_Intl` | USDOJ_Intl | 1 | 2026-04-15 | 2026-04-15 | 2026-05-19 | 0 | 0 |
 | `@USLaborIG` | USLaborIG | 4 | 2026-02-04 | 2026-05-19 | 2026-05-19 | 3 | 2 |
 | `@USOPM` | USOPM | 1 | 2026-03-30 | 2026-03-30 | 2026-05-19 | 1 | 1 |
@@ -240,11 +249,12 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@unlimited_ls` | unlimited_ls | 1 | 2026-04-07 | 2026-04-07 | 2026-05-19 | 1 | 1 |
 | `@uscgfmsg` | uscgfmsg | 1 | 2026-04-07 | 2026-04-07 | 2026-05-19 | 4 | 0 |
 | `@usedgov` | usedgov | 2 | 2026-05-11 | 2026-05-18 | 2026-05-19 | 1 | 0 |
+| `@usembassytokyo` | usembassytokyo | 1 | 2026-03-26 | 2026-03-26 | 2026-05-19 | 1 | 0 |
 | `@vinekpr` | vinekpr | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@vlast98230` | vlast98230 | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 1 | 0 |
 | `@washingtonpost` | washingtonpost | 3 | 2026-05-08 | 2026-05-13 | 2026-05-19 | 1 | 1 |
 
-_Generated 2026-05-19T19:09:36Z._
+_Generated 2026-05-19T19:11:02Z._
 
 <!-- COVERAGE:END -->
 
