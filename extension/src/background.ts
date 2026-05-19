@@ -236,21 +236,24 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
   }
 
   // Diagnostic: every tweet-endpoint payload gets a line in the activity
-  // tail with what we saw vs kept. Helps distinguish three failure modes:
-  //   - 0 observed → X returned an empty timeline (login wall / guest tier
-  //                  / unexpected envelope shape)
-  //   - N observed, 0 kept → tweets present but none authored by tracked
-  //                          handles (timeline contains other accounts)
-  //   - N observed, M kept → captured (the normal happy path)
-  await info('graphql payload seen', {
-    endpoint,
-    observed: normalized.observed_ids.length,
-    kept: normalized.tweets.length,
-    response_keys:
-      typeof response === 'object' && response !== null
-        ? Object.keys(response).slice(0, 8)
-        : typeof response,
-  });
+  // tail with what we saw vs kept. When observed=0 we also emit a shape
+  // probe (key paths + typenames) so we can tell whether X returned an
+  // empty envelope, a login-wall response, or a new shape we don't know how
+  // to walk yet.
+  if (normalized.observed_ids.length === 0) {
+    await info('graphql payload empty — shape probe', {
+      endpoint,
+      key_paths: probeKeyPaths(response, 4).slice(0, 40),
+      typenames: probeTypenames(response).slice(0, 30),
+      has_errors: hasErrorsField(response),
+    });
+  } else {
+    await info('graphql payload seen', {
+      endpoint,
+      observed: normalized.observed_ids.length,
+      kept: normalized.tweets.length,
+    });
+  }
 
   if (normalized.tweets.length === 0) return;
 
@@ -706,6 +709,62 @@ function isoCompact(iso: string): string {
 
 function viewerUrl(s: Settings): string {
   return `https://${s.owner}.github.io/${s.repo}/`;
+}
+
+/**
+ * Walk `node` collecting dotted key paths up to `maxDepth` deep. Array
+ * indices collapse to `[0]` (we only descend into the first element). Used
+ * to surface the structural skeleton of an unfamiliar GraphQL response
+ * without including any data values.
+ */
+function probeKeyPaths(node: unknown, maxDepth: number): string[] {
+  const out: string[] = [];
+  function walk(n: unknown, depth: number, prefix: string): void {
+    if (depth > maxDepth || n === null || typeof n !== 'object') return;
+    if (Array.isArray(n)) {
+      out.push(`${prefix}[len=${n.length}]`);
+      if (n.length > 0) walk(n[0], depth + 1, `${prefix}[0]`);
+      return;
+    }
+    for (const k of Object.keys(n as Record<string, unknown>)) {
+      const path = prefix ? `${prefix}.${k}` : k;
+      out.push(path);
+      walk((n as Record<string, unknown>)[k], depth + 1, path);
+    }
+  }
+  walk(node, 0, '');
+  return out;
+}
+
+/** Collect every distinct `__typename` value found anywhere in the tree. */
+function probeTypenames(node: unknown): string[] {
+  const seen = new Set<string>();
+  const visited = new WeakSet<object>();
+  const stack: unknown[] = [node];
+  while (stack.length > 0) {
+    const n = stack.pop();
+    if (n === null || typeof n !== 'object') continue;
+    if (visited.has(n as object)) continue;
+    visited.add(n as object);
+    if (Array.isArray(n)) {
+      for (const v of n) stack.push(v);
+    } else {
+      const obj = n as Record<string, unknown>;
+      if (typeof obj.__typename === 'string') seen.add(obj.__typename);
+      for (const v of Object.values(obj)) stack.push(v);
+    }
+  }
+  return [...seen].sort();
+}
+
+/** True if the response has a top-level `errors` array, GraphQL-style. */
+function hasErrorsField(node: unknown): boolean {
+  return (
+    typeof node === 'object' &&
+    node !== null &&
+    Array.isArray((node as Record<string, unknown>).errors) &&
+    (node as { errors: unknown[] }).errors.length > 0
+  );
 }
 
 function shortenUrl(u: string): string {
