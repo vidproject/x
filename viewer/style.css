@@ -409,6 +409,15 @@ body {
   background: rgba(138, 146, 156, 0.18);
   color: var(--fg-2);
 }
+.pill.cn {
+  background: rgba(225, 176, 74, 0.2);
+  color: var(--warn);
+  font-weight: 600;
+}
+.pill.trunc {
+  background: rgba(192, 57, 43, 0.18);
+  color: var(--err);
+}
 .media-flags {
   display: inline-flex;
   gap: 4px;
@@ -580,6 +589,20 @@ body {
 }
 .sp-media .m .meta {
   color: var(--fg-3);
+}
+.sp-badge {
+  margin-top: 6px;
+  padding: 6px 8px;
+  font-size: 11px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  color: var(--fg-2);
+}
+.sp-badge.warn {
+  border-color: rgba(225, 176, 74, 0.5);
+  background: rgba(225, 176, 74, 0.12);
+  color: var(--fg);
 }
 
 .col-pop {

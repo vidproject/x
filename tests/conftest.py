@@ -33,6 +33,8 @@ def make_tweet(
     quoted_tweet_id: str | None = None,
     retweeted_tweet_id: str | None = None,
     deletion_detected_at: str | None = None,
+    community_note: dict[str, Any] | None = None,
+    is_truncated: bool = False,
 ) -> dict[str, Any]:
     return {
         "tweet_id": tweet_id,
@@ -72,6 +74,8 @@ def make_tweet(
                 "bookmarks": None,
             }
         ],
+        "community_note": community_note,
+        "is_truncated": is_truncated,
         "wayback_url": None,
         "wayback_submitted_at": None,
         "capture_source": "extension",

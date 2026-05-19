@@ -4,7 +4,9 @@ A public, append-only archive of social-media posts (especially videos) publishe
 
 This is journalism / public-records work. Capture happens via the publicly visible web only — no X Developer Agreement, no X API credentials. The repository itself is the database: structured tweet JSON is committed by a Firefox extension, ingested by GitHub Actions into per-account Parquet files, mirrored to GitHub Releases for media, and served as a static GitHub Pages viewer.
 
-**[Open the searchable archive →](https://vidproject.github.io/x/)** _(live once Phase 3 completes)_
+**[Open the searchable archive →](https://vidproject.github.io/x/)**
+
+The viewer is published to GitHub Pages by `.github/workflows/pages.yml` on every push to `master` that touches `index.html`, `viewer/**`, or `data/**`. Repo settings need **Pages → Build and deployment → Source: GitHub Actions** for the workflow to actually deploy.
 
 ## How to use the viewer
 
@@ -22,6 +24,14 @@ The extension captures public X posts from the configured accounts as you browse
 Firefox removes temporary add-ons when it closes — reinstalling takes about ten seconds.
 
 If you reload the extension while X tabs are already open, those tabs keep their old content scripts; the new build only takes full effect on tabs opened after the reload. The extension does re-inject its page-hook into existing tabs on every wake, but the cleanest behaviour is to close X tabs before reloading and let `Capture now` open a fresh one.
+
+### Auto-scroll (replies-tab pagination workaround)
+
+The Replies tab on a profile (`UserTweetsAndReplies`) silently stops paginating after a few hundred entries — X de-prioritizes deep anonymous pagination there. The sidebar has an **Auto-scroll** toggle and an interval slider (3–60s, default 6s): when enabled, the background worker presses **End** + scrolls to the bottom on every open `x.com` / `twitter.com` tab on that cadence, which keeps the intersection observer triggering and pulls fresh GraphQL batches. Open multiple replies tabs side-by-side and they'll all be advanced together.
+
+### Refetching truncated long-form tweets
+
+Long tweets (Premium "notes" — up to 25k chars) often come back from timeline endpoints as just the 280-char head with a `https://t.co/…` "show more" link tacked on; only the per-tweet detail page returns the full `note_tweet` body. The normalizer detects this case (`is_truncated=true`) and adds the tweet to a refetch queue. The sidebar surfaces a count and a **Start refetch** button: the worker drives one dedicated tab through the queue at the auto-scroll cadence, so each tweet's detail page loads and the page-hook captures the full body. Once full text arrives the tweet drops off the queue automatically.
 
 ### Generating the right PAT
 

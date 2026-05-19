@@ -48,6 +48,17 @@ ENGAGEMENT_STRUCT = pl.Struct(
     ]
 )
 
+COMMUNITY_NOTE_STRUCT = pl.Struct(
+    [
+        pl.Field("note_id", pl.Utf8),
+        pl.Field("title", pl.Utf8),
+        pl.Field("short_title", pl.Utf8),
+        pl.Field("summary", pl.Utf8),
+        pl.Field("destination_url", pl.Utf8),
+        pl.Field("observed_at", pl.Utf8),
+    ]
+)
+
 TWEET_SCHEMA: dict[str, Any] = {
     "tweet_id": pl.Utf8,
     "account_handle": pl.Utf8,
@@ -76,6 +87,8 @@ TWEET_SCHEMA: dict[str, Any] = {
     "view_count": pl.Int64,
     "bookmark_count": pl.Int64,
     "engagement_history": pl.List(ENGAGEMENT_STRUCT),
+    "community_note": COMMUNITY_NOTE_STRUCT,
+    "is_truncated": pl.Boolean,
     "wayback_url": pl.Utf8,
     "wayback_submitted_at": pl.Utf8,
     "capture_source": pl.Utf8,

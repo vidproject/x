@@ -10,6 +10,12 @@ export interface Settings {
   branch: string;
   autoCapture: boolean;
   configuredAt: number | null;
+  /** When true, the background periodically scrolls all open x.com tabs to
+   * the bottom — works around X de-prioritizing deep pagination on the
+   * `with_replies` tab. */
+  autoScroll: boolean;
+  /** Seconds between auto-scroll ticks (clamped 3..60 in the UI). */
+  autoScrollIntervalSec: number;
 }
 
 export type ConnectionStatus =
@@ -67,6 +73,21 @@ export interface EngagementSnapshot {
 
 export type TweetType = 'original' | 'retweet' | 'quote' | 'reply';
 
+export interface CommunityNote {
+  /** ID of the Community Note (formerly Birdwatch note). */
+  note_id: string | null;
+  /** Header text — usually "Readers added context". */
+  title: string | null;
+  /** Compact title (mobile / space-constrained UI). */
+  short_title: string | null;
+  /** The actual body of the reader-supplied context. */
+  summary: string | null;
+  /** Where X links the reader to for full note + ratings. */
+  destination_url: string | null;
+  /** When the extension first saw this note attached to the tweet. */
+  observed_at: string;
+}
+
 export interface CanonicalTweet {
   tweet_id: string;
   account_handle: string;
@@ -95,6 +116,14 @@ export interface CanonicalTweet {
   view_count: number | null;
   bookmark_count: number | null;
   engagement_history: EngagementSnapshot[];
+  /** Reader-supplied context attached by X's Community Notes program.
+   * `null` when no note is attached (the vast majority of tweets). */
+  community_note: CommunityNote | null;
+  /** Heuristic: the timeline returned a "show more" link without the
+   * accompanying `note_tweet` block, so the archived `text` is likely
+   * the 280-char head of a long tweet. Re-fetching the tweet's detail
+   * page returns the full body. */
+  is_truncated: boolean;
   wayback_url: string | null;
   wayback_submitted_at: string | null;
   capture_source: 'extension' | 'manual';
@@ -148,12 +177,24 @@ export interface AccountCounter {
   bufferedCount: number;
 }
 
+export interface RefetchQueueState {
+  /** Total tweets queued for full-text refetch across all handles. */
+  total: number;
+  /** Whether a refetch loop is currently iterating. */
+  running: boolean;
+  /** ISO of the last refetch tick, if any. */
+  lastTickAt: string | null;
+}
+
 export interface ExtensionState {
   version: string;
   settings: Omit<Settings, 'pat'> & { patSuffix: string; patSet: boolean };
   connection: ConnectionState;
   accounts: AccountConfig[];
   counters: Record<string, AccountCounter>;
+  /** Auto-scroll runtime state. Tab count comes from the SW's live tab query. */
+  autoScroll: { active: boolean; tabCount: number };
+  refetchQueue: RefetchQueueState;
 }
 
 export type RuntimeMessage =
@@ -168,6 +209,10 @@ export type RuntimeMessage =
   | { type: 'flush-all' }
   | { type: 'flush-handle'; handle: string }
   | { type: 'toggle-auto-capture'; on: boolean }
+  | { type: 'toggle-auto-scroll'; on: boolean }
+  | { type: 'set-auto-scroll-interval'; seconds: number }
+  | { type: 'start-refetch' }
+  | { type: 'cancel-refetch' }
   | { type: 'refresh-accounts' }
   | { type: 'verify-connection' }
   | { type: 'clear-activity' }

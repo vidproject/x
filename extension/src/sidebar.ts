@@ -27,6 +27,14 @@ const optionsLink = $<HTMLAnchorElement>('open-options');
 const viewerLink = $<HTMLAnchorElement>('open-viewer');
 const clearActBtn = $<HTMLButtonElement>('clear-activity');
 const extVersionEl = $<HTMLSpanElement>('ext-version');
+const autoScrollToggle = $<HTMLInputElement>('auto-scroll');
+const autoScrollInterval = $<HTMLInputElement>('auto-scroll-interval');
+const autoScrollSecsEl = $<HTMLSpanElement>('auto-scroll-secs');
+const autoScrollStatus = $<HTMLSpanElement>('auto-scroll-status');
+const refetchSection = $<HTMLElement>('refetch-section');
+const refetchCount = $<HTMLSpanElement>('refetch-count');
+const refetchStartBtn = $<HTMLButtonElement>('refetch-start');
+const refetchCancelBtn = $<HTMLButtonElement>('refetch-cancel');
 
 let lastState: ExtensionState | null = null;
 
@@ -218,6 +226,39 @@ function paint(state: ExtensionState): void {
   autoToggle.checked = state.settings.autoCapture;
   viewerLink.href = `https://${state.settings.owner}.github.io/${state.settings.repo}/`;
   renderAccounts(state);
+  paintAutoScroll(state);
+  paintRefetch(state);
+}
+
+function paintAutoScroll(state: ExtensionState): void {
+  autoScrollToggle.checked = state.settings.autoScroll;
+  const secs = state.settings.autoScrollIntervalSec;
+  autoScrollInterval.value = String(secs);
+  autoScrollSecsEl.textContent = String(secs);
+  if (state.settings.autoScroll) {
+    const n = state.autoScroll.tabCount;
+    autoScrollStatus.textContent =
+      n === 0 ? 'on — no X tabs open' : `on — scrolling ${n} ${n === 1 ? 'tab' : 'tabs'}`;
+    autoScrollStatus.className = 'rate-info on';
+  } else {
+    autoScrollStatus.textContent = 'off';
+    autoScrollStatus.className = 'rate-info';
+  }
+}
+
+function paintRefetch(state: ExtensionState): void {
+  const total = state.refetchQueue.total;
+  const running = state.refetchQueue.running;
+  refetchSection.hidden = total === 0 && !running;
+  refetchCount.textContent =
+    total === 0
+      ? running
+        ? 'finishing…'
+        : '0 queued'
+      : `${fmtNum(total)} queued${running ? ' · running' : ''}`;
+  refetchStartBtn.hidden = running;
+  refetchStartBtn.disabled = total === 0;
+  refetchCancelBtn.hidden = !running;
 }
 
 async function refreshActivity(): Promise<void> {
@@ -259,6 +300,34 @@ flushBtn.addEventListener('click', async () => {
 
 autoToggle.addEventListener('change', () => {
   void send({ type: 'toggle-auto-capture', on: autoToggle.checked });
+});
+
+autoScrollToggle.addEventListener('change', () => {
+  void send({ type: 'toggle-auto-scroll', on: autoScrollToggle.checked });
+});
+
+autoScrollInterval.addEventListener('input', () => {
+  autoScrollSecsEl.textContent = autoScrollInterval.value;
+});
+autoScrollInterval.addEventListener('change', () => {
+  const seconds = Number(autoScrollInterval.value);
+  if (Number.isFinite(seconds)) {
+    void send({ type: 'set-auto-scroll-interval', seconds });
+  }
+});
+
+refetchStartBtn.addEventListener('click', () => {
+  refetchStartBtn.disabled = true;
+  void send({ type: 'start-refetch' }).finally(() => {
+    refetchStartBtn.disabled = false;
+  });
+});
+
+refetchCancelBtn.addEventListener('click', () => {
+  refetchCancelBtn.disabled = true;
+  void send({ type: 'cancel-refetch' }).finally(() => {
+    refetchCancelBtn.disabled = false;
+  });
 });
 
 optionsLink.addEventListener('click', (e: Event) => {

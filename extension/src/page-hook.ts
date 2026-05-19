@@ -50,6 +50,8 @@
     'Bookmarks',
     'UserByScreenName',
     'UserByRestId',
+    'BirdwatchFetchOneNote',
+    'BirdwatchFetchNotes',
   ];
 
   function endpointOf(url: string): string | null {

@@ -40,6 +40,9 @@ interface StorageShape {
   runBuffers: Record<string, RunBuffer>;
   activity: LogEvent[];
   committedIndex: Record<string, Record<string, CommittedEntry>>;
+  /** Tweets the normalizer flagged as truncated and that we haven't seen a
+   * full-text version of yet. Keyed by handle → array of tweet ids. */
+  refetchQueue: Record<string, string[]>;
 }
 
 const DEFAULT_CONNECTION: ConnectionState = {
@@ -59,6 +62,7 @@ const DEFAULTS: StorageShape = {
   runBuffers: {},
   activity: [],
   committedIndex: {},
+  refetchQueue: {},
 };
 
 async function getRaw<K extends keyof StorageShape>(key: K): Promise<StorageShape[K]> {
@@ -77,7 +81,11 @@ async function setRaw<K extends keyof StorageShape>(key: K, value: StorageShape[
 // --- Settings -------------------------------------------------------------
 
 export async function getSettings(): Promise<Settings> {
-  return getRaw('settings');
+  // Backfill any keys the user's stored settings predate — readers can rely
+  // on every Settings field being present rather than `?? defaulting` at
+  // every callsite.
+  const stored = await getRaw('settings');
+  return { ...DEFAULT_SETTINGS, ...stored };
 }
 export async function setSettings(s: Settings): Promise<void> {
   await setRaw('settings', s);
@@ -236,6 +244,50 @@ export async function pruneCommittedIndex(maxAgeMs: number): Promise<number> {
   }
   if (pruned > 0) await setCommittedIndex(idx);
   return pruned;
+}
+
+// --- Refetch queue (tweets needing full-text recapture) -----------------
+
+export async function getRefetchQueue(): Promise<Record<string, string[]>> {
+  return getRaw('refetchQueue');
+}
+
+export async function refetchQueueTotal(): Promise<number> {
+  const q = await getRefetchQueue();
+  let total = 0;
+  for (const ids of Object.values(q)) total += ids.length;
+  return total;
+}
+
+export async function enqueueRefetch(handle: string, tweetId: string): Promise<void> {
+  const q = await getRefetchQueue();
+  const ids = q[handle] ?? [];
+  if (!ids.includes(tweetId)) {
+    ids.push(tweetId);
+    q[handle] = ids;
+    await setRaw('refetchQueue', q);
+  }
+}
+
+export async function dequeueRefetch(handle: string, tweetId: string): Promise<void> {
+  const q = await getRefetchQueue();
+  const ids = q[handle];
+  if (!ids) return;
+  const filtered = ids.filter((id) => id !== tweetId);
+  if (filtered.length === 0) delete q[handle];
+  else q[handle] = filtered;
+  await setRaw('refetchQueue', q);
+}
+
+export async function nextRefetchTarget(): Promise<{
+  handle: string;
+  tweetId: string;
+} | null> {
+  const q = await getRefetchQueue();
+  for (const [handle, ids] of Object.entries(q)) {
+    if (ids.length > 0) return { handle, tweetId: ids[0]! };
+  }
+  return null;
 }
 
 // --- Full reset ----------------------------------------------------------
