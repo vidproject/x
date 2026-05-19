@@ -42,7 +42,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 
 | Handle | Label | Tweets | First post | Latest post | Latest capture | Media | Videos |
 | ------ | ----- | -----: | ---------- | ----------- | -------------- | ----: | -----: |
-| `@DHSgov` | Department of Homeland Security | 751 | 2025-04-09 | 2026-05-19 | 2026-05-19 | 464 | 189 |
+| `@DHSgov` | Department of Homeland Security | 870 | 2025-04-09 | 2026-05-19 | 2026-05-19 | 580 | 192 |
 | `@ICEgov` | U.S. Immigration and Customs Enforcement | 74 | 2025-04-16 | 2026-05-19 | 2026-05-19 | 46 | 11 |
 | `@CBP` | U.S. Customs and Border Protection | 202 | 2025-06-04 | 2026-05-19 | 2026-05-19 | 93 | 20 |
 | `@USCIS` | U.S. Citizenship and Immigration Services | 743 | 2025-04-04 | 2026-05-18 | 2026-05-19 | 469 | 83 |
@@ -268,7 +268,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@vlast98230` | vlast98230 | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 1 | 0 |
 | `@washingtonpost` | washingtonpost | 3 | 2026-05-08 | 2026-05-13 | 2026-05-19 | 1 | 1 |
 
-_Generated 2026-05-19T19:26:21Z._
+_Generated 2026-05-19T19:30:59Z._
 
 <!-- COVERAGE:END -->
 
