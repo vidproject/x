@@ -46,17 +46,17 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@ICEgov` | U.S. Immigration and Customs Enforcement | 74 | 2025-04-16 | 2026-05-19 | 2026-05-19 | 46 | 11 |
 | `@CBP` | U.S. Customs and Border Protection | 202 | 2025-06-04 | 2026-05-19 | 2026-05-19 | 93 | 20 |
 | `@USCIS` | U.S. Citizenship and Immigration Services | 743 | 2025-04-04 | 2026-05-18 | 2026-05-19 | 469 | 83 |
-| `@WhiteHouse` | The White House | 174 | 2025-06-09 | 2026-05-19 | 2026-05-19 | 160 | 37 |
-| `@PressSec` | White House Press Secretary | 90 | 2025-09-17 | 2026-05-15 | 2026-05-19 | 10 | 3 |
+| `@WhiteHouse` | The White House | 181 | 2025-06-09 | 2026-05-19 | 2026-05-19 | 169 | 38 |
+| `@PressSec` | White House Press Secretary | 91 | 2025-09-17 | 2026-05-15 | 2026-05-19 | 10 | 3 |
 | `@POTUS` | President of the United States | 101 | 2025-01-20 | 2026-05-19 | 2026-05-19 | 40 | 13 |
-| `@USDOL` | U.S. Department of Labor | 357 | 2026-01-08 | 2026-05-19 | 2026-05-19 | 171 | 20 |
+| `@USDOL` | U.S. Department of Labor | 490 | 2025-12-28 | 2026-05-19 | 2026-05-19 | 238 | 28 |
 | `@10minutedrill` | 10minutedrill | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 1 | 1 |
 | `@7NewsDC` | 7NewsDC | 2 | 2026-04-07 | 2026-05-15 | 2026-05-19 | 0 | 0 |
 | `@ABC` | ABC | 1 | 2026-04-09 | 2026-04-09 | 2026-05-19 | 0 | 0 |
 | `@ABC7` | ABC7 | 1 | 2026-04-10 | 2026-04-10 | 2026-05-19 | 1 | 1 |
 | `@ACTIdgit` | ACTIdgit | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 0 | 0 |
 | `@AEMAdvocacy` | AEMAdvocacy | 1 | 2026-02-09 | 2026-02-09 | 2026-05-19 | 3 | 0 |
-| `@AGPamBondi` | AGPamBondi | 1 | 2026-03-26 | 2026-03-26 | 2026-05-19 | 0 | 0 |
+| `@AGPamBondi` | AGPamBondi | 2 | 2025-12-29 | 2026-03-26 | 2026-05-19 | 0 | 0 |
 | `@AJGuglielmi` | AJGuglielmi | 1 | 2026-04-26 | 2026-04-26 | 2026-05-19 | 1 | 0 |
 | `@AJInvestigates` | AJInvestigates | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 2 | 0 |
 | `@ATFHQ` | ATFHQ | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 1 | 0 |
@@ -104,7 +104,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@DliElectro19205` | DliElectro19205 | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 0 | 0 |
 | `@DrOzCMS` | DrOzCMS | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 1 | 1 |
 | `@DualityXrp` | DualityXrp | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 1 | 0 |
-| `@EDSecMcMahon` | EDSecMcMahon | 2 | 2026-02-11 | 2026-04-21 | 2026-05-19 | 1 | 0 |
+| `@EDSecMcMahon` | EDSecMcMahon | 3 | 2026-01-05 | 2026-04-21 | 2026-05-19 | 2 | 0 |
 | `@EROBoston` | EROBoston | 6 | 2026-04-12 | 2026-05-13 | 2026-05-19 | 6 | 0 |
 | `@ERODenver` | ERODenver | 5 | 2026-04-09 | 2026-05-07 | 2026-05-19 | 4 | 0 |
 | `@EROLosAngeles` | EROLosAngeles | 3 | 2026-04-10 | 2026-04-29 | 2026-05-19 | 2 | 0 |
@@ -127,6 +127,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@FPSDHS` | FPSDHS | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
 | `@Fashionably84` | Fashionably84 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@FoxNews` | FoxNews | 4 | 2026-04-10 | 2026-05-15 | 2026-05-19 | 7 | 2 |
+| `@Freedom250` | Freedom250 | 1 | 2026-01-01 | 2026-01-01 | 2026-05-19 | 1 | 0 |
 | `@FrontlinesTPUSA` | FrontlinesTPUSA | 1 | 2025-09-30 | 2025-09-30 | 2026-05-19 | 1 | 1 |
 | `@GovEvers` | GovEvers | 1 | 2026-04-02 | 2026-04-02 | 2026-05-19 | 0 | 0 |
 | `@GovTimWalz` | GovTimWalz | 3 | 2026-01-06 | 2026-05-04 | 2026-05-19 | 2 | 1 |
@@ -135,6 +136,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@HSITampa` | HSITampa | 1 | 2025-05-02 | 2025-05-02 | 2026-05-19 | 1 | 0 |
 | `@HSI_HQ` | HSI_HQ | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 1 | 0 |
 | `@HarshThoughtful` | HarshThoughtful | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@HouseGOP` | HouseGOP | 1 | 2026-01-06 | 2026-01-06 | 2026-05-19 | 1 | 0 |
 | `@Independent` | Independent | 1 | 2026-05-13 | 2026-05-13 | 2026-05-19 | 1 | 0 |
 | `@JDVance` | JDVance | 3 | 2026-04-28 | 2026-05-16 | 2026-05-19 | 1 | 1 |
 | `@JSYKRobert` | JSYKRobert | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
@@ -174,7 +176,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@PeteHegseth` | PeteHegseth | 1 | 2026-04-29 | 2026-04-29 | 2026-05-19 | 1 | 0 |
 | `@Plasticwasteguy` | Plasticwasteguy | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@PolkCoSheriff` | PolkCoSheriff | 1 | 2025-04-18 | 2025-04-18 | 2026-05-19 | 1 | 0 |
-| `@RapidResponse47` | RapidResponse47 | 84 | 2025-06-08 | 2026-05-19 | 2026-05-19 | 70 | 53 |
+| `@RapidResponse47` | RapidResponse47 | 90 | 2025-06-08 | 2026-05-19 | 2026-05-19 | 75 | 54 |
 | `@RelentlesSheep` | RelentlesSheep | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@RoKhanna` | RoKhanna | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
 | `@SBA_Kelly` | SBA_Kelly | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 1 |
@@ -184,11 +186,11 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@SecRubio` | SecRubio | 2 | 2026-04-04 | 2026-04-11 | 2026-05-19 | 0 | 0 |
 | `@SecScottBessent` | SecScottBessent | 2 | 2026-04-02 | 2026-04-29 | 2026-05-19 | 0 | 0 |
 | `@SecretSvcSpox` | SecretSvcSpox | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 0 |
-| `@SecretaryLCD` | SecretaryLCD | 57 | 2026-01-09 | 2026-04-20 | 2026-05-19 | 75 | 18 |
+| `@SecretaryLCD` | SecretaryLCD | 87 | 2025-07-27 | 2026-04-20 | 2026-05-19 | 98 | 23 |
 | `@SenEricSchmitt` | SenEricSchmitt | 1 | 2026-04-13 | 2026-04-13 | 2026-05-19 | 1 | 0 |
 | `@SenWarren` | SenWarren | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
 | `@SenateGOP` | SenateGOP | 1 | 2026-04-23 | 2026-04-23 | 2026-05-19 | 1 | 1 |
-| `@Sonderling47` | Sonderling47 | 64 | 2026-01-09 | 2026-05-19 | 2026-05-19 | 54 | 24 |
+| `@Sonderling47` | Sonderling47 | 68 | 2025-12-29 | 2026-05-19 | 2026-05-19 | 57 | 24 |
 | `@SonofKiese` | SonofKiese | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@StacyAnnFlorida` | StacyAnnFlorida | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@StateDept` | StateDept | 2 | 2026-04-07 | 2026-05-11 | 2026-05-19 | 1 | 0 |
@@ -221,7 +223,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@USDOJ_Intl` | USDOJ_Intl | 1 | 2026-04-15 | 2026-04-15 | 2026-05-19 | 0 | 0 |
 | `@USLaborIG` | USLaborIG | 4 | 2026-02-04 | 2026-05-19 | 2026-05-19 | 3 | 2 |
 | `@USOPM` | USOPM | 1 | 2026-03-30 | 2026-03-30 | 2026-05-19 | 1 | 1 |
-| `@USTradeRep` | USTradeRep | 3 | 2026-01-13 | 2026-05-19 | 2026-05-19 | 3 | 2 |
+| `@USTradeRep` | USTradeRep | 4 | 2026-01-08 | 2026-05-19 | 2026-05-19 | 4 | 2 |
 | `@UpdatingOnRome` | UpdatingOnRome | 1 | 2026-04-30 | 2026-04-30 | 2026-05-19 | 2 | 0 |
 | `@VETS_DOL` | VETS_DOL | 2 | 2026-01-29 | 2026-04-28 | 2026-05-19 | 2 | 0 |
 | `@VP` | VP | 2 | 2026-05-06 | 2026-05-18 | 2026-05-19 | 2 | 0 |
@@ -269,7 +271,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@vlast98230` | vlast98230 | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 1 | 0 |
 | `@washingtonpost` | washingtonpost | 3 | 2026-05-08 | 2026-05-13 | 2026-05-19 | 1 | 1 |
 
-_Generated 2026-05-19T19:44:24Z._
+_Generated 2026-05-19T19:46:41Z._
 
 <!-- COVERAGE:END -->
 
