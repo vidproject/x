@@ -62,6 +62,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@ATFHQ` | ATFHQ | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 1 | 0 |
 | `@AZSun4Trump` | AZSun4Trump | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@AdamsMorganNews` | AdamsMorganNews | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 1 | 1 |
+| `@Alexjonesbible` | Alexjonesbible | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@AnnaKelly47` | AnnaKelly47 | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
 | `@AntiSatanist333` | AntiSatanist333 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@AquitaineH43797` | AquitaineH43797 | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
@@ -70,6 +71,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@Bear_Faced` | Bear_Faced | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 1 | 0 |
 | `@BillMelugin_` | BillMelugin_ | 9 | 2026-03-22 | 2026-04-30 | 2026-05-19 | 8 | 1 |
 | `@BorderHawkNews` | BorderHawkNews | 1 | 2026-05-08 | 2026-05-08 | 2026-05-19 | 0 | 0 |
+| `@BowTiedDolphin` | BowTiedDolphin | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@BrasfieldAshley` | BrasfieldAshley | 1 | 2026-02-13 | 2026-02-13 | 2026-05-19 | 1 | 0 |
 | `@Breaking911` | Breaking911 | 1 | 2026-04-07 | 2026-04-07 | 2026-05-19 | 1 | 1 |
 | `@Brooketaylortv` | Brooketaylortv | 1 | 2026-05-13 | 2026-05-13 | 2026-05-19 | 1 | 0 |
@@ -126,9 +128,11 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@FLOTUS` | FLOTUS | 1 | 2026-04-27 | 2026-04-27 | 2026-05-19 | 0 | 0 |
 | `@FPSDHS` | FPSDHS | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
 | `@Fashionably84` | Fashionably84 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@FiSurgi` | FiSurgi | 24 | 2020-07-29 | 2026-05-19 | 2026-05-19 | 3 | 1 |
 | `@FoxNews` | FoxNews | 4 | 2026-04-10 | 2026-05-15 | 2026-05-19 | 7 | 2 |
 | `@Freedom250` | Freedom250 | 1 | 2026-01-01 | 2026-01-01 | 2026-05-19 | 1 | 0 |
 | `@FrontlinesTPUSA` | FrontlinesTPUSA | 1 | 2025-09-30 | 2025-09-30 | 2026-05-19 | 1 | 1 |
+| `@GasmanMD_85` | GasmanMD_85 | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@GovEvers` | GovEvers | 1 | 2026-04-02 | 2026-04-02 | 2026-05-19 | 0 | 0 |
 | `@GovTimWalz` | GovTimWalz | 3 | 2026-01-06 | 2026-05-04 | 2026-05-19 | 2 | 1 |
 | `@GuntherEagleman` | GuntherEagleman | 1 | 2026-04-30 | 2026-04-30 | 2026-05-19 | 1 | 1 |
@@ -141,20 +145,24 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@JDVance` | JDVance | 3 | 2026-04-28 | 2026-05-16 | 2026-05-19 | 1 | 1 |
 | `@JSYKRobert` | JSYKRobert | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@JamesBlairUSA` | JamesBlairUSA | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 1 | 1 |
+| `@Jdvsky` | Jdvsky | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@JennieSTaer` | JennieSTaer | 3 | 2026-04-07 | 2026-05-05 | 2026-05-19 | 1 | 0 |
 | `@JoeyFAFO_JK` | JoeyFAFO_JK | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 1 | 0 |
 | `@JonesOyl1776` | JonesOyl1776 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@JuliaDavisNews` | JuliaDavisNews | 1 | 2026-03-31 | 2026-03-31 | 2026-05-19 | 0 | 0 |
 | `@Justadolfan` | Justadolfan | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@Katelyn_Caralle` | Katelyn_Caralle | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 1 | 0 |
+| `@KingONumbers` | KingONumbers | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@Know2Protect` | Know2Protect | 3 | 2026-05-12 | 2026-05-16 | 2026-05-19 | 3 | 0 |
 | `@KristinFisher` | KristinFisher | 1 | 2026-04-29 | 2026-04-29 | 2026-05-19 | 0 | 0 |
+| `@KurmudgeTV` | KurmudgeTV | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@KushDesai47` | KushDesai47 | 3 | 2026-04-29 | 2026-04-30 | 2026-05-19 | 0 | 0 |
 | `@LeadingReport` | LeadingReport | 1 | 2026-04-06 | 2026-04-06 | 2026-05-19 | 0 | 0 |
 | `@LizHuston33` | LizHuston33 | 2 | 2026-04-28 | 2026-04-29 | 2026-05-19 | 1 | 1 |
 | `@LizHuston47` | LizHuston47 | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
 | `@LongTimeHistory` | LongTimeHistory | 1 | 2026-05-06 | 2026-05-06 | 2026-05-19 | 1 | 1 |
 | `@MSFarmBureau` | MSFarmBureau | 1 | 2026-02-07 | 2026-02-07 | 2026-05-19 | 4 | 0 |
+| `@Mae141590` | Mae141590 | 2 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@MargoMartin47` | MargoMartin47 | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 1 |
 | `@MaryMargOlohan` | MaryMargOlohan | 1 | 2026-04-30 | 2026-04-30 | 2026-05-19 | 1 | 0 |
 | `@MckagueKelli` | MckagueKelli | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
@@ -166,12 +174,14 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@NCDOL` | NCDOL | 1 | 2026-05-06 | 2026-05-06 | 2026-05-19 | 3 | 0 |
 | `@NEWSMAX` | NEWSMAX | 3 | 2026-04-15 | 2026-05-09 | 2026-05-19 | 2 | 1 |
 | `@NWS` | NWS | 1 | 2026-01-23 | 2026-01-23 | 2026-05-19 | 1 | 0 |
+| `@NeedsBourbon` | NeedsBourbon | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@NickMinock` | NickMinock | 2 | 2026-03-31 | 2026-04-23 | 2026-05-19 | 1 | 1 |
 | `@OANN` | OANN | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 1 |
 | `@OFOEAC` | OFOEAC | 12 | 2026-03-18 | 2026-05-18 | 2026-05-19 | 21 | 6 |
 | `@OSHA_DOL` | OSHA_DOL | 2 | 2026-01-23 | 2026-04-28 | 2026-05-19 | 1 | 0 |
 | `@OffThePress1` | OffThePress1 | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 1 |
 | `@PatAdams96` | PatAdams96 | 4 | 2026-04-27 | 2026-04-29 | 2026-05-19 | 4 | 3 |
+| `@PatrickDFarley` | PatrickDFarley | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@PattyMorin` | PattyMorin | 1 | 2026-05-09 | 2026-05-09 | 2026-05-19 | 1 | 0 |
 | `@PaulLoder54165` | PaulLoder54165 | 1 | 2026-03-19 | 2026-03-19 | 2026-05-19 | 0 | 0 |
 | `@PeteHegseth` | PeteHegseth | 1 | 2026-04-29 | 2026-04-29 | 2026-05-19 | 1 | 0 |
@@ -181,6 +191,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@RelentlesSheep` | RelentlesSheep | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@RoKhanna` | RoKhanna | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
 | `@SBA_Kelly` | SBA_Kelly | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 1 |
+| `@SaucePieJones` | SaucePieJones | 2 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@SecDuffy` | SecDuffy | 1 | 2026-05-02 | 2026-05-02 | 2026-05-19 | 0 | 0 |
 | `@SecMullinDHS` | SecMullinDHS | 45 | 2026-03-24 | 2026-05-19 | 2026-05-19 | 52 | 20 |
 | `@SecRollins` | SecRollins | 1 | 2026-05-07 | 2026-05-07 | 2026-05-19 | 1 | 1 |
@@ -191,6 +202,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@SenEricSchmitt` | SenEricSchmitt | 1 | 2026-04-13 | 2026-04-13 | 2026-05-19 | 1 | 0 |
 | `@SenWarren` | SenWarren | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
 | `@SenateGOP` | SenateGOP | 1 | 2026-04-23 | 2026-04-23 | 2026-05-19 | 1 | 1 |
+| `@SevendersOTW` | SevendersOTW | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@Sonderling47` | Sonderling47 | 68 | 2025-12-29 | 2026-05-19 | 2026-05-19 | 57 | 24 |
 | `@SonofKiese` | SonofKiese | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@StacyAnnFlorida` | StacyAnnFlorida | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
@@ -202,8 +214,10 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@TMZ` | TMZ | 1 | 2026-05-03 | 2026-05-03 | 2026-05-19 | 1 | 1 |
 | `@TPsocialEXP` | TPsocialEXP | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 1 | 0 |
 | `@TSA` | TSA | 3 | 2026-05-04 | 2026-05-11 | 2026-05-19 | 2 | 1 |
+| `@TTankerville` | TTankerville | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@TTim420` | TTim420 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@TXAG` | TXAG | 1 | 2025-06-17 | 2025-06-17 | 2026-05-19 | 0 | 0 |
+| `@Tak_Horigoshi` | Tak_Horigoshi | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@TaylorRogers47` | TaylorRogers47 | 2 | 2026-04-30 | 2026-04-30 | 2026-05-19 | 0 | 0 |
 | `@TheBuffaloNews` | TheBuffaloNews | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 0 | 0 |
 | `@TheJusticeDept` | TheJusticeDept | 2 | 2025-09-16 | 2026-04-30 | 2026-05-19 | 3 | 0 |
@@ -238,21 +252,27 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@YahooFinance` | YahooFinance | 1 | 2026-01-09 | 2026-01-09 | 2026-05-19 | 1 | 1 |
 | `@alexbruesewitz` | alexbruesewitz | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
 | `@angeldadjoe` | angeldadjoe | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 2 | 0 |
+| `@avidseries` | avidseries | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@axios` | axios | 2 | 2026-02-13 | 2026-03-24 | 2026-05-19 | 0 | 0 |
 | `@bilignb` | bilignb | 1 | 2026-04-24 | 2026-04-24 | 2026-05-19 | 0 | 0 |
 | `@californiapost` | californiapost | 1 | 2026-04-01 | 2026-04-01 | 2026-05-19 | 1 | 0 |
 | `@cash_override` | cash_override | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@charlesmurray` | charlesmurray | 2 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@chrisbradleyonX` | chrisbradleyonX | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@davemcomie` | davemcomie | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@denverpost` | denverpost | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 0 | 0 |
 | `@dlippman` | dlippman | 1 | 2026-04-12 | 2026-04-12 | 2026-05-19 | 0 | 0 |
+| `@drterrysimpson` | drterrysimpson | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@genteastco` | genteastco | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@glennbeck` | glennbeck | 1 | 2025-10-06 | 2025-10-06 | 2026-05-19 | 1 | 1 |
+| `@illicit_pikachu` | illicit_pikachu | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@johnnymaga` | johnnymaga | 1 | 2026-05-14 | 2026-05-14 | 2026-05-19 | 1 | 1 |
 | `@jsolomonReports` | jsolomonReports | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 0 | 0 |
 | `@karolineleavitt` | karolineleavitt | 1 | 2026-05-07 | 2026-05-07 | 2026-05-19 | 1 | 0 |
 | `@lerafera` | lerafera | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 1 | 0 |
 | `@matthatfield278` | matthatfield278 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@mrico18` | mrico18 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@muldowney_matt` | muldowney_matt | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@necanet` | necanet | 1 | 2026-04-27 | 2026-04-27 | 2026-05-19 | 1 | 0 |
 | `@news6wkmg` | news6wkmg | 1 | 2026-05-13 | 2026-05-13 | 2026-05-19 | 0 | 0 |
 | `@nicksortor` | nicksortor | 1 | 2026-04-21 | 2026-04-21 | 2026-05-19 | 1 | 1 |
@@ -260,7 +280,9 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@politico` | politico | 4 | 2026-04-15 | 2026-05-12 | 2026-05-19 | 0 | 0 |
 | `@priscialva` | priscialva | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
 | `@recoverbritain` | recoverbritain | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@restacked_dev` | restacked_dev | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@ryer25785` | ryer25785 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@sSir259596` | sSir259596 | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@scotus_wire` | scotus_wire | 1 | 2026-03-04 | 2026-03-04 | 2026-05-19 | 1 | 0 |
 | `@sfj8888` | sfj8888 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 1 | 0 |
 | `@theblaze` | theblaze | 2 | 2025-04-09 | 2026-04-29 | 2026-05-19 | 2 | 0 |
@@ -270,9 +292,11 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@usembassytokyo` | usembassytokyo | 1 | 2026-03-26 | 2026-03-26 | 2026-05-19 | 1 | 0 |
 | `@vinekpr` | vinekpr | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@vlast98230` | vlast98230 | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 1 | 0 |
+| `@wantthepfunk` | wantthepfunk | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 1 | 0 |
 | `@washingtonpost` | washingtonpost | 3 | 2026-05-08 | 2026-05-13 | 2026-05-19 | 1 | 1 |
+| `@whyjohngalt` | whyjohngalt | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 
-_Generated 2026-05-19T19:50:01Z._
+_Generated 2026-05-19T19:52:01Z._
 
 <!-- COVERAGE:END -->
 
