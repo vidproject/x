@@ -40,18 +40,26 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 
 <!-- COVERAGE:START -->
 
-| Handle        | Label                                     | Tweets | First post | Latest post | Latest capture | Media | Videos |
-| ------------- | ----------------------------------------- | -----: | ---------- | ----------- | -------------- | ----: | -----: |
-| `@DHSgov`     | Department of Homeland Security           |    350 | 2026-03-05 | 2026-05-19  | 2026-05-19     |   222 |     94 |
-| `@ICEgov`     | U.S. Immigration and Customs Enforcement  |      5 | 2026-04-28 | 2026-05-19  | 2026-05-19     |     7 |      2 |
-| `@CBP`        | U.S. Customs and Border Protection        |      4 | 2026-05-11 | 2026-05-19  | 2026-05-19     |     3 |      3 |
-| `@USCIS`      | U.S. Citizenship and Immigration Services |      0 | —          | —           | —              |     0 |      0 |
-| `@WhiteHouse` | The White House                           |      5 | 2026-04-27 | 2026-05-19  | 2026-05-19     |     4 |      1 |
-| `@PressSec`   | White House Press Secretary               |      5 | 2026-04-23 | 2026-04-30  | 2026-05-19     |     0 |      0 |
-| `@POTUS`      | President of the United States            |      0 | —          | —           | —              |     0 |      0 |
-| `@USDOL`      | U.S. Department of Labor                  |      0 | —          | —           | —              |     0 |      0 |
+| Handle | Label | Tweets | First post | Latest post | Latest capture | Media | Videos |
+| ------ | ----- | -----: | ---------- | ----------- | -------------- | ----: | -----: |
+| `@DHSgov` | Department of Homeland Security | 350 | 2026-03-05 | 2026-05-19 | 2026-05-19 | 222 | 94 |
+| `@ICEgov` | U.S. Immigration and Customs Enforcement | 5 | 2026-04-28 | 2026-05-19 | 2026-05-19 | 7 | 2 |
+| `@CBP` | U.S. Customs and Border Protection | 4 | 2026-05-11 | 2026-05-19 | 2026-05-19 | 3 | 3 |
+| `@USCIS` | U.S. Citizenship and Immigration Services | 0 | — | — | — | 0 | 0 |
+| `@WhiteHouse` | The White House | 5 | 2026-04-27 | 2026-05-19 | 2026-05-19 | 4 | 1 |
+| `@PressSec` | White House Press Secretary | 5 | 2026-04-23 | 2026-04-30 | 2026-05-19 | 0 | 0 |
+| `@POTUS` | President of the United States | 0 | — | — | — | 0 | 0 |
+| `@USDOL` | U.S. Department of Labor | 0 | — | — | — | 0 | 0 |
+| `@BorderHawkNews` | BorderHawkNews | 1 | 2026-05-08 | 2026-05-08 | 2026-05-19 | 0 | 0 |
+| `@CBPAMO` | CBPAMO | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 4 | 0 |
+| `@EROPhiladelphia` | EROPhiladelphia | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
+| `@FPSDHS` | FPSDHS | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
+| `@PattyMorin` | PattyMorin | 1 | 2026-05-09 | 2026-05-09 | 2026-05-19 | 1 | 0 |
+| `@RapidResponse47` | RapidResponse47 | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 0 | 0 |
+| `@TSA` | TSA | 2 | 2026-05-06 | 2026-05-11 | 2026-05-19 | 2 | 1 |
+| `@WHTaskForceFIFA` | WHTaskForceFIFA | 1 | 2026-05-09 | 2026-05-09 | 2026-05-19 | 1 | 0 |
 
-_Generated 2026-05-19T18:34:42Z._
+_Generated 2026-05-19T18:48:00Z._
 
 <!-- COVERAGE:END -->
 
