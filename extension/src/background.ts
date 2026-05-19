@@ -80,6 +80,7 @@ async function onWake(reason: string): Promise<void> {
   try {
     await ensureAlarms();
     await flushOrphanedBuffersIfStale();
+    await reinjectIntoOpenTabs();
     const settings = await getSettings();
     if (settings.pat && settings.owner && settings.repo) {
       await verifyConnection(false);
@@ -97,6 +98,57 @@ async function onWake(reason: string): Promise<void> {
     }
   } catch (err) {
     await logErr('wake failed', { reason, ...describeError(err) });
+  }
+}
+
+/**
+ * Re-inject the MAIN-world page-hook + isolated-world content script into
+ * every already-open x.com / twitter.com tab.
+ *
+ * Manifest content_scripts only inject on fresh navigation (run_at:
+ * document_start). When the user reloads the extension while X tabs are
+ * open, those tabs keep their content scripts but never get a new page-hook
+ * — so fetch/XHR stays unpatched and captures silently fail. Doing this on
+ * every wake is idempotent (page-hook has a TAG guard) and cheap.
+ */
+async function reinjectIntoOpenTabs(): Promise<void> {
+  let tabs: browser.tabs.Tab[];
+  try {
+    tabs = await browser.tabs.query({ url: ['https://x.com/*', 'https://twitter.com/*'] });
+  } catch (err) {
+    await warn('could not query open tabs', describeError(err));
+    return;
+  }
+  if (tabs.length === 0) return;
+  for (const tab of tabs) {
+    if (typeof tab.id !== 'number') continue;
+    try {
+      await browser.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ['page-hook.js'],
+        // Firefox 128+ supports the MAIN execution world via this API, but
+        // the @types/firefox-webext-browser package we're on still only
+        // declares 'ISOLATED'. Cast through the literal union.
+        world: 'MAIN' as 'ISOLATED',
+      });
+      await browser.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ['content.js'],
+      });
+      await info('re-injected scripts into open tab', {
+        tabId: tab.id,
+        url: shortenUrl(tab.url ?? ''),
+      });
+    } catch (err) {
+      // Some tabs (about: pages, discarded tabs, mid-navigation) reject
+      // executeScript. That's fine — we'll catch them on the next wake or
+      // when the user navigates.
+      await warn('re-inject failed for tab; continuing', {
+        tabId: tab.id,
+        url: shortenUrl(tab.url ?? ''),
+        ...describeError(err),
+      });
+    }
   }
 }
 

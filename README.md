@@ -21,6 +21,8 @@ The extension captures public X posts from the configured accounts as you browse
 
 Firefox removes temporary add-ons when it closes — reinstalling takes about ten seconds.
 
+If you reload the extension while X tabs are already open, those tabs keep their old content scripts; the new build only takes full effect on tabs opened after the reload. The extension does re-inject its page-hook into existing tabs on every wake, but the cleanest behaviour is to close X tabs before reloading and let `Capture now` open a fresh one.
+
 ### Generating the right PAT
 
 Use a **fine-grained** Personal Access Token, not a classic one, with **only this repository** selected and only the minimum permissions:
