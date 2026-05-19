@@ -58,10 +58,13 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@CBPCommissioner` | CBPCommissioner | 1 | 2026-05-05 | 2026-05-05 | 2026-05-19 | 1 | 0 |
 | `@DFOBaltimore` | DFOBaltimore | 1 | 2026-05-05 | 2026-05-05 | 2026-05-19 | 1 | 0 |
 | `@ERODenver` | ERODenver | 1 | 2026-05-07 | 2026-05-07 | 2026-05-19 | 1 | 0 |
+| `@ERONewOrleans` | ERONewOrleans | 3 | 2026-05-11 | 2026-05-13 | 2026-05-19 | 2 | 0 |
 | `@ERONewark` | ERONewark | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
 | `@EROPhiladelphia` | EROPhiladelphia | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
 | `@EROSanDiego` | EROSanDiego | 1 | 2026-05-07 | 2026-05-07 | 2026-05-19 | 1 | 0 |
+| `@FDRLST` | FDRLST | 2 | 2026-05-11 | 2026-05-12 | 2026-05-19 | 0 | 0 |
 | `@FPSDHS` | FPSDHS | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
+| `@FoxNews` | FoxNews | 2 | 2026-05-09 | 2026-05-15 | 2026-05-19 | 5 | 1 |
 | `@GovTimWalz` | GovTimWalz | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 0 |
 | `@Independent` | Independent | 1 | 2026-05-13 | 2026-05-13 | 2026-05-19 | 1 | 0 |
 | `@JennieSTaer` | JennieSTaer | 1 | 2026-05-05 | 2026-05-05 | 2026-05-19 | 1 | 0 |
@@ -73,12 +76,17 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@TSA` | TSA | 2 | 2026-05-06 | 2026-05-11 | 2026-05-19 | 2 | 1 |
 | `@TheBuffaloNews` | TheBuffaloNews | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 0 | 0 |
 | `@USBPChiefDTM` | USBPChiefDTM | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 1 | 0 |
+| `@USCG` | USCG | 2 | 2026-05-13 | 2026-05-14 | 2026-05-19 | 2 | 1 |
+| `@USCGSoutheast` | USCGSoutheast | 2 | 2026-04-27 | 2026-05-12 | 2026-05-19 | 5 | 1 |
 | `@WHTaskForceFIFA` | WHTaskForceFIFA | 1 | 2026-05-09 | 2026-05-09 | 2026-05-19 | 1 | 0 |
 | `@denverpost` | denverpost | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 0 | 0 |
+| `@news6wkmg` | news6wkmg | 1 | 2026-05-13 | 2026-05-13 | 2026-05-19 | 0 | 0 |
 | `@nypost` | nypost | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 0 |
+| `@politico` | politico | 2 | 2026-04-27 | 2026-05-12 | 2026-05-19 | 0 | 0 |
 | `@priscialva` | priscialva | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
+| `@washingtonpost` | washingtonpost | 3 | 2026-05-08 | 2026-05-13 | 2026-05-19 | 1 | 1 |
 
-_Generated 2026-05-19T18:50:05Z._
+_Generated 2026-05-19T18:51:04Z._
 
 <!-- COVERAGE:END -->
 

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-19T18:50:05Z",
+  "generated_at": "2026-05-19T18:51:04Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -34,11 +34,11 @@
       "handle": "CBP",
       "label": "U.S. Customs and Border Protection",
       "parquet": "data/CBP.parquet",
-      "parquet_bytes": 23978,
+      "parquet_bytes": 24122,
       "row_count": 4,
       "first_post_at": "2026-05-11T15:30:03.000Z",
       "latest_post_at": "2026-05-19T15:04:19.000Z",
-      "latest_capture_at": "2026-05-19T18:32:49.818Z",
+      "latest_capture_at": "2026-05-19T18:49:12.925Z",
       "deleted_count": 0,
       "media_count": 3,
       "video_count": 3,
@@ -62,11 +62,11 @@
       "handle": "WhiteHouse",
       "label": "The White House",
       "parquet": "data/WhiteHouse.parquet",
-      "parquet_bytes": 23310,
+      "parquet_bytes": 23349,
       "row_count": 5,
       "first_post_at": "2026-04-27T16:30:28.000Z",
       "latest_post_at": "2026-05-19T15:49:44.000Z",
-      "latest_capture_at": "2026-05-19T18:48:23.786Z",
+      "latest_capture_at": "2026-05-19T18:50:39.935Z",
       "deleted_count": 0,
       "media_count": 4,
       "video_count": 1,
@@ -227,6 +227,20 @@
       "releases": []
     },
     {
+      "handle": "ERONewOrleans",
+      "label": "ERONewOrleans",
+      "parquet": "data/ERONewOrleans.parquet",
+      "parquet_bytes": 22920,
+      "row_count": 3,
+      "first_post_at": "2026-05-11T17:19:29.000Z",
+      "latest_post_at": "2026-05-13T13:14:00.000Z",
+      "latest_capture_at": "2026-05-19T18:49:12.925Z",
+      "deleted_count": 0,
+      "media_count": 2,
+      "video_count": 0,
+      "releases": []
+    },
+    {
       "handle": "ERONewark",
       "label": "ERONewark",
       "parquet": "data/ERONewark.parquet",
@@ -269,6 +283,20 @@
       "releases": []
     },
     {
+      "handle": "FDRLST",
+      "label": "FDRLST",
+      "parquet": "data/FDRLST.parquet",
+      "parquet_bytes": 21953,
+      "row_count": 2,
+      "first_post_at": "2026-05-11T21:13:04.000Z",
+      "latest_post_at": "2026-05-12T21:05:38.000Z",
+      "latest_capture_at": "2026-05-19T18:49:04.584Z",
+      "deleted_count": 0,
+      "media_count": 0,
+      "video_count": 0,
+      "releases": []
+    },
+    {
       "handle": "FPSDHS",
       "label": "FPSDHS",
       "parquet": "data/FPSDHS.parquet",
@@ -280,6 +308,20 @@
       "deleted_count": 0,
       "media_count": 1,
       "video_count": 0,
+      "releases": []
+    },
+    {
+      "handle": "FoxNews",
+      "label": "FoxNews",
+      "parquet": "data/FoxNews.parquet",
+      "parquet_bytes": 22744,
+      "row_count": 2,
+      "first_post_at": "2026-05-09T02:18:54.000Z",
+      "latest_post_at": "2026-05-15T14:04:51.000Z",
+      "latest_capture_at": "2026-05-19T18:49:21.987Z",
+      "deleted_count": 0,
+      "media_count": 5,
+      "video_count": 1,
       "releases": []
     },
     {
@@ -437,6 +479,34 @@
       "releases": []
     },
     {
+      "handle": "USCG",
+      "label": "USCG",
+      "parquet": "data/USCG.parquet",
+      "parquet_bytes": 24469,
+      "row_count": 2,
+      "first_post_at": "2026-05-13T16:52:12.000Z",
+      "latest_post_at": "2026-05-14T17:23:25.000Z",
+      "latest_capture_at": "2026-05-19T18:48:54.684Z",
+      "deleted_count": 0,
+      "media_count": 2,
+      "video_count": 1,
+      "releases": []
+    },
+    {
+      "handle": "USCGSoutheast",
+      "label": "USCGSoutheast",
+      "parquet": "data/USCGSoutheast.parquet",
+      "parquet_bytes": 23899,
+      "row_count": 2,
+      "first_post_at": "2026-04-27T20:19:00.000Z",
+      "latest_post_at": "2026-05-12T19:00:35.000Z",
+      "latest_capture_at": "2026-05-19T18:50:35.657Z",
+      "deleted_count": 0,
+      "media_count": 5,
+      "video_count": 1,
+      "releases": []
+    },
+    {
       "handle": "WHTaskForceFIFA",
       "label": "WHTaskForceFIFA",
       "parquet": "data/WHTaskForceFIFA.parquet",
@@ -465,6 +535,20 @@
       "releases": []
     },
     {
+      "handle": "news6wkmg",
+      "label": "news6wkmg",
+      "parquet": "data/news6wkmg.parquet",
+      "parquet_bytes": 21944,
+      "row_count": 1,
+      "first_post_at": "2026-05-13T00:00:06.000Z",
+      "latest_post_at": "2026-05-13T00:00:06.000Z",
+      "latest_capture_at": "2026-05-19T18:48:54.684Z",
+      "deleted_count": 0,
+      "media_count": 0,
+      "video_count": 0,
+      "releases": []
+    },
+    {
       "handle": "nypost",
       "label": "nypost",
       "parquet": "data/nypost.parquet",
@@ -475,6 +559,20 @@
       "latest_capture_at": "2026-05-19T18:47:38.249Z",
       "deleted_count": 0,
       "media_count": 1,
+      "video_count": 0,
+      "releases": []
+    },
+    {
+      "handle": "politico",
+      "label": "politico",
+      "parquet": "data/politico.parquet",
+      "parquet_bytes": 21344,
+      "row_count": 2,
+      "first_post_at": "2026-04-27T21:27:35.000Z",
+      "latest_post_at": "2026-05-12T15:46:13.000Z",
+      "latest_capture_at": "2026-05-19T18:50:35.657Z",
+      "deleted_count": 0,
+      "media_count": 0,
       "video_count": 0,
       "releases": []
     },
@@ -490,6 +588,20 @@
       "deleted_count": 0,
       "media_count": 0,
       "video_count": 0,
+      "releases": []
+    },
+    {
+      "handle": "washingtonpost",
+      "label": "washingtonpost",
+      "parquet": "data/washingtonpost.parquet",
+      "parquet_bytes": 23794,
+      "row_count": 3,
+      "first_post_at": "2026-05-08T13:30:09.000Z",
+      "latest_post_at": "2026-05-13T00:30:54.000Z",
+      "latest_capture_at": "2026-05-19T18:49:33.296Z",
+      "deleted_count": 0,
+      "media_count": 1,
+      "video_count": 1,
       "releases": []
     }
   ]
