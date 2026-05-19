@@ -59,6 +59,35 @@ COMMUNITY_NOTE_STRUCT = pl.Struct(
     ]
 )
 
+USER_SNAPSHOT_STRUCT = pl.Struct(
+    [
+        pl.Field("display_name", pl.Utf8),
+        pl.Field("avatar_url", pl.Utf8),
+        pl.Field("verified", pl.Boolean),
+        pl.Field("is_blue_verified", pl.Boolean),
+        pl.Field("verified_type", pl.Utf8),
+        pl.Field("description", pl.Utf8),
+        pl.Field("location", pl.Utf8),
+        pl.Field("url", pl.Utf8),
+        pl.Field("followers_count", pl.Int64),
+        pl.Field("friends_count", pl.Int64),
+        pl.Field("statuses_count", pl.Int64),
+        pl.Field("account_created_at", pl.Utf8),
+        pl.Field("protected", pl.Boolean),
+    ]
+)
+
+CARD_STRUCT = pl.Struct(
+    [
+        pl.Field("name", pl.Utf8),
+        pl.Field("card_url", pl.Utf8),
+        pl.Field("vendor_url", pl.Utf8),
+        pl.Field("title", pl.Utf8),
+        pl.Field("description", pl.Utf8),
+        pl.Field("image_url", pl.Utf8),
+    ]
+)
+
 TWEET_SCHEMA: dict[str, Any] = {
     "tweet_id": pl.Utf8,
     "account_handle": pl.Utf8,
@@ -69,16 +98,22 @@ TWEET_SCHEMA: dict[str, Any] = {
     "deletion_detected_at": pl.Utf8,
     "tweet_url": pl.Utf8,
     "tweet_type": pl.Utf8,
+    "conversation_id": pl.Utf8,
     "reply_to_tweet_id": pl.Utf8,
     "reply_to_account": pl.Utf8,
+    "reply_to_account_id": pl.Utf8,
     "quoted_tweet_id": pl.Utf8,
     "retweeted_tweet_id": pl.Utf8,
     "text": pl.Utf8,
     "text_resolved": pl.Utf8,
     "lang": pl.Utf8,
+    "possibly_sensitive": pl.Boolean,
+    "source": pl.Utf8,
+    "place_full_name": pl.Utf8,
     "hashtags": pl.List(pl.Utf8),
     "mentions": pl.List(pl.Utf8),
     "urls": pl.List(URL_STRUCT),
+    "card": CARD_STRUCT,
     "media": pl.List(MEDIA_STRUCT),
     "like_count": pl.Int64,
     "retweet_count": pl.Int64,
@@ -87,6 +122,7 @@ TWEET_SCHEMA: dict[str, Any] = {
     "view_count": pl.Int64,
     "bookmark_count": pl.Int64,
     "engagement_history": pl.List(ENGAGEMENT_STRUCT),
+    "author": USER_SNAPSHOT_STRUCT,
     "community_note": COMMUNITY_NOTE_STRUCT,
     "is_truncated": pl.Boolean,
     "wayback_url": pl.Utf8,

@@ -27,6 +27,8 @@ const optionsLink = $<HTMLAnchorElement>('open-options');
 const viewerLink = $<HTMLAnchorElement>('open-viewer');
 const clearActBtn = $<HTMLButtonElement>('clear-activity');
 const extVersionEl = $<HTMLSpanElement>('ext-version');
+const masterSwitch = $<HTMLInputElement>('master-switch');
+const masterLabel = $<HTMLSpanElement>('master-label');
 const autoScrollToggle = $<HTMLInputElement>('auto-scroll');
 const autoScrollInterval = $<HTMLInputElement>('auto-scroll-interval');
 const autoScrollSecsEl = $<HTMLSpanElement>('auto-scroll-secs');
@@ -225,9 +227,17 @@ function paint(state: ExtensionState): void {
   setConnStatus(state);
   autoToggle.checked = state.settings.autoCapture;
   viewerLink.href = `https://${state.settings.owner}.github.io/${state.settings.repo}/`;
+  paintMasterSwitch(state);
   renderAccounts(state);
   paintAutoScroll(state);
   paintRefetch(state);
+}
+
+function paintMasterSwitch(state: ExtensionState): void {
+  const on = state.settings.enabled !== false;
+  masterSwitch.checked = on;
+  masterLabel.textContent = on ? 'ON' : 'PAUSED';
+  document.body.classList.toggle('paused', !on);
 }
 
 function paintAutoScroll(state: ExtensionState): void {
@@ -300,6 +310,10 @@ flushBtn.addEventListener('click', async () => {
 
 autoToggle.addEventListener('change', () => {
   void send({ type: 'toggle-auto-capture', on: autoToggle.checked });
+});
+
+masterSwitch.addEventListener('change', () => {
+  void send({ type: 'toggle-enabled', on: masterSwitch.checked });
 });
 
 autoScrollToggle.addEventListener('change', () => {

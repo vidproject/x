@@ -301,23 +301,45 @@ def union_media(
             v = m.get(fld)
             if v is not None and v != "":
                 merged[fld] = v
-        # Archive metadata: prefer whichever side has it. The archive
-        # workflow writes these into the parquet, so on re-ingest the
-        # extension-side capture (which has them null) must not clobber.
-        for fld in (
+        # Archive metadata pivots on `release_asset_url` — whichever side
+        # has the uploaded asset is the authoritative source for ALL the
+        # archive fields. Critically, `archive_status` is always truthy on
+        # both sides ('pending' from the extension, 'archived' from the
+        # archive workflow), so the old field-by-field "non-empty wins"
+        # rule silently let the extension's 'pending' clobber the
+        # workflow's 'archived'. Anchoring on release_asset_url fixes that.
+        archive_fields = (
             "release_asset_url",
             "sha256",
             "bytes",
             "archive_status",
             "archive_attempts",
             "last_attempt_at",
-        ):
-            prev_v = prev.get(fld)
-            new_v = m.get(fld)
-            if prev_v and not new_v:
-                merged[fld] = prev_v
-            elif new_v:
-                merged[fld] = new_v
+        )
+        prev_archived = bool(prev.get("release_asset_url"))
+        new_archived = bool(m.get("release_asset_url"))
+        if prev_archived and not new_archived:
+            for fld in archive_fields:
+                merged[fld] = prev.get(fld)
+        elif new_archived and not prev_archived:
+            for fld in archive_fields:
+                merged[fld] = m.get(fld)
+        else:
+            # Neither archived (both 'pending' / 'failed'), or both
+            # archived. Take the new row's values, falling back to prev
+            # for missing fields. For attempts, the maximum wins so we
+            # don't reset a backoff counter on re-ingest.
+            for fld in archive_fields:
+                v = m.get(fld)
+                if v is None or v == "":
+                    v = prev.get(fld)
+                merged[fld] = v
+            if isinstance(prev.get("archive_attempts"), int) and isinstance(
+                m.get("archive_attempts"), int
+            ):
+                merged["archive_attempts"] = max(
+                    int(prev["archive_attempts"]), int(m["archive_attempts"])
+                )
         by_id[k] = merged
     return [by_id[k] for k in order]
 
@@ -418,6 +440,89 @@ def write_manifest(manifest: dict[str, Any]) -> None:
     tmp = DATA_DIR / "manifest.tmp.json"
     tmp.write_text(json.dumps(manifest, indent=2, sort_keys=False) + "\n", encoding="utf-8")
     os.replace(tmp, DATA_DIR / "manifest.json")
+
+
+# --------------------------------------------------------------------------
+# Users aggregation
+#
+# Per-author profile snapshots live on every tweet (in the `author` struct).
+# `data/users.json` is the latest-non-null aggregation, keyed by handle.
+# The viewer loads it once on boot to render avatars + display names inline
+# without scanning every tweet at render time.
+
+
+def aggregate_users() -> dict[str, dict[str, Any]]:
+    """Return {handle: latest_user_snapshot} merged across every parquet
+    (tracked + _misc). For each field, the most recently captured non-null
+    value wins.
+    """
+    field_keys = (
+        "display_name",
+        "avatar_url",
+        "verified",
+        "is_blue_verified",
+        "verified_type",
+        "description",
+        "location",
+        "url",
+        "followers_count",
+        "friends_count",
+        "statuses_count",
+        "account_created_at",
+        "protected",
+    )
+    # handle -> {observed_at, fields...}
+    out: dict[str, dict[str, Any]] = {}
+    for parquet_path in sorted(DATA_DIR.glob("*.parquet")):
+        try:
+            df = pl.read_parquet(parquet_path, columns=["account_handle", "author", "last_seen_at"])
+        except Exception:
+            LOG.exception("aggregate_users: could not read", path=str(parquet_path))
+            continue
+        for row in df.iter_rows(named=True):
+            handle = str(row.get("account_handle") or "")
+            if not handle:
+                continue
+            author = row.get("author") or {}
+            if not isinstance(author, dict):
+                continue
+            seen = str(row.get("last_seen_at") or "")
+            cur = out.get(handle)
+            if cur is None:
+                cur = {"handle": handle, "observed_at": seen}
+                for k in field_keys:
+                    cur[k] = author.get(k)
+                out[handle] = cur
+                continue
+            # Field-by-field: prefer non-null from whichever row was
+            # captured later. Falls back to current value when newer row's
+            # field is null.
+            row_seen = seen
+            cur_seen = str(cur.get("observed_at") or "")
+            if row_seen >= cur_seen:
+                cur["observed_at"] = row_seen
+                for k in field_keys:
+                    v = author.get(k)
+                    if v is not None:
+                        cur[k] = v
+            else:
+                for k in field_keys:
+                    if cur.get(k) is None:
+                        v = author.get(k)
+                        if v is not None:
+                            cur[k] = v
+    return out
+
+
+def write_users(users: dict[str, dict[str, Any]]) -> None:
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "generated_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "users": users,
+    }
+    tmp = DATA_DIR / "users.tmp.json"
+    tmp.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    os.replace(tmp, DATA_DIR / "users.json")
 
 
 # --------------------------------------------------------------------------
@@ -604,11 +709,19 @@ def main(argv: list[str] | None = None) -> int:
         manifest_accounts.append({"handle": MISC_HANDLE, "label": MISC_LABEL})
     manifest = build_manifest(manifest_accounts)
     write_manifest(manifest)
+
+    # Aggregate per-author user snapshots into data/users.json so the
+    # viewer can render avatars + display names inline without scanning
+    # every tweet at load time.
+    users = aggregate_users()
+    write_users(users)
+
     LOG.info(
         "ingest complete",
         **totals,
         tracked=len(tracked_results),
         misc=len(misc_rows),
+        users=len(users),
     )
     return 0
 

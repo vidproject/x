@@ -13,7 +13,7 @@ export const COLUMNS = [
     default: true,
     filterable: true,
     sortable: true,
-    render: (r) => `<span class="handle">@${escape(r.account_handle ?? '')}</span>`,
+    render: renderAccountCell,
   },
   {
     key: 'posted_at',
@@ -415,6 +415,29 @@ function fmtNum(v) {
   if (!Number.isFinite(n)) return '—';
   return n.toLocaleString('en-US');
 }
+// Per-author user map injected by app.js. Empty by default; populated
+// from data/users.json once it loads.
+let userLookup = new Map();
+export function setUserLookup(map) {
+  userLookup = map instanceof Map ? map : new Map();
+}
+
+function renderAccountCell(r) {
+  const handle = r.account_handle ?? '';
+  const userMeta = userLookup.get(handle) ?? {};
+  const avatar = userMeta.avatar_url || r.author?.avatar_url || null;
+  const displayName = userMeta.display_name || r.author?.display_name || null;
+  const verifiedBadge = userMeta.verified || userMeta.is_blue_verified ? ' ✓' : '';
+  const avatarHtml = avatar
+    ? `<img class="acc-avatar" loading="lazy" alt="" src="${escape(avatar)}" />`
+    : '<span class="acc-avatar acc-avatar-placeholder">·</span>';
+  const handleHtml = `<span class="handle">@${escape(handle)}</span>`;
+  const nameHtml = displayName
+    ? `<span class="display-name" title="${escape(displayName)}">${escape(displayName)}${verifiedBadge}</span>`
+    : '';
+  return `<span class="acc-cell">${avatarHtml}${handleHtml}${nameHtml}</span>`;
+}
+
 function mediaFlags(r) {
   const media = Array.isArray(r.media) ? r.media : [];
   if (media.length === 0) return '<span class="muted">—</span>';
