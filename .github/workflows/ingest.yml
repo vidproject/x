@@ -1,7 +1,7 @@
 name: ingest
 on:
   push:
-    branches: [main]
+    branches: ['**']
     paths:
       - 'raw/**'
       - 'config/accounts.yaml'
