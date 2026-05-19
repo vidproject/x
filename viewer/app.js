@@ -1,0 +1,508 @@
+// Orchestrator: wires the UI controls to the Store, manages URL state, theme,
+// column visibility, CSV export, and lazy parquet loading.
+
+import { exportCsv } from './csv.js';
+import { loadParquetRows } from './parquet.js';
+import { applyToUrl, defaults as defaultState, fromHash } from './state.js';
+import { Store } from './store.js';
+import {
+  openColumnFilterPopup,
+  parseVisibleColumns,
+  renderColumnsMenu,
+  renderTable,
+} from './table.js';
+import { closeSidepanel, openSidepanel } from './sidepanel.js';
+
+const $ = (id) => {
+  const el = document.getElementById(id);
+  if (!el) throw new Error(`missing element #${id}`);
+  return el;
+};
+
+// --- DOM handles ---
+const els = {
+  hdrStats: $('hdr-stats'),
+  dlBtn: $('dl-btn'),
+  dlMenu: $('dl-menu'),
+  colsBtn: $('cols-btn'),
+  colsMenu: $('cols-menu'),
+  filterBtn: $('filter-btn'),
+  csvBtn: $('csv-btn'),
+  tipsBtn: $('tips-btn'),
+  tips: $('tips'),
+  themeBtn: $('theme-btn'),
+  themeIcon: $('theme-icon'),
+  toolbar: $('toolbar'),
+  search: $('search'),
+  dateFrom: $('date-from'),
+  dateTo: $('date-to'),
+  tweetType: $('tweet-type'),
+  mediaType: $('media-type'),
+  pageSize: $('page-size'),
+  resetBtn: $('reset-btn'),
+  resultBar: $('result-bar'),
+  resultCount: $('result-count'),
+  spinner: $('spinner'),
+  tableWrap: $('table-wrap'),
+  theadRow: $('thead-row'),
+  tbody: $('tbody'),
+  pager: $('pager'),
+  pgFirst: $('pg-first'),
+  pgPrev: $('pg-prev'),
+  pgLabel: $('pg-label'),
+  pgNext: $('pg-next'),
+  pgLast: $('pg-last'),
+  empty: $('empty'),
+  emptyDetail: $('empty-detail'),
+  sidepanel: $('sidepanel'),
+  spTitle: $('sp-title'),
+  spBody: $('sp-body'),
+  spClose: $('sp-close'),
+  colPop: $('col-pop'),
+  errbar: $('errbar'),
+};
+
+// --- State ---
+const store = new Store();
+let manifest = null;
+let urlState = fromHash();
+let visibleCols = parseVisibleColumns(urlState.cols);
+let filteredRows = [];
+/** @type {Record<string, Set<string>>} */
+let colFilters = {};
+let selectedRowId = null;
+const LOADING = new Set();
+
+// --- Theme ---
+function loadTheme() {
+  const saved = localStorage.getItem('imm-theme') || 'auto';
+  applyTheme(saved);
+}
+function applyTheme(mode) {
+  document.body.classList.remove('theme-auto', 'theme-light', 'theme-dark');
+  document.body.classList.add(`theme-${mode}`);
+  els.themeIcon.textContent = mode === 'dark' ? '☾' : mode === 'light' ? '☀' : '◐';
+  els.themeBtn.title = `Theme: ${mode} (click to cycle)`;
+  localStorage.setItem('imm-theme', mode);
+}
+els.themeBtn.addEventListener('click', () => {
+  const cur = localStorage.getItem('imm-theme') || 'auto';
+  const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
+  applyTheme(next);
+});
+
+// --- Tips ---
+els.tipsBtn.addEventListener('click', () => {
+  const next = els.tips.hidden;
+  els.tips.hidden = !next;
+  els.tipsBtn.setAttribute('aria-pressed', next ? 'true' : 'false');
+});
+
+// --- Manifest + Database Downloads menu ---
+async function loadManifest() {
+  try {
+    const res = await fetch('data/manifest.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error(`manifest: ${res.status}`);
+    manifest = await res.json();
+  } catch {
+    manifest = { accounts: [] };
+    els.emptyDetail.textContent =
+      'No data/manifest.json found yet. Once captures land and the ingest workflow runs, accounts will appear here.';
+  }
+  paintDlMenu();
+  paintHdrStats();
+  if ((manifest.accounts || []).length === 0) {
+    els.empty.hidden = false;
+  }
+}
+
+function paintHdrStats() {
+  const accounts = manifest?.accounts ?? [];
+  const totalRows = accounts.reduce((s, a) => s + (a.row_count || 0), 0);
+  const totalMedia = accounts.reduce((s, a) => s + (a.media_count || 0), 0);
+  if (accounts.length === 0) {
+    els.hdrStats.textContent = '';
+    return;
+  }
+  els.hdrStats.textContent = `${fmtNum(totalRows)} tweets · ${fmtNum(totalMedia)} media · ${accounts.length} account${accounts.length === 1 ? '' : 's'}`;
+}
+
+function paintDlMenu() {
+  els.dlMenu.replaceChildren();
+  const accounts = manifest?.accounts ?? [];
+  if (accounts.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'muted';
+    empty.style.padding = '6px';
+    empty.textContent = 'No accounts yet.';
+    els.dlMenu.append(empty);
+    return;
+  }
+  for (const a of accounts) {
+    const row = document.createElement('label');
+    row.className = 'dl-row';
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = urlState.accounts.includes(a.handle);
+    cb.addEventListener('change', () => {
+      if (cb.checked) selectAccount(a, row);
+      else unselectAccount(a.handle);
+    });
+    const handle = document.createElement('span');
+    handle.className = 'handle';
+    handle.textContent = `@${a.handle}`;
+    const label = document.createElement('span');
+    label.className = 'label';
+    label.textContent = a.label;
+    const count = document.createElement('span');
+    count.className = 'count';
+    count.textContent = fmtNum(a.row_count);
+    row.dataset.handle = a.handle;
+    row.append(cb, handle, label, count);
+    els.dlMenu.append(row);
+  }
+}
+
+async function selectAccount(account, rowEl) {
+  if (store.has(account.handle) || LOADING.has(account.handle)) return;
+  LOADING.add(account.handle);
+  rowEl.classList.add('loading');
+  showError(null);
+  try {
+    setSpinner(true);
+    const rows = await loadParquetRows(`data/${account.handle}.parquet`);
+    store.setHandle(account.handle, rows);
+    if (!urlState.accounts.includes(account.handle)) {
+      urlState.accounts.push(account.handle);
+    }
+    applyToUrl(urlState);
+    revealUi();
+    refresh();
+  } catch (err) {
+    showError(`Failed to load ${account.handle}: ${err.message ?? err}`);
+    // Roll back the checkbox.
+    const cb = rowEl.querySelector('input[type=checkbox]');
+    if (cb) cb.checked = false;
+  } finally {
+    LOADING.delete(account.handle);
+    rowEl.classList.remove('loading');
+    setSpinner(false);
+  }
+}
+
+function unselectAccount(handle) {
+  store.removeHandle(handle);
+  urlState.accounts = urlState.accounts.filter((h) => h !== handle);
+  applyToUrl(urlState);
+  if (store.handles().length === 0) {
+    els.toolbar.hidden = true;
+    els.resultBar.hidden = true;
+    els.tableWrap.hidden = true;
+    els.pager.hidden = true;
+    els.empty.hidden = false;
+  } else {
+    refresh();
+  }
+}
+
+function revealUi() {
+  els.empty.hidden = true;
+  els.toolbar.hidden = false;
+  els.resultBar.hidden = false;
+  els.tableWrap.hidden = false;
+  els.pager.hidden = false;
+}
+
+// --- Toolbar wiring ---
+els.search.value = urlState.q;
+els.dateFrom.value = urlState.from;
+els.dateTo.value = urlState.to;
+els.tweetType.value = urlState.type;
+els.mediaType.value = urlState.media;
+els.pageSize.value = String(urlState.size);
+
+let searchDebounce;
+els.search.addEventListener('input', () => {
+  clearTimeout(searchDebounce);
+  searchDebounce = setTimeout(() => {
+    urlState.q = els.search.value;
+    urlState.page = 1;
+    applyToUrl(urlState);
+    refresh();
+  }, 150);
+});
+els.dateFrom.addEventListener('change', () => {
+  urlState.from = els.dateFrom.value;
+  urlState.page = 1;
+  applyToUrl(urlState);
+  refresh();
+});
+els.dateTo.addEventListener('change', () => {
+  urlState.to = els.dateTo.value;
+  urlState.page = 1;
+  applyToUrl(urlState);
+  refresh();
+});
+els.tweetType.addEventListener('change', () => {
+  urlState.type = els.tweetType.value;
+  urlState.page = 1;
+  applyToUrl(urlState);
+  refresh();
+});
+els.mediaType.addEventListener('change', () => {
+  urlState.media = els.mediaType.value;
+  urlState.page = 1;
+  applyToUrl(urlState);
+  refresh();
+});
+els.pageSize.addEventListener('change', () => {
+  urlState.size = Number(els.pageSize.value) || 100;
+  urlState.page = 1;
+  applyToUrl(urlState);
+  refresh();
+});
+els.resetBtn.addEventListener('click', () => {
+  const accounts = urlState.accounts;
+  urlState = { ...defaultState(), accounts };
+  colFilters = {};
+  els.search.value = '';
+  els.dateFrom.value = '';
+  els.dateTo.value = '';
+  els.tweetType.value = '';
+  els.mediaType.value = '';
+  els.pageSize.value = '100';
+  applyToUrl(urlState);
+  refresh();
+});
+
+// --- Columns menu ---
+function onColumnsChange(next) {
+  visibleCols = next;
+  urlState.cols = next.join(',');
+  applyToUrl(urlState);
+  renderColumnsMenu(els.colsMenu, visibleCols, onColumnsChange);
+  refresh();
+}
+renderColumnsMenu(els.colsMenu, visibleCols, onColumnsChange);
+
+// --- Dropdown toggles ---
+wireDropdown(els.dlBtn, els.dlMenu);
+wireDropdown(els.colsBtn, els.colsMenu);
+function wireDropdown(btn, menu) {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const willOpen = menu.hidden;
+    // Close any other dropdowns first.
+    for (const m of [els.dlMenu, els.colsMenu]) {
+      if (m !== menu) m.hidden = true;
+    }
+    menu.hidden = !willOpen;
+    btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+  });
+}
+document.addEventListener('mousedown', (e) => {
+  for (const m of [els.dlMenu, els.colsMenu]) {
+    if (!m.hidden && !m.contains(e.target) && e.target !== els.dlBtn && e.target !== els.colsBtn) {
+      m.hidden = true;
+    }
+  }
+});
+
+// --- CSV ---
+els.csvBtn.addEventListener('click', () => {
+  if (filteredRows.length === 0) {
+    showError('Nothing to export — no rows match the current filters.', 3000);
+    return;
+  }
+  exportCsv(filteredRows);
+});
+
+// --- Sidepanel ---
+els.spClose.addEventListener('click', () => {
+  selectedRowId = null;
+  closeSidepanel(els.sidepanel);
+  refreshSelectionHighlight();
+});
+
+// --- Pager ---
+els.pgFirst.addEventListener('click', () => goto(1));
+els.pgPrev.addEventListener('click', () => goto(urlState.page - 1));
+els.pgNext.addEventListener('click', () => goto(urlState.page + 1));
+els.pgLast.addEventListener('click', () => goto(lastPage()));
+
+function lastPage() {
+  return Math.max(1, Math.ceil(filteredRows.length / urlState.size));
+}
+function goto(p) {
+  const np = Math.min(Math.max(1, p), lastPage());
+  if (np === urlState.page) return;
+  urlState.page = np;
+  applyToUrl(urlState);
+  refresh();
+}
+
+// --- Hash sync ---
+window.addEventListener('hashchange', () => {
+  const next = fromHash();
+  if (JSON.stringify(next) === JSON.stringify(urlState)) return;
+  urlState = next;
+  els.search.value = urlState.q;
+  els.dateFrom.value = urlState.from;
+  els.dateTo.value = urlState.to;
+  els.tweetType.value = urlState.type;
+  els.mediaType.value = urlState.media;
+  els.pageSize.value = String(urlState.size);
+  visibleCols = parseVisibleColumns(urlState.cols);
+  refresh();
+});
+
+// --- Filter button (toggles toolbar visibility) ---
+let filterBarVisible = true;
+els.filterBtn.addEventListener('click', () => {
+  filterBarVisible = !filterBarVisible;
+  els.toolbar.hidden = !filterBarVisible || store.handles().length === 0;
+  els.filterBtn.setAttribute('aria-pressed', filterBarVisible ? 'true' : 'false');
+});
+els.filterBtn.setAttribute('aria-pressed', 'true');
+
+// --- Render pipeline ---
+function refresh() {
+  filteredRows = store.apply({
+    accounts: urlState.accounts,
+    q: urlState.q,
+    from: urlState.from,
+    to: urlState.to,
+    type: urlState.type,
+    media: urlState.media,
+    sort: urlState.sort,
+    dir: urlState.dir,
+    colFilters,
+  });
+
+  // Result count + page bounds.
+  const total = filteredRows.length;
+  const page = Math.min(urlState.page, lastPage());
+  if (page !== urlState.page) urlState.page = page;
+  const start = (page - 1) * urlState.size;
+  const end = Math.min(total, start + urlState.size);
+  els.resultCount.textContent =
+    total === 0
+      ? 'No matches.'
+      : `Showing ${fmtNum(start + 1)}–${fmtNum(end)} of ${fmtNum(total)} tweet${total === 1 ? '' : 's'}.`;
+  els.pgLabel.textContent = `Page ${fmtNum(page)} of ${fmtNum(lastPage())}`;
+  els.pgFirst.disabled = page === 1;
+  els.pgPrev.disabled = page === 1;
+  els.pgNext.disabled = page === lastPage();
+  els.pgLast.disabled = page === lastPage();
+
+  renderTable({
+    theadEl: els.theadRow,
+    tbodyEl: els.tbody,
+    rows: filteredRows,
+    visible: visibleCols,
+    page: urlState.page,
+    pageSize: urlState.size,
+    sort: urlState.sort,
+    dir: urlState.dir,
+    colFilters,
+    onRowClick: (r) => {
+      selectedRowId = r.tweet_id;
+      openSidepanel(els.sidepanel, els.spTitle, els.spBody, r);
+      refreshSelectionHighlight();
+    },
+    onSortToggle: (key) => {
+      if (urlState.sort === key) {
+        urlState.dir = urlState.dir === 'desc' ? 'asc' : 'desc';
+      } else {
+        urlState.sort = key;
+        urlState.dir = 'desc';
+      }
+      applyToUrl(urlState);
+      refresh();
+    },
+    onOpenColPop: (key, btn) =>
+      openColumnFilterPopup({
+        popEl: els.colPop,
+        anchorBtn: btn,
+        colKey: key,
+        allRows: store.allRows,
+        activeFilters: colFilters,
+        onChange: (col, set) => {
+          if (set.size === 0) delete colFilters[col];
+          else colFilters[col] = set;
+          urlState.page = 1;
+          refresh();
+        },
+        onSort: (dir) => {
+          urlState.sort = key;
+          urlState.dir = dir;
+          applyToUrl(urlState);
+          refresh();
+        },
+      }),
+  });
+
+  refreshSelectionHighlight();
+}
+
+function refreshSelectionHighlight() {
+  for (const tr of els.tbody.children) {
+    if (tr.dataset && tr.dataset.tweetId === String(selectedRowId)) {
+      tr.classList.add('selected');
+    } else {
+      tr.classList.remove?.('selected');
+    }
+  }
+}
+
+// --- Misc helpers ---
+function setSpinner(on) {
+  els.spinner.hidden = !on;
+}
+function showError(msg, timeoutMs) {
+  if (!msg) {
+    els.errbar.hidden = true;
+    els.errbar.textContent = '';
+    return;
+  }
+  els.errbar.hidden = false;
+  els.errbar.textContent = msg;
+  if (timeoutMs) {
+    setTimeout(() => {
+      els.errbar.hidden = true;
+      els.errbar.textContent = '';
+    }, timeoutMs);
+  }
+}
+function fmtNum(v) {
+  if (v == null) return '—';
+  const n = Number(v);
+  if (!Number.isFinite(n)) return '—';
+  return n.toLocaleString('en-US');
+}
+
+// --- Boot ---
+loadTheme();
+loadManifest().then(async () => {
+  // If the URL pre-selected accounts, auto-load them.
+  if (urlState.accounts.length > 0 && manifest?.accounts) {
+    for (const handle of [...urlState.accounts]) {
+      const acc = manifest.accounts.find((a) => a.handle === handle);
+      if (!acc) continue;
+      // Find the matching dl-row for the loading indicator.
+      let rowEl = els.dlMenu.querySelector(`[data-handle="${cssEscape(handle)}"]`);
+      if (!rowEl) {
+        // Fallback synthetic element.
+        rowEl = document.createElement('div');
+      }
+      // Tick the checkbox to keep UI in sync.
+      const cb = rowEl.querySelector?.('input[type=checkbox]');
+      if (cb) cb.checked = true;
+      await selectAccount(acc, rowEl);
+    }
+  }
+});
+
+function cssEscape(s) {
+  return s.replace(/["\\]/g, '\\$&');
+}

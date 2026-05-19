@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Immigration Social Media Archive</title>
+    <link rel="stylesheet" href="viewer/style.css" />
+  </head>
+  <body class="theme-auto">
+    <header class="hdr">
+      <div class="hdr-l">
+        <div class="hdr-title">Immigration Social Media Archive</div>
+        <div class="hdr-stats" id="hdr-stats" aria-live="polite"></div>
+      </div>
+      <nav class="hdr-r">
+        <div class="menu">
+          <button class="btn" id="dl-btn" aria-haspopup="true" aria-expanded="false">
+            <span class="icon">📁</span> Database Downloads
+          </button>
+          <div class="dropdown" id="dl-menu" role="menu" hidden></div>
+        </div>
+        <div class="menu">
+          <button class="btn" id="cols-btn" aria-haspopup="true" aria-expanded="false">
+            <span class="icon">⚙</span> Columns
+          </button>
+          <div class="dropdown" id="cols-menu" role="menu" hidden></div>
+        </div>
+        <button class="btn" id="filter-btn" aria-pressed="false">
+          <span class="icon">▾</span> Filter
+        </button>
+        <button class="btn" id="csv-btn" title="Export current view to CSV">
+          <span class="icon">⤓</span> CSV
+        </button>
+        <button class="btn" id="tips-btn" aria-pressed="false">
+          <span class="icon">?</span> Tips
+        </button>
+        <button class="btn" id="theme-btn" title="Toggle light / dark / system">
+          <span class="icon" id="theme-icon">◐</span>
+        </button>
+        <a
+          class="btn"
+          id="gh-link"
+          href="https://github.com/vidproject/x"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="icon">★</span> GitHub
+        </a>
+      </nav>
+    </header>
+
+    <div class="tips" id="tips" hidden>
+      <h2>Tips</h2>
+      <ul>
+        <li>
+          Pick one or more accounts under <em>Database Downloads</em>. Their data loads lazily.
+        </li>
+        <li>
+          <kbd>?</kbd> in the search box matches any single character; <kbd>*</kbd> matches any run.
+        </li>
+        <li>
+          Click <code>▾</code> on any column header to filter by that column's unique values,
+          Excel-style.
+        </li>
+        <li>Click any row to open the full tweet detail panel on the right.</li>
+        <li>
+          Use <em>Columns</em> to toggle visibility — including <em>Deletion detected</em>, which is
+          off by default.
+        </li>
+        <li>The URL updates as you filter; bookmark or share it to come back to the same view.</li>
+        <li>
+          This is a public archive. Captures mirror what X served the browser at capture time — no
+          editorial filter.
+        </li>
+      </ul>
+    </div>
+
+    <section class="toolbar" id="toolbar" hidden>
+      <input
+        id="search"
+        class="search"
+        type="search"
+        placeholder="Search text, hashtags, mentions…  (use * and ? wildcards)"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <label class="lbl">From <input id="date-from" type="date" /> </label>
+      <label class="lbl">To <input id="date-to" type="date" /> </label>
+      <select id="tweet-type" class="select">
+        <option value="">All tweet types</option>
+        <option value="original">Original</option>
+        <option value="retweet">Retweet</option>
+        <option value="quote">Quote</option>
+        <option value="reply">Reply</option>
+      </select>
+      <select id="media-type" class="select">
+        <option value="">Any media</option>
+        <option value="video">Has video</option>
+        <option value="photo">Has photo</option>
+        <option value="none">Text only</option>
+      </select>
+      <select id="page-size" class="select" title="Rows per page">
+        <option value="50">50 / page</option>
+        <option value="100" selected>100 / page</option>
+        <option value="250">250 / page</option>
+        <option value="500">500 / page</option>
+      </select>
+      <button class="btn ghost" id="reset-btn" title="Clear all filters">Reset</button>
+    </section>
+
+    <section class="result-bar" id="result-bar" hidden>
+      <span id="result-count">—</span>
+      <span class="spinner" id="spinner" hidden></span>
+    </section>
+
+    <main class="table-wrap" id="table-wrap" hidden>
+      <table class="data-table" id="data-table">
+        <thead>
+          <tr id="thead-row"></tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </main>
+
+    <nav class="pager" id="pager" hidden>
+      <button class="btn" id="pg-first">⏮</button>
+      <button class="btn" id="pg-prev">◀</button>
+      <span class="pg-label" id="pg-label">—</span>
+      <button class="btn" id="pg-next">▶</button>
+      <button class="btn" id="pg-last">⏭</button>
+    </nav>
+
+    <section class="empty" id="empty">
+      <div class="empty-card">
+        <h2>No data loaded yet</h2>
+        <p>
+          Open <em>Database Downloads</em> in the header and tick one or more accounts. Their
+          per-account Parquet files load directly in your browser.
+        </p>
+        <p class="muted" id="empty-detail">Looking for accounts…</p>
+      </div>
+    </section>
+
+    <aside class="sidepanel" id="sidepanel" hidden aria-hidden="true">
+      <div class="sidepanel-head">
+        <span class="sidepanel-title" id="sp-title">Tweet</span>
+        <button class="btn ghost" id="sp-close" aria-label="Close">✕</button>
+      </div>
+      <div class="sidepanel-body" id="sp-body"></div>
+    </aside>
+
+    <div class="col-pop" id="col-pop" hidden role="dialog"></div>
+
+    <div class="errbar" id="errbar" hidden></div>
+
+    <footer class="ftr">
+      <span class="muted"
+        >Immigration Social Media Archive · Property of the University of California.</span
+      >
+    </footer>
+
+    <script type="module" src="viewer/app.js"></script>
+  </body>
+</html>
