@@ -295,9 +295,14 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
   if (normalized.observed_ids.length === 0) {
     await info('graphql payload empty — shape probe', {
       endpoint,
-      key_paths: probeKeyPaths(response, 4).slice(0, 40),
+      key_paths: probeKeyPaths(response, 6).slice(0, 60),
       typenames: probeTypenames(response).slice(0, 30),
       has_errors: hasErrorsField(response),
+      tweet_keys: probeFirstTypeShape(response, 'Tweet'),
+      tweetvr_keys: probeFirstTypeShape(response, 'TweetWithVisibilityResults'),
+      timeline_tweet_keys: probeFirstTypeShape(response, 'TimelineTweet'),
+      tweet_results_shape: probeFirstWithKey(response, 'tweet_results'),
+      itemcontent_shape: probeFirstWithKey(response, 'itemContent'),
     });
   } else {
     await info('graphql payload seen', {
@@ -807,6 +812,63 @@ function probeTypenames(node: unknown): string[] {
     }
   }
   return [...seen].sort();
+}
+
+/**
+ * Find the first node anywhere in the tree whose `__typename` matches and
+ * return its top-level key list (sorted). Useful for discovering what fields
+ * X is actually shipping for a given node type after a schema change.
+ */
+function probeFirstTypeShape(node: unknown, typename: string): string[] | null {
+  const visited = new WeakSet<object>();
+  const stack: unknown[] = [node];
+  while (stack.length > 0) {
+    const n = stack.pop();
+    if (n === null || typeof n !== 'object') continue;
+    if (visited.has(n as object)) continue;
+    visited.add(n as object);
+    if (Array.isArray(n)) {
+      for (const v of n) stack.push(v);
+    } else {
+      const obj = n as Record<string, unknown>;
+      if (obj.__typename === typename) {
+        return Object.keys(obj).sort();
+      }
+      for (const v of Object.values(obj)) stack.push(v);
+    }
+  }
+  return null;
+}
+
+/**
+ * Find the first node anywhere in the tree that has a particular key and
+ * return that key's value's top-level keys. Used to inspect known wrapper
+ * containers (`tweet_results`, `itemContent`) without us knowing where in
+ * the tree they live.
+ */
+function probeFirstWithKey(node: unknown, key: string): string[] | null {
+  const visited = new WeakSet<object>();
+  const stack: unknown[] = [node];
+  while (stack.length > 0) {
+    const n = stack.pop();
+    if (n === null || typeof n !== 'object') continue;
+    if (visited.has(n as object)) continue;
+    visited.add(n as object);
+    if (Array.isArray(n)) {
+      for (const v of n) stack.push(v);
+    } else {
+      const obj = n as Record<string, unknown>;
+      if (key in obj) {
+        const v = obj[key];
+        if (typeof v === 'object' && v !== null) {
+          return Object.keys(v as Record<string, unknown>).sort();
+        }
+        return [];
+      }
+      for (const v of Object.values(obj)) stack.push(v);
+    }
+  }
+  return null;
 }
 
 /** True if the response has a top-level `errors` array, GraphQL-style. */
