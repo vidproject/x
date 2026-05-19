@@ -30,17 +30,37 @@ export interface NormalizeContext {
 export interface NormalizeResult {
   tweets: CanonicalTweet[];
   observed_ids: string[];
+  /**
+   * Tweet-shaped nodes the walker saw (had a `rest_id`) but couldn't turn
+   * into a full `CanonicalTweet` — typically because the embedded user
+   * info was missing or the entry was a media-only thumbnail card from
+   * the UserMedia endpoint. The background queues these for an explicit
+   * "go fetch the detail page" crawl so we don't drop them on the floor.
+   */
+  partial_ids: Array<{ tweet_id: string; hint_handle: string | null }>;
 }
 
 export function normalize(payload: unknown, ctx: NormalizeContext): NormalizeResult {
   const rawTweets = collectTweets(payload);
   const tweets: CanonicalTweet[] = [];
   const observed: string[] = [];
+  const built = new Set<string>();
+  const partialMap = new Map<string, string | null>();
   for (const raw of rawTweets) {
     try {
       const t = buildTweet(raw, ctx);
-      if (!t) continue;
+      if (!t) {
+        // Couldn't build a canonical tweet. If it has a rest_id we still
+        // record the id (with a best-effort author hint) so the user can
+        // drive a refetch loop against the detail page.
+        const restId = pickRestId(raw);
+        if (restId) {
+          partialMap.set(restId, pickHintHandle(raw));
+        }
+        continue;
+      }
       observed.push(t.tweet_id);
+      built.add(t.tweet_id);
       if (ctx.allowedHandles.size === 0 || ctx.allowedHandles.has(t.account_handle.toLowerCase())) {
         tweets.push(t);
       }
@@ -48,7 +68,39 @@ export function normalize(payload: unknown, ctx: NormalizeContext): NormalizeRes
       // One bad entry shouldn't take down the whole batch.
     }
   }
-  return { tweets, observed_ids: observed };
+  // Anything that ended up in partialMap but ALSO came back as a built
+  // tweet (different walker pass, same id) isn't actually partial.
+  const partial_ids: Array<{ tweet_id: string; hint_handle: string | null }> = [];
+  for (const [id, hint] of partialMap) {
+    if (built.has(id)) continue;
+    partial_ids.push({ tweet_id: id, hint_handle: hint });
+  }
+  return { tweets, observed_ids: observed, partial_ids };
+}
+
+function pickRestId(node: unknown): string | null {
+  if (typeof node !== 'object' || node === null) return null;
+  const n = node as Record<string, unknown>;
+  if (typeof n.rest_id === 'string' && n.rest_id) return n.rest_id;
+  // Some UserMedia entries shape the id as { rest_id_str } or store
+  // it on a `tweet_result.result.rest_id` nested struct.
+  const tweetResult = obj(n.tweet_result);
+  if (tweetResult) {
+    const inner = obj(tweetResult.result);
+    if (inner && typeof inner.rest_id === 'string' && inner.rest_id) return inner.rest_id;
+  }
+  return null;
+}
+
+function pickHintHandle(node: unknown): string | null {
+  if (typeof node !== 'object' || node === null) return null;
+  const n = node as Record<string, unknown>;
+  const userResult = obj(obj(obj(n.core)?.user_results)?.result);
+  return (
+    strOrNull(obj(userResult?.core)?.screen_name) ??
+    strOrNull(obj(userResult?.legacy)?.screen_name) ??
+    strOrNull(obj(n.legacy)?.screen_name)
+  );
 }
 
 function collectTweets(obj: unknown): unknown[] {

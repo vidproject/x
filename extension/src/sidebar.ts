@@ -37,6 +37,10 @@ const refetchSection = $<HTMLElement>('refetch-section');
 const refetchCount = $<HTMLSpanElement>('refetch-count');
 const refetchStartBtn = $<HTMLButtonElement>('refetch-start');
 const refetchCancelBtn = $<HTMLButtonElement>('refetch-cancel');
+const mediaCrawlSection = $<HTMLElement>('media-crawl-section');
+const mediaCrawlCount = $<HTMLSpanElement>('media-crawl-count');
+const mediaCrawlStartBtn = $<HTMLButtonElement>('media-crawl-start');
+const mediaCrawlCancelBtn = $<HTMLButtonElement>('media-crawl-cancel');
 
 let lastState: ExtensionState | null = null;
 
@@ -230,7 +234,23 @@ function paint(state: ExtensionState): void {
   paintMasterSwitch(state);
   renderAccounts(state);
   paintAutoScroll(state);
+  paintMediaCrawl(state);
   paintRefetch(state);
+}
+
+function paintMediaCrawl(state: ExtensionState): void {
+  const total = state.mediaCrawlQueue.total;
+  const running = state.mediaCrawlQueue.running;
+  mediaCrawlSection.hidden = total === 0 && !running;
+  mediaCrawlCount.textContent =
+    total === 0
+      ? running
+        ? 'finishing…'
+        : '0 queued'
+      : `${fmtNum(total)} queued${running ? ' · running' : ''}`;
+  mediaCrawlStartBtn.hidden = running;
+  mediaCrawlStartBtn.disabled = total === 0;
+  mediaCrawlCancelBtn.hidden = !running;
 }
 
 function paintMasterSwitch(state: ExtensionState): void {
@@ -341,6 +361,20 @@ refetchCancelBtn.addEventListener('click', () => {
   refetchCancelBtn.disabled = true;
   void send({ type: 'cancel-refetch' }).finally(() => {
     refetchCancelBtn.disabled = false;
+  });
+});
+
+mediaCrawlStartBtn.addEventListener('click', () => {
+  mediaCrawlStartBtn.disabled = true;
+  void send({ type: 'start-media-crawl' }).finally(() => {
+    mediaCrawlStartBtn.disabled = false;
+  });
+});
+
+mediaCrawlCancelBtn.addEventListener('click', () => {
+  mediaCrawlCancelBtn.disabled = true;
+  void send({ type: 'cancel-media-crawl' }).finally(() => {
+    mediaCrawlCancelBtn.disabled = false;
   });
 });
 

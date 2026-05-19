@@ -63,6 +63,22 @@
       </div>
     </section>
 
+    <section class="refetch" id="media-crawl-section" hidden>
+      <div class="section-head">
+        <h2 class="section-title">Media-tab partial captures</h2>
+        <span class="muted" id="media-crawl-count">0 queued</span>
+      </div>
+      <p class="muted refetch-blurb">
+        Tweets the Media tab surfaced without enough data to fully capture (no author block,
+        thumbnail-only entries). We only stored the tweet IDs; click below to walk a tab through
+        each detail page and capture the real tweet. Already-archived IDs are skipped.
+      </p>
+      <div class="row">
+        <button class="btn" id="media-crawl-start">Start crawl</button>
+        <button class="btn" id="media-crawl-cancel" hidden>Cancel</button>
+      </div>
+    </section>
+
     <section class="refetch" id="refetch-section" hidden>
       <div class="section-head">
         <h2 class="section-title">Truncated tweets</h2>

@@ -311,12 +311,21 @@ async function loadAllAccounts() {
       // network" from "parquet codec unsupported".
       const msg = err?.message ?? String(err);
       const statusMatch = /:\s*(\d{3})\s*(.*)$/.exec(msg);
+      const status = statusMatch ? Number(statusMatch[1]) : null;
+      // Rewrite the most common cause — Pages serving stale manifest that
+      // points at a file the new commit added but Pages hasn't deployed
+      // yet — to a less alarming explanation. The raw HTTP status stays in
+      // its own column.
+      const friendly =
+        status === 404
+          ? `${resource} is in the manifest but hasn't been deployed to Pages yet (manifest moved ahead of Pages). Refresh in ~60s.`
+          : msg;
       pushLoadError({
         resource,
-        status: statusMatch ? Number(statusMatch[1]) : null,
+        status,
         kind: 'parquet',
         handle: account.handle,
-        message: msg,
+        message: friendly,
       });
       console.warn(`[viewer] failed to load ${account.handle}:`, err);
     } finally {
