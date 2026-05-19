@@ -1,0 +1,81 @@
+name: ingest
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'raw/**'
+      - 'config/accounts.yaml'
+      - 'scripts/ingest.py'
+      - 'scripts/detect_deletions.py'
+      - 'scripts/update_readme.py'
+      - 'scripts/_schema.py'
+      - 'seen/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: skip if previous bot commit is fresh
+        id: cooldown
+        run: |
+          # If the immediately-preceding commit on this branch is one of ours
+          # (less than 60s ago), bail out — the previous ingest already covers
+          # everything that's now pushed.
+          last_msg=$(git log -1 --pretty=%s)
+          last_ts=$(git log -1 --pretty=%ct)
+          now=$(date +%s)
+          if [[ "$last_msg" == "[bot] ingest"* && $((now - last_ts)) -lt 60 ]]; then
+            echo "skip=1" >> "$GITHUB_OUTPUT"
+            echo "cooling down (last bot commit ${last_msg!r} was $((now - last_ts))s ago)"
+          fi
+
+      - uses: astral-sh/setup-uv@v3
+        if: steps.cooldown.outputs.skip != '1'
+        with:
+          enable-cache: true
+
+      - name: install python deps
+        if: steps.cooldown.outputs.skip != '1'
+        run: uv sync
+
+      - name: run unit tests
+        if: steps.cooldown.outputs.skip != '1'
+        run: uv run pytest -q
+
+      - name: ingest raw captures
+        if: steps.cooldown.outputs.skip != '1'
+        run: uv run python -m scripts.ingest
+
+      - name: detect deletions
+        if: steps.cooldown.outputs.skip != '1'
+        run: uv run python -m scripts.detect_deletions
+
+      - name: update README coverage
+        if: steps.cooldown.outputs.skip != '1'
+        run: uv run python -m scripts.update_readme
+
+      - name: commit results
+        if: steps.cooldown.outputs.skip != '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain data/ README.md)" ]; then
+            git add data/ README.md
+            handle_count=$(ls data/*.parquet 2>/dev/null | wc -l | tr -d ' ')
+            git commit -m "[bot] ingest: ${handle_count} parquet(s) refreshed"
+            git push
+          else
+            echo "no changes to commit"
+          fi

@@ -78,10 +78,7 @@ def bundle() -> None:
         # IIFE for ones loaded as classic scripts (content + page-hook). The
         # page-hook executes in the page world and shouldn't introduce module
         # syntax (some pages have CSP that blocks it).
-        if src_name in {"content.ts", "page-hook.ts"}:
-            fmt = "iife"
-        else:
-            fmt = "esm"
+        fmt = "iife" if src_name in {"content.ts", "page-hook.ts"} else "esm"
         cmd = [
             str(esbuild),
             str(src),

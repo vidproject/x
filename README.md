@@ -37,6 +37,9 @@ Generate one at <https://github.com/settings/personal-access-tokens/new>. The PA
 _Coverage tables are regenerated automatically by `scripts/update_readme.py` after each ingest run. The section below will populate once captures begin._
 
 <!-- COVERAGE:START -->
+
+_No captures yet. The Firefox extension hasn't committed any tweets._
+
 <!-- COVERAGE:END -->
 
 ## Architecture
