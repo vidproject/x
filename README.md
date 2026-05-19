@@ -42,7 +42,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 
 | Handle | Label | Tweets | First post | Latest post | Latest capture | Media | Videos |
 | ------ | ----- | -----: | ---------- | ----------- | -------------- | ----: | -----: |
-| `@DHSgov` | Department of Homeland Security | 350 | 2026-03-05 | 2026-05-19 | 2026-05-19 | 222 | 94 |
+| `@DHSgov` | Department of Homeland Security | 365 | 2026-03-05 | 2026-05-19 | 2026-05-19 | 229 | 97 |
 | `@ICEgov` | U.S. Immigration and Customs Enforcement | 5 | 2026-04-28 | 2026-05-19 | 2026-05-19 | 7 | 2 |
 | `@CBP` | U.S. Customs and Border Protection | 4 | 2026-05-11 | 2026-05-19 | 2026-05-19 | 3 | 3 |
 | `@USCIS` | U.S. Citizenship and Immigration Services | 0 | — | — | — | 0 | 0 |
@@ -50,16 +50,35 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@PressSec` | White House Press Secretary | 5 | 2026-04-23 | 2026-04-30 | 2026-05-19 | 0 | 0 |
 | `@POTUS` | President of the United States | 0 | — | — | — | 0 | 0 |
 | `@USDOL` | U.S. Department of Labor | 0 | — | — | — | 0 | 0 |
+| `@7NewsDC` | 7NewsDC | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
+| `@BLaw` | BLaw | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 | `@BorderHawkNews` | BorderHawkNews | 1 | 2026-05-08 | 2026-05-08 | 2026-05-19 | 0 | 0 |
+| `@Brooketaylortv` | Brooketaylortv | 1 | 2026-05-13 | 2026-05-13 | 2026-05-19 | 1 | 0 |
 | `@CBPAMO` | CBPAMO | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 4 | 0 |
+| `@CBPCommissioner` | CBPCommissioner | 1 | 2026-05-05 | 2026-05-05 | 2026-05-19 | 1 | 0 |
+| `@DFOBaltimore` | DFOBaltimore | 1 | 2026-05-05 | 2026-05-05 | 2026-05-19 | 1 | 0 |
+| `@ERODenver` | ERODenver | 1 | 2026-05-07 | 2026-05-07 | 2026-05-19 | 1 | 0 |
+| `@ERONewark` | ERONewark | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
 | `@EROPhiladelphia` | EROPhiladelphia | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
+| `@EROSanDiego` | EROSanDiego | 1 | 2026-05-07 | 2026-05-07 | 2026-05-19 | 1 | 0 |
 | `@FPSDHS` | FPSDHS | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
+| `@GovTimWalz` | GovTimWalz | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 0 |
+| `@Independent` | Independent | 1 | 2026-05-13 | 2026-05-13 | 2026-05-19 | 1 | 0 |
+| `@JennieSTaer` | JennieSTaer | 1 | 2026-05-05 | 2026-05-05 | 2026-05-19 | 1 | 0 |
+| `@LongTimeHistory` | LongTimeHistory | 1 | 2026-05-06 | 2026-05-06 | 2026-05-19 | 1 | 1 |
+| `@MizellPreston` | MizellPreston | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 1 | 0 |
+| `@OffThePress1` | OffThePress1 | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 1 |
 | `@PattyMorin` | PattyMorin | 1 | 2026-05-09 | 2026-05-09 | 2026-05-19 | 1 | 0 |
 | `@RapidResponse47` | RapidResponse47 | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 0 | 0 |
 | `@TSA` | TSA | 2 | 2026-05-06 | 2026-05-11 | 2026-05-19 | 2 | 1 |
+| `@TheBuffaloNews` | TheBuffaloNews | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 0 | 0 |
+| `@USBPChiefDTM` | USBPChiefDTM | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 1 | 0 |
 | `@WHTaskForceFIFA` | WHTaskForceFIFA | 1 | 2026-05-09 | 2026-05-09 | 2026-05-19 | 1 | 0 |
+| `@denverpost` | denverpost | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 0 | 0 |
+| `@nypost` | nypost | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 0 |
+| `@priscialva` | priscialva | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
 
-_Generated 2026-05-19T18:48:00Z._
+_Generated 2026-05-19T18:50:05Z._
 
 <!-- COVERAGE:END -->
 
