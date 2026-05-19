@@ -43,74 +43,189 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | Handle | Label | Tweets | First post | Latest post | Latest capture | Media | Videos |
 | ------ | ----- | -----: | ---------- | ----------- | -------------- | ----: | -----: |
 | `@DHSgov` | Department of Homeland Security | 694 | 2026-03-05 | 2026-05-19 | 2026-05-19 | 416 | 180 |
-| `@ICEgov` | U.S. Immigration and Customs Enforcement | 5 | 2026-04-28 | 2026-05-19 | 2026-05-19 | 7 | 2 |
-| `@CBP` | U.S. Customs and Border Protection | 6 | 2026-04-18 | 2026-05-19 | 2026-05-19 | 3 | 3 |
-| `@USCIS` | U.S. Citizenship and Immigration Services | 0 | — | — | — | 0 | 0 |
-| `@WhiteHouse` | The White House | 5 | 2026-04-27 | 2026-05-19 | 2026-05-19 | 4 | 1 |
-| `@PressSec` | White House Press Secretary | 7 | 2026-04-10 | 2026-04-30 | 2026-05-19 | 0 | 0 |
-| `@POTUS` | President of the United States | 0 | — | — | — | 0 | 0 |
-| `@USDOL` | U.S. Department of Labor | 0 | — | — | — | 0 | 0 |
-| `@7NewsDC` | 7NewsDC | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
+| `@ICEgov` | U.S. Immigration and Customs Enforcement | 30 | 2026-03-31 | 2026-05-19 | 2026-05-19 | 23 | 6 |
+| `@CBP` | U.S. Customs and Border Protection | 25 | 2026-04-18 | 2026-05-19 | 2026-05-19 | 13 | 5 |
+| `@USCIS` | U.S. Citizenship and Immigration Services | 20 | 2026-04-18 | 2026-05-18 | 2026-05-19 | 2 | 0 |
+| `@WhiteHouse` | The White House | 160 | 2026-01-20 | 2026-05-19 | 2026-05-19 | 148 | 34 |
+| `@PressSec` | White House Press Secretary | 84 | 2026-04-10 | 2026-05-15 | 2026-05-19 | 10 | 3 |
+| `@POTUS` | President of the United States | 81 | 2025-01-20 | 2026-05-15 | 2026-05-19 | 33 | 11 |
+| `@USDOL` | U.S. Department of Labor | 297 | 2026-01-21 | 2026-05-19 | 2026-05-19 | 137 | 19 |
+| `@10minutedrill` | 10minutedrill | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 1 | 1 |
+| `@7NewsDC` | 7NewsDC | 2 | 2026-04-07 | 2026-05-15 | 2026-05-19 | 0 | 0 |
+| `@ABC` | ABC | 1 | 2026-04-09 | 2026-04-09 | 2026-05-19 | 0 | 0 |
 | `@ABC7` | ABC7 | 1 | 2026-04-10 | 2026-04-10 | 2026-05-19 | 1 | 1 |
+| `@ACTIdgit` | ACTIdgit | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 0 | 0 |
+| `@AEMAdvocacy` | AEMAdvocacy | 1 | 2026-02-09 | 2026-02-09 | 2026-05-19 | 3 | 0 |
+| `@AGPamBondi` | AGPamBondi | 1 | 2026-03-26 | 2026-03-26 | 2026-05-19 | 0 | 0 |
 | `@AJGuglielmi` | AJGuglielmi | 1 | 2026-04-26 | 2026-04-26 | 2026-05-19 | 1 | 0 |
 | `@AJInvestigates` | AJInvestigates | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 2 | 0 |
+| `@AZSun4Trump` | AZSun4Trump | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@AdamsMorganNews` | AdamsMorganNews | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 1 | 1 |
+| `@AnnaKelly47` | AnnaKelly47 | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
+| `@AntiSatanist333` | AntiSatanist333 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@BLaw` | BLaw | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
-| `@BillMelugin_` | BillMelugin_ | 5 | 2026-04-16 | 2026-04-30 | 2026-05-19 | 4 | 0 |
+| `@BananaTweetsX` | BananaTweetsX | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@Bear_Faced` | Bear_Faced | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 1 | 0 |
+| `@BillMelugin_` | BillMelugin_ | 9 | 2026-03-22 | 2026-04-30 | 2026-05-19 | 8 | 1 |
 | `@BorderHawkNews` | BorderHawkNews | 1 | 2026-05-08 | 2026-05-08 | 2026-05-19 | 0 | 0 |
+| `@Breaking911` | Breaking911 | 1 | 2026-04-07 | 2026-04-07 | 2026-05-19 | 1 | 1 |
 | `@Brooketaylortv` | Brooketaylortv | 1 | 2026-05-13 | 2026-05-13 | 2026-05-19 | 1 | 0 |
 | `@CBPAMO` | CBPAMO | 2 | 2026-04-29 | 2026-05-12 | 2026-05-19 | 5 | 0 |
-| `@CBPCommissioner` | CBPCommissioner | 2 | 2026-04-21 | 2026-05-05 | 2026-05-19 | 1 | 0 |
+| `@CBPCommissioner` | CBPCommissioner | 4 | 2026-04-11 | 2026-05-15 | 2026-05-19 | 2 | 1 |
+| `@CBSMornings` | CBSMornings | 1 | 2026-04-29 | 2026-04-29 | 2026-05-19 | 1 | 1 |
 | `@CBSNews` | CBSNews | 3 | 2026-04-22 | 2026-04-30 | 2026-05-19 | 1 | 1 |
+| `@CENTCOM` | CENTCOM | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 1 | 1 |
+| `@ChrisVanHollen` | ChrisVanHollen | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 2 | 0 |
+| `@Curt50542` | Curt50542 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@DFOBaltimore` | DFOBaltimore | 1 | 2026-05-05 | 2026-05-05 | 2026-05-19 | 1 | 0 |
+| `@DFOLosAngeles` | DFOLosAngeles | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 1 | 1 |
+| `@DOLOIG` | DOLOIG | 3 | 2026-05-02 | 2026-05-14 | 2026-05-19 | 3 | 3 |
+| `@DOWResponse` | DOWResponse | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 1 | 0 |
 | `@DailyCaller` | DailyCaller | 2 | 2026-04-08 | 2026-04-24 | 2026-05-19 | 0 | 0 |
+| `@DeniseSkjerven` | DeniseSkjerven | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 0 | 0 |
+| `@DliElectro19205` | DliElectro19205 | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 0 | 0 |
+| `@DrOzCMS` | DrOzCMS | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 1 | 1 |
+| `@DualityXrp` | DualityXrp | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 1 | 0 |
+| `@EDSecMcMahon` | EDSecMcMahon | 2 | 2026-02-11 | 2026-04-21 | 2026-05-19 | 1 | 0 |
 | `@EROBoston` | EROBoston | 6 | 2026-04-12 | 2026-05-13 | 2026-05-19 | 6 | 0 |
-| `@ERODenver` | ERODenver | 1 | 2026-05-07 | 2026-05-07 | 2026-05-19 | 1 | 0 |
+| `@ERODenver` | ERODenver | 5 | 2026-04-09 | 2026-05-07 | 2026-05-19 | 4 | 0 |
 | `@EROLosAngeles` | EROLosAngeles | 3 | 2026-04-10 | 2026-04-29 | 2026-05-19 | 2 | 0 |
 | `@ERONewOrleans` | ERONewOrleans | 4 | 2026-04-14 | 2026-05-13 | 2026-05-19 | 3 | 0 |
-| `@ERONewark` | ERONewark | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
+| `@ERONewark` | ERONewark | 3 | 2026-04-03 | 2026-05-11 | 2026-05-19 | 3 | 0 |
 | `@EROPhiladelphia` | EROPhiladelphia | 2 | 2026-04-17 | 2026-05-11 | 2026-05-19 | 2 | 0 |
+| `@EROSaltLakeCity` | EROSaltLakeCity | 1 | 2026-04-07 | 2026-04-07 | 2026-05-19 | 1 | 0 |
 | `@EROSanDiego` | EROSanDiego | 1 | 2026-05-07 | 2026-05-07 | 2026-05-19 | 1 | 0 |
-| `@EROSanFrancisco` | EROSanFrancisco | 4 | 2026-04-29 | 2026-05-12 | 2026-05-19 | 4 | 0 |
+| `@EROSanFrancisco` | EROSanFrancisco | 7 | 2026-04-02 | 2026-05-12 | 2026-05-19 | 7 | 0 |
+| `@EROSeattle` | EROSeattle | 2 | 2026-04-03 | 2026-04-16 | 2026-05-19 | 2 | 0 |
+| `@EROWashington` | EROWashington | 1 | 2026-04-08 | 2026-04-08 | 2026-05-19 | 1 | 0 |
+| `@EdWorkforceCmte` | EdWorkforceCmte | 2 | 2026-04-21 | 2026-04-29 | 2026-05-19 | 2 | 1 |
+| `@EricTrump` | EricTrump | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
 | `@FDRLST` | FDRLST | 2 | 2026-05-11 | 2026-05-12 | 2026-05-19 | 0 | 0 |
+| `@FLACommerce` | FLACommerce | 1 | 2026-05-03 | 2026-05-03 | 2026-05-19 | 1 | 0 |
+| `@FLOTUS` | FLOTUS | 1 | 2026-04-27 | 2026-04-27 | 2026-05-19 | 0 | 0 |
 | `@FPSDHS` | FPSDHS | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 0 |
+| `@Fashionably84` | Fashionably84 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@FoxNews` | FoxNews | 3 | 2026-04-10 | 2026-05-15 | 2026-05-19 | 6 | 1 |
+| `@GovEvers` | GovEvers | 1 | 2026-04-02 | 2026-04-02 | 2026-05-19 | 0 | 0 |
 | `@GovTimWalz` | GovTimWalz | 2 | 2026-04-28 | 2026-05-04 | 2026-05-19 | 1 | 0 |
+| `@GuntherEagleman` | GuntherEagleman | 1 | 2026-04-30 | 2026-04-30 | 2026-05-19 | 1 | 1 |
 | `@HSI_HQ` | HSI_HQ | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 1 | 0 |
+| `@HarshThoughtful` | HarshThoughtful | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@Independent` | Independent | 1 | 2026-05-13 | 2026-05-13 | 2026-05-19 | 1 | 0 |
-| `@JDVance` | JDVance | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
-| `@JennieSTaer` | JennieSTaer | 1 | 2026-05-05 | 2026-05-05 | 2026-05-19 | 1 | 0 |
+| `@JDVance` | JDVance | 2 | 2026-04-28 | 2026-05-16 | 2026-05-19 | 1 | 1 |
+| `@JSYKRobert` | JSYKRobert | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@JamesBlairUSA` | JamesBlairUSA | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 1 | 1 |
+| `@JennieSTaer` | JennieSTaer | 2 | 2026-04-07 | 2026-05-05 | 2026-05-19 | 1 | 0 |
+| `@JoeyFAFO_JK` | JoeyFAFO_JK | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 1 | 0 |
+| `@JonesOyl1776` | JonesOyl1776 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@JuliaDavisNews` | JuliaDavisNews | 1 | 2026-03-31 | 2026-03-31 | 2026-05-19 | 0 | 0 |
+| `@Justadolfan` | Justadolfan | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@Katelyn_Caralle` | Katelyn_Caralle | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 1 | 0 |
+| `@Know2Protect` | Know2Protect | 1 | 2026-05-16 | 2026-05-16 | 2026-05-19 | 1 | 0 |
+| `@KristinFisher` | KristinFisher | 1 | 2026-04-29 | 2026-04-29 | 2026-05-19 | 0 | 0 |
+| `@KushDesai47` | KushDesai47 | 3 | 2026-04-29 | 2026-04-30 | 2026-05-19 | 0 | 0 |
+| `@LeadingReport` | LeadingReport | 1 | 2026-04-06 | 2026-04-06 | 2026-05-19 | 0 | 0 |
+| `@LizHuston33` | LizHuston33 | 2 | 2026-04-28 | 2026-04-29 | 2026-05-19 | 1 | 1 |
+| `@LizHuston47` | LizHuston47 | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
 | `@LongTimeHistory` | LongTimeHistory | 1 | 2026-05-06 | 2026-05-06 | 2026-05-19 | 1 | 1 |
+| `@MSFarmBureau` | MSFarmBureau | 1 | 2026-02-07 | 2026-02-07 | 2026-05-19 | 4 | 0 |
+| `@MargoMartin47` | MargoMartin47 | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 1 |
+| `@MaryMargOlohan` | MaryMargOlohan | 1 | 2026-04-30 | 2026-04-30 | 2026-05-19 | 1 | 0 |
 | `@MizellPreston` | MizellPreston | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 1 | 0 |
-| `@NBCNews` | NBCNews | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
+| `@MollieG65457693` | MollieG65457693 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@MoosesFelix` | MoosesFelix | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 1 | 0 |
+| `@NASAAdmin` | NASAAdmin | 1 | 2026-04-29 | 2026-04-29 | 2026-05-19 | 0 | 0 |
+| `@NBCNews` | NBCNews | 3 | 2026-03-31 | 2026-04-28 | 2026-05-19 | 0 | 0 |
+| `@NCDOL` | NCDOL | 1 | 2026-05-06 | 2026-05-06 | 2026-05-19 | 3 | 0 |
+| `@NEWSMAX` | NEWSMAX | 3 | 2026-04-15 | 2026-05-09 | 2026-05-19 | 2 | 1 |
+| `@NWS` | NWS | 1 | 2026-01-23 | 2026-01-23 | 2026-05-19 | 1 | 0 |
+| `@NickMinock` | NickMinock | 2 | 2026-03-31 | 2026-04-23 | 2026-05-19 | 1 | 1 |
+| `@OANN` | OANN | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 1 | 1 |
+| `@OFOEAC` | OFOEAC | 4 | 2026-05-14 | 2026-05-18 | 2026-05-19 | 8 | 2 |
+| `@OSHA_DOL` | OSHA_DOL | 2 | 2026-01-23 | 2026-04-28 | 2026-05-19 | 1 | 0 |
 | `@OffThePress1` | OffThePress1 | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 1 |
+| `@PatAdams96` | PatAdams96 | 4 | 2026-04-27 | 2026-04-29 | 2026-05-19 | 4 | 3 |
 | `@PattyMorin` | PattyMorin | 1 | 2026-05-09 | 2026-05-09 | 2026-05-19 | 1 | 0 |
-| `@RapidResponse47` | RapidResponse47 | 1 | 2026-05-11 | 2026-05-11 | 2026-05-19 | 0 | 0 |
+| `@PeteHegseth` | PeteHegseth | 1 | 2026-04-29 | 2026-04-29 | 2026-05-19 | 1 | 0 |
+| `@Plasticwasteguy` | Plasticwasteguy | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@RapidResponse47` | RapidResponse47 | 70 | 2026-02-25 | 2026-05-19 | 2026-05-19 | 58 | 44 |
+| `@RelentlesSheep` | RelentlesSheep | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@RoKhanna` | RoKhanna | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 0 | 0 |
+| `@SBA_Kelly` | SBA_Kelly | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 1 |
+| `@SecDuffy` | SecDuffy | 1 | 2026-05-02 | 2026-05-02 | 2026-05-19 | 0 | 0 |
+| `@SecMullinDHS` | SecMullinDHS | 45 | 2026-03-24 | 2026-05-19 | 2026-05-19 | 52 | 20 |
+| `@SecRollins` | SecRollins | 1 | 2026-05-07 | 2026-05-07 | 2026-05-19 | 1 | 1 |
+| `@SecRubio` | SecRubio | 2 | 2026-04-04 | 2026-04-11 | 2026-05-19 | 0 | 0 |
+| `@SecScottBessent` | SecScottBessent | 2 | 2026-04-02 | 2026-04-29 | 2026-05-19 | 0 | 0 |
 | `@SecretSvcSpox` | SecretSvcSpox | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 0 |
+| `@SecretaryLCD` | SecretaryLCD | 50 | 2026-01-21 | 2026-04-20 | 2026-05-19 | 66 | 18 |
 | `@SenEricSchmitt` | SenEricSchmitt | 1 | 2026-04-13 | 2026-04-13 | 2026-05-19 | 1 | 0 |
+| `@SenWarren` | SenWarren | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
 | `@SenateGOP` | SenateGOP | 1 | 2026-04-23 | 2026-04-23 | 2026-05-19 | 1 | 1 |
+| `@Sonderling47` | Sonderling47 | 58 | 2026-01-22 | 2026-05-19 | 2026-05-19 | 49 | 22 |
+| `@SonofKiese` | SonofKiese | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@StacyAnnFlorida` | StacyAnnFlorida | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@StateDept` | StateDept | 2 | 2026-04-07 | 2026-05-11 | 2026-05-19 | 1 | 0 |
+| `@StevenCheung47` | StevenCheung47 | 1 | 2026-04-29 | 2026-04-29 | 2026-05-19 | 0 | 0 |
+| `@SusieWiles47` | SusieWiles47 | 2 | 2026-04-28 | 2026-05-19 | 2026-05-19 | 1 | 0 |
+| `@T4TEXAS2` | T4TEXAS2 | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 0 | 0 |
 | `@TMZ` | TMZ | 1 | 2026-05-03 | 2026-05-03 | 2026-05-19 | 1 | 1 |
+| `@TPsocialEXP` | TPsocialEXP | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 1 | 0 |
 | `@TSA` | TSA | 3 | 2026-05-04 | 2026-05-11 | 2026-05-19 | 2 | 1 |
+| `@TTim420` | TTim420 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@TaylorRogers47` | TaylorRogers47 | 2 | 2026-04-30 | 2026-04-30 | 2026-05-19 | 0 | 0 |
 | `@TheBuffaloNews` | TheBuffaloNews | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 0 | 0 |
+| `@TheJusticeDept` | TheJusticeDept | 1 | 2026-04-30 | 2026-04-30 | 2026-05-19 | 2 | 0 |
 | `@USBPChief` | USBPChief | 1 | 2026-05-01 | 2026-05-01 | 2026-05-19 | 1 | 1 |
-| `@USBPChiefDTM` | USBPChiefDTM | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 1 | 0 |
-| `@USCG` | USCG | 2 | 2026-05-13 | 2026-05-14 | 2026-05-19 | 2 | 1 |
+| `@USBPChiefDTM` | USBPChiefDTM | 2 | 2026-05-15 | 2026-05-19 | 2026-05-19 | 2 | 0 |
+| `@USBPChiefELC` | USBPChiefELC | 1 | 2026-05-18 | 2026-05-18 | 2026-05-19 | 1 | 1 |
+| `@USCG` | USCG | 4 | 2026-03-30 | 2026-05-14 | 2026-05-19 | 8 | 1 |
 | `@USCGSoutheast` | USCGSoutheast | 3 | 2026-04-24 | 2026-05-12 | 2026-05-19 | 9 | 2 |
+| `@USCISJoe` | USCISJoe | 15 | 2026-03-24 | 2026-05-09 | 2026-05-19 | 13 | 13 |
+| `@USLaborIG` | USLaborIG | 4 | 2026-02-04 | 2026-05-19 | 2026-05-19 | 3 | 2 |
+| `@USOPM` | USOPM | 1 | 2026-03-30 | 2026-03-30 | 2026-05-19 | 1 | 1 |
+| `@USTradeRep` | USTradeRep | 1 | 2026-02-22 | 2026-02-22 | 2026-05-19 | 1 | 1 |
 | `@UpdatingOnRome` | UpdatingOnRome | 1 | 2026-04-30 | 2026-04-30 | 2026-05-19 | 2 | 0 |
+| `@VETS_DOL` | VETS_DOL | 2 | 2026-01-29 | 2026-04-28 | 2026-05-19 | 2 | 0 |
+| `@VP` | VP | 2 | 2026-05-06 | 2026-05-18 | 2026-05-19 | 2 | 0 |
+| `@Varneyco` | Varneyco | 1 | 2026-04-03 | 2026-04-03 | 2026-05-19 | 1 | 1 |
 | `@WBAY` | WBAY | 1 | 2026-04-22 | 2026-04-22 | 2026-05-19 | 0 | 0 |
 | `@WHTaskForceFIFA` | WHTaskForceFIFA | 1 | 2026-05-09 | 2026-05-09 | 2026-05-19 | 1 | 0 |
+| `@WSJopinion` | WSJopinion | 1 | 2026-03-30 | 2026-03-30 | 2026-05-19 | 0 | 0 |
+| `@WallStreetApes` | WallStreetApes | 1 | 2026-04-30 | 2026-04-30 | 2026-05-19 | 1 | 1 |
+| `@alexbruesewitz` | alexbruesewitz | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
 | `@angeldadjoe` | angeldadjoe | 1 | 2026-04-28 | 2026-04-28 | 2026-05-19 | 2 | 0 |
+| `@axios` | axios | 2 | 2026-02-13 | 2026-03-24 | 2026-05-19 | 0 | 0 |
+| `@californiapost` | californiapost | 1 | 2026-04-01 | 2026-04-01 | 2026-05-19 | 1 | 0 |
+| `@cash_override` | cash_override | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@chrisbradleyonX` | chrisbradleyonX | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
 | `@denverpost` | denverpost | 1 | 2026-05-12 | 2026-05-12 | 2026-05-19 | 0 | 0 |
 | `@dlippman` | dlippman | 1 | 2026-04-12 | 2026-04-12 | 2026-05-19 | 0 | 0 |
+| `@genteastco` | genteastco | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@johnnymaga` | johnnymaga | 1 | 2026-05-14 | 2026-05-14 | 2026-05-19 | 1 | 1 |
+| `@jsolomonReports` | jsolomonReports | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 0 | 0 |
+| `@karolineleavitt` | karolineleavitt | 1 | 2026-05-07 | 2026-05-07 | 2026-05-19 | 1 | 0 |
+| `@lerafera` | lerafera | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 1 | 0 |
+| `@matthatfield278` | matthatfield278 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@mrico18` | mrico18 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@necanet` | necanet | 1 | 2026-04-27 | 2026-04-27 | 2026-05-19 | 1 | 0 |
 | `@news6wkmg` | news6wkmg | 1 | 2026-05-13 | 2026-05-13 | 2026-05-19 | 0 | 0 |
 | `@nicksortor` | nicksortor | 1 | 2026-04-21 | 2026-04-21 | 2026-05-19 | 1 | 1 |
-| `@nypost` | nypost | 1 | 2026-05-04 | 2026-05-04 | 2026-05-19 | 1 | 0 |
+| `@nypost` | nypost | 6 | 2026-03-31 | 2026-05-04 | 2026-05-19 | 6 | 0 |
 | `@politico` | politico | 3 | 2026-04-15 | 2026-05-12 | 2026-05-19 | 0 | 0 |
 | `@priscialva` | priscialva | 1 | 2026-05-15 | 2026-05-15 | 2026-05-19 | 0 | 0 |
+| `@recoverbritain` | recoverbritain | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@ryer25785` | ryer25785 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@sfj8888` | sfj8888 | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 1 | 0 |
 | `@theblaze` | theblaze | 1 | 2026-04-29 | 2026-04-29 | 2026-05-19 | 1 | 0 |
+| `@unlimited_ls` | unlimited_ls | 1 | 2026-04-07 | 2026-04-07 | 2026-05-19 | 1 | 1 |
+| `@uscgfmsg` | uscgfmsg | 1 | 2026-04-07 | 2026-04-07 | 2026-05-19 | 4 | 0 |
+| `@usedgov` | usedgov | 2 | 2026-05-11 | 2026-05-18 | 2026-05-19 | 1 | 0 |
+| `@vinekpr` | vinekpr | 1 | 2026-04-04 | 2026-04-04 | 2026-05-19 | 0 | 0 |
+| `@vlast98230` | vlast98230 | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 1 | 0 |
 | `@washingtonpost` | washingtonpost | 3 | 2026-05-08 | 2026-05-13 | 2026-05-19 | 1 | 1 |
 
-_Generated 2026-05-19T18:53:20Z._
+_Generated 2026-05-19T19:00:55Z._
 
 <!-- COVERAGE:END -->
 
