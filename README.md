@@ -306,7 +306,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@washingtonpost` | washingtonpost | 3 | 2026-05-08 | 2026-05-13 | 2026-05-19 | 1 | 1 |
 | `@whyjohngalt` | whyjohngalt | 1 | 2026-05-19 | 2026-05-19 | 2026-05-19 | 0 | 0 |
 
-_Generated 2026-05-19T19:52:01Z._
+_Generated 2026-05-19T20:10:46Z._
 
 <!-- COVERAGE:END -->
 
