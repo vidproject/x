@@ -12,6 +12,9 @@ export function openSidepanel(panelEl, titleEl, bodyEl, row) {
   if (row.community_note) {
     bodyEl.append(section('Community Note', communityNoteBlock(row.community_note)));
   }
+  if (row.card) {
+    bodyEl.append(section('Link preview', cardBlock(row.card)));
+  }
   if (Array.isArray(row.media) && row.media.length > 0) {
     bodyEl.append(section('Media', mediaGrid(row.media)));
   }
@@ -207,6 +210,45 @@ function para(text) {
   const p = document.createElement('p');
   p.textContent = text;
   return p;
+}
+
+function cardBlock(card) {
+  const wrap = document.createElement('div');
+  wrap.className = 'sp-card';
+  if (card.image_url) {
+    const img = document.createElement('img');
+    img.className = 'sp-card-image';
+    img.loading = 'lazy';
+    img.alt = '';
+    img.src = card.image_url;
+    wrap.append(img);
+  }
+  const body = document.createElement('div');
+  body.className = 'sp-card-body';
+  if (card.title) {
+    const t = document.createElement('div');
+    t.className = 'sp-card-title';
+    t.textContent = card.title;
+    body.append(t);
+  }
+  if (card.description) {
+    const d = document.createElement('div');
+    d.className = 'sp-card-desc';
+    d.textContent = card.description;
+    body.append(d);
+  }
+  const url = card.vendor_url || card.card_url;
+  if (url) {
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.className = 'sp-link sp-card-link';
+    a.textContent = url;
+    body.append(a);
+  }
+  wrap.append(body);
+  return wrap;
 }
 
 function truncationBadge(row) {

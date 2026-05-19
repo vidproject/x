@@ -40,22 +40,38 @@ export interface NormalizeResult {
   partial_ids: Array<{ tweet_id: string; hint_handle: string | null }>;
 }
 
+// X tweet IDs are 64-bit positive integers serialized as decimal strings.
+// They've grown to 19 chars (~1.5e18) by 2026. Reject anything that doesn't
+// match this shape — otherwise spurious card IDs, cursor strings, ad slot
+// IDs, etc. end up in the partial-capture queue and the crawl loop
+// navigates to invalid URLs that show "this page doesn't exist".
+const TWEET_ID_RE = /^\d{15,20}$/;
+
+// Only one endpoint actually exposes the failure mode the partial-capture
+// queue exists for — the Media tab's `UserMedia` query returning
+// thumbnail-only entries without a populated author block. Every other
+// endpoint that hands us a `Tweet` shape gives us the full entry; if
+// `buildTweet` fails there it's a real error, not "go re-fetch this".
+// Restricting partial-id emission to UserMedia stops the floods of
+// false positives reported on Replies / TweetDetail / SearchTimeline.
+const PARTIAL_OK_ENDPOINTS: ReadonlySet<string> = new Set(['UserMedia']);
+
 export function normalize(payload: unknown, ctx: NormalizeContext): NormalizeResult {
   const rawTweets = collectTweets(payload);
   const tweets: CanonicalTweet[] = [];
   const observed: string[] = [];
   const built = new Set<string>();
   const partialMap = new Map<string, string | null>();
+  const collectPartials = PARTIAL_OK_ENDPOINTS.has(ctx.endpoint);
   for (const raw of rawTweets) {
     try {
       const t = buildTweet(raw, ctx);
       if (!t) {
-        // Couldn't build a canonical tweet. If it has a rest_id we still
-        // record the id (with a best-effort author hint) so the user can
-        // drive a refetch loop against the detail page.
-        const restId = pickRestId(raw);
-        if (restId) {
-          partialMap.set(restId, pickHintHandle(raw));
+        if (collectPartials) {
+          // Only enqueue real-tweet shells (not tombstones, not stripped
+          // nodes lacking a legacy block, not garbage IDs).
+          const partial = pickPartial(raw);
+          if (partial) partialMap.set(partial.tweet_id, partial.hint_handle);
         }
         continue;
       }
@@ -78,18 +94,24 @@ export function normalize(payload: unknown, ctx: NormalizeContext): NormalizeRes
   return { tweets, observed_ids: observed, partial_ids };
 }
 
-function pickRestId(node: unknown): string | null {
+function pickPartial(node: unknown): { tweet_id: string; hint_handle: string | null } | null {
   if (typeof node !== 'object' || node === null) return null;
   const n = node as Record<string, unknown>;
-  if (typeof n.rest_id === 'string' && n.rest_id) return n.rest_id;
-  // Some UserMedia entries shape the id as { rest_id_str } or store
-  // it on a `tweet_result.result.rest_id` nested struct.
-  const tweetResult = obj(n.tweet_result);
-  if (tweetResult) {
-    const inner = obj(tweetResult.result);
-    if (inner && typeof inner.rest_id === 'string' && inner.rest_id) return inner.rest_id;
+  // Deleted tweets surface as TweetTombstone — there's nothing to refetch,
+  // skip them or the crawl loop will spin on "this page doesn't exist".
+  if (n.__typename === 'TweetTombstone') return null;
+  // Require a recognized Tweet typename OR a legacy block. Cursors, ads,
+  // module headers, and the like get rejected here.
+  const tn = n.__typename;
+  if (tn !== 'Tweet' && tn !== 'TweetWithVisibilityResults' && !obj(n.legacy)) {
+    return null;
   }
-  return null;
+  const restId =
+    (typeof n.rest_id === 'string' && n.rest_id) ||
+    (typeof obj(n.tweet_result)?.result === 'object' &&
+      (obj(obj(n.tweet_result)?.result)?.rest_id as string));
+  if (typeof restId !== 'string' || !TWEET_ID_RE.test(restId)) return null;
+  return { tweet_id: restId, hint_handle: pickHintHandle(node) };
 }
 
 function pickHintHandle(node: unknown): string | null {
