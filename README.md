@@ -45,7 +45,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@DHSgov` | Department of Homeland Security | 748 | 2025-05-20 | 2026-05-19 | 2026-05-19 | 462 | 189 |
 | `@ICEgov` | U.S. Immigration and Customs Enforcement | 37 | 2025-04-16 | 2026-05-19 | 2026-05-19 | 29 | 8 |
 | `@CBP` | U.S. Customs and Border Protection | 202 | 2025-06-04 | 2026-05-19 | 2026-05-19 | 93 | 20 |
-| `@USCIS` | U.S. Citizenship and Immigration Services | 591 | 2025-05-30 | 2026-05-18 | 2026-05-19 | 346 | 58 |
+| `@USCIS` | U.S. Citizenship and Immigration Services | 711 | 2025-04-17 | 2026-05-18 | 2026-05-19 | 445 | 81 |
 | `@WhiteHouse` | The White House | 169 | 2025-06-09 | 2026-05-19 | 2026-05-19 | 157 | 37 |
 | `@PressSec` | White House Press Secretary | 90 | 2025-09-17 | 2026-05-15 | 2026-05-19 | 10 | 3 |
 | `@POTUS` | President of the United States | 81 | 2025-01-20 | 2026-05-15 | 2026-05-19 | 33 | 11 |
@@ -263,7 +263,7 @@ _Coverage tables are regenerated automatically by `scripts/update_readme.py` aft
 | `@vlast98230` | vlast98230 | 1 | 2026-04-05 | 2026-04-05 | 2026-05-19 | 1 | 0 |
 | `@washingtonpost` | washingtonpost | 3 | 2026-05-08 | 2026-05-13 | 2026-05-19 | 1 | 1 |
 
-_Generated 2026-05-19T19:13:41Z._
+_Generated 2026-05-19T19:14:18Z._
 
 <!-- COVERAGE:END -->
 
