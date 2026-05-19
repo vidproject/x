@@ -25,10 +25,12 @@ export interface ConnectionState {
   login: string | null;
   checkedAt: string | null;
   error: string | null;
-  /** GitHub's reported default branch for the configured repo, when known.
-   * Used to surface a mismatch warning if the user picked a branch that
-   * doesn't actually exist. */
+  /** GitHub's reported default branch for the configured repo, when known. */
   defaultBranch: string | null;
+  /** Whether settings.branch exists on the remote, as of the last verify.
+   * null = unknown / not probed yet. A non-default branch is fine as long
+   * as it actually exists; this is what governs the sidebar warning. */
+  configuredBranchExists: boolean | null;
 }
 
 export interface MediaItem {

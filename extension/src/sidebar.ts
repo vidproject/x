@@ -37,17 +37,18 @@ function setConnStatus(state: ExtensionState): void {
   const { connection, settings } = state;
   let cls = '';
   let text = '';
-  const branchMismatch =
-    connection.status === 'ok' &&
-    connection.defaultBranch &&
-    settings.branch &&
-    connection.defaultBranch !== settings.branch;
+  // Only warn when the configured branch genuinely doesn't exist on the
+  // remote. A non-default branch that exists is fine — capturing into a
+  // working branch is routine — so the mere `!==` to default_branch is not
+  // a problem and shouldn't shout in the header.
+  const branchMissing =
+    connection.status === 'ok' && settings.branch && connection.configuredBranchExists === false;
   if (!settings.patSet) {
     cls = 'warn';
     text = 'Not configured — open Settings';
-  } else if (branchMismatch) {
-    cls = 'warn';
-    text = `Branch "${settings.branch}" not the default ("${connection.defaultBranch}") — commits may 422`;
+  } else if (branchMissing) {
+    cls = 'err';
+    text = `Branch "${settings.branch}" does not exist on ${settings.owner}/${settings.repo} — commits will 422. Set branch to "${connection.defaultBranch ?? 'master'}" in Settings.`;
   } else if (connection.status === 'ok') {
     cls = 'ok';
     text = `Connected as @${connection.login ?? '?'} to ${settings.owner}/${settings.repo} · …${settings.patSuffix}`;

@@ -91,6 +91,7 @@ async function onWake(reason: string): Promise<void> {
         checkedAt: new Date().toISOString(),
         error: null,
         defaultBranch: null,
+        configuredBranchExists: null,
       });
       await info('extension awake; settings incomplete', { reason });
     }
@@ -233,6 +234,23 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
     await quarantine('normalize-threw', endpoint, url, response, err);
     return;
   }
+
+  // Diagnostic: every tweet-endpoint payload gets a line in the activity
+  // tail with what we saw vs kept. Helps distinguish three failure modes:
+  //   - 0 observed → X returned an empty timeline (login wall / guest tier
+  //                  / unexpected envelope shape)
+  //   - N observed, 0 kept → tweets present but none authored by tracked
+  //                          handles (timeline contains other accounts)
+  //   - N observed, M kept → captured (the normal happy path)
+  await info('graphql payload seen', {
+    endpoint,
+    observed: normalized.observed_ids.length,
+    kept: normalized.tweets.length,
+    response_keys:
+      typeof response === 'object' && response !== null
+        ? Object.keys(response).slice(0, 8)
+        : typeof response,
+  });
 
   if (normalized.tweets.length === 0) return;
 
@@ -421,6 +439,7 @@ async function flushHandle(handle: string, reason: string): Promise<void> {
         checkedAt: new Date().toISOString(),
         error: null,
         defaultBranch: prev.defaultBranch,
+        configuredBranchExists: prev.configuredBranchExists,
       });
     }
   } catch (err) {
@@ -440,6 +459,7 @@ async function flushHandle(handle: string, reason: string): Promise<void> {
         checkedAt: new Date().toISOString(),
         error: err.message,
         defaultBranch: conn.defaultBranch,
+        configuredBranchExists: conn.configuredBranchExists,
       });
       await logErr('flush failed', {
         handle,
@@ -547,6 +567,7 @@ async function verifyConnection(force: boolean): Promise<void> {
       checkedAt: new Date().toISOString(),
       error: null,
       defaultBranch: null,
+      configuredBranchExists: null,
     });
     await broadcastState();
     return;
@@ -559,32 +580,34 @@ async function verifyConnection(force: boolean): Promise<void> {
   try {
     const client = new GitHubClient(settings);
     const r = await client.verifyRepoAccess();
+    // Probe the configured branch. A non-default branch is fine — it's
+    // routine to capture into a working branch — but a *missing* branch
+    // would 422 every commit.
+    let branchOk = true;
+    if (settings.branch && settings.branch !== r.default_branch) {
+      branchOk = await client.branchExists(settings.branch);
+    }
     await setConnection({
       status: 'ok',
       login: r.login,
       checkedAt: new Date().toISOString(),
       error: null,
       defaultBranch: r.default_branch,
+      configuredBranchExists: branchOk,
     });
     await info('connection verified', {
       login: r.login,
       repo: r.full_name,
       default_branch: r.default_branch,
       configured_branch: settings.branch,
+      configured_branch_exists: branchOk,
     });
-    if (settings.branch && settings.branch !== r.default_branch) {
-      // The user may have intentionally chosen a non-default branch (e.g.
-      // for testing), but if their pick doesn't exist GitHub will 422 every
-      // commit. Probe the branch and warn loudly when it's missing — the
-      // user can either create it or switch back to the default in Settings.
-      const branchOk = await client.branchExists(settings.branch);
-      if (!branchOk) {
-        await warn('configured branch does not exist on remote', {
-          configured: settings.branch,
-          default_branch: r.default_branch,
-          fix: 'open Settings and change branch to ' + r.default_branch,
-        });
-      }
+    if (!branchOk) {
+      await warn('configured branch does not exist on remote', {
+        configured: settings.branch,
+        default_branch: r.default_branch,
+        fix: 'open Settings and change branch to ' + r.default_branch,
+      });
     }
   } catch (err) {
     const cat = err instanceof GitHubError ? err.category : 'unknown';
@@ -602,6 +625,7 @@ async function verifyConnection(force: boolean): Promise<void> {
       checkedAt: new Date().toISOString(),
       error: describeError(err).message,
       defaultBranch: null,
+      configuredBranchExists: null,
     });
     await warn('connection check failed', { category: cat, ...describeError(err) });
   }
