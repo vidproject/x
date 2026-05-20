@@ -325,7 +325,9 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
         help="Also describe media that has not been archived yet.",
     )
     parser.add_argument("--force", action="store_true", help="Ignore the existing sidecar cache.")
-    parser.add_argument("--dry-run", action="store_true", help="Report planned rows without writing.")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Report planned rows without writing."
+    )
     parser.add_argument(
         "--max-items",
         type=int,

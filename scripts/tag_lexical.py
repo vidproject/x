@@ -695,9 +695,7 @@ def _has_immigration_signal(entries: list[dict[str, Any]], text: str) -> bool:
 
 
 def _has_non_immigration_topic(entries: list[dict[str, Any]]) -> bool:
-    return any(
-        e["tag"].startswith("topic:") and e["tag"] != "topic:immigration" for e in entries
-    )
+    return any(e["tag"].startswith("topic:") and e["tag"] != "topic:immigration" for e in entries)
 
 
 def _maybe_immigration_default(

@@ -116,7 +116,9 @@ def main(argv: list[str] | None = None) -> int:
 
     tracked = load_tracked()
     if not tracked:
-        print("no tracked accounts found in config/accounts.yaml; refusing to purge", file=sys.stderr)
+        print(
+            "no tracked accounts found in config/accounts.yaml; refusing to purge", file=sys.stderr
+        )
         return 1
     related = collect_related(tracked)
     targets = directories_to_purge(tracked, related)
