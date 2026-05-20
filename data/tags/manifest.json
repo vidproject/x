@@ -5,14 +5,14 @@
       "cost_estimate_usd": 0.0,
       "extractor_version": "ffmpeg-keyframes-v1",
       "frame_count": 0,
-      "generated_at": "2026-05-20T16:34:00Z",
-      "intra_run_dedup": 20,
-      "row_count": 556,
-      "rows": 556,
+      "generated_at": "2026-05-20T17:40:36Z",
+      "intra_run_dedup": 21,
+      "row_count": 578,
+      "rows": 578,
       "status_counts": {
-        "skipped-no-ffmpeg": 556
+        "skipped-no-ffmpeg": 578
       },
-      "status_skipped-no-ffmpeg": 536
+      "status_skipped-no-ffmpeg": 557
     },
     "lexical": {
       "generated_at": "2026-05-20T08:07:39Z",
@@ -233,28 +233,28 @@
       "tagger_version": "lexical-v1"
     },
     "media_vision": {
-      "cache_hits": 2758,
+      "cache_hits": 2955,
       "cost_estimate_usd": 0.0,
       "generated": 197,
-      "generated_at": "2026-05-20T16:33:59Z",
+      "generated_at": "2026-05-20T17:40:35Z",
       "model": "metadata",
       "model_version": "media-metadata-v1",
       "prompt_hash": "b048ffcd7be4e534",
-      "row_count": 2955,
-      "rows": 2955,
+      "row_count": 3152,
+      "rows": 3152,
       "status_counts": {
-        "metadata-alt": 68,
-        "metadata-only": 2887
+        "metadata-alt": 94,
+        "metadata-only": 3058
       },
       "tag_frequency": {
-        "media:animated-gif": 32,
-        "media:archived": 2955,
-        "media:described": 2955,
-        "media:has-alt-text": 68,
-        "media:needs-vision": 2887,
-        "media:photo": 2020,
-        "media:short-video": 184,
-        "media:video": 903
+        "media:animated-gif": 54,
+        "media:archived": 3152,
+        "media:described": 3152,
+        "media:has-alt-text": 94,
+        "media:needs-vision": 3058,
+        "media:photo": 2156,
+        "media:short-video": 190,
+        "media:video": 942
       }
     }
   },
