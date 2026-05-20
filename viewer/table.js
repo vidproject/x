@@ -4,16 +4,16 @@
 // "default" controls whether the column is visible on first load — deletion is
 // deliberately false per the deemphasis brief.
 //
-// The Tags column is special-cased: its filter popup aggregates by tag rather
-// than by row value, and a tweet matches if its tag set intersects the
-// selected tags (vs. equals one of them).
+// The Tags column is special-cased: its filter popup aggregates tags into
+// namespace parents plus exact-tag children, and a tweet matches if its tag
+// set intersects the selected tags/categories (vs. equals one row value).
 //
 // Threading: when the dataset contains conversation threads, rows are
 // rendered as collapsible thread groups (master row + indented slaves).
 // Sort/filter/search operate on individual rows; threads simply group them
 // for display. Standalone rows (the vast majority) render exactly as before.
 
-import { formatForFilter, tagNames } from './store.js';
+import { combineTagMainSub, formatForFilter, tagNames, tagNamespace, tagSubtype } from './store.js';
 
 export const COLUMNS = [
   {
@@ -480,19 +480,32 @@ export function openColumnFilterPopup({
       counts.set(v, (counts.get(v) ?? 0) + 1);
     }
   }
-  const allValues = [...counts.entries()].sort((a, b) => {
-    // For tags: group by namespace then frequency. For other columns:
-    // pure frequency desc.
-    if (colKey === 'tags') {
-      const [na] = String(a[0]).split(':', 1);
-      const [nb] = String(b[0]).split(':', 1);
-      if (na !== nb) return na.localeCompare(nb);
-      return b[1] - a[1];
+  const allValues =
+    colKey === 'tags'
+      ? buildTagFilterValues(counts)
+      : [...counts.entries()]
+          .sort((a, b) => b[1] - a[1])
+          .map(([value, count]) => ({ value, count, display: value === '' ? '(blank)' : value }));
+  const allValueKeys = allValues.map((p) => p.value);
+  const valueByKey = new Map(allValues.map((p) => [p.value, p]));
+  const childValuesByParent = new Map();
+  if (colKey === 'tags') {
+    for (const p of allValues) {
+      if (!p.child) continue;
+      const children = childValuesByParent.get(p.parent) ?? [];
+      children.push(p.value);
+      childValuesByParent.set(p.parent, children);
     }
-    return b[1] - a[1];
-  });
-  const active = new Set(activeFilters[colKey] || []);
-  const allowAll = active.size === 0;
+  }
+  const rawActive = activeFilters[colKey];
+  const hasActive =
+    rawActive instanceof Set
+      ? rawActive.size > 0
+      : Array.isArray(rawActive)
+        ? rawActive.length > 0
+        : !!rawActive;
+  const active = new Set(hasActive ? rawActive : allValueKeys);
+  if (colKey === 'tags') normalizeTagSelections(active, allValues, childValuesByParent);
 
   const list = document.createElement('div');
   list.className = 'col-values';
@@ -500,36 +513,81 @@ export function openColumnFilterPopup({
 
   function renderList(filter) {
     list.replaceChildren();
-    const f = filter.toLowerCase();
-    let lastNs = null;
-    for (const [value, count] of allValues) {
-      if (f && !String(value).toLowerCase().includes(f)) continue;
-      if (colKey === 'tags') {
-        const ns = String(value).split(':', 1)[0];
-        if (ns !== lastNs) {
-          const h = document.createElement('div');
-          h.className = `tag-ns-hdr ns-${ns}`;
-          h.textContent = `${ns}:`;
-          list.append(h);
-          lastNs = ns;
-        }
-      }
+    const f = filter.trim().toLowerCase();
+    const visible = allValues.filter((p) => filterPairMatches(p, f));
+    if (visible.length === 0) {
+      const empty = document.createElement('div');
+      empty.className = 'col-empty';
+      empty.textContent = 'No values';
+      list.append(empty);
+      return;
+    }
+
+    const allVisible = document.createElement('label');
+    allVisible.className = 'col-val select-all';
+    const allVisibleCb = document.createElement('input');
+    allVisibleCb.type = 'checkbox';
+    allVisibleCb.checked = visible.every((p) => active.has(p.value));
+    allVisibleCb.indeterminate = !allVisibleCb.checked && visible.some((p) => active.has(p.value));
+    allVisibleCb.addEventListener('change', () => {
+      for (const p of visible) setFilterValue(p.value, allVisibleCb.checked);
+      renderList(search.value);
+    });
+    const allVisibleTxt = document.createElement('span');
+    allVisibleTxt.textContent = 'Select all';
+    allVisible.append(allVisibleCb, allVisibleTxt);
+    list.append(allVisible);
+
+    for (const p of visible) {
       const lab = document.createElement('label');
-      lab.className = 'col-val';
+      lab.className = p.child ? 'col-val child' : 'col-val';
       const cb = document.createElement('input');
       cb.type = 'checkbox';
-      cb.checked = colKey === 'tags' ? active.has(value) : allowAll || active.has(value);
+      cb.checked = active.has(p.value);
+      if (colKey === 'tags' && !p.child) {
+        const children = childValuesByParent.get(p.value) ?? [];
+        const checkedChildren = children.filter((child) => active.has(child)).length;
+        cb.indeterminate = !cb.checked && checkedChildren > 0 && checkedChildren < children.length;
+      }
       cb.addEventListener('change', () => {
-        if (cb.checked) active.add(value);
-        else active.delete(value);
+        setFilterValue(p.value, cb.checked);
+        renderList(search.value);
       });
       const txt = document.createElement('span');
-      txt.textContent = value === '' ? '(blank)' : value;
+      if (p.child) {
+        const prefix = document.createElement('span');
+        prefix.className = 'tag-child-prefix';
+        prefix.textContent = '↳';
+        txt.append(prefix, document.createTextNode(p.display));
+      } else {
+        txt.textContent = p.display;
+      }
       const cnt = document.createElement('span');
       cnt.className = 'count';
-      cnt.textContent = String(count);
+      cnt.textContent = String(p.count);
       lab.append(cb, txt, cnt);
       list.append(lab);
+    }
+
+    function setFilterValue(value, checked) {
+      const pair = valueByKey.get(value);
+      if (colKey === 'tags' && pair && !pair.child) {
+        const values = [pair.value, ...(childValuesByParent.get(pair.value) ?? [])];
+        for (const key of values) {
+          if (checked) active.add(key);
+          else active.delete(key);
+        }
+        return;
+      }
+      if (checked) active.add(value);
+      else active.delete(value);
+      if (colKey === 'tags' && pair?.child) {
+        active.delete(pair.parent);
+        const siblings = childValuesByParent.get(pair.parent) ?? [];
+        if (siblings.length > 0 && siblings.every((key) => active.has(key))) {
+          active.add(pair.parent);
+        }
+      }
     }
   }
   renderList('');
@@ -547,10 +605,14 @@ export function openColumnFilterPopup({
   cancel.className = 'btn ghost';
   cancel.textContent = 'Cancel';
   apply.addEventListener('click', () => {
-    if (colKey !== 'tags' && active.size === allValues.length) {
+    if (colKey === 'tags') normalizeTagSelections(active, allValues, childValuesByParent);
+    if (allValueKeys.every((value) => active.has(value))) {
       onChange(colKey, new Set());
     } else {
-      onChange(colKey, active);
+      onChange(
+        colKey,
+        colKey === 'tags' ? compressTagSelections(active, allValues) : new Set(active)
+      );
     }
     close();
   });
@@ -570,6 +632,75 @@ export function openColumnFilterPopup({
     if (!popEl.contains(e.target) && e.target !== anchorBtn) close();
   }
   setTimeout(() => document.addEventListener('mousedown', away), 0);
+}
+
+function buildTagFilterValues(counts) {
+  const byNamespace = new Map();
+  for (const [tag, count] of counts.entries()) {
+    const ns = tagNamespace(tag) || 'tag';
+    let info = byNamespace.get(ns);
+    if (!info) {
+      info = { count: 0, tags: [] };
+      byNamespace.set(ns, info);
+    }
+    info.count += count;
+    info.tags.push({ tag, count });
+  }
+
+  const values = [];
+  const namespaces = [...byNamespace.entries()].sort((a, b) => {
+    const delta = b[1].count - a[1].count;
+    return delta || a[0].localeCompare(b[0]);
+  });
+  for (const [ns, info] of namespaces) {
+    values.push({ value: ns, count: info.count, display: `${ns}:` });
+    for (const child of info.tags.sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag))) {
+      values.push({
+        value: combineTagMainSub(ns, child.tag),
+        count: child.count,
+        parent: ns,
+        sub: child.tag,
+        child: true,
+        display: tagSubtype(child.tag),
+      });
+    }
+  }
+  return values;
+}
+
+function normalizeTagSelections(active, allValues, childValuesByParent) {
+  for (const p of allValues) {
+    if (p.child && active.has(p.sub)) {
+      active.delete(p.sub);
+      active.add(p.value);
+    }
+  }
+  for (const [parent, children] of childValuesByParent.entries()) {
+    if (active.has(parent)) {
+      for (const child of children) active.add(child);
+    } else if (children.length > 0 && children.every((child) => active.has(child))) {
+      active.add(parent);
+    }
+  }
+}
+
+function compressTagSelections(active, allValues) {
+  const next = new Set();
+  for (const p of allValues) {
+    if (p.child) {
+      if (!active.has(p.parent) && active.has(p.value)) next.add(p.value);
+    } else if (active.has(p.value)) {
+      next.add(p.value);
+    }
+  }
+  return next;
+}
+
+function filterPairMatches(pair, filter) {
+  if (!filter) return true;
+  return [pair.value, pair.display, pair.parent, pair.sub]
+    .filter(Boolean)
+    .some((value) => String(value).toLowerCase().includes(filter));
 }
 
 // ---- helpers ----

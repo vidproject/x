@@ -117,6 +117,34 @@ def test_frame_criminal_and_action_combo_marks_enforcement_op() -> None:
     assert "shape:lineup" in tags
 
 
+def test_action_report_to_ice_matches_direct_reporting_appeals() -> None:
+    examples = (
+        "Call ICE at 866-DHS-2-ICE to report illegal aliens in your community.",
+        "Report criminal aliens to ICE today.",
+        "Submit a tip to DHS about immigration violations.",
+    )
+    for text in examples:
+        out = tag_text(
+            text, tweet_type="original", mentions=[], media_count=0, account_category="core"
+        )
+        assert "action:report-to-ice" in _tags(out), text
+
+
+def test_action_report_to_ice_avoids_generic_ice_mentions() -> None:
+    examples = (
+        "ICE reported that it arrested three people yesterday.",
+        "Call your senator about ICE oversight.",
+        "The ICE report on immigrant removals was released today.",
+        "Submit a tip to DHS about disaster fraud.",
+        "If you or someone you know was victimized by this predator, contact ICE: 866-DHS-2ICE.",
+    )
+    for text in examples:
+        out = tag_text(
+            text, tweet_type="original", mentions=[], media_count=0, account_category="core"
+        )
+        assert "action:report-to-ice" not in _tags(out), text
+
+
 def test_shape_lineup_requires_all_three_conditions() -> None:
     # Right text + photo but not a reply.
     out = tag_text(

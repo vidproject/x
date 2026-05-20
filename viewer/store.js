@@ -12,6 +12,32 @@
 
 import MiniSearch from 'https://esm.sh/minisearch@7.1.2';
 
+export const TAG_SUB_SEPARATOR = ' ⊂ ';
+
+export function combineTagMainSub(main, sub) {
+  return sub ? `${main}${TAG_SUB_SEPARATOR}${sub}` : main;
+}
+
+export function splitTagMainSub(value) {
+  const text = String(value ?? '');
+  const idx = text.indexOf(TAG_SUB_SEPARATOR);
+  if (idx === -1) return { main: text, sub: '' };
+  return {
+    main: text.slice(0, idx),
+    sub: text.slice(idx + TAG_SUB_SEPARATOR.length),
+  };
+}
+
+export function tagNamespace(tag) {
+  return String(tag ?? '').split(':', 1)[0];
+}
+
+export function tagSubtype(tag) {
+  const text = String(tag ?? '');
+  const idx = text.indexOf(':');
+  return idx === -1 ? text : text.slice(idx + 1);
+}
+
 export class Store {
   constructor() {
     /** @type {Map<string, Array<Record<string, unknown>>>} */
@@ -158,7 +184,7 @@ export class Store {
       // selector useless once you exceed 1-2 selections — every tweet
       // would drop out.
       const want = new Set(filt.tags);
-      rows = rows.filter((r) => tagNames(r).some((t) => want.has(t)));
+      rows = rows.filter((r) => tagFilterMatches(r, want));
     }
     if (filt.colFilters) {
       for (const [col, allowed] of Object.entries(filt.colFilters)) {
@@ -241,6 +267,20 @@ export class Store {
     if (!this.accountCategoryByHandle.has(handle)) return 'public';
     return this.accountCategoryByHandle.get(handle) || 'public';
   }
+}
+
+function tagFilterMatches(row, selections) {
+  const exact = new Set();
+  const namespaces = new Set();
+  for (const value of selections) {
+    const text = String(value ?? '');
+    if (!text) continue;
+    const { main, sub } = splitTagMainSub(text);
+    if (sub) exact.add(sub);
+    else if (main.includes(':')) exact.add(main);
+    else namespaces.add(main);
+  }
+  return tagNames(row).some((tag) => exact.has(tag) || namespaces.has(tagNamespace(tag)));
 }
 
 function tagNames(row) {

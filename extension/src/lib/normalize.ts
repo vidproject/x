@@ -25,6 +25,7 @@ export interface NormalizeContext {
   runId: string;
   endpoint: string;
   allowedHandles: ReadonlySet<string>;
+  sourceUrl?: string | null;
 }
 
 export interface NormalizeResult {
@@ -70,7 +71,7 @@ export function normalize(payload: unknown, ctx: NormalizeContext): NormalizeRes
         if (collectPartials) {
           // Only enqueue real-tweet shells (not tombstones, not stripped
           // nodes lacking a legacy block, not garbage IDs).
-          const partial = pickPartial(raw);
+          const partial = pickPartial(raw, ctx);
           if (partial) partialMap.set(partial.tweet_id, partial.hint_handle);
         }
         continue;
@@ -94,7 +95,10 @@ export function normalize(payload: unknown, ctx: NormalizeContext): NormalizeRes
   return { tweets, observed_ids: observed, partial_ids };
 }
 
-function pickPartial(node: unknown): { tweet_id: string; hint_handle: string | null } | null {
+function pickPartial(
+  node: unknown,
+  ctx: NormalizeContext
+): { tweet_id: string; hint_handle: string | null } | null {
   if (typeof node !== 'object' || node === null) return null;
   const n = node as Record<string, unknown>;
   // Deleted tweets surface as TweetTombstone — there's nothing to refetch,
@@ -111,18 +115,66 @@ function pickPartial(node: unknown): { tweet_id: string; hint_handle: string | n
     (typeof obj(n.tweet_result)?.result === 'object' &&
       (obj(obj(n.tweet_result)?.result)?.rest_id as string));
   if (typeof restId !== 'string' || !TWEET_ID_RE.test(restId)) return null;
-  return { tweet_id: restId, hint_handle: pickHintHandle(node) };
+  return { tweet_id: restId, hint_handle: pickHintHandle(node, restId, ctx) };
 }
 
-function pickHintHandle(node: unknown): string | null {
+function pickHintHandle(node: unknown, tweetId: string, ctx: NormalizeContext): string | null {
   if (typeof node !== 'object' || node === null) return null;
   const n = node as Record<string, unknown>;
   const userResult = obj(obj(obj(n.core)?.user_results)?.result);
   return (
     strOrNull(obj(userResult?.core)?.screen_name) ??
     strOrNull(obj(userResult?.legacy)?.screen_name) ??
-    strOrNull(obj(n.legacy)?.screen_name)
+    strOrNull(obj(n.legacy)?.screen_name) ??
+    pickHandleFromTweetUrls(node, tweetId) ??
+    pickHandleFromMediaPage(ctx.sourceUrl)
   );
+}
+
+function pickHandleFromTweetUrls(node: unknown, tweetId: string): string | null {
+  const seen = new WeakSet<object>();
+  const stack: unknown[] = [node];
+  while (stack.length > 0) {
+    const cur = stack.pop();
+    if (typeof cur === 'string') {
+      const handle = handleFromTweetUrl(cur, tweetId);
+      if (handle) return handle;
+      continue;
+    }
+    if (cur === null || typeof cur !== 'object') continue;
+    if (seen.has(cur as object)) continue;
+    seen.add(cur as object);
+    if (Array.isArray(cur)) {
+      for (const v of cur) stack.push(v);
+    } else {
+      for (const v of Object.values(cur as Record<string, unknown>)) stack.push(v);
+    }
+  }
+  return null;
+}
+
+function handleFromTweetUrl(rawUrl: string, tweetId: string): string | null {
+  try {
+    const url = new URL(rawUrl, TWEET_URL_PREFIX);
+    if (url.hostname !== 'x.com' && url.hostname !== 'twitter.com') return null;
+    const match = url.pathname.match(/^\/([A-Za-z0-9_]{1,15})\/status\/(\d{15,20})(?:\/|$)/);
+    if (!match || match[2] !== tweetId) return null;
+    return match[1] ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function pickHandleFromMediaPage(rawUrl: string | null | undefined): string | null {
+  if (!rawUrl) return null;
+  try {
+    const url = new URL(rawUrl);
+    if (url.hostname !== 'x.com' && url.hostname !== 'twitter.com') return null;
+    const match = url.pathname.match(/^\/([A-Za-z0-9_]{1,15})\/media\/?$/);
+    return match?.[1] ?? null;
+  } catch {
+    return null;
+  }
 }
 
 function collectTweets(obj: unknown): unknown[] {

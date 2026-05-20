@@ -73,6 +73,7 @@
           source: TARGET,
           endpoint,
           url,
+          page_url: location.href,
           response: body,
           observed_at: new Date().toISOString(),
         },

@@ -370,6 +370,35 @@ PATTERN_ACTION_DETENTION = _compile(
 PATTERN_ACTION_DEPORTATION = _compile(
     r"\b(deport(?:ed|ing|ation)?|remov(?:ed|al)|repatriat(?:ed|ion))\b"
 )
+ICE_OR_DHS_TARGET = (
+    r"(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|"
+    r"U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|DHS|"
+    r"Department of Homeland Security|Homeland Security)"
+)
+ICE_DIRECT_TARGET = (
+    r"(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|"
+    r"U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement)"
+)
+ICE_REPORT_SUBJECT = (
+    r"(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|"
+    r"undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|"
+    r"alien(?:s|['’]s)?|immigrants?|migrants?)"
+)
+ICE_REPORT_PHONE = r"(?:866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)"
+PATTERN_ACTION_REPORT_TO_ICE = _compile(
+    rf"\b(?:"
+    rf"(?:call|contact)\s+(?:{ICE_DIRECT_TARGET}|{ICE_REPORT_PHONE})\b"
+    rf"(?=.{{0,180}}\b{ICE_REPORT_SUBJECT}\b)"
+    rf"|(?:report|tip|submit|send|notify)\b.{{0,80}}\b{ICE_REPORT_SUBJECT}\b"
+    rf".{{0,80}}\b(?:to|at|with)\s+(?:{ICE_OR_DHS_TARGET}|{ICE_REPORT_PHONE})\b"
+    rf"|(?:submit|send)\s+(?:a\s+)?tip\b.{{0,80}}\b(?:to|with)\s+"
+    rf"(?:{ICE_OR_DHS_TARGET}|{ICE_REPORT_PHONE})\b"
+    rf"(?=.{{0,120}}\b{ICE_REPORT_SUBJECT}\b)"
+    rf"|{ICE_REPORT_SUBJECT}\b.{{0,240}}\b(?:call|contact)\s+"
+    rf"(?:(?:our|the)\s+)?(?:{ICE_DIRECT_TARGET}|ICE\s+)?"
+    rf"(?:tip\s*line|hotline|{ICE_REPORT_PHONE})\b"
+    rf")"
+)
 PATTERN_TOPIC_BORDER = _compile(r"\b(border|southwest border|crossing|border wall)\b")
 PATTERN_TOPIC_SANCTUARY = _compile(
     r"\b(sanctuary (?:cit(?:y|ies)|jurisdiction|polic(?:y|ies))|sanctuary state)\b"
@@ -490,6 +519,7 @@ def tag_text(
         (PATTERN_FRAME_CRIMINAL, "frame:criminal"),
         (PATTERN_ACTION_DETENTION, "action:detention"),
         (PATTERN_ACTION_DEPORTATION, "action:deportation"),
+        (PATTERN_ACTION_REPORT_TO_ICE, "action:report-to-ice"),
         (PATTERN_TOPIC_BORDER, "topic:border"),
         (PATTERN_TOPIC_SANCTUARY, "topic:sanctuary-cities"),
         (PATTERN_TOPIC_WORKSITE, "topic:worksite-enforcement"),

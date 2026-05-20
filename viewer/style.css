@@ -775,10 +775,27 @@ body {
 .col-pop label.col-val:hover {
   background: var(--bg-3);
 }
+.col-pop label.col-val.select-all {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3px;
+  padding-bottom: 5px;
+  font-weight: 600;
+}
+.col-pop label.col-val.child {
+  padding-left: 18px;
+}
+.col-pop .tag-child-prefix {
+  color: var(--fg-3);
+  margin-right: 4px;
+}
 .col-pop label.col-val .count {
   margin-left: auto;
   color: var(--fg-3);
   font-variant-numeric: tabular-nums;
+}
+.col-pop .col-empty {
+  color: var(--fg-3);
+  padding: 6px;
 }
 .col-pop .col-actions {
   display: flex;

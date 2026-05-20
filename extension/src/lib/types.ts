@@ -1,9 +1,4 @@
-export type AccountCategory =
-  | 'core'
-  | 'government'
-  | 'officials'
-  | 'public_figures'
-  | 'public';
+export type AccountCategory = 'core' | 'government' | 'officials' | 'public_figures' | 'public';
 
 export interface AccountConfig {
   handle: string;
@@ -308,7 +303,7 @@ export interface ExtensionState {
 }
 
 export type RuntimeMessage =
-  | { type: 'graphql-capture'; endpoint: string; url: string; response: unknown }
+  | { type: 'graphql-capture'; endpoint: string; url: string; pageUrl?: string; response: unknown }
   | { type: 'content-alive'; url: string }
   | { type: 'page-hook-active'; url: string }
   | { type: 'log-content-event'; level: LogLevel; msg: string; url: string }

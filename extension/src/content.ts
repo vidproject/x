@@ -77,9 +77,12 @@ window.addEventListener('message', (event: MessageEvent) => {
   if (d.source !== TARGET) return;
   const endpoint = typeof d.endpoint === 'string' ? d.endpoint : null;
   const url = typeof d.url === 'string' ? d.url : null;
+  const pageUrl = typeof d.page_url === 'string' ? d.page_url : location.href;
   const response = d.response;
   if (!endpoint || !url || response === undefined) return;
-  browser.runtime.sendMessage({ type: 'graphql-capture', endpoint, url, response }).catch((err) => {
-    console.warn('[imm-archive] sendMessage failed', err);
-  });
+  browser.runtime
+    .sendMessage({ type: 'graphql-capture', endpoint, url, pageUrl, response })
+    .catch((err) => {
+      console.warn('[imm-archive] sendMessage failed', err);
+    });
 });

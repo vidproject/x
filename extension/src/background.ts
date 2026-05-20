@@ -420,7 +420,7 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
   }
   switch (msg.type) {
     case 'graphql-capture':
-      await onGraphqlCapture(msg.endpoint, msg.url, msg.response);
+      await onGraphqlCapture(msg.endpoint, msg.url, msg.pageUrl ?? null, msg.response);
       return { ok: true };
     case 'content-alive':
       await info('content script alive on page', { url: shortenUrl(msg.url) });
@@ -539,7 +539,12 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
 
 // --- Capture pipeline -----------------------------------------------------
 
-async function onGraphqlCapture(endpoint: string, url: string, response: unknown): Promise<void> {
+async function onGraphqlCapture(
+  endpoint: string,
+  url: string,
+  pageUrl: string | null,
+  response: unknown
+): Promise<void> {
   if (PROFILE_ENDPOINTS.has(endpoint)) return; // not tweet-bearing
   if (!TWEET_ENDPOINTS.has(endpoint)) return;
 
@@ -569,6 +574,7 @@ async function onGraphqlCapture(endpoint: string, url: string, response: unknown
       runId: 'pending',
       endpoint,
       allowedHandles: new Set<string>(),
+      sourceUrl: pageUrl,
     });
   } catch (err) {
     await quarantine('normalize-threw', endpoint, url, response, err);
@@ -1495,14 +1501,22 @@ async function mediaCrawlTick(): Promise<void> {
     return;
   }
 
-  // Always use the explicit handle URL when we know one. The handle-less
-  // `i/status/<id>` form has surfaced as "this page doesn't exist" in
-  // practice (X's router doesn't always resolve it for tweets that need a
-  // login wall or have author-context redirects).
-  const url =
-    target.bucket === '_unknown'
-      ? `https://x.com/i/status/${target.tweetId}`
-      : `https://x.com/${target.bucket}/status/${target.tweetId}`;
+  // Media-tab overlay/status routes like `/i/status/<id>` are not reliable
+  // detail pages. The normalizer should recover the author handle before
+  // queueing; if an old or degraded queue entry has no handle, skip it
+  // instead of sending the user to an empty X route.
+  if (target.bucket === '_unknown') {
+    await warn('media-crawl target missing handle; skipping broken status route', {
+      tweet_id: target.tweetId,
+    });
+    await dequeueMediaCrawl(target.tweetId);
+    sess.processed += 1;
+    sess.inflight = null;
+    await setMediaCrawlSession(sess);
+    await broadcastState();
+    return;
+  }
+  const url = `https://x.com/${target.bucket}/status/${target.tweetId}`;
   let tabId = await getMediaCrawlTabId();
   if (tabId !== null) {
     try {

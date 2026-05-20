@@ -198,9 +198,7 @@ async function loadManifest() {
  * viewer treats tags as a strictly additive overlay, never required.
  */
 async function loadTags() {
-  const cacheKey = manifest?.generated_at
-    ? `?v=${encodeURIComponent(manifest.generated_at)}`
-    : '';
+  const cacheKey = manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
   const url = `data/tags/lexical.parquet${cacheKey}`;
   try {
     const rows = await loadParquetRows(url);
@@ -730,8 +728,7 @@ function refresh() {
   const start = (page - 1) * urlState.size;
   const end = Math.min(total, start + urlState.size);
   const rowCount = filteredRows.length;
-  const threadNote =
-    rowCount > total ? ` · ${fmtNum(rowCount)} including replies` : '';
+  const threadNote = rowCount > total ? ` · ${fmtNum(rowCount)} including replies` : '';
   els.resultCount.textContent =
     total === 0
       ? 'No matches.'
@@ -742,6 +739,10 @@ function refresh() {
   els.pgNext.disabled = page === lastPage();
   els.pgLast.disabled = page === lastPage();
 
+  const visibleColFilters =
+    urlState.tags && urlState.tags.length > 0
+      ? { ...colFilters, tags: new Set(urlState.tags) }
+      : colFilters;
   renderTable({
     theadEl: els.theadRow,
     tbodyEl: els.tbody,
@@ -752,7 +753,7 @@ function refresh() {
     pageSize: urlState.size,
     sort: urlState.sort,
     dir: urlState.dir,
-    colFilters,
+    colFilters: visibleColFilters,
     expandedThreads,
     onRowClick: (r) => {
       selectedRowId = r.tweet_id;
@@ -780,7 +781,7 @@ function refresh() {
         anchorBtn: btn,
         colKey: key,
         allRows: store.allRows,
-        activeFilters: colFilters,
+        activeFilters: visibleColFilters,
         onChange: (col, set) => {
           if (col === 'tags') {
             // Tags filter rides on urlState so it survives reloads and
