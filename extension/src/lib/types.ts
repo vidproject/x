@@ -292,6 +292,22 @@ export interface LogEvent {
   context: Record<string, unknown>;
 }
 
+export type TweetArchiveStatus = 'new' | 'saved';
+export type TweetCaptureAction = 'buffered' | 'skipped' | 'unchanged';
+
+export interface TweetSighting {
+  tweet_id: string;
+  account_handle: string;
+  posted_at: string;
+  text: string;
+  tweet_type: TweetType;
+  tweet_url: string;
+  seen_at: string;
+  endpoint: string;
+  archive_status: TweetArchiveStatus;
+  action: TweetCaptureAction;
+}
+
 export interface AccountCounter {
   todayCount: number;
   todayDate: string;
@@ -342,6 +358,7 @@ export interface ExtensionState {
   autoScroll: AutoScrollProgress;
   refetchQueue: QueueProgress;
   mediaCrawlQueue: QueueProgress;
+  recentTweetSightings: TweetSighting[];
 }
 
 export type RuntimeMessage =

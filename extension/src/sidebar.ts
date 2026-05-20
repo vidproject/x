@@ -7,7 +7,7 @@
  */
 
 import { ACTIVITY_TAIL_MAX } from './lib/config.js';
-import type { ExtensionState, LogEvent, RuntimeMessage } from './lib/types.js';
+import type { ExtensionState, LogEvent, RuntimeMessage, TweetSighting } from './lib/types.js';
 
 const $ = <T extends HTMLElement = HTMLElement>(id: string): T => {
   const el = document.getElementById(id);
@@ -18,6 +18,7 @@ const $ = <T extends HTMLElement = HTMLElement>(id: string): T => {
 const connDot = $('conn-dot');
 const connText = $<HTMLSpanElement>('conn-text');
 const accountList = $<HTMLUListElement>('account-list');
+const recentTweetList = $<HTMLUListElement>('recent-tweet-list');
 const activityList = $<HTMLUListElement>('activity-list');
 const autoToggle = $<HTMLInputElement>('auto-capture');
 const updateExistingToggle = $<HTMLInputElement>('update-existing');
@@ -267,9 +268,61 @@ function paint(state: ExtensionState): void {
   viewerLink.href = `https://${state.settings.owner}.github.io/${state.settings.repo}/`;
   paintMasterSwitch(state);
   renderAccounts(state);
+  renderRecentTweets(state.recentTweetSightings);
   paintAutoScroll(state);
   paintMediaCrawl(state);
   paintRefetch(state);
+}
+
+function renderRecentTweets(rows: TweetSighting[]): void {
+  recentTweetList.replaceChildren();
+  if (rows.length === 0) {
+    const li = document.createElement('li');
+    li.className = 'empty';
+    li.textContent = 'No tweets seen yet.';
+    recentTweetList.append(li);
+    return;
+  }
+  for (const row of rows.slice(0, 40)) {
+    const li = document.createElement('li');
+    li.className = `recent-tweet ${row.archive_status}`;
+
+    const top = document.createElement('div');
+    top.className = 'tweet-head';
+    const link = document.createElement('a');
+    link.className = 'tweet-handle';
+    link.href = row.tweet_url;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = `@${row.account_handle}`;
+    const status = document.createElement('span');
+    status.className = `tweet-pill ${row.archive_status}`;
+    status.textContent = row.archive_status === 'saved' ? 'saved' : 'new';
+    top.append(link, status);
+
+    const text = document.createElement('div');
+    text.className = 'tweet-text';
+    text.textContent = truncateText(row.text, 140);
+
+    const meta = document.createElement('div');
+    meta.className = 'tweet-meta';
+    meta.textContent =
+      `${formatTweetAction(row.action)} · ${row.tweet_type} · posted ${fmtRel(row.posted_at)}`;
+
+    li.append(top, text, meta);
+    recentTweetList.append(li);
+  }
+}
+
+function formatTweetAction(action: TweetSighting['action']): string {
+  if (action === 'buffered') return 'buffered';
+  if (action === 'unchanged') return 'unchanged';
+  return 'skipped';
+}
+
+function truncateText(text: string, max: number): string {
+  const compact = text.replace(/\s+/g, ' ').trim();
+  return compact.length <= max ? compact : `${compact.slice(0, max - 1)}…`;
 }
 
 function paintMediaCrawl(state: ExtensionState): void {

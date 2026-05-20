@@ -660,12 +660,18 @@ function detectTruncation(
  * "related" if any of the following hold:
  *
  *   - its author is tracked (handle in `targeted`),
+ *   - its author is core (handle in `coreHandles`), regardless of where X
+ *     surfaced it,
  *   - it mentions a tracked handle,
  *   - it replies to a tracked account,
- *   - it quotes/retweets/replies-to a tweet that's also present in the
+ *   - it quotes/replies-to a tweet that's also present in the
  *     batch *and* authored by a tracked account (transitively related —
- *     captures the quoted/RT'd content that appears as a sibling node in
- *     the same GraphQL response).
+ *     captures quoted/reply context that appears as a sibling node in the
+ *     same GraphQL response).
+ *
+ * Non-core retweet wrappers are not kept merely because they retweeted a
+ * tracked/core tweet. The underlying core tweet is kept as its own row when
+ * present in the payload.
  *
  * Anything else (random replies under a tracked account's tweet, random
  * authors that happen to surface in a tracked account's thread) is dropped.
@@ -673,9 +679,10 @@ function detectTruncation(
  */
 export function filterRelated(
   tweets: CanonicalTweet[],
-  targeted: ReadonlySet<string>
+  targeted: ReadonlySet<string>,
+  coreHandles: ReadonlySet<string> = new Set()
 ): CanonicalTweet[] {
-  if (targeted.size === 0) return tweets;
+  if (targeted.size === 0 && coreHandles.size === 0) return tweets;
   // First pass: which tweet IDs do tracked-author tweets reference (the
   // "forward" direction — tracked account quotes / RTs / replies to X)?
   // And which tweet IDs ARE tracked-authored (the "reverse" direction —
@@ -692,11 +699,13 @@ export function filterRelated(
   return tweets.filter((t) => {
     const h = t.account_handle.toLowerCase();
     if (targeted.has(h)) return true;
+    if (coreHandles.has(h)) return true;
     // Forward: a tracked-author tweet pointed at this one.
     if (referencedIds.has(t.tweet_id)) return true;
-    // Reverse: this tweet points at a tracked-author tweet in the batch.
+    // Reverse: this tweet quotes/replies to a tracked-author tweet in the
+    // batch. Reverse retweets are just "non-core account retweeted core
+    // tweet" wrappers, and do not add core archive value.
     if (t.quoted_tweet_id && targetedTweetIds.has(t.quoted_tweet_id)) return true;
-    if (t.retweeted_tweet_id && targetedTweetIds.has(t.retweeted_tweet_id)) return true;
     if (t.reply_to_tweet_id && targetedTweetIds.has(t.reply_to_tweet_id)) return true;
     // Reply-to-account or mentions a tracked handle.
     if (t.reply_to_account && targeted.has(t.reply_to_account.toLowerCase())) return true;

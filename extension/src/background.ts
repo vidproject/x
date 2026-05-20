@@ -48,6 +48,7 @@ import {
   getMediaCrawlSession,
   getRefetchQueue,
   getRefetchSession,
+  getRecentTweetSightings,
   getRunBuffer,
   getRunBuffers,
   getSettings,
@@ -58,6 +59,7 @@ import {
   pruneCommittedIndex,
   purgeUnrelatedState,
   refetchQueueTotal,
+  prependRecentTweetSightings,
   setAccounts,
   setAccountsRefreshedAt,
   setArchiveSnapshot,
@@ -82,6 +84,7 @@ import type {
   RuntimeMessage,
   SeenPayload,
   Settings,
+  TweetSighting,
   UnavailableTweet,
 } from './lib/types.js';
 import { parseAccountsYaml } from './lib/yaml.js';
@@ -594,6 +597,9 @@ async function onGraphqlCapture(
   //      was way too permissive on the Replies tab: every random replier's
   //      reply landed in a per-handle buffer keyed by their own handle.
   const tracked = new Set(accounts.map((a) => a.handle.toLowerCase()));
+  const core = new Set(
+    accounts.filter((a) => a.category === 'core').map((a) => a.handle.toLowerCase())
+  );
   const capturedAt = new Date().toISOString();
 
   let normalized;
@@ -617,7 +623,7 @@ async function onGraphqlCapture(
   //     authored-by, mentioning, replying-to, or referenced-by a tracked
   //     account.
   const beforeFilter = normalized.tweets.length;
-  normalized.tweets = filterRelated(normalized.tweets, tracked);
+  normalized.tweets = filterRelated(normalized.tweets, tracked, core);
   const droppedUnrelated = beforeFilter - normalized.tweets.length;
   if (droppedUnrelated > 0) {
     await info('dropped unrelated tweets', {
@@ -746,6 +752,7 @@ async function onGraphqlCapture(
   let oldFromSnapshot = 0;
   const liveTweets: typeof normalized.tweets = [];
   const freshnessById = new Map<string, 'new' | 'existing'>();
+  const actionById = new Map<string, TweetSighting['action']>();
   for (const t of normalized.tweets) {
     const prev = committedIdx[t.account_handle]?.[t.tweet_id];
     const oldBySnapshot = !prev && archiveSnapshotHasTweet(t, archiveSnapshot);
@@ -755,6 +762,7 @@ async function onGraphqlCapture(
     if (previouslyArchived && !updateExisting) {
       if (prev) skippedNoUpdateLocal += 1;
       else skippedNoUpdateSnapshot += 1;
+      actionById.set(t.tweet_id, 'skipped');
       continue;
     }
     const sig = engagementSig(
@@ -766,8 +774,10 @@ async function onGraphqlCapture(
     );
     if (prev && prev.sig === sig) {
       dedupedSkipped += 1;
+      actionById.set(t.tweet_id, 'unchanged');
       continue;
     }
+    actionById.set(t.tweet_id, 'buffered');
     liveTweets.push(t);
   }
   if (dedupedSkipped > 0) {
@@ -800,6 +810,11 @@ async function onGraphqlCapture(
       snapshot_generated_at: archiveSnapshot?.generated_at ?? null,
     });
   }
+  await prependRecentTweetSightings(
+    normalized.tweets.map((t) =>
+      buildTweetSighting(t, endpoint, capturedAt, freshnessById.get(t.tweet_id), actionById.get(t.tweet_id))
+    )
+  );
   // --- Missing-parent recovery ----------------------------------------
   // X's UserTweetsAndReplies endpoint sometimes serves a reply without the
   // parent tweet it points at — only an in_reply_to_screen_name anchor. We
@@ -2074,6 +2089,7 @@ async function buildState(): Promise<ExtensionState> {
   const refetchSess = await getRefetchSession();
   const mediaCrawlSess = await getMediaCrawlSession();
   const autoScrollSess = await getAutoScrollSession();
+  const recentTweetSightings = await getRecentTweetSightings();
   return {
     version: EXT_VERSION,
     settings: redactSettings(settings),
@@ -2102,6 +2118,7 @@ async function buildState(): Promise<ExtensionState> {
       processed: mediaCrawlSess?.processed ?? 0,
       total_at_start: mediaCrawlSess?.totalAtStart ?? 0,
     },
+    recentTweetSightings,
   };
 }
 
@@ -2151,6 +2168,27 @@ function archiveSnapshotHasTweet(t: CanonicalTweet, snapshot: ArchiveSnapshot | 
   const posted = Date.parse(t.posted_at);
   const latest = Date.parse(entry.latest_post_at);
   return Number.isFinite(posted) && Number.isFinite(latest) && posted <= latest;
+}
+
+function buildTweetSighting(
+  t: CanonicalTweet,
+  endpoint: string,
+  seenAt: string,
+  freshness: 'new' | 'existing' = 'new',
+  action: TweetSighting['action'] = 'buffered'
+): TweetSighting {
+  return {
+    tweet_id: t.tweet_id,
+    account_handle: t.account_handle,
+    posted_at: t.posted_at,
+    text: t.text_resolved || t.text,
+    tweet_type: t.tweet_type,
+    tweet_url: t.tweet_url,
+    seen_at: seenAt,
+    endpoint,
+    archive_status: freshness === 'existing' ? 'saved' : 'new',
+    action,
+  };
 }
 
 function isWriteAuthError(message: string | null): boolean {

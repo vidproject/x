@@ -8,6 +8,7 @@ import type {
   ConnectionState,
   LogEvent,
   Settings,
+  TweetSighting,
   UnavailableTweet,
 } from './types.js';
 
@@ -77,6 +78,7 @@ interface StorageShape {
   counters: Record<string, AccountCounter>;
   runBuffers: Record<string, RunBuffer>;
   activity: LogEvent[];
+  recentTweetSightings: TweetSighting[];
   committedIndex: Record<string, Record<string, CommittedEntry>>;
   /** Tweets the normalizer flagged as truncated and that we haven't seen a
    * full-text version of yet. Keyed by handle → array of tweet ids. */
@@ -110,6 +112,7 @@ const DEFAULTS: StorageShape = {
   counters: {},
   runBuffers: {},
   activity: [],
+  recentTweetSightings: [],
   committedIndex: {},
   refetchQueue: {},
   mediaCrawlQueue: {},
@@ -282,6 +285,35 @@ export async function appendActivity(ev: LogEvent): Promise<LogEvent[]> {
 
 export async function clearActivity(): Promise<void> {
   await setRaw('activity', []);
+}
+
+// --- Recent tweet sightings ---------------------------------------------
+
+const RECENT_TWEET_SIGHTINGS_MAX = 80;
+
+export async function getRecentTweetSightings(): Promise<TweetSighting[]> {
+  return getRaw('recentTweetSightings');
+}
+
+export async function prependRecentTweetSightings(rows: TweetSighting[]): Promise<void> {
+  if (rows.length === 0) return;
+  const cur = await getRecentTweetSightings();
+  const seen = new Set<string>();
+  const next: TweetSighting[] = [];
+  for (const row of rows) {
+    const key = `${row.account_handle.toLowerCase()}:${row.tweet_id}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    next.push(row);
+  }
+  for (const row of cur) {
+    const key = `${row.account_handle.toLowerCase()}:${row.tweet_id}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    next.push(row);
+  }
+  next.length = Math.min(next.length, RECENT_TWEET_SIGHTINGS_MAX);
+  await setRaw('recentTweetSightings', next);
 }
 
 // --- Committed-tweets dedup index ----------------------------------------

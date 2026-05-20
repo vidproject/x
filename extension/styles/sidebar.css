@@ -319,6 +319,64 @@ body.paused .acc-stats {
   color: var(--accent-2);
 }
 
+.recent-tweets {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.recent-tweet-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.recent-tweet {
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--border);
+}
+.recent-tweet:last-child {
+  border-bottom: none;
+}
+.tweet-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: baseline;
+}
+.tweet-handle {
+  color: var(--fg);
+  font-weight: 600;
+  text-decoration: none;
+}
+.tweet-handle:hover {
+  text-decoration: underline;
+}
+.tweet-pill {
+  flex: 0 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 1px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.tweet-pill.new {
+  color: var(--ok);
+  border-color: color-mix(in srgb, var(--ok) 45%, var(--border));
+}
+.tweet-pill.saved {
+  color: var(--fg-3);
+}
+.tweet-text {
+  margin-top: 3px;
+  color: var(--fg-2);
+  font-size: 12px;
+  word-break: break-word;
+}
+.tweet-meta {
+  margin-top: 2px;
+  color: var(--fg-3);
+  font-size: 11px;
+}
+
 .activity {
   padding: 10px 12px;
   border-bottom: 1px solid var(--border);
