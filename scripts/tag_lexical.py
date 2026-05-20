@@ -445,6 +445,27 @@ PATTERN_THEME_CHRISTIANITY = _compile(
     r"|\bjesus(?:\s+christ)?\b"
     r"|\bchrist\s+(?:is\s+king|the\s+king|our\s+lord)\b"
     r"|\b(?:bible|biblical|scripture|scriptural)\b"
+    # Civil-religion / Christian-adjacent phrases that federal accounts use
+    # all the time but the strict list above missed (e.g. "God has blessed
+    # us..."). Each pattern requires a religious-context word *together*
+    # with another religious-context word or a clear invocation, so we don't
+    # tag every "thank god" or "good lord" outburst.
+    r"|\bgod\s+bless\b"
+    r"|\bgod\s+(?:has\s+)?bless(?:ed|es|ing|ings)?\b"
+    r"|\bpraise\s+(?:be\s+to\s+)?god\b"
+    r"|\bblessed\s+by\s+god\b"
+    r"|\bgod[-\s]given\b"
+    r"|\bgod\s+almighty\b"
+    r"|\bunder\s+god\b"
+    r"|\bin\s+god\s+we\s+trust\b"
+    r"|\bthank(?:s)?\s+(?:to\s+)?(?:god|the\s+lord|jesus)\b"
+    r"|\bprais(?:e|ing)\s+the\s+lord\b"
+    r"|\bin\s+jesus(?:'s|')?\s+name\b"
+    r"|\bpray(?:er|ers|ing|ed)?\s+(?:for|to|with|over|that)\b"
+    r"|\bprayer(?:s)?\s+(?:and|are|for|of|go\s+out|with)\b"
+    r"|\b(?:our|the|my|his|her|their)\s+prayers\b"
+    r"|\bsending\s+prayers\b"
+    r"|\bkeep\s+(?:them|him|her|us|you)\s+in\s+(?:our|your|my)\s+prayers\b"
 )
 PATTERN_STATUS_COPYRIGHT_REMOVAL = _compile(r"\b(copyright|dmca)\b")
 PATTERN_SLOGAN_NICE = _compile(r"\b(NICE day|NICE morning|ICE is NICE|NICE city)\b")

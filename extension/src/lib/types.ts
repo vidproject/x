@@ -43,6 +43,12 @@ export interface Settings {
    * 3..60 in the UI). The loops themselves are now driven by per-loop
    * Start/Cancel buttons; only the cadence lives in settings. */
   autoScrollIntervalSec: number;
+  /** When false, tweets we've already committed are skipped entirely —
+   * we don't re-capture them even when engagement counts have changed.
+   * Cuts the bandwidth + GitHub-API overhead of churn updates on long-tail
+   * tweets. Defaults to true so users keep the existing engagement-history
+   * behaviour unless they opt out. */
+  updateExisting: boolean;
 }
 
 export type ConnectionStatus =
@@ -332,6 +338,7 @@ export type RuntimeMessage =
   | { type: 'flush-handle'; handle: string }
   | { type: 'toggle-auto-capture'; on: boolean }
   | { type: 'toggle-enabled'; on: boolean }
+  | { type: 'toggle-update-existing'; on: boolean }
   | { type: 'start-auto-scroll' }
   | { type: 'cancel-auto-scroll' }
   | { type: 'set-auto-scroll-interval'; seconds: number }

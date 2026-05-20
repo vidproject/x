@@ -459,6 +459,10 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
       await updateSettings({ autoCapture: msg.on });
       await info('auto-capture toggled', { on: msg.on });
       return buildState();
+    case 'toggle-update-existing':
+      await updateSettings({ updateExisting: msg.on });
+      await info('update-existing toggled', { on: msg.on });
+      return buildState();
     case 'toggle-enabled': {
       const s = await updateSettings({ enabled: msg.on });
       if (!msg.on) {
@@ -702,11 +706,25 @@ async function onGraphqlCapture(
   // excluded — it churns too fast to be useful as a freshness signal.
   // `is_truncated` is part of the signature so a refetch that flips
   // truncated→full is treated as a material change and gets committed.
+  //
+  // When the user has turned off "update existing", we skip the engagement
+  // comparison entirely: any tweet that's already committed under any
+  // handle gets dropped here, so we don't pay GitHub-API overhead just to
+  // refresh like / RT counts. New tweets and truncated→full refetches
+  // still flow through normally because they aren't in the index yet
+  // (or carry an is_truncated transition that fails the sig check).
+  const settings = await getSettings();
+  const updateExisting = settings.updateExisting !== false;
   const committedIdx = await getCommittedIndex();
   let dedupedSkipped = 0;
+  let skippedNoUpdate = 0;
   const liveTweets: typeof normalized.tweets = [];
   for (const t of normalized.tweets) {
     const prev = committedIdx[t.account_handle]?.[t.tweet_id];
+    if (prev && !updateExisting) {
+      skippedNoUpdate += 1;
+      continue;
+    }
     const sig = engagementSig(
       t.like_count,
       t.retweet_count,
@@ -727,6 +745,22 @@ async function onGraphqlCapture(
       remaining: liveTweets.length,
     });
   }
+  if (skippedNoUpdate > 0) {
+    await info('dedup: skipped previously-committed tweets (updateExisting=false)', {
+      endpoint,
+      skipped: skippedNoUpdate,
+      remaining: liveTweets.length,
+    });
+  }
+  // --- Missing-parent recovery ----------------------------------------
+  // X's UserTweetsAndReplies endpoint sometimes serves a reply without the
+  // parent tweet it points at — only an in_reply_to_screen_name anchor. We
+  // never see that parent, so it never lands in the archive. Same for
+  // quoted_tweet_id / retweeted_tweet_id when X strips the referenced
+  // node. Walk the tweets we just saw, find any parent ID we don't have,
+  // and enqueue it on the media-crawl loop so its detail page gets
+  // visited and ingested next time the user starts the crawl.
+  await enqueueMissingParents(normalized.tweets, endpoint);
   if (liveTweets.length === 0) return;
 
   // Group surviving tweets by author handle.
@@ -866,6 +900,60 @@ async function recordUnavailableTweets(
 
 function unavailableSig(u: UnavailableTweet): string {
   return `unavailable|${u.unavailable_reason ?? ''}|${u.unavailable_text ?? ''}`;
+}
+
+/**
+ * Find every parent tweet referenced by the captures we just ingested
+ * (`reply_to_tweet_id`, `quoted_tweet_id`, `retweeted_tweet_id`) that we
+ * don't yet have in the archive, and enqueue it on the media-crawl loop.
+ *
+ * Why: X's UserTweetsAndReplies endpoint sometimes returns a tracked
+ * account's reply *without* the parent it points at. The `reply_to_*`
+ * fields on the reply still get set from `in_reply_to_status_id_str`, but
+ * `filterRelated` has nothing to keep — there is no parent node in the
+ * batch to keep. Result: the archive shows DHSgov's reply but not the
+ * original it's replying to. Symmetric problem for orphaned quote / RT
+ * pointers.
+ *
+ * Reusing the media-crawl queue + loop means no new UI; the user already
+ * starts it manually when they want to fetch partial-captured tweets.
+ * Same dedup rules apply (committed → skip; already queued → no-op).
+ *
+ * We only walk the tweets that survived `filterRelated` so we don't crawl
+ * parents of random replies that wouldn't have been kept anyway.
+ */
+async function enqueueMissingParents(
+  tweets: ReadonlyArray<CanonicalTweet>,
+  endpoint: string
+): Promise<void> {
+  if (tweets.length === 0) return;
+  // Build a same-batch ID set so we don't enqueue a parent that already
+  // arrived in this very response.
+  const sameBatchIds = new Set<string>();
+  for (const t of tweets) sameBatchIds.add(t.tweet_id);
+
+  let enqueued = 0;
+  for (const t of tweets) {
+    const parents: Array<{ id: string; hint: string | null }> = [];
+    if (t.reply_to_tweet_id) {
+      parents.push({ id: t.reply_to_tweet_id, hint: t.reply_to_account });
+    }
+    if (t.quoted_tweet_id) parents.push({ id: t.quoted_tweet_id, hint: null });
+    if (t.retweeted_tweet_id) parents.push({ id: t.retweeted_tweet_id, hint: null });
+    for (const p of parents) {
+      if (sameBatchIds.has(p.id)) continue;
+      if (await isCommitted(p.id)) continue;
+      await enqueueMediaCrawl(p.hint, p.id);
+      enqueued += 1;
+    }
+  }
+  if (enqueued > 0) {
+    await info('queued missing parent tweets for detail-page crawl', {
+      endpoint,
+      enqueued,
+      queue_total: await mediaCrawlQueueTotal(),
+    });
+  }
 }
 
 async function ensureRunBuffer(
@@ -1628,22 +1716,15 @@ async function mediaCrawlTick(): Promise<void> {
     return;
   }
 
-  // Media-tab overlay/status routes like `/i/status/<id>` are not reliable
-  // detail pages. The normalizer should recover the author handle before
-  // queueing; if an old or degraded queue entry has no handle, skip it
-  // instead of sending the user to an empty X route.
-  if (target.bucket === '_unknown') {
-    await warn('media-crawl target missing handle; skipping broken status route', {
-      tweet_id: target.tweetId,
-    });
-    await dequeueMediaCrawl(target.tweetId);
-    sess.processed += 1;
-    sess.inflight = null;
-    await setMediaCrawlSession(sess);
-    await broadcastState();
-    return;
-  }
-  const url = `https://x.com/${target.bucket}/status/${target.tweetId}`;
+  // When we don't know the parent's author handle (quote/RT of a tweet
+  // X stripped, or a UserMedia thumbnail that lacked the author block),
+  // fall back to `/i/web/status/<id>`. X resolves it to the correct
+  // detail page, which is enough for the page-hook to ingest a
+  // TweetDetail response.
+  const url =
+    target.bucket === '_unknown'
+      ? `https://x.com/i/web/status/${target.tweetId}`
+      : `https://x.com/${target.bucket}/status/${target.tweetId}`;
   let tabId = await getMediaCrawlTabId();
   if (tabId !== null) {
     try {
@@ -1939,6 +2020,7 @@ function redactSettings(s: Settings): ExtensionState['settings'] {
     autoCapture: s.autoCapture,
     configuredAt: s.configuredAt,
     autoScrollIntervalSec: s.autoScrollIntervalSec,
+    updateExisting: s.updateExisting,
     patSet: s.pat.length > 0,
     patSuffix: s.pat.length >= 4 ? s.pat.slice(-4) : '',
   };

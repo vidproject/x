@@ -272,6 +272,33 @@ def test_christianity_theme_matches_explicit_christian_language() -> None:
     assert "theme:christianity" in _tags(out)
 
 
+def test_christianity_theme_matches_civil_religion_phrases() -> None:
+    """Federal accounts rarely say "Christian" out loud, but routinely invoke
+    God / blessings / prayers in identifiably religious framings. The matcher
+    needs to catch those, not just the literal "Christian" / "Jesus" / "Bible"
+    keywords."""
+    samples = [
+        # Real tweet from DHSgov (id 2056894104106086877) the lexical tagger
+        # previously missed entirely.
+        "God has blessed us to call the greatest nation in history home.",
+        "GOD BLESS AMERICA AND THE PATRIOTS DEFENDING OUR HOMELAND",
+        "Our prayers are with the family.",
+        "Praying for the victims and their loved ones.",
+        "In Jesus' name we pray.",
+        "Praise be to God.",
+        "Sending prayers to everyone affected.",
+    ]
+    for text in samples:
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="core",
+        )
+        assert "theme:christianity" in _tags(out), text
+
+
 def test_unavailable_copyright_status_tags() -> None:
     out = tag_text(
         "",
