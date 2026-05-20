@@ -29,7 +29,7 @@ export function openSidepanel(panelEl, titleEl, bodyEl, row, thread) {
     bodyEl.append(section('Link preview', cardBlock(row.card)));
   }
   if (Array.isArray(row.media) && row.media.length > 0) {
-    bodyEl.append(section('Media', mediaGrid(row.media)));
+    bodyEl.append(section('Media', mediaGridWithPreviews(row.media)));
   }
   if (Array.isArray(row.engagement_history) && row.engagement_history.length > 1) {
     bodyEl.append(section('Engagement history', engagementHistory(row.engagement_history)));
@@ -149,65 +149,144 @@ function engagementRows(r) {
   ];
 }
 
-function mediaGrid(media) {
+function mediaGridWithPreviews(media) {
   const wrap = document.createElement('div');
   wrap.className = 'sp-media';
   for (const m of media) {
     if (!m) continue;
+    const archiveUrl = stringOrNull(m.release_asset_url);
+    const originalUrl = stringOrNull(m.original_url);
     const card = document.createElement('div');
     card.className = 'm';
+
     const kind = document.createElement('div');
-    kind.textContent = m.media_type ?? 'media';
-    kind.style.fontWeight = '600';
-    card.append(kind);
+    kind.className = 'sp-media-kind';
+    kind.textContent = mediaKindLabel(m, archiveUrl);
+    card.append(kind, mediaPreview(m, archiveUrl));
+
     const meta = document.createElement('div');
     meta.className = 'meta';
-    const bits = [];
-    // Parquet Int64 columns come back from hyparquet as BigInt, which
-    // crashes any arithmetic against a JS Number ("Cannot mix BigInt
-    // and other types"). Coerce up front so the sidepanel can render
-    // rows that carry media regardless of how the codec typed the
-    // counts.
-    const num = (v) => (typeof v === 'bigint' ? Number(v) : v);
-    const w = num(m.width);
-    const h = num(m.height);
-    const dur = num(m.duration_sec);
-    const bytes = num(m.bytes);
-    if (w && h) bits.push(`${w}×${h}`);
-    if (dur) bits.push(`${Math.round(dur)}s`);
-    if (bytes) bits.push(`${Math.round(bytes / 1024)} KiB`);
-    meta.textContent = bits.join(' · ') || '—';
+    meta.textContent = mediaMetaText(m);
     card.append(meta);
+
     if (m.alt_text) {
       const alt = document.createElement('div');
-      alt.style.marginTop = '4px';
+      alt.className = 'sp-media-alt';
       alt.textContent = `alt: ${m.alt_text}`;
       card.append(alt);
     }
-    if (m.release_asset_url) {
-      const a = document.createElement('a');
-      a.href = m.release_asset_url;
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.className = 'sp-link';
-      a.textContent = 'archived asset ↗';
-      a.style.display = 'block';
-      a.style.marginTop = '4px';
-      card.append(a);
-    } else if (m.original_url) {
-      const a = document.createElement('a');
-      a.href = m.original_url;
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.className = 'sp-link';
-      a.textContent = 'original (expires) ↗';
-      a.style.display = 'block';
-      a.style.marginTop = '4px';
-      card.append(a);
-    }
+
+    card.append(mediaLinks(m, archiveUrl, originalUrl));
     wrap.append(card);
   }
   return wrap;
+}
+
+function mediaPreview(m, archiveUrl) {
+  const frame = document.createElement('div');
+  frame.className = 'sp-media-preview';
+  if (!archiveUrl) {
+    frame.classList.add('missing');
+    frame.textContent = 'Not archived yet';
+    return frame;
+  }
+
+  if (m.media_type === 'photo') {
+    const link = document.createElement('a');
+    link.href = archiveUrl;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.title = 'Open archived image';
+    const img = document.createElement('img');
+    img.className = 'sp-media-img';
+    img.loading = 'lazy';
+    img.alt = m.alt_text || 'Archived image';
+    img.src = archiveUrl;
+    link.append(img);
+    frame.append(link);
+    return frame;
+  }
+
+  if (m.media_type === 'video' || m.media_type === 'animated_gif') {
+    const video = document.createElement('video');
+    video.className = 'sp-media-video';
+    video.controls = true;
+    video.preload = 'metadata';
+    video.src = archiveUrl;
+    if (m.media_type === 'animated_gif') {
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true;
+    }
+    frame.append(video);
+    return frame;
+  }
+
+  const link = document.createElement('a');
+  link.className = 'sp-link';
+  link.href = archiveUrl;
+  link.target = '_blank';
+  link.rel = 'noopener';
+  link.textContent = 'Open GitHub archive';
+  frame.append(link);
+  return frame;
+}
+
+function mediaLinks(m, archiveUrl, originalUrl) {
+  const links = document.createElement('div');
+  links.className = 'sp-media-links';
+  if (archiveUrl) {
+    links.append(mediaLink(archiveUrl, 'GitHub archive'));
+  }
+  if (originalUrl) {
+    if (links.childElementCount > 0) {
+      const sep = document.createElement('span');
+      sep.className = 'sep';
+      sep.textContent = '·';
+      links.append(sep);
+    }
+    links.append(mediaLink(originalUrl, originalLinkLabel(m)));
+  }
+  if (links.childElementCount === 0) {
+    links.textContent = 'No media URL';
+  }
+  return links;
+}
+
+function mediaLink(href, label) {
+  const link = document.createElement('a');
+  link.href = href;
+  link.target = '_blank';
+  link.rel = 'noopener';
+  link.className = 'sp-link';
+  link.textContent = label;
+  return link;
+}
+
+function mediaMetaText(m) {
+  const bits = [];
+  const num = (v) => (typeof v === 'bigint' ? Number(v) : v);
+  const w = num(m.width);
+  const h = num(m.height);
+  const dur = num(m.duration_sec);
+  const bytes = num(m.bytes);
+  if (w && h) bits.push(`${w}x${h}`);
+  if (dur) bits.push(`${Math.round(dur)}s`);
+  if (bytes) bits.push(`${Math.round(bytes / 1024)} KiB`);
+  return bits.join(' · ') || '—';
+}
+
+function mediaKindLabel(m, archiveUrl) {
+  const type = m.media_type === 'animated_gif' ? 'gif' : m.media_type || 'media';
+  return `${type}${archiveUrl ? ' · archived' : ' · pending'}`;
+}
+
+function originalLinkLabel(m) {
+  return m.media_type === 'photo' ? 'Original picture' : 'Original source';
+}
+
+function stringOrNull(v) {
+  return typeof v === 'string' && v.length > 0 ? v : null;
 }
 
 function engagementHistory(history) {

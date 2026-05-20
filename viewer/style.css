@@ -657,7 +657,7 @@ body {
 }
 .sp-media {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 8px;
 }
 .sp-media .m {
@@ -669,6 +669,56 @@ body {
 }
 .sp-media .m .meta {
   color: var(--fg-3);
+}
+.sp-media-kind {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.sp-media-preview {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bg-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+.sp-media-preview.missing {
+  color: var(--fg-3);
+  font-size: 11px;
+  text-align: center;
+  padding: 8px;
+}
+.sp-media-preview a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.sp-media-img,
+.sp-media-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: var(--bg);
+}
+.sp-media-links {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 6px;
+}
+.sp-media-links .sep {
+  color: var(--fg-3);
+}
+.sp-media-alt {
+  margin-top: 4px;
+  color: var(--fg-2);
+  word-break: break-word;
 }
 .sp-card {
   display: flex;
