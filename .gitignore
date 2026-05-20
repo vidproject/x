@@ -31,3 +31,9 @@ htmlcov/
 coverage.xml
 .coverage
 tmp/
+
+# Derived artifacts — deterministic from canonical data + tooling, not committed.
+# Layer 2+ tag scripts (keyframe extraction, OCR, transcripts) write here on
+# the CI runner; the metadata about each artifact lives in data/tags/*.parquet
+# but the bytes themselves are regenerable.
+data/derived/

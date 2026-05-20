@@ -225,3 +225,56 @@ MEDIA_VISION_SCHEMA: dict[str, Any] = {
 def empty_media_vision_dataframe() -> pl.DataFrame:
     """Return an empty DataFrame with the media-recognition sidecar schema."""
     return pl.DataFrame(schema=MEDIA_VISION_SCHEMA)
+
+
+# --------------------------------------------------------------------------
+# Keyframe sidecar (Layer 2)
+#
+# One row per archived video. Records the metadata of evenly-spaced
+# keyframes extracted by ffmpeg for downstream OCR / CLIP / vision-LLM
+# layers to consume. The frame JPEGs themselves live under
+# `data/derived/keyframes/<media_sha256>/` and are gitignored — they are
+# deterministic from the archived video + the extractor version + frame
+# indices, and downstream layers re-extract on demand within the same CI
+# run if the derived dir was cleared.
+#
+# The sidecar is the cache boundary: a row's presence with `status == "ok"`
+# and the right `extractor_version` lets layers 3a/3b/4 skip re-extraction
+# (or, if the derived dir is missing, drive a re-run by sha256). Each frame
+# carries its own sha256 so OCR / CLIP layers can key their own caches off
+# the frame bytes, not the parent video.
+
+KEYFRAME_STRUCT = pl.Struct(
+    [
+        pl.Field("index", pl.Int64),
+        pl.Field("timestamp_sec", pl.Float64),
+        pl.Field("path", pl.Utf8),
+        pl.Field("sha256", pl.Utf8),
+        pl.Field("width", pl.Int64),
+        pl.Field("height", pl.Int64),
+        pl.Field("bytes", pl.Int64),
+    ]
+)
+
+KEYFRAMES_SCHEMA: dict[str, Any] = {
+    "tweet_id": pl.Utf8,
+    "account_handle": pl.Utf8,
+    "media_id": pl.Utf8,
+    "media_sha256": pl.Utf8,
+    "release_asset_url": pl.Utf8,
+    "video_duration_sec": pl.Float64,
+    "video_width": pl.Int64,
+    "video_height": pl.Int64,
+    "frame_count": pl.Int64,
+    "frames": pl.List(KEYFRAME_STRUCT),
+    "generated_at": pl.Utf8,
+    "extractor_version": pl.Utf8,
+    "status": pl.Utf8,
+    "cost_estimate_usd": pl.Float64,
+    "error": pl.Utf8,
+}
+
+
+def empty_keyframes_dataframe() -> pl.DataFrame:
+    """Return an empty DataFrame with the keyframe sidecar schema."""
+    return pl.DataFrame(schema=KEYFRAMES_SCHEMA)

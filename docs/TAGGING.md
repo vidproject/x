@@ -13,16 +13,16 @@ implementation hand-off for the layers that have actually shipped.
 
 ## Layers, status
 
-| Layer | Source                                                                   | Output                                                 | Status                                                                                                       |
-| ----- | ------------------------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| 0     | passthrough — existing `hashtags`, `card.title/description`, URL domains | viewer columns / facets                                | viewer pulls `tags_str` from `hashtags`; not yet broadened                                                   |
-| 1     | regex / structural rules on `text_resolved` (+ OCR when present)         | `data/tags/lexical.parquet`                            | **shipped** — see `scripts/tag_lexical.py`                                                                   |
-| 2     | text topic classifier (zero-shot / API)                                  | `data/tags/text_topic.parquet`                         | not started                                                                                                  |
-| 3m    | archived media metadata + source alt text                                | `data/tags/media_vision.parquet`                       | **shipped** — see `scripts/describe_media.py`                                                                |
-| 3a    | CLIP zero-shot image labels                                              | `data/tags/image_clip.parquet`                         | not started                                                                                                  |
-| 3b    | OCR for in-image text (Tesseract → PaddleOCR fallback)                   | `data/tags/image_ocr.parquet`                          | not started; **the lexical tagger already integrates with it via `load_ocr_map()` once the parquet appears** |
-| 3c    | Video keyframes / transcripts / OCR                                      | enriches `media_vision`, `image_clip`, and `image_ocr` | not started; `media:needs-vision` marks the queue                                                            |
-| 4     | vision LLM for high-value items                                          | merged into 1 + 3a namespaces                          | not started                                                                                                  |
+| Layer | Source                                                                   | Output                                                      | Status                                                                                                                                   |
+| ----- | ------------------------------------------------------------------------ | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| 0     | passthrough — existing `hashtags`, `card.title/description`, URL domains | viewer columns / facets                                     | viewer pulls `tags_str` from `hashtags`; not yet broadened                                                                               |
+| 1     | regex / structural rules on `text_resolved` (+ OCR when present)         | `data/tags/lexical.parquet`                                 | **shipped** — see `scripts/tag_lexical.py`                                                                                               |
+| 2     | ffmpeg keyframe extraction (5 evenly-spaced frames per archived video)   | `data/tags/keyframes.parquet` (+ `data/derived/keyframes/`) | **shipped** — see `scripts/extract_video_frames.py`                                                                                      |
+| 3m    | archived media metadata + source alt text                                | `data/tags/media_vision.parquet`                            | **shipped** — see `scripts/describe_media.py`                                                                                            |
+| 3a    | CLIP zero-shot image labels                                              | `data/tags/image_clip.parquet`                              | not started; consumes the keyframe sidecar from Layer 2                                                                                  |
+| 3b    | OCR for in-image text (Tesseract → PaddleOCR fallback)                   | `data/tags/image_ocr.parquet`                               | not started; consumes Layer 2 keyframes; **the lexical tagger already integrates with it via `load_ocr_map()` once the parquet appears** |
+| 3c    | Audio transcripts (whisper.cpp / faster-whisper)                         | `data/tags/audio_transcript.parquet`                        | not started; transcripts feed Layer 1 the same way OCR does                                                                              |
+| 4     | vision LLM for high-value items (budget-gated)                           | merged into 1 + 3a namespaces                               | not started                                                                                                                              |
 
 ## Tag schema (`data/tags/lexical.parquet`)
 
@@ -62,6 +62,29 @@ The sidecar emits media tags such as `media:video`, `media:photo`,
 `media:needs-vision`. The viewer merges those tags with the lexical tags
 and shows searchable media descriptions in the table, CSV export, and
 sidepanel.
+
+## Keyframe sidecar (`data/tags/keyframes.parquet`)
+
+`scripts.extract_video_frames` is the Layer-2 step that ffmpeg-extracts
+5 evenly-spaced JPEG keyframes from every archived video/animated-gif
+and records the catalog. The JPEGs themselves live under
+`data/derived/keyframes/<media_sha256>/` (gitignored — deterministic from
+the archived video and the extractor version, so downstream layers
+re-extract on demand if the dir is missing).
+
+Each row carries `media_sha256` (the cache key), `release_asset_url`,
+the probed video duration/dimensions, and a `frames: list<struct>` with
+per-frame `index`, `timestamp_sec`, `path`, `sha256`, `width`, `height`,
+`bytes`. The status column distinguishes successful extraction from
+`fetch-failed`, `ffprobe-failed`, `ffmpeg-failed`, `video-too-large`,
+`no-frames`, and `skipped-no-ffmpeg` — only `ok` rows are cached against
+re-runs; failures are re-attempted.
+
+This is the catalog Layer 3a (CLIP labels) and 3b (OCR) will consume:
+both layers iterate frames by sha256, hash their inputs, and write their
+own sidecars keyed off the frame hash. No tweet parquets are modified,
+no API costs are incurred, and the work scales linearly with new
+archived videos.
 
 ## Tag namespaces
 
@@ -193,12 +216,14 @@ uv run python -m scripts.ingest          # canonical parquets + manifest
 uv run python -m scripts.tag_lexical     # data/tags/lexical.parquet
 
 # 3. After media archival:
-uv run python -m scripts.describe_media  # data/tags/media_vision.parquet
+uv run python -m scripts.describe_media         # data/tags/media_vision.parquet
+uv run python -m scripts.extract_video_frames   # data/tags/keyframes.parquet (ffmpeg required)
 
-# 4. (Future) After frame/OCR passes:
-# uv run python -m scripts.tag_image_ocr   # data/tags/image_ocr.parquet
-# uv run python -m scripts.tag_image_clip  # data/tags/image_clip.parquet
-# 5. Re-run scripts/tag_lexical so OCR text feeds Layer-1 rules.
+# 4. (Future) After frame/OCR/transcript passes:
+# uv run python -m scripts.tag_image_ocr        # data/tags/image_ocr.parquet
+# uv run python -m scripts.tag_image_clip       # data/tags/image_clip.parquet
+# uv run python -m scripts.tag_audio_transcript # data/tags/audio_transcript.parquet
+# 5. Re-run scripts/tag_lexical so OCR + transcript text feed Layer-1 rules.
 ```
 
 The viewer fetches the shipped sidecars in `data/tags/` on load and
