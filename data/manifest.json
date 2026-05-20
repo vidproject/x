@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-20T17:33:51Z",
+  "generated_at": "2026-05-20T17:34:45Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -18,21 +18,6 @@
       "releases": []
     },
     {
-      "handle": "RapidResponse47",
-      "label": "Rapid Response 47",
-      "category": "core",
-      "parquet": "data/RapidResponse47.parquet",
-      "parquet_bytes": 181691,
-      "row_count": 404,
-      "first_post_at": "2025-06-08T14:50:22.000Z",
-      "latest_post_at": "2026-05-20T15:53:43.000Z",
-      "latest_capture_at": "2026-05-20T17:31:56.856Z",
-      "deleted_count": 0,
-      "media_count": 330,
-      "video_count": 273,
-      "releases": []
-    },
-    {
       "handle": "ICEgov",
       "label": "U.S. Immigration and Customs Enforcement",
       "category": "core",
@@ -45,21 +30,6 @@
       "deleted_count": 0,
       "media_count": 183,
       "video_count": 34,
-      "releases": []
-    },
-    {
-      "handle": "PressSec",
-      "label": "White House Press Secretary",
-      "category": "core",
-      "parquet": "data/PressSec.parquet",
-      "parquet_bytes": 76482,
-      "row_count": 131,
-      "first_post_at": "2025-09-17T14:05:13.000Z",
-      "latest_post_at": "2026-05-15T19:01:09.000Z",
-      "latest_capture_at": "2026-05-19T23:28:45.220Z",
-      "deleted_count": 0,
-      "media_count": 19,
-      "video_count": 4,
       "releases": []
     },
     {
@@ -78,18 +48,33 @@
       "releases": []
     },
     {
-      "handle": "WhiteHouse",
-      "label": "The White House",
+      "handle": "DHSgov",
+      "label": "Department of Homeland Security",
       "category": "core",
-      "parquet": "data/WhiteHouse.parquet",
-      "parquet_bytes": 117004,
-      "row_count": 251,
-      "first_post_at": "2025-06-09T20:56:20.000Z",
-      "latest_post_at": "2026-05-20T15:12:19.000Z",
+      "parquet": "data/DHSgov.parquet",
+      "parquet_bytes": 324757,
+      "row_count": 983,
+      "first_post_at": "2025-04-09T13:37:20.000Z",
+      "latest_post_at": "2026-05-20T16:26:23.000Z",
       "latest_capture_at": "2026-05-20T17:31:56.856Z",
       "deleted_count": 0,
-      "media_count": 200,
-      "video_count": 47,
+      "media_count": 685,
+      "video_count": 220,
+      "releases": []
+    },
+    {
+      "handle": "PressSec",
+      "label": "White House Press Secretary",
+      "category": "core",
+      "parquet": "data/PressSec.parquet",
+      "parquet_bytes": 76482,
+      "row_count": 131,
+      "first_post_at": "2025-09-17T14:05:13.000Z",
+      "latest_post_at": "2026-05-15T19:01:09.000Z",
+      "latest_capture_at": "2026-05-19T23:28:45.220Z",
+      "deleted_count": 0,
+      "media_count": 19,
+      "video_count": 4,
       "releases": []
     },
     {
@@ -123,18 +108,33 @@
       "releases": []
     },
     {
-      "handle": "DHSgov",
-      "label": "Department of Homeland Security",
+      "handle": "WhiteHouse",
+      "label": "The White House",
       "category": "core",
-      "parquet": "data/DHSgov.parquet",
-      "parquet_bytes": 324757,
-      "row_count": 983,
-      "first_post_at": "2025-04-09T13:37:20.000Z",
-      "latest_post_at": "2026-05-20T16:26:23.000Z",
+      "parquet": "data/WhiteHouse.parquet",
+      "parquet_bytes": 117004,
+      "row_count": 251,
+      "first_post_at": "2025-06-09T20:56:20.000Z",
+      "latest_post_at": "2026-05-20T15:12:19.000Z",
       "latest_capture_at": "2026-05-20T17:31:56.856Z",
       "deleted_count": 0,
-      "media_count": 685,
-      "video_count": 220,
+      "media_count": 200,
+      "video_count": 47,
+      "releases": []
+    },
+    {
+      "handle": "RapidResponse47",
+      "label": "Rapid Response 47",
+      "category": "core",
+      "parquet": "data/RapidResponse47.parquet",
+      "parquet_bytes": 181691,
+      "row_count": 404,
+      "first_post_at": "2025-06-08T14:50:22.000Z",
+      "latest_post_at": "2026-05-20T15:53:43.000Z",
+      "latest_capture_at": "2026-05-20T17:31:56.856Z",
+      "deleted_count": 0,
+      "media_count": 330,
+      "video_count": 273,
       "releases": []
     },
     {
@@ -142,13 +142,13 @@
       "label": "Miscellaneous (replies / quotes / retweets of non-tracked accounts)",
       "category": "public",
       "parquet": "data/_misc.parquet",
-      "parquet_bytes": 617788,
-      "row_count": 1522,
+      "parquet_bytes": 624992,
+      "row_count": 1556,
       "first_post_at": "2020-07-29T19:42:48.000Z",
       "latest_post_at": "2026-05-20T15:41:14.000Z",
-      "latest_capture_at": "2026-05-20T17:32:09.432Z",
+      "latest_capture_at": "2026-05-20T17:33:40.151Z",
       "deleted_count": 0,
-      "media_count": 868,
+      "media_count": 890,
       "video_count": 224,
       "releases": []
     }
