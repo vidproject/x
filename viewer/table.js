@@ -407,13 +407,15 @@ function paintThreaded({
     masterRow.classList.add('thread-master');
     masterRow.dataset.threadId = thread.threadId;
     const hasSelf = thread.selfSlaves.length > 0;
+    const privilegedSlaves = Array.isArray(thread.privilegedSlaves) ? thread.privilegedSlaves : [];
+    const hasPrivileged = privilegedSlaves.length > 0;
     const hasOther = thread.otherSlaves.length > 0;
     const hasPromoted = Array.isArray(thread.promotedReplies) && thread.promotedReplies.length > 0;
     if (hasPromoted) {
       masterRow.classList.add('has-promoted-reply');
       masterRow.classList.add(`promoted-${topPromotionCategory(thread.promotedReplies)}`);
     }
-    if (hasSelf || hasOther) {
+    if (hasSelf || hasPrivileged || hasOther) {
       masterRow.classList.add('has-slaves');
       decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread);
     }
@@ -422,10 +424,15 @@ function paintThreaded({
     // public replies do not — they're reachable via the sidepanel on
     // master-row click so the table doesn't get spammed by a hundred
     // random reactions to a viral DHS tweet.
-    if (expanded && hasSelf) {
-      for (const slave of thread.selfSlaves) {
+    if (expanded && (hasSelf || hasPrivileged)) {
+      for (const slave of [...thread.selfSlaves, ...privilegedSlaves]) {
         const sr = buildRow(slave, visible, onRowClick);
         sr.classList.add('thread-slave');
+        const privileged = slave.__thread_privileged_category;
+        if (privileged) {
+          sr.classList.add('thread-privileged-slave');
+          sr.classList.add(`privileged-${privileged}`);
+        }
         sr.dataset.threadId = thread.threadId;
         tbodyEl.append(sr);
       }
@@ -439,20 +446,26 @@ function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
   if (!targetCell) return;
   const promotions = Array.isArray(thread.promotedReplies) ? thread.promotedReplies : [];
   const selfCount = thread.selfSlaves.length;
+  const privilegedCount = Array.isArray(thread.privilegedSlaves)
+    ? thread.privilegedSlaves.length
+    : 0;
+  const inlineCount = selfCount + privilegedCount;
   const replyCount = thread.otherSlaves.length;
-  if (selfCount === 0 && replyCount === 0 && promotions.length === 0) return;
+  if (inlineCount === 0 && replyCount === 0 && promotions.length === 0) return;
 
   const wrap = document.createElement('span');
   wrap.className = `thread-affordances promoted-${topPromotionCategory(promotions)}`;
-  if (selfCount > 0) {
+  if (inlineCount > 0) {
     const toggle = document.createElement('button');
     toggle.type = 'button';
     toggle.className = 'thread-toggle';
     toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    toggle.title = expanded
-      ? `Collapse ${selfCount} self-repl${selfCount === 1 ? 'y' : 'ies'}`
-      : `Expand ${selfCount} self-repl${selfCount === 1 ? 'y' : 'ies'}`;
-    toggle.textContent = `${expanded ? '▾' : '▸'} ${selfCount} self-repl${selfCount === 1 ? 'y' : 'ies'}`;
+    const label =
+      privilegedCount > 0 && selfCount === 0
+        ? `${inlineCount} core repl${inlineCount === 1 ? 'y' : 'ies'}`
+        : `${inlineCount} repl${inlineCount === 1 ? 'y' : 'ies'}`;
+    toggle.title = expanded ? `Collapse ${label}` : `Expand ${label}`;
+    toggle.textContent = `${expanded ? 'v' : '>'} ${label}`;
     toggle.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -526,10 +539,10 @@ function promotedReplyBadge(group) {
     badge.append(placeholder);
   }
   const label = document.createElement('span');
-  label.textContent = `@${group.handle} replied${group.count > 1 ? ` x${group.count}` : ''}`;
+  label.textContent = `@${group.handle}${group.count > 1 ? ` x${group.count}` : ''}`;
   badge.append(label);
   const displayName = displayNameForRow(group.reply);
-  badge.title = `${displayName ? `${displayName} ` : ''}@${group.handle} replied directly`;
+  badge.title = `${displayName ? `${displayName} ` : ''}@${group.handle} direct reply`;
   return badge;
 }
 
@@ -646,6 +659,7 @@ export function openColumnFilterPopup({
       childValuesByParent.set(p.parent, children);
     }
   }
+  const expandedTagParents = new Set();
   const rawActive = activeFilters[colKey];
   const hasActive =
     rawActive instanceof Set
@@ -687,7 +701,22 @@ export function openColumnFilterPopup({
     allVisible.append(allVisibleCb, allVisibleTxt);
     list.append(allVisible);
 
-    for (const p of visible) {
+    const renderedValues =
+      colKey === 'tags' ? collapsedTagValues(visible, f, expandedTagParents) : visible;
+    for (const p of renderedValues) {
+      if (p.toggle) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'tag-more-btn';
+        btn.textContent = `${p.expanded ? 'Show fewer' : `Show ${p.hiddenCount} more`} ${p.parent}: tags`;
+        btn.addEventListener('click', () => {
+          if (expandedTagParents.has(p.parent)) expandedTagParents.delete(p.parent);
+          else expandedTagParents.add(p.parent);
+          renderList(search.value);
+        });
+        list.append(btn);
+        continue;
+      }
       const lab = document.createElement('label');
       lab.className = p.child ? 'col-val child' : 'col-val';
       const cb = document.createElement('input');
@@ -745,12 +774,15 @@ export function openColumnFilterPopup({
   const actions = document.createElement('div');
   actions.className = 'col-actions';
   const apply = document.createElement('button');
+  apply.type = 'button';
   apply.className = 'btn';
   apply.textContent = 'Apply';
   const clear = document.createElement('button');
+  clear.type = 'button';
   clear.className = 'btn ghost';
   clear.textContent = 'Clear';
   const cancel = document.createElement('button');
+  cancel.type = 'button';
   cancel.className = 'btn ghost';
   cancel.textContent = 'Cancel';
   apply.addEventListener('click', () => {
@@ -765,9 +797,12 @@ export function openColumnFilterPopup({
     }
     close();
   });
-  clear.addEventListener('click', () => {
-    onChange(colKey, new Set());
+  clear.title = 'Clear this column filter';
+  clear.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     close();
+    requestAnimationFrame(() => onChange(colKey, new Set()));
   });
   cancel.addEventListener('click', close);
   actions.append(apply, clear, cancel);
@@ -878,6 +913,51 @@ function buildTagFilterValues(counts) {
     }
   }
   return values;
+}
+
+function collapsedTagValues(values, filter, expandedParents) {
+  if (filter) return values;
+  const out = [];
+  let i = 0;
+  while (i < values.length) {
+    const parent = values[i];
+    out.push(parent);
+    if (parent.child) {
+      i += 1;
+      continue;
+    }
+    const children = [];
+    let j = i + 1;
+    while (j < values.length && values[j].child && values[j].parent === parent.value) {
+      children.push(values[j]);
+      j += 1;
+    }
+    if (children.length <= 1 || expandedParents.has(parent.value)) {
+      out.push(...children);
+      if (children.length > 5) {
+        out.push({
+          toggle: true,
+          parent: parent.value,
+          expanded: true,
+          hiddenCount: Math.max(0, children.length - 5),
+        });
+      }
+    } else {
+      const shown = children.filter((child, index) => index < 5 && child.count >= 10);
+      out.push(...shown);
+      const hiddenCount = children.length - shown.length;
+      if (hiddenCount > 0) {
+        out.push({
+          toggle: true,
+          parent: parent.value,
+          expanded: false,
+          hiddenCount,
+        });
+      }
+    }
+    i = j;
+  }
+  return out;
 }
 
 function normalizeTagSelections(active, allValues, childValuesByParent) {

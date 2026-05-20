@@ -85,6 +85,9 @@ jobs:
           fi
           uv run python -m scripts.extract_video_frames "${args[@]}"
 
+      - name: refresh lexical tags
+        run: uv run python -m scripts.tag_lexical
+
       - name: commit parquet updates
         run: |
           git config user.name "github-actions[bot]"

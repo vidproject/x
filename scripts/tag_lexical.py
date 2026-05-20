@@ -37,8 +37,9 @@ DATA_DIR = REPO_ROOT / "data"
 TAGS_DIR = DATA_DIR / "tags"
 CONFIG_PATH = REPO_ROOT / "config" / "tag_taxonomy.yaml"
 ACCOUNTS_CONFIG_PATH = REPO_ROOT / "config" / "accounts.yaml"
+TAG_OVERRIDES_PATH = REPO_ROOT / "config" / "tag_overrides.yaml"
 
-TAGGER_VERSION = "lexical-v1"
+TAGGER_VERSION = "lexical-v2"
 
 # Countries the auto-tagger validates `origin:<X>` and `country:<X>`
 # matches against. Sovereign UN-recognized state names only; common
@@ -333,10 +334,34 @@ AGENCY_HANDLES: frozenset[str] = frozenset(
         "StateDept",
         "DOJgov",
         "FBI",
+        "DEAHQ",
+        "USMarshalsHQ",
+        "HHSGov",
+        "USTreasury",
+        "FEMA",
+        "DeptofWar",
+        "CENTCOM",
+        "Southcom",
+        "EPA",
+        "USAttyEssayli",
+        "USAttyPirro",
         "ERO_LosAngeles",
         "ERO_HQ",
     }
 )
+
+AGENCY_MENTION_ALIASES: dict[str, str] = {
+    **{handle.lower(): handle for handle in AGENCY_HANDLES},
+    "fbidirectorkash": "FBI",
+    "fbimostwanted": "FBI",
+    "fbimnneapolis": "FBI",
+    "fbiminneapolis": "FBI",
+    "fbitampa": "FBI",
+    "thejusticedept": "DOJgov",
+    "justiceoig": "DOJgov",
+    "epaleezeldin": "EPA",
+    "secwar": "DeptofWar",
+}
 
 # Detection rules for *non-immigration* signals. If any of these match a
 # tweet, we suppress the default `topic:immigration`. The corpus is
@@ -361,6 +386,68 @@ IMMIGRATION_DEFAULT_CATEGORIES: frozenset[str] = frozenset({"core", "government"
 
 def _compile(pattern: str) -> re.Pattern[str]:
     return re.compile(pattern.strip(), re.I)
+
+
+AGENCY_TEXT_PATTERNS: tuple[tuple[re.Pattern[str], str], ...] = (
+    (_compile(r"\bFBI\b|\bFederal Bureau of Investigation\b"), "agency:FBI"),
+    (
+        _compile(r"\bDOJ\b|\bDepartment of Justice\b|\bJustice Department\b"),
+        "agency:DOJgov",
+    ),
+    (
+        _compile(
+            r"\bICE\b|\bI\.C\.E\.\b|\bImmigration and Customs Enforcement\b|"
+            r"\bU\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement\b"
+        ),
+        "agency:ICEgov",
+    ),
+    (
+        _compile(
+            r"\bCBP\b|\bCustoms and Border Protection\b|\bU\.S\.\s+Border Patrol\b|"
+            r"\bBorder Patrol\b"
+        ),
+        "agency:CBP",
+    ),
+    (
+        _compile(r"\bUSCIS\b|\bCitizenship and Immigration Services\b"),
+        "agency:USCIS",
+    ),
+    (
+        _compile(r"\bDHS\b|\bDepartment of Homeland Security\b"),
+        "agency:DHSgov",
+    ),
+    (
+        _compile(r"\bDEA\b|\bDrug Enforcement Administration\b"),
+        "agency:DEAHQ",
+    ),
+    (
+        _compile(r"\bUSMS\b|\bU\.?S\.?\s+Marshals(?:\s+Service)?\b"),
+        "agency:USMarshalsHQ",
+    ),
+    (
+        _compile(r"\bHHS\b|\bHealth and Human Services\b"),
+        "agency:HHSGov",
+    ),
+    (
+        _compile(r"\bState Department\b|\bDepartment of State\b"),
+        "agency:StateDept",
+    ),
+    (
+        _compile(
+            r"\bTreasury Department\b|\bDepartment of the Treasury\b|"
+            r"\bU\.?S\.?\s+Treasury\b"
+        ),
+        "agency:USTreasury",
+    ),
+    (
+        _compile(r"\bFEMA\b|\bFederal Emergency Management Agency\b"),
+        "agency:FEMA",
+    ),
+    (_compile(r"\bEPA\b|\bEnvironmental Protection Agency\b"), "agency:EPA"),
+    (_compile(r"\bDepartment of War\b|\bDept\.?\s+of\s+War\b"), "agency:DeptofWar"),
+    (_compile(r"\bCENTCOM\b|\bU\.?S\.?\s+Central Command\b"), "agency:CENTCOM"),
+    (_compile(r"\bSOUTHCOM\b|\bU\.?S\.?\s+Southern Command\b"), "agency:Southcom"),
+)
 
 
 PATTERN_FRAME_CRIMINAL = _compile(
@@ -465,6 +552,13 @@ PATTERN_THEME_NATIVISM = _compile(
     r"\b(?:foreign\s+(?:workers?|labor)|foreign[- ]born\s+workers?)\b"
     r"|\bglobalism has failed\b|\bamericanism will prevail\b"
 )
+PATTERN_NATIVISM_INHERITANCE = _compile(r"\b(?:inheritors?|inheritance|inherit(?:ed|ing)?)\b")
+PATTERN_NATIVISM_INHERITANCE_CONTEXT = _compile(
+    r"\b(?:american|america|nation|national|citizens?|native[- ]born|foreign[- ]born|"
+    r"immigrants?|migrants?|aliens?|homeland|heritage|birthright|forefathers?|"
+    r"founders?|ancestors?|descendants?|civilization|our\s+people|our\s+country|"
+    r"our\s+nation|american\s+(?:workers?|jobs?))\b"
+)
 PATTERN_THEME_CHRISTIANITY = _compile(
     r"\bchristian(?:ity|s)?\b"
     r"|\bjudeo[- ]christian\b"
@@ -563,6 +657,17 @@ PATTERN_VIDEO_MUSIC_VIDEO = _compile(
     r"|\b(?:song|anthem|ballad)\s+(?:by|about|for)\b"
     r"|\btrack\s+by\b"
 )
+PATTERN_AUDIO_MUSIC_CONTEXT = _compile(
+    r"\bwhat(?:'s| is)\s+(?:the\s+)?song\b"
+    r"|\b(?:name|title)\s+of\s+(?:the\s+)?song\b"
+    r"|\bsong\s+(?:name|title|id|identifier)\b"
+    r"|\b(?:this|that|the)\s+song\b"
+    r"|\bbackground\s+music\b"
+    r"|\bsoundtrack\b"
+    r"|\b(?:music|beat|track)\s+(?:goes\s+hard|slaps|is\s+fire)\b"
+    r"|\bset\s+to\s+(?:music|the\s+song|the\s+track)\b"
+    r"|\bmusic\s+video\b"
+)
 PATTERN_VIDEO_NEWS_CLIP = _compile(
     r"\b(?:fox\s+(?:news|business)|cnn|msnbc|cbs|abc|nbc|newsmax|oan|cspan|c-span|newsnation|"
     r"the\s+\w+\s+report|the\s+\w+\s+show|nightly\s+news|morning\s+joe|hannity|tucker|maddow|"
@@ -610,6 +715,38 @@ PATTERN_SLOGAN_GO_HOME = _compile(
     r"(?:illegal\s+aliens?|aliens?|migrants?|CBP\s+Home|self[- ]deport|deport)\b"
 )
 PATTERN_SLOGAN_PROJECT_HOMECOMING = _compile(r"\bPROJECT\s+HOMECOMING\b")
+PATTERN_SLOGAN_MAGA = _compile(r"\bMAGA\b|\bMake\s+America\s+Great\s+Again\b")
+PATTERN_SLOGAN_MAHA = _compile(r"\bMAHA\b|\bMake\s+America\s+Healthy\s+Again\b")
+PATTERN_SLOGAN_AMERICA_FIRST = _compile(r"\bAmerica\s+First\b|\bAmericaFirst\b")
+PATTERN_SLOGAN_GOLDEN_AGE = _compile(r"\bGolden\s+Age\b|\bWelcome\s+to\s+the\s+Golden\s+Age\b")
+PATTERN_SLOGAN_SAVE_AMERICA = _compile(r"\bSave\s+America\b|\bSAVEAMERICA\b")
+PATTERN_SLOGAN_LAW_AND_ORDER = _compile(r"\bLaw\s+and\s+Order\b|\bLaw\s*&\s*Order\b")
+PATTERN_SLOGAN_PEACE_THROUGH_STRENGTH = _compile(r"\bPeace\s+Through\s+Strength\b")
+PATTERN_SLOGAN_PROMISES_KEPT = _compile(r"\bPromises?\s+Made[,;:]?\s+Promises?\s+Kept\b")
+PATTERN_SLOGAN_MASS_DEPORTATION = _compile(r"\bMass\s+Deportations?\b")
+PATTERN_LEGAL_CRIMINAL_PROSECUTION = _compile(
+    r"\bprosecut(?:e|ed|ing|ion|ions)\b"
+    r"|\bindict(?:ed|ment|ments)?\b"
+    r"|\bcharged\s+with\b"
+    r"|\bcriminal\s+(?:complaint|charges?|case|prosecution)\b"
+    r"|\barraign(?:ed|ment)?\b"
+    r"|\bple(?:a|d|aded|ads)\s+(?:guilty|not\s+guilty)\b"
+    r"|\bconvict(?:ed|ion|ions)?\b"
+    r"|\bsentenc(?:ed|ing)\b"
+    r"|\bfelony\s+charges?\b"
+    r"|\bmisdemeanor\s+charges?\b"
+)
+PATTERN_LEGAL_CIVIL_LAWSUIT = _compile(
+    r"\bcivil\s+(?:lawsuit|suit|action|case|complaint|litigation)\b"
+    r"|\blawsuits?\b"
+    r"|\bfiled\s+(?:a\s+)?(?:lawsuit|suit|civil\s+action|complaint)\b"
+    r"|\bsu(?:e|ed|es|ing)\b"
+    r"|\binjunction\b"
+    r"|\btemporary\s+restraining\s+order\b"
+    r"|\bTRO\b"
+    r"|\bsettlement\s+agreement\b"
+    r"|\bconsent\s+decree\b"
+)
 PATTERN_GENRE_STATISTICS = _compile(
     r"\b\d[\d,]*\s+(?:arrest|removal|deportat|encounter|alien|illegal|criminal|gang|fentanyl)"
 )
@@ -641,10 +778,58 @@ PATTERN_STATE_CANDIDATE = re.compile(
     r"\b[A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+)?,\s+([A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+)?)\b"
 )
 
+MEDIA_TAG_PREFIXES_ALLOWED_IN_LEXICAL: tuple[str, ...] = (
+    "action:",
+    "agency:",
+    "audio:",
+    "branch:",
+    "country:",
+    "crime:",
+    "frame:",
+    "homicide:",
+    "legal:",
+    "media:",
+    "shape:",
+    "slogan:",
+    "speaker:",
+    "state:",
+    "status:",
+    "subject:",
+    "theme:",
+    "topic:",
+    "video:",
+)
+
 
 # ---------------------------------------------------------------------------
 # Per-tweet tagger.
 # ---------------------------------------------------------------------------
+
+
+def normalized_media_tags(media_tags: list[Any] | None) -> list[dict[str, Any]]:
+    """Return vetted tag entries imported from media-recognition sidecars."""
+    out: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    if not isinstance(media_tags, list):
+        return out
+    for entry in media_tags:
+        if isinstance(entry, str):
+            tag = entry.strip()
+            source = "media-description"
+            tentative = False
+        elif isinstance(entry, dict):
+            tag = str(entry.get("tag") or "").strip()
+            source = str(entry.get("source") or "media-description")
+            tentative = bool(entry.get("tentative"))
+        else:
+            continue
+        if not tag or tag in seen:
+            continue
+        if not any(tag.startswith(prefix) for prefix in MEDIA_TAG_PREFIXES_ALLOWED_IN_LEXICAL):
+            continue
+        seen.add(tag)
+        out.append({"tag": tag, "source": source, "tentative": tentative})
+    return out
 
 
 def tag_text(
@@ -655,6 +840,9 @@ def tag_text(
     media_count: int,
     account_category: str,
     ocr_text: str = "",
+    media_text: str = "",
+    media_tags: list[Any] | None = None,
+    reply_context_text: str = "",
     is_unavailable: bool = False,
     unavailable_text: str = "",
     community_note: dict[str, Any] | None = None,
@@ -673,9 +861,9 @@ def tag_text(
     tweet body. OCR text also feeds the immigration-signal check that
     decides whether `topic:immigration` is confirmed or tentative.
 
-    Spans on emitted tags index into the **combined** buffer (`text +
-    " ¶ " + ocr_text`), so they're stable per-tweet but not directly
-    comparable across the original text/OCR boundary."""
+    Spans on emitted tags index into the **combined** regex buffer, so
+    they're stable per-tweet but not directly comparable across the
+    original text/OCR/media-description boundaries."""
     entries: list[dict[str, Any]] = []
     seen: set[str] = set()  # dedupe identical (tag, span) pairs
 
@@ -684,6 +872,7 @@ def tag_text(
         *,
         span: tuple[int, int] | None = None,
         tentative: bool = False,
+        source: str = "auto",
     ) -> None:
         key = f"{tag}@{span[0] if span else ''}"
         if key in seen:
@@ -693,7 +882,7 @@ def tag_text(
             {
                 "tag": tag,
                 "tentative": True if tentative else None,
-                "source": "auto",
+                "source": source,
                 "span_start": span[0] if span else None,
                 "span_end": span[1] if span else None,
             }
@@ -709,8 +898,9 @@ def tag_text(
 
     # agency:<HANDLE> — derived from mentions[]
     for mention in mentions or []:
-        if mention in AGENCY_HANDLES:
-            add(f"agency:{mention}")
+        canonical = AGENCY_MENTION_ALIASES.get(str(mention).lstrip("@").lower())
+        if canonical:
+            add(f"agency:{canonical}")
 
     if is_unavailable:
         add("status:unavailable")
@@ -719,11 +909,18 @@ def tag_text(
     if community_note:
         add("status:community-note")
 
-    # Concatenate OCR text (when present) so a poster's stamped slogan
-    # earns the same tags as if it had been typed into the tweet body.
-    # The separator (" ¶ ") doesn't appear in any of our patterns and
-    # keeps regex matches from spanning the boundary accidentally.
-    body = (f"{text} ¶ {ocr_text}" if text else ocr_text) if ocr_text else text
+    for media_tag in normalized_media_tags(media_tags):
+        add(
+            media_tag["tag"],
+            tentative=bool(media_tag.get("tentative")),
+            source=str(media_tag.get("source") or "media-description"),
+        )
+
+    # Concatenate OCR and media-description text so a poster's stamped
+    # slogan or manually reviewed image description earns the same tags
+    # as if the words had been typed into the tweet body.
+    body_parts = [part for part in (text, ocr_text, media_text) if part]
+    body = " || ".join(body_parts)
 
     if not body:
         # Even with no text we still get format: + agency: + sticky
@@ -742,6 +939,8 @@ def tag_text(
         (PATTERN_ACTION_REPORT_TO_ICE, "action:report-immigrants"),
         (PATTERN_SUBJECT_CBP_HOME_APP, "subject:cbp-home-app"),
         (PATTERN_SUBJECT_CELEBRITY, "subject:celebrity"),
+        (PATTERN_LEGAL_CRIMINAL_PROSECUTION, "legal:criminal-prosecution"),
+        (PATTERN_LEGAL_CIVIL_LAWSUIT, "legal:civil-lawsuit"),
         (PATTERN_TOPIC_ECONOMY, "topic:economy"),
         (PATTERN_TOPIC_MILITARY, "topic:military"),
         (PATTERN_TOPIC_LAUDATORY, "topic:laudatory"),
@@ -762,6 +961,15 @@ def tag_text(
         (PATTERN_SLOGAN_FREE_TICKET_HOME, "slogan:free-ticket-home"),
         (PATTERN_SLOGAN_GO_HOME, "slogan:go-home"),
         (PATTERN_SLOGAN_PROJECT_HOMECOMING, "slogan:project-homecoming"),
+        (PATTERN_SLOGAN_MAGA, "slogan:maga"),
+        (PATTERN_SLOGAN_MAHA, "slogan:maha"),
+        (PATTERN_SLOGAN_AMERICA_FIRST, "slogan:america-first"),
+        (PATTERN_SLOGAN_GOLDEN_AGE, "slogan:golden-age"),
+        (PATTERN_SLOGAN_SAVE_AMERICA, "slogan:save-america"),
+        (PATTERN_SLOGAN_LAW_AND_ORDER, "slogan:law-and-order"),
+        (PATTERN_SLOGAN_PEACE_THROUGH_STRENGTH, "slogan:peace-through-strength"),
+        (PATTERN_SLOGAN_PROMISES_KEPT, "slogan:promises-kept"),
+        (PATTERN_SLOGAN_MASS_DEPORTATION, "slogan:mass-deportation"),
         (PATTERN_GENRE_STATISTICS, "genre:statistics"),
         (PATTERN_GENRE_DIRECTIVE, "genre:directive"),
         (PATTERN_ANGEL_FAMILY, "subject:angel-family"),
@@ -770,6 +978,13 @@ def tag_text(
         m = pat.search(text)
         if m:
             add(tag, span=m.span())
+
+    for pat, tag in AGENCY_TEXT_PATTERNS:
+        for m in pat.finditer(text):
+            add(tag, span=m.span())
+
+    if m := _coded_nativism_match(text, entries):
+        add("theme:nativism", span=m.span())
 
     if m := _theme_religion_match(text):
         add("theme:religion", span=m.span())
@@ -848,6 +1063,12 @@ def tag_text(
             m = pat.search(text)
             if m:
                 add(tag, span=m.span())
+        if PATTERN_AUDIO_MUSIC_CONTEXT.search(text):
+            add("audio:music-likely")
+        if PATTERN_AUDIO_MUSIC_CONTEXT.search(reply_context_text):
+            add("audio:music-likely", source="reply-context")
+        if any(e["tag"] in {"media:music-video", "video:music-video"} for e in entries):
+            add("audio:music-likely")
         if video_max_duration_sec is not None and video_max_duration_sec > 0:
             if video_max_duration_sec <= 30:
                 add("video:short")
@@ -873,6 +1094,37 @@ def _theme_religion_match(text: str) -> re.Match[str] | None:
         if PATTERN_THEME_RELIGION_EXPLETIVE.search(window):
             continue
         return match
+    return None
+
+
+def _coded_nativism_match(text: str, entries: list[dict[str, Any]]) -> re.Match[str] | None:
+    """Match coded inheritance/inheritor language only with nearby context.
+
+    Standalone "inheritance" can be about taxes or probate. In the corpus,
+    though, inheritance/inheritor language next to nation, citizenship,
+    Homeland, birthright, American workers, or immigration terms is a
+    nativism signal.
+    """
+    existing = {str(e["tag"]) for e in entries}
+    strong_tag_context = any(
+        tag in {"subject:native-born-citizen", "theme:homeland", "theme:nativism"}
+        or tag.startswith(("action:", "origin:"))
+        or tag
+        in {
+            "agency:ICEgov",
+            "agency:CBP",
+            "agency:DHSgov",
+            "slogan:criminal-illegal-alien",
+            "slogan:illegal-alien",
+            "topic:immigration",
+        }
+        for tag in existing
+    )
+    for match in PATTERN_NATIVISM_INHERITANCE.finditer(text):
+        start, end = match.span()
+        window = text[max(0, start - 160) : min(len(text), end + 160)]
+        if strong_tag_context or PATTERN_NATIVISM_INHERITANCE_CONTEXT.search(window):
+            return match
     return None
 
 
@@ -905,7 +1157,16 @@ INTRINSIC_PARENT_TOPICS_EXACT: dict[str, tuple[str, ...]] = {
     "slogan:free-ticket-home": ("topic:immigration",),
     "slogan:go-home": ("topic:immigration",),
     "slogan:illegal-alien": ("topic:immigration",),
+    "slogan:mass-deportation": ("topic:immigration",),
     "slogan:project-homecoming": ("topic:immigration",),
+    "slogan:maga": ("topic:general",),
+    "slogan:maha": ("topic:general",),
+    "slogan:america-first": ("topic:general",),
+    "slogan:golden-age": ("topic:general",),
+    "slogan:save-america": ("topic:general",),
+    "slogan:law-and-order": ("topic:general",),
+    "slogan:peace-through-strength": ("topic:general",),
+    "slogan:promises-kept": ("topic:general",),
 }
 INTRINSIC_PARENT_TOPICS_PREFIXES: tuple[tuple[str, str], ...] = (("origin:", "topic:immigration"),)
 PATTERN_EXPLICIT_IMMIGRATION_TOPIC = _compile(
@@ -960,7 +1221,6 @@ IMMIGRATION_CONFIRMING_PREFIXES: tuple[str, ...] = (
     "theme:worksite",
     "theme:nativism",
     "theme:cbp-home",
-    "slogan:",
     "shape:",
     "subject:cbp-home-app",
     "subject:enforcement-op",
@@ -972,6 +1232,15 @@ IMMIGRATION_CONFIRMING_EXACT: frozenset[str] = frozenset(
         "agency:DHSgov",
         "agency:HSI_HQ",
         "agency:USBPChief",
+        "slogan:criminal-illegal-alien",
+        "slogan:free-ticket-home",
+        "slogan:go-home",
+        "slogan:illegal-alien",
+        "slogan:mass-deportation",
+        "slogan:nice",
+        "slogan:project-homecoming",
+        "slogan:reportrecon",
+        "slogan:worst",
     }
 )
 # Last-ditch keyword check — picks up image-heavy / template-light
@@ -1101,6 +1370,97 @@ def load_ocr_map() -> dict[str, str]:
     return out
 
 
+def load_media_context_map() -> dict[str, dict[str, Any]]:
+    """Return per-tweet media descriptions and tags from Layer 3m.
+
+    ``scripts.describe_media`` is still a cheap/local recognizer, but it
+    now carries manual-review observations and downstream media labels.
+    Feeding that text back through lexical rules lets image-only posts
+    earn the same topic / slogan / agency tags as text posts.
+    """
+    p = TAGS_DIR / "media_vision.parquet"
+    if not p.exists():
+        return {}
+    df = pl.read_parquet(p)
+    if df.is_empty() or "tweet_id" not in df.columns:
+        return {}
+    out: dict[str, dict[str, Any]] = {}
+    for row in df.iter_rows(named=True):
+        tid = str(row.get("tweet_id") or "")
+        if not tid:
+            continue
+        item = out.setdefault(tid, {"text_parts": [], "tags": []})
+        for col in ("summary_text", "description"):
+            value = str(row.get(col) or "").strip()
+            if value:
+                item["text_parts"].append(value)
+        tags = row.get("tags")
+        if isinstance(tags, list):
+            item["tags"].extend(tags)
+    for item in out.values():
+        seen_parts: set[str] = set()
+        parts: list[str] = []
+        for part in item["text_parts"]:
+            if part not in seen_parts:
+                seen_parts.add(part)
+                parts.append(part)
+        item["text"] = " | ".join(parts)
+        del item["text_parts"]
+    return out
+
+
+def load_reply_context_map(parquets: list[Path]) -> dict[str, str]:
+    """Return direct-reply text keyed by replied-to tweet id.
+
+    This is intentionally small and local. It lets deterministic media
+    taggers use replies as weak context, e.g. "what song is this?" under
+    a video, without having to inspect or stream the media in the viewer.
+    """
+    buckets: dict[str, list[str]] = {}
+    for path in parquets:
+        try:
+            df = pl.read_parquet(path)
+        except Exception:
+            LOG.exception("reply context: could not read parquet", path=str(path))
+            continue
+        for row in df.iter_rows(named=True):
+            if str(row.get("tweet_type") or "") != "reply":
+                continue
+            parent_id = str(row.get("reply_to_tweet_id") or "")
+            if not parent_id:
+                continue
+            text = str(row.get("text_resolved") or row.get("text") or "").strip()
+            if not text:
+                continue
+            bucket = buckets.setdefault(parent_id, [])
+            if len(bucket) < 50:
+                bucket.append(text[:280])
+    return {tweet_id: " | ".join(parts)[:6000] for tweet_id, parts in buckets.items()}
+
+
+def load_tag_overrides() -> dict[str, list[str]]:
+    """Return manual/editor-confirmed tag overrides keyed by tweet id."""
+    if not TAG_OVERRIDES_PATH.exists():
+        return {}
+    data = yaml.safe_load(TAG_OVERRIDES_PATH.read_text(encoding="utf-8")) or {}
+    out: dict[str, list[str]] = {}
+    rows = data.get("overrides") or []
+    if not isinstance(rows, list):
+        return out
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        tweet_id = str(row.get("tweet_id") or "").strip()
+        raw_tags = row.get("tags") or []
+        if not tweet_id or not isinstance(raw_tags, list):
+            continue
+        tags = [str(tag or "").strip() for tag in raw_tags]
+        tags = [tag for tag in tags if tag and ":" in tag]
+        if tags:
+            out[tweet_id] = tags
+    return out
+
+
 def discover_canonical_parquets() -> list[Path]:
     """Return per-account canonical parquets in `data/`, excluding any
     sidecars under `data/tags/`."""
@@ -1114,6 +1474,9 @@ def tag_one_parquet(
     account_categories: dict[str, str],
     tagged_at: str,
     ocr_map: dict[str, str] | None = None,
+    media_context_map: dict[str, dict[str, Any]] | None = None,
+    reply_context_map: dict[str, str] | None = None,
+    tag_overrides: dict[str, list[str]] | None = None,
 ) -> list[dict[str, Any]]:
     """Tag every row in one canonical parquet. Returns list of rows
     keyed for the lexical-tag schema.
@@ -1123,6 +1486,9 @@ def tag_one_parquet(
     pass `None` and the tagger silently runs against tweet text alone.
     """
     ocr_map = ocr_map or {}
+    media_context_map = media_context_map or {}
+    reply_context_map = reply_context_map or {}
+    tag_overrides = tag_overrides or {}
     df = pl.read_parquet(path)
     if df.is_empty():
         return []
@@ -1164,6 +1530,7 @@ def tag_one_parquet(
             for col in ("unavailable_reason", "unavailable_text")
             if r.get(col)
         )
+        media_context = media_context_map.get(tweet_id, {})
         tags = tag_text(
             text,
             tweet_type=r.get("tweet_type"),
@@ -1171,12 +1538,29 @@ def tag_one_parquet(
             media_count=media_count,
             account_category=category,
             ocr_text=ocr_map.get(tweet_id, ""),
+            media_text=str(media_context.get("text") or ""),
+            media_tags=media_context.get("tags") if isinstance(media_context, dict) else None,
+            reply_context_text=reply_context_map.get(tweet_id, ""),
             is_unavailable=bool(r.get("unavailable_detected_at")),
             unavailable_text=unavailable_text,
             community_note=r.get("community_note"),
             video_count=video_count,
             video_max_duration_sec=video_max_duration_sec,
         )
+        existing_tags = {str(entry.get("tag") or "") for entry in tags}
+        for tag in tag_overrides.get(tweet_id, []):
+            if tag in existing_tags:
+                continue
+            tags.append(
+                {
+                    "tag": tag,
+                    "tentative": None,
+                    "source": "manual-override",
+                    "span_start": None,
+                    "span_end": None,
+                }
+            )
+            existing_tags.add(tag)
         rows.append(
             {
                 "tweet_id": tweet_id,
@@ -1241,10 +1625,30 @@ def main(argv: list[str] | None = None) -> int:
     ocr_map = load_ocr_map()
     if ocr_map:
         LOG.info("loaded OCR sidecar overlay", tweets_with_ocr=len(ocr_map))
+    media_context_map = load_media_context_map()
+    if media_context_map:
+        LOG.info(
+            "loaded media-recognition sidecar overlay",
+            tweets_with_media_context=len(media_context_map),
+        )
+    reply_context_map = load_reply_context_map(parquets)
+    if reply_context_map:
+        LOG.info("loaded direct-reply text context", parents_with_replies=len(reply_context_map))
+    tag_overrides = load_tag_overrides()
+    if tag_overrides:
+        LOG.info("loaded manual tag overrides", tweets_with_overrides=len(tag_overrides))
     all_rows: list[dict[str, Any]] = []
     per_file: dict[str, int] = {}
     for path in parquets:
-        rows = tag_one_parquet(path, account_categories, tagged_at, ocr_map=ocr_map)
+        rows = tag_one_parquet(
+            path,
+            account_categories,
+            tagged_at,
+            ocr_map=ocr_map,
+            media_context_map=media_context_map,
+            reply_context_map=reply_context_map,
+            tag_overrides=tag_overrides,
+        )
         all_rows.extend(rows)
         per_file[path.name] = len(rows)
         LOG.info("tagged parquet", file=path.name, rows=len(rows))

@@ -68,6 +68,34 @@ def test_describe_media_item_does_not_mark_unknown_duration_as_short() -> None:
     assert "media:short-video" not in tags
 
 
+def test_manual_review_observation_promotes_visual_tags() -> None:
+    media = {
+        "media_id": "p1",
+        "media_type": "photo",
+        "release_asset_url": "https://github.com/asset.jpg",
+    }
+    manual_review = {
+        "visual_observation": "Press-photo of President Trump at a podium with visible title-card text.",
+        "tweet_text_excerpt": "MAKE AMERICA GREAT AGAIN!!!",
+        "candidate_visual_tags": ["subject:official", "media:text-overlay", "video:news-clip"],
+    }
+    row = describe_media_item(
+        _tweet(),
+        media,
+        generated_at="2026-05-20T00:00:00Z",
+        manual_review=manual_review,
+    )
+    tags = {entry["tag"] for entry in row["tags"]}
+
+    assert row["status"] == "manual-review"
+    assert row["confidence"] == 0.92
+    assert "visual observation: Press-photo of President Trump" in row["description"]
+    assert "subject:official" in tags
+    assert "media:text-overlay" in tags
+    assert "video:news-clip" not in tags
+    assert "media:needs-vision" not in tags
+
+
 def test_input_hash_changes_when_media_evidence_changes() -> None:
     media = {"media_id": "v1", "media_type": "video", "duration_sec": 12.4}
     changed = {**media, "duration_sec": 13.0}

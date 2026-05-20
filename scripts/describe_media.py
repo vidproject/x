@@ -20,6 +20,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import sys
 from collections import Counter
 from datetime import UTC, datetime
@@ -40,12 +41,14 @@ OUT_PATH = TAGS_DIR / "media_vision.parquet"
 MANIFEST_PATH = TAGS_DIR / "manifest.json"
 
 MODEL = "metadata"
-MODEL_VERSION = "media-metadata-v1"
+MODEL_VERSION = "media-metadata-v2"
 PROMPT = (
     "Describe public X media from canonical capture metadata. "
-    "Do not infer visual content beyond alt text or captured metadata."
+    "Do not infer visual content beyond alt text, captured metadata, or "
+    "curated manual media-review observations."
 )
 PROMPT_HASH = hashlib.sha256(PROMPT.encode("utf-8")).hexdigest()[:16]
+MANUAL_REVIEW_QUEUE_PATH = TAGS_DIR / "manual_media_review_queue.json"
 
 
 def discover_canonical_parquets() -> list[Path]:
@@ -56,7 +59,11 @@ def stable_json(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 
-def input_hash_for(tweet: dict[str, Any], media: dict[str, Any]) -> str:
+def input_hash_for(
+    tweet: dict[str, Any],
+    media: dict[str, Any],
+    manual_review: dict[str, Any] | None = None,
+) -> str:
     payload = {
         "tweet_id": str(tweet.get("tweet_id") or ""),
         "media_id": str(media.get("media_id") or ""),
@@ -69,17 +76,33 @@ def input_hash_for(tweet: dict[str, Any], media: dict[str, Any]) -> str:
         "height": media.get("height"),
         "alt_text": str(media.get("alt_text") or ""),
         "text": tweet_text(tweet)[:1200],
+        "manual_review": manual_review_hash_payload(manual_review),
         "model_version": MODEL_VERSION,
         "prompt_hash": PROMPT_HASH,
     }
     return hashlib.sha256(stable_json(payload).encode("utf-8")).hexdigest()
 
 
-def tag_entry(tag: str, *, tentative: bool = False) -> dict[str, Any]:
+def manual_review_hash_payload(manual_review: dict[str, Any] | None) -> dict[str, Any] | None:
+    if not manual_review:
+        return None
+    return {
+        "visual_observation": manual_review.get("visual_observation"),
+        "candidate_visual_tags": manual_review.get("candidate_visual_tags"),
+        "deterministic_signal_missing": manual_review.get("deterministic_signal_missing"),
+    }
+
+
+def tag_entry(
+    tag: str,
+    *,
+    tentative: bool = False,
+    source: str = "media-metadata",
+) -> dict[str, Any]:
     return {
         "tag": tag,
         "tentative": True if tentative else None,
-        "source": "media-metadata",
+        "source": source,
         "span_start": None,
         "span_end": None,
     }
@@ -90,6 +113,7 @@ def describe_media_item(
     media: dict[str, Any],
     *,
     generated_at: str,
+    manual_review: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     media_type = str(media.get("media_type") or "media")
     media_id = str(media.get("media_id") or "")
@@ -99,6 +123,11 @@ def describe_media_item(
     dimensions = dimension_text(media)
     duration = duration_text(media)
     byte_count = bytes_text(media)
+    visual_observation = clean_text(str((manual_review or {}).get("visual_observation") or ""))
+    tweet_excerpt = clean_text(str((manual_review or {}).get("tweet_text_excerpt") or ""))
+    missing_signal = clean_text(
+        str((manual_review or {}).get("deterministic_signal_missing") or "")
+    )
 
     source_fields = ["media_type", "archive_status"]
     parts = [kind_label(media_type)]
@@ -118,8 +147,19 @@ def describe_media_item(
     if context:
         parts.append(f"tweet context: {truncate(context, 260)}")
         source_fields.append("text_resolved")
+    if tweet_excerpt and tweet_excerpt not in context:
+        parts.append(f"review tweet excerpt: {truncate(tweet_excerpt, 260)}")
+        source_fields.append("manual_media_review_queue")
+    if visual_observation:
+        parts.append(f"visual observation: {visual_observation}")
+        source_fields.append("manual_media_review_queue")
+    if missing_signal:
+        parts.append(f"tagging gap: {missing_signal}")
+        source_fields.append("manual_media_review_queue")
 
-    needs_vision = media_type in {"photo", "video", "animated_gif"} and not alt_text
+    needs_vision = (
+        media_type in {"photo", "video", "animated_gif"} and not alt_text and not visual_observation
+    )
     if needs_vision:
         parts.append("needs OCR, transcript, or frame-level vision before content claims")
 
@@ -134,16 +174,25 @@ def describe_media_item(
     duration_seconds = numeric(media.get("duration_sec"))
     if media_type in {"video", "animated_gif"} and 0 < duration_seconds <= 30:
         tags.append(tag_entry("media:short-video"))
+    for tag in derive_description_tags(
+        " ".join(p for p in [description, alt_text, context] if p),
+        media_type=media_type,
+    ):
+        tags.append(tag_entry(tag, source="media-description"))
+    if manual_review:
+        tags.extend(candidate_visual_tag_entries(manual_review, media_type=media_type))
 
-    status = "metadata-alt" if alt_text else "metadata-only"
-    confidence = 0.68 if alt_text else 0.35
+    status = (
+        "manual-review" if visual_observation else "metadata-alt" if alt_text else "metadata-only"
+    )
+    confidence = 0.92 if visual_observation else 0.68 if alt_text else 0.35
     return {
         "tweet_id": str(tweet.get("tweet_id") or ""),
         "account_handle": str(tweet.get("account_handle") or ""),
         "media_id": media_id,
         "media_type": media_type,
         "media_sha256": str(media.get("sha256") or ""),
-        "input_hash": input_hash_for(tweet, media),
+        "input_hash": input_hash_for(tweet, media, manual_review),
         "generated_at": generated_at,
         "model": MODEL,
         "model_version": MODEL_VERSION,
@@ -157,6 +206,85 @@ def describe_media_item(
         "source_fields": sorted(set(source_fields)),
         "error": None,
     }
+
+
+def derive_description_tags(text: str, *, media_type: str) -> list[str]:
+    """Infer media-production tags from description text.
+
+    This is intentionally conservative: it consumes text already present in
+    alt text, manual review, OCR/vision descriptions, or tweet context. It
+    does not inspect pixels by itself.
+    """
+    haystack = text.lower()
+    is_video = media_type in {"video", "animated_gif"}
+    out: list[str] = []
+
+    def add(tag: str) -> None:
+        if tag not in out:
+            out.append(tag)
+
+    if re_search(
+        r"\b(text[- ]only|text overlay|title[- ]card|caption|chyron|lower-third|headline|press-release card|graphic text)\b",
+        haystack,
+    ):
+        add("media:text-overlay")
+    if is_video and re_search(
+        r"\b(polished|produced|edited|multi-shot|screencast|recruitment|psa|public service announcement|commercial)\b",
+        haystack,
+    ):
+        add("media:produced-video")
+    if is_video and re_search(r"\bmontage\b|\bmultiple shots?\b|\bsequence of clips?\b", haystack):
+        add("media:montage")
+    if is_video and re_search(r"\bset to music\b|\bmusic track\b|\bsong\b|\banthem\b", haystack):
+        add("media:music-video")
+    if is_video and re_search(r"\bvoiceover\b|\bnarration\b|\bnarrator\b", haystack):
+        add("media:voiceover")
+    if is_video and re_search(
+        r"\b(cnn|fox news|msnbc|cbs news|abc news|nbc news|newsmax|lower-third|chyron|broadcast)\b",
+        haystack,
+    ):
+        add("video:news-clip")
+    if is_video and re_search(
+        r"\b(psa|public service announcement|did you know|learn more|hotline)\b", haystack
+    ):
+        add("video:psa")
+    if is_video and re_search(
+        r"\b(podium|remarks|speech|address|press conference|press briefing)\b", haystack
+    ):
+        add("video:speech")
+    if is_video and re_search(
+        r"\b(recruitment|commercial|campaign ad|ad spot|apply now|apply today)\b", haystack
+    ):
+        add("video:ad")
+    return out
+
+
+def re_search(pattern: str, text: str) -> bool:
+    return re.search(pattern, text, re.I) is not None
+
+
+def candidate_visual_tag_entries(
+    manual_review: dict[str, Any],
+    *,
+    media_type: str,
+) -> list[dict[str, Any]]:
+    raw = manual_review.get("candidate_visual_tags")
+    if not isinstance(raw, list):
+        return []
+    is_video = media_type in {"video", "animated_gif"}
+    entries: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for value in raw:
+        tag = str(value or "").strip()
+        if not tag or tag in seen:
+            continue
+        # Do not apply video:* tags to still-image review rows. Those notes
+        # are useful for future taxonomy work but not a deterministic tag.
+        if tag.startswith("video:") and not is_video:
+            continue
+        seen.add(tag)
+        entries.append(tag_entry(tag, source="manual-media-review"))
+    return entries
 
 
 def media_candidates(tweet: dict[str, Any], *, include_pending: bool) -> list[dict[str, Any]]:
@@ -195,6 +323,7 @@ def build_rows(
     max_items: int | None,
 ) -> tuple[list[dict[str, Any]], dict[str, int]]:
     existing = load_existing(OUT_PATH)
+    manual_reviews = load_manual_review_queue()
     rows: list[dict[str, Any]] = []
     stats = Counter[str]()
     generated = 0
@@ -204,7 +333,13 @@ def build_rows(
         for tweet in df.iter_rows(named=True):
             for media in media_candidates(tweet, include_pending=include_pending):
                 key = (str(tweet.get("tweet_id") or ""), str(media.get("media_id") or ""))
-                draft = describe_media_item(tweet, media, generated_at=generated_at)
+                manual_review = manual_reviews.get(key)
+                draft = describe_media_item(
+                    tweet,
+                    media,
+                    generated_at=generated_at,
+                    manual_review=manual_review,
+                )
                 cached = existing.get(key)
                 if (
                     cached
@@ -222,6 +357,21 @@ def build_rows(
                 stats["generated"] += 1
     stats["rows"] = len(rows)
     return rows, dict(stats)
+
+
+def load_manual_review_queue() -> dict[tuple[str, str], dict[str, Any]]:
+    if not MANUAL_REVIEW_QUEUE_PATH.exists():
+        return {}
+    data = json.loads(MANUAL_REVIEW_QUEUE_PATH.read_text(encoding="utf-8"))
+    out: dict[tuple[str, str], dict[str, Any]] = {}
+    for item in data.get("items", []):
+        if not isinstance(item, dict):
+            continue
+        tweet_id = str(item.get("tweet_id") or "")
+        media_id = str(item.get("media_id") or "")
+        if tweet_id and media_id:
+            out[(tweet_id, media_id)] = item
+    return out
 
 
 def write_parquet(rows: list[dict[str, Any]], path: Path) -> None:

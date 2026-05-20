@@ -117,6 +117,7 @@ export class Store {
     for (const rows of this.byHandle.values()) {
       for (const r of rows) {
         delete r.__reply_promotions;
+        delete r.__thread_privileged_category;
         all.push(r);
       }
     }
@@ -259,9 +260,11 @@ export class Store {
    *                  These are the "DHS continues its own thread" case
    *                  worth inlining; they read as part of the master's
    *                  message and don't spam.
-   *   otherSlaves  — every other reply (tracked-other accounts AND
-   *                  random `_misc` chatter). Not inlined; the viewer
-   *                  surfaces them in the sidepanel on row click.
+   *   privilegedSlaves — direct thread replies from core / government /
+   *                  official accounts to a non-self parent. These are
+   *                  inlined because the tracked account is the story.
+   *   otherSlaves  — every other reply. Not inlined; the viewer surfaces
+   *                  them in the sidepanel on row click.
    *
    * A thread is included if at least one of its members survived the
    * filter; non-surviving siblings still get pulled in so context isn't
@@ -271,7 +274,7 @@ export class Store {
    */
   groupIntoThreads(filteredRows) {
     const seenThreads = new Set();
-    /** @type {Array<{master: any, selfSlaves: any[], otherSlaves: any[], matchedCount: number, threadId: string}>} */
+    /** @type {Array<{master: any, selfSlaves: any[], privilegedSlaves: any[], otherSlaves: any[], matchedCount: number, threadId: string}>} */
     const threads = [];
     for (const r of filteredRows) {
       const tid = String(r.conversation_id ?? r.tweet_id ?? '');
@@ -287,17 +290,28 @@ export class Store {
       if (!master) master = ordered[0];
       const masterHandle = master.account_handle;
       const selfSlaves = [];
+      const privilegedSlaves = [];
       const otherSlaves = [];
       for (const x of ordered) {
         if (x === master) continue;
-        if (x.account_handle === masterHandle) selfSlaves.push(x);
-        else otherSlaves.push(x);
+        if (x.account_handle === masterHandle) {
+          selfSlaves.push(x);
+          continue;
+        }
+        const category = this.categoryOf(x);
+        if (isPrivilegedReplyCategory(category)) {
+          x.__thread_privileged_category = category === 'core' ? 'core' : 'officials';
+          privilegedSlaves.push(x);
+        } else {
+          otherSlaves.push(x);
+        }
       }
       const filteredSet = new Set(filteredRows);
       const matchedCount = ordered.filter((x) => filteredSet.has(x)).length;
       threads.push({
         master,
         selfSlaves,
+        privilegedSlaves,
         otherSlaves,
         promotedReplies: replyPromotionsFor(master),
         matchedCount,
@@ -325,11 +339,11 @@ export class Store {
       if (!parent || parent === reply) continue;
       if (parent.account_handle === reply.account_handle) continue;
 
-      const category = this.accountCategoryByHandle.get(reply.account_handle);
-      if (category !== 'core' && category !== 'officials') continue;
+      const category = this.categoryOf(reply);
+      if (!isPrivilegedReplyCategory(category)) continue;
       const promotions = replyPromotionsFor(parent);
       promotions.push({
-        category,
+        category: category === 'core' ? 'core' : 'officials',
         reply,
       });
       parent.__reply_promotions = promotions;
@@ -358,6 +372,10 @@ function dominantCategory(own, promoted) {
     '': 0,
   };
   return (priority[promoted] ?? 0) > (priority[own] ?? 0) ? promoted : own;
+}
+
+function isPrivilegedReplyCategory(category) {
+  return category === 'core' || category === 'officials' || category === 'government';
 }
 
 function tagFilterMatches(row, selections) {

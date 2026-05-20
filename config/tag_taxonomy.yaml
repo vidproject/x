@@ -120,6 +120,19 @@ tags:
     description: Video includes narration or speech over other visuals.
     classification: tentative
 
+  # ===== audio:* - audio-track / sound cues ==========================
+  audio:music-likely:
+    description: >-
+      Cheap contextual signal that a video likely contains music,
+      derived from explicit tweet/media text or direct replies asking
+      about the song, soundtrack, or background music.
+    classification: deterministic
+  audio:music:
+    description: >-
+      Confirmed music detected in the archived video's audio track by a
+      future audio classifier sidecar.
+    classification: model
+
   media:described:
     description: Media item has a generated sidecar description.
     classification: deterministic
@@ -201,6 +214,18 @@ tags:
     classification: deterministic
     pattern: |
       \b(?:(?:call|contact)\s+(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b(?=.{0,180}\b(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b)|(?:report|tip|submit|send|notify)\b.{0,80}\b(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b.{0,80}\b(?:to|at|with)\s+(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|DHS|Department of Homeland Security|Homeland Security|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b|(?:submit|send)\s+(?:a\s+)?tip\b.{0,80}\b(?:to|with)\s+(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|DHS|Department of Homeland Security|Homeland Security|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b(?=.{0,120}\b(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b)|(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b.{0,240}\b(?:call|contact)\s+(?:(?:our|the)\s+)?(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|ICE\s+)?(?:tip\s*line|hotline|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b)
+
+  # ===== legal:* - legal posture / litigation =======================
+  legal:criminal-prosecution:
+    description: >-
+      Criminal prosecution posture: indictment, charges, plea,
+      conviction, sentencing, or criminal complaint.
+    classification: deterministic
+  legal:civil-lawsuit:
+    description: >-
+      Civil lawsuit / civil action posture, including complaints,
+      injunctions, TROs, settlements, or consent decrees.
+    classification: deterministic
 
   # ===== topic:* - broad subject area ================================
   topic:immigration:
@@ -286,7 +311,9 @@ tags:
     description: >-
       Frames U.S.-born or American workers/citizens as displaced,
       threatened, or specially entitled relative to immigrants,
-      foreign-born people, or foreign labor.
+      foreign-born people, or foreign labor. Also catches coded
+      inheritance/inheritor language when it appears with national,
+      citizenship, Homeland, birthright, or immigration context.
     classification: deterministic
   theme:christianity:
     description: >-
@@ -409,6 +436,34 @@ tags:
     classification: deterministic
 
   # ===== shape:* — composite tags ===================================
+  slogan:maga:
+    description: '"MAGA" / "Make America Great Again" campaign slogan.'
+    classification: deterministic
+  slogan:maha:
+    description: '"MAHA" / "Make America Healthy Again" slogan.'
+    classification: deterministic
+  slogan:america-first:
+    description: '"America First" slogan.'
+    classification: deterministic
+  slogan:golden-age:
+    description: '"Golden Age" administration / campaign slogan.'
+    classification: deterministic
+  slogan:save-america:
+    description: '"Save America" slogan.'
+    classification: deterministic
+  slogan:law-and-order:
+    description: '"Law and Order" slogan.'
+    classification: deterministic
+  slogan:peace-through-strength:
+    description: '"Peace Through Strength" slogan.'
+    classification: deterministic
+  slogan:promises-kept:
+    description: '"Promises Made, Promises Kept" slogan.'
+    classification: deterministic
+  slogan:mass-deportation:
+    description: '"Mass deportation(s)" recurring campaign/enforcement slogan.'
+    classification: deterministic
+
   shape:lineup:
     description: >-
       The templated mugshot-reply form: tweet_type=reply AND

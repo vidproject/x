@@ -85,6 +85,8 @@ Current sidecars:
 
 - `data/tags/lexical.parquet`: regex and structural tags from `scripts/tag_lexical.py`.
 - `data/tags/media_vision.parquet`: media descriptions from `scripts/describe_media.py`.
+- `data/account_categories.json`: corpus-wide public figure / government / official categories from `scripts/build_account_categories.py`.
+- `config/tag_overrides.yaml`: editor-confirmed tags for cases the capture layer cannot prove from canonical fields alone.
 
 The viewer joins sidecars by `tweet_id`. Missing sidecars are tolerated.
 
@@ -94,11 +96,11 @@ The immigration-reporting tag is `action:report-immigrants`. Generic non-immigra
 
 ## Media Recognition
 
-`scripts.describe_media` is the first recognition layer. It is deliberately cheap. It uses archived media metadata, source alt text, dimensions, duration, byte count, and tweet context. It does not infer visual content from pixels.
+`scripts.describe_media` is the first recognition layer. It is deliberately cheap. It uses archived media metadata, source alt text, dimensions, duration, byte count, tweet context, and curated manual media-review observations. It does not infer visual content from pixels unless a reviewed observation or later OCR/vision sidecar supplies that evidence.
 
 Each media row carries cache and provenance fields: `input_hash`, `model`, `model_version`, `prompt_hash`, `confidence`, `cost_estimate_usd`, `status`, `source_fields`, and `error`.
 
-This gives later OCR, transcript, keyframe, CLIP, or vision-model jobs a stable place to write results without changing canonical capture data. Items that need deeper inspection get tentative `media:needs-vision`.
+This gives later OCR, transcript, keyframe, CLIP, audio, or vision-model jobs a stable place to write results without changing canonical capture data. Items that need deeper inspection get tentative `media:needs-vision`. Until an audio classifier lands, the lexical layer also uses video text and direct replies as cheap context for `audio:music-likely` when people explicitly reference the song, soundtrack, or background music.
 
 ## Pipeline
 
@@ -110,11 +112,15 @@ extension
       data/manifest.json
     scripts.tag_lexical
       data/tags/lexical.parquet
+    scripts.build_account_categories
+      data/account_categories.json
     scripts.archive_media
       GitHub Release assets
       data/*.parquet media URLs
     scripts.describe_media
       data/tags/media_vision.parquet
+    scripts.tag_lexical
+      data/tags/lexical.parquet with media-description tags
     GitHub Pages
       viewer
 ```
@@ -124,6 +130,7 @@ Main commands:
 ```bash
 uv run python -m scripts.ingest
 uv run python -m scripts.tag_lexical
+uv run python -m scripts.build_account_categories
 uv run python -m scripts.archive_media
 uv run python -m scripts.describe_media
 npm run lint

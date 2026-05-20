@@ -1149,6 +1149,21 @@ html[data-media-fit='vertical'] .media-thumb {
 .col-pop label.col-val.child {
   padding-left: 18px;
 }
+.col-pop .tag-more-btn {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--fg-3);
+  font: inherit;
+  font-size: 11px;
+  text-align: left;
+  padding: 3px 6px 3px 22px;
+  cursor: pointer;
+}
+.col-pop .tag-more-btn:hover {
+  color: var(--accent-2);
+  background: var(--bg-row-hover);
+}
 .col-pop .tag-child-prefix {
   color: var(--fg-3);
   margin-right: 4px;
@@ -1395,6 +1410,12 @@ tr.thread-slave > td {
 tr.thread-slave > td:first-child {
   border-left: 3px solid var(--accent-2);
   padding-left: 16px;
+}
+tr.thread-privileged-slave.privileged-core > td:first-child {
+  border-left-color: #d9a441;
+}
+tr.thread-privileged-slave.privileged-officials > td:first-child {
+  border-left-color: #aeb4bd;
 }
 tr.thread-slave > td:first-child::before {
   content: '↪ ';

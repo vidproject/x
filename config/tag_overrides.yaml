@@ -1,0 +1,12 @@
+# Human/editor-confirmed tag overrides for cases the deterministic capture
+# layer cannot prove from canonical fields alone.
+#
+# Keep this file small and evidence-oriented. The lexical tagger imports these
+# tags with source="manual-override" so the viewer can distinguish them from
+# regex/model output.
+
+overrides:
+  - tweet_id: '2042613811547394058'
+    reason: User-confirmed X media copyright removal; canonical tweet row stayed visible.
+    tags:
+      - status:copyright-removal

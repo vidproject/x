@@ -115,7 +115,7 @@ initChartsPanel({
   categoryOf: (row) => store.categoryOf(row),
 });
 
-const MEDIA_SETTINGS_KEY = 'imm-media-column-settings';
+const MEDIA_SETTINGS_KEY = 'imm-media-column-settings-v2';
 const MEDIA_THUMB_DEFAULT = 22;
 const MEDIA_THUMB_MIN = 16;
 const MEDIA_THUMB_MAX = 48;
@@ -133,8 +133,12 @@ function loadMediaSettings() {
 function normalizeMediaSettings(value) {
   const thumbWidth = Number(value?.thumbWidth);
   const fit = value?.fit === 'vertical' ? 'vertical' : 'horizontal';
+  const previews =
+    value && Object.prototype.hasOwnProperty.call(value, 'previews')
+      ? Boolean(value.previews)
+      : true;
   return {
-    previews: Boolean(value?.previews),
+    previews,
     thumbWidth: clampThumbWidth(thumbWidth || MEDIA_THUMB_DEFAULT),
     fit,
   };
@@ -246,6 +250,7 @@ async function loadManifest() {
   for (const a of manifest?.accounts ?? []) {
     if (a.handle && a.category) catMap.set(a.handle, a.category);
   }
+  await loadAccountCategorySidecar(catMap);
   store.setAccountCategories(catMap);
   // Best-effort users.json — totally optional, viewer still works without
   // avatars / display names.
@@ -280,6 +285,30 @@ async function loadManifest() {
   paintHdrStats();
   if ((manifest.accounts || []).length === 0) {
     els.empty.hidden = false;
+  }
+}
+
+async function loadAccountCategorySidecar(catMap) {
+  const cacheKey = manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
+  const url = `data/account_categories.json${cacheKey}`;
+  try {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) {
+      if (res.status !== 404) throw new Error(`HTTP ${res.status} ${res.statusText}`);
+      return;
+    }
+    const payload = await res.json();
+    for (const [handle, meta] of Object.entries(payload?.categories ?? {})) {
+      if (!handle || !meta?.category) continue;
+      catMap.set(handle, meta.category);
+    }
+  } catch (err) {
+    pushLoadError({
+      resource: url,
+      status: null,
+      kind: 'account-categories',
+      message: err?.message ?? String(err),
+    });
   }
 }
 
@@ -536,14 +565,7 @@ const CATEGORY_ORDER = ['core', 'government', 'officials', 'public_figures', 'pu
 function _paintCategoryMenu() {
   if (!els.catsMenu) return;
   els.catsMenu.replaceChildren();
-  const accounts = manifest?.accounts ?? [];
-  const counts = new Map();
-  for (const a of accounts) {
-    const c = a.category || 'core';
-    counts.set(c, (counts.get(c) ?? 0) + (a.row_count || 0));
-  }
-  // `_misc.parquet` shows up in manifest with category=public; that already
-  // covers the bulk of public-bucket counts.
+  const counts = categoryCounts();
   if (counts.size === 0) {
     const empty = document.createElement('div');
     empty.className = 'muted';
@@ -613,18 +635,29 @@ function paintAccountFilter() {
 
 function paintCategoryFilter() {
   els.categoryFilter.replaceChildren(optionEl('', 'All categories'));
-  const accounts = manifest?.accounts ?? [];
-  const counts = new Map();
-  for (const account of accounts) {
-    const category = account.category || 'core';
-    counts.set(category, (counts.get(category) ?? 0) + (account.row_count || 0));
-  }
+  const counts = categoryCounts();
   for (const category of CATEGORY_ORDER) {
     if (!counts.has(category)) continue;
     const label = `${CATEGORY_LABELS[category] || category} (${fmtNum(counts.get(category))})`;
     els.categoryFilter.append(optionEl(category, label));
   }
   els.categoryFilter.value = urlState.categories.length === 1 ? urlState.categories[0] : '';
+}
+
+function categoryCounts() {
+  const counts = new Map();
+  if (store.allRows.length > 0) {
+    for (const row of store.allRows) {
+      const category = store.categoryOf(row);
+      counts.set(category, (counts.get(category) ?? 0) + 1);
+    }
+    return counts;
+  }
+  for (const account of manifest?.accounts ?? []) {
+    const category = account.category || 'core';
+    counts.set(category, (counts.get(category) ?? 0) + (account.row_count || 0));
+  }
+  return counts;
 }
 
 function optionEl(value, label) {
@@ -738,6 +771,7 @@ async function loadAllAccounts(sidecarsPromise) {
       ) {
         store.rebuild();
         if (sidecarsResolved) applySidecars();
+        paintCategoryFilter();
         revealUi();
         refresh();
       }
@@ -761,6 +795,7 @@ async function loadAllAccounts(sidecarsPromise) {
     );
   }
   paintHdrStats();
+  paintCategoryFilter();
 
   function applySidecars() {
     store.applyTags(tagMap);
@@ -1059,10 +1094,12 @@ function refresh() {
         allRows: store.allRows,
         activeFilters: visibleColFilters,
         onChange: (col, set) => {
+          urlState.page = 1;
           if (col === 'tags') {
             // Tags filter rides on urlState so it survives reloads and
             // can be deep-linked, unlike the other col filters which
             // are session-local. Mirror the selection out.
+            delete colFilters.tags;
             urlState.tags = [...set];
             applyToUrl(urlState);
           } else if (set.size === 0) {
@@ -1070,7 +1107,6 @@ function refresh() {
           } else {
             colFilters[col] = set;
           }
-          urlState.page = 1;
           refresh();
         },
         onSort: (dir) => {

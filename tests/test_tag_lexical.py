@@ -9,9 +9,12 @@ doesn't have to grow proportionally.
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any
 
-from scripts.tag_lexical import tag_text
+import polars as pl
+
+from scripts.tag_lexical import tag_one_parquet, tag_text
 
 
 def _tags(out: list[dict[str, Any]]) -> set[str]:
@@ -86,7 +89,18 @@ def test_immigration_default_suppressed_on_obvious_off_topic_signals() -> None:
     assert "topic:immigration" not in _tags(out)
 
 
-def test_immigration_default_off_for_public_authors() -> None:
+def test_immigration_default_off_for_public_authors_without_signal() -> None:
+    out = tag_text(
+        "Happy birthday to Secretary Smith.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    assert "topic:immigration" not in _tags(out)
+
+
+def test_public_ice_arrest_text_marks_immigration_signal() -> None:
     out = tag_text(
         "ICE arrested another felon today.",
         tweet_type="original",
@@ -94,7 +108,9 @@ def test_immigration_default_off_for_public_authors() -> None:
         media_count=0,
         account_category="public",
     )
-    assert "topic:immigration" not in _tags(out)
+    tags = _tags(out)
+    assert "agency:ICEgov" in tags
+    assert "topic:immigration" in tags
 
 
 def test_frame_criminal_and_action_combo_marks_enforcement_op() -> None:
@@ -183,6 +199,21 @@ def test_agency_tag_derives_from_mentions() -> None:
     assert "agency:JohnDoe1234" not in tags
 
 
+def test_agency_tags_derive_from_text_and_alias_mentions() -> None:
+    out = tag_text(
+        "FBI, the Department of Justice, DEA, and the U.S. Marshals announced the case.",
+        tweet_type="original",
+        mentions=["FBIDirectorKash", "TheJusticeDept", "DEAHQ", "USMarshalsHQ"],
+        media_count=0,
+        account_category="public",
+    )
+    tags = _tags(out)
+    assert "agency:FBI" in tags
+    assert "agency:DOJgov" in tags
+    assert "agency:DEAHQ" in tags
+    assert "agency:USMarshalsHQ" in tags
+
+
 def test_angel_family_keyword_match() -> None:
     out = tag_text(
         "Honoring this Angel Mom who lost her son to a violent illegal alien.",
@@ -209,6 +240,28 @@ def test_native_born_citizen_keyword_match() -> None:
     assert "topic:immigration" in tags
     imm = next(e for e in out if e["tag"] == "topic:immigration")
     assert not imm["tentative"]
+
+
+def test_inheritance_language_needs_nativism_context() -> None:
+    coded = tag_text(
+        "This country is our inheritance, and Americans must defend the Homeland.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    tags = _tags(coded)
+    assert "theme:nativism" in tags
+    assert "topic:immigration" in tags
+
+    probate = tag_text(
+        "The court discussed inheritance taxes and probate deadlines.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    assert "theme:nativism" not in _tags(probate)
 
 
 def test_homeland_theme_matches_capital_h_homeland_framing() -> None:
@@ -397,6 +450,51 @@ def test_video_kind_tags_only_fire_when_video_present() -> None:
     assert "video:medium" in tags  # 30 < 42 ≤ 120
 
 
+def test_music_likely_tag_uses_video_text_and_reply_context() -> None:
+    own_text = tag_text(
+        "New montage set to music.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="public",
+        video_count=1,
+    )
+    assert "audio:music-likely" in _tags(own_text)
+
+    reply_context = tag_text(
+        "Watch this update.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="public",
+        video_count=1,
+        reply_context_text="What is the song name? The soundtrack is great.",
+    )
+    assert "audio:music-likely" in _tags(reply_context)
+
+    no_video = tag_text(
+        "Watch this update.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+        video_count=0,
+        reply_context_text="What is the song name?",
+    )
+    assert "audio:music-likely" not in _tags(no_video)
+
+    imported_media_tag = tag_text(
+        "Watch this update.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="public",
+        video_count=1,
+        media_tags=[{"tag": "media:music-video", "source": "manual-media-review"}],
+    )
+    assert "audio:music-likely" in _tags(imported_media_tag)
+
+
 def test_video_duration_buckets() -> None:
     short = tag_text(
         "video",
@@ -443,6 +541,59 @@ def test_unavailable_copyright_status_tags() -> None:
     tags = _tags(out)
     assert "status:unavailable" in tags
     assert "status:copyright-removal" in tags
+
+
+def test_manual_tag_overrides_are_added_to_parquet_rows() -> None:
+    df = pl.DataFrame(
+        [
+            {
+                "tweet_id": "override-1",
+                "account_handle": "DHSgov",
+                "tweet_type": "original",
+                "text": "ICE is HOT.",
+                "text_resolved": "ICE is HOT.",
+                "mentions": [],
+                "media": [],
+                "unavailable_detected_at": None,
+                "unavailable_reason": None,
+                "unavailable_text": None,
+                "community_note": None,
+            }
+        ]
+    )
+    path = Path(".pytest_cache") / "manual-tag-override-DHSgov.parquet"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        df.write_parquet(path)
+        rows = tag_one_parquet(
+            path,
+            {"DHSgov": "core"},
+            "2026-05-20T00:00:00Z",
+            tag_overrides={"override-1": ["status:copyright-removal"]},
+        )
+        tags = _tags(rows[0]["tags"])
+        assert "status:copyright-removal" in tags
+    finally:
+        path.unlink(missing_ok=True)
+
+
+def test_legal_prosecution_and_civil_lawsuit_tags() -> None:
+    criminal = tag_text(
+        "The defendant was indicted, charged with a felony, convicted, and sentenced.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    civil = tag_text(
+        "The state filed a civil lawsuit seeking an injunction and a temporary restraining order.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    assert "legal:criminal-prosecution" in _tags(criminal)
+    assert "legal:civil-lawsuit" in _tags(civil)
 
 
 def test_community_note_status_tag() -> None:
@@ -528,6 +679,15 @@ def test_slogan_patterns_fire() -> None:
         ("FREE TICKET HOME! Sign up for CBP Home today.", "slogan:free-ticket-home"),
         ("Illegal aliens should use CBP Home and go home.", "slogan:go-home"),
         ("PROJECT HOMECOMING is expanding.", "slogan:project-homecoming"),
+        ("MAKE AMERICA GREAT AGAIN.", "slogan:maga"),
+        ("MAHA means Make America Healthy Again.", "slogan:maha"),
+        ("America First is the policy.", "slogan:america-first"),
+        ("Welcome to the Golden Age.", "slogan:golden-age"),
+        ("Save America now.", "slogan:save-america"),
+        ("Law and Order is back.", "slogan:law-and-order"),
+        ("Peace Through Strength.", "slogan:peace-through-strength"),
+        ("Promises Made, Promises Kept.", "slogan:promises-kept"),
+        ("Mass deportation is the plan.", "slogan:mass-deportation"),
     ):
         out = tag_text(
             text, tweet_type="original", mentions=[], media_count=0, account_category="core"
@@ -547,6 +707,44 @@ def test_criminal_illegal_alien_slogan_also_marks_generic_phrase() -> None:
     assert "slogan:criminal-illegal-alien" in tags
     assert "slogan:illegal-alien" in tags
     assert "frame:criminal" in tags
+    assert "topic:immigration" in tags
+
+
+def test_generic_maga_slogan_does_not_force_immigration() -> None:
+    out = tag_text(
+        "MAKE AMERICA GREAT AGAIN.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="public",
+        media_text="A campaign-style graphic with President Trump and the words MAKE AMERICA GREAT AGAIN.",
+        media_tags=[{"tag": "subject:official", "source": "manual-media-review"}],
+    )
+    tags = _tags(out)
+    assert "slogan:maga" in tags
+    assert "subject:official" in tags
+    assert "topic:general" in tags
+    assert "topic:immigration" not in tags
+
+
+def test_media_description_text_can_drive_immigration_slogans() -> None:
+    out = tag_text(
+        "",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="public",
+        media_text=(
+            "A social card says ICE arrested an illegal alien felon after release "
+            "from a sanctuary city."
+        ),
+        media_tags=[{"tag": "media:text-overlay", "source": "manual-media-review"}],
+    )
+    tags = _tags(out)
+    assert "media:text-overlay" in tags
+    assert "agency:ICEgov" in tags
+    assert "slogan:illegal-alien" in tags
+    assert "theme:sanctuary-cities" in tags
     assert "topic:immigration" in tags
 
 
