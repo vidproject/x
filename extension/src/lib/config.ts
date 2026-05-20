@@ -29,6 +29,9 @@ export const FALLBACK_ACCOUNTS: AccountConfig[] = [
   { handle: 'POTUS', label: 'President of the United States', category: 'core' },
   { handle: 'USDOL', label: 'U.S. Department of Labor', category: 'core' },
   { handle: 'RapidResponse47', label: 'Rapid Response 47', category: 'core' },
+  { handle: 'StephenM', label: 'Stephen Miller', category: 'core' },
+  { handle: 'GregoryKBovino', label: 'Gregory Bovino', category: 'core' },
+  { handle: 'RealTomHoman', label: 'Thomas D. Homan', category: 'core' },
 ];
 
 // GraphQL endpoint names we care about (matched by substring against URL path).
