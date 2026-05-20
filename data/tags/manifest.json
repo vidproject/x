@@ -5,7 +5,7 @@
       "cost_estimate_usd": 0.0,
       "extractor_version": "ffmpeg-keyframes-v1",
       "frame_count": 0,
-      "generated_at": "2026-05-20T23:21:48Z",
+      "generated_at": "2026-05-20T23:29:49Z",
       "intra_run_dedup": 21,
       "row_count": 580,
       "rows": 580,
@@ -233,28 +233,28 @@
       "tagger_version": "lexical-v1"
     },
     "media_vision": {
-      "cache_hits": 3340,
+      "cache_hits": 3536,
       "cost_estimate_usd": 0.0,
       "generated": 196,
-      "generated_at": "2026-05-20T23:21:47Z",
+      "generated_at": "2026-05-20T23:29:48Z",
       "model": "metadata",
       "model_version": "media-metadata-v1",
       "prompt_hash": "b048ffcd7be4e534",
-      "row_count": 3536,
-      "rows": 3536,
+      "row_count": 3732,
+      "rows": 3732,
       "status_counts": {
         "metadata-alt": 151,
-        "metadata-only": 3385
+        "metadata-only": 3581
       },
       "tag_frequency": {
         "media:animated-gif": 61,
-        "media:archived": 3536,
-        "media:described": 3536,
+        "media:archived": 3732,
+        "media:described": 3732,
         "media:has-alt-text": 151,
-        "media:needs-vision": 3385,
-        "media:photo": 2449,
-        "media:short-video": 229,
-        "media:video": 1026
+        "media:needs-vision": 3581,
+        "media:photo": 2528,
+        "media:short-video": 249,
+        "media:video": 1143
       }
     }
   },
