@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-20T17:54:50Z",
+  "generated_at": "2026-05-20T17:55:50Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -18,18 +18,18 @@
       "releases": []
     },
     {
-      "handle": "PressSec",
-      "label": "White House Press Secretary",
+      "handle": "WhiteHouse",
+      "label": "The White House",
       "category": "core",
-      "parquet": "data/PressSec.parquet",
-      "parquet_bytes": 76482,
-      "row_count": 131,
-      "first_post_at": "2025-09-17T14:05:13.000Z",
-      "latest_post_at": "2026-05-15T19:01:09.000Z",
-      "latest_capture_at": "2026-05-19T23:28:45.220Z",
+      "parquet": "data/WhiteHouse.parquet",
+      "parquet_bytes": 117044,
+      "row_count": 251,
+      "first_post_at": "2025-06-09T20:56:20.000Z",
+      "latest_post_at": "2026-05-20T15:12:19.000Z",
+      "latest_capture_at": "2026-05-20T17:51:25.132Z",
       "deleted_count": 0,
-      "media_count": 19,
-      "video_count": 4,
+      "media_count": 200,
+      "video_count": 47,
       "releases": []
     },
     {
@@ -78,6 +78,21 @@
       "releases": []
     },
     {
+      "handle": "ICEgov",
+      "label": "U.S. Immigration and Customs Enforcement",
+      "category": "core",
+      "parquet": "data/ICEgov.parquet",
+      "parquet_bytes": 133714,
+      "row_count": 272,
+      "first_post_at": "2025-04-16T01:30:00.000Z",
+      "latest_post_at": "2026-05-19T22:00:23.000Z",
+      "latest_capture_at": "2026-05-20T17:52:33.727Z",
+      "deleted_count": 0,
+      "media_count": 183,
+      "video_count": 34,
+      "releases": []
+    },
+    {
       "handle": "RapidResponse47",
       "label": "Rapid Response 47",
       "category": "core",
@@ -108,33 +123,18 @@
       "releases": []
     },
     {
-      "handle": "ICEgov",
-      "label": "U.S. Immigration and Customs Enforcement",
+      "handle": "PressSec",
+      "label": "White House Press Secretary",
       "category": "core",
-      "parquet": "data/ICEgov.parquet",
-      "parquet_bytes": 133714,
-      "row_count": 272,
-      "first_post_at": "2025-04-16T01:30:00.000Z",
-      "latest_post_at": "2026-05-19T22:00:23.000Z",
-      "latest_capture_at": "2026-05-20T17:52:33.727Z",
+      "parquet": "data/PressSec.parquet",
+      "parquet_bytes": 76482,
+      "row_count": 131,
+      "first_post_at": "2025-09-17T14:05:13.000Z",
+      "latest_post_at": "2026-05-15T19:01:09.000Z",
+      "latest_capture_at": "2026-05-19T23:28:45.220Z",
       "deleted_count": 0,
-      "media_count": 183,
-      "video_count": 34,
-      "releases": []
-    },
-    {
-      "handle": "WhiteHouse",
-      "label": "The White House",
-      "category": "core",
-      "parquet": "data/WhiteHouse.parquet",
-      "parquet_bytes": 117044,
-      "row_count": 251,
-      "first_post_at": "2025-06-09T20:56:20.000Z",
-      "latest_post_at": "2026-05-20T15:12:19.000Z",
-      "latest_capture_at": "2026-05-20T17:51:25.132Z",
-      "deleted_count": 0,
-      "media_count": 200,
-      "video_count": 47,
+      "media_count": 19,
+      "video_count": 4,
       "releases": []
     },
     {
@@ -142,14 +142,14 @@
       "label": "Miscellaneous (replies / quotes / retweets of non-tracked accounts)",
       "category": "public",
       "parquet": "data/_misc.parquet",
-      "parquet_bytes": 962919,
-      "row_count": 2458,
+      "parquet_bytes": 984663,
+      "row_count": 2543,
       "first_post_at": "2020-07-29T19:42:48.000Z",
       "latest_post_at": "2026-05-20T15:41:14.000Z",
-      "latest_capture_at": "2026-05-20T17:53:41.211Z",
+      "latest_capture_at": "2026-05-20T17:54:22.277Z",
       "deleted_count": 0,
-      "media_count": 1420,
-      "video_count": 319,
+      "media_count": 1440,
+      "video_count": 320,
       "releases": []
     }
   ]
