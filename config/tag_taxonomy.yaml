@@ -1,0 +1,213 @@
+# Per-tweet tag taxonomy.
+#
+# Tags are an annotation layer over the canonical capture data. They
+# live in sidecar parquets under `data/tags/` (joined into the viewer
+# at load time on tweet_id), never as new columns on the per-account
+# parquets. The canonical parquet remains the honest record of what X
+# served; tagging is downstream and reversible. See docs/TAGGING.md
+# for the architecture and `scripts/tag_lexical.py` for the regex
+# implementation of Layer 1.
+#
+# Tag names are namespaced: `<namespace>:<slug>`. The namespace is the
+# over-category; the slug is the narrow chunk. The viewer colors pills
+# by namespace.
+#
+# Each tag declares a `classification`:
+#
+#   deterministic — Settable from a hard rule (regex, structural field,
+#                   composite of other deterministic tags). The
+#                   auto-tagger writes these directly without a
+#                   `tentative` flag.
+#   tentative     — Requires human judgement or a vision model; until
+#                   the relevant tagger lands, the auto-tagger emits
+#                   these with `tentative: true` (or leaves them unset).
+#   manual        — Auto-tagging not attempted; only humans set these.
+#
+# `tentative: true` on a stored tag entry means "best guess, subject to
+# correction" regardless of the taxonomy's declared classification.
+# Anyone can open a GitHub Discussion to suggest a change; see
+# docs/TAGGING.md for the protocol.
+#
+# Open-ended namespaces (country, origin, crime, state, agency) are
+# extracted by pattern and validated against fixed vocabularies; their
+# slug list is documented inline below rather than enumerated here.
+
+tags:
+  # ===== subject:* — who/what the post features =====================
+  subject:detainee:
+    description: Post features named or unnamed individuals in custody.
+    classification: tentative
+  subject:angel-family:
+    description: >-
+      Post explicitly uses the "Angel Family" framing or names a family
+      in that program.
+    classification: deterministic
+  subject:crime-victim:
+    description: >-
+      Post features a victim of a crime attributed to an immigrant
+      (superset of angel-family).
+    classification: tentative
+  subject:enforcement-op:
+    description: >-
+      Post depicts an arrest, raid, deportation flight, or other operation.
+    classification: tentative
+  subject:official:
+    description: >-
+      Post centers on a named federal official (press conf, swearing-in,
+      etc.).
+    classification: tentative
+
+  # ===== genre:* — communicative function ===========================
+  genre:statistics:
+    description: >-
+      Post leads with numerical claims (arrests, removals, encounters).
+    classification: deterministic
+  genre:policy-statement:
+    description: Post announces or restates an administration position.
+    classification: manual
+  genre:directive:
+    description: >-
+      Post directs an audience to take an action (apply, leave, report).
+    classification: deterministic
+  genre:public-info:
+    description: >-
+      Post conveys factual procedure (how to apply for X, deadline for Y).
+    classification: manual
+
+  # ===== media:* — content of attached media ========================
+  # All currently tentative; will move to deterministic once the CLIP
+  # tagger (Layer 3a in docs/TAGGING.md) lands.
+  media:photo-detainee:
+    description: Photographic media of a detained person.
+    classification: tentative
+  media:photo-operation:
+    description: Photographic media of agents/raid scene.
+    classification: tentative
+  media:video-testimonial:
+    description: Video of a named individual addressing camera.
+    classification: tentative
+
+  # ===== format:* — purely structural; derived from tweet_type ======
+  format:retweet:
+    description: Native retweet of another account.
+    classification: deterministic
+  format:quote:
+    description: Quote-tweet.
+    classification: deterministic
+  format:reply:
+    description: Reply (redundant with tweet_type=reply; kept for symmetry).
+    classification: deterministic
+
+  # ===== frame:* — recurring rhetorical scaffolds ===================
+  frame:criminal:
+    description: >-
+      DHS templated "Name, a criminal illegal alien from X, convicted of
+      Y in Z, State" reply pattern.
+    classification: deterministic
+    pattern: |
+      \b(criminal illegal alien|illegal alien|criminal alien|aggravated felon|convicted (?:for|of))\b
+
+  # ===== action:* — enforcement verbs ===============================
+  action:detention:
+    description: Arrest, detain, apprehend, or take into custody.
+    classification: deterministic
+    pattern: |
+      \b(arrest(?:ed|ing)?|detain(?:ed|ing)?|apprehend(?:ed|ing)?|in custody|nab(?:bed)?)\b
+  action:deportation:
+    description: Deport, remove, or repatriate.
+    classification: deterministic
+    pattern: |
+      \b(deport(?:ed|ing|ation)?|remov(?:ed|al)|repatriat(?:ed|ion))\b
+
+  # ===== topic:* — themes ===========================================
+  topic:immigration:
+    description: >-
+      Post is about immigration / immigration enforcement / immigration
+      policy. Applied to every tweet from a tracked-tier account
+      (core / government / officials) unless an obvious non-immigration
+      signal blocks it. The corpus is overwhelmingly about immigration;
+      making this the default beats trying to infer it from sparse text.
+
+      Confidence split: emitted with `tentative: true` when the
+      tweet's text carries no explicit immigration-domain signal (no
+      origin/country pattern, no enforcement verb, no ICE/CBP/DHS
+      handle, no border keyword, etc.). These are the image-heavy /
+      template-light tweets where the author's identity is the only
+      reason we're confident. Confirmed (tentative omitted) when at
+      least one explicit signal fires.
+    classification: deterministic
+  topic:border:
+    description: References to the southern border, border wall, crossings.
+    classification: deterministic
+    pattern: |
+      \b(border|southwest border|crossing|border wall)\b
+  topic:sanctuary-cities:
+    description: References to sanctuary cities / sanctuary policies.
+    classification: deterministic
+    pattern: |
+      \b(sanctuary (?:cit(?:y|ies)|jurisdiction|polic(?:y|ies))|sanctuary state)\b
+  topic:worksite-enforcement:
+    description: Worksite raids / employment-related enforcement.
+    classification: deterministic
+    pattern: |
+      \b(worksite|workplace|I-9|E-Verify|employer (?:audit|raid))\b
+
+  # ===== slogan:* — branded phrases =================================
+  slogan:nice:
+    description: DHS "ICE is NICE" branded meme.
+    classification: deterministic
+    pattern: |
+      \b(NICE day|NICE morning|ICE is NICE|NICE city)\b
+  slogan:worst:
+    description: "Worst of the Worst" branding.
+    classification: deterministic
+    pattern: |
+      \bWORST OF THE WORST\b
+  slogan:reportrecon:
+    description: "Report. Recon. Raid." branding.
+    classification: deterministic
+    pattern: |
+      \bReport\.\s*Recon\.\s*Raid\.
+
+  # ===== shape:* — composite tags ===================================
+  shape:lineup:
+    description: >-
+      The templated mugshot-reply form: tweet_type=reply AND
+      frame:criminal AND exactly one photo. Highly stable visual genre.
+    classification: deterministic
+
+# ===== Open-ended namespaces (extracted, validated) =================
+#
+# The auto-tagger emits these with slugs drawn from fixed vocabularies
+# bundled with the tagger script. They are not enumerated in this file
+# because the vocabularies are long (195 country names, 50 US states)
+# and rarely change.
+#
+#   origin:<COUNTRY>   — "from <COUNTRY>," validated against
+#                        sovereign-state list. Indicates an attributed
+#                        country of origin in templated DHS replies.
+#                        ~233 hits in the corpus as of 2026-05-20.
+#   country:<NAME>     — any sovereign-state name mention (superset of
+#                        origin:). Disambiguated against false-positive
+#                        words ("Chad" the name vs Chad the country) by
+#                        requiring a leading capital and adjacent
+#                        comma / "from" / "in".
+#   crime:<TYPE>       — vocabulary: rape, sodomy, murder, burglary,
+#                        theft, robbery, assault, battery, fentanyl,
+#                        cocaine, methamphetamine, trafficking, DUI,
+#                        DWI, kidnap, child, gang, MS-13,
+#                        tren-de-aragua, narcotics, fraud, arson,
+#                        weapon, firearm. One match = one tag entry, so
+#                        a tweet can carry multiple `crime:*` tags.
+#   state:<NAME>       — US-state mention pattern "in <Place>, <State>,"
+#                        validated against the 50-state list.
+#   agency:<HANDLE>    — derived from `mentions[]` against a fixed list
+#                        of enforcement-adjacent handles. Distinct from
+#                        the post's `account_handle`: lets you find
+#                        tweets that mention ICE without being authored
+#                        by @ICEgov.
+
+# Sentinel: when no other namespace matches and the post is plausibly
+# about immigration, this is the only tag emitted. Lets the viewer
+# distinguish "tagged + immigration-related but uncategorised" from
+# "no tags at all" (which means the tagger hasn't run yet).

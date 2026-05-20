@@ -5,6 +5,8 @@
 
 const KEYS = [
   'accounts',
+  'categories',
+  'tags',
   'q',
   'from',
   'to',
@@ -20,6 +22,8 @@ const KEYS = [
 export function defaults() {
   return {
     accounts: [],
+    categories: [],
+    tags: [],
     q: '',
     from: '',
     to: '',
@@ -41,8 +45,8 @@ export function fromHash(hash) {
   for (const key of KEYS) {
     const v = params.get(key);
     if (v === null) continue;
-    if (key === 'accounts') {
-      out.accounts = v.split(',').filter(Boolean);
+    if (key === 'accounts' || key === 'categories' || key === 'tags') {
+      out[key] = v.split(',').filter(Boolean);
     } else if (key === 'page' || key === 'size') {
       const n = Number(v);
       if (Number.isFinite(n) && n > 0) out[key] = n;
@@ -58,7 +62,7 @@ export function toHash(state) {
   const params = new URLSearchParams();
   for (const key of KEYS) {
     const value = state[key];
-    if (key === 'accounts') {
+    if (key === 'accounts' || key === 'categories' || key === 'tags') {
       if (value && value.length > 0) params.set(key, value.join(','));
       continue;
     }

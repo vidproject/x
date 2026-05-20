@@ -25,6 +25,8 @@ const els = {
   hdrStats: $('hdr-stats'),
   dlBtn: $('dl-btn'),
   dlMenu: $('dl-menu'),
+  catsBtn: document.getElementById('cats-btn'),
+  catsMenu: document.getElementById('cats-menu'),
   colsBtn: $('cols-btn'),
   colsMenu: $('cols-menu'),
   filterBtn: $('filter-btn'),
@@ -82,9 +84,12 @@ let manifest = null;
 let urlState = fromHash();
 let visibleCols = parseVisibleColumns(urlState.cols);
 let filteredRows = [];
+let filteredThreads = [];
 /** @type {Record<string, Set<string>>} */
 let colFilters = {};
 let selectedRowId = null;
+/** @type {Set<string>} */
+let expandedThreads = new Set();
 
 // --- Theme ---
 function loadTheme() {
@@ -143,6 +148,14 @@ async function loadManifest() {
     els.emptyDetail.textContent =
       'No data/manifest.json found yet. Once captures land and the ingest workflow runs, accounts will appear here.';
   }
+  // Push account categories into the store so the category filter can
+  // resolve handle → category in O(1) at filter time. Untracked authors
+  // (anyone not in the manifest) implicitly fall through to `public`.
+  const catMap = new Map();
+  for (const a of manifest?.accounts ?? []) {
+    if (a.handle && a.category) catMap.set(a.handle, a.category);
+  }
+  store.setAccountCategories(catMap);
   // Best-effort users.json — totally optional, viewer still works without
   // avatars / display names.
   try {
@@ -172,9 +185,46 @@ async function loadManifest() {
     });
   }
   paintDlMenu();
+  paintCategoryMenu();
   paintHdrStats();
   if ((manifest.accounts || []).length === 0) {
     els.empty.hidden = false;
+  }
+}
+
+/**
+ * Fetch the lexical-tag sidecar and build a tweet_id → tag-entries map.
+ * Returns an empty map (no error) when the file isn't present yet — the
+ * viewer treats tags as a strictly additive overlay, never required.
+ */
+async function loadTags() {
+  const cacheKey = manifest?.generated_at
+    ? `?v=${encodeURIComponent(manifest.generated_at)}`
+    : '';
+  const url = `data/tags/lexical.parquet${cacheKey}`;
+  try {
+    const rows = await loadParquetRows(url);
+    const map = new Map();
+    for (const r of rows) {
+      const id = String(r?.tweet_id ?? '');
+      if (!id) continue;
+      map.set(id, Array.isArray(r.tags) ? r.tags : []);
+    }
+    return map;
+  } catch (err) {
+    const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
+    // 404 is expected before the tagger workflow has run for the first
+    // time; record-but-don't-shout. Any other failure is a real error
+    // and surfaces in the load-failures panel.
+    if (status !== '404') {
+      pushLoadError({
+        resource: url,
+        status: status ? Number(status) : null,
+        kind: 'tags',
+        message: err?.message ?? String(err),
+      });
+    }
+    return new Map();
   }
 }
 
@@ -285,7 +335,79 @@ function toggleAccountFilter(handle) {
   refresh();
 }
 
-async function loadAllAccounts() {
+// ----- Account category filter --------------------------------------
+//
+// Categories come from `manifest.accounts[].category`. Untracked
+// authors are implicitly `public` and not surfaced here; filtering by
+// `public` includes everyone in `_misc.parquet` plus any tracked
+// account explicitly labelled public.
+
+const CATEGORY_LABELS = {
+  core: 'Core (DHS / ICE / WH / …)',
+  government: 'Other federal agencies',
+  officials: 'Federal officials',
+  public_figures: 'Public figures (senators, governors, …)',
+  public: 'Public (replies, quotes, RTs)',
+};
+const CATEGORY_ORDER = ['core', 'government', 'officials', 'public_figures', 'public'];
+
+function paintCategoryMenu() {
+  if (!els.catsMenu) return;
+  els.catsMenu.replaceChildren();
+  const accounts = manifest?.accounts ?? [];
+  const counts = new Map();
+  for (const a of accounts) {
+    const c = a.category || 'core';
+    counts.set(c, (counts.get(c) ?? 0) + (a.row_count || 0));
+  }
+  // `_misc.parquet` shows up in manifest with category=public; that already
+  // covers the bulk of public-bucket counts.
+  if (counts.size === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'muted';
+    empty.style.padding = '6px';
+    empty.textContent = 'No accounts loaded yet.';
+    els.catsMenu.append(empty);
+    return;
+  }
+  const heading = document.createElement('div');
+  heading.className = 'muted';
+  heading.style.padding = '4px 6px';
+  heading.style.fontSize = '11px';
+  heading.textContent = 'Show only tweets from these account categories.';
+  els.catsMenu.append(heading);
+  for (const cat of CATEGORY_ORDER) {
+    if (!counts.has(cat)) continue;
+    const row = document.createElement('button');
+    row.type = 'button';
+    row.className = 'dl-row dl-row-btn';
+    row.dataset.category = cat;
+    const label = document.createElement('span');
+    label.className = 'label';
+    label.textContent = CATEGORY_LABELS[cat] || cat;
+    const count = document.createElement('span');
+    count.className = 'count';
+    count.textContent = fmtNum(counts.get(cat));
+    row.append(label, count);
+    if (urlState.categories.includes(cat)) row.classList.add('active');
+    row.addEventListener('click', () => toggleCategoryFilter(cat));
+    els.catsMenu.append(row);
+  }
+}
+
+function toggleCategoryFilter(cat) {
+  const idx = urlState.categories.indexOf(cat);
+  if (idx === -1) urlState.categories.push(cat);
+  else urlState.categories.splice(idx, 1);
+  urlState.page = 1;
+  applyToUrl(urlState);
+  for (const el of els.catsMenu.querySelectorAll('.dl-row-btn')) {
+    if (el.dataset.category === cat) el.classList.toggle('active');
+  }
+  refresh();
+}
+
+async function loadAllAccounts(tagsPromise) {
   const accounts = manifest?.accounts ?? [];
   if (accounts.length === 0) return;
 
@@ -293,6 +415,17 @@ async function loadAllAccounts() {
   els.emptyDetail.textContent = `Loading 0 / ${accounts.length} accounts…`;
   setSpinner(true);
   paintHdrStats();
+  // Resolve the tag overlay alongside the first parquet batch so the
+  // user sees pills immediately, not after every account has loaded.
+  /** @type {Map<string, any[]>} */
+  let tagMap = new Map();
+  let tagsResolved = false;
+  tagsPromise.then((m) => {
+    tagMap = m;
+    tagsResolved = true;
+    store.applyTags(tagMap);
+    refresh();
+  });
 
   const queue = [...accounts];
   const inFlight = new Set();
@@ -365,6 +498,7 @@ async function loadAllAccounts() {
         loadProgress.completed === loadProgress.total
       ) {
         store.rebuild();
+        if (tagsResolved) store.applyTags(tagMap);
         revealUi();
         refresh();
       }
@@ -459,6 +593,7 @@ els.resetBtn.addEventListener('click', () => {
   const accounts = urlState.accounts;
   urlState = { ...defaultState(), accounts };
   colFilters = {};
+  expandedThreads = new Set();
   els.search.value = '';
   els.dateFrom.value = '';
   els.dateTo.value = '';
@@ -466,6 +601,7 @@ els.resetBtn.addEventListener('click', () => {
   els.mediaType.value = '';
   els.pageSize.value = '100';
   applyToUrl(urlState);
+  paintCategoryMenu();
   refresh();
 });
 
@@ -480,14 +616,21 @@ function onColumnsChange(next) {
 renderColumnsMenu(els.colsMenu, visibleCols, onColumnsChange);
 
 // --- Dropdown toggles ---
+const dropdownMenus = [els.dlMenu, els.colsMenu];
+const dropdownButtons = [els.dlBtn, els.colsBtn];
+if (els.catsBtn && els.catsMenu) {
+  dropdownMenus.push(els.catsMenu);
+  dropdownButtons.push(els.catsBtn);
+}
 wireDropdown(els.dlBtn, els.dlMenu);
 wireDropdown(els.colsBtn, els.colsMenu);
+if (els.catsBtn && els.catsMenu) wireDropdown(els.catsBtn, els.catsMenu);
 function wireDropdown(btn, menu) {
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
     const willOpen = menu.hidden;
     // Close any other dropdowns first.
-    for (const m of [els.dlMenu, els.colsMenu]) {
+    for (const m of dropdownMenus) {
       if (m !== menu) m.hidden = true;
     }
     menu.hidden = !willOpen;
@@ -495,10 +638,11 @@ function wireDropdown(btn, menu) {
   });
 }
 document.addEventListener('mousedown', (e) => {
-  for (const m of [els.dlMenu, els.colsMenu]) {
-    if (!m.hidden && !m.contains(e.target) && e.target !== els.dlBtn && e.target !== els.colsBtn) {
-      m.hidden = true;
-    }
+  for (const m of dropdownMenus) {
+    if (m.hidden) continue;
+    if (m.contains(e.target)) continue;
+    if (dropdownButtons.includes(e.target)) continue;
+    m.hidden = true;
   }
 });
 
@@ -525,7 +669,7 @@ els.pgNext.addEventListener('click', () => goto(urlState.page + 1));
 els.pgLast.addEventListener('click', () => goto(lastPage()));
 
 function lastPage() {
-  return Math.max(1, Math.ceil(filteredRows.length / urlState.size));
+  return Math.max(1, Math.ceil(filteredThreads.length / urlState.size));
 }
 function goto(p) {
   const np = Math.min(Math.max(1, p), lastPage());
@@ -547,6 +691,7 @@ window.addEventListener('hashchange', () => {
   els.mediaType.value = urlState.media;
   els.pageSize.value = String(urlState.size);
   visibleCols = parseVisibleColumns(urlState.cols);
+  paintCategoryMenu();
   refresh();
 });
 
@@ -563,6 +708,8 @@ els.filterBtn.setAttribute('aria-pressed', 'true');
 function refresh() {
   filteredRows = store.apply({
     accounts: urlState.accounts,
+    accountCategories: urlState.categories,
+    tags: urlState.tags,
     q: urlState.q,
     from: urlState.from,
     to: urlState.to,
@@ -572,17 +719,23 @@ function refresh() {
     dir: urlState.dir,
     colFilters,
   });
+  filteredThreads = store.groupIntoThreads(filteredRows);
 
-  // Result count + page bounds.
-  const total = filteredRows.length;
+  // Pagination counts threads (which collapse multi-row reply chains
+  // into a single visible row). When no threading kicks in (the common
+  // case), thread count == row count, so the math is unchanged.
+  const total = filteredThreads.length;
   const page = Math.min(urlState.page, lastPage());
   if (page !== urlState.page) urlState.page = page;
   const start = (page - 1) * urlState.size;
   const end = Math.min(total, start + urlState.size);
+  const rowCount = filteredRows.length;
+  const threadNote =
+    rowCount > total ? ` · ${fmtNum(rowCount)} including replies` : '';
   els.resultCount.textContent =
     total === 0
       ? 'No matches.'
-      : `Showing ${fmtNum(start + 1)}–${fmtNum(end)} of ${fmtNum(total)} tweet${total === 1 ? '' : 's'}.`;
+      : `Showing ${fmtNum(start + 1)}–${fmtNum(end)} of ${fmtNum(total)} thread${total === 1 ? '' : 's'}${threadNote}.`;
   els.pgLabel.textContent = `Page ${fmtNum(page)} of ${fmtNum(lastPage())}`;
   els.pgFirst.disabled = page === 1;
   els.pgPrev.disabled = page === 1;
@@ -593,15 +746,22 @@ function refresh() {
     theadEl: els.theadRow,
     tbodyEl: els.tbody,
     rows: filteredRows,
+    threads: filteredThreads,
     visible: visibleCols,
     page: urlState.page,
     pageSize: urlState.size,
     sort: urlState.sort,
     dir: urlState.dir,
     colFilters,
+    expandedThreads,
     onRowClick: (r) => {
       selectedRowId = r.tweet_id;
-      openSidepanel(els.sidepanel, els.spTitle, els.spBody, r);
+      // When the clicked row is a master that owns non-self replies,
+      // hand the thread along so the sidepanel can render its "Other
+      // replies" section. Lookup is O(threads) but called only on
+      // click, so it stays cheap.
+      const thread = filteredThreads.find((t) => t.master === r) || null;
+      openSidepanel(els.sidepanel, els.spTitle, els.spBody, r, thread);
       refreshSelectionHighlight();
     },
     onSortToggle: (key) => {
@@ -622,8 +782,17 @@ function refresh() {
         allRows: store.allRows,
         activeFilters: colFilters,
         onChange: (col, set) => {
-          if (set.size === 0) delete colFilters[col];
-          else colFilters[col] = set;
+          if (col === 'tags') {
+            // Tags filter rides on urlState so it survives reloads and
+            // can be deep-linked, unlike the other col filters which
+            // are session-local. Mirror the selection out.
+            urlState.tags = [...set];
+            applyToUrl(urlState);
+          } else if (set.size === 0) {
+            delete colFilters[col];
+          } else {
+            colFilters[col] = set;
+          }
           urlState.page = 1;
           refresh();
         },
@@ -634,6 +803,11 @@ function refresh() {
           refresh();
         },
       }),
+    onToggleThread: (threadId) => {
+      if (expandedThreads.has(threadId)) expandedThreads.delete(threadId);
+      else expandedThreads.add(threadId);
+      refresh();
+    },
   });
 
   refreshSelectionHighlight();
@@ -677,4 +851,10 @@ function fmtNum(v) {
 
 // --- Boot ---
 loadTheme();
-loadManifest().then(() => loadAllAccounts());
+loadManifest().then(async () => {
+  // Kick off tag and account loads in parallel; the tag merge happens
+  // in `loadAllAccounts` after each progressive parquet flush so tags
+  // appear in lock-step with the rows they annotate.
+  const tagsPromise = loadTags();
+  await loadAllAccounts(tagsPromise);
+});

@@ -3,8 +3,17 @@
 // Columns are defined as { key, label, render, filterable, sortable, default }.
 // "default" controls whether the column is visible on first load — deletion is
 // deliberately false per the deemphasis brief.
+//
+// The Tags column is special-cased: its filter popup aggregates by tag rather
+// than by row value, and a tweet matches if its tag set intersects the
+// selected tags (vs. equals one of them).
+//
+// Threading: when the dataset contains conversation threads, rows are
+// rendered as collapsible thread groups (master row + indented slaves).
+// Sort/filter/search operate on individual rows; threads simply group them
+// for display. Standalone rows (the vast majority) render exactly as before.
 
-import { formatForFilter } from './store.js';
+import { formatForFilter, tagNames } from './store.js';
 
 export const COLUMNS = [
   {
@@ -43,6 +52,14 @@ export const COLUMNS = [
     sortable: false,
     render: (r) =>
       `<span class="cell-text" title="${escape(r.text ?? '')}">${escape(truncate(r.text ?? '', 200))}</span>`,
+  },
+  {
+    key: 'tags',
+    label: 'Tags',
+    default: true,
+    filterable: true,
+    sortable: false,
+    render: (r) => renderTagPills(r),
   },
   {
     key: 'media_kinds',
@@ -194,20 +211,42 @@ export function renderColumnsMenu(menuEl, visible, onChange) {
   }
 }
 
-export function renderTable({
-  theadEl,
-  tbodyEl,
-  rows,
-  visible,
-  page,
-  pageSize,
-  sort,
-  dir,
-  colFilters,
-  onRowClick,
-  onSortToggle,
-  onOpenColPop,
-}) {
+/**
+ * Render the table body. When `threads` is supplied, rows are grouped into
+ * thread blocks; otherwise the flat row list paints exactly as before.
+ *
+ * @param {{
+ *   theadEl: HTMLElement, tbodyEl: HTMLElement,
+ *   rows: Array<Record<string, unknown>>,
+ *   threads?: Array<{master:any, slaves:any[], matchedCount:number, threadId:string}>,
+ *   visible: string[], page: number, pageSize: number,
+ *   sort: string, dir: 'asc'|'desc',
+ *   colFilters: Record<string, Set<string>>,
+ *   expandedThreads?: Set<string>,
+ *   onRowClick: (row:any)=>void,
+ *   onSortToggle: (key:string)=>void,
+ *   onOpenColPop: (key:string, btn:HTMLElement)=>void,
+ *   onToggleThread?: (threadId:string)=>void,
+ * }} args
+ */
+export function renderTable(args) {
+  const {
+    theadEl,
+    tbodyEl,
+    rows,
+    threads,
+    visible,
+    page,
+    pageSize,
+    sort,
+    dir,
+    colFilters,
+    expandedThreads,
+    onRowClick,
+    onSortToggle,
+    onOpenColPop,
+    onToggleThread,
+  } = args;
   // header
   theadEl.replaceChildren();
   for (const key of visible) {
@@ -243,38 +282,146 @@ export function renderTable({
     theadEl.append(th);
   }
 
-  // body (paginated slice)
+  // body — threads-or-rows
+  tbodyEl.replaceChildren();
+  if (threads && threads.length > 0) {
+    paintThreaded({
+      tbodyEl,
+      threads,
+      visible,
+      page,
+      pageSize,
+      expandedThreads: expandedThreads ?? new Set(),
+      onRowClick,
+      onToggleThread,
+    });
+    return;
+  }
+
+  // flat fallback (kept for code paths that pre-empt threading)
   const start = (page - 1) * pageSize;
   const slice = rows.slice(start, start + pageSize);
-  tbodyEl.replaceChildren();
   if (slice.length === 0) {
-    const tr = document.createElement('tr');
-    const td = document.createElement('td');
-    td.colSpan = visible.length || 1;
-    td.style.textAlign = 'center';
-    td.style.color = 'var(--fg-3)';
-    td.style.padding = '24px';
-    td.textContent = 'No tweets match the current filters.';
-    tr.append(td);
-    tbodyEl.append(tr);
+    emptyMessage(tbodyEl, visible.length || 1);
     return;
   }
   for (const r of slice) {
-    const tr = document.createElement('tr');
-    tr.dataset.tweetId = r.tweet_id;
-    tr.addEventListener('click', () => onRowClick(r));
-    for (const key of visible) {
-      const col = KEY_TO_COL[key];
-      if (!col) continue;
-      const td = document.createElement('td');
-      if (col.className) td.className = col.className;
-      td.innerHTML = col.render(r);
-      tr.append(td);
-    }
-    tbodyEl.append(tr);
+    tbodyEl.append(buildRow(r, visible, onRowClick));
   }
 }
 
+function paintThreaded({
+  tbodyEl,
+  threads,
+  visible,
+  page,
+  pageSize,
+  expandedThreads,
+  onRowClick,
+  onToggleThread,
+}) {
+  // Pagination counts threads, not rows. A page is N threads regardless of
+  // how big they are when expanded. Keeps page sizes predictable.
+  const start = (page - 1) * pageSize;
+  const slice = threads.slice(start, start + pageSize);
+  if (slice.length === 0) {
+    emptyMessage(tbodyEl, visible.length || 1);
+    return;
+  }
+  for (const thread of slice) {
+    const expanded = expandedThreads.has(thread.threadId);
+    const masterRow = buildRow(thread.master, visible, onRowClick);
+    masterRow.classList.add('thread-master');
+    masterRow.dataset.threadId = thread.threadId;
+    const hasSelf = thread.selfSlaves.length > 0;
+    const hasOther = thread.otherSlaves.length > 0;
+    if (hasSelf || hasOther) {
+      masterRow.classList.add('has-slaves');
+      decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread);
+    }
+    tbodyEl.append(masterRow);
+    // Self-replies inline-expand under the master. Tracked-other and
+    // public replies do not — they're reachable via the sidepanel on
+    // master-row click so the table doesn't get spammed by a hundred
+    // random reactions to a viral DHS tweet.
+    if (expanded && hasSelf) {
+      for (const slave of thread.selfSlaves) {
+        const sr = buildRow(slave, visible, onRowClick);
+        sr.classList.add('thread-slave');
+        sr.dataset.threadId = thread.threadId;
+        tbodyEl.append(sr);
+      }
+    }
+  }
+}
+
+function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
+  const firstCell = masterRow.firstElementChild;
+  if (!firstCell) return;
+  const selfCount = thread.selfSlaves.length;
+  const otherCount = thread.otherSlaves.length;
+  const wrap = document.createElement('span');
+  wrap.className = 'thread-affordances';
+  if (selfCount > 0) {
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'thread-toggle';
+    toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    toggle.title = expanded
+      ? `Collapse ${selfCount} self-repl${selfCount === 1 ? 'y' : 'ies'}`
+      : `Expand ${selfCount} self-repl${selfCount === 1 ? 'y' : 'ies'}`;
+    toggle.textContent = `${expanded ? '▾' : '▸'} ${selfCount} self-repl${selfCount === 1 ? 'y' : 'ies'}`;
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      onToggleThread?.(thread.threadId);
+    });
+    wrap.append(toggle);
+  }
+  if (otherCount > 0) {
+    // Non-self replies aren't inlined; the badge invites the user to
+    // open the sidepanel, where they appear in a dedicated section.
+    // The badge itself doesn't take a click handler — it inherits the
+    // row's click → open-sidepanel behavior.
+    const badge = document.createElement('span');
+    badge.className = 'thread-others-badge';
+    badge.title = `${otherCount} reply / replies from other accounts — click the row to view in the side panel`;
+    badge.textContent = `↪ ${otherCount} other${otherCount === 1 ? '' : 's'}`;
+    wrap.append(badge);
+  }
+  firstCell.prepend(wrap);
+}
+
+function buildRow(r, visible, onRowClick) {
+  const tr = document.createElement('tr');
+  tr.dataset.tweetId = r.tweet_id;
+  tr.addEventListener('click', () => onRowClick(r));
+  for (const key of visible) {
+    const col = KEY_TO_COL[key];
+    if (!col) continue;
+    const td = document.createElement('td');
+    if (col.className) td.className = col.className;
+    td.innerHTML = col.render(r);
+    tr.append(td);
+  }
+  return tr;
+}
+
+function emptyMessage(tbodyEl, colspan) {
+  const tr = document.createElement('tr');
+  const td = document.createElement('td');
+  td.colSpan = colspan;
+  td.style.textAlign = 'center';
+  td.style.color = 'var(--fg-3)';
+  td.style.padding = '24px';
+  td.textContent = 'No tweets match the current filters.';
+  tr.append(td);
+  tbodyEl.append(tr);
+}
+
+/**
+ * Open the column-filter popup. The Tags column gets a custom aggregator
+ * that counts tag occurrences across all rows (vs. one value per row).
+ */
 export function openColumnFilterPopup({
   popEl,
   anchorBtn,
@@ -292,24 +439,26 @@ export function openColumnFilterPopup({
   popEl.hidden = false;
   popEl.replaceChildren();
 
-  const sortRow = document.createElement('div');
-  sortRow.className = 'col-sort-row';
-  const asc = document.createElement('button');
-  asc.className = 'btn ghost';
-  asc.textContent = 'Sort A → Z';
-  asc.addEventListener('click', () => {
-    onSort('asc');
-    close();
-  });
-  const desc = document.createElement('button');
-  desc.className = 'btn ghost';
-  desc.textContent = 'Sort Z → A';
-  desc.addEventListener('click', () => {
-    onSort('desc');
-    close();
-  });
-  sortRow.append(asc, desc);
-  popEl.append(sortRow);
+  if (colKey !== 'tags') {
+    const sortRow = document.createElement('div');
+    sortRow.className = 'col-sort-row';
+    const asc = document.createElement('button');
+    asc.className = 'btn ghost';
+    asc.textContent = 'Sort A → Z';
+    asc.addEventListener('click', () => {
+      onSort('asc');
+      close();
+    });
+    const desc = document.createElement('button');
+    desc.className = 'btn ghost';
+    desc.textContent = 'Sort Z → A';
+    desc.addEventListener('click', () => {
+      onSort('desc');
+      close();
+    });
+    sortRow.append(asc, desc);
+    popEl.append(sortRow);
+  }
 
   const search = document.createElement('input');
   search.type = 'search';
@@ -319,11 +468,29 @@ export function openColumnFilterPopup({
 
   // Aggregate value counts.
   const counts = new Map();
-  for (const r of allRows) {
-    const v = formatForFilter(r, colKey);
-    counts.set(v, (counts.get(v) ?? 0) + 1);
+  if (colKey === 'tags') {
+    for (const r of allRows) {
+      for (const t of tagNames(r)) {
+        counts.set(t, (counts.get(t) ?? 0) + 1);
+      }
+    }
+  } else {
+    for (const r of allRows) {
+      const v = formatForFilter(r, colKey);
+      counts.set(v, (counts.get(v) ?? 0) + 1);
+    }
   }
-  const allValues = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  const allValues = [...counts.entries()].sort((a, b) => {
+    // For tags: group by namespace then frequency. For other columns:
+    // pure frequency desc.
+    if (colKey === 'tags') {
+      const [na] = String(a[0]).split(':', 1);
+      const [nb] = String(b[0]).split(':', 1);
+      if (na !== nb) return na.localeCompare(nb);
+      return b[1] - a[1];
+    }
+    return b[1] - a[1];
+  });
   const active = new Set(activeFilters[colKey] || []);
   const allowAll = active.size === 0;
 
@@ -334,13 +501,24 @@ export function openColumnFilterPopup({
   function renderList(filter) {
     list.replaceChildren();
     const f = filter.toLowerCase();
+    let lastNs = null;
     for (const [value, count] of allValues) {
       if (f && !String(value).toLowerCase().includes(f)) continue;
+      if (colKey === 'tags') {
+        const ns = String(value).split(':', 1)[0];
+        if (ns !== lastNs) {
+          const h = document.createElement('div');
+          h.className = `tag-ns-hdr ns-${ns}`;
+          h.textContent = `${ns}:`;
+          list.append(h);
+          lastNs = ns;
+        }
+      }
       const lab = document.createElement('label');
       lab.className = 'col-val';
       const cb = document.createElement('input');
       cb.type = 'checkbox';
-      cb.checked = allowAll || active.has(value);
+      cb.checked = colKey === 'tags' ? active.has(value) : allowAll || active.has(value);
       cb.addEventListener('change', () => {
         if (cb.checked) active.add(value);
         else active.delete(value);
@@ -369,7 +547,7 @@ export function openColumnFilterPopup({
   cancel.className = 'btn ghost';
   cancel.textContent = 'Cancel';
   apply.addEventListener('click', () => {
-    if (active.size === allValues.length) {
+    if (colKey !== 'tags' && active.size === allValues.length) {
       onChange(colKey, new Set());
     } else {
       onChange(colKey, active);
@@ -455,4 +633,27 @@ function mediaFlags(r) {
     );
   }
   return `<span class="media-flags">${html.join('')}</span>`;
+}
+
+function renderTagPills(r) {
+  const tags = Array.isArray(r.tags) ? r.tags : [];
+  if (tags.length === 0) return '<span class="muted">—</span>';
+  // Cap rendered pills to avoid blowing out the cell on
+  // crime-heavy DHS replies. The sidepanel shows the full list.
+  const VISIBLE = 6;
+  const html = [];
+  for (const entry of tags.slice(0, VISIBLE)) {
+    const name = typeof entry === 'string' ? entry : entry?.tag;
+    if (!name) continue;
+    const ns = String(name).split(':', 1)[0];
+    const tentative = typeof entry === 'object' && entry?.tentative ? ' tentative' : '';
+    const titleSuffix = typeof entry === 'object' && entry?.tentative ? ' (tentative)' : '';
+    html.push(
+      `<span class="tag-pill ns-${escape(ns)}${tentative}" title="${escape(name)}${titleSuffix}">${escape(name)}</span>`
+    );
+  }
+  if (tags.length > VISIBLE) {
+    html.push(`<span class="tag-pill more">+${tags.length - VISIBLE}</span>`);
+  }
+  return `<span class="tag-pills">${html.join('')}</span>`;
 }

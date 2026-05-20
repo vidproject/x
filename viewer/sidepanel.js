@@ -1,14 +1,27 @@
 // Side-panel detail view: opens when a table row is clicked.
 
-export function openSidepanel(panelEl, titleEl, bodyEl, row) {
+export function openSidepanel(panelEl, titleEl, bodyEl, row, thread) {
   if (!row) return;
   titleEl.textContent = `@${row.account_handle} · ${shortDate(row.posted_at)}`;
   bodyEl.replaceChildren();
   bodyEl.append(
     section('Tweet', tweetText(row), tweetLinks(row), truncationBadge(row)),
+    section('Tags', tagsBlock(row), suggestButton(row)),
     section('Identifiers', grid(idRows(row))),
     section('Engagement', grid(engagementRows(row)))
   );
+  // When the clicked row is a thread master, surface its sibling
+  // replies that the table doesn't inline (everything that isn't a
+  // self-reply from the same handle). This is the "click to see the
+  // rest" half of the threading design.
+  if (thread && thread.otherSlaves && thread.otherSlaves.length > 0) {
+    bodyEl.append(
+      section(
+        `Other replies (${thread.otherSlaves.length})`,
+        otherRepliesBlock(thread.otherSlaves)
+      )
+    );
+  }
   if (row.community_note) {
     bodyEl.append(section('Community Note', communityNoteBlock(row.community_note)));
   }
@@ -150,9 +163,19 @@ function mediaGrid(media) {
     const meta = document.createElement('div');
     meta.className = 'meta';
     const bits = [];
-    if (m.width && m.height) bits.push(`${m.width}×${m.height}`);
-    if (m.duration_sec) bits.push(`${Math.round(m.duration_sec)}s`);
-    if (m.bytes) bits.push(`${Math.round(m.bytes / 1024)} KiB`);
+    // Parquet Int64 columns come back from hyparquet as BigInt, which
+    // crashes any arithmetic against a JS Number ("Cannot mix BigInt
+    // and other types"). Coerce up front so the sidepanel can render
+    // rows that carry media regardless of how the codec typed the
+    // counts.
+    const num = (v) => (typeof v === 'bigint' ? Number(v) : v);
+    const w = num(m.width);
+    const h = num(m.height);
+    const dur = num(m.duration_sec);
+    const bytes = num(m.bytes);
+    if (w && h) bits.push(`${w}×${h}`);
+    if (dur) bits.push(`${Math.round(dur)}s`);
+    if (bytes) bits.push(`${Math.round(bytes / 1024)} KiB`);
     meta.textContent = bits.join(' · ') || '—';
     card.append(meta);
     if (m.alt_text) {
@@ -293,6 +316,134 @@ function communityNoteBlock(note) {
     if (note.observed_at) bits.push(`first seen ${shortDate(note.observed_at)}`);
     meta.textContent = bits.join(' · ');
     wrap.append(meta);
+  }
+  return wrap;
+}
+
+function tagsBlock(row) {
+  const wrap = document.createElement('div');
+  wrap.className = 'sp-tags';
+  const tags = Array.isArray(row.tags) ? row.tags : [];
+  if (tags.length === 0) {
+    const muted = document.createElement('div');
+    muted.className = 'meta';
+    muted.textContent =
+      'No tags. Either the lexical tagger has not run yet, or no rule fired against this tweet.';
+    wrap.append(muted);
+    return wrap;
+  }
+  // Group by namespace so the reader sees `subject:*` together,
+  // `topic:*` together, etc. Within a namespace, confirmed first.
+  const byNs = new Map();
+  for (const entry of tags) {
+    const name = typeof entry === 'string' ? entry : entry?.tag;
+    if (!name) continue;
+    const ns = String(name).split(':', 1)[0];
+    if (!byNs.has(ns)) byNs.set(ns, []);
+    byNs.get(ns).push(entry);
+  }
+  for (const [ns, entries] of byNs) {
+    const grp = document.createElement('div');
+    grp.className = `sp-tag-group ns-${ns}`;
+    const lbl = document.createElement('span');
+    lbl.className = 'sp-tag-ns';
+    lbl.textContent = `${ns}:`;
+    grp.append(lbl);
+    entries
+      .slice()
+      .sort((a, b) => Number(!!a?.tentative) - Number(!!b?.tentative))
+      .forEach((entry) => {
+        const name = typeof entry === 'string' ? entry : entry.tag;
+        const tentative = typeof entry === 'object' && entry?.tentative;
+        const source = typeof entry === 'object' && entry?.source;
+        const pill = document.createElement('span');
+        pill.className = `tag-pill ns-${ns}${tentative ? ' tentative' : ''}`;
+        pill.textContent = name.split(':').slice(1).join(':') || name;
+        pill.title = `${name}${tentative ? ' (tentative)' : ''}${source ? ` — ${source}` : ''}`;
+        grp.append(pill);
+      });
+    wrap.append(grp);
+  }
+  return wrap;
+}
+
+function suggestButton(row) {
+  // Opens a prefilled GitHub Discussion. The viewer doesn't have
+  // write access; once the maintainer (running the extension with a
+  // PAT) acts on it, the discussion closes and the tag overlay
+  // updates. See docs/TAGGING.md §Suggestion-flow for the protocol.
+  const wrap = document.createElement('div');
+  wrap.className = 'sp-suggest';
+  const a = document.createElement('a');
+  a.className = 'btn ghost sp-suggest-btn';
+  a.target = '_blank';
+  a.rel = 'noopener';
+  const body = encodeURIComponent(
+    [
+      `tweet_id: ${row.tweet_id ?? ''}`,
+      `tweet_url: ${row.tweet_url ?? ''}`,
+      `account: @${row.account_handle ?? ''}`,
+      '',
+      '<!-- Describe the change you want to suggest. -->',
+      '',
+      'add:',
+      '  - subject:detainee',
+      '',
+      'remove:',
+      '  - (none)',
+      '',
+      'rationale: ',
+    ].join('\n')
+  );
+  const title = encodeURIComponent(
+    `tag suggestion: ${row.tweet_id ?? ''} (@${row.account_handle ?? ''})`
+  );
+  a.href = `https://github.com/vidproject/x/discussions/new?category=tag-suggestions&title=${title}&body=${body}`;
+  a.textContent = '✎ Suggest a tag change';
+  wrap.append(a);
+  const note = document.createElement('div');
+  note.className = 'meta sp-suggest-note';
+  note.textContent =
+    'Opens a GitHub Discussion. The maintainer can apply your suggestion from the extension once they review it.';
+  wrap.append(note);
+  return wrap;
+}
+
+function otherRepliesBlock(slaves) {
+  const wrap = document.createElement('div');
+  wrap.className = 'sp-other-replies';
+  const ordered = slaves.slice().sort((a, b) => {
+    const av = String(a.posted_at ?? '');
+    const bv = String(b.posted_at ?? '');
+    return av.localeCompare(bv);
+  });
+  for (const r of ordered) {
+    const item = document.createElement('div');
+    item.className = 'sp-other-reply';
+    const head = document.createElement('div');
+    head.className = 'sp-other-reply-head';
+    const handleEl = document.createElement('span');
+    handleEl.className = 'handle';
+    handleEl.textContent = `@${r.account_handle ?? ''}`;
+    const dateEl = document.createElement('span');
+    dateEl.className = 'meta';
+    dateEl.textContent = shortDate(r.posted_at) || '';
+    head.append(handleEl, dateEl);
+    if (r.tweet_url) {
+      const a = document.createElement('a');
+      a.className = 'sp-link';
+      a.href = r.tweet_url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = '↗';
+      head.append(a);
+    }
+    item.append(head);
+    const body = document.createElement('div');
+    body.className = 'sp-other-reply-body';
+    body.textContent = r.text_resolved || r.text || '';
+    item.append(body);
+    wrap.append(item);
   }
   return wrap;
 }
