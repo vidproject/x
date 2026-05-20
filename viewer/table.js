@@ -15,7 +15,35 @@
 
 import { combineTagMainSub, formatForFilter, tagNames, tagNamespace, tagSubtype } from './store.js';
 
+const MEDIA_COL_KEY = 'media_kinds';
+const MEDIA_THUMBNAIL_KEYS = [
+  'thumbnail_url',
+  'thumbnailUrl',
+  'thumb_url',
+  'thumbUrl',
+  'poster_url',
+  'posterUrl',
+  'preview_image_url',
+  'previewImageUrl',
+  'preview_url',
+  'previewUrl',
+];
+
+let mediaColumnConfig = {
+  previews: false,
+  posterBySha: new Map(),
+};
+
 export const COLUMNS = [
+  {
+    key: MEDIA_COL_KEY,
+    label: 'Media',
+    default: true,
+    filterable: true,
+    sortable: false,
+    className: 'col-media',
+    render: (r) => renderMediaColumn(r),
+  },
   {
     key: 'account_handle',
     label: 'Account',
@@ -52,7 +80,7 @@ export const COLUMNS = [
     sortable: false,
     className: 'col-text',
     render: (r) =>
-      `<span class="cell-text" title="${escape(r.text ?? '')}">${escape(truncate(r.text ?? '', 200))}</span>`,
+      `<span class="cell-text" title="${escape(r.text ?? '')}">${escape(r.text ?? '')}</span>`,
   },
   {
     key: 'tags',
@@ -61,14 +89,6 @@ export const COLUMNS = [
     filterable: true,
     sortable: false,
     render: (r) => renderTagPills(r),
-  },
-  {
-    key: 'media_kinds',
-    label: 'Media',
-    default: true,
-    filterable: true,
-    sortable: false,
-    render: (r) => mediaFlags(r),
   },
   {
     key: 'media_description',
@@ -144,7 +164,7 @@ export const COLUMNS = [
         : '—',
   },
   {
-    // Deemphasized per the brief: off by default, only available via Columns.
+    // Deemphasized per the brief: available only via Columns.
     key: 'deletion_detected_at',
     label: 'Deletion detected',
     default: false,
@@ -214,14 +234,27 @@ export const COLUMNS = [
 
 const KEY_TO_COL = Object.fromEntries(COLUMNS.map((c) => [c.key, c]));
 
+export function setMediaColumnConfig(config = {}) {
+  mediaColumnConfig = {
+    previews: Boolean(config.previews),
+    posterBySha: config.posterBySha instanceof Map ? config.posterBySha : new Map(),
+  };
+}
+
 export function defaultVisibleColumns() {
-  return COLUMNS.filter((c) => c.default).map((c) => c.key);
+  return normalizeVisibleColumns(COLUMNS.filter((c) => c.default).map((c) => c.key));
 }
 
 export function parseVisibleColumns(spec) {
   if (!spec) return defaultVisibleColumns();
   const keys = spec.split(',').filter((k) => KEY_TO_COL[k]);
-  return keys.length > 0 ? keys : defaultVisibleColumns();
+  return keys.length > 0 ? normalizeVisibleColumns(keys) : defaultVisibleColumns();
+}
+
+function normalizeVisibleColumns(keys) {
+  const out = keys.filter((key, index) => keys.indexOf(key) === index);
+  if (!out.includes(MEDIA_COL_KEY)) return out;
+  return [MEDIA_COL_KEY, ...out.filter((key) => key !== MEDIA_COL_KEY)];
 }
 
 export function renderColumnsMenu(menuEl, visible, onChange) {
@@ -240,14 +273,7 @@ export function renderColumnsMenu(menuEl, visible, onChange) {
     });
     const label = document.createElement('span');
     label.textContent = col.label;
-    if (col.key === 'deletion_detected_at') {
-      const tag = document.createElement('span');
-      tag.className = 'count';
-      tag.textContent = 'off by default';
-      row.append(cb, label, tag);
-    } else {
-      row.append(cb, label);
-    }
+    row.append(cb, label);
     menuEl.append(row);
   }
 }
@@ -288,28 +314,34 @@ export function renderTable(args) {
     onOpenColPop,
     onToggleThread,
   } = args;
+  const visibleKeys = normalizeVisibleColumns(visible);
   // header
   theadEl.replaceChildren();
-  for (const key of visible) {
+  for (const key of visibleKeys) {
     const col = KEY_TO_COL[key];
     if (!col) continue;
     const th = document.createElement('th');
+    th.dataset.colKey = col.key;
     if (col.className) th.className = col.className;
     const head = document.createElement('span');
     head.className = 'col-head';
-    const title = document.createElement('span');
-    title.textContent = col.label;
-    if (col.sortable) {
-      title.style.cursor = 'pointer';
-      title.addEventListener('click', () => onSortToggle(col.key));
-      if (sort === col.key) title.textContent += dir === 'asc' ? ' ▲' : ' ▼';
+    if (col.key !== MEDIA_COL_KEY) {
+      const title = document.createElement('span');
+      title.textContent = col.label;
+      if (col.sortable) {
+        title.style.cursor = 'pointer';
+        title.addEventListener('click', () => onSortToggle(col.key));
+        if (sort === col.key) title.textContent += dir === 'asc' ? ' ▲' : ' ▼';
+      }
+      head.append(title);
     }
-    head.append(title);
     if (col.filterable) {
       const btn = document.createElement('button');
       btn.className = 'col-filter-btn';
-      btn.textContent = '▾';
-      btn.title = 'Filter this column';
+      btn.title = `Filter ${col.label}`;
+      btn.setAttribute('aria-label', `Filter ${col.label}`);
+      btn.innerHTML =
+        '<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.25 3.25h11.5L9.25 8.3v3.35l-2.5 1.35V8.3L2.25 3.25z"/></svg>';
       if (colFilters && colFilters[col.key] && colFilters[col.key].size > 0) {
         btn.classList.add('active');
       }
@@ -329,7 +361,7 @@ export function renderTable(args) {
     paintThreaded({
       tbodyEl,
       threads,
-      visible,
+      visible: visibleKeys,
       page,
       pageSize,
       expandedThreads: expandedThreads ?? new Set(),
@@ -343,11 +375,11 @@ export function renderTable(args) {
   const start = (page - 1) * pageSize;
   const slice = rows.slice(start, start + pageSize);
   if (slice.length === 0) {
-    emptyMessage(tbodyEl, visible.length || 1);
+    emptyMessage(tbodyEl, visibleKeys.length || 1);
     return;
   }
   for (const r of slice) {
-    tbodyEl.append(buildRow(r, visible, onRowClick));
+    tbodyEl.append(buildRow(r, visibleKeys, onRowClick));
   }
 }
 
@@ -383,11 +415,9 @@ function paintThreaded({
     }
     if (hasSelf || hasOther) {
       masterRow.classList.add('has-slaves');
+      decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread);
     }
     tbodyEl.append(masterRow);
-    if (hasSelf || hasOther) {
-      tbodyEl.append(buildRepliesRow(thread, visible.length, expanded, onToggleThread));
-    }
     // Self-replies inline-expand under the master. Tracked-other and
     // public replies do not — they're reachable via the sidepanel on
     // master-row click so the table doesn't get spammed by a hundred
@@ -403,18 +433,17 @@ function paintThreaded({
   }
 }
 
-function buildRepliesRow(thread, visibleCount, expanded, onToggleThread) {
+function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
+  const targetCell =
+    masterRow.querySelector('td[data-col-key="account_handle"]') ?? masterRow.firstElementChild;
+  if (!targetCell) return;
   const promotions = Array.isArray(thread.promotedReplies) ? thread.promotedReplies : [];
-  const tr = document.createElement('tr');
-  tr.className = `thread-promoted-replies thread-replies-row promoted-${topPromotionCategory(promotions)}`;
-  tr.dataset.threadId = thread.threadId;
-
-  const td = document.createElement('td');
-  td.colSpan = Math.max(1, visibleCount);
-
-  const wrap = document.createElement('div');
-  wrap.className = 'thread-promoted-replies-wrap';
   const selfCount = thread.selfSlaves.length;
+  const replyCount = thread.otherSlaves.length;
+  if (selfCount === 0 && replyCount === 0 && promotions.length === 0) return;
+
+  const wrap = document.createElement('span');
+  wrap.className = `thread-affordances promoted-${topPromotionCategory(promotions)}`;
   if (selfCount > 0) {
     const toggle = document.createElement('button');
     toggle.type = 'button';
@@ -425,12 +454,12 @@ function buildRepliesRow(thread, visibleCount, expanded, onToggleThread) {
       : `Expand ${selfCount} self-repl${selfCount === 1 ? 'y' : 'ies'}`;
     toggle.textContent = `${expanded ? '▾' : '▸'} ${selfCount} self-repl${selfCount === 1 ? 'y' : 'ies'}`;
     toggle.addEventListener('click', (e) => {
+      e.preventDefault();
       e.stopPropagation();
       onToggleThread?.(thread.threadId);
     });
     wrap.append(toggle);
   }
-  const replyCount = thread.otherSlaves.length;
   if (replyCount > 0) {
     const count = document.createElement('span');
     count.className = 'thread-replies-summary';
@@ -440,10 +469,7 @@ function buildRepliesRow(thread, visibleCount, expanded, onToggleThread) {
   for (const group of promotedReplyGroups(promotions)) {
     wrap.append(promotedReplyBadge(group));
   }
-
-  td.append(wrap);
-  tr.append(td);
-  return tr;
+  targetCell.append(wrap);
 }
 
 function topPromotionCategory(promotions) {
@@ -515,6 +541,7 @@ function buildRow(r, visible, onRowClick) {
     const col = KEY_TO_COL[key];
     if (!col) continue;
     const td = document.createElement('td');
+    td.dataset.colKey = col.key;
     if (col.className) td.className = col.className;
     td.innerHTML = col.render(r);
     tr.append(td);
@@ -546,6 +573,8 @@ export function openColumnFilterPopup({
   activeFilters,
   onChange,
   onSort,
+  mediaSettings,
+  onMediaSettingsChange,
 }) {
   const col = KEY_TO_COL[colKey];
   if (!col) return;
@@ -555,7 +584,11 @@ export function openColumnFilterPopup({
   popEl.hidden = false;
   popEl.replaceChildren();
 
-  if (colKey !== 'tags') {
+  if (colKey === MEDIA_COL_KEY) {
+    popEl.append(buildMediaPopupSettings(mediaSettings, onMediaSettingsChange));
+  }
+
+  if (colKey !== 'tags' && col.sortable) {
     const sortRow = document.createElement('div');
     sortRow.className = 'col-sort-row';
     const asc = document.createElement('button');
@@ -750,6 +783,69 @@ export function openColumnFilterPopup({
   setTimeout(() => document.addEventListener('mousedown', away), 0);
 }
 
+function buildMediaPopupSettings(mediaSettings = {}, onMediaSettingsChange) {
+  const settings = {
+    previews: Boolean(mediaSettings?.previews),
+    thumbWidth: Number(mediaSettings?.thumbWidth) || 22,
+    fit: mediaSettings?.fit === 'vertical' ? 'vertical' : 'horizontal',
+  };
+  const wrap = document.createElement('div');
+  wrap.className = 'media-pop-settings';
+
+  const toggle = document.createElement('label');
+  toggle.className = 'media-pop-toggle';
+  const cb = document.createElement('input');
+  cb.type = 'checkbox';
+  cb.checked = settings.previews;
+  const toggleText = document.createElement('span');
+  toggleText.textContent = 'Show thumbnails';
+  toggle.append(cb, toggleText);
+
+  const details = document.createElement('div');
+  details.className = 'media-pop-detail';
+
+  const widthLabel = document.createElement('label');
+  widthLabel.textContent = 'Max px';
+  const width = document.createElement('input');
+  width.type = 'number';
+  width.min = '16';
+  width.max = '48';
+  width.step = '1';
+  width.value = String(settings.thumbWidth);
+  widthLabel.append(width);
+
+  const fitLabel = document.createElement('label');
+  fitLabel.textContent = 'Fit';
+  const fit = document.createElement('select');
+  fit.className = 'select';
+  for (const [value, label] of [
+    ['horizontal', 'Horizontal'],
+    ['vertical', 'Vertical'],
+  ]) {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = label;
+    option.selected = value === settings.fit;
+    fit.append(option);
+  }
+  fitLabel.append(fit);
+
+  details.append(widthLabel, fitLabel);
+  wrap.append(toggle, details);
+
+  cb.addEventListener('change', () => {
+    onMediaSettingsChange?.({ previews: cb.checked });
+  });
+  width.addEventListener('change', () => {
+    onMediaSettingsChange?.({ thumbWidth: width.value });
+  });
+  fit.addEventListener('change', () => {
+    onMediaSettingsChange?.({ fit: fit.value });
+  });
+
+  return wrap;
+}
+
 function buildTagFilterValues(counts) {
   const byNamespace = new Map();
   for (const [tag, count] of counts.entries()) {
@@ -825,11 +921,6 @@ function escape(s) {
     c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : c === '"' ? '&quot;' : '&#39;'
   );
 }
-function truncate(s, n) {
-  if (typeof s !== 'string') return '';
-  if (s.length <= n) return s;
-  return s.slice(0, n) + '…';
-}
 function fmtDate(iso) {
   if (typeof iso !== 'string' || iso.length < 10) return iso || '';
   return iso.slice(0, 10);
@@ -885,23 +976,88 @@ function displayNameForRow(r) {
   return userMeta.display_name || r?.author?.display_name || null;
 }
 
-function mediaFlags(r) {
+function renderMediaColumn(r) {
+  if (mediaColumnConfig.previews) {
+    const preview = mediaPreviewForRow(r);
+    if (preview) return renderMediaPreview(preview);
+  }
+  return renderMediaSymbol(r);
+}
+
+function mediaPreviewForRow(r) {
   const media = Array.isArray(r.media) ? r.media : [];
-  if (media.length === 0) return '<span class="muted">—</span>';
-  const kinds = new Map();
   for (const m of media) {
-    const k = m && m.media_type;
-    if (!k) continue;
-    kinds.set(k, (kinds.get(k) ?? 0) + 1);
+    if (!m || typeof m !== 'object') continue;
+    const type = normalizeMediaType(m.media_type);
+    const url = mediaPreviewUrl(m, type);
+    if (!url) continue;
+    return {
+      type,
+      url,
+      alt: type === 'photo' ? m.alt_text || 'Archived photo' : `${mediaTypeLabel(type)} poster`,
+    };
   }
-  const html = [];
-  for (const [kind, count] of kinds) {
-    const cls = kind === 'animated_gif' ? 'gif' : kind === 'video' ? 'video' : 'photo';
-    html.push(
-      `<span class="media-flag ${cls}">${kind === 'animated_gif' ? 'gif' : kind}${count > 1 ? ` ×${count}` : ''}</span>`
-    );
+  return null;
+}
+
+function mediaPreviewUrl(media, type) {
+  if (type === 'photo') return stringOrNull(media.release_asset_url);
+  if (type !== 'video' && type !== 'gif') return null;
+  for (const key of MEDIA_THUMBNAIL_KEYS) {
+    const url = stringOrNull(media[key]);
+    if (url) return url;
   }
-  return `<span class="media-flags">${html.join('')}</span>`;
+  const sha = stringOrNull(media.sha256);
+  return sha ? mediaColumnConfig.posterBySha.get(sha) || null : null;
+}
+
+function renderMediaPreview(preview) {
+  const videoClass = preview.type === 'video' || preview.type === 'gif' ? ' has-video' : '';
+  const title = `${mediaTypeLabel(preview.type)} preview`;
+  return (
+    `<span class="media-thumb-frame media-${escape(preview.type)}${videoClass}" title="${escape(title)}">` +
+    `<img class="media-thumb" loading="lazy" decoding="async" fetchpriority="low" alt="${escape(preview.alt)}" src="${escape(preview.url)}" />` +
+    '</span>'
+  );
+}
+
+function renderMediaSymbol(r) {
+  const summary = mediaSummary(r);
+  return `<span class="media-symbol media-${summary.key}" title="${escape(summary.label)}" aria-label="${escape(summary.label)}">${summary.symbol}</span>`;
+}
+
+function mediaSummary(r) {
+  const media = Array.isArray(r.media) ? r.media : [];
+  let photos = 0;
+  let videos = 0;
+  let gifs = 0;
+  for (const item of media) {
+    const type = normalizeMediaType(item?.media_type);
+    if (type === 'photo') photos += 1;
+    else if (type === 'video') videos += 1;
+    else if (type === 'gif') gifs += 1;
+  }
+  if (photos > 0 && videos + gifs > 0) {
+    return { key: 'mixed', label: 'photo + video', symbol: '🖼️▶️' };
+  }
+  if (photos > 0) return { key: 'photo', label: 'photo', symbol: '🖼️' };
+  if (videos > 0) return { key: 'video', label: 'video', symbol: '▶️' };
+  if (gifs > 0) return { key: 'gif', label: 'gif', symbol: '🎞️' };
+  return { key: 'text', label: 'text only', symbol: '📝' };
+}
+
+function normalizeMediaType(type) {
+  if (type === 'animated_gif') return 'gif';
+  if (type === 'video' || type === 'photo') return type;
+  return '';
+}
+
+function mediaTypeLabel(type) {
+  return type === 'gif' ? 'gif' : type || 'media';
+}
+
+function stringOrNull(value) {
+  return typeof value === 'string' && value.length > 0 ? value : null;
 }
 
 /**
@@ -937,7 +1093,7 @@ function renderMediaDescription(r) {
     .filter(Boolean)
     .join(' ');
   if (!text) return '<span class="muted">—</span>';
-  return `<span class="cell-text" title="${escape(text)}">${escape(truncate(text, 180))}</span>`;
+  return `<span class="cell-text" title="${escape(text)}">${escape(text)}</span>`;
 }
 
 function renderTagPills(r) {

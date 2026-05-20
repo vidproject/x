@@ -91,7 +91,7 @@ export class Store {
   applyTags(tagMap) {
     for (const r of this.allRows) {
       const id = String(r.tweet_id ?? '');
-      r.tags = tagMap.get(id) ?? [];
+      r.tags = derivedRowTags(r, tagMap.get(id) ?? []);
     }
     this.search = null; // rebuild so tags enter the search corpus
   }
@@ -372,6 +372,24 @@ function tagFilterMatches(row, selections) {
     else namespaces.add(main);
   }
   return tagNames(row).some((tag) => exact.has(tag) || namespaces.has(tagNamespace(tag)));
+}
+
+function derivedRowTags(row, sourceTags) {
+  const tags = Array.isArray(sourceTags) ? [...sourceTags] : [];
+  const names = new Set(tags.map((entry) => (typeof entry === 'string' ? entry : entry?.tag)));
+  if (row.unavailable_detected_at && !names.has('status:unavailable')) {
+    tags.push({ tag: 'status:unavailable', source: 'row' });
+    names.add('status:unavailable');
+  }
+  const unavailableText = `${row.unavailable_reason || ''} ${row.unavailable_text || ''}`;
+  if (
+    row.unavailable_detected_at &&
+    /\b(?:copyright|dmca)\b/i.test(unavailableText) &&
+    !names.has('status:copyright-removal')
+  ) {
+    tags.push({ tag: 'status:copyright-removal', source: 'row' });
+  }
+  return tags;
 }
 
 function tagNames(row) {

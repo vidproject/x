@@ -22,6 +22,7 @@
     'Apple Color Emoji', 'Segoe UI Emoji';
   --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
   --base-font-size: 13px;
+  --media-thumb-size: 22px;
 }
 
 .theme-dark,
@@ -131,7 +132,6 @@ body {
 .hdr .btn[aria-pressed='true'] {
   background: rgba(255, 255, 255, 0.22);
 }
-
 .btn {
   font: inherit;
   font-size: 12px;
@@ -263,16 +263,25 @@ body {
 
 .toolbar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
   padding: 8px 12px;
   border-bottom: 1px solid var(--border);
   background: var(--bg-2);
+  align-items: stretch;
+}
+.toolbar[hidden],
+.filterbar[hidden] {
+  display: none;
+}
+.toolbar-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
   align-items: center;
+  width: 100%;
 }
 .toolbar .search {
-  flex: 1 1 280px;
-  min-width: 220px;
+  flex: 1 1 460px;
+  min-width: 260px;
   padding: 6px 10px;
   border: 1px solid var(--border);
   background: var(--bg);
@@ -281,27 +290,33 @@ body {
   font: inherit;
 }
 .toolbar .search-field {
-  flex: 0 0 150px;
+  flex: 0 0 180px;
 }
-.toolbar #account-filter {
+.filterbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+  align-items: center;
+}
+.filterbar #account-filter {
   flex: 1 1 190px;
   max-width: 280px;
 }
-.toolbar #category-filter {
+.filterbar #category-filter {
   flex: 1 1 180px;
   max-width: 260px;
 }
-.toolbar .menu {
-  flex: 0 0 auto;
-}
-.toolbar .lbl {
+.filterbar .lbl {
   font-size: 12px;
   color: var(--fg-2);
   display: flex;
   align-items: center;
   gap: 4px;
 }
-.toolbar input[type='date'] {
+.filterbar input[type='date'] {
   font: inherit;
   font-size: 12px;
   padding: 5px 6px;
@@ -385,14 +400,23 @@ body {
   color: var(--fg-3);
   cursor: pointer;
   font: inherit;
-  font-size: 12px;
-  padding: 0;
+  width: 17px;
+  height: 17px;
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .col-filter-btn:hover {
   color: var(--accent-2);
 }
 .col-filter-btn.active {
   color: var(--accent-2);
+}
+.col-filter-btn svg {
+  width: 13px;
+  height: 13px;
+  fill: currentColor;
 }
 .data-table tbody tr {
   cursor: pointer;
@@ -402,6 +426,18 @@ body {
 }
 .data-table tbody tr.selected {
   background: var(--bg-row-sel);
+}
+.data-table th.col-media,
+.data-table td.col-media {
+  width: calc(var(--media-thumb-size) + 14px);
+  min-width: calc(var(--media-thumb-size) + 14px);
+  max-width: calc(var(--media-thumb-size) + 14px);
+  padding: 3px 5px;
+  text-align: center;
+  vertical-align: middle;
+}
+.data-table th.col-media .col-head {
+  justify-content: center;
 }
 .data-table th.col-text,
 .data-table td.col-text {
@@ -561,6 +597,79 @@ body {
   color: var(--err);
   font-size: 11px;
 }
+.media-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--media-thumb-size);
+  min-width: 16px;
+  max-width: 48px;
+  height: 18px;
+  color: var(--fg-2);
+  font-size: 14px;
+  line-height: 1;
+  font-family: 'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji', sans-serif;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+.media-symbol.media-text {
+  color: var(--fg-3);
+}
+.media-symbol.media-photo {
+  color: var(--ok);
+}
+.media-symbol.media-gif {
+  color: var(--warn);
+}
+.media-symbol.media-video,
+.media-symbol.media-mixed {
+  color: var(--accent-2);
+}
+.media-thumb-frame {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--media-thumb-size);
+  max-width: 48px;
+  height: var(--media-thumb-size);
+  max-height: 48px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  background: var(--bg-3);
+  vertical-align: middle;
+}
+html[data-media-fit='vertical'] .media-thumb-frame {
+  height: calc(var(--media-thumb-size) * 1.25);
+  max-height: 60px;
+}
+.media-thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--bg);
+}
+html[data-media-fit='vertical'] .media-thumb {
+  object-fit: contain;
+}
+.media-thumb-frame.has-video::after {
+  content: '\25B6';
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.62);
+  color: white;
+  font-size: 8px;
+  line-height: 1;
+}
 
 .pager {
   display: flex;
@@ -623,6 +732,81 @@ body {
 .sidepanel[hidden] {
   display: none;
 }
+.chartpanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(900px, 100%);
+  height: 100vh;
+  background: var(--bg);
+  border-left: 1px solid var(--border-strong);
+  box-shadow: var(--shadow);
+  z-index: 48;
+  display: flex;
+  flex-direction: column;
+}
+.chartpanel[hidden] {
+  display: none;
+}
+.chartpanel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+}
+.chartpanel-body {
+  padding: 14px;
+  overflow: auto;
+  flex: 1 1 auto;
+}
+.charts-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.charts-control {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 11px;
+  color: var(--fg-3);
+}
+.charts-control .select {
+  width: 100%;
+}
+.charts-control-small {
+  min-width: 90px;
+}
+.charts-summary {
+  font-size: 12px;
+  color: var(--fg-2);
+  margin: 0 0 8px;
+}
+.charts-status {
+  font-size: 12px;
+  margin: 0 0 8px;
+  padding: 7px 9px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+}
+.charts-status[data-status='error'] {
+  border-color: rgba(220, 38, 38, 0.45);
+  color: #fca5a5;
+}
+.charts-canvas-wrap {
+  min-height: 360px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+}
+.charts-canvas-wrap canvas {
+  max-width: 100%;
+}
 .sidepanel-head {
   display: flex;
   justify-content: space-between;
@@ -642,13 +826,24 @@ body {
 }
 .sp-title-share {
   color: var(--fg-3);
-  font-family: var(--mono);
-  font-size: 12px;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
   text-decoration: none;
   border: 1px solid var(--border);
   border-radius: 4px;
-  padding: 1px 5px;
+  padding: 2px;
+}
+.sp-title-share svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .sp-title-share:hover {
   color: var(--accent-2);
@@ -880,6 +1075,43 @@ body {
   font-size: 12px;
   padding: 5px 8px;
   margin-bottom: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--fg);
+  border-radius: var(--radius);
+}
+.col-pop .media-pop-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 2px 0 8px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.col-pop .media-pop-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+.col-pop .media-pop-detail {
+  display: grid;
+  grid-template-columns: minmax(78px, 1fr) minmax(112px, 1fr);
+  gap: 6px;
+}
+.col-pop .media-pop-detail label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: var(--fg-3);
+  font-size: 11px;
+}
+.col-pop .media-pop-detail input,
+.col-pop .media-pop-detail select {
+  width: 100%;
+  font: inherit;
+  font-size: 12px;
+  padding: 5px 8px;
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--fg);
@@ -1174,9 +1406,25 @@ tr.thread-slave > td:first-child::before {
  * Two-tier threading affordances.
  *
  * Reply counts, self-reply toggles, and promoted reply markers render
- * in a child row under the master so they read as replies instead of
- * part of the parent account.
+ * below the username in the master account cell, so the account stays
+ * first and replies read as subordinate metadata.
  * ============================================================ */
+.thread-affordances {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+  padding-left: 24px;
+}
+.thread-affordances.promoted-core {
+  border-left: 3px solid #d9a441;
+  padding-left: 7px;
+}
+.thread-affordances.promoted-officials {
+  border-left: 3px solid #aeb4bd;
+  padding-left: 7px;
+}
 .thread-reply-badge {
   display: inline-flex;
   align-items: center;
@@ -1225,25 +1473,6 @@ tr.thread-slave > td:first-child::before {
   border: 1px dashed var(--border-strong);
   font-family: var(--mono);
 }
-.thread-promoted-replies > td {
-  padding: 4px 8px 7px 18px;
-  background: color-mix(in srgb, var(--bg-3) 22%, var(--bg));
-}
-.thread-promoted-replies-wrap {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 4px;
-  padding-left: 10px;
-  border-left: 3px solid var(--border-strong);
-}
-.thread-promoted-replies.promoted-core .thread-promoted-replies-wrap {
-  border-left-color: #d9a441;
-}
-.thread-promoted-replies.promoted-officials .thread-promoted-replies-wrap {
-  border-left-color: #aeb4bd;
-}
-
 .sp-other-replies {
   display: flex;
   flex-direction: column;

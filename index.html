@@ -13,6 +13,25 @@
         <div class="hdr-stats" id="hdr-stats" aria-live="polite"></div>
       </div>
       <nav class="hdr-r">
+        <button
+          class="btn ghost"
+          id="filters-btn"
+          aria-controls="filterbar"
+          aria-expanded="true"
+          aria-pressed="true"
+        >
+          Filters
+        </button>
+        <div class="menu">
+          <button class="btn ghost" id="cols-btn" aria-haspopup="true" aria-expanded="false">
+            Columns
+          </button>
+          <div class="dropdown" id="cols-menu" role="menu" hidden></div>
+        </div>
+        <button class="btn ghost" id="csv-btn" title="Export current view to CSV">CSV</button>
+        <button class="btn ghost" id="charts-btn" aria-pressed="false">Charts</button>
+        <button class="btn ghost" id="tips-btn" aria-pressed="false">Tips</button>
+        <button class="btn ghost" id="reset-btn" title="Clear all filters">Reset</button>
         <button class="btn" id="theme-btn" title="Toggle light / dark / system">
           <span class="icon" id="theme-icon">auto</span>
         </button>
@@ -28,42 +47,21 @@
       </nav>
     </header>
 
-    <div class="tips" id="tips" hidden>
-      <h2>Tips</h2>
-      <ul>
-        <li>
-          Every tracked account loads automatically into a single unified view. Use the filter bar
-          to narrow by account, category, date, type, media, tags, or column values.
-        </li>
-        <li>
-          Search defaults to all fields. Change the field selector beside it to search only text,
-          account, tags, mentions, media descriptions, or another single field.
-        </li>
-        <li><kbd>?</kbd> in search matches any single character; <kbd>*</kbd> matches any run.</li>
-        <li>
-          Click the filter button on any column header to filter by that column's unique values.
-        </li>
-        <li>Click any row to open the full tweet detail panel on the right.</li>
-        <li>
-          Use Columns to toggle visibility, including Deletion detected, which is off by default.
-        </li>
-        <li>The URL updates as you filter; bookmark or share it to come back to the same view.</li>
-        <li>
-          This is a public archive. Captures mirror what X served the browser at capture time.
-        </li>
-      </ul>
-    </div>
-
     <section class="toolbar" id="toolbar" hidden>
-      <select id="search-field" class="select search-field" title="Search field"></select>
-      <input
-        id="search"
-        class="search"
-        type="search"
-        placeholder="Search all fields... (use * and ? wildcards)"
-        autocomplete="off"
-        spellcheck="false"
-      />
+      <div class="toolbar-search">
+        <input
+          id="search"
+          class="search"
+          type="search"
+          placeholder="Search all fields... (use * and ? wildcards)"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <select id="search-field" class="select search-field" title="Search field"></select>
+      </div>
+    </section>
+
+    <section class="filterbar" id="filterbar" hidden>
       <select id="account-filter" class="select" title="Account filter">
         <option value="">All accounts</option>
       </select>
@@ -91,16 +89,31 @@
         <option value="250">250 / page</option>
         <option value="500">500 / page</option>
       </select>
-      <div class="menu">
-        <button class="btn ghost" id="cols-btn" aria-haspopup="true" aria-expanded="false">
-          Columns
-        </button>
-        <div class="dropdown" id="cols-menu" role="menu" hidden></div>
-      </div>
-      <button class="btn ghost" id="csv-btn" title="Export current view to CSV">CSV</button>
-      <button class="btn ghost" id="tips-btn" aria-pressed="false">Tips</button>
-      <button class="btn ghost" id="reset-btn" title="Clear all filters">Reset</button>
     </section>
+
+    <div class="tips" id="tips" hidden>
+      <h2>Tips</h2>
+      <ul>
+        <li>
+          Every tracked account loads automatically into a single unified view. Use the filter bar
+          to narrow by account, category, date, type, media, tags, or column values.
+        </li>
+        <li>
+          Search defaults to all fields. Change the field selector beside it to search only text,
+          account, tags, mentions, media descriptions, or another single field.
+        </li>
+        <li><kbd>?</kbd> in search matches any single character; <kbd>*</kbd> matches any run.</li>
+        <li>
+          Click the filter button on any column header to filter by that column's unique values.
+        </li>
+        <li>Click any row to open the full tweet detail panel on the right.</li>
+        <li>Use Columns to toggle visibility, including Deletion detected.</li>
+        <li>The URL updates as you filter; bookmark or share it to come back to the same view.</li>
+        <li>
+          This is a public archive. Captures mirror what X served the browser at capture time.
+        </li>
+      </ul>
+    </div>
 
     <section class="result-bar" id="result-bar" hidden>
       <span id="result-count">-</span>
@@ -132,6 +145,64 @@
         parquet (zstd, schema mismatch) apart.
       </div>
     </section>
+
+    <aside class="chartpanel" id="chartpanel" hidden aria-hidden="true">
+      <div class="chartpanel-head">
+        <strong>Charts</strong>
+        <button class="btn ghost" id="charts-close" aria-label="Close">x</button>
+      </div>
+      <div class="chartpanel-body">
+        <div class="charts-controls" data-chart-controls>
+          <label class="charts-control">
+            <span>Element</span>
+            <select class="select" id="chart-element" data-chart-control="element"></select>
+          </label>
+          <label class="charts-control">
+            <span>Dimension</span>
+            <select class="select" id="chart-dimension" data-chart-control="dimension"></select>
+          </label>
+          <label class="charts-control">
+            <span>Rows</span>
+            <select class="select" id="chart-scope" data-chart-control="scope"></select>
+          </label>
+          <label class="charts-control">
+            <span>Chart</span>
+            <select class="select" id="chart-type" data-chart-control="chartType"></select>
+          </label>
+          <label class="charts-control charts-control-small">
+            <span>Top</span>
+            <input
+              class="select"
+              id="chart-limit"
+              type="number"
+              min="0"
+              max="500"
+              step="1"
+              value="20"
+              data-chart-control="limit"
+            />
+          </label>
+          <label class="charts-control charts-control-small">
+            <span>Min</span>
+            <input
+              class="select"
+              id="chart-min-count"
+              type="number"
+              min="1"
+              max="1000000"
+              step="1"
+              value="1"
+              data-chart-control="minCount"
+            />
+          </label>
+        </div>
+        <div class="charts-summary" id="charts-summary" data-chart-summary></div>
+        <div class="charts-status" id="charts-status" data-chart-status hidden></div>
+        <div class="charts-canvas-wrap">
+          <canvas id="charts-canvas" data-chart-canvas height="320"></canvas>
+        </div>
+      </div>
+    </aside>
 
     <main class="table-wrap" id="table-wrap" hidden>
       <table class="data-table" id="data-table">
@@ -172,8 +243,11 @@
             aria-label="Share entry"
             title="Share entry"
             hidden
-            >#</a
-          >
+            ><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <path d="M6.2 4.4 7.3 3.3a3.1 3.1 0 0 1 4.4 4.4l-1.4 1.4a3.1 3.1 0 0 1-4.2.2" />
+              <path d="M9.8 11.6 8.7 12.7a3.1 3.1 0 0 1-4.4-4.4l1.4-1.4a3.1 3.1 0 0 1 4.2-.2" />
+              <path d="m6.7 9.3 2.6-2.6" /></svg
+          ></a>
         </div>
         <button class="btn ghost" id="sp-close" aria-label="Close">x</button>
       </div>

@@ -287,7 +287,7 @@ STATE_LOWER: frozenset[str] = frozenset(s.lower() for s in US_STATES)
 CRIME_VOCAB: tuple[tuple[str, str], ...] = (
     ("rape", r"\brap(?:e|ed|ing|ist)\b"),
     ("sodomy", r"\bsodom(?:y|ize|ized)\b"),
-    ("murder", r"\bmurder(?:ed|er|ing)?\b"),
+    ("homicide", r"\bhomicides?\b"),
     ("burglary", r"\bburglar(?:y|ize|ized|ies)\b"),
     ("theft", r"\btheft\b|\bsteal(?:ing)?\b|\bstole\b"),
     ("robbery", r"\brobber(?:y|ies)\b|\brobbed\b"),
@@ -308,6 +308,10 @@ CRIME_VOCAB: tuple[tuple[str, str], ...] = (
     ("arson", r"\barson(?:ist)?\b"),
     ("weapon", r"\bweapon[s]?\b|\billegal firearm[s]?\b"),
     ("firearm", r"\bfirearm[s]?\b"),
+)
+
+HOMICIDE_SUBTYPE_VOCAB: tuple[tuple[str, str], ...] = (
+    ("murder", r"\bmurder(?:s|ed|ers?|ing)?\b"),
 )
 
 # Handles whose mention earns an `agency:<HANDLE>` tag. Distinct from the
@@ -409,7 +413,24 @@ PATTERN_ACTION_REPORT_TO_ICE = _compile(
 PATTERN_TOPIC_ECONOMY = _compile(
     r"\b(econom(?:y|ic)|jobs?|job growth|workers?|workforce|wages?|labor market|"
     r"employment|unemployment|hiring|manufactur(?:e|ing)|business(?:es)?|"
-    r"apprenticeships?|small businesses?|tax cuts?)\b"
+    r"apprenticeships?|small businesses?|tax cuts?|taxes|inflation|prices?|"
+    r"cost of living|tariffs?|trade deficit|supply chains?|GDP|stock market|markets?)\b"
+)
+PATTERN_TOPIC_MILITARY = _compile(
+    r"\b(military|armed forces|servicemembers?|service members?|veterans?|troops?|"
+    r"soldiers?|sailors?|airmen|marines|guardsmen|army|navy|air force|space force|"
+    r"marine corps|coast guard|national guard|USAF|USSF|USMC|pentagon|"
+    r"department of defense|DoD|DOD|veterans affairs|combat|battlefield|"
+    r"war zone|deployed|deployment)\b"
+)
+BRANCH_VOCAB: tuple[tuple[str, re.Pattern[str]], ...] = (
+    ("army", _compile(r"\b(?:(?:u\.s\.\s+)?army|soldiers?)\b")),
+    ("navy", _compile(r"\b(?:(?:u\.s\.\s+)?navy|sailors?)\b")),
+    ("air-force", _compile(r"\b(?:(?:u\.s\.\s+)?air\s+force|usaf|airm[ae]n)\b")),
+    ("space-force", _compile(r"\b(?:(?:u\.s\.\s+)?space\s+force|ussf)\b")),
+    ("marines", _compile(r"\b(?:marine\s+corps|u\.s\.\s+marines?|usmc|marines)\b")),
+    ("coast-guard", _compile(r"\b(?:coast\s+guard|coast\s+guards?m[ae]n)\b")),
+    ("national-guard", _compile(r"\b(?:national\s+guard|national\s+guards?m[ae]n)\b")),
 )
 PATTERN_TOPIC_LAUDATORY = _compile(
     r"\b(accomplishments?|wins?|success(?:es)?|historic|record[- ]breaking|"
@@ -420,6 +441,7 @@ GENERAL_TOPIC_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("immigration", _compile(r"\b(immigration|migrant|border|illegal alien|asylum)\b")),
     ("crime", _compile(r"\b(crime|criminal|drugs?|fentanyl|gang|violence|murder)\b")),
     ("economy", PATTERN_TOPIC_ECONOMY),
+    ("military", PATTERN_TOPIC_MILITARY),
     ("fraud", _compile(r"\b(fraud|waste|abuse|corruption|scam)\b")),
     ("security", _compile(r"\b(security|terror|war|china|cartel|threat)\b")),
     ("costs", _compile(r"\b(inflation|prices?|taxes|cost of living)\b")),
@@ -452,27 +474,7 @@ PATTERN_THEME_CHRISTIANITY = _compile(
     r"|\bjesus(?:\s+christ)?\b"
     r"|\bchrist\s+(?:is\s+king|the\s+king|our\s+lord)\b"
     r"|\b(?:bible|biblical|scripture|scriptural)\b"
-    # Civil-religion / Christian-adjacent phrases that federal accounts use
-    # all the time but the strict list above missed (e.g. "God has blessed
-    # us..."). Each pattern requires a religious-context word *together*
-    # with another religious-context word or a clear invocation, so we don't
-    # tag every "thank god" or "good lord" outburst.
-    r"|\bgod\s+bless\b"
-    r"|\bgod\s+(?:has\s+)?bless(?:ed|es|ing|ings)?\b"
-    r"|\bpraise\s+(?:be\s+to\s+)?god\b"
-    r"|\bblessed\s+by\s+god\b"
-    r"|\bgod[-\s]given\b"
-    r"|\bgod\s+almighty\b"
-    r"|\bunder\s+god\b"
-    r"|\bin\s+god\s+we\s+trust\b"
-    r"|\bthank(?:s)?\s+(?:to\s+)?(?:god|the\s+lord|jesus)\b"
-    r"|\bprais(?:e|ing)\s+the\s+lord\b"
     r"|\bin\s+jesus(?:'s|')?\s+name\b"
-    r"|\bpray(?:er|ers|ing|ed)?\s+(?:for|to|with|over|that)\b"
-    r"|\bprayer(?:s)?\s+(?:and|are|for|of|go\s+out|with)\b"
-    r"|\b(?:our|the|my|his|her|their)\s+prayers\b"
-    r"|\bsending\s+prayers\b"
-    r"|\bkeep\s+(?:them|him|her|us|you)\s+in\s+(?:our|your|my)\s+prayers\b"
 )
 PATTERN_THEME_RELIGION = _compile(
     r"\breligio(?:n|us)\b"
@@ -485,9 +487,21 @@ PATTERN_THEME_RELIGION = _compile(
 )
 PATTERN_THEME_RELIGION_EXPLETIVE = _compile(
     r"\b(?:oh\s+my\s+god|omg|god\s*damn(?:ed|it)?|goddamn(?:ed)?|"
-    r"for\s+god'?s\s+sake|good\s+lord)\b"
+    r"for\s+god'?s\s+sake|good\s+lord|thank\s+god)\b"
 )
 RELIGION_EXPLETIVE_WINDOW_CHARS = 18
+PATTERN_THEME_TRANSGENDER = _compile(
+    r"\btransgender\b"
+    r"|\bgender[- ](?:ideology|identity|affirming|transition|dysphoria)\b"
+    r"|\b(?:biological|transgender)\s+"
+    r"(?:males?|females?|man|woman|men|women|boys?|girls?)\b"
+    r"|\b(?:men|males|boys)\s+in\s+(?:women[’']?s|girls[’']?)\s+sports\b"
+    r"|\b(?:men|males|boys)\s+(?:competing|playing|participating)\s+"
+    r"(?:in|against|with)\s+(?:women|girls|female\s+athletes?)\b"
+    r"|\b(?:protect|save|defend)\s+(?:women[’']?s|girls[’']?)\s+sports\b"
+    r"|\btitle\s+ix\b.{0,80}\b(?:transgender|gender|women[’']?s\s+sports|girls[’']?\s+sports)\b"
+    r"|\b(?:transgender|gender|women[’']?s\s+sports|girls[’']?\s+sports)\b.{0,80}\btitle\s+ix\b"
+)
 PATTERN_SUBJECT_CBP_HOME_APP = _compile(
     r"\b@?CBP\s+Home\s+App\b"
     r"|\b@?CBP\s+Home\b"
@@ -584,6 +598,8 @@ PATTERN_STATUS_COPYRIGHT_REMOVAL = _compile(r"\b(copyright|dmca)\b")
 PATTERN_SLOGAN_NICE = _compile(r"\b(NICE day|NICE morning|ICE is NICE|NICE city)\b")
 PATTERN_SLOGAN_WORST = _compile(r"\bWORST OF THE WORST\b")
 PATTERN_SLOGAN_REPORTRECON = _compile(r"\bReport\.\s*Recon\.\s*Raid\.")
+PATTERN_SLOGAN_CRIMINAL_ILLEGAL_ALIEN = _compile(r"\bcriminal\s+illegal\s+aliens?\b")
+PATTERN_SLOGAN_ILLEGAL_ALIEN = _compile(r"\billegal\s+aliens?\b")
 PATTERN_SLOGAN_FREE_TICKET_HOME = _compile(
     r"\bFREE\s+(?:TICKET|FLIGHT|PLANE\s+TICKET)\s+HOME\b"
     r"|\bfree\s+(?:ticket|flight|plane\s+ticket)\s+home\b"
@@ -714,6 +730,7 @@ def tag_text(
     if not body:
         # Even with no text we still get format: + agency: + sticky
         # default. Skip the regex pass.
+        _ensure_intrinsic_parent_topics(entries, "", add)
         _maybe_immigration_default(entries, account_category, "", add)
         return entries
     text = body
@@ -728,6 +745,7 @@ def tag_text(
         (PATTERN_SUBJECT_CBP_HOME_APP, "subject:cbp-home-app"),
         (PATTERN_SUBJECT_CELEBRITY, "subject:celebrity"),
         (PATTERN_TOPIC_ECONOMY, "topic:economy"),
+        (PATTERN_TOPIC_MILITARY, "topic:military"),
         (PATTERN_TOPIC_LAUDATORY, "topic:laudatory"),
         (PATTERN_THEME_BORDER, "theme:border"),
         (PATTERN_THEME_SANCTUARY, "theme:sanctuary-cities"),
@@ -735,11 +753,14 @@ def tag_text(
         (PATTERN_THEME_HOMELAND, "theme:homeland"),
         (PATTERN_THEME_NATIVISM, "theme:nativism"),
         (PATTERN_THEME_CHRISTIANITY, "theme:christianity"),
+        (PATTERN_THEME_TRANSGENDER, "theme:transgender"),
         (PATTERN_THEME_CBP_HOME, "theme:cbp-home"),
         (PATTERN_THEME_POP_CULTURE_ENFORCEMENT, "theme:pop-culture-enforcement"),
         (PATTERN_SLOGAN_NICE, "slogan:nice"),
         (PATTERN_SLOGAN_WORST, "slogan:worst"),
         (PATTERN_SLOGAN_REPORTRECON, "slogan:reportrecon"),
+        (PATTERN_SLOGAN_CRIMINAL_ILLEGAL_ALIEN, "slogan:criminal-illegal-alien"),
+        (PATTERN_SLOGAN_ILLEGAL_ALIEN, "slogan:illegal-alien"),
         (PATTERN_SLOGAN_FREE_TICKET_HOME, "slogan:free-ticket-home"),
         (PATTERN_SLOGAN_GO_HOME, "slogan:go-home"),
         (PATTERN_SLOGAN_PROJECT_HOMECOMING, "slogan:project-homecoming"),
@@ -755,6 +776,12 @@ def tag_text(
     if m := _theme_religion_match(text):
         add("theme:religion", span=m.span())
 
+    # branch:<BRANCH> - military branch subtopics. These are narrower than
+    # topic:military; the parent is enforced below for branch-only aliases.
+    for slug, pat in BRANCH_VOCAB:
+        for m in pat.finditer(text):
+            add(f"branch:{slug}", span=m.span())
+
     if _general_topic_score(text) >= 3:
         add("topic:general")
 
@@ -762,6 +789,10 @@ def tag_text(
     for slug, pat_str in CRIME_VOCAB:
         for m in re.finditer(pat_str, text, re.I):
             add(f"crime:{slug}", span=m.span())
+    for slug, pat_str in HOMICIDE_SUBTYPE_VOCAB:
+        for m in re.finditer(pat_str, text, re.I):
+            add("crime:homicide", span=m.span())
+            add(f"homicide:{slug}", span=m.span())
 
     # origin:<COUNTRY> — validated against the sovereign-state vocab.
     for m in PATTERN_ORIGIN_CANDIDATE.finditer(text):
@@ -827,6 +858,7 @@ def tag_text(
             else:
                 add("video:long")
 
+    _ensure_intrinsic_parent_topics(entries, text, add)
     _maybe_immigration_default(entries, account_category, text, add)
     return entries
 
@@ -849,6 +881,71 @@ def _theme_religion_match(text: str) -> re.Match[str] | None:
 def _general_topic_score(text: str) -> int:
     """Count broad problem domains in a multi-issue / grievance-style post."""
     return sum(1 for _slug, pat in GENERAL_TOPIC_PATTERNS if pat.search(text))
+
+
+INTRINSIC_PARENT_TOPICS_EXACT: dict[str, tuple[str, ...]] = {
+    "action:deportation": ("topic:immigration",),
+    "action:self-deportation": ("topic:immigration",),
+    "action:report-immigrants": ("topic:immigration",),
+    "agency:ICEgov": ("topic:immigration",),
+    "agency:CBP": ("topic:immigration",),
+    "agency:DHSgov": ("topic:immigration",),
+    "agency:HSI_HQ": ("topic:immigration",),
+    "agency:USBPChief": ("topic:immigration",),
+    "frame:criminal": ("topic:immigration",),
+    "shape:lineup": ("topic:immigration",),
+    "subject:angel-family": ("topic:immigration",),
+    "subject:cbp-home-app": ("topic:immigration",),
+    "subject:enforcement-op": ("topic:immigration",),
+    "theme:border": ("topic:immigration",),
+    "theme:cbp-home": ("topic:immigration",),
+    "theme:nativism": ("topic:immigration",),
+    "theme:pop-culture-enforcement": ("topic:immigration",),
+    "theme:sanctuary-cities": ("topic:immigration",),
+    "theme:worksite-enforcement": ("topic:economy", "topic:immigration"),
+    "slogan:criminal-illegal-alien": ("topic:immigration",),
+    "slogan:free-ticket-home": ("topic:immigration",),
+    "slogan:go-home": ("topic:immigration",),
+    "slogan:illegal-alien": ("topic:immigration",),
+    "slogan:project-homecoming": ("topic:immigration",),
+}
+INTRINSIC_PARENT_TOPICS_PREFIXES: tuple[tuple[str, str], ...] = (
+    ("origin:", "topic:immigration"),
+)
+PATTERN_EXPLICIT_IMMIGRATION_TOPIC = _compile(
+    r"\b(immigration|immigrants?|migrants?|asylum|illegal\s+(?:alien|immigrant)s?|"
+    r"undocumented\s+(?:alien|immigrant)s?|border patrol|CBP\s+Home|"
+    r"deport(?:ed|ing|ation)?|removals?)\b"
+)
+
+
+def _ensure_intrinsic_parent_topics(
+    entries: list[dict[str, Any]],
+    text: str,
+    add: Callable[..., None],
+) -> None:
+    """Add broad topic parents implied by narrower deterministic tags."""
+    existing_tags = {str(e["tag"]) for e in entries}
+    if (
+        any(tag.startswith("branch:") for tag in existing_tags)
+        and "topic:military" not in existing_tags
+    ):
+        add("topic:military")
+        existing_tags.add("topic:military")
+    for tag in list(existing_tags):
+        for parent in INTRINSIC_PARENT_TOPICS_EXACT.get(tag, ()):
+            add(parent)
+            existing_tags.add(parent)
+        for prefix, parent in INTRINSIC_PARENT_TOPICS_PREFIXES:
+            if tag.startswith(prefix):
+                add(parent)
+                existing_tags.add(parent)
+    if PATTERN_EXPLICIT_IMMIGRATION_TOPIC.search(text):
+        add("topic:immigration")
+    if any(
+        e["tag"] == "theme:worksite-enforcement" for e in entries
+    ) and "topic:economy" not in existing_tags:
+        add("topic:economy")
 
 
 # Tag names whose presence on a tweet promotes `topic:immigration` from

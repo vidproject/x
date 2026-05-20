@@ -274,11 +274,10 @@ def test_christianity_theme_matches_explicit_christian_language() -> None:
     assert "theme:religion" in tags
 
 
-def test_christianity_theme_matches_civil_religion_phrases() -> None:
-    """Federal accounts rarely say "Christian" out loud, but routinely invoke
-    God / blessings / prayers in identifiably religious framings. The matcher
-    needs to catch those, not just the literal "Christian" / "Jesus" / "Bible"
-    keywords."""
+def test_religion_theme_matches_civil_religion_phrases() -> None:
+    """Federal accounts routinely invoke God / blessings / prayers without
+    explicitly naming Christianity. Those should land in theme:religion without
+    forcing theme:christianity."""
     samples = [
         # Real tweet from DHSgov (id 2056894104106086877) the lexical tagger
         # previously missed entirely.
@@ -286,7 +285,6 @@ def test_christianity_theme_matches_civil_religion_phrases() -> None:
         "GOD BLESS AMERICA AND THE PATRIOTS DEFENDING OUR HOMELAND",
         "Our prayers are with the family.",
         "Praying for the victims and their loved ones.",
-        "In Jesus' name we pray.",
         "Praise be to God.",
         "Sending prayers to everyone affected.",
     ]
@@ -299,8 +297,21 @@ def test_christianity_theme_matches_civil_religion_phrases() -> None:
             account_category="core",
         )
         tags = _tags(out)
-        assert "theme:christianity" in tags, text
         assert "theme:religion" in tags, text
+        assert "theme:christianity" not in tags, text
+
+
+def test_christianity_theme_adds_religion_when_appropriate() -> None:
+    out = tag_text(
+        "In Jesus' name we pray.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    tags = _tags(out)
+    assert "theme:christianity" in tags
+    assert "theme:religion" in tags
 
 
 def test_religion_theme_matches_non_expletive_god_and_religious_terms() -> None:
@@ -325,6 +336,7 @@ def test_religion_theme_ignores_expletive_god_phrases() -> None:
         "oh my god, that was a mess.",
         "God damn it, fix this.",
         "good lord, what a mess.",
+        "Thank god it's Friday.",
     ]
     for text in samples:
         out = tag_text(
@@ -337,6 +349,25 @@ def test_religion_theme_ignores_expletive_god_phrases() -> None:
         tags = _tags(out)
         assert "theme:religion" not in tags, text
         assert "theme:christianity" not in tags, text
+
+
+def test_transgender_theme_matches_gender_identity_and_sports_frames() -> None:
+    samples = [
+        "The order protects women’s sports from biological males competing against women.",
+        "No men in women's sports.",
+        "The agency rescinded gender-identity guidance under Title IX.",
+        "This policy rejects radical gender ideology.",
+        "Transgender athletes remain covered by the guidance.",
+    ]
+    for text in samples:
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="public",
+        )
+        assert "theme:transgender" in _tags(out), text
 
 
 def test_video_kind_tags_only_fire_when_video_present() -> None:
@@ -448,11 +479,52 @@ def test_general_topic_matches_multi_problem_posts() -> None:
     assert "topic:general" in _tags(out)
 
 
+def test_explicit_military_language_emits_military_topic() -> None:
+    out = tag_text(
+        "Military veterans and service members attended the briefing.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    tags = _tags(out)
+    assert "topic:military" in tags
+    assert not any(t.startswith("branch:") for t in tags)
+
+
+def test_military_branch_mentions_emit_branch_and_military_topic() -> None:
+    examples = (
+        ("The Army deployed soldiers overseas.", "branch:army"),
+        ("The Navy honored sailors at the ceremony.", "branch:navy"),
+        ("The USAF recognized airmen for their service.", "branch:air-force"),
+        ("The USSF launched a new mission.", "branch:space-force"),
+        ("The Marine Corps honored Marines today.", "branch:marines"),
+        ("The Coast Guard rescued families after the storm.", "branch:coast-guard"),
+        ("The National Guard deployed today.", "branch:national-guard"),
+    )
+    for text, expected in examples:
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="public",
+        )
+        tags = _tags(out)
+        assert expected in tags, text
+        assert "topic:military" in tags, text
+        assert "topic:immigration" not in tags, text
+
+
 def test_slogan_patterns_fire() -> None:
     for text, expected in (
         ("Have a NICE day, America.", "slogan:nice"),
         ("ICE is targeting the WORST OF THE WORST.", "slogan:worst"),
         ("Report. Recon. Raid. That's the workflow.", "slogan:reportrecon"),
+        ("An illegal alien was arrested today.", "slogan:illegal-alien"),
+        ("ILLEGAL ALIENS should leave now.", "slogan:illegal-alien"),
+        ("A criminal illegal alien was arrested today.", "slogan:criminal-illegal-alien"),
+        ("CRIMINAL ILLEGAL ALIENS were removed today.", "slogan:criminal-illegal-alien"),
         ("FREE TICKET HOME! Sign up for CBP Home today.", "slogan:free-ticket-home"),
         ("Illegal aliens should use CBP Home and go home.", "slogan:go-home"),
         ("PROJECT HOMECOMING is expanding.", "slogan:project-homecoming"),
@@ -461,6 +533,37 @@ def test_slogan_patterns_fire() -> None:
             text, tweet_type="original", mentions=[], media_count=0, account_category="core"
         )
         assert expected in _tags(out), expected
+
+
+def test_criminal_illegal_alien_slogan_also_marks_generic_phrase() -> None:
+    out = tag_text(
+        "A criminal illegal alien was arrested today.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    tags = _tags(out)
+    assert "slogan:criminal-illegal-alien" in tags
+    assert "slogan:illegal-alien" in tags
+    assert "frame:criminal" in tags
+    assert "topic:immigration" in tags
+
+
+def test_intrinsic_immigration_tags_promote_immigration_topic() -> None:
+    for text in (
+        "An illegal alien was arrested today.",
+        "A criminal illegal alien was arrested today.",
+        "PROJECT HOMECOMING gives aliens a free flight home.",
+    ):
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="public",
+        )
+        assert "topic:immigration" in _tags(out), text
 
 
 def test_cbp_home_theme_pairs_with_slogans_and_self_deport_action() -> None:
@@ -566,6 +669,29 @@ def test_genre_statistics_requires_digits_with_keyword() -> None:
         account_category="core",
     )
     assert "genre:statistics" not in _tags(no)
+
+
+def test_homicide_murder_subtype_matches_plain_murder_and_homicide_terms() -> None:
+    samples = [
+        "That murder was absolutely preventable.",
+        "The murder of Stephanie Minter should never have happened.",
+        "The victim was murdered last year.",
+        "The murderer was arrested.",
+        "These murderers cannot hide.",
+        "The suspect was charged with homicide.",
+    ]
+    for text in samples:
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="public",
+        )
+        tags = _tags(out)
+        assert "crime:homicide" in tags, text
+        if "murder" in text.lower():
+            assert "homicide:murder" in tags, text
 
 
 def test_origin_only_fires_for_valid_country() -> None:

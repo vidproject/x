@@ -82,7 +82,10 @@ function tweetContent(row) {
   if (row.card) {
     wrap.append(cardBlock(row.card));
   }
-  wrap.append(tweetText(row), tweetLinks(row), truncationBadge(row));
+  wrap.append(tweetText(row));
+  const links = tweetLinks(row);
+  if (links) wrap.append(links);
+  wrap.append(truncationBadge(row));
   return wrap;
 }
 
@@ -97,15 +100,7 @@ function tweetLinks(row) {
   const div = document.createElement('div');
   div.style.marginTop = '6px';
   div.style.fontSize = '12px';
-  if (row.tweet_id) {
-    const share = document.createElement('a');
-    share.className = 'sp-link';
-    share.href = shareUrlForRow(row);
-    share.textContent = 'Share entry';
-    div.append(share);
-  }
   if (row.tweet_url) {
-    if (div.childElementCount > 0) div.append(' | ');
     const a = document.createElement('a');
     a.className = 'sp-link';
     a.href = row.tweet_url;
@@ -124,7 +119,7 @@ function tweetLinks(row) {
     w.textContent = 'Wayback snapshot';
     div.append(w);
   }
-  return div;
+  return div.childElementCount > 0 ? div : null;
 }
 
 function shareUrlForRow(row) {

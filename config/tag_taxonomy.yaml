@@ -220,13 +220,44 @@ tags:
       least one explicit signal fires.
     classification: deterministic
   topic:economy:
-    description: Jobs, wages, workers, labor markets, business, or economy.
+    description: >-
+      Jobs, wages, workers, labor markets, business, taxes, prices,
+      trade, supply chains, or economy. Also emitted when a narrower
+      always-economic tag fires.
+    classification: deterministic
+  topic:military:
+    description: >-
+      Military, armed forces, veterans, service members, troops,
+      deployments, the Pentagon / DoD, or combat.
     classification: deterministic
   topic:laudatory:
     description: Lists or celebrates accomplishments, wins, or successes.
     classification: deterministic
   topic:general:
     description: Broad or mixed-problem posts that are not a narrower topic.
+    classification: deterministic
+
+  # ===== branch:* - military branch subtopics ========================
+  branch:army:
+    description: References the U.S. Army or soldiers as an Army-specific branch cue.
+    classification: deterministic
+  branch:navy:
+    description: References the U.S. Navy or sailors as a Navy-specific branch cue.
+    classification: deterministic
+  branch:air-force:
+    description: References the U.S. Air Force or airmen as an Air Force-specific branch cue.
+    classification: deterministic
+  branch:space-force:
+    description: References the U.S. Space Force.
+    classification: deterministic
+  branch:marines:
+    description: References the U.S. Marine Corps or Marines.
+    classification: deterministic
+  branch:coast-guard:
+    description: References the U.S. Coast Guard.
+    classification: deterministic
+  branch:national-guard:
+    description: References the National Guard.
     classification: deterministic
 
   # ===== theme:* - rhetorical / ideological frames ==================
@@ -267,6 +298,11 @@ tags:
       References religious language, institutions, faith, prayer,
       blessings, God, scripture, or worship, excluding casual expletive
       uses like "oh my god" or "god damn".
+    classification: deterministic
+  theme:transgender:
+    description: >-
+      References transgender identity, gender-identity policy, or the
+      recurring frame around men or boys in women's or girls' sports.
     classification: deterministic
   theme:cbp-home:
     description: >-
@@ -352,6 +388,16 @@ tags:
     classification: deterministic
     pattern: |
       \bReport\.\s*Recon\.\s*Raid\.
+  slogan:illegal-alien:
+    description: Recurring "illegal alien(s)" phrase.
+    classification: deterministic
+    pattern: |
+      \billegal\s+aliens?\b
+  slogan:criminal-illegal-alien:
+    description: Recurring "criminal illegal alien(s)" phrase.
+    classification: deterministic
+    pattern: |
+      \bcriminal\s+illegal\s+aliens?\b
   slogan:free-ticket-home:
     description: '"Free ticket home" / "free flight home" CBP Home slogan.'
     classification: deterministic
@@ -385,7 +431,7 @@ tags:
 #                        words ("Chad" the name vs Chad the country) by
 #                        requiring a leading capital and adjacent
 #                        comma / "from" / "in".
-#   crime:<TYPE>       — vocabulary: rape, sodomy, murder, burglary,
+#   crime:<TYPE>       — vocabulary: rape, sodomy, murder / homicide, burglary,
 #                        theft, robbery, assault, battery, fentanyl,
 #                        cocaine, methamphetamine, trafficking, DUI,
 #                        DWI, kidnap, child, gang, MS-13,

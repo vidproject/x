@@ -5,11 +5,13 @@ import { exportCsv } from './csv.js';
 import { loadParquetRows } from './parquet.js';
 import { applyToUrl, defaults as defaultState, fromHash } from './state.js';
 import { SEARCH_FIELD_OPTIONS, Store } from './store.js';
+import { initChartsPanel, updateChartsPanel } from './charts.js';
 import {
   openColumnFilterPopup,
   parseVisibleColumns,
   renderColumnsMenu,
   renderTable,
+  setMediaColumnConfig,
   setUserLookup,
 } from './table.js';
 import { closeSidepanel, openSidepanel } from './sidepanel.js';
@@ -23,14 +25,22 @@ const $ = (id) => {
 // --- DOM handles ---
 const els = {
   hdrStats: $('hdr-stats'),
+  filtersBtn: $('filters-btn'),
   colsBtn: $('cols-btn'),
   colsMenu: $('cols-menu'),
   csvBtn: $('csv-btn'),
+  chartsBtn: $('charts-btn'),
+  chartsPanel: $('chartpanel'),
+  chartsClose: $('charts-close'),
+  chartsSummary: $('charts-summary'),
+  chartsStatus: $('charts-status'),
+  chartsCanvas: $('charts-canvas'),
   tipsBtn: $('tips-btn'),
   tips: $('tips'),
   themeBtn: $('theme-btn'),
   themeIcon: $('theme-icon'),
   toolbar: $('toolbar'),
+  filterbar: $('filterbar'),
   searchField: $('search-field'),
   search: $('search'),
   accountFilter: $('account-filter'),
@@ -88,6 +98,89 @@ let colFilters = {};
 let selectedRowId = null;
 /** @type {Set<string>} */
 let expandedThreads = new Set();
+let uiRevealed = false;
+let filterbarVisible = localStorage.getItem('imm-filterbar-visible') !== 'false';
+let mediaSettings = null;
+let mediaPosterBySha = new Map();
+
+initChartsPanel({
+  button: els.chartsBtn,
+  panel: els.chartsPanel,
+  closeBtn: els.chartsClose,
+  canvas: els.chartsCanvas,
+  summary: els.chartsSummary,
+  status: els.chartsStatus,
+  getRows: () => filteredRows,
+  getAllRows: () => store.allRows,
+  categoryOf: (row) => store.categoryOf(row),
+});
+
+const MEDIA_SETTINGS_KEY = 'imm-media-column-settings';
+const MEDIA_THUMB_DEFAULT = 22;
+const MEDIA_THUMB_MIN = 16;
+const MEDIA_THUMB_MAX = 48;
+
+function loadMediaSettings() {
+  let saved = null;
+  try {
+    saved = JSON.parse(localStorage.getItem(MEDIA_SETTINGS_KEY) || 'null');
+  } catch {
+    saved = null;
+  }
+  return normalizeMediaSettings(saved);
+}
+
+function normalizeMediaSettings(value) {
+  const thumbWidth = Number(value?.thumbWidth);
+  const fit = value?.fit === 'vertical' ? 'vertical' : 'horizontal';
+  return {
+    previews: Boolean(value?.previews),
+    thumbWidth: clampThumbWidth(thumbWidth || MEDIA_THUMB_DEFAULT),
+    fit,
+  };
+}
+
+function clampThumbWidth(value) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return MEDIA_THUMB_DEFAULT;
+  return Math.min(MEDIA_THUMB_MAX, Math.max(MEDIA_THUMB_MIN, Math.round(n)));
+}
+
+function applyMediaSettings({ persist = true, rerender = false } = {}) {
+  mediaSettings = normalizeMediaSettings(mediaSettings);
+  document.documentElement.style.setProperty('--media-thumb-size', `${mediaSettings.thumbWidth}px`);
+  document.documentElement.dataset.mediaPreview = mediaSettings.previews ? 'on' : 'off';
+  document.documentElement.dataset.mediaFit = mediaSettings.fit;
+  setMediaColumnConfig({
+    previews: mediaSettings.previews,
+    posterBySha: mediaPosterBySha,
+  });
+  syncMediaControls();
+  if (persist) localStorage.setItem(MEDIA_SETTINGS_KEY, JSON.stringify(mediaSettings));
+  if (rerender) refresh();
+}
+
+function syncMediaControls() {
+  document.documentElement.dataset.mediaPreview = mediaSettings.previews ? 'on' : 'off';
+}
+
+function setFilterbarVisible(next, { persist = true } = {}) {
+  filterbarVisible = Boolean(next);
+  syncFilterbarVisibility();
+  if (persist) {
+    localStorage.setItem('imm-filterbar-visible', filterbarVisible ? 'true' : 'false');
+  }
+}
+
+function syncFilterbarVisibility() {
+  els.filterbar.hidden = !uiRevealed || !filterbarVisible;
+  els.filtersBtn.setAttribute('aria-expanded', filterbarVisible ? 'true' : 'false');
+  els.filtersBtn.setAttribute('aria-pressed', filterbarVisible ? 'true' : 'false');
+}
+
+mediaSettings = loadMediaSettings();
+applyMediaSettings({ persist: false });
+syncFilterbarVisibility();
 
 // --- Theme ---
 function loadTheme() {
@@ -195,13 +288,17 @@ async function loadManifest() {
  * sidecars are normal on a fresh archive; the viewer still works without them.
  */
 async function loadSidecars() {
-  const [tagMap, mediaInsightMap] = await Promise.all([loadLexicalTags(), loadMediaInsights()]);
+  const [tagMap, mediaInsightMap, posterBySha] = await Promise.all([
+    loadLexicalTags(),
+    loadMediaInsights(),
+    loadKeyframePosters(),
+  ]);
   for (const [id, insights] of mediaInsightMap.entries()) {
     for (const insight of insights) {
       if (Array.isArray(insight.tags)) mergeTags(tagMap, id, insight.tags);
     }
   }
-  return { tagMap, mediaInsightMap };
+  return { tagMap, mediaInsightMap, posterBySha };
 }
 
 async function loadLexicalTags() {
@@ -259,6 +356,42 @@ async function loadMediaInsights() {
     }
     return new Map();
   }
+}
+
+async function loadKeyframePosters() {
+  const cacheKey = manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
+  const url = `data/tags/keyframes.parquet${cacheKey}`;
+  try {
+    const rows = await loadParquetRows(url);
+    const map = new Map();
+    for (const row of rows) {
+      if (String(row?.status || '') !== 'ok') continue;
+      const sha = String(row?.media_sha256 || '');
+      if (!sha || map.has(sha)) continue;
+      const poster = posterPathFromFrames(row?.frames);
+      if (poster) map.set(sha, poster);
+    }
+    return map;
+  } catch (err) {
+    const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
+    if (status !== '404') {
+      pushLoadError({
+        resource: url,
+        status: status ? Number(status) : null,
+        kind: 'keyframes',
+        message: err?.message ?? String(err),
+      });
+    }
+    return new Map();
+  }
+}
+
+function posterPathFromFrames(frames) {
+  if (!Array.isArray(frames) || frames.length === 0) return null;
+  const usable = frames.filter((frame) => typeof frame?.path === 'string' && frame.path.length > 0);
+  if (usable.length === 0) return null;
+  const frame = usable[Math.floor(usable.length / 2)];
+  return frame.path.replace(/\\/g, '/').replace(/^\.\//, '');
 }
 
 function mergeTags(map, id, tags) {
@@ -526,7 +659,9 @@ async function loadAllAccounts(sidecarsPromise) {
   sidecarsPromise.then((sidecars) => {
     tagMap = sidecars.tagMap;
     mediaInsightMap = sidecars.mediaInsightMap;
+    mediaPosterBySha = sidecars.posterBySha;
     sidecarsResolved = true;
+    applyMediaSettings({ persist: false });
     applySidecars();
     refresh();
   });
@@ -643,8 +778,10 @@ els.loadErrorsClose.addEventListener('click', () => {
 });
 
 function revealUi() {
+  uiRevealed = true;
   els.empty.hidden = true;
   els.toolbar.hidden = false;
+  syncFilterbarVisibility();
   els.resultBar.hidden = false;
   els.tableWrap.hidden = false;
   els.pager.hidden = false;
@@ -661,6 +798,10 @@ els.dateTo.value = urlState.to;
 els.tweetType.value = urlState.type;
 els.mediaType.value = urlState.media;
 els.pageSize.value = String(urlState.size);
+
+els.filtersBtn.addEventListener('click', () => {
+  setFilterbarVisible(!filterbarVisible);
+});
 
 let searchDebounce;
 els.searchField.addEventListener('change', () => {
@@ -938,16 +1079,31 @@ function refresh() {
           applyToUrl(urlState);
           refresh();
         },
+        mediaSettings,
+        onMediaSettingsChange: (next) => {
+          mediaSettings = normalizeMediaSettings({ ...mediaSettings, ...next });
+          applyMediaSettings({ rerender: true });
+        },
       }),
     onToggleThread: (threadId) => {
+      const beforeX = window.scrollX;
+      const beforeY = window.scrollY;
+      const tableScrollLeft = els.tableWrap.scrollLeft;
+      const tableScrollTop = els.tableWrap.scrollTop;
       if (expandedThreads.has(threadId)) expandedThreads.delete(threadId);
       else expandedThreads.add(threadId);
       refresh();
+      requestAnimationFrame(() => {
+        window.scrollTo(beforeX, beforeY);
+        els.tableWrap.scrollLeft = tableScrollLeft;
+        els.tableWrap.scrollTop = tableScrollTop;
+      });
     },
   });
 
   openSharedEntryFromUrl();
   refreshSelectionHighlight();
+  updateChartsPanel();
 }
 
 function openSharedEntryFromUrl() {
