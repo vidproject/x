@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+from typing import Any
+
 from scripts.describe_media import describe_media_item, input_hash_for
 
 
-def _tweet() -> dict:
+def _tweet() -> dict[str, Any]:
     return {
         "tweet_id": "1234567890123456789",
         "account_handle": "DHSgov",

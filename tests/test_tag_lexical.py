@@ -9,11 +9,13 @@ doesn't have to grow proportionally.
 
 from __future__ import annotations
 
+from typing import Any
+
 from scripts.tag_lexical import tag_text
 
 
-def _tags(out: list[dict]) -> set[str]:
-    return {e["tag"] for e in out}
+def _tags(out: list[dict[str, Any]]) -> set[str]:
+    return {str(e["tag"]) for e in out}
 
 
 def test_format_tags_derive_from_tweet_type() -> None:
