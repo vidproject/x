@@ -4,7 +4,7 @@
  * Owns the capture pipeline: receives `graphql-capture` messages from the
  * content script, normalizes them, accumulates per-handle run buffers in
  * `browser.storage.local`, and commits them to the configured GitHub repo
- * via the Contents API.
+ * via the Git Data API.
  *
  * Service workers in MV3 may be evicted at any time, so all critical state
  * lives in storage (never module-scope). On every wake we re-derive what we
@@ -39,6 +39,7 @@ import {
   getAccounts,
   getAccountsRefreshedAt,
   getActivity,
+  getArchiveSnapshot,
   getAutoScrollSession,
   getCommittedIndex,
   getConnection,
@@ -59,6 +60,7 @@ import {
   refetchQueueTotal,
   setAccounts,
   setAccountsRefreshedAt,
+  setArchiveSnapshot,
   setAutoScrollSession,
   setBufferedCount,
   setCommittedIndex,
@@ -72,6 +74,7 @@ import {
 import type {
   CanonicalTweet,
   CapturePayload,
+  ArchiveSnapshot,
   ConnectionState,
   ExtensionState,
   LogEvent,
@@ -84,10 +87,16 @@ import type {
 import { parseAccountsYaml } from './lib/yaml.js';
 
 const EXT_VERSION = browser.runtime.getManifest().version;
+const MANUAL_CAPTURE_WINDOW_MS = 90_000;
+let manualCaptureUntilMs = 0;
 
 setBroadcaster((ev: LogEvent) => {
   browser.runtime.sendMessage({ type: 'log-event', event: ev }).catch(() => {});
 });
+
+function allowManualCaptureWindow(): void {
+  manualCaptureUntilMs = Date.now() + MANUAL_CAPTURE_WINDOW_MS;
+}
 
 // --- Wake handlers --------------------------------------------------------
 
@@ -237,11 +246,15 @@ function armAutoScrollTimer(intervalSec: number): void {
 }
 
 async function startAutoScrollLoop(): Promise<void> {
+  allowManualCaptureWindow();
   const s = await getSettings();
   await setAutoScrollSession({
     startedAt: new Date().toISOString(),
     scrollCount: 0,
     ingestedCount: 0,
+    ingestedNewCount: 0,
+    ingestedExistingCount: 0,
+    skippedOldCount: 0,
     expandedCount: 0,
   });
   armAutoScrollTimer(s.autoScrollIntervalSec);
@@ -553,6 +566,17 @@ async function onGraphqlCapture(
   if (PROFILE_ENDPOINTS.has(endpoint)) return; // not tweet-bearing
   if (!TWEET_ENDPOINTS.has(endpoint)) return;
 
+  const settings = await getSettings();
+  if (settings.enabled === false) return;
+  if (settings.autoCapture === false) {
+    const explicitCaptureActive =
+      Date.now() < manualCaptureUntilMs ||
+      (await getAutoScrollSession()) !== null ||
+      (await getRefetchSession()) !== null ||
+      (await getMediaCrawlSession()) !== null;
+    if (!explicitCaptureActive) return;
+  }
+
   const accounts = await getAccounts();
   // We deliberately do NOT short-circuit when the PAT is missing. The
   // normalize step is cheap, the buffer survives service-worker eviction,
@@ -713,16 +737,24 @@ async function onGraphqlCapture(
   // refresh like / RT counts. New tweets and truncated→full refetches
   // still flow through normally because they aren't in the index yet
   // (or carry an is_truncated transition that fails the sig check).
-  const settings = await getSettings();
   const updateExisting = settings.updateExisting !== false;
   const committedIdx = await getCommittedIndex();
+  const archiveSnapshot = await getArchiveSnapshot();
   let dedupedSkipped = 0;
-  let skippedNoUpdate = 0;
+  let skippedNoUpdateLocal = 0;
+  let skippedNoUpdateSnapshot = 0;
+  let oldFromSnapshot = 0;
   const liveTweets: typeof normalized.tweets = [];
+  const freshnessById = new Map<string, 'new' | 'existing'>();
   for (const t of normalized.tweets) {
     const prev = committedIdx[t.account_handle]?.[t.tweet_id];
-    if (prev && !updateExisting) {
-      skippedNoUpdate += 1;
+    const oldBySnapshot = !prev && archiveSnapshotHasTweet(t, archiveSnapshot);
+    const previouslyArchived = Boolean(prev) || oldBySnapshot;
+    freshnessById.set(t.tweet_id, previouslyArchived ? 'existing' : 'new');
+    if (oldBySnapshot) oldFromSnapshot += 1;
+    if (previouslyArchived && !updateExisting) {
+      if (prev) skippedNoUpdateLocal += 1;
+      else skippedNoUpdateSnapshot += 1;
       continue;
     }
     const sig = engagementSig(
@@ -745,11 +777,27 @@ async function onGraphqlCapture(
       remaining: liveTweets.length,
     });
   }
-  if (skippedNoUpdate > 0) {
-    await info('dedup: skipped previously-committed tweets (updateExisting=false)', {
+  if (skippedNoUpdateLocal + skippedNoUpdateSnapshot > 0) {
+    const skippedOld = skippedNoUpdateLocal + skippedNoUpdateSnapshot;
+    await info('dedup: skipped previously archived tweets (updateExisting=false)', {
       endpoint,
-      skipped: skippedNoUpdate,
+      skipped: skippedOld,
+      local_index: skippedNoUpdateLocal,
+      archive_snapshot: skippedNoUpdateSnapshot,
       remaining: liveTweets.length,
+    });
+    const asSess = await getAutoScrollSession();
+    if (asSess !== null) {
+      asSess.skippedOldCount = (asSess.skippedOldCount ?? 0) + skippedOld;
+      await setAutoScrollSession(asSess);
+    }
+  }
+  if (oldFromSnapshot > 0 && updateExisting) {
+    await info('archive snapshot recognized old tweets', {
+      endpoint,
+      old: oldFromSnapshot,
+      action: 'buffering because updateExisting=true',
+      snapshot_generated_at: archiveSnapshot?.generated_at ?? null,
     });
   }
   // --- Missing-parent recovery ----------------------------------------
@@ -774,6 +822,9 @@ async function onGraphqlCapture(
   for (const [handle, tweets] of byHandle) {
     const buf = await ensureRunBuffer(handle, capturedAt, url, endpoint);
     let added = 0;
+    let addedNew = 0;
+    let addedExisting = 0;
+    let updatedBuffered = 0;
     for (const t of tweets) {
       const existing = buf.tweets_by_id[t.tweet_id];
       if (existing) {
@@ -791,10 +842,13 @@ async function onGraphqlCapture(
         if (snap && (!last || last.captured_at !== snap.captured_at)) {
           existing.engagement_history.push(snap);
         }
+        updatedBuffered += 1;
       } else {
         const stamped: CanonicalTweet = { ...t, capture_run_id: buf.run_id };
         buf.tweets_by_id[t.tweet_id] = stamped;
         added += 1;
+        if (freshnessById.get(t.tweet_id) === 'existing') addedExisting += 1;
+        else addedNew += 1;
       }
       if (!buf.tweet_ids_observed.includes(t.tweet_id)) {
         buf.tweet_ids_observed.push(t.tweet_id);
@@ -807,11 +861,14 @@ async function onGraphqlCapture(
       handle,
       Object.keys(buf.tweets_by_id).length + Object.keys(buf.unavailable_by_id ?? {}).length
     );
-    if (added > 0) {
-      await info('captured tweets', {
+    if (added > 0 || updatedBuffered > 0) {
+      await info('buffered tweets', {
         handle,
         endpoint,
         added,
+        new: addedNew,
+        existing: addedExisting,
+        updated_buffered: updatedBuffered,
         total: Object.keys(buf.tweets_by_id).length,
       });
       // Bump the auto-scroll progress so the user sees "X ingested" tick up
@@ -819,6 +876,9 @@ async function onGraphqlCapture(
       const asSess = await getAutoScrollSession();
       if (asSess !== null) {
         asSess.ingestedCount += added;
+        asSess.ingestedNewCount = (asSess.ingestedNewCount ?? 0) + addedNew;
+        asSess.ingestedExistingCount =
+          (asSess.ingestedExistingCount ?? 0) + addedExisting;
         await setAutoScrollSession(asSess);
       }
     }
@@ -1336,6 +1396,7 @@ async function clearCommittedTweetsFromBuffer(item: FlushItem): Promise<number> 
 // --- Capture-now / capture-all -------------------------------------------
 
 async function captureNow(handle: string): Promise<void> {
+  allowManualCaptureWindow();
   // Land on the Replies tab so X fetches via UserTweetsAndReplies — that
   // endpoint returns both top-level posts and replies, which is the superset
   // we want for the archive. The plain `/<handle>` URL hits UserTweets,
@@ -1378,6 +1439,7 @@ async function captureAll(): Promise<void> {
  * that don't map cleanly to one of the configured handles.
  */
 async function captureThisPage(): Promise<void> {
+  allowManualCaptureWindow();
   let tabs: browser.tabs.Tab[];
   try {
     tabs = await browser.tabs.query({ active: true, currentWindow: true });
@@ -1458,6 +1520,7 @@ async function setRefetchTabId(id: number | null): Promise<void> {
 }
 
 async function startRefetchLoop(): Promise<void> {
+  allowManualCaptureWindow();
   const total = await refetchQueueTotal();
   if (total === 0) {
     await info('refetch: nothing queued');
@@ -1621,6 +1684,7 @@ async function setMediaCrawlTabId(id: number | null): Promise<void> {
 }
 
 async function startMediaCrawlLoop(): Promise<void> {
+  allowManualCaptureWindow();
   const total = await mediaCrawlQueueTotal();
   if (total === 0) {
     await info('media-crawl: nothing queued');
@@ -1856,6 +1920,10 @@ async function verifyConnection(force: boolean): Promise<void> {
     if (settings.branch && settings.branch !== r.default_branch) {
       branchOk = await client.branchExists(settings.branch);
     }
+    const checkWrite = force || isWriteAuthError(conn.error);
+    if (branchOk && checkWrite) {
+      await client.verifyWriteAccess();
+    }
     await setConnection({
       status: 'ok',
       login: r.login,
@@ -1871,6 +1939,7 @@ async function verifyConnection(force: boolean): Promise<void> {
       default_branch: r.default_branch,
       configured_branch: settings.branch,
       configured_branch_exists: branchOk,
+      write_access: checkWrite ? 'checked' : 'not_checked',
     });
     if (!branchOk) {
       await warn('configured branch does not exist on remote', {
@@ -1950,12 +2019,34 @@ async function refreshAccountsList(force: boolean): Promise<void> {
       return;
     }
     await setAccounts(parsed);
+    await refreshArchiveSnapshot(client, force);
     await setAccountsRefreshedAt(new Date().toISOString());
     if (force) await info('accounts list refreshed', { count: parsed.length });
   } catch (err) {
     await warn('refresh accounts failed; keeping current list', describeError(err));
   }
   await broadcastState();
+}
+
+async function refreshArchiveSnapshot(client: GitHubClient, force: boolean): Promise<void> {
+  const text = await client.fetchRawText('data/manifest.json');
+  if (!text) {
+    await setArchiveSnapshot(null);
+    if (force) await warn('archive manifest not found; old-tweet detection disabled');
+    return;
+  }
+  try {
+    const snapshot = parseArchiveSnapshot(JSON.parse(text) as unknown);
+    await setArchiveSnapshot(snapshot);
+    if (force) {
+      await info('archive snapshot refreshed', {
+        accounts: Object.keys(snapshot.accounts).length,
+        generated_at: snapshot.generated_at,
+      });
+    }
+  } catch (err) {
+    await warn('archive snapshot parse failed; old-tweet detection disabled', describeError(err));
+  }
 }
 
 // --- State broadcast -----------------------------------------------------
@@ -1994,6 +2085,9 @@ async function buildState(): Promise<ExtensionState> {
       tabCount,
       scrollCount: autoScrollSess?.scrollCount ?? 0,
       ingestedCount: autoScrollSess?.ingestedCount ?? 0,
+      ingestedNewCount: autoScrollSess?.ingestedNewCount ?? 0,
+      ingestedExistingCount: autoScrollSess?.ingestedExistingCount ?? 0,
+      skippedOldCount: autoScrollSess?.skippedOldCount ?? 0,
       expandedCount: autoScrollSess?.expandedCount ?? 0,
     },
     refetchQueue: {
@@ -2024,6 +2118,46 @@ function redactSettings(s: Settings): ExtensionState['settings'] {
     patSet: s.pat.length > 0,
     patSuffix: s.pat.length >= 4 ? s.pat.slice(-4) : '',
   };
+}
+
+function parseArchiveSnapshot(raw: unknown): ArchiveSnapshot {
+  if (!raw || typeof raw !== 'object') throw new Error('manifest is not an object');
+  const manifest = raw as { generated_at?: unknown; accounts?: unknown };
+  if (!Array.isArray(manifest.accounts)) throw new Error('manifest.accounts is not an array');
+  const accounts: ArchiveSnapshot['accounts'] = {};
+  for (const entry of manifest.accounts) {
+    if (!entry || typeof entry !== 'object') continue;
+    const row = entry as Record<string, unknown>;
+    const handle = typeof row.handle === 'string' ? row.handle : '';
+    if (!handle || handle === '_misc') continue;
+    accounts[handle.toLowerCase()] = {
+      handle,
+      latest_post_at: typeof row.latest_post_at === 'string' ? row.latest_post_at : null,
+      latest_capture_at: typeof row.latest_capture_at === 'string' ? row.latest_capture_at : null,
+      row_count: typeof row.row_count === 'number' ? row.row_count : null,
+    };
+  }
+  return {
+    generated_at: typeof manifest.generated_at === 'string' ? manifest.generated_at : null,
+    fetched_at: new Date().toISOString(),
+    accounts,
+  };
+}
+
+function archiveSnapshotHasTweet(t: CanonicalTweet, snapshot: ArchiveSnapshot | null): boolean {
+  if (!snapshot) return false;
+  const entry = snapshot.accounts[t.account_handle.toLowerCase()];
+  if (!entry?.latest_post_at) return false;
+  const posted = Date.parse(t.posted_at);
+  const latest = Date.parse(entry.latest_post_at);
+  return Number.isFinite(posted) && Number.isFinite(latest) && posted <= latest;
+}
+
+function isWriteAuthError(message: string | null): boolean {
+  return (
+    typeof message === 'string' &&
+    /Resource not accessible by personal access token|\/git\/blobs|\/git\/refs/i.test(message)
+  );
 }
 
 function isoCompact(iso: string): string {

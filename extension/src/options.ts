@@ -11,6 +11,7 @@ import {
   clearAll,
   getAccounts,
   getActivity,
+  getArchiveSnapshot,
   getConnection,
   getCounters,
   getRunBuffers,
@@ -47,6 +48,13 @@ async function send<T>(msg: RuntimeMessage): Promise<T> {
 function setStatus(el: HTMLElement, kind: 'ok' | 'err' | 'warn' | '', msg: string): void {
   el.className = kind ? `status ${kind}` : 'status';
   el.textContent = msg;
+}
+
+function isWriteAuthError(message: string | null): boolean {
+  return (
+    typeof message === 'string' &&
+    /Resource not accessible by personal access token|\/git\/blobs|\/git\/refs/i.test(message)
+  );
 }
 
 async function loadSettings(): Promise<void> {
@@ -121,7 +129,13 @@ form.addEventListener('submit', async (e: Event) => {
   if (conn.status === 'ok') {
     setStatus(saveStatus, 'ok', `Connected as @${conn.login ?? '?'}.`);
   } else if (conn.status === 'auth-error') {
-    setStatus(saveStatus, 'err', 'Auth failed — check the PAT and its repo scope.');
+    setStatus(
+      saveStatus,
+      'err',
+      isWriteAuthError(conn.error)
+        ? 'PAT can read this repo but cannot write. Set Contents: Read & Write.'
+        : 'Auth failed - check the PAT and its repo scope.'
+    );
   } else if (conn.status === 'rate-limited') {
     setStatus(saveStatus, 'warn', 'Rate-limited — token is valid but GitHub is throttling.');
   } else if (conn.status === 'network-error') {
@@ -158,13 +172,14 @@ refreshBtn.addEventListener('click', async () => {
 });
 
 async function refreshDiag(): Promise<void> {
-  const [settings, conn, accounts, counters, buffers, activity] = await Promise.all([
+  const [settings, conn, accounts, counters, buffers, activity, archiveSnapshot] = await Promise.all([
     getSettings(),
     getConnection(),
     getAccounts(),
     getCounters(),
     getRunBuffers(),
     getActivity(),
+    getArchiveSnapshot(),
   ]);
   const redactedBuffers = Object.fromEntries(
     Object.entries(buffers).map(([k, b]) => [
@@ -188,6 +203,7 @@ async function refreshDiag(): Promise<void> {
       repo: settings.repo,
       branch: settings.branch,
       autoCapture: settings.autoCapture,
+      updateExisting: settings.updateExisting,
       configuredAt: settings.configuredAt,
       patSet: settings.pat.length > 0,
       patSuffix: settings.pat.length >= 4 ? settings.pat.slice(-4) : '',
@@ -195,6 +211,13 @@ async function refreshDiag(): Promise<void> {
     connection: conn,
     accounts,
     counters,
+    archiveSnapshot: archiveSnapshot
+      ? {
+          generated_at: archiveSnapshot.generated_at,
+          fetched_at: archiveSnapshot.fetched_at,
+          accounts: Object.keys(archiveSnapshot.accounts).length,
+        }
+      : null,
     runBuffers: redactedBuffers,
     activity_tail_size: activity.length,
     activity_recent: activity.slice(0, 30),

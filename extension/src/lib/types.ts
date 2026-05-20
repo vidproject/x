@@ -78,6 +78,19 @@ export interface ConnectionState {
   rateLimitResetAt: number | null;
 }
 
+export interface ArchiveSnapshotAccount {
+  handle: string;
+  latest_post_at: string | null;
+  latest_capture_at: string | null;
+  row_count: number | null;
+}
+
+export interface ArchiveSnapshot {
+  generated_at: string | null;
+  fetched_at: string;
+  accounts: Record<string, ArchiveSnapshotAccount>;
+}
+
 export interface MediaItem {
   media_id: string;
   media_type: 'photo' | 'video' | 'animated_gif';
@@ -310,6 +323,12 @@ export interface AutoScrollProgress {
   scrollCount: number;
   /** Tweets ingested across all handles since the user clicked "Start". */
   ingestedCount: number;
+  /** Buffered tweets not recognized as already present in the archive. */
+  ingestedNewCount: number;
+  /** Buffered tweets recognized as already present in the archive. */
+  ingestedExistingCount: number;
+  /** Old/archive tweets skipped because updateExisting=false. */
+  skippedOldCount: number;
   /** "Show more" links clicked since the user clicked "Start". */
   expandedCount: number;
 }

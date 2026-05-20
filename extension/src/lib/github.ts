@@ -101,6 +101,23 @@ export class GitHubClient {
   }
 
   /**
+   * Verify the PAT can write to the configured branch without creating a
+   * commit. Moving a ref to its current SHA is a no-op, but GitHub still
+   * enforces the Contents: Write permission required by commitFiles().
+   */
+  async verifyWriteAccess(): Promise<void> {
+    const head = await this.getBranchHead();
+    await this.fetchJson(
+      'PATCH',
+      `/repos/${this.settings.owner}/${this.settings.repo}/git/refs/heads/${encodePath(this.settings.branch)}`,
+      {
+        sha: head.sha,
+        force: false,
+      }
+    );
+  }
+
+  /**
    * Fetch a text file from raw.githubusercontent.com authenticated with the
    * PAT. Returns null if the file doesn't exist. Used for config/accounts.yaml.
    */

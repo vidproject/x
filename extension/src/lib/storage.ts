@@ -3,6 +3,7 @@ import { decryptPat, encryptPat, isEncryptedPat } from './crypto.js';
 import type {
   AccountConfig,
   AccountCounter,
+  ArchiveSnapshot,
   CanonicalTweet,
   ConnectionState,
   LogEvent,
@@ -58,6 +59,9 @@ export interface AutoScrollSession {
   startedAt: string;
   scrollCount: number;
   ingestedCount: number;
+  ingestedNewCount: number;
+  ingestedExistingCount: number;
+  skippedOldCount: number;
   expandedCount: number;
 }
 
@@ -68,6 +72,7 @@ interface StorageShape {
    * Used by `refreshAccountsList` to skip re-fetching on every SW wake — the
    * file changes rarely and an authenticated raw fetch every wake adds up. */
   accountsRefreshedAt: string | null;
+  archiveSnapshot: ArchiveSnapshot | null;
   connection: ConnectionState;
   counters: Record<string, AccountCounter>;
   runBuffers: Record<string, RunBuffer>;
@@ -100,6 +105,7 @@ const DEFAULTS: StorageShape = {
   settings: { ...DEFAULT_SETTINGS },
   accounts: [...FALLBACK_ACCOUNTS],
   accountsRefreshedAt: null,
+  archiveSnapshot: null,
   connection: { ...DEFAULT_CONNECTION },
   counters: {},
   runBuffers: {},
@@ -172,6 +178,16 @@ export async function getAccountsRefreshedAt(): Promise<string | null> {
 }
 export async function setAccountsRefreshedAt(iso: string | null): Promise<void> {
   await setRaw('accountsRefreshedAt', iso);
+}
+
+// --- Archive snapshot ----------------------------------------------------
+
+export async function getArchiveSnapshot(): Promise<ArchiveSnapshot | null> {
+  return getRaw('archiveSnapshot');
+}
+
+export async function setArchiveSnapshot(snapshot: ArchiveSnapshot | null): Promise<void> {
+  await setRaw('archiveSnapshot', snapshot);
 }
 
 // --- Connection state ----------------------------------------------------

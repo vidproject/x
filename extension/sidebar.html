@@ -53,10 +53,10 @@
       </label>
       <label
         class="toggle"
-        title="When off, tweets already in the archive are skipped — saves bandwidth and GitHub API calls but stops engagement-history snapshots from growing."
+        title="When off, tweets already in the archive are skipped using the local index plus the repo manifest high-water mark. Saves extension work and GitHub API calls, but stops engagement-history snapshots from growing."
       >
         <input type="checkbox" id="update-existing" />
-        <span>Update tweets already in the archive</span>
+        <span>Update old tweets already in the archive</span>
       </label>
       <div class="row scroll-rate" id="scroll-rate-row">
         <label class="rate-lbl" for="auto-scroll-interval">Tick every</label>

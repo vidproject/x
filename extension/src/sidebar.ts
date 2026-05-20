@@ -75,7 +75,9 @@ function setConnStatus(state: ExtensionState): void {
     text = `Connected as @${connection.login ?? '?'} to ${settings.owner}/${settings.repo} · …${settings.patSuffix}`;
   } else if (connection.status === 'auth-error') {
     cls = 'err';
-    text = `Auth error — check your PAT`;
+    text = isWriteAuthError(connection.error)
+      ? 'PAT can read repo but cannot write - set Contents: Read & Write'
+      : 'Auth error - check your PAT';
   } else if (connection.status === 'rate-limited') {
     cls = 'warn';
     const resets = fmtRateLimitReset(connection.rateLimitResetAt);
@@ -129,6 +131,13 @@ function fmtRateLimitReset(epochSec: number | null): string {
 
 function fmtNum(n: number): string {
   return n.toLocaleString('en-US');
+}
+
+function isWriteAuthError(message: string | null): boolean {
+  return (
+    typeof message === 'string' &&
+    /Resource not accessible by personal access token|\/git\/blobs|\/git\/refs/i.test(message)
+  );
 }
 
 function renderAccounts(state: ExtensionState): void {
@@ -321,10 +330,14 @@ function paintAutoScroll(state: ExtensionState): void {
   }
   if (as.active || as.scrollCount > 0 || as.ingestedCount > 0) {
     autoScrollProgress.hidden = false;
-    autoScrollProgress.textContent =
-      `${fmtNum(as.scrollCount)} scrolls · ` +
-      `${fmtNum(as.ingestedCount)} tweets ingested · ` +
-      `${fmtNum(as.expandedCount)} expanded`;
+    const parts = [
+      `${fmtNum(as.scrollCount)} scrolls`,
+      `${fmtNum(as.ingestedNewCount)} new buffered`,
+      `${fmtNum(as.ingestedExistingCount)} old buffered`,
+    ];
+    if (as.skippedOldCount > 0) parts.push(`${fmtNum(as.skippedOldCount)} old skipped`);
+    parts.push(`${fmtNum(as.expandedCount)} expanded`);
+    autoScrollProgress.textContent = parts.join(' · ');
     autoScrollProgress.className = as.active ? 'progress on' : 'progress';
   } else {
     autoScrollProgress.hidden = true;
