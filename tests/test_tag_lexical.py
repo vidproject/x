@@ -299,6 +299,66 @@ def test_christianity_theme_matches_civil_religion_phrases() -> None:
         assert "theme:christianity" in _tags(out), text
 
 
+def test_video_kind_tags_only_fire_when_video_present() -> None:
+    """video:* kind tags are gated on the tweet having at least one video
+    media item. Text matches alone do not earn the tag."""
+    text_only = tag_text(
+        "Watch the new bodycam footage from yesterday's raid.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+        video_count=0,
+    )
+    assert "video:bodycam" not in _tags(text_only)
+
+    with_video = tag_text(
+        "Watch the new bodycam footage from yesterday's raid.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        video_count=1,
+        video_max_duration_sec=42.0,
+    )
+    tags = _tags(with_video)
+    assert "video:bodycam" in tags
+    assert "video:medium" in tags  # 30 < 42 ≤ 120
+
+
+def test_video_duration_buckets() -> None:
+    short = tag_text(
+        "video",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        video_count=1,
+        video_max_duration_sec=15.0,
+    )
+    medium = tag_text(
+        "video",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        video_count=1,
+        video_max_duration_sec=90.0,
+    )
+    long_video = tag_text(
+        "video",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        video_count=1,
+        video_max_duration_sec=300.0,
+    )
+    assert "video:short" in _tags(short)
+    assert "video:medium" in _tags(medium)
+    assert "video:long" in _tags(long_video)
+
+
 def test_unavailable_copyright_status_tags() -> None:
     out = tag_text(
         "",

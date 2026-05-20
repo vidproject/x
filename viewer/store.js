@@ -446,6 +446,19 @@ function valueOf(row, key) {
   if (key === 'media_description') {
     return mediaInsightText(row);
   }
+  if (key === 'video_duration') {
+    // Mirrors viewer/table.js#videoDurationSeconds. Kept here so the
+    // store-side sort doesn't need to import from the rendering module.
+    const media = Array.isArray(row.media) ? row.media : [];
+    let max = 0;
+    for (const m of media) {
+      if (!m) continue;
+      if (m.media_type !== 'video' && m.media_type !== 'animated_gif') continue;
+      const d = Number(m.duration_sec);
+      if (Number.isFinite(d) && d > max) max = d;
+    }
+    return max;
+  }
   return row[key];
 }
 

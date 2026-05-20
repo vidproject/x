@@ -467,6 +467,66 @@ PATTERN_THEME_CHRISTIANITY = _compile(
     r"|\bsending\s+prayers\b"
     r"|\bkeep\s+(?:them|him|her|us|you)\s+in\s+(?:our|your|my)\s+prayers\b"
 )
+# --- video:<kind> --------------------------------------------------------
+#
+# Video-nature heuristics. Federal accounts post a few recognizable
+# species: bodycam / raid footage, polished PSAs and ad spots, music
+# videos set to enforcement footage, news-clip embeds, sit-down
+# interviews. The viewer wants to filter by these. We tag from the tweet
+# body (and OCR overlay when available) — the gate in `tag_text` only
+# applies these tags when the tweet actually has a video attached, so
+# textual matches on a text-only retweet don't pollute the namespace.
+
+PATTERN_VIDEO_BODYCAM = _compile(
+    r"\bbody[- ]?cam(?:era)?\b"
+    r"|\b(?:bwc|body-worn\s+camera)\b"
+    r"|\b(?:ice|cbp|hsi|border\s+patrol)\s+(?:raid|arrest|operation|takedown|sting)\b.{0,80}\b(?:footage|video|clip|caught\s+on)\b"
+    r"|\b(?:raid|arrest|takedown|sting|chase|pursuit)\s+footage\b"
+    r"|\bcaught\s+on\s+(?:camera|video|tape)\b"
+)
+PATTERN_VIDEO_INTERVIEW = _compile(
+    r"\binterview(?:ed|ing|s)?\s+(?:with|on|about|by)\b"
+    r"|\b(?:sit[- ]down|one[- ]on[- ]one)\s+(?:with|interview)\b"
+    r"|\b(?:full|exclusive|extended)\s+interview\b"
+    r"|\b(?:secretary|director|administrator|chief|spokesperson|senator|representative|congressman|congresswoman|press\s+secretary)\s+\w+\s+(?:joins?|joined|spoke|speaks|sat\s+down)\b"
+    r"|\b(?:joins?|joined)\s+(?:fox|cnn|msnbc|cbs|abc|nbc|newsmax|oan|cspan|c-span|newsnation|the\s+\w+\s+show)\b"
+)
+PATTERN_VIDEO_MUSIC_VIDEO = _compile(
+    r"\bmusic\s+video\b"
+    r"|\bset\s+to\s+(?:music|the\s+song|the\s+track)\b"
+    r"|\b(?:🎵|🎶)\b"
+    r"|\b(?:song|anthem|ballad)\s+(?:by|about|for)\b"
+    r"|\btrack\s+by\b"
+)
+PATTERN_VIDEO_NEWS_CLIP = _compile(
+    r"\b(?:fox\s+(?:news|business)|cnn|msnbc|cbs|abc|nbc|newsmax|oan|cspan|c-span|newsnation|"
+    r"the\s+\w+\s+report|the\s+\w+\s+show|nightly\s+news|morning\s+joe|hannity|tucker|maddow|"
+    r"reuters|bloomberg|wsj|wall\s+street\s+journal|new\s+york\s+times|washington\s+post|"
+    r"daily\s+wire|breitbart)\b"
+    r"|\bvia\s+@?(?:foxnews|cnn|msnbc|cbsnews|abcnews|nbcnews)\b"
+    r"|\b(?:reporting|reports|reported)\s+(?:on|that|from)\b"
+)
+PATTERN_VIDEO_PSA = _compile(
+    r"\b(?:psa|public\s+service\s+announcement)\b"
+    r"|\b(?:learn\s+more|find\s+out\s+more|more\s+info|visit\s+(?:our\s+)?website)\s+at\b"
+    r"|\bdid\s+you\s+know(?:\s+that)?\b"
+    r"|\b(?:know\s+(?:your\s+rights|the\s+facts|the\s+signs)|protect\s+yourself|stay\s+safe|"
+    r"report\s+(?:a|suspicious))\b"
+    r"|\bcall\s+(?:1-?800|1-?888|1-?877|1-?866)[- ]?\d"
+)
+PATTERN_VIDEO_SPEECH = _compile(
+    r"\b(?:gives|delivers|delivered|gave|giving|delivering)\s+(?:a\s+)?(?:speech|address|remarks|statement)\b"
+    r"|\b(?:remarks|speech|statement|address)\s+(?:by|from|at|to|on)\b"
+    r"|\b(?:press\s+(?:conference|briefing|gaggle))\b"
+    r"|\b(?:oval\s+office|rose\s+garden|east\s+room|state\s+dining\s+room)\b"
+)
+PATTERN_VIDEO_AD = _compile(
+    r"\b(?:new\s+(?:ad|advert|spot|commercial))\b"
+    r"|\b(?:campaign|recruitment)\s+(?:ad|spot|video)\b"
+    r"|\bjoin\s+(?:ice|cbp|hsi|the\s+(?:ice|cbp)\s+(?:team|family))\b"
+    r"|\bapply\s+(?:today|now)\s+at\b"
+)
+
 PATTERN_STATUS_COPYRIGHT_REMOVAL = _compile(r"\b(copyright|dmca)\b")
 PATTERN_SLOGAN_NICE = _compile(r"\b(NICE day|NICE morning|ICE is NICE|NICE city)\b")
 PATTERN_SLOGAN_WORST = _compile(r"\bWORST OF THE WORST\b")
@@ -518,6 +578,8 @@ def tag_text(
     ocr_text: str = "",
     is_unavailable: bool = False,
     unavailable_text: str = "",
+    video_count: int = 0,
+    video_max_duration_sec: float | None = None,
 ) -> list[dict[str, Any]]:
     """Apply every deterministic rule to a single tweet, returning a
     list of tag-entry dicts in the shape expected by
@@ -655,6 +717,36 @@ def tag_text(
         e["tag"] == "frame:criminal" for e in entries
     ):
         add("subject:enforcement-op")
+
+    # video:<kind> + video:duration-bucket — only when a video is attached.
+    # Apply *all* matching kinds so a single tweet can carry e.g.
+    # video:bodycam + video:music-video (the song-set-to-raid-footage genre).
+    # Duration bucket is derived from the longest video on the tweet:
+    #   short  : ≤ 30s
+    #   medium : 30s < d ≤ 120s
+    #   long   : > 120s
+    # We tag the bucket regardless of whether a kind matched so the viewer
+    # can filter "all videos under 30s" without depending on text cues.
+    if video_count > 0:
+        for pat, tag in (
+            (PATTERN_VIDEO_BODYCAM, "video:bodycam"),
+            (PATTERN_VIDEO_INTERVIEW, "video:interview"),
+            (PATTERN_VIDEO_MUSIC_VIDEO, "video:music-video"),
+            (PATTERN_VIDEO_NEWS_CLIP, "video:news-clip"),
+            (PATTERN_VIDEO_PSA, "video:psa"),
+            (PATTERN_VIDEO_SPEECH, "video:speech"),
+            (PATTERN_VIDEO_AD, "video:ad"),
+        ):
+            m = pat.search(text)
+            if m:
+                add(tag, span=m.span())
+        if video_max_duration_sec is not None and video_max_duration_sec > 0:
+            if video_max_duration_sec <= 30:
+                add("video:short")
+            elif video_max_duration_sec <= 120:
+                add("video:medium")
+            else:
+                add("video:long")
 
     _maybe_immigration_default(entries, account_category, text, add)
     return entries
@@ -858,6 +950,22 @@ def tag_one_parquet(
         text = str(r.get("text_resolved") or r.get("text") or "")
         media = r.get("media") or []
         media_count = len(media) if isinstance(media, list) else 0
+        video_count = 0
+        video_max_duration_sec: float | None = None
+        if isinstance(media, list):
+            for m in media:
+                if not isinstance(m, dict):
+                    continue
+                mt = m.get("media_type")
+                if mt == "video" or mt == "animated_gif":
+                    video_count += 1
+                    dur = m.get("duration_sec")
+                    if (
+                        isinstance(dur, (int, float))
+                        and dur > 0
+                        and (video_max_duration_sec is None or dur > video_max_duration_sec)
+                    ):
+                        video_max_duration_sec = float(dur)
         mentions = r.get("mentions") or []
         if not isinstance(mentions, list):
             mentions = []
@@ -875,6 +983,8 @@ def tag_one_parquet(
             ocr_text=ocr_map.get(tweet_id, ""),
             is_unavailable=bool(r.get("unavailable_detected_at")),
             unavailable_text=unavailable_text,
+            video_count=video_count,
+            video_max_duration_sec=video_max_duration_sec,
         )
         rows.append(
             {

@@ -225,6 +225,63 @@ tags:
       values, scripture, churches, or Christ.
     classification: deterministic
 
+  # ===== video:* - video-nature heuristics ==========================
+  #
+  # Only emitted when the tweet actually has video media attached; a
+  # tweet's text alone never earns a video:* tag. Multiple kinds can
+  # co-apply (e.g. a music video that's also a recruitment ad).
+  video:bodycam:
+    description: >-
+      Body-worn camera or raid/arrest footage. Catches "bodycam",
+      "BWC", and "ICE/CBP/HSI raid footage" framings.
+    classification: deterministic
+  video:interview:
+    description: >-
+      Sit-down interview, joint appearance on a cable-news show, or
+      "X joins Y" framing where an official is being interviewed.
+    classification: deterministic
+  video:music-video:
+    description: >-
+      Music video, or text explicitly notes the video is "set to" a
+      song / track. Often paired with bodycam footage in DHS-genre
+      posts.
+    classification: deterministic
+  video:news-clip:
+    description: >-
+      Embedded cable-news / press clip. Matches major outlet names and
+      "reporting on / from" framings.
+    classification: deterministic
+  video:psa:
+    description: >-
+      Public-service-announcement-style video: hotline numbers, "know
+      the signs", "learn more at <url>", "did you know…".
+    classification: deterministic
+  video:speech:
+    description: >-
+      Speech, address, press conference, or remarks (Oval Office, Rose
+      Garden, podium, etc.).
+    classification: deterministic
+  video:ad:
+    description: >-
+      Polished ad / commercial / recruitment spot. "New ad", "campaign
+      spot", "apply today at <url>".
+    classification: deterministic
+  video:short:
+    description: >-
+      Duration bucket — longest video on the tweet is 30 seconds or
+      less. Applied automatically based on media metadata.
+    classification: deterministic
+  video:medium:
+    description: >-
+      Duration bucket — longest video on the tweet is between 30s and
+      120s. Applied automatically based on media metadata.
+    classification: deterministic
+  video:long:
+    description: >-
+      Duration bucket — longest video on the tweet exceeds 120s.
+      Applied automatically based on media metadata.
+    classification: deterministic
+
   # ===== slogan:* - branded phrases =================================
   slogan:nice:
     description: DHS "ICE is NICE" branded meme.

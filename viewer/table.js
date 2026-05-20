@@ -78,6 +78,16 @@ export const COLUMNS = [
     render: (r) => renderMediaDescription(r),
   },
   {
+    key: 'video_duration',
+    label: 'Video length',
+    default: false,
+    filterable: false,
+    sortable: true,
+    className: 'cell-num',
+    sortValue: videoDurationSeconds,
+    render: (r) => renderVideoDuration(r),
+  },
+  {
     key: 'like_count',
     label: 'Likes',
     default: true,
@@ -871,6 +881,32 @@ function mediaFlags(r) {
     );
   }
   return `<span class="media-flags">${html.join('')}</span>`;
+}
+
+/**
+ * Longest video/animated_gif duration in seconds (0 when the tweet has no
+ * video media). Used both for the cell renderer and as the sort key.
+ */
+function videoDurationSeconds(r) {
+  const media = Array.isArray(r.media) ? r.media : [];
+  let max = 0;
+  for (const m of media) {
+    if (!m) continue;
+    if (m.media_type !== 'video' && m.media_type !== 'animated_gif') continue;
+    const d = Number(m.duration_sec);
+    if (Number.isFinite(d) && d > max) max = d;
+  }
+  return max;
+}
+
+function renderVideoDuration(r) {
+  const secs = videoDurationSeconds(r);
+  if (secs <= 0) return '<span class="muted">—</span>';
+  const minutes = Math.floor(secs / 60);
+  const remainder = Math.round(secs - minutes * 60);
+  const label =
+    minutes > 0 ? `${minutes}:${String(remainder).padStart(2, '0')}` : `${Math.round(secs)}s`;
+  return `<span title="${escape(`${secs.toFixed(1)}s`)}">${escape(label)}</span>`;
 }
 
 function renderMediaDescription(r) {
