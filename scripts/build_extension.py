@@ -65,6 +65,8 @@ def clean() -> None:
 def bundle() -> None:
     # Resolve the local esbuild binary.
     esbuild = ROOT / "node_modules" / ".bin" / "esbuild"
+    if sys.platform == "win32":
+        esbuild = esbuild.with_suffix(".cmd")
     if not esbuild.exists():
         sys.exit(
             "esbuild not found in node_modules/.bin. "

@@ -800,15 +800,31 @@ async function ensureRunBuffer(
 
 // --- Flush logic ----------------------------------------------------------
 
+let flushChain: Promise<void> = Promise.resolve();
+
+interface FlushItem {
+  handle: string;
+  buf: RunBuffer;
+  tweets: CanonicalTweet[];
+  rawPath: string;
+  seenPath: string;
+  capture: CapturePayload;
+  seen: SeenPayload;
+  day: string;
+  runShort: string;
+}
+
 async function flushIdleBuffers(): Promise<void> {
   const all = await getRunBuffers();
   const now = Date.now();
+  const handles: string[] = [];
   for (const [handle, buf] of Object.entries(all)) {
     const last = Date.parse(buf.last_capture_at);
     if (Number.isFinite(last) && now - last >= FLUSH_IDLE_MS) {
-      await flushHandle(handle, 'idle');
+      handles.push(handle);
     }
   }
+  await flushHandles(handles, 'idle');
 }
 
 async function flushOrphanedBuffersIfStale(): Promise<void> {
@@ -822,95 +838,97 @@ async function flushOrphanedBuffersIfStale(): Promise<void> {
   if (!settings.pat || !settings.owner || !settings.repo) return;
   const all = await getRunBuffers();
   const now = Date.now();
+  const handles: string[] = [];
   for (const [handle, buf] of Object.entries(all)) {
     const last = Date.parse(buf.last_capture_at);
     if (Number.isFinite(last) && now - last >= FLUSH_IDLE_MS) {
-      await flushHandle(handle, 'wake');
+      handles.push(handle);
     }
   }
+  await flushHandles(handles, 'wake');
 }
 
 async function flushAll(reason: string): Promise<void> {
   const all = await getRunBuffers();
-  for (const handle of Object.keys(all)) {
-    await flushHandle(handle, reason);
-  }
+  await flushHandles(Object.keys(all), reason);
 }
 
 async function flushHandle(handle: string, reason: string): Promise<void> {
-  const buf = await getRunBuffer(handle);
-  if (!buf) return;
-  const tweets = Object.values(buf.tweets_by_id);
-  if (tweets.length === 0) {
-    await clearRunBuffer(handle);
-    return;
+  await flushHandles([handle], reason);
+}
+
+async function flushHandles(handles: string[], reason: string): Promise<void> {
+  const unique = [...new Set(handles)].filter((h) => h.length > 0);
+  if (unique.length === 0) return;
+  const run = flushChain.then(() => flushHandlesLocked(unique, reason));
+  flushChain = run.catch(() => {});
+  return run;
+}
+
+async function flushHandlesLocked(handles: string[], reason: string): Promise<void> {
+  const all = await getRunBuffers();
+  const items: FlushItem[] = [];
+  for (const handle of handles) {
+    const buf = all[handle];
+    if (!buf) continue;
+    const tweets = Object.values(buf.tweets_by_id);
+    if (tweets.length === 0) {
+      await clearRunBuffer(handle);
+      await setBufferedCount(handle, 0);
+      continue;
+    }
+    items.push(buildFlushItem(handle, buf, tweets));
   }
+  if (items.length === 0) return;
+
   const settings = await getSettings();
   if (!settings.pat || !settings.owner || !settings.repo) {
-    await warn('flush deferred: settings incomplete', { handle });
+    await warn('flush deferred: settings incomplete', {
+      count: items.length,
+      handles: items.map((item) => item.handle).slice(0, 20),
+    });
     return;
   }
   const client = new GitHubClient(settings);
-  const ts = isoCompact(buf.started_at);
-  const day = buf.started_at.slice(0, 10);
-  const rawPath = `raw/${handle}/${ts}-${shortRunId(buf.run_id)}.json`;
-  const seenPath = `seen/${handle}/${ts}-${shortRunId(buf.run_id)}.json`;
-
-  const capture: CapturePayload = {
-    schema_version: 1,
-    capture_run_id: buf.run_id,
-    account_handle: handle,
-    captured_at: buf.last_capture_at,
-    endpoint: buf.endpoints_seen.join(','),
-    user_agent: navigator.userAgent,
-    source_url: buf.source_url,
-    tweets,
-  };
-  const seen: SeenPayload = {
-    schema_version: 1,
-    capture_run_id: buf.run_id,
-    account_handle: handle,
-    captured_at: buf.last_capture_at,
-    tweet_ids_observed: buf.tweet_ids_observed,
-  };
-
-  const commitMsg = `capture: ${handle} ${day} ${tweets.length} tweet${tweets.length === 1 ? '' : 's'} (run ${shortRunId(buf.run_id)})`;
+  const files = items.flatMap((item) => [
+    {
+      path: item.rawPath,
+      contentBase64: toBase64(JSON.stringify(item.capture, null, 2) + '\n'),
+    },
+    {
+      path: item.seenPath,
+      contentBase64: toBase64(JSON.stringify(item.seen, null, 2) + '\n'),
+    },
+  ]);
+  const commitMsg = buildBatchCommitMessage(items);
 
   try {
-    await client.putFile({
-      path: rawPath,
-      contentBase64: toBase64(JSON.stringify(capture, null, 2) + '\n'),
+    const result = await client.commitFiles({
+      files,
       message: commitMsg,
     });
-    await client.putFile({
-      path: seenPath,
-      contentBase64: toBase64(JSON.stringify(seen, null, 2) + '\n'),
-      message: `seen: ${handle} ${day} ${seen.tweet_ids_observed.length} ids (run ${shortRunId(buf.run_id)})`,
-    });
-    await clearRunBuffer(handle);
-    {
+    const idx = await getCommittedIndex();
+    for (const item of items) {
+      const remainingCount = await clearCommittedTweetsFromBuffer(item);
       // Counter bump: actually INCREMENT todayCount and totalCommitted by
       // the number of tweets we just persisted (the previous code read the
       // existing values and wrote them back, leaving the counter pegged at
       // zero).
-      const prev = (await getCounters())[handle];
+      const prev = (await getCounters())[item.handle];
       const today = new Date().toISOString().slice(0, 10);
       const carriedToday = prev && prev.todayDate === today ? prev.todayCount : 0;
-      await bumpCounter(handle, {
-        todayCount: carriedToday + tweets.length,
+      await bumpCounter(item.handle, {
+        todayCount: carriedToday + item.tweets.length,
         todayDate: today,
-        lastCaptureAt: buf.last_capture_at,
-        totalCommitted: (prev?.totalCommitted ?? 0) + tweets.length,
-        bufferedCount: 0,
+        lastCaptureAt: item.buf.last_capture_at,
+        totalCommitted: (prev?.totalCommitted ?? 0) + item.tweets.length,
+        bufferedCount: remainingCount,
       });
-    }
-    // Record commits in the dedup index so we don't re-commit them next
-    // browse with unchanged engagement.
-    {
-      const idx = await getCommittedIndex();
-      const inner = idx[handle] ?? {};
+      // Record commits in the dedup index so we don't re-commit them next
+      // browse with unchanged engagement.
+      const inner = idx[item.handle] ?? {};
       const nowIso = new Date().toISOString();
-      for (const t of tweets) {
+      for (const t of item.tweets) {
         inner[t.tweet_id] = {
           ts: nowIso,
           sig: engagementSig(
@@ -922,15 +940,23 @@ async function flushHandle(handle: string, reason: string): Promise<void> {
           ),
         };
       }
-      idx[handle] = inner;
-      await setCommittedIndex(idx);
+      idx[item.handle] = inner;
+      await info('flush committed', {
+        handle: item.handle,
+        reason,
+        tweets: item.tweets.length,
+        run: item.runShort,
+        path: item.rawPath,
+        batch_commit: result.commitSha,
+      });
     }
-    await info('flush committed', {
-      handle,
+    await setCommittedIndex(idx);
+    await info('flush batch committed', {
       reason,
-      tweets: tweets.length,
-      run: shortRunId(buf.run_id),
-      path: rawPath,
+      runs: items.length,
+      files: files.length,
+      tweets: items.reduce((total, item) => total + item.tweets.length, 0),
+      commit: result.commitSha,
     });
     {
       const prev = await getConnection();
@@ -966,20 +992,125 @@ async function flushHandle(handle: string, reason: string): Promise<void> {
           err.category === 'rate-limit' ? err.rateLimitResetAt : conn.rateLimitResetAt,
       });
       await logErr('flush failed', {
-        handle,
         reason,
+        handles: items.map((item) => item.handle).slice(0, 20),
+        runs: items.length,
+        files: files.length,
         category: err.category,
         status: err.status,
         message: err.message,
         rateLimitResetAt: err.rateLimitResetAt,
       });
     } else {
-      await logErr('flush failed', { handle, reason, ...describeError(err) });
+      await logErr('flush failed', {
+        reason,
+        handles: items.map((item) => item.handle).slice(0, 20),
+        runs: items.length,
+        files: files.length,
+        ...describeError(err),
+      });
     }
     // Leave buffer intact for retry.
   } finally {
     await broadcastState();
   }
+}
+
+function buildFlushItem(handle: string, buf: RunBuffer, tweets: CanonicalTweet[]): FlushItem {
+  const ts = isoCompact(buf.started_at);
+  const day = buf.started_at.slice(0, 10);
+  const runShort = shortRunId(buf.run_id);
+  const rawPath = `raw/${handle}/${ts}-${runShort}.json`;
+  const seenPath = `seen/${handle}/${ts}-${runShort}.json`;
+  return {
+    handle,
+    buf,
+    tweets,
+    rawPath,
+    seenPath,
+    day,
+    runShort,
+    capture: {
+      schema_version: 1,
+      capture_run_id: buf.run_id,
+      account_handle: handle,
+      captured_at: buf.last_capture_at,
+      endpoint: buf.endpoints_seen.join(','),
+      user_agent: navigator.userAgent,
+      source_url: buf.source_url,
+      tweets,
+    },
+    seen: {
+      schema_version: 1,
+      capture_run_id: buf.run_id,
+      account_handle: handle,
+      captured_at: buf.last_capture_at,
+      tweet_ids_observed: buf.tweet_ids_observed,
+    },
+  };
+}
+
+function buildBatchCommitMessage(items: FlushItem[]): string {
+  if (items.length === 1) {
+    const item = items[0]!;
+    return `capture: ${item.handle} ${item.day} ${item.tweets.length} tweet${item.tweets.length === 1 ? '' : 's'} (run ${item.runShort})`;
+  }
+  const days = [...new Set(items.map((item) => item.day))].sort();
+  const dayLabel = days.length === 1 ? days[0]! : `${days[0]}..${days[days.length - 1]}`;
+  const tweetCount = items.reduce((total, item) => total + item.tweets.length, 0);
+  return `capture batch: ${items.length} runs, ${tweetCount} tweet${tweetCount === 1 ? '' : 's'} (${dayLabel})`;
+}
+
+async function clearCommittedTweetsFromBuffer(item: FlushItem): Promise<number> {
+  const current = await getRunBuffer(item.handle);
+  if (!current) return 0;
+  if (current.run_id !== item.buf.run_id) return Object.keys(current.tweets_by_id).length;
+
+  const committed = new Map(
+    item.tweets.map((t) => [
+      t.tweet_id,
+      engagementSig(t.like_count, t.retweet_count, t.reply_count, t.quote_count, t.is_truncated),
+    ])
+  );
+  const remainingTweets: Record<string, CanonicalTweet> = {};
+  for (const [tweetId, tweet] of Object.entries(current.tweets_by_id)) {
+    const committedSig = committed.get(tweetId);
+    const currentSig = engagementSig(
+      tweet.like_count,
+      tweet.retweet_count,
+      tweet.reply_count,
+      tweet.quote_count,
+      tweet.is_truncated
+    );
+    if (!committedSig || committedSig !== currentSig) {
+      remainingTweets[tweetId] = { ...tweet };
+    }
+  }
+
+  const remainingCount = Object.keys(remainingTweets).length;
+  if (remainingCount === 0) {
+    await clearRunBuffer(item.handle);
+    return 0;
+  }
+
+  const nextRunId = newRunId();
+  for (const tweet of Object.values(remainingTweets)) {
+    tweet.capture_run_id = nextRunId;
+  }
+  await setRunBuffer(item.handle, {
+    ...current,
+    run_id: nextRunId,
+    started_at: current.last_capture_at,
+    tweets_by_id: remainingTweets,
+    tweet_ids_observed: current.tweet_ids_observed.filter((id) => id in remainingTweets),
+  });
+  await info('flush kept newer buffered tweets', {
+    handle: item.handle,
+    committed_run: item.runShort,
+    next_run: shortRunId(nextRunId),
+    remaining: remainingCount,
+  });
+  return remainingCount;
 }
 
 // --- Capture-now / capture-all -------------------------------------------

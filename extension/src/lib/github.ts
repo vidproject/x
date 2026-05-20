@@ -17,6 +17,22 @@ export interface PutFileResult {
   url: string;
 }
 
+export interface CommitFileOptions {
+  path: string;
+  contentBase64: string;
+}
+
+export interface CommitFilesOptions {
+  files: CommitFileOptions[];
+  message: string;
+}
+
+export interface CommitFilesResult {
+  commitSha: string;
+  url: string;
+  files: string[];
+}
+
 export class GitHubError extends Error {
   status: number;
   body: unknown;
@@ -154,6 +170,110 @@ export class GitHubClient {
     throw new Error(`putFile: exhausted attempts for ${path}`);
   }
 
+  /**
+   * Commit several files with one branch update. The Contents API creates one
+   * commit per PUT, so rapid flushes race each other on the branch head. This
+   * uses the lower-level Git Data API instead: upload blobs, build a tree,
+   * create one commit, then move the branch ref once. If another writer moves
+   * the branch first, rebase this tree patch onto the latest head and retry.
+   */
+  async commitFiles(opts: CommitFilesOptions): Promise<CommitFilesResult> {
+    if (opts.files.length === 0) throw new Error('commitFiles: no files to commit');
+    const maxAttempts = 5;
+    let lastErr: unknown = null;
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        const blobs = await Promise.all(
+          opts.files.map(async (file) => {
+            const out = await this.fetchJson(
+              'POST',
+              `/repos/${this.settings.owner}/${this.settings.repo}/git/blobs`,
+              {
+                content: file.contentBase64,
+                encoding: 'base64',
+              }
+            );
+            return {
+              path: file.path,
+              sha: (out as { sha: string }).sha,
+            };
+          })
+        );
+
+        const head = await this.getBranchHead();
+        const tree = await this.fetchJson(
+          'POST',
+          `/repos/${this.settings.owner}/${this.settings.repo}/git/trees`,
+          {
+            base_tree: head.treeSha,
+            tree: blobs.map((blob) => ({
+              path: blob.path,
+              mode: '100644',
+              type: 'blob',
+              sha: blob.sha,
+            })),
+          }
+        );
+        const treeSha = (tree as { sha: string }).sha;
+        const commit = await this.fetchJson(
+          'POST',
+          `/repos/${this.settings.owner}/${this.settings.repo}/git/commits`,
+          {
+            message: opts.message,
+            tree: treeSha,
+            parents: [head.sha],
+          }
+        );
+        const commitOut = commit as { sha: string; html_url: string };
+        try {
+          await this.fetchJson(
+            'PATCH',
+            `/repos/${this.settings.owner}/${this.settings.repo}/git/refs/heads/${encodePath(this.settings.branch)}`,
+            {
+              sha: commitOut.sha,
+              force: false,
+            }
+          );
+        } catch (err) {
+          if (isConflict(err) && attempt < maxAttempts) {
+            lastErr = err;
+            await sleep(backoffMs(attempt, err));
+            continue;
+          }
+          throw err;
+        }
+        return {
+          commitSha: commitOut.sha,
+          url: commitOut.html_url,
+          files: opts.files.map((file) => file.path),
+        };
+      } catch (err) {
+        lastErr = err;
+        if (!(err instanceof GitHubError)) throw err;
+        if ((!err.retriable && !isConflict(err)) || attempt === maxAttempts) throw err;
+        await sleep(backoffMs(attempt, err));
+      }
+    }
+    throw lastErr instanceof Error ? lastErr : new Error('commitFiles: exhausted attempts');
+  }
+
+  private async getBranchHead(): Promise<{ sha: string; treeSha: string }> {
+    const ref = await this.fetchJson(
+      'GET',
+      `/repos/${this.settings.owner}/${this.settings.repo}/git/ref/heads/${encodePath(this.settings.branch)}`
+    );
+    const headSha = (ref as { object: { sha: string } }).object.sha;
+    const commit = await this.fetchJson(
+      'GET',
+      `/repos/${this.settings.owner}/${this.settings.repo}/git/commits/${headSha}`
+    );
+    return {
+      sha: headSha,
+      treeSha: (commit as { tree: { sha: string } }).tree.sha,
+    };
+  }
+
   private async fetchJson(method: string, path: string, body?: unknown): Promise<unknown> {
     const url = path.startsWith('http') ? path : `${API_BASE}${path}`;
     const init: RequestInit = {
@@ -275,6 +395,10 @@ function backoffMs(attempt: number, err: GitHubError): number {
   const base = err.category === 'rate-limit' ? 5000 : 500;
   const jitter = Math.floor(Math.random() * 400);
   return Math.min(60_000, base * 2 ** (attempt - 1) + jitter);
+}
+
+function isConflict(err: unknown): err is GitHubError {
+  return err instanceof GitHubError && err.category === 'conflict';
 }
 
 function sleep(ms: number): Promise<void> {
