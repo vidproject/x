@@ -8,6 +8,10 @@ This repo is the database. A Firefox extension captures public X timeline data i
 
 No X API credentials. No X Developer Agreement. Capture uses what the public web UI served at the time.
 
+The viewer is published to GitHub Pages by `.github/workflows/pages.yml` on every push to `master` that touches `index.html`, `viewer/**`, `data/**`, or `extension.zip`. Repo settings need **Pages → Build and deployment → Source: GitHub Actions** for the workflow to actually deploy.
+
+The Firefox extension zip is rebuilt automatically by the `build-extension` workflow whenever the extension changes, committed back to `extension.zip`, and published by Pages at **[vidproject.github.io/x/extension.zip](https://vidproject.github.io/x/extension.zip)**.
+
 ## Scope
 
 Tracked core accounts:
@@ -30,7 +34,7 @@ The viewer loads every account Parquet listed in `data/manifest.json`. Search ru
 
 Search covers tweet text, resolved links, handles, mentions, tags, and media descriptions. CSV export uses the currently filtered rows.
 
-GitHub Pages publishes the viewer through `.github/workflows/pages.yml` when `index.html`, `viewer/**`, or `data/**` changes. Repo settings must use:
+GitHub Pages publishes the viewer and extension zip through `.github/workflows/pages.yml` when `index.html`, `viewer/**`, `data/**`, or `extension.zip` changes. Repo settings must use:
 
 `Pages -> Build and deployment -> Source: GitHub Actions`
 
@@ -38,7 +42,7 @@ GitHub Pages publishes the viewer through `.github/workflows/pages.yml` when `in
 
 The extension captures public X posts and commits structured JSON to this repository.
 
-1. Download [`extension.zip`](./extension.zip) and unzip it.
+1. Download the latest auto-built [`extension.zip`](https://vidproject.github.io/x/extension.zip) and unzip it.
 2. In Firefox, open `about:debugging`.
 3. Select `This Firefox`.
 4. Select `Load Temporary Add-on`.

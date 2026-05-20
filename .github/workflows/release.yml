@@ -3,6 +3,7 @@ on:
   push:
     branches: ['**']
     paths:
+      - '.github/workflows/release.yml'
       - 'extension/**'
       - 'scripts/build_extension.py'
       - 'package.json'
@@ -29,8 +30,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: npm install --no-audit --no-fund
-      - run: python3 scripts/build_extension.py
+      - name: install node deps
+        run: npm ci --no-audit --no-fund
+      - name: build extension zip
+        run: npm run build:extension
+      - name: upload extension zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: extension.zip
+          path: extension.zip
+          if-no-files-found: error
       - name: commit extension.zip if changed
         run: |
           git config user.name "github-actions[bot]"

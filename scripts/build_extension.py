@@ -25,6 +25,7 @@ EXT = ROOT / "extension"
 SRC = EXT / "src"
 DIST = EXT / "dist"
 OUT_ZIP = ROOT / "extension.zip"
+ZIP_TIMESTAMP = (1980, 1, 1, 0, 0, 0)
 
 ENTRY_POINTS: list[tuple[str, str]] = [
     # (src path relative to extension/src, output filename in dist/)
@@ -108,7 +109,10 @@ def write_zip() -> None:
             if root.is_dir():
                 continue
             arcname = root.relative_to(DIST).as_posix()
-            zf.write(root, arcname)
+            info = zipfile.ZipInfo(arcname, ZIP_TIMESTAMP)
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o644 << 16
+            zf.writestr(info, root.read_bytes())
     size = OUT_ZIP.stat().st_size
     print(f"wrote {OUT_ZIP} ({size:,} bytes)")
 
