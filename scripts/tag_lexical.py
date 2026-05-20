@@ -310,9 +310,7 @@ CRIME_VOCAB: tuple[tuple[str, str], ...] = (
     ("firearm", r"\bfirearm[s]?\b"),
 )
 
-HOMICIDE_SUBTYPE_VOCAB: tuple[tuple[str, str], ...] = (
-    ("murder", r"\bmurder(?:s|ed|ers?|ing)?\b"),
-)
+HOMICIDE_SUBTYPE_VOCAB: tuple[tuple[str, str], ...] = (("murder", r"\bmurder(?:s|ed|ers?|ing)?\b"),)
 
 # Handles whose mention earns an `agency:<HANDLE>` tag. Distinct from the
 # author handle: a tweet from @POTUS that mentions @ICEgov gets
@@ -909,9 +907,7 @@ INTRINSIC_PARENT_TOPICS_EXACT: dict[str, tuple[str, ...]] = {
     "slogan:illegal-alien": ("topic:immigration",),
     "slogan:project-homecoming": ("topic:immigration",),
 }
-INTRINSIC_PARENT_TOPICS_PREFIXES: tuple[tuple[str, str], ...] = (
-    ("origin:", "topic:immigration"),
-)
+INTRINSIC_PARENT_TOPICS_PREFIXES: tuple[tuple[str, str], ...] = (("origin:", "topic:immigration"),)
 PATTERN_EXPLICIT_IMMIGRATION_TOPIC = _compile(
     r"\b(immigration|immigrants?|migrants?|asylum|illegal\s+(?:alien|immigrant)s?|"
     r"undocumented\s+(?:alien|immigrant)s?|border patrol|CBP\s+Home|"
@@ -942,9 +938,10 @@ def _ensure_intrinsic_parent_topics(
                 existing_tags.add(parent)
     if PATTERN_EXPLICIT_IMMIGRATION_TOPIC.search(text):
         add("topic:immigration")
-    if any(
-        e["tag"] == "theme:worksite-enforcement" for e in entries
-    ) and "topic:economy" not in existing_tags:
+    if (
+        any(e["tag"] == "theme:worksite-enforcement" for e in entries)
+        and "topic:economy" not in existing_tags
+    ):
         add("topic:economy")
 
 
