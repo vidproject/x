@@ -312,8 +312,7 @@ function renderRecentTweets(rows: TweetSighting[]): void {
 
     const meta = document.createElement('div');
     meta.className = 'tweet-meta';
-    meta.textContent =
-      `${formatTweetAction(row.action)} · ${row.tweet_type} · posted ${fmtRel(row.posted_at)}`;
+    meta.textContent = `${formatTweetAction(row.action)} · ${row.tweet_type} · posted ${fmtRel(row.posted_at)}`;
 
     li.append(top, text, meta);
     recentTweetList.append(li);

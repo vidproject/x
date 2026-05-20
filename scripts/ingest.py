@@ -360,10 +360,7 @@ def merge_retweet_edges(rows: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
         if not all(key):
             continue
         captured_at = str(
-            row.get("captured_at")
-            or row.get("last_seen_at")
-            or row.get("first_captured_at")
-            or ""
+            row.get("captured_at") or row.get("last_seen_at") or row.get("first_captured_at") or ""
         )
         cur = merged.get(key)
         if cur is None:
@@ -380,7 +377,9 @@ def merge_retweet_edges(rows: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
                 "first_captured_at": captured_at,
                 "last_seen_at": captured_at,
                 "seen_count": int(row.get("seen_count") or 1),
-                "capture_run_ids": _as_unique_list(row.get("capture_run_ids"), row.get("capture_run_id")),
+                "capture_run_ids": _as_unique_list(
+                    row.get("capture_run_ids"), row.get("capture_run_id")
+                ),
                 "endpoints": _as_unique_list(row.get("endpoints"), row.get("endpoint")),
                 "source_urls": _as_unique_list(row.get("source_urls"), row.get("source_url")),
             }

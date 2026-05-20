@@ -170,9 +170,7 @@ function scanAndUnfoldShowMore(): void {
     }
   }
   if (clicked > 0) {
-    browser.runtime
-      .sendMessage({ type: 'show-more-unfolded', count: clicked })
-      .catch(() => {});
+    browser.runtime.sendMessage({ type: 'show-more-unfolded', count: clicked }).catch(() => {});
   }
 }
 
@@ -186,8 +184,7 @@ async function refreshUnfoldTargets(): Promise<void> {
     const response = await browser.runtime.sendMessage({
       type: 'get-unfold-targets',
     });
-    const raw =
-      response && typeof response === 'object' ? (response as UnfoldTargetsResponse) : {};
+    const raw = response && typeof response === 'object' ? (response as UnfoldTargetsResponse) : {};
     unfoldEnabled = raw.enabled !== false;
     unfoldCoreHandles = new Set(
       (raw.coreHandles ?? []).map((h) => h.toLowerCase().replace(/^@/, ''))

@@ -3,9 +3,10 @@
 export function openSidepanel(panelEl, titleEl, bodyEl, row, thread) {
   if (!row) return;
   titleEl.textContent = `@${row.account_handle} · ${shortDate(row.posted_at)}`;
+  updateTitleShareLink(titleEl, row);
   bodyEl.replaceChildren();
   bodyEl.append(
-    section('Tweet', tweetText(row), tweetLinks(row), truncationBadge(row)),
+    section('Tweet', tweetContent(row)),
     section('Tags', tagsBlock(row), suggestButton(row)),
     section('Identifiers', grid(idRows(row))),
     section('Engagement', grid(engagementRows(row)))
@@ -16,17 +17,11 @@ export function openSidepanel(panelEl, titleEl, bodyEl, row, thread) {
   // rest" half of the threading design.
   if (thread && thread.otherSlaves && thread.otherSlaves.length > 0) {
     bodyEl.append(
-      section(`Other replies (${thread.otherSlaves.length})`, otherRepliesBlock(thread.otherSlaves))
+      section(`Replies (${thread.otherSlaves.length})`, otherRepliesBlock(thread.otherSlaves))
     );
   }
   if (row.community_note) {
     bodyEl.append(section('Community Note', communityNoteBlock(row.community_note)));
-  }
-  if (row.card) {
-    bodyEl.append(section('Link preview', cardBlock(row.card)));
-  }
-  if (Array.isArray(row.media) && row.media.length > 0) {
-    bodyEl.append(section('Media', mediaGridWithPreviews(row.media)));
   }
   if (Array.isArray(row.media_insights) && row.media_insights.length > 0) {
     bodyEl.append(section('Media Recognition', mediaInsightsBlock(row.media_insights)));
@@ -54,6 +49,19 @@ export function openSidepanel(panelEl, titleEl, bodyEl, row, thread) {
 export function closeSidepanel(panelEl) {
   panelEl.hidden = true;
   panelEl.setAttribute('aria-hidden', 'true');
+  const shareEl = panelEl.querySelector('#sp-share');
+  if (shareEl) shareEl.hidden = true;
+}
+
+function updateTitleShareLink(titleEl, row) {
+  const shareEl = titleEl.parentElement?.querySelector('#sp-share');
+  if (!shareEl) return;
+  if (!row.tweet_id) {
+    shareEl.hidden = true;
+    return;
+  }
+  shareEl.href = shareUrlForRow(row);
+  shareEl.hidden = false;
 }
 
 function section(title, ...children) {
@@ -63,6 +71,19 @@ function section(title, ...children) {
   h.textContent = title;
   sec.append(h, ...children);
   return sec;
+}
+
+function tweetContent(row) {
+  const wrap = document.createElement('div');
+  wrap.className = 'sp-tweet-content';
+  if (Array.isArray(row.media) && row.media.length > 0) {
+    wrap.append(mediaGridWithPreviews(row.media));
+  }
+  if (row.card) {
+    wrap.append(cardBlock(row.card));
+  }
+  wrap.append(tweetText(row), tweetLinks(row), truncationBadge(row));
+  return wrap;
 }
 
 function tweetText(row) {
@@ -84,23 +105,23 @@ function tweetLinks(row) {
     div.append(share);
   }
   if (row.tweet_url) {
-    if (div.childElementCount > 0) div.append(' Â· ');
+    if (div.childElementCount > 0) div.append(' | ');
     const a = document.createElement('a');
     a.className = 'sp-link';
     a.href = row.tweet_url;
     a.target = '_blank';
     a.rel = 'noopener';
-    a.textContent = 'Open on x.com ↗';
+    a.textContent = 'Open on x.com';
     div.append(a);
   }
   if (row.wayback_url) {
-    if (div.childElementCount > 0) div.append(' · ');
+    if (div.childElementCount > 0) div.append(' | ');
     const w = document.createElement('a');
     w.className = 'sp-link';
     w.href = row.wayback_url;
     w.target = '_blank';
     w.rel = 'noopener';
-    w.textContent = 'Wayback snapshot ↗';
+    w.textContent = 'Wayback snapshot';
     div.append(w);
   }
   return div;

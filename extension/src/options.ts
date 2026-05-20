@@ -172,15 +172,16 @@ refreshBtn.addEventListener('click', async () => {
 });
 
 async function refreshDiag(): Promise<void> {
-  const [settings, conn, accounts, counters, buffers, activity, archiveSnapshot] = await Promise.all([
-    getSettings(),
-    getConnection(),
-    getAccounts(),
-    getCounters(),
-    getRunBuffers(),
-    getActivity(),
-    getArchiveSnapshot(),
-  ]);
+  const [settings, conn, accounts, counters, buffers, activity, archiveSnapshot] =
+    await Promise.all([
+      getSettings(),
+      getConnection(),
+      getAccounts(),
+      getCounters(),
+      getRunBuffers(),
+      getActivity(),
+      getArchiveSnapshot(),
+    ]);
   const redactedBuffers = Object.fromEntries(
     Object.entries(buffers).map(([k, b]) => [
       k,

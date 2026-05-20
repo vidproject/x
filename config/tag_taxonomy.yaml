@@ -262,6 +262,12 @@ tags:
       References Christianity or explicitly Christian identity, faith,
       values, scripture, churches, or Christ.
     classification: deterministic
+  theme:religion:
+    description: >-
+      References religious language, institutions, faith, prayer,
+      blessings, God, scripture, or worship, excluding casual expletive
+      uses like "oh my god" or "god damn".
+    classification: deterministic
   theme:cbp-home:
     description: >-
       CBP Home / Project Homecoming / self-deportation incentive campaign,

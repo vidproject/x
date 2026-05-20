@@ -269,7 +269,9 @@ def test_christianity_theme_matches_explicit_christian_language() -> None:
         media_count=0,
         account_category="core",
     )
-    assert "theme:christianity" in _tags(out)
+    tags = _tags(out)
+    assert "theme:christianity" in tags
+    assert "theme:religion" in tags
 
 
 def test_christianity_theme_matches_civil_religion_phrases() -> None:
@@ -296,7 +298,45 @@ def test_christianity_theme_matches_civil_religion_phrases() -> None:
             media_count=0,
             account_category="core",
         )
-        assert "theme:christianity" in _tags(out), text
+        tags = _tags(out)
+        assert "theme:christianity" in tags, text
+        assert "theme:religion" in tags, text
+
+
+def test_religion_theme_matches_non_expletive_god_and_religious_terms() -> None:
+    samples = [
+        "May God protect our agents.",
+        "Faith leaders gathered for a national day of prayer.",
+        "Religious liberty matters.",
+    ]
+    for text in samples:
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="public",
+        )
+        assert "theme:religion" in _tags(out), text
+
+
+def test_religion_theme_ignores_expletive_god_phrases() -> None:
+    samples = [
+        "oh my god, that was a mess.",
+        "God damn it, fix this.",
+        "good lord, what a mess.",
+    ]
+    for text in samples:
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="public",
+        )
+        tags = _tags(out)
+        assert "theme:religion" not in tags, text
+        assert "theme:christianity" not in tags, text
 
 
 def test_video_kind_tags_only_fire_when_video_present() -> None:

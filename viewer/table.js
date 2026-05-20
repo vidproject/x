@@ -50,6 +50,7 @@ export const COLUMNS = [
     default: true,
     filterable: false,
     sortable: false,
+    className: 'col-text',
     render: (r) =>
       `<span class="cell-text" title="${escape(r.text ?? '')}">${escape(truncate(r.text ?? '', 200))}</span>`,
   },
@@ -382,11 +383,10 @@ function paintThreaded({
     }
     if (hasSelf || hasOther) {
       masterRow.classList.add('has-slaves');
-      decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread);
     }
     tbodyEl.append(masterRow);
-    if (hasPromoted) {
-      tbodyEl.append(buildPromotedRepliesRow(thread, visible.length));
+    if (hasSelf || hasOther) {
+      tbodyEl.append(buildRepliesRow(thread, visible.length, expanded, onToggleThread));
     }
     // Self-replies inline-expand under the master. Tracked-other and
     // public replies do not — they're reachable via the sidepanel on
@@ -403,20 +403,18 @@ function paintThreaded({
   }
 }
 
-function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
-  const firstCell = masterRow.firstElementChild;
-  if (!firstCell) return;
+function buildRepliesRow(thread, visibleCount, expanded, onToggleThread) {
+  const promotions = Array.isArray(thread.promotedReplies) ? thread.promotedReplies : [];
+  const tr = document.createElement('tr');
+  tr.className = `thread-promoted-replies thread-replies-row promoted-${topPromotionCategory(promotions)}`;
+  tr.dataset.threadId = thread.threadId;
+
+  const td = document.createElement('td');
+  td.colSpan = Math.max(1, visibleCount);
+
+  const wrap = document.createElement('div');
+  wrap.className = 'thread-promoted-replies-wrap';
   const selfCount = thread.selfSlaves.length;
-  const promotedReplies = Array.isArray(thread.promotedReplies) ? thread.promotedReplies : [];
-  const promotedIds = new Set(
-    promotedReplies.map((p) => String(p?.reply?.tweet_id ?? '')).filter(Boolean)
-  );
-  const otherCount = thread.otherSlaves.filter(
-    (r) => !promotedIds.has(String(r?.tweet_id ?? ''))
-  ).length;
-  if (selfCount === 0 && otherCount === 0) return;
-  const wrap = document.createElement('span');
-  wrap.className = 'thread-affordances';
   if (selfCount > 0) {
     const toggle = document.createElement('button');
     toggle.type = 'button';
@@ -432,31 +430,13 @@ function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
     });
     wrap.append(toggle);
   }
-  if (otherCount > 0) {
-    // Non-self replies aren't inlined; the badge invites the user to
-    // open the sidepanel, where they appear in a dedicated section.
-    // The badge itself doesn't take a click handler — it inherits the
-    // row's click → open-sidepanel behavior.
-    const badge = document.createElement('span');
-    badge.className = 'thread-others-badge';
-    badge.title = `${otherCount} reply / replies from other accounts — click the row to view in the side panel`;
-    badge.textContent = `↪ ${otherCount} other${otherCount === 1 ? '' : 's'}`;
-    wrap.append(badge);
+  const replyCount = thread.otherSlaves.length;
+  if (replyCount > 0) {
+    const count = document.createElement('span');
+    count.className = 'thread-replies-summary';
+    count.textContent = `${replyCount} repl${replyCount === 1 ? 'y' : 'ies'}`;
+    wrap.append(count);
   }
-  firstCell.prepend(wrap);
-}
-
-function buildPromotedRepliesRow(thread, visibleCount) {
-  const promotions = Array.isArray(thread.promotedReplies) ? thread.promotedReplies : [];
-  const tr = document.createElement('tr');
-  tr.className = `thread-promoted-replies promoted-${topPromotionCategory(promotions)}`;
-  tr.dataset.threadId = thread.threadId;
-
-  const td = document.createElement('td');
-  td.colSpan = Math.max(1, visibleCount);
-
-  const wrap = document.createElement('div');
-  wrap.className = 'thread-promoted-replies-wrap';
   for (const group of promotedReplyGroups(promotions)) {
     wrap.append(promotedReplyBadge(group));
   }
@@ -467,6 +447,7 @@ function buildPromotedRepliesRow(thread, visibleCount) {
 }
 
 function topPromotionCategory(promotions) {
+  if (!promotions.length) return 'none';
   return promotions.some((p) => p?.category === 'core') ? 'core' : 'officials';
 }
 

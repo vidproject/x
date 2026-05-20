@@ -163,7 +163,18 @@
 
     <aside class="sidepanel" id="sidepanel" hidden aria-hidden="true">
       <div class="sidepanel-head">
-        <span class="sidepanel-title" id="sp-title">Tweet</span>
+        <div class="sidepanel-title-wrap">
+          <span class="sidepanel-title" id="sp-title">Tweet</span>
+          <a
+            class="sp-title-share"
+            id="sp-share"
+            href="#"
+            aria-label="Share entry"
+            title="Share entry"
+            hidden
+            >#</a
+          >
+        </div>
         <button class="btn ghost" id="sp-close" aria-label="Close">x</button>
       </div>
       <div class="sidepanel-body" id="sp-body"></div>

@@ -474,6 +474,20 @@ PATTERN_THEME_CHRISTIANITY = _compile(
     r"|\bsending\s+prayers\b"
     r"|\bkeep\s+(?:them|him|her|us|you)\s+in\s+(?:our|your|my)\s+prayers\b"
 )
+PATTERN_THEME_RELIGION = _compile(
+    r"\breligio(?:n|us)\b"
+    r"|\bfaith(?:ful|s|[- ]based)?\b"
+    r"|\b(?:worship|church(?:es)?|synagogue|mosque|temple|chaplain)\b"
+    r"|\b(?:prayer|prayers|pray|praying|prayed)\b"
+    r"|\b(?:bless|blessed|blessing|blessings)\b"
+    r"|\b(?:god|lord|jesus|christ|christian(?:ity|s)?|judeo[- ]christian)\b"
+    r"|\b(?:bible|biblical|scripture|scriptural)\b"
+)
+PATTERN_THEME_RELIGION_EXPLETIVE = _compile(
+    r"\b(?:oh\s+my\s+god|omg|god\s*damn(?:ed|it)?|goddamn(?:ed)?|"
+    r"for\s+god'?s\s+sake|good\s+lord)\b"
+)
+RELIGION_EXPLETIVE_WINDOW_CHARS = 18
 PATTERN_SUBJECT_CBP_HOME_APP = _compile(
     r"\b@?CBP\s+Home\s+App\b"
     r"|\b@?CBP\s+Home\b"
@@ -738,6 +752,9 @@ def tag_text(
         if m:
             add(tag, span=m.span())
 
+    if m := _theme_religion_match(text):
+        add("theme:religion", span=m.span())
+
     if _general_topic_score(text) >= 3:
         add("topic:general")
 
@@ -812,6 +829,21 @@ def tag_text(
 
     _maybe_immigration_default(entries, account_category, text, add)
     return entries
+
+
+def _theme_religion_match(text: str) -> re.Match[str] | None:
+    """Return the first religious-language match outside common outbursts."""
+    for match in PATTERN_THEME_RELIGION.finditer(text):
+        start, end = match.span()
+        window = text[
+            max(0, start - RELIGION_EXPLETIVE_WINDOW_CHARS) : min(
+                len(text), end + RELIGION_EXPLETIVE_WINDOW_CHARS
+            )
+        ]
+        if PATTERN_THEME_RELIGION_EXPLETIVE.search(window):
+            continue
+        return match
+    return None
 
 
 def _general_topic_score(text: str) -> int:

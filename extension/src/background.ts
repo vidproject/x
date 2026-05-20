@@ -760,7 +760,12 @@ async function onGraphqlCapture(
   }
 
   if (normalized.tweets.length === 0) {
-    const bufferedEdges = await bufferRetweetEdges(retweetEdges, capturedAt, pageUrl ?? url, endpoint);
+    const bufferedEdges = await bufferRetweetEdges(
+      retweetEdges,
+      capturedAt,
+      pageUrl ?? url,
+      endpoint
+    );
     if (bufferedEdges > 0) await broadcastState();
     return;
   }
@@ -858,8 +863,7 @@ async function onGraphqlCapture(
       t.quote_count,
       t.is_truncated
     );
-    const fullTextUpgrade =
-      prev !== undefined && sigMarksTruncated(prev.sig) && !t.is_truncated;
+    const fullTextUpgrade = prev !== undefined && sigMarksTruncated(prev.sig) && !t.is_truncated;
     if (previouslyArchived && !updateExisting && !fullTextUpgrade) {
       if (prev) skippedNoUpdateLocal += 1;
       else skippedNoUpdateSnapshot += 1;
@@ -915,7 +919,13 @@ async function onGraphqlCapture(
   }
   await prependRecentTweetSightings(
     normalized.tweets.map((t) =>
-      buildTweetSighting(t, endpoint, capturedAt, freshnessById.get(t.tweet_id), actionById.get(t.tweet_id))
+      buildTweetSighting(
+        t,
+        endpoint,
+        capturedAt,
+        freshnessById.get(t.tweet_id),
+        actionById.get(t.tweet_id)
+      )
     )
   );
   // --- Missing-parent recovery ----------------------------------------
@@ -1002,8 +1012,7 @@ async function onGraphqlCapture(
       if (asSess !== null) {
         asSess.ingestedCount += added;
         asSess.ingestedNewCount = (asSess.ingestedNewCount ?? 0) + addedNew;
-        asSess.ingestedExistingCount =
-          (asSess.ingestedExistingCount ?? 0) + addedExisting;
+        asSess.ingestedExistingCount = (asSess.ingestedExistingCount ?? 0) + addedExisting;
         await setAutoScrollSession(asSess);
       }
     }
@@ -1107,11 +1116,9 @@ function runBufferItemCount(buf: RunBuffer): number {
 }
 
 function retweetEdgeKey(edge: RetweetEdge): string {
-  return [
-    edge.retweeter_handle.toLowerCase(),
-    edge.retweet_tweet_id,
-    edge.original_tweet_id,
-  ].join('|');
+  return [edge.retweeter_handle.toLowerCase(), edge.retweet_tweet_id, edge.original_tweet_id].join(
+    '|'
+  );
 }
 
 function inferRetweetedHandle(text: string): string | null {
@@ -1134,7 +1141,8 @@ function buildRetweetEdges(
     const retweeterCategory = categoryByHandle.get(t.account_handle.toLowerCase());
     if (!retweeterCategory) continue;
     const original = byId.get(t.retweeted_tweet_id);
-    const originalHandle = original?.account_handle ?? inferRetweetedHandle(t.text_resolved || t.text);
+    const originalHandle =
+      original?.account_handle ?? inferRetweetedHandle(t.text_resolved || t.text);
     const originalCategory = originalHandle
       ? (categoryByHandle.get(originalHandle.toLowerCase()) ?? 'public')
       : null;
