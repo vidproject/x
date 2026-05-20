@@ -399,11 +399,54 @@ PATTERN_ACTION_REPORT_TO_ICE = _compile(
     rf"(?:tip\s*line|hotline|{ICE_REPORT_PHONE})\b"
     rf")"
 )
-PATTERN_TOPIC_BORDER = _compile(r"\b(border|southwest border|crossing|border wall)\b")
-PATTERN_TOPIC_SANCTUARY = _compile(
+PATTERN_TOPIC_ECONOMY = _compile(
+    r"\b(econom(?:y|ic)|jobs?|job growth|workers?|workforce|wages?|labor market|"
+    r"employment|unemployment|hiring|manufactur(?:e|ing)|business(?:es)?|"
+    r"apprenticeships?|small businesses?|tax cuts?)\b"
+)
+PATTERN_TOPIC_LAUDATORY = _compile(
+    r"\b(accomplishments?|wins?|success(?:es)?|historic|record[- ]breaking|"
+    r"promises? made[,;:]?\s+promises? kept|delivering|delivered|momentum|"
+    r"golden age|winning)\b"
+)
+GENERAL_TOPIC_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
+    ("immigration", _compile(r"\b(immigration|migrant|border|illegal alien|asylum)\b")),
+    ("crime", _compile(r"\b(crime|criminal|drugs?|fentanyl|gang|violence|murder)\b")),
+    ("economy", PATTERN_TOPIC_ECONOMY),
+    ("fraud", _compile(r"\b(fraud|waste|abuse|corruption|scam)\b")),
+    ("security", _compile(r"\b(security|terror|war|china|cartel|threat)\b")),
+    ("costs", _compile(r"\b(inflation|prices?|taxes|cost of living)\b")),
+)
+PATTERN_THEME_BORDER = _compile(r"\b(border|southwest border|crossing|border wall)\b")
+PATTERN_THEME_SANCTUARY = _compile(
     r"\b(sanctuary (?:cit(?:y|ies)|jurisdiction|polic(?:y|ies))|sanctuary state)\b"
 )
-PATTERN_TOPIC_WORKSITE = _compile(r"\b(worksite|workplace|I-9|E-Verify|employer (?:audit|raid))\b")
+PATTERN_THEME_WORKSITE = _compile(r"\b(worksite|workplace|I-9|E-Verify|employer (?:audit|raid))\b")
+PATTERN_THEME_HOMELAND = re.compile(
+    r"\b(?i:our|the|this|america's)\s+Homeland\b"
+    r"|\b(?i:protect|protecting|secure|securing|defend|defending|safeguard|safeguarding)"
+    r"\s+(?:(?i:our|the|this|america's)\s+)?Homeland\b"
+    r"|\b(?i:safe|secure)\s+Homeland\b"
+)
+PATTERN_THEME_NATIVISM = _compile(
+    r"\bnative[- ]born\s+(?:americans?|workers?|citizens?)\b"
+    r"|\bamerican[- ]born\s+(?:americans?|workers?|citizens?)\b"
+    r"|\bforeign[- ]born\s+workers?\b"
+    r"|\bforeign\s+(?:workers?|labor)\b.{0,140}\b(?:flood|cheap|displac|replac|"
+    r"betray|job market|american\s+(?:workers?|jobs?)|americans?\s+first)\b"
+    r"|\b(?:american\s+(?:workers?|jobs?)|americans?\s+first|job market)\b.{0,140}"
+    r"\b(?:foreign\s+(?:workers?|labor)|foreign[- ]born\s+workers?)\b"
+    r"|\bglobalism has failed\b|\bamericanism will prevail\b"
+)
+PATTERN_THEME_CHRISTIANITY = _compile(
+    r"\bchristian(?:ity|s)?\b"
+    r"|\bjudeo[- ]christian\b"
+    r"|\bchristian\s+(?:faith|values?|church|churches|heritage|nation)\b"
+    r"|\bjesus(?:\s+christ)?\b"
+    r"|\bchrist\s+(?:is\s+king|the\s+king|our\s+lord)\b"
+    r"|\b(?:bible|biblical|scripture|scriptural)\b"
+)
+PATTERN_STATUS_COPYRIGHT_REMOVAL = _compile(r"\b(copyright|dmca)\b")
 PATTERN_SLOGAN_NICE = _compile(r"\b(NICE day|NICE morning|ICE is NICE|NICE city)\b")
 PATTERN_SLOGAN_WORST = _compile(r"\bWORST OF THE WORST\b")
 PATTERN_SLOGAN_REPORTRECON = _compile(r"\bReport\.\s*Recon\.\s*Raid\.")
@@ -417,6 +460,9 @@ PATTERN_GENRE_DIRECTIVE = _compile(
 )
 PATTERN_ANGEL_FAMILY = _compile(
     r"\bangel (?:famil(?:y|ies)|mom|dad|parent|mother|father|wife|husband|son|daughter|child)\b"
+)
+PATTERN_NATIVE_BORN_CITIZEN = _compile(
+    r"\bnative[- ]born\s+(?:citizens?|americans?|u\.?s\.?\s+citizens?|people|workers|taxpayers)\b"
 )
 # "from <Country>," — anchors the COUNTRY validator. The preposition is
 # scoped-case-insensitive ((?i:...)) so "From"/"FROM"/"from" all match,
@@ -449,6 +495,8 @@ def tag_text(
     media_count: int,
     account_category: str,
     ocr_text: str = "",
+    is_unavailable: bool = False,
+    unavailable_text: str = "",
 ) -> list[dict[str, Any]]:
     """Apply every deterministic rule to a single tweet, returning a
     list of tag-entry dicts in the shape expected by
@@ -501,6 +549,11 @@ def tag_text(
         if mention in AGENCY_HANDLES:
             add(f"agency:{mention}")
 
+    if is_unavailable:
+        add("status:unavailable")
+        if PATTERN_STATUS_COPYRIGHT_REMOVAL.search(unavailable_text):
+            add("status:copyright-removal")
+
     # Concatenate OCR text (when present) so a poster's stamped slogan
     # earns the same tags as if it had been typed into the tweet body.
     # The separator (" ¶ ") doesn't appear in any of our patterns and
@@ -520,19 +573,28 @@ def tag_text(
         (PATTERN_ACTION_DETENTION, "action:detention"),
         (PATTERN_ACTION_DEPORTATION, "action:deportation"),
         (PATTERN_ACTION_REPORT_TO_ICE, "action:report-immigrants"),
-        (PATTERN_TOPIC_BORDER, "topic:border"),
-        (PATTERN_TOPIC_SANCTUARY, "topic:sanctuary-cities"),
-        (PATTERN_TOPIC_WORKSITE, "topic:worksite-enforcement"),
+        (PATTERN_TOPIC_ECONOMY, "topic:economy"),
+        (PATTERN_TOPIC_LAUDATORY, "topic:laudatory"),
+        (PATTERN_THEME_BORDER, "theme:border"),
+        (PATTERN_THEME_SANCTUARY, "theme:sanctuary-cities"),
+        (PATTERN_THEME_WORKSITE, "theme:worksite-enforcement"),
+        (PATTERN_THEME_HOMELAND, "theme:homeland"),
+        (PATTERN_THEME_NATIVISM, "theme:nativism"),
+        (PATTERN_THEME_CHRISTIANITY, "theme:christianity"),
         (PATTERN_SLOGAN_NICE, "slogan:nice"),
         (PATTERN_SLOGAN_WORST, "slogan:worst"),
         (PATTERN_SLOGAN_REPORTRECON, "slogan:reportrecon"),
         (PATTERN_GENRE_STATISTICS, "genre:statistics"),
         (PATTERN_GENRE_DIRECTIVE, "genre:directive"),
         (PATTERN_ANGEL_FAMILY, "subject:angel-family"),
+        (PATTERN_NATIVE_BORN_CITIZEN, "subject:native-born-citizen"),
     ):
         m = pat.search(text)
         if m:
             add(tag, span=m.span())
+
+    if _general_topic_score(text) >= 3:
+        add("topic:general")
 
     # crime:<TYPE> — every distinct match emits one tag entry.
     for slug, pat_str in CRIME_VOCAB:
@@ -577,6 +639,11 @@ def tag_text(
     return entries
 
 
+def _general_topic_score(text: str) -> int:
+    """Count broad problem domains in a multi-issue / grievance-style post."""
+    return sum(1 for _slug, pat in GENERAL_TOPIC_PATTERNS if pat.search(text))
+
+
 # Tag names whose presence on a tweet promotes `topic:immigration` from
 # a tentative-by-account default to a confirmed-by-text classification.
 # Anything that explicitly references the immigration domain (origin
@@ -587,15 +654,22 @@ IMMIGRATION_CONFIRMING_PREFIXES: tuple[str, ...] = (
     "action:",
     "origin:",
     "country:",
-    "topic:border",
-    "topic:sanctuary",
-    "topic:worksite",
+    "theme:border",
+    "theme:sanctuary",
+    "theme:worksite",
+    "theme:nativism",
     "slogan:",
     "shape:",
     "subject:enforcement-op",
 )
 IMMIGRATION_CONFIRMING_EXACT: frozenset[str] = frozenset(
-    {"agency:ICEgov", "agency:CBP", "agency:DHSgov", "agency:HSI_HQ", "agency:USBPChief"}
+    {
+        "agency:ICEgov",
+        "agency:CBP",
+        "agency:DHSgov",
+        "agency:HSI_HQ",
+        "agency:USBPChief",
+    }
 )
 # Last-ditch keyword check — picks up image-heavy / template-light
 # tweets that the namespace rules above don't flag but that still
@@ -620,6 +694,12 @@ def _has_immigration_signal(entries: list[dict[str, Any]], text: str) -> bool:
     return bool(PATTERN_IMMIGRATION_KEYWORD.search(text))
 
 
+def _has_non_immigration_topic(entries: list[dict[str, Any]]) -> bool:
+    return any(
+        e["tag"].startswith("topic:") and e["tag"] != "topic:immigration" for e in entries
+    )
+
+
 def _maybe_immigration_default(
     entries: list[dict[str, Any]],
     account_category: str,
@@ -636,12 +716,14 @@ def _maybe_immigration_default(
     the rationale."""
     if account_category not in IMMIGRATION_DEFAULT_CATEGORIES:
         return
+    has_signal = _has_immigration_signal(entries, text)
+    if has_signal:
+        add("topic:immigration")
+        return
     for pat in NON_IMMIGRATION_PATTERNS:
         if pat.search(text):
             return
-    if _has_immigration_signal(entries, text):
-        add("topic:immigration")
-    else:
+    if not _has_non_immigration_topic(entries):
         add("topic:immigration", tentative=True)
 
 
@@ -760,6 +842,11 @@ def tag_one_parquet(
         mentions = r.get("mentions") or []
         if not isinstance(mentions, list):
             mentions = []
+        unavailable_text = " ".join(
+            str(r.get(col) or "")
+            for col in ("unavailable_reason", "unavailable_text")
+            if r.get(col)
+        )
         tags = tag_text(
             text,
             tweet_type=r.get("tweet_type"),
@@ -767,6 +854,8 @@ def tag_one_parquet(
             media_count=media_count,
             account_category=category,
             ocr_text=ocr_map.get(tweet_id, ""),
+            is_unavailable=bool(r.get("unavailable_detected_at")),
+            unavailable_text=unavailable_text,
         )
         rows.append(
             {

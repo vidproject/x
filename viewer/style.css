@@ -975,6 +975,14 @@ body {
   background: rgba(46, 204, 113, 0.18);
   border-color: rgba(46, 204, 113, 0.5);
 }
+.tag-pill.ns-theme {
+  background: rgba(114, 91, 190, 0.16);
+  border-color: rgba(114, 91, 190, 0.46);
+}
+.tag-pill.ns-status {
+  background: rgba(192, 57, 43, 0.14);
+  border-color: rgba(192, 57, 43, 0.48);
+}
 .tag-pill.ns-origin {
   background: rgba(52, 152, 219, 0.18);
   border-color: rgba(52, 152, 219, 0.5);
@@ -1078,6 +1086,20 @@ tr.thread-master.has-slaves > td:first-child {
     transparent 60%
   );
 }
+tr.thread-master.has-promoted-reply.promoted-core > td:first-child {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in srgb, #d9a441 20%, transparent),
+    transparent 60%
+  );
+}
+tr.thread-master.has-promoted-reply.promoted-officials > td:first-child {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in srgb, #aeb4bd 22%, transparent),
+    transparent 60%
+  );
+}
 tr.thread-slave > td {
   background: color-mix(in srgb, var(--bg-3) 35%, var(--bg));
 }
@@ -1105,6 +1127,44 @@ tr.thread-slave > td:first-child::before {
   gap: 4px;
   margin-right: 6px;
   align-items: center;
+  flex-wrap: wrap;
+}
+.thread-reply-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 7px 1px 3px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--mono);
+  border: 1px solid var(--border-strong);
+  white-space: nowrap;
+}
+.thread-reply-badge.promo-core {
+  border-color: rgba(217, 164, 65, 0.82);
+  background: rgba(217, 164, 65, 0.2);
+  color: #8a5b00;
+}
+.thread-reply-badge.promo-officials {
+  border-color: rgba(174, 180, 189, 0.88);
+  background: rgba(174, 180, 189, 0.18);
+  color: var(--fg-2);
+}
+.thread-reply-avatar {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  object-fit: cover;
+  background: var(--bg);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+}
+.thread-reply-avatar-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-3);
 }
 .thread-others-badge {
   display: inline-block;

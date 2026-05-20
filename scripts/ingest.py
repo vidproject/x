@@ -18,6 +18,7 @@ import os
 import shutil
 import sys
 from collections.abc import Iterable, Iterator
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -88,6 +89,12 @@ def load_accounts(path: Path = CONFIG_PATH) -> list[dict[str, str]]:
 # Reading raw captures
 
 
+@dataclass
+class ParsedCapture:
+    tweets: list[dict[str, Any]]
+    unavailable_tweets: list[dict[str, Any]]
+
+
 def iter_raw_files(handle: str) -> Iterator[Path]:
     handle_dir = RAW_DIR / handle
     if not handle_dir.exists():
@@ -107,11 +114,12 @@ def quarantine(path: Path, reason: str, detail: str | None = None) -> None:
     shutil.move(str(path), str(target))
 
 
-def parse_capture_file(path: Path) -> list[dict[str, Any]] | None:
-    """Return the list of tweet dicts in this file, or None if it's not a
-    valid capture payload. Files lacking the structured envelope but
-    containing a top-level list of tweet dicts (legacy/manual format) are
-    accepted as well.
+def parse_capture_file(path: Path) -> ParsedCapture | None:
+    """Return tweet rows plus unavailable/tombstone events in this file.
+
+    Files lacking the structured envelope but containing a top-level list
+    of tweet dicts (legacy/manual format) are accepted as tweet rows only.
+    Return None if the file is not a valid capture payload.
     """
     try:
         raw = json.loads(path.read_text(encoding="utf-8"))
@@ -124,8 +132,10 @@ def parse_capture_file(path: Path) -> list[dict[str, Any]] | None:
             quarantine(path, "schema-version-mismatch", str(raw.get("schema_version")))
             return None
         tweets = raw.get("tweets")
+        unavailable_raw = raw.get("unavailable_tweets") or []
     elif isinstance(raw, list):
         tweets = raw
+        unavailable_raw = []
     else:
         quarantine(path, "unrecognized-shape", type(raw).__name__)
         return None
@@ -148,7 +158,16 @@ def parse_capture_file(path: Path) -> list[dict[str, Any]] | None:
             )
             continue
         valid.append(entry)
-    return valid
+    unavailable: list[dict[str, Any]] = []
+    if isinstance(unavailable_raw, list):
+        for entry in unavailable_raw:
+            if not isinstance(entry, dict):
+                continue
+            tweet_id = str(entry.get("tweet_id") or "").strip()
+            if not tweet_id:
+                continue
+            unavailable.append(entry)
+    return ParsedCapture(tweets=valid, unavailable_tweets=unavailable)
 
 
 # --------------------------------------------------------------------------
@@ -210,6 +229,14 @@ def merge_tweets(rows: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]]:
             # with null on re-ingest.
             if cur.get("deletion_detected_at") and not row.get("deletion_detected_at"):
                 preserved["deletion_detected_at"] = cur["deletion_detected_at"]
+            for field in (
+                "unavailable_detected_at",
+                "unavailable_reason",
+                "unavailable_text",
+                "unavailable_source_url",
+            ):
+                if cur.get(field) and not row.get(field):
+                    preserved[field] = cur[field]
             # Preserve a previously-set wayback url if the new row doesn't carry it.
             if cur.get("wayback_url") and not row.get("wayback_url"):
                 preserved["wayback_url"] = cur["wayback_url"]
@@ -237,9 +264,46 @@ def merge_tweets(rows: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]]:
             # (e.g. a backfilled older raw file rebuilding history).
             cur["media"] = union_media(cur.get("media"), row.get("media"))
             cur["text"], cur["text_resolved"], cur["is_truncated"] = pick_text(cur, row)
+            for field in (
+                "unavailable_detected_at",
+                "unavailable_reason",
+                "unavailable_text",
+                "unavailable_source_url",
+            ):
+                if not cur.get(field) and row.get(field):
+                    cur[field] = row[field]
             if not cur.get("community_note") and row.get("community_note"):
                 cur["community_note"] = row["community_note"]
     return merged
+
+
+def apply_unavailable_events(
+    merged: dict[str, dict[str, Any]], events: Iterable[dict[str, Any]]
+) -> int:
+    updated = 0
+    for event in events:
+        tweet_id = str(event.get("tweet_id") or "").strip()
+        if not tweet_id:
+            continue
+        row = merged.get(tweet_id)
+        if row is None:
+            LOG.warning(
+                "unavailable event has no matching archived tweet",
+                tweet_id=tweet_id,
+                reason=event.get("unavailable_reason"),
+            )
+            continue
+        for field in (
+            "unavailable_detected_at",
+            "unavailable_reason",
+            "unavailable_text",
+            "unavailable_source_url",
+        ):
+            value = event.get(field)
+            if value:
+                row[field] = value
+        updated += 1
+    return updated
 
 
 def pick_text(cur: dict[str, Any], row: dict[str, Any]) -> tuple[str | None, str | None, bool]:
@@ -583,6 +647,7 @@ def ingest_handle_rows(
     files_read = 0
     tweets_seen = 0
     captures: list[dict[str, Any]] = []
+    unavailable_events: list[dict[str, Any]] = []
 
     existing_path = DATA_DIR / f"{handle}.parquet"
     if existing_path.exists():
@@ -598,13 +663,17 @@ def ingest_handle_rows(
     for raw_path in iter_raw_files(handle):
         if raw_path.parent.name == "_quarantine":
             continue
-        tweets = parse_capture_file(raw_path)
-        if tweets is None:
+        parsed = parse_capture_file(raw_path)
+        if parsed is None:
             continue
         files_read += 1
-        tweets_seen += len(tweets)
-        captures.extend(tweets)
+        tweets_seen += len(parsed.tweets)
+        captures.extend(parsed.tweets)
+        unavailable_events.extend(parsed.unavailable_tweets)
     merged = merge_tweets(captures)
+    updated = apply_unavailable_events(merged, unavailable_events)
+    if updated:
+        LOG.info("applied unavailable tweet events", handle=handle, updated=updated)
     return files_read, tweets_seen, merged
 
 

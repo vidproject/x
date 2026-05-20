@@ -79,6 +79,7 @@ import type {
   RuntimeMessage,
   SeenPayload,
   Settings,
+  UnavailableTweet,
 } from './lib/types.js';
 import { parseAccountsYaml } from './lib/yaml.js';
 
@@ -636,6 +637,10 @@ async function onGraphqlCapture(
     });
   }
 
+  if (normalized.unavailable_tweets.length > 0) {
+    await recordUnavailableTweets(normalized.unavailable_tweets, tracked, capturedAt, url, endpoint);
+  }
+
   if (normalized.tweets.length === 0) return;
 
   // Refetch queue housekeeping — runs BEFORE the dedup short-circuit. A
@@ -758,7 +763,10 @@ async function onGraphqlCapture(
     if (!buf.endpoints_seen.includes(endpoint)) buf.endpoints_seen.push(endpoint);
     buf.last_capture_at = capturedAt;
     await setRunBuffer(handle, buf);
-    await setBufferedCount(handle, Object.keys(buf.tweets_by_id).length);
+    await setBufferedCount(
+      handle,
+      Object.keys(buf.tweets_by_id).length + Object.keys(buf.unavailable_by_id ?? {}).length
+    );
     if (added > 0) {
       await info('captured tweets', {
         handle,
@@ -781,6 +789,79 @@ async function onGraphqlCapture(
   await broadcastState();
 }
 
+async function recordUnavailableTweets(
+  unavailableTweets: UnavailableTweet[],
+  tracked: ReadonlySet<string>,
+  capturedAt: string,
+  sourceUrl: string,
+  endpoint: string
+): Promise<void> {
+  const committedIdx = await getCommittedIndex();
+  const refetchSess = await getRefetchSession();
+  const mediaCrawlSess = await getMediaCrawlSession();
+  let recorded = 0;
+  let skipped = 0;
+  let missingHandle = 0;
+
+  for (const u of unavailableTweets) {
+    const handle = u.account_handle;
+    if (!handle) {
+      missingHandle += 1;
+      await dequeueMediaCrawl(u.tweet_id);
+      continue;
+    }
+    if (tracked.size > 0 && !tracked.has(handle.toLowerCase())) {
+      skipped += 1;
+      continue;
+    }
+
+    await dequeueMediaCrawl(u.tweet_id);
+    await dequeueRefetch(handle, u.tweet_id);
+    if (refetchSess?.inflight?.tweetId === u.tweet_id) {
+      refetchSess.inflight = null;
+      refetchSess.processed += 1;
+      await setRefetchSession(refetchSess);
+    }
+    if (mediaCrawlSess?.inflight?.tweetId === u.tweet_id) {
+      mediaCrawlSess.inflight = null;
+      mediaCrawlSess.processed += 1;
+      await setMediaCrawlSession(mediaCrawlSess);
+    }
+
+    const sig = unavailableSig(u);
+    const prev = committedIdx[handle]?.[u.tweet_id];
+    if (prev?.sig === sig) {
+      skipped += 1;
+      continue;
+    }
+
+    const buf = await ensureRunBuffer(handle, capturedAt, sourceUrl, endpoint);
+    const unavailableById = buf.unavailable_by_id ?? {};
+    unavailableById[u.tweet_id] = u;
+    buf.unavailable_by_id = unavailableById;
+    if (!buf.tweet_ids_observed.includes(u.tweet_id)) {
+      buf.tweet_ids_observed.push(u.tweet_id);
+    }
+    if (!buf.endpoints_seen.includes(endpoint)) buf.endpoints_seen.push(endpoint);
+    buf.last_capture_at = capturedAt;
+    await setRunBuffer(handle, buf);
+    await setBufferedCount(
+      handle,
+      Object.keys(buf.tweets_by_id).length + Object.keys(unavailableById).length
+    );
+    recorded += 1;
+  }
+
+  if (recorded > 0 || missingHandle > 0 || skipped > 0) {
+    await info('unavailable tweets observed', { endpoint, recorded, skipped, missingHandle });
+  }
+  await broadcastState();
+}
+
+function unavailableSig(u: UnavailableTweet): string {
+  return `unavailable|${u.unavailable_reason ?? ''}|${u.unavailable_text ?? ''}`;
+}
+
 async function ensureRunBuffer(
   handle: string,
   ts: string,
@@ -795,6 +876,7 @@ async function ensureRunBuffer(
     started_at: ts,
     last_capture_at: ts,
     tweets_by_id: {},
+    unavailable_by_id: {},
     tweet_ids_observed: [],
     endpoints_seen: [endpoint],
     source_url: sourceUrl,
@@ -812,6 +894,7 @@ interface FlushItem {
   handle: string;
   buf: RunBuffer;
   tweets: CanonicalTweet[];
+  unavailableTweets: UnavailableTweet[];
   rawPath: string;
   seenPath: string;
   capture: CapturePayload;
@@ -878,12 +961,13 @@ async function flushHandlesLocked(handles: string[], reason: string): Promise<vo
     const buf = all[handle];
     if (!buf) continue;
     const tweets = Object.values(buf.tweets_by_id);
-    if (tweets.length === 0) {
+    const unavailableTweets = Object.values(buf.unavailable_by_id ?? {});
+    if (tweets.length === 0 && unavailableTweets.length === 0) {
       await clearRunBuffer(handle);
       await setBufferedCount(handle, 0);
       continue;
     }
-    items.push(buildFlushItem(handle, buf, tweets));
+    items.push(buildFlushItem(handle, buf, tweets, unavailableTweets));
   }
   if (items.length === 0) return;
 
@@ -924,10 +1008,11 @@ async function flushHandlesLocked(handles: string[], reason: string): Promise<vo
       const today = new Date().toISOString().slice(0, 10);
       const carriedToday = prev && prev.todayDate === today ? prev.todayCount : 0;
       await bumpCounter(item.handle, {
-        todayCount: carriedToday + item.tweets.length,
+        todayCount: carriedToday + item.tweets.length + item.unavailableTweets.length,
         todayDate: today,
         lastCaptureAt: item.buf.last_capture_at,
-        totalCommitted: (prev?.totalCommitted ?? 0) + item.tweets.length,
+        totalCommitted:
+          (prev?.totalCommitted ?? 0) + item.tweets.length + item.unavailableTweets.length,
         bufferedCount: remainingCount,
       });
       // Record commits in the dedup index so we don't re-commit them next
@@ -946,11 +1031,18 @@ async function flushHandlesLocked(handles: string[], reason: string): Promise<vo
           ),
         };
       }
+      for (const u of item.unavailableTweets) {
+        inner[u.tweet_id] = {
+          ts: nowIso,
+          sig: unavailableSig(u),
+        };
+      }
       idx[item.handle] = inner;
       await info('flush committed', {
         handle: item.handle,
         reason,
         tweets: item.tweets.length,
+        unavailable: item.unavailableTweets.length,
         run: item.runShort,
         path: item.rawPath,
         batch_commit: result.commitSha,
@@ -962,6 +1054,7 @@ async function flushHandlesLocked(handles: string[], reason: string): Promise<vo
       runs: items.length,
       files: files.length,
       tweets: items.reduce((total, item) => total + item.tweets.length, 0),
+      unavailable: items.reduce((total, item) => total + item.unavailableTweets.length, 0),
       commit: result.commitSha,
     });
     {
@@ -1022,7 +1115,12 @@ async function flushHandlesLocked(handles: string[], reason: string): Promise<vo
   }
 }
 
-function buildFlushItem(handle: string, buf: RunBuffer, tweets: CanonicalTweet[]): FlushItem {
+function buildFlushItem(
+  handle: string,
+  buf: RunBuffer,
+  tweets: CanonicalTweet[],
+  unavailableTweets: UnavailableTweet[]
+): FlushItem {
   const ts = isoCompact(buf.started_at);
   const day = buf.started_at.slice(0, 10);
   const runShort = shortRunId(buf.run_id);
@@ -1032,6 +1130,7 @@ function buildFlushItem(handle: string, buf: RunBuffer, tweets: CanonicalTweet[]
     handle,
     buf,
     tweets,
+    unavailableTweets,
     rawPath,
     seenPath,
     day,
@@ -1045,6 +1144,7 @@ function buildFlushItem(handle: string, buf: RunBuffer, tweets: CanonicalTweet[]
       user_agent: navigator.userAgent,
       source_url: buf.source_url,
       tweets,
+      unavailable_tweets: unavailableTweets,
     },
     seen: {
       schema_version: 1,
@@ -1059,12 +1159,16 @@ function buildFlushItem(handle: string, buf: RunBuffer, tweets: CanonicalTweet[]
 function buildBatchCommitMessage(items: FlushItem[]): string {
   if (items.length === 1) {
     const item = items[0]!;
-    return `capture: ${item.handle} ${item.day} ${item.tweets.length} tweet${item.tweets.length === 1 ? '' : 's'} (run ${item.runShort})`;
+    const unavailableCount = item.unavailableTweets.length;
+    const suffix = unavailableCount > 0 ? `, ${unavailableCount} unavailable` : '';
+    return `capture: ${item.handle} ${item.day} ${item.tweets.length} tweet${item.tweets.length === 1 ? '' : 's'}${suffix} (run ${item.runShort})`;
   }
   const days = [...new Set(items.map((item) => item.day))].sort();
   const dayLabel = days.length === 1 ? days[0]! : `${days[0]}..${days[days.length - 1]}`;
   const tweetCount = items.reduce((total, item) => total + item.tweets.length, 0);
-  return `capture batch: ${items.length} runs, ${tweetCount} tweet${tweetCount === 1 ? '' : 's'} (${dayLabel})`;
+  const unavailableCount = items.reduce((total, item) => total + item.unavailableTweets.length, 0);
+  const suffix = unavailableCount > 0 ? `, ${unavailableCount} unavailable` : '';
+  return `capture batch: ${items.length} runs, ${tweetCount} tweet${tweetCount === 1 ? '' : 's'}${suffix} (${dayLabel})`;
 }
 
 async function clearCommittedTweetsFromBuffer(item: FlushItem): Promise<number> {
@@ -1078,6 +1182,9 @@ async function clearCommittedTweetsFromBuffer(item: FlushItem): Promise<number> 
       engagementSig(t.like_count, t.retweet_count, t.reply_count, t.quote_count, t.is_truncated),
     ])
   );
+  for (const u of item.unavailableTweets) {
+    committed.set(u.tweet_id, unavailableSig(u));
+  }
   const remainingTweets: Record<string, CanonicalTweet> = {};
   for (const [tweetId, tweet] of Object.entries(current.tweets_by_id)) {
     const committedSig = committed.get(tweetId);
@@ -1092,8 +1199,20 @@ async function clearCommittedTweetsFromBuffer(item: FlushItem): Promise<number> 
       remainingTweets[tweetId] = { ...tweet };
     }
   }
+  const remainingUnavailable: Record<string, UnavailableTweet> = {};
+  for (const [tweetId, unavailable] of Object.entries(current.unavailable_by_id ?? {})) {
+    const committedSig = committed.get(tweetId);
+    const currentSig = unavailableSig(unavailable);
+    if (!committedSig || committedSig !== currentSig) {
+      remainingUnavailable[tweetId] = { ...unavailable };
+    }
+  }
 
-  const remainingCount = Object.keys(remainingTweets).length;
+  const remainingIds = new Set([
+    ...Object.keys(remainingTweets),
+    ...Object.keys(remainingUnavailable),
+  ]);
+  const remainingCount = remainingIds.size;
   if (remainingCount === 0) {
     await clearRunBuffer(item.handle);
     return 0;
@@ -1108,7 +1227,8 @@ async function clearCommittedTweetsFromBuffer(item: FlushItem): Promise<number> 
     run_id: nextRunId,
     started_at: current.last_capture_at,
     tweets_by_id: remainingTweets,
-    tweet_ids_observed: current.tweet_ids_observed.filter((id) => id in remainingTweets),
+    unavailable_by_id: remainingUnavailable,
+    tweet_ids_observed: current.tweet_ids_observed.filter((id) => remainingIds.has(id)),
   });
   await info('flush kept newer buffered tweets', {
     handle: item.handle,
@@ -1137,6 +1257,7 @@ async function captureNow(handle: string): Promise<void> {
       started_at: now,
       last_capture_at: now,
       tweets_by_id: {},
+      unavailable_by_id: {},
       tweet_ids_observed: [],
       endpoints_seen: [],
       source_url: targetUrl,

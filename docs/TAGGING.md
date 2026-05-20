@@ -67,22 +67,24 @@ sidepanel.
 
 See `config/tag_taxonomy.yaml` for the authoritative list. Quick map:
 
-| Namespace  | What it labels                         | Example                |
-| ---------- | -------------------------------------- | ---------------------- |
-| `subject:` | who/what the post is about             | `subject:detainee`     |
-| `genre:`   | communicative function                 | `genre:statistics`     |
-| `media:`   | content of attached media (Layer 3a)   | `media:photo-detainee` |
-| `format:`  | structural (derived from `tweet_type`) | `format:retweet`       |
-| `frame:`   | recurring rhetorical scaffolds         | `frame:criminal`       |
-| `action:`  | enforcement verbs                      | `action:deportation`   |
-| `topic:`   | themes                                 | `topic:border`         |
-| `origin:`  | "from <country>," pattern              | `origin:Mexico`        |
-| `country:` | any contextual country mention         | `country:Mexico`       |
-| `state:`   | "<place>, <state>" pattern             | `state:Texas`          |
-| `crime:`   | crime type vocabulary                  | `crime:assault`        |
-| `agency:`  | mentioned enforcement-adjacent handle  | `agency:ICEgov`        |
-| `slogan:`  | DHS branded phrases                    | `slogan:nice`          |
-| `shape:`   | composite (e.g. mugshot-reply form)    | `shape:lineup`         |
+| Namespace | What it labels | Example |
+|---|---|---|
+| `subject:`  | who/what the post is about        | `subject:detainee` |
+| `genre:`    | communicative function            | `genre:statistics` |
+| `media:`    | content of attached media (Layer 3a) | `media:photo-detainee` |
+| `format:`   | structural (derived from `tweet_type`) | `format:retweet` |
+| `status:`   | availability / moderation state     | `status:copyright-removal` |
+| `frame:`    | recurring rhetorical scaffolds    | `frame:criminal` |
+| `action:`   | enforcement verbs                 | `action:deportation` |
+| `topic:`    | broad subject areas; additive     | `topic:immigration` |
+| `theme:`    | rhetorical / ideological frames   | `theme:nativism` |
+| `origin:`   | "from <country>," pattern         | `origin:Mexico` |
+| `country:`  | any contextual country mention    | `country:Mexico` |
+| `state:`    | "<place>, <state>" pattern        | `state:Texas` |
+| `crime:`    | crime type vocabulary             | `crime:assault` |
+| `agency:`   | mentioned enforcement-adjacent handle | `agency:ICEgov` |
+| `slogan:`   | DHS branded phrases               | `slogan:nice` |
+| `shape:`    | composite (e.g. mugshot-reply form) | `shape:lineup` |
 
 ## The `topic:immigration` default
 
@@ -91,11 +93,14 @@ relevance from sparse tweet text (image-heavy posts, three-word
 slogans) costs recall. So:
 
 - Every tweet from a tracked-tier account (`core` / `government` /
-  `officials`) is tagged `topic:immigration`, **unless** an obvious
-  non-immigration signal blocks it (birthday, weather, sports).
+  `officials`) is tagged `topic:immigration` when it has an explicit
+  immigration signal. Sparse tracked-account posts still get a tentative
+  `topic:immigration` only when no other broad `topic:*` signal fires.
+  Topics are additive: a labor/immigration post can carry both
+  `topic:economy` and `topic:immigration`.
 - The tag is emitted **confirmed** when the text (or OCR) carries any
   explicit immigration signal: a `frame:`, `action:`, `origin:`,
-  `country:`, `topic:border/sanctuary/worksite`, a known agency
+  `country:`, `theme:border/sanctuary/worksite/nativism`, a known agency
   handle, the `slogan:` phrases, or one of a small set of plain
   keywords (`immigration`, `migrant`, `asylum`, `illegal alien`, `the
 border`, `border patrol`, bare `ICE`/`CBP`).
@@ -108,6 +113,16 @@ tentative `topic:immigration` tags across 3,204 tagged tweets.
 
 `_misc` / public-tier authors don't get the default at all; their
 tweets only earn `topic:immigration` if an explicit signal fires.
+
+## Unavailable / removed posts
+
+When X returns a tombstone for a tweet, the extension records an
+`unavailable_tweets` event in the raw capture. Ingest folds that event
+onto the existing canonical row as `unavailable_detected_at`,
+`unavailable_reason`, `unavailable_text`, and
+`unavailable_source_url`. The lexical tagger emits `status:unavailable`
+for those rows, plus `status:copyright-removal` when the tombstone text
+or reason mentions copyright / DMCA.
 
 ## OCR awareness
 

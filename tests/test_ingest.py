@@ -455,6 +455,36 @@ def test_refetched_full_text_replaces_truncated(tmp_repo: Path) -> None:
     assert row["is_truncated"] is False
 
 
+def test_unavailable_event_marks_existing_row(tmp_repo: Path) -> None:
+    write_capture(
+        tmp_repo,
+        "test-handle",
+        "01.json",
+        make_capture([make_tweet("gone01", text="original body")]),
+    )
+    unavailable = make_capture([])
+    unavailable["unavailable_tweets"] = [
+        {
+            "tweet_id": "gone01",
+            "account_handle": "test-handle",
+            "unavailable_detected_at": "2025-04-14T10:00:00Z",
+            "unavailable_reason": "copyright",
+            "unavailable_text": "This media has been removed due to a copyright report.",
+            "unavailable_source_url": "https://x.com/test-handle/status/gone01",
+        }
+    ]
+    write_capture(tmp_repo, "test-handle", "02-unavailable.json", unavailable)
+
+    assert ingest.main([]) == 0
+
+    df = pl.read_parquet(tmp_repo / "data" / "test-handle.parquet")
+    row = df.row(0, named=True)
+    assert row["text"] == "original body"
+    assert row["unavailable_detected_at"] == "2025-04-14T10:00:00Z"
+    assert row["unavailable_reason"] == "copyright"
+    assert "copyright report" in row["unavailable_text"]
+
+
 def test_full_text_not_clobbered_by_later_truncated_scroll(tmp_repo: Path) -> None:
     """Once we've archived the full body of a long tweet, a later timeline
     scroll that returns only the truncated head must not overwrite it."""

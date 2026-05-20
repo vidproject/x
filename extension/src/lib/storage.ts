@@ -7,6 +7,7 @@ import type {
   ConnectionState,
   LogEvent,
   Settings,
+  UnavailableTweet,
 } from './types.js';
 
 /**
@@ -20,6 +21,7 @@ export interface RunBuffer {
   started_at: string;
   last_capture_at: string;
   tweets_by_id: Record<string, CanonicalTweet>;
+  unavailable_by_id?: Record<string, UnavailableTweet>;
   tweet_ids_observed: string[];
   endpoints_seen: string[];
   source_url: string | null;

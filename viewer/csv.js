@@ -23,6 +23,10 @@ const COLS = [
   'tweet_url',
   'wayback_url',
   'deletion_detected_at',
+  'unavailable_detected_at',
+  'unavailable_reason',
+  'unavailable_text',
+  'unavailable_source_url',
   'capture_run_id',
 ];
 

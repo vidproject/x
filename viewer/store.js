@@ -101,7 +101,10 @@ export class Store {
   rebuild() {
     const all = [];
     for (const rows of this.byHandle.values()) {
-      for (const r of rows) all.push(r);
+      for (const r of rows) {
+        delete r.__reply_promotions;
+        all.push(r);
+      }
     }
     this.allRows = all;
     this.idIndex = new Map();
@@ -119,6 +122,7 @@ export class Store {
       }
       list.push(r);
     }
+    this.annotateReplyPromotions();
     this.search = null; // rebuild lazily
   }
 
@@ -273,7 +277,14 @@ export class Store {
       }
       const filteredSet = new Set(filteredRows);
       const matchedCount = ordered.filter((x) => filteredSet.has(x)).length;
-      threads.push({ master, selfSlaves, otherSlaves, matchedCount, threadId: tid });
+      threads.push({
+        master,
+        selfSlaves,
+        otherSlaves,
+        promotedReplies: replyPromotionsFor(master),
+        matchedCount,
+        threadId: tid,
+      });
     }
     return threads;
   }
@@ -283,9 +294,52 @@ export class Store {
     // `_misc.parquet` aggregates non-tracked authors, so they're
     // implicitly `public` regardless of which non-tracked handle wrote
     // the tweet.
-    if (!this.accountCategoryByHandle.has(handle)) return 'public';
-    return this.accountCategoryByHandle.get(handle) || 'public';
+    const own = this.accountCategoryByHandle.get(handle) || 'public';
+    return dominantCategory(own, promotedCategoryOf(row));
   }
+
+  annotateReplyPromotions() {
+    for (const reply of this.allRows) {
+      if (reply.tweet_type !== 'reply') continue;
+      const parentId = String(reply.reply_to_tweet_id ?? '');
+      if (!parentId) continue;
+      const parent = this.getById(parentId);
+      if (!parent || parent === reply) continue;
+      if (parent.account_handle === reply.account_handle) continue;
+
+      const category = this.accountCategoryByHandle.get(reply.account_handle);
+      if (category !== 'core' && category !== 'officials') continue;
+      const promotions = replyPromotionsFor(parent);
+      promotions.push({
+        category,
+        reply,
+      });
+      parent.__reply_promotions = promotions;
+    }
+  }
+}
+
+function replyPromotionsFor(row) {
+  return Array.isArray(row?.__reply_promotions) ? row.__reply_promotions : [];
+}
+
+function promotedCategoryOf(row) {
+  const promotions = replyPromotionsFor(row);
+  if (promotions.some((p) => p?.category === 'core')) return 'core';
+  if (promotions.some((p) => p?.category === 'officials')) return 'officials';
+  return '';
+}
+
+function dominantCategory(own, promoted) {
+  const priority = {
+    core: 5,
+    officials: 4,
+    government: 3,
+    public_figures: 2,
+    public: 1,
+    '': 0,
+  };
+  return (priority[promoted] ?? 0) > (priority[own] ?? 0) ? promoted : own;
 }
 
 function tagFilterMatches(row, selections) {

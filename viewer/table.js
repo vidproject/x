@@ -145,6 +145,17 @@ export const COLUMNS = [
         : '—',
   },
   {
+    key: 'unavailable_detected_at',
+    label: 'Unavailable',
+    default: false,
+    filterable: true,
+    sortable: true,
+    render: (r) =>
+      r.unavailable_detected_at
+        ? `<span class="deleted-cell" title="${escape(r.unavailable_text ?? r.unavailable_detected_at)}">${escape(r.unavailable_reason || fmtDate(r.unavailable_detected_at))}</span>`
+        : '—',
+  },
+  {
     key: 'community_note',
     label: 'Note',
     default: false,
@@ -226,7 +237,7 @@ export function renderColumnsMenu(menuEl, visible, onChange) {
  * @param {{
  *   theadEl: HTMLElement, tbodyEl: HTMLElement,
  *   rows: Array<Record<string, unknown>>,
- *   threads?: Array<{master:any, slaves:any[], matchedCount:number, threadId:string}>,
+ *   threads?: Array<{master:any, slaves:any[], promotedReplies?:any[], matchedCount:number, threadId:string}>,
  *   visible: string[], page: number, pageSize: number,
  *   sort: string, dir: 'asc'|'desc',
  *   colFilters: Record<string, Set<string>>,
@@ -343,6 +354,11 @@ function paintThreaded({
     masterRow.dataset.threadId = thread.threadId;
     const hasSelf = thread.selfSlaves.length > 0;
     const hasOther = thread.otherSlaves.length > 0;
+    const hasPromoted = Array.isArray(thread.promotedReplies) && thread.promotedReplies.length > 0;
+    if (hasPromoted) {
+      masterRow.classList.add('has-promoted-reply');
+      masterRow.classList.add(`promoted-${topPromotionCategory(thread.promotedReplies)}`);
+    }
     if (hasSelf || hasOther) {
       masterRow.classList.add('has-slaves');
       decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread);
@@ -367,7 +383,13 @@ function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
   const firstCell = masterRow.firstElementChild;
   if (!firstCell) return;
   const selfCount = thread.selfSlaves.length;
-  const otherCount = thread.otherSlaves.length;
+  const promotedReplies = Array.isArray(thread.promotedReplies) ? thread.promotedReplies : [];
+  const promotedIds = new Set(
+    promotedReplies.map((p) => String(p?.reply?.tweet_id ?? '')).filter(Boolean)
+  );
+  const otherCount = thread.otherSlaves.filter(
+    (r) => !promotedIds.has(String(r?.tweet_id ?? ''))
+  ).length;
   const wrap = document.createElement('span');
   wrap.className = 'thread-affordances';
   if (selfCount > 0) {
@@ -385,6 +407,9 @@ function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
     });
     wrap.append(toggle);
   }
+  for (const group of promotedReplyGroups(promotedReplies)) {
+    wrap.append(promotedReplyBadge(group));
+  }
   if (otherCount > 0) {
     // Non-self replies aren't inlined; the badge invites the user to
     // open the sidepanel, where they appear in a dedicated section.
@@ -397,6 +422,66 @@ function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
     wrap.append(badge);
   }
   firstCell.prepend(wrap);
+}
+
+function topPromotionCategory(promotions) {
+  return promotions.some((p) => p?.category === 'core') ? 'core' : 'officials';
+}
+
+function promotedReplyGroups(promotions) {
+  const byHandle = new Map();
+  for (const promo of promotions) {
+    const reply = promo?.reply;
+    const handle = String(reply?.account_handle ?? '');
+    if (!handle) continue;
+    const category = promo?.category === 'core' ? 'core' : 'officials';
+    const key = `${category}:${handle}`;
+    let group = byHandle.get(key);
+    if (!group) {
+      group = {
+        category,
+        handle,
+        reply,
+        count: 0,
+      };
+      byHandle.set(key, group);
+    }
+    group.count += 1;
+  }
+  return [...byHandle.values()].sort((a, b) => {
+    const byPriority = promotionPriority(b.category) - promotionPriority(a.category);
+    if (byPriority) return byPriority;
+    return a.handle.localeCompare(b.handle);
+  });
+}
+
+function promotionPriority(category) {
+  return category === 'core' ? 2 : category === 'officials' ? 1 : 0;
+}
+
+function promotedReplyBadge(group) {
+  const badge = document.createElement('span');
+  badge.className = `thread-reply-badge promo-${group.category}`;
+  const avatar = avatarForRow(group.reply);
+  if (avatar) {
+    const img = document.createElement('img');
+    img.className = 'thread-reply-avatar';
+    img.loading = 'lazy';
+    img.alt = '';
+    img.src = avatar;
+    badge.append(img);
+  } else {
+    const placeholder = document.createElement('span');
+    placeholder.className = 'thread-reply-avatar thread-reply-avatar-placeholder';
+    placeholder.textContent = '·';
+    badge.append(placeholder);
+  }
+  const label = document.createElement('span');
+  label.textContent = `@${group.handle} replied${group.count > 1 ? ` x${group.count}` : ''}`;
+  badge.append(label);
+  const displayName = displayNameForRow(group.reply);
+  badge.title = `${displayName ? `${displayName} ` : ''}@${group.handle} replied directly`;
+  return badge;
 }
 
 function buildRow(r, visible, onRowClick) {
@@ -741,9 +826,9 @@ export function setUserLookup(map) {
 
 function renderAccountCell(r) {
   const handle = r.account_handle ?? '';
-  const userMeta = userLookup.get(handle) ?? {};
-  const avatar = userMeta.avatar_url || r.author?.avatar_url || null;
-  const displayName = userMeta.display_name || r.author?.display_name || null;
+  const userMeta = userMetaForRow(r);
+  const avatar = avatarForRow(r);
+  const displayName = displayNameForRow(r);
   const verifiedBadge = userMeta.verified || userMeta.is_blue_verified ? ' ✓' : '';
   const avatarHtml = avatar
     ? `<img class="acc-avatar" loading="lazy" alt="" src="${escape(avatar)}" />`
@@ -753,6 +838,20 @@ function renderAccountCell(r) {
     ? `<span class="display-name" title="${escape(displayName)}">${escape(displayName)}${verifiedBadge}</span>`
     : '';
   return `<span class="acc-cell">${avatarHtml}${handleHtml}${nameHtml}</span>`;
+}
+
+function userMetaForRow(r) {
+  return userLookup.get(r?.account_handle) ?? {};
+}
+
+function avatarForRow(r) {
+  const userMeta = userMetaForRow(r);
+  return userMeta.avatar_url || r?.author?.avatar_url || null;
+}
+
+function displayNameForRow(r) {
+  const userMeta = userMetaForRow(r);
+  return userMeta.display_name || r?.author?.display_name || null;
 }
 
 function mediaFlags(r) {

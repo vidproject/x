@@ -192,6 +192,121 @@ def test_angel_family_keyword_match() -> None:
     assert "subject:angel-family" in _tags(out)
 
 
+def test_native_born_citizen_keyword_match() -> None:
+    out = tag_text(
+        "President Trump is ensuring net job growth goes to NATIVE-BORN AMERICANS.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    tags = _tags(out)
+    assert "subject:native-born-citizen" in tags
+    assert "theme:nativism" in tags
+    assert "topic:economy" in tags
+    assert "topic:immigration" in tags
+    imm = next(e for e in out if e["tag"] == "topic:immigration")
+    assert not imm["tentative"]
+
+
+def test_homeland_theme_matches_capital_h_homeland_framing() -> None:
+    out = tag_text(
+        "Our mission is securing the Homeland and protecting American communities.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    assert "theme:homeland" in _tags(out)
+
+
+def test_homeland_theme_ignores_lowercase_generic_homeland() -> None:
+    out = tag_text(
+        "Our mission is homeland security and protecting American communities.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    assert "theme:homeland" not in _tags(out)
+
+
+def test_nativism_theme_matches_labor_contrast_frame_with_multiple_topics() -> None:
+    out = tag_text(
+        "Foreign-born workers gained jobs while American-Born workers lost jobs.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    tags = _tags(out)
+    assert "theme:nativism" in tags
+    assert "topic:economy" in tags
+    assert "topic:immigration" in tags
+
+
+def test_nativism_theme_avoids_generic_american_worker_posts() -> None:
+    out = tag_text(
+        "USDOL is fighting for American workers and expanding apprenticeships.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    tags = _tags(out)
+    assert "theme:nativism" not in tags
+    assert "topic:economy" in tags
+    assert "topic:immigration" not in tags
+
+
+def test_christianity_theme_matches_explicit_christian_language() -> None:
+    out = tag_text(
+        "We defend Christian values and religious liberty.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    assert "theme:christianity" in _tags(out)
+
+
+def test_unavailable_copyright_status_tags() -> None:
+    out = tag_text(
+        "",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+        is_unavailable=True,
+        unavailable_text="This media has been removed in response to a copyright report.",
+    )
+    tags = _tags(out)
+    assert "status:unavailable" in tags
+    assert "status:copyright-removal" in tags
+
+
+def test_laudatory_topic_matches_accomplishment_posts() -> None:
+    out = tag_text(
+        "Promises made, promises kept: historic wins and record-breaking results.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    assert "topic:laudatory" in _tags(out)
+
+
+def test_general_topic_matches_multi_problem_posts() -> None:
+    out = tag_text(
+        "Crime, inflation, fraud, and border chaos are hurting families.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    assert "topic:general" in _tags(out)
+
+
 def test_slogan_patterns_fire() -> None:
     for text, expected in (
         ("Have a NICE day, America.", "slogan:nice"),

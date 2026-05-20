@@ -44,6 +44,9 @@ export function openSidepanel(panelEl, titleEl, bodyEl, row, thread) {
       )
     );
   }
+  if (row.unavailable_detected_at) {
+    bodyEl.append(section('Unavailable', grid(unavailableRows(row))));
+  }
   panelEl.hidden = false;
   panelEl.setAttribute('aria-hidden', 'false');
 }
@@ -146,6 +149,15 @@ function engagementRows(r) {
     ['quotes', fmtNum(r.quote_count)],
     ['views', fmtNum(r.view_count)],
     ['bookmarks', fmtNum(r.bookmark_count)],
+  ];
+}
+
+function unavailableRows(r) {
+  return [
+    ['detected_at', r.unavailable_detected_at],
+    ['reason', r.unavailable_reason],
+    ['notice', r.unavailable_text],
+    ['source_url', r.unavailable_source_url],
   ];
 }
 

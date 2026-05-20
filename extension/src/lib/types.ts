@@ -163,6 +163,13 @@ export interface CanonicalTweet {
   first_captured_at: string;
   last_seen_at: string;
   deletion_detected_at: string | null;
+  /** X returned a tombstone / unavailable notice for this tweet. Kept
+   * separately from deletion_detected_at because X sometimes supplies a
+   * specific reason, e.g. copyright or withholding. */
+  unavailable_detected_at: string | null;
+  unavailable_reason: string | null;
+  unavailable_text: string | null;
+  unavailable_source_url: string | null;
   tweet_url: string;
   tweet_type: TweetType;
   /** ID of the root tweet that started this conversation thread. Needed to
@@ -218,6 +225,15 @@ export interface CanonicalTweet {
   schema_version: 1;
 }
 
+export interface UnavailableTweet {
+  tweet_id: string;
+  account_handle: string | null;
+  unavailable_detected_at: string;
+  unavailable_reason: string | null;
+  unavailable_text: string | null;
+  unavailable_source_url: string | null;
+}
+
 export interface CapturePayload {
   schema_version: 1;
   capture_run_id: string;
@@ -227,6 +243,7 @@ export interface CapturePayload {
   user_agent: string;
   source_url: string | null;
   tweets: CanonicalTweet[];
+  unavailable_tweets?: UnavailableTweet[];
 }
 
 export interface SeenPayload {

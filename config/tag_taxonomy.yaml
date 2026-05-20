@@ -47,6 +47,11 @@ tags:
       Post features a victim of a crime attributed to an immigrant
       (superset of angel-family).
     classification: tentative
+  subject:native-born-citizen:
+    description: >-
+      Post explicitly references native-born U.S. citizens or Americans
+      as a class.
+    classification: deterministic
   subject:enforcement-op:
     description: >-
       Post depicts an arrest, raid, deportation flight, or other operation.
@@ -121,7 +126,17 @@ tags:
     description: Reply (redundant with tweet_type=reply; kept for symmetry).
     classification: deterministic
 
-  # ===== frame:* — recurring rhetorical scaffolds ===================
+  # ===== status:* - availability / moderation state =================
+  status:unavailable:
+    description: X returned a tombstone or unavailable notice for this tweet.
+    classification: deterministic
+  status:copyright-removal:
+    description: >-
+      X indicated the tweet or attached media was removed or withheld for
+      copyright / DMCA reasons.
+    classification: deterministic
+
+  # ===== frame:* - recurring rhetorical scaffolds ===================
   frame:criminal:
     description: >-
       DHS templated "Name, a criminal illegal alien from X, convicted of
@@ -149,7 +164,7 @@ tags:
     pattern: |
       \b(?:(?:call|contact)\s+(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b(?=.{0,180}\b(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b)|(?:report|tip|submit|send|notify)\b.{0,80}\b(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b.{0,80}\b(?:to|at|with)\s+(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|DHS|Department of Homeland Security|Homeland Security|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b|(?:submit|send)\s+(?:a\s+)?tip\b.{0,80}\b(?:to|with)\s+(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|DHS|Department of Homeland Security|Homeland Security|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b(?=.{0,120}\b(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b)|(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b.{0,240}\b(?:call|contact)\s+(?:(?:our|the)\s+)?(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|ICE\s+)?(?:tip\s*line|hotline|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b)
 
-  # ===== topic:* — themes ===========================================
+  # ===== topic:* - broad subject area ================================
   topic:immigration:
     description: >-
       Post is about immigration / immigration enforcement / immigration
@@ -166,23 +181,51 @@ tags:
       reason we're confident. Confirmed (tentative omitted) when at
       least one explicit signal fires.
     classification: deterministic
-  topic:border:
+  topic:economy:
+    description: Jobs, wages, workers, labor markets, business, or economy.
+    classification: deterministic
+  topic:laudatory:
+    description: Lists or celebrates accomplishments, wins, or successes.
+    classification: deterministic
+  topic:general:
+    description: Broad or mixed-problem posts that are not a narrower topic.
+    classification: deterministic
+
+  # ===== theme:* - rhetorical / ideological frames ==================
+  theme:border:
     description: References to the southern border, border wall, crossings.
     classification: deterministic
     pattern: |
       \b(border|southwest border|crossing|border wall)\b
-  topic:sanctuary-cities:
+  theme:sanctuary-cities:
     description: References to sanctuary cities / sanctuary policies.
     classification: deterministic
     pattern: |
       \b(sanctuary (?:cit(?:y|ies)|jurisdiction|polic(?:y|ies))|sanctuary state)\b
-  topic:worksite-enforcement:
+  theme:worksite-enforcement:
     description: Worksite raids / employment-related enforcement.
     classification: deterministic
     pattern: |
       \b(worksite|workplace|I-9|E-Verify|employer (?:audit|raid))\b
 
-  # ===== slogan:* — branded phrases =================================
+  theme:homeland:
+    description: >-
+      References homeland framing: protecting, securing, or defending
+      the capital-H Homeland as a national object of loyalty or protection.
+    classification: deterministic
+  theme:nativism:
+    description: >-
+      Frames U.S.-born or American workers/citizens as displaced,
+      threatened, or specially entitled relative to immigrants,
+      foreign-born people, or foreign labor.
+    classification: deterministic
+  theme:christianity:
+    description: >-
+      References Christianity or explicitly Christian identity, faith,
+      values, scripture, churches, or Christ.
+    classification: deterministic
+
+  # ===== slogan:* - branded phrases =================================
   slogan:nice:
     description: DHS "ICE is NICE" branded meme.
     classification: deterministic

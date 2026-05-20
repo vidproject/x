@@ -5,6 +5,7 @@ import type {
   MediaItem,
   TweetCard,
   TweetType,
+  UnavailableTweet,
   UrlEntity,
   UserSnapshot,
 } from './types.js';
@@ -31,12 +32,14 @@ export interface NormalizeContext {
 export interface NormalizeResult {
   tweets: CanonicalTweet[];
   observed_ids: string[];
+  unavailable_tweets: UnavailableTweet[];
   /**
    * Tweet-shaped nodes the walker saw (had a `rest_id`) but couldn't turn
    * into a full `CanonicalTweet` — typically because the embedded user
    * info was missing or the entry was a media-only thumbnail card from
-   * the UserMedia endpoint. The background queues these for an explicit
-   * "go fetch the detail page" crawl so we don't drop them on the floor.
+   * the UserMedia endpoint. Only IDs with a trustworthy handle from the
+   * tweet node itself are returned; otherwise the background cannot build
+   * a reliable /<handle>/status/<id> detail URL.
    */
   partial_ids: Array<{ tweet_id: string; hint_handle: string | null }>;
 }
@@ -60,18 +63,27 @@ const PARTIAL_OK_ENDPOINTS: ReadonlySet<string> = new Set(['UserMedia']);
 export function normalize(payload: unknown, ctx: NormalizeContext): NormalizeResult {
   const rawTweets = collectTweets(payload);
   const tweets: CanonicalTweet[] = [];
+  const unavailableTweets: UnavailableTweet[] = [];
   const observed: string[] = [];
   const built = new Set<string>();
   const partialMap = new Map<string, string | null>();
   const collectPartials = PARTIAL_OK_ENDPOINTS.has(ctx.endpoint);
   for (const raw of rawTweets) {
     try {
+      const unavailable = pickUnavailableTweet(raw, ctx);
+      if (unavailable) {
+        unavailableTweets.push(unavailable);
+        observed.push(unavailable.tweet_id);
+        built.add(unavailable.tweet_id);
+        continue;
+      }
       const t = buildTweet(raw, ctx);
       if (!t) {
         if (collectPartials) {
-          // Only enqueue real-tweet shells (not tombstones, not stripped
-          // nodes lacking a legacy block, not garbage IDs).
-          const partial = pickPartial(raw, ctx);
+          // Only enqueue real-tweet shells with a trustworthy handle (not
+          // tombstones, stripped nodes lacking a legacy block, garbage IDs,
+          // or IDs that would require guessing the author from the page).
+          const partial = pickPartial(raw);
           if (partial) partialMap.set(partial.tweet_id, partial.hint_handle);
         }
         continue;
@@ -92,13 +104,109 @@ export function normalize(payload: unknown, ctx: NormalizeContext): NormalizeRes
     if (built.has(id)) continue;
     partial_ids.push({ tweet_id: id, hint_handle: hint });
   }
-  return { tweets, observed_ids: observed, partial_ids };
+  return { tweets, observed_ids: observed, unavailable_tweets: unavailableTweets, partial_ids };
 }
 
-function pickPartial(
-  node: unknown,
-  ctx: NormalizeContext
-): { tweet_id: string; hint_handle: string | null } | null {
+function pickUnavailableTweet(node: unknown, ctx: NormalizeContext): UnavailableTweet | null {
+  if (typeof node !== 'object' || node === null) return null;
+  const n = node as Record<string, unknown>;
+  if (n.__typename !== 'TweetTombstone') return null;
+
+  const tweetId =
+    strOrNull(n.rest_id) ??
+    pickTweetIdFromUrls(node) ??
+    (ctx.sourceUrl ? tweetIdFromTweetUrl(ctx.sourceUrl) : null);
+  if (!tweetId || !TWEET_ID_RE.test(tweetId)) return null;
+
+  const unavailableText = pickTombstoneText(node);
+  return {
+    tweet_id: tweetId,
+    account_handle:
+      pickHandleFromTweetUrls(node, tweetId) ??
+      (ctx.sourceUrl ? handleFromTweetUrl(ctx.sourceUrl, tweetId) : null),
+    unavailable_detected_at: ctx.capturedAt,
+    unavailable_reason: classifyUnavailableReason(unavailableText),
+    unavailable_text: unavailableText,
+    unavailable_source_url: ctx.sourceUrl ?? null,
+  };
+}
+
+function pickTweetIdFromUrls(node: unknown): string | null {
+  const seen = new WeakSet<object>();
+  const stack: unknown[] = [node];
+  while (stack.length > 0) {
+    const cur = stack.pop();
+    if (typeof cur === 'string') {
+      const id = tweetIdFromTweetUrl(cur);
+      if (id) return id;
+      continue;
+    }
+    if (cur === null || typeof cur !== 'object') continue;
+    if (seen.has(cur as object)) continue;
+    seen.add(cur as object);
+    if (Array.isArray(cur)) {
+      for (const v of cur) stack.push(v);
+    } else {
+      for (const v of Object.values(cur as Record<string, unknown>)) stack.push(v);
+    }
+  }
+  return null;
+}
+
+function tweetIdFromTweetUrl(rawUrl: string): string | null {
+  try {
+    const url = new URL(rawUrl, TWEET_URL_PREFIX);
+    if (url.hostname !== 'x.com' && url.hostname !== 'twitter.com') return null;
+    const match = url.pathname.match(/^\/[A-Za-z0-9_]{1,15}\/status\/(\d{15,20})(?:\/|$)/);
+    return match?.[1] ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function pickTombstoneText(node: unknown): string | null {
+  const strings: string[] = [];
+  const seen = new WeakSet<object>();
+  const stack: unknown[] = [node];
+  while (stack.length > 0) {
+    const cur = stack.pop();
+    if (typeof cur === 'string') {
+      const trimmed = cur.trim();
+      if (
+        trimmed.length >= 4 &&
+        !trimmed.startsWith('http://') &&
+        !trimmed.startsWith('https://')
+      ) {
+        strings.push(trimmed);
+      }
+      continue;
+    }
+    if (cur === null || typeof cur !== 'object') continue;
+    if (seen.has(cur as object)) continue;
+    seen.add(cur as object);
+    if (Array.isArray(cur)) {
+      for (const v of cur) stack.push(v);
+    } else {
+      for (const v of Object.values(cur as Record<string, unknown>)) stack.push(v);
+    }
+  }
+  const preferred = strings.find((s) =>
+    /\b(copyright|dmca|unavailable|withheld|removed|deleted|violat|suspended)\b/i.test(s)
+  );
+  return preferred ?? strings[0] ?? null;
+}
+
+function classifyUnavailableReason(text: string | null): string | null {
+  if (!text) return null;
+  if (/\b(copyright|dmca)\b/i.test(text)) return 'copyright';
+  if (/\bwithheld\b/i.test(text)) return 'withheld';
+  if (/\bdeleted|removed\b/i.test(text)) return 'removed';
+  if (/\bsuspended\b/i.test(text)) return 'suspended';
+  if (/\bunavailable|not available\b/i.test(text)) return 'unavailable';
+  return null;
+}
+
+function pickPartial(node: unknown): { tweet_id: string; hint_handle: string | null } | null {
   if (typeof node !== 'object' || node === null) return null;
   const n = node as Record<string, unknown>;
   // Deleted tweets surface as TweetTombstone — there's nothing to refetch,
@@ -115,10 +223,12 @@ function pickPartial(
     (typeof obj(n.tweet_result)?.result === 'object' &&
       (obj(obj(n.tweet_result)?.result)?.rest_id as string));
   if (typeof restId !== 'string' || !TWEET_ID_RE.test(restId)) return null;
-  return { tweet_id: restId, hint_handle: pickHintHandle(node, restId, ctx) };
+  const hintHandle = pickHintHandle(node, restId);
+  if (!hintHandle) return null;
+  return { tweet_id: restId, hint_handle: hintHandle };
 }
 
-function pickHintHandle(node: unknown, tweetId: string, ctx: NormalizeContext): string | null {
+function pickHintHandle(node: unknown, tweetId: string): string | null {
   if (typeof node !== 'object' || node === null) return null;
   const n = node as Record<string, unknown>;
   const userResult = obj(obj(obj(n.core)?.user_results)?.result);
@@ -126,8 +236,7 @@ function pickHintHandle(node: unknown, tweetId: string, ctx: NormalizeContext): 
     strOrNull(obj(userResult?.core)?.screen_name) ??
     strOrNull(obj(userResult?.legacy)?.screen_name) ??
     strOrNull(obj(n.legacy)?.screen_name) ??
-    pickHandleFromTweetUrls(node, tweetId) ??
-    pickHandleFromMediaPage(ctx.sourceUrl)
+    pickHandleFromTweetUrls(node, tweetId)
   );
 }
 
@@ -160,18 +269,6 @@ function handleFromTweetUrl(rawUrl: string, tweetId: string): string | null {
     const match = url.pathname.match(/^\/([A-Za-z0-9_]{1,15})\/status\/(\d{15,20})(?:\/|$)/);
     if (!match || match[2] !== tweetId) return null;
     return match[1] ?? null;
-  } catch {
-    return null;
-  }
-}
-
-function pickHandleFromMediaPage(rawUrl: string | null | undefined): string | null {
-  if (!rawUrl) return null;
-  try {
-    const url = new URL(rawUrl);
-    if (url.hostname !== 'x.com' && url.hostname !== 'twitter.com') return null;
-    const match = url.pathname.match(/^\/([A-Za-z0-9_]{1,15})\/media\/?$/);
-    return match?.[1] ?? null;
   } catch {
     return null;
   }
@@ -300,6 +397,10 @@ function buildTweet(raw: unknown, ctx: NormalizeContext): CanonicalTweet | null 
     first_captured_at: ctx.capturedAt,
     last_seen_at: ctx.capturedAt,
     deletion_detected_at: null,
+    unavailable_detected_at: null,
+    unavailable_reason: null,
+    unavailable_text: null,
+    unavailable_source_url: null,
     tweet_url: `${TWEET_URL_PREFIX}/${handle}/status/${restId}`,
     tweet_type: tweetType,
     conversation_id: strOrNull(legacy.conversation_id_str),
