@@ -218,6 +218,19 @@ overlay file consulted by the lexical tagger on its next run) and
 closes the discussion. The extension-side polling + one-click apply
 is a follow-up — the protocol it'll speak is the YAML stub above.
 
+## Manual media-review queue
+
+`data/tags/manual_media_review_queue.json` holds tweet-id / media-path
+items where a direct inspection of the archived asset surfaced visual
+signal that today's deterministic pipeline cannot recover — image-only
+text overlays, news-card chyrons, composite mugshot graphics, recruitment
+montages — alongside the candidate tags a vision/OCR layer would
+emit. The queue is hand-curated, additive, and never mutates the
+canonical parquets or the lexical / media_vision sidecars; it exists
+so the future Layer-3a/3b/3c jobs have a small ground-truth set to
+sanity-check their outputs against, and so pipeline gaps stay visible
+between OCR/CLIP runs.
+
 ## Run order
 
 ```

@@ -495,12 +495,12 @@ PATTERN_THEME_TRANSGENDER = _compile(
     r"|\bgender[- ](?:ideology|identity|affirming|transition|dysphoria)\b"
     r"|\b(?:biological|transgender)\s+"
     r"(?:males?|females?|man|woman|men|women|boys?|girls?)\b"
-    r"|\b(?:men|males|boys)\s+in\s+(?:women[’']?s|girls[’']?)\s+sports\b"
+    r"|\b(?:men|males|boys)\s+in\s+(?:women[\u2019']?s|girls[\u2019']?)\s+sports\b"
     r"|\b(?:men|males|boys)\s+(?:competing|playing|participating)\s+"
     r"(?:in|against|with)\s+(?:women|girls|female\s+athletes?)\b"
-    r"|\b(?:protect|save|defend)\s+(?:women[’']?s|girls[’']?)\s+sports\b"
-    r"|\btitle\s+ix\b.{0,80}\b(?:transgender|gender|women[’']?s\s+sports|girls[’']?\s+sports)\b"
-    r"|\b(?:transgender|gender|women[’']?s\s+sports|girls[’']?\s+sports)\b.{0,80}\btitle\s+ix\b"
+    r"|\b(?:protect|save|defend)\s+(?:women[\u2019']?s|girls[\u2019']?)\s+sports\b"
+    r"|\btitle\s+ix\b.{0,80}\b(?:transgender|gender|women[\u2019']?s\s+sports|girls[\u2019']?\s+sports)\b"
+    r"|\b(?:transgender|gender|women[\u2019']?s\s+sports|girls[\u2019']?\s+sports)\b.{0,80}\btitle\s+ix\b"
 )
 PATTERN_SUBJECT_CBP_HOME_APP = _compile(
     r"\b@?CBP\s+Home\s+App\b"

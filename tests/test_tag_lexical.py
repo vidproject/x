@@ -353,7 +353,7 @@ def test_religion_theme_ignores_expletive_god_phrases() -> None:
 
 def test_transgender_theme_matches_gender_identity_and_sports_frames() -> None:
     samples = [
-        "The order protects women’s sports from biological males competing against women.",
+        "The order protects women's sports from biological males competing against women.",
         "No men in women's sports.",
         "The agency rescinded gender-identity guidance under Title IX.",
         "This policy rejects radical gender ideology.",
