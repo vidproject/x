@@ -232,12 +232,12 @@ tags:
     pattern: |
       \b(NICE day|NICE morning|ICE is NICE|NICE city)\b
   slogan:worst:
-    description: "Worst of the Worst" branding.
+    description: '"Worst of the Worst" branding.'
     classification: deterministic
     pattern: |
       \bWORST OF THE WORST\b
   slogan:reportrecon:
-    description: "Report. Recon. Raid." branding.
+    description: '"Report. Recon. Raid." branding.'
     classification: deterministic
     pattern: |
       \bReport\.\s*Recon\.\s*Raid\.

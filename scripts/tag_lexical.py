@@ -382,7 +382,7 @@ ICE_DIRECT_TARGET = (
 ICE_REPORT_SUBJECT = (
     r"(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|"
     r"undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|"
-    r"alien(?:s|['’]s)?|immigrants?|migrants?)"
+    r"alien(?:s|['\u2019]s)?|immigrants?|migrants?)"
 )
 ICE_REPORT_PHONE = r"(?:866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)"
 PATTERN_ACTION_REPORT_TO_ICE = _compile(

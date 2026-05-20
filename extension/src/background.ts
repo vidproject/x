@@ -638,7 +638,13 @@ async function onGraphqlCapture(
   }
 
   if (normalized.unavailable_tweets.length > 0) {
-    await recordUnavailableTweets(normalized.unavailable_tweets, tracked, capturedAt, url, endpoint);
+    await recordUnavailableTweets(
+      normalized.unavailable_tweets,
+      tracked,
+      capturedAt,
+      url,
+      endpoint
+    );
   }
 
   if (normalized.tweets.length === 0) return;

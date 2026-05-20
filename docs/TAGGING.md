@@ -67,24 +67,24 @@ sidepanel.
 
 See `config/tag_taxonomy.yaml` for the authoritative list. Quick map:
 
-| Namespace | What it labels | Example |
-|---|---|---|
-| `subject:`  | who/what the post is about        | `subject:detainee` |
-| `genre:`    | communicative function            | `genre:statistics` |
-| `media:`    | content of attached media (Layer 3a) | `media:photo-detainee` |
-| `format:`   | structural (derived from `tweet_type`) | `format:retweet` |
-| `status:`   | availability / moderation state     | `status:copyright-removal` |
-| `frame:`    | recurring rhetorical scaffolds    | `frame:criminal` |
-| `action:`   | enforcement verbs                 | `action:deportation` |
-| `topic:`    | broad subject areas; additive     | `topic:immigration` |
-| `theme:`    | rhetorical / ideological frames   | `theme:nativism` |
-| `origin:`   | "from <country>," pattern         | `origin:Mexico` |
-| `country:`  | any contextual country mention    | `country:Mexico` |
-| `state:`    | "<place>, <state>" pattern        | `state:Texas` |
-| `crime:`    | crime type vocabulary             | `crime:assault` |
-| `agency:`   | mentioned enforcement-adjacent handle | `agency:ICEgov` |
-| `slogan:`   | DHS branded phrases               | `slogan:nice` |
-| `shape:`    | composite (e.g. mugshot-reply form) | `shape:lineup` |
+| Namespace  | What it labels                         | Example                    |
+| ---------- | -------------------------------------- | -------------------------- |
+| `subject:` | who/what the post is about             | `subject:detainee`         |
+| `genre:`   | communicative function                 | `genre:statistics`         |
+| `media:`   | content of attached media (Layer 3a)   | `media:photo-detainee`     |
+| `format:`  | structural (derived from `tweet_type`) | `format:retweet`           |
+| `status:`  | availability / moderation state        | `status:copyright-removal` |
+| `frame:`   | recurring rhetorical scaffolds         | `frame:criminal`           |
+| `action:`  | enforcement verbs                      | `action:deportation`       |
+| `topic:`   | broad subject areas; additive          | `topic:immigration`        |
+| `theme:`   | rhetorical / ideological frames        | `theme:nativism`           |
+| `origin:`  | "from <country>," pattern              | `origin:Mexico`            |
+| `country:` | any contextual country mention         | `country:Mexico`           |
+| `state:`   | "<place>, <state>" pattern             | `state:Texas`              |
+| `crime:`   | crime type vocabulary                  | `crime:assault`            |
+| `agency:`  | mentioned enforcement-adjacent handle  | `agency:ICEgov`            |
+| `slogan:`  | DHS branded phrases                    | `slogan:nice`              |
+| `shape:`   | composite (e.g. mugshot-reply form)    | `shape:lineup`             |
 
 ## The `topic:immigration` default
 
