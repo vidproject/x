@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-20T22:28:23Z",
+  "reviewer": "claude-inspect-archived-media",
+  "notes": "Items where direct inspection of archived media surfaced visual signal that the Layer-1 lexical tagger and the Layer-3m metadata sidecar cannot represent today. These are queued for a later OCR (Layer 3b), CLIP (Layer 3a), audio-transcript (Layer 3c), or vision-LLM (Layer 4) pass to turn into deterministic tags. The queue is additive: nothing here mutates the canonical parquets or the existing tag sidecars.",
+  "items": [
+    {
+      "tweet_id": "2056861089363611960",
+      "account_handle": "DHSgov",
+      "media_id": "13_2056861025304018946",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_2056861025304018946.mp4",
+      "tweet_text_excerpt": "You know you wanna be her",
+      "visual_observation": "Polished produced recruitment-style montage of female DHS / Coast Guard / Secret Service / HSI personnel in uniform, ending on a U.S. Department of Homeland Security end-card.",
+      "candidate_visual_tags": [
+        "media:produced-video",
+        "media:montage",
+        "video:ad",
+        "branch:coast-guard",
+        "agency:DHSgov"
+      ],
+      "deterministic_signal_missing": "Text is too sparse for the existing video:ad / branch:coast-guard / video:music-video regexes. Needs Layer 3a (CLIP), 3b (OCR on the end-card seal), or 3c (audio) before any of these tags become deterministic."
+    },
+    {
+      "tweet_id": "2056735360147730868",
+      "account_handle": "DHSgov",
+      "media_id": "13_2056735305617563650",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_2056735305617563650.mp4",
+      "tweet_text_excerpt": "CALIFORNIA CAVE RESCUE. 8 people were rescued in Santa Cruz after they were trapped in a cave by rising tides.",
+      "visual_observation": "CNN News Central broadcast: CNN logo, 'CNN NEWS CENTRAL' banner, '8 RESCUED AFTER RISING TIDES TRAPS GROUP IN CAVE' lower-third, 'LIVE CNN' bug, 'CAL FIRE C2T' source watermark, on-screen anchor at a desk.",
+      "candidate_visual_tags": [
+        "video:news-clip",
+        "media:text-overlay"
+      ],
+      "deterministic_signal_missing": "Outlet name (CNN) is in the chyron, not the tweet body, so PATTERN_VIDEO_NEWS_CLIP misses it. OCR on the lower-third would lift it to deterministic."
+    },
+    {
+      "tweet_id": "2057125065397784877",
+      "account_handle": "DHSgov",
+      "media_id": "13_2057124383311740929",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_2057124383311740929.mp4",
+      "tweet_text_excerpt": "RT @MargoMartin47: .@SecMullinDHS arrives to the United States Coast Guard Academy",
+      "visual_observation": "USCGA 145th Commencement: dress-uniform cadets saluting, USCGA banner, U.S. flag, Secretary Mullin walking down the line. Already gets branch:coast-guard / topic:military / agency:SecMullinDHS via text; visual confirms.",
+      "candidate_visual_tags": [
+        "media:produced-video",
+        "video:speech"
+      ],
+      "deterministic_signal_missing": "Lexical tagger already covers this one well. Queue entry kept as a positive control — visual lines up with current deterministic tags."
+    },
+    {
+      "tweet_id": "2034267508455194675",
+      "account_handle": "USCIS",
+      "media_id": "13_2034256300553494528",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCIS/13_2034256300553494528.mp4",
+      "tweet_text_excerpt": "A Moldovan alien fraudster with multiple extradition warrants",
+      "visual_observation": "Animated PSA-style infographic: gavel / courtroom imagery, USCIS+DHS seal, title cards progressively reveal 'Immigration Fraud is a CRIME'.",
+      "candidate_visual_tags": [
+        "media:produced-video",
+        "media:text-overlay",
+        "video:psa"
+      ],
+      "deterministic_signal_missing": "PATTERN_VIDEO_PSA wants a hotline / 'learn more at' / 'did you know' phrase in the body. OCR on the title-card text would catch this PSA deterministically."
+    },
+    {
+      "tweet_id": "2056890234785214964",
+      "account_handle": "WhiteHouse",
+      "media_id": "13_2056889479349026816",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2056889479349026816.mp4",
+      "tweet_text_excerpt": "First Lady Melania Trump delivers an announcement that the House has passed the Fostering the Future Act!",
+      "visual_observation": "White House balcony shot: Melania Trump at podium with Presidential Seal, Donald Trump standing behind, U.S. flag, title-card overlay 'First Lady Melania Trump Announces House Passes Fostering The Future Act'.",
+      "candidate_visual_tags": [
+        "media:text-overlay",
+        "video:speech",
+        "speaker:First Lady Melania Trump"
+      ],
+      "deterministic_signal_missing": "Tweet text names the speaker so speaker:* would be supportable today; PATTERN_VIDEO_SPEECH wants 'delivers a speech/address/remarks' phrasing, doesn't catch 'delivers an announcement'. Either widen the speech regex or wait for OCR / audio-transcript layers."
+    },
+    {
+      "tweet_id": "2056484964393259112",
+      "account_handle": "WhiteHouse",
+      "media_id": "13_2056484768003371008",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2056484768003371008.mp4",
+      "tweet_text_excerpt": "Find your medication, with ease. TrumpRx.Gov",
+      "visual_observation": "Screen recording demo of the TrumpRx.Gov search UI: typed queries ('we', 'infer') populate Wegovy / Vfend / Zyvox results with prices. Pure produced screencast, no human on camera.",
+      "candidate_visual_tags": [
+        "media:produced-video",
+        "media:text-overlay",
+        "video:ad",
+        "video:psa"
+      ],
+      "deterministic_signal_missing": "Already deterministic on genre:directive via 'Find your medication'. The video-kind tags need a screencast cue source (URL pattern + visible 'TrumpRx.Gov' chyron) that today's regexes don't carry."
+    },
+    {
+      "tweet_id": "2056838576344645973",
+      "account_handle": "_misc",
+      "media_id": "3_2056836964951683072",
+      "media_type": "photo",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/3_2056836964951683072.jpg",
+      "tweet_text_excerpt": "U.S. House of Representatives unanimously passes Fostering the Future Act championed by First Lady Melania Trump",
+      "visual_observation": "Dark-navy text-only White House press-release card with Office of the First Lady masthead.",
+      "candidate_visual_tags": [
+        "media:text-overlay"
+      ],
+      "deterministic_signal_missing": "No photo equivalent of media:text-overlay in the taxonomy yet (the tag is video-scoped). Either broaden media:text-overlay to images or add a parallel photo:text-overlay slug."
+    },
+    {
+      "tweet_id": "2056831719039181284",
+      "account_handle": "_misc",
+      "media_id": "3_2056831714400272384",
+      "media_type": "photo",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/3_2056831714400272384.jpg",
+      "tweet_text_excerpt": "@DHSgov @POTUS @SecMullinDHS That's truly fact and we definitely,",
+      "visual_observation": "American-flag background with white text 'God bless the US Border Patrol & ICE'.",
+      "candidate_visual_tags": [
+        "media:text-overlay",
+        "theme:religion",
+        "agency:ICEgov",
+        "agency:CBP",
+        "topic:immigration"
+      ],
+      "deterministic_signal_missing": "The image text carries the entire immigration + religion signal. Lexical tagger sees only the empty reply body, so the post lands as format:reply with no topical tag. This is the textbook OCR-recovery case from docs/TAGGING.md."
+    },
+    {
+      "tweet_id": "2056839141988749612",
+      "account_handle": "_misc",
+      "media_id": "3_2056839102818062337",
+      "media_type": "photo",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/3_2056839102818062337.jpg",
+      "tweet_text_excerpt": "@DHSgov @POTUS @SecMullinDHS FAT FUCK RAPIST @realDonaldTrump",
+      "visual_observation": "Caricature illustration: Trump's head on a taco body with MAGA hats and stars; bold caption 'DO YOU WANT TARIFFS WITH THAT?'",
+      "candidate_visual_tags": [
+        "topic:economy",
+        "theme:pop-culture-enforcement"
+      ],
+      "deterministic_signal_missing": "Image is a tariff-economy meme; the reply body triggers crime:rape from 'RAPIST' even though the image isn't crime-related. Manual-review flag to avoid over-attributing crime:* on image-driven posts; resolution needs OCR plus a guard that decays tag confidence when the textual cue is a single epithet."
+    },
+    {
+      "tweet_id": "2056894791145734560",
+      "account_handle": "_misc",
+      "media_id": "3_2056894788306116608",
+      "media_type": "photo",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/3_2056894788306116608.jpg",
+      "tweet_text_excerpt": "https://www.whitehouse.gov/briefings-statements/2026/05/first-lady-melania-trump-americas-tradition-fosters-unity/",
+      "visual_observation": "White House press-release card: navy background, 'OFFICE OF THE FIRST LADY' kicker, headline 'First Lady Melania Trump: America's Tradition Fosters Unity', date stamp.",
+      "candidate_visual_tags": [
+        "media:text-overlay",
+        "subject:official"
+      ],
+      "deterministic_signal_missing": "Tweet body is just the URL, so the lexical tagger emits nothing. The URL itself carries the headline, but resolved_url.title is not part of the buffer the tagger reads."
+    },
+    {
+      "tweet_id": "2049123692123189681",
+      "account_handle": "USCIS",
+      "media_id": "3_2049121864791031808",
+      "media_type": "photo",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCIS/3_2049121864791031808.jpg",
+      "tweet_text_excerpt": "@DHSgov Announces New Immigration Fees & Enforcement Measures",
+      "visual_observation": "DHS-branded infographic: 'DHS Announces New Immigration Fees & Enforcement Measures', body text references H.R. 1 Reconciliation Act of 2025, Annual Asylum Fee, Form I-589, Form I-102.",
+      "candidate_visual_tags": [
+        "media:text-overlay",
+        "topic:immigration",
+        "action:deportation"
+      ],
+      "deterministic_signal_missing": "Tweet body covers most of the topical signal already. The form numbers (I-589, I-102) and 'H.R. 1 Reconciliation Act' would only become tag-able after OCR + a forms-vocab namespace, which doesn't exist yet."
+    },
+    {
+      "tweet_id": "2044498376079597905",
+      "account_handle": "USCIS",
+      "media_id": "3_2044491379787563009",
+      "media_type": "photo",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCIS/3_2044491379787563009.jpg",
+      "tweet_text_excerpt": "While vetting an alien from Colombia, our staff uncovered a DUI conviction and charges for felony aggravated assault",
+      "visual_observation": "USCIS-branded propaganda-style graphic: 'Violent criminals identified through thorough vetting / KEEPING THREATS OFF OUR STREETS', binary-code overlay, red warning triangle, laptop image, USCIS+DHS seal.",
+      "candidate_visual_tags": [
+        "media:text-overlay",
+        "theme:nativism"
+      ],
+      "deterministic_signal_missing": "Body covers DUI / assault / Colombia adequately for crime/origin tags. The 'KEEPING THREATS OFF OUR STREETS' nativism framing exists only in the image. OCR would catch it."
+    },
+    {
+      "tweet_id": "2056777431919243519",
+      "account_handle": "ICEgov",
+      "media_id": "3_2056777138498387968",
+      "media_type": "photo",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-ICEgov/3_2056777138498387968.jpg",
+      "tweet_text_excerpt": "indictment underscores Homeland Security Investigations ongoing commitment to follow the money, expose foreign corruption",
+      "visual_observation": "Composite ICE press graphic: embedded mugshot of named subject + headline 'MADURO REGIME ALLY ALEX SAAB ARRESTED FOR MONEY LAUNDERING CONNECTED TO VENEZUELAN FOOD CONTRACTS AND OIL', ICE+DHS seal.",
+      "candidate_visual_tags": [
+        "media:text-overlay",
+        "shape:lineup",
+        "crime:fraud",
+        "country:Venezuela",
+        "subject:detainee"
+      ],
+      "deterministic_signal_missing": "shape:lineup currently requires tweet_type=reply, but ICE's composite-graphic pattern (single embedded mugshot + headline) is structurally identical. Consider relaxing shape:lineup or adding shape:press-graphic. OCR would catch the headline text deterministically."
+    },
+    {
+      "tweet_id": "2055384322866110467",
+      "account_handle": "DHSgov",
+      "media_id": "3_2055384322866110467",
+      "media_type": "photo",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-ICEgov/3_2055384322866110467.jpg",
+      "tweet_text_excerpt": "Virginia sanctuary politicians are fighting to protect criminals. We're fighting to protect Americans.",
+      "visual_observation": "Fox News-branded social card: photo of Secretary Mullin in DHS vest at night, FOX NEWS logo, headline 'Mullin rips Spanberger for criminalizing DHS while ICE arrests illegal alien felon in her sanctuary state', DHS seal at bottom.",
+      "candidate_visual_tags": [
+        "media:text-overlay",
+        "video:news-clip",
+        "speaker:Secretary Mullin",
+        "state:Virginia"
+      ],
+      "deterministic_signal_missing": "Photo not video, so video:news-clip can't apply; but a media:news-card or shape:news-graphic slug would. Speaker / outlet / state are all OCR-recoverable."
+    },
+    {
+      "tweet_id": "2056913890408022394",
+      "account_handle": "WhiteHouse",
+      "media_id": "3_2056913686292303872",
+      "media_type": "photo",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/3_2056913686292303872.jpg",
+      "tweet_text_excerpt": "MAKE AMERICA GREAT AGAIN!!!",
+      "visual_observation": "Press-photo of President Trump in navy suit / red tie, pointing toward camera, U.S. flag lapel pin, blurred event crowd in background.",
+      "candidate_visual_tags": [
+        "subject:official"
+      ],
+      "deterministic_signal_missing": "Per the rules, no speaker:* without name in tweet text / alt text / caption / nearby metadata; tweet body is 'MAKE AMERICA GREAT AGAIN!!!' only. Hold for manual review or wait until a face-detection layer with a named-individuals gazetteer ships."
+    }
+  ]
+}
