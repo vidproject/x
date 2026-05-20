@@ -220,28 +220,28 @@
       "tagger_version": "lexical-v1"
     },
     "media_vision": {
-      "cache_hits": 2361,
+      "cache_hits": 2558,
       "cost_estimate_usd": 0.0,
-      "generated": 197,
-      "generated_at": "2026-05-20T16:05:21Z",
+      "generated": 200,
+      "generated_at": "2026-05-20T16:21:03Z",
       "model": "metadata",
       "model_version": "media-metadata-v1",
       "prompt_hash": "b048ffcd7be4e534",
-      "row_count": 2558,
-      "rows": 2558,
+      "row_count": 2758,
+      "rows": 2758,
       "status_counts": {
-        "metadata-alt": 50,
-        "metadata-only": 2508
+        "metadata-alt": 65,
+        "metadata-only": 2693
       },
       "tag_frequency": {
-        "media:animated-gif": 16,
-        "media:archived": 2558,
-        "media:described": 2558,
-        "media:has-alt-text": 50,
-        "media:needs-vision": 2508,
-        "media:photo": 1743,
-        "media:short-video": 157,
-        "media:video": 799
+        "media:animated-gif": 22,
+        "media:archived": 2758,
+        "media:described": 2758,
+        "media:has-alt-text": 65,
+        "media:needs-vision": 2693,
+        "media:photo": 1874,
+        "media:short-video": 172,
+        "media:video": 862
       }
     }
   },
