@@ -117,7 +117,7 @@ def test_frame_criminal_and_action_combo_marks_enforcement_op() -> None:
     assert "shape:lineup" in tags
 
 
-def test_action_report_to_ice_matches_direct_reporting_appeals() -> None:
+def test_action_report_immigrants_matches_direct_reporting_appeals() -> None:
     examples = (
         "Call ICE at 866-DHS-2-ICE to report illegal aliens in your community.",
         "Report criminal aliens to ICE today.",
@@ -127,10 +127,10 @@ def test_action_report_to_ice_matches_direct_reporting_appeals() -> None:
         out = tag_text(
             text, tweet_type="original", mentions=[], media_count=0, account_category="core"
         )
-        assert "action:report-to-ice" in _tags(out), text
+        assert "action:report-immigrants" in _tags(out), text
 
 
-def test_action_report_to_ice_avoids_generic_ice_mentions() -> None:
+def test_action_report_immigrants_avoids_generic_ice_mentions() -> None:
     examples = (
         "ICE reported that it arrested three people yesterday.",
         "Call your senator about ICE oversight.",
@@ -142,7 +142,7 @@ def test_action_report_to_ice_avoids_generic_ice_mentions() -> None:
         out = tag_text(
             text, tweet_type="original", mentions=[], media_count=0, account_category="core"
         )
-        assert "action:report-to-ice" not in _tags(out), text
+        assert "action:report-immigrants" not in _tags(out), text
 
 
 def test_shape_lineup_requires_all_three_conditions() -> None:

@@ -74,9 +74,7 @@ tags:
       Post conveys factual procedure (how to apply for X, deadline for Y).
     classification: manual
 
-  # ===== media:* — content of attached media ========================
-  # All currently tentative; will move to deterministic once the CLIP
-  # tagger (Layer 3a in docs/TAGGING.md) lands.
+  # ===== media:* — attached media labels ============================
   media:photo-detainee:
     description: Photographic media of a detained person.
     classification: tentative
@@ -86,6 +84,31 @@ tags:
   media:video-testimonial:
     description: Video of a named individual addressing camera.
     classification: tentative
+
+  media:described:
+    description: Media item has a generated sidecar description.
+    classification: deterministic
+  media:photo:
+    description: Media item is a still image.
+    classification: deterministic
+  media:video:
+    description: Media item is a video.
+    classification: deterministic
+  media:animated-gif:
+    description: Media item is an animated GIF/video loop.
+    classification: deterministic
+  media:archived:
+    description: Media item has an archived GitHub Release asset.
+    classification: deterministic
+  media:has-alt-text:
+    description: Media item includes source-provided alt text.
+    classification: deterministic
+  media:needs-vision:
+    description: Media item needs OCR, transcript, or frame-level vision before content claims.
+    classification: tentative
+  media:short-video:
+    description: Video or animated GIF is 30 seconds or shorter.
+    classification: deterministic
 
   # ===== format:* — purely structural; derived from tweet_type ======
   format:retweet:
@@ -118,7 +141,7 @@ tags:
     classification: deterministic
     pattern: |
       \b(deport(?:ed|ing|ation)?|remov(?:ed|al)|repatriat(?:ed|ion))\b
-  action:report-to-ice:
+  action:report-immigrants:
     description: >-
       Encourages an audience to call, contact, tip, or report people or
       immigration violations to ICE/DHS.

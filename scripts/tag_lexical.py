@@ -519,7 +519,7 @@ def tag_text(
         (PATTERN_FRAME_CRIMINAL, "frame:criminal"),
         (PATTERN_ACTION_DETENTION, "action:detention"),
         (PATTERN_ACTION_DEPORTATION, "action:deportation"),
-        (PATTERN_ACTION_REPORT_TO_ICE, "action:report-to-ice"),
+        (PATTERN_ACTION_REPORT_TO_ICE, "action:report-immigrants"),
         (PATTERN_TOPIC_BORDER, "topic:border"),
         (PATTERN_TOPIC_SANCTUARY, "topic:sanctuary-cities"),
         (PATTERN_TOPIC_WORKSITE, "topic:worksite-enforcement"),
@@ -788,9 +788,18 @@ def atomic_write_parquet(df: pl.DataFrame, path: Path) -> None:
 
 def write_tag_manifest(stats: dict[str, Any]) -> None:
     TAGS_DIR.mkdir(parents=True, exist_ok=True)
+    manifest: dict[str, Any] = {}
+    manifest_path = TAGS_DIR / "manifest.json"
+    if manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    layers = manifest.get("layers")
+    if not isinstance(layers, dict):
+        layers = {}
+    layers["lexical"] = stats
+    manifest = {**stats, "layers": layers}
     tmp = TAGS_DIR / "manifest.tmp.json"
-    tmp.write_text(json.dumps(stats, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    os.replace(tmp, TAGS_DIR / "manifest.json")
+    tmp.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    os.replace(tmp, manifest_path)
 
 
 def main(argv: list[str] | None = None) -> int:

@@ -1,9 +1,9 @@
 // In-memory store: holds loaded rows from one or more parquet files, builds a
 // MiniSearch index lazily, exposes a filter+sort+paginate pipeline.
 //
-// Tags from the `data/tags/lexical.parquet` sidecar (joined in by app.js)
-// live on `row.tags` as `Array<{tag, tentative?, source?}>`. The store
-// treats them like any other filterable field.
+// Tags from sidecar parquets (joined in by app.js) live on `row.tags` as
+// `Array<{tag, tentative?, source?}>`. The store treats them like any other
+// filterable field.
 //
 // Threading: every row carries an effective `thread_id` (= conversation_id
 // or tweet_id when no conversation_id exists). After filter+sort, the
@@ -70,7 +70,7 @@ export class Store {
     this.rebuild();
   }
 
-  /** Inject the per-tweet tag map sourced from `data/tags/lexical.parquet`.
+  /** Inject the per-tweet tag map sourced from sidecar parquets.
    * Tags are attached directly to each row so downstream code (filter,
    * sort, column render, CSV export, sidepanel) doesn't need a second
    * data structure. */
@@ -80,6 +80,16 @@ export class Store {
       r.tags = tagMap.get(id) ?? [];
     }
     this.search = null; // rebuild so tags enter the search corpus
+  }
+
+  /** Attach optional media-recognition rows from `data/tags/media_vision.parquet`.
+   * These are downstream annotations, not canonical tweet data. */
+  applyMediaInsights(insightMap) {
+    for (const r of this.allRows) {
+      const id = String(r.tweet_id ?? '');
+      r.media_insights = insightMap.get(id) ?? [];
+    }
+    this.search = null;
   }
 
   /** Provide the manifest's account categorization so the filter pipeline
@@ -122,7 +132,15 @@ export class Store {
     if (this.search) return this.search;
     const mini = new MiniSearch({
       idField: 'tweet_id',
-      fields: ['text', 'text_resolved', 'tags_str', 'mentions_str', 'account_handle', 'tag_names'],
+      fields: [
+        'text',
+        'text_resolved',
+        'tags_str',
+        'mentions_str',
+        'account_handle',
+        'tag_names',
+        'media_insight_text',
+      ],
       storeFields: ['tweet_id'],
       searchOptions: {
         prefix: true,
@@ -137,6 +155,7 @@ export class Store {
       mentions_str: Array.isArray(r.mentions) ? r.mentions.join(' ') : '',
       account_handle: r.account_handle || '',
       tag_names: tagNames(r).join(' '),
+      media_insight_text: mediaInsightText(r),
     }));
     mini.addAll(docs);
     this.search = mini;
@@ -286,10 +305,13 @@ function tagFilterMatches(row, selections) {
 function tagNames(row) {
   const ts = row.tags;
   if (!Array.isArray(ts)) return [];
+  const seen = new Set();
   const out = [];
   for (const t of ts) {
-    if (typeof t === 'string') out.push(t);
-    else if (t && typeof t.tag === 'string') out.push(t.tag);
+    const name = typeof t === 'string' ? t : t && typeof t.tag === 'string' ? t.tag : '';
+    if (!name || seen.has(name)) continue;
+    seen.add(name);
+    out.push(name);
   }
   return out;
 }
@@ -332,8 +354,17 @@ function haystack(r) {
     Array.isArray(r.hashtags) ? r.hashtags.join(' ') : '',
     Array.isArray(r.mentions) ? r.mentions.join(' ') : '',
     tagNames(r).join(' '),
+    mediaInsightText(r),
   ];
   return parts.join(' ');
+}
+
+function mediaInsightText(row) {
+  const insights = Array.isArray(row.media_insights) ? row.media_insights : [];
+  return insights
+    .map((entry) => [entry?.description, entry?.summary_text].filter(Boolean).join(' '))
+    .filter(Boolean)
+    .join(' ');
 }
 
 function matchMediaFilter(r, kind) {
@@ -357,6 +388,9 @@ function compare(a, b, key) {
 function valueOf(row, key) {
   if (key === 'media_count') {
     return Array.isArray(row.media) ? row.media.length : 0;
+  }
+  if (key === 'media_description') {
+    return mediaInsightText(row);
   }
   return row[key];
 }

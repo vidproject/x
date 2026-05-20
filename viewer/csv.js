@@ -18,6 +18,7 @@ const COLS = [
   'view_count',
   'media_kinds',
   'media_count',
+  'media_descriptions',
   'media_release_urls',
   'tweet_url',
   'wayback_url',
@@ -38,6 +39,12 @@ export function exportCsv(rows, filename) {
         .filter(Boolean)
         .join('|'),
       media_count: media.length,
+      media_descriptions: Array.isArray(r.media_insights)
+        ? r.media_insights
+            .map((entry) => entry && entry.description)
+            .filter(Boolean)
+            .join('|')
+        : '',
       media_release_urls: media
         .map((m) => m && m.release_asset_url)
         .filter(Boolean)

@@ -16,10 +16,7 @@ export function openSidepanel(panelEl, titleEl, bodyEl, row, thread) {
   // rest" half of the threading design.
   if (thread && thread.otherSlaves && thread.otherSlaves.length > 0) {
     bodyEl.append(
-      section(
-        `Other replies (${thread.otherSlaves.length})`,
-        otherRepliesBlock(thread.otherSlaves)
-      )
+      section(`Other replies (${thread.otherSlaves.length})`, otherRepliesBlock(thread.otherSlaves))
     );
   }
   if (row.community_note) {
@@ -30,6 +27,9 @@ export function openSidepanel(panelEl, titleEl, bodyEl, row, thread) {
   }
   if (Array.isArray(row.media) && row.media.length > 0) {
     bodyEl.append(section('Media', mediaGridWithPreviews(row.media)));
+  }
+  if (Array.isArray(row.media_insights) && row.media_insights.length > 0) {
+    bodyEl.append(section('Media Recognition', mediaInsightsBlock(row.media_insights)));
   }
   if (Array.isArray(row.engagement_history) && row.engagement_history.length > 1) {
     bodyEl.append(section('Engagement history', engagementHistory(row.engagement_history)));
@@ -253,6 +253,50 @@ function mediaLinks(m, archiveUrl, originalUrl) {
   return links;
 }
 
+function mediaInsightsBlock(insights) {
+  const wrap = document.createElement('div');
+  wrap.className = 'sp-media-insights';
+  for (const insight of insights) {
+    if (!insight) continue;
+    const item = document.createElement('div');
+    item.className = 'sp-media-insight';
+
+    const head = document.createElement('div');
+    head.className = 'sp-media-insight-head';
+    head.textContent = [
+      insight.media_type || 'media',
+      insight.media_id ? `id=${insight.media_id}` : '',
+      insight.status || '',
+    ]
+      .filter(Boolean)
+      .join(' · ');
+    item.append(head);
+
+    if (insight.description) {
+      const desc = document.createElement('div');
+      desc.className = 'sp-media-desc';
+      desc.textContent = insight.description;
+      item.append(desc);
+    }
+
+    const meta = document.createElement('div');
+    meta.className = 'sp-media-provenance';
+    const bits = [];
+    if (insight.model_version) bits.push(insight.model_version);
+    if (typeof insight.confidence === 'number') bits.push(`confidence ${insight.confidence}`);
+    if (typeof insight.cost_estimate_usd === 'number') {
+      bits.push(`$${insight.cost_estimate_usd.toFixed(4)}`);
+    }
+    if (Array.isArray(insight.source_fields) && insight.source_fields.length > 0) {
+      bits.push(`sources: ${insight.source_fields.join(', ')}`);
+    }
+    meta.textContent = bits.join(' · ');
+    item.append(meta);
+    wrap.append(item);
+  }
+  return wrap;
+}
+
 function mediaLink(href, label) {
   const link = document.createElement('a');
   link.href = href;
@@ -402,7 +446,7 @@ function communityNoteBlock(note) {
 function tagsBlock(row) {
   const wrap = document.createElement('div');
   wrap.className = 'sp-tags';
-  const tags = Array.isArray(row.tags) ? row.tags : [];
+  const tags = uniqueTagEntries(Array.isArray(row.tags) ? row.tags : []);
   if (tags.length === 0) {
     const muted = document.createElement('div');
     muted.className = 'meta';
@@ -444,6 +488,18 @@ function tagsBlock(row) {
     wrap.append(grp);
   }
   return wrap;
+}
+
+function uniqueTagEntries(tags) {
+  const seen = new Set();
+  const out = [];
+  for (const entry of tags) {
+    const name = typeof entry === 'string' ? entry : entry?.tag;
+    if (!name || seen.has(name)) continue;
+    seen.add(name);
+    out.push(entry);
+  }
+  return out;
 }
 
 function suggestButton(row) {

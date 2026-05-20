@@ -194,3 +194,30 @@ LEXICAL_TAG_SCHEMA: dict[str, Any] = {
 def empty_lexical_tag_dataframe() -> pl.DataFrame:
     """Return an empty DataFrame with the lexical-tag sidecar schema."""
     return pl.DataFrame(schema=LEXICAL_TAG_SCHEMA)
+
+
+MEDIA_VISION_SCHEMA: dict[str, Any] = {
+    "tweet_id": pl.Utf8,
+    "account_handle": pl.Utf8,
+    "media_id": pl.Utf8,
+    "media_type": pl.Utf8,
+    "media_sha256": pl.Utf8,
+    "input_hash": pl.Utf8,
+    "generated_at": pl.Utf8,
+    "model": pl.Utf8,
+    "model_version": pl.Utf8,
+    "prompt_hash": pl.Utf8,
+    "description": pl.Utf8,
+    "summary_text": pl.Utf8,
+    "confidence": pl.Float64,
+    "cost_estimate_usd": pl.Float64,
+    "status": pl.Utf8,
+    "tags": pl.List(TAG_ENTRY_STRUCT),
+    "source_fields": pl.List(pl.Utf8),
+    "error": pl.Utf8,
+}
+
+
+def empty_media_vision_dataframe() -> pl.DataFrame:
+    """Return an empty DataFrame with the media-recognition sidecar schema."""
+    return pl.DataFrame(schema=MEDIA_VISION_SCHEMA)

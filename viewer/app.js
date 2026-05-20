@@ -193,11 +193,20 @@ async function loadManifest() {
 }
 
 /**
- * Fetch the lexical-tag sidecar and build a tweet_id → tag-entries map.
- * Returns an empty map (no error) when the file isn't present yet — the
- * viewer treats tags as a strictly additive overlay, never required.
+ * Fetch optional sidecars and build additive per-tweet overlays. Missing
+ * sidecars are normal on a fresh archive; the viewer still works without them.
  */
-async function loadTags() {
+async function loadSidecars() {
+  const [tagMap, mediaInsightMap] = await Promise.all([loadLexicalTags(), loadMediaInsights()]);
+  for (const [id, insights] of mediaInsightMap.entries()) {
+    for (const insight of insights) {
+      if (Array.isArray(insight.tags)) mergeTags(tagMap, id, insight.tags);
+    }
+  }
+  return { tagMap, mediaInsightMap };
+}
+
+async function loadLexicalTags() {
   const cacheKey = manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
   const url = `data/tags/lexical.parquet${cacheKey}`;
   try {
@@ -206,7 +215,7 @@ async function loadTags() {
     for (const r of rows) {
       const id = String(r?.tweet_id ?? '');
       if (!id) continue;
-      map.set(id, Array.isArray(r.tags) ? r.tags : []);
+      mergeTags(map, id, Array.isArray(r.tags) ? r.tags : []);
     }
     return map;
   } catch (err) {
@@ -224,6 +233,41 @@ async function loadTags() {
     }
     return new Map();
   }
+}
+
+async function loadMediaInsights() {
+  const cacheKey = manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
+  const url = `data/tags/media_vision.parquet${cacheKey}`;
+  try {
+    const rows = await loadParquetRows(url);
+    const map = new Map();
+    for (const r of rows) {
+      const id = String(r?.tweet_id ?? '');
+      if (!id) continue;
+      const list = map.get(id) ?? [];
+      list.push(r);
+      map.set(id, list);
+    }
+    return map;
+  } catch (err) {
+    const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
+    if (status !== '404') {
+      pushLoadError({
+        resource: url,
+        status: status ? Number(status) : null,
+        kind: 'media-tags',
+        message: err?.message ?? String(err),
+      });
+    }
+    return new Map();
+  }
+}
+
+function mergeTags(map, id, tags) {
+  if (!Array.isArray(tags) || tags.length === 0) return;
+  const list = map.get(id) ?? [];
+  list.push(...tags);
+  map.set(id, list);
 }
 
 function pushLoadError(entry) {
@@ -405,7 +449,7 @@ function toggleCategoryFilter(cat) {
   refresh();
 }
 
-async function loadAllAccounts(tagsPromise) {
+async function loadAllAccounts(sidecarsPromise) {
   const accounts = manifest?.accounts ?? [];
   if (accounts.length === 0) return;
 
@@ -417,11 +461,14 @@ async function loadAllAccounts(tagsPromise) {
   // user sees pills immediately, not after every account has loaded.
   /** @type {Map<string, any[]>} */
   let tagMap = new Map();
-  let tagsResolved = false;
-  tagsPromise.then((m) => {
-    tagMap = m;
-    tagsResolved = true;
-    store.applyTags(tagMap);
+  /** @type {Map<string, any[]>} */
+  let mediaInsightMap = new Map();
+  let sidecarsResolved = false;
+  sidecarsPromise.then((sidecars) => {
+    tagMap = sidecars.tagMap;
+    mediaInsightMap = sidecars.mediaInsightMap;
+    sidecarsResolved = true;
+    applySidecars();
     refresh();
   });
 
@@ -496,7 +543,7 @@ async function loadAllAccounts(tagsPromise) {
         loadProgress.completed === loadProgress.total
       ) {
         store.rebuild();
-        if (tagsResolved) store.applyTags(tagMap);
+        if (sidecarsResolved) applySidecars();
         revealUi();
         refresh();
       }
@@ -520,6 +567,11 @@ async function loadAllAccounts(tagsPromise) {
     );
   }
   paintHdrStats();
+
+  function applySidecars() {
+    store.applyTags(tagMap);
+    store.applyMediaInsights(mediaInsightMap);
+  }
 }
 
 // Wire the load-errors panel: button toggles, X closes.
@@ -853,9 +905,9 @@ function fmtNum(v) {
 // --- Boot ---
 loadTheme();
 loadManifest().then(async () => {
-  // Kick off tag and account loads in parallel; the tag merge happens
-  // in `loadAllAccounts` after each progressive parquet flush so tags
-  // appear in lock-step with the rows they annotate.
-  const tagsPromise = loadTags();
-  await loadAllAccounts(tagsPromise);
+  // Kick off sidecar and account loads in parallel; the sidecar merge
+  // happens in `loadAllAccounts` after each progressive parquet flush so
+  // tags and media descriptions appear in lock-step with their rows.
+  const sidecarsPromise = loadSidecars();
+  await loadAllAccounts(sidecarsPromise);
 });

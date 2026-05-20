@@ -60,6 +60,17 @@ jobs:
           fi
           uv run python -m scripts.archive_media "${args[@]}"
 
+      - name: describe archived media
+        run: |
+          args=()
+          if [ -n "${{ inputs.handle }}" ]; then
+            args+=(--handle "${{ inputs.handle }}")
+          fi
+          if [ -n "${{ inputs.max_items }}" ]; then
+            args+=(--max-items "${{ inputs.max_items }}")
+          fi
+          uv run python -m scripts.describe_media "${args[@]}"
+
       - name: commit parquet updates
         run: |
           git config user.name "github-actions[bot]"

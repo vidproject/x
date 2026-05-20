@@ -720,6 +720,32 @@ body {
   color: var(--fg-2);
   word-break: break-word;
 }
+.sp-media-insights {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sp-media-insight {
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  border-radius: 4px;
+  padding: 8px;
+}
+.sp-media-insight-head {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--fg-2);
+  margin-bottom: 4px;
+}
+.sp-media-desc {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.sp-media-provenance {
+  margin-top: 5px;
+  color: var(--fg-3);
+  font-size: 11px;
+}
 .sp-card {
   display: flex;
   gap: 10px;

@@ -70,6 +70,14 @@ export const COLUMNS = [
     render: (r) => mediaFlags(r),
   },
   {
+    key: 'media_description',
+    label: 'Media desc',
+    default: false,
+    filterable: false,
+    sortable: false,
+    render: (r) => renderMediaDescription(r),
+  },
+  {
     key: 'like_count',
     label: 'Likes',
     default: true,
@@ -766,8 +774,18 @@ function mediaFlags(r) {
   return `<span class="media-flags">${html.join('')}</span>`;
 }
 
+function renderMediaDescription(r) {
+  const insights = Array.isArray(r.media_insights) ? r.media_insights : [];
+  const text = insights
+    .map((entry) => entry?.description)
+    .filter(Boolean)
+    .join(' ');
+  if (!text) return '<span class="muted">—</span>';
+  return `<span class="cell-text" title="${escape(text)}">${escape(truncate(text, 180))}</span>`;
+}
+
 function renderTagPills(r) {
-  const tags = Array.isArray(r.tags) ? r.tags : [];
+  const tags = uniqueTagEntries(Array.isArray(r.tags) ? r.tags : []);
   if (tags.length === 0) return '<span class="muted">—</span>';
   // Cap rendered pills to avoid blowing out the cell on
   // crime-heavy DHS replies. The sidepanel shows the full list.
@@ -787,4 +805,16 @@ function renderTagPills(r) {
     html.push(`<span class="tag-pill more">+${tags.length - VISIBLE}</span>`);
   }
   return `<span class="tag-pills">${html.join('')}</span>`;
+}
+
+function uniqueTagEntries(tags) {
+  const seen = new Set();
+  const out = [];
+  for (const entry of tags) {
+    const name = typeof entry === 'string' ? entry : entry?.tag;
+    if (!name || seen.has(name)) continue;
+    seen.add(name);
+    out.push(entry);
+  }
+  return out;
 }
