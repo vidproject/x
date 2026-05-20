@@ -1,5 +1,14 @@
 // In-memory store: holds loaded rows from one or more parquet files, builds a
 // MiniSearch index lazily, exposes a filter+sort+paginate pipeline.
+//
+// Tags from the `data/tags/lexical.parquet` sidecar (joined in by app.js)
+// live on `row.tags` as `Array<{tag, tentative?, source?}>`. The store
+// treats them like any other filterable field.
+//
+// Threading: every row carries an effective `thread_id` (= conversation_id
+// or tweet_id when no conversation_id exists). After filter+sort, the
+// pipeline groups surviving rows into threads. Masters carry aggregated
+// thread metadata (combined media count, latest activity, sibling count).
 
 import MiniSearch from 'https://esm.sh/minisearch@7.1.2';
 
@@ -13,6 +22,10 @@ export class Store {
     this.search = null;
     /** @type {Map<string, number>} */
     this.idIndex = new Map(); // tweet_id → allRows index
+    /** @type {Map<string, Array<Record<string, unknown>>>} */
+    this.threadIndex = new Map(); // thread_id → all rows in thread
+    /** @type {Map<string, string>} */
+    this.accountCategoryByHandle = new Map();
   }
 
   has(handle) {
@@ -31,6 +44,24 @@ export class Store {
     this.rebuild();
   }
 
+  /** Inject the per-tweet tag map sourced from `data/tags/lexical.parquet`.
+   * Tags are attached directly to each row so downstream code (filter,
+   * sort, column render, CSV export, sidepanel) doesn't need a second
+   * data structure. */
+  applyTags(tagMap) {
+    for (const r of this.allRows) {
+      const id = String(r.tweet_id ?? '');
+      r.tags = tagMap.get(id) ?? [];
+    }
+    this.search = null; // rebuild so tags enter the search corpus
+  }
+
+  /** Provide the manifest's account categorization so the filter pipeline
+   * can match `row.account_handle` → category without a per-row lookup. */
+  setAccountCategories(map) {
+    this.accountCategoryByHandle = map instanceof Map ? map : new Map();
+  }
+
   rebuild() {
     const all = [];
     for (const rows of this.byHandle.values()) {
@@ -38,9 +69,19 @@ export class Store {
     }
     this.allRows = all;
     this.idIndex = new Map();
+    this.threadIndex = new Map();
     for (let i = 0; i < all.length; i++) {
-      const id = String(all[i].tweet_id ?? '');
+      const r = all[i];
+      const id = String(r.tweet_id ?? '');
       if (id) this.idIndex.set(id, i);
+      const tid = String(r.conversation_id ?? r.tweet_id ?? '');
+      if (!tid) continue;
+      let list = this.threadIndex.get(tid);
+      if (!list) {
+        list = [];
+        this.threadIndex.set(tid, list);
+      }
+      list.push(r);
     }
     this.search = null; // rebuild lazily
   }
@@ -55,7 +96,7 @@ export class Store {
     if (this.search) return this.search;
     const mini = new MiniSearch({
       idField: 'tweet_id',
-      fields: ['text', 'text_resolved', 'tags_str', 'mentions_str', 'account_handle'],
+      fields: ['text', 'text_resolved', 'tags_str', 'mentions_str', 'account_handle', 'tag_names'],
       storeFields: ['tweet_id'],
       searchOptions: {
         prefix: true,
@@ -69,6 +110,7 @@ export class Store {
       tags_str: Array.isArray(r.hashtags) ? r.hashtags.join(' ') : '',
       mentions_str: Array.isArray(r.mentions) ? r.mentions.join(' ') : '',
       account_handle: r.account_handle || '',
+      tag_names: tagNames(r).join(' '),
     }));
     mini.addAll(docs);
     this.search = mini;
@@ -81,6 +123,8 @@ export class Store {
    *   accounts: string[], q: string, from: string, to: string,
    *   type: string, media: string, sort: string, dir: 'asc'|'desc',
    *   colFilters?: Record<string, Set<string>>,
+   *   tags?: string[],
+   *   accountCategories?: string[],
    *   includeDeleted?: boolean
    * }} filt
    */
@@ -89,6 +133,10 @@ export class Store {
     if (filt.accounts && filt.accounts.length > 0) {
       const set = new Set(filt.accounts);
       rows = rows.filter((r) => set.has(r.account_handle));
+    }
+    if (filt.accountCategories && filt.accountCategories.length > 0) {
+      const set = new Set(filt.accountCategories);
+      rows = rows.filter((r) => set.has(this.categoryOf(r)));
     }
     if (filt.from) {
       const fromIso = `${filt.from}T00:00:00Z`;
@@ -103,6 +151,14 @@ export class Store {
     }
     if (filt.media) {
       rows = rows.filter((r) => matchMediaFilter(r, filt.media));
+    }
+    if (filt.tags && filt.tags.length > 0) {
+      // Tag filter is OR-across-selected, so a tweet matches when its
+      // tag set intersects the selected set. ANDing would make the
+      // selector useless once you exceed 1-2 selections — every tweet
+      // would drop out.
+      const want = new Set(filt.tags);
+      rows = rows.filter((r) => tagNames(r).some((t) => want.has(t)));
     }
     if (filt.colFilters) {
       for (const [col, allowed] of Object.entries(filt.colFilters)) {
@@ -126,6 +182,76 @@ export class Store {
     rows = rows.slice().sort((a, b) => compare(a, b, sortKey) * dir);
     return rows;
   }
+
+  /**
+   * Group surviving rows into threads. Each thread carries:
+   *
+   *   master       — the conversation root (or the earliest captured
+   *                  sibling when the root itself isn't archived).
+   *   selfSlaves   — replies authored by the same handle as the master.
+   *                  These are the "DHS continues its own thread" case
+   *                  worth inlining; they read as part of the master's
+   *                  message and don't spam.
+   *   otherSlaves  — every other reply (tracked-other accounts AND
+   *                  random `_misc` chatter). Not inlined; the viewer
+   *                  surfaces them in the sidepanel on row click.
+   *
+   * A thread is included if at least one of its members survived the
+   * filter; non-surviving siblings still get pulled in so context isn't
+   * lost when the filter is narrow.
+   *
+   * @param {Array<Record<string, unknown>>} filteredRows
+   */
+  groupIntoThreads(filteredRows) {
+    const seenThreads = new Set();
+    /** @type {Array<{master: any, selfSlaves: any[], otherSlaves: any[], matchedCount: number, threadId: string}>} */
+    const threads = [];
+    for (const r of filteredRows) {
+      const tid = String(r.conversation_id ?? r.tweet_id ?? '');
+      if (!tid || seenThreads.has(tid)) continue;
+      seenThreads.add(tid);
+      const full = this.threadIndex.get(tid) ?? [r];
+      const ordered = full.slice().sort((a, b) => {
+        const av = String(a.posted_at ?? '');
+        const bv = String(b.posted_at ?? '');
+        return av.localeCompare(bv);
+      });
+      let master = ordered.find((x) => String(x.tweet_id) === tid);
+      if (!master) master = ordered[0];
+      const masterHandle = master.account_handle;
+      const selfSlaves = [];
+      const otherSlaves = [];
+      for (const x of ordered) {
+        if (x === master) continue;
+        if (x.account_handle === masterHandle) selfSlaves.push(x);
+        else otherSlaves.push(x);
+      }
+      const filteredSet = new Set(filteredRows);
+      const matchedCount = ordered.filter((x) => filteredSet.has(x)).length;
+      threads.push({ master, selfSlaves, otherSlaves, matchedCount, threadId: tid });
+    }
+    return threads;
+  }
+
+  categoryOf(row) {
+    const handle = row.account_handle;
+    // `_misc.parquet` aggregates non-tracked authors, so they're
+    // implicitly `public` regardless of which non-tracked handle wrote
+    // the tweet.
+    if (!this.accountCategoryByHandle.has(handle)) return 'public';
+    return this.accountCategoryByHandle.get(handle) || 'public';
+  }
+}
+
+function tagNames(row) {
+  const ts = row.tags;
+  if (!Array.isArray(ts)) return [];
+  const out = [];
+  for (const t of ts) {
+    if (typeof t === 'string') out.push(t);
+    else if (t && typeof t.tag === 'string') out.push(t.tag);
+  }
+  return out;
 }
 
 function runMiniSearch(mini, q) {
@@ -165,6 +291,7 @@ function haystack(r) {
     r.account_handle || '',
     Array.isArray(r.hashtags) ? r.hashtags.join(' ') : '',
     Array.isArray(r.mentions) ? r.mentions.join(' ') : '',
+    tagNames(r).join(' '),
   ];
   return parts.join(' ');
 }
@@ -209,3 +336,5 @@ export function formatForFilter(row, col) {
   if (v == null) return '';
   return String(v);
 }
+
+export { tagNames };

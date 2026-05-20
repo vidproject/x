@@ -820,3 +820,242 @@ body {
     max-width: 220px;
   }
 }
+
+/* ============================================================
+ * Tags column + sidepanel tag pills.
+ * Namespace-keyed colors so the eye can scan a busy row quickly.
+ * Tentative tags get a dashed border to invite correction via the
+ * suggestion flow.
+ * ============================================================ */
+.tag-pills {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: 360px;
+  vertical-align: middle;
+}
+.tag-pill {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 1.4;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-3);
+  color: var(--fg);
+  white-space: nowrap;
+}
+.tag-pill.more {
+  background: transparent;
+  color: var(--fg-3);
+  border-style: dashed;
+}
+.tag-pill.tentative {
+  border-style: dashed;
+  opacity: 0.85;
+}
+.tag-pill.ns-subject {
+  background: rgba(74, 144, 226, 0.18);
+  border-color: rgba(74, 144, 226, 0.5);
+}
+.tag-pill.ns-genre {
+  background: rgba(155, 89, 182, 0.18);
+  border-color: rgba(155, 89, 182, 0.5);
+}
+.tag-pill.ns-media {
+  background: rgba(241, 196, 15, 0.2);
+  border-color: rgba(241, 196, 15, 0.55);
+}
+.tag-pill.ns-format {
+  background: rgba(149, 165, 166, 0.18);
+  border-color: rgba(149, 165, 166, 0.5);
+}
+.tag-pill.ns-frame {
+  background: rgba(231, 76, 60, 0.18);
+  border-color: rgba(231, 76, 60, 0.5);
+}
+.tag-pill.ns-action {
+  background: rgba(230, 126, 34, 0.18);
+  border-color: rgba(230, 126, 34, 0.5);
+}
+.tag-pill.ns-topic {
+  background: rgba(46, 204, 113, 0.18);
+  border-color: rgba(46, 204, 113, 0.5);
+}
+.tag-pill.ns-origin {
+  background: rgba(52, 152, 219, 0.18);
+  border-color: rgba(52, 152, 219, 0.5);
+}
+.tag-pill.ns-country {
+  background: rgba(52, 152, 219, 0.1);
+  border-color: rgba(52, 152, 219, 0.3);
+}
+.tag-pill.ns-state {
+  background: rgba(26, 188, 156, 0.18);
+  border-color: rgba(26, 188, 156, 0.5);
+}
+.tag-pill.ns-crime {
+  background: rgba(192, 57, 43, 0.18);
+  border-color: rgba(192, 57, 43, 0.5);
+}
+.tag-pill.ns-agency {
+  background: rgba(127, 140, 141, 0.18);
+  border-color: rgba(127, 140, 141, 0.5);
+}
+.tag-pill.ns-slogan {
+  background: rgba(243, 156, 18, 0.18);
+  border-color: rgba(243, 156, 18, 0.5);
+}
+.tag-pill.ns-shape {
+  background: rgba(189, 195, 199, 0.2);
+  border-color: rgba(189, 195, 199, 0.55);
+}
+
+.sp-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sp-tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+.sp-tag-ns {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--fg-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-right: 4px;
+  min-width: 56px;
+}
+.sp-suggest {
+  margin-top: 10px;
+}
+.sp-suggest-btn {
+  display: inline-block;
+  font-size: 12px;
+}
+.sp-suggest-note {
+  margin-top: 4px;
+  font-size: 11px;
+}
+
+/* Tag-filter popup: namespace section headers. */
+.tag-ns-hdr {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--fg-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 6px 0 2px;
+  padding: 0 4px;
+}
+
+/* ============================================================
+ * Threading.
+ *
+ * A thread renders as one master <tr> plus, when expanded, the slaves
+ * indented under it. The toggle button is prepended to the first cell
+ * of the master so it stays put under sticky headers and the table's
+ * column structure isn't disturbed.
+ * ============================================================ */
+.thread-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--fg-2);
+  padding: 1px 6px;
+  margin-right: 6px;
+  cursor: pointer;
+  vertical-align: middle;
+  font-family: var(--mono);
+}
+.thread-toggle:hover {
+  background: var(--bg-row-hover);
+  color: var(--fg);
+}
+tr.thread-master.has-slaves > td:first-child {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--accent-2) 12%, transparent),
+    transparent 60%
+  );
+}
+tr.thread-slave > td {
+  background: color-mix(in srgb, var(--bg-3) 35%, var(--bg));
+}
+tr.thread-slave > td:first-child {
+  border-left: 3px solid var(--accent-2);
+  padding-left: 16px;
+}
+tr.thread-slave > td:first-child::before {
+  content: '↪ ';
+  color: var(--fg-3);
+  margin-right: 4px;
+}
+
+/* ============================================================
+ * Two-tier threading affordances.
+ *
+ * The master row gets at most two affordances:
+ *   .thread-toggle       — expand/collapse self-replies inline
+ *   .thread-others-badge — passive marker for non-self replies, which
+ *                          appear in the sidepanel's "Other replies"
+ *                          section when the row is clicked
+ * ============================================================ */
+.thread-affordances {
+  display: inline-flex;
+  gap: 4px;
+  margin-right: 6px;
+  align-items: center;
+}
+.thread-others-badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--fg-2);
+  background: transparent;
+  border: 1px dashed var(--border-strong);
+  font-family: var(--mono);
+  cursor: default;
+}
+
+.sp-other-replies {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 360px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.sp-other-reply {
+  border-left: 3px solid var(--border-strong);
+  padding: 4px 8px;
+  background: var(--bg-2);
+  border-radius: 0 4px 4px 0;
+}
+.sp-other-reply-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 11px;
+}
+.sp-other-reply-head .handle {
+  font-weight: 600;
+  color: var(--fg);
+}
+.sp-other-reply-head .meta {
+  color: var(--fg-3);
+}
+.sp-other-reply-body {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--fg);
+  white-space: pre-wrap;
+  word-break: break-word;
+}

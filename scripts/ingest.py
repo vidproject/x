@@ -46,6 +46,13 @@ SCHEMA_VERSION = 1
 # brought them in.
 MISC_HANDLE = "_misc"
 MISC_LABEL = "Miscellaneous (replies / quotes / retweets of non-tracked accounts)"
+MISC_CATEGORY = "public"
+
+# Valid over-categories an account in accounts.yaml may declare. The `_misc`
+# bucket is always `public` regardless. Listed entries with a missing or
+# unrecognised category fall back to `core` for backward compat with the
+# pre-categorization file shape.
+VALID_CATEGORIES = frozenset({"core", "government", "officials", "public_figures", "public"})
 
 
 # --------------------------------------------------------------------------
@@ -64,8 +71,16 @@ def load_accounts(path: Path = CONFIG_PATH) -> list[dict[str, str]]:
             continue
         handle = str(entry.get("handle", "")).strip()
         label = str(entry.get("label", handle)).strip()
+        category = str(entry.get("category", "core")).strip() or "core"
+        if category not in VALID_CATEGORIES:
+            LOG.warning(
+                "unknown account category; defaulting to core",
+                handle=handle,
+                category=category,
+            )
+            category = "core"
         if handle:
-            out.append({"handle": handle, "label": label})
+            out.append({"handle": handle, "label": label, "category": category})
     return out
 
 
@@ -416,6 +431,7 @@ def build_manifest(accounts: list[dict[str, str]]) -> dict[str, Any]:
             {
                 "handle": handle,
                 "label": a["label"],
+                "category": a.get("category", "core"),
                 "parquet": f"data/{handle}.parquet",
                 "parquet_bytes": path.stat().st_size,
                 "row_count": row_count,
@@ -702,11 +718,19 @@ def main(argv: list[str] | None = None) -> int:
             LOG.info("collapsed legacy per-handle parquet into _misc", handle=h)
 
     # --- Manifest --------------------------------------------------------
+    tracked_categories = {a["handle"]: a["category"] for a in tracked_accounts}
     manifest_accounts: list[dict[str, str]] = [
-        {"handle": h, "label": tracked_labels.get(h, h)} for h in tracked_handles
+        {
+            "handle": h,
+            "label": tracked_labels.get(h, h),
+            "category": tracked_categories.get(h, "core"),
+        }
+        for h in tracked_handles
     ]
     if (DATA_DIR / f"{MISC_HANDLE}.parquet").exists():
-        manifest_accounts.append({"handle": MISC_HANDLE, "label": MISC_LABEL})
+        manifest_accounts.append(
+            {"handle": MISC_HANDLE, "label": MISC_LABEL, "category": MISC_CATEGORY}
+        )
     manifest = build_manifest(manifest_accounts)
     write_manifest(manifest)
 

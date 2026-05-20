@@ -149,3 +149,48 @@ REQUIRED_TWEET_KEYS: frozenset[str] = frozenset(
         "schema_version",
     }
 )
+
+
+# --------------------------------------------------------------------------
+# Sidecar tag parquets
+#
+# Tag layers (lexical regex, CLIP image labels, OCR, etc.) write to
+# separate files under `data/tags/`, keyed by tweet_id (or media_id
+# for image layers). The canonical tweet parquets are never modified
+# by the taggers — that's the "Capture honestly" principle. Viewers
+# join the sidecars in on tweet_id at load time.
+
+TAG_ENTRY_STRUCT = pl.Struct(
+    [
+        pl.Field("tag", pl.Utf8),
+        # Set when the tagger was uncertain (low-confidence regex match,
+        # vision-model output below threshold, etc.). Omitted / null on
+        # confirmed tags. Renders as a dashed pill in the viewer and
+        # invites a suggestion via GitHub Discussions.
+        pl.Field("tentative", pl.Boolean),
+        # Where the tag came from. One of:
+        #   "auto"       — written by an auto-tagger script
+        #   "human"      — applied by an editor with PAT write access
+        #   "suggestion" — accepted from a GitHub-Discussion suggestion
+        pl.Field("source", pl.Utf8),
+        # Character offsets in the tweet's `text_resolved` (falling back
+        # to `text`) where the rule matched. Null for tags that aren't
+        # tied to a specific span (composite tags, structural tags from
+        # tweet_type, etc.). Useful for highlighting in the viewer.
+        pl.Field("span_start", pl.Int64),
+        pl.Field("span_end", pl.Int64),
+    ]
+)
+
+LEXICAL_TAG_SCHEMA: dict[str, Any] = {
+    "tweet_id": pl.Utf8,
+    "account_handle": pl.Utf8,
+    "tagger_version": pl.Utf8,
+    "tagged_at": pl.Utf8,
+    "tags": pl.List(TAG_ENTRY_STRUCT),
+}
+
+
+def empty_lexical_tag_dataframe() -> pl.DataFrame:
+    """Return an empty DataFrame with the lexical-tag sidecar schema."""
+    return pl.DataFrame(schema=LEXICAL_TAG_SCHEMA)

@@ -1,6 +1,35 @@
+export type AccountCategory =
+  | 'core'
+  | 'government'
+  | 'officials'
+  | 'public_figures'
+  | 'public';
+
 export interface AccountConfig {
   handle: string;
   label: string;
+  /** Over-category for this account. Untracked authors that fall through
+   * to `_misc.parquet` are implicitly `public` and don't appear in
+   * accounts.yaml at all. */
+  category: AccountCategory;
+}
+
+/** One tag entry attached to a tweet in `data/tags.json`. Tags are an
+ * annotation layer — they're never written into the per-account
+ * parquets. See docs/TAGS.md and config/tag_taxonomy.yaml. */
+export interface TweetTag {
+  /** Namespaced tag, e.g. "subject:detainee", "genre:statistics". */
+  tag: string;
+  /** Set to true when the tag was applied with non-trivial uncertainty
+   * (image-classifier output, ambiguous keyword match, etc.) and should
+   * be visually de-emphasized + open to correction via the suggestion
+   * flow. Omitted on confirmed tags. */
+  tentative?: boolean;
+  /** Where the tag came from. `auto` = the deterministic auto-tagger;
+   * `human` = an editor with PAT write access; `suggestion` = a
+   * GitHub-Discussion suggestion the editor applied. Defaults to `human`
+   * when omitted. */
+  source?: 'auto' | 'human' | 'suggestion';
 }
 
 export interface Settings {

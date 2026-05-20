@@ -1,22 +1,49 @@
 # Authoritative list of accounts the archive tracks.
-# The Firefox extension fetches this file from the configured repo at startup
-# and filters captured GraphQL payloads to tweets authored by these handles.
+#
+# Each entry must declare a `category`, one of:
+#
+#   core           — Direct federal-agency / WH principal accounts. The
+#                    seed set this archive was built around.
+#   government     — Other federal agencies (StateDept, DOJgov, FBI, …).
+#                    Tracked, captured into per-handle parquets.
+#   officials      — Federal executive branch officials in their personal
+#                    capacity (SecRubio, AGPamBondi, …).
+#   public_figures — Non-federal officials: senators, governors,
+#                    state-level executives, prominent advocates, etc.
+#
+# Untracked authors (people the tracked accounts reply to / quote / RT)
+# are captured into `data/_misc.parquet` and treated as the catch-all
+# category `public`. They are not listed here.
+#
+# The Firefox extension fetches this file from the configured repo at
+# startup and filters captured GraphQL payloads to tweets authored by
+# these handles (plus their reply/quote/retweet targets, which always
+# flow through to `public` regardless of who they are).
 accounts:
   - handle: DHSgov
     label: Department of Homeland Security
+    category: core
   - handle: ICEgov
     label: U.S. Immigration and Customs Enforcement
+    category: core
   - handle: CBP
     label: U.S. Customs and Border Protection
+    category: core
   - handle: USCIS
     label: U.S. Citizenship and Immigration Services
+    category: core
   - handle: WhiteHouse
     label: The White House
+    category: core
   - handle: PressSec
     label: White House Press Secretary
+    category: core
   - handle: POTUS
     label: President of the United States
+    category: core
   - handle: USDOL
     label: U.S. Department of Labor
+    category: core
   - handle: RapidResponse47
     label: Rapid Response 47
+    category: core

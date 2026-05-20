@@ -19,15 +19,15 @@ export const AUTO_SCROLL_MAX_SEC = 60;
 // Built-in fallback if config/accounts.yaml cannot be fetched (e.g., before the
 // repo has been initialized or PAT misconfigured). Kept in sync with the file.
 export const FALLBACK_ACCOUNTS: AccountConfig[] = [
-  { handle: 'DHSgov', label: 'Department of Homeland Security' },
-  { handle: 'ICEgov', label: 'U.S. Immigration and Customs Enforcement' },
-  { handle: 'CBP', label: 'U.S. Customs and Border Protection' },
-  { handle: 'USCIS', label: 'U.S. Citizenship and Immigration Services' },
-  { handle: 'WhiteHouse', label: 'The White House' },
-  { handle: 'PressSec', label: 'White House Press Secretary' },
-  { handle: 'POTUS', label: 'President of the United States' },
-  { handle: 'USDOL', label: 'U.S. Department of Labor' },
-  { handle: 'RapidResponse47', label: 'Rapid Response 47' },
+  { handle: 'DHSgov', label: 'Department of Homeland Security', category: 'core' },
+  { handle: 'ICEgov', label: 'U.S. Immigration and Customs Enforcement', category: 'core' },
+  { handle: 'CBP', label: 'U.S. Customs and Border Protection', category: 'core' },
+  { handle: 'USCIS', label: 'U.S. Citizenship and Immigration Services', category: 'core' },
+  { handle: 'WhiteHouse', label: 'The White House', category: 'core' },
+  { handle: 'PressSec', label: 'White House Press Secretary', category: 'core' },
+  { handle: 'POTUS', label: 'President of the United States', category: 'core' },
+  { handle: 'USDOL', label: 'U.S. Department of Labor', category: 'core' },
+  { handle: 'RapidResponse47', label: 'Rapid Response 47', category: 'core' },
 ];
 
 // GraphQL endpoint names we care about (matched by substring against URL path).
