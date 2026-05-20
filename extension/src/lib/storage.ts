@@ -7,6 +7,7 @@ import type {
   CanonicalTweet,
   ConnectionState,
   LogEvent,
+  RetweetEdge,
   Settings,
   TweetSighting,
   UnavailableTweet,
@@ -24,6 +25,7 @@ export interface RunBuffer {
   last_capture_at: string;
   tweets_by_id: Record<string, CanonicalTweet>;
   unavailable_by_id?: Record<string, UnavailableTweet>;
+  retweet_edges_by_key?: Record<string, RetweetEdge>;
   tweet_ids_observed: string[];
   endpoints_seen: string[];
   source_url: string | null;
@@ -88,8 +90,14 @@ interface StorageShape {
    * "_unknown") → array of tweet ids. The user can drive a crawl that
    * opens each detail page to capture the real thing. */
   mediaCrawlQueue: Record<string, string[]>;
+  /** Core-account thread roots worth opening because timeline/search views may
+   * omit later self-replies. Keyed by hint-handle -> root tweet ids. */
+  threadOpenQueue: Record<string, string[]>;
+  /** Root tweet ids already attempted by the thread-opening utility. */
+  threadOpenSeen: Record<string, string>;
   refetchSession: LoopSession | null;
   mediaCrawlSession: LoopSession | null;
+  threadOpenSession: LoopSession | null;
   autoScrollSession: AutoScrollSession | null;
 }
 
@@ -116,8 +124,11 @@ const DEFAULTS: StorageShape = {
   committedIndex: {},
   refetchQueue: {},
   mediaCrawlQueue: {},
+  threadOpenQueue: {},
+  threadOpenSeen: {},
   refetchSession: null,
   mediaCrawlSession: null,
+  threadOpenSession: null,
   autoScrollSession: null,
 };
 
@@ -462,6 +473,68 @@ export async function nextMediaCrawlTarget(): Promise<{
   return null;
 }
 
+// --- Thread-opening queue (core conversation roots to visit) -------------
+
+export async function getThreadOpenQueue(): Promise<Record<string, string[]>> {
+  return getRaw('threadOpenQueue');
+}
+
+export async function threadOpenQueueTotal(): Promise<number> {
+  const q = await getThreadOpenQueue();
+  let total = 0;
+  for (const ids of Object.values(q)) total += ids.length;
+  return total;
+}
+
+export async function hasThreadOpenSeen(tweetId: string): Promise<boolean> {
+  const seen = await getRaw('threadOpenSeen');
+  return tweetId in seen;
+}
+
+export async function markThreadOpenSeen(tweetId: string): Promise<void> {
+  const seen = await getRaw('threadOpenSeen');
+  seen[tweetId] = new Date().toISOString();
+  await setRaw('threadOpenSeen', seen);
+}
+
+export async function enqueueThreadOpen(handle: string, tweetId: string): Promise<void> {
+  if (await hasThreadOpenSeen(tweetId)) return;
+  const q = await getThreadOpenQueue();
+  const ids = q[handle] ?? [];
+  if (!ids.includes(tweetId)) {
+    ids.push(tweetId);
+    q[handle] = ids;
+    await setRaw('threadOpenQueue', q);
+  }
+}
+
+export async function dequeueThreadOpen(tweetId: string): Promise<void> {
+  const q = await getThreadOpenQueue();
+  let changed = false;
+  for (const bucket of Object.keys(q)) {
+    const ids = q[bucket];
+    if (!ids) continue;
+    const filtered = ids.filter((id) => id !== tweetId);
+    if (filtered.length !== ids.length) {
+      changed = true;
+      if (filtered.length === 0) delete q[bucket];
+      else q[bucket] = filtered;
+    }
+  }
+  if (changed) await setRaw('threadOpenQueue', q);
+}
+
+export async function nextThreadOpenTarget(): Promise<{
+  handle: string;
+  tweetId: string;
+} | null> {
+  const q = await getThreadOpenQueue();
+  for (const [handle, ids] of Object.entries(q)) {
+    if (ids.length > 0) return { handle, tweetId: ids[0]! };
+  }
+  return null;
+}
+
 /** Has this tweet id already been committed (any handle)? Used to skip
  * enqueueing media-crawl targets we've already archived. */
 export async function isCommitted(tweetId: string): Promise<boolean> {
@@ -486,6 +559,12 @@ export async function getMediaCrawlSession(): Promise<LoopSession | null> {
 export async function setMediaCrawlSession(s: LoopSession | null): Promise<void> {
   await setRaw('mediaCrawlSession', s);
 }
+export async function getThreadOpenSession(): Promise<LoopSession | null> {
+  return getRaw('threadOpenSession');
+}
+export async function setThreadOpenSession(s: LoopSession | null): Promise<void> {
+  await setRaw('threadOpenSession', s);
+}
 export async function getAutoScrollSession(): Promise<AutoScrollSession | null> {
   return getRaw('autoScrollSession');
 }
@@ -509,6 +588,7 @@ export async function purgeUnrelatedState(targeted: ReadonlySet<string>): Promis
   committedHandlesRemoved: number;
   refetchHandlesRemoved: number;
   mediaCrawlIdsRemoved: number;
+  threadOpenIdsRemoved: number;
 }> {
   const targLower = new Set([...targeted].map((h) => h.toLowerCase()));
   const isTargeted = (h: string): boolean => targLower.has(h.toLowerCase());
@@ -570,12 +650,23 @@ export async function purgeUnrelatedState(targeted: ReadonlySet<string>): Promis
   }
   await setRaw('mediaCrawlQueue', mq);
 
+  const tq = await getThreadOpenQueue();
+  let threadOpenIdsRemoved = 0;
+  for (const h of Object.keys(tq)) {
+    if (!isTargeted(h)) {
+      threadOpenIdsRemoved += (tq[h] ?? []).length;
+      delete tq[h];
+    }
+  }
+  await setRaw('threadOpenQueue', tq);
+
   return {
     countersRemoved,
     buffersRemoved,
     committedHandlesRemoved,
     refetchHandlesRemoved,
     mediaCrawlIdsRemoved,
+    threadOpenIdsRemoved,
   };
 }
 

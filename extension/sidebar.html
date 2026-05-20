@@ -43,8 +43,8 @@
         >
           Capture this page
         </button>
-        <button class="btn" id="flush-all" title="Commit any buffered captures now">
-          Flush pending
+        <button class="btn" id="flush-all" title="Upload buffered captures now">
+          Upload buffer
         </button>
       </div>
       <label class="toggle">
@@ -78,8 +78,8 @@
         <span class="muted" id="auto-scroll-status">idle</span>
       </div>
       <p class="muted loop-blurb">
-        Scrolls open X tabs to the bottom and clicks visible “Show more” links so long tweets unfold
-        in place. Stops on its own when you click Cancel.
+        Scrolls open X tabs to the bottom. Long core-relevant tweets unfold while you browse, with
+        or without auto-scroll running.
       </p>
       <div class="row">
         <button class="btn" id="auto-scroll-start">Start auto-scroll</button>
@@ -118,6 +118,22 @@
         <button class="btn" id="refetch-start">Start refetch</button>
         <button class="btn" id="refetch-cancel" hidden>Cancel</button>
         <span class="progress" id="refetch-progress" hidden></span>
+      </div>
+    </section>
+
+    <section class="loop" id="thread-open-section" hidden>
+      <div class="section-head">
+        <h2 class="section-title">Thread openings</h2>
+        <span class="muted" id="thread-open-count">0 queued</span>
+      </div>
+      <p class="muted loop-blurb">
+        Core-account thread roots that may hide later self-replies in timeline views. The opener
+        walks one tab through each detail page and nudges it so the conversation loads.
+      </p>
+      <div class="row">
+        <button class="btn" id="thread-open-start">Start opening</button>
+        <button class="btn" id="thread-open-cancel" hidden>Cancel</button>
+        <span class="progress" id="thread-open-progress" hidden></span>
       </div>
     </section>
 

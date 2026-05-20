@@ -52,6 +52,14 @@ tags:
       Post explicitly references native-born U.S. citizens or Americans
       as a class.
     classification: deterministic
+  subject:cbp-home-app:
+    description: Post explicitly references the CBP Home app or CBP Home program.
+    classification: deterministic
+  subject:celebrity:
+    description: >-
+      Post explicitly references a named entertainer, influencer, model,
+      athlete, or other non-government celebrity/public persona.
+    classification: deterministic
   subject:enforcement-op:
     description: >-
       Post depicts an arrest, raid, deportation flight, or other operation.
@@ -135,6 +143,9 @@ tags:
       X indicated the tweet or attached media was removed or withheld for
       copyright / DMCA reasons.
     classification: deterministic
+  status:community-note:
+    description: X displayed a Community Note / Birdwatch note on the tweet.
+    classification: deterministic
 
   # ===== frame:* - recurring rhetorical scaffolds ===================
   frame:criminal:
@@ -156,6 +167,11 @@ tags:
     classification: deterministic
     pattern: |
       \b(deport(?:ed|ing|ation)?|remov(?:ed|al)|repatriat(?:ed|ion))\b
+  action:self-deportation:
+    description: Self-deport, voluntary departure, or CBP Home departure reporting.
+    classification: deterministic
+    pattern: |
+      \b(self[- ]deport(?:ed|ing|ation)?|voluntar(?:y|ily) depart(?:ure|ed|ing)?|leave voluntarily|report (?:your|their|his|her)? departure)\b
   action:report-immigrants:
     description: >-
       Encourages an audience to call, contact, tip, or report people or
@@ -223,6 +239,16 @@ tags:
     description: >-
       References Christianity or explicitly Christian identity, faith,
       values, scripture, churches, or Christ.
+    classification: deterministic
+  theme:cbp-home:
+    description: >-
+      CBP Home / Project Homecoming / self-deportation incentive campaign,
+      including free flight, exit bonus, and "go home" variants.
+    classification: deterministic
+  theme:pop-culture-enforcement:
+    description: >-
+      Uses a celebrity, ad campaign, entertainment meme, or pop-culture
+      reference to frame immigration or enforcement messaging.
     classification: deterministic
 
   # ===== video:* - video-nature heuristics ==========================
@@ -298,6 +324,15 @@ tags:
     classification: deterministic
     pattern: |
       \bReport\.\s*Recon\.\s*Raid\.
+  slogan:free-ticket-home:
+    description: '"Free ticket home" / "free flight home" CBP Home slogan.'
+    classification: deterministic
+  slogan:go-home:
+    description: '"Go home" imperative slogan in CBP Home / deportation context.'
+    classification: deterministic
+  slogan:project-homecoming:
+    description: '"Project Homecoming" self-deportation campaign branding.'
+    classification: deterministic
 
   # ===== shape:* — composite tags ===================================
   shape:lineup:

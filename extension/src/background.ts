@@ -33,9 +33,11 @@ import {
   clearRunBuffer,
   dequeueMediaCrawl,
   dequeueRefetch,
+  dequeueThreadOpen,
   engagementSig,
   enqueueMediaCrawl,
   enqueueRefetch,
+  enqueueThreadOpen,
   getAccounts,
   getAccountsRefreshedAt,
   getActivity,
@@ -52,10 +54,15 @@ import {
   getRunBuffer,
   getRunBuffers,
   getSettings,
+  getThreadOpenQueue,
+  getThreadOpenSession,
+  hasThreadOpenSeen,
   isCommitted,
+  markThreadOpenSeen,
   mediaCrawlQueueTotal,
   nextMediaCrawlTarget,
   nextRefetchTarget,
+  nextThreadOpenTarget,
   pruneCommittedIndex,
   purgeUnrelatedState,
   refetchQueueTotal,
@@ -70,6 +77,8 @@ import {
   setMediaCrawlSession,
   setRefetchSession,
   setRunBuffer,
+  setThreadOpenSession,
+  threadOpenQueueTotal,
   type RunBuffer,
   updateSettings,
 } from './lib/storage.js';
@@ -81,6 +90,7 @@ import type {
   ExtensionState,
   LogEvent,
   QuarantinePayload,
+  RetweetEdge,
   RuntimeMessage,
   SeenPayload,
   Settings,
@@ -211,6 +221,13 @@ async function ensureAlarms(): Promise<void> {
 // `autoScrollSession` in storage is the source of truth for whether the loop
 // is meant to be running — the timer is just the local execution arm.
 let autoScrollTimer: ReturnType<typeof setInterval> | null = null;
+const SHOW_MORE_RELEVANCE_TTL_MS = 10 * 60 * 1000;
+interface TabRelevantTweets {
+  updatedAt: number;
+  pageUrl: string | null;
+  tweetIds: Set<string>;
+}
+const showMoreRelevantTweetsByTab = new Map<number, TabRelevantTweets>();
 
 // Wait-for-ingest timeout: if a refetch / media-crawl tab navigation doesn't
 // produce an ingested capture within this many ms, advance anyway so we
@@ -289,7 +306,6 @@ async function autoScrollTick(): Promise<void> {
   }
   if (tabs.length === 0) return;
   let scrollCount = 0;
-  let expandedCount = 0;
   for (const tab of tabs) {
     if (typeof tab.id !== 'number') continue;
     if (tab.discarded) continue;
@@ -297,39 +313,8 @@ async function autoScrollTick(): Promise<void> {
       const results = (await browser.scripting.executeScript({
         target: { tabId: tab.id },
         world: 'MAIN' as 'ISOLATED',
-        // Cast: the @types/firefox-webext-browser type signature insists
-        // `func` returns void, but the API actually surfaces the return
-        // value via `result[0].result`. We use that for the expand count.
         func: (() => {
-          // 1. Click any visible "Show more" links in long-tweet bodies so X
-          //    inlines the note_tweet body and our page-hook captures the
-          //    full text without the refetch detour. Try several selectors
-          //    because X rotates the testid label semi-regularly.
-          const SHOW_MORE_SELECTORS = [
-            '[data-testid="tweet-text-show-more-link"]',
-            'button[data-testid="tweet-text-show-more-link"]',
-            'div[data-testid="cellInnerDiv"] [role="button"][tabindex="0"]',
-          ];
-          const clicked = new Set<Element>();
-          let expanded = 0;
-          for (const sel of SHOW_MORE_SELECTORS) {
-            for (const el of Array.from(document.querySelectorAll(sel))) {
-              if (clicked.has(el)) continue;
-              // Confirm it's actually the show-more affordance by text.
-              const t = (el.textContent || '').trim().toLowerCase();
-              if (t !== 'show more' && t !== 'show this thread') continue;
-              const rect = el.getBoundingClientRect();
-              if (rect.width === 0 || rect.height === 0) continue;
-              clicked.add(el);
-              try {
-                (el as HTMLElement).click();
-                expanded += 1;
-              } catch {
-                // ignore
-              }
-            }
-          }
-          // 2. Scroll the page. Dispatch End key first since many X surfaces
+          // Scroll the page. Dispatch End key first since many X surfaces
           //    (lists, search, replies) bind pagination triggers to it via
           //    React handlers; then explicitly scroll the document.
           const opts: KeyboardEventInit = {
@@ -347,12 +332,10 @@ async function autoScrollTick(): Promise<void> {
             top: document.documentElement.scrollHeight,
             behavior: 'auto',
           });
-          return { expanded };
         }) as () => void,
       })) as Array<{ result?: unknown }>;
       scrollCount += 1;
-      const r = results[0]?.result as { expanded?: number } | undefined;
-      if (r && typeof r.expanded === 'number') expandedCount += r.expanded;
+      void results;
     } catch {
       // Tabs that disallow scripting (about:, discarded, mid-navigation)
       // just get skipped — they'll be eligible on a later tick.
@@ -362,11 +345,50 @@ async function autoScrollTick(): Promise<void> {
     const sess = await getAutoScrollSession();
     if (sess !== null) {
       sess.scrollCount += scrollCount;
-      sess.expandedCount += expandedCount;
       await setAutoScrollSession(sess);
       // No broadcast on every tick — the 15s sidebar refresh picks it up.
     }
   }
+}
+
+function pruneShowMoreRelevance(): void {
+  const cutoff = Date.now() - SHOW_MORE_RELEVANCE_TTL_MS;
+  for (const [tabId, entry] of showMoreRelevantTweetsByTab) {
+    if (entry.updatedAt < cutoff) showMoreRelevantTweetsByTab.delete(tabId);
+  }
+}
+
+function rememberShowMoreRelevantTweets(
+  tabId: number | null,
+  pageUrl: string | null,
+  tweets: ReadonlyArray<CanonicalTweet>,
+  coreHandles: ReadonlySet<string>
+): void {
+  if (tabId === null || tweets.length === 0 || coreHandles.size === 0) return;
+  const coreTweetIds = new Set<string>();
+  for (const t of tweets) {
+    if (coreHandles.has(t.account_handle.toLowerCase())) coreTweetIds.add(t.tweet_id);
+  }
+  const existing = showMoreRelevantTweetsByTab.get(tabId);
+  const tweetIds = existing?.tweetIds ?? new Set<string>();
+  for (const t of tweets) {
+    const handle = t.account_handle.toLowerCase();
+    const replyHandle = t.reply_to_account?.toLowerCase() ?? null;
+    if (
+      coreHandles.has(handle) ||
+      (replyHandle !== null && coreHandles.has(replyHandle)) ||
+      (t.reply_to_tweet_id !== null && coreTweetIds.has(t.reply_to_tweet_id)) ||
+      (t.quoted_tweet_id !== null && coreTweetIds.has(t.quoted_tweet_id)) ||
+      (t.retweeted_tweet_id !== null && coreTweetIds.has(t.retweeted_tweet_id))
+    ) {
+      tweetIds.add(t.tweet_id);
+    }
+  }
+  showMoreRelevantTweetsByTab.set(tabId, {
+    updatedAt: Date.now(),
+    pageUrl,
+    tweetIds,
+  });
 }
 
 browser.alarms.onAlarm.addListener((alarm) => {
@@ -396,9 +418,9 @@ if (browser.action?.onClicked) {
 
 // --- Runtime message dispatch --------------------------------------------
 
-browser.runtime.onMessage.addListener((msg: unknown, _sender) => {
+browser.runtime.onMessage.addListener((msg: unknown, sender) => {
   if (!isRuntimeMessage(msg)) return undefined;
-  return handleMessage(msg).catch((err) => {
+  return handleMessage(msg, sender).catch((err) => {
     void logErr('message handler failed', { type: msg.type, ...describeError(err) });
     throw err;
   });
@@ -419,6 +441,7 @@ const CAPTURE_PIPELINE_MESSAGES = new Set<RuntimeMessage['type']>([
   'flush-handle',
   'start-refetch',
   'start-media-crawl',
+  'start-thread-open',
   'start-auto-scroll',
 ]);
 
@@ -427,7 +450,10 @@ async function isEnabled(): Promise<boolean> {
   return s.enabled !== false;
 }
 
-async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
+async function handleMessage(
+  msg: RuntimeMessage,
+  sender?: browser.runtime.MessageSender
+): Promise<unknown> {
   // Master switch: when the user has paused the extension we still need
   // the meta-channels (get-state, toggle-enabled, open-options, …) so the
   // sidebar stays functional, but anything that would actually capture,
@@ -437,7 +463,13 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
   }
   switch (msg.type) {
     case 'graphql-capture':
-      await onGraphqlCapture(msg.endpoint, msg.url, msg.pageUrl ?? null, msg.response);
+      await onGraphqlCapture(
+        msg.endpoint,
+        msg.url,
+        msg.pageUrl ?? null,
+        msg.response,
+        sender?.tab?.id ?? null
+      );
       return { ok: true };
     case 'content-alive':
       await info('content script alive on page', { url: shortenUrl(msg.url) });
@@ -454,6 +486,34 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
         await info(msg.msg, { url: shortenUrl(msg.url) });
       }
       return { ok: true };
+    case 'get-unfold-targets': {
+      const settings = await getSettings();
+      if (settings.enabled === false) {
+        return { enabled: false, coreHandles: [], relevantTweetIds: [] };
+      }
+      pruneShowMoreRelevance();
+      const accounts = await getAccounts();
+      const coreHandles = accounts
+        .filter((a) => a.category === 'core')
+        .map((a) => a.handle.toLowerCase());
+      const tabId = sender?.tab?.id ?? null;
+      return {
+        enabled: true,
+        coreHandles,
+        relevantTweetIds:
+          tabId === null ? [] : Array.from(showMoreRelevantTweetsByTab.get(tabId)?.tweetIds ?? []),
+      };
+    }
+    case 'show-more-unfolded': {
+      if (msg.count > 0) {
+        const asSess = await getAutoScrollSession();
+        if (asSess !== null) {
+          asSess.expandedCount += msg.count;
+          await setAutoScrollSession(asSess);
+        }
+      }
+      return { ok: true };
+    }
     case 'get-state':
       return buildState();
     case 'capture-now':
@@ -487,8 +547,10 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
         clearAutoScrollTimer();
         stopRefetchInterval();
         stopMediaCrawlInterval();
+        stopThreadOpenInterval();
         await browser.alarms.clear('refetch-tick'); // legacy cleanup
         await browser.alarms.clear('media-crawl-tick');
+        await browser.alarms.clear('thread-open-tick');
       } else {
         // Resuming re-arms any loops whose session is still set.
         const sess = await getAutoScrollSession();
@@ -514,6 +576,7 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
       if (sess !== null) armAutoScrollTimer(seconds);
       if (refetchIntervalHandle !== null) startRefetchInterval(seconds);
       if (mediaCrawlIntervalHandle !== null) startMediaCrawlInterval(seconds);
+      if (threadOpenIntervalHandle !== null) startThreadOpenInterval(seconds);
       return buildState();
     }
     case 'start-refetch':
@@ -527,6 +590,12 @@ async function handleMessage(msg: RuntimeMessage): Promise<unknown> {
       return buildState();
     case 'cancel-media-crawl':
       await cancelMediaCrawlLoop();
+      return buildState();
+    case 'start-thread-open':
+      await startThreadOpenLoop();
+      return buildState();
+    case 'cancel-thread-open':
+      await cancelThreadOpenLoop();
       return buildState();
     case 'purge-unrelated': {
       const accs = await getAccounts();
@@ -564,7 +633,8 @@ async function onGraphqlCapture(
   endpoint: string,
   url: string,
   pageUrl: string | null,
-  response: unknown
+  response: unknown,
+  senderTabId: number | null
 ): Promise<void> {
   if (PROFILE_ENDPOINTS.has(endpoint)) return; // not tweet-bearing
   if (!TWEET_ENDPOINTS.has(endpoint)) return;
@@ -615,6 +685,13 @@ async function onGraphqlCapture(
     await quarantine('normalize-threw', endpoint, url, response, err);
     return;
   }
+  const retweetEdges = buildRetweetEdges(
+    normalized.tweets,
+    accounts,
+    capturedAt,
+    endpoint,
+    pageUrl ?? url
+  );
   // Drop unrelated tweets. The filter is endpoint-aware:
   //   - On the home / search timelines we'd already been filtering to
   //     tracked authors only — keep that behaviour but go through the same
@@ -632,6 +709,7 @@ async function onGraphqlCapture(
       kept: normalized.tweets.length,
     });
   }
+  rememberShowMoreRelevantTweets(senderTabId, pageUrl, normalized.tweets, core);
 
   // Diagnostic: every tweet-endpoint payload gets a line in the activity
   // tail with what we saw vs kept. When observed=0 we also emit a shape
@@ -681,7 +759,11 @@ async function onGraphqlCapture(
     );
   }
 
-  if (normalized.tweets.length === 0) return;
+  if (normalized.tweets.length === 0) {
+    const bufferedEdges = await bufferRetweetEdges(retweetEdges, capturedAt, pageUrl ?? url, endpoint);
+    if (bufferedEdges > 0) await broadcastState();
+    return;
+  }
 
   // Refetch queue housekeeping — runs BEFORE the dedup short-circuit. A
   // refetch capture comes back with the same engagement counts (we're
@@ -694,6 +776,7 @@ async function onGraphqlCapture(
   // guard otherwise blocks until the navigation-timeout fires.
   const refetchSess = await getRefetchSession();
   const mediaCrawlSess = await getMediaCrawlSession();
+  const threadOpenSess = await getThreadOpenSession();
   for (const t of normalized.tweets) {
     if (t.is_truncated) {
       await enqueueRefetch(t.account_handle, t.tweet_id);
@@ -712,6 +795,13 @@ async function onGraphqlCapture(
       mediaCrawlSess.inflight = null;
       mediaCrawlSess.processed += 1;
       await setMediaCrawlSession(mediaCrawlSess);
+    }
+    if (threadOpenSess?.inflight?.tweetId === t.tweet_id) {
+      threadOpenSess.inflight = null;
+      threadOpenSess.processed += 1;
+      await markThreadOpenSeen(t.tweet_id);
+      await dequeueThreadOpen(t.tweet_id);
+      await setThreadOpenSession(threadOpenSess);
     }
   }
 
@@ -743,6 +833,7 @@ async function onGraphqlCapture(
   // refresh like / RT counts. New tweets and truncated→full refetches
   // still flow through normally because they aren't in the index yet
   // (or carry an is_truncated transition that fails the sig check).
+  // Full-text upgrades bypass this skip even with updateExisting=false.
   const updateExisting = settings.updateExisting !== false;
   const committedIdx = await getCommittedIndex();
   const archiveSnapshot = await getArchiveSnapshot();
@@ -750,6 +841,7 @@ async function onGraphqlCapture(
   let skippedNoUpdateLocal = 0;
   let skippedNoUpdateSnapshot = 0;
   let oldFromSnapshot = 0;
+  let fullTextUpgrades = 0;
   const liveTweets: typeof normalized.tweets = [];
   const freshnessById = new Map<string, 'new' | 'existing'>();
   const actionById = new Map<string, TweetSighting['action']>();
@@ -759,12 +851,6 @@ async function onGraphqlCapture(
     const previouslyArchived = Boolean(prev) || oldBySnapshot;
     freshnessById.set(t.tweet_id, previouslyArchived ? 'existing' : 'new');
     if (oldBySnapshot) oldFromSnapshot += 1;
-    if (previouslyArchived && !updateExisting) {
-      if (prev) skippedNoUpdateLocal += 1;
-      else skippedNoUpdateSnapshot += 1;
-      actionById.set(t.tweet_id, 'skipped');
-      continue;
-    }
     const sig = engagementSig(
       t.like_count,
       t.retweet_count,
@@ -772,11 +858,20 @@ async function onGraphqlCapture(
       t.quote_count,
       t.is_truncated
     );
+    const fullTextUpgrade =
+      prev !== undefined && sigMarksTruncated(prev.sig) && !t.is_truncated;
+    if (previouslyArchived && !updateExisting && !fullTextUpgrade) {
+      if (prev) skippedNoUpdateLocal += 1;
+      else skippedNoUpdateSnapshot += 1;
+      actionById.set(t.tweet_id, 'skipped');
+      continue;
+    }
     if (prev && prev.sig === sig) {
       dedupedSkipped += 1;
       actionById.set(t.tweet_id, 'unchanged');
       continue;
     }
+    if (fullTextUpgrade) fullTextUpgrades += 1;
     actionById.set(t.tweet_id, 'buffered');
     liveTweets.push(t);
   }
@@ -810,6 +905,14 @@ async function onGraphqlCapture(
       snapshot_generated_at: archiveSnapshot?.generated_at ?? null,
     });
   }
+  if (fullTextUpgrades > 0) {
+    await info('dedup: buffering full-text upgrades', {
+      endpoint,
+      upgrades: fullTextUpgrades,
+      updateExisting,
+      remaining: liveTweets.length,
+    });
+  }
   await prependRecentTweetSightings(
     normalized.tweets.map((t) =>
       buildTweetSighting(t, endpoint, capturedAt, freshnessById.get(t.tweet_id), actionById.get(t.tweet_id))
@@ -824,7 +927,17 @@ async function onGraphqlCapture(
   // and enqueue it on the media-crawl loop so its detail page gets
   // visited and ingested next time the user starts the crawl.
   await enqueueMissingParents(normalized.tweets, endpoint);
-  if (liveTweets.length === 0) return;
+  await enqueueThreadOpenCandidates(normalized.tweets, core, endpoint);
+  const bufferedRetweetEdges = await bufferRetweetEdges(
+    retweetEdges,
+    capturedAt,
+    pageUrl ?? url,
+    endpoint
+  );
+  if (liveTweets.length === 0) {
+    if (bufferedRetweetEdges > 0) await broadcastState();
+    return;
+  }
 
   // Group surviving tweets by author handle.
   const byHandle = new Map<string, CanonicalTweet[]>();
@@ -872,10 +985,7 @@ async function onGraphqlCapture(
     if (!buf.endpoints_seen.includes(endpoint)) buf.endpoints_seen.push(endpoint);
     buf.last_capture_at = capturedAt;
     await setRunBuffer(handle, buf);
-    await setBufferedCount(
-      handle,
-      Object.keys(buf.tweets_by_id).length + Object.keys(buf.unavailable_by_id ?? {}).length
-    );
+    await setBufferedCount(handle, runBufferItemCount(buf));
     if (added > 0 || updatedBuffered > 0) {
       await info('buffered tweets', {
         handle,
@@ -914,6 +1024,7 @@ async function recordUnavailableTweets(
   const committedIdx = await getCommittedIndex();
   const refetchSess = await getRefetchSession();
   const mediaCrawlSess = await getMediaCrawlSession();
+  const threadOpenSess = await getThreadOpenSession();
   let recorded = 0;
   let skipped = 0;
   let missingHandle = 0;
@@ -923,6 +1034,7 @@ async function recordUnavailableTweets(
     if (!handle) {
       missingHandle += 1;
       await dequeueMediaCrawl(u.tweet_id);
+      await dequeueThreadOpen(u.tweet_id);
       continue;
     }
     if (tracked.size > 0 && !tracked.has(handle.toLowerCase())) {
@@ -932,6 +1044,7 @@ async function recordUnavailableTweets(
 
     await dequeueMediaCrawl(u.tweet_id);
     await dequeueRefetch(handle, u.tweet_id);
+    await dequeueThreadOpen(u.tweet_id);
     if (refetchSess?.inflight?.tweetId === u.tweet_id) {
       refetchSess.inflight = null;
       refetchSess.processed += 1;
@@ -941,6 +1054,12 @@ async function recordUnavailableTweets(
       mediaCrawlSess.inflight = null;
       mediaCrawlSess.processed += 1;
       await setMediaCrawlSession(mediaCrawlSess);
+    }
+    if (threadOpenSess?.inflight?.tweetId === u.tweet_id) {
+      threadOpenSess.inflight = null;
+      threadOpenSess.processed += 1;
+      await markThreadOpenSeen(u.tweet_id);
+      await setThreadOpenSession(threadOpenSess);
     }
 
     const sig = unavailableSig(u);
@@ -960,10 +1079,7 @@ async function recordUnavailableTweets(
     if (!buf.endpoints_seen.includes(endpoint)) buf.endpoints_seen.push(endpoint);
     buf.last_capture_at = capturedAt;
     await setRunBuffer(handle, buf);
-    await setBufferedCount(
-      handle,
-      Object.keys(buf.tweets_by_id).length + Object.keys(unavailableById).length
-    );
+    await setBufferedCount(handle, runBufferItemCount(buf));
     recorded += 1;
   }
 
@@ -975,6 +1091,118 @@ async function recordUnavailableTweets(
 
 function unavailableSig(u: UnavailableTweet): string {
   return `unavailable|${u.unavailable_reason ?? ''}|${u.unavailable_text ?? ''}`;
+}
+
+function sigMarksTruncated(sig: string): boolean {
+  const parts = sig.split('|');
+  return parts[parts.length - 1] === 't';
+}
+
+function runBufferItemCount(buf: RunBuffer): number {
+  return (
+    Object.keys(buf.tweets_by_id).length +
+    Object.keys(buf.unavailable_by_id ?? {}).length +
+    Object.keys(buf.retweet_edges_by_key ?? {}).length
+  );
+}
+
+function retweetEdgeKey(edge: RetweetEdge): string {
+  return [
+    edge.retweeter_handle.toLowerCase(),
+    edge.retweet_tweet_id,
+    edge.original_tweet_id,
+  ].join('|');
+}
+
+function inferRetweetedHandle(text: string): string | null {
+  const match = text.match(/^RT\s+@([A-Za-z0-9_]{1,15})\b/i);
+  return match?.[1] ?? null;
+}
+
+function buildRetweetEdges(
+  tweets: ReadonlyArray<CanonicalTweet>,
+  accounts: ReadonlyArray<{ handle: string; category: string }>,
+  capturedAt: string,
+  endpoint: string,
+  sourceUrl: string | null
+): RetweetEdge[] {
+  const categoryByHandle = new Map(accounts.map((a) => [a.handle.toLowerCase(), a.category]));
+  const byId = new Map(tweets.map((t) => [t.tweet_id, t]));
+  const out = new Map<string, RetweetEdge>();
+  for (const t of tweets) {
+    if (t.tweet_type !== 'retweet' || !t.retweeted_tweet_id) continue;
+    const retweeterCategory = categoryByHandle.get(t.account_handle.toLowerCase());
+    if (!retweeterCategory) continue;
+    const original = byId.get(t.retweeted_tweet_id);
+    const originalHandle = original?.account_handle ?? inferRetweetedHandle(t.text_resolved || t.text);
+    const originalCategory = originalHandle
+      ? (categoryByHandle.get(originalHandle.toLowerCase()) ?? 'public')
+      : null;
+    const edge: RetweetEdge = {
+      retweeter_handle: t.account_handle,
+      retweeter_account_id: t.account_id ?? null,
+      retweeter_category: retweeterCategory,
+      retweet_tweet_id: t.tweet_id,
+      retweet_url: t.tweet_url,
+      original_tweet_id: t.retweeted_tweet_id,
+      original_author_handle: originalHandle,
+      original_author_account_id: original?.account_id ?? null,
+      original_author_category: originalCategory,
+      captured_at: capturedAt,
+      capture_run_id: 'pending',
+      endpoint,
+      source_url: sourceUrl,
+    };
+    out.set(retweetEdgeKey(edge), edge);
+  }
+  return [...out.values()];
+}
+
+async function bufferRetweetEdges(
+  edges: ReadonlyArray<RetweetEdge>,
+  capturedAt: string,
+  sourceUrl: string,
+  endpoint: string
+): Promise<number> {
+  if (edges.length === 0) return 0;
+  const byHandle = new Map<string, RetweetEdge[]>();
+  for (const edge of edges) {
+    const arr = byHandle.get(edge.retweeter_handle) ?? [];
+    arr.push(edge);
+    byHandle.set(edge.retweeter_handle, arr);
+  }
+  let added = 0;
+  for (const [handle, handleEdges] of byHandle) {
+    const buf = await ensureRunBuffer(handle, capturedAt, sourceUrl, endpoint);
+    const edgeMap = buf.retweet_edges_by_key ?? {};
+    let addedForHandle = 0;
+    for (const edge of handleEdges) {
+      const stamped: RetweetEdge = { ...edge, capture_run_id: buf.run_id };
+      const key = retweetEdgeKey(stamped);
+      if (!edgeMap[key]) addedForHandle += 1;
+      edgeMap[key] = stamped;
+      if (!buf.tweet_ids_observed.includes(stamped.retweet_tweet_id)) {
+        buf.tweet_ids_observed.push(stamped.retweet_tweet_id);
+      }
+      if (!buf.tweet_ids_observed.includes(stamped.original_tweet_id)) {
+        buf.tweet_ids_observed.push(stamped.original_tweet_id);
+      }
+    }
+    if (addedForHandle === 0) continue;
+    buf.retweet_edges_by_key = edgeMap;
+    if (!buf.endpoints_seen.includes(endpoint)) buf.endpoints_seen.push(endpoint);
+    buf.last_capture_at = capturedAt;
+    await setRunBuffer(handle, buf);
+    await setBufferedCount(handle, runBufferItemCount(buf));
+    added += addedForHandle;
+    await info('buffered retweet edges', {
+      handle,
+      endpoint,
+      added: addedForHandle,
+      total: Object.keys(edgeMap).length,
+    });
+  }
+  return added;
 }
 
 /**
@@ -1031,6 +1259,45 @@ async function enqueueMissingParents(
   }
 }
 
+async function enqueueThreadOpenCandidates(
+  tweets: ReadonlyArray<CanonicalTweet>,
+  coreHandles: ReadonlySet<string>,
+  endpoint: string
+): Promise<void> {
+  if (tweets.length === 0 || coreHandles.size === 0) return;
+  if (endpoint.includes('TweetDetail') || endpoint.includes('TweetResultByRestId')) return;
+
+  const candidates = new Map<string, string>();
+  for (const t of tweets) {
+    const handle = t.account_handle.toLowerCase();
+    if (!coreHandles.has(handle)) continue;
+
+    const rootId = t.conversation_id ?? t.tweet_id;
+    const isRoot = rootId === t.tweet_id || t.reply_to_tweet_id === null;
+    const isCoreReply = t.reply_to_tweet_id !== null;
+    if (isRoot && t.reply_count > 0) {
+      candidates.set(rootId, t.account_handle);
+    } else if (isCoreReply && rootId) {
+      candidates.set(rootId, t.account_handle);
+    }
+  }
+
+  let enqueued = 0;
+  for (const [tweetId, handle] of candidates) {
+    const before = await threadOpenQueueTotal();
+    await enqueueThreadOpen(handle, tweetId);
+    const after = await threadOpenQueueTotal();
+    if (after > before) enqueued += 1;
+  }
+  if (enqueued > 0) {
+    await info('queued core thread roots for opening', {
+      endpoint,
+      enqueued,
+      queue_total: await threadOpenQueueTotal(),
+    });
+  }
+}
+
 async function ensureRunBuffer(
   handle: string,
   ts: string,
@@ -1064,6 +1331,7 @@ interface FlushItem {
   buf: RunBuffer;
   tweets: CanonicalTweet[];
   unavailableTweets: UnavailableTweet[];
+  retweetEdges: RetweetEdge[];
   rawPath: string;
   seenPath: string;
   capture: CapturePayload;
@@ -1131,18 +1399,19 @@ async function flushHandlesLocked(handles: string[], reason: string): Promise<vo
     if (!buf) continue;
     const tweets = Object.values(buf.tweets_by_id);
     const unavailableTweets = Object.values(buf.unavailable_by_id ?? {});
-    if (tweets.length === 0 && unavailableTweets.length === 0) {
+    const retweetEdges = Object.values(buf.retweet_edges_by_key ?? {});
+    if (tweets.length === 0 && unavailableTweets.length === 0 && retweetEdges.length === 0) {
       await clearRunBuffer(handle);
       await setBufferedCount(handle, 0);
       continue;
     }
-    items.push(buildFlushItem(handle, buf, tweets, unavailableTweets));
+    items.push(buildFlushItem(handle, buf, tweets, unavailableTweets, retweetEdges));
   }
   if (items.length === 0) return;
 
   const settings = await getSettings();
   if (!settings.pat || !settings.owner || !settings.repo) {
-    await warn('flush deferred: settings incomplete', {
+    await warn('upload buffer deferred: settings incomplete', {
       count: items.length,
       handles: items.map((item) => item.handle).slice(0, 20),
     });
@@ -1207,23 +1476,25 @@ async function flushHandlesLocked(handles: string[], reason: string): Promise<vo
         };
       }
       idx[item.handle] = inner;
-      await info('flush committed', {
+      await info('upload buffer committed', {
         handle: item.handle,
         reason,
         tweets: item.tweets.length,
         unavailable: item.unavailableTweets.length,
+        retweet_edges: item.retweetEdges.length,
         run: item.runShort,
         path: item.rawPath,
         batch_commit: result.commitSha,
       });
     }
     await setCommittedIndex(idx);
-    await info('flush batch committed', {
+    await info('upload buffer batch committed', {
       reason,
       runs: items.length,
       files: files.length,
       tweets: items.reduce((total, item) => total + item.tweets.length, 0),
       unavailable: items.reduce((total, item) => total + item.unavailableTweets.length, 0),
+      retweet_edges: items.reduce((total, item) => total + item.retweetEdges.length, 0),
       commit: result.commitSha,
     });
     {
@@ -1259,7 +1530,7 @@ async function flushHandlesLocked(handles: string[], reason: string): Promise<vo
         rateLimitResetAt:
           err.category === 'rate-limit' ? err.rateLimitResetAt : conn.rateLimitResetAt,
       });
-      await logErr('flush failed', {
+      await logErr('upload buffer failed', {
         reason,
         handles: items.map((item) => item.handle).slice(0, 20),
         runs: items.length,
@@ -1270,7 +1541,7 @@ async function flushHandlesLocked(handles: string[], reason: string): Promise<vo
         rateLimitResetAt: err.rateLimitResetAt,
       });
     } else {
-      await logErr('flush failed', {
+      await logErr('upload buffer failed', {
         reason,
         handles: items.map((item) => item.handle).slice(0, 20),
         runs: items.length,
@@ -1288,7 +1559,8 @@ function buildFlushItem(
   handle: string,
   buf: RunBuffer,
   tweets: CanonicalTweet[],
-  unavailableTweets: UnavailableTweet[]
+  unavailableTweets: UnavailableTweet[],
+  retweetEdges: RetweetEdge[]
 ): FlushItem {
   const ts = isoCompact(buf.started_at);
   const day = buf.started_at.slice(0, 10);
@@ -1300,6 +1572,7 @@ function buildFlushItem(
     buf,
     tweets,
     unavailableTweets,
+    retweetEdges,
     rawPath,
     seenPath,
     day,
@@ -1314,6 +1587,7 @@ function buildFlushItem(
       source_url: buf.source_url,
       tweets,
       unavailable_tweets: unavailableTweets,
+      retweet_edges: retweetEdges,
     },
     seen: {
       schema_version: 1,
@@ -1329,21 +1603,27 @@ function buildBatchCommitMessage(items: FlushItem[]): string {
   if (items.length === 1) {
     const item = items[0]!;
     const unavailableCount = item.unavailableTweets.length;
-    const suffix = unavailableCount > 0 ? `, ${unavailableCount} unavailable` : '';
+    const edgeCount = item.retweetEdges.length;
+    const suffix =
+      (unavailableCount > 0 ? `, ${unavailableCount} unavailable` : '') +
+      (edgeCount > 0 ? `, ${edgeCount} retweet edge${edgeCount === 1 ? '' : 's'}` : '');
     return `capture: ${item.handle} ${item.day} ${item.tweets.length} tweet${item.tweets.length === 1 ? '' : 's'}${suffix} (run ${item.runShort})`;
   }
   const days = [...new Set(items.map((item) => item.day))].sort();
   const dayLabel = days.length === 1 ? days[0]! : `${days[0]}..${days[days.length - 1]}`;
   const tweetCount = items.reduce((total, item) => total + item.tweets.length, 0);
   const unavailableCount = items.reduce((total, item) => total + item.unavailableTweets.length, 0);
-  const suffix = unavailableCount > 0 ? `, ${unavailableCount} unavailable` : '';
+  const edgeCount = items.reduce((total, item) => total + item.retweetEdges.length, 0);
+  const suffix =
+    (unavailableCount > 0 ? `, ${unavailableCount} unavailable` : '') +
+    (edgeCount > 0 ? `, ${edgeCount} retweet edge${edgeCount === 1 ? '' : 's'}` : '');
   return `capture batch: ${items.length} runs, ${tweetCount} tweet${tweetCount === 1 ? '' : 's'}${suffix} (${dayLabel})`;
 }
 
 async function clearCommittedTweetsFromBuffer(item: FlushItem): Promise<number> {
   const current = await getRunBuffer(item.handle);
   if (!current) return 0;
-  if (current.run_id !== item.buf.run_id) return Object.keys(current.tweets_by_id).length;
+  if (current.run_id !== item.buf.run_id) return runBufferItemCount(current);
 
   const committed = new Map(
     item.tweets.map((t) => [
@@ -1376,12 +1656,25 @@ async function clearCommittedTweetsFromBuffer(item: FlushItem): Promise<number> 
       remainingUnavailable[tweetId] = { ...unavailable };
     }
   }
+  const remainingRetweetEdges: Record<string, RetweetEdge> = {};
+  for (const [key, edge] of Object.entries(current.retweet_edges_by_key ?? {})) {
+    if (!item.retweetEdges.some((committedEdge) => retweetEdgeKey(committedEdge) === key)) {
+      remainingRetweetEdges[key] = { ...edge };
+    }
+  }
 
   const remainingIds = new Set([
     ...Object.keys(remainingTweets),
     ...Object.keys(remainingUnavailable),
+    ...Object.values(remainingRetweetEdges).flatMap((edge) => [
+      edge.retweet_tweet_id,
+      edge.original_tweet_id,
+    ]),
   ]);
-  const remainingCount = remainingIds.size;
+  const remainingCount =
+    Object.keys(remainingTweets).length +
+    Object.keys(remainingUnavailable).length +
+    Object.keys(remainingRetweetEdges).length;
   if (remainingCount === 0) {
     await clearRunBuffer(item.handle);
     return 0;
@@ -1391,15 +1684,19 @@ async function clearCommittedTweetsFromBuffer(item: FlushItem): Promise<number> 
   for (const tweet of Object.values(remainingTweets)) {
     tweet.capture_run_id = nextRunId;
   }
+  for (const edge of Object.values(remainingRetweetEdges)) {
+    edge.capture_run_id = nextRunId;
+  }
   await setRunBuffer(item.handle, {
     ...current,
     run_id: nextRunId,
     started_at: current.last_capture_at,
     tweets_by_id: remainingTweets,
     unavailable_by_id: remainingUnavailable,
+    retweet_edges_by_key: remainingRetweetEdges,
     tweet_ids_observed: current.tweet_ids_observed.filter((id) => remainingIds.has(id)),
   });
-  await info('flush kept newer buffered tweets', {
+  await info('upload buffer kept newer tweets', {
     handle: item.handle,
     committed_run: item.runShort,
     next_run: shortRunId(nextRunId),
@@ -1845,6 +2142,189 @@ async function mediaCrawlTick(): Promise<void> {
   await broadcastState();
 }
 
+// --- Thread-opening loop -------------------------------------------------
+//
+// Timelines often show a core account's root tweet without every later
+// self-reply in the conversation. This utility walks a dedicated tab through
+// queued core thread roots and nudges the detail page so TweetDetail payloads
+// load the rest of the conversation.
+
+const THREAD_OPEN_TAB_KEY = '__imm_archive_thread_open_tab_id__';
+
+async function getThreadOpenTabId(): Promise<number | null> {
+  const stored = await browser.storage.local.get(THREAD_OPEN_TAB_KEY);
+  const id = stored[THREAD_OPEN_TAB_KEY];
+  return typeof id === 'number' ? id : null;
+}
+
+async function setThreadOpenTabId(id: number | null): Promise<void> {
+  if (id === null) await browser.storage.local.remove(THREAD_OPEN_TAB_KEY);
+  else await browser.storage.local.set({ [THREAD_OPEN_TAB_KEY]: id });
+}
+
+async function startThreadOpenLoop(): Promise<void> {
+  allowManualCaptureWindow();
+  const total = await threadOpenQueueTotal();
+  if (total === 0) {
+    await info('thread-open: nothing queued');
+    return;
+  }
+  const s = await getSettings();
+  const seconds = Math.min(
+    AUTO_SCROLL_MAX_SEC,
+    Math.max(AUTO_SCROLL_MIN_SEC, Math.round(s.autoScrollIntervalSec))
+  );
+  await setThreadOpenSession({
+    totalAtStart: total,
+    processed: 0,
+    startedAt: new Date().toISOString(),
+    inflight: null,
+  });
+  startThreadOpenInterval(seconds);
+  void threadOpenTick();
+  await info('thread-open loop started', { queued: total, interval_sec: seconds });
+  await broadcastState();
+}
+
+let threadOpenIntervalHandle: ReturnType<typeof setInterval> | null = null;
+
+function startThreadOpenInterval(seconds: number): void {
+  if (threadOpenIntervalHandle !== null) clearInterval(threadOpenIntervalHandle);
+  threadOpenIntervalHandle = setInterval(() => {
+    void threadOpenTick().catch((err) => {
+      void warn('thread-open tick failed', describeError(err));
+    });
+  }, seconds * 1000);
+}
+
+function stopThreadOpenInterval(): void {
+  if (threadOpenIntervalHandle !== null) {
+    clearInterval(threadOpenIntervalHandle);
+    threadOpenIntervalHandle = null;
+  }
+}
+
+async function cancelThreadOpenLoop(): Promise<void> {
+  stopThreadOpenInterval();
+  await browser.alarms.clear('thread-open-tick'); // legacy cleanup
+  const tabId = await getThreadOpenTabId();
+  await setThreadOpenTabId(null);
+  const sess = await getThreadOpenSession();
+  await setThreadOpenSession(null);
+  await info('thread-open loop cancelled', {
+    had_tab: tabId !== null,
+    processed: sess?.processed ?? 0,
+  });
+  await broadcastState();
+}
+
+async function threadOpenTick(): Promise<void> {
+  let sess = await getThreadOpenSession();
+  if (sess === null) {
+    stopThreadOpenInterval();
+    return;
+  }
+  if (sess.inflight !== null) {
+    const elapsed = Date.now() - Date.parse(sess.inflight.navigatedAt);
+    if (elapsed < INGEST_WAIT_MS) return;
+    await warn('thread-open: target timed out waiting for ingest', {
+      tweet_id: sess.inflight.tweetId,
+      waited_ms: elapsed,
+    });
+    await markThreadOpenSeen(sess.inflight.tweetId);
+    await dequeueThreadOpen(sess.inflight.tweetId);
+    sess.processed += 1;
+    sess.inflight = null;
+    await setThreadOpenSession(sess);
+  }
+
+  const target = await nextThreadOpenTarget();
+  if (!target) {
+    stopThreadOpenInterval();
+    await setThreadOpenTabId(null);
+    await setThreadOpenSession(null);
+    await info('thread-open loop complete', { processed: sess.processed });
+    await broadcastState();
+    return;
+  }
+  if (await hasThreadOpenSeen(target.tweetId)) {
+    await dequeueThreadOpen(target.tweetId);
+    sess.processed += 1;
+    sess.inflight = null;
+    await setThreadOpenSession(sess);
+    await broadcastState();
+    return;
+  }
+
+  const url = `https://x.com/${target.handle}/status/${target.tweetId}`;
+  let tabId = await getThreadOpenTabId();
+  if (tabId !== null) {
+    try {
+      await browser.tabs.get(tabId);
+    } catch {
+      tabId = null;
+    }
+  }
+  try {
+    if (tabId === null) {
+      const tab = await browser.tabs.create({ url, active: false });
+      if (typeof tab.id !== 'number') throw new Error('created tab without id');
+      tabId = tab.id;
+      await setThreadOpenTabId(tabId);
+    } else {
+      await browser.tabs.update(tabId, { url });
+    }
+    await markThreadOpenSeen(target.tweetId);
+    sess = (await getThreadOpenSession()) ?? sess;
+    sess.inflight = {
+      tweetId: target.tweetId,
+      navigatedAt: new Date().toISOString(),
+    };
+    await setThreadOpenSession(sess);
+    if (tabId !== null) {
+      void nudgeThreadOpenTab(tabId);
+    }
+    await info('thread-open tick', {
+      handle: target.handle,
+      tweet_id: target.tweetId,
+      remaining: await threadOpenQueueTotal(),
+      processed: sess.processed,
+      total_at_start: sess.totalAtStart,
+    });
+  } catch (err) {
+    await warn('thread-open navigate failed; dropping target', {
+      handle: target.handle,
+      tweet_id: target.tweetId,
+      ...describeError(err),
+    });
+    await markThreadOpenSeen(target.tweetId);
+    await dequeueThreadOpen(target.tweetId);
+    sess.processed += 1;
+    sess.inflight = null;
+    await setThreadOpenSession(sess);
+  }
+  await broadcastState();
+}
+
+async function nudgeThreadOpenTab(tabId: number): Promise<void> {
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+  try {
+    await browser.scripting.executeScript({
+      target: { tabId },
+      world: 'MAIN' as 'ISOLATED',
+      func: () => {
+        const h = window.innerHeight;
+        const step = () => window.scrollBy({ top: h * 1.3, behavior: 'smooth' });
+        step();
+        setTimeout(step, 1400);
+        setTimeout(step, 2800);
+      },
+    });
+  } catch (err) {
+    await warn('thread-open scroll-nudge failed', describeError(err));
+  }
+}
+
 // --- Quarantine -----------------------------------------------------------
 
 async function quarantine(
@@ -2086,8 +2566,10 @@ async function buildState(): Promise<ExtensionState> {
   }
   const refetchQueued = await refetchQueueTotal();
   const mediaCrawlQueued = await mediaCrawlQueueTotal();
+  const threadOpenQueued = await threadOpenQueueTotal();
   const refetchSess = await getRefetchSession();
   const mediaCrawlSess = await getMediaCrawlSession();
+  const threadOpenSess = await getThreadOpenSession();
   const autoScrollSess = await getAutoScrollSession();
   const recentTweetSightings = await getRecentTweetSightings();
   return {
@@ -2117,6 +2599,12 @@ async function buildState(): Promise<ExtensionState> {
       running: mediaCrawlIntervalHandle !== null,
       processed: mediaCrawlSess?.processed ?? 0,
       total_at_start: mediaCrawlSess?.totalAtStart ?? 0,
+    },
+    threadOpenQueue: {
+      total: threadOpenQueued,
+      running: threadOpenIntervalHandle !== null,
+      processed: threadOpenSess?.processed ?? 0,
+      total_at_start: threadOpenSess?.totalAtStart ?? 0,
     },
     recentTweetSightings,
   };
@@ -2335,4 +2823,7 @@ function shortenUrl(u: string): string {
   mediaCrawlQueue: getMediaCrawlQueue,
   startMediaCrawl: startMediaCrawlLoop,
   cancelMediaCrawl: cancelMediaCrawlLoop,
+  threadOpenQueue: getThreadOpenQueue,
+  startThreadOpen: startThreadOpenLoop,
+  cancelThreadOpen: cancelThreadOpenLoop,
 };

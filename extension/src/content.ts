@@ -22,6 +22,20 @@
 
 const TARGET = 'IMM_ARCHIVE_CAPTURE';
 const READY = 'IMM_ARCHIVE_HOOK_READY';
+const UNFOLD_SYNC_MS = 2_000;
+const UNFOLD_SCAN_DEBOUNCE_MS = 250;
+
+interface UnfoldTargetsResponse {
+  enabled?: boolean;
+  coreHandles?: string[];
+  relevantTweetIds?: string[];
+}
+
+let unfoldEnabled = false;
+let unfoldCoreHandles = new Set<string>();
+let unfoldRelevantTweetIds = new Set<string>();
+let unfoldScanTimer: ReturnType<typeof setTimeout> | null = null;
+const unfoldedControls = new WeakSet<Element>();
 
 void browser.runtime
   .sendMessage({ type: 'content-alive', url: location.href })
@@ -57,6 +71,150 @@ function fallbackInject(): void {
 }
 
 fallbackInject();
+
+function normalizeHandle(raw: string | null): string | null {
+  if (!raw) return null;
+  const cleaned = raw.trim().replace(/^@/, '').toLowerCase();
+  return cleaned.length > 0 ? cleaned : null;
+}
+
+const STATUS_HOSTS = new Set(['x.com', 'twitter.com', 'mobile.twitter.com']);
+
+function parseTweetUrl(href: string | null): { handle: string; id: string } | null {
+  if (!href) return null;
+  try {
+    const u = new URL(href, location.href);
+    if (!STATUS_HOSTS.has(u.hostname.toLowerCase())) return null;
+    const parts = u.pathname.split('/').filter(Boolean);
+    const statusIdx = parts.indexOf('status');
+    if (statusIdx <= 0) return null;
+    const handle = normalizeHandle(parts[statusIdx - 1] ?? null);
+    const id = parts[statusIdx + 1] ?? null;
+    if (!handle || !id || !/^\d+$/.test(id)) return null;
+    return { handle, id };
+  } catch {
+    return null;
+  }
+}
+
+function parseHandleUrl(href: string | null): string | null {
+  if (!href) return null;
+  try {
+    const u = new URL(href, location.href);
+    if (!STATUS_HOSTS.has(u.hostname.toLowerCase())) return null;
+    const first = u.pathname.split('/').filter(Boolean)[0];
+    if (!first || first === 'i' || first === 'intent' || first === 'search') return null;
+    return normalizeHandle(first);
+  } catch {
+    return null;
+  }
+}
+
+function isVisible(el: Element): boolean {
+  const rect = el.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) return false;
+  const style = window.getComputedStyle(el);
+  return style.visibility !== 'hidden' && style.display !== 'none';
+}
+
+function nearestTweetContainer(el: Element): Element | null {
+  return el.closest('article') ?? el.closest('div[data-testid="cellInnerDiv"]');
+}
+
+function isReplyToCore(container: Element): boolean {
+  const text = (container.textContent || '').toLowerCase();
+  if (!text.includes('replying to')) return false;
+  for (const link of Array.from(container.querySelectorAll('a[href]'))) {
+    const handle = parseHandleUrl(link.getAttribute('href'));
+    if (handle && unfoldCoreHandles.has(handle)) return true;
+  }
+  return false;
+}
+
+function isCoreRelevant(container: Element): boolean {
+  for (const link of Array.from(container.querySelectorAll('a[href]'))) {
+    const tweet = parseTweetUrl(link.getAttribute('href'));
+    if (!tweet) continue;
+    if (unfoldCoreHandles.has(tweet.handle)) return true;
+    if (unfoldRelevantTweetIds.has(tweet.id)) return true;
+  }
+  return isReplyToCore(container);
+}
+
+function scanAndUnfoldShowMore(): void {
+  unfoldScanTimer = null;
+  if (!unfoldEnabled || unfoldCoreHandles.size === 0) return;
+  const selectors = [
+    '[data-testid="tweet-text-show-more-link"]',
+    'button[data-testid="tweet-text-show-more-link"]',
+    'article [role="button"][tabindex="0"]',
+    'div[data-testid="cellInnerDiv"] [role="button"][tabindex="0"]',
+  ];
+  const seen = new Set<Element>();
+  let clicked = 0;
+  for (const sel of selectors) {
+    for (const el of Array.from(document.querySelectorAll(sel))) {
+      if (seen.has(el) || unfoldedControls.has(el)) continue;
+      seen.add(el);
+      if ((el.textContent || '').trim().toLowerCase() !== 'show more') continue;
+      if (!isVisible(el)) continue;
+      const container = nearestTweetContainer(el);
+      if (!container || !isCoreRelevant(container)) continue;
+      unfoldedControls.add(el);
+      try {
+        (el as HTMLElement).click();
+        clicked += 1;
+      } catch {
+        // Ignore stale or synthetic controls.
+      }
+    }
+  }
+  if (clicked > 0) {
+    browser.runtime
+      .sendMessage({ type: 'show-more-unfolded', count: clicked })
+      .catch(() => {});
+  }
+}
+
+function scheduleUnfoldScan(delay = UNFOLD_SCAN_DEBOUNCE_MS): void {
+  if (unfoldScanTimer !== null) return;
+  unfoldScanTimer = setTimeout(scanAndUnfoldShowMore, delay);
+}
+
+async function refreshUnfoldTargets(): Promise<void> {
+  try {
+    const response = await browser.runtime.sendMessage({
+      type: 'get-unfold-targets',
+    });
+    const raw =
+      response && typeof response === 'object' ? (response as UnfoldTargetsResponse) : {};
+    unfoldEnabled = raw.enabled !== false;
+    unfoldCoreHandles = new Set(
+      (raw.coreHandles ?? []).map((h) => h.toLowerCase().replace(/^@/, ''))
+    );
+    unfoldRelevantTweetIds = new Set(raw.relevantTweetIds ?? []);
+    scheduleUnfoldScan(0);
+  } catch {
+    unfoldEnabled = false;
+  }
+}
+
+function installUnfoldObserver(): void {
+  const root = document.documentElement || document.body;
+  if (!root) {
+    setTimeout(installUnfoldObserver, 100);
+    return;
+  }
+  const observer = new MutationObserver(() => scheduleUnfoldScan());
+  observer.observe(root, { childList: true, subtree: true });
+  window.addEventListener('scroll', () => scheduleUnfoldScan(), { passive: true });
+  void refreshUnfoldTargets();
+  setInterval(() => {
+    void refreshUnfoldTargets();
+  }, UNFOLD_SYNC_MS);
+}
+
+installUnfoldObserver();
 
 window.addEventListener('message', (event: MessageEvent) => {
   if (event.source !== window) return;

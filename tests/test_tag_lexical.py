@@ -374,6 +374,18 @@ def test_unavailable_copyright_status_tags() -> None:
     assert "status:copyright-removal" in tags
 
 
+def test_community_note_status_tag() -> None:
+    out = tag_text(
+        "A post with reader context.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+        community_note={"note_id": "note-abc", "summary": "Context"},
+    )
+    assert "status:community-note" in _tags(out)
+
+
 def test_laudatory_topic_matches_accomplishment_posts() -> None:
     out = tag_text(
         "Promises made, promises kept: historic wins and record-breaking results.",
@@ -401,11 +413,100 @@ def test_slogan_patterns_fire() -> None:
         ("Have a NICE day, America.", "slogan:nice"),
         ("ICE is targeting the WORST OF THE WORST.", "slogan:worst"),
         ("Report. Recon. Raid. That's the workflow.", "slogan:reportrecon"),
+        ("FREE TICKET HOME! Sign up for CBP Home today.", "slogan:free-ticket-home"),
+        ("Illegal aliens should use CBP Home and go home.", "slogan:go-home"),
+        ("PROJECT HOMECOMING is expanding.", "slogan:project-homecoming"),
     ):
         out = tag_text(
             text, tweet_type="original", mentions=[], media_count=0, account_category="core"
         )
         assert expected in _tags(out), expected
+
+
+def test_cbp_home_theme_pairs_with_slogans_and_self_deport_action() -> None:
+    out = tag_text(
+        "PROJECT HOMECOMING. Use the CBP Home app to self-deport and get a free flight home.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    tags = _tags(out)
+    assert "subject:cbp-home-app" in tags
+    assert "theme:cbp-home" in tags
+    assert "slogan:project-homecoming" in tags
+    assert "slogan:free-ticket-home" in tags
+    assert "action:self-deportation" in tags
+    assert "action:deportation" not in tags
+    assert "topic:immigration" in tags
+
+
+def test_self_deportation_does_not_flatten_into_deportation() -> None:
+    self_deport = tag_text(
+        "Now is the time to self-deport using the CBP Home App.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    tags = _tags(self_deport)
+    assert "action:self-deportation" in tags
+    assert "action:deportation" not in tags
+
+    forced = tag_text(
+        "If you do not self-deport, you will be arrested and deported.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    forced_tags = _tags(forced)
+    assert "action:self-deportation" in forced_tags
+    assert "action:deportation" in forced_tags
+
+
+def test_pop_culture_enforcement_and_celebrity_tags() -> None:
+    out = tag_text(
+        "Sydney Sweeney has good genes. DHS says illegal aliens should leave.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    tags = _tags(out)
+    assert "subject:celebrity" in tags
+    assert "theme:pop-culture-enforcement" in tags
+
+
+def test_pop_culture_celebrity_false_positives_stay_silent() -> None:
+    legal_actor = tag_text(
+        "The victim was under 13 years old and the actor is more than two years older.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    assert "subject:celebrity" not in _tags(legal_actor)
+
+    bio_noise = tag_text(
+        "Independent and tweeting without the celebrity status.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    tags = _tags(bio_noise)
+    assert "subject:celebrity" not in tags
+    assert "theme:pop-culture-enforcement" not in tags
+
+    retail_only = tag_text(
+        "American Eagle released a new campaign.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    assert "theme:pop-culture-enforcement" not in _tags(retail_only)
 
 
 def test_genre_statistics_requires_digits_with_keyword() -> None:

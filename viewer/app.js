@@ -310,7 +310,16 @@ function escapeHtml(s) {
 
 function paintHdrStats() {
   const accounts = manifest?.accounts ?? [];
-  const totalRows = accounts.reduce((s, a) => s + (a.row_count || 0), 0);
+  const loadedRows = Array.isArray(store.allRows) ? store.allRows : [];
+  const loadedTotal = loadedRows.length;
+  const loadedReplies = loadedRows.filter((r) => r.tweet_type === 'reply').length;
+  const manifestReplies = accounts.reduce((s, a) => s + (a.reply_count || 0), 0);
+  const manifestPosts = accounts.reduce(
+    (s, a) => s + (a.post_count ?? Math.max(0, (a.row_count || 0) - (a.reply_count || 0))),
+    0
+  );
+  const totalPosts = loadedTotal > 0 ? loadedTotal - loadedReplies : manifestPosts;
+  const totalReplies = loadedTotal > 0 ? loadedReplies : manifestReplies;
   const totalMedia = accounts.reduce((s, a) => s + (a.media_count || 0), 0);
   if (accounts.length === 0) {
     els.hdrStats.textContent = '';
@@ -322,7 +331,7 @@ function paintHdrStats() {
       : '';
   const failed = loadProgress.failed > 0 ? ` · ${loadProgress.failed} failed` : '';
   els.hdrStats.textContent =
-    `${fmtNum(totalRows)} tweets · ${fmtNum(totalMedia)} media · ` +
+    `${fmtNum(totalPosts)} tweets · ${fmtNum(totalReplies)} replies · ${fmtNum(totalMedia)} media · ` +
     `${accounts.length} account${accounts.length === 1 ? '' : 's'}${loading}${failed}`;
 }
 

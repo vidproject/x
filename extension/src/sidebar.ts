@@ -47,6 +47,11 @@ const mediaCrawlCount = $<HTMLSpanElement>('media-crawl-count');
 const mediaCrawlStartBtn = $<HTMLButtonElement>('media-crawl-start');
 const mediaCrawlCancelBtn = $<HTMLButtonElement>('media-crawl-cancel');
 const mediaCrawlProgress = $<HTMLSpanElement>('media-crawl-progress');
+const threadOpenSection = $<HTMLElement>('thread-open-section');
+const threadOpenCount = $<HTMLSpanElement>('thread-open-count');
+const threadOpenStartBtn = $<HTMLButtonElement>('thread-open-start');
+const threadOpenCancelBtn = $<HTMLButtonElement>('thread-open-cancel');
+const threadOpenProgress = $<HTMLSpanElement>('thread-open-progress');
 const purgeLink = $<HTMLAnchorElement>('purge-unrelated');
 
 let lastState: ExtensionState | null = null;
@@ -272,6 +277,7 @@ function paint(state: ExtensionState): void {
   paintAutoScroll(state);
   paintMediaCrawl(state);
   paintRefetch(state);
+  paintThreadOpen(state);
 }
 
 function renderRecentTweets(rows: TweetSighting[]): void {
@@ -414,6 +420,23 @@ function paintRefetch(state: ExtensionState): void {
   paintQueueProgress(refetchProgress, q);
 }
 
+function paintThreadOpen(state: ExtensionState): void {
+  const q = state.threadOpenQueue;
+  const total = q.total;
+  const running = q.running;
+  threadOpenSection.hidden = total === 0 && !running;
+  threadOpenCount.textContent =
+    total === 0
+      ? running
+        ? 'finishing...'
+        : '0 queued'
+      : `${fmtNum(total)} queued${running ? ' · running' : ''}`;
+  threadOpenStartBtn.hidden = running;
+  threadOpenStartBtn.disabled = total === 0;
+  threadOpenCancelBtn.hidden = !running;
+  paintQueueProgress(threadOpenProgress, q);
+}
+
 async function refreshActivity(): Promise<void> {
   // Pull straight from storage on first render; live updates come via
   // `log-event` broadcasts.
@@ -489,7 +512,7 @@ autoScrollInterval.addEventListener('change', () => {
 purgeLink.addEventListener('click', (e: Event) => {
   e.preventDefault();
   const ok = window.confirm(
-    'Drop every counter, run buffer, refetch / media-crawl queue entry for accounts not in your tracked list?\n\n' +
+    'Drop every counter, run buffer, refetch / media-crawl / thread-opening queue entry for accounts not in your tracked list?\n\n' +
       'This only touches local extension state. Already-committed files in the GitHub repo are not affected — ' +
       'run scripts/purge_unrelated.py separately if you also want to scrub the repo.'
   );
@@ -522,6 +545,20 @@ mediaCrawlCancelBtn.addEventListener('click', () => {
   mediaCrawlCancelBtn.disabled = true;
   void send({ type: 'cancel-media-crawl' }).finally(() => {
     mediaCrawlCancelBtn.disabled = false;
+  });
+});
+
+threadOpenStartBtn.addEventListener('click', () => {
+  threadOpenStartBtn.disabled = true;
+  void send({ type: 'start-thread-open' }).finally(() => {
+    threadOpenStartBtn.disabled = false;
+  });
+});
+
+threadOpenCancelBtn.addEventListener('click', () => {
+  threadOpenCancelBtn.disabled = true;
+  void send({ type: 'cancel-thread-open' }).finally(() => {
+    threadOpenCancelBtn.disabled = false;
   });
 });
 

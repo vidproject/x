@@ -367,8 +367,15 @@ PATTERN_FRAME_CRIMINAL = _compile(
 PATTERN_ACTION_DETENTION = _compile(
     r"\b(arrest(?:ed|ing)?|detain(?:ed|ing)?|apprehend(?:ed|ing)?|in custody|nab(?:bed)?)\b"
 )
+PATTERN_ACTION_SELF_DEPORTATION = _compile(
+    r"\bself[- ]deport(?:ed|ing|ation)?\b"
+    r"|\bvoluntar(?:y|ily)\s+depart(?:ure|ed|ing)?\b"
+    r"|\bleave voluntarily\b"
+    r"|\breport\s+(?:your|their|his|her|an|the)?\s*departure\b"
+    r"|\btake\s+control\s+of\s+(?:your|their|his|her)\s+departure\b"
+)
 PATTERN_ACTION_DEPORTATION = _compile(
-    r"\b(deport(?:ed|ing|ation)?|remov(?:ed|al)|repatriat(?:ed|ion))\b"
+    r"(?<!self-)(?<!self )\b(deport(?:ed|ing|ation)?|remov(?:ed|al)|repatriat(?:ed|ion))\b"
 )
 ICE_OR_DHS_TARGET = (
     r"(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|"
@@ -467,6 +474,38 @@ PATTERN_THEME_CHRISTIANITY = _compile(
     r"|\bsending\s+prayers\b"
     r"|\bkeep\s+(?:them|him|her|us|you)\s+in\s+(?:our|your|my)\s+prayers\b"
 )
+PATTERN_SUBJECT_CBP_HOME_APP = _compile(
+    r"\b@?CBP\s+Home\s+App\b"
+    r"|\b@?CBP\s+Home\b"
+    r"|\bDHS\.?GOV/CBPHOME\b"
+    r"|\b(?:dhs|cbp)\.gov/(?:cbp[-_]?home|projecthomecoming)\b"
+)
+PATTERN_THEME_CBP_HOME = _compile(
+    r"\bCBP\s+Home\b"
+    r"|\bProject\s+Homecoming\b"
+    r"|\bself[- ]deport(?:ed|ing|ation)?\b"
+    r"|\bfree\s+(?:flight|plane\s+ticket|ticket)\s+home\b"
+    r"|\bcomplimentary\s+plane\s+ticket\s+home\b"
+    r"|\bexit\s+bonus\b"
+    r"|\btake\s+control\s+of\s+(?:your|their|his|her)\s+departure\b"
+    r"|\b(?:illegal\s+aliens?|aliens?|migrants?|CBP\s+Home|self[- ]deport|deport)\b"
+    r".{0,120}\bgo\s+home\b"
+    r"|\bgo\s+home\b.{0,120}\b"
+    r"(?:illegal\s+aliens?|aliens?|migrants?|CBP\s+Home|self[- ]deport|deport)\b"
+)
+PATTERN_SUBJECT_CELEBRITY = _compile(
+    r"\bSydney\s+Sweeney\b"
+    r"|\b(?:actress|influencer|celebrity|pop\s+star|movie\s+star|Hollywood\s+star)"
+    r"\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+\b"
+    r"|\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+,\s+(?:an?\s+)?"
+    r"(?:actress|influencer|celebrity|pop\s+star|movie\s+star)\b"
+)
+PATTERN_THEME_POP_CULTURE_ENFORCEMENT = _compile(
+    r"\bSydney\s+Sweeney\b"
+    r"|\bAmerican\s+Eagle\b.{0,100}\b(?:ICE|DHS|CBP|deport|illegal\s+alien|border)\b"
+    r"|\b(?:ICE|DHS|CBP|deport|illegal\s+alien|border)\b.{0,100}\bAmerican\s+Eagle\b"
+    r"|\bgood\s+genes\b.{0,100}\b(?:jeans|ICE|DHS|CBP|deport|border|illegal\s+alien)\b"
+)
 # --- video:<kind> --------------------------------------------------------
 #
 # Video-nature heuristics. Federal accounts post a few recognizable
@@ -531,6 +570,18 @@ PATTERN_STATUS_COPYRIGHT_REMOVAL = _compile(r"\b(copyright|dmca)\b")
 PATTERN_SLOGAN_NICE = _compile(r"\b(NICE day|NICE morning|ICE is NICE|NICE city)\b")
 PATTERN_SLOGAN_WORST = _compile(r"\bWORST OF THE WORST\b")
 PATTERN_SLOGAN_REPORTRECON = _compile(r"\bReport\.\s*Recon\.\s*Raid\.")
+PATTERN_SLOGAN_FREE_TICKET_HOME = _compile(
+    r"\bFREE\s+(?:TICKET|FLIGHT|PLANE\s+TICKET)\s+HOME\b"
+    r"|\bfree\s+(?:ticket|flight|plane\s+ticket)\s+home\b"
+    r"|\bcomplimentary\s+plane\s+ticket\s+home\b"
+)
+PATTERN_SLOGAN_GO_HOME = _compile(
+    r"\b(?:illegal\s+aliens?|aliens?|migrants?|CBP\s+Home|self[- ]deport|deport)\b"
+    r".{0,120}\bgo\s+home\b"
+    r"|\bgo\s+home\b.{0,120}\b"
+    r"(?:illegal\s+aliens?|aliens?|migrants?|CBP\s+Home|self[- ]deport|deport)\b"
+)
+PATTERN_SLOGAN_PROJECT_HOMECOMING = _compile(r"\bPROJECT\s+HOMECOMING\b")
 PATTERN_GENRE_STATISTICS = _compile(
     r"\b\d[\d,]*\s+(?:arrest|removal|deportat|encounter|alien|illegal|criminal|gang|fentanyl)"
 )
@@ -578,6 +629,7 @@ def tag_text(
     ocr_text: str = "",
     is_unavailable: bool = False,
     unavailable_text: str = "",
+    community_note: dict[str, Any] | None = None,
     video_count: int = 0,
     video_max_duration_sec: float | None = None,
 ) -> list[dict[str, Any]]:
@@ -636,6 +688,8 @@ def tag_text(
         add("status:unavailable")
         if PATTERN_STATUS_COPYRIGHT_REMOVAL.search(unavailable_text):
             add("status:copyright-removal")
+    if community_note:
+        add("status:community-note")
 
     # Concatenate OCR text (when present) so a poster's stamped slogan
     # earns the same tags as if it had been typed into the tweet body.
@@ -654,8 +708,11 @@ def tag_text(
     for pat, tag in (
         (PATTERN_FRAME_CRIMINAL, "frame:criminal"),
         (PATTERN_ACTION_DETENTION, "action:detention"),
+        (PATTERN_ACTION_SELF_DEPORTATION, "action:self-deportation"),
         (PATTERN_ACTION_DEPORTATION, "action:deportation"),
         (PATTERN_ACTION_REPORT_TO_ICE, "action:report-immigrants"),
+        (PATTERN_SUBJECT_CBP_HOME_APP, "subject:cbp-home-app"),
+        (PATTERN_SUBJECT_CELEBRITY, "subject:celebrity"),
         (PATTERN_TOPIC_ECONOMY, "topic:economy"),
         (PATTERN_TOPIC_LAUDATORY, "topic:laudatory"),
         (PATTERN_THEME_BORDER, "theme:border"),
@@ -664,9 +721,14 @@ def tag_text(
         (PATTERN_THEME_HOMELAND, "theme:homeland"),
         (PATTERN_THEME_NATIVISM, "theme:nativism"),
         (PATTERN_THEME_CHRISTIANITY, "theme:christianity"),
+        (PATTERN_THEME_CBP_HOME, "theme:cbp-home"),
+        (PATTERN_THEME_POP_CULTURE_ENFORCEMENT, "theme:pop-culture-enforcement"),
         (PATTERN_SLOGAN_NICE, "slogan:nice"),
         (PATTERN_SLOGAN_WORST, "slogan:worst"),
         (PATTERN_SLOGAN_REPORTRECON, "slogan:reportrecon"),
+        (PATTERN_SLOGAN_FREE_TICKET_HOME, "slogan:free-ticket-home"),
+        (PATTERN_SLOGAN_GO_HOME, "slogan:go-home"),
+        (PATTERN_SLOGAN_PROJECT_HOMECOMING, "slogan:project-homecoming"),
         (PATTERN_GENRE_STATISTICS, "genre:statistics"),
         (PATTERN_GENRE_DIRECTIVE, "genre:directive"),
         (PATTERN_ANGEL_FAMILY, "subject:angel-family"),
@@ -771,8 +833,10 @@ IMMIGRATION_CONFIRMING_PREFIXES: tuple[str, ...] = (
     "theme:sanctuary",
     "theme:worksite",
     "theme:nativism",
+    "theme:cbp-home",
     "slogan:",
     "shape:",
+    "subject:cbp-home-app",
     "subject:enforcement-op",
 )
 IMMIGRATION_CONFIRMING_EXACT: frozenset[str] = frozenset(
@@ -983,6 +1047,7 @@ def tag_one_parquet(
             ocr_text=ocr_map.get(tweet_id, ""),
             is_unavailable=bool(r.get("unavailable_detected_at")),
             unavailable_text=unavailable_text,
+            community_note=r.get("community_note"),
             video_count=video_count,
             video_max_duration_sec=video_max_duration_sec,
         )

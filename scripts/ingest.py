@@ -27,13 +27,14 @@ import polars as pl
 import yaml
 
 from scripts._logging import configure
-from scripts._schema import REQUIRED_TWEET_KEYS, TWEET_SCHEMA, empty_dataframe
+from scripts._schema import REQUIRED_TWEET_KEYS, RETWEET_EDGE_SCHEMA, TWEET_SCHEMA, empty_dataframe
 
 LOG = configure()
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 RAW_DIR = REPO_ROOT / "raw"
 DATA_DIR = REPO_ROOT / "data"
+RELATIONSHIPS_DIR = DATA_DIR / "relationships"
 CONFIG_PATH = REPO_ROOT / "config" / "accounts.yaml"
 QUARANTINE_DIR = RAW_DIR / "_quarantine"
 SCHEMA_VERSION = 1
@@ -103,6 +104,7 @@ def load_accounts(path: Path = CONFIG_PATH) -> list[dict[str, str]]:
 class ParsedCapture:
     tweets: list[dict[str, Any]]
     unavailable_tweets: list[dict[str, Any]]
+    retweet_edges: list[dict[str, Any]]
 
 
 def iter_raw_files(handle: str) -> Iterator[Path]:
@@ -143,9 +145,11 @@ def parse_capture_file(path: Path) -> ParsedCapture | None:
             return None
         tweets = raw.get("tweets")
         unavailable_raw = raw.get("unavailable_tweets") or []
+        retweet_edges_raw = raw.get("retweet_edges") or []
     elif isinstance(raw, list):
         tweets = raw
         unavailable_raw = []
+        retweet_edges_raw = []
     else:
         quarantine(path, "unrecognized-shape", type(raw).__name__)
         return None
@@ -177,7 +181,21 @@ def parse_capture_file(path: Path) -> ParsedCapture | None:
             if not tweet_id:
                 continue
             unavailable.append(entry)
-    return ParsedCapture(tweets=valid, unavailable_tweets=unavailable)
+    retweet_edges: list[dict[str, Any]] = []
+    if isinstance(retweet_edges_raw, list):
+        for entry in retweet_edges_raw:
+            if not isinstance(entry, dict):
+                continue
+            retweeter = str(entry.get("retweeter_handle") or "").strip()
+            original_id = str(entry.get("original_tweet_id") or "").strip()
+            if not retweeter or not original_id:
+                continue
+            retweet_edges.append(entry)
+    return ParsedCapture(
+        tweets=valid,
+        unavailable_tweets=unavailable,
+        retweet_edges=retweet_edges,
+    )
 
 
 # --------------------------------------------------------------------------
@@ -314,6 +332,141 @@ def apply_unavailable_events(
                 row[field] = value
         updated += 1
     return updated
+
+
+def retweet_edge_key(edge: dict[str, Any]) -> tuple[str, str, str]:
+    return (
+        str(edge.get("retweeter_handle") or "").lower(),
+        str(edge.get("retweet_tweet_id") or ""),
+        str(edge.get("original_tweet_id") or ""),
+    )
+
+
+def load_existing_retweet_edges() -> list[dict[str, Any]]:
+    path = RELATIONSHIPS_DIR / "retweets.parquet"
+    if not path.exists():
+        return []
+    try:
+        return pl.read_parquet(path).to_dicts()
+    except Exception:
+        LOG.exception("could not read existing retweet relationship sidecar; rebuilding")
+        return []
+
+
+def merge_retweet_edges(rows: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
+    merged: dict[tuple[str, str, str], dict[str, Any]] = {}
+    for row in rows:
+        key = retweet_edge_key(row)
+        if not all(key):
+            continue
+        captured_at = str(
+            row.get("captured_at")
+            or row.get("last_seen_at")
+            or row.get("first_captured_at")
+            or ""
+        )
+        cur = merged.get(key)
+        if cur is None:
+            merged[key] = {
+                "retweeter_handle": row.get("retweeter_handle"),
+                "retweeter_account_id": row.get("retweeter_account_id"),
+                "retweeter_category": row.get("retweeter_category"),
+                "retweet_tweet_id": row.get("retweet_tweet_id"),
+                "retweet_url": row.get("retweet_url"),
+                "original_tweet_id": row.get("original_tweet_id"),
+                "original_author_handle": row.get("original_author_handle"),
+                "original_author_account_id": row.get("original_author_account_id"),
+                "original_author_category": row.get("original_author_category"),
+                "first_captured_at": captured_at,
+                "last_seen_at": captured_at,
+                "seen_count": int(row.get("seen_count") or 1),
+                "capture_run_ids": _as_unique_list(row.get("capture_run_ids"), row.get("capture_run_id")),
+                "endpoints": _as_unique_list(row.get("endpoints"), row.get("endpoint")),
+                "source_urls": _as_unique_list(row.get("source_urls"), row.get("source_url")),
+            }
+            continue
+        if captured_at:
+            first = str(cur.get("first_captured_at") or captured_at)
+            last = str(cur.get("last_seen_at") or captured_at)
+            cur["first_captured_at"] = min(first, captured_at)
+            cur["last_seen_at"] = max(last, captured_at)
+        cur["seen_count"] = int(cur.get("seen_count") or 0) + int(row.get("seen_count") or 1)
+        for field, value in (
+            ("capture_run_ids", row.get("capture_run_id")),
+            ("endpoints", row.get("endpoint")),
+            ("source_urls", row.get("source_url")),
+        ):
+            cur[field] = _merge_list_values(cur.get(field), value)
+        for field in (
+            "retweeter_account_id",
+            "retweeter_category",
+            "retweet_url",
+            "original_author_handle",
+            "original_author_account_id",
+            "original_author_category",
+        ):
+            if not cur.get(field) and row.get(field):
+                cur[field] = row[field]
+    return sorted(
+        merged.values(),
+        key=lambda e: (
+            str(e.get("retweeter_handle") or ""),
+            str(e.get("original_tweet_id") or ""),
+            str(e.get("retweet_tweet_id") or ""),
+        ),
+    )
+
+
+def _as_unique_list(existing: Any, extra: Any = None) -> list[str]:
+    values: list[str] = []
+    if isinstance(existing, list):
+        values.extend(str(v) for v in existing if v)
+    elif existing:
+        values.append(str(existing))
+    if extra:
+        values.append(str(extra))
+    return sorted(set(values))
+
+
+def _merge_list_values(existing: Any, extra: Any) -> list[str]:
+    return _as_unique_list(existing, extra)
+
+
+def write_retweet_edges(edges: list[dict[str, Any]]) -> None:
+    path = RELATIONSHIPS_DIR / "retweets.parquet"
+    if not edges:
+        if path.exists():
+            path.unlink()
+        return
+    RELATIONSHIPS_DIR.mkdir(parents=True, exist_ok=True)
+    normalized = []
+    for e in edges:
+        normalized.append(
+            {
+                "retweeter_handle": str(e.get("retweeter_handle") or ""),
+                "retweeter_account_id": e.get("retweeter_account_id"),
+                "retweeter_category": e.get("retweeter_category"),
+                "retweet_tweet_id": str(e.get("retweet_tweet_id") or ""),
+                "retweet_url": e.get("retweet_url"),
+                "original_tweet_id": str(e.get("original_tweet_id") or ""),
+                "original_author_handle": e.get("original_author_handle"),
+                "original_author_account_id": e.get("original_author_account_id"),
+                "original_author_category": e.get("original_author_category"),
+                "first_captured_at": e.get("first_captured_at"),
+                "last_seen_at": e.get("last_seen_at"),
+                "seen_count": int(e.get("seen_count") or 0),
+                "capture_run_ids": e.get("capture_run_ids") or [],
+                "endpoints": e.get("endpoints") or [],
+                "source_urls": e.get("source_urls") or [],
+            }
+        )
+    df = pl.DataFrame(normalized, schema=RETWEET_EDGE_SCHEMA, strict=False)
+    atomic_write_parquet(df, path)
+    LOG.info(
+        "wrote retweet relationship sidecar",
+        rows=df.height,
+        out=str(path.relative_to(REPO_ROOT)),
+    )
 
 
 def pick_text(cur: dict[str, Any], row: dict[str, Any]) -> tuple[str | None, str | None, bool]:
@@ -486,6 +639,12 @@ def build_manifest(accounts: list[dict[str, str]]) -> dict[str, Any]:
             continue
         df = pl.read_parquet(path)
         row_count = df.height
+        reply_count = (
+            df.filter(pl.col("tweet_type") == "reply").height
+            if row_count and "tweet_type" in df.columns
+            else 0
+        )
+        post_count = row_count - reply_count
         first_post = df.select(pl.col("posted_at").min()).item() if row_count else None
         latest_post = df.select(pl.col("posted_at").max()).item() if row_count else None
         latest_capture = df.select(pl.col("last_seen_at").max()).item() if row_count else None
@@ -509,6 +668,8 @@ def build_manifest(accounts: list[dict[str, str]]) -> dict[str, Any]:
                 "parquet": f"data/{handle}.parquet",
                 "parquet_bytes": path.stat().st_size,
                 "row_count": row_count,
+                "post_count": post_count,
+                "reply_count": reply_count,
                 "first_post_at": first_post,
                 "latest_post_at": latest_post,
                 "latest_capture_at": latest_capture,
@@ -645,8 +806,8 @@ def load_misc_rows_by_handle() -> dict[str, list[dict[str, Any]]]:
 
 def ingest_handle_rows(
     handle: str, *, seed_extra: list[dict[str, Any]] | None = None
-) -> tuple[int, int, dict[str, dict[str, Any]]]:
-    """Return (files_read, tweets_seen, merged_rows_by_id) for a handle.
+) -> tuple[int, int, dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """Return (files_read, tweets_seen, merged_rows_by_id, retweet_edges) for a handle.
 
     Seeds the merge with the existing per-handle parquet (if any) plus any
     rows supplied via ``seed_extra`` (typically the handle's slice of an
@@ -658,6 +819,7 @@ def ingest_handle_rows(
     tweets_seen = 0
     captures: list[dict[str, Any]] = []
     unavailable_events: list[dict[str, Any]] = []
+    retweet_edges: list[dict[str, Any]] = []
 
     existing_path = DATA_DIR / f"{handle}.parquet"
     if existing_path.exists():
@@ -680,11 +842,12 @@ def ingest_handle_rows(
         tweets_seen += len(parsed.tweets)
         captures.extend(parsed.tweets)
         unavailable_events.extend(parsed.unavailable_tweets)
+        retweet_edges.extend(parsed.retweet_edges)
     merged = merge_tweets(captures)
     updated = apply_unavailable_events(merged, unavailable_events)
     if updated:
         LOG.info("applied unavailable tweet events", handle=handle, updated=updated)
-    return files_read, tweets_seen, merged
+    return files_read, tweets_seen, merged, retweet_edges
 
 
 def discover_handles(restrict_to: str | None) -> set[str]:
@@ -737,6 +900,15 @@ def main(argv: list[str] | None = None) -> int:
     totals = {"files": 0, "tweets": 0, "rows": 0}
     misc_rows: list[dict[str, Any]] = []
     tracked_results: dict[str, dict[str, dict[str, Any]]] = {}
+    existing_retweet_edges = load_existing_retweet_edges() if args.handle else []
+    if args.handle:
+        handle_lc = args.handle.lower()
+        existing_retweet_edges = [
+            e
+            for e in existing_retweet_edges
+            if str(e.get("retweeter_handle") or "").lower() != handle_lc
+        ]
+    retweet_edges: list[dict[str, Any]] = existing_retweet_edges
 
     for handle in sorted(handles):
         seed = misc_by_handle.get(handle) if handle not in tracked_handles else None
@@ -746,13 +918,14 @@ def main(argv: list[str] | None = None) -> int:
             # migrate over without losing any archive metadata.
             seed = misc_by_handle.get(handle)
         try:
-            f, t, merged = ingest_handle_rows(handle, seed_extra=seed)
+            f, t, merged, edges = ingest_handle_rows(handle, seed_extra=seed)
         except Exception:
             LOG.exception("ingest failed for handle", handle=handle)
             return 2
         totals["files"] += f
         totals["tweets"] += t
         totals["rows"] += len(merged)
+        retweet_edges.extend(edges)
         if handle in tracked_handles:
             tracked_results[handle] = merged
         else:
@@ -812,6 +985,7 @@ def main(argv: list[str] | None = None) -> int:
         )
     manifest = build_manifest(manifest_accounts)
     write_manifest(manifest)
+    write_retweet_edges(merge_retweet_edges(retweet_edges))
 
     # Aggregate per-author user snapshots into data/users.json so the
     # viewer can render avatars + display names inline without scanning

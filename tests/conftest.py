@@ -172,6 +172,7 @@ def tmp_repo(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[Path]:
     monkeypatch.setattr(ingest, "REPO_ROOT", tmp_path)
     monkeypatch.setattr(ingest, "RAW_DIR", tmp_path / "raw")
     monkeypatch.setattr(ingest, "DATA_DIR", tmp_path / "data")
+    monkeypatch.setattr(ingest, "RELATIONSHIPS_DIR", tmp_path / "data" / "relationships")
     monkeypatch.setattr(ingest, "CONFIG_PATH", tmp_path / "config" / "accounts.yaml")
     monkeypatch.setattr(ingest, "QUARANTINE_DIR", tmp_path / "raw" / "_quarantine")
 

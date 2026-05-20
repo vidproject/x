@@ -136,6 +136,24 @@ TWEET_SCHEMA: dict[str, Any] = {
     "schema_version": pl.Int64,
 }
 
+RETWEET_EDGE_SCHEMA: dict[str, Any] = {
+    "retweeter_handle": pl.Utf8,
+    "retweeter_account_id": pl.Utf8,
+    "retweeter_category": pl.Utf8,
+    "retweet_tweet_id": pl.Utf8,
+    "retweet_url": pl.Utf8,
+    "original_tweet_id": pl.Utf8,
+    "original_author_handle": pl.Utf8,
+    "original_author_account_id": pl.Utf8,
+    "original_author_category": pl.Utf8,
+    "first_captured_at": pl.Utf8,
+    "last_seen_at": pl.Utf8,
+    "seen_count": pl.Int64,
+    "capture_run_ids": pl.List(pl.Utf8),
+    "endpoints": pl.List(pl.Utf8),
+    "source_urls": pl.List(pl.Utf8),
+}
+
 
 def empty_dataframe() -> pl.DataFrame:
     """Return an empty DataFrame with the canonical schema."""

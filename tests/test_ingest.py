@@ -87,6 +87,44 @@ def test_tweet_types_round_trip(tmp_repo: Path) -> None:
     assert sorted(types) == ["original", "quote", "reply", "retweet"]
 
 
+def test_retweet_edges_write_relationship_sidecar(tmp_repo: Path) -> None:
+    cap = make_capture(
+        [
+            make_tweet("2002", tweet_type="retweet", retweeted_tweet_id="9001"),
+            make_tweet("9001", handle="DHSgov", text="original"),
+        ]
+    )
+    cap["retweet_edges"] = [
+        {
+            "retweeter_handle": "test-handle",
+            "retweeter_account_id": "1234",
+            "retweeter_category": "core",
+            "retweet_tweet_id": "2002",
+            "retweet_url": "https://x.com/test-handle/status/2002",
+            "original_tweet_id": "9001",
+            "original_author_handle": "DHSgov",
+            "original_author_account_id": "5678",
+            "original_author_category": "core",
+            "captured_at": "2025-04-12T14:30:00Z",
+            "capture_run_id": "TESTRUN0001",
+            "endpoint": "UserTweets",
+            "source_url": "https://x.com/test-handle",
+        }
+    ]
+    write_capture(tmp_repo, "test-handle", "run.json", cap)
+
+    assert ingest.main([]) == 0
+
+    rel = pl.read_parquet(tmp_repo / "data" / "relationships" / "retweets.parquet")
+    assert rel.height == 1
+    row = rel.row(0, named=True)
+    assert row["retweeter_handle"] == "test-handle"
+    assert row["original_tweet_id"] == "9001"
+    assert row["original_author_handle"] == "DHSgov"
+    assert row["seen_count"] == 1
+    assert row["capture_run_ids"] == ["TESTRUN0001"]
+
+
 def test_media_video_photo_and_alt(tmp_repo: Path) -> None:
     tweets = [
         make_tweet("3001", media=[make_media(media_type="video", media_id="v1")]),

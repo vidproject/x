@@ -253,6 +253,22 @@ export interface UnavailableTweet {
   unavailable_source_url: string | null;
 }
 
+export interface RetweetEdge {
+  retweeter_handle: string;
+  retweeter_account_id: string | null;
+  retweeter_category: string | null;
+  retweet_tweet_id: string;
+  retweet_url: string;
+  original_tweet_id: string;
+  original_author_handle: string | null;
+  original_author_account_id: string | null;
+  original_author_category: string | null;
+  captured_at: string;
+  capture_run_id: string;
+  endpoint: string;
+  source_url: string | null;
+}
+
 export interface CapturePayload {
   schema_version: 1;
   capture_run_id: string;
@@ -263,6 +279,7 @@ export interface CapturePayload {
   source_url: string | null;
   tweets: CanonicalTweet[];
   unavailable_tweets?: UnavailableTweet[];
+  retweet_edges?: RetweetEdge[];
 }
 
 export interface SeenPayload {
@@ -358,6 +375,7 @@ export interface ExtensionState {
   autoScroll: AutoScrollProgress;
   refetchQueue: QueueProgress;
   mediaCrawlQueue: QueueProgress;
+  threadOpenQueue: QueueProgress;
   recentTweetSightings: TweetSighting[];
 }
 
@@ -366,6 +384,8 @@ export type RuntimeMessage =
   | { type: 'content-alive'; url: string }
   | { type: 'page-hook-active'; url: string }
   | { type: 'log-content-event'; level: LogLevel; msg: string; url: string }
+  | { type: 'get-unfold-targets' }
+  | { type: 'show-more-unfolded'; count: number }
   | { type: 'get-state' }
   | { type: 'capture-now'; handle: string }
   | { type: 'capture-all' }
@@ -382,6 +402,8 @@ export type RuntimeMessage =
   | { type: 'cancel-refetch' }
   | { type: 'start-media-crawl' }
   | { type: 'cancel-media-crawl' }
+  | { type: 'start-thread-open' }
+  | { type: 'cancel-thread-open' }
   | { type: 'purge-unrelated' }
   | { type: 'refresh-accounts' }
   | { type: 'verify-connection' }
