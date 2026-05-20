@@ -49,6 +49,16 @@ MISC_HANDLE = "_misc"
 MISC_LABEL = "Miscellaneous (replies / quotes / retweets of non-tracked accounts)"
 MISC_CATEGORY = "public"
 
+# Directory names under `raw/` that don't correspond to a real X handle.
+# X usernames may legally start with an underscore (e.g. `_aktrades`), so we
+# must list the sentinels explicitly instead of skipping anything that
+# starts with `_`.
+RAW_SENTINEL_DIRS = frozenset({"_quarantine", "_purged"})
+
+# Parquet stems under `data/` that aren't per-handle archives. Same reason:
+# a handle like `_aktrades` is legal and must not be confused with a sentinel.
+DATA_SENTINEL_STEMS = frozenset({MISC_HANDLE})
+
 # Valid over-categories an account in accounts.yaml may declare. The `_misc`
 # bucket is always `public` regardless. Listed entries with a missing or
 # unrecognised category fall back to `core` for backward compat with the
@@ -686,11 +696,11 @@ def discover_handles(restrict_to: str | None) -> set[str]:
     handles: set[str] = set()
     if RAW_DIR.exists():
         for d in RAW_DIR.iterdir():
-            if d.is_dir() and not d.name.startswith("_"):
+            if d.is_dir() and d.name not in RAW_SENTINEL_DIRS:
                 handles.add(d.name)
     for p in DATA_DIR.glob("*.parquet"):
         h = p.stem
-        if not h.startswith("_"):
+        if h not in DATA_SENTINEL_STEMS:
             handles.add(h)
     handles.update(load_misc_rows_by_handle().keys())
     return handles
@@ -781,7 +791,7 @@ def main(argv: list[str] | None = None) -> int:
         # the single _misc bucket on the next ingest.
         for parquet_path in sorted(DATA_DIR.glob("*.parquet")):
             h = parquet_path.stem
-            if h.startswith("_") or h in tracked_handles:
+            if h in DATA_SENTINEL_STEMS or h in tracked_handles:
                 continue
             parquet_path.unlink()
             LOG.info("collapsed legacy per-handle parquet into _misc", handle=h)

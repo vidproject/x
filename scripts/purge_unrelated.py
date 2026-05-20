@@ -36,6 +36,10 @@ CONFIG_PATH = REPO_ROOT / "config" / "accounts.yaml"
 PURGED_DIR = RAW_DIR / "_purged"
 QUARANTINE_DIR = RAW_DIR / "_quarantine"
 
+# Sentinel directory names under raw/ that are not real X handles. Listed
+# explicitly because X usernames are allowed to start with `_`.
+SENTINEL_DIRS = frozenset({"_purged", "_quarantine"})
+
 
 def load_tracked() -> set[str]:
     if not CONFIG_PATH.exists():
@@ -97,8 +101,8 @@ def directories_to_purge(tracked: set[str], related: set[str]) -> list[Path]:
     for child in sorted(RAW_DIR.iterdir()):
         if not child.is_dir():
             continue
-        if child.name.startswith("_"):
-            continue  # _quarantine, _purged, etc.
+        if child.name in SENTINEL_DIRS:
+            continue
         if child.name.lower() in keep:
             continue
         out.append(child)

@@ -320,6 +320,39 @@ def test_tracked_handle_gets_own_parquet_non_tracked_consolidates_into_misc(
     assert handles == {"test-handle", "_misc"}
 
 
+def test_handle_starting_with_underscore_is_ingested_not_dropped(
+    tmp_repo: Path,
+) -> None:
+    """X usernames may begin with an underscore (e.g. ``_aktrades``). The
+    raw-directory walk used to skip anything whose name started with ``_``,
+    which silently dropped every tweet from such handles. Sentinel dirs
+    (``_quarantine``, ``_purged``) are matched by exact name now, not by
+    prefix, so real handles get ingested into ``_misc.parquet`` like any
+    other non-tracked author."""
+    write_capture(
+        tmp_repo,
+        "test-handle",
+        "a.json",
+        make_capture([make_tweet("tracked-1", handle="test-handle")]),
+    )
+    write_capture(
+        tmp_repo,
+        "_aktrades",
+        "a.json",
+        make_capture([make_tweet("under-1", handle="_aktrades", text="reply from _aktrades")]),
+    )
+    # A directory that genuinely is a sentinel must still be skipped.
+    (tmp_repo / "raw" / "_quarantine").mkdir()
+
+    assert ingest.main([]) == 0
+    misc = pl.read_parquet(tmp_repo / "data" / "_misc.parquet")
+    assert misc.height == 1
+    assert misc["account_handle"][0] == "_aktrades"
+    assert misc["tweet_id"][0] == "under-1"
+    # No per-handle parquet for the underscore author — it consolidates into _misc.
+    assert not (tmp_repo / "data" / "_aktrades.parquet").exists()
+
+
 def test_legacy_per_handle_parquet_for_untracked_is_collapsed_into_misc(
     tmp_repo: Path,
 ) -> None:
