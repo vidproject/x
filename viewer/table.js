@@ -188,6 +188,17 @@ export const COLUMNS = [
         : '—',
   },
   {
+    key: 'share',
+    label: 'Share',
+    default: true,
+    filterable: false,
+    sortable: false,
+    render: (r) =>
+      r.tweet_id
+        ? `<a class="tweet-link share-link" href="${escape(shareUrlForRow(r))}">share</a>`
+        : '',
+  },
+  {
     key: 'tweet_url',
     label: 'Link',
     default: true,
@@ -374,6 +385,9 @@ function paintThreaded({
       decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread);
     }
     tbodyEl.append(masterRow);
+    if (hasPromoted) {
+      tbodyEl.append(buildPromotedRepliesRow(thread, visible.length));
+    }
     // Self-replies inline-expand under the master. Tracked-other and
     // public replies do not — they're reachable via the sidepanel on
     // master-row click so the table doesn't get spammed by a hundred
@@ -400,6 +414,7 @@ function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
   const otherCount = thread.otherSlaves.filter(
     (r) => !promotedIds.has(String(r?.tweet_id ?? ''))
   ).length;
+  if (selfCount === 0 && otherCount === 0) return;
   const wrap = document.createElement('span');
   wrap.className = 'thread-affordances';
   if (selfCount > 0) {
@@ -417,9 +432,6 @@ function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
     });
     wrap.append(toggle);
   }
-  for (const group of promotedReplyGroups(promotedReplies)) {
-    wrap.append(promotedReplyBadge(group));
-  }
   if (otherCount > 0) {
     // Non-self replies aren't inlined; the badge invites the user to
     // open the sidepanel, where they appear in a dedicated section.
@@ -432,6 +444,26 @@ function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
     wrap.append(badge);
   }
   firstCell.prepend(wrap);
+}
+
+function buildPromotedRepliesRow(thread, visibleCount) {
+  const promotions = Array.isArray(thread.promotedReplies) ? thread.promotedReplies : [];
+  const tr = document.createElement('tr');
+  tr.className = `thread-promoted-replies promoted-${topPromotionCategory(promotions)}`;
+  tr.dataset.threadId = thread.threadId;
+
+  const td = document.createElement('td');
+  td.colSpan = Math.max(1, visibleCount);
+
+  const wrap = document.createElement('div');
+  wrap.className = 'thread-promoted-replies-wrap';
+  for (const group of promotedReplyGroups(promotions)) {
+    wrap.append(promotedReplyBadge(group));
+  }
+
+  td.append(wrap);
+  tr.append(td);
+  return tr;
 }
 
 function topPromotionCategory(promotions) {
@@ -832,6 +864,14 @@ function fmtNum(v) {
 let userLookup = new Map();
 export function setUserLookup(map) {
   userLookup = map instanceof Map ? map : new Map();
+}
+
+function shareUrlForRow(row) {
+  const url = new URL(location.href);
+  const params = new URLSearchParams();
+  params.set('tweet', String(row.tweet_id || ''));
+  url.hash = params.toString();
+  return url.toString();
 }
 
 function renderAccountCell(r) {

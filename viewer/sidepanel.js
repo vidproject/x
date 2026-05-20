@@ -76,7 +76,15 @@ function tweetLinks(row) {
   const div = document.createElement('div');
   div.style.marginTop = '6px';
   div.style.fontSize = '12px';
+  if (row.tweet_id) {
+    const share = document.createElement('a');
+    share.className = 'sp-link';
+    share.href = shareUrlForRow(row);
+    share.textContent = 'Share entry';
+    div.append(share);
+  }
   if (row.tweet_url) {
+    if (div.childElementCount > 0) div.append(' Â· ');
     const a = document.createElement('a');
     a.className = 'sp-link';
     a.href = row.tweet_url;
@@ -96,6 +104,14 @@ function tweetLinks(row) {
     div.append(w);
   }
   return div;
+}
+
+function shareUrlForRow(row) {
+  const url = new URL(location.href);
+  const params = new URLSearchParams();
+  params.set('tweet', String(row.tweet_id || ''));
+  url.hash = params.toString();
+  return url.toString();
 }
 
 function grid(rows) {

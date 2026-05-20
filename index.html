@@ -13,41 +13,8 @@
         <div class="hdr-stats" id="hdr-stats" aria-live="polite"></div>
       </div>
       <nav class="hdr-r">
-        <div class="menu">
-          <button class="btn" id="dl-btn" aria-haspopup="true" aria-expanded="false">
-            <span class="icon">📁</span> Accounts
-          </button>
-          <div class="dropdown" id="dl-menu" role="menu" hidden></div>
-        </div>
-        <div class="menu">
-          <button
-            class="btn"
-            id="cats-btn"
-            aria-haspopup="true"
-            aria-expanded="false"
-            title="Filter by account category (core, government, officials, public figures, public)"
-          >
-            <span class="icon">▣</span> Categories
-          </button>
-          <div class="dropdown" id="cats-menu" role="menu" hidden></div>
-        </div>
-        <div class="menu">
-          <button class="btn" id="cols-btn" aria-haspopup="true" aria-expanded="false">
-            <span class="icon">⚙</span> Columns
-          </button>
-          <div class="dropdown" id="cols-menu" role="menu" hidden></div>
-        </div>
-        <button class="btn" id="filter-btn" aria-pressed="false">
-          <span class="icon">▾</span> Filter
-        </button>
-        <button class="btn" id="csv-btn" title="Export current view to CSV">
-          <span class="icon">⤓</span> CSV
-        </button>
-        <button class="btn" id="tips-btn" aria-pressed="false">
-          <span class="icon">?</span> Tips
-        </button>
         <button class="btn" id="theme-btn" title="Toggle light / dark / system">
-          <span class="icon" id="theme-icon">◐</span>
+          <span class="icon" id="theme-icon">auto</span>
         </button>
         <a
           class="btn"
@@ -56,7 +23,7 @@
           target="_blank"
           rel="noopener"
         >
-          <span class="icon">★</span> GitHub
+          GitHub
         </a>
       </nav>
     </header>
@@ -65,39 +32,44 @@
       <h2>Tips</h2>
       <ul>
         <li>
-          Every tracked account loads automatically into a single unified view — there's no
-          per-account download to pick. <em>Accounts</em> in the header lists what's loaded and lets
-          you click a handle to filter the table to just that account.
+          Every tracked account loads automatically into a single unified view. Use the filter bar
+          to narrow by account, category, date, type, media, tags, or column values.
         </li>
         <li>
-          <kbd>?</kbd> in the search box matches any single character; <kbd>*</kbd> matches any run.
+          Search defaults to all fields. Change the field selector beside it to search only text,
+          account, tags, mentions, media descriptions, or another single field.
         </li>
+        <li><kbd>?</kbd> in search matches any single character; <kbd>*</kbd> matches any run.</li>
         <li>
-          Click <code>▾</code> on any column header to filter by that column's unique values,
-          Excel-style.
+          Click the filter button on any column header to filter by that column's unique values.
         </li>
         <li>Click any row to open the full tweet detail panel on the right.</li>
         <li>
-          Use <em>Columns</em> to toggle visibility — including <em>Deletion detected</em>, which is
-          off by default.
+          Use Columns to toggle visibility, including Deletion detected, which is off by default.
         </li>
         <li>The URL updates as you filter; bookmark or share it to come back to the same view.</li>
         <li>
-          This is a public archive. Captures mirror what X served the browser at capture time — no
-          editorial filter.
+          This is a public archive. Captures mirror what X served the browser at capture time.
         </li>
       </ul>
     </div>
 
     <section class="toolbar" id="toolbar" hidden>
+      <select id="search-field" class="select search-field" title="Search field"></select>
       <input
         id="search"
         class="search"
         type="search"
-        placeholder="Search text, hashtags, mentions…  (use * and ? wildcards)"
+        placeholder="Search all fields... (use * and ? wildcards)"
         autocomplete="off"
         spellcheck="false"
       />
+      <select id="account-filter" class="select" title="Account filter">
+        <option value="">All accounts</option>
+      </select>
+      <select id="category-filter" class="select" title="Account category filter">
+        <option value="">All categories</option>
+      </select>
       <label class="lbl">From <input id="date-from" type="date" /> </label>
       <label class="lbl">To <input id="date-to" type="date" /> </label>
       <select id="tweet-type" class="select">
@@ -119,21 +91,29 @@
         <option value="250">250 / page</option>
         <option value="500">500 / page</option>
       </select>
+      <div class="menu">
+        <button class="btn ghost" id="cols-btn" aria-haspopup="true" aria-expanded="false">
+          Columns
+        </button>
+        <div class="dropdown" id="cols-menu" role="menu" hidden></div>
+      </div>
+      <button class="btn ghost" id="csv-btn" title="Export current view to CSV">CSV</button>
+      <button class="btn ghost" id="tips-btn" aria-pressed="false">Tips</button>
       <button class="btn ghost" id="reset-btn" title="Clear all filters">Reset</button>
     </section>
 
     <section class="result-bar" id="result-bar" hidden>
-      <span id="result-count">—</span>
+      <span id="result-count">-</span>
       <span class="spinner" id="spinner" hidden></span>
       <button class="btn ghost" id="load-errors-btn" hidden title="Show what failed to load">
-        ⚠ <span id="load-errors-count">0</span> load failures
+        ! <span id="load-errors-count">0</span> load failures
       </button>
     </section>
 
     <section class="load-errors" id="load-errors" hidden>
       <div class="load-errors-head">
         <strong>Load failures</strong>
-        <button class="btn ghost" id="load-errors-close" aria-label="Close">✕</button>
+        <button class="btn ghost" id="load-errors-close" aria-label="Close">x</button>
       </div>
       <table class="data-table load-errors-tbl">
         <thead>
@@ -163,28 +143,28 @@
     </main>
 
     <nav class="pager" id="pager" hidden>
-      <button class="btn" id="pg-first">⏮</button>
-      <button class="btn" id="pg-prev">◀</button>
-      <span class="pg-label" id="pg-label">—</span>
-      <button class="btn" id="pg-next">▶</button>
-      <button class="btn" id="pg-last">⏭</button>
+      <button class="btn" id="pg-first">First</button>
+      <button class="btn" id="pg-prev">Prev</button>
+      <span class="pg-label" id="pg-label">-</span>
+      <button class="btn" id="pg-next">Next</button>
+      <button class="btn" id="pg-last">Last</button>
     </nav>
 
     <section class="empty" id="empty">
       <div class="empty-card">
-        <h2 id="empty-title">Loading archive…</h2>
+        <h2 id="empty-title">Loading archive...</h2>
         <p>
           Every tracked account's parquet file is fetched and merged into a single unified view. The
           table appears as accounts come in.
         </p>
-        <p class="muted" id="empty-detail">Fetching account manifest…</p>
+        <p class="muted" id="empty-detail">Fetching account manifest...</p>
       </div>
     </section>
 
     <aside class="sidepanel" id="sidepanel" hidden aria-hidden="true">
       <div class="sidepanel-head">
         <span class="sidepanel-title" id="sp-title">Tweet</span>
-        <button class="btn ghost" id="sp-close" aria-label="Close">✕</button>
+        <button class="btn ghost" id="sp-close" aria-label="Close">x</button>
       </div>
       <div class="sidepanel-body" id="sp-body"></div>
     </aside>
@@ -195,7 +175,7 @@
 
     <footer class="ftr">
       <span class="muted"
-        >Immigration Social Media Archive · Property of the University of California.</span
+        >Immigration Social Media Archive - Property of the University of California.</span
       >
     </footer>
 

@@ -86,6 +86,16 @@ own sidecars keyed off the frame hash. No tweet parquets are modified,
 no API costs are incurred, and the work scales linearly with new
 archived videos.
 
+For later video-enrichment passes, use descriptive production labels:
+`media:produced-video`, `media:music-video`, `media:montage`,
+`media:text-overlay`, and `media:voiceover`. These tags should be based
+on observed video/audio structure: editing, music, multi-shot sequences,
+visible text, and narration. Speaker attribution uses `speaker:<title or
+name>`. A speaker may be tagged only when the tweet text, source alt
+text, transcript/captions, or captured replies/comments support it;
+otherwise write "unknown speaker" in the description or omit the speaker
+field.
+
 ## Tag namespaces
 
 See `config/tag_taxonomy.yaml` for the authoritative list. Quick map:
@@ -95,6 +105,7 @@ See `config/tag_taxonomy.yaml` for the authoritative list. Quick map:
 | `subject:` | who/what the post is about             | `subject:detainee`         |
 | `genre:`   | communicative function                 | `genre:statistics`         |
 | `media:`   | content of attached media (Layer 3a)   | `media:photo-detainee`     |
+| `speaker:` | evidence-supported speaker attribution | `speaker:Secretary Noem`   |
 | `format:`  | structural (derived from `tweet_type`) | `format:retweet`           |
 | `status:`  | availability / moderation state        | `status:copyright-removal` |
 | `frame:`   | recurring rhetorical scaffolds         | `frame:criminal`           |

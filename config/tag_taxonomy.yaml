@@ -28,7 +28,7 @@
 # Anyone can open a GitHub Discussion to suggest a change; see
 # docs/TAGGING.md for the protocol.
 #
-# Open-ended namespaces (country, origin, crime, state, agency) are
+# Open-ended namespaces (country, origin, crime, state, agency, speaker) are
 # extracted by pattern and validated against fixed vocabularies; their
 # slug list is documented inline below rather than enumerated here.
 
@@ -87,6 +87,13 @@ tags:
       Post conveys factual procedure (how to apply for X, deadline for Y).
     classification: manual
 
+  # ===== speaker:* - evidence-supported speaker attribution =========
+  speaker:*:
+    description: >-
+      Speaker identified by title or name from tweet text, source alt text,
+      transcript/captions, or captured replies/comments; do not guess.
+    classification: tentative
+
   # ===== media:* — attached media labels ============================
   media:photo-detainee:
     description: Photographic media of a detained person.
@@ -96,6 +103,21 @@ tags:
     classification: tentative
   media:video-testimonial:
     description: Video of a named individual addressing camera.
+    classification: tentative
+  media:produced-video:
+    description: Professionally edited or intentionally produced video rather than raw footage.
+    classification: tentative
+  media:music-video:
+    description: Video whose pacing or presentation is built around a music track.
+    classification: tentative
+  media:montage:
+    description: Video assembled from multiple shots, scenes, or clips in an edited sequence.
+    classification: tentative
+  media:text-overlay:
+    description: Video or image contains visible title cards, captions, chyron text, or graphic text overlays.
+    classification: tentative
+  media:voiceover:
+    description: Video includes narration or speech over other visuals.
     classification: tentative
 
   media:described:

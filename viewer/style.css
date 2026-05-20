@@ -271,14 +271,28 @@ body {
   align-items: center;
 }
 .toolbar .search {
-  flex: 1 1 240px;
-  min-width: 200px;
+  flex: 1 1 280px;
+  min-width: 220px;
   padding: 6px 10px;
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--fg);
   border-radius: var(--radius);
   font: inherit;
+}
+.toolbar .search-field {
+  flex: 0 0 150px;
+}
+.toolbar #account-filter {
+  flex: 1 1 190px;
+  max-width: 280px;
+}
+.toolbar #category-filter {
+  flex: 1 1 180px;
+  max-width: 260px;
+}
+.toolbar .menu {
+  flex: 0 0 auto;
 }
 .toolbar .lbl {
   font-size: 12px;
@@ -531,6 +545,9 @@ body {
 .tweet-link:hover {
   color: var(--accent-2);
   text-decoration: underline;
+}
+.share-link {
+  font-weight: 600;
 }
 .deleted-cell {
   color: var(--err);
@@ -1121,6 +1138,8 @@ tr.thread-slave > td:first-child::before {
  *   .thread-others-badge — passive marker for non-self replies, which
  *                          appear in the sidepanel's "Other replies"
  *                          section when the row is clicked
+ * Promoted replies render in their own child row below the master row's
+ * divider so they read as replies instead of part of the parent account.
  * ============================================================ */
 .thread-affordances {
   display: inline-flex;
@@ -1176,6 +1195,24 @@ tr.thread-slave > td:first-child::before {
   border: 1px dashed var(--border-strong);
   font-family: var(--mono);
   cursor: default;
+}
+.thread-promoted-replies > td {
+  padding: 4px 8px 7px 18px;
+  background: color-mix(in srgb, var(--bg-3) 22%, var(--bg));
+}
+.thread-promoted-replies-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding-left: 10px;
+  border-left: 3px solid var(--border-strong);
+}
+.thread-promoted-replies.promoted-core .thread-promoted-replies-wrap {
+  border-left-color: #d9a441;
+}
+.thread-promoted-replies.promoted-officials .thread-promoted-replies-wrap {
+  border-left-color: #aeb4bd;
 }
 
 .sp-other-replies {

@@ -4,7 +4,7 @@
 import { exportCsv } from './csv.js';
 import { loadParquetRows } from './parquet.js';
 import { applyToUrl, defaults as defaultState, fromHash } from './state.js';
-import { Store } from './store.js';
+import { SEARCH_FIELD_OPTIONS, Store } from './store.js';
 import {
   openColumnFilterPopup,
   parseVisibleColumns,
@@ -23,20 +23,18 @@ const $ = (id) => {
 // --- DOM handles ---
 const els = {
   hdrStats: $('hdr-stats'),
-  dlBtn: $('dl-btn'),
-  dlMenu: $('dl-menu'),
-  catsBtn: document.getElementById('cats-btn'),
-  catsMenu: document.getElementById('cats-menu'),
   colsBtn: $('cols-btn'),
   colsMenu: $('cols-menu'),
-  filterBtn: $('filter-btn'),
   csvBtn: $('csv-btn'),
   tipsBtn: $('tips-btn'),
   tips: $('tips'),
   themeBtn: $('theme-btn'),
   themeIcon: $('theme-icon'),
   toolbar: $('toolbar'),
+  searchField: $('search-field'),
   search: $('search'),
+  accountFilter: $('account-filter'),
+  categoryFilter: $('category-filter'),
   dateFrom: $('date-from'),
   dateTo: $('date-to'),
   tweetType: $('tweet-type'),
@@ -184,8 +182,8 @@ async function loadManifest() {
       message: err.message ?? String(err),
     });
   }
-  paintDlMenu();
-  paintCategoryMenu();
+  paintAccountFilter();
+  paintCategoryFilter();
   paintHdrStats();
   if ((manifest.accounts || []).length === 0) {
     els.empty.hidden = false;
@@ -335,7 +333,7 @@ function paintHdrStats() {
     `${accounts.length} account${accounts.length === 1 ? '' : 's'}${loading}${failed}`;
 }
 
-function paintDlMenu() {
+function _paintDlMenu() {
   els.dlMenu.replaceChildren();
   const accounts = manifest?.accounts ?? [];
   if (accounts.length === 0) {
@@ -367,13 +365,13 @@ function paintDlMenu() {
     count.className = 'count';
     count.textContent = fmtNum(a.row_count);
     row.append(handle, label, count);
-    row.addEventListener('click', () => toggleAccountFilter(a.handle));
+    row.addEventListener('click', () => _toggleAccountFilter(a.handle));
     if (urlState.accounts.includes(a.handle)) row.classList.add('active');
     els.dlMenu.append(row);
   }
 }
 
-function toggleAccountFilter(handle) {
+function _toggleAccountFilter(handle) {
   const idx = urlState.accounts.indexOf(handle);
   if (idx === -1) urlState.accounts.push(handle);
   else urlState.accounts.splice(idx, 1);
@@ -402,7 +400,7 @@ const CATEGORY_LABELS = {
 };
 const CATEGORY_ORDER = ['core', 'government', 'officials', 'public_figures', 'public'];
 
-function paintCategoryMenu() {
+function _paintCategoryMenu() {
   if (!els.catsMenu) return;
   els.catsMenu.replaceChildren();
   const accounts = manifest?.accounts ?? [];
@@ -441,12 +439,12 @@ function paintCategoryMenu() {
     count.textContent = fmtNum(counts.get(cat));
     row.append(label, count);
     if (urlState.categories.includes(cat)) row.classList.add('active');
-    row.addEventListener('click', () => toggleCategoryFilter(cat));
+    row.addEventListener('click', () => _toggleCategoryFilter(cat));
     els.catsMenu.append(row);
   }
 }
 
-function toggleCategoryFilter(cat) {
+function _toggleCategoryFilter(cat) {
   const idx = urlState.categories.indexOf(cat);
   if (idx === -1) urlState.categories.push(cat);
   else urlState.categories.splice(idx, 1);
@@ -456,6 +454,58 @@ function toggleCategoryFilter(cat) {
     if (el.dataset.category === cat) el.classList.toggle('active');
   }
   refresh();
+}
+
+function paintSearchFieldMenu() {
+  els.searchField.replaceChildren();
+  for (const field of SEARCH_FIELD_OPTIONS) {
+    const option = document.createElement('option');
+    option.value = field.value;
+    option.textContent = field.label;
+    els.searchField.append(option);
+  }
+  els.searchField.value = urlState.qfield || 'all';
+  updateSearchPlaceholder();
+}
+
+function paintAccountFilter() {
+  els.accountFilter.replaceChildren(optionEl('', 'All accounts'));
+  const accounts = manifest?.accounts ?? [];
+  for (const account of accounts) {
+    const label = account.label ? `@${account.handle} - ${account.label}` : `@${account.handle}`;
+    els.accountFilter.append(optionEl(account.handle, label));
+  }
+  els.accountFilter.value = urlState.accounts.length === 1 ? urlState.accounts[0] : '';
+}
+
+function paintCategoryFilter() {
+  els.categoryFilter.replaceChildren(optionEl('', 'All categories'));
+  const accounts = manifest?.accounts ?? [];
+  const counts = new Map();
+  for (const account of accounts) {
+    const category = account.category || 'core';
+    counts.set(category, (counts.get(category) ?? 0) + (account.row_count || 0));
+  }
+  for (const category of CATEGORY_ORDER) {
+    if (!counts.has(category)) continue;
+    const label = `${CATEGORY_LABELS[category] || category} (${fmtNum(counts.get(category))})`;
+    els.categoryFilter.append(optionEl(category, label));
+  }
+  els.categoryFilter.value = urlState.categories.length === 1 ? urlState.categories[0] : '';
+}
+
+function optionEl(value, label) {
+  const option = document.createElement('option');
+  option.value = value;
+  option.textContent = label;
+  return option;
+}
+
+function updateSearchPlaceholder() {
+  const value = els.searchField.value || 'all';
+  const label = SEARCH_FIELD_OPTIONS.find((field) => field.value === value)?.label || 'All fields';
+  const scope = value === 'all' ? 'all fields' : label.toLocaleLowerCase();
+  els.search.placeholder = `Search ${scope}... (use * and ? wildcards)`;
 }
 
 async function loadAllAccounts(sidecarsPromise) {
@@ -601,7 +651,11 @@ function revealUi() {
 }
 
 // --- Toolbar wiring ---
+paintSearchFieldMenu();
+els.searchField.value = urlState.qfield || 'all';
 els.search.value = urlState.q;
+els.accountFilter.value = urlState.accounts.length === 1 ? urlState.accounts[0] : '';
+els.categoryFilter.value = urlState.categories.length === 1 ? urlState.categories[0] : '';
 els.dateFrom.value = urlState.from;
 els.dateTo.value = urlState.to;
 els.tweetType.value = urlState.type;
@@ -609,6 +663,13 @@ els.mediaType.value = urlState.media;
 els.pageSize.value = String(urlState.size);
 
 let searchDebounce;
+els.searchField.addEventListener('change', () => {
+  urlState.qfield = els.searchField.value || 'all';
+  updateSearchPlaceholder();
+  urlState.page = 1;
+  applyToUrl(urlState);
+  refresh();
+});
 els.search.addEventListener('input', () => {
   clearTimeout(searchDebounce);
   searchDebounce = setTimeout(() => {
@@ -617,6 +678,18 @@ els.search.addEventListener('input', () => {
     applyToUrl(urlState);
     refresh();
   }, 150);
+});
+els.accountFilter.addEventListener('change', () => {
+  urlState.accounts = els.accountFilter.value ? [els.accountFilter.value] : [];
+  urlState.page = 1;
+  applyToUrl(urlState);
+  refresh();
+});
+els.categoryFilter.addEventListener('change', () => {
+  urlState.categories = els.categoryFilter.value ? [els.categoryFilter.value] : [];
+  urlState.page = 1;
+  applyToUrl(urlState);
+  refresh();
 });
 els.dateFrom.addEventListener('change', () => {
   urlState.from = els.dateFrom.value;
@@ -649,18 +722,22 @@ els.pageSize.addEventListener('change', () => {
   refresh();
 });
 els.resetBtn.addEventListener('click', () => {
-  const accounts = urlState.accounts;
-  urlState = { ...defaultState(), accounts };
+  urlState = defaultState();
   colFilters = {};
   expandedThreads = new Set();
+  els.searchField.value = 'all';
+  updateSearchPlaceholder();
   els.search.value = '';
+  els.accountFilter.value = '';
+  els.categoryFilter.value = '';
   els.dateFrom.value = '';
   els.dateTo.value = '';
   els.tweetType.value = '';
   els.mediaType.value = '';
   els.pageSize.value = '100';
   applyToUrl(urlState);
-  paintCategoryMenu();
+  paintAccountFilter();
+  paintCategoryFilter();
   refresh();
 });
 
@@ -675,15 +752,9 @@ function onColumnsChange(next) {
 renderColumnsMenu(els.colsMenu, visibleCols, onColumnsChange);
 
 // --- Dropdown toggles ---
-const dropdownMenus = [els.dlMenu, els.colsMenu];
-const dropdownButtons = [els.dlBtn, els.colsBtn];
-if (els.catsBtn && els.catsMenu) {
-  dropdownMenus.push(els.catsMenu);
-  dropdownButtons.push(els.catsBtn);
-}
-wireDropdown(els.dlBtn, els.dlMenu);
+const dropdownMenus = [els.colsMenu];
+const dropdownButtons = [els.colsBtn];
 wireDropdown(els.colsBtn, els.colsMenu);
-if (els.catsBtn && els.catsMenu) wireDropdown(els.catsBtn, els.catsMenu);
 function wireDropdown(btn, menu) {
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -717,6 +788,10 @@ els.csvBtn.addEventListener('click', () => {
 // --- Sidepanel ---
 els.spClose.addEventListener('click', () => {
   selectedRowId = null;
+  if (urlState.tweet) {
+    urlState.tweet = '';
+    applyToUrl(urlState);
+  }
   closeSidepanel(els.sidepanel);
   refreshSelectionHighlight();
 });
@@ -743,25 +818,21 @@ window.addEventListener('hashchange', () => {
   const next = fromHash();
   if (JSON.stringify(next) === JSON.stringify(urlState)) return;
   urlState = next;
+  els.searchField.value = urlState.qfield || 'all';
+  updateSearchPlaceholder();
   els.search.value = urlState.q;
+  els.accountFilter.value = urlState.accounts.length === 1 ? urlState.accounts[0] : '';
+  els.categoryFilter.value = urlState.categories.length === 1 ? urlState.categories[0] : '';
   els.dateFrom.value = urlState.from;
   els.dateTo.value = urlState.to;
   els.tweetType.value = urlState.type;
   els.mediaType.value = urlState.media;
   els.pageSize.value = String(urlState.size);
   visibleCols = parseVisibleColumns(urlState.cols);
-  paintCategoryMenu();
+  paintAccountFilter();
+  paintCategoryFilter();
   refresh();
 });
-
-// --- Filter button (toggles toolbar visibility) ---
-let filterBarVisible = true;
-els.filterBtn.addEventListener('click', () => {
-  filterBarVisible = !filterBarVisible;
-  els.toolbar.hidden = !filterBarVisible || store.handles().length === 0;
-  els.filterBtn.setAttribute('aria-pressed', filterBarVisible ? 'true' : 'false');
-});
-els.filterBtn.setAttribute('aria-pressed', 'true');
 
 // --- Render pipeline ---
 function refresh() {
@@ -770,6 +841,7 @@ function refresh() {
     accountCategories: urlState.categories,
     tags: urlState.tags,
     q: urlState.q,
+    qfield: urlState.qfield,
     from: urlState.from,
     to: urlState.to,
     type: urlState.type,
@@ -818,6 +890,8 @@ function refresh() {
     expandedThreads,
     onRowClick: (r) => {
       selectedRowId = r.tweet_id;
+      urlState.tweet = String(r.tweet_id || '');
+      applyToUrl(urlState);
       // When the clicked row is a master that owns non-self replies,
       // hand the thread along so the sidepanel can render its "Other
       // replies" section. Lookup is O(threads) but called only on
@@ -872,7 +946,24 @@ function refresh() {
     },
   });
 
+  openSharedEntryFromUrl();
   refreshSelectionHighlight();
+}
+
+function openSharedEntryFromUrl() {
+  const tweetId = String(urlState.tweet || '');
+  if (!tweetId) return;
+  if (selectedRowId === tweetId && !els.sidepanel.hidden) return;
+  const row = store.getById(tweetId);
+  if (!row) {
+    if (loadProgress.total > 0 && loadProgress.completed >= loadProgress.total) {
+      showError(`No archived entry found for tweet ${tweetId}.`, 4000);
+    }
+    return;
+  }
+  selectedRowId = tweetId;
+  const thread = store.groupIntoThreads([row])[0] || null;
+  openSidepanel(els.sidepanel, els.spTitle, els.spBody, row, thread);
 }
 
 function refreshSelectionHighlight() {

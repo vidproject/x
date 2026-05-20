@@ -38,6 +38,20 @@ export function tagSubtype(tag) {
   return idx === -1 ? text : text.slice(idx + 1);
 }
 
+export const SEARCH_FIELD_OPTIONS = [
+  { value: 'all', label: 'All fields' },
+  { value: 'text', label: 'Text' },
+  { value: 'account_handle', label: 'Account' },
+  { value: 'tags', label: 'Tags' },
+  { value: 'mentions', label: 'Mentions' },
+  { value: 'media_description', label: 'Media description' },
+  { value: 'tweet_type', label: 'Type' },
+  { value: 'media_kinds', label: 'Media' },
+  { value: 'posted_at', label: 'Posted date' },
+  { value: 'tweet_url', label: 'Tweet URL' },
+  { value: 'reply_to_account', label: 'Reply-to account' },
+];
+
 export class Store {
   constructor() {
     /** @type {Map<string, Array<Record<string, unknown>>>} */
@@ -171,6 +185,7 @@ export class Store {
    * @param {{
    *   accounts: string[], q: string, from: string, to: string,
    *   type: string, media: string, sort: string, dir: 'asc'|'desc',
+   *   qfield?: string,
    *   colFilters?: Record<string, Set<string>>,
    *   tags?: string[],
    *   accountCategories?: string[],
@@ -217,7 +232,10 @@ export class Store {
     }
     if (filt.q && filt.q.trim()) {
       const q = filt.q.trim();
-      if (/[*?]/.test(q)) {
+      const qfield = filt.qfield || 'all';
+      if (qfield !== 'all') {
+        rows = rows.filter((r) => fieldSearchMatches(r, qfield, q));
+      } else if (/[*?]/.test(q)) {
         const re = wildcardToRegex(q);
         rows = rows.filter((r) => re.test(haystack(r)));
       } else {
@@ -386,6 +404,17 @@ function runMiniSearch(mini, q) {
   return result ?? new Set();
 }
 
+function fieldSearchMatches(row, field, q) {
+  const text = fieldHaystack(row, field);
+  if (/[*?]/.test(q)) return wildcardToRegex(q).test(text);
+  const lower = text.toLocaleLowerCase();
+  return q
+    .toLocaleLowerCase()
+    .split(/\s+/)
+    .filter(Boolean)
+    .every((tok) => lower.includes(tok));
+}
+
 function wildcardToRegex(q) {
   const body = q
     .split(/\s+/)
@@ -411,6 +440,21 @@ function haystack(r) {
     mediaInsightText(r),
   ];
   return parts.join(' ');
+}
+
+function fieldHaystack(row, field) {
+  if (field === 'all') return haystack(row);
+  if (field === 'text') return [row.text || '', row.text_resolved || ''].join(' ');
+  if (field === 'tags') return tagNames(row).join(' ');
+  if (field === 'mentions') return Array.isArray(row.mentions) ? row.mentions.join(' ') : '';
+  if (field === 'media_description') return mediaInsightText(row);
+  if (field === 'media_kinds') return formatForFilter(row, 'media_kinds');
+  if (field === 'posted_at') return formatForFilter(row, 'posted_at');
+  if (field === 'account_handle') return String(row.account_handle || '');
+  if (field === 'tweet_type') return String(row.tweet_type || '');
+  if (field === 'tweet_url') return String(row.tweet_url || '');
+  if (field === 'reply_to_account') return String(row.reply_to_account || '');
+  return formatForFilter(row, field);
 }
 
 function mediaInsightText(row) {
