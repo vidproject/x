@@ -47,6 +47,11 @@ The extension captures public X posts and commits structured JSON to this reposi
 3. Select `This Firefox`.
 4. Select `Load Temporary Add-on`.
 5. Pick `manifest.json` from the unzipped extension folder.
+
+The sidebar includes a **Low-bandwidth X tabs** option. When enabled, the
+extension blocks images, video/audio resources, and fonts inside open
+X/Twitter tabs while leaving GraphQL/API capture and background archive
+downloads alone.
 6. Open the extension sidebar.
 7. Open `Settings`.
 8. Paste a fine-grained GitHub PAT.

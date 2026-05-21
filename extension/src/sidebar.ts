@@ -22,6 +22,7 @@ const recentTweetList = $<HTMLUListElement>('recent-tweet-list');
 const activityList = $<HTMLUListElement>('activity-list');
 const autoToggle = $<HTMLInputElement>('auto-capture');
 const updateExistingToggle = $<HTMLInputElement>('update-existing');
+const lowBandwidthToggle = $<HTMLInputElement>('low-bandwidth');
 const captureAllBtn = $<HTMLButtonElement>('capture-all');
 const captureThisBtn = $<HTMLButtonElement>('capture-this');
 const flushBtn = $<HTMLButtonElement>('flush-all');
@@ -270,6 +271,7 @@ function paint(state: ExtensionState): void {
   setConnStatus(state);
   autoToggle.checked = state.settings.autoCapture;
   updateExistingToggle.checked = state.settings.updateExisting !== false;
+  lowBandwidthToggle.checked = state.settings.lowBandwidthBrowsing === true;
   viewerLink.href = `https://${state.settings.owner}.github.io/${state.settings.repo}/`;
   paintMasterSwitch(state);
   renderAccounts(state);
@@ -479,6 +481,10 @@ autoToggle.addEventListener('change', () => {
 
 updateExistingToggle.addEventListener('change', () => {
   void send({ type: 'toggle-update-existing', on: updateExistingToggle.checked });
+});
+
+lowBandwidthToggle.addEventListener('change', () => {
+  void send({ type: 'toggle-low-bandwidth', on: lowBandwidthToggle.checked });
 });
 
 masterSwitch.addEventListener('change', () => {

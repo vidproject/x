@@ -9,7 +9,7 @@
       "strict_min_version": "128.0"
     }
   },
-  "permissions": ["storage", "alarms", "scripting", "tabs"],
+  "permissions": ["storage", "alarms", "scripting", "tabs", "declarativeNetRequest"],
   "host_permissions": [
     "https://x.com/*",
     "https://twitter.com/*",

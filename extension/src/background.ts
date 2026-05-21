@@ -101,7 +101,28 @@ import { parseAccountsYaml } from './lib/yaml.js';
 
 const EXT_VERSION = browser.runtime.getManifest().version;
 const MANUAL_CAPTURE_WINDOW_MS = 90_000;
+const LOW_BANDWIDTH_RULE_ID = 760_001;
+const LOW_BANDWIDTH_RESOURCE_TYPES = ['image', 'media', 'font'] as const;
 let manualCaptureUntilMs = 0;
+
+type LowBandwidthResourceType = (typeof LOW_BANDWIDTH_RESOURCE_TYPES)[number];
+
+interface LowBandwidthRule {
+  id: number;
+  priority: number;
+  action: { type: 'block' };
+  condition: {
+    tabIds: number[];
+    resourceTypes: LowBandwidthResourceType[];
+  };
+}
+
+interface DeclarativeNetRequestApi {
+  updateSessionRules(update: {
+    addRules?: LowBandwidthRule[];
+    removeRuleIds?: number[];
+  }): Promise<void>;
+}
 
 setBroadcaster((ev: LogEvent) => {
   browser.runtime.sendMessage({ type: 'log-event', event: ev }).catch(() => {});
@@ -129,6 +150,7 @@ async function onWake(reason: string): Promise<void> {
   try {
     await ensureAlarms();
     await ensureAutoScrollAlarm();
+    await syncLowBandwidthRules({ reason: `wake:${reason}`, log: false });
     await flushOrphanedBuffersIfStale();
     await reinjectIntoOpenTabs();
     // Drop dedup-index entries older than 30 days so the store doesn't
@@ -155,6 +177,80 @@ async function onWake(reason: string): Promise<void> {
     await logErr('wake failed', { reason, ...describeError(err) });
   }
 }
+
+function dnrApi(): DeclarativeNetRequestApi | null {
+  const maybeBrowser = browser as unknown as {
+    declarativeNetRequest?: DeclarativeNetRequestApi;
+  };
+  return maybeBrowser.declarativeNetRequest ?? null;
+}
+
+async function currentXTabIds(): Promise<number[]> {
+  const tabs = await browser.tabs.query({ url: ['https://x.com/*', 'https://twitter.com/*'] });
+  return tabs.flatMap((tab) => (typeof tab.id === 'number' ? [tab.id] : []));
+}
+
+async function syncLowBandwidthRules({
+  reason,
+  log,
+}: {
+  reason: string;
+  log: boolean;
+}): Promise<void> {
+  const settings = await getSettings();
+  const dnr = dnrApi();
+  if (!dnr) {
+    if (settings.lowBandwidthBrowsing && log) {
+      await warn('low-bandwidth browsing unavailable; declarativeNetRequest API missing', {
+        reason,
+      });
+    }
+    return;
+  }
+
+  const tabIds = settings.lowBandwidthBrowsing ? await currentXTabIds() : [];
+  const addRules: LowBandwidthRule[] =
+    tabIds.length > 0
+      ? [
+          {
+            id: LOW_BANDWIDTH_RULE_ID,
+            priority: 1,
+            action: { type: 'block' },
+            condition: {
+              tabIds,
+              resourceTypes: [...LOW_BANDWIDTH_RESOURCE_TYPES],
+            },
+          },
+        ]
+      : [];
+  await dnr.updateSessionRules({
+    removeRuleIds: [LOW_BANDWIDTH_RULE_ID],
+    addRules,
+  });
+
+  if (log) {
+    await info('low-bandwidth browsing rules updated', {
+      enabled: settings.lowBandwidthBrowsing,
+      tab_count: tabIds.length,
+      blocked_resource_types: LOW_BANDWIDTH_RESOURCE_TYPES.join(','),
+      reason,
+    });
+  }
+}
+
+browser.tabs.onUpdated.addListener((_tabId, changeInfo) => {
+  if (changeInfo.url || changeInfo.status === 'complete') {
+    void syncLowBandwidthRules({ reason: 'tab-updated', log: false }).catch((err) => {
+      void warn('low-bandwidth rule refresh failed', describeError(err));
+    });
+  }
+});
+
+browser.tabs.onRemoved.addListener(() => {
+  void syncLowBandwidthRules({ reason: 'tab-removed', log: false }).catch((err) => {
+    void warn('low-bandwidth rule refresh failed', describeError(err));
+  });
+});
 
 /**
  * Re-inject the MAIN-world page-hook + isolated-world content script into
@@ -538,6 +634,10 @@ async function handleMessage(
     case 'toggle-update-existing':
       await updateSettings({ updateExisting: msg.on });
       await info('update-existing toggled', { on: msg.on });
+      return buildState();
+    case 'toggle-low-bandwidth':
+      await updateSettings({ lowBandwidthBrowsing: msg.on });
+      await syncLowBandwidthRules({ reason: 'toggle', log: true });
       return buildState();
     case 'toggle-enabled': {
       const s = await updateSettings({ enabled: msg.on });
@@ -2628,6 +2728,7 @@ function redactSettings(s: Settings): ExtensionState['settings'] {
     configuredAt: s.configuredAt,
     autoScrollIntervalSec: s.autoScrollIntervalSec,
     updateExisting: s.updateExisting,
+    lowBandwidthBrowsing: s.lowBandwidthBrowsing,
     patSet: s.pat.length > 0,
     patSuffix: s.pat.length >= 4 ? s.pat.slice(-4) : '',
   };

@@ -12,6 +12,7 @@ export const DEFAULT_SETTINGS: Settings = {
   configuredAt: null,
   autoScrollIntervalSec: 6,
   updateExisting: true,
+  lowBandwidthBrowsing: false,
 };
 
 export const AUTO_SCROLL_MIN_SEC = 3;

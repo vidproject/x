@@ -49,6 +49,10 @@ export interface Settings {
    * tweets. Defaults to true so users keep the existing engagement-history
    * behaviour unless they opt out. */
   updateExisting: boolean;
+  /** When true, block image, media, and font requests in X/Twitter tabs.
+   * GraphQL/XHR capture continues, and background archive downloads are
+   * not tab-scoped so they are unaffected. */
+  lowBandwidthBrowsing: boolean;
 }
 
 export type ConnectionStatus =
@@ -395,6 +399,7 @@ export type RuntimeMessage =
   | { type: 'toggle-auto-capture'; on: boolean }
   | { type: 'toggle-enabled'; on: boolean }
   | { type: 'toggle-update-existing'; on: boolean }
+  | { type: 'toggle-low-bandwidth'; on: boolean }
   | { type: 'start-auto-scroll' }
   | { type: 'cancel-auto-scroll' }
   | { type: 'set-auto-scroll-interval'; seconds: number }
