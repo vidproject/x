@@ -299,7 +299,7 @@
     "CBP": {
       "category": "core",
       "label": "U.S. Customs and Border Protection",
-      "observations": 748,
+      "observations": 776,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -528,7 +528,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 3969,
+      "observations": 3970,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -800,7 +800,7 @@
     "EnvoyNoem": {
       "category": "officials",
       "label": "Special Envoy Kristi Noem",
-      "observations": 15,
+      "observations": 16,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2410,7 +2410,7 @@
     "TurnSeattleRed": {
       "category": "public_figures",
       "label": "\ud83c\uddfa\ud83c\uddf8STOP SEATTLE DEMs 2026\ud83c\uddfa\ud83c\uddf8",
-      "observations": 1,
+      "observations": 2,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -2975,6 +2975,16 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "marcomac20": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Huckleberry",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "masonisonx": {
       "badges": [
         "veteran"
@@ -3248,10 +3258,10 @@
     "core": 12,
     "government": 82,
     "officials": 79,
-    "public": 144,
+    "public": 145,
     "public_figures": 72
   },
-  "generated_at": "2026-05-21T03:49:39Z",
+  "generated_at": "2026-05-21T04:21:22Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
