@@ -807,9 +807,8 @@ export function openColumnFilterPopup({
   clear.addEventListener('click', (event) => {
     stopPopupButtonEvent(event);
     active.clear();
-    renderList(search.value);
-    onChange(colKey, new Set());
     close();
+    onChange(colKey, new Set());
   });
   cancel.addEventListener('mousedown', stopPopupButtonEvent);
   cancel.addEventListener('click', (event) => {
