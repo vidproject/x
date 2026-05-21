@@ -235,6 +235,16 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "Brutal_Honesty9": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Brutal Honesty",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "ByronDonalds": {
       "category": "public_figures",
       "label": "Byron Donalds",
@@ -857,7 +867,7 @@
     "GregoryKBovino": {
       "category": "core",
       "label": "Gregory Bovino",
-      "observations": 2604,
+      "observations": 2624,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1105,6 +1115,13 @@
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
+    "JohnShoraka": {
+      "category": "government",
+      "label": "A. John Shoraka",
+      "observations": 1,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
     "JstDkyFL": {
       "badges": [
         "veteran"
@@ -1317,7 +1334,7 @@
     "MrStevenSteele": {
       "category": "officials",
       "label": "Steven Steele",
-      "observations": 3,
+      "observations": 4,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2015,7 +2032,7 @@
     "StephenM": {
       "category": "core",
       "label": "Stephen Miller",
-      "observations": 1374,
+      "observations": 1509,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2181,6 +2198,16 @@
       "label": "Tom Cotton",
       "observations": 2,
       "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "TomO85613447": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Tom\u2019s On Fire",
+      "observations": 1,
+      "reason": "service-history badge only",
       "source": "data/users.json"
     },
     "TurnSeattleRed": {
@@ -2955,12 +2982,12 @@
   },
   "category_counts": {
     "core": 12,
-    "government": 79,
+    "government": 80,
     "officials": 75,
-    "public": 124,
+    "public": 126,
     "public_figures": 67
   },
-  "generated_at": "2026-05-21T01:37:37Z",
+  "generated_at": "2026-05-21T01:40:31Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
