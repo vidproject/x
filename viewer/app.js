@@ -13,7 +13,7 @@ import {
   renderTable,
   setMediaColumnConfig,
   setUserLookup,
-} from './table.js';
+} from './table.js?v=ddbf519';
 import { closeSidepanel, openSidepanel } from './sidepanel.js';
 
 const $ = (id) => {
