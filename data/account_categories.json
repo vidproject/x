@@ -1615,7 +1615,7 @@
     "PressSec": {
       "category": "core",
       "label": "White House Press Secretary",
-      "observations": 170,
+      "observations": 174,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2042,6 +2042,13 @@
       "category": "public_figures",
       "label": "Markwayne Mullin",
       "observations": 14,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "SenSchumer": {
+      "category": "public_figures",
+      "label": "Chuck Schumer",
+      "observations": 114,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -3198,9 +3205,9 @@
     "government": 81,
     "officials": 78,
     "public": 141,
-    "public_figures": 71
+    "public_figures": 72
   },
-  "generated_at": "2026-05-21T03:41:13Z",
+  "generated_at": "2026-05-21T03:48:04Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
