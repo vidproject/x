@@ -21,8 +21,9 @@ implementation hand-off for the layers that have actually shipped.
 | 3m    | archived media metadata + source alt text                                | `data/tags/media_vision.parquet`                            | **shipped** — see `scripts/describe_media.py`                                                                                            |
 | 3n    | local news-corpus exact status-URL matching                              | `data/tags/news_mentions.parquet`                           | **shipped** — see `scripts/news_mentions.py`                                                                                             |
 | 3a    | CLIP zero-shot image labels                                              | `data/tags/image_clip.parquet`                              | not started; consumes the keyframe sidecar from Layer 2                                                                                  |
-| 3b    | OCR for in-image text (Tesseract → PaddleOCR fallback)                   | `data/tags/image_ocr.parquet`                               | not started; consumes Layer 2 keyframes; **the lexical tagger already integrates with it via `load_ocr_map()` once the parquet appears** |
-| 3c    | Audio transcripts (whisper.cpp / faster-whisper)                         | `data/tags/audio_transcript.parquet`                        | not started; transcripts feed Layer 1 the same way OCR does                                                                              |
+| 3b    | OCR for in-image text (Tesseract)                                        | `data/tags/image_ocr.parquet`                               | **shipped** — see `scripts/tag_image_ocr.py`; consumes archived photos and Layer 2 keyframes                                             |
+| 3c    | Audio stream/music heuristic (ffprobe/ffmpeg)                            | `data/tags/audio_music.parquet`                             | **shipped** — see `scripts/detect_audio_music.py`; detects audio/no-audio/silent and tentative music                                    |
+| 3t    | Audio transcripts (whisper.cpp / faster-whisper or API transcription)     | `data/tags/audio_transcript.parquet`                        | not started; transcripts feed Layer 1 the same way OCR does                                                                              |
 | 4     | vision LLM for high-value items (budget-gated)                           | merged into 1 + 3a namespaces                               | not started                                                                                                                              |
 
 ## Tag schema (`data/tags/lexical.parquet`)
@@ -263,8 +264,9 @@ uv run python -m scripts.describe_media         # data/tags/media_vision.parquet
 uv run python -m scripts.extract_video_frames   # data/tags/keyframes.parquet (ffmpeg required)
 uv run python -m scripts.news_mentions --articles data/news/articles.jsonl
 
-# 4. (Future) After frame/OCR/transcript passes:
-# uv run python -m scripts.tag_image_ocr        # data/tags/image_ocr.parquet
+# 4. After frame/OCR/audio passes:
+uv run python -m scripts.tag_image_ocr          # data/tags/image_ocr.parquet
+uv run python -m scripts.detect_audio_music     # data/tags/audio_music.parquet
 # uv run python -m scripts.tag_image_clip       # data/tags/image_clip.parquet
 # uv run python -m scripts.tag_audio_transcript # data/tags/audio_transcript.parquet
 # 5. Re-run scripts/tag_lexical so OCR + transcript text feed Layer-1 rules.

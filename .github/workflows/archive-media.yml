@@ -15,9 +15,9 @@ on:
         description: 'Restrict to one handle (optional)'
         required: false
       max_items:
-        description: 'Max media items to download this run'
+        description: 'Max uncached items to process per analyzer step'
         required: false
-        default: '200'
+        default: '80'
 
 permissions:
   contents: write
@@ -29,6 +29,7 @@ concurrency:
 jobs:
   archive:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     # Skip when the upstream ingest run failed — no fresh data to chase.
     if: >-
       github.event_name != 'workflow_run' ||
@@ -51,66 +52,81 @@ jobs:
           sudo apt-get install -y tesseract-ocr
 
       - name: archive media
+        timeout-minutes: 30
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
         run: |
           args=()
+          max_items="${{ inputs.max_items }}"
+          if [ -z "$max_items" ]; then
+            max_items="80"
+          fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
           fi
-          if [ -n "${{ inputs.max_items }}" ]; then
-            args+=(--max-items "${{ inputs.max_items }}")
-          fi
+          args+=(--max-items "$max_items")
           uv run python -m scripts.archive_media "${args[@]}"
 
       - name: describe archived media
+        timeout-minutes: 10
         run: |
           args=()
+          max_items="${{ inputs.max_items }}"
+          if [ -z "$max_items" ]; then
+            max_items="80"
+          fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
           fi
-          if [ -n "${{ inputs.max_items }}" ]; then
-            args+=(--max-items "${{ inputs.max_items }}")
-          fi
+          args+=(--max-items "$max_items")
           uv run python -m scripts.describe_media "${args[@]}"
 
       - name: extract video keyframes
+        timeout-minutes: 20
         # ffmpeg ships preinstalled on ubuntu-latest. Capped at the same
         # max_items as the archive step so the runtime stays bounded; the
         # script caches by media_sha256, so re-runs are free. This also
         # writes tiny video thumbnails for the viewer's media column.
         run: |
           args=()
+          max_items="${{ inputs.max_items }}"
+          if [ -z "$max_items" ]; then
+            max_items="80"
+          fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
           fi
-          if [ -n "${{ inputs.max_items }}" ]; then
-            args+=(--max-items "${{ inputs.max_items }}")
-          fi
+          args+=(--max-items "$max_items")
           uv run python -m scripts.extract_video_frames "${args[@]}"
 
       - name: OCR archived images and keyframes
+        timeout-minutes: 20
         run: |
           args=()
+          max_items="${{ inputs.max_items }}"
+          if [ -z "$max_items" ]; then
+            max_items="80"
+          fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
           fi
-          if [ -n "${{ inputs.max_items }}" ]; then
-            args+=(--max-items "${{ inputs.max_items }}")
-          fi
+          args+=(--max-items "$max_items")
           uv run python -m scripts.tag_image_ocr "${args[@]}"
 
       - name: detect audio music
+        timeout-minutes: 20
         run: |
           args=()
+          max_items="${{ inputs.max_items }}"
+          if [ -z "$max_items" ]; then
+            max_items="80"
+          fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
           fi
-          if [ -n "${{ inputs.max_items }}" ]; then
-            args+=(--max-items "${{ inputs.max_items }}")
-          fi
+          args+=(--max-items "$max_items")
           uv run python -m scripts.detect_audio_music "${args[@]}"
 
       - name: refresh lexical tags
