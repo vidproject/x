@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-21T01:48:28Z",
+  "generated_at": "2026-05-21T01:55:04Z",
   "layers": {
     "audio_music": {
       "attempted": 80,
@@ -48,7 +48,7 @@
       "status_skipped-no-ffmpeg": 559
     },
     "lexical": {
-      "generated_at": "2026-05-21T01:48:28Z",
+      "generated_at": "2026-05-21T01:55:04Z",
       "parquets_scanned": {
         "CBP.parquet": 491,
         "DHSgov.parquet": 1023,
@@ -62,12 +62,12 @@
         "USCIS.parquet": 760,
         "USDOL.parquet": 490,
         "WhiteHouse.parquet": 262,
-        "_misc.parquet": 4779
+        "_misc.parquet": 4793
       },
-      "row_count": 11120,
+      "row_count": 11134,
       "tag_frequency": {
-        "action:deportation": 600,
-        "action:detention": 805,
+        "action:deportation": 601,
+        "action:detention": 806,
         "action:report-immigrants": 2,
         "action:self-deportation": 97,
         "agency:AGPamBondi": 7,
@@ -202,7 +202,7 @@
         "crime:tren-de-aragua": 31,
         "crime:weapon": 391,
         "format:quote": 986,
-        "format:reply": 4599,
+        "format:reply": 4613,
         "format:retweet": 1745,
         "frame:criminal": 1241,
         "genre:directive": 169,
@@ -265,7 +265,7 @@
         "slogan:law-and-order": 14,
         "slogan:maga": 61,
         "slogan:maha": 7,
-        "slogan:mass-deportation": 239,
+        "slogan:mass-deportation": 242,
         "slogan:nice": 9,
         "slogan:peace-through-strength": 3,
         "slogan:project-homecoming": 3,
@@ -354,7 +354,7 @@
         "theme:worksite-enforcement": 19,
         "topic:economy": 958,
         "topic:general": 439,
-        "topic:immigration": 8111,
+        "topic:immigration": 8115,
         "topic:laudatory": 383,
         "topic:military": 252,
         "video:ad": 10,
@@ -434,12 +434,12 @@
     "USCIS.parquet": 760,
     "USDOL.parquet": 490,
     "WhiteHouse.parquet": 262,
-    "_misc.parquet": 4779
+    "_misc.parquet": 4793
   },
-  "row_count": 11120,
+  "row_count": 11134,
   "tag_frequency": {
-    "action:deportation": 600,
-    "action:detention": 805,
+    "action:deportation": 601,
+    "action:detention": 806,
     "action:report-immigrants": 2,
     "action:self-deportation": 97,
     "agency:AGPamBondi": 7,
@@ -574,7 +574,7 @@
     "crime:tren-de-aragua": 31,
     "crime:weapon": 391,
     "format:quote": 986,
-    "format:reply": 4599,
+    "format:reply": 4613,
     "format:retweet": 1745,
     "frame:criminal": 1241,
     "genre:directive": 169,
@@ -637,7 +637,7 @@
     "slogan:law-and-order": 14,
     "slogan:maga": 61,
     "slogan:maha": 7,
-    "slogan:mass-deportation": 239,
+    "slogan:mass-deportation": 242,
     "slogan:nice": 9,
     "slogan:peace-through-strength": 3,
     "slogan:project-homecoming": 3,
@@ -726,7 +726,7 @@
     "theme:worksite-enforcement": 19,
     "topic:economy": 958,
     "topic:general": 439,
-    "topic:immigration": 8111,
+    "topic:immigration": 8115,
     "topic:laudatory": 383,
     "topic:military": 252,
     "video:ad": 10,
