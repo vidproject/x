@@ -501,7 +501,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 3802,
+      "observations": 3804,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -524,6 +524,13 @@
       "label": "DOW Rapid Response",
       "observations": 7,
       "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "DallasKing2022": {
+      "category": "officials",
+      "label": "Dallas Asst Border Czar",
+      "observations": 1,
+      "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "DanHolbrook": {
@@ -828,7 +835,7 @@
       ],
       "category": "public",
       "label": "Bruce",
-      "observations": 1,
+      "observations": 2,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -987,6 +994,13 @@
       "label": "HipCheck",
       "observations": 4,
       "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "HistoryBoutique": {
+      "category": "officials",
+      "label": "Erin Derham",
+      "observations": 1,
+      "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "HobieJ18977": {
@@ -1299,6 +1313,13 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "Liberty_Xtreme": {
+      "category": "public_figures",
+      "label": "Appalachian Liberty",
+      "observations": 1,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
     "LindseyGrahamSC": {
       "category": "public_figures",
       "label": "Lindsey Graham",
@@ -1492,7 +1513,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 825,
+      "observations": 829,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1905,7 +1926,7 @@
     "SecMullinDHS": {
       "category": "officials",
       "label": "Secretary Markwayne Mullin",
-      "observations": 535,
+      "observations": 539,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2113,7 +2134,7 @@
     "StephenM": {
       "category": "core",
       "label": "Stephen Miller",
-      "observations": 2214,
+      "observations": 2347,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2555,7 +2576,7 @@
     "WhiteHouse": {
       "category": "core",
       "label": "The White House",
-      "observations": 479,
+      "observations": 483,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2997,7 +3018,7 @@
     "realDonaldTrump": {
       "category": "government",
       "label": "Donald J. Trump",
-      "observations": 33,
+      "observations": 34,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3158,11 +3179,11 @@
   "category_counts": {
     "core": 12,
     "government": 81,
-    "officials": 76,
+    "officials": 78,
     "public": 140,
-    "public_figures": 69
+    "public_figures": 70
   },
-  "generated_at": "2026-05-21T01:55:04Z",
+  "generated_at": "2026-05-21T01:57:39Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
