@@ -475,6 +475,16 @@
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
+    "DanHolbrook": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Dan Holbrook",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "DavidFlippoNV": {
       "badges": [
         "veteran"
@@ -651,7 +661,7 @@
       ],
       "category": "public",
       "label": "Ed Gallrein",
-      "observations": 4,
+      "observations": 5,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -1363,7 +1373,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 819,
+      "observations": 821,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1372,6 +1382,16 @@
       "label": "President Biden Archived",
       "observations": 2,
       "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "PamBondiGOTTAgo": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "T L",
+      "observations": 1,
+      "reason": "service-history badge only",
       "source": "data/users.json"
     },
     "PamelaSpeaksNow": {
@@ -1954,7 +1974,7 @@
     "StephenM": {
       "category": "core",
       "label": "Stephen Miller",
-      "observations": 619,
+      "observations": 878,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2093,6 +2113,16 @@
       "label": "Thomas Hern",
       "observations": 4,
       "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "Tim_Cleary_USN": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Tim Cleary",
+      "observations": 1,
+      "reason": "service-history badge only",
       "source": "data/users.json"
     },
     "TomCottonAR": {
@@ -2539,6 +2569,16 @@
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
+    "jsn_schmitz": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Jason Schmitz",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "karolineleavitt": {
       "category": "officials",
       "label": "Karoline Leavitt",
@@ -2596,6 +2636,16 @@
       ],
       "category": "public",
       "label": "Lost",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "masonisonx": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Mason",
       "observations": 1,
       "reason": "service-history badge only",
       "source": "data/users.json"
@@ -2786,10 +2836,10 @@
     "core": 12,
     "government": 79,
     "officials": 75,
-    "public": 107,
+    "public": 112,
     "public_figures": 67
   },
-  "generated_at": "2026-05-21T01:33:25Z",
+  "generated_at": "2026-05-21T01:34:33Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
