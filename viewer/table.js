@@ -18,7 +18,6 @@ import {
   formatForFilter,
   splitTagMainSub,
   retweetedByHandles,
-  tagNames,
   tagNamespace,
   tagSubtype,
 } from './store.js';
@@ -61,8 +60,7 @@ const TAG_NAMESPACE_RANK = new Map(
     section.namespaces.map((ns, index) => [ns, sectionIndex * 100 + index])
   )
 );
-const TAG_CHILD_VISIBLE_LIMIT = 5;
-const TAG_CHILD_MIN_VISIBLE_COUNT = 10;
+const TAG_CHILD_VISIBLE_LIMIT = 8;
 const MEDIA_THUMBNAIL_KEYS = [
   'thumbnail_url',
   'thumbnailUrl',
@@ -344,6 +342,7 @@ export function renderColumnsMenu(menuEl, visible, onChange) {
  *   visible: string[], page: number, pageSize: number,
  *   sort: string, dir: 'asc'|'desc',
  *   colFilters: Record<string, Set<string>>,
+ *   tagCertainty?: string,
  *   expandedThreads?: Set<string>,
  *   onRowClick: (row:any)=>void,
  *   onAccountOpen?: (handle:string, row:any)=>void,
@@ -364,6 +363,7 @@ export function renderTable(args) {
     sort,
     dir,
     colFilters,
+    tagCertainty = 'all',
     expandedThreads,
     onRowClick,
     onAccountOpen,
@@ -400,7 +400,9 @@ export function renderTable(args) {
       btn.setAttribute('aria-label', `Filter ${col.label}`);
       btn.innerHTML =
         '<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.25 3.25h11.5L9.25 8.3v3.35l-2.5 1.35V8.3L2.25 3.25z"/></svg>';
-      if (colFilters && colFilters[col.key] && colFilters[col.key].size > 0) {
+      const hasColumnFilter = colFilters && colFilters[col.key] && colFilters[col.key].size > 0;
+      const hasCertaintyFilter = col.key === 'tags' && tagCertainty && tagCertainty !== 'all';
+      if (hasColumnFilter || hasCertaintyFilter) {
         btn.classList.add('active');
       }
       btn.addEventListener('click', (e) => {
@@ -719,23 +721,33 @@ export function openColumnFilterPopup({
   onChange,
   onSort,
   tagCertainty = 'all',
-  onTagCertaintyChange,
   mediaSettings,
   onMediaSettingsChange,
 }) {
   const col = KEY_TO_COL[colKey];
   if (!col) return;
   const rect = anchorBtn.getBoundingClientRect();
+  const popupWidth = colKey === 'tags' ? 460 : 240;
   popEl.style.top = `${Math.round(rect.bottom + 4)}px`;
-  popEl.style.left = `${Math.max(8, Math.round(rect.right - 240))}px`;
+  popEl.style.left = `${Math.max(8, Math.round(rect.right - popupWidth))}px`;
   popEl.hidden = false;
+  popEl.classList.toggle('tag-pop', colKey === 'tags');
   popEl.replaceChildren();
 
   if (colKey === MEDIA_COL_KEY) {
     popEl.append(buildMediaPopupSettings(mediaSettings, onMediaSettingsChange));
   }
   if (colKey === 'tags') {
-    popEl.append(buildTagCertaintyControl(tagCertainty, onTagCertaintyChange));
+    buildResearchTagFilterPopup({
+      popEl,
+      rows: Array.isArray(countRows) ? countRows : allRows,
+      activeValues: activeFilters[colKey],
+      tagCertainty,
+      onApply: (next, opts) => onChange(colKey, next, opts),
+      close,
+    });
+    setTimeout(() => document.addEventListener('mousedown', away), 0);
+    return;
   }
 
   if (colKey !== 'tags' && col.sortable) {
@@ -764,23 +776,14 @@ export function openColumnFilterPopup({
   const search = document.createElement('input');
   search.type = 'search';
   search.className = 'col-search';
-  search.placeholder =
-    colKey === 'tags'
-      ? 'Search all tag namespaces and values...'
-      : `Filter ${col.label.toLowerCase()}...`;
+  search.placeholder = `Filter ${col.label.toLowerCase()}...`;
   popEl.append(search);
 
   const rowsForCounts = Array.isArray(countRows) ? countRows : allRows;
 
   // Aggregate value counts.
   const counts = new Map();
-  if (colKey === 'tags') {
-    for (const r of rowsForCounts) {
-      for (const t of tagNames(r)) {
-        counts.set(t, (counts.get(t) ?? 0) + 1);
-      }
-    }
-  } else if (colKey === 'retweeted_by') {
+  if (colKey === 'retweeted_by') {
     for (const r of rowsForCounts) {
       const handles = retweetedByHandles(r);
       if (handles.length === 0) {
@@ -795,24 +798,10 @@ export function openColumnFilterPopup({
       counts.set(v, (counts.get(v) ?? 0) + 1);
     }
   }
-  const allValues =
-    colKey === 'tags'
-      ? buildTagFilterValues(counts)
-      : [...counts.entries()]
-          .sort((a, b) => b[1] - a[1])
-          .map(([value, count]) => ({ value, count, display: value === '' ? '(blank)' : value }));
+  const allValues = [...counts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([value, count]) => ({ value, count, display: value === '' ? '(blank)' : value }));
   const allValueKeys = allValues.map((p) => p.value);
-  const valueByKey = new Map(allValues.map((p) => [p.value, p]));
-  const childValuesByParent = new Map();
-  if (colKey === 'tags') {
-    for (const p of allValues) {
-      if (!p.child) continue;
-      const children = childValuesByParent.get(p.parent) ?? [];
-      children.push(p.value);
-      childValuesByParent.set(p.parent, children);
-    }
-  }
-  const expandedTagParents = new Set();
   const rawActive = activeFilters[colKey];
   const hasActive =
     rawActive instanceof Set
@@ -821,29 +810,15 @@ export function openColumnFilterPopup({
         ? rawActive.length > 0
         : !!rawActive;
   const active = new Set(hasActive ? rawActive : allValueKeys);
-  if (colKey === 'tags') normalizeTagSelections(active, allValues, childValuesByParent);
 
   const list = document.createElement('div');
-  list.className = colKey === 'tags' ? 'col-values tag-browser' : 'col-values';
+  list.className = 'col-values';
   popEl.append(list);
 
   function renderList(filter) {
     list.replaceChildren();
     const f = filter.trim().toLowerCase();
-    const currentValues =
-      colKey === 'tags'
-        ? valuesWithDynamicTagCounts(
-            allValues,
-            rowsForCounts,
-            active,
-            allValueKeys,
-            tagCertainty
-          )
-        : allValues;
-    const visible =
-      colKey === 'tags' ? currentValues : currentValues.filter((p) => filterPairMatches(p, f));
-    const matchingValues =
-      colKey === 'tags' ? currentValues.filter((p) => filterPairMatches(p, f)) : visible;
+    const visible = allValues.filter((p) => filterValueMatches(p, f));
     if (visible.length === 0) {
       const empty = document.createElement('div');
       empty.className = 'col-empty';
@@ -852,136 +827,43 @@ export function openColumnFilterPopup({
       return;
     }
 
-    if (colKey === 'tags') {
-      const activeBlock = buildActiveTagFilterBlock(currentValues, allValueKeys, active, (value) => {
-        setFilterValue(value, false);
-        renderList(search.value);
-      });
-      if (activeBlock) list.append(activeBlock);
-    }
-    if (colKey === 'tags' && f && matchingValues.length === 0) {
-      const empty = document.createElement('div');
-      empty.className = 'col-empty';
-      empty.textContent = 'No matching tags';
-      list.append(empty);
-      return;
-    }
-
     const allVisible = document.createElement('label');
     allVisible.className = 'col-val select-all';
     const allVisibleCb = document.createElement('input');
     allVisibleCb.type = 'checkbox';
-    allVisibleCb.checked = matchingValues.every((p) => active.has(p.value));
+    allVisibleCb.checked = visible.every((p) => active.has(p.value));
     allVisibleCb.indeterminate =
-      !allVisibleCb.checked && matchingValues.some((p) => active.has(p.value));
+      !allVisibleCb.checked && visible.some((p) => active.has(p.value));
     allVisibleCb.addEventListener('change', () => {
-      for (const p of matchingValues) setFilterValue(p.value, allVisibleCb.checked);
+      for (const p of visible) {
+        if (allVisibleCb.checked) active.add(p.value);
+        else active.delete(p.value);
+      }
       renderList(search.value);
     });
     const allVisibleTxt = document.createElement('span');
-    allVisibleTxt.textContent = colKey === 'tags' && f ? 'Select matches' : 'Select all';
+    allVisibleTxt.textContent = 'Select all';
     allVisible.append(allVisibleCb, allVisibleTxt);
     list.append(allVisible);
 
-    const renderedValues =
-      colKey === 'tags' ? collapsedTagValues(currentValues, f, expandedTagParents) : visible;
-    for (const p of renderedValues) {
-      if (p.section) {
-        const section = document.createElement('div');
-        section.className = 'tag-facet-section';
-        section.textContent = p.section;
-        list.append(section);
-        continue;
-      }
-      if (p.hint) {
-        const hint = document.createElement('div');
-        hint.className = 'tag-browser-hint';
-        hint.textContent = p.hint;
-        list.append(hint);
-        continue;
-      }
-      if (p.toggle) {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'tag-more-btn';
-        btn.textContent = p.expanded
-          ? `Collapse ${p.parent}: tags`
-          : `Search to find ${p.hiddenCount} smaller ${p.parent}: tags`;
-        btn.addEventListener('click', () => {
-          if (expandedTagParents.has(p.parent)) expandedTagParents.delete(p.parent);
-          else expandedTagParents.add(p.parent);
-          renderList(search.value);
-        });
-        list.append(btn);
-        continue;
-      }
+    for (const p of visible) {
       const lab = document.createElement('label');
-      lab.className = p.child ? 'col-val child' : 'col-val namespace';
-      if (colKey === 'tags' && !p.child) {
-        const expander = document.createElement('button');
-        expander.type = 'button';
-        expander.className = 'tag-fold-btn';
-        expander.textContent = expandedTagParents.has(p.value) ? '-' : '+';
-        expander.title = expandedTagParents.has(p.value)
-          ? `Collapse ${p.value}: tags`
-          : `Open ${p.value}: tags`;
-        expander.setAttribute('aria-label', expander.title);
-        expander.addEventListener('click', (event) => {
-          event.preventDefault();
-          event.stopPropagation();
-          if (expandedTagParents.has(p.value)) expandedTagParents.delete(p.value);
-          else expandedTagParents.add(p.value);
-          renderList(search.value);
-        });
-        lab.append(expander);
-      }
+      lab.className = 'col-val';
       const cb = document.createElement('input');
       cb.type = 'checkbox';
       cb.checked = active.has(p.value);
-      if (colKey === 'tags' && !p.child) {
-        const children = childValuesByParent.get(p.value) ?? [];
-        const checkedChildren = children.filter((child) => active.has(child)).length;
-        cb.indeterminate = !cb.checked && checkedChildren > 0 && checkedChildren < children.length;
-      }
       cb.addEventListener('change', () => {
-        setFilterValue(p.value, cb.checked);
+        if (cb.checked) active.add(p.value);
+        else active.delete(p.value);
         renderList(search.value);
       });
       const txt = document.createElement('span');
-      if (p.child) {
-        const prefix = document.createElement('span');
-        prefix.className = 'tag-child-prefix';
-        prefix.textContent = '';
-        txt.append(prefix, document.createTextNode(p.display));
-      } else {
-        txt.textContent = p.display;
-      }
+      txt.textContent = p.display;
       const cnt = document.createElement('span');
       cnt.className = 'count';
       cnt.textContent = String(p.count);
       lab.append(cb, txt, cnt);
       list.append(lab);
-    }
-
-    function setFilterValue(value, checked) {
-      const pair = valueByKey.get(value);
-      if (colKey === 'tags' && pair && !pair.child) {
-        const values = [pair.value, ...(childValuesByParent.get(pair.value) ?? [])];
-        for (const key of values) {
-          if (checked) active.add(key);
-          else active.delete(key);
-        }
-        return;
-      }
-      if (checked) active.add(value);
-      else active.delete(value);
-      if (colKey === 'tags' && pair?.child) {
-        active.delete(pair.parent);
-        const siblings = childValuesByParent.get(pair.parent) ?? [];
-        if (siblings.length > 0 && siblings.every((key) => active.has(key))) {
-          active.add(pair.parent);
-        }
-      }
     }
   }
   renderList('');
@@ -1004,25 +886,18 @@ export function openColumnFilterPopup({
   apply.addEventListener('mousedown', stopPopupButtonEvent);
   apply.addEventListener('click', (event) => {
     stopPopupButtonEvent(event);
-    if (colKey === 'tags') normalizeTagSelections(active, allValues, childValuesByParent);
     if (allValueKeys.every((value) => active.has(value))) {
       onChange(colKey, new Set());
     } else {
-      onChange(
-        colKey,
-        colKey === 'tags' ? compressTagSelections(active, allValues) : new Set(active)
-      );
+      onChange(colKey, new Set(active));
     }
     close();
   });
-  clear.title =
-    colKey === 'tags'
-      ? 'Clear tag selections and the firm/tentative tag mode'
-      : 'Clear this column filter';
+  clear.title = 'Clear this column filter';
   clear.addEventListener('mousedown', stopPopupButtonEvent);
   clear.addEventListener('click', (event) => {
     stopPopupButtonEvent(event);
-    onChange(colKey, new Set(), colKey === 'tags' ? { tagCertainty: 'all' } : {});
+    onChange(colKey, new Set());
     close();
   });
   cancel.addEventListener('mousedown', stopPopupButtonEvent);
@@ -1045,6 +920,161 @@ export function openColumnFilterPopup({
     if (!popEl.contains(e.target) && e.target !== anchorBtn) close();
   }
   setTimeout(() => document.addEventListener('mousedown', away), 0);
+}
+
+function buildResearchTagFilterPopup({
+  popEl,
+  rows,
+  activeValues,
+  tagCertainty = 'all',
+  onApply,
+  close,
+}) {
+  const rowsForCounts = Array.isArray(rows) ? rows : [];
+  const active = new Set(filterValuesArray(activeValues));
+  const expandedGroups = new Set();
+  let certainty = TAG_CERTAINTY_LABELS[tagCertainty] ? tagCertainty : 'all';
+
+  const header = document.createElement('div');
+  header.className = 'tag-filter-head';
+  const title = document.createElement('div');
+  title.className = 'tag-filter-title';
+  title.textContent = 'Tags';
+  const summary = document.createElement('div');
+  summary.className = 'tag-filter-summary';
+  header.append(title, summary);
+  popEl.append(header);
+
+  const certaintyControl = buildTagCertaintyControl(certainty, (mode) => {
+    certainty = TAG_CERTAINTY_LABELS[mode] ? mode : 'all';
+    render();
+  });
+  const certaintySelect = certaintyControl.querySelector('select');
+  popEl.append(certaintyControl);
+
+  const search = document.createElement('input');
+  search.type = 'search';
+  search.className = 'col-search';
+  search.placeholder = 'Search namespaces and tags...';
+  popEl.append(search);
+
+  const selectedBlock = document.createElement('div');
+  selectedBlock.className = 'tag-selected';
+  popEl.append(selectedBlock);
+
+  const list = document.createElement('div');
+  list.className = 'col-values tag-browser';
+  popEl.append(list);
+
+  const actions = document.createElement('div');
+  actions.className = 'col-actions';
+  const apply = document.createElement('button');
+  apply.type = 'button';
+  apply.className = 'btn';
+  apply.textContent = 'Apply';
+  const clear = document.createElement('button');
+  clear.type = 'button';
+  clear.className = 'btn ghost';
+  clear.textContent = 'Clear';
+  clear.title = 'Clear tag selections and certainty mode';
+  const cancel = document.createElement('button');
+  cancel.type = 'button';
+  cancel.className = 'btn ghost';
+  cancel.textContent = 'Cancel';
+  actions.append(apply, clear, cancel);
+  popEl.append(actions);
+
+  function render() {
+    const groups = buildResearchTagGroups(tagCountsForRows(rowsForCounts, certainty));
+    const valueByKey = researchTagValueMap(groups);
+    const filter = search.value.trim().toLowerCase();
+    summary.textContent = `${fmtNum(totalTagOccurrences(groups))} tag hit${
+      totalTagOccurrences(groups) === 1 ? '' : 's'
+    } in scope`;
+
+    renderSelectedTags(selectedBlock, active, valueByKey, () => render());
+    list.replaceChildren();
+
+    let rendered = 0;
+    let lastSection = '';
+    for (const group of groups) {
+      const groupMatches = tagFilterPairMatches(group, filter);
+      const matchingChildren = group.children.filter(
+        (child) => groupMatches || tagFilterPairMatches(child, filter)
+      );
+      if (filter && !groupMatches && matchingChildren.length === 0) continue;
+      if (!filter && matchingChildren.length === 0) continue;
+
+      if (group.section !== lastSection) {
+        const section = document.createElement('div');
+        section.className = 'tag-facet-section';
+        section.textContent = group.section;
+        list.append(section);
+        lastSection = group.section;
+      }
+
+      list.append(buildTagNamespaceRow(group, active, () => render()));
+      const visibleChildren =
+        filter || expandedGroups.has(group.value)
+          ? matchingChildren
+          : matchingChildren.slice(0, TAG_CHILD_VISIBLE_LIMIT);
+      for (const child of visibleChildren) {
+        list.append(buildTagChildRow(child, active, () => render()));
+      }
+      const hidden = matchingChildren.length - visibleChildren.length;
+      if (hidden > 0) {
+        const more = document.createElement('button');
+        more.type = 'button';
+        more.className = 'tag-more-btn';
+        more.textContent = `Show ${fmtNum(hidden)} more ${group.value}: tags`;
+        more.addEventListener('click', () => {
+          expandedGroups.add(group.value);
+          render();
+        });
+        list.append(more);
+      }
+      rendered += 1;
+    }
+
+    if (rendered === 0) {
+      const empty = document.createElement('div');
+      empty.className = 'col-empty';
+      empty.textContent = filter ? 'No matching tags' : 'No tags in scope';
+      list.append(empty);
+    }
+  }
+
+  search.addEventListener('input', () => render());
+  apply.addEventListener('mousedown', stopPopupButtonEvent);
+  apply.addEventListener('click', (event) => {
+    stopPopupButtonEvent(event);
+    const valueByKey = researchTagValueMap(
+      buildResearchTagGroups(tagCountsForRows(rowsForCounts, certainty))
+    );
+    onApply(normalizeResearchTagSelections(active, valueByKey), { tagCertainty: certainty });
+    close();
+  });
+  clear.addEventListener('mousedown', stopPopupButtonEvent);
+  clear.addEventListener('click', (event) => {
+    stopPopupButtonEvent(event);
+    active.clear();
+    certainty = 'all';
+    if (certaintySelect) certaintySelect.value = certainty;
+    onApply(new Set(), { tagCertainty: 'all' });
+    close();
+  });
+  cancel.addEventListener('mousedown', stopPopupButtonEvent);
+  cancel.addEventListener('click', (event) => {
+    stopPopupButtonEvent(event);
+    close();
+  });
+
+  render();
+
+  function stopPopupButtonEvent(event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
 }
 
 function buildTagCertaintyControl(tagCertainty = 'all', onTagCertaintyChange) {
@@ -1133,7 +1163,26 @@ function buildMediaPopupSettings(mediaSettings = {}, onMediaSettingsChange) {
   return wrap;
 }
 
-function buildTagFilterValues(counts) {
+function filterValuesArray(values) {
+  if (values instanceof Set) return [...values];
+  if (Array.isArray(values)) return values;
+  return values ? [values] : [];
+}
+
+function tagCountsForRows(rows, certainty) {
+  const counts = new Map();
+  for (const row of rows) {
+    const seen = new Set();
+    for (const { name, tentative } of tagEntriesForPopup(row)) {
+      if (!tagEntryCertaintyMatches(tentative, certainty) || seen.has(name)) continue;
+      seen.add(name);
+      counts.set(name, (counts.get(name) ?? 0) + 1);
+    }
+  }
+  return counts;
+}
+
+function buildResearchTagGroups(counts) {
   const byNamespace = new Map();
   for (const [tag, count] of counts.entries()) {
     const ns = tagNamespace(tag) || 'tag';
@@ -1146,64 +1195,147 @@ function buildTagFilterValues(counts) {
     info.tags.push({ tag, count });
   }
 
-  const values = [];
-  const namespaces = [...byNamespace.entries()].sort((a, b) => {
-    const delta = tagNamespaceRank(a[0]) - tagNamespaceRank(b[0]);
-    return delta || b[1].count - a[1].count || a[0].localeCompare(b[0]);
-  });
-  for (const [ns, info] of namespaces) {
-    values.push({ value: ns, count: info.count, display: `${ns}:` });
-    for (const child of info.tags.sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag))) {
-      values.push({
-        value: combineTagMainSub(ns, child.tag),
-        count: child.count,
-        parent: ns,
-        sub: child.tag,
-        child: true,
-        display: tagSubtype(child.tag),
-      });
-    }
-  }
-  return values;
+  return [...byNamespace.entries()]
+    .sort((a, b) => {
+      const delta = tagNamespaceRank(a[0]) - tagNamespaceRank(b[0]);
+      return delta || b[1].count - a[1].count || a[0].localeCompare(b[0]);
+    })
+    .map(([ns, info]) => ({
+      value: ns,
+      namespace: ns,
+      count: info.count,
+      display: `${ns}:`,
+      section: tagNamespaceSection(ns),
+      children: info.tags
+        .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag))
+        .map((child) => ({
+          value: combineTagMainSub(ns, child.tag),
+          count: child.count,
+          parent: ns,
+          sub: child.tag,
+          child: true,
+          display: tagSubtype(child.tag),
+        })),
+    }));
 }
 
-function valuesWithDynamicTagCounts(allValues, rows, active, allValueKeys, certainty) {
-  const allSelected = allValueKeys.every((value) => active.has(value));
-  const filteredRows = allSelected
-    ? rows
-    : rows.filter((row) => rowMatchesTagPopupSelection(row, active, certainty));
-  const tagCounts = new Map();
-  const namespaceCounts = new Map();
-  for (const row of filteredRows) {
-    for (const { name, tentative } of tagEntriesForPopup(row)) {
-      if (!tagEntryCertaintyMatches(tentative, certainty)) continue;
-      const ns = tagNamespace(name) || 'tag';
-      tagCounts.set(name, (tagCounts.get(name) ?? 0) + 1);
-      namespaceCounts.set(ns, (namespaceCounts.get(ns) ?? 0) + 1);
-    }
+function researchTagValueMap(groups) {
+  const map = new Map();
+  for (const group of groups) {
+    map.set(group.value, group);
+    for (const child of group.children) map.set(child.value, child);
   }
-  return allValues.map((pair) => ({
-    ...pair,
-    count: pair.child
-      ? tagCounts.get(pair.sub) ?? 0
-      : namespaceCounts.get(pair.value) ?? 0,
-  }));
+  return map;
 }
 
-function rowMatchesTagPopupSelection(row, selections, certainty) {
-  if (!selections || selections.size === 0) return false;
-  const exact = new Set();
-  const namespaces = new Set();
-  for (const value of selections) {
-    const { main, sub } = splitTagMainSub(value);
-    if (sub) exact.add(sub);
-    else if (main.includes(':')) exact.add(main);
-    else if (main) namespaces.add(main);
+function totalTagOccurrences(groups) {
+  return groups.reduce((sum, group) => sum + group.count, 0);
+}
+
+function renderSelectedTags(wrap, active, valueByKey, onRemove) {
+  wrap.replaceChildren();
+  const selected = [...active]
+    .map((value) => ({ value, label: formatTagSelectionLabel(value, valueByKey) }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+  wrap.hidden = selected.length === 0;
+  if (selected.length === 0) return;
+
+  const title = document.createElement('div');
+  title.className = 'tag-selected-title';
+  title.textContent = 'Selected';
+  wrap.append(title);
+  for (const item of selected) {
+    const pill = document.createElement('button');
+    pill.type = 'button';
+    pill.className = 'tag-selection-pill';
+    pill.title = `Remove ${item.label}`;
+    pill.textContent = item.label;
+    pill.addEventListener('click', () => {
+      active.delete(item.value);
+      onRemove();
+    });
+    wrap.append(pill);
   }
-  return tagEntriesForPopup(row).some(({ name, tentative }) => {
-    if (!tagEntryCertaintyMatches(tentative, certainty)) return false;
-    return exact.has(name) || namespaces.has(tagNamespace(name));
+}
+
+function buildTagNamespaceRow(group, active, onChange) {
+  const lab = document.createElement('label');
+  lab.className = 'col-val namespace tag-group-row';
+  const cb = document.createElement('input');
+  cb.type = 'checkbox';
+  cb.checked = active.has(group.value);
+  cb.indeterminate =
+    !cb.checked && group.children.some((child) => active.has(child.value));
+  cb.addEventListener('change', () => {
+    if (cb.checked) {
+      active.add(group.value);
+      for (const child of group.children) active.delete(child.value);
+    } else {
+      active.delete(group.value);
+    }
+    onChange();
   });
+  const txt = document.createElement('span');
+  txt.className = 'tag-group-label';
+  txt.textContent = group.display;
+  const cnt = document.createElement('span');
+  cnt.className = 'count';
+  cnt.textContent = String(group.count);
+  lab.append(cb, txt, cnt);
+  return lab;
+}
+
+function buildTagChildRow(child, active, onChange) {
+  const parentActive = active.has(child.parent);
+  const lab = document.createElement('label');
+  lab.className = `col-val child tag-child-row${parentActive ? ' parent-active' : ''}`;
+  if (parentActive) lab.title = `Select only ${child.parent}: ${child.display}`;
+  const cb = document.createElement('input');
+  cb.type = 'checkbox';
+  cb.checked = active.has(child.value);
+  cb.addEventListener('change', () => {
+    if (cb.checked) {
+      active.delete(child.parent);
+      active.add(child.value);
+    } else {
+      active.delete(child.value);
+    }
+    onChange();
+  });
+  const txt = document.createElement('span');
+  txt.className = 'tag-child-tag';
+  txt.textContent = child.display;
+  const cnt = document.createElement('span');
+  cnt.className = 'count';
+  cnt.textContent = String(child.count);
+  lab.append(cb, txt, cnt);
+  return lab;
+}
+
+function tagFilterPairMatches(pair, filter) {
+  if (!filter) return true;
+  return [pair.value, pair.display, pair.parent, pair.sub, pair.namespace]
+    .filter(Boolean)
+    .some((value) => String(value).toLowerCase().includes(filter));
+}
+
+function normalizeResearchTagSelections(active, valueByKey) {
+  const next = new Set();
+  for (const value of active) {
+    const pair = valueByKey.get(value);
+    if (pair?.child && active.has(pair.parent)) continue;
+    next.add(value);
+  }
+  return next;
+}
+
+function formatTagSelectionLabel(value, valueByKey) {
+  const pair = valueByKey.get(value);
+  if (pair?.child) return `${pair.parent}: ${pair.display}`;
+  if (pair) return pair.display;
+  const { main, sub } = splitTagMainSub(value);
+  if (sub) return `${main}: ${tagSubtype(sub)}`;
+  return main.includes(':') ? main : `${main}:`;
 }
 
 function tagEntriesForPopup(row) {
@@ -1223,93 +1355,6 @@ function tagEntryCertaintyMatches(tentative, mode) {
   return true;
 }
 
-function collapsedTagValues(values, filter, expandedParents) {
-  const parents = values.filter((p) => !p.child);
-  const childrenByParent = new Map();
-  for (const child of values.filter((p) => p.child)) {
-    const children = childrenByParent.get(child.parent) ?? [];
-    children.push(child);
-    childrenByParent.set(child.parent, children);
-  }
-
-  if (filter) {
-    const out = [];
-    out.push({ section: 'Matching tags' });
-    for (const parent of parents) {
-      const children = childrenByParent.get(parent.value) ?? [];
-      const matchingChildren = children.filter((child) => filterPairMatches(child, filter));
-      const parentMatches = filterPairMatches(parent, filter);
-      if (!parentMatches && matchingChildren.length === 0) continue;
-      out.push(parent);
-      out.push(...matchingChildren);
-    }
-    return out;
-  }
-
-  const out = [];
-  let lastSection = '';
-  for (const parent of parents) {
-    const section = tagNamespaceSection(parent.value);
-    if (section !== lastSection) {
-      out.push({ section });
-      lastSection = section;
-    }
-    out.push(parent);
-    if (!expandedParents.has(parent.value)) continue;
-
-    const children = childrenByParent.get(parent.value) ?? [];
-    const visibleChildren =
-      children.length === 1
-        ? children
-        : children
-            .filter((child) => child.count >= TAG_CHILD_MIN_VISIBLE_COUNT)
-            .slice(0, TAG_CHILD_VISIBLE_LIMIT);
-    out.push(...visibleChildren);
-    const hiddenCount = Math.max(0, children.length - visibleChildren.length);
-    if (hiddenCount > 0) {
-      out.push({
-        toggle: true,
-        parent: parent.value,
-        expanded: true,
-        hiddenCount,
-      });
-    }
-  }
-  out.push({ hint: 'Search to find low-frequency tags inside collapsed namespaces.' });
-  return out;
-}
-
-function buildActiveTagFilterBlock(allValues, allValueKeys, active, onRemove) {
-  if (allValueKeys.every((value) => active.has(value))) return null;
-  const selected = [...compressTagSelections(active, allValues)]
-    .map((value) => allValues.find((p) => p.value === value))
-    .filter(Boolean);
-  if (selected.length === 0) return null;
-
-  const wrap = document.createElement('div');
-  wrap.className = 'tag-active-filters';
-  const title = document.createElement('div');
-  title.className = 'tag-active-title';
-  title.textContent = 'Active filters';
-  wrap.append(title);
-  for (const p of selected.slice(0, 12)) {
-    const pill = document.createElement('button');
-    pill.type = 'button';
-    pill.className = 'tag-active-pill';
-    pill.title = `Remove ${p.sub || p.value}`;
-    pill.textContent = p.child ? `${p.parent}: ${p.display}` : p.display;
-    pill.addEventListener('click', () => onRemove(p.value));
-    wrap.append(pill);
-  }
-  if (selected.length > 12) {
-    const more = document.createElement('span');
-    more.className = 'tag-active-more';
-    more.textContent = `+${selected.length - 12} more`;
-    wrap.append(more);
-  }
-  return wrap;
-}
-
 function tagNamespaceRank(ns) {
   return TAG_NAMESPACE_RANK.get(ns) ?? 1000;
 }
@@ -1321,37 +1366,9 @@ function tagNamespaceSection(ns) {
   return 'Other namespaces';
 }
 
-function normalizeTagSelections(active, allValues, childValuesByParent) {
-  for (const p of allValues) {
-    if (p.child && active.has(p.sub)) {
-      active.delete(p.sub);
-      active.add(p.value);
-    }
-  }
-  for (const [parent, children] of childValuesByParent.entries()) {
-    if (active.has(parent)) {
-      for (const child of children) active.add(child);
-    } else if (children.length > 0 && children.every((child) => active.has(child))) {
-      active.add(parent);
-    }
-  }
-}
-
-function compressTagSelections(active, allValues) {
-  const next = new Set();
-  for (const p of allValues) {
-    if (p.child) {
-      if (!active.has(p.parent) && active.has(p.value)) next.add(p.value);
-    } else if (active.has(p.value)) {
-      next.add(p.value);
-    }
-  }
-  return next;
-}
-
-function filterPairMatches(pair, filter) {
+function filterValueMatches(pair, filter) {
   if (!filter) return true;
-  return [pair.value, pair.display, pair.parent, pair.sub]
+  return [pair.value, pair.display]
     .filter(Boolean)
     .some((value) => String(value).toLowerCase().includes(filter));
 }

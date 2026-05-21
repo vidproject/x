@@ -1418,10 +1418,11 @@ function goto(p) {
 
 function renderTimelinePager(rows, threads) {
   els.timelineBars.replaceChildren();
-  els.timelineClear.hidden = !(urlState.from || urlState.to);
+  const dateFilterActive = Boolean(urlState.from || urlState.to);
+  els.timelineClear.hidden = !dateFilterActive;
   const bins = buildTimelineBins(rows, threads);
   if (bins.length === 0) {
-    els.timelineLabel.textContent = 'Tweet volume';
+    els.timelineLabel.textContent = 'Date histogram';
     const empty = document.createElement('div');
     empty.className = 'timeline-empty';
     empty.textContent = 'No dated tweets in current filters';
@@ -1431,32 +1432,61 @@ function renderTimelinePager(rows, threads) {
   const unit = bins[0]?.unit || 'day';
   const maxTweets = Math.max(1, ...bins.map((bin) => bin.tweets));
   const totalTweets = bins.reduce((sum, bin) => sum + bin.tweets, 0);
-  els.timelineLabel.textContent = `${fmtNum(totalTweets)} tweets by ${unit}`;
+  const firstBin = bins[0];
+  const lastBin = bins[bins.length - 1];
+  const coverageStart = firstBin.coverageStart || firstBin.start;
+  const coverageEnd = lastBin.coverageEnd || lastBin.end;
+  const activeRange = dateFilterActive
+    ? ` · selected ${timelineRangeLabel(urlState.from || coverageStart, urlState.to || coverageEnd)}`
+    : '';
+  els.timelineLabel.textContent = `Date histogram: ${fmtNum(totalTweets)} tweet${
+    totalTweets === 1 ? '' : 's'
+  } · ${timelineRangeLabel(coverageStart, coverageEnd)} · by ${unit}${activeRange}`;
+
+  const track = document.createElement('div');
+  track.className = 'timeline-track';
+  track.style.setProperty('--timeline-bin-count', String(bins.length));
+
   for (const bin of bins) {
     const bar = document.createElement('button');
     bar.type = 'button';
-    bar.className = `timeline-bar${bin.tweets === 0 ? ' empty' : ''}${
-      timelineBinIsActive(bin) ? ' active' : ''
+    const active = timelineBinIsActive(bin);
+    bar.className = `timeline-bar${bin.tweets === 0 ? ' empty' : ''}${active ? ' active' : ''}${
+      dateFilterActive && !active ? ' inactive' : ''
     }`;
-    const height = bin.tweets === 0 ? 2 : Math.max(3, Math.round((bin.tweets / maxTweets) * 28));
-    bar.style.setProperty('--bar-height', `${height}px`);
-    bar.title = `${bin.label}: ${fmtNum(bin.tweets)} tweet${bin.tweets === 1 ? '' : 's'}; ${fmtNum(bin.threads)} thread${bin.threads === 1 ? '' : 's'}. Click to filter ${bin.start} through ${bin.end}.`;
+    const scaled = bin.tweets === 0 ? 0 : Math.sqrt(bin.tweets / maxTweets);
+    const height = bin.tweets === 0 ? 3 : Math.max(8, Math.round(scaled * 100));
+    bar.style.setProperty('--bar-height', `${height}%`);
+    bar.title = `${timelineRangeLabel(bin.start, bin.end)}: ${fmtNum(bin.tweets)} tweet${
+      bin.tweets === 1 ? '' : 's'
+    }; ${fmtNum(bin.threads)} thread${bin.threads === 1 ? '' : 's'}.`;
     bar.setAttribute('aria-label', bar.title);
-    if (bin.tweets === 0) {
-      bar.disabled = true;
-    } else {
-      bar.addEventListener('click', () => {
-        urlState.from = bin.start;
-        urlState.to = bin.end;
-        urlState.page = 1;
-        els.dateFrom.value = urlState.from;
-        els.dateTo.value = urlState.to;
-        applyToUrl(urlState);
-        refresh();
-      });
-    }
-    els.timelineBars.append(bar);
+    const fill = document.createElement('span');
+    fill.className = 'timeline-bar-fill';
+    fill.setAttribute('aria-hidden', 'true');
+    bar.append(fill);
+    bar.addEventListener('click', () => {
+      urlState.from = bin.start;
+      urlState.to = bin.end;
+      urlState.page = 1;
+      els.dateFrom.value = urlState.from;
+      els.dateTo.value = urlState.to;
+      applyToUrl(urlState);
+      refresh();
+    });
+    track.append(bar);
   }
+  const axis = document.createElement('div');
+  axis.className = 'timeline-axis';
+  const startLabel = document.createElement('span');
+  startLabel.textContent = coverageStart;
+  const unitLabel = document.createElement('span');
+  unitLabel.className = 'timeline-axis-unit';
+  unitLabel.textContent = `${bins.length} ${pluralize(unit, bins.length)}`;
+  const endLabel = document.createElement('span');
+  endLabel.textContent = coverageEnd;
+  axis.append(startLabel, unitLabel, endLabel);
+  els.timelineBars.append(track, axis);
 }
 
 function buildTimelineBins(rows, threads) {
@@ -1465,6 +1495,8 @@ function buildTimelineBins(rows, threads) {
   dates.sort((a, b) => a - b);
   const min = dates[0];
   const max = dates[dates.length - 1];
+  const coverageStart = dayFromDate(min);
+  const coverageEnd = dayFromDate(max);
   const unit = timelineUnit(min, max);
   const bins = [];
   const byStart = new Map();
@@ -1485,6 +1517,8 @@ function buildTimelineBins(rows, threads) {
     byStart.set(start, bin);
     cur = nextTimelineBin(cur, unit);
   }
+  if (bins[0]) bins[0].coverageStart = coverageStart;
+  if (bins[bins.length - 1]) bins[bins.length - 1].coverageEnd = coverageEnd;
   for (const row of rows) {
     const date = dateFromDay(dayKey(row.posted_at));
     if (!date) continue;
@@ -1500,12 +1534,16 @@ function buildTimelineBins(rows, threads) {
   return bins;
 }
 
+const TIMELINE_MAX_BINS = 72;
+
 function timelineUnit(min, max) {
   const days = Math.max(1, Math.round((max - min) / 86_400_000) + 1);
-  if (days <= 60) return 'day';
-  if (days <= 730) return 'week';
+  if (days <= TIMELINE_MAX_BINS) return 'day';
+  if (Math.ceil(days / 7) <= TIMELINE_MAX_BINS) return 'week';
   const months = (max.getUTCFullYear() - min.getUTCFullYear()) * 12 + max.getUTCMonth() - min.getUTCMonth() + 1;
-  return months <= 144 ? 'month' : 'quarter';
+  if (months <= TIMELINE_MAX_BINS) return 'month';
+  if (Math.ceil(months / 3) <= TIMELINE_MAX_BINS) return 'quarter';
+  return 'year';
 }
 
 function timelineBinStart(date, unit) {
@@ -1518,6 +1556,7 @@ function timelineBinStart(date, unit) {
   if (unit === 'quarter') {
     return new Date(Date.UTC(d.getUTCFullYear(), Math.floor(d.getUTCMonth() / 3) * 3, 1));
   }
+  if (unit === 'year') return new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
   return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1));
 }
 
@@ -1532,6 +1571,7 @@ function nextTimelineBin(start, unit) {
   if (unit === 'day') next.setUTCDate(next.getUTCDate() + 1);
   else if (unit === 'week') next.setUTCDate(next.getUTCDate() + 7);
   else if (unit === 'quarter') next.setUTCMonth(next.getUTCMonth() + 3);
+  else if (unit === 'year') next.setUTCFullYear(next.getUTCFullYear() + 1);
   else next.setUTCMonth(next.getUTCMonth() + 1);
   return next;
 }
@@ -1542,6 +1582,7 @@ function timelineBinLabel(start, unit) {
   if (unit === 'day') return dayFromDate(start);
   if (unit === 'week') return `${dayFromDate(start)} week`;
   if (unit === 'quarter') return `${year} Q${Math.floor(start.getUTCMonth() / 3) + 1}`;
+  if (unit === 'year') return String(year);
   return `${year}-${month}`;
 }
 
@@ -1554,6 +1595,14 @@ function timelineBinIsActive(bin) {
 
 function dayFromDate(date) {
   return date.toISOString().slice(0, 10);
+}
+
+function timelineRangeLabel(start, end) {
+  return start === end ? start : `${start} to ${end}`;
+}
+
+function pluralize(unit, count) {
+  return `${unit}${count === 1 ? '' : 's'}`;
 }
 
 // --- Hash sync ---
@@ -1652,6 +1701,7 @@ function refresh() {
     sort: urlState.sort,
     dir: urlState.dir,
     colFilters: visibleColFilters,
+    tagCertainty: urlState.tagcert || 'all',
     expandedThreads,
     onRowClick: (r) => {
       selectedRowId = r.tweet_id;
@@ -1710,12 +1760,6 @@ function refresh() {
           refresh();
         },
         tagCertainty: urlState.tagcert || 'all',
-        onTagCertaintyChange: (mode) => {
-          urlState.tagcert = mode === 'all' ? 'all' : mode;
-          urlState.page = 1;
-          applyToUrl(urlState);
-          refresh();
-        },
         mediaSettings,
         onMediaSettingsChange: (next) => {
           mediaSettings = normalizeMediaSettings({ ...mediaSettings, ...next });
@@ -1749,17 +1793,18 @@ function rowsForColumnCounts(key) {
     if (col === key) continue;
     scopedColFilters[col] = values instanceof Set ? new Set(values) : new Set(values || []);
   }
+  const includeTagFilter = key !== 'tags';
   return store.apply({
     accounts: urlState.accounts,
     accountCategories: urlState.categories,
-    tags: urlState.tags,
+    tags: includeTagFilter ? urlState.tags : [],
     q: urlState.q,
     qfield: urlState.qfield,
     from: urlState.from,
     to: urlState.to,
     type: urlState.type,
     media: urlState.media,
-    tagCertainty: urlState.tagcert || 'all',
+    tagCertainty: includeTagFilter ? urlState.tagcert || 'all' : 'all',
     sort: urlState.sort,
     dir: urlState.dir,
     colFilters: scopedColFilters,
