@@ -511,7 +511,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 3854,
+      "observations": 3862,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1033,7 +1033,7 @@
     "ICEgov": {
       "category": "core",
       "label": "U.S. Immigration and Customs Enforcement",
-      "observations": 1164,
+      "observations": 1168,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3200,7 +3200,7 @@
     "public": 141,
     "public_figures": 71
   },
-  "generated_at": "2026-05-21T03:22:58Z",
+  "generated_at": "2026-05-21T03:25:13Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
