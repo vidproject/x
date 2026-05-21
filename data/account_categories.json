@@ -495,7 +495,7 @@
     "DNIGabbard": {
       "category": "officials",
       "label": "DNI Tulsi Gabbard",
-      "observations": 8,
+      "observations": 9,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2032,7 +2032,7 @@
     "StephenM": {
       "category": "core",
       "label": "Stephen Miller",
-      "observations": 1509,
+      "observations": 1771,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2152,6 +2152,16 @@
       ],
       "category": "public",
       "label": "Lawrence Moore",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "TheTexasBoomer": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Texas Boomer",
       "observations": 1,
       "reason": "service-history badge only",
       "source": "data/users.json"
@@ -2591,7 +2601,7 @@
       ],
       "category": "public",
       "label": "MICHAEL Murdock \ud83c\uddfa\ud83c\uddf8\ud83c\uddee\ud83c\uddf9",
-      "observations": 1,
+      "observations": 2,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -2683,7 +2693,7 @@
       ],
       "category": "public",
       "label": "Jason Schmitz",
-      "observations": 1,
+      "observations": 2,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -2724,7 +2734,7 @@
     "ksorbs": {
       "category": "officials",
       "label": "Kevin Sorbo",
-      "observations": 2,
+      "observations": 3,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2984,10 +2994,10 @@
     "core": 12,
     "government": 80,
     "officials": 75,
-    "public": 126,
+    "public": 127,
     "public_figures": 67
   },
-  "generated_at": "2026-05-21T01:40:31Z",
+  "generated_at": "2026-05-21T01:42:34Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
