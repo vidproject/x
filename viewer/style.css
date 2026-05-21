@@ -1364,8 +1364,80 @@ html[data-media-fit='vertical'] .media-thumb {
   padding-bottom: 5px;
   font-weight: 600;
 }
+.col-pop .tag-browser label.col-val.namespace {
+  font-weight: 650;
+}
 .col-pop label.col-val.child {
   padding-left: 18px;
+}
+.col-pop .tag-fold-btn {
+  width: 18px;
+  height: 18px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--fg-2);
+  font: inherit;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+}
+.col-pop .tag-fold-btn:hover {
+  color: var(--accent-2);
+  border-color: var(--accent-2);
+}
+.col-pop .tag-facet-section {
+  margin: 8px 2px 4px;
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+  color: var(--fg-3);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.col-pop .tag-active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 5px;
+  margin-bottom: 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-2);
+}
+.col-pop .tag-active-title {
+  flex: 0 0 100%;
+  color: var(--fg-3);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.col-pop .tag-active-pill {
+  border: 1px solid rgba(75, 142, 255, 0.45);
+  border-radius: 999px;
+  background: rgba(75, 142, 255, 0.12);
+  color: var(--fg);
+  font: inherit;
+  font-size: 11px;
+  padding: 2px 7px;
+  cursor: pointer;
+}
+.col-pop .tag-active-pill::after {
+  content: ' x';
+  color: var(--fg-3);
+}
+.col-pop .tag-active-pill:hover {
+  border-color: var(--accent-2);
+}
+.col-pop .tag-active-more,
+.col-pop .tag-browser-hint {
+  color: var(--fg-3);
+  font-size: 11px;
+  padding: 3px 6px;
 }
 .col-pop .tag-more-btn {
   width: 100%;
