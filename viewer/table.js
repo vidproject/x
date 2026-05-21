@@ -291,6 +291,7 @@ export function renderColumnsMenu(menuEl, visible, onChange) {
  *   colFilters: Record<string, Set<string>>,
  *   expandedThreads?: Set<string>,
  *   onRowClick: (row:any)=>void,
+ *   onAccountOpen?: (handle:string, row:any)=>void,
  *   onSortToggle: (key:string)=>void,
  *   onOpenColPop: (key:string, btn:HTMLElement)=>void,
  *   onToggleThread?: (threadId:string)=>void,
@@ -310,6 +311,7 @@ export function renderTable(args) {
     colFilters,
     expandedThreads,
     onRowClick,
+    onAccountOpen,
     onSortToggle,
     onOpenColPop,
     onToggleThread,
@@ -367,6 +369,7 @@ export function renderTable(args) {
       pageSize,
       expandedThreads: expandedThreads ?? new Set(),
       onRowClick,
+      onAccountOpen,
       onToggleThread,
     });
     return;
@@ -380,7 +383,7 @@ export function renderTable(args) {
     return;
   }
   for (const r of slice) {
-    tbodyEl.append(buildRow(r, visibleKeys, onRowClick));
+    tbodyEl.append(buildRow(r, visibleKeys, onRowClick, onAccountOpen));
   }
 }
 
@@ -392,6 +395,7 @@ function paintThreaded({
   pageSize,
   expandedThreads,
   onRowClick,
+  onAccountOpen,
   onToggleThread,
 }) {
   // Pagination counts threads, not rows. A page is N threads regardless of
@@ -404,7 +408,7 @@ function paintThreaded({
   }
   for (const thread of slice) {
     const expanded = expandedThreads.has(thread.threadId);
-    const masterRow = buildRow(thread.master, visible, onRowClick);
+    const masterRow = buildRow(thread.master, visible, onRowClick, onAccountOpen);
     masterRow.classList.add('thread-master');
     masterRow.dataset.threadId = thread.threadId;
     const hasSelf = thread.selfSlaves.length > 0;
@@ -427,7 +431,7 @@ function paintThreaded({
     // random reactions to a viral DHS tweet.
     if (expanded && (hasSelf || hasPrivileged)) {
       for (const slave of [...thread.selfSlaves, ...privilegedSlaves]) {
-        const sr = buildRow(slave, visible, onRowClick);
+        const sr = buildRow(slave, visible, onRowClick, onAccountOpen);
         sr.classList.add('thread-slave');
         const privileged = slave.__thread_privileged_category;
         if (privileged) {
@@ -547,7 +551,7 @@ function promotedReplyBadge(group) {
   return badge;
 }
 
-function buildRow(r, visible, onRowClick) {
+function buildRow(r, visible, onRowClick, onAccountOpen) {
   const tr = document.createElement('tr');
   tr.dataset.tweetId = r.tweet_id;
   tr.addEventListener('click', () => onRowClick(r));
@@ -558,6 +562,16 @@ function buildRow(r, visible, onRowClick) {
     td.dataset.colKey = col.key;
     if (col.className) td.className = col.className;
     td.innerHTML = col.render(r);
+    if (col.key === 'account_handle') {
+      for (const btn of td.querySelectorAll('[data-account-profile]')) {
+        btn.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const handle = btn.getAttribute('data-account-profile') || r.account_handle || '';
+          if (handle) onAccountOpen?.(handle, r);
+        });
+      }
+    }
     tr.append(td);
   }
   return tr;
@@ -1049,9 +1063,11 @@ function renderAccountCell(r) {
   const avatarHtml = avatar
     ? `<img class="acc-avatar" loading="lazy" alt="" src="${escape(avatar)}" />`
     : '<span class="acc-avatar acc-avatar-placeholder">·</span>';
-  const handleHtml = `<span class="handle">@${escape(handle)}</span>`;
+  const handleHtml = handle
+    ? `<button type="button" class="account-profile-link handle" data-account-profile="${escape(handle)}" title="Open @${escape(handle)} profile">@${escape(handle)}</button>`
+    : '<span class="handle">@</span>';
   const nameHtml = displayName
-    ? `<span class="display-name" title="${escape(displayName)}">${escape(displayName)}${verifiedBadge}</span>`
+    ? `<button type="button" class="account-profile-link display-name" data-account-profile="${escape(handle)}" title="Open @${escape(handle)} profile">${escape(displayName)}${verifiedBadge}</button>`
     : '';
   return `<span class="acc-cell">${avatarHtml}${handleHtml}${renderAccountBadges(userMeta)}${nameHtml}</span>`;
 }

@@ -1004,13 +1004,332 @@ els.csvBtn.addEventListener('click', () => {
 // --- Sidepanel ---
 els.spClose.addEventListener('click', () => {
   selectedRowId = null;
-  if (urlState.tweet) {
+  if (urlState.tweet || urlState.profile) {
     urlState.tweet = '';
+    urlState.profile = '';
     applyToUrl(urlState);
   }
   closeSidepanel(els.sidepanel);
   refreshSelectionHighlight();
 });
+
+function openProfileForHandle(handle, { updateUrl = true } = {}) {
+  const cleanHandle = String(handle ?? '').replace(/^@/, '').trim();
+  if (!cleanHandle) return;
+  selectedRowId = null;
+  if (updateUrl) {
+    urlState.profile = cleanHandle;
+    urlState.tweet = '';
+    applyToUrl(urlState);
+  }
+  const rows = store.allRows
+    .filter((row) => row.account_handle === cleanHandle)
+    .slice()
+    .sort((a, b) => String(b.posted_at ?? '').localeCompare(String(a.posted_at ?? '')));
+  const manifestAccount = (manifest?.accounts ?? []).find((account) => account.handle === cleanHandle);
+  const user = users.get(cleanHandle) ?? {};
+  els.spTitle.textContent = `@${cleanHandle}`;
+  const shareEl = els.sidepanel.querySelector('#sp-share');
+  if (shareEl) shareEl.hidden = true;
+  els.spBody.replaceChildren(profileView(cleanHandle, rows, user, manifestAccount));
+  els.sidepanel.hidden = false;
+  els.sidepanel.setAttribute('aria-hidden', 'false');
+  refreshSelectionHighlight();
+}
+
+function openSharedProfileFromUrl() {
+  const handle = String(urlState.profile || '');
+  if (!handle) return false;
+  openProfileForHandle(handle, { updateUrl: false });
+  return true;
+}
+
+function profileView(handle, rows, user, manifestAccount) {
+  const wrap = document.createElement('div');
+  wrap.className = 'profile-view';
+  wrap.append(
+    profileHeader(handle, rows, user, manifestAccount),
+    profileStats(rows, user, manifestAccount),
+    profileActivity(rows),
+    profileTweetList(rows)
+  );
+  return wrap;
+}
+
+function profileHeader(handle, rows, user, manifestAccount) {
+  const head = document.createElement('section');
+  head.className = 'profile-head';
+  const avatar = document.createElement(user.avatar_url ? 'img' : 'span');
+  avatar.className = user.avatar_url ? 'profile-avatar' : 'profile-avatar profile-avatar-placeholder';
+  if (user.avatar_url) {
+    avatar.src = user.avatar_url;
+    avatar.alt = '';
+    avatar.loading = 'lazy';
+  } else {
+    avatar.textContent = '@';
+  }
+  const body = document.createElement('div');
+  body.className = 'profile-head-body';
+  const name = document.createElement('div');
+  name.className = 'profile-name';
+  name.textContent = user.display_name || manifestAccount?.label || `@${handle}`;
+  const meta = document.createElement('div');
+  meta.className = 'profile-meta';
+  meta.textContent = [
+    `@${handle}`,
+    manifestAccount?.category,
+    user.location,
+    user.verified || user.is_blue_verified ? 'verified' : '',
+  ]
+    .filter(Boolean)
+    .join(' · ');
+  body.append(name, meta);
+  if (user.description) {
+    const desc = document.createElement('div');
+    desc.className = 'profile-description';
+    desc.textContent = user.description;
+    body.append(desc);
+  }
+  const actions = document.createElement('div');
+  actions.className = 'profile-actions';
+  const filterBtn = document.createElement('button');
+  filterBtn.type = 'button';
+  filterBtn.className = 'btn';
+  filterBtn.textContent = 'Filter table';
+  filterBtn.addEventListener('click', () => {
+    urlState.accounts = [handle];
+    urlState.page = 1;
+    urlState.profile = '';
+    applyToUrl(urlState);
+    els.accountFilter.value = handle;
+    closeSidepanel(els.sidepanel);
+    refresh();
+  });
+  actions.append(filterBtn);
+  const latestTweet = rows.find((row) => row.tweet_url);
+  if (latestTweet?.tweet_url) {
+    const xLink = document.createElement('a');
+    xLink.className = 'btn ghost';
+    xLink.href = latestTweet.tweet_url.replace(/\/status\/.*/, '');
+    xLink.target = '_blank';
+    xLink.rel = 'noopener';
+    xLink.textContent = 'Open on X';
+    actions.append(xLink);
+  }
+  body.append(actions);
+  head.append(avatar, body);
+  return head;
+}
+
+function profileStats(rows, user, manifestAccount) {
+  const section = document.createElement('section');
+  section.className = 'profile-section';
+  section.append(profileSectionTitle('Account snapshot'));
+  const grid = document.createElement('div');
+  grid.className = 'profile-stat-grid';
+  const mediaRows = rows.filter((row) => Array.isArray(row.media) && row.media.length > 0).length;
+  const replyRows = rows.filter((row) => row.tweet_type === 'reply').length;
+  const dates = rows.map((row) => dayKey(row.posted_at)).filter(Boolean).sort();
+  const firstLast = dates.length ? `${dates[0]} to ${dates[dates.length - 1]}` : 'No posted dates';
+  for (const [label, value] of [
+    ['Archived tweets', fmtNum(rows.length)],
+    ['Replies', fmtNum(replyRows)],
+    ['With media', fmtNum(mediaRows)],
+    ['Posted range', firstLast],
+    ['Followers', fmtNum(user.followers_count)],
+    ['Following', fmtNum(user.friends_count)],
+    ['Statuses', fmtNum(user.statuses_count)],
+    ['Latest capture', shortDate(manifestAccount?.latest_capture_at || user.observed_at)],
+  ]) {
+    grid.append(profileStat(label, value));
+  }
+  section.append(grid);
+  return section;
+}
+
+function profileActivity(rows) {
+  const section = document.createElement('section');
+  section.className = 'profile-section';
+  section.append(profileSectionTitle('Activity by posted date'));
+  const model = profileActivityModel(rows);
+  section.append(profileBarChart(model.buckets), profileCalendar(model.buckets, model.scannedDays));
+  const note = document.createElement('div');
+  note.className = 'profile-note';
+  note.textContent =
+    'Muted cells are days with no archived tweet for this account. Gray cells are conservatively inferred unscanned days because this viewer only sees capture dates present in loaded rows and the manifest.';
+  section.append(note);
+  return section;
+}
+
+function profileTweetList(rows) {
+  const section = document.createElement('section');
+  section.className = 'profile-section';
+  section.append(profileSectionTitle(`Archived tweets (${fmtNum(rows.length)})`));
+  const list = document.createElement('div');
+  list.className = 'profile-tweets';
+  if (rows.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'muted';
+    empty.textContent = 'No loaded tweets for this account yet.';
+    list.append(empty);
+  }
+  for (const row of rows.slice(0, 100)) {
+    list.append(profileTweetItem(row));
+  }
+  if (rows.length > 100) {
+    const more = document.createElement('div');
+    more.className = 'profile-note';
+    more.textContent = `Showing latest 100 of ${fmtNum(rows.length)} archived tweets. Use Filter table for the full set.`;
+    list.append(more);
+  }
+  section.append(list);
+  return section;
+}
+
+function profileTweetItem(row) {
+  const item = document.createElement('button');
+  item.type = 'button';
+  item.className = 'profile-tweet';
+  item.addEventListener('click', () => {
+    selectedRowId = row.tweet_id;
+    urlState.tweet = String(row.tweet_id || '');
+    urlState.profile = '';
+    applyToUrl(urlState);
+    const thread = store.groupIntoThreads([row])[0] || null;
+    openSidepanel(els.sidepanel, els.spTitle, els.spBody, row, thread);
+    refreshSelectionHighlight();
+  });
+  const meta = document.createElement('div');
+  meta.className = 'profile-tweet-meta';
+  meta.textContent = [shortDate(row.posted_at), row.tweet_type || 'original'].filter(Boolean).join(' · ');
+  const text = document.createElement('div');
+  text.className = 'profile-tweet-text';
+  text.textContent = row.text_resolved || row.text || '(no text)';
+  item.append(meta, text);
+  return item;
+}
+
+function profileActivityModel(rows) {
+  const counts = new Map();
+  for (const row of rows) {
+    const day = dayKey(row.posted_at);
+    if (!day) continue;
+    counts.set(day, (counts.get(day) || 0) + 1);
+  }
+  const scannedDays = inferredScannedDays();
+  const unique = [...counts.keys()].sort();
+  if (unique.length === 0) unique.push(...scannedDays);
+  unique.sort();
+  const min = unique[0] || dayKey(new Date().toISOString());
+  const max = unique[unique.length - 1] || min;
+  const buckets = [];
+  for (const day of daysBetween(min, max)) {
+    buckets.push({
+      day,
+      count: counts.get(day) || 0,
+      scanned: scannedDays.has(day),
+    });
+  }
+  return { buckets, scannedDays };
+}
+
+function inferredScannedDays() {
+  const days = new Set();
+  for (const row of store.allRows) {
+    for (const key of ['captured_at', 'first_captured_at', 'last_seen_at', 'unavailable_detected_at']) {
+      const day = dayKey(row[key]);
+      if (day) days.add(day);
+    }
+    for (const entry of Array.isArray(row.engagement_history) ? row.engagement_history : []) {
+      const day = dayKey(entry?.captured_at);
+      if (day) days.add(day);
+    }
+  }
+  for (const account of manifest?.accounts ?? []) {
+    const day = dayKey(account.latest_capture_at);
+    if (day) days.add(day);
+  }
+  return days;
+}
+
+function profileBarChart(buckets) {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.classList.add('profile-bars');
+  svg.setAttribute('viewBox', '0 0 640 140');
+  svg.setAttribute('role', 'img');
+  svg.setAttribute('aria-label', 'Tweet activity by posted date');
+  const max = Math.max(1, ...buckets.map((bucket) => bucket.count));
+  const visible = buckets.slice(-90);
+  const width = 640 / Math.max(1, visible.length);
+  visible.forEach((bucket, index) => {
+    const height = bucket.count > 0 ? Math.max(3, (bucket.count / max) * 112) : 2;
+    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    rect.setAttribute('x', String(index * width + 1));
+    rect.setAttribute('y', String(128 - height));
+    rect.setAttribute('width', String(Math.max(1, width - 2)));
+    rect.setAttribute('height', String(height));
+    rect.setAttribute('rx', '1');
+    rect.classList.add(bucket.count > 0 ? 'active' : bucket.scanned ? 'empty' : 'unscanned');
+    const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+    title.textContent = `${bucket.day}: ${bucket.count} tweet${bucket.count === 1 ? '' : 's'}${bucket.scanned ? '' : ' (scan not inferred)'}`;
+    rect.append(title);
+    svg.append(rect);
+  });
+  return svg;
+}
+
+function profileCalendar(buckets, scannedDays) {
+  const wrap = document.createElement('div');
+  wrap.className = 'profile-calendar';
+  const max = Math.max(1, ...buckets.map((bucket) => bucket.count));
+  for (const bucket of buckets.slice(-120)) {
+    const cell = document.createElement('span');
+    cell.className = 'profile-day';
+    if (bucket.count > 0) cell.classList.add(`level-${Math.min(4, Math.ceil((bucket.count / max) * 4))}`);
+    else if (!scannedDays.has(bucket.day)) cell.classList.add('unscanned');
+    else cell.classList.add('empty');
+    cell.title = `${bucket.day}: ${bucket.count} archived tweet${bucket.count === 1 ? '' : 's'}${scannedDays.has(bucket.day) ? '' : '; scan not inferred'}`;
+    wrap.append(cell);
+  }
+  return wrap;
+}
+
+function profileSectionTitle(text) {
+  const h = document.createElement('h3');
+  h.textContent = text;
+  return h;
+}
+
+function profileStat(label, value) {
+  const item = document.createElement('div');
+  item.className = 'profile-stat';
+  const v = document.createElement('div');
+  v.className = 'profile-stat-value';
+  v.textContent = value || '—';
+  const k = document.createElement('div');
+  k.className = 'profile-stat-label';
+  k.textContent = label;
+  item.append(v, k);
+  return item;
+}
+
+function daysBetween(start, end) {
+  const out = [];
+  const cur = dateFromDay(start);
+  const stop = dateFromDay(end);
+  if (!cur || !stop) return out;
+  while (cur <= stop) {
+    out.push(cur.toISOString().slice(0, 10));
+    cur.setUTCDate(cur.getUTCDate() + 1);
+  }
+  return out;
+}
+
+function dateFromDay(day) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(day ?? ''))) return null;
+  const date = new Date(`${day}T00:00:00Z`);
+  return Number.isNaN(date.valueOf()) ? null : date;
+}
 
 // --- Pager ---
 els.pgFirst.addEventListener('click', () => goto(1));
@@ -1107,6 +1426,7 @@ function refresh() {
     onRowClick: (r) => {
       selectedRowId = r.tweet_id;
       urlState.tweet = String(r.tweet_id || '');
+      urlState.profile = '';
       applyToUrl(urlState);
       // When the clicked row is a master that owns non-self replies,
       // hand the thread along so the sidepanel can render its "Other
@@ -1116,6 +1436,7 @@ function refresh() {
       openSidepanel(els.sidepanel, els.spTitle, els.spBody, r, thread);
       refreshSelectionHighlight();
     },
+    onAccountOpen: (handle) => openProfileForHandle(handle),
     onSortToggle: (key) => {
       if (urlState.sort === key) {
         urlState.dir = urlState.dir === 'desc' ? 'asc' : 'desc';
@@ -1178,7 +1499,7 @@ function refresh() {
     },
   });
 
-  openSharedEntryFromUrl();
+  if (!openSharedProfileFromUrl()) openSharedEntryFromUrl();
   refreshSelectionHighlight();
   updateChartsPanel();
 }
@@ -1233,6 +1554,14 @@ function fmtNum(v) {
   const n = Number(v);
   if (!Number.isFinite(n)) return '—';
   return n.toLocaleString('en-US');
+}
+
+function dayKey(value) {
+  const text = String(value ?? '');
+  return /^\d{4}-\d{2}-\d{2}/.test(text) ? text.slice(0, 10) : '';
+}
+function shortDate(value) {
+  return dayKey(value) || '';
 }
 
 // --- Boot ---
