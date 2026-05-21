@@ -6,6 +6,14 @@ reference and is filled out in Phase 8.
 
 See also: the `Canonical tweet schema` block in the project specification.
 
+## Viewer-derived fields
+
+- `retweeted_by`: derived in the viewer from archived `tweet_type=retweet`
+  wrapper rows. When the original tweet is archived, the viewer shows the
+  original row with compact green `RT @handle` badges and exposes
+  `retweeted_by` for search, filtering, CSV export, and the sidepanel. The
+  column is hidden by default.
+
 ## News mentions sidecar
 
 `data/tags/news_mentions.parquet` is an optional annotation sidecar

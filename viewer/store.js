@@ -50,6 +50,7 @@ export const SEARCH_FIELD_OPTIONS = [
   { value: 'media_kinds', label: 'Media' },
   { value: 'posted_at', label: 'Posted date' },
   { value: 'tweet_url', label: 'Tweet URL' },
+  { value: 'retweeted_by', label: 'Retweeted by' },
   { value: 'reply_to_account', label: 'Reply-to account' },
 ];
 
@@ -67,6 +68,8 @@ export class Store {
     this.threadIndex = new Map(); // thread_id → all rows in thread
     /** @type {Map<string, string>} */
     this.accountCategoryByHandle = new Map();
+    /** @type {Map<string, Record<string, unknown>>} */
+    this.retweetOriginalById = new Map(); // retweet tweet_id -> original row
   }
 
   has(handle) {
@@ -131,6 +134,9 @@ export class Store {
     for (const rows of this.byHandle.values()) {
       for (const r of rows) {
         delete r.__reply_promotions;
+        delete r.__retweet_promotions;
+        delete r.__retweet_original;
+        delete r.retweeted_by;
         delete r.__thread_privileged_category;
         all.push(r);
       }
@@ -138,6 +144,7 @@ export class Store {
     this.allRows = all;
     this.idIndex = new Map();
     this.threadIndex = new Map();
+    this.retweetOriginalById = new Map();
     for (let i = 0; i < all.length; i++) {
       const r = all[i];
       const id = String(r.tweet_id ?? '');
@@ -151,6 +158,7 @@ export class Store {
       }
       list.push(r);
     }
+    this.annotateRetweetPromotions();
     this.annotateReplyPromotions();
     this.search = null; // rebuild lazily
   }
@@ -158,6 +166,15 @@ export class Store {
   getById(id) {
     const idx = this.idIndex.get(String(id));
     return idx === undefined ? null : this.allRows[idx];
+  }
+
+  getDisplayRowById(id) {
+    return this.displayRowFor(this.getById(id));
+  }
+
+  displayRowFor(row) {
+    if (!row) return null;
+    return row.__retweet_original || this.retweetOriginalById.get(String(row.tweet_id ?? '')) || row;
   }
 
   /** Build the full-text index on demand. */
@@ -174,6 +191,7 @@ export class Store {
         'tag_names',
         'media_insight_text',
         'news_mention_text',
+        'retweeted_by_str',
       ],
       storeFields: ['tweet_id'],
       searchOptions: {
@@ -191,6 +209,7 @@ export class Store {
       tag_names: tagNames(r).join(' '),
       media_insight_text: mediaInsightText(r),
       news_mention_text: newsMentionText(r),
+      retweeted_by_str: retweetedByHandles(r).join(' '),
     }));
     mini.addAll(docs);
     this.search = mini;
@@ -248,7 +267,15 @@ export class Store {
     if (filt.colFilters) {
       for (const [col, allowed] of Object.entries(filt.colFilters)) {
         if (!allowed || allowed.size === 0) continue;
-        rows = rows.filter((r) => allowed.has(formatForFilter(r, col)));
+        if (col === 'retweeted_by') {
+          rows = rows.filter((r) => {
+            const handles = retweetedByHandles(r);
+            if (handles.length === 0) return allowed.has('');
+            return handles.some((handle) => allowed.has(handle));
+          });
+        } else {
+          rows = rows.filter((r) => allowed.has(formatForFilter(r, col)));
+        }
       }
     }
     if (filt.q && filt.q.trim()) {
@@ -268,7 +295,7 @@ export class Store {
     const dir = filt.dir === 'asc' ? 1 : -1;
     const sortKey = filt.sort || 'posted_at';
     rows = rows.slice().sort((a, b) => compare(a, b, sortKey) * dir);
-    return rows;
+    return this.collapseRetweetsToOriginals(rows);
   }
 
   /**
@@ -371,10 +398,44 @@ export class Store {
       parent.__reply_promotions = promotions;
     }
   }
+
+  annotateRetweetPromotions() {
+    for (const retweet of this.allRows) {
+      if (retweet.tweet_type !== 'retweet') continue;
+      const originalId = String(retweet.retweeted_tweet_id ?? '');
+      if (!originalId) continue;
+      const original = this.getById(originalId);
+      if (!original || original === retweet) continue;
+      this.retweetOriginalById.set(String(retweet.tweet_id ?? ''), original);
+      retweet.__retweet_original = original;
+      const promotions = retweetPromotionsFor(original);
+      promotions.push({ retweet });
+      original.__retweet_promotions = promotions;
+      original.retweeted_by = retweetedByHandles(original);
+    }
+  }
+
+  collapseRetweetsToOriginals(rows) {
+    const out = [];
+    const seen = new Set();
+    for (const row of rows) {
+      const display = this.displayRowFor(row);
+      if (!display) continue;
+      const key = String(display.tweet_id ?? row.tweet_id ?? '');
+      if (key && seen.has(key)) continue;
+      if (key) seen.add(key);
+      out.push(display);
+    }
+    return out;
+  }
 }
 
 function replyPromotionsFor(row) {
   return Array.isArray(row?.__reply_promotions) ? row.__reply_promotions : [];
+}
+
+function retweetPromotionsFor(row) {
+  return Array.isArray(row?.__retweet_promotions) ? row.__retweet_promotions : [];
 }
 
 function promotedCategoryOf(row) {
@@ -522,6 +583,7 @@ function haystack(r) {
     tagNames(r).join(' '),
     mediaInsightText(r),
     newsMentionText(r),
+    retweetedByHandles(r).join(' '),
   ];
   return parts.join(' ');
 }
@@ -538,6 +600,7 @@ function fieldHaystack(row, field) {
   if (field === 'account_handle') return String(row.account_handle || '');
   if (field === 'tweet_type') return String(row.tweet_type || '');
   if (field === 'tweet_url') return String(row.tweet_url || '');
+  if (field === 'retweeted_by') return retweetedByHandles(row).join(' ');
   if (field === 'reply_to_account') return String(row.reply_to_account || '');
   return formatForFilter(row, field);
 }
@@ -567,6 +630,22 @@ function newsMentionText(row) {
     )
     .filter(Boolean)
     .join(' ');
+}
+
+export function retweetedByHandles(row) {
+  const handles = new Set();
+  if (Array.isArray(row?.retweeted_by)) {
+    for (const handle of row.retweeted_by) {
+      const text = String(handle || '').replace(/^@/, '').trim();
+      if (text) handles.add(text);
+    }
+  }
+  const promotions = Array.isArray(row?.__retweet_promotions) ? row.__retweet_promotions : [];
+  for (const promo of promotions) {
+    const handle = String(promo?.retweet?.account_handle || '').replace(/^@/, '').trim();
+    if (handle) handles.add(handle);
+  }
+  return [...handles].sort((a, b) => a.localeCompare(b));
 }
 
 function matchMediaFilter(r, kind) {
@@ -627,6 +706,7 @@ export function formatForFilter(row, col) {
     const kinds = new Set(media.map((m) => (m && m.media_type) || ''));
     return [...kinds].sort().join('+');
   }
+  if (col === 'retweeted_by') return retweetedByHandles(row).join('|');
   if (v == null) return '';
   return String(v);
 }

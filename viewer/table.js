@@ -17,11 +17,13 @@ import {
   combineTagMainSub,
   formatForFilter,
   splitTagMainSub,
+  retweetedByHandles,
   tagNames,
   tagNamespace,
   tagSubtype,
 } from './store.js';
 import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js';
+import { archiveShareUrlForRow, xTweetUrlForRow } from './links.js';
 
 const MEDIA_COL_KEY = 'media_kinds';
 export const TAG_CERTAINTY_LABELS = {
@@ -261,7 +263,7 @@ export const COLUMNS = [
     sortable: false,
     render: (r) =>
       r.tweet_id
-        ? `<a class="tweet-link share-link" href="${escape(shareUrlForRow(r))}">share</a>`
+        ? `<a class="tweet-link share-link" href="${escape(archiveShareUrlForRow(r))}">share</a>`
         : '',
   },
   {
@@ -271,9 +273,17 @@ export const COLUMNS = [
     filterable: false,
     sortable: false,
     render: (r) =>
-      r.tweet_url
-        ? `<a class="tweet-link" href="${escape(r.tweet_url)}" target="_blank" rel="noopener">↗</a>`
+      xTweetUrlForRow(r)
+        ? `<a class="tweet-link" href="${escape(xTweetUrlForRow(r))}" target="_blank" rel="noopener">↗</a>`
         : '',
+  },
+  {
+    key: 'retweeted_by',
+    label: 'Retweeted by',
+    default: false,
+    filterable: true,
+    sortable: false,
+    render: (r) => renderRetweetedByCell(r),
   },
 ];
 
@@ -461,11 +471,15 @@ function paintThreaded({
     const hasPrivileged = privilegedSlaves.length > 0;
     const hasOther = thread.otherSlaves.length > 0;
     const hasPromoted = Array.isArray(thread.promotedReplies) && thread.promotedReplies.length > 0;
+    const hasRetweets =
+      Array.isArray(thread.master.__retweet_promotions) &&
+      thread.master.__retweet_promotions.length > 0;
     if (hasPromoted) {
       masterRow.classList.add('has-promoted-reply');
       masterRow.classList.add(`promoted-${topPromotionCategory(thread.promotedReplies)}`);
     }
-    if (hasSelf || hasPrivileged || hasOther) {
+    if (hasRetweets) masterRow.classList.add('has-retweet-promotion');
+    if (hasSelf || hasPrivileged || hasOther || hasRetweets) {
       masterRow.classList.add('has-slaves');
       decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread);
     }
@@ -495,13 +509,18 @@ function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
     masterRow.querySelector('td[data-col-key="account_handle"]') ?? masterRow.firstElementChild;
   if (!targetCell) return;
   const promotions = Array.isArray(thread.promotedReplies) ? thread.promotedReplies : [];
+  const retweets = Array.isArray(thread.master.__retweet_promotions)
+    ? thread.master.__retweet_promotions
+    : [];
   const selfCount = thread.selfSlaves.length;
   const privilegedCount = Array.isArray(thread.privilegedSlaves)
     ? thread.privilegedSlaves.length
     : 0;
   const inlineCount = selfCount + privilegedCount;
   const replyCount = thread.otherSlaves.length;
-  if (inlineCount === 0 && replyCount === 0 && promotions.length === 0) return;
+  if (inlineCount === 0 && replyCount === 0 && promotions.length === 0 && retweets.length === 0) {
+    return;
+  }
 
   const wrap = document.createElement('span');
   wrap.className = `thread-affordances promoted-${topPromotionCategory(promotions)}`;
@@ -528,6 +547,9 @@ function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
   }
   for (const group of promotedReplyGroups(promotions)) {
     wrap.append(promotedReplyBadge(group));
+  }
+  for (const group of retweetPromotionGroups(retweets)) {
+    wrap.append(retweetBadge(group));
   }
   targetCell.append(wrap);
 }
@@ -598,6 +620,50 @@ function promotedReplyBadge(group) {
   badge.append(label);
   const displayName = displayNameForRow(group.reply);
   badge.title = `${displayName ? `${displayName} ` : ''}@${group.handle} direct reply`;
+  return badge;
+}
+
+function retweetPromotionGroups(promotions) {
+  const byHandle = new Map();
+  for (const promo of promotions) {
+    const retweet = promo?.retweet;
+    const handle = String(retweet?.account_handle ?? '');
+    if (!handle) continue;
+    let group = byHandle.get(handle);
+    if (!group) {
+      group = {
+        handle,
+        retweet,
+        count: 0,
+      };
+      byHandle.set(handle, group);
+    }
+    group.count += 1;
+  }
+  return [...byHandle.values()].sort((a, b) => a.handle.localeCompare(b.handle));
+}
+
+function retweetBadge(group) {
+  const badge = document.createElement('span');
+  badge.className = 'thread-retweet-badge';
+  const avatar = avatarForRow(group.retweet);
+  if (avatar) {
+    const img = document.createElement('img');
+    img.className = 'thread-reply-avatar';
+    img.loading = 'lazy';
+    img.alt = '';
+    img.src = avatar;
+    badge.append(img);
+  } else {
+    const placeholder = document.createElement('span');
+    placeholder.className = 'thread-reply-avatar thread-reply-avatar-placeholder';
+    badge.append(placeholder);
+  }
+  const label = document.createElement('span');
+  label.textContent = `RT @${group.handle}${group.count > 1 ? ` x${group.count}` : ''}`;
+  badge.append(label);
+  const displayName = displayNameForRow(group.retweet);
+  badge.title = `${displayName ? `${displayName} ` : ''}@${group.handle} retweeted`;
   return badge;
 }
 
@@ -713,6 +779,15 @@ export function openColumnFilterPopup({
       for (const t of tagNames(r)) {
         counts.set(t, (counts.get(t) ?? 0) + 1);
       }
+    }
+  } else if (colKey === 'retweeted_by') {
+    for (const r of rowsForCounts) {
+      const handles = retweetedByHandles(r);
+      if (handles.length === 0) {
+        counts.set('', (counts.get('') ?? 0) + 1);
+        continue;
+      }
+      for (const handle of handles) counts.set(handle, (counts.get(handle) ?? 0) + 1);
     }
   } else {
     for (const r of rowsForCounts) {
@@ -1304,14 +1379,6 @@ export function setUserLookup(map) {
   userLookup = map instanceof Map ? map : new Map();
 }
 
-function shareUrlForRow(row) {
-  const url = new URL(location.href);
-  const params = new URLSearchParams();
-  params.set('tweet', String(row.tweet_id || ''));
-  url.hash = params.toString();
-  return url.toString();
-}
-
 function renderAccountCell(r) {
   const handle = r.account_handle ?? '';
   const userMeta = userMetaForRow(r);
@@ -1517,6 +1584,17 @@ function renderMediaDescription(r) {
   return `<span class="cell-text" title="${escape(text)}">${escape(text)}</span>`;
 }
 
+function renderRetweetedByCell(r) {
+  const handles = retweetedByHandles(r);
+  if (handles.length === 0) return '<span class="muted">&mdash;</span>';
+  return handles
+    .map(
+      (handle) =>
+        `<span class="thread-retweet-badge" title="Retweeted by @${escape(handle)}">RT @${escape(handle)}</span>`
+    )
+    .join(' ');
+}
+
 function renderHierarchicalTagPills(r) {
   const tree = tagTreeFromEntries(Array.isArray(r.tags) ? r.tags : []);
   if (tree.length === 0) return '<span class="muted">&mdash;</span>';
@@ -1559,7 +1637,7 @@ function renderTagPill(entry, options = {}) {
   return `<span class="tag-pill ns-${escape(ns)}${tentative}${child}" title="${escape(name)}${titleSuffix}">${escape(name)}</span>`;
 }
 
-function renderTagPills(r) {
+function _renderTagPills(r) {
   const tags = uniqueTagEntries(Array.isArray(r.tags) ? r.tags : []);
   if (tags.length === 0) return '<span class="muted">—</span>';
   // Cap rendered pills to avoid blowing out the cell on

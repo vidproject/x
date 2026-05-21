@@ -2,6 +2,8 @@
 // canonical schema — nested arrays/structs are joined into pipe-separated
 // strings to keep the file usable in spreadsheets.
 
+import { retweetedByHandles } from './store.js';
+
 const COLS = [
   'tweet_id',
   'account_handle',
@@ -22,6 +24,7 @@ const COLS = [
   'media_release_urls',
   'news_mention_count',
   'news_articles',
+  'retweeted_by',
   'tweet_url',
   'wayback_url',
   'deletion_detected_at',
@@ -76,6 +79,7 @@ export function exportCsv(rows, filename) {
             .filter(Boolean)
             .join('|')
         : '',
+      retweeted_by: retweetedByHandles(r).join('|'),
     };
     lines.push(COLS.map((c) => csvCell(flat[c])).join(','));
   }

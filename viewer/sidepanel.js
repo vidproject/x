@@ -1,6 +1,7 @@
 // Side-panel detail view: opens when a table row is clicked.
 
 import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js';
+import { archiveShareUrlForRow, xTweetLinkLabel, xTweetUrlForRow } from './links.js';
 
 export function openSidepanel(panelEl, titleEl, bodyEl, row, thread) {
   if (!row) return;
@@ -65,7 +66,7 @@ function updateTitleShareLink(titleEl, row) {
     shareEl.hidden = true;
     return;
   }
-  shareEl.href = shareUrlForRow(row);
+  shareEl.href = archiveShareUrlForRow(row);
   shareEl.hidden = false;
 }
 
@@ -88,6 +89,8 @@ function tweetContent(row) {
     wrap.append(cardBlock(row.card));
   }
   wrap.append(tweetText(row));
+  const retweets = retweetedByBlock(row);
+  if (retweets) wrap.append(retweets);
   const links = tweetLinks(row);
   if (links) wrap.append(links);
   wrap.append(truncationBadge(row));
@@ -105,13 +108,14 @@ function tweetLinks(row) {
   const div = document.createElement('div');
   div.style.marginTop = '6px';
   div.style.fontSize = '12px';
-  if (row.tweet_url) {
+  const tweetUrl = xTweetUrlForRow(row);
+  if (tweetUrl) {
     const a = document.createElement('a');
     a.className = 'sp-link';
-    a.href = row.tweet_url;
+    a.href = tweetUrl;
     a.target = '_blank';
     a.rel = 'noopener';
-    a.textContent = 'Open on x.com';
+    a.textContent = xTweetLinkLabel(row);
     div.append(a);
   }
   if (row.wayback_url) {
@@ -125,14 +129,6 @@ function tweetLinks(row) {
     div.append(w);
   }
   return div.childElementCount > 0 ? div : null;
-}
-
-function shareUrlForRow(row) {
-  const url = new URL(location.href);
-  const params = new URLSearchParams();
-  params.set('tweet', String(row.tweet_id || ''));
-  url.hash = params.toString();
-  return url.toString();
 }
 
 function grid(rows) {
@@ -173,6 +169,7 @@ function idRows(r) {
     ['reply_to', r.reply_to_account ? `@${r.reply_to_account}` : null],
     ['quoted_tweet_id', r.quoted_tweet_id],
     ['retweeted_tweet_id', r.retweeted_tweet_id],
+    ['retweeted_by', Array.isArray(r.retweeted_by) ? r.retweeted_by.join(', ') : null],
     ['lang', r.lang],
     ['capture_run_id', r.capture_run_id],
   ];
@@ -196,6 +193,31 @@ function unavailableRows(r) {
     ['notice', r.unavailable_text],
     ['source_url', r.unavailable_source_url],
   ];
+}
+
+function retweetedByBlock(row) {
+  const promotions = Array.isArray(row.__retweet_promotions) ? row.__retweet_promotions : [];
+  if (promotions.length === 0) return null;
+  const groups = new Map();
+  for (const promo of promotions) {
+    const retweet = promo?.retweet;
+    const handle = String(retweet?.account_handle ?? '');
+    if (!handle) continue;
+    const group = groups.get(handle) ?? { handle, count: 0 };
+    group.count += 1;
+    groups.set(handle, group);
+  }
+  if (groups.size === 0) return null;
+  const wrap = document.createElement('div');
+  wrap.className = 'sp-retweets';
+  for (const group of [...groups.values()].sort((a, b) => a.handle.localeCompare(b.handle))) {
+    const badge = document.createElement('span');
+    badge.className = 'thread-retweet-badge';
+    badge.textContent = `RT @${group.handle}${group.count > 1 ? ` x${group.count}` : ''}`;
+    badge.title = `Retweeted by @${group.handle}`;
+    wrap.append(badge);
+  }
+  return wrap;
 }
 
 function mediaGridWithPreviews(media) {
@@ -715,10 +737,11 @@ function otherRepliesBlock(slaves) {
     dateEl.className = 'meta';
     dateEl.textContent = shortDate(r.posted_at) || '';
     head.append(handleEl, dateEl);
-    if (r.tweet_url) {
+    const url = xTweetUrlForRow(r);
+    if (url) {
       const a = document.createElement('a');
       a.className = 'sp-link';
-      a.href = r.tweet_url;
+      a.href = url;
       a.target = '_blank';
       a.rel = 'noopener';
       a.textContent = '↗';

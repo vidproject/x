@@ -1978,6 +1978,23 @@ tr.thread-slave > td:first-child::before {
   background: rgba(174, 180, 189, 0.18);
   color: var(--fg-2);
 }
+.thread-retweet-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 7px 1px 3px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--mono);
+  border: 1px solid rgba(34, 197, 94, 0.7);
+  background: rgba(34, 197, 94, 0.14);
+  color: #16803a;
+  white-space: nowrap;
+}
+.theme-dark .thread-retweet-badge {
+  color: #4ade80;
+}
 .thread-reply-avatar {
   width: 16px;
   height: 16px;
@@ -2003,6 +2020,11 @@ tr.thread-slave > td:first-child::before {
   background: transparent;
   border: 1px dashed var(--border-strong);
   font-family: var(--mono);
+}
+.sp-retweets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 .sp-other-replies {
   display: flex;

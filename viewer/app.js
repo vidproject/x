@@ -1166,11 +1166,10 @@ function profileHeader(handle, rows, user, manifestAccount) {
     refresh();
   });
   actions.append(filterBtn);
-  const latestTweet = rows.find((row) => row.tweet_url);
-  if (latestTweet?.tweet_url) {
+  if (handle) {
     const xLink = document.createElement('a');
     xLink.className = 'btn ghost';
-    xLink.href = latestTweet.tweet_url.replace(/\/status\/.*/, '');
+    xLink.href = `https://x.com/${encodeURIComponent(handle)}`;
     xLink.target = '_blank';
     xLink.rel = 'noopener';
     xLink.textContent = 'Open on X';
@@ -1771,14 +1770,14 @@ function openSharedEntryFromUrl() {
   const tweetId = String(urlState.tweet || '');
   if (!tweetId) return;
   if (selectedRowId === tweetId && !els.sidepanel.hidden) return;
-  const row = store.getById(tweetId);
+  const row = store.getDisplayRowById(tweetId);
   if (!row) {
     if (loadProgress.total > 0 && loadProgress.completed >= loadProgress.total) {
       showError(`No archived entry found for tweet ${tweetId}.`, 4000);
     }
     return;
   }
-  selectedRowId = tweetId;
+  selectedRowId = String(row.tweet_id || tweetId);
   const thread = store.groupIntoThreads([row])[0] || null;
   openSidepanel(els.sidepanel, els.spTitle, els.spBody, row, thread);
 }
