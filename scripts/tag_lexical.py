@@ -763,6 +763,8 @@ PATTERN_SLOGAN_LAW_AND_ORDER = _compile(r"\bLaw\s+and\s+Order\b|\bLaw\s*&\s*Orde
 PATTERN_SLOGAN_PEACE_THROUGH_STRENGTH = _compile(r"\bPeace\s+Through\s+Strength\b")
 PATTERN_SLOGAN_PROMISES_KEPT = _compile(r"\bPromises?\s+Made[,;:]?\s+Promises?\s+Kept\b")
 PATTERN_SLOGAN_MASS_DEPORTATION = _compile(r"\bMass\s+Deportations?\b")
+PATTERN_PHRASE_MIGRANT = _compile(r"\bmigrants?\b")
+PATTERN_PHRASE_IMMIGRANT = _compile(r"\bimmigrants?\b")
 PATTERN_LEGAL_CRIMINAL_PROSECUTION = _compile(
     r"\bprosecut(?:e|ed|ing|ion|ions)\b"
     r"|\bindict(?:ed|ment|ments)?\b"
@@ -828,6 +830,7 @@ MEDIA_TAG_PREFIXES_ALLOWED_IN_LEXICAL: tuple[str, ...] = (
     "homicide:",
     "legal:",
     "media:",
+    "phrase:",
     "shape:",
     "slogan:",
     "speaker:",
@@ -1009,6 +1012,8 @@ def tag_text(
         (PATTERN_SLOGAN_PEACE_THROUGH_STRENGTH, "slogan:peace-through-strength"),
         (PATTERN_SLOGAN_PROMISES_KEPT, "slogan:promises-kept"),
         (PATTERN_SLOGAN_MASS_DEPORTATION, "slogan:mass-deportation"),
+        (PATTERN_PHRASE_MIGRANT, "phrase:migrant"),
+        (PATTERN_PHRASE_IMMIGRANT, "phrase:immigrant"),
         (PATTERN_GENRE_STATISTICS, "genre:statistics"),
         (PATTERN_GENRE_DIRECTIVE, "genre:directive"),
         (PATTERN_ANGEL_FAMILY, "subject:angel-family"),
@@ -1209,6 +1214,8 @@ INTRINSIC_PARENT_TOPICS_EXACT: dict[str, tuple[str, ...]] = {
     "slogan:law-and-order": ("topic:general",),
     "slogan:peace-through-strength": ("topic:general",),
     "slogan:promises-kept": ("topic:general",),
+    "phrase:immigrant": ("topic:immigration",),
+    "phrase:migrant": ("topic:immigration",),
 }
 INTRINSIC_PARENT_TOPICS_PREFIXES: tuple[tuple[str, str], ...] = (("origin:", "topic:immigration"),)
 PATTERN_EXPLICIT_IMMIGRATION_TOPIC = _compile(
@@ -1283,6 +1290,8 @@ IMMIGRATION_CONFIRMING_EXACT: frozenset[str] = frozenset(
         "slogan:project-homecoming",
         "slogan:reportrecon",
         "slogan:worst",
+        "phrase:immigrant",
+        "phrase:migrant",
     }
 )
 # Last-ditch keyword check — picks up image-heavy / template-light

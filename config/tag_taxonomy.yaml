@@ -493,6 +493,18 @@ tags:
     description: '"Mass deportation(s)" recurring campaign/enforcement slogan.'
     classification: deterministic
 
+  # ===== phrase:* - recurring domain terms ===========================
+  phrase:migrant:
+    description: Plain-language "migrant(s)" reference; implies topic:immigration.
+    classification: deterministic
+    pattern: |
+      \bmigrants?\b
+  phrase:immigrant:
+    description: Plain-language "immigrant(s)" reference; implies topic:immigration.
+    classification: deterministic
+    pattern: |
+      \bimmigrants?\b
+
   shape:lineup:
     description: >-
       The templated mugshot-reply form: tweet_type=reply AND

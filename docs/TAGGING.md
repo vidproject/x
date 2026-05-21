@@ -169,6 +169,7 @@ See `config/tag_taxonomy.yaml` for the authoritative list. Quick map:
 | `crime:`   | crime type vocabulary                  | `crime:assault`            |
 | `agency:`  | mentioned enforcement-adjacent handle  | `agency:ICEgov`            |
 | `slogan:`  | DHS branded phrases                    | `slogan:nice`              |
+| `phrase:`  | recurring domain terms                 | `phrase:migrant`           |
 | `shape:`   | composite (e.g. mugshot-reply form)    | `shape:lineup`             |
 | `news:`    | local article export cited this tweet  | `news:mentioned`           |
 
@@ -187,7 +188,7 @@ slogans) costs recall. So:
 - The tag is emitted **confirmed** when the text (or OCR) carries any
   explicit immigration signal: a `frame:`, `action:`, `origin:`,
   `country:`, `theme:border/sanctuary/worksite/nativism`, a known agency
-  handle, the `slogan:` phrases, or one of a small set of plain
+  handle, the `slogan:` / `phrase:` phrases, or one of a small set of plain
   keywords (`immigration`, `migrant`, `asylum`, `illegal alien`, `the
 border`, `border patrol`, bare `ICE`/`CBP`).
 - Without an explicit signal, the tag is emitted **tentative** —

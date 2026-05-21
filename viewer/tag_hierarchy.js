@@ -30,6 +30,8 @@ const EXACT_PARENTS = new Map([
   ['slogan:illegal-alien', ['topic:immigration']],
   ['slogan:mass-deportation', ['topic:immigration']],
   ['slogan:project-homecoming', ['topic:immigration']],
+  ['phrase:immigrant', ['topic:immigration']],
+  ['phrase:migrant', ['topic:immigration']],
   ['slogan:maga', ['topic:general']],
   ['slogan:maha', ['topic:general']],
   ['slogan:america-first', ['topic:general']],

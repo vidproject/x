@@ -79,6 +79,7 @@ ALLOWED_TAG_PREFIXES = (
     "homicide:",
     "legal:",
     "media:",
+    "phrase:",
     "shape:",
     "slogan:",
     "speaker:",
@@ -112,7 +113,7 @@ Rules:
 - If the media appears AI-generated or heavily synthetic from visual cues alone, add media:ai-generated, set provenance_signal false, and mention the visible cues in the description; do not assert certainty.
 - If visible metadata, watermark labels, C2PA/Content Credentials text, or another explicit provenance signal indicates AI generation, add media:ai-generated and set provenance_signal true.
 - Use speaker:<title/name> only when the tweet text or visible captions identify the speaker. Do not guess from a face.
-- Use slogan:* only for visible or context-supported recurring phrases.
+- Use slogan:* only for branded slogans; use phrase:* for visible or context-supported recurring domain terms.
 - Include no more than 8 tags. Prefer existing namespaces over inventing new ones.
 """
 PROMPT_HASH = hashlib.sha256(PROMPT.encode("utf-8")).hexdigest()[:16]

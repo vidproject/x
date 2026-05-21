@@ -767,6 +767,26 @@ def test_criminal_illegal_alien_slogan_also_marks_generic_phrase() -> None:
     assert "topic:immigration" in tags
 
 
+def test_migrant_and_immigrant_phrases_promote_immigration_topic() -> None:
+    for text, expected in (
+        ("Migrant workers were detained near the border.", "phrase:migrant"),
+        ("The immigrant community asked for answers.", "phrase:immigrant"),
+        ("Migrants and immigrants were mentioned in the report.", "phrase:migrant"),
+    ):
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="public",
+        )
+        tags = _tags(out)
+        assert expected in tags
+        assert "topic:immigration" in tags
+        imm = next(e for e in out if e["tag"] == "topic:immigration")
+        assert not imm["tentative"]
+
+
 def test_generic_maga_slogan_does_not_force_immigration() -> None:
     out = tag_text(
         "MAKE AMERICA GREAT AGAIN.",
