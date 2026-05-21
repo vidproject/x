@@ -501,7 +501,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 3804,
+      "observations": 3810,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1513,7 +1513,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 829,
+      "observations": 831,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1926,7 +1926,7 @@
     "SecMullinDHS": {
       "category": "officials",
       "label": "Secretary Markwayne Mullin",
-      "observations": 539,
+      "observations": 541,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2418,14 +2418,14 @@
       ],
       "category": "government",
       "label": "U.S. Coast Guard",
-      "observations": 46,
+      "observations": 47,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "USCGAcademy": {
       "category": "government",
       "label": "U.S. Coast Guard Academy",
-      "observations": 41,
+      "observations": 42,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3183,7 +3183,7 @@
     "public": 140,
     "public_figures": 70
   },
-  "generated_at": "2026-05-21T02:47:52Z",
+  "generated_at": "2026-05-21T02:56:05Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
