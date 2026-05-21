@@ -1018,6 +1018,7 @@ def tag_text(
     community_note: dict[str, Any] | None = None,
     video_count: int = 0,
     video_max_duration_sec: float | None = None,
+    possibly_sensitive: bool = False,
 ) -> list[dict[str, Any]]:
     """Apply every deterministic rule to a single tweet, returning a
     list of tag-entry dicts in the shape expected by
@@ -1065,6 +1066,11 @@ def tag_text(
         add("format:quote")
     elif tweet_type == "reply":
         add("format:reply")
+
+    # X's own media/content warning. This is not an interpretation of the
+    # image; it records that the platform flagged the tweet as sensitive.
+    if possibly_sensitive:
+        add("media:graphic-content", source="platform")
 
     # agency:<HANDLE> — derived from mentions[]
     for mention in mentions or []:
@@ -1818,6 +1824,7 @@ def tag_one_parquet(
             community_note=r.get("community_note"),
             video_count=video_count,
             video_max_duration_sec=video_max_duration_sec,
+            possibly_sensitive=bool(r.get("possibly_sensitive")),
         )
         existing_tags = {str(entry.get("tag") or "") for entry in tags}
         for tag in tag_overrides.get(tweet_id, []):

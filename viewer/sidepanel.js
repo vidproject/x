@@ -28,6 +28,9 @@ export function openSidepanel(panelEl, titleEl, bodyEl, row, thread) {
   if (Array.isArray(row.media_insights) && row.media_insights.length > 0) {
     bodyEl.append(section('Media Recognition', mediaInsightsBlock(row.media_insights)));
   }
+  if (Array.isArray(row.news_mentions) && row.news_mentions.length > 0) {
+    bodyEl.append(section('News Coverage', newsMentionsBlock(row.news_mentions)));
+  }
   if (Array.isArray(row.engagement_history) && row.engagement_history.length > 1) {
     bodyEl.append(section('Engagement history', engagementHistory(row.engagement_history)));
   }
@@ -351,6 +354,43 @@ function mediaLink(href, label) {
   link.className = 'sp-link';
   link.textContent = label;
   return link;
+}
+
+function newsMentionsBlock(mentions) {
+  const wrap = document.createElement('div');
+  wrap.className = 'sp-news-mentions';
+  for (const mention of mentions) {
+    if (!mention) continue;
+    const item = document.createElement('div');
+    item.className = 'sp-news-mention';
+
+    const title = document.createElement('a');
+    title.className = 'sp-link sp-news-title';
+    title.href = stringOrNull(mention.url) || '#';
+    title.target = '_blank';
+    title.rel = 'noopener';
+    title.textContent = mention.title || mention.url || 'News article';
+    if (!stringOrNull(mention.url)) title.removeAttribute('href');
+    item.append(title);
+
+    const meta = document.createElement('div');
+    meta.className = 'sp-news-meta';
+    const bits = [];
+    if (mention.source) bits.push(mention.source);
+    if (mention.published_at) bits.push(mention.published_at);
+    if (typeof mention.confidence === 'number') bits.push(`confidence ${mention.confidence}`);
+    meta.textContent = bits.join(' - ');
+    item.append(meta);
+
+    if (Array.isArray(mention.matched_terms) && mention.matched_terms.length > 0) {
+      const terms = document.createElement('div');
+      terms.className = 'sp-news-terms';
+      terms.textContent = mention.matched_terms.join(' | ');
+      item.append(terms);
+    }
+    wrap.append(item);
+  }
+  return wrap;
 }
 
 function mediaMetaText(m) {

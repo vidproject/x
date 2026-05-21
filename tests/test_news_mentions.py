@@ -135,3 +135,57 @@ def test_jsonl_loader_and_parquet_output_need_no_network(tmp_path: Path) -> None
     assert df.row(0, named=True)["status"] == "mentioned"
     assert manifest["layers"]["news_mentions"]["article_count"] == 1
     assert manifest["layers"]["news_mentions"]["tag_frequency"]["news:mentioned"] == 1
+
+
+def test_gdelt_query_uses_exact_status_url_variants() -> None:
+    tweet = make_tweet("4444444444", handle="DHSgov")
+
+    query = news_mentions.gdelt_query_for_tweet(tweet)
+
+    assert '"x.com/DHSgov/status/4444444444"' in query
+    assert '"twitter.com/DHSgov/status/4444444444"' in query
+    assert '"x.com/i/web/status/4444444444"' in query
+
+
+def test_gdelt_discovery_can_crosslink_without_local_article_export(tmp_path: Path) -> None:
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    config_path = _write_core_config(tmp_path)
+    _write_parquet(data_dir / "DHSgov.parquet", [make_tweet("5555555555", handle="DHSgov")])
+    seen_queries: list[str] = []
+
+    def fake_search(query: str, *, max_records: int, timeout_sec: float) -> list[dict[str, object]]:
+        seen_queries.append(query)
+        assert max_records == 3
+        assert timeout_sec == 2.0
+        return [
+            {
+                "sourceCommonName": "Example News",
+                "title": "DHS tweet cited",
+                "url": "https://example.test/dhs-tweet",
+                "seendate": "20260520T120000Z",
+            }
+        ]
+
+    rows, stats = news_mentions.build_rows(
+        [data_dir / "DHSgov.parquet"],
+        [],
+        core_handles=news_mentions.load_core_handles(config_path),
+        generated_at="2026-05-20T00:00:00Z",
+        matched_only=True,
+        discover_web="gdelt",
+        max_web_tweets=1,
+        web_max_records=3,
+        web_timeout_sec=2.0,
+        web_delay_sec=0.0,
+        web_searcher=fake_search,
+    )
+
+    assert seen_queries
+    assert stats["web_tweets_scanned"] == 1
+    assert stats["web_article_mentions"] == 1
+    assert rows[0]["tweet_id"] == "5555555555"
+    assert rows[0]["mention_count"] == 1
+    assert rows[0]["articles"][0]["matched_fields"] == ["gdelt-query"]
+    assert rows[0]["articles"][0]["confidence"] == 0.75
+    assert {entry["tag"] for entry in rows[0]["tags"]} == {"news:covered", "news:mentioned"}

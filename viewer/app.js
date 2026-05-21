@@ -317,17 +317,17 @@ async function loadAccountCategorySidecar(catMap) {
  * sidecars are normal on a fresh archive; the viewer still works without them.
  */
 async function loadSidecars() {
-  const [tagMap, audioTagMap, newsTagMap, mediaInsightMap, posterBySha] = await Promise.all([
+  const [tagMap, audioTagMap, newsMentions, mediaInsightMap, posterBySha] = await Promise.all([
     loadLexicalTags(),
     loadAudioMusicTags(),
-    loadNewsMentionTags(),
+    loadNewsMentions(),
     loadMediaInsights(),
     loadKeyframePosters(),
   ]);
   for (const [id, tags] of audioTagMap.entries()) {
     mergeTags(tagMap, id, tags);
   }
-  for (const [id, tags] of newsTagMap.entries()) {
+  for (const [id, tags] of newsMentions.tagMap.entries()) {
     mergeTags(tagMap, id, tags);
   }
   for (const [id, insights] of mediaInsightMap.entries()) {
@@ -335,7 +335,7 @@ async function loadSidecars() {
       if (Array.isArray(insight.tags)) mergeTags(tagMap, id, insight.tags);
     }
   }
-  return { tagMap, mediaInsightMap, posterBySha };
+  return { tagMap, mediaInsightMap, newsMentionMap: newsMentions.mentionMap, posterBySha };
 }
 
 async function loadLexicalTags() {
@@ -435,18 +435,27 @@ async function loadAudioMusicTags() {
   }
 }
 
-async function loadNewsMentionTags() {
+async function loadNewsMentions() {
   const cacheKey = tagLayerCacheKey('news_mentions');
   const url = `data/tags/news_mentions.parquet${cacheKey}`;
+  const tagMap = new Map();
+  const mentionMap = new Map();
   try {
     const rows = await loadParquetRows(url);
-    const map = new Map();
     for (const r of rows) {
       const id = String(r?.tweet_id ?? '');
       if (!id || Number(r?.mention_count ?? 0) <= 0) continue;
-      mergeTags(map, id, Array.isArray(r.tags) ? r.tags : []);
+      mergeTags(tagMap, id, Array.isArray(r.tags) ? r.tags : []);
+      mentionMap.set(id, {
+        mention_count: Number(r?.mention_count ?? 0),
+        status: String(r?.status || 'mentioned'),
+        detector: String(r?.detector || ''),
+        detector_version: String(r?.detector_version || ''),
+        generated_at: String(r?.generated_at || ''),
+        articles: Array.isArray(r?.articles) ? r.articles : [],
+      });
     }
-    return map;
+    return { tagMap, mentionMap };
   } catch (err) {
     const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
     if (status !== '404') {
@@ -457,7 +466,7 @@ async function loadNewsMentionTags() {
         message: err?.message ?? String(err),
       });
     }
-    return new Map();
+    return { tagMap, mentionMap };
   }
 }
 
@@ -772,10 +781,13 @@ async function loadAllAccounts(sidecarsPromise) {
   let tagMap = new Map();
   /** @type {Map<string, any[]>} */
   let mediaInsightMap = new Map();
+  /** @type {Map<string, any>} */
+  let newsMentionMap = new Map();
   let sidecarsResolved = false;
   sidecarsPromise.then((sidecars) => {
     tagMap = sidecars.tagMap;
     mediaInsightMap = sidecars.mediaInsightMap;
+    newsMentionMap = sidecars.newsMentionMap;
     mediaPosterBySha = sidecars.posterBySha;
     sidecarsResolved = true;
     applyMediaSettings({ persist: false });
@@ -884,6 +896,7 @@ async function loadAllAccounts(sidecarsPromise) {
   function applySidecars() {
     store.applyTags(tagMap);
     store.applyMediaInsights(mediaInsightMap);
+    store.applyNewsMentions(newsMentionMap);
   }
 }
 

@@ -131,13 +131,19 @@ passed with `--articles`). The matcher only counts exact status URLs for
 archived core tweets, including `x.com/<handle>/status/<id>`,
 `twitter.com/<handle>/status/<id>`, and `x.com/i/web/status/<id>`.
 
-The script does not call a paid API or any network service. If the
-article export is absent, the GitHub workflow skips the step. If it is
-present, the sidecar emits `news:mentioned` and `news:covered` tags for
-matched tweets, plus article provenance (`source`, `title`, `url`,
-`published_at`, `matched_fields`, `matched_terms`, and confidence). The
-viewer loads this sidecar opportunistically and merges those tags into
-the normal tag filter/search surface.
+Normal offline runs do not call a paid API or any network service. For
+cheap ad-hoc discovery, `--discover-web google-news-rss` queries Google
+News RSS, or `--discover-web gdelt` queries the free GDELT Doc API, for
+exact status URL strings, capped by `--max-web-tweets`. Those results
+are recorded at lower confidence with `matched_fields` set to the
+provider query field; local article-export matches remain the firm
+signal. If the article export is absent and web discovery is disabled,
+the GitHub workflow skips the step. Matched tweets receive
+`news:mentioned` and `news:covered` tags, plus article provenance
+(`source`, `title`, `url`, `published_at`, `matched_fields`,
+`matched_terms`, and confidence). The viewer loads this sidecar
+opportunistically and merges those tags into the normal tag
+filter/search surface.
 
 For later video-enrichment passes, use descriptive production labels:
 `media:produced-video`, `media:music-video`, `media:montage`,

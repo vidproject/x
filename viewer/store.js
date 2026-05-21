@@ -45,6 +45,7 @@ export const SEARCH_FIELD_OPTIONS = [
   { value: 'tags', label: 'Tags' },
   { value: 'mentions', label: 'Mentions' },
   { value: 'media_description', label: 'Media description' },
+  { value: 'news_coverage', label: 'News coverage' },
   { value: 'tweet_type', label: 'Type' },
   { value: 'media_kinds', label: 'Media' },
   { value: 'posted_at', label: 'Posted date' },
@@ -106,6 +107,19 @@ export class Store {
     this.search = null;
   }
 
+  /** Attach optional external-news article crosslinks. */
+  applyNewsMentions(mentionMap) {
+    for (const r of this.allRows) {
+      const id = String(r.tweet_id ?? '');
+      const sidecar = mentionMap.get(id);
+      r.news_mentions = Array.isArray(sidecar?.articles) ? sidecar.articles : [];
+      r.news_mention_count = Number(sidecar?.mention_count ?? r.news_mentions.length ?? 0);
+      r.news_mention_status = sidecar?.status ?? '';
+      r.news_mention_detector = sidecar?.detector ?? '';
+    }
+    this.search = null;
+  }
+
   /** Provide the manifest's account categorization so the filter pipeline
    * can match `row.account_handle` → category without a per-row lookup. */
   setAccountCategories(map) {
@@ -159,6 +173,7 @@ export class Store {
         'account_handle',
         'tag_names',
         'media_insight_text',
+        'news_mention_text',
       ],
       storeFields: ['tweet_id'],
       searchOptions: {
@@ -175,6 +190,7 @@ export class Store {
       account_handle: r.account_handle || '',
       tag_names: tagNames(r).join(' '),
       media_insight_text: mediaInsightText(r),
+      news_mention_text: newsMentionText(r),
     }));
     mini.addAll(docs);
     this.search = mini;
@@ -505,6 +521,7 @@ function haystack(r) {
     Array.isArray(r.mentions) ? r.mentions.join(' ') : '',
     tagNames(r).join(' '),
     mediaInsightText(r),
+    newsMentionText(r),
   ];
   return parts.join(' ');
 }
@@ -515,6 +532,7 @@ function fieldHaystack(row, field) {
   if (field === 'tags') return tagNames(row).join(' ');
   if (field === 'mentions') return Array.isArray(row.mentions) ? row.mentions.join(' ') : '';
   if (field === 'media_description') return mediaInsightText(row);
+  if (field === 'news_coverage') return newsMentionText(row);
   if (field === 'media_kinds') return formatForFilter(row, 'media_kinds');
   if (field === 'posted_at') return formatForFilter(row, 'posted_at');
   if (field === 'account_handle') return String(row.account_handle || '');
@@ -528,6 +546,18 @@ function mediaInsightText(row) {
   const insights = Array.isArray(row.media_insights) ? row.media_insights : [];
   return insights
     .map((entry) => [entry?.description, entry?.summary_text].filter(Boolean).join(' '))
+    .filter(Boolean)
+    .join(' ');
+}
+
+function newsMentionText(row) {
+  const mentions = Array.isArray(row.news_mentions) ? row.news_mentions : [];
+  return mentions
+    .map((entry) =>
+      [entry?.source, entry?.title, entry?.url, entry?.published_at]
+        .filter(Boolean)
+        .join(' ')
+    )
     .filter(Boolean)
     .join(' ');
 }

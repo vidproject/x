@@ -9,6 +9,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc -p extension/tsconfig.json --noEmit",
+    "skim:x": "node tools/x-skim.mjs",
     "build:extension": "python scripts/build_extension.py",
     "build:extension:chrome": "python scripts/build_extension.py --browser chrome"
   },

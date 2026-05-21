@@ -13,6 +13,20 @@ on:
       - 'data/news/**'
       - 'seen/**'
   workflow_dispatch:
+    inputs:
+      news_discover:
+        description: 'Optional external news discovery provider'
+        required: false
+        default: 'none'
+        type: choice
+        options:
+          - none
+          - gdelt
+          - google-news-rss
+      news_max_web_tweets:
+        description: 'Maximum core tweets to query when news_discover is enabled'
+        required: false
+        default: '100'
 
 permissions:
   contents: write
@@ -70,11 +84,18 @@ jobs:
 
       - name: refresh news mentions
         if: steps.cooldown.outputs.skip != '1'
+        env:
+          NEWS_DISCOVER: ${{ github.event.inputs.news_discover || 'none' }}
+          NEWS_MAX_WEB_TWEETS: ${{ github.event.inputs.news_max_web_tweets || '100' }}
         run: |
-          if [ -f data/news/articles.jsonl ]; then
-            uv run python -m scripts.news_mentions --articles data/news/articles.jsonl
+          if [ -f data/news/articles.jsonl ] || [ "$NEWS_DISCOVER" != "none" ]; then
+            args=(--articles data/news/articles.jsonl)
+            if [ "$NEWS_DISCOVER" != "none" ]; then
+              args+=(--discover-web "$NEWS_DISCOVER" --max-web-tweets "$NEWS_MAX_WEB_TWEETS" --matched-only)
+            fi
+            uv run python -m scripts.news_mentions "${args[@]}"
           else
-            echo "no local news article export at data/news/articles.jsonl"
+            echo "no local news article export and news discovery disabled"
           fi
 
       - name: refresh lexical tags

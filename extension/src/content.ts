@@ -30,12 +30,10 @@ const LOW_BANDWIDTH_MEDIA_EVENTS = ['loadstart', 'loadedmetadata', 'play', 'play
 
 interface UnfoldTargetsResponse {
   enabled?: boolean;
-  coreHandles?: string[];
   relevantTweetIds?: string[];
 }
 
 let unfoldEnabled = false;
-let unfoldCoreHandles = new Set<string>();
 let unfoldRelevantTweetIds = new Set<string>();
 let unfoldScanTimer: ReturnType<typeof setTimeout> | null = null;
 const unfoldedControls = new WeakSet<Element>();
@@ -104,19 +102,6 @@ function parseTweetUrl(href: string | null): { handle: string; id: string } | nu
   }
 }
 
-function parseHandleUrl(href: string | null): string | null {
-  if (!href) return null;
-  try {
-    const u = new URL(href, location.href);
-    if (!STATUS_HOSTS.has(u.hostname.toLowerCase())) return null;
-    const first = u.pathname.split('/').filter(Boolean)[0];
-    if (!first || first === 'i' || first === 'intent' || first === 'search') return null;
-    return normalizeHandle(first);
-  } catch {
-    return null;
-  }
-}
-
 function isVisible(el: Element): boolean {
   const rect = el.getBoundingClientRect();
   if (rect.width === 0 || rect.height === 0) return false;
@@ -124,33 +109,9 @@ function isVisible(el: Element): boolean {
   return style.visibility !== 'hidden' && style.display !== 'none';
 }
 
-function nearestTweetContainer(el: Element): Element | null {
-  return el.closest('article') ?? el.closest('div[data-testid="cellInnerDiv"]');
-}
-
-function isReplyToCore(container: Element): boolean {
-  const text = (container.textContent || '').toLowerCase();
-  if (!text.includes('replying to')) return false;
-  for (const link of Array.from(container.querySelectorAll('a[href]'))) {
-    const handle = parseHandleUrl(link.getAttribute('href'));
-    if (handle && unfoldCoreHandles.has(handle)) return true;
-  }
-  return false;
-}
-
-function isCoreRelevant(container: Element): boolean {
-  for (const link of Array.from(container.querySelectorAll('a[href]'))) {
-    const tweet = parseTweetUrl(link.getAttribute('href'));
-    if (!tweet) continue;
-    if (unfoldCoreHandles.has(tweet.handle)) return true;
-    if (unfoldRelevantTweetIds.has(tweet.id)) return true;
-  }
-  return isReplyToCore(container);
-}
-
 function scanAndUnfoldShowMore(): void {
   unfoldScanTimer = null;
-  if (!unfoldEnabled || unfoldCoreHandles.size === 0) return;
+  if (!unfoldEnabled) return;
   const selectors = [
     '[data-testid="tweet-text-show-more-link"]',
     'button[data-testid="tweet-text-show-more-link"]',
@@ -165,8 +126,9 @@ function scanAndUnfoldShowMore(): void {
       seen.add(el);
       if ((el.textContent || '').trim().toLowerCase() !== 'show more') continue;
       if (!isVisible(el)) continue;
-      const container = nearestTweetContainer(el);
-      if (!container || !isCoreRelevant(container)) continue;
+      const link = el.closest('a[href]');
+      const linkedTweet = link ? parseTweetUrl(link.getAttribute('href')) : null;
+      if (linkedTweet && !unfoldRelevantTweetIds.has(linkedTweet.id)) continue;
       unfoldedControls.add(el);
       try {
         (el as HTMLElement).click();
@@ -193,9 +155,6 @@ async function refreshUnfoldTargets(): Promise<void> {
     });
     const raw = response && typeof response === 'object' ? (response as UnfoldTargetsResponse) : {};
     unfoldEnabled = raw.enabled !== false;
-    unfoldCoreHandles = new Set(
-      (raw.coreHandles ?? []).map((h) => h.toLowerCase().replace(/^@/, ''))
-    );
     unfoldRelevantTweetIds = new Set(raw.relevantTweetIds ?? []);
     scheduleUnfoldScan(0);
   } catch {

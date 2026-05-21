@@ -192,6 +192,9 @@ tags:
   media:short-video:
     description: Video or animated GIF is 30 seconds or shorter.
     classification: deterministic
+  media:graphic-content:
+    description: X/Twitter marked the tweet as possibly sensitive or graphic content.
+    classification: deterministic
 
   # ===== format:* — purely structural; derived from tweet_type ======
   format:retweet:

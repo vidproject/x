@@ -1,13 +1,15 @@
-"""Detect core tweets cited by news coverage from a local article export.
+"""Detect core tweets cited by news coverage.
 
-This is deliberately cheap and reproducible: it does not call a paid API, and
-it does not need network access. Provide a JSON, JSONL, or CSV file containing
-news articles; the script looks for exact X/Twitter status URLs for archived
-core tweets and writes ``data/tags/news_mentions.parquet``.
+The default path is deliberately cheap and reproducible: provide a JSON, JSONL,
+or CSV file containing news articles, and the script looks for exact X/Twitter
+status URLs for archived core tweets. For ad-hoc discovery, optional web modes
+query free public news indexes for exact status URL strings and record returned
+article metadata with lower confidence.
 
 Run with:
 
     uv run python -m scripts.news_mentions --articles data/news/articles.jsonl
+    uv run python -m scripts.news_mentions --discover-web google-news-rss --max-web-tweets 100
 """
 
 from __future__ import annotations
@@ -19,11 +21,16 @@ import json
 import os
 import re
 import sys
+import time
 from collections import Counter
 from collections.abc import Iterable, Iterator
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
+from urllib.error import URLError
+from urllib.parse import urlencode
+from urllib.request import Request, urlopen
+from xml.etree import ElementTree
 
 import polars as pl
 import yaml
@@ -42,7 +49,9 @@ OUT_PATH = TAGS_DIR / "news_mentions.parquet"
 MANIFEST_PATH = TAGS_DIR / "manifest.json"
 
 DETECTOR = "exact-status-url"
-DETECTOR_VERSION = "news-mentions-v1"
+DETECTOR_VERSION = "news-mentions-v2"
+GDELT_DOC_API = "https://api.gdeltproject.org/api/v2/doc/doc"
+GOOGLE_NEWS_RSS = "https://news.google.com/rss/search"
 ARTICLE_TEXT_FIELDS = (
     "url",
     "canonical_url",
@@ -53,6 +62,8 @@ ARTICLE_TEXT_FIELDS = (
     "content",
     "text",
 )
+
+type NewsSearchFn = Any
 
 
 def discover_canonical_parquets() -> list[Path]:
@@ -225,6 +236,171 @@ def normalize_url_term(value: str) -> str:
     return value.rstrip(".,;:!?)\"'").replace("http://", "https://")
 
 
+def status_url_terms(tweet: dict[str, Any]) -> list[str]:
+    """Return exact URL strings worth searching for this tweet."""
+    tweet_id = str(tweet.get("tweet_id") or "").strip()
+    handle = str(tweet.get("account_handle") or "").strip()
+    if not tweet_id or not handle:
+        return []
+    return [
+        f"https://x.com/{handle}/status/{tweet_id}",
+        f"https://twitter.com/{handle}/status/{tweet_id}",
+        f"https://x.com/i/web/status/{tweet_id}",
+        f"https://twitter.com/i/web/status/{tweet_id}",
+    ]
+
+
+def gdelt_query_for_tweet(tweet: dict[str, Any]) -> str:
+    # GDELT accepts quoted phrases and OR; drop the scheme so http/https and
+    # embed-normalized URLs still have a chance to match.
+    terms = [term.replace("https://", "") for term in status_url_terms(tweet)]
+    return " OR ".join(f'"{term}"' for term in terms)
+
+
+def gdelt_search(
+    query: str,
+    *,
+    max_records: int,
+    timeout_sec: float,
+) -> list[dict[str, Any]]:
+    params = {
+        "query": query,
+        "mode": "ArtList",
+        "format": "json",
+        "maxrecords": str(max(1, min(max_records, 250))),
+        "sort": "datedesc",
+    }
+    url = f"{GDELT_DOC_API}?{urlencode(params)}"
+    request = Request(url, headers={"User-Agent": "imm-archive-news-mentions/1.0"})
+    with urlopen(request, timeout=timeout_sec) as response:  # nosec B310 - user-requested public API.
+        payload = json.loads(response.read().decode("utf-8"))
+    articles = payload.get("articles") if isinstance(payload, dict) else None
+    return [item for item in articles or [] if isinstance(item, dict)]
+
+
+def google_news_rss_search(
+    query: str,
+    *,
+    max_records: int,
+    timeout_sec: float,
+) -> list[dict[str, Any]]:
+    params = {
+        "q": query,
+        "hl": "en-US",
+        "gl": "US",
+        "ceid": "US:en",
+    }
+    url = f"{GOOGLE_NEWS_RSS}?{urlencode(params)}"
+    request = Request(url, headers={"User-Agent": "imm-archive-news-mentions/1.0"})
+    with urlopen(request, timeout=timeout_sec) as response:  # nosec B310 - user-requested public RSS.
+        root = ElementTree.fromstring(response.read())
+    out: list[dict[str, Any]] = []
+    for item in root.findall("./channel/item"):
+        source = item.find("source")
+        out.append(
+            {
+                "source": source.text if source is not None else "",
+                "title": item.findtext("title") or "",
+                "url": item.findtext("link") or "",
+                "published_at": item.findtext("pubDate") or "",
+            }
+        )
+        if len(out) >= max_records:
+            break
+    return out
+
+
+def mention_for_search_article(
+    tweet: dict[str, Any],
+    article: dict[str, Any],
+    *,
+    matched_terms: list[str],
+    matched_field: str,
+) -> dict[str, Any] | None:
+    url = string_field(article, "url")
+    title = string_field(article, "title")
+    if not url and not title:
+        return None
+    source = (
+        string_field(article, "sourceCommonName")
+        or string_field(article, "domain")
+        or string_field(article, "source")
+    )
+    published_at = (
+        string_field(article, "seendate")
+        or string_field(article, "published_at")
+        or string_field(article, "published")
+        or string_field(article, "date")
+    )
+    return {
+        "source": source or None,
+        "title": title or None,
+        "url": url or None,
+        "published_at": published_at or None,
+        "matched_fields": [matched_field],
+        "matched_terms": matched_terms,
+        "confidence": 0.75,
+    }
+
+
+def discover_web_mentions_for_tweet(
+    tweet: dict[str, Any],
+    *,
+    provider: str,
+    searcher: NewsSearchFn | None = None,
+    max_records: int,
+    timeout_sec: float,
+) -> tuple[list[dict[str, Any]], str | None]:
+    if provider == "none":
+        return [], None
+    if provider not in {"gdelt", "google-news-rss"}:
+        return [], f"unsupported news discovery provider: {provider}"
+    query = gdelt_query_for_tweet(tweet)
+    if not query:
+        return [], None
+    terms = status_url_terms(tweet)
+    if provider == "google-news-rss":
+        search = searcher or google_news_rss_search
+        matched_field = "google-news-rss-query"
+    else:
+        search = searcher or gdelt_search
+        matched_field = "gdelt-query"
+    try:
+        articles = search(query, max_records=max_records, timeout_sec=timeout_sec)
+    except (OSError, TimeoutError, URLError, json.JSONDecodeError, ElementTree.ParseError) as exc:
+        return [], str(exc)
+    mentions = [
+        mention
+        for article in articles
+        if (
+            mention := mention_for_search_article(
+                tweet,
+                article,
+                matched_terms=terms,
+                matched_field=matched_field,
+            )
+        )
+        is not None
+    ]
+    return dedupe_mentions(mentions), None
+
+
+def dedupe_mentions(mentions: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
+    seen: set[tuple[str, str, str]] = set()
+    for mention in mentions:
+        key = (
+            str(mention.get("url") or ""),
+            str(mention.get("title") or ""),
+            str(mention.get("published_at") or ""),
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(mention)
+    return out
+
+
 def tag_entry(tag: str, *, source: str = "news-mentions") -> dict[str, Any]:
     return {
         "tag": tag,
@@ -274,14 +450,17 @@ def build_row(
     *,
     generated_at: str,
     corpus_hash: str,
+    extra_mentions: list[dict[str, Any]] | None = None,
+    error: str | None = None,
 ) -> dict[str, Any]:
-    mentions = [
+    local_mentions = [
         mention
         for article in articles
         if (mention := mention_for_article(tweet, article)) is not None
     ]
+    mentions = dedupe_mentions([*local_mentions, *(extra_mentions or [])])
     tags = [tag_entry("news:mentioned"), tag_entry("news:covered")] if mentions else []
-    status = "mentioned" if mentions else "no-match"
+    status = "mentioned" if mentions else ("error" if error else "no-match")
     return {
         "tweet_id": str(tweet.get("tweet_id") or ""),
         "account_handle": str(tweet.get("account_handle") or ""),
@@ -296,7 +475,7 @@ def build_row(
         "status": status,
         "tags": tags,
         "cost_estimate_usd": 0.0,
-        "error": None,
+        "error": error,
     }
 
 
@@ -307,13 +486,48 @@ def build_rows(
     core_handles: set[str],
     generated_at: str,
     matched_only: bool,
+    discover_web: str = "none",
+    max_web_tweets: int = 0,
+    web_max_records: int = 5,
+    web_timeout_sec: float = 12.0,
+    web_delay_sec: float = 0.25,
+    web_searcher: NewsSearchFn | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, int]]:
     rows: list[dict[str, Any]] = []
     stats = Counter[str]()
     corpus_hash = article_corpus_hash(articles)
     for tweet in iter_core_tweets(parquets, core_handles):
         stats["core_tweets_scanned"] += 1
-        row = build_row(tweet, articles, generated_at=generated_at, corpus_hash=corpus_hash)
+        web_mentions: list[dict[str, Any]] = []
+        web_error: str | None = None
+        if discover_web != "none" and stats["web_tweets_scanned"] < max_web_tweets:
+            stats["web_tweets_scanned"] += 1
+            web_mentions, web_error = discover_web_mentions_for_tweet(
+                tweet,
+                provider=discover_web,
+                searcher=web_searcher,
+                max_records=web_max_records,
+                timeout_sec=web_timeout_sec,
+            )
+            stats["web_article_mentions"] += len(web_mentions)
+            if web_error:
+                stats["web_errors"] += 1
+                LOG.warning(
+                    "news discovery failed",
+                    tweet_id=str(tweet.get("tweet_id") or ""),
+                    provider=discover_web,
+                    error=web_error,
+                )
+            if web_delay_sec > 0:
+                time.sleep(web_delay_sec)
+        row = build_row(
+            tweet,
+            articles,
+            generated_at=generated_at,
+            corpus_hash=corpus_hash,
+            extra_mentions=web_mentions,
+            error=web_error,
+        )
         if row["mention_count"]:
             stats["mentioned_tweets"] += 1
             stats["article_mentions"] += int(row["mention_count"])
@@ -327,6 +541,7 @@ def build_rows(
 
 def write_parquet(rows: list[dict[str, Any]], path: Path) -> None:
     TAGS_DIR.mkdir(parents=True, exist_ok=True)
+    path.parent.mkdir(parents=True, exist_ok=True)
     df = (
         pl.DataFrame(rows, schema=NEWS_MENTIONS_SCHEMA, strict=False)
         if rows
@@ -393,21 +608,57 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         action="store_true",
         help="Write only tweets with one or more news mentions.",
     )
+    parser.add_argument(
+        "--discover-web",
+        choices=("none", "gdelt", "google-news-rss"),
+        default="none",
+        help="Optionally query a free news index for exact status URL strings.",
+    )
+    parser.add_argument(
+        "--max-web-tweets",
+        type=int,
+        default=100,
+        help="Maximum core tweets to query through --discover-web.",
+    )
+    parser.add_argument(
+        "--web-max-records",
+        type=int,
+        default=5,
+        help="Maximum news-index articles to keep per tweet query.",
+    )
+    parser.add_argument(
+        "--web-timeout-sec",
+        type=float,
+        default=12.0,
+        help="Timeout for each news-index request.",
+    )
+    parser.add_argument(
+        "--web-delay-sec",
+        type=float,
+        default=1.0,
+        help="Delay between news-index requests.",
+    )
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     generated_at = datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-    if args.articles.exists():
+    should_scan = args.articles.exists() or args.discover_web != "none"
+    if should_scan:
         core_handles = load_core_handles()
-        articles = load_articles(args.articles)
+        articles = load_articles(args.articles) if args.articles.exists() else []
         rows, stats = build_rows(
             discover_canonical_parquets(),
             articles,
             core_handles=core_handles,
             generated_at=generated_at,
             matched_only=bool(args.matched_only),
+            discover_web=str(args.discover_web),
+            max_web_tweets=max(0, int(args.max_web_tweets)),
+            web_max_records=max(1, int(args.web_max_records)),
+            web_timeout_sec=max(1.0, float(args.web_timeout_sec)),
+            web_delay_sec=max(0.0, float(args.web_delay_sec)),
         )
     else:
         articles = []

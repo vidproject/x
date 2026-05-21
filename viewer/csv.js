@@ -20,6 +20,8 @@ const COLS = [
   'media_count',
   'media_descriptions',
   'media_release_urls',
+  'news_mention_count',
+  'news_articles',
   'tweet_url',
   'wayback_url',
   'deletion_detected_at',
@@ -53,6 +55,13 @@ export function exportCsv(rows, filename) {
         .map((m) => m && m.release_asset_url)
         .filter(Boolean)
         .join('|'),
+      news_mention_count: Array.isArray(r.news_mentions) ? r.news_mentions.length : 0,
+      news_articles: Array.isArray(r.news_mentions)
+        ? r.news_mentions
+            .map((entry) => [entry?.source, entry?.title, entry?.url].filter(Boolean).join(' - '))
+            .filter(Boolean)
+            .join('|')
+        : '',
     };
     lines.push(COLS.map((c) => csvCell(flat[c])).join(','));
   }

@@ -40,6 +40,19 @@ def test_format_tag_absent_for_original_tweets() -> None:
     assert not any(t.startswith("format:") for t in _tags(out))
 
 
+def test_possibly_sensitive_marks_graphic_content() -> None:
+    out = tag_text(
+        "regular post",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        possibly_sensitive=True,
+    )
+    tags = _tags(out)
+    assert "media:graphic-content" in tags
+
+
 def test_immigration_default_applies_to_tracked_categories() -> None:
     out = tag_text(
         "Border Patrol agents detained 3.",

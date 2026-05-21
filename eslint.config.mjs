@@ -9,6 +9,8 @@ export default [
       'viewer/vendor/**',
       'data/**',
       'raw/**',
+      '.skim/**',
+      'skim/**',
       '**/*.min.js',
     ],
   },
