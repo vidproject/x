@@ -511,7 +511,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 3881,
+      "observations": 3882,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1033,7 +1033,7 @@
     "ICEgov": {
       "category": "core",
       "label": "U.S. Immigration and Customs Enforcement",
-      "observations": 1170,
+      "observations": 1171,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1530,7 +1530,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 836,
+      "observations": 838,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1615,7 +1615,7 @@
     "PressSec": {
       "category": "core",
       "label": "White House Press Secretary",
-      "observations": 169,
+      "observations": 170,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1656,7 +1656,7 @@
     "RapidResponse47": {
       "category": "core",
       "label": "Rapid Response 47",
-      "observations": 721,
+      "observations": 724,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2593,7 +2593,7 @@
     "WhiteHouse": {
       "category": "core",
       "label": "The White House",
-      "observations": 484,
+      "observations": 485,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3200,7 +3200,7 @@
     "public": 141,
     "public_figures": 71
   },
-  "generated_at": "2026-05-21T03:40:06Z",
+  "generated_at": "2026-05-21T03:41:13Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
