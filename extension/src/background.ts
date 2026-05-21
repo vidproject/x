@@ -101,11 +101,24 @@ import { parseAccountsYaml } from './lib/yaml.js';
 
 const EXT_VERSION = browser.runtime.getManifest().version;
 const MANUAL_CAPTURE_WINDOW_MS = 90_000;
-const LOW_BANDWIDTH_RULE_ID = 760_001;
+const LOW_BANDWIDTH_BASE_RULE_ID = 760_001;
+const LOW_BANDWIDTH_MEDIA_RULE_ID_BASE = 760_010;
 const LOW_BANDWIDTH_RESOURCE_TYPES = ['image', 'media', 'font'] as const;
+const LOW_BANDWIDTH_MEDIA_CHUNK_RESOURCE_TYPES = ['media', 'xmlhttprequest', 'other'] as const;
+const LOW_BANDWIDTH_MEDIA_URL_FILTERS = [
+  '||video.twimg.com^',
+  '||ton.twimg.com^',
+  '||amp.twimg.com^',
+  '||video.pscp.tv^',
+  '||prod-fastly-us-west-1.video.pscp.tv^',
+  '|https://x.com/i/videos/',
+  '|https://twitter.com/i/videos/',
+] as const;
 let manualCaptureUntilMs = 0;
 
-type LowBandwidthResourceType = (typeof LOW_BANDWIDTH_RESOURCE_TYPES)[number];
+type LowBandwidthResourceType =
+  | (typeof LOW_BANDWIDTH_RESOURCE_TYPES)[number]
+  | (typeof LOW_BANDWIDTH_MEDIA_CHUNK_RESOURCE_TYPES)[number];
 
 interface LowBandwidthRule {
   id: number;
@@ -114,6 +127,7 @@ interface LowBandwidthRule {
   condition: {
     tabIds: number[];
     resourceTypes: LowBandwidthResourceType[];
+    urlFilter?: string;
   };
 }
 
@@ -209,11 +223,15 @@ async function syncLowBandwidthRules({
   }
 
   const tabIds = settings.lowBandwidthBrowsing ? await currentXTabIds() : [];
+  const removeRuleIds = [
+    LOW_BANDWIDTH_BASE_RULE_ID,
+    ...LOW_BANDWIDTH_MEDIA_URL_FILTERS.map((_, idx) => LOW_BANDWIDTH_MEDIA_RULE_ID_BASE + idx),
+  ];
   const addRules: LowBandwidthRule[] =
     tabIds.length > 0
       ? [
           {
-            id: LOW_BANDWIDTH_RULE_ID,
+            id: LOW_BANDWIDTH_BASE_RULE_ID,
             priority: 1,
             action: { type: 'block' },
             condition: {
@@ -221,10 +239,20 @@ async function syncLowBandwidthRules({
               resourceTypes: [...LOW_BANDWIDTH_RESOURCE_TYPES],
             },
           },
+          ...LOW_BANDWIDTH_MEDIA_URL_FILTERS.map((urlFilter, idx) => ({
+            id: LOW_BANDWIDTH_MEDIA_RULE_ID_BASE + idx,
+            priority: 2,
+            action: { type: 'block' as const },
+            condition: {
+              tabIds,
+              urlFilter,
+              resourceTypes: [...LOW_BANDWIDTH_MEDIA_CHUNK_RESOURCE_TYPES],
+            },
+          })),
         ]
       : [];
   await dnr.updateSessionRules({
-    removeRuleIds: [LOW_BANDWIDTH_RULE_ID],
+    removeRuleIds,
     addRules,
   });
 
@@ -233,6 +261,7 @@ async function syncLowBandwidthRules({
       enabled: settings.lowBandwidthBrowsing,
       tab_count: tabIds.length,
       blocked_resource_types: LOW_BANDWIDTH_RESOURCE_TYPES.join(','),
+      blocked_media_filters: LOW_BANDWIDTH_MEDIA_URL_FILTERS.join(','),
       reason,
     });
   }
@@ -402,6 +431,7 @@ async function autoScrollTick(): Promise<void> {
   }
   if (tabs.length === 0) return;
   let scrollCount = 0;
+  let retryCount = 0;
   for (const tab of tabs) {
     if (typeof tab.id !== 'number') continue;
     if (tab.discarded) continue;
@@ -410,6 +440,31 @@ async function autoScrollTick(): Promise<void> {
         target: { tabId: tab.id },
         world: 'MAIN' as 'ISOLATED',
         func: (() => {
+          const normalizedText = (el: Element): string =>
+            `${el.textContent ?? ''} ${el.getAttribute('aria-label') ?? ''}`
+              .replace(/\s+/g, ' ')
+              .trim()
+              .toLowerCase();
+          const clickRetryIfReloadError = (): boolean => {
+            const bodyText = (document.body?.innerText ?? '').toLowerCase();
+            if (
+              !bodyText.includes('something went wrong') &&
+              !bodyText.includes('try reloading')
+            ) {
+              return false;
+            }
+            const controls = Array.from(
+              document.querySelectorAll('button,[role="button"],a[href]')
+            );
+            const retry = controls.find((el) => {
+              const text = normalizedText(el);
+              return text === 'retry' || text.includes('retry') || text.includes('try again');
+            });
+            if (!retry) return false;
+            (retry as HTMLElement).click();
+            return true;
+          };
+          if (clickRetryIfReloadError()) return { retried: true, scrolled: false };
           // Scroll the page. Dispatch End key first since many X surfaces
           //    (lists, search, replies) bind pagination triggers to it via
           //    React handlers; then explicitly scroll the document.
@@ -428,14 +483,28 @@ async function autoScrollTick(): Promise<void> {
             top: document.documentElement.scrollHeight,
             behavior: 'auto',
           });
-        }) as () => void,
+          return { retried: false, scrolled: true };
+        }) as unknown as () => void,
       })) as Array<{ result?: unknown }>;
-      scrollCount += 1;
-      void results;
+      const pageResults = results
+        .map((r) => r.result)
+        .filter(
+          (result): result is { retried?: unknown; scrolled?: unknown } =>
+            typeof result === 'object' && result !== null
+        );
+      if (pageResults.some((result) => result.retried === true)) {
+        retryCount += 1;
+      }
+      if (pageResults.some((result) => result.scrolled === true)) {
+        scrollCount += 1;
+      }
     } catch {
       // Tabs that disallow scripting (about:, discarded, mid-navigation)
       // just get skipped — they'll be eligible on a later tick.
     }
+  }
+  if (retryCount > 0) {
+    await info('auto-scroll clicked X retry control', { tab_count: retryCount });
   }
   if (scrollCount > 0) {
     const sess = await getAutoScrollSession();
@@ -501,12 +570,37 @@ browser.alarms.onAlarm.addListener((alarm) => {
 // --- Toolbar action: toggle the sidebar -----------------------------------
 
 if (browser.action?.onClicked) {
-  browser.action.onClicked.addListener(async () => {
+  browser.action.onClicked.addListener(async (tab) => {
     try {
-      await browser.sidebarAction.toggle();
+      const sidebarAction = (browser as unknown as {
+        sidebarAction?: { toggle?: () => Promise<void> };
+      }).sidebarAction;
+      if (sidebarAction?.toggle) {
+        await sidebarAction.toggle();
+        return;
+      }
+
+      const sidePanel = (browser as unknown as {
+        sidePanel?: { open?: (options: { windowId?: number }) => Promise<void> };
+      }).sidePanel;
+      if (sidePanel?.open) {
+        const options: { windowId?: number } = {};
+        if (typeof tab.windowId === 'number') options.windowId = tab.windowId;
+        await sidePanel.open(options);
+        return;
+      }
+
+      await browser.tabs.create({ url: browser.runtime.getURL('sidebar.html') });
     } catch (err) {
-      // Fallback: open options if sidebar can't be toggled.
-      await warn('sidebar toggle failed; opening options', describeError(err));
+      // Fallback: open the extension UI in a tab if the browser-specific
+      // sidebar API is unavailable or rejects the action-click request.
+      await warn('sidebar open failed; opening sidebar tab', describeError(err));
+      try {
+        await browser.tabs.create({ url: browser.runtime.getURL('sidebar.html') });
+        return;
+      } catch (tabErr) {
+        await warn('sidebar tab failed; opening options', describeError(tabErr));
+      }
       await browser.runtime.openOptionsPage();
     }
   });

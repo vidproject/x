@@ -4,13 +4,16 @@ Public archive of immigration-related posts from federal X accounts.
 
 [Open the searchable archive](https://vidproject.github.io/x/)
 
-This repo is the database. A Firefox extension captures public X timeline data in the browser, commits raw JSON to GitHub, and GitHub Actions turns it into Parquet, archived media assets, tag sidecars, and a static viewer.
+This repo is the database. A browser extension captures public X timeline data in the browser, commits raw JSON to GitHub, and GitHub Actions turns it into Parquet, archived media assets, tag sidecars, and a static viewer.
 
 No X API credentials. No X Developer Agreement. Capture uses what the public web UI served at the time.
 
-The viewer is published to GitHub Pages by `.github/workflows/pages.yml` on every push to `master` that touches `index.html`, `viewer/**`, `data/**`, or `extension.zip`. Repo settings need **Pages → Build and deployment → Source: GitHub Actions** for the workflow to actually deploy.
+The viewer is published to GitHub Pages by `.github/workflows/pages.yml` on every push to `master` that touches `index.html`, `viewer/**`, `data/**`, `extension.zip`, or `extension-chrome.zip`. Repo settings need **Pages -> Build and deployment -> Source: GitHub Actions** for the workflow to actually deploy.
 
-The Firefox extension zip is rebuilt automatically by the `build-extension` workflow whenever the extension changes, committed back to `extension.zip`, and published by Pages at **[vidproject.github.io/x/extension.zip](https://vidproject.github.io/x/extension.zip)**.
+The extension zips are rebuilt automatically by the `build-extension` workflow whenever the extension changes, committed back to the repo, and published by Pages:
+
+- Firefox: **[vidproject.github.io/x/extension.zip](https://vidproject.github.io/x/extension.zip)**
+- Chrome: **[vidproject.github.io/x/extension-chrome.zip](https://vidproject.github.io/x/extension-chrome.zip)**
 
 ## Scope
 
@@ -34,13 +37,15 @@ The viewer loads every account Parquet listed in `data/manifest.json`. Search ru
 
 Search covers tweet text, resolved links, handles, mentions, tags, and media descriptions. CSV export uses the currently filtered rows.
 
-GitHub Pages publishes the viewer and extension zip through `.github/workflows/pages.yml` when `index.html`, `viewer/**`, `data/**`, or `extension.zip` changes. Repo settings must use:
+GitHub Pages publishes the viewer and extension zips through `.github/workflows/pages.yml` when `index.html`, `viewer/**`, `data/**`, `extension.zip`, or `extension-chrome.zip` changes. Repo settings must use:
 
 `Pages -> Build and deployment -> Source: GitHub Actions`
 
-## Firefox Extension
+## Browser Extension
 
 The extension captures public X posts and commits structured JSON to this repository.
+
+### Firefox
 
 1. Download the latest auto-built [`extension.zip`](https://vidproject.github.io/x/extension.zip) and unzip it.
 2. In Firefox, open `about:debugging`.
@@ -48,14 +53,25 @@ The extension captures public X posts and commits structured JSON to this reposi
 4. Select `Load Temporary Add-on`.
 5. Pick `manifest.json` from the unzipped extension folder.
 
+### Chrome
+
+1. Download the latest auto-built [`extension-chrome.zip`](https://vidproject.github.io/x/extension-chrome.zip) and unzip it.
+2. In Chrome, open `chrome://extensions`.
+3. Enable `Developer mode`.
+4. Select `Load unpacked`.
+5. Pick the unzipped extension folder.
+
 The sidebar includes a **Low-bandwidth X tabs** option. When enabled, the
-extension blocks images, video/audio resources, and fonts inside open
-X/Twitter tabs while leaving GraphQL/API capture and background archive
-downloads alone.
-6. Open the extension sidebar.
-7. Open `Settings`.
-8. Paste a fine-grained GitHub PAT.
-9. Visit a tracked account on `x.com`, for example <https://x.com/DHSgov>.
+extension blocks images, video/audio resources, fonts, and known X/Twitter
+video chunk URLs inside open X/Twitter tabs while leaving GraphQL/API capture
+and background archive downloads alone.
+
+After loading either build:
+
+1. Open the extension sidebar.
+2. Open `Settings`.
+3. Paste a fine-grained GitHub PAT.
+4. Visit a tracked account on `x.com`, for example <https://x.com/DHSgov>.
 
 Temporary Firefox extensions disappear when Firefox closes. Reinstalling takes about ten seconds.
 

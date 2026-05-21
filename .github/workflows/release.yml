@@ -34,20 +34,28 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: build extension zip
         run: npm run build:extension
+      - name: build Chrome extension zip
+        run: npm run build:extension:chrome
       - name: upload extension zip artifact
         uses: actions/upload-artifact@v4
         with:
           name: extension.zip
           path: extension.zip
           if-no-files-found: error
-      - name: commit extension.zip if changed
+      - name: upload Chrome extension zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: extension-chrome.zip
+          path: extension-chrome.zip
+          if-no-files-found: error
+      - name: commit extension zips if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [ -n "$(git status --porcelain extension.zip)" ]; then
-            git add extension.zip
-            git commit -m "[bot] build extension.zip"
+          if [ -n "$(git status --porcelain extension.zip extension-chrome.zip)" ]; then
+            git add extension.zip extension-chrome.zip
+            git commit -m "[bot] build extension zips"
             git push
           else
-            echo "extension.zip unchanged"
+            echo "extension zips unchanged"
           fi

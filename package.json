@@ -9,7 +9,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc -p extension/tsconfig.json --noEmit",
-    "build:extension": "python scripts/build_extension.py"
+    "build:extension": "python scripts/build_extension.py",
+    "build:extension:chrome": "python scripts/build_extension.py --browser chrome"
   },
   "devDependencies": {
     "@types/firefox-webext-browser": "^120.0.4",

@@ -24,6 +24,9 @@ const TARGET = 'IMM_ARCHIVE_CAPTURE';
 const READY = 'IMM_ARCHIVE_HOOK_READY';
 const UNFOLD_SYNC_MS = 2_000;
 const UNFOLD_SCAN_DEBOUNCE_MS = 250;
+const LOW_BANDWIDTH_SCAN_DEBOUNCE_MS = 100;
+const LOW_BANDWIDTH_RESCAN_MS = 1_500;
+const LOW_BANDWIDTH_MEDIA_EVENTS = ['loadstart', 'loadedmetadata', 'play', 'playing'] as const;
 
 interface UnfoldTargetsResponse {
   enabled?: boolean;
@@ -36,6 +39,10 @@ let unfoldCoreHandles = new Set<string>();
 let unfoldRelevantTweetIds = new Set<string>();
 let unfoldScanTimer: ReturnType<typeof setTimeout> | null = null;
 const unfoldedControls = new WeakSet<Element>();
+let lowBandwidthScrubberEnabled = false;
+let lowBandwidthObserver: MutationObserver | null = null;
+let lowBandwidthScanTimer: ReturnType<typeof setTimeout> | null = null;
+let lowBandwidthRescanTimer: ReturnType<typeof setInterval> | null = null;
 
 void browser.runtime
   .sendMessage({ type: 'content-alive', url: location.href })
@@ -212,6 +219,111 @@ function installUnfoldObserver(): void {
 }
 
 installUnfoldObserver();
+
+function lowBandwidthSettingFrom(raw: unknown): boolean {
+  if (!raw || typeof raw !== 'object') return false;
+  return (raw as { lowBandwidthBrowsing?: unknown }).lowBandwidthBrowsing === true;
+}
+
+function isScrubbableMedia(el: EventTarget | Element | null): el is HTMLMediaElement {
+  return el instanceof HTMLVideoElement || el instanceof HTMLAudioElement;
+}
+
+function scrubMediaElement(el: HTMLMediaElement): void {
+  try {
+    el.pause();
+  } catch {
+    // Ignore stale media nodes.
+  }
+  try {
+    el.autoplay = false;
+    el.preload = 'none';
+    el.removeAttribute('autoplay');
+    el.removeAttribute('src');
+    el.src = '';
+    if ('srcObject' in el) el.srcObject = null;
+    for (const source of Array.from(el.querySelectorAll('source[src]'))) {
+      source.removeAttribute('src');
+    }
+    el.load();
+  } catch {
+    // X can replace nodes during scroll; best-effort scrubbing is enough.
+  }
+}
+
+function scanLowBandwidthMedia(): void {
+  lowBandwidthScanTimer = null;
+  if (!lowBandwidthScrubberEnabled) return;
+  for (const el of Array.from(document.querySelectorAll('video,audio'))) {
+    if (isScrubbableMedia(el)) scrubMediaElement(el);
+  }
+}
+
+function scheduleLowBandwidthScan(delay = LOW_BANDWIDTH_SCAN_DEBOUNCE_MS): void {
+  if (!lowBandwidthScrubberEnabled || lowBandwidthScanTimer !== null) return;
+  lowBandwidthScanTimer = setTimeout(scanLowBandwidthMedia, delay);
+}
+
+function onLowBandwidthMediaEvent(event: Event): void {
+  if (!lowBandwidthScrubberEnabled) return;
+  if (isScrubbableMedia(event.target)) scrubMediaElement(event.target);
+}
+
+function setLowBandwidthScrubber(on: boolean): void {
+  if (lowBandwidthScrubberEnabled === on) return;
+  lowBandwidthScrubberEnabled = on;
+
+  if (on) {
+    const root = document.documentElement || document.body;
+    if (root) {
+      lowBandwidthObserver = new MutationObserver(() => scheduleLowBandwidthScan());
+      lowBandwidthObserver.observe(root, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['src'],
+      });
+    }
+    for (const eventName of LOW_BANDWIDTH_MEDIA_EVENTS) {
+      document.addEventListener(eventName, onLowBandwidthMediaEvent, true);
+    }
+    lowBandwidthRescanTimer = setInterval(scanLowBandwidthMedia, LOW_BANDWIDTH_RESCAN_MS);
+    scheduleLowBandwidthScan(0);
+    return;
+  }
+
+  if (lowBandwidthObserver) {
+    lowBandwidthObserver.disconnect();
+    lowBandwidthObserver = null;
+  }
+  if (lowBandwidthScanTimer !== null) {
+    clearTimeout(lowBandwidthScanTimer);
+    lowBandwidthScanTimer = null;
+  }
+  if (lowBandwidthRescanTimer !== null) {
+    clearInterval(lowBandwidthRescanTimer);
+    lowBandwidthRescanTimer = null;
+  }
+  for (const eventName of LOW_BANDWIDTH_MEDIA_EVENTS) {
+    document.removeEventListener(eventName, onLowBandwidthMediaEvent, true);
+  }
+}
+
+async function refreshLowBandwidthScrubber(): Promise<void> {
+  try {
+    const result = await browser.storage.local.get('settings');
+    setLowBandwidthScrubber(lowBandwidthSettingFrom(result.settings));
+  } catch {
+    setLowBandwidthScrubber(false);
+  }
+}
+
+browser.storage.onChanged.addListener((changes, areaName) => {
+  if (areaName !== 'local' || !changes.settings) return;
+  setLowBandwidthScrubber(lowBandwidthSettingFrom(changes.settings.newValue));
+});
+
+void refreshLowBandwidthScrubber();
 
 window.addEventListener('message', (event: MessageEvent) => {
   if (event.source !== window) return;
