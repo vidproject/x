@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-21T03:16:57Z",
+  "generated_at": "2026-05-21T03:21:47Z",
   "layers": {
     "audio_music": {
       "attempted": 80,
@@ -48,7 +48,7 @@
       "status_skipped-no-ffmpeg": 559
     },
     "lexical": {
-      "generated_at": "2026-05-21T03:16:57Z",
+      "generated_at": "2026-05-21T03:21:47Z",
       "parquets_scanned": {
         "CBP.parquet": 491,
         "DHSgov.parquet": 1027,
@@ -62,9 +62,9 @@
         "USCIS.parquet": 760,
         "USDOL.parquet": 490,
         "WhiteHouse.parquet": 262,
-        "_misc.parquet": 4886
+        "_misc.parquet": 4889
       },
-      "row_count": 11231,
+      "row_count": 11234,
       "tag_frequency": {
         "action:deportation": 608,
         "action:detention": 808,
@@ -74,7 +74,7 @@
         "agency:CBP": 2996,
         "agency:CENTCOM": 33,
         "agency:DEAHQ": 31,
-        "agency:DHSgov": 2848,
+        "agency:DHSgov": 2850,
         "agency:DOJgov": 135,
         "agency:DeptofWar": 69,
         "agency:EPA": 11,
@@ -82,7 +82,7 @@
         "agency:FEMA": 85,
         "agency:HHSGov": 9,
         "agency:HSI_HQ": 28,
-        "agency:ICEgov": 3311,
+        "agency:ICEgov": 3315,
         "agency:POTUS": 728,
         "agency:PressSec": 34,
         "agency:RapidResponse47": 219,
@@ -202,7 +202,7 @@
         "crime:tren-de-aragua": 31,
         "crime:weapon": 391,
         "format:quote": 986,
-        "format:reply": 4704,
+        "format:reply": 4707,
         "format:retweet": 1749,
         "frame:criminal": 1242,
         "genre:directive": 169,
@@ -295,7 +295,7 @@
         "state:Florida": 121,
         "state:Georgia": 4,
         "state:Idaho": 12,
-        "state:Illinois": 27,
+        "state:Illinois": 28,
         "state:Indiana": 3,
         "state:Iowa": 7,
         "state:KENTUCKY": 4,
@@ -356,7 +356,7 @@
         "theme:worksite-enforcement": 19,
         "topic:economy": 964,
         "topic:general": 440,
-        "topic:immigration": 8149,
+        "topic:immigration": 8152,
         "topic:laudatory": 385,
         "topic:military": 254,
         "video:ad": 10,
@@ -436,9 +436,9 @@
     "USCIS.parquet": 760,
     "USDOL.parquet": 490,
     "WhiteHouse.parquet": 262,
-    "_misc.parquet": 4886
+    "_misc.parquet": 4889
   },
-  "row_count": 11231,
+  "row_count": 11234,
   "tag_frequency": {
     "action:deportation": 608,
     "action:detention": 808,
@@ -448,7 +448,7 @@
     "agency:CBP": 2996,
     "agency:CENTCOM": 33,
     "agency:DEAHQ": 31,
-    "agency:DHSgov": 2848,
+    "agency:DHSgov": 2850,
     "agency:DOJgov": 135,
     "agency:DeptofWar": 69,
     "agency:EPA": 11,
@@ -456,7 +456,7 @@
     "agency:FEMA": 85,
     "agency:HHSGov": 9,
     "agency:HSI_HQ": 28,
-    "agency:ICEgov": 3311,
+    "agency:ICEgov": 3315,
     "agency:POTUS": 728,
     "agency:PressSec": 34,
     "agency:RapidResponse47": 219,
@@ -576,7 +576,7 @@
     "crime:tren-de-aragua": 31,
     "crime:weapon": 391,
     "format:quote": 986,
-    "format:reply": 4704,
+    "format:reply": 4707,
     "format:retweet": 1749,
     "frame:criminal": 1242,
     "genre:directive": 169,
@@ -669,7 +669,7 @@
     "state:Florida": 121,
     "state:Georgia": 4,
     "state:Idaho": 12,
-    "state:Illinois": 27,
+    "state:Illinois": 28,
     "state:Indiana": 3,
     "state:Iowa": 7,
     "state:KENTUCKY": 4,
@@ -730,7 +730,7 @@
     "theme:worksite-enforcement": 19,
     "topic:economy": 964,
     "topic:general": 440,
-    "topic:immigration": 8149,
+    "topic:immigration": 8152,
     "topic:laudatory": 385,
     "topic:military": 254,
     "video:ad": 10,
