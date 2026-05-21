@@ -47,8 +47,63 @@ def test_status_url_match_handles_x_and_twitter_variants() -> None:
     assert mention is not None
     assert mention["source"] == "Example News"
     assert mention["confidence"] == 1.0
+    assert mention["confirmed"] is True
+    assert mention["match_type"] == "local-exact-status-url"
     assert mention["matched_fields"] == ["body"]
     assert len(mention["matched_terms"]) == 2
+
+
+def test_status_url_match_handles_bare_encoded_nested_and_renamed_handles() -> None:
+    tweet = make_tweet("1234567890", handle="DHSgov")
+    article = {
+        "source": {"name": "Wire"},
+        "headline": "Embed roundup",
+        "links": [
+            {
+                "href": (
+                    "https%3A%2F%2Ftwitter.com%2FSomeOldHandle%2Fstatuses%2F1234567890"
+                    "%3Fs%3D20"
+                )
+            }
+        ],
+        "body": "Mirror: x.com/DHSgov/status/1234567890.",
+    }
+
+    mention = news_mentions.mention_for_article(tweet, article)
+
+    assert mention is not None
+    assert mention["source"] == "Wire"
+    assert set(mention["matched_fields"]) == {"body", "links[0].href"}
+    assert "https://twitter.com/SomeOldHandle/status/1234567890?s=20" in mention["matched_terms"]
+
+
+def test_load_articles_accepts_directory_and_nested_json_exports(tmp_path: Path) -> None:
+    articles_dir = tmp_path / "articles"
+    articles_dir.mkdir()
+    (articles_dir / "feed.json").write_text(
+        json.dumps(
+            {
+                "response": {
+                    "docs": [
+                        {
+                            "source": "Nested",
+                            "title": "One",
+                            "body": "https://x.com/DHSgov/status/111",
+                        }
+                    ]
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    (articles_dir / "more.csv").write_text(
+        "\ufeffsource,title,body\nCSV,Two,https://x.com/DHSgov/status/222\n",
+        encoding="utf-8",
+    )
+
+    articles = news_mentions.load_articles(articles_dir)
+
+    assert [article["title"] for article in articles] == ["One", "Two"]
 
 
 def test_build_rows_scans_only_core_tweets_from_local_articles(tmp_path: Path) -> None:
@@ -124,7 +179,7 @@ def test_jsonl_loader_and_parquet_output_need_no_network(tmp_path: Path) -> None
             rows,
             stats,
             "2026-05-20T00:00:00Z",
-            articles_path,
+            [articles_path],
         )
     finally:
         news_mentions.MANIFEST_PATH = old_manifest
@@ -187,5 +242,30 @@ def test_gdelt_discovery_can_crosslink_without_local_article_export(tmp_path: Pa
     assert rows[0]["tweet_id"] == "5555555555"
     assert rows[0]["mention_count"] == 1
     assert rows[0]["articles"][0]["matched_fields"] == ["gdelt-query"]
-    assert rows[0]["articles"][0]["confidence"] == 0.75
+    assert rows[0]["articles"][0]["confidence"] == 0.85
+    assert rows[0]["articles"][0]["confirmed"] is True
     assert {entry["tag"] for entry in rows[0]["tags"]} == {"news:covered", "news:mentioned"}
+
+
+def test_query_export_sorts_high_value_core_tweets(tmp_path: Path) -> None:
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    high = make_tweet("7777777777", handle="DHSgov")
+    high["like_count"] = 10
+    high["retweet_count"] = 20
+    low = make_tweet("6666666666", handle="DHSgov")
+    low["like_count"] = 1
+    _write_parquet(data_dir / "DHSgov.parquet", [low, high])
+    out_path = tmp_path / "queries.csv"
+
+    rows = news_mentions.build_query_export_rows(
+        [data_dir / "DHSgov.parquet"],
+        core_handles={"DHSgov"},
+        limit=1,
+    )
+    news_mentions.write_query_export(rows, out_path)
+
+    written = out_path.read_text(encoding="utf-8")
+    assert rows[0]["tweet_id"] == "7777777777"
+    assert '"x.com/DHSgov/status/7777777777"' in rows[0]["exact_url_query"]
+    assert "7777777777" in written

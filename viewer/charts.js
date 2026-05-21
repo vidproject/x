@@ -2,25 +2,55 @@ import { tagNames, tagNamespace } from './store.js';
 
 export const CHART_JS_URL = 'https://esm.sh/chart.js@4.5.0/auto?bundle';
 
+export const CHART_VIEW_OPTIONS = [
+  { value: 'time_series', label: 'Time series' },
+  { value: 'breakdown', label: 'Breakdown' },
+  { value: 'crosstab', label: 'Tag comparison' },
+];
+
 export const CHART_ELEMENT_OPTIONS = [
-  { value: 'tweets', label: 'Tweets' },
-  { value: 'media', label: 'Media' },
-  { value: 'tags', label: 'Tags' },
-  { value: 'hashtags', label: 'Hashtags' },
-  { value: 'mentions', label: 'Mentions' },
+  { value: 'tweets', label: 'Tweet count' },
+  { value: 'replies', label: 'Reply count' },
+  { value: 'media', label: 'Media count' },
+  { value: 'tags', label: 'Tag count' },
+  { value: 'categories', label: 'Category count' },
+  { value: 'hashtags', label: 'Hashtag count' },
+  { value: 'mentions', label: 'Mention count' },
 ];
 
 export const CHART_DIMENSION_OPTIONS = [
+  { value: 'posted_time', label: 'Posted time' },
   { value: 'account', label: 'Account' },
   { value: 'category', label: 'Category' },
-  { value: 'tweet_type', label: 'Tweet type' },
-  { value: 'media_kind', label: 'Media kind' },
   { value: 'tag', label: 'Tag' },
   { value: 'tag_namespace', label: 'Tag namespace' },
+  { value: 'tweet_type', label: 'Tweet type' },
+  { value: 'media_kind', label: 'Media kind' },
   { value: 'posted_day', label: 'Posted day' },
+  { value: 'posted_week', label: 'Posted week' },
   { value: 'posted_month', label: 'Posted month' },
+  { value: 'posted_year', label: 'Posted year' },
   { value: 'lang', label: 'Language' },
   { value: 'deleted', label: 'Deleted' },
+  { value: 'news_coverage', label: 'News coverage' },
+];
+
+export const CHART_SERIES_OPTIONS = [
+  { value: 'none', label: 'Single series' },
+  { value: 'account', label: 'Account' },
+  { value: 'category', label: 'Category' },
+  { value: 'tag', label: 'Tag' },
+  { value: 'tag_namespace', label: 'Tag namespace' },
+  { value: 'tweet_type', label: 'Tweet type' },
+  { value: 'media_kind', label: 'Media kind' },
+  { value: 'news_coverage', label: 'News coverage' },
+];
+
+export const CHART_TIME_OPTIONS = [
+  { value: 'day', label: 'Day' },
+  { value: 'week', label: 'Week' },
+  { value: 'month', label: 'Month' },
+  { value: 'year', label: 'Year' },
 ];
 
 export const CHART_TYPE_OPTIONS = [
@@ -45,10 +75,17 @@ export const CHART_SORT_OPTIONS = [
 ];
 
 const DEFAULTS = {
+  view: 'time_series',
   element: 'tweets',
   dimension: 'category',
+  series: 'none',
+  granularity: 'month',
   chartType: 'auto',
   scope: 'filtered',
+  account: '',
+  from: '',
+  to: '',
+  focusTag: '',
   limit: 20,
   minCount: 1,
   sort: 'auto',
@@ -56,8 +93,14 @@ const DEFAULTS = {
 };
 
 const CONTROL_DEFS = {
+  view: {
+    label: 'View',
+    type: 'select',
+    options: CHART_VIEW_OPTIONS,
+    aliases: ['view', 'viewSelect', 'chartView'],
+  },
   element: {
-    label: 'Element',
+    label: 'Metric',
     type: 'select',
     options: CHART_ELEMENT_OPTIONS,
     aliases: ['element', 'elementSelect', 'elementControl', 'chartElement'],
@@ -67,6 +110,18 @@ const CONTROL_DEFS = {
     type: 'select',
     options: CHART_DIMENSION_OPTIONS,
     aliases: ['dimension', 'dimensionSelect', 'dimensionControl', 'chartDimension'],
+  },
+  series: {
+    label: 'Compare',
+    type: 'select',
+    options: CHART_SERIES_OPTIONS,
+    aliases: ['series', 'seriesSelect', 'compare', 'compareSelect'],
+  },
+  granularity: {
+    label: 'Group time by',
+    type: 'select',
+    options: CHART_TIME_OPTIONS,
+    aliases: ['granularity', 'timeGranularity', 'groupByTime'],
   },
   chartType: {
     label: 'Chart',
@@ -80,11 +135,32 @@ const CONTROL_DEFS = {
     options: CHART_SCOPE_OPTIONS,
     aliases: ['scope', 'scopeSelect', 'rowScope'],
   },
+  account: {
+    label: 'Account',
+    type: 'select',
+    dynamic: 'accounts',
+    aliases: ['account', 'accountSelect', 'accountFilter', 'user', 'userSelect'],
+  },
+  from: {
+    label: 'From',
+    type: 'date',
+    aliases: ['from', 'fromDate', 'dateFrom'],
+  },
+  to: {
+    label: 'To',
+    type: 'date',
+    aliases: ['to', 'toDate', 'dateTo'],
+  },
+  focusTag: {
+    label: 'Tag/topic',
+    type: 'text',
+    dynamic: 'tags',
+    aliases: ['focusTag', 'tag', 'tagFilter', 'topic', 'topicFilter'],
+  },
   limit: {
-    label: 'Top',
+    label: 'Top N',
     type: 'number',
     min: 0,
-    max: 500,
     aliases: ['limit', 'limitInput', 'topN', 'topNInput'],
   },
   minCount: {
@@ -107,17 +183,25 @@ const CONTROL_DEFS = {
   },
 };
 
+const VIEW_LABELS = Object.fromEntries(CHART_VIEW_OPTIONS.map((opt) => [opt.value, opt.label]));
 const ELEMENT_LABELS = Object.fromEntries(
   CHART_ELEMENT_OPTIONS.map((opt) => [opt.value, opt.label])
 );
 const DIMENSION_LABELS = Object.fromEntries(
   CHART_DIMENSION_OPTIONS.map((opt) => [opt.value, opt.label])
 );
+const SERIES_LABELS = Object.fromEntries(CHART_SERIES_OPTIONS.map((opt) => [opt.value, opt.label]));
 const VALID_ELEMENTS = new Set(CHART_ELEMENT_OPTIONS.map((opt) => opt.value));
 const VALID_DIMENSIONS = new Set(CHART_DIMENSION_OPTIONS.map((opt) => opt.value));
+const VALID_VIEWS = new Set(CHART_VIEW_OPTIONS.map((opt) => opt.value));
+const VALID_SERIES = new Set(CHART_SERIES_OPTIONS.map((opt) => opt.value));
+const VALID_GRANULARITIES = new Set(CHART_TIME_OPTIONS.map((opt) => opt.value));
 const VALID_CHART_TYPES = new Set(CHART_TYPE_OPTIONS.map((opt) => opt.value));
 const VALID_SCOPES = new Set(CHART_SCOPE_OPTIONS.map((opt) => opt.value));
 const VALID_SORTS = new Set(CHART_SORT_OPTIONS.map((opt) => opt.value));
+const NO_LIMIT = 0;
+const MAX_TOP_N = Number.MAX_SAFE_INTEGER;
+const RENDER_POINT_WARNING = 25000;
 
 const PALETTE = [
   '#2563eb',
@@ -141,6 +225,7 @@ const state = {
   canvas: null,
   statusEl: null,
   summaryEl: null,
+  tableEl: null,
   controls: {},
   getRows: () => [],
   getAllRows: null,
@@ -150,6 +235,7 @@ const state = {
   renderTimer: 0,
   renderSeq: 0,
   listeners: [],
+  tagListEl: null,
 };
 
 export function initChartsPanel(options = {}) {
@@ -189,11 +275,19 @@ export function destroyChartsPanel() {
 
 export function buildChartData(rows, options = {}) {
   const opts = normalizeOptions(options);
+  const inputRows = toArray(rows);
+  const chartRows = applyChartFilters(inputRows, opts);
+  if (opts.view === 'time_series') return buildTimeSeriesData(chartRows, opts, inputRows.length);
+  if (opts.view === 'crosstab') return buildCrosstabData(chartRows, opts, inputRows.length);
+  return buildBreakdownData(chartRows, opts, inputRows.length);
+}
+
+function buildBreakdownData(rows, opts, sourceRowCount) {
   const counts = new Map();
   let rowCount = 0;
   let elementCount = 0;
 
-  for (const row of toArray(rows)) {
+  for (const row of rows) {
     rowCount += 1;
     for (const entry of elementEntries(row, opts.element)) {
       const values = dimensionValues(entry, opts);
@@ -213,15 +307,157 @@ export function buildChartData(rows, options = {}) {
   pairs = sortPairs(pairs, resolveSort(opts));
   if (opts.limit > 0) pairs = pairs.slice(0, opts.limit);
 
+  const datasets = [
+    {
+      label: `${ELEMENT_LABELS[opts.element]} by ${DIMENSION_LABELS[opts.dimension]}`,
+      data: pairs.map((pair) => pair.count),
+    },
+  ];
+
   return {
     labels: pairs.map((pair) => pair.label),
-    values: pairs.map((pair) => pair.count),
+    values: datasets[0].data,
+    datasets,
     pairs,
     rowCount,
+    sourceRowCount,
     elementCount,
     totalCount: pairs.reduce((sum, pair) => sum + pair.count, 0),
     element: opts.element,
     dimension: opts.dimension,
+    view: opts.view,
+    series: opts.series,
+    granularity: opts.granularity,
+  };
+}
+
+function buildTimeSeriesData(rows, opts, sourceRowCount) {
+  const seriesDimension = opts.series === 'none' ? null : opts.series;
+  const labelsSet = new Set();
+  const countsBySeries = new Map();
+  const totalsBySeries = new Map();
+  let elementCount = 0;
+
+  for (const row of rows) {
+    const bucket = dateBucket(row.posted_at, opts.granularity);
+    if (!isRealTimeBucket(bucket)) continue;
+    labelsSet.add(bucket);
+    for (const entry of elementEntries(row, opts.element)) {
+      elementCount += 1;
+      const seriesValues = seriesDimension
+        ? dimensionValues(entry, { ...opts, dimension: seriesDimension })
+        : ['All'];
+      for (const seriesValue of emptyAware(seriesValues, opts.includeEmpty, '(none)')) {
+        addNestedCount(countsBySeries, seriesValue, bucket, 1);
+        totalsBySeries.set(seriesValue, (totalsBySeries.get(seriesValue) || 0) + 1);
+      }
+    }
+  }
+
+  let labels = sortedTimeLabels([...labelsSet], opts.granularity);
+  if (opts.includeEmpty) labels = expandedTimeLabels(labels, rows, opts);
+
+  const seriesNames = limitLabels(sortSeriesLabels(totalsBySeries), opts.limit);
+  const datasets = seriesNames.map((name, idx) => ({
+    label: name,
+    data: labels.map((label) => countsBySeries.get(name)?.get(label) || 0),
+    borderColor: PALETTE[idx % PALETTE.length],
+    backgroundColor: PALETTE[idx % PALETTE.length],
+  }));
+
+  const first = datasets[0]?.data ?? [];
+  return {
+    labels,
+    values: first,
+    datasets,
+    pairs: labels.map((label, idx) => ({
+      label,
+      count: datasets.reduce((sum, dataset) => sum + Number(dataset.data[idx] || 0), 0),
+    })),
+    rowCount: rows.length,
+    sourceRowCount,
+    elementCount,
+    totalCount: datasets.reduce(
+      (sum, dataset) => sum + dataset.data.reduce((inner, value) => inner + Number(value || 0), 0),
+      0
+    ),
+    element: opts.element,
+    dimension: 'posted_time',
+    view: opts.view,
+    series: opts.series,
+    granularity: opts.granularity,
+  };
+}
+
+function buildCrosstabData(rows, opts, sourceRowCount) {
+  const focus = String(opts.focusTag || '').trim();
+  if (!focus) {
+    return emptyModel(rows, opts, sourceRowCount, 'Choose a tag/topic to compare.');
+  }
+
+  const counts = new Map();
+  let elementCount = 0;
+  for (const row of rows) {
+    const matches = rowMatchesTag(row, focus);
+    for (const entry of elementEntries(row, opts.element)) {
+      elementCount += 1;
+      const values = dimensionValues(entry, opts);
+      for (const value of values) {
+        const record = counts.get(value) ?? { label: value, match: 0, other: 0 };
+        if (matches) record.match += 1;
+        else record.other += 1;
+        counts.set(value, record);
+      }
+    }
+  }
+
+  let pairs = [...counts.values()]
+    .filter((pair) => pair.match + pair.other >= Math.max(1, opts.minCount))
+    .map((pair) => ({
+      ...pair,
+      count: pair.match + pair.other,
+      share: pair.match + pair.other > 0 ? pair.match / (pair.match + pair.other) : 0,
+    }));
+  pairs = sortPairs(pairs, resolveSort(opts));
+  if (opts.limit > 0) pairs = pairs.slice(0, opts.limit);
+
+  return {
+    labels: pairs.map((pair) => pair.label),
+    values: pairs.map((pair) => pair.match),
+    datasets: [
+      { label: `With ${focus}`, data: pairs.map((pair) => pair.match), backgroundColor: PALETTE[0] },
+      { label: `Without ${focus}`, data: pairs.map((pair) => pair.other), backgroundColor: PALETTE[7] },
+    ],
+    pairs,
+    rowCount: rows.length,
+    sourceRowCount,
+    elementCount,
+    totalCount: pairs.reduce((sum, pair) => sum + pair.count, 0),
+    element: opts.element,
+    dimension: opts.dimension,
+    view: opts.view,
+    series: opts.series,
+    granularity: opts.granularity,
+    focusTag: focus,
+  };
+}
+
+function emptyModel(rows, opts, sourceRowCount, message) {
+  return {
+    labels: [],
+    values: [],
+    datasets: [],
+    pairs: [],
+    rowCount: rows.length,
+    sourceRowCount,
+    elementCount: 0,
+    totalCount: 0,
+    element: opts.element,
+    dimension: opts.dimension,
+    view: opts.view,
+    series: opts.series,
+    granularity: opts.granularity,
+    message,
   };
 }
 
@@ -237,6 +473,7 @@ function applyBindings(options) {
     options.status ?? options.statusEl ?? options.message ?? options.messageEl
   );
   assignElement('summaryEl', options.summary ?? options.summaryEl);
+  assignElement('tableEl', options.table ?? options.tableEl ?? options.details ?? options.detailsEl);
 
   const controls = options.controls && typeof options.controls === 'object' ? options.controls : {};
   for (const [name, def] of Object.entries(CONTROL_DEFS)) {
@@ -287,6 +524,10 @@ function ensurePanelScaffold(options) {
     state.summaryEl ||
     panel.querySelector('[data-chart-summary]') ||
     panel.querySelector('[data-charts-summary]');
+  state.tableEl =
+    state.tableEl ||
+    panel.querySelector('[data-chart-table]') ||
+    panel.querySelector('[data-charts-table]');
   state.canvas =
     state.canvas ||
     panel.querySelector('[data-chart-canvas]') ||
@@ -337,6 +578,13 @@ function ensurePanelScaffold(options) {
   }
 
   if (!state.canvas.getAttribute('height')) state.canvas.setAttribute('height', '320');
+
+  if (!state.tableEl) {
+    state.tableEl = document.createElement('div');
+    state.tableEl.dataset.chartTable = 'true';
+    state.tableEl.className = 'charts-table-wrap';
+    panel.append(state.tableEl);
+  }
 }
 
 function createControl(name, def) {
@@ -357,10 +605,11 @@ function createControl(name, def) {
     input.type = def.type;
     if (def.type === 'number') {
       input.min = String(def.min ?? 0);
-      input.max = String(def.max ?? 1000000);
+      if (def.max !== undefined) input.max = String(def.max);
       input.step = '1';
-      input.className = 'select';
     }
+    input.className = 'select';
+    if (def.dynamic === 'tags') attachTagList(input);
   }
 
   input.dataset.chartControl = name;
@@ -381,7 +630,10 @@ function populateControls() {
     if (control.value === '' && DEFAULTS[name] !== undefined) {
       setControlValue(control, DEFAULTS[name], name);
     }
+
+    if (name === 'focusTag') attachTagList(control);
   }
+  populateDynamicControls();
 }
 
 function appendOptions(select, options) {
@@ -391,6 +643,82 @@ function appendOptions(select, options) {
     option.textContent = opt.label;
     select.append(option);
   }
+}
+
+function populateDynamicControls() {
+  const rows = currentRowsForControls();
+  const accountControl = state.controls.account;
+  if (isSelectControl(accountControl)) {
+    const options = accountOptions(rows);
+    replaceSelectOptions(accountControl, [{ value: '', label: 'All accounts' }, ...options]);
+  }
+
+  const tagControl = state.controls.focusTag;
+  if (isDomControl(tagControl)) {
+    attachTagList(tagControl);
+    if (state.tagListEl) replaceDataListOptions(state.tagListEl, tagOptions(rows));
+  }
+}
+
+function currentRowsForControls() {
+  if (typeof state.getAllRows === 'function') return toArray(state.getAllRows());
+  if (typeof state.getRows === 'function') return toArray(state.getRows());
+  return [];
+}
+
+function accountOptions(rows) {
+  const counts = new Map();
+  for (const row of rows) {
+    const raw = String(row?.account_handle ?? '').trim();
+    if (!raw) continue;
+    counts.set(raw, (counts.get(raw) || 0) + 1);
+  }
+  return [...counts.entries()]
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .map(([handle, count]) => ({
+      value: handle,
+      label: `${formatHandle(handle)} (${formatNumber(count)})`,
+    }));
+}
+
+function tagOptions(rows) {
+  const counts = new Map();
+  for (const row of rows) {
+    for (const tag of tagNames(row)) counts.set(tag, (counts.get(tag) || 0) + 1);
+  }
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, 1000)
+    .map(([tag, count]) => ({ value: tag, label: `${tag} (${formatNumber(count)})` }));
+}
+
+function replaceSelectOptions(select, options) {
+  const previous = select.value;
+  select.replaceChildren();
+  appendOptions(select, options);
+  if (options.some((opt) => opt.value === previous)) select.value = previous;
+  else select.value = '';
+}
+
+function replaceDataListOptions(list, options) {
+  list.replaceChildren();
+  for (const opt of options) {
+    const option = document.createElement('option');
+    option.value = opt.value;
+    option.label = opt.label;
+    list.append(option);
+  }
+}
+
+function attachTagList(input) {
+  if (!isDomControl(input) || !('setAttribute' in input)) return;
+  const doc = input.ownerDocument || document;
+  if (!state.tagListEl) {
+    state.tagListEl = doc.getElementById('chart-tag-options') || doc.createElement('datalist');
+    state.tagListEl.id = 'chart-tag-options';
+    if (!state.tagListEl.parentNode) doc.body.append(state.tagListEl);
+  }
+  input.setAttribute('list', state.tagListEl.id);
 }
 
 function setControlValue(control, value, name) {
@@ -409,7 +737,10 @@ function attachListeners() {
 
   for (const [name, control] of Object.entries(state.controls)) {
     if (!isDomControl(control)) continue;
-    const eventName = name === 'limit' || name === 'minCount' ? 'input' : 'change';
+    const eventName =
+      name === 'limit' || name === 'minCount' || name === 'from' || name === 'to' || name === 'focusTag'
+        ? 'input'
+        : 'change';
     listen(control, eventName, () => scheduleRender());
   }
 }
@@ -426,6 +757,10 @@ function detachListeners() {
 
 function isDomControl(value) {
   return value && typeof value === 'object' && 'nodeType' in value;
+}
+
+function isSelectControl(value) {
+  return isDomControl(value) && String(value.tagName || '').toLowerCase() === 'select';
 }
 
 function setPanelOpen(open) {
@@ -475,10 +810,11 @@ async function renderChartsPanel({ force = false } = {}) {
   const rows = currentRows(opts);
   const model = buildChartData(rows, opts);
   setSummary(summaryText(model, opts));
+  renderDetailsTable(model, opts);
 
   if (model.labels.length === 0) {
     destroyChart();
-    setStatus('empty', 'No chartable values for the selected element and dimension.');
+    setStatus('empty', model.message || 'No chartable values for the selected metric and dimension.');
     return;
   }
 
@@ -498,15 +834,30 @@ async function renderChartsPanel({ force = false } = {}) {
   const context = state.canvas.getContext('2d');
   destroyChart();
   state.chart = new Chart(context, chartConfig(model, opts));
-  setStatus('', '');
+  const pointCount = model.datasets.reduce((sum, dataset) => sum + dataset.data.length, 0);
+  if (pointCount > RENDER_POINT_WARNING) {
+    setStatus(
+      'warn',
+      `Rendering ${formatNumber(pointCount)} chart points. Lower Top N or narrow the chart filters if interaction gets sluggish.`
+    );
+  } else {
+    setStatus('', '');
+  }
 }
 
 function currentOptions() {
   return normalizeOptions({
+    view: readControl('view', DEFAULTS.view),
     element: readControl('element', DEFAULTS.element),
     dimension: readControl('dimension', DEFAULTS.dimension),
+    series: readControl('series', DEFAULTS.series),
+    granularity: readControl('granularity', DEFAULTS.granularity),
     chartType: readControl('chartType', DEFAULTS.chartType),
     scope: readControl('scope', DEFAULTS.scope),
+    account: readControl('account', DEFAULTS.account),
+    from: readControl('from', DEFAULTS.from),
+    to: readControl('to', DEFAULTS.to),
+    focusTag: readControl('focusTag', DEFAULTS.focusTag),
     limit: readControl('limit', DEFAULTS.limit),
     minCount: readControl('minCount', DEFAULTS.minCount),
     sort: readControl('sort', DEFAULTS.sort),
@@ -516,20 +867,34 @@ function currentOptions() {
 }
 
 function normalizeOptions(options) {
+  const view = validOption(options.view, VALID_VIEWS, DEFAULTS.view);
   const element = validOption(options.element, VALID_ELEMENTS, DEFAULTS.element);
   const dimension = validOption(options.dimension, VALID_DIMENSIONS, DEFAULTS.dimension);
+  const series = validOption(options.series, VALID_SERIES, DEFAULTS.series);
+  const granularity = validOption(options.granularity, VALID_GRANULARITIES, DEFAULTS.granularity);
   const chartType = validOption(options.chartType, VALID_CHART_TYPES, DEFAULTS.chartType);
   const scope = validOption(options.scope, VALID_SCOPES, DEFAULTS.scope);
   const sort = validOption(options.sort, VALID_SORTS, DEFAULTS.sort);
-  const limit = normalizeNumber(options.limit, DEFAULTS.limit, 0, 500);
+  const limit = normalizeNumber(options.limit, DEFAULTS.limit, NO_LIMIT, MAX_TOP_N);
   const minCount = normalizeNumber(options.minCount, DEFAULTS.minCount, 1, 1000000);
   const includeEmpty = normalizeBoolean(options.includeEmpty);
+  const account = String(options.account ?? '').trim();
+  const from = normalizeDateInput(options.from);
+  const to = normalizeDateInput(options.to);
+  const focusTag = String(options.focusTag ?? '').trim();
 
   return {
+    view,
     element,
     dimension,
+    series,
+    granularity,
     chartType,
     scope,
+    account,
+    from,
+    to,
+    focusTag,
     sort,
     limit,
     minCount,
@@ -555,6 +920,11 @@ function normalizeBoolean(value) {
   return Boolean(value);
 }
 
+function normalizeDateInput(value) {
+  const text = String(value ?? '').trim();
+  return /^\d{4}-\d{2}-\d{2}$/.test(text) ? text : '';
+}
+
 function readControl(name, fallback) {
   const control = state.controls[name];
   if (!isDomControl(control)) return control ?? fallback;
@@ -568,6 +938,26 @@ function currentRows(opts = currentOptions()) {
     return toArray(state.getAllRows());
   if (typeof state.getRows === 'function') return toArray(state.getRows());
   return [];
+}
+
+function applyChartFilters(rows, opts) {
+  const account = String(opts.account || '').replace(/^@/, '').toLocaleLowerCase();
+  return rows.filter((row) => {
+    if (account) {
+      const handle = String(row?.account_handle ?? '').replace(/^@/, '').toLocaleLowerCase();
+      if (handle !== account) return false;
+    }
+    const postedDate = postedDateString(row?.posted_at);
+    if (opts.from && (!postedDate || postedDate < opts.from)) return false;
+    if (opts.to && (!postedDate || postedDate > opts.to)) return false;
+    if (opts.focusTag && opts.view !== 'crosstab' && !rowMatchesTag(row, opts.focusTag)) return false;
+    return true;
+  });
+}
+
+function postedDateString(value) {
+  const match = String(value ?? '').match(/^(\d{4}-\d{2}-\d{2})/);
+  return match ? match[1] : '';
 }
 
 function toArray(value) {
@@ -600,6 +990,8 @@ function destroyChart() {
 
 function elementEntries(row, element) {
   if (element === 'tweets') return [{ row, value: row }];
+  if (element === 'replies') return row?.tweet_type === 'reply' ? [{ row, value: row }] : [];
+  if (element === 'categories') return [{ row, category: categoryLabel(row, state.categoryOf), value: row }];
 
   if (element === 'media') {
     return toArray(row?.media)
@@ -634,10 +1026,14 @@ function dimensionValues(entry, opts) {
   if (opts.dimension === 'category') return [categoryLabel(row, opts.categoryOf)];
   if (opts.dimension === 'tweet_type') return [nonEmpty(row.tweet_type, 'original')];
   if (opts.dimension === 'media_kind') return mediaKindValues(entry);
+  if (opts.dimension === 'posted_time') return [dateBucket(row.posted_at, opts.granularity)];
   if (opts.dimension === 'posted_day') return [dateBucket(row.posted_at, 'day')];
+  if (opts.dimension === 'posted_week') return [dateBucket(row.posted_at, 'week')];
   if (opts.dimension === 'posted_month') return [dateBucket(row.posted_at, 'month')];
+  if (opts.dimension === 'posted_year') return [dateBucket(row.posted_at, 'year')];
   if (opts.dimension === 'lang') return [nonEmpty(row.lang, '(unknown language)')];
   if (opts.dimension === 'deleted') return [deletedBucket(row)];
+  if (opts.dimension === 'news_coverage') return [newsCoverageBucket(row)];
 
   if (opts.dimension === 'tag') {
     const tags = entry.tag ? [entry.tag] : tagNames(row);
@@ -681,11 +1077,88 @@ function deletedBucket(row) {
   return 'available';
 }
 
+function newsCoverageBucket(row) {
+  const count = Number(row?.news_mention_count ?? toArray(row?.news_mentions).length ?? 0);
+  return count > 0 ? 'mentioned in news' : 'not found in news';
+}
+
 function dateBucket(value, granularity) {
-  const text = String(value ?? '');
-  const match = text.match(/^(\d{4}-\d{2})(?:-(\d{2}))?/);
-  if (!match) return '(no posted date)';
-  return granularity === 'month' ? match[1] : `${match[1]}-${match[2] || '01'}`;
+  const text = postedDateString(value);
+  if (!text) return '(no posted date)';
+  if (granularity === 'year') return text.slice(0, 4);
+  if (granularity === 'month') return text.slice(0, 7);
+  if (granularity === 'week') return weekBucket(text);
+  return text;
+}
+
+function weekBucket(dateText) {
+  const date = parseUtcDate(dateText);
+  if (!date) return '(no posted date)';
+  const day = date.getUTCDay() || 7;
+  date.setUTCDate(date.getUTCDate() + 4 - day);
+  const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+  const week = Math.ceil(((date - yearStart) / 86400000 + 1) / 7);
+  return `${date.getUTCFullYear()}-W${String(week).padStart(2, '0')}`;
+}
+
+function parseUtcDate(value) {
+  const match = String(value ?? '').match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!match) return null;
+  const date = new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function isRealTimeBucket(value) {
+  return value && value !== '(no posted date)';
+}
+
+function sortedTimeLabels(labels, granularity) {
+  return labels.slice().sort((a, b) => timeBucketSortKey(a, granularity).localeCompare(timeBucketSortKey(b, granularity)));
+}
+
+function timeBucketSortKey(label, granularity) {
+  if (granularity === 'week') return label.replace('-W', '-');
+  return label;
+}
+
+function expandedTimeLabels(labels, rows, opts) {
+  const range = timeRange(labels, rows, opts);
+  if (!range) return labels;
+  const out = [];
+  const cursor = parseUtcDate(range.start);
+  const end = parseUtcDate(range.end);
+  if (!cursor || !end) return labels;
+  while (cursor <= end) {
+    out.push(dateBucket(formatDate(cursor), opts.granularity));
+    advanceDate(cursor, opts.granularity);
+  }
+  return uniqueStrings(out);
+}
+
+function timeRange(labels, rows, opts) {
+  const dates = [];
+  if (opts.from) dates.push(opts.from);
+  if (opts.to) dates.push(opts.to);
+  for (const row of rows) {
+    const date = postedDateString(row?.posted_at);
+    if (date) dates.push(date);
+  }
+  if (dates.length === 0 && labels.length === 0) return null;
+  dates.sort();
+  return { start: opts.from || dates[0], end: opts.to || dates[dates.length - 1] };
+}
+
+function advanceDate(date, granularity) {
+  if (granularity === 'year') date.setUTCFullYear(date.getUTCFullYear() + 1, 0, 1);
+  else if (granularity === 'month') date.setUTCMonth(date.getUTCMonth() + 1, 1);
+  else if (granularity === 'week') date.setUTCDate(date.getUTCDate() + 7);
+  else date.setUTCDate(date.getUTCDate() + 1);
+}
+
+function formatDate(date) {
+  return `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, '0')}-${String(
+    date.getUTCDate()
+  ).padStart(2, '0')}`;
 }
 
 function mediaKind(media) {
@@ -746,6 +1219,18 @@ function emptyAware(values, includeEmpty, emptyLabel) {
   return includeEmpty ? [emptyLabel] : [];
 }
 
+function rowMatchesTag(row, selection) {
+  const want = String(selection ?? '').trim().toLocaleLowerCase();
+  if (!want) return true;
+  const wantNamespace = want.endsWith(':') ? want.slice(0, -1) : '';
+  return tagNames(row).some((tag) => {
+    const lower = tag.toLocaleLowerCase();
+    if (lower === want) return true;
+    if (wantNamespace && tagNamespace(lower) === wantNamespace) return true;
+    return !want.includes(':') && tagNamespace(lower) === want;
+  });
+}
+
 function nonEmpty(value, fallback) {
   const text = String(value ?? '').trim();
   return text || fallback;
@@ -753,6 +1238,25 @@ function nonEmpty(value, fallback) {
 
 function hasValue(value) {
   return value !== undefined && value !== null && String(value).trim() !== '';
+}
+
+function addNestedCount(map, outer, inner, amount) {
+  let innerMap = map.get(outer);
+  if (!innerMap) {
+    innerMap = new Map();
+    map.set(outer, innerMap);
+  }
+  innerMap.set(inner, (innerMap.get(inner) || 0) + amount);
+}
+
+function sortSeriesLabels(totalsBySeries) {
+  return [...totalsBySeries.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([label]) => label);
+}
+
+function limitLabels(labels, limit) {
+  return limit > 0 ? labels.slice(0, limit) : labels;
 }
 
 function sortPairs(pairs, sort) {
@@ -768,7 +1272,14 @@ function sortPairs(pairs, sort) {
 
 function resolveSort(opts) {
   if (opts.sort !== 'auto') return opts.sort;
-  if (opts.dimension === 'posted_day' || opts.dimension === 'posted_month') return 'label_asc';
+  if (
+    opts.dimension === 'posted_time' ||
+    opts.dimension === 'posted_day' ||
+    opts.dimension === 'posted_week' ||
+    opts.dimension === 'posted_month' ||
+    opts.dimension === 'posted_year'
+  )
+    return 'label_asc';
   return 'count_desc';
 }
 
@@ -777,39 +1288,45 @@ function chartConfig(model, opts) {
   const isDoughnut = chartType.type === 'doughnut';
   const isLine = chartType.type === 'line';
   const colors = model.labels.map((_, idx) => PALETTE[idx % PALETTE.length]);
+  const title = chartTitle(model, opts);
+  const datasets = (model.datasets.length > 0 ? model.datasets : [{ label: title, data: model.values }]).map(
+    (dataset, datasetIdx) => {
+      const color = dataset.borderColor || dataset.backgroundColor || PALETTE[datasetIdx % PALETTE.length];
+      return {
+        label: dataset.label || title,
+        data: dataset.data,
+        backgroundColor: isDoughnut ? colors : dataset.backgroundColor || color,
+        borderColor: dataset.borderColor || color,
+        borderWidth: isLine ? 2 : 1,
+        fill: false,
+        tension: isLine ? 0.2 : 0,
+      };
+    }
+  );
 
   return {
     type: chartType.type,
     data: {
       labels: model.labels,
-      datasets: [
-        {
-          label: `${ELEMENT_LABELS[opts.element]} by ${DIMENSION_LABELS[opts.dimension]}`,
-          data: model.values,
-          backgroundColor: isLine ? PALETTE[0] : colors,
-          borderColor: isLine ? PALETTE[0] : colors,
-          borderWidth: isLine ? 2 : 1,
-          fill: false,
-          tension: isLine ? 0.2 : 0,
-        },
-      ],
+      datasets,
     },
     options: {
       responsive: true,
-      maintainAspectRatio: true,
+      maintainAspectRatio: false,
       indexAxis: chartType.indexAxis,
       plugins: {
         legend: {
-          display: isDoughnut,
+          display: isDoughnut || datasets.length > 1,
           position: 'bottom',
         },
         title: {
           display: true,
-          text: `${ELEMENT_LABELS[opts.element]} by ${DIMENSION_LABELS[opts.dimension]}`,
+          text: title,
         },
         tooltip: {
           callbacks: {
-            label: (ctx) => `${ctx.label}: ${ctx.parsed.y ?? ctx.parsed.x ?? ctx.parsed}`,
+            label: (ctx) =>
+              `${ctx.dataset.label}: ${ctx.parsed.y ?? ctx.parsed.x ?? ctx.parsed}`,
           },
         },
       },
@@ -818,12 +1335,16 @@ function chartConfig(model, opts) {
         : {
             x: {
               beginAtZero: true,
+              stacked: opts.view === 'crosstab',
               ticks: {
+                autoSkip: true,
+                maxTicksLimit: opts.view === 'time_series' ? 16 : 20,
                 precision: 0,
               },
             },
             y: {
               beginAtZero: true,
+              stacked: opts.view === 'crosstab',
               ticks: {
                 precision: 0,
               },
@@ -839,18 +1360,104 @@ function resolveChartType(opts, model) {
   if (opts.chartType === 'horizontal_bar') return { type: 'bar', indexAxis: 'y' };
   if (opts.chartType === 'bar') return { type: 'bar' };
 
-  if (opts.dimension === 'posted_day' || opts.dimension === 'posted_month') return { type: 'line' };
+  if (opts.view === 'time_series') return { type: 'line' };
+  if (
+    opts.dimension === 'posted_time' ||
+    opts.dimension === 'posted_day' ||
+    opts.dimension === 'posted_week' ||
+    opts.dimension === 'posted_month' ||
+    opts.dimension === 'posted_year'
+  )
+    return { type: 'line' };
+  if (opts.view === 'crosstab') return { type: 'bar', indexAxis: 'y' };
   if (model.labels.length > 10) return { type: 'bar', indexAxis: 'y' };
   return { type: 'bar' };
 }
 
+function chartTitle(model, opts) {
+  if (opts.view === 'time_series') {
+    const compare = opts.series === 'none' ? '' : ` by ${SERIES_LABELS[opts.series].toLowerCase()}`;
+    return `${ELEMENT_LABELS[opts.element]} over time${compare}`;
+  }
+  if (opts.view === 'crosstab') {
+    return `${ELEMENT_LABELS[opts.element]} with/without ${model.focusTag || opts.focusTag} by ${
+      DIMENSION_LABELS[opts.dimension]
+    }`;
+  }
+  return `${ELEMENT_LABELS[opts.element]} by ${DIMENSION_LABELS[opts.dimension]}`;
+}
+
+function renderDetailsTable(model, opts) {
+  if (!state.tableEl) return;
+  const rows = model.pairs.slice(0, 200);
+  if (rows.length === 0) {
+    state.tableEl.replaceChildren();
+    return;
+  }
+
+  const table = document.createElement('table');
+  table.className = 'charts-table';
+  const thead = document.createElement('thead');
+  const headRow = document.createElement('tr');
+  const headers =
+    opts.view === 'crosstab'
+      ? ['Bucket', `With ${model.focusTag || opts.focusTag}`, 'Without', 'Share']
+      : ['Bucket', 'Count'];
+  for (const header of headers) {
+    const th = document.createElement('th');
+    th.textContent = header;
+    headRow.append(th);
+  }
+  thead.append(headRow);
+  table.append(thead);
+
+  const tbody = document.createElement('tbody');
+  for (const row of rows) {
+    const tr = document.createElement('tr');
+    appendCell(tr, row.label);
+    if (opts.view === 'crosstab') {
+      appendCell(tr, formatNumber(row.match), true);
+      appendCell(tr, formatNumber(row.other), true);
+      appendCell(tr, `${Math.round(row.share * 1000) / 10}%`, true);
+    } else {
+      appendCell(tr, formatNumber(row.count), true);
+    }
+    tbody.append(tr);
+  }
+  table.append(tbody);
+
+  const note = document.createElement('div');
+  note.className = 'charts-table-note';
+  note.textContent =
+    model.pairs.length > rows.length
+      ? `Showing first ${formatNumber(rows.length)} table rows; chart uses ${formatNumber(
+          model.pairs.length
+        )}.`
+      : `Showing ${formatNumber(rows.length)} table rows.`;
+
+  state.tableEl.replaceChildren(table, note);
+}
+
+function appendCell(row, value, numeric = false) {
+  const td = document.createElement('td');
+  td.textContent = String(value ?? '');
+  if (numeric) td.className = 'num';
+  row.append(td);
+}
+
 function summaryText(model, opts) {
   const rows = formatNumber(model.rowCount);
+  const sourceRows = formatNumber(model.sourceRowCount);
   const elements = formatNumber(model.elementCount);
   const buckets = formatNumber(model.labels.length);
   const elementLabel = ELEMENT_LABELS[opts.element].toLowerCase();
-  const dimensionLabel = DIMENSION_LABELS[opts.dimension].toLowerCase();
-  return `${elements} ${elementLabel} across ${buckets} ${dimensionLabel} buckets from ${rows} rows.`;
+  const dimension =
+    opts.view === 'time_series'
+      ? `${opts.granularity} buckets`
+      : `${DIMENSION_LABELS[opts.dimension].toLowerCase()} buckets`;
+  const narrowed = model.rowCount === model.sourceRowCount ? rows : `${rows} of ${sourceRows}`;
+  const focus = opts.focusTag ? ` Tag/topic: ${opts.focusTag}.` : '';
+  return `${VIEW_LABELS[opts.view]}: ${elements} ${elementLabel} across ${buckets} ${dimension} from ${narrowed} rows.${focus}`;
 }
 
 function formatNumber(value) {

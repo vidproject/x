@@ -343,6 +343,12 @@ body {
   display: flex;
   gap: 8px;
   align-items: center;
+  flex-wrap: wrap;
+}
+.result-page-size {
+  padding: 2px 7px;
+  min-height: 24px;
+  flex: 0 0 auto;
 }
 .spinner {
   width: 12px;
@@ -716,6 +722,7 @@ html[data-media-fit='vertical'] .media-thumb {
 
 .pager {
   display: flex;
+  flex-direction: column;
   gap: 6px;
   padding: 8px 12px;
   border-top: 1px solid var(--border);
@@ -723,12 +730,77 @@ html[data-media-fit='vertical'] .media-thumb {
   align-items: center;
   justify-content: center;
 }
+.pager-controls {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 .pg-label {
   font-size: 12px;
   color: var(--fg-2);
   min-width: 200px;
   text-align: center;
   font-variant-numeric: tabular-nums;
+}
+.timeline-pager {
+  width: min(1100px, 100%);
+  display: grid;
+  gap: 3px;
+}
+.timeline-pager-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--fg-3);
+  font-size: 11px;
+}
+.timeline-clear {
+  padding: 1px 5px;
+  font-size: 11px;
+  color: var(--fg-2);
+}
+.timeline-bars {
+  height: 36px;
+  display: flex;
+  align-items: end;
+  gap: 1px;
+  padding: 3px 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  overflow: hidden;
+}
+.timeline-bar {
+  flex: 1 1 0;
+  min-width: 3px;
+  height: var(--bar-height, 2px);
+  border: 0;
+  border-radius: 2px 2px 0 0;
+  background: color-mix(in srgb, var(--accent-2) 72%, var(--bg));
+  cursor: pointer;
+  padding: 0;
+}
+.timeline-bar:hover,
+.timeline-bar:focus-visible {
+  background: var(--accent-2);
+  outline: none;
+}
+.timeline-bar.active {
+  background: var(--warn);
+}
+.timeline-bar.empty {
+  opacity: 0.28;
+  cursor: default;
+}
+.timeline-empty {
+  width: 100%;
+  align-self: center;
+  text-align: center;
+  color: var(--fg-3);
+  font-size: 11px;
 }
 
 .empty {
@@ -779,7 +851,7 @@ html[data-media-fit='vertical'] .media-thumb {
   position: fixed;
   top: 0;
   right: 0;
-  width: min(900px, 100%);
+  width: min(1120px, 100%);
   height: 100vh;
   background: var(--bg);
   border-left: 1px solid var(--border-strong);
@@ -806,7 +878,7 @@ html[data-media-fit='vertical'] .media-thumb {
 }
 .charts-controls {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
   gap: 8px;
   margin-bottom: 10px;
 }
@@ -822,6 +894,16 @@ html[data-media-fit='vertical'] .media-thumb {
 }
 .charts-control-small {
   min-width: 90px;
+}
+.charts-control-wide {
+  grid-column: span 2;
+}
+.charts-control-check {
+  justify-content: end;
+}
+.charts-control-check input {
+  width: 16px;
+  height: 16px;
 }
 .charts-summary {
   font-size: 12px;
@@ -840,15 +922,61 @@ html[data-media-fit='vertical'] .media-thumb {
   border-color: rgba(220, 38, 38, 0.45);
   color: #fca5a5;
 }
+.charts-status[data-status='warn'] {
+  border-color: rgba(178, 106, 0, 0.45);
+  color: var(--warn);
+}
 .charts-canvas-wrap {
-  min-height: 360px;
+  height: min(52vh, 520px);
+  min-height: 340px;
   padding: 10px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--bg-2);
 }
 .charts-canvas-wrap canvas {
+  height: 100%;
   max-width: 100%;
+}
+.charts-table-wrap {
+  margin-top: 10px;
+  max-height: 240px;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+.charts-table-wrap:empty {
+  display: none;
+}
+.charts-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.charts-table th,
+.charts-table td {
+  padding: 5px 7px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.charts-table th {
+  position: sticky;
+  top: 0;
+  background: var(--bg-2);
+  color: var(--fg-2);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.charts-table td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.charts-table-note {
+  padding: 5px 7px;
+  color: var(--fg-3);
+  font-size: 11px;
 }
 .sidepanel-head {
   display: flex;

@@ -378,9 +378,18 @@ function newsMentionsBlock(mentions) {
     const bits = [];
     if (mention.source) bits.push(mention.source);
     if (mention.published_at) bits.push(mention.published_at);
+    if (mention.match_type) bits.push(mention.match_type);
     if (typeof mention.confidence === 'number') bits.push(`confidence ${mention.confidence}`);
+    if (mention.confirmed === false) bits.push('candidate');
     meta.textContent = bits.join(' - ');
     item.append(meta);
+
+    if (Array.isArray(mention.matched_fields) && mention.matched_fields.length > 0) {
+      const fields = document.createElement('div');
+      fields.className = 'sp-news-terms';
+      fields.textContent = `Fields: ${mention.matched_fields.join(' | ')}`;
+      item.append(fields);
+    }
 
     if (Array.isArray(mention.matched_terms) && mention.matched_terms.length > 0) {
       const terms = document.createElement('div');

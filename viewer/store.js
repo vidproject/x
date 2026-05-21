@@ -554,7 +554,14 @@ function newsMentionText(row) {
   const mentions = Array.isArray(row.news_mentions) ? row.news_mentions : [];
   return mentions
     .map((entry) =>
-      [entry?.source, entry?.title, entry?.url, entry?.published_at]
+      [
+        entry?.source,
+        entry?.title,
+        entry?.url,
+        entry?.published_at,
+        entry?.match_type,
+        Array.isArray(entry?.matched_fields) ? entry.matched_fields.join(' ') : '',
+      ]
         .filter(Boolean)
         .join(' ')
     )

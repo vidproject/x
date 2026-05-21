@@ -115,12 +115,6 @@
         <option value="music">Likely music</option>
         <option value="none">Text only</option>
       </select>
-      <select id="page-size" class="select" title="Rows per page">
-        <option value="20" selected>20 / page</option>
-        <option value="50">50 / page</option>
-        <option value="100">100 / page</option>
-        <option value="200">200 / page</option>
-      </select>
     </section>
 
     <div class="tips" id="tips" hidden>
@@ -150,6 +144,12 @@
     <section class="result-bar" id="result-bar" hidden>
       <span id="result-count">-</span>
       <span class="spinner" id="spinner" hidden></span>
+      <select id="page-size" class="select result-page-size" title="Rows per page">
+        <option value="20" selected>20 / page</option>
+        <option value="50">50 / page</option>
+        <option value="100">100 / page</option>
+        <option value="200">200 / page</option>
+      </select>
       <button
         type="button"
         class="btn ghost"
@@ -194,31 +194,62 @@
       <div class="chartpanel-body">
         <div class="charts-controls" data-chart-controls>
           <label class="charts-control">
-            <span>Element</span>
-            <select class="select" id="chart-element" data-chart-control="element"></select>
+            <span>View</span>
+            <select class="select" id="chart-view" data-chart-control="view"></select>
           </label>
           <label class="charts-control">
-            <span>Dimension</span>
-            <select class="select" id="chart-dimension" data-chart-control="dimension"></select>
+            <span>Metric</span>
+            <select class="select" id="chart-element" data-chart-control="element"></select>
           </label>
           <label class="charts-control">
             <span>Rows</span>
             <select class="select" id="chart-scope" data-chart-control="scope"></select>
           </label>
           <label class="charts-control">
-            <span>Chart</span>
-            <select class="select" id="chart-type" data-chart-control="chartType"></select>
+            <span>Account</span>
+            <select class="select" id="chart-account" data-chart-control="account"></select>
+          </label>
+          <label class="charts-control">
+            <span>From</span>
+            <input class="select" id="chart-from" type="date" data-chart-control="from" />
+          </label>
+          <label class="charts-control">
+            <span>To</span>
+            <input class="select" id="chart-to" type="date" data-chart-control="to" />
+          </label>
+          <label class="charts-control">
+            <span>Group time by</span>
+            <select class="select" id="chart-granularity" data-chart-control="granularity"></select>
+          </label>
+          <label class="charts-control">
+            <span>Dimension</span>
+            <select class="select" id="chart-dimension" data-chart-control="dimension"></select>
+          </label>
+          <label class="charts-control">
+            <span>Compare</span>
+            <select class="select" id="chart-series" data-chart-control="series"></select>
+          </label>
+          <label class="charts-control charts-control-wide">
+            <span>Tag/topic</span>
+            <input
+              class="select"
+              id="chart-focus-tag"
+              type="text"
+              list="chart-tag-options"
+              placeholder="Optional exact tag"
+              data-chart-control="focusTag"
+            />
           </label>
           <label class="charts-control charts-control-small">
-            <span>Top</span>
+            <span>Top N</span>
             <input
               class="select"
               id="chart-limit"
               type="number"
               min="0"
-              max="500"
               step="1"
               value="20"
+              title="Use 0 for all buckets or all comparison series"
               data-chart-control="limit"
             />
           </label>
@@ -235,12 +266,26 @@
               data-chart-control="minCount"
             />
           </label>
+          <label class="charts-control">
+            <span>Sort</span>
+            <select class="select" id="chart-sort" data-chart-control="sort"></select>
+          </label>
+          <label class="charts-control">
+            <span>Chart</span>
+            <select class="select" id="chart-type" data-chart-control="chartType"></select>
+          </label>
+          <label class="charts-control charts-control-check">
+            <span>Empty buckets</span>
+            <input id="chart-include-empty" type="checkbox" data-chart-control="includeEmpty" />
+          </label>
         </div>
+        <datalist id="chart-tag-options"></datalist>
         <div class="charts-summary" id="charts-summary" data-chart-summary></div>
         <div class="charts-status" id="charts-status" data-chart-status hidden></div>
         <div class="charts-canvas-wrap">
           <canvas id="charts-canvas" data-chart-canvas height="320"></canvas>
         </div>
+        <div class="charts-table-wrap" id="charts-table" data-chart-table></div>
       </div>
     </aside>
 
@@ -254,11 +299,22 @@
     </main>
 
     <nav class="pager" id="pager" hidden>
-      <button type="button" class="btn" id="pg-first">First</button>
-      <button type="button" class="btn" id="pg-prev">Prev</button>
-      <span class="pg-label" id="pg-label">-</span>
-      <button type="button" class="btn" id="pg-next">Next</button>
-      <button type="button" class="btn" id="pg-last">Last</button>
+      <div class="timeline-pager" id="timeline-pager" aria-label="Tweet volume timeline">
+        <div class="timeline-pager-head">
+          <span id="timeline-label">Tweet volume</span>
+          <button type="button" class="btn ghost timeline-clear" id="timeline-clear" hidden>
+            Clear dates
+          </button>
+        </div>
+        <div class="timeline-bars" id="timeline-bars"></div>
+      </div>
+      <div class="pager-controls">
+        <button type="button" class="btn" id="pg-first">First</button>
+        <button type="button" class="btn" id="pg-prev">Prev</button>
+        <span class="pg-label" id="pg-label">-</span>
+        <button type="button" class="btn" id="pg-next">Next</button>
+        <button type="button" class="btn" id="pg-last">Last</button>
+      </div>
     </nav>
 
     <section class="empty" id="empty">

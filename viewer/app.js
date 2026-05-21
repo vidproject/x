@@ -58,6 +58,9 @@ const els = {
   theadRow: $('thead-row'),
   tbody: $('tbody'),
   pager: $('pager'),
+  timelineLabel: $('timeline-label'),
+  timelineBars: $('timeline-bars'),
+  timelineClear: $('timeline-clear'),
   pgFirst: $('pg-first'),
   pgPrev: $('pg-prev'),
   pgLabel: $('pg-label'),
@@ -1393,6 +1396,15 @@ els.pgFirst.addEventListener('click', () => goto(1));
 els.pgPrev.addEventListener('click', () => goto(urlState.page - 1));
 els.pgNext.addEventListener('click', () => goto(urlState.page + 1));
 els.pgLast.addEventListener('click', () => goto(lastPage()));
+els.timelineClear.addEventListener('click', () => {
+  urlState.from = '';
+  urlState.to = '';
+  urlState.page = 1;
+  els.dateFrom.value = '';
+  els.dateTo.value = '';
+  applyToUrl(urlState);
+  refresh();
+});
 
 function lastPage() {
   return Math.max(1, Math.ceil(filteredThreads.length / urlState.size));
@@ -1403,6 +1415,146 @@ function goto(p) {
   urlState.page = np;
   applyToUrl(urlState);
   refresh();
+}
+
+function renderTimelinePager(rows, threads) {
+  els.timelineBars.replaceChildren();
+  els.timelineClear.hidden = !(urlState.from || urlState.to);
+  const bins = buildTimelineBins(rows, threads);
+  if (bins.length === 0) {
+    els.timelineLabel.textContent = 'Tweet volume';
+    const empty = document.createElement('div');
+    empty.className = 'timeline-empty';
+    empty.textContent = 'No dated tweets in current filters';
+    els.timelineBars.append(empty);
+    return;
+  }
+  const unit = bins[0]?.unit || 'day';
+  const maxTweets = Math.max(1, ...bins.map((bin) => bin.tweets));
+  const totalTweets = bins.reduce((sum, bin) => sum + bin.tweets, 0);
+  els.timelineLabel.textContent = `${fmtNum(totalTweets)} tweets by ${unit}`;
+  for (const bin of bins) {
+    const bar = document.createElement('button');
+    bar.type = 'button';
+    bar.className = `timeline-bar${bin.tweets === 0 ? ' empty' : ''}${
+      timelineBinIsActive(bin) ? ' active' : ''
+    }`;
+    const height = bin.tweets === 0 ? 2 : Math.max(3, Math.round((bin.tweets / maxTweets) * 28));
+    bar.style.setProperty('--bar-height', `${height}px`);
+    bar.title = `${bin.label}: ${fmtNum(bin.tweets)} tweet${bin.tweets === 1 ? '' : 's'}; ${fmtNum(bin.threads)} thread${bin.threads === 1 ? '' : 's'}. Click to filter ${bin.start} through ${bin.end}.`;
+    bar.setAttribute('aria-label', bar.title);
+    if (bin.tweets === 0) {
+      bar.disabled = true;
+    } else {
+      bar.addEventListener('click', () => {
+        urlState.from = bin.start;
+        urlState.to = bin.end;
+        urlState.page = 1;
+        els.dateFrom.value = urlState.from;
+        els.dateTo.value = urlState.to;
+        applyToUrl(urlState);
+        refresh();
+      });
+    }
+    els.timelineBars.append(bar);
+  }
+}
+
+function buildTimelineBins(rows, threads) {
+  const dates = rows.map((row) => dateFromDay(dayKey(row.posted_at))).filter(Boolean);
+  if (dates.length === 0) return [];
+  dates.sort((a, b) => a - b);
+  const min = dates[0];
+  const max = dates[dates.length - 1];
+  const unit = timelineUnit(min, max);
+  const bins = [];
+  const byStart = new Map();
+  let cur = timelineBinStart(min, unit);
+  const stop = timelineBinStart(max, unit);
+  while (cur <= stop) {
+    const start = dayFromDate(cur);
+    const end = dayFromDate(timelineBinEnd(cur, unit));
+    const bin = {
+      unit,
+      start,
+      end,
+      label: timelineBinLabel(cur, unit),
+      tweets: 0,
+      threads: 0,
+    };
+    bins.push(bin);
+    byStart.set(start, bin);
+    cur = nextTimelineBin(cur, unit);
+  }
+  for (const row of rows) {
+    const date = dateFromDay(dayKey(row.posted_at));
+    if (!date) continue;
+    const bin = byStart.get(dayFromDate(timelineBinStart(date, unit)));
+    if (bin) bin.tweets += 1;
+  }
+  for (const thread of threads) {
+    const date = dateFromDay(dayKey(thread?.master?.posted_at));
+    if (!date) continue;
+    const bin = byStart.get(dayFromDate(timelineBinStart(date, unit)));
+    if (bin) bin.threads += 1;
+  }
+  return bins;
+}
+
+function timelineUnit(min, max) {
+  const days = Math.max(1, Math.round((max - min) / 86_400_000) + 1);
+  if (days <= 60) return 'day';
+  if (days <= 730) return 'week';
+  const months = (max.getUTCFullYear() - min.getUTCFullYear()) * 12 + max.getUTCMonth() - min.getUTCMonth() + 1;
+  return months <= 144 ? 'month' : 'quarter';
+}
+
+function timelineBinStart(date, unit) {
+  const d = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+  if (unit === 'day') return d;
+  if (unit === 'week') {
+    d.setUTCDate(d.getUTCDate() - d.getUTCDay());
+    return d;
+  }
+  if (unit === 'quarter') {
+    return new Date(Date.UTC(d.getUTCFullYear(), Math.floor(d.getUTCMonth() / 3) * 3, 1));
+  }
+  return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1));
+}
+
+function timelineBinEnd(start, unit) {
+  const next = nextTimelineBin(start, unit);
+  next.setUTCDate(next.getUTCDate() - 1);
+  return next;
+}
+
+function nextTimelineBin(start, unit) {
+  const next = new Date(start.valueOf());
+  if (unit === 'day') next.setUTCDate(next.getUTCDate() + 1);
+  else if (unit === 'week') next.setUTCDate(next.getUTCDate() + 7);
+  else if (unit === 'quarter') next.setUTCMonth(next.getUTCMonth() + 3);
+  else next.setUTCMonth(next.getUTCMonth() + 1);
+  return next;
+}
+
+function timelineBinLabel(start, unit) {
+  const year = start.getUTCFullYear();
+  const month = String(start.getUTCMonth() + 1).padStart(2, '0');
+  if (unit === 'day') return dayFromDate(start);
+  if (unit === 'week') return `${dayFromDate(start)} week`;
+  if (unit === 'quarter') return `${year} Q${Math.floor(start.getUTCMonth() / 3) + 1}`;
+  return `${year}-${month}`;
+}
+
+function timelineBinIsActive(bin) {
+  if (!urlState.from && !urlState.to) return false;
+  const from = urlState.from || '0000-01-01';
+  const to = urlState.to || '9999-12-31';
+  return bin.start <= to && bin.end >= from;
+}
+
+function dayFromDate(date) {
+  return date.toISOString().slice(0, 10);
 }
 
 // --- Hash sync ---
@@ -1464,6 +1616,27 @@ function refresh() {
   els.pgPrev.disabled = page === 1;
   els.pgNext.disabled = page === lastPage();
   els.pgLast.disabled = page === lastPage();
+  const timelineRows =
+    urlState.from || urlState.to
+      ? store.apply({
+          accounts: urlState.accounts,
+          accountCategories: urlState.categories,
+          tags: urlState.tags,
+          q: urlState.q,
+          qfield: urlState.qfield,
+          from: '',
+          to: '',
+          type: urlState.type,
+          media: urlState.media,
+          tagCertainty: urlState.tagcert || 'all',
+          sort: urlState.sort,
+          dir: urlState.dir,
+          colFilters,
+        })
+      : filteredRows;
+  const timelineThreads =
+    timelineRows === filteredRows ? filteredThreads : store.groupIntoThreads(timelineRows);
+  renderTimelinePager(timelineRows, timelineThreads);
 
   const visibleColFilters =
     urlState.tags && urlState.tags.length > 0

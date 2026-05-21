@@ -150,24 +150,43 @@ candidates can be fetched by GitHub Actions without local video bandwidth.
 
 `scripts.news_mentions` writes one row per scanned core tweet, keyed by
 `tweet_id`. Its input is a deterministic local news article export
-(`data/news/articles.jsonl` by convention, or a JSON/JSONL/CSV path
-passed with `--articles`). The matcher only counts exact status URLs for
-archived core tweets, including `x.com/<handle>/status/<id>`,
-`twitter.com/<handle>/status/<id>`, and `x.com/i/web/status/<id>`.
+(`data/news/articles.jsonl` by convention, or a JSON/JSONL/CSV path,
+directory, or `--article-glob`). The loader handles common article
+containers such as `articles`, `items`, `entries`, `response.docs`, CSV
+BOMs, nested link arrays, HTML entities, and URL-encoded status links.
+The matcher only counts exact status URLs for archived core tweets,
+including `x.com/<handle>/status/<id>`,
+`twitter.com/<handle>/status/<id>`, `x.com/i/web/status/<id>`, bare
+`x.com/...` strings, `status`/`statuses`, and historical/renamed handle
+variants where the tweet id is still exact.
 
 Normal offline runs do not call a paid API or any network service. For
 cheap ad-hoc discovery, `--discover-web google-news-rss` queries Google
 News RSS, or `--discover-web gdelt` queries the free GDELT Doc API, for
 exact status URL strings, capped by `--max-web-tweets`. Those results
-are recorded at lower confidence with `matched_fields` set to the
-provider query field; local article-export matches remain the firm
-signal. If the article export is absent and web discovery is disabled,
-the GitHub workflow skips the step. Matched tweets receive
-`news:mentioned` and `news:covered` tags, plus article provenance
-(`source`, `title`, `url`, `published_at`, `matched_fields`,
-`matched_terms`, and confidence). The viewer loads this sidecar
-opportunistically and merges those tags into the normal tag
-filter/search surface.
+are recorded with `match_type` and `matched_fields` set to the provider
+query rather than a local article body, so the provenance is visible and
+distinct from locally-audited exact URL evidence. If the article export
+is absent and web discovery is disabled, the GitHub workflow skips the
+step. Confirmed matched tweets receive `news:mentioned` and
+`news:covered` tags, plus article provenance (`source`, `title`, `url`,
+`published_at`, `match_type`, `matched_fields`, `matched_terms`,
+confidence, and `confirmed`). Vague text/title similarity does not emit
+firm news tags. The viewer loads this sidecar opportunistically and
+merges those tags into the normal tag filter/search surface, with article
+links in the sidepanel and CSV export.
+
+For cheap future discovery without tagging anything, write a transparent
+candidate list:
+
+```bash
+uv run python -m scripts.news_mentions --write-query-export data/news/core_tweet_news_queries.csv
+```
+
+The CSV ranks core tweets by engagement/media priority and includes exact
+status-URL search strings plus a separate context query for human or
+external RSS/search tooling. The context query is never used by the
+tagger to infer coverage.
 
 For later video-enrichment passes, use descriptive production labels:
 `media:produced-video`, `media:music-video`, `media:montage`,
@@ -233,6 +252,22 @@ tentative `topic:immigration` tags across 3,204 tagged tweets.
 
 `_misc` / public-tier authors don't get the default at all; their
 tweets only earn `topic:immigration` if an explicit signal fires.
+
+## Military hierarchy
+
+`topic:military` is broad and additive. It fires on explicit armed
+services language, combatant commands, DoD / Pentagon references,
+service academies, deployments, troops / service members, carrier
+strike groups, aircraft carriers, USS / USNS ship references, CVN hull
+numbers, and similar high-signal military terms.
+
+Branch tags are narrower children. For example, `branch:navy` covers
+Navy / sailor language and naval carrier cues such as "Carrier Strike
+Group," "aircraft carrier," "USS Nimitz," and "CVN 68"; those narrower
+tags automatically imply `topic:military`. Known branch handles such as
+`@USCGAcademy` also emit the relevant branch tag. Combatant-command
+agency tags such as `agency:Southcom`, `agency:CENTCOM`, and
+`agency:DeptofWar` also imply `topic:military`.
 
 ## Unavailable / removed posts
 

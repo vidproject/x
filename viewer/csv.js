@@ -58,7 +58,21 @@ export function exportCsv(rows, filename) {
       news_mention_count: Array.isArray(r.news_mentions) ? r.news_mentions.length : 0,
       news_articles: Array.isArray(r.news_mentions)
         ? r.news_mentions
-            .map((entry) => [entry?.source, entry?.title, entry?.url].filter(Boolean).join(' - '))
+            .map((entry) =>
+              [
+                entry?.source,
+                entry?.title,
+                entry?.url,
+                entry?.published_at,
+                entry?.match_type,
+                typeof entry?.confidence === 'number' ? `confidence ${entry.confidence}` : '',
+                Array.isArray(entry?.matched_fields)
+                  ? `fields ${entry.matched_fields.join('|')}`
+                  : '',
+              ]
+                .filter(Boolean)
+                .join(' - ')
+            )
             .filter(Boolean)
             .join('|')
         : '',

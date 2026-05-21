@@ -16,7 +16,9 @@ from __future__ import annotations
 
 import argparse
 import csv
+import glob
 import hashlib
+import html
 import json
 import os
 import re
@@ -28,7 +30,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 from urllib.error import URLError
-from urllib.parse import urlencode
+from urllib.parse import unquote, urlencode, urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree
 
@@ -49,19 +51,41 @@ OUT_PATH = TAGS_DIR / "news_mentions.parquet"
 MANIFEST_PATH = TAGS_DIR / "manifest.json"
 
 DETECTOR = "exact-status-url"
-DETECTOR_VERSION = "news-mentions-v2"
+DETECTOR_VERSION = "news-mentions-v3"
 GDELT_DOC_API = "https://api.gdeltproject.org/api/v2/doc/doc"
 GOOGLE_NEWS_RSS = "https://news.google.com/rss/search"
+ARTICLE_EXPORT_SUFFIXES = {".jsonl", ".json", ".csv"}
+ARTICLE_CONTAINER_KEYS = (
+    "articles",
+    "items",
+    "entries",
+    "results",
+    "records",
+    "docs",
+    "data",
+    "response",
+    "feed",
+)
 ARTICLE_TEXT_FIELDS = (
     "url",
     "canonical_url",
+    "link",
+    "links",
+    "amp_url",
+    "source_url",
+    "external_url",
     "title",
     "description",
     "summary",
     "body",
     "content",
     "text",
+    "html",
+    "snippet",
+    "lead",
+    "abstract",
 )
+CONFIRMED_CONFIDENCE_THRESHOLD = 0.85
 
 type NewsSearchFn = Any
 
@@ -100,9 +124,53 @@ def iter_core_tweets(parquets: Iterable[Path], core_handles: set[str]) -> Iterat
                 yield row
 
 
+def discover_article_exports(path: Path, globs: Iterable[str] = ()) -> list[Path]:
+    """Return local article export files in a deterministic order.
+
+    `path` may be a single JSON/JSONL/CSV export or a directory containing
+    exports. Globs are resolved relative to the repository root unless they
+    are absolute. Missing default paths are ignored so workflows can run before
+    a news corpus exists.
+    """
+    out: list[Path] = []
+    if path.exists():
+        if path.is_dir():
+            out.extend(
+                p
+                for p in sorted(path.rglob("*"))
+                if p.is_file() and p.suffix.lower() in ARTICLE_EXPORT_SUFFIXES
+            )
+        elif path.suffix.lower() in ARTICLE_EXPORT_SUFFIXES:
+            out.append(path)
+        else:
+            raise ValueError(f"unsupported article file extension: {path.suffix}")
+    for pattern in globs:
+        base_pattern = pattern if Path(pattern).is_absolute() else str(REPO_ROOT / pattern)
+        out.extend(
+            item
+            for item in (Path(p) for p in sorted(glob.glob(base_pattern, recursive=True)))
+            if item.is_file() and item.suffix.lower() in ARTICLE_EXPORT_SUFFIXES
+        )
+    seen: set[Path] = set()
+    unique: list[Path] = []
+    for item in out:
+        resolved = item.resolve()
+        if resolved in seen:
+            continue
+        seen.add(resolved)
+        unique.append(item)
+    return unique
+
+
 def load_articles(path: Path) -> list[dict[str, Any]]:
-    if not path.exists():
-        return []
+    paths = discover_article_exports(path)
+    articles: list[dict[str, Any]] = []
+    for item in paths:
+        articles.extend(load_article_export(item))
+    return articles
+
+
+def load_article_export(path: Path) -> list[dict[str, Any]]:
     suffix = path.suffix.lower()
     if suffix == ".jsonl":
         return list(iter_jsonl(path))
@@ -127,43 +195,74 @@ def iter_jsonl(path: Path) -> Iterator[dict[str, Any]]:
 
 def iter_json(path: Path) -> Iterator[dict[str, Any]]:
     payload = json.loads(path.read_text(encoding="utf-8"))
-    if isinstance(payload, list):
-        items = payload
-    elif isinstance(payload, dict) and isinstance(payload.get("articles"), list):
-        items = payload["articles"]
-    elif isinstance(payload, dict):
-        items = [payload]
-    else:
-        raise ValueError(f"{path}: expected object, array, or object with articles[]")
-    for item in items:
-        if isinstance(item, dict):
-            yield item
+    yield from iter_article_objects(payload, path)
 
 
 def iter_csv(path: Path) -> Iterator[dict[str, Any]]:
-    with path.open("r", encoding="utf-8", newline="") as fh:
+    with path.open("r", encoding="utf-8-sig", newline="") as fh:
         reader = csv.DictReader(fh)
         yield from reader
 
 
+def iter_article_objects(value: Any, path: Path, trail: str = "$") -> Iterator[dict[str, Any]]:
+    if isinstance(value, list):
+        for idx, item in enumerate(value):
+            yield from iter_article_objects(item, path, f"{trail}[{idx}]")
+        return
+    if not isinstance(value, dict):
+        return
+
+    yielded_child = False
+    for key in ARTICLE_CONTAINER_KEYS:
+        child = value.get(key)
+        if isinstance(child, (dict, list)):
+            before = yielded_child
+            for item in iter_article_objects(child, path, f"{trail}.{key}"):
+                yielded_child = True
+                yield item
+            if yielded_child and not before:
+                continue
+    if yielded_child and not looks_like_article(value):
+        return
+    if looks_like_article(value):
+        yield value
+
+
+def looks_like_article(value: dict[str, Any]) -> bool:
+    keys = {str(k).lower() for k in value}
+    identity_keys = {"source", "publisher", "publication", "title", "url", "canonical_url", "link"}
+    text_keys = set(ARTICLE_TEXT_FIELDS)
+    return bool(keys & identity_keys or keys & text_keys)
+
+
 def article_identity(article: dict[str, Any]) -> tuple[str, str, str, str]:
-    source = string_field(article, "source") or string_field(article, "publisher")
-    title = string_field(article, "title")
-    url = string_field(article, "url") or string_field(article, "canonical_url")
+    source = (
+        string_field(article, "source")
+        or string_field(article, "publisher")
+        or string_field(article, "publication")
+        or string_field(article, "sourceCommonName")
+        or string_field(article, "domain")
+    )
+    title = string_field(article, "title") or string_field(article, "headline")
+    url = (
+        string_field(article, "url")
+        or string_field(article, "canonical_url")
+        or string_field(article, "link")
+        or string_field(article, "amp_url")
+    )
     published_at = (
         string_field(article, "published_at")
         or string_field(article, "published")
         or string_field(article, "date")
+        or string_field(article, "pubDate")
+        or string_field(article, "seendate")
     )
     return source, title, url, published_at
 
 
 def article_fields(article: dict[str, Any]) -> dict[str, str]:
     fields: dict[str, str] = {}
-    for key in ARTICLE_TEXT_FIELDS:
-        value = string_field(article, key)
-        if value:
-            fields[key] = value
+    collect_string_fields(article, "$", fields)
     return fields
 
 
@@ -171,9 +270,45 @@ def string_field(article: dict[str, Any], key: str) -> str:
     value = article.get(key)
     if value is None:
         return ""
-    if isinstance(value, (dict, list)):
+    if isinstance(value, dict):
+        for nested_key in ("name", "title", "displayName", "domain", "url", "href"):
+            nested = value.get(nested_key)
+            if nested:
+                return str(nested)
         return json.dumps(value, ensure_ascii=False, sort_keys=True)
+    if isinstance(value, list):
+        return " ".join(str(v) for v in value if isinstance(v, str))
     return str(value)
+
+
+def collect_string_fields(value: Any, trail: str, fields: dict[str, str]) -> None:
+    if value is None:
+        return
+    if isinstance(value, str):
+        normalized = normalize_article_text(value)
+        if normalized:
+            fields[trail.lstrip("$.")] = normalized
+        return
+    if isinstance(value, (int, float)):
+        fields[trail.lstrip("$.")] = str(value)
+        return
+    if isinstance(value, list):
+        for idx, item in enumerate(value):
+            collect_string_fields(item, f"{trail}[{idx}]", fields)
+        return
+    if isinstance(value, dict):
+        for key, item in value.items():
+            collect_string_fields(item, f"{trail}.{key}", fields)
+
+
+def normalize_article_text(value: str) -> str:
+    text = html.unescape(value)
+    for _ in range(2):
+        decoded = unquote(text)
+        if decoded == text:
+            break
+        text = decoded
+    return text
 
 
 def mention_for_article(tweet: dict[str, Any], article: dict[str, Any]) -> dict[str, Any] | None:
@@ -201,24 +336,25 @@ def mention_for_article(tweet: dict[str, Any], article: dict[str, Any]) -> dict[
         "title": title or None,
         "url": url or None,
         "published_at": published_at or None,
+        "match_type": "local-exact-status-url",
         "matched_fields": sorted(matched_fields),
         "matched_terms": sorted(matched_terms),
         "confidence": 1.0,
+        "confirmed": True,
     }
 
 
 def status_url_regex(tweet_id: str, handle: str) -> re.Pattern[str]:
-    handle_part = re.escape(handle)
     tweet_id_part = re.escape(tweet_id)
     return re.compile(
         rf"""
         (?:
-          https?://
+          (?:(?:https?:)?//)?
           (?:
-            (?:www\.|mobile\.)?(?:x|twitter)\.com
+            (?:www\.|mobile\.|m\.)?(?:x|twitter)\.com
             /
             (?:
-              {handle_part}
+              [A-Za-z0-9_]{{1,20}}
               |
               i/web
             )
@@ -233,7 +369,19 @@ def status_url_regex(tweet_id: str, handle: str) -> re.Pattern[str]:
 
 
 def normalize_url_term(value: str) -> str:
-    return value.rstrip(".,;:!?)\"'").replace("http://", "https://")
+    term = normalize_article_text(value).rstrip(".,;:!?)\"'")
+    if term.startswith("//"):
+        term = f"https:{term}"
+    elif not re.match(r"^https?://", term, flags=re.IGNORECASE):
+        term = f"https://{term}"
+    term = re.sub(r"^http://", "https://", term, flags=re.IGNORECASE)
+    try:
+        parts = urlsplit(term)
+        netloc = parts.netloc.lower()
+        path = re.sub(r"/statuses/", "/status/", parts.path, flags=re.IGNORECASE)
+        return urlunsplit(("https", netloc, path, parts.query, parts.fragment))
+    except ValueError:
+        return term
 
 
 def status_url_terms(tweet: dict[str, Any]) -> list[str]:
@@ -337,9 +485,11 @@ def mention_for_search_article(
         "title": title or None,
         "url": url or None,
         "published_at": published_at or None,
+        "match_type": f"{matched_field}:exact-status-url-query",
         "matched_fields": [matched_field],
-        "matched_terms": matched_terms,
-        "confidence": 0.75,
+        "matched_terms": sorted({normalize_url_term(term) for term in matched_terms}),
+        "confidence": 0.85,
+        "confirmed": True,
     }
 
 
@@ -411,6 +561,18 @@ def tag_entry(tag: str, *, source: str = "news-mentions") -> dict[str, Any]:
     }
 
 
+def has_confirmed_coverage(mentions: Iterable[dict[str, Any]]) -> bool:
+    for mention in mentions:
+        if mention.get("confirmed") is True:
+            return True
+        try:
+            if float(mention.get("confidence") or 0.0) >= CONFIRMED_CONFIDENCE_THRESHOLD:
+                return True
+        except (TypeError, ValueError):
+            continue
+    return False
+
+
 def stable_json(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
@@ -459,8 +621,9 @@ def build_row(
         if (mention := mention_for_article(tweet, article)) is not None
     ]
     mentions = dedupe_mentions([*local_mentions, *(extra_mentions or [])])
-    tags = [tag_entry("news:mentioned"), tag_entry("news:covered")] if mentions else []
-    status = "mentioned" if mentions else ("error" if error else "no-match")
+    confirmed = has_confirmed_coverage(mentions)
+    tags = [tag_entry("news:mentioned"), tag_entry("news:covered")] if confirmed else []
+    status = "mentioned" if confirmed else ("candidate" if mentions else ("error" if error else "no-match"))
     return {
         "tweet_id": str(tweet.get("tweet_id") or ""),
         "account_handle": str(tweet.get("account_handle") or ""),
@@ -529,14 +692,123 @@ def build_rows(
             error=web_error,
         )
         if row["mention_count"]:
-            stats["mentioned_tweets"] += 1
+            stats["candidate_or_mentioned_tweets"] += 1
             stats["article_mentions"] += int(row["mention_count"])
+            if row["status"] == "mentioned":
+                stats["mentioned_tweets"] += 1
+            else:
+                stats["candidate_tweets"] += 1
         if matched_only and not row["mention_count"]:
             continue
         rows.append(row)
     stats["rows"] = len(rows)
     stats["article_count"] = len(articles)
     return rows, dict(stats)
+
+
+def numeric_tweet_field(tweet: dict[str, Any], key: str) -> int:
+    value = tweet.get(key)
+    try:
+        return int(value or 0)
+    except (TypeError, ValueError):
+        return 0
+
+
+def tweet_news_priority(tweet: dict[str, Any]) -> int:
+    likes = numeric_tweet_field(tweet, "like_count")
+    retweets = numeric_tweet_field(tweet, "retweet_count")
+    replies = numeric_tweet_field(tweet, "reply_count")
+    quotes = numeric_tweet_field(tweet, "quote_count")
+    media_bonus = 50 if tweet.get("media") else 0
+    return likes + (retweets * 3) + (quotes * 2) + replies + media_bonus
+
+
+def tweet_text_excerpt(tweet: dict[str, Any], limit: int = 180) -> str:
+    text = str(tweet.get("text_resolved") or tweet.get("text") or "").replace("\r", " ")
+    text = re.sub(r"\s+", " ", text).strip()
+    if len(text) <= limit:
+        return text
+    return f"{text[: limit - 1].rstrip()}..."
+
+
+def article_query_for_tweet(tweet: dict[str, Any]) -> str:
+    return " OR ".join(f'"{term.replace("https://", "")}"' for term in status_url_terms(tweet))
+
+
+def context_query_for_tweet(tweet: dict[str, Any]) -> str:
+    handle = str(tweet.get("account_handle") or "").strip()
+    excerpt = tweet_text_excerpt(tweet, 80)
+    parts = [f'"{handle}"'] if handle else []
+    if excerpt:
+        parts.append(f'"{excerpt}"')
+    return " ".join(parts)
+
+
+def build_query_export_rows(
+    parquets: list[Path],
+    *,
+    core_handles: set[str],
+    limit: int = 0,
+    min_score: int = 0,
+) -> list[dict[str, Any]]:
+    candidates: list[dict[str, Any]] = []
+    for tweet in iter_core_tweets(parquets, core_handles):
+        score = tweet_news_priority(tweet)
+        if score < min_score:
+            continue
+        tweet_id = str(tweet.get("tweet_id") or "")
+        handle = str(tweet.get("account_handle") or "")
+        if not tweet_id or not handle:
+            continue
+        candidates.append(
+            {
+                "tweet_id": tweet_id,
+                "account_handle": handle,
+                "posted_at": str(tweet.get("posted_at") or ""),
+                "priority_score": score,
+                "like_count": numeric_tweet_field(tweet, "like_count"),
+                "retweet_count": numeric_tweet_field(tweet, "retweet_count"),
+                "reply_count": numeric_tweet_field(tweet, "reply_count"),
+                "quote_count": numeric_tweet_field(tweet, "quote_count"),
+                "tweet_url": str(tweet.get("tweet_url") or status_url_terms(tweet)[0]),
+                "exact_url_query": article_query_for_tweet(tweet),
+                "context_query": context_query_for_tweet(tweet),
+                "text_excerpt": tweet_text_excerpt(tweet),
+            }
+        )
+    candidates.sort(
+        key=lambda row: (
+            -int(row["priority_score"]),
+            str(row["posted_at"]),
+            str(row["account_handle"]),
+            str(row["tweet_id"]),
+        )
+    )
+    return candidates[:limit] if limit > 0 else candidates
+
+
+def write_query_export(rows: list[dict[str, Any]], path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fieldnames = [
+        "tweet_id",
+        "account_handle",
+        "posted_at",
+        "priority_score",
+        "like_count",
+        "retweet_count",
+        "reply_count",
+        "quote_count",
+        "tweet_url",
+        "exact_url_query",
+        "context_query",
+        "text_excerpt",
+    ]
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    with tmp.open("w", encoding="utf-8", newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+    os.replace(tmp, path)
 
 
 def write_parquet(rows: list[dict[str, Any]], path: Path) -> None:
@@ -556,7 +828,8 @@ def update_manifest(
     rows: list[dict[str, Any]],
     stats: dict[str, int],
     generated_at: str,
-    articles_path: Path,
+    article_sources: Iterable[Path],
+    query_export_path: Path | None = None,
 ) -> None:
     TAGS_DIR.mkdir(parents=True, exist_ok=True)
     manifest: dict[str, Any] = {}
@@ -576,7 +849,8 @@ def update_manifest(
         "generated_at": generated_at,
         "detector": DETECTOR,
         "detector_version": DETECTOR_VERSION,
-        "articles_path": str(articles_path),
+        "article_sources": [str(path) for path in article_sources],
+        "query_export_path": str(query_export_path) if query_export_path else "",
         "row_count": len(rows),
         "cost_estimate_usd": 0.0,
         "status_counts": dict(sorted(status_counts.items())),
@@ -595,7 +869,13 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--articles",
         type=Path,
         default=DEFAULT_ARTICLES_PATH,
-        help="Local JSON, JSONL, or CSV news article export to scan.",
+        help="Local JSON, JSONL, or CSV news article export, or a directory of exports, to scan.",
+    )
+    parser.add_argument(
+        "--article-glob",
+        action="append",
+        default=[],
+        help="Additional repo-relative or absolute glob for JSON/JSONL/CSV article exports.",
     )
     parser.add_argument(
         "--out",
@@ -638,18 +918,55 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=1.0,
         help="Delay between news-index requests.",
     )
+    parser.add_argument(
+        "--write-query-export",
+        type=Path,
+        default=None,
+        help="Optional CSV of high-priority exact-status-URL search queries for later RSS/search work.",
+    )
+    parser.add_argument(
+        "--query-limit",
+        type=int,
+        default=0,
+        help="Maximum query-export rows. 0 means all core tweets.",
+    )
+    parser.add_argument(
+        "--query-min-score",
+        type=int,
+        default=0,
+        help="Minimum engagement/media priority score for query-export rows.",
+    )
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     generated_at = datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-    should_scan = args.articles.exists() or args.discover_web != "none"
+    core_handles = load_core_handles()
+    parquets = discover_canonical_parquets()
+    article_sources = discover_article_exports(args.articles, args.article_glob)
+    if args.write_query_export:
+        query_rows = build_query_export_rows(
+            parquets,
+            core_handles=core_handles,
+            limit=max(0, int(args.query_limit)),
+            min_score=max(0, int(args.query_min_score)),
+        )
+        write_query_export(query_rows, args.write_query_export)
+    should_scan = bool(article_sources) or args.discover_web != "none"
+    if not should_scan and args.write_query_export:
+        LOG.info(
+            "news query export complete",
+            rows=len(query_rows),
+            out=str(args.write_query_export),
+        )
+        return 0
     if should_scan:
-        core_handles = load_core_handles()
-        articles = load_articles(args.articles) if args.articles.exists() else []
+        articles: list[dict[str, Any]] = []
+        for article_source in article_sources:
+            articles.extend(load_article_export(article_source))
         rows, stats = build_rows(
-            discover_canonical_parquets(),
+            parquets,
             articles,
             core_handles=core_handles,
             generated_at=generated_at,
@@ -666,12 +983,13 @@ def main(argv: list[str] | None = None) -> int:
         stats = {"article_count": 0, "rows": 0, "missing_article_export": 1}
     write_parquet(rows, args.out)
     if args.out == OUT_PATH:
-        update_manifest(rows, stats, generated_at, args.articles)
+        update_manifest(rows, stats, generated_at, article_sources, args.write_query_export)
     LOG.info(
         "news mentions complete",
         rows=len(rows),
         articles=len(articles),
         mentioned=stats.get("mentioned_tweets", 0),
+        query_export=str(args.write_query_export or ""),
         out=str(args.out),
     )
     return 0

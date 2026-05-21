@@ -138,6 +138,63 @@ def test_prompt_for_contains_openai_context() -> None:
     assert "Visible caption says test." in prompt
 
 
+def test_blank_model_env_uses_default(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("OPENAI_MEDIA_LLM_MODEL", "")
+    monkeypatch.setenv("GEMINI_MEDIA_LLM_MODEL", "   ")
+
+    assert (
+        tag_media_llm.env_or_default(
+            "OPENAI_MEDIA_LLM_MODEL", tag_media_llm.DEFAULT_OPENAI_MODEL
+        )
+        == tag_media_llm.DEFAULT_OPENAI_MODEL
+    )
+    assert (
+        tag_media_llm.env_or_default("GEMINI_MEDIA_LLM_MODEL", "gemini-fallback")
+        == "gemini-fallback"
+    )
+
+
+def test_run_normalizes_blank_model_name(tmp_corpus: Path) -> None:
+    _write_handle_parquet(
+        tmp_corpus,
+        "DHSgov",
+        [make_tweet("t-photo", handle="DHSgov", media=[_archived_photo("pic-1", "a" * 64)])],
+    )
+
+    tag_media_llm.run(
+        parquets=[tmp_corpus / "data" / "DHSgov.parquet"],
+        max_items=1,
+        model="",
+        analyzer=lambda _c: MediaLlmResult(status="ok", description="A visible photo."),
+    )
+
+    out = pl.read_parquet(tmp_corpus / "data" / "tags" / "media_llm.parquet")
+    assert out.row(0, named=True)["model_version"] == tag_media_llm.DEFAULT_OPENAI_MODEL
+
+
+def test_dry_run_does_not_call_paid_analyzer(tmp_corpus: Path) -> None:
+    _write_handle_parquet(
+        tmp_corpus,
+        "DHSgov",
+        [make_tweet("t-photo", handle="DHSgov", media=[_archived_photo("pic-1", "a" * 64)])],
+    )
+
+    def fail_if_called(_cand: Any) -> MediaLlmResult:
+        raise AssertionError("dry-run must not call the paid analyzer")
+
+    stats = tag_media_llm.run(
+        parquets=[tmp_corpus / "data" / "DHSgov.parquet"],
+        max_items=1,
+        dry_run=True,
+        openai_api_key="present-but-unused",
+        analyzer=fail_if_called,
+    )
+
+    assert stats["candidates"] == 1
+    assert stats["would_attempt"] == 1
+    assert not (tmp_corpus / "data" / "tags" / "media_llm.parquet").exists()
+
+
 def test_video_genre_adds_produced_parent_and_ai_tag_is_tentative(tmp_corpus: Path) -> None:
     media_sha = "k" * 64
     _write_handle_parquet(

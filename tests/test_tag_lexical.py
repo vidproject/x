@@ -853,6 +853,36 @@ def test_military_branch_mentions_emit_branch_and_military_topic() -> None:
         assert "topic:immigration" not in tags, text
 
 
+def test_naval_carrier_context_marks_military_for_southcom_retweet() -> None:
+    out = tag_text(
+        "RT @Southcom: Welcome to the Caribbean, Nimitz Carrier Strike Group!\n\n"
+        "The aircraft carrier USS Nimitz (CVN 68), the embarked Carrier Air Wing...",
+        tweet_type="retweet",
+        mentions=["Southcom"],
+        media_count=0,
+        account_category="public",
+    )
+    tags = _tags(out)
+    assert "agency:Southcom" in tags
+    assert "branch:navy" in tags
+    assert "topic:military" in tags
+    assert "topic:immigration" not in tags
+
+
+def test_military_branch_mentions_from_handles_emit_branch_and_parent_topic() -> None:
+    out = tag_text(
+        "Training the next generation of cadets.",
+        tweet_type="original",
+        mentions=["USCGAcademy"],
+        media_count=0,
+        account_category="public",
+    )
+    tags = _tags(out)
+    assert "agency:USCGAcademy" in tags
+    assert "branch:coast-guard" in tags
+    assert "topic:military" in tags
+
+
 def test_slogan_patterns_fire() -> None:
     for text, expected in (
         ("Have a NICE day, America.", "slogan:nice"),

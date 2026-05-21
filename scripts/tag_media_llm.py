@@ -51,7 +51,7 @@ KEYFRAMES_PATH = TAGS_DIR / "keyframes.parquet"
 GEMINI_URL_TEMPLATE = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 OPENAI_URL = "https://api.openai.com/v1/responses"
 DEFAULT_GEMINI_MODEL = "gemini-2.5-flash"
-DEFAULT_OPENAI_MODEL = "gpt-5.4-nano"
+DEFAULT_OPENAI_MODEL = "gpt-5-nano"
 DEFAULT_MODEL = DEFAULT_OPENAI_MODEL
 PRIMARY_PROVIDER = "openai"
 WATERMARK_PROVIDER = "gemini"
@@ -65,8 +65,8 @@ HTTP_TIMEOUT_SECS = 90.0
 
 # Defaults match the primary OpenAI model. Operators can override for
 # another model with env vars.
-DEFAULT_INPUT_USD_PER_MTOK = 0.10
-DEFAULT_OUTPUT_USD_PER_MTOK = 0.625
+DEFAULT_INPUT_USD_PER_MTOK = 0.05
+DEFAULT_OUTPUT_USD_PER_MTOK = 0.40
 
 ALLOWED_TAG_PREFIXES = (
     "action:",
@@ -393,6 +393,47 @@ def watermark_prompt_for(cand: MediaLlmCandidate, primary: MediaLlmResult) -> st
         f"Primary recognizer description:\n{primary.description[:1000]}\n"
         f"Tweet text/context:\n{cand.tweet_text[:1000]}\n"
     )
+
+
+def env_or_default(name: str, default: str) -> str:
+    value = os.environ.get(name)
+    if value is None:
+        return default
+    value = value.strip()
+    return value or default
+
+
+def http_error_message(resp: httpx.Response) -> str:
+    message = f"{resp.status_code} {resp.reason_phrase}"
+    try:
+        payload = resp.json()
+    except ValueError:
+        text = resp.text.strip()
+        if text:
+            return f"{message}: {text[:500]}"
+        return message
+    if isinstance(payload, dict):
+        error = payload.get("error")
+        if isinstance(error, dict):
+            detail = str(error.get("message") or "").strip()
+            code = str(error.get("code") or "").strip()
+            if detail and code:
+                return f"{message}: {detail} ({code})"
+            if detail:
+                return f"{message}: {detail}"
+        detail = str(payload.get("message") or "").strip()
+        if detail:
+            return f"{message}: {detail}"
+    return f"{message}: {json.dumps(payload, sort_keys=True)[:500]}"
+
+
+def raise_for_status_with_body(resp: httpx.Response) -> None:
+    try:
+        resp.raise_for_status()
+    except httpx.HTTPStatusError as exc:
+        raise RuntimeError(http_error_message(resp)) from exc
+
+
 def call_gemini_watermark(
     cand: MediaLlmCandidate,
     *,
@@ -425,7 +466,7 @@ def call_gemini_watermark(
             },
             json=body,
         )
-        resp.raise_for_status()
+        raise_for_status_with_body(resp)
         payload = resp.json()
     text = extract_response_text(payload)
     parsed = parse_model_json(text)
@@ -463,7 +504,7 @@ def call_openai(
             },
             json=body,
         )
-        resp.raise_for_status()
+        raise_for_status_with_body(resp)
         payload = resp.json()
     text = extract_response_text(payload)
     parsed = parse_model_json(text)
@@ -715,7 +756,7 @@ def update_manifest(
         "model": PRIMARY_PROVIDER,
         "model_version": rows[0]["model_version"]
         if rows
-        else os.environ.get("OPENAI_MEDIA_LLM_MODEL", DEFAULT_OPENAI_MODEL),
+        else env_or_default("OPENAI_MEDIA_LLM_MODEL", DEFAULT_OPENAI_MODEL),
         "prompt_hash": PROMPT_HASH,
         "rows": len(rows),
         "status_counts": dict(Counter(str(r.get("status") or "") for r in rows)),
@@ -746,6 +787,8 @@ def run(
     | None = None,
 ) -> dict[str, int]:
     out_path = out_path or OUT_PATH
+    model = (model or "").strip() or DEFAULT_OPENAI_MODEL
+    gemini_model = (gemini_model or "").strip() or DEFAULT_GEMINI_MODEL
     parquets = parquets if parquets is not None else discover_canonical_parquets()
     existing = load_existing_index(out_path)
     rows: list[dict[str, Any]] = []
@@ -757,6 +800,21 @@ def run(
     )
     rate_limiter = RateLimiter(gemini_rate_limit_per_minute)
     spent = 0.0
+
+    if dry_run:
+        for cand in discover_candidates(parquets):
+            stats["candidates"] += 1
+            input_hash = input_hash_for(cand, model, provider=PRIMARY_PROVIDER)
+            cached = existing.get(input_hash)
+            if not force and is_cache_hit(cached or {}, model, provider=PRIMARY_PROVIDER):
+                stats["cache_hits"] += 1
+                continue
+            if stats["would_attempt"] >= max_items:
+                stats["skipped_max_items"] += 1
+                continue
+            stats["would_attempt"] += 1
+        stats["rows"] = len(existing)
+        return dict(stats)
 
     if analyzer is None and not openai_api_key:
         stats["skipped_no_api_key"] = 1
@@ -836,10 +894,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--handle", help="Restrict to one data/<handle>.parquet file.")
     parser.add_argument("--max-items", type=int, default=DEFAULT_MAX_ITEMS)
     parser.add_argument("--budget-usd", type=float, default=DEFAULT_BUDGET_USD)
-    parser.add_argument("--model", default=os.environ.get("OPENAI_MEDIA_LLM_MODEL", DEFAULT_OPENAI_MODEL))
+    parser.add_argument("--model", default=env_or_default("OPENAI_MEDIA_LLM_MODEL", DEFAULT_OPENAI_MODEL))
     parser.add_argument(
         "--gemini-model",
-        default=os.environ.get("GEMINI_MEDIA_LLM_MODEL", DEFAULT_GEMINI_MODEL),
+        default=env_or_default("GEMINI_MEDIA_LLM_MODEL", DEFAULT_GEMINI_MODEL),
         help="Gemini model used only for suspected-AI watermark/provenance verification.",
     )
     parser.add_argument(

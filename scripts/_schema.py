@@ -334,9 +334,11 @@ NEWS_ARTICLE_MENTION_STRUCT = pl.Struct(
         pl.Field("title", pl.Utf8),
         pl.Field("url", pl.Utf8),
         pl.Field("published_at", pl.Utf8),
+        pl.Field("match_type", pl.Utf8),
         pl.Field("matched_fields", pl.List(pl.Utf8)),
         pl.Field("matched_terms", pl.List(pl.Utf8)),
         pl.Field("confidence", pl.Float64),
+        pl.Field("confirmed", pl.Boolean),
     ]
 )
 

@@ -361,6 +361,28 @@ AGENCY_HANDLES: frozenset[str] = frozenset(
         "CENTCOM",
         "Southcom",
         "EPA",
+        "USCG",
+        "USCGAcademy",
+        "ComdtUSCG",
+        "VComdtUSCG",
+        "USCGLANTAREA",
+        "USCGPACAREA",
+        "USCGSoutheast",
+        "USCGHeartland",
+        "USCGNorCal",
+        "USCG_Tri_State",
+        "USArmyNorth",
+        "USNationalGuard",
+        "USNorthernCmd",
+        "TSA",
+        "SecretService",
+        "CISAgov",
+        "CISAInfraSec",
+        "CISACyber",
+        "FLETC",
+        "ODNIgov",
+        "NSAGov",
+        "IPRCenter",
         "USAttyEssayli",
         "USAttyPirro",
         "ERO_LosAngeles",
@@ -465,6 +487,19 @@ AGENCY_TEXT_PATTERNS: tuple[tuple[re.Pattern[str], str], ...] = (
     (_compile(r"\bDepartment of War\b|\bDept\.?\s+of\s+War\b"), "agency:DeptofWar"),
     (_compile(r"\bCENTCOM\b|\bU\.?S\.?\s+Central Command\b"), "agency:CENTCOM"),
     (_compile(r"\bSOUTHCOM\b|\bU\.?S\.?\s+Southern Command\b"), "agency:Southcom"),
+    (_compile(r"\bUSCG\b|\bU\.?S\.?\s+Coast Guard\b|\bUnited States Coast Guard\b"), "agency:USCG"),
+    (_compile(r"\bTSA\b|\bTransportation Security Administration\b"), "agency:TSA"),
+    (_compile(r"\bU\.?S\.?\s+Secret Service\b|\bUnited States Secret Service\b"), "agency:SecretService"),
+    (_compile(r"\bCISA\b|\bCybersecurity and Infrastructure Security Agency\b"), "agency:CISAgov"),
+    (
+        _compile(r"\bODNI\b|\bOffice of the Director of National Intelligence\b"),
+        "agency:ODNIgov",
+    ),
+    (_compile(r"\bNSA\b|\bNational Security Agency\b"), "agency:NSAGov"),
+    (
+        _compile(r"\bFLETC\b|\bFederal Law Enforcement Training Centers?\b"),
+        "agency:FLETC",
+    ),
 )
 
 
@@ -524,17 +559,54 @@ PATTERN_TOPIC_MILITARY = _compile(
     r"soldiers?|sailors?|airmen|marines|guardsmen|army|navy|air force|space force|"
     r"marine corps|coast guard|national guard|USAF|USSF|USMC|pentagon|"
     r"department of defense|DoD|DOD|veterans affairs|combat|battlefield|"
-    r"war zone|deployed|deployment)\b"
+    r"war zone|deployed|deployment|carrier strike group|aircraft carrier|"
+    r"carrier air wing|CVN\s*\d+|USS\s+[A-Z][A-Za-z0-9-]+|USNS\s+[A-Z][A-Za-z0-9-]+|"
+    r"service academ(?:y|ies)|military academy|naval academy|coast guard academy|"
+    r"air force academy|west point|USMA|USNA|USCGA|cadets?|midshipmen|"
+    r"commander[- ]in[- ]chief|commandant)\b"
 )
 BRANCH_VOCAB: tuple[tuple[str, re.Pattern[str]], ...] = (
-    ("army", _compile(r"\b(?:(?:u\.s\.\s+)?army|soldiers?)\b")),
-    ("navy", _compile(r"\b(?:(?:u\.s\.\s+)?navy|sailors?)\b")),
-    ("air-force", _compile(r"\b(?:(?:u\.s\.\s+)?air\s+force|usaf|airm[ae]n)\b")),
+    ("army", _compile(r"\b(?:(?:u\.s\.\s+)?army|soldiers?|west\s+point|USMA)\b")),
+    (
+        "navy",
+        _compile(
+            r"\b(?:(?:u\.s\.\s+)?navy|sailors?|naval\s+academy|USNA|midshipmen|"
+            r"carrier\s+strike\s+group|aircraft\s+carrier|carrier\s+air\s+wing|"
+            r"CVN\s*\d+|USS\s+[A-Z][A-Za-z0-9-]+|USNS\s+[A-Z][A-Za-z0-9-]+)\b"
+        ),
+    ),
+    (
+        "air-force",
+        _compile(r"\b(?:(?:u\.s\.\s+)?air\s+force|usaf|airm[ae]n|air\s+force\s+academy)\b"),
+    ),
     ("space-force", _compile(r"\b(?:(?:u\.s\.\s+)?space\s+force|ussf)\b")),
     ("marines", _compile(r"\b(?:marine\s+corps|u\.s\.\s+marines?|usmc|marines)\b")),
-    ("coast-guard", _compile(r"\b(?:coast\s+guard|coast\s+guards?m[ae]n)\b")),
+    (
+        "coast-guard",
+        _compile(r"\b(?:coast\s+guard|USCG|USCGA|coast\s+guard\s+academy|coasties?|coast\s+guards?m[ae]n)\b"),
+    ),
     ("national-guard", _compile(r"\b(?:national\s+guard|national\s+guards?m[ae]n)\b")),
 )
+BRANCH_MENTION_ALIASES: dict[str, str] = {
+    "usarmynorth": "army",
+    "usnationalguard": "national-guard",
+    "usguard": "national-guard",
+    "usnavy": "navy",
+    "usairforce": "air-force",
+    "usspaceforce": "space-force",
+    "usmc": "marines",
+    "marines": "marines",
+    "uscg": "coast-guard",
+    "uscgacademy": "coast-guard",
+    "comdtuscg": "coast-guard",
+    "vcomdtuscg": "coast-guard",
+    "uscglantarea": "coast-guard",
+    "uscgpacarea": "coast-guard",
+    "uscgsoutheast": "coast-guard",
+    "uscgheartland": "coast-guard",
+    "uscgnorcal": "coast-guard",
+    "uscg_tri_state": "coast-guard",
+}
 PATTERN_TOPIC_LAUDATORY = _compile(
     r"\b(accomplishments?|wins?|success(?:es)?|historic|record[- ]breaking|"
     r"promises? made[,;:]?\s+promises? kept|delivering|delivered|momentum|"
@@ -1101,9 +1173,13 @@ def tag_text(
 
     # agency:<HANDLE> — derived from mentions[]
     for mention in mentions or []:
-        canonical = AGENCY_MENTION_ALIASES.get(str(mention).lstrip("@").lower())
+        mention_key = str(mention).lstrip("@").lower()
+        canonical = AGENCY_MENTION_ALIASES.get(mention_key)
         if canonical:
             add(f"agency:{canonical}")
+        branch = BRANCH_MENTION_ALIASES.get(mention_key)
+        if branch:
+            add(f"branch:{branch}")
 
     if is_unavailable:
         add("status:unavailable")
@@ -1398,6 +1474,13 @@ INTRINSIC_PARENT_TOPICS_EXACT: dict[str, tuple[str, ...]] = {
     "agency:DHSgov": ("topic:immigration",),
     "agency:HSI_HQ": ("topic:immigration",),
     "agency:USBPChief": ("topic:immigration",),
+    "agency:DeptofWar": ("topic:military",),
+    "agency:CENTCOM": ("topic:military",),
+    "agency:Southcom": ("topic:military",),
+    "agency:USCG": ("topic:military",),
+    "agency:USArmyNorth": ("topic:military",),
+    "agency:USNationalGuard": ("topic:military",),
+    "agency:USNorthernCmd": ("topic:military",),
     "frame:criminal": ("topic:immigration",),
     "shape:lineup": ("topic:immigration",),
     "subject:angel-family": ("theme:martyrdom", "topic:immigration"),
