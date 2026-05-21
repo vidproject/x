@@ -55,6 +55,16 @@
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
+    "AT_PDX_OR": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "I voted for DOGE",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "AZSenatorShamp": {
       "category": "public_figures",
       "label": "Former Majority Leader of the AZ State Senate",
@@ -481,6 +491,16 @@
       ],
       "category": "public",
       "label": "Dan Holbrook",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "DavedixsDavid": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "DDixs \ud83c\uddfa\ud83c\uddf8\ud83c\uddef\ud83c\uddf2",
       "observations": 1,
       "reason": "service-history badge only",
       "source": "data/users.json"
@@ -1722,6 +1742,16 @@
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
+    "SaraHigdon": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Sara Higdon",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "SarahisCensored": {
       "badges": [
         "veteran"
@@ -1974,7 +2004,7 @@
     "StephenM": {
       "category": "core",
       "label": "Stephen Miller",
-      "observations": 878,
+      "observations": 1183,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2068,6 +2098,16 @@
       "label": "U.S. Department of Justice",
       "observations": 19,
       "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "TheNewArrogator": {
+      "badges": [
+        "retired-police"
+      ],
+      "category": "public",
+      "label": "Hugh Akston",
+      "observations": 1,
+      "reason": "service-history badge only",
       "source": "data/users.json"
     },
     "TheOtherMandela": {
@@ -2423,6 +2463,16 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "arnoldog21": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Arnold G",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "bobbyr75": {
       "badges": [
         "veteran"
@@ -2520,6 +2570,26 @@
       ],
       "category": "public",
       "label": "Evil Jay",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "freezymfe": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Freed Ninja",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "fuzz_e_bizkitz": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Fuzz E Bizkitz",
       "observations": 1,
       "reason": "service-history badge only",
       "source": "data/users.json"
@@ -2646,7 +2716,7 @@
       ],
       "category": "public",
       "label": "Mason",
-      "observations": 1,
+      "observations": 3,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -2701,6 +2771,26 @@
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
+    "papanovember001": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "PapaNovember",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "phattylav": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "phattylav",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "realBrandonGill": {
       "category": "public_figures",
       "label": "Brandon Gill",
@@ -2749,6 +2839,16 @@
       ],
       "category": "public",
       "label": "Reynaldi Benitez",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "rnautismmom": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Olivia Renee \ud83c\uddfa\ud83c\uddf8 (Autism Mom)",
       "observations": 1,
       "reason": "service-history badge only",
       "source": "data/users.json"
@@ -2836,10 +2936,10 @@
     "core": 12,
     "government": 79,
     "officials": 75,
-    "public": 112,
+    "public": 122,
     "public_figures": 67
   },
-  "generated_at": "2026-05-21T01:34:33Z",
+  "generated_at": "2026-05-21T01:36:34Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
