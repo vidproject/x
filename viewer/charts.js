@@ -637,7 +637,7 @@ function populateControls() {
 }
 
 function appendOptions(select, options) {
-  for (const opt of options) {
+  for (const opt of options ?? []) {
     const option = document.createElement('option');
     option.value = opt.value;
     option.textContent = opt.label;
