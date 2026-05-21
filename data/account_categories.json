@@ -304,7 +304,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 4449,
+      "observations": 4451,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -327,6 +327,13 @@
       "label": "DOW Rapid Response",
       "observations": 7,
       "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "DavidFlippoNV": {
+      "category": "public_figures",
+      "label": "Lt. Col. David Flippo, USAF Ret.",
+      "observations": 40,
+      "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
     "DavidZsutty": {
@@ -542,7 +549,7 @@
     "ForgiatoBlow47": {
       "category": "public_figures",
       "label": "Trumps Nephew",
-      "observations": 4,
+      "observations": 6,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -598,7 +605,7 @@
     "GregoryKBovino": {
       "category": "core",
       "label": "Gregory Bovino",
-      "observations": 2558,
+      "observations": 2647,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -647,9 +654,16 @@
     "ICEgov": {
       "category": "core",
       "label": "U.S. Immigration and Customs Enforcement",
-      "observations": 1161,
+      "observations": 1163,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
+    },
+    "ImFiredUp2": {
+      "category": "officials",
+      "label": "Chad Caton\ud83c\udf99\ud83c\uddfa\ud83c\uddf8",
+      "observations": 6,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
     },
     "InnaVernikov": {
       "category": "government",
@@ -934,7 +948,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 874,
+      "observations": 876,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1025,7 +1039,7 @@
     "RealTomHoman": {
       "category": "core",
       "label": "Thomas D. Homan",
-      "observations": 620,
+      "observations": 622,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1298,7 +1312,7 @@
     "SecMullinDHS": {
       "category": "officials",
       "label": "Secretary Markwayne Mullin",
-      "observations": 533,
+      "observations": 538,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -1312,7 +1326,7 @@
     "SecRubio": {
       "category": "officials",
       "label": "Secretary Marco Rubio",
-      "observations": 21,
+      "observations": 23,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -1536,7 +1550,7 @@
     "StephenM": {
       "category": "core",
       "label": "Stephen Miller",
-      "observations": 619,
+      "observations": 621,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2005,14 +2019,14 @@
     "realBrandonGill": {
       "category": "public_figures",
       "label": "Brandon Gill",
-      "observations": 10,
+      "observations": 13,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
     "realDonaldTrump": {
       "category": "government",
       "label": "Donald J. Trump",
-      "observations": 33,
+      "observations": 35,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2054,7 +2068,7 @@
     "texkota": {
       "category": "government",
       "label": "SSgt Texkota",
-      "observations": 3,
+      "observations": 6,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2076,10 +2090,10 @@
   "category_counts": {
     "core": 12,
     "government": 96,
-    "officials": 86,
-    "public_figures": 102
+    "officials": 87,
+    "public_figures": 103
   },
-  "generated_at": "2026-05-21T00:13:20Z",
+  "generated_at": "2026-05-21T00:15:20Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
