@@ -1053,11 +1053,64 @@ function renderAccountCell(r) {
   const nameHtml = displayName
     ? `<span class="display-name" title="${escape(displayName)}">${escape(displayName)}${verifiedBadge}</span>`
     : '';
-  return `<span class="acc-cell">${avatarHtml}${handleHtml}${nameHtml}</span>`;
+  return `<span class="acc-cell">${avatarHtml}${handleHtml}${renderAccountBadges(userMeta)}${nameHtml}</span>`;
 }
 
 function userMetaForRow(r) {
   return userLookup.get(r?.account_handle) ?? {};
+}
+
+function renderAccountBadges(userMeta) {
+  const badges = serviceBadgesForUserMeta(userMeta);
+  if (badges.length === 0) return '';
+  const labels = {
+    veteran: 'Veteran or military',
+    police: 'Police or law enforcement',
+    'retired-police': 'Retired police or law enforcement',
+    'retired-government': 'Retired government official',
+  };
+  return badges
+    .map((badge) => {
+      const key = String(badge ?? '');
+      const label = labels[key];
+      if (!label) return '';
+      return `<span class="acc-badge acc-badge-${escape(key)}" title="${escape(label)}" aria-label="${escape(label)}"></span>`;
+    })
+    .join('');
+}
+
+function serviceBadgesForUserMeta(userMeta) {
+  const text = `${userMeta?.display_name ?? ''} ${userMeta?.description ?? ''}`;
+  const badges = [];
+  if (
+    /\b(veteran|vet\b|retired\s+(?:u\.?s\.?\s+)?(?:army|navy|marine|air\s+force|space\s+force)|(?:u\.?s\.?\s+)?(?:army|navy|marines?|air\s+force|space\s+force)\b)/i.test(
+      text
+    )
+  ) {
+    badges.push('veteran');
+  }
+  if (
+    /\b(?:ret\.?|retired|former|ex)[-\s]+(?:deputy\s+)?(?:police|sheriff|law\s+enforcement|border\s+patrol\s+agent|(?:u\.?s\.?\s+)?marshal|criminal\s+investigator)\b|\b(?:deputy\s+)?(?:u\.?s\.?\s+)?marshal\s+ret\.?\b/i.test(
+      text
+    )
+  ) {
+    badges.push('retired-police');
+  } else if (
+    /\b(police|sheriff|law\s+enforcement|border\s+patrol\s+agent|(?:deputy\s+)?(?:u\.?s\.?\s+)?marshal|criminal\s+investigator)\b/i.test(
+      text
+    )
+  ) {
+    badges.push('police');
+  }
+  if (
+    userMeta?.verified_type !== 'Government' &&
+    /\b(?:ret\.?|retired|former|ex)[-\s]+(?:secretary|administrator|commissioner|director|u\.?s\.?\s+attorney|inspector\s+general|civil\s+servant|federal\s+employee|government\s+official)\b/i.test(
+      text
+    )
+  ) {
+    badges.push('retired-government');
+  }
+  return badges;
 }
 
 function avatarForRow(r) {

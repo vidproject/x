@@ -520,6 +520,34 @@ body {
   text-overflow: ellipsis;
   max-width: 14ch;
 }
+.acc-badge {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex: 0 0 auto;
+  border: 1px solid var(--border-strong);
+}
+.acc-badge-veteran {
+  background:
+    linear-gradient(135deg, rgba(67, 94, 49, 0.95) 0 35%, rgba(119, 113, 66, 0.95) 35% 58%, rgba(42, 66, 45, 0.95) 58% 100%);
+  border-color: rgba(67, 94, 49, 0.9);
+}
+.acc-badge-police {
+  background: rgba(41, 112, 214, 0.85);
+  border-color: rgba(41, 112, 214, 0.95);
+}
+.acc-badge-retired-police {
+  background:
+    radial-gradient(circle, rgba(41, 112, 214, 0.9) 0 2px, transparent 2px) 0 0 / 5px 5px,
+    rgba(41, 112, 214, 0.16);
+  border-color: rgba(41, 112, 214, 0.75);
+}
+.acc-badge-retired-government {
+  background:
+    radial-gradient(circle, rgba(150, 156, 166, 0.95) 0 2px, transparent 2px) 0 0 / 5px 5px,
+    rgba(150, 156, 166, 0.16);
+  border-color: rgba(150, 156, 166, 0.78);
+}
 
 .load-errors {
   position: fixed;

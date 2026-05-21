@@ -326,7 +326,9 @@ export class Store {
     // `_misc.parquet` aggregates non-tracked authors, so they're
     // implicitly `public` regardless of which non-tracked handle wrote
     // the tweet.
-    const own = this.accountCategoryByHandle.get(handle) || 'public';
+    const meta = this.accountCategoryByHandle.get(handle);
+    const own =
+      typeof meta === 'string' ? meta : meta && typeof meta.category === 'string' ? meta.category : 'public';
     return dominantCategory(own, promotedCategoryOf(row));
   }
 

@@ -80,6 +80,33 @@ FORMER_PERSONAL_SERVICE_RE = re.compile(
     r"|\b(?:deputy\s+)?(?:u\.?s\.?\s+)?marshal\s+ret\.?\b",
     re.I,
 )
+MILITARY_SERVICE_RE = re.compile(
+    r"\b("
+    r"veteran|vet\b|retired\s+(?:u\.?s\.?\s+)?(?:army|navy|marine|air\s+force|space\s+force)|"
+    r"(?:u\.?s\.?\s+)?(?:army|navy|marines?|air\s+force|space\s+force)\b"
+    r")",
+    re.I,
+)
+POLICE_SERVICE_RE = re.compile(
+    r"\b("
+    r"police|sheriff|law\s+enforcement|border\s+patrol\s+agent|"
+    r"(?:deputy\s+)?(?:u\.?s\.?\s+)?marshal|criminal\s+investigator"
+    r")\b",
+    re.I,
+)
+RETIRED_POLICE_SERVICE_RE = re.compile(
+    r"\b(?:ret\.?|retired|former|ex)[-\s]+(?:deputy\s+)?"
+    r"(?:police|sheriff|law\s+enforcement|border\s+patrol\s+agent|"
+    r"(?:u\.?s\.?\s+)?marshal|criminal\s+investigator)\b"
+    r"|\b(?:deputy\s+)?(?:u\.?s\.?\s+)?marshal\s+ret\.?\b",
+    re.I,
+)
+RETIRED_GOVERNMENT_SERVICE_RE = re.compile(
+    r"\b(?:ret\.?|retired|former|ex)[-\s]+"
+    r"(?:secretary|administrator|commissioner|director|u\.?s\.?\s+attorney|"
+    r"inspector\s+general|civil\s+servant|federal\s+employee|government\s+official)\b",
+    re.I,
+)
 
 
 def load_config_accounts() -> dict[str, dict[str, str]]:
@@ -179,6 +206,23 @@ def classify(handle: str, user: dict[str, Any]) -> dict[str, str] | None:
     return None
 
 
+def service_badges(user: dict[str, Any]) -> list[str]:
+    display_name = str(user.get("display_name") or "")
+    description = str(user.get("description") or "")
+    verified_type = str(user.get("verified_type") or "")
+    text = " ".join([display_name, description])
+    badges: list[str] = []
+    if MILITARY_SERVICE_RE.search(text):
+        badges.append("veteran")
+    if RETIRED_POLICE_SERVICE_RE.search(text):
+        badges.append("retired-police")
+    elif POLICE_SERVICE_RE.search(text):
+        badges.append("police")
+    if verified_type != "Government" and RETIRED_GOVERNMENT_SERVICE_RE.search(text):
+        badges.append("retired-government")
+    return badges
+
+
 def build() -> dict[str, Any]:
     config_accounts = load_config_accounts()
     users = load_users()
@@ -194,8 +238,18 @@ def build() -> dict[str, Any]:
         if not isinstance(user, dict):
             continue
         result = classify(handle, user)
-        if not result:
+        badges = service_badges(user)
+        if not result and not badges:
             continue
+        if not result:
+            result = {
+                "category": "public",
+                "label": str(user.get("display_name") or handle),
+                "source": "data/users.json",
+                "reason": "service-history badge only",
+            }
+        if badges:
+            result = {**result, "badges": badges}
         categories[handle] = {**result, "observations": counts.get(handle, 0)}
 
     return {
