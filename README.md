@@ -181,6 +181,8 @@ This gives later OCR, transcript, keyframe, CLIP, audio, or vision-model jobs a 
 
 `scripts.build_core_video_audit` joins core-account videos against keyframes, OCR, audio, metadata vision, paid LLM, manual-review, and lexical tags. It writes `data/tags/core_video_audit.json` and `data/tags/core_video_audit.csv`, prioritized for produced-video and genre review (`genre:music-video`, `genre:dystopian`, `genre:war-movie`, `genre:utopian`, recruitment, advertisement, and PSA).
 
+The audit also emits queue files for GitHub-side recovery of likely produced or genre-relevant videos whose media is still missing: `data/tags/core_produced_missing_tweet_ids.txt` and `data/tags/core_produced_missing_media_ids.txt`. Dispatch `archive-media` with those files, or push changes to them, to have GitHub fetch the queued media instead of using local bandwidth.
+
 ## News Mentions
 
 `scripts.news_mentions` checks whether archived core tweets are cited by news coverage using a deterministic local article export. It accepts JSON, JSONL, or CSV records with fields such as `url`, `title`, `description`, `body`, `content`, or `text`, then matches exact `x.com/<handle>/status/<tweet_id>`, `twitter.com/<handle>/status/<tweet_id>`, and `x.com/i/web/status/<tweet_id>` URLs. Tests and normal offline runs need no network. For cheap ad-hoc discovery, run `uv run python -m scripts.news_mentions --discover-web google-news-rss --max-web-tweets 100 --matched-only`; this queries Google News RSS, or `--discover-web gdelt` for GDELT, for exact status URL strings and records returned article metadata at lower confidence.

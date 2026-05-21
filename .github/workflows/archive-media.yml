@@ -195,6 +195,9 @@ jobs:
       - name: refresh lexical tags
         run: uv run python -m scripts.tag_lexical
 
+      - name: refresh core video audit
+        run: uv run python -m scripts.build_core_video_audit
+
       - name: commit parquet updates
         run: |
           git config user.name "github-actions[bot]"
