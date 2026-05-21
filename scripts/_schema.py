@@ -246,6 +246,124 @@ def empty_media_vision_dataframe() -> pl.DataFrame:
 
 
 # --------------------------------------------------------------------------
+# Image OCR sidecar (Layer 3b)
+#
+# One row per OCR attempt over archived still images and extracted video
+# keyframes. The lexical tagger concatenates rows by tweet_id and treats the
+# recovered text as another deterministic text source.
+
+IMAGE_OCR_SCHEMA: dict[str, Any] = {
+    "tweet_id": pl.Utf8,
+    "account_handle": pl.Utf8,
+    "media_id": pl.Utf8,
+    "media_type": pl.Utf8,
+    "media_sha256": pl.Utf8,
+    "source_kind": pl.Utf8,
+    "source_path": pl.Utf8,
+    "input_hash": pl.Utf8,
+    "ocr_engine": pl.Utf8,
+    "ocr_version": pl.Utf8,
+    "ocr_at": pl.Utf8,
+    "text": pl.Utf8,
+    "confidence": pl.Float64,
+    "status": pl.Utf8,
+    "cost_estimate_usd": pl.Float64,
+    "error": pl.Utf8,
+}
+
+
+def empty_image_ocr_dataframe() -> pl.DataFrame:
+    """Return an empty DataFrame with the image-OCR sidecar schema."""
+    return pl.DataFrame(schema=IMAGE_OCR_SCHEMA)
+
+
+# --------------------------------------------------------------------------
+# Audio sidecar (Layer 3a)
+#
+# One row per archived video / animated-gif media item. This is a cheap,
+# ffmpeg-only classifier boundary: it records whether an audio stream exists
+# and a conservative music-likelihood score without downloading any model.
+
+AUDIO_MUSIC_SCHEMA: dict[str, Any] = {
+    "tweet_id": pl.Utf8,
+    "account_handle": pl.Utf8,
+    "media_id": pl.Utf8,
+    "media_type": pl.Utf8,
+    "media_sha256": pl.Utf8,
+    "release_asset_url": pl.Utf8,
+    "input_hash": pl.Utf8,
+    "generated_at": pl.Utf8,
+    "detector": pl.Utf8,
+    "detector_version": pl.Utf8,
+    "audio_duration_sec": pl.Float64,
+    "sample_duration_sec": pl.Float64,
+    "audio_stream_count": pl.Int64,
+    "codec": pl.Utf8,
+    "channels": pl.Int64,
+    "sample_rate": pl.Int64,
+    "music_score": pl.Float64,
+    "speech_score": pl.Float64,
+    "non_silent_ratio": pl.Float64,
+    "zero_crossing_rate": pl.Float64,
+    "rms_mean": pl.Float64,
+    "rms_variance": pl.Float64,
+    "status": pl.Utf8,
+    "tags": pl.List(TAG_ENTRY_STRUCT),
+    "features_json": pl.Utf8,
+    "cost_estimate_usd": pl.Float64,
+    "error": pl.Utf8,
+}
+
+
+def empty_audio_music_dataframe() -> pl.DataFrame:
+    """Return an empty DataFrame with the audio-recognition sidecar schema."""
+    return pl.DataFrame(schema=AUDIO_MUSIC_SCHEMA)
+
+
+# --------------------------------------------------------------------------
+# News-mentions sidecar
+#
+# One row per core tweet scanned against a deterministic, local news-corpus
+# export. The script never calls a search API during normal operation or tests:
+# callers provide an article JSON/JSONL/CSV file, and exact status-URL matches
+# become `news:*` tags the viewer can merge like other sidecar tags.
+
+NEWS_ARTICLE_MENTION_STRUCT = pl.Struct(
+    [
+        pl.Field("source", pl.Utf8),
+        pl.Field("title", pl.Utf8),
+        pl.Field("url", pl.Utf8),
+        pl.Field("published_at", pl.Utf8),
+        pl.Field("matched_fields", pl.List(pl.Utf8)),
+        pl.Field("matched_terms", pl.List(pl.Utf8)),
+        pl.Field("confidence", pl.Float64),
+    ]
+)
+
+NEWS_MENTIONS_SCHEMA: dict[str, Any] = {
+    "tweet_id": pl.Utf8,
+    "account_handle": pl.Utf8,
+    "tweet_url": pl.Utf8,
+    "posted_at": pl.Utf8,
+    "input_hash": pl.Utf8,
+    "generated_at": pl.Utf8,
+    "detector": pl.Utf8,
+    "detector_version": pl.Utf8,
+    "mention_count": pl.Int64,
+    "articles": pl.List(NEWS_ARTICLE_MENTION_STRUCT),
+    "status": pl.Utf8,
+    "tags": pl.List(TAG_ENTRY_STRUCT),
+    "cost_estimate_usd": pl.Float64,
+    "error": pl.Utf8,
+}
+
+
+def empty_news_mentions_dataframe() -> pl.DataFrame:
+    """Return an empty DataFrame with the news-mentions sidecar schema."""
+    return pl.DataFrame(schema=NEWS_MENTIONS_SCHEMA)
+
+
+# --------------------------------------------------------------------------
 # Keyframe sidecar (Layer 2)
 #
 # One row per archived video. Records the metadata of evenly-spaced
@@ -280,6 +398,11 @@ KEYFRAMES_SCHEMA: dict[str, Any] = {
     "media_id": pl.Utf8,
     "media_sha256": pl.Utf8,
     "release_asset_url": pl.Utf8,
+    "thumbnail_path": pl.Utf8,
+    "thumbnail_sha256": pl.Utf8,
+    "thumbnail_width": pl.Int64,
+    "thumbnail_height": pl.Int64,
+    "thumbnail_bytes": pl.Int64,
     "video_duration_sec": pl.Float64,
     "video_width": pl.Int64,
     "video_height": pl.Int64,

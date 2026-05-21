@@ -938,13 +938,6 @@
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
-    "OldPatrolHQ": {
-      "category": "government",
-      "label": "Old Patrol HQ",
-      "observations": 116,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
-    },
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
@@ -1617,13 +1610,6 @@
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
-    "TheRealRazielah": {
-      "category": "government",
-      "label": "Lawrence Moore",
-      "observations": 1,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
-    },
     "ThomasMHern": {
       "category": "officials",
       "label": "Thomas Hern",
@@ -2089,11 +2075,11 @@
   },
   "category_counts": {
     "core": 12,
-    "government": 96,
+    "government": 94,
     "officials": 87,
     "public_figures": 103
   },
-  "generated_at": "2026-05-21T00:15:20Z",
+  "generated_at": "2026-05-21T00:46:12Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }

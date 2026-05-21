@@ -276,6 +276,65 @@ def test_run_respects_max_items(tmp_corpus: Path) -> None:
     assert stats["skipped_max_items"] == 2
 
 
+def test_run_respects_max_items_for_failed_attempts(tmp_corpus: Path) -> None:
+    media = [_archived_video(f"vid-{i}", sha=chr(ord("a") + i) * 64) for i in range(4)]
+    _write_handle_parquet(
+        tmp_corpus,
+        "DHSgov",
+        [make_tweet(f"t-{i}", handle="DHSgov", media=[m]) for i, m in enumerate(media)],
+    )
+
+    def skipped(cand: VideoCandidate) -> ExtractResult:
+        return ExtractResult(
+            status="skipped-no-ffmpeg",
+            frames=[],
+            video_duration_sec=cand.declared_duration_sec,
+            video_width=0,
+            video_height=0,
+            error="ffmpeg / ffprobe not on PATH",
+        )
+
+    stats = extract_video_frames.run(
+        parquets=[tmp_corpus / "data" / "DHSgov.parquet"],
+        max_items=2,
+        dry_run=True,
+        extractor=skipped,
+    )
+    assert stats["attempted"] == 2
+    assert stats.get("extracted", 0) == 0
+    assert stats["skipped_max_items"] == 2
+
+
+def test_all_no_ffmpeg_run_does_not_overwrite_existing_ok_sidecar(tmp_corpus: Path) -> None:
+    m = _archived_video("vid-1", sha="a" * 64, duration=42.0)
+    _write_handle_parquet(tmp_corpus, "DHSgov", [make_tweet("t-1", handle="DHSgov", media=[m])])
+    extract_video_frames.run(
+        parquets=[tmp_corpus / "data" / "DHSgov.parquet"],
+        extractor=_fake_extractor_factory({}),
+    )
+    before = pl.read_parquet(tmp_corpus / "data" / "tags" / "keyframes.parquet")
+    assert before["status"].to_list() == ["ok"]
+
+    def skipped(cand: VideoCandidate) -> ExtractResult:
+        return ExtractResult(
+            status="skipped-no-ffmpeg",
+            frames=[],
+            video_duration_sec=cand.declared_duration_sec,
+            video_width=0,
+            video_height=0,
+            error="ffmpeg / ffprobe not on PATH",
+        )
+
+    stats = extract_video_frames.run(
+        parquets=[tmp_corpus / "data" / "DHSgov.parquet"],
+        force=True,
+        extractor=skipped,
+    )
+    after = pl.read_parquet(tmp_corpus / "data" / "tags" / "keyframes.parquet")
+    assert stats["skipped_write_all_no_ffmpeg"] == 1
+    assert after["status"].to_list() == ["ok"]
+
+
 def test_run_records_failure_status_without_caching(tmp_corpus: Path) -> None:
     m = _archived_video("vid-1", sha="a" * 64)
     _write_handle_parquet(tmp_corpus, "DHSgov", [make_tweet("t-1", handle="DHSgov", media=[m])])

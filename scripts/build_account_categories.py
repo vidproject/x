@@ -74,6 +74,12 @@ NEWS_OR_MEDIA_RE = re.compile(
     r"\b(reporter|journalist|correspondent|anchor|news|magazine|politico|reuters|fox|cnn|msnbc|cbs|abc|nbc)\b",
     re.I,
 )
+FORMER_PERSONAL_SERVICE_RE = re.compile(
+    r"\b(?:ret\.?|retired|former|ex)[-\s]+(?:deputy\s+)?"
+    r"(?:u\.?s\.?\s+)?(?:marshal|sheriff|police|officer|agent|investigator|army|navy|marine|air\s+force|soldier)\b"
+    r"|\b(?:deputy\s+)?(?:u\.?s\.?\s+)?marshal\s+ret\.?\b",
+    re.I,
+)
 
 
 def load_config_accounts() -> dict[str, dict[str, str]]:
@@ -159,6 +165,8 @@ def classify(handle: str, user: dict[str, Any]) -> dict[str, str] | None:
         }
 
     if verified_type == "Government" or AGENCY_OR_OFFICE_RE.search(text):
+        if verified_type != "Government" and FORMER_PERSONAL_SERVICE_RE.search(text):
+            return None
         if "personal account" in text_l and not AGENCY_OR_OFFICE_RE.search(display_name):
             return None
         return {

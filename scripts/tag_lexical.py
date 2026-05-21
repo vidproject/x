@@ -696,6 +696,45 @@ PATTERN_VIDEO_AD = _compile(
     r"|\bjoin\s+(?:ice|cbp|hsi|the\s+(?:ice|cbp)\s+(?:team|family))\b"
     r"|\bapply\s+(?:today|now)\s+at\b"
 )
+SPEAKER_ACTION_CONTEXT = (
+    r"(?:deliver(?:s|ed|ing)?|giv(?:e|es|ing)|gave|announce(?:s|d|ment)?|"
+    r"say|says|said|speak(?:s|ing)?|spoke|remark(?:s|ed)?|brief(?:s|ed|ing)?|"
+    r"join(?:s|ed|ing)?|interview(?:s|ed|ing)?|sat\s+down|quote(?:s|d)?)"
+)
+SPEAKER_NOUN_CONTEXT = (
+    r"(?:remarks?|speech|address|statement|announcement|interview|quote|"
+    r"press\s+(?:conference|briefing|gaggle)|briefing)"
+)
+SPEAKER_ALIASES: tuple[tuple[str, str], ...] = (
+    (
+        "First Lady Melania Trump",
+        r"(?:First\s+Lady\s+)?Melania\s+Trump|FLOTUS",
+    ),
+    (
+        "Secretary Mullin",
+        r"Secretary\s+Mullin|Sec\.?\s+Mullin|@?SecMullinDHS",
+    ),
+    (
+        "President Trump",
+        r"President\s+(?:Donald\s+J\.?\s+)?Trump|Donald\s+Trump|@?POTUS|@?realDonaldTrump",
+    ),
+    (
+        "Vice President Vance",
+        r"Vice\s+President\s+(?:JD\s+|J\.D\.\s+)?Vance|VP\s+Vance|J\.?D\.?\s+Vance|@?VP",
+    ),
+    (
+        "Tom Homan",
+        r"Tom\s+Homan|Thomas\s+D\.?\s+Homan|@?RealTomHoman",
+    ),
+    (
+        "Stephen Miller",
+        r"Stephen\s+Miller|@?StephenM",
+    ),
+    (
+        "Gregory Bovino",
+        r"Gregory\s+Bovino|Gregory\s+K\.?\s+Bovino|@?GregoryKBovino",
+    ),
+)
 
 PATTERN_STATUS_COPYRIGHT_REMOVAL = _compile(r"\b(copyright|dmca)\b")
 PATTERN_SLOGAN_NICE = _compile(r"\b(NICE day|NICE morning|ICE is NICE|NICE city)\b")
@@ -982,6 +1021,9 @@ def tag_text(
     for pat, tag in AGENCY_TEXT_PATTERNS:
         for m in pat.finditer(text):
             add(tag, span=m.span())
+
+    for tag, span in speaker_matches(text):
+        add(tag, span=span)
 
     if m := _coded_nativism_match(text, entries):
         add("theme:nativism", span=m.span())
@@ -1409,6 +1451,43 @@ def load_media_context_map() -> dict[str, dict[str, Any]]:
     return out
 
 
+def speaker_matches(text: str) -> list[tuple[str, tuple[int, int]]]:
+    """Return speaker tags only when a named official is tied to speech."""
+    out: list[tuple[str, tuple[int, int]]] = []
+    for canonical, alias in SPEAKER_ALIASES:
+        patterns = (
+            rf"(?<!\w)({alias})(?!\w).{{0,100}}\b(?:{SPEAKER_ACTION_CONTEXT}|{SPEAKER_NOUN_CONTEXT})\b",
+            rf"\b(?:{SPEAKER_ACTION_CONTEXT}|{SPEAKER_NOUN_CONTEXT})\b"
+            rf".{{0,80}}\b(?:by|from|with|of|featuring|:)?\s*({alias})(?!\w)",
+        )
+        for pattern in patterns:
+            match = re.search(pattern, text, re.I)
+            if match:
+                out.append((f"speaker:{canonical}", match.span(1)))
+                break
+    return out
+
+
+def load_audio_context_map() -> dict[str, dict[str, Any]]:
+    """Return per-tweet audio tags from the cheap audio sidecar."""
+    p = TAGS_DIR / "audio_music.parquet"
+    if not p.exists():
+        return {}
+    df = pl.read_parquet(p)
+    if df.is_empty() or "tweet_id" not in df.columns:
+        return {}
+    out: dict[str, dict[str, Any]] = {}
+    for row in df.iter_rows(named=True):
+        tid = str(row.get("tweet_id") or "")
+        if not tid:
+            continue
+        item = out.setdefault(tid, {"tags": []})
+        tags = row.get("tags")
+        if isinstance(tags, list):
+            item["tags"].extend(tags)
+    return out
+
+
 def load_reply_context_map(parquets: list[Path]) -> dict[str, str]:
     """Return direct-reply text keyed by replied-to tweet id.
 
@@ -1475,6 +1554,7 @@ def tag_one_parquet(
     tagged_at: str,
     ocr_map: dict[str, str] | None = None,
     media_context_map: dict[str, dict[str, Any]] | None = None,
+    audio_context_map: dict[str, dict[str, Any]] | None = None,
     reply_context_map: dict[str, str] | None = None,
     tag_overrides: dict[str, list[str]] | None = None,
 ) -> list[dict[str, Any]]:
@@ -1487,6 +1567,7 @@ def tag_one_parquet(
     """
     ocr_map = ocr_map or {}
     media_context_map = media_context_map or {}
+    audio_context_map = audio_context_map or {}
     reply_context_map = reply_context_map or {}
     tag_overrides = tag_overrides or {}
     df = pl.read_parquet(path)
@@ -1531,6 +1612,12 @@ def tag_one_parquet(
             if r.get(col)
         )
         media_context = media_context_map.get(tweet_id, {})
+        audio_context = audio_context_map.get(tweet_id, {})
+        media_tags: list[Any] = []
+        if isinstance(media_context, dict) and isinstance(media_context.get("tags"), list):
+            media_tags.extend(media_context["tags"])
+        if isinstance(audio_context, dict) and isinstance(audio_context.get("tags"), list):
+            media_tags.extend(audio_context["tags"])
         tags = tag_text(
             text,
             tweet_type=r.get("tweet_type"),
@@ -1539,7 +1626,7 @@ def tag_one_parquet(
             account_category=category,
             ocr_text=ocr_map.get(tweet_id, ""),
             media_text=str(media_context.get("text") or ""),
-            media_tags=media_context.get("tags") if isinstance(media_context, dict) else None,
+            media_tags=media_tags,
             reply_context_text=reply_context_map.get(tweet_id, ""),
             is_unavailable=bool(r.get("unavailable_detected_at")),
             unavailable_text=unavailable_text,
@@ -1631,6 +1718,12 @@ def main(argv: list[str] | None = None) -> int:
             "loaded media-recognition sidecar overlay",
             tweets_with_media_context=len(media_context_map),
         )
+    audio_context_map = load_audio_context_map()
+    if audio_context_map:
+        LOG.info(
+            "loaded audio-recognition sidecar overlay",
+            tweets_with_audio_context=len(audio_context_map),
+        )
     reply_context_map = load_reply_context_map(parquets)
     if reply_context_map:
         LOG.info("loaded direct-reply text context", parents_with_replies=len(reply_context_map))
@@ -1646,6 +1739,7 @@ def main(argv: list[str] | None = None) -> int:
             tagged_at,
             ocr_map=ocr_map,
             media_context_map=media_context_map,
+            audio_context_map=audio_context_map,
             reply_context_map=reply_context_map,
             tag_overrides=tag_overrides,
         )

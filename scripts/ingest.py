@@ -868,6 +868,70 @@ def discover_handles(restrict_to: str | None) -> set[str]:
     return handles
 
 
+def relationship_target_ids(row: dict[str, Any]) -> set[str]:
+    """Tweet IDs this row directly points at."""
+    out: set[str] = set()
+    for field in ("reply_to_tweet_id", "quoted_tweet_id", "retweeted_tweet_id"):
+        value = str(row.get(field) or "").strip()
+        if value:
+            out.add(value)
+    return out
+
+
+def prune_misc_rows_to_related(
+    misc_rows: list[dict[str, Any]],
+    tracked_results: dict[str, dict[str, dict[str, Any]]],
+) -> list[dict[str, Any]]:
+    """Keep only public/misc rows connected to tracked rows.
+
+    `_misc.parquet` is a relationship bucket, not a durable subscription to
+    every public handle we have ever seen. A misc row is kept when it is a
+    parent/child/quote/retweet neighbor of a tracked row, or when it is linked
+    by the same relationship closure from another kept misc row.
+    """
+    if not misc_rows:
+        return []
+
+    tracked_ids: set[str] = set()
+    wanted_ids: set[str] = set()
+    for merged in tracked_results.values():
+        for row in merged.values():
+            tid = str(row.get("tweet_id") or "").strip()
+            if tid:
+                tracked_ids.add(tid)
+            wanted_ids.update(relationship_target_ids(row))
+
+    if not tracked_ids and not wanted_ids:
+        return []
+
+    misc_by_id: dict[str, dict[str, Any]] = {}
+    for row in misc_rows:
+        tid = str(row.get("tweet_id") or "").strip()
+        if tid:
+            misc_by_id[tid] = row
+
+    kept_ids: set[str] = set()
+    reachable_ids: set[str] = set(tracked_ids)
+    changed = True
+    while changed:
+        changed = False
+        for tid, row in misc_by_id.items():
+            if tid in kept_ids:
+                continue
+            targets = relationship_target_ids(row)
+            if tid in wanted_ids or targets.intersection(reachable_ids):
+                kept_ids.add(tid)
+                reachable_ids.add(tid)
+                wanted_ids.update(targets)
+                changed = True
+
+    return [
+        row
+        for row in misc_rows
+        if str(row.get("tweet_id") or "").strip() in kept_ids
+    ]
+
+
 # --------------------------------------------------------------------------
 # CLI
 
@@ -929,6 +993,11 @@ def main(argv: list[str] | None = None) -> int:
             tracked_results[handle] = merged
         else:
             misc_rows.extend(merged.values())
+
+    before_prune = len(misc_rows)
+    misc_rows = prune_misc_rows_to_related(misc_rows, tracked_results)
+    if before_prune != len(misc_rows):
+        LOG.info("pruned unrelated _misc rows", before=before_prune, after=len(misc_rows))
 
     # --- Write tracked parquets ------------------------------------------
     for handle, merged in tracked_results.items():

@@ -21,6 +21,15 @@ const KEYS = [
   'cols',
 ];
 
+const DEFAULT_PAGE_SIZE = 20;
+const MAX_PAGE_SIZE = 200;
+
+function normalizePageSize(value) {
+  const n = Number(value);
+  if (!Number.isFinite(n) || n <= 0) return DEFAULT_PAGE_SIZE;
+  return Math.min(Math.floor(n), MAX_PAGE_SIZE);
+}
+
 export function defaults() {
   return {
     accounts: [],
@@ -36,7 +45,7 @@ export function defaults() {
     sort: 'posted_at',
     dir: 'desc',
     page: 1,
-    size: 100,
+    size: DEFAULT_PAGE_SIZE,
     cols: '', // empty = default visible columns
   };
 }
@@ -53,7 +62,11 @@ export function fromHash(hash) {
       out[key] = v.split(',').filter(Boolean);
     } else if (key === 'page' || key === 'size') {
       const n = Number(v);
-      if (Number.isFinite(n) && n > 0) out[key] = n;
+      if (key === 'page') {
+        if (Number.isFinite(n) && n > 0) out[key] = Math.floor(n);
+      } else {
+        out[key] = normalizePageSize(v);
+      }
     } else {
       out[key] = v;
     }

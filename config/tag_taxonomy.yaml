@@ -91,8 +91,10 @@ tags:
   speaker:*:
     description: >-
       Speaker identified by title or name from tweet text, source alt text,
-      transcript/captions, or captured replies/comments; do not guess.
-    classification: tentative
+      transcript/captions, media descriptions, or captured replies/comments
+      with explicit speech, remarks, announcement, interview, or quote context;
+      do not guess from faces or setting.
+    classification: deterministic
 
   # ===== media:* — attached media labels ============================
   media:photo-detainee:
@@ -123,15 +125,36 @@ tags:
   # ===== audio:* - audio-track / sound cues ==========================
   audio:music-likely:
     description: >-
-      Cheap contextual signal that a video likely contains music,
-      derived from explicit tweet/media text or direct replies asking
-      about the song, soundtrack, or background music.
+      Cheap signal that a video likely contains music, derived from
+      explicit tweet/media text, direct replies asking about the song,
+      or the bounded ffmpeg-only audio sidecar.
+    classification: deterministic
+  audio:has-audio:
+    description: Archived video has at least one detectable audio stream.
+    classification: deterministic
+  audio:no-audio:
+    description: Archived video or animated GIF has no detectable audio stream.
+    classification: deterministic
+  audio:silent:
+    description: Archived video has an audio stream but the sampled audio is effectively silent.
     classification: deterministic
   audio:music:
     description: >-
       Confirmed music detected in the archived video's audio track by a
       future audio classifier sidecar.
     classification: model
+
+  # ===== news:* - external news coverage ============================
+  news:mentioned:
+    description: >-
+      A local news-corpus export contains an exact X/Twitter status URL
+      for this archived core tweet.
+    classification: deterministic
+  news:covered:
+    description: >-
+      Alias for news:mentioned, kept as a user-friendly filter for
+      tweets cited or embedded by external news coverage.
+    classification: deterministic
 
   media:described:
     description: Media item has a generated sidecar description.

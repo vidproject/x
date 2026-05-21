@@ -338,13 +338,35 @@ def test_tracked_handle_gets_own_parquet_non_tracked_consolidates_into_misc(
         tmp_repo,
         "extra",
         "a.json",
-        make_capture([make_tweet("h2-1", handle="extra", text="reply A")]),
+        make_capture(
+            [
+                make_tweet(
+                    "h2-1",
+                    handle="extra",
+                    text="reply A",
+                    tweet_type="reply",
+                    reply_to_tweet_id="h1-1",
+                    reply_to_account="test-handle",
+                )
+            ]
+        ),
     )
     write_capture(
         tmp_repo,
         "another",
         "a.json",
-        make_capture([make_tweet("h3-1", handle="another", text="reply B")]),
+        make_capture(
+            [
+                make_tweet(
+                    "h3-1",
+                    handle="another",
+                    text="reply B",
+                    tweet_type="reply",
+                    reply_to_tweet_id="h1-1",
+                    reply_to_account="test-handle",
+                )
+            ]
+        ),
     )
     assert ingest.main([]) == 0
     assert (tmp_repo / "data" / "test-handle.parquet").exists()
@@ -377,7 +399,18 @@ def test_handle_starting_with_underscore_is_ingested_not_dropped(
         tmp_repo,
         "_aktrades",
         "a.json",
-        make_capture([make_tweet("under-1", handle="_aktrades", text="reply from _aktrades")]),
+        make_capture(
+            [
+                make_tweet(
+                    "under-1",
+                    handle="_aktrades",
+                    text="reply from _aktrades",
+                    tweet_type="reply",
+                    reply_to_tweet_id="tracked-1",
+                    reply_to_account="test-handle",
+                )
+            ]
+        ),
     )
     # A directory that genuinely is a sentinel must still be skipped.
     (tmp_repo / "raw" / "_quarantine").mkdir()
@@ -398,6 +431,22 @@ def test_legacy_per_handle_parquet_for_untracked_is_collapsed_into_misc(
     handle that's not in accounts.yaml gets folded into _misc on the next
     ingest. Confirms data is preserved across the migration."""
     # Pre-seed: build an "extra.parquet" the old layout would have produced.
+    write_capture(
+        tmp_repo,
+        "test-handle",
+        "tracked.json",
+        make_capture(
+            [
+                make_tweet(
+                    "tracked-1",
+                    handle="test-handle",
+                    tweet_type="reply",
+                    reply_to_tweet_id="legacy-1",
+                    reply_to_account="extra",
+                )
+            ]
+        ),
+    )
     write_capture(
         tmp_repo,
         "extra",
@@ -429,6 +478,22 @@ def test_promoting_handle_to_tracked_migrates_rows_out_of_misc(tmp_repo: Path) -
     """When an account is added to accounts.yaml, its previously-misc rows
     should migrate to its own parquet (with archive metadata intact)."""
     # First run: "extra" is not tracked, lands in _misc.
+    write_capture(
+        tmp_repo,
+        "test-handle",
+        "tracked.json",
+        make_capture(
+            [
+                make_tweet(
+                    "tracked-1",
+                    handle="test-handle",
+                    tweet_type="reply",
+                    reply_to_tweet_id="e1",
+                    reply_to_account="extra",
+                )
+            ]
+        ),
+    )
     write_capture(
         tmp_repo,
         "extra",

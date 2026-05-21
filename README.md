@@ -85,6 +85,10 @@ Current sidecars:
 
 - `data/tags/lexical.parquet`: regex and structural tags from `scripts/tag_lexical.py`.
 - `data/tags/media_vision.parquet`: media descriptions from `scripts/describe_media.py`.
+- `data/tags/keyframes.parquet`: video keyframe metadata and tiny poster thumbnails from `scripts/extract_video_frames.py`.
+- `data/tags/image_ocr.parquet`: Tesseract OCR text from archived photos and extracted video keyframes from `scripts/tag_image_ocr.py`.
+- `data/tags/audio_music.parquet`: ffmpeg-only audio stream/music-likelihood tags from `scripts/detect_audio_music.py`.
+- `data/tags/news_mentions.parquet`: exact X/Twitter status-URL mentions of core tweets in a local news article export from `scripts/news_mentions.py`.
 - `data/account_categories.json`: corpus-wide public figure / government / official categories from `scripts/build_account_categories.py`.
 - `config/tag_overrides.yaml`: editor-confirmed tags for cases the capture layer cannot prove from canonical fields alone.
 
@@ -100,7 +104,19 @@ The immigration-reporting tag is `action:report-immigrants`. Generic non-immigra
 
 Each media row carries cache and provenance fields: `input_hash`, `model`, `model_version`, `prompt_hash`, `confidence`, `cost_estimate_usd`, `status`, `source_fields`, and `error`.
 
-This gives later OCR, transcript, keyframe, CLIP, audio, or vision-model jobs a stable place to write results without changing canonical capture data. Items that need deeper inspection get tentative `media:needs-vision`. Until an audio classifier lands, the lexical layer also uses video text and direct replies as cheap context for `audio:music-likely` when people explicitly reference the song, soundtrack, or background music.
+This gives later OCR, transcript, keyframe, CLIP, audio, or vision-model jobs a stable place to write results without changing canonical capture data. Items that need deeper inspection get tentative `media:needs-vision`.
+
+`scripts.extract_video_frames` pulls bounded keyframes from archived videos and also writes a tiny 96px JPEG poster under `data/thumbnails/video/` for the viewer. The table uses those posters before falling back to larger frame paths, so video thumbnails are automatic and cheap to load.
+
+`scripts.tag_image_ocr` is the first true pixel-reading image layer. It OCRs archived photos and the keyframes extracted in the same workflow run, then `scripts.tag_lexical` imports that recovered text so image-only slogans, agency names, religious language, and other text-overlay tags are searchable and filterable.
+
+`scripts.detect_audio_music` is the first audio pass. It uses ffprobe/ffmpeg only: detect whether an archived video has audio, decode a short mono sample, compute simple energy/zero-crossing features, and emit conservative `audio:has-audio`, `audio:no-audio`, `audio:silent`, and tentative `audio:music-likely` tags. The lexical layer still uses video text and direct replies as additional cheap context when people explicitly reference the song, soundtrack, or background music.
+
+## News Mentions
+
+`scripts.news_mentions` checks whether archived core tweets are cited by news coverage using a deterministic local article export. It accepts JSON, JSONL, or CSV records with fields such as `url`, `title`, `description`, `body`, `content`, or `text`, then matches exact `x.com/<handle>/status/<tweet_id>`, `twitter.com/<handle>/status/<tweet_id>`, and `x.com/i/web/status/<tweet_id>` URLs. It does not call a news/search API, so tests and normal offline runs need no network.
+
+When `data/news/articles.jsonl` exists, the ingest workflow refreshes `data/tags/news_mentions.parquet`; otherwise it skips the step. Mentioned tweets receive `news:mentioned` and `news:covered` tags that the viewer loads like other optional sidecars.
 
 ## Pipeline
 
@@ -119,8 +135,17 @@ extension
       data/*.parquet media URLs
     scripts.describe_media
       data/tags/media_vision.parquet
+    scripts.extract_video_frames
+      data/tags/keyframes.parquet
+      data/thumbnails/video/*.jpg
+    scripts.tag_image_ocr
+      data/tags/image_ocr.parquet
+    scripts.detect_audio_music
+      data/tags/audio_music.parquet
+    scripts.news_mentions
+      data/tags/news_mentions.parquet
     scripts.tag_lexical
-      data/tags/lexical.parquet with media-description tags
+      data/tags/lexical.parquet with media/audio-description tags
     GitHub Pages
       viewer
 ```
@@ -133,6 +158,10 @@ uv run python -m scripts.tag_lexical
 uv run python -m scripts.build_account_categories
 uv run python -m scripts.archive_media
 uv run python -m scripts.describe_media
+uv run python -m scripts.extract_video_frames
+uv run python -m scripts.tag_image_ocr
+uv run python -m scripts.detect_audio_music
+uv run python -m scripts.news_mentions --articles data/news/articles.jsonl
 npm run lint
 npm run typecheck
 ```

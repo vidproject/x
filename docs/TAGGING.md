@@ -19,6 +19,7 @@ implementation hand-off for the layers that have actually shipped.
 | 1     | regex / structural rules on `text_resolved` (+ OCR when present)         | `data/tags/lexical.parquet`                                 | **shipped** — see `scripts/tag_lexical.py`                                                                                               |
 | 2     | ffmpeg keyframe extraction (5 evenly-spaced frames per archived video)   | `data/tags/keyframes.parquet` (+ `data/derived/keyframes/`) | **shipped** — see `scripts/extract_video_frames.py`                                                                                      |
 | 3m    | archived media metadata + source alt text                                | `data/tags/media_vision.parquet`                            | **shipped** — see `scripts/describe_media.py`                                                                                            |
+| 3n    | local news-corpus exact status-URL matching                              | `data/tags/news_mentions.parquet`                           | **shipped** — see `scripts/news_mentions.py`                                                                                             |
 | 3a    | CLIP zero-shot image labels                                              | `data/tags/image_clip.parquet`                              | not started; consumes the keyframe sidecar from Layer 2                                                                                  |
 | 3b    | OCR for in-image text (Tesseract → PaddleOCR fallback)                   | `data/tags/image_ocr.parquet`                               | not started; consumes Layer 2 keyframes; **the lexical tagger already integrates with it via `load_ocr_map()` once the parquet appears** |
 | 3c    | Audio transcripts (whisper.cpp / faster-whisper)                         | `data/tags/audio_transcript.parquet`                        | not started; transcripts feed Layer 1 the same way OCR does                                                                              |
@@ -86,6 +87,23 @@ own sidecars keyed off the frame hash. No tweet parquets are modified,
 no API costs are incurred, and the work scales linearly with new
 archived videos.
 
+## News-mentions sidecar (`data/tags/news_mentions.parquet`)
+
+`scripts.news_mentions` writes one row per scanned core tweet, keyed by
+`tweet_id`. Its input is a deterministic local news article export
+(`data/news/articles.jsonl` by convention, or a JSON/JSONL/CSV path
+passed with `--articles`). The matcher only counts exact status URLs for
+archived core tweets, including `x.com/<handle>/status/<id>`,
+`twitter.com/<handle>/status/<id>`, and `x.com/i/web/status/<id>`.
+
+The script does not call a paid API or any network service. If the
+article export is absent, the GitHub workflow skips the step. If it is
+present, the sidecar emits `news:mentioned` and `news:covered` tags for
+matched tweets, plus article provenance (`source`, `title`, `url`,
+`published_at`, `matched_fields`, `matched_terms`, and confidence). The
+viewer loads this sidecar opportunistically and merges those tags into
+the normal tag filter/search surface.
+
 For later video-enrichment passes, use descriptive production labels:
 `media:produced-video`, `media:music-video`, `media:montage`,
 `media:text-overlay`, and `media:voiceover`. These tags should be based
@@ -119,6 +137,7 @@ See `config/tag_taxonomy.yaml` for the authoritative list. Quick map:
 | `agency:`  | mentioned enforcement-adjacent handle  | `agency:ICEgov`            |
 | `slogan:`  | DHS branded phrases                    | `slogan:nice`              |
 | `shape:`   | composite (e.g. mugshot-reply form)    | `shape:lineup`             |
+| `news:`    | local article export cited this tweet  | `news:mentioned`           |
 
 ## The `topic:immigration` default
 
@@ -242,6 +261,7 @@ uv run python -m scripts.tag_lexical     # data/tags/lexical.parquet
 # 3. After media archival:
 uv run python -m scripts.describe_media         # data/tags/media_vision.parquet
 uv run python -m scripts.extract_video_frames   # data/tags/keyframes.parquet (ffmpeg required)
+uv run python -m scripts.news_mentions --articles data/news/articles.jsonl
 
 # 4. (Future) After frame/OCR/transcript passes:
 # uv run python -m scripts.tag_image_ocr        # data/tags/image_ocr.parquet

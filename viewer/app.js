@@ -317,11 +317,15 @@ async function loadAccountCategorySidecar(catMap) {
  * sidecars are normal on a fresh archive; the viewer still works without them.
  */
 async function loadSidecars() {
-  const [tagMap, mediaInsightMap, posterBySha] = await Promise.all([
+  const [tagMap, newsTagMap, mediaInsightMap, posterBySha] = await Promise.all([
     loadLexicalTags(),
+    loadNewsMentionTags(),
     loadMediaInsights(),
     loadKeyframePosters(),
   ]);
+  for (const [id, tags] of newsTagMap.entries()) {
+    mergeTags(tagMap, id, tags);
+  }
   for (const [id, insights] of mediaInsightMap.entries()) {
     for (const insight of insights) {
       if (Array.isArray(insight.tags)) mergeTags(tagMap, id, insight.tags);
@@ -380,6 +384,32 @@ async function loadMediaInsights() {
         resource: url,
         status: status ? Number(status) : null,
         kind: 'media-tags',
+        message: err?.message ?? String(err),
+      });
+    }
+    return new Map();
+  }
+}
+
+async function loadNewsMentionTags() {
+  const cacheKey = tagLayerCacheKey('news_mentions');
+  const url = `data/tags/news_mentions.parquet${cacheKey}`;
+  try {
+    const rows = await loadParquetRows(url);
+    const map = new Map();
+    for (const r of rows) {
+      const id = String(r?.tweet_id ?? '');
+      if (!id || Number(r?.mention_count ?? 0) <= 0) continue;
+      mergeTags(map, id, Array.isArray(r.tags) ? r.tags : []);
+    }
+    return map;
+  } catch (err) {
+    const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
+    if (status !== '404') {
+      pushLoadError({
+        resource: url,
+        status: status ? Number(status) : null,
+        kind: 'news-tags',
         message: err?.message ?? String(err),
       });
     }
@@ -902,7 +932,7 @@ els.mediaType.addEventListener('change', () => {
   refresh();
 });
 els.pageSize.addEventListener('change', () => {
-  urlState.size = Number(els.pageSize.value) || 100;
+  urlState.size = Math.min(Number(els.pageSize.value) || 20, 200);
   urlState.page = 1;
   applyToUrl(urlState);
   refresh();
@@ -920,7 +950,7 @@ els.resetBtn.addEventListener('click', () => {
   els.dateTo.value = '';
   els.tweetType.value = '';
   els.mediaType.value = '';
-  els.pageSize.value = '100';
+  els.pageSize.value = '20';
   applyToUrl(urlState);
   paintAccountFilter();
   paintCategoryFilter();

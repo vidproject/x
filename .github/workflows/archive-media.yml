@@ -45,6 +45,11 @@ jobs:
       - name: install python deps
         run: uv sync
 
+      - name: install OCR engine
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr
+
       - name: archive media
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -74,7 +79,8 @@ jobs:
       - name: extract video keyframes
         # ffmpeg ships preinstalled on ubuntu-latest. Capped at the same
         # max_items as the archive step so the runtime stays bounded; the
-        # script caches by media_sha256, so re-runs are free.
+        # script caches by media_sha256, so re-runs are free. This also
+        # writes tiny video thumbnails for the viewer's media column.
         run: |
           args=()
           if [ -n "${{ inputs.handle }}" ]; then
@@ -84,6 +90,28 @@ jobs:
             args+=(--max-items "${{ inputs.max_items }}")
           fi
           uv run python -m scripts.extract_video_frames "${args[@]}"
+
+      - name: OCR archived images and keyframes
+        run: |
+          args=()
+          if [ -n "${{ inputs.handle }}" ]; then
+            args+=(--handle "${{ inputs.handle }}")
+          fi
+          if [ -n "${{ inputs.max_items }}" ]; then
+            args+=(--max-items "${{ inputs.max_items }}")
+          fi
+          uv run python -m scripts.tag_image_ocr "${args[@]}"
+
+      - name: detect audio music
+        run: |
+          args=()
+          if [ -n "${{ inputs.handle }}" ]; then
+            args+=(--handle "${{ inputs.handle }}")
+          fi
+          if [ -n "${{ inputs.max_items }}" ]; then
+            args+=(--max-items "${{ inputs.max_items }}")
+          fi
+          uv run python -m scripts.detect_audio_music "${args[@]}"
 
       - name: refresh lexical tags
         run: uv run python -m scripts.tag_lexical

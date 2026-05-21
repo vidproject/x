@@ -577,6 +577,50 @@ def test_manual_tag_overrides_are_added_to_parquet_rows() -> None:
         path.unlink(missing_ok=True)
 
 
+def test_audio_sidecar_tags_are_imported_to_parquet_rows() -> None:
+    df = pl.DataFrame(
+        [
+            {
+                "tweet_id": "audio-1",
+                "account_handle": "DHSgov",
+                "tweet_type": "original",
+                "text": "New video.",
+                "text_resolved": "New video.",
+                "mentions": [],
+                "media": [{"media_type": "video", "duration_sec": 20.0}],
+                "unavailable_detected_at": None,
+                "unavailable_reason": None,
+                "unavailable_text": None,
+                "community_note": None,
+            }
+        ]
+    )
+    path = Path(".pytest_cache") / "audio-sidecar-DHSgov.parquet"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        df.write_parquet(path)
+        rows = tag_one_parquet(
+            path,
+            {"DHSgov": "core"},
+            "2026-05-20T00:00:00Z",
+            audio_context_map={
+                "audio-1": {
+                    "tags": [
+                        {
+                            "tag": "audio:music-likely",
+                            "tentative": True,
+                            "source": "audio-heuristic",
+                        }
+                    ]
+                }
+            },
+        )
+        tags = _tags(rows[0]["tags"])
+        assert "audio:music-likely" in tags
+    finally:
+        path.unlink(missing_ok=True)
+
+
 def test_legal_prosecution_and_civil_lawsuit_tags() -> None:
     criminal = tag_text(
         "The defendant was indicted, charged with a felony, convicted, and sentenced.",
@@ -746,6 +790,75 @@ def test_media_description_text_can_drive_immigration_slogans() -> None:
     assert "slogan:illegal-alien" in tags
     assert "theme:sanctuary-cities" in tags
     assert "topic:immigration" in tags
+
+
+def test_speaker_tags_require_named_speech_context() -> None:
+    examples = (
+        (
+            "First Lady Melania Trump delivers an announcement that the House passed the bill.",
+            "speaker:First Lady Melania Trump",
+        ),
+        (".@SecMullinDHS delivered remarks at the Coast Guard Academy.", "speaker:Secretary Mullin"),
+        ("Remarks by @POTUS in the Oval Office.", "speaker:President Trump"),
+        (
+            "Vice President Vance joined Fox News for an interview on border security.",
+            "speaker:Vice President Vance",
+        ),
+        ('Tom Homan said, "We are enforcing the law."', "speaker:Tom Homan"),
+        ("Stephen Miller gives remarks on immigration policy.", "speaker:Stephen Miller"),
+        ("Gregory Bovino spoke at a press conference in Los Angeles.", "speaker:Gregory Bovino"),
+    )
+    for text, expected in examples:
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="public",
+        )
+        assert expected in _tags(out), text
+
+
+def test_speaker_tags_can_use_ocr_or_media_description_text() -> None:
+    out = tag_text(
+        "",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="public",
+        media_text="Manual review observation: Tom Homan at a podium delivering remarks.",
+    )
+    assert "speaker:Tom Homan" in _tags(out)
+
+    ocr = tag_text(
+        "Watch live.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="public",
+        ocr_text="INTERVIEW WITH STEPHEN MILLER",
+    )
+    assert "speaker:Stephen Miller" in _tags(ocr)
+
+
+def test_speaker_tags_do_not_fire_on_name_mentions_without_speech_context() -> None:
+    examples = (
+        "U.S. House passes the act championed by First Lady Melania Trump.",
+        ".@SecMullinDHS arrives to the United States Coast Guard Academy.",
+        "@DHSgov @POTUS @SecMullinDHS That's truly fact.",
+        "President Trump signed the order today.",
+        "Vice President Vance attended the meeting.",
+        "Tom Homan and Stephen Miller met with Gregory Bovino.",
+    )
+    for text in examples:
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="public",
+        )
+        assert not any(tag.startswith("speaker:") for tag in _tags(out)), text
 
 
 def test_intrinsic_immigration_tags_promote_immigration_topic() -> None:

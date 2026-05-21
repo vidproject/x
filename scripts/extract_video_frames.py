@@ -61,12 +61,15 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = REPO_ROOT / "data"
 TAGS_DIR = DATA_DIR / "tags"
 DERIVED_DIR = DATA_DIR / "derived" / "keyframes"
+THUMBNAILS_DIR = DATA_DIR / "thumbnails" / "video"
 OUT_PATH = TAGS_DIR / "keyframes.parquet"
 MANIFEST_PATH = TAGS_DIR / "manifest.json"
 
-EXTRACTOR_VERSION = "ffmpeg-keyframes-v1"
+EXTRACTOR_VERSION = "ffmpeg-keyframes-v2"
 DEFAULT_FRAMES = 5
 DEFAULT_FRAME_WIDTH = 640
+DEFAULT_THUMBNAIL_WIDTH = 96
+DEFAULT_THUMBNAIL_QUALITY = 9
 DEFAULT_JPEG_QUALITY = 4  # ffmpeg -q:v scale (lower = better; 4 ≈ ~85 quality)
 HTTP_TIMEOUT_SECS = 60.0
 MAX_VIDEO_BYTES = 600 * 1024 * 1024  # 600 MiB — anything bigger we skip & flag.
@@ -194,6 +197,15 @@ class FrameRecord:
 
 
 @dataclass
+class ThumbnailRecord:
+    path: str
+    sha256: str
+    width: int
+    height: int
+    bytes: int
+
+
+@dataclass
 class ExtractResult:
     status: str  # "ok" | "fetch-failed" | "ffprobe-failed" | "ffmpeg-failed" | "skipped-no-ffmpeg" | "video-too-large" | "no-frames"
     frames: list[FrameRecord]
@@ -201,6 +213,7 @@ class ExtractResult:
     video_width: int
     video_height: int
     error: str | None
+    thumbnail: ThumbnailRecord | None = None
 
 
 def ffmpeg_available() -> bool:
@@ -243,7 +256,14 @@ def evenly_spaced_timestamps(duration: float, n: int) -> list[float]:
     return [(i + 0.5) / n * duration for i in range(n)]
 
 
-def run_ffmpeg_frame(video: Path, timestamp: float, out_path: Path, frame_width: int) -> None:
+def run_ffmpeg_frame(
+    video: Path,
+    timestamp: float,
+    out_path: Path,
+    frame_width: int,
+    *,
+    jpeg_quality: int = DEFAULT_JPEG_QUALITY,
+) -> None:
     """Pull a single frame at ``timestamp`` (seconds). Uses ``-ss`` BEFORE
     ``-i`` for fast input seeking; the resulting frame may be slightly off
     the requested timestamp at I-frame boundaries but is more than good
@@ -262,7 +282,7 @@ def run_ffmpeg_frame(video: Path, timestamp: float, out_path: Path, frame_width:
             "-vf",
             f"scale={frame_width}:-2",
             "-q:v",
-            str(DEFAULT_JPEG_QUALITY),
+            str(jpeg_quality),
             str(out_path),
         ],
         check=True,
@@ -340,6 +360,7 @@ def extract_candidate(
     cand: VideoCandidate,
     *,
     derived_root: Path,
+    thumbnail_root: Path,
     http: httpx.Client,
     n_frames: int,
     frame_width: int,
@@ -399,6 +420,34 @@ def extract_candidate(
         if out_dir.exists():
             shutil.rmtree(out_dir)
         out_dir.mkdir(parents=True, exist_ok=True)
+        thumb_ts = timestamps[len(timestamps) // 2]
+        thumb_path = thumbnail_root / f"{cand.media_sha256}.jpg"
+        try:
+            run_ffmpeg_frame(
+                local_video,
+                thumb_ts,
+                thumb_path,
+                DEFAULT_THUMBNAIL_WIDTH,
+                jpeg_quality=DEFAULT_THUMBNAIL_QUALITY,
+            )
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
+            return ExtractResult(
+                status="ffmpeg-failed",
+                frames=[],
+                video_duration_sec=effective_duration,
+                video_width=width or cand.declared_width,
+                video_height=height or cand.declared_height,
+                error=f"thumbnail ts={thumb_ts:.3f}: {e}",
+            )
+        thumb_sha, thumb_size = hash_file(thumb_path)
+        thumb_w, thumb_h = jpeg_dimensions(thumb_path)
+        thumbnail = ThumbnailRecord(
+            path=str(thumb_path.relative_to(REPO_ROOT)),
+            sha256=thumb_sha,
+            width=thumb_w,
+            height=thumb_h,
+            bytes=thumb_size,
+        )
         frames: list[FrameRecord] = []
         for i, ts in enumerate(timestamps):
             frame_path = out_dir / f"{i:03d}.jpg"
@@ -433,6 +482,7 @@ def extract_candidate(
             video_width=width or cand.declared_width,
             video_height=height or cand.declared_height,
             error=None,
+            thumbnail=thumbnail,
         )
     finally:
         with contextlib.suppress(OSError):
@@ -450,6 +500,11 @@ def build_row(cand: VideoCandidate, result: ExtractResult, *, generated_at: str)
         "media_id": cand.media_id,
         "media_sha256": cand.media_sha256,
         "release_asset_url": cand.release_asset_url,
+        "thumbnail_path": result.thumbnail.path if result.thumbnail else None,
+        "thumbnail_sha256": result.thumbnail.sha256 if result.thumbnail else None,
+        "thumbnail_width": result.thumbnail.width if result.thumbnail else None,
+        "thumbnail_height": result.thumbnail.height if result.thumbnail else None,
+        "thumbnail_bytes": result.thumbnail.bytes if result.thumbnail else None,
         "video_duration_sec": result.video_duration_sec,
         "video_width": result.video_width,
         "video_height": result.video_height,
@@ -525,6 +580,7 @@ def run(
     dry_run: bool = False,
     out_path: Path | None = None,
     derived_root: Path | None = None,
+    thumbnail_root: Path | None = None,
     extractor: Callable[[VideoCandidate], ExtractResult] | None = None,
 ) -> dict[str, int]:
     """Core run loop, factored out of ``main`` so tests can substitute a
@@ -538,6 +594,8 @@ def run(
         out_path = OUT_PATH
     if derived_root is None:
         derived_root = DERIVED_DIR
+    if thumbnail_root is None:
+        thumbnail_root = THUMBNAILS_DIR
     parquets = parquets if parquets is not None else discover_canonical_parquets()
     existing = load_existing_index(out_path)
     rows: list[dict[str, Any]] = []
@@ -554,12 +612,15 @@ def run(
         )
         assert derived_root is not None  # type narrowing
         _derived_root = derived_root
+        assert thumbnail_root is not None  # type narrowing
+        _thumbnail_root = thumbnail_root
         _http = http
 
         def _real_extractor(c: VideoCandidate) -> ExtractResult:
             return extract_candidate(
                 c,
                 derived_root=_derived_root,
+                thumbnail_root=_thumbnail_root,
                 http=_http,
                 n_frames=n_frames,
                 frame_width=frame_width,
@@ -601,10 +662,11 @@ def run(
                     stats["intra_run_dedup"] += 1
                     continue
 
-            if max_items is not None and stats["extracted"] >= max_items:
+            if max_items is not None and stats["attempted"] >= max_items:
                 stats["skipped_max_items"] += 1
                 continue
 
+            stats["attempted"] += 1
             result = runner(cand)
             stats[f"status_{result.status}"] += 1
             if result.status == "ok":
@@ -618,8 +680,15 @@ def run(
 
     stats["rows"] = len(rows)
     if not dry_run:
-        write_parquet(rows, out_path)
-        update_manifest(rows, dict(stats), generated_at)
+        if rows and all(str(r.get("status") or "") == "skipped-no-ffmpeg" for r in rows):
+            stats["skipped_write_all_no_ffmpeg"] = 1
+            LOG.warning(
+                "not writing keyframe sidecar because every attempted row lacked ffmpeg",
+                rows=len(rows),
+            )
+        else:
+            write_parquet(rows, out_path)
+            update_manifest(rows, dict(stats), generated_at)
     return dict(stats)
 
 
