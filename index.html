@@ -20,6 +20,7 @@
           aria-controls="filterbar"
           aria-expanded="true"
           aria-pressed="true"
+          title="Show or hide the main filters"
         >
           Filters
         </button>
@@ -30,6 +31,7 @@
             id="cols-btn"
             aria-haspopup="true"
             aria-expanded="false"
+            title="Choose visible table columns"
           >
             Columns
           </button>
@@ -38,10 +40,24 @@
         <button type="button" class="btn ghost" id="csv-btn" title="Export current view to CSV">
           CSV
         </button>
-        <button type="button" class="btn ghost" id="charts-btn" aria-pressed="false">
+        <button
+          type="button"
+          class="btn ghost"
+          id="charts-btn"
+          aria-pressed="false"
+          title="Chart frequencies for filtered or full archive rows"
+        >
           Charts
         </button>
-        <button type="button" class="btn ghost" id="tips-btn" aria-pressed="false">Tips</button>
+        <button
+          type="button"
+          class="btn ghost"
+          id="tips-btn"
+          aria-pressed="false"
+          title="Show archive usage notes"
+        >
+          Tips
+        </button>
         <button type="button" class="btn ghost" id="reset-btn" title="Clear all filters">
           Reset
         </button>
@@ -93,7 +109,10 @@
       <select id="media-type" class="select">
         <option value="">Any media</option>
         <option value="video">Has video</option>
+        <option value="gif">Has GIF</option>
         <option value="photo">Has photo</option>
+        <option value="audio">Has audio</option>
+        <option value="music">Likely music</option>
         <option value="none">Text only</option>
       </select>
       <select id="page-size" class="select" title="Rows per page">

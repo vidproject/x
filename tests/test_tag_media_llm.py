@@ -154,7 +154,7 @@ def test_video_genre_adds_produced_parent_and_ai_tag_is_tentative(tmp_corpus: Pa
             status="ok",
             description="Keyframes show a polished synthetic recruitment-style video.",
             summary_text="Produced video with synthetic visual cues.",
-            tags=["video:ad", "media:ai-generated"],
+            tags=["genre:advertisement", "genre:recruitment", "media:ai-generated"],
             confidence=0.93,
             usage={"promptTokenCount": 1000, "candidatesTokenCount": 100},
         ),
@@ -165,7 +165,8 @@ def test_video_genre_adds_produced_parent_and_ai_tag_is_tentative(tmp_corpus: Pa
     tags = out.row(0, named=True)["tags"]
     by_tag = {entry["tag"]: entry for entry in tags}
     assert "media:produced-video" in by_tag
-    assert "video:ad" in by_tag
+    assert "genre:advertisement" in by_tag
+    assert "genre:recruitment" in by_tag
     assert by_tag["media:ai-generated"]["tentative"] is True
     assert out.row(0, named=True)["model"] == PRIMARY_PROVIDER
 

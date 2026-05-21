@@ -70,22 +70,28 @@ tags:
       etc.).
     classification: tentative
 
-  # ===== genre:* — communicative function ===========================
-  genre:statistics:
-    description: >-
-      Post leads with numerical claims (arrests, removals, encounters).
-    classification: deterministic
-  genre:policy-statement:
-    description: Post announces or restates an administration position.
-    classification: manual
-  genre:directive:
-    description: >-
-      Post directs an audience to take an action (apply, leave, report).
-    classification: deterministic
-  genre:public-info:
-    description: >-
-      Post conveys factual procedure (how to apply for X, deadline for Y).
-    classification: manual
+  # ===== genre:* — produced-video genre / aesthetic =================
+  genre:music-video:
+    description: Produced video paced around a music track or presented as a music video.
+    classification: tentative
+  genre:psa:
+    description: Produced public-service announcement or public-information spot.
+    classification: tentative
+  genre:advertisement:
+    description: Produced ad, campaign spot, recruitment spot, or commercial-style video.
+    classification: tentative
+  genre:recruitment:
+    description: Produced recruitment or hiring spot for DHS, ICE, CBP, HSI, or related service.
+    classification: tentative
+  genre:war-movie:
+    description: Produced video using war-movie, battle, trailer, or military-cinematic style.
+    classification: tentative
+  genre:utopian:
+    description: Produced video using aspirational, golden-age, bright-future, or idealized imagery.
+    classification: tentative
+  genre:dystopian:
+    description: Produced video using bleak, apocalyptic, hellscape, or dark-future imagery.
+    classification: tentative
 
   # ===== speaker:* - evidence-supported speaker attribution =========
   speaker:*:
@@ -344,10 +350,12 @@ tags:
       inheritance/inheritor language when it appears with national,
       citizenship, Homeland, birthright, or immigration context.
     classification: deterministic
-  theme:christianity:
+  theme:martyrdom:
     description: >-
-      References Christianity or explicitly Christian identity, faith,
-      values, scripture, churches, or Christ.
+      Frames victims, fallen officers, or named dead/injured people as
+      the moral reason for enforcement or policy action. Includes the
+      recurring "This is our why" / "they are our why" style when tied
+      to victim, memory, Angel Family, or line-of-duty framing.
     classification: deterministic
   theme:religion:
     description: >-
@@ -355,10 +363,22 @@ tags:
       blessings, God, scripture, or worship, excluding casual expletive
       uses like "oh my god" or "god damn".
     classification: deterministic
+  religion:christianity:
+    description: >-
+      Christian-specific religious material, including Christianity,
+      Christian faith or values, Bible/scripture references, churches,
+      Jesus, Christ, and "in Jesus' name" formulations. Nested under
+      theme:religion in the viewer.
+    classification: deterministic
   theme:transgender:
     description: >-
       References transgender identity, gender-identity policy, or the
       recurring frame around men or boys in women's or girls' sports.
+    classification: deterministic
+  theme:civil-disturbance:
+    description: >-
+      References riots, violent protests, civil unrest, anti-ICE
+      disturbances, or similar large-scale street disorder.
     classification: deterministic
   theme:cbp-home:
     description: >-
@@ -369,6 +389,16 @@ tags:
     description: >-
       Uses a celebrity, ad campaign, entertainment meme, or pop-culture
       reference to frame immigration or enforcement messaging.
+    classification: deterministic
+  theme:statistics:
+    description: >-
+      Uses statistics, numbered lists, totals, rankings, or quantified
+      evidence as the primary rhetorical mode.
+    classification: deterministic
+  theme:directive:
+    description: >-
+      Gives direct instructions, commands, compliance steps, or explicit
+      calls to action.
     classification: deterministic
 
   # ===== video:* - video-nature heuristics ==========================
@@ -386,31 +416,15 @@ tags:
       Sit-down interview, joint appearance on a cable-news show, or
       "X joins Y" framing where an official is being interviewed.
     classification: deterministic
-  video:music-video:
-    description: >-
-      Music video, or text explicitly notes the video is "set to" a
-      song / track. Often paired with bodycam footage in DHS-genre
-      posts.
-    classification: deterministic
   video:news-clip:
     description: >-
       Embedded cable-news / press clip. Matches major outlet names and
       "reporting on / from" framings.
     classification: deterministic
-  video:psa:
-    description: >-
-      Public-service-announcement-style video: hotline numbers, "know
-      the signs", "learn more at <url>", "did you know…".
-    classification: deterministic
   video:speech:
     description: >-
       Speech, address, press conference, or remarks (Oval Office, Rose
       Garden, podium, etc.).
-    classification: deterministic
-  video:ad:
-    description: >-
-      Polished ad / commercial / recruitment spot. "New ad", "campaign
-      spot", "apply today at <url>".
     classification: deterministic
   video:short:
     description: >-
@@ -531,9 +545,13 @@ tags:
 #                        theft, robbery, assault, battery, fentanyl,
 #                        cocaine, methamphetamine, trafficking, DUI,
 #                        DWI, kidnap, child, gang, MS-13,
-#                        tren-de-aragua, narcotics, fraud, arson,
-#                        weapon, firearm. One match = one tag entry, so
-#                        a tweet can carry multiple `crime:*` tags.
+#                        tren-de-aragua, narcotics, fraud, disobedience,
+#                        perjury, arson, weapon, firearm. Broad buckets
+#                        such as crime:sexual, crime:child-sexual,
+#                        crime:narcotics, crime:homicide, and
+#                        crime:disobedience can contain narrower tags.
+#                        One match = one tag entry, so a tweet can carry
+#                        multiple `crime:*` tags.
 #   state:<NAME>       — US-state mention pattern "in <Place>, <State>,"
 #                        validated against the 50-state list.
 #   agency:<HANDLE>    — derived from `mentions[]` against a fixed list
@@ -541,6 +559,11 @@ tags:
 #                        the post's `account_handle`: lets you find
 #                        tweets that mention ICE without being authored
 #                        by @ICEgov.
+#   event:<SLUG>       — named event/city clusters, currently including
+#                        los-angeles-disturbance, minneapolis-disturbance,
+#                        and portland-disturbance. These require explicit
+#                        protest/riot/unrest/federal-response language,
+#                        not just a city name.
 
 # Sentinel: when no other namespace matches and the post is plausibly
 # about immigration, this is the only tag emitted. Lets the viewer

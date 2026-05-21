@@ -13,7 +13,14 @@
 // Sort/filter/search operate on individual rows; threads simply group them
 // for display. Standalone rows (the vast majority) render exactly as before.
 
-import { combineTagMainSub, formatForFilter, tagNames, tagNamespace, tagSubtype } from './store.js';
+import {
+  combineTagMainSub,
+  formatForFilter,
+  splitTagMainSub,
+  tagNames,
+  tagNamespace,
+  tagSubtype,
+} from './store.js';
 import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js';
 
 const MEDIA_COL_KEY = 'media_kinds';
@@ -25,15 +32,26 @@ export const TAG_CERTAINTY_LABELS = {
 const TAG_FACET_SECTIONS = [
   {
     label: 'Primary facets',
-    namespaces: ['topic', 'media', 'theme', 'legal', 'crime'],
+    namespaces: ['topic', 'media', 'theme', 'religion', 'legal', 'crime'],
   },
   {
     label: 'Evidence terms',
-    namespaces: ['slogan', 'phrase', 'action', 'frame', 'subject', 'video', 'audio', 'speaker'],
+    namespaces: [
+      'slogan',
+      'phrase',
+      'action',
+      'frame',
+      'subject',
+      'event',
+      'genre',
+      'video',
+      'audio',
+      'speaker',
+    ],
   },
   {
     label: 'Analysis fields',
-    namespaces: ['agency', 'country', 'origin', 'state', 'branch', 'status', 'format', 'genre'],
+    namespaces: ['agency', 'country', 'origin', 'state', 'branch', 'status', 'format'],
   },
 ];
 const TAG_NAMESPACE_RANK = new Map(
@@ -492,10 +510,7 @@ function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
     toggle.type = 'button';
     toggle.className = 'thread-toggle';
     toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    const label =
-      privilegedCount > 0 && selfCount === 0
-        ? `${inlineCount} core repl${inlineCount === 1 ? 'y' : 'ies'}`
-        : `${inlineCount} repl${inlineCount === 1 ? 'y' : 'ies'}`;
+    const label = inlineReplyLabel(selfCount, privilegedCount);
     toggle.title = expanded ? `Collapse ${label}` : `Expand ${label}`;
     toggle.textContent = `${expanded ? 'v' : '>'} ${label}`;
     toggle.addEventListener('click', (e) => {
@@ -515,6 +530,15 @@ function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
     wrap.append(promotedReplyBadge(group));
   }
   targetCell.append(wrap);
+}
+
+function inlineReplyLabel(selfCount, privilegedCount) {
+  const labels = [];
+  if (selfCount > 0) labels.push(`${selfCount} repl${selfCount === 1 ? 'y' : 'ies'}`);
+  if (privilegedCount > 0) {
+    labels.push(`${privilegedCount} core repl${privilegedCount === 1 ? 'y' : 'ies'}`);
+  }
+  return labels.join(' + ');
 }
 
 function topPromotionCategory(promotions) {
@@ -567,7 +591,6 @@ function promotedReplyBadge(group) {
   } else {
     const placeholder = document.createElement('span');
     placeholder.className = 'thread-reply-avatar thread-reply-avatar-placeholder';
-    placeholder.textContent = '·';
     badge.append(placeholder);
   }
   const label = document.createElement('span');
@@ -625,6 +648,7 @@ export function openColumnFilterPopup({
   anchorBtn,
   colKey,
   allRows,
+  countRows,
   activeFilters,
   onChange,
   onSort,
@@ -680,16 +704,18 @@ export function openColumnFilterPopup({
       : `Filter ${col.label.toLowerCase()}...`;
   popEl.append(search);
 
+  const rowsForCounts = Array.isArray(countRows) ? countRows : allRows;
+
   // Aggregate value counts.
   const counts = new Map();
   if (colKey === 'tags') {
-    for (const r of allRows) {
+    for (const r of rowsForCounts) {
       for (const t of tagNames(r)) {
         counts.set(t, (counts.get(t) ?? 0) + 1);
       }
     }
   } else {
-    for (const r of allRows) {
+    for (const r of rowsForCounts) {
       const v = formatForFilter(r, colKey);
       counts.set(v, (counts.get(v) ?? 0) + 1);
     }
@@ -729,10 +755,20 @@ export function openColumnFilterPopup({
   function renderList(filter) {
     list.replaceChildren();
     const f = filter.trim().toLowerCase();
+    const currentValues =
+      colKey === 'tags'
+        ? valuesWithDynamicTagCounts(
+            allValues,
+            rowsForCounts,
+            active,
+            allValueKeys,
+            tagCertainty
+          )
+        : allValues;
     const visible =
-      colKey === 'tags' ? allValues : allValues.filter((p) => filterPairMatches(p, f));
+      colKey === 'tags' ? currentValues : currentValues.filter((p) => filterPairMatches(p, f));
     const matchingValues =
-      colKey === 'tags' ? allValues.filter((p) => filterPairMatches(p, f)) : visible;
+      colKey === 'tags' ? currentValues.filter((p) => filterPairMatches(p, f)) : visible;
     if (visible.length === 0) {
       const empty = document.createElement('div');
       empty.className = 'col-empty';
@@ -742,7 +778,7 @@ export function openColumnFilterPopup({
     }
 
     if (colKey === 'tags') {
-      const activeBlock = buildActiveTagFilterBlock(allValues, allValueKeys, active, (value) => {
+      const activeBlock = buildActiveTagFilterBlock(currentValues, allValueKeys, active, (value) => {
         setFilterValue(value, false);
         renderList(search.value);
       });
@@ -773,7 +809,7 @@ export function openColumnFilterPopup({
     list.append(allVisible);
 
     const renderedValues =
-      colKey === 'tags' ? collapsedTagValues(allValues, f, expandedTagParents) : visible;
+      colKey === 'tags' ? collapsedTagValues(currentValues, f, expandedTagParents) : visible;
     for (const p of renderedValues) {
       if (p.section) {
         const section = document.createElement('div');
@@ -904,11 +940,14 @@ export function openColumnFilterPopup({
     }
     close();
   });
-  clear.title = 'Clear this column filter';
+  clear.title =
+    colKey === 'tags'
+      ? 'Clear tag selections and the firm/tentative tag mode'
+      : 'Clear this column filter';
   clear.addEventListener('mousedown', stopPopupButtonEvent);
   clear.addEventListener('click', (event) => {
     stopPopupButtonEvent(event);
-    onChange(colKey, new Set());
+    onChange(colKey, new Set(), colKey === 'tags' ? { tagCertainty: 'all' } : {});
     close();
   });
   cancel.addEventListener('mousedown', stopPopupButtonEvent);
@@ -940,6 +979,7 @@ function buildTagCertaintyControl(tagCertainty = 'all', onTagCertaintyChange) {
   label.textContent = 'Certainty';
   const select = document.createElement('select');
   select.className = 'select';
+  select.title = 'Choose whether tag filters include tentative model-derived tags';
   for (const [value, text] of Object.entries(TAG_CERTAINTY_LABELS)) {
     const option = document.createElement('option');
     option.value = value;
@@ -968,6 +1008,7 @@ function buildMediaPopupSettings(mediaSettings = {}, onMediaSettingsChange) {
   cb.checked = settings.previews;
   const toggleText = document.createElement('span');
   toggleText.textContent = 'Show thumbnails';
+  toggle.title = 'Turn media thumbnails on or collapse this column to compact media markers';
   toggle.append(cb, toggleText);
 
   const details = document.createElement('div');
@@ -977,6 +1018,7 @@ function buildMediaPopupSettings(mediaSettings = {}, onMediaSettingsChange) {
   widthLabel.textContent = 'Max px';
   const width = document.createElement('input');
   width.type = 'number';
+  width.title = 'Maximum thumbnail size in pixels';
   width.min = '16';
   width.max = '48';
   width.step = '1';
@@ -987,6 +1029,7 @@ function buildMediaPopupSettings(mediaSettings = {}, onMediaSettingsChange) {
   fitLabel.textContent = 'Fit';
   const fit = document.createElement('select');
   fit.className = 'select';
+  fit.title = 'Choose whether thumbnails fit by width or height';
   for (const [value, label] of [
     ['horizontal', 'Horizontal'],
     ['vertical', 'Vertical'],
@@ -1047,6 +1090,62 @@ function buildTagFilterValues(counts) {
     }
   }
   return values;
+}
+
+function valuesWithDynamicTagCounts(allValues, rows, active, allValueKeys, certainty) {
+  const allSelected = allValueKeys.every((value) => active.has(value));
+  const filteredRows = allSelected
+    ? rows
+    : rows.filter((row) => rowMatchesTagPopupSelection(row, active, certainty));
+  const tagCounts = new Map();
+  const namespaceCounts = new Map();
+  for (const row of filteredRows) {
+    for (const { name, tentative } of tagEntriesForPopup(row)) {
+      if (!tagEntryCertaintyMatches(tentative, certainty)) continue;
+      const ns = tagNamespace(name) || 'tag';
+      tagCounts.set(name, (tagCounts.get(name) ?? 0) + 1);
+      namespaceCounts.set(ns, (namespaceCounts.get(ns) ?? 0) + 1);
+    }
+  }
+  return allValues.map((pair) => ({
+    ...pair,
+    count: pair.child
+      ? tagCounts.get(pair.sub) ?? 0
+      : namespaceCounts.get(pair.value) ?? 0,
+  }));
+}
+
+function rowMatchesTagPopupSelection(row, selections, certainty) {
+  if (!selections || selections.size === 0) return false;
+  const exact = new Set();
+  const namespaces = new Set();
+  for (const value of selections) {
+    const { main, sub } = splitTagMainSub(value);
+    if (sub) exact.add(sub);
+    else if (main.includes(':')) exact.add(main);
+    else if (main) namespaces.add(main);
+  }
+  return tagEntriesForPopup(row).some(({ name, tentative }) => {
+    if (!tagEntryCertaintyMatches(tentative, certainty)) return false;
+    return exact.has(name) || namespaces.has(tagNamespace(name));
+  });
+}
+
+function tagEntriesForPopup(row) {
+  const tags = Array.isArray(row?.tags) ? row.tags : [];
+  const out = [];
+  for (const entry of tags) {
+    const name = typeof entry === 'string' ? entry : entry?.tag;
+    if (!name) continue;
+    out.push({ name, tentative: typeof entry === 'object' && Boolean(entry?.tentative) });
+  }
+  return out;
+}
+
+function tagEntryCertaintyMatches(tentative, mode) {
+  if (mode === 'firm') return !tentative;
+  if (mode === 'tentative') return Boolean(tentative);
+  return true;
 }
 
 function collapsedTagValues(values, filter, expandedParents) {

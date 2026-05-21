@@ -84,10 +84,12 @@ bandwidth and token spend bounded.
 
 It emits neutral descriptions and tags for produced-video structure:
 `media:produced-video`, `media:music-video`, `media:montage`,
-`media:text-overlay`, `media:voiceover`, and supported `video:*` genre
-labels such as `video:bodycam`, `video:news-clip`, `video:psa`,
-`video:speech`, and `video:ad`. `speaker:*` tags require tweet text,
-visible captions, or other explicit context identifying the speaker.
+`media:text-overlay`, `media:voiceover`, supported `genre:*` labels
+such as `genre:psa`, `genre:advertisement`, `genre:recruitment`, and
+`genre:music-video`, and `video:*` source/kind labels such as
+`video:bodycam`, `video:news-clip`, and `video:speech`. `speaker:*`
+tags require tweet text, visible captions, or other explicit context
+identifying the speaker.
 
 The tag `media:ai-generated` is tentative when it is based on visible
 synthetic cues plus model judgment. It is firm only when the recognizer
@@ -154,7 +156,7 @@ See `config/tag_taxonomy.yaml` for the authoritative list. Quick map:
 | Namespace  | What it labels                         | Example                    |
 | ---------- | -------------------------------------- | -------------------------- |
 | `subject:` | who/what the post is about             | `subject:detainee`         |
-| `genre:`   | communicative function                 | `genre:statistics`         |
+| `genre:`   | produced-video genre / aesthetic       | `genre:recruitment`        |
 | `media:`   | content of attached media (Layer 3a)   | `media:photo-detainee`     |
 | `speaker:` | evidence-supported speaker attribution | `speaker:Secretary Noem`   |
 | `format:`  | structural (derived from `tweet_type`) | `format:retweet`           |
@@ -163,6 +165,7 @@ See `config/tag_taxonomy.yaml` for the authoritative list. Quick map:
 | `action:`  | enforcement verbs                      | `action:deportation`       |
 | `topic:`   | broad subject areas; additive          | `topic:immigration`        |
 | `theme:`   | rhetorical / ideological frames        | `theme:nativism`           |
+| `religion:`| religion-specific subcategories        | `religion:christianity`    |
 | `origin:`  | "from <country>," pattern              | `origin:Mexico`            |
 | `country:` | any contextual country mention         | `country:Mexico`           |
 | `state:`   | "<place>, <state>" pattern             | `state:Texas`              |

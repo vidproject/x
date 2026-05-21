@@ -317,12 +317,16 @@ async function loadAccountCategorySidecar(catMap) {
  * sidecars are normal on a fresh archive; the viewer still works without them.
  */
 async function loadSidecars() {
-  const [tagMap, newsTagMap, mediaInsightMap, posterBySha] = await Promise.all([
+  const [tagMap, audioTagMap, newsTagMap, mediaInsightMap, posterBySha] = await Promise.all([
     loadLexicalTags(),
+    loadAudioMusicTags(),
     loadNewsMentionTags(),
     loadMediaInsights(),
     loadKeyframePosters(),
   ]);
+  for (const [id, tags] of audioTagMap.entries()) {
+    mergeTags(tagMap, id, tags);
+  }
   for (const [id, tags] of newsTagMap.entries()) {
     mergeTags(tagMap, id, tags);
   }
@@ -397,6 +401,33 @@ async function loadMediaInsightLayer(layerName) {
         resource: url,
         status: status ? Number(status) : null,
         kind: layerName,
+        message: err?.message ?? String(err),
+      });
+    }
+    return new Map();
+  }
+}
+
+async function loadAudioMusicTags() {
+  const cacheKey = tagLayerCacheKey('audio_music');
+  const url = `data/tags/audio_music.parquet${cacheKey}`;
+  try {
+    const rows = await loadParquetRows(url);
+    const map = new Map();
+    for (const r of rows) {
+      const id = String(r?.tweet_id ?? '');
+      if (!id) continue;
+      const tags = Array.isArray(r.tags) ? r.tags : [];
+      if (tags.length > 0) mergeTags(map, id, tags);
+    }
+    return map;
+  } catch (err) {
+    const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
+    if (status !== '404') {
+      pushLoadError({
+        resource: url,
+        status: status ? Number(status) : null,
+        kind: 'audio-tags',
         message: err?.message ?? String(err),
       });
     }
@@ -1467,8 +1498,9 @@ function refresh() {
         anchorBtn: btn,
         colKey: key,
         allRows: store.allRows,
+        countRows: rowsForColumnCounts(key),
         activeFilters: visibleColFilters,
-        onChange: (col, set) => {
+        onChange: (col, set, opts = {}) => {
           const nextSet = set instanceof Set ? set : new Set(set || []);
           urlState.page = 1;
           if (col === 'tags') {
@@ -1476,6 +1508,7 @@ function refresh() {
             // can be deep-linked, unlike the other col filters which
             // are session-local. Mirror the selection out.
             delete colFilters.tags;
+            if (opts.tagCertainty) urlState.tagcert = opts.tagCertainty;
             urlState.tags = [...nextSet];
             applyToUrl(urlState);
           } else if (nextSet.size === 0) {
@@ -1523,6 +1556,29 @@ function refresh() {
   if (!openSharedProfileFromUrl()) openSharedEntryFromUrl();
   refreshSelectionHighlight();
   updateChartsPanel();
+}
+
+function rowsForColumnCounts(key) {
+  const scopedColFilters = {};
+  for (const [col, values] of Object.entries(colFilters)) {
+    if (col === key) continue;
+    scopedColFilters[col] = values instanceof Set ? new Set(values) : new Set(values || []);
+  }
+  return store.apply({
+    accounts: urlState.accounts,
+    accountCategories: urlState.categories,
+    tags: urlState.tags,
+    q: urlState.q,
+    qfield: urlState.qfield,
+    from: urlState.from,
+    to: urlState.to,
+    type: urlState.type,
+    media: urlState.media,
+    tagCertainty: urlState.tagcert || 'all',
+    sort: urlState.sort,
+    dir: urlState.dir,
+    colFilters: scopedColFilters,
+  });
 }
 
 function openSharedEntryFromUrl() {

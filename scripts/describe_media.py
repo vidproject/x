@@ -300,7 +300,7 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
     if is_video and re_search(
         r"\b(psa|public service announcement|did you know|learn more|hotline)\b", haystack
     ):
-        add("video:psa")
+        add("genre:psa")
     if is_video and re_search(
         r"\b(podium|remarks|speech|address|press conference|press briefing)\b", haystack
     ):
@@ -308,7 +308,9 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
     if is_video and re_search(
         r"\b(recruitment|commercial|campaign ad|ad spot|apply now|apply today)\b", haystack
     ):
-        add("video:ad")
+        if re_search(r"\b(recruitment|apply now|apply today)\b", haystack):
+            add("genre:recruitment")
+        add("genre:advertisement")
     return out
 
 
@@ -333,7 +335,7 @@ def candidate_visual_tag_entries(
             continue
         # Do not apply video:* tags to still-image review rows. Those notes
         # are useful for future taxonomy work but not a deterministic tag.
-        if tag.startswith("video:") and not is_video:
+        if (tag.startswith("video:") or tag.startswith("genre:")) and not is_video:
             continue
         seen.add(tag)
         entries.append(tag_entry(tag, source="manual-media-review"))

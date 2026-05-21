@@ -300,18 +300,36 @@ CRIME_VOCAB: tuple[tuple[str, str], ...] = (
     ("trafficking", r"\btraffick(?:ing|er|ers)\b"),
     ("dui", r"\bDUI\b|\bDWI\b"),
     ("kidnap", r"\bkidnap(?:ped|ping|per)?\b"),
+    ("sexual", r"\b(?:sexual\s+assault|sex\s+crime|sex\s+offen[sc]e|sex\s+abuse)\b"),
+    (
+        "child-sexual",
+        r"\b(?:child\s+(?:sex(?:ual)?|pornography|molest(?:ation)?)|"
+        r"child\s+sexual|minor\s+sex(?:ual)?|sex(?:ual)?\s+abuse\s+of\s+(?:a\s+)?minor)\b",
+    ),
     ("child", r"\bchild (?:abuse|sex|pornography|molest)|child sexual\b"),
     ("gang", r"\bgang (?:member|members|affiliation)\b|\bgang-related\b"),
     ("ms13", r"\bMS-?13\b"),
     ("tren-de-aragua", r"\bTren de Aragua\b|\bTdA\b"),
     ("narcotics", r"\bnarcotic[s]?\b"),
     ("fraud", r"\bfraud(?:ulent|ster)?\b"),
+    ("disobedience", r"\b(?:contempt\s+of\s+court|violat(?:e|ed|ing|ion)\s+(?:of\s+)?(?:a\s+)?court\s+order|disobey(?:ed|ing)?\s+(?:a\s+)?court\s+order)\b"),
+    ("perjury", r"\bperjur(?:y|ed)\b|\blying\s+under\s+oath\b"),
     ("arson", r"\barson(?:ist)?\b"),
     ("weapon", r"\bweapon[s]?\b|\billegal firearm[s]?\b"),
     ("firearm", r"\bfirearm[s]?\b"),
 )
 
 HOMICIDE_SUBTYPE_VOCAB: tuple[tuple[str, str], ...] = (("murder", r"\bmurder(?:s|ed|ers?|ing)?\b"),)
+
+CRIME_PARENT_TAGS: dict[str, tuple[str, ...]] = {
+    "crime:rape": ("crime:sexual",),
+    "crime:sodomy": ("crime:sexual",),
+    "crime:child-sexual": ("crime:sexual",),
+    "crime:perjury": ("crime:disobedience",),
+    "crime:fentanyl": ("crime:narcotics",),
+    "crime:cocaine": ("crime:narcotics",),
+    "crime:meth": ("crime:narcotics",),
+}
 
 # Handles whose mention earns an `agency:<HANDLE>` tag. Distinct from the
 # author handle: a tweet from @POTUS that mentions @ICEgov gets
@@ -551,6 +569,7 @@ PATTERN_THEME_NATIVISM = _compile(
     r"|\b(?:american\s+(?:workers?|jobs?)|americans?\s+first|job market)\b.{0,140}"
     r"\b(?:foreign\s+(?:workers?|labor)|foreign[- ]born\s+workers?)\b"
     r"|\bglobalism has failed\b|\bamericanism will prevail\b"
+    r"|\b(?:our\s+)?forefathers?\b"
 )
 PATTERN_NATIVISM_INHERITANCE = _compile(r"\b(?:inheritors?|inheritance|inherit(?:ed|ing)?)\b")
 PATTERN_NATIVISM_INHERITANCE_CONTEXT = _compile(
@@ -566,6 +585,13 @@ PATTERN_THEME_CHRISTIANITY = _compile(
     r"|\bjesus(?:\s+christ)?\b"
     r"|\bchrist\s+(?:is\s+king|the\s+king|our\s+lord)\b"
     r"|\b(?:bible|biblical|scripture|scriptural)\b"
+    r"|\b(?:[1-3]\s+)?(?:Genesis|Exodus|Leviticus|Numbers|Deuteronomy|Joshua|Judges|Ruth|"
+    r"Samuel|Kings|Chronicles|Ezra|Nehemiah|Esther|Job|Psalms?|Proverbs|Ecclesiastes|"
+    r"Song\s+of\s+Songs|Isaiah|Jeremiah|Lamentations|Ezekiel|Daniel|Hosea|Joel|Amos|"
+    r"Obadiah|Jonah|Micah|Nahum|Habakkuk|Zephaniah|Haggai|Zechariah|Malachi|Matthew|"
+    r"Mark|Luke|John|Acts|Romans|Corinthians|Galatians|Ephesians|Philippians|"
+    r"Colossians|Thessalonians|Timothy|Titus|Philemon|Hebrews|James|Peter|Jude|"
+    r"Revelation)\s+\d{1,3}:\d{1,3}(?:[-\u2013]\d{1,3})?\b"
     r"|\bin\s+jesus(?:'s|')?\s+name\b"
 )
 PATTERN_THEME_RELIGION = _compile(
@@ -590,9 +616,66 @@ PATTERN_THEME_TRANSGENDER = _compile(
     r"|\b(?:men|males|boys)\s+in\s+(?:women[\u2019']?s|girls[\u2019']?)\s+sports\b"
     r"|\b(?:men|males|boys)\s+(?:competing|playing|participating)\s+"
     r"(?:in|against|with)\s+(?:women|girls|female\s+athletes?)\b"
+    r"|\b(?:women[\u2019']?s|girls[\u2019']?)\s+sports\s+(?:are\s+)?"
+    r"for\s+(?:women|girls|female\s+athletes?)\b"
     r"|\b(?:protect|save|defend)\s+(?:women[\u2019']?s|girls[\u2019']?)\s+sports\b"
     r"|\btitle\s+ix\b.{0,80}\b(?:transgender|gender|women[\u2019']?s\s+sports|girls[\u2019']?\s+sports)\b"
     r"|\b(?:transgender|gender|women[\u2019']?s\s+sports|girls[\u2019']?\s+sports)\b.{0,80}\btitle\s+ix\b"
+)
+PATTERN_THEME_CIVIL_DISTURBANCE = _compile(
+    r"\b(?:riot(?:s|ers|ing)?|civil\s+disturbance|civil\s+unrest|mass\s+unrest|"
+    r"violent\s+protests?|anti[- ]ICE\s+(?:riot(?:s|ers|ing)?|protests?)|"
+    r"violent\s+demonstrators?|street\s+violence|mob\s+violence)\b"
+)
+DISTURBANCE_CITY_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
+    (
+        "los-angeles-disturbance",
+        _compile(
+            r"\b(?:Los\s+Angeles|L\.A\.|LA)\b.{0,180}\b(?:riot(?:s|ers|ing)?|"
+            r"civil\s+disturbance|civil\s+unrest|violent\s+protests?|anti[- ]ICE\s+"
+            r"(?:riot(?:s|ers|ing)?|protests?)|federal\s+building|concrete\s+at\s+DHS\s+agents)\b"
+            r"|\b(?:riot(?:s|ers|ing)?|civil\s+disturbance|civil\s+unrest|violent\s+protests?|"
+            r"anti[- ]ICE\s+(?:riot(?:s|ers|ing)?|protests?)|federal\s+building|"
+            r"concrete\s+at\s+DHS\s+agents)\b.{0,180}\b(?:Los\s+Angeles|L\.A\.|LA)\b"
+        ),
+    ),
+    (
+        "minneapolis-disturbance",
+        _compile(
+            r"\bMinneapolis\b.{0,180}\b(?:Bovino|riot(?:s|ers|ing)?|civil\s+disturbance|"
+            r"civil\s+unrest|violent\s+protests?|protests?|tear\s+gas|pellet\s+guns?|"
+            r"heavy[- ]handed|lawsuits?|killing|killed|disaster)\b"
+            r"|\b(?:Bovino|riot(?:s|ers|ing)?|civil\s+disturbance|civil\s+unrest|"
+            r"violent\s+protests?|protests?|tear\s+gas|pellet\s+guns?|heavy[- ]handed|"
+            r"lawsuits?|killing|killed|disaster)\b.{0,180}\bMinneapolis\b"
+        ),
+    ),
+    (
+        "portland-disturbance",
+        _compile(
+            r"\bPortland\b.{0,180}\b(?:riot(?:s|ers|ing)?|civil\s+disturbance|civil\s+unrest|"
+            r"violent\s+protests?|anti[- ]ICE\s+(?:riot(?:s|ers|ing)?|protests?)|"
+            r"ICE\s+(?:detention|facility)|Antifa|domestic\s+terrorism)\b"
+            r"|\b(?:riot(?:s|ers|ing)?|civil\s+disturbance|civil\s+unrest|violent\s+protests?|"
+            r"anti[- ]ICE\s+(?:riot(?:s|ers|ing)?|protests?)|ICE\s+(?:detention|facility)|"
+            r"Antifa|domestic\s+terrorism)\b.{0,180}\bPortland\b"
+        ),
+    ),
+)
+PATTERN_MARTYRDOM_WHY = _compile(
+    r"\bthis\s+is\s+our\s+why\b"
+    r"|\bthey\s+are\s+our\s+why\b"
+    r"|\byou\s+are\s+why\s+we\s+fight\b"
+)
+PATTERN_MARTYRDOM_CONTEXT = _compile(
+    r"\bangel\s+(?:famil(?:y|ies)|mom|dad|parent|mother|father|wife|husband|son|daughter|child)\b"
+    r"|\b(?:honou?r|remember|commemorate|mourn|never\s+forget|say\s+their\s+names?)\b"
+    r".{0,180}\b(?:victims?|fallen|killed|murdered|lives?|life|names?|memory|heroes|families)\b"
+    r"|\b(?:victims?|fallen|killed|murdered|lives?|life|names?|memory|heroes|families)\b"
+    r".{0,180}\b(?:honou?r|remember|commemorate|mourn|never\s+forget|say\s+their\s+names?)\b"
+    r"|\b(?:would\s+still\s+be\s+alive|life\s+was\s+taken|lives?\s+were\s+taken|"
+    r"preventable\s+(?:murder|death|tragedy)|killed\s+in\s+the\s+line\s+of\s+duty|"
+    r"gave\s+everything)\b"
 )
 PATTERN_SUBJECT_CBP_HOME_APP = _compile(
     r"\b@?CBP\s+Home\s+App\b"
@@ -690,12 +773,43 @@ PATTERN_VIDEO_SPEECH = _compile(
     r"|\b(?:press\s+(?:conference|briefing|gaggle))\b"
     r"|\b(?:oval\s+office|rose\s+garden|east\s+room|state\s+dining\s+room)\b"
 )
+PATTERN_VIDEO_RECRUITMENT = _compile(
+    r"\bjoin\.ice\.gov\b"
+    r"|\b(?:ice|cbp|hsi|dhs)\.gov/(?:careers?|join|jobs?|recruit(?:ment|ing)?)\b"
+    r"|\b(?:careers?|jobs?)\.(?:ice|cbp|hsi|dhs)\.gov\b"
+    r"|\b(?:dhs|ice|cbp|hsi)\s+(?:is\s+)?(?:hiring|recruiting)\b"
+    r"|\b(?:recruitment|hiring)\s+(?:ad|spot|video|campaign)\b"
+    r"|\bjoin\s+(?:ice|cbp|hsi|dhs|the\s+(?:ice|cbp|hsi|dhs)\s+(?:team|family))\b"
+    r"|\bapply\s+(?:today|now)\b"
+    r"|\bcareer(?:s)?\s+(?:with|at)\s+(?:ice|cbp|hsi|dhs)\b"
+    r"|\banswer\s+the\s+call\b"
+    r"|\bserve\s+(?:your|our|their|his|her)\s+(?:country|nation|countrymen|community)\b"
+)
 PATTERN_VIDEO_AD = _compile(
     r"\b(?:new\s+(?:ad|advert|spot|commercial))\b"
-    r"|\b(?:campaign|recruitment)\s+(?:ad|spot|video)\b"
+    r"|\b(?:campaign|recruitment)\s+(?:ad|spot|video|campaign)\b"
     r"|\bjoin\s+(?:ice|cbp|hsi|the\s+(?:ice|cbp)\s+(?:team|family))\b"
-    r"|\bapply\s+(?:today|now)\s+at\b"
+    r"|\bjoin\.ice\.gov\b"
+    r"|\bapply\s+(?:today|now)\b"
+    r"|\bpromises?\s+made[,.]?\s+promises?\s+kept\b"
+    r"|\bmost\s+secure\s+border\s+in\s+american\s+history\b"
 )
+PRODUCED_VIDEO_GENRE_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
+    ("genre:music-video", PATTERN_VIDEO_MUSIC_VIDEO),
+    ("genre:psa", PATTERN_VIDEO_PSA),
+    ("genre:recruitment", PATTERN_VIDEO_RECRUITMENT),
+    ("genre:advertisement", PATTERN_VIDEO_AD),
+    ("genre:war-movie", _compile(r"\bwar[- ]movie\b|\b(?:cinematic|movie[- ]trailer)\s+(?:war|battle|military)\b")),
+    ("genre:utopian", _compile(r"\butopian\b|\b(?:golden\s+age|bright\s+future|morning\s+in\s+america)\b")),
+    ("genre:dystopian", _compile(r"\bdystopian\b|\b(?:dark|bleak|apocalyptic|hellscape)\s+(?:future|city|vision|scene)\b")),
+)
+PRODUCED_VIDEO_STRUCTURE_TAGS = {
+    "media:produced-video",
+    "media:music-video",
+    "media:montage",
+    "media:text-overlay",
+    "media:voiceover",
+}
 SPEAKER_ACTION_CONTEXT = (
     r"(?:deliver(?:s|ed|ing)?|giv(?:e|es|ing)|gave|announce(?:s|d|ment)?|"
     r"say|says|said|speak(?:s|ing)?|spoke|remark(?:s|ed)?|brief(?:s|ed|ing)?|"
@@ -788,12 +902,12 @@ PATTERN_LEGAL_CIVIL_LAWSUIT = _compile(
     r"|\bsettlement\s+agreement\b"
     r"|\bconsent\s+decree\b"
 )
-PATTERN_GENRE_STATISTICS = _compile(
+PATTERN_THEME_STATISTICS = _compile(
     r"\b\d[\d,]*\s+(?:arrest|removal|deportat|encounter|alien|illegal|criminal|gang|fentanyl)"
 )
 # Imperative-mood markers at the start of a sentence (lowercase or
-# title-case). Used for `genre:directive`.
-PATTERN_GENRE_DIRECTIVE = _compile(
+# title-case). Used for `theme:directive`.
+PATTERN_THEME_DIRECTIVE = _compile(
     r"(?:^|[.!?]\s+)(Apply|Report|Call|Visit|Leave|Self[- ]deport|Go to|Submit|Sign up|Tip|Click|Tap|See|Read)\b"
 )
 PATTERN_ANGEL_FAMILY = _compile(
@@ -826,11 +940,14 @@ MEDIA_TAG_PREFIXES_ALLOWED_IN_LEXICAL: tuple[str, ...] = (
     "branch:",
     "country:",
     "crime:",
+    "event:",
     "frame:",
+    "genre:",
     "homicide:",
     "legal:",
     "media:",
     "phrase:",
+    "religion:",
     "shape:",
     "slogan:",
     "speaker:",
@@ -841,6 +958,11 @@ MEDIA_TAG_PREFIXES_ALLOWED_IN_LEXICAL: tuple[str, ...] = (
     "topic:",
     "video:",
 )
+LEGACY_MEDIA_TAG_ALIASES: dict[str, tuple[str, ...]] = {
+    "video:ad": ("genre:advertisement",),
+    "video:music-video": ("genre:music-video",),
+    "video:psa": ("genre:psa",),
+}
 
 
 # ---------------------------------------------------------------------------
@@ -867,10 +989,16 @@ def normalized_media_tags(media_tags: list[Any] | None) -> list[dict[str, Any]]:
             continue
         if not tag or tag in seen:
             continue
-        if not any(tag.startswith(prefix) for prefix in MEDIA_TAG_PREFIXES_ALLOWED_IN_LEXICAL):
-            continue
-        seen.add(tag)
-        out.append({"tag": tag, "source": source, "tentative": tentative})
+        aliased_tags = LEGACY_MEDIA_TAG_ALIASES.get(tag, (tag,))
+        for aliased_tag in aliased_tags:
+            if aliased_tag in seen:
+                continue
+            if not any(
+                aliased_tag.startswith(prefix) for prefix in MEDIA_TAG_PREFIXES_ALLOWED_IN_LEXICAL
+            ):
+                continue
+            seen.add(aliased_tag)
+            out.append({"tag": aliased_tag, "source": source, "tentative": tentative})
     return out
 
 
@@ -991,8 +1119,9 @@ def tag_text(
         (PATTERN_THEME_WORKSITE, "theme:worksite-enforcement"),
         (PATTERN_THEME_HOMELAND, "theme:homeland"),
         (PATTERN_THEME_NATIVISM, "theme:nativism"),
-        (PATTERN_THEME_CHRISTIANITY, "theme:christianity"),
+        (PATTERN_THEME_CHRISTIANITY, "religion:christianity"),
         (PATTERN_THEME_TRANSGENDER, "theme:transgender"),
+        (PATTERN_THEME_CIVIL_DISTURBANCE, "theme:civil-disturbance"),
         (PATTERN_THEME_CBP_HOME, "theme:cbp-home"),
         (PATTERN_THEME_POP_CULTURE_ENFORCEMENT, "theme:pop-culture-enforcement"),
         (PATTERN_SLOGAN_NICE, "slogan:nice"),
@@ -1014,8 +1143,8 @@ def tag_text(
         (PATTERN_SLOGAN_MASS_DEPORTATION, "slogan:mass-deportation"),
         (PATTERN_PHRASE_MIGRANT, "phrase:migrant"),
         (PATTERN_PHRASE_IMMIGRANT, "phrase:immigrant"),
-        (PATTERN_GENRE_STATISTICS, "genre:statistics"),
-        (PATTERN_GENRE_DIRECTIVE, "genre:directive"),
+        (PATTERN_THEME_STATISTICS, "theme:statistics"),
+        (PATTERN_THEME_DIRECTIVE, "theme:directive"),
         (PATTERN_ANGEL_FAMILY, "subject:angel-family"),
         (PATTERN_NATIVE_BORN_CITIZEN, "subject:native-born-citizen"),
     ):
@@ -1030,11 +1159,20 @@ def tag_text(
     for tag, span in speaker_matches(text):
         add(tag, span=span)
 
+    for slug, pat in DISTURBANCE_CITY_PATTERNS:
+        for m in pat.finditer(text):
+            add(f"event:{slug}", span=m.span())
+            add("theme:civil-disturbance", span=m.span())
+
     if m := _coded_nativism_match(text, entries):
         add("theme:nativism", span=m.span())
 
     if m := _theme_religion_match(text):
         add("theme:religion", span=m.span())
+
+    for tag, pat in PRODUCED_VIDEO_GENRE_PATTERNS:
+        if m := pat.search(text):
+            add(tag, span=m.span())
 
     # branch:<BRANCH> - military branch subtopics. These are narrower than
     # topic:military; the parent is enforced below for branch-only aliases.
@@ -1049,10 +1187,15 @@ def tag_text(
     for slug, pat_str in CRIME_VOCAB:
         for m in re.finditer(pat_str, text, re.I):
             add(f"crime:{slug}", span=m.span())
+            for parent in CRIME_PARENT_TAGS.get(f"crime:{slug}", ()):
+                add(parent, span=m.span())
     for slug, pat_str in HOMICIDE_SUBTYPE_VOCAB:
         for m in re.finditer(pat_str, text, re.I):
             add("crime:homicide", span=m.span())
             add(f"homicide:{slug}", span=m.span())
+
+    if m := _martyrdom_match(text, account_category, entries):
+        add("theme:martyrdom", span=m.span())
 
     # origin:<COUNTRY> — validated against the sovereign-state vocab.
     for m in PATTERN_ORIGIN_CANDIDATE.finditer(text):
@@ -1089,8 +1232,7 @@ def tag_text(
         add("subject:enforcement-op")
 
     # video:<kind> + video:duration-bucket — only when a video is attached.
-    # Apply *all* matching kinds so a single tweet can carry e.g.
-    # video:bodycam + video:music-video (the song-set-to-raid-footage genre).
+    # Apply all matching source/kind tags; produced forms live under genre:*.
     # Duration bucket is derived from the longest video on the tweet:
     #   short  : ≤ 30s
     #   medium : 30s < d ≤ 120s
@@ -1101,11 +1243,8 @@ def tag_text(
         for pat, tag in (
             (PATTERN_VIDEO_BODYCAM, "video:bodycam"),
             (PATTERN_VIDEO_INTERVIEW, "video:interview"),
-            (PATTERN_VIDEO_MUSIC_VIDEO, "video:music-video"),
             (PATTERN_VIDEO_NEWS_CLIP, "video:news-clip"),
-            (PATTERN_VIDEO_PSA, "video:psa"),
             (PATTERN_VIDEO_SPEECH, "video:speech"),
-            (PATTERN_VIDEO_AD, "video:ad"),
         ):
             m = pat.search(text)
             if m:
@@ -1114,7 +1253,7 @@ def tag_text(
             add("audio:music-likely")
         if PATTERN_AUDIO_MUSIC_CONTEXT.search(reply_context_text):
             add("audio:music-likely", source="reply-context")
-        if any(e["tag"] in {"media:music-video", "video:music-video"} for e in entries):
+        if any(e["tag"] in {"media:music-video", "genre:music-video"} for e in entries):
             add("audio:music-likely")
         if video_max_duration_sec is not None and video_max_duration_sec > 0:
             if video_max_duration_sec <= 30:
@@ -1123,6 +1262,13 @@ def tag_text(
                 add("video:medium")
             else:
                 add("video:long")
+        if any(e["tag"] in {"media:music-video", "genre:music-video"} for e in entries):
+            add("genre:music-video")
+        if any(
+            e["tag"] in PRODUCED_VIDEO_STRUCTURE_TAGS or str(e["tag"]).startswith("genre:")
+            for e in entries
+        ):
+            add("media:produced-video")
 
     _ensure_intrinsic_parent_topics(entries, text, add)
     _maybe_immigration_default(entries, account_category, text, add)
@@ -1175,6 +1321,34 @@ def _coded_nativism_match(text: str, entries: list[dict[str, Any]]) -> re.Match[
     return None
 
 
+def _martyrdom_match(
+    text: str, account_category: str, entries: list[dict[str, Any]]
+) -> re.Match[str] | None:
+    """Match victim-commemoration frames used as a moral justification.
+
+    "This is our why" is highly distinctive in the tracked core-account
+    corpus, but noisy in public replies. We therefore accept that phrase
+    directly for tracked core/government/official accounts and require
+    nearby victim/memorial context elsewhere.
+    """
+    if m := PATTERN_MARTYRDOM_CONTEXT.search(text):
+        return m
+
+    why = PATTERN_MARTYRDOM_WHY.search(text)
+    if not why:
+        return None
+    existing = {str(e["tag"]) for e in entries}
+    if account_category in {"core", "government", "officials"}:
+        return why
+    if existing.intersection({"subject:angel-family", "subject:crime-victim", "crime:homicide"}):
+        return why
+    start, end = why.span()
+    window = text[max(0, start - 220) : min(len(text), end + 220)]
+    if PATTERN_MARTYRDOM_CONTEXT.search(window):
+        return why
+    return None
+
+
 def _general_topic_score(text: str) -> int:
     """Count broad problem domains in a multi-issue / grievance-style post."""
     return sum(1 for _slug, pat in GENERAL_TOPIC_PATTERNS if pat.search(text))
@@ -1191,7 +1365,8 @@ INTRINSIC_PARENT_TOPICS_EXACT: dict[str, tuple[str, ...]] = {
     "agency:USBPChief": ("topic:immigration",),
     "frame:criminal": ("topic:immigration",),
     "shape:lineup": ("topic:immigration",),
-    "subject:angel-family": ("topic:immigration",),
+    "subject:angel-family": ("theme:martyrdom", "topic:immigration"),
+    "subject:crime-victim": ("theme:martyrdom", "topic:immigration"),
     "subject:cbp-home-app": ("topic:immigration",),
     "subject:enforcement-op": ("topic:immigration",),
     "theme:border": ("topic:immigration",),
@@ -1200,6 +1375,7 @@ INTRINSIC_PARENT_TOPICS_EXACT: dict[str, tuple[str, ...]] = {
     "theme:pop-culture-enforcement": ("topic:immigration",),
     "theme:sanctuary-cities": ("topic:immigration",),
     "theme:worksite-enforcement": ("topic:economy", "topic:immigration"),
+    "religion:christianity": ("theme:religion",),
     "slogan:criminal-illegal-alien": ("topic:immigration",),
     "slogan:free-ticket-home": ("topic:immigration",),
     "slogan:go-home": ("topic:immigration",),

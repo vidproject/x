@@ -535,8 +535,13 @@ function mediaInsightText(row) {
 function matchMediaFilter(r, kind) {
   const media = Array.isArray(r.media) ? r.media : [];
   if (kind === 'none') return media.length === 0;
-  if (kind === 'video') return media.some((m) => m && m.media_type === 'video');
+  if (kind === 'video') {
+    return media.some((m) => m && (m.media_type === 'video' || m.media_type === 'animated_gif'));
+  }
+  if (kind === 'gif') return media.some((m) => m && m.media_type === 'animated_gif');
   if (kind === 'photo') return media.some((m) => m && m.media_type === 'photo');
+  if (kind === 'audio') return tagNames(r).includes('audio:has-audio');
+  if (kind === 'music') return tagNames(r).includes('audio:music-likely');
   return true;
 }
 

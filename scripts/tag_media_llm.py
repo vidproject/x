@@ -74,12 +74,15 @@ ALLOWED_TAG_PREFIXES = (
     "audio:",
     "branch:",
     "crime:",
+    "event:",
     "format:",
     "frame:",
+    "genre:",
     "homicide:",
     "legal:",
     "media:",
     "phrase:",
+    "religion:",
     "shape:",
     "slogan:",
     "speaker:",
@@ -90,13 +93,18 @@ ALLOWED_TAG_PREFIXES = (
 )
 
 PRODUCED_VIDEO_GENRE_TAGS = {
-    "video:bodycam",
-    "video:interview",
-    "video:music-video",
-    "video:news-clip",
-    "video:psa",
-    "video:speech",
-    "video:ad",
+    "genre:advertisement",
+    "genre:dystopian",
+    "genre:music-video",
+    "genre:psa",
+    "genre:recruitment",
+    "genre:utopian",
+    "genre:war-movie",
+}
+LEGACY_LLM_TAG_ALIASES = {
+    "video:ad": "genre:advertisement",
+    "video:music-video": "genre:music-video",
+    "video:psa": "genre:psa",
 }
 
 PROMPT = """You are describing archived public X/Twitter media for an academic research archive.
@@ -109,7 +117,8 @@ Rules:
 - For videos, the images are keyframes, not the full video. Say "keyframes show" when appropriate.
 - Use concise, neutral language. Do not use the word propaganda.
 - Useful media tags include media:produced-video, media:music-video, media:montage, media:text-overlay, media:voiceover.
-- For produced videos, identify the genre where visible/context-supported with one or more of: video:bodycam, video:interview, video:music-video, video:news-clip, video:psa, video:speech, video:ad.
+- For produced videos, identify the genre where visible/context-supported with one or more of: genre:music-video, genre:psa, genre:advertisement, genre:recruitment, genre:war-movie, genre:utopian, genre:dystopian. Genre tags can co-apply.
+- Use video:* tags only for video kind or source, such as video:bodycam, video:interview, video:news-clip, video:speech.
 - If the media appears AI-generated or heavily synthetic from visual cues alone, add media:ai-generated, set provenance_signal false, and mention the visible cues in the description; do not assert certainty.
 - If visible metadata, watermark labels, C2PA/Content Credentials text, or another explicit provenance signal indicates AI generation, add media:ai-generated and set provenance_signal true.
 - Use speaker:<title/name> only when the tweet text or visible captions identify the speaker. Do not guess from a face.
@@ -525,6 +534,7 @@ def normalize_llm_tags(value: Any) -> list[str]:
     seen: set[str] = set()
     for item in value:
         tag = str(item or "").strip()
+        tag = LEGACY_LLM_TAG_ALIASES.get(tag, tag)
         if not tag or tag in seen:
             continue
         if not any(tag.startswith(prefix) for prefix in ALLOWED_TAG_PREFIXES):

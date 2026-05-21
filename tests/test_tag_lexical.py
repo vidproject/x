@@ -277,6 +277,19 @@ def test_forefathers_language_can_trigger_nativism_context() -> None:
     assert "topic:immigration" in tags
 
 
+def test_forefathers_language_triggers_nativism_without_inheritance_word() -> None:
+    out = tag_text(
+        "Our Forefathers were pioneers who built the greatest nation known to man.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    tags = _tags(out)
+    assert "theme:nativism" in tags
+    assert "topic:immigration" in tags
+
+
 def test_homeland_theme_matches_capital_h_homeland_framing() -> None:
     out = tag_text(
         "Our mission is securing the Homeland and protecting American communities.",
@@ -327,7 +340,7 @@ def test_nativism_theme_avoids_generic_american_worker_posts() -> None:
     assert "topic:immigration" not in tags
 
 
-def test_christianity_theme_matches_explicit_christian_language() -> None:
+def test_christianity_subtag_matches_explicit_christian_language() -> None:
     out = tag_text(
         "We defend Christian values and religious liberty.",
         tweet_type="original",
@@ -336,14 +349,14 @@ def test_christianity_theme_matches_explicit_christian_language() -> None:
         account_category="core",
     )
     tags = _tags(out)
-    assert "theme:christianity" in tags
+    assert "religion:christianity" in tags
     assert "theme:religion" in tags
 
 
 def test_religion_theme_matches_civil_religion_phrases() -> None:
     """Federal accounts routinely invoke God / blessings / prayers without
     explicitly naming Christianity. Those should land in theme:religion without
-    forcing theme:christianity."""
+    forcing religion:christianity."""
     samples = [
         # Real tweet from DHSgov (id 2056894104106086877) the lexical tagger
         # previously missed entirely.
@@ -364,10 +377,10 @@ def test_religion_theme_matches_civil_religion_phrases() -> None:
         )
         tags = _tags(out)
         assert "theme:religion" in tags, text
-        assert "theme:christianity" not in tags, text
+        assert "religion:christianity" not in tags, text
 
 
-def test_christianity_theme_adds_religion_when_appropriate() -> None:
+def test_christianity_subtag_adds_religion_when_appropriate() -> None:
     out = tag_text(
         "In Jesus' name we pray.",
         tweet_type="original",
@@ -376,7 +389,20 @@ def test_christianity_theme_adds_religion_when_appropriate() -> None:
         account_category="core",
     )
     tags = _tags(out)
-    assert "theme:christianity" in tags
+    assert "religion:christianity" in tags
+    assert "theme:religion" in tags
+
+
+def test_bible_citation_adds_christianity_subtag() -> None:
+    out = tag_text(
+        "John 3:16 reminds us of our calling today.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    tags = _tags(out)
+    assert "religion:christianity" in tags
     assert "theme:religion" in tags
 
 
@@ -414,13 +440,14 @@ def test_religion_theme_ignores_expletive_god_phrases() -> None:
         )
         tags = _tags(out)
         assert "theme:religion" not in tags, text
-        assert "theme:christianity" not in tags, text
+        assert "religion:christianity" not in tags, text
 
 
 def test_transgender_theme_matches_gender_identity_and_sports_frames() -> None:
     samples = [
         "The order protects women's sports from biological males competing against women.",
         "No men in women's sports.",
+        "Women's sports are for WOMEN.",
         "The agency rescinded gender-identity guidance under Title IX.",
         "This policy rejects radical gender ideology.",
         "Transgender athletes remain covered by the guidance.",
@@ -461,6 +488,95 @@ def test_video_kind_tags_only_fire_when_video_present() -> None:
     tags = _tags(with_video)
     assert "video:bodycam" in tags
     assert "video:medium" in tags  # 30 < 42 ≤ 120
+
+
+def test_produced_video_genres_use_genre_namespace() -> None:
+    out = tag_text(
+        "New cinematic war movie style recruitment ad. Join ICE today in this dystopian city intro.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        video_count=1,
+        video_max_duration_sec=45,
+    )
+    tags = _tags(out)
+    assert "media:produced-video" in tags
+    assert "genre:advertisement" in tags
+    assert "genre:recruitment" in tags
+    assert "genre:war-movie" in tags
+    assert "genre:dystopian" in tags
+
+
+def test_legacy_video_kind_tags_promote_to_produced_genres() -> None:
+    out = tag_text(
+        "Learn more at dhs.gov today.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        video_count=1,
+        media_tags=[{"tag": "video:psa", "source": "media-description"}],
+    )
+    tags = _tags(out)
+    assert "genre:psa" in tags
+    assert "video:psa" not in tags
+    assert "media:produced-video" in tags
+
+
+def test_join_ice_url_triggers_recruitment_genre_for_video() -> None:
+    out = tag_text(
+        "Apply now at join.ice.gov and answer the call.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        video_count=1,
+    )
+    tags = _tags(out)
+    assert "genre:recruitment" in tags
+    assert "genre:advertisement" in tags
+    assert "media:produced-video" in tags
+
+
+def test_psa_and_recruitment_genres_are_not_video_only() -> None:
+    psa = tag_text(
+        "Public service announcement: learn more about the program today.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+        video_count=0,
+    )
+    psa_tags = _tags(psa)
+    assert "genre:psa" in psa_tags
+    assert "media:produced-video" not in psa_tags
+
+    recruitment = tag_text(
+        "Apply now at join.ice.gov.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+        video_count=0,
+    )
+    recruitment_tags = _tags(recruitment)
+    assert "genre:recruitment" in recruitment_tags
+    assert "media:produced-video" not in recruitment_tags
+
+
+def test_promises_kept_video_triggers_advertisement_genre() -> None:
+    out = tag_text(
+        "PROMISES MADE, PROMISES KEPT. Most secure border in American history.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        video_count=1,
+    )
+    tags = _tags(out)
+    assert "genre:advertisement" in tags
+    assert "media:produced-video" in tags
 
 
 def test_music_likely_tag_uses_video_text_and_reply_context() -> None:
@@ -996,7 +1112,7 @@ def test_pop_culture_celebrity_false_positives_stay_silent() -> None:
     assert "theme:pop-culture-enforcement" not in _tags(retail_only)
 
 
-def test_genre_statistics_requires_digits_with_keyword() -> None:
+def test_statistics_theme_requires_digits_with_keyword() -> None:
     yes = tag_text(
         "ICE made 1,234 arrests this week.",
         tweet_type="original",
@@ -1004,7 +1120,7 @@ def test_genre_statistics_requires_digits_with_keyword() -> None:
         media_count=0,
         account_category="core",
     )
-    assert "genre:statistics" in _tags(yes)
+    assert "theme:statistics" in _tags(yes)
     no = tag_text(
         "We did some arrests this week.",
         tweet_type="original",
@@ -1012,7 +1128,7 @@ def test_genre_statistics_requires_digits_with_keyword() -> None:
         media_count=0,
         account_category="core",
     )
-    assert "genre:statistics" not in _tags(no)
+    assert "theme:statistics" not in _tags(no)
 
 
 def test_homicide_murder_subtype_matches_plain_murder_and_homicide_terms() -> None:
@@ -1036,6 +1152,98 @@ def test_homicide_murder_subtype_matches_plain_murder_and_homicide_terms() -> No
         assert "crime:homicide" in tags, text
         if "murder" in text.lower():
             assert "homicide:murder" in tags, text
+
+
+def test_crime_hierarchy_adds_broad_buckets_for_suboffenses() -> None:
+    sexual = tag_text(
+        "The suspect was charged with rape and possession of child pornography.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    sexual_tags = _tags(sexual)
+    assert "crime:rape" in sexual_tags
+    assert "crime:child-sexual" in sexual_tags
+    assert "crime:sexual" in sexual_tags
+
+    disobedience = tag_text(
+        "The defendant committed perjury and violated a court order.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    disobedience_tags = _tags(disobedience)
+    assert "crime:perjury" in disobedience_tags
+    assert "crime:disobedience" in disobedience_tags
+
+
+def test_martyrdom_theme_matches_angel_family_why_frame() -> None:
+    out = tag_text(
+        "This is our why. Angel families will always have our support.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    tags = _tags(out)
+    assert "subject:angel-family" in tags
+    assert "theme:martyrdom" in tags
+    assert "topic:immigration" in tags
+
+
+def test_martyrdom_theme_avoids_public_reply_catchphrase_without_victim_context() -> None:
+    out = tag_text(
+        "This is our why. Now bust the Epstein perps or stop posting.",
+        tweet_type="reply",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    assert "theme:martyrdom" not in _tags(out)
+
+
+def test_civil_disturbance_events_require_city_and_disturbance_context() -> None:
+    la = tag_text(
+        "Anti-ICE rioters threw concrete at DHS agents outside the federal building in Los Angeles.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    la_tags = _tags(la)
+    assert "theme:civil-disturbance" in la_tags
+    assert "event:los-angeles-disturbance" in la_tags
+
+    minneapolis = tag_text(
+        "Bovino's heavy-handed Minneapolis operation prompted protests and lawsuits.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    assert "event:minneapolis-disturbance" in _tags(minneapolis)
+
+    portland = tag_text(
+        "Court docs describe a domestic terrorism plot targeting an ICE facility in Portland.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    assert "event:portland-disturbance" in _tags(portland)
+
+    ordinary_city = tag_text(
+        "USCIS Los Angeles arrested a suspect wanted for burglary.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    ordinary_tags = _tags(ordinary_city)
+    assert "event:los-angeles-disturbance" not in ordinary_tags
+    assert "theme:civil-disturbance" not in ordinary_tags
 
 
 def test_origin_only_fires_for_valid_country() -> None:

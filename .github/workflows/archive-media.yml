@@ -54,10 +54,10 @@ jobs:
       - name: install python deps
         run: uv sync
 
-      - name: install OCR engine
+      - name: install media analysis tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y tesseract-ocr
+          sudo apt-get install -y tesseract-ocr ffmpeg
 
       - name: archive media
         timeout-minutes: 30
