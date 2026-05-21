@@ -511,7 +511,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 3864,
+      "observations": 3872,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -662,7 +662,7 @@
     "EROBoston": {
       "category": "government",
       "label": "ICE Boston",
-      "observations": 14,
+      "observations": 18,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -676,7 +676,7 @@
     "EROLosAngeles": {
       "category": "government",
       "label": "ICE Los Angeles",
-      "observations": 24,
+      "observations": 26,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1530,7 +1530,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 833,
+      "observations": 834,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1943,7 +1943,7 @@
     "SecMullinDHS": {
       "category": "officials",
       "label": "Secretary Markwayne Mullin",
-      "observations": 543,
+      "observations": 545,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2013,7 +2013,7 @@
     "SenEricSchmitt": {
       "category": "public_figures",
       "label": "Senator Eric Schmitt",
-      "observations": 4,
+      "observations": 5,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -2435,7 +2435,7 @@
       ],
       "category": "government",
       "label": "U.S. Coast Guard",
-      "observations": 48,
+      "observations": 49,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3200,7 +3200,7 @@
     "public": 141,
     "public_figures": 71
   },
-  "generated_at": "2026-05-21T03:38:06Z",
+  "generated_at": "2026-05-21T03:39:03Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
