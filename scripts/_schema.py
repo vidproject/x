@@ -369,7 +369,7 @@ def empty_news_mentions_dataframe() -> pl.DataFrame:
 # Keyframe sidecar (Layer 2)
 #
 # One row per archived video. Records the metadata of evenly-spaced
-# keyframes extracted by ffmpeg for downstream OCR / CLIP / vision-LLM
+# keyframes extracted by ffmpeg for downstream OCR / CLIP-style analysis
 # layers to consume. The frame JPEGs themselves live under
 # `data/derived/keyframes/<media_sha256>/` and are gitignored — they are
 # deterministic from the archived video + the extractor version + frame

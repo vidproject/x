@@ -30,14 +30,6 @@ on:
         description: 'Max uncached items to process per analyzer step'
         required: false
         default: '160'
-      llm_max_items:
-        description: 'Max uncached media items to send to OpenAI vision'
-        required: false
-        default: '120'
-      llm_budget_usd:
-        description: 'Approximate budget cap for paid vision calls'
-        required: false
-        default: '6.00'
 
 permissions:
   contents: write
@@ -162,34 +154,6 @@ jobs:
           fi
           args+=(--max-items "$max_items")
           uv run python -m scripts.detect_audio_music "${args[@]}"
-
-      - name: describe images and video keyframes with OpenAI
-        timeout-minutes: 20
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GEMINI_MEDIA_LLM_MODEL: ${{ vars.GEMINI_MEDIA_LLM_MODEL }}
-          OPENAI_MEDIA_LLM_MODEL: ${{ vars.OPENAI_MEDIA_LLM_MODEL }}
-        run: |
-          if [ -z "$OPENAI_API_KEY" ]; then
-            echo "OPENAI_API_KEY not configured; media LLM layer will record skipped_no_api_key"
-          fi
-          args=()
-          llm_max_items="${{ inputs.llm_max_items }}"
-          if [ -z "$llm_max_items" ]; then
-            llm_max_items="120"
-          fi
-          llm_budget_usd="${{ inputs.llm_budget_usd }}"
-          if [ -z "$llm_budget_usd" ]; then
-            llm_budget_usd="6.00"
-          fi
-          if [ -n "${{ inputs.handle }}" ]; then
-            args+=(--handle "${{ inputs.handle }}")
-          fi
-          args+=(--max-items "$llm_max_items")
-          args+=(--budget-usd "$llm_budget_usd")
-          uv run python -m scripts.tag_media_llm "${args[@]}"
 
       - name: refresh lexical tags
         run: uv run python -m scripts.tag_lexical

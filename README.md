@@ -152,7 +152,6 @@ Current sidecars:
 - `data/tags/keyframes.parquet`: video keyframe metadata and tiny poster thumbnails from `scripts/extract_video_frames.py`.
 - `data/tags/image_ocr.parquet`: Tesseract OCR text from archived photos and extracted video keyframes from `scripts/tag_image_ocr.py`.
 - `data/tags/audio_music.parquet`: ffmpeg-only audio stream/music-likelihood tags from `scripts/detect_audio_music.py`.
-- `data/tags/media_llm.parquet`: optional paid OpenAI image/video keyframe descriptions from `scripts/tag_media_llm.py`; Gemini is used only as a narrow watermark/provenance verifier for suspected AI-generated media.
 - `data/tags/news_mentions.parquet`: exact X/Twitter status-URL mentions of core tweets in a local news article export from `scripts/news_mentions.py`.
 - `data/account_categories.json`: corpus-wide public figure / government / official categories from `scripts/build_account_categories.py`.
 - `config/tag_overrides.yaml`: editor-confirmed tags for cases the capture layer cannot prove from canonical fields alone.
@@ -169,7 +168,7 @@ The immigration-reporting tag is `action:report-immigrants`. Generic non-immigra
 
 Each media row carries cache and provenance fields: `input_hash`, `model`, `model_version`, `prompt_hash`, `confidence`, `cost_estimate_usd`, `status`, `source_fields`, and `error`.
 
-This gives later OCR, transcript, keyframe, CLIP, audio, or vision-model jobs a stable place to write results without changing canonical capture data. Items that need deeper inspection get tentative `media:needs-vision`.
+This gives later OCR, transcript, keyframe, CLIP, audio, or external analysis jobs a stable place to write results without changing canonical capture data. Items that need deeper inspection get tentative `media:needs-vision`.
 
 `scripts.extract_video_frames` pulls bounded keyframes from archived videos and also writes a tiny 96px JPEG poster under `data/thumbnails/video/` for the viewer. The table uses those posters before falling back to larger frame paths, so video thumbnails are automatic and cheap to load.
 
@@ -177,9 +176,9 @@ This gives later OCR, transcript, keyframe, CLIP, audio, or vision-model jobs a 
 
 `scripts.detect_audio_music` is the first audio pass. It uses ffprobe/ffmpeg only: detect whether an archived video has audio, decode a short mono sample, compute simple energy/zero-crossing features, and emit conservative `audio:has-audio`, `audio:no-audio`, `audio:silent`, and tentative `audio:music-likely` tags. The lexical layer still uses video text and direct replies as additional cheap context when people explicitly reference the song, soundtrack, or background music.
 
-`scripts.tag_media_llm` is the paid image/video recognition tier. OpenAI (`OPENAI_API_KEY`) is the first-line recognizer for archived photos and bounded video keyframes. Gemini (`GEMINI_API_KEY` or `GOOGLE_API_KEY`) is called only when the OpenAI result already suspects `media:ai-generated`, and then only as a narrow watermark/provenance verifier capped at 5 calls per minute. The tier emits neutral descriptions plus tags for produced-video structure (`media:produced-video`, `media:montage`, `media:text-overlay`, `media:voiceover`, `video:*` genre labels), visible slogans, evidence-supported `speaker:*`, and tentative `media:ai-generated` when synthetic cues are visible. The workflow caps this tier with `llm_max_items` and `llm_budget_usd`.
+External LLM review is intentionally kept outside this repository. Curated results can be folded back through `data/tags/manual_media_review_queue.json` or another reviewed sidecar without storing provider credentials or running paid model calls from CI.
 
-`scripts.build_core_video_audit` joins core-account videos against keyframes, OCR, audio, metadata vision, paid LLM, manual-review, and lexical tags. It writes `data/tags/core_video_audit.json` and `data/tags/core_video_audit.csv`, prioritized for produced-video and genre review (`genre:music-video`, `genre:dystopian`, `genre:war-movie`, `genre:utopian`, recruitment, advertisement, and PSA).
+`scripts.build_core_video_audit` joins core-account videos against keyframes, OCR, audio, metadata vision, manual-review, and lexical tags. It writes `data/tags/core_video_audit.json` and `data/tags/core_video_audit.csv`, prioritized for produced-video and genre review (`genre:music-video`, `genre:dystopian`, `genre:war-movie`, `genre:utopian`, recruitment, advertisement, and PSA).
 
 The audit also emits queue files for GitHub-side recovery of likely produced or genre-relevant videos whose media is still missing: `data/tags/core_produced_missing_tweet_ids.txt` and `data/tags/core_produced_missing_media_ids.txt`. Dispatch `archive-media` with those files, or push changes to them, to have GitHub fetch the queued media instead of using local bandwidth.
 
@@ -213,8 +212,6 @@ extension
       data/tags/image_ocr.parquet
     scripts.detect_audio_music
       data/tags/audio_music.parquet
-    scripts.tag_media_llm
-      data/tags/media_llm.parquet
     scripts.build_core_video_audit
       data/tags/core_video_audit.json
       data/tags/core_video_audit.csv
@@ -237,7 +234,6 @@ uv run python -m scripts.describe_media
 uv run python -m scripts.extract_video_frames
 uv run python -m scripts.tag_image_ocr
 uv run python -m scripts.detect_audio_music
-uv run python -m scripts.tag_media_llm --max-items 20 --budget-usd 2.00
 uv run python -m scripts.build_core_video_audit
 uv run python -m scripts.news_mentions --articles data/news/articles.jsonl
 npm run lint

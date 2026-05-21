@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-21T23:43:26Z",
+  "generated_at": "2026-05-21T23:46:55Z",
   "layers": {
     "audio_music": {
       "analyzed": 160,
@@ -62,7 +62,7 @@
       "status_ok": 160
     },
     "lexical": {
-      "generated_at": "2026-05-21T23:43:26Z",
+      "generated_at": "2026-05-21T23:46:55Z",
       "parquets_scanned": {
         "CBP.parquet": 515,
         "DHSgov.parquet": 4497,
@@ -445,21 +445,6 @@
         "video:speech": 24
       },
       "tagger_version": "lexical-v2"
-    },
-    "media_llm": {
-      "attempted": 120,
-      "cost_estimate_usd": 0.0,
-      "generated_at": "2026-05-21T23:41:42Z",
-      "model": "openai",
-      "model_version": "gpt-5-nano",
-      "prompt_hash": "15f891d88d25fdaa",
-      "provider_openai": 120,
-      "rows": 120,
-      "skipped_max_items": 1209,
-      "status_counts": {
-        "model-error": 120
-      },
-      "status_model-error": 120
     },
     "media_vision": {
       "cache_hits": 3981,

@@ -7,8 +7,8 @@ The frame JPEGs themselves go under
 they're deterministic from the archived video + extractor version + frame
 indices, so downstream layers re-extract on demand.
 
-Used by Layer 3a (CLIP labels), 3b (OCR), and 4 (vision-LLM) as the
-shared frame catalog. The ``media_sha256`` is the natural cache key: a
+Used by downstream image-analysis layers such as OCR and CLIP labels as
+the shared frame catalog. The ``media_sha256`` is the natural cache key: a
 re-archived identical video doesn't trigger re-extraction.
 
 The script enforces a per-run cap (``--max-items``) and uses two cheap

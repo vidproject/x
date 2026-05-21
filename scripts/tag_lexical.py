@@ -1723,30 +1723,29 @@ def load_ocr_map() -> dict[str, str]:
 def load_media_context_map() -> dict[str, dict[str, Any]]:
     """Return per-tweet media descriptions and tags from media sidecars.
 
-    ``scripts.describe_media`` is still the cheap/local recognizer, while
-    ``scripts.tag_media_llm`` can add budget-gated image/video descriptions
-    from keyframes. Feeding both back through lexical rules lets image-only
-    posts earn the same topic / slogan / agency tags as text posts.
+    ``scripts.describe_media`` is the cheap/local recognizer. Feeding those
+    descriptions back through lexical rules lets image-only posts earn the
+    same topic / slogan / agency tags as text posts.
     """
     out: dict[str, dict[str, Any]] = {}
-    for p in (TAGS_DIR / "media_vision.parquet", TAGS_DIR / "media_llm.parquet"):
-        if not p.exists():
+    p = TAGS_DIR / "media_vision.parquet"
+    if not p.exists():
+        return {}
+    df = pl.read_parquet(p)
+    if df.is_empty() or "tweet_id" not in df.columns:
+        return {}
+    for row in df.iter_rows(named=True):
+        tid = str(row.get("tweet_id") or "")
+        if not tid:
             continue
-        df = pl.read_parquet(p)
-        if df.is_empty() or "tweet_id" not in df.columns:
-            continue
-        for row in df.iter_rows(named=True):
-            tid = str(row.get("tweet_id") or "")
-            if not tid:
-                continue
-            item = out.setdefault(tid, {"text_parts": [], "tags": []})
-            for col in ("summary_text", "description"):
-                value = str(row.get(col) or "").strip()
-                if value:
-                    item["text_parts"].append(value)
-            tags = row.get("tags")
-            if isinstance(tags, list):
-                item["tags"].extend(tags)
+        item = out.setdefault(tid, {"text_parts": [], "tags": []})
+        for col in ("summary_text", "description"):
+            value = str(row.get(col) or "").strip()
+            if value:
+                item["text_parts"].append(value)
+        tags = row.get("tags")
+        if isinstance(tags, list):
+            item["tags"].extend(tags)
     for item in out.values():
         seen_parts: set[str] = set()
         parts: list[str] = []

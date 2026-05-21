@@ -1,8 +1,8 @@
 """Build a review queue for produced-video and genre work on core accounts.
 
 The archive already has several media layers: keyframes, audio/music,
-OCR, cheap metadata descriptions, manual review notes, and optional LLM
-vision rows. This script joins those layers into one lightweight audit
+OCR, cheap metadata descriptions, and manual review notes. This script
+joins those layers into one lightweight audit
 artifact focused on core-account videos, so genre work can proceed without
 more broad scraping.
 
@@ -215,7 +215,6 @@ def missing_steps(
     *,
     keyframe_rows: list[dict[str, Any]],
     audio_rows: list[dict[str, Any]],
-    llm_rows: list[dict[str, Any]],
     vision_rows: list[dict[str, Any]],
     tags: set[str],
 ) -> list[str]:
@@ -226,7 +225,7 @@ def missing_steps(
         steps.append("extract-keyframes")
     if media.get("archive_status") == "archived" and not audio_rows:
         steps.append("detect-audio")
-    if not vision_rows and not llm_rows:
+    if not vision_rows:
         steps.append("describe-with-vision")
     if (tags & PRODUCED_TAGS) and not (tags & GENRE_TAGS):
         steps.append("assign-produced-video-genre")
@@ -268,7 +267,6 @@ def build_item(
     *,
     lexical: dict[str, set[str]],
     vision: dict[tuple[str, str], list[dict[str, Any]]],
-    llm: dict[tuple[str, str], list[dict[str, Any]]],
     audio: dict[tuple[str, str], list[dict[str, Any]]],
     keyframes: dict[tuple[str, str], list[dict[str, Any]]],
     ocr: dict[tuple[str, str], list[dict[str, Any]]],
@@ -278,12 +276,11 @@ def build_item(
     media_id = str(media.get("media_id") or "")
     key = (tweet_id, media_id)
     vision_rows = vision.get(key, [])
-    llm_rows = llm.get(key, [])
     audio_rows = audio.get(key, [])
     keyframe_rows = keyframes.get(key, [])
     ocr_rows = ocr.get(key, [])
     manual_row = manual.get(key, {})
-    descriptions = sidecar_descriptions(vision_rows + llm_rows + ocr_rows)
+    descriptions = sidecar_descriptions(vision_rows + ocr_rows)
     if manual_row.get("visual_observation"):
         descriptions.append(str(manual_row["visual_observation"]))
     context = "\n".join(
@@ -294,14 +291,13 @@ def build_item(
         ]
     )
     tags = set(lexical.get(tweet_id, set()))
-    tags.update(sidecar_tags(vision_rows + llm_rows + audio_rows))
+    tags.update(sidecar_tags(vision_rows + audio_rows))
     tags.update(tag_values(manual_row.get("candidate_visual_tags")))
     tags.update(classify_from_text(context))
     missing = missing_steps(
         media,
         keyframe_rows=keyframe_rows,
         audio_rows=audio_rows,
-        llm_rows=llm_rows,
         vision_rows=vision_rows,
         tags=tags,
     )
@@ -329,7 +325,7 @@ def build_item(
         "missing_steps": missing,
         "has_keyframes": any(r.get("status") == "ok" for r in keyframe_rows),
         "has_audio_analysis": bool(audio_rows),
-        "has_vision_description": bool(vision_rows or llm_rows),
+        "has_vision_description": bool(vision_rows),
         "has_ocr": bool(ocr_rows),
         "description": " | ".join(descriptions)[:1200],
     }
@@ -349,7 +345,6 @@ def build() -> dict[str, Any]:
     handles = core_handles()
     lexical = load_lexical_tags(handles)
     vision = load_media_sidecar("media_vision", handles)
-    llm = load_media_sidecar("media_llm", handles)
     audio = load_media_sidecar("audio_music", handles)
     keyframes = load_media_sidecar("keyframes", handles)
     ocr = load_media_sidecar("image_ocr", handles)
@@ -365,7 +360,6 @@ def build() -> dict[str, Any]:
                         media,
                         lexical=lexical,
                         vision=vision,
-                        llm=llm,
                         audio=audio,
                         keyframes=keyframes,
                         ocr=ocr,
