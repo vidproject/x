@@ -14,6 +14,7 @@
 // for display. Standalone rows (the vast majority) render exactly as before.
 
 import { combineTagMainSub, formatForFilter, tagNames, tagNamespace, tagSubtype } from './store.js';
+import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js';
 
 const MEDIA_COL_KEY = 'media_kinds';
 const MEDIA_THUMBNAIL_KEYS = [
@@ -88,7 +89,7 @@ export const COLUMNS = [
     default: true,
     filterable: true,
     sortable: false,
-    render: (r) => renderTagPills(r),
+    render: (r) => renderHierarchicalTagPills(r),
   },
   {
     key: 'media_description',
@@ -1257,6 +1258,48 @@ function renderMediaDescription(r) {
     .join(' ');
   if (!text) return '<span class="muted">—</span>';
   return `<span class="cell-text" title="${escape(text)}">${escape(text)}</span>`;
+}
+
+function renderHierarchicalTagPills(r) {
+  const tree = tagTreeFromEntries(Array.isArray(r.tags) ? r.tags : []);
+  if (tree.length === 0) return '<span class="muted">&mdash;</span>';
+  // Cap rendered pills to avoid blowing out the cell on crime-heavy rows.
+  // Parent + visible children count as separate pills; the sidepanel shows all.
+  const visible = 6;
+  const html = [];
+  let rendered = 0;
+  let total = 0;
+  for (const node of tree) total += 1 + node.children.length;
+  for (const node of tree) {
+    if (rendered >= visible) break;
+    const remaining = visible - rendered;
+    const children = node.children.slice(0, Math.max(0, remaining - 1));
+    html.push(renderTagNode(node.entry, children));
+    rendered += 1 + children.length;
+  }
+  if (total > rendered) {
+    html.push(`<span class="tag-pill more">+${total - rendered}</span>`);
+  }
+  return `<span class="tag-pills tag-tree">${html.join('')}</span>`;
+}
+
+function renderTagNode(entry, children) {
+  const childHtml = children.map((child) => renderTagChild(child)).join('');
+  return `<span class="tag-node">${renderTagPill(entry)}${childHtml}</span>`;
+}
+
+function renderTagChild(entry) {
+  return `<span class="tag-child">${renderTagPill(entry, { child: true })}</span>`;
+}
+
+function renderTagPill(entry, options = {}) {
+  const name = tagEntryName(entry);
+  if (!name) return '';
+  const ns = tagNamespaceFor(name);
+  const tentative = typeof entry === 'object' && entry?.tentative ? ' tentative' : '';
+  const titleSuffix = typeof entry === 'object' && entry?.tentative ? ' (tentative)' : '';
+  const child = options.child ? ' tag-pill-child' : '';
+  return `<span class="tag-pill ns-${escape(ns)}${tentative}${child}" title="${escape(name)}${titleSuffix}">${escape(name)}</span>`;
 }
 
 function renderTagPills(r) {

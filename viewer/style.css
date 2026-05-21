@@ -1374,8 +1374,25 @@ html[data-media-fit='vertical'] .media-thumb {
   background: var(--bg-row-hover);
 }
 .col-pop .tag-child-prefix {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 9px;
+  font-size: 0;
   color: var(--fg-3);
   margin-right: 4px;
+}
+.col-pop .tag-child-prefix::before {
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  width: 7px;
+  height: 7px;
+  border-left: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  border-radius: 0 0 0 2px;
+  opacity: 0.75;
 }
 .col-pop label.col-val .count {
   margin-left: auto;
@@ -1436,9 +1453,39 @@ html[data-media-fit='vertical'] .media-thumb {
 .tag-pills {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 4px 6px;
+  align-items: flex-start;
   max-width: 360px;
   vertical-align: middle;
+}
+.tag-tree {
+  align-items: flex-start;
+}
+.tag-node {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  max-width: 100%;
+}
+.tag-child {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+.tag-child::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 7px;
+  height: 7px;
+  border-left: 1px solid var(--fg-3);
+  border-bottom: 1px solid var(--fg-3);
+  border-radius: 0 0 0 2px;
+  opacity: 0.72;
 }
 .tag-pill {
   display: inline-block;
@@ -1450,6 +1497,12 @@ html[data-media-fit='vertical'] .media-thumb {
   background: var(--bg-3);
   color: var(--fg);
   white-space: nowrap;
+}
+.tag-pill-child {
+  padding: 0 5px;
+  font-size: 10px;
+  line-height: 1.35;
+  opacity: 0.94;
 }
 .tag-pill.more {
   background: transparent;
@@ -1532,9 +1585,9 @@ html[data-media-fit='vertical'] .media-thumb {
 }
 .sp-tag-group {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 4px;
-  align-items: center;
+  align-items: flex-start;
 }
 .sp-tag-ns {
   font-family: var(--mono);
@@ -1544,6 +1597,16 @@ html[data-media-fit='vertical'] .media-thumb {
   letter-spacing: 0.04em;
   margin-right: 4px;
   min-width: 56px;
+}
+.sp-tag-tree {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 7px;
+  align-items: flex-start;
+  min-width: 0;
+}
+.sp-tag-node {
+  gap: 2px;
 }
 .sp-suggest {
   margin-top: 10px;

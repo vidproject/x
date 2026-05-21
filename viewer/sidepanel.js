@@ -1,5 +1,7 @@
 // Side-panel detail view: opens when a table row is clicked.
 
+import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js';
+
 export function openSidepanel(panelEl, titleEl, bodyEl, row, thread) {
   if (!row) return;
   titleEl.textContent = `@${row.account_handle} · ${shortDate(row.posted_at)}`;
@@ -499,6 +501,11 @@ function tagsBlock(row) {
     wrap.append(muted);
     return wrap;
   }
+  const tree = tagTreeFromEntries(tags);
+  if (tree.length > 0) {
+    renderSidepanelTagTree(wrap, tree);
+    return wrap;
+  }
   // Group by namespace so the reader sees `subject:*` together,
   // `topic:*` together, etc. Within a namespace, confirmed first.
   const byNs = new Map();
@@ -544,6 +551,57 @@ function uniqueTagEntries(tags) {
     out.push(entry);
   }
   return out;
+}
+
+function renderSidepanelTagTree(wrap, tree) {
+  const byNs = new Map();
+  for (const node of tree) {
+    const ns = node.namespace || tagNamespaceFor(node.name);
+    const nodes = byNs.get(ns) ?? [];
+    nodes.push(node);
+    byNs.set(ns, nodes);
+  }
+  for (const [ns, nodes] of byNs) {
+    const grp = document.createElement('div');
+    grp.className = `sp-tag-group sp-tag-tree-group ns-${ns}`;
+    const lbl = document.createElement('span');
+    lbl.className = 'sp-tag-ns';
+    lbl.textContent = `${ns}:`;
+    const list = document.createElement('div');
+    list.className = 'sp-tag-tree';
+    for (const node of nodes) {
+      list.append(renderSidepanelTagNode(node.entry, node.children, ns));
+    }
+    grp.append(lbl, list);
+    wrap.append(grp);
+  }
+}
+
+function renderSidepanelTagNode(entry, children, groupNs) {
+  const node = document.createElement('span');
+  node.className = 'tag-node sp-tag-node';
+  node.append(renderSidepanelTagPill(entry, { groupNs }));
+  for (const child of children) {
+    const childWrap = document.createElement('span');
+    childWrap.className = 'tag-child';
+    childWrap.append(renderSidepanelTagPill(child, { child: true }));
+    node.append(childWrap);
+  }
+  return node;
+}
+
+function renderSidepanelTagPill(entry, { child = false, groupNs = '' } = {}) {
+  const name = tagEntryName(entry);
+  const ns = tagNamespaceFor(name);
+  const tentative = typeof entry === 'object' && entry?.tentative;
+  const source = typeof entry === 'object' && entry?.source;
+  const pill = document.createElement('span');
+  pill.className = `tag-pill ns-${ns}${tentative ? ' tentative' : ''}${
+    child ? ' tag-pill-child' : ''
+  }`;
+  pill.textContent = child || ns !== groupNs ? name : name.split(':').slice(1).join(':') || name;
+  pill.title = `${name}${tentative ? ' (tentative)' : ''}${source ? ` - ${source}` : ''}`;
+  return pill;
 }
 
 function suggestButton(row) {
