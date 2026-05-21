@@ -739,6 +739,13 @@ PATTERN_VIDEO_MUSIC_VIDEO = _compile(
     r"|\b(?:🎵|🎶)\b"
     r"|\b(?:song|anthem|ballad)\s+(?:by|about|for)\b"
     r"|\btrack\s+by\b"
+    r"|\b(?:soundtrack|background\s+music|music\s+bed|needle\s+drop)\b"
+    r"|\b(?:cinematic\s+)?score\b"
+)
+PATTERN_PRODUCED_VIDEO_STYLE = _compile(
+    r"\b(?:polished|produced|edited|cinematic|trailer[- ]style|multi[- ]shot|rapid[- ]cut|"
+    r"b-roll|title[- ]card|end[- ]card|color[- ]graded|montage|screencast|"
+    r"music\s+bed|soundtrack|voice[- ]?over|narrat(?:ion|ed|or))\b"
 )
 PATTERN_AUDIO_MUSIC_CONTEXT = _compile(
     r"\bwhat(?:'s| is)\s+(?:the\s+)?song\b"
@@ -775,7 +782,7 @@ PATTERN_VIDEO_SPEECH = _compile(
 )
 PATTERN_VIDEO_RECRUITMENT = _compile(
     r"\bjoin\.ice\.gov\b"
-    r"|\b(?:ice|cbp|hsi|dhs)\.gov/(?:careers?|join|jobs?|recruit(?:ment|ing)?)\b"
+    r"|\b(?:ice|cbp|hsi|dhs)\.gov/(?:careers?|join|jobs?|recruit(?:ment|ing)?|homeland-security-careers)\b"
     r"|\b(?:careers?|jobs?)\.(?:ice|cbp|hsi|dhs)\.gov\b"
     r"|\b(?:dhs|ice|cbp|hsi)\s+(?:is\s+)?(?:hiring|recruiting)\b"
     r"|\b(?:recruitment|hiring)\s+(?:ad|spot|video|campaign)\b"
@@ -787,6 +794,7 @@ PATTERN_VIDEO_RECRUITMENT = _compile(
 )
 PATTERN_VIDEO_AD = _compile(
     r"\b(?:new\s+(?:ad|advert|spot|commercial))\b"
+    r"|\b(?:ad|advertisement|commercial|promo|promotional\s+video|campaign\s+spot)\b"
     r"|\b(?:campaign|recruitment)\s+(?:ad|spot|video|campaign)\b"
     r"|\bjoin\s+(?:ice|cbp|hsi|the\s+(?:ice|cbp)\s+(?:team|family))\b"
     r"|\bjoin\.ice\.gov\b"
@@ -799,9 +807,28 @@ PRODUCED_VIDEO_GENRE_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("genre:psa", PATTERN_VIDEO_PSA),
     ("genre:recruitment", PATTERN_VIDEO_RECRUITMENT),
     ("genre:advertisement", PATTERN_VIDEO_AD),
-    ("genre:war-movie", _compile(r"\bwar[- ]movie\b|\b(?:cinematic|movie[- ]trailer)\s+(?:war|battle|military)\b")),
-    ("genre:utopian", _compile(r"\butopian\b|\b(?:golden\s+age|bright\s+future|morning\s+in\s+america)\b")),
-    ("genre:dystopian", _compile(r"\bdystopian\b|\b(?:dark|bleak|apocalyptic|hellscape)\s+(?:future|city|vision|scene)\b")),
+    (
+        "genre:war-movie",
+        _compile(
+            r"\bwar[- ]movie\b|\bwar[- ]film\b|\baction[- ]movie\b"
+            r"|\b(?:cinematic|movie[- ]trailer|trailer[- ]style|dramatic)\b.{0,80}\b(?:war|battle|combat|military|raid|operation)\b"
+            r"|\b(?:war|battle|combat|military|raid|operation)\b.{0,80}\b(?:cinematic|movie[- ]trailer|trailer[- ]style|dramatic)\b"
+        ),
+    ),
+    (
+        "genre:utopian",
+        _compile(
+            r"\butopian\b|\bidealized\b|\baspirational\b|\b(?:golden\s+age|bright\s+future|morning\s+in\s+america)\b"
+            r"|\b(?:sunlit|heroic|triumphal)\b.{0,80}\b(?:montage|vision|future|aesthetic)\b"
+        ),
+    ),
+    (
+        "genre:dystopian",
+        _compile(
+            r"\bdystopian\b|\bsci[- ]?fi\b|\bscience[- ]fiction\b|\bcyberpunk\b"
+            r"|\b(?:dark|bleak|apocalyptic|hellscape|surveillance[- ]state|futuristic)\b.{0,80}\b(?:future|city|vision|scene|aesthetic)\b"
+        ),
+    ),
 )
 PRODUCED_VIDEO_STRUCTURE_TAGS = {
     "media:produced-video",
@@ -1261,6 +1288,8 @@ def tag_text(
             add("audio:music-likely", source="reply-context")
         if any(e["tag"] in {"media:music-video", "genre:music-video"} for e in entries):
             add("audio:music-likely")
+        if m := PATTERN_PRODUCED_VIDEO_STYLE.search(text):
+            add("media:produced-video", span=m.span())
         if video_max_duration_sec is not None and video_max_duration_sec > 0:
             if video_max_duration_sec <= 30:
                 add("video:short")

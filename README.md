@@ -179,6 +179,8 @@ This gives later OCR, transcript, keyframe, CLIP, audio, or vision-model jobs a 
 
 `scripts.tag_media_llm` is the paid image/video recognition tier. OpenAI (`OPENAI_API_KEY`) is the first-line recognizer for archived photos and bounded video keyframes. Gemini (`GEMINI_API_KEY` or `GOOGLE_API_KEY`) is called only when the OpenAI result already suspects `media:ai-generated`, and then only as a narrow watermark/provenance verifier capped at 5 calls per minute. The tier emits neutral descriptions plus tags for produced-video structure (`media:produced-video`, `media:montage`, `media:text-overlay`, `media:voiceover`, `video:*` genre labels), visible slogans, evidence-supported `speaker:*`, and tentative `media:ai-generated` when synthetic cues are visible. The workflow caps this tier with `llm_max_items` and `llm_budget_usd`.
 
+`scripts.build_core_video_audit` joins core-account videos against keyframes, OCR, audio, metadata vision, paid LLM, manual-review, and lexical tags. It writes `data/tags/core_video_audit.json` and `data/tags/core_video_audit.csv`, prioritized for produced-video and genre review (`genre:music-video`, `genre:dystopian`, `genre:war-movie`, `genre:utopian`, recruitment, advertisement, and PSA).
+
 ## News Mentions
 
 `scripts.news_mentions` checks whether archived core tweets are cited by news coverage using a deterministic local article export. It accepts JSON, JSONL, or CSV records with fields such as `url`, `title`, `description`, `body`, `content`, or `text`, then matches exact `x.com/<handle>/status/<tweet_id>`, `twitter.com/<handle>/status/<tweet_id>`, and `x.com/i/web/status/<tweet_id>` URLs. Tests and normal offline runs need no network. For cheap ad-hoc discovery, run `uv run python -m scripts.news_mentions --discover-web google-news-rss --max-web-tweets 100 --matched-only`; this queries Google News RSS, or `--discover-web gdelt` for GDELT, for exact status URL strings and records returned article metadata at lower confidence.
@@ -211,6 +213,9 @@ extension
       data/tags/audio_music.parquet
     scripts.tag_media_llm
       data/tags/media_llm.parquet
+    scripts.build_core_video_audit
+      data/tags/core_video_audit.json
+      data/tags/core_video_audit.csv
     scripts.news_mentions
       data/tags/news_mentions.parquet
     scripts.tag_lexical
@@ -231,6 +236,7 @@ uv run python -m scripts.extract_video_frames
 uv run python -m scripts.tag_image_ocr
 uv run python -m scripts.detect_audio_music
 uv run python -m scripts.tag_media_llm --max-items 20 --budget-usd 2.00
+uv run python -m scripts.build_core_video_audit
 uv run python -m scripts.news_mentions --articles data/news/articles.jsonl
 npm run lint
 npm run typecheck

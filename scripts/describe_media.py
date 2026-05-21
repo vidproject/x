@@ -41,7 +41,7 @@ OUT_PATH = TAGS_DIR / "media_vision.parquet"
 MANIFEST_PATH = TAGS_DIR / "manifest.json"
 
 MODEL = "metadata"
-MODEL_VERSION = "media-metadata-v3"
+MODEL_VERSION = "media-metadata-v4"
 PROMPT = (
     "Describe public X media from canonical capture metadata. "
     "Do not infer visual content beyond alt text, captured metadata, or "
@@ -282,15 +282,26 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
     ):
         add("media:text-overlay")
     if is_video and re_search(
-        r"\b(polished|produced|edited|multi-shot|screencast|recruitment|psa|public service announcement|commercial)\b",
+        r"\b(polished|produced|edited|multi-shot|multi shot|rapid[- ]cut|b-roll|screencast|"
+        r"recruitment|psa|public service announcement|commercial|cinematic|trailer[- ]style|"
+        r"title[- ]card|end[- ]card|color[- ]graded|soundtrack|score|music bed)\b",
         haystack,
     ):
         add("media:produced-video")
-    if is_video and re_search(r"\bmontage\b|\bmultiple shots?\b|\bsequence of clips?\b", haystack):
+    if is_video and re_search(
+        r"\bmontage\b|\bmultiple shots?\b|\bsequence of clips?\b|\bseries of clips?\b|"
+        r"\bb-roll\b|\brapid[- ]cut\b|\bcuts between\b",
+        haystack,
+    ):
         add("media:montage")
-    if is_video and re_search(r"\bset to music\b|\bmusic track\b|\bsong\b|\banthem\b", haystack):
+    if is_video and re_search(
+        r"\bset to music\b|\bmusic track\b|\bsong\b|\banthem\b|\bsoundtrack\b|"
+        r"\bbackground music\b|\bmusic bed\b|\bscore\b|\bbeat\b|\bneedle drop\b",
+        haystack,
+    ):
         add("media:music-video")
-    if is_video and re_search(r"\bvoiceover\b|\bnarration\b|\bnarrator\b", haystack):
+        add("genre:music-video")
+    if is_video and re_search(r"\bvoiceover\b|\bvoice-over\b|\bnarration\b|\bnarrator\b|\bnarrated\b", haystack):
         add("media:voiceover")
     if is_video and re_search(
         r"\b(cnn|fox news|msnbc|cbs news|abc news|nbc news|newsmax|lower-third|chyron|broadcast)\b",
@@ -311,6 +322,25 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
         if re_search(r"\b(recruitment|apply now|apply today)\b", haystack):
             add("genre:recruitment")
         add("genre:advertisement")
+    if is_video and re_search(
+        r"\bwar[- ]movie\b|\bwar[- ]film\b|\baction[- ]movie\b|"
+        r"\b(?:cinematic|trailer[- ]style|dramatic)\b.{0,80}\b(?:battle|combat|military|raid|operation)\b|"
+        r"\b(?:battle|combat|military|raid|operation)\b.{0,80}\b(?:cinematic|trailer[- ]style|dramatic)\b",
+        haystack,
+    ):
+        add("genre:war-movie")
+    if is_video and re_search(
+        r"\bdystopian\b|\bsci[- ]?fi\b|\bscience[- ]fiction\b|\bcyberpunk\b|"
+        r"\b(?:bleak|dark|apocalyptic|hellscape|surveillance[- ]state|futuristic)\b.{0,80}\b(?:city|scene|vision|aesthetic|future)\b",
+        haystack,
+    ):
+        add("genre:dystopian")
+    if is_video and re_search(
+        r"\butopian\b|\bidealized\b|\baspirational\b|\bbright future\b|\bgolden age\b|"
+        r"\b(?:sunlit|heroic|triumphal)\b.{0,80}\b(?:montage|vision|future|aesthetic)\b",
+        haystack,
+    ):
+        add("genre:utopian")
     return out
 
 

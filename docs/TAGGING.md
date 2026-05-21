@@ -86,10 +86,11 @@ It emits neutral descriptions and tags for produced-video structure:
 `media:produced-video`, `media:music-video`, `media:montage`,
 `media:text-overlay`, `media:voiceover`, supported `genre:*` labels
 such as `genre:psa`, `genre:advertisement`, `genre:recruitment`, and
-`genre:music-video`, and `video:*` source/kind labels such as
-`video:bodycam`, `video:news-clip`, and `video:speech`. `speaker:*`
-tags require tweet text, visible captions, or other explicit context
-identifying the speaker.
+`genre:music-video`, `genre:war-movie`, `genre:utopian`, and
+`genre:dystopian`, and `video:*` source/kind labels such as
+`video:bodycam`, `video:news-clip`, and `video:speech`. `speaker:*` tags
+require tweet text, visible captions, or other explicit context identifying
+the speaker.
 
 The tag `media:ai-generated` is tentative when it is based on visible
 synthetic cues plus model judgment. It is firm only when the recognizer
@@ -121,6 +122,23 @@ both layers iterate frames by sha256, hash their inputs, and write their
 own sidecars keyed off the frame hash. No tweet parquets are modified,
 no API costs are incurred, and the work scales linearly with new
 archived videos.
+
+## Core video audit (`data/tags/core_video_audit.json`)
+
+`scripts.build_core_video_audit` is the working queue for produced-video
+research across all `core` accounts. It joins each core-account video or
+animated GIF against lexical tags, manual media review, metadata vision,
+paid LLM rows, audio/music detection, OCR, and keyframes. It writes a rich
+JSON artifact and a spreadsheet-friendly CSV at
+`data/tags/core_video_audit.csv`.
+
+The audit assigns buckets such as `genre-experiment`, `produced-video`,
+`needs-recognition`, `missing-media`, and `ordinary-video`, plus concrete
+`missing_steps` like `extract-keyframes`, `detect-audio`,
+`describe-with-vision`, and `assign-produced-video-genre`. This keeps the
+review surface focused on music-video, dystopian, war-movie, utopian,
+recruitment, advertisement, and PSA experiments before more scraping is
+considered.
 
 ## News-mentions sidecar (`data/tags/news_mentions.parquet`)
 

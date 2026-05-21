@@ -121,6 +121,12 @@ class GitHubReleaseClient:
                 f"{API_BASE}/repos/{self.owner}/{self.repo}/releases/{release_id}/assets",
                 params={"per_page": 100, "page": page},
             )
+            if r.status_code == 403:
+                LOG.warning(
+                    "archive: release asset listing forbidden; uploads will continue without duplicate preflight",
+                    release_id=release_id,
+                )
+                return out
             r.raise_for_status()
             items = cast(list[dict[str, Any]], r.json())
             if not items:
@@ -152,6 +158,9 @@ class GitHubReleaseClient:
         )
         r.raise_for_status()
         return cast(dict[str, Any], r.json())
+
+    def browser_download_url(self, tag: str, asset_name: str) -> str:
+        return f"https://github.com/{self.owner}/{self.repo}/releases/download/{tag}/{asset_name}"
 
 
 # --------------------------------------------------------------------------
@@ -198,10 +207,21 @@ def fetch_bytes(url: str, http: httpx.Client) -> bytes:
     return r.content
 
 
-def candidates_from_row(row: dict[str, Any]) -> Iterable[tuple[int, dict[str, Any]]]:
+def candidates_from_row(
+    row: dict[str, Any],
+    *,
+    tweet_ids: set[str] | None = None,
+    media_ids: set[str] | None = None,
+) -> Iterable[tuple[int, dict[str, Any]]]:
+    tid = str(row.get("tweet_id") or "")
+    if tweet_ids is not None and tid not in tweet_ids:
+        return
     media = row.get("media") or []
     for idx, m in enumerate(media):
         if not isinstance(m, dict):
+            continue
+        mid = str(m.get("media_id") or "")
+        if media_ids is not None and mid not in media_ids:
             continue
         if m.get("release_asset_url"):
             continue  # already archived
@@ -268,6 +288,9 @@ def archive_one_handle(
     gh: GitHubReleaseClient,
     http: httpx.Client,
     max_items: int,
+    *,
+    tweet_ids: set[str] | None = None,
+    media_ids: set[str] | None = None,
 ) -> tuple[int, int, int]:
     """Returns (archived, failed, skipped) counts for this handle."""
     df = load_parquet(parquet_path)
@@ -277,7 +300,7 @@ def archive_one_handle(
     # Collect candidates.
     todo: list[tuple[str, dict[str, Any]]] = []  # (tweet_id, media)
     for r in df.iter_rows(named=True):
-        for _idx, m in candidates_from_row(r):
+        for _idx, m in candidates_from_row(r, tweet_ids=tweet_ids, media_ids=media_ids):
             todo.append((str(r["tweet_id"]), m))
             if len(todo) >= max_items:
                 break
@@ -341,6 +364,23 @@ def archive_one_handle(
         try:
             uploaded = gh.upload_asset(release["upload_url"], asset_name, ct, data)
         except Exception as e:
+            if isinstance(e, httpx.HTTPStatusError) and e.response.status_code == 422:
+                per[mid] = {
+                    "release_asset_url": gh.browser_download_url(media_release_tag(handle), asset_name),
+                    "sha256": sha,
+                    "bytes": len(data),
+                    "archive_status": "archived",
+                    "archive_attempts": attempts + 1,
+                    "last_attempt_at": now_iso,
+                }
+                archived += 1
+                LOG.info(
+                    "archive: asset already exists; stitched parquet URL",
+                    handle=handle,
+                    tweet_id=tweet_id,
+                    media_id=mid,
+                )
+                continue
             failed += 1
             per[mid] = {
                 "archive_status": "failed",
@@ -381,9 +421,24 @@ def discover_handles(only: str | None) -> list[str]:
     return sorted(p.stem for p in DATA_DIR.glob("*.parquet"))
 
 
+def load_id_file(path: Path | None) -> set[str] | None:
+    if not path:
+        return None
+    ids: set[str] = set()
+    with path.open("r", encoding="utf-8") as f:
+        for line in f:
+            value = line.strip()
+            if not value or value.startswith("#"):
+                continue
+            ids.add(value.split(",", 1)[0].strip())
+    return ids
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--handle", help="Archive only this handle.")
+    p.add_argument("--tweet-ids-file", type=Path, help="Archive only tweets listed in this newline/CSV file.")
+    p.add_argument("--media-ids-file", type=Path, help="Archive only media IDs listed in this newline/CSV file.")
     p.add_argument(
         "--max-items",
         type=int,
@@ -413,6 +468,8 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     gh = GitHubReleaseClient(args.owner, args.repo, token)
+    tweet_ids = load_id_file(args.tweet_ids_file)
+    media_ids = load_id_file(args.media_ids_file)
     http = httpx.Client(
         headers={"User-Agent": "imm-archive-media/1.0"},
         follow_redirects=True,
@@ -426,7 +483,15 @@ def main(argv: list[str] | None = None) -> int:
             path = DATA_DIR / f"{handle}.parquet"
             if not path.exists():
                 continue
-            a, f, s = archive_one_handle(handle, path, gh, http, remaining)
+            a, f, s = archive_one_handle(
+                handle,
+                path,
+                gh,
+                http,
+                remaining,
+                tweet_ids=tweet_ids,
+                media_ids=media_ids,
+            )
             totals["archived"] += a
             totals["failed"] += f
             totals["skipped"] += s
