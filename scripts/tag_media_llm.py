@@ -56,8 +56,8 @@ DEFAULT_MODEL = DEFAULT_OPENAI_MODEL
 PRIMARY_PROVIDER = "openai"
 WATERMARK_PROVIDER = "gemini"
 MODEL_VERSION = "openai-vision-v2"
-DEFAULT_MAX_ITEMS = 20
-DEFAULT_BUDGET_USD = 2.0
+DEFAULT_MAX_ITEMS = 120
+DEFAULT_BUDGET_USD = 6.0
 DEFAULT_GEMINI_RATE_LIMIT_PER_MINUTE = 5
 MAX_IMAGES_PER_VIDEO = 3
 MAX_REMOTE_IMAGE_BYTES = 8_000_000
@@ -819,7 +819,9 @@ def run(
     if analyzer is None and not openai_api_key:
         stats["skipped_no_api_key"] = 1
         if not dry_run:
-            write_parquet(list(existing.values()), out_path)
+            preserved_rows = list(existing.values())
+            write_parquet(preserved_rows, out_path)
+            update_manifest(preserved_rows, dict(stats), generated_at)
         return dict(stats)
 
     for cand in discover_candidates(parquets):

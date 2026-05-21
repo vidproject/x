@@ -50,6 +50,11 @@ PROMPT = (
 )
 PROMPT_HASH = hashlib.sha256(PROMPT.encode("utf-8")).hexdigest()[:16]
 MANUAL_REVIEW_QUEUE_PATH = TAGS_DIR / "manual_media_review_queue.json"
+LEGACY_MANUAL_TAG_ALIASES = {
+    "video:ad": "genre:advertisement",
+    "video:music-video": "genre:music-video",
+    "video:psa": "genre:psa",
+}
 
 
 def discover_canonical_parquets() -> list[Path]:
@@ -202,20 +207,19 @@ def describe_media_item(
     duration_seconds = numeric(media.get("duration_sec"))
     if media_type in {"video", "animated_gif"} and 0 < duration_seconds <= 30:
         tags.append(tag_entry("media:short-video"))
-    for tag in derive_description_tags(
-        " ".join(
-            p
-            for p in [
-                description,
-                alt_text,
-                context,
-                " ".join(value for _, value, _ in card_context),
-                original_url,
-            ]
-            if p
-        ),
-        media_type=media_type,
-    ):
+    tag_derivation_text = " ".join(
+        p
+        for p in [
+            alt_text,
+            context,
+            " ".join(value for _, value, _ in card_context),
+            original_url,
+            tweet_excerpt,
+            visual_observation,
+        ]
+        if p
+    )
+    for tag in derive_description_tags(tag_derivation_text, media_type=media_type):
         tags.append(tag_entry(tag, source="media-description"))
     if manual_review:
         tags.extend(candidate_visual_tag_entries(manual_review, media_type=media_type))
@@ -269,6 +273,7 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
     does not inspect pixels by itself.
     """
     haystack = text.lower()
+    media_form_haystack = without_negated_media_form_claims(haystack)
     is_video = media_type in {"video", "animated_gif"}
     out: list[str] = []
 
@@ -281,23 +286,32 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
         haystack,
     ):
         add("media:text-overlay")
+    musical_score = (
+        r"\b(?:musical|orchestral|cinematic|dramatic|film|movie|trailer)\s+score\b"
+    )
+    musical_beat = r"\b(?:backing|driving|dance|rap|musical)\s+beat\b|\bbeat\s+drops?\b"
     if is_video and re_search(
         r"\b(polished|produced|edited|multi-shot|multi shot|rapid[- ]cut|b-roll|screencast|"
         r"recruitment|psa|public service announcement|commercial|cinematic|trailer[- ]style|"
-        r"title[- ]card|end[- ]card|color[- ]graded|soundtrack|score|music bed)\b",
-        haystack,
+        r"title[- ]card|end[- ]card|color[- ]graded|soundtrack|music bed)\b|"
+        + musical_score,
+        media_form_haystack,
     ):
         add("media:produced-video")
     if is_video and re_search(
         r"\bmontage\b|\bmultiple shots?\b|\bsequence of clips?\b|\bseries of clips?\b|"
         r"\bb-roll\b|\brapid[- ]cut\b|\bcuts between\b",
-        haystack,
+        media_form_haystack,
     ):
         add("media:montage")
     if is_video and re_search(
-        r"\bset to music\b|\bmusic track\b|\bsong\b|\banthem\b|\bsoundtrack\b|"
-        r"\bbackground music\b|\bmusic bed\b|\bscore\b|\bbeat\b|\bneedle drop\b",
-        haystack,
+        r"\bmusic\s+video\b|\bset to music\b|\bmusic track\b|"
+        r"\b(?:song|ballad)\s+(?:by|about|for)\b|"
+        r"\bsoundtrack\b|\bbackground music\b|\bmusic bed\b|\bneedle drop\b|"
+        + musical_score
+        + "|"
+        + musical_beat,
+        media_form_haystack,
     ):
         add("media:music-video")
         add("genre:music-video")
@@ -344,6 +358,19 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
     return out
 
 
+NEGATED_MEDIA_FORM_PATTERN = re.compile(
+    r"\b(?:not|no|without|never|isn['’]?t|is\s+not|does\s+not\s+appear\s+to\s+be)\b"
+    r".{0,90}\b(?:music\s+videos?|music[- ](?:led|driven)\s+(?:clips?|montages?|videos?)|"
+    r"produced[- ]videos?|produced\s+videos?|montages?|soundtracks?|music\s+beds?)\b",
+    re.I,
+)
+
+
+def without_negated_media_form_claims(text: str) -> str:
+    """Drop negated media-form phrases before positive media-form matching."""
+    return NEGATED_MEDIA_FORM_PATTERN.sub(" ", text)
+
+
 def re_search(pattern: str, text: str) -> bool:
     return re.search(pattern, text, re.I) is not None
 
@@ -361,6 +388,7 @@ def candidate_visual_tag_entries(
     seen: set[str] = set()
     for value in raw:
         tag = str(value or "").strip()
+        tag = LEGACY_MANUAL_TAG_ALIASES.get(tag, tag)
         if not tag or tag in seen:
             continue
         # Do not apply video:* tags to still-image review rows. Those notes

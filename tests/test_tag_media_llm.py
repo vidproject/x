@@ -345,6 +345,10 @@ def test_missing_keys_preserve_existing_rows(tmp_corpus: Path) -> None:
     out = pl.read_parquet(tmp_corpus / "data" / "tags" / "media_llm.parquet")
     assert out.height == 1
     assert out.row(0, named=True)["tweet_id"] == "old"
+    manifest = json.loads((tmp_corpus / "data" / "tags" / "manifest.json").read_text())
+    layer = manifest["layers"]["media_llm"]
+    assert layer["rows"] == 1
+    assert layer["skipped_no_api_key"] == 1
 
 
 def test_manifest_records_paid_layer(tmp_corpus: Path) -> None:

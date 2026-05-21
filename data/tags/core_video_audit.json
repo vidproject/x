@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-21T22:58:08Z",
+  "generated_at": "2026-05-21T23:30:44Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -19,10 +19,10 @@
   "summary": {
     "videos": 1337,
     "bucket_counts": {
-      "genre-experiment": 16,
+      "genre-experiment": 11,
       "missing-media": 276,
-      "needs-recognition": 636,
-      "ordinary-video": 296,
+      "needs-recognition": 640,
+      "ordinary-video": 297,
       "produced-video": 113
     },
     "top_tags": {
@@ -30,7 +30,7 @@
       "media:archived": 1085,
       "media:described": 1085,
       "media:video": 1076,
-      "media:needs-vision": 1072,
+      "media:needs-vision": 1071,
       "video:medium": 865,
       "audio:has-audio": 326,
       "video:short": 287,
@@ -42,7 +42,7 @@
       "topic:economy": 145,
       "frame:criminal": 142,
       "slogan:illegal-alien": 135,
-      "media:produced-video": 133,
+      "media:produced-video": 127,
       "agency:USCIS": 96,
       "format:retweet": 93,
       "agency:CBP": 88,
@@ -51,14 +51,14 @@
       "genre:psa": 85,
       "topic:military": 79,
       "topic:laudatory": 65,
-      "agency:SecMullinDHS": 63,
       "speaker:President Trump": 63,
+      "agency:SecMullinDHS": 63,
       "slogan:criminal-illegal-alien": 58,
       "action:detention": 54,
       "crime:homicide": 51,
       "homicide:murder": 50,
-      "crime:fraud": 47,
-      "topic:general": 46,
+      "crime:fraud": 48,
+      "topic:general": 47,
       "action:deportation": 41,
       "theme:religion": 35,
       "legal:criminal-prosecution": 35,
@@ -67,10 +67,10 @@
       "genre:advertisement": 27,
       "agency:TSA": 27,
       "crime:weapon": 27,
-      "audio:music-likely": 26,
       "format:reply": 25,
       "country:China": 23,
       "crime:trafficking": 23,
+      "audio:music-likely": 22,
       "branch:coast-guard": 21,
       "genre:recruitment": 20,
       "theme:sanctuary-cities": 19,
@@ -364,53 +364,6 @@
       "description": "video; 640x360; 15.0s; 0.55 MiB; archived; tweet context: Under @POTUS, we’re equipping our workforce with the in-demand skills needed to build a Golden Age of Prosperity for generations to come 🇺🇸 http://APPRENTICESHIP.GOV https://t.co/1NVSaEtmKP; source URL: https://video.twimg.com/ext_tw_video/2034746399338762240/pu/vid/avc1/640x360/0YEuIVLEvUbmPLVc.mp4?tag=19; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/7_2034746399338762240.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 640x360; 15.0s; 0.55 MiB; archived; tweet context: Under @POTUS, we’re equipping our workforce with the in-demand skills needed to build a Golden Age of Prosperity for generations to come 🇺🇸 http://APPRENTICESHIP.GOV https://t.co/1NVSaEtmKP; source URL: https://video.twimg.com/ext_tw_video/2034746399338762240/pu/vid/avc1/640x360/0YEuIVLEvUbmPLVc.mp4?tag=19; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/7_2034746399338762240.mp4; needs OCR, transcript, or frame-level vision before content claims. Under @POTUS, we’re equipping our workforce with the in-demand skills needed to build a Golden Age of Prosperity for generat"
     },
     {
-      "tweet_id": "2045268086119694377",
-      "account_handle": "RapidResponse47",
-      "posted_at": "2026-04-17T22:28:05.000Z",
-      "tweet_url": "https://x.com/RapidResponse47/status/2045268086119694377",
-      "tweet_text": ".@POTUS: For years, we were ruled by fools who let every third-rate country push us around and bleed us dry — but those days are OVER. America was not founded by weak and timid men who cowered in the face of evil or sat by as danger loomed. Our ancestors knew exactly what to do with America's enemies — BEAT THEM and beat them good.",
-      "media_id": "13_2045267532475506688",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2045267532475506688.mp4",
-      "duration_sec": 74.474,
-      "width": 1280,
-      "height": 720,
-      "like_count": 13068,
-      "retweet_count": 2929,
-      "bucket": "genre-experiment",
-      "priority": 100,
-      "tags": [
-        "agency:POTUS",
-        "audio:music-likely",
-        "genre:music-video",
-        "media:archived",
-        "media:described",
-        "media:music-video",
-        "media:needs-vision",
-        "media:produced-video",
-        "media:video",
-        "topic:immigration",
-        "video:medium"
-      ],
-      "genre_tags": [
-        "genre:music-video"
-      ],
-      "produced_video_tags": [
-        "media:music-video",
-        "media:produced-video"
-      ],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 1280x720; 74.5s; 4.26 MiB; archived; tweet context: .@POTUS: For years, we were ruled by fools who let every third-rate country push us around and bleed us dry — but those days are OVER. America was not founded by weak and timid men who cowered in the face of evil or sat by as danger loomed. Our ancestors knew...; source URL: https://video.twimg.com/amplify_video/2045267532475506688/vid/avc1/1280x720/jrndPuUzp96WdVyM.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2045267532475506688.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 74.5s; 4.26 MiB; archived; tweet context: .@POTUS: For years, we were ruled by fools who let every third-rate country push us around and bleed us dry — but those days are OVER. America was not founded by weak and timid men who cowered in the face of evil or sat by as danger loomed. Our ancestors knew...; source URL: https://video.twimg.com/amplify_video/2045267532475506688/vid/avc1/1280x720/jrndPuUzp96WdVyM.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2045267532475506688.mp4; needs OCR, transcript, o"
-    },
-    {
       "tweet_id": "2051473750873321574",
       "account_handle": "WhiteHouse",
       "posted_at": "2026-05-05T01:27:11.000Z",
@@ -503,54 +456,6 @@
       "description": "video; 4096x2160; 8.9s; 3.46 MiB; archived; tweet context: RT @WhiteHouse: BEST I CAN DO IS THE GOLDEN AGE FOR SMALL BUSINESSES 🔥 Pawn Stars' Rick Harrison x White House 🇺🇸 https://t.co/lIaSBg3duK; source URL: https://video.twimg.com/amplify_video/2051473238694170633/vid/avc1/4096x2160/R65gavK2ckyB-14b.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-POTUS/13_2051473238694170633.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 4096x2160; 8.9s; 3.46 MiB; archived; tweet context: RT @WhiteHouse: BEST I CAN DO IS THE GOLDEN AGE FOR SMALL BUSINESSES 🔥 Pawn Stars' Rick Harrison x White House 🇺🇸 https://t.co/lIaSBg3duK; source URL: https://video.twimg.com/amplify_video/2051473238694170633/vid/avc1/4096x2160/R65gavK2ckyB-14b.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-POTUS/13_2051473238694170633.mp4; needs OCR, transcript, or frame-level vision before content claims. RT @WhiteHouse: BEST I CAN DO IS THE GOLDEN AGE FOR SMALL BUSINESSES 🔥 Pawn Stars' Rick Harrison x White House 🇺🇸 https://t.co/lIaSBg3duK"
     },
     {
-      "tweet_id": "2051810460865896871",
-      "account_handle": "DHSgov",
-      "posted_at": "2026-05-05T23:45:09.000Z",
-      "tweet_url": "https://x.com/DHSgov/status/2051810460865896871",
-      "tweet_text": "ICE IS NOT SLOWING DOWN.\n\n“We haven’t missed a beat. We’re still on track — pushing as hard as we can. We just are doing it in a different way by using local law enforcement to work with us. \" @SecMullinDHS https://t.co/3r5Sr3Xz6g",
-      "media_id": "13_2051810371954958340",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_2051810371954958340.mp4",
-      "duration_sec": 94.727,
-      "width": 1280,
-      "height": 720,
-      "like_count": 17525,
-      "retweet_count": 3195,
-      "bucket": "genre-experiment",
-      "priority": 100,
-      "tags": [
-        "agency:ICEgov",
-        "agency:SecMullinDHS",
-        "audio:music-likely",
-        "genre:music-video",
-        "media:archived",
-        "media:described",
-        "media:music-video",
-        "media:needs-vision",
-        "media:produced-video",
-        "media:video",
-        "topic:immigration",
-        "video:medium"
-      ],
-      "genre_tags": [
-        "genre:music-video"
-      ],
-      "produced_video_tags": [
-        "media:music-video",
-        "media:produced-video"
-      ],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 1280x720; 94.7s; 9.96 MiB; archived; tweet context: ICE IS NOT SLOWING DOWN. “We haven’t missed a beat. We’re still on track — pushing as hard as we can. We just are doing it in a different way by using local law enforcement to work with us. \" @SecMullinDHS https://t.co/3r5Sr3Xz6g; source URL: https://video.twimg.com/amplify_video/2051810371954958340/vid/avc1/1280x720/vvIPIixrHU56o5Ss.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2051810371954958340.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 94.7s; 9.96 MiB; archived; tweet context: ICE IS NOT SLOWING DOWN. “We haven’t missed a beat. We’re still on track — pushing as hard as we can. We just are doing it in a different way by using local law enforcement to work with us. \" @SecMullinDHS https://t.co/3r5Sr3Xz6g; source URL: https://video.twimg.com/amplify_video/2051810371954958340/vid/avc1/1280x720/vvIPIixrHU56o5Ss.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2051810371954958340.mp4; needs OCR, transcript, or frame-level vision before content claims. ICE IS NOT SLOWING DOWN. “We haven’t mis"
-    },
-    {
       "tweet_id": "2052065008889073999",
       "account_handle": "USDOL",
       "posted_at": "2026-05-06T16:36:38.000Z",
@@ -598,59 +503,6 @@
       "description": "video; 1280x720; 42.6s; 3.88 MiB; archived; tweet context: The GOLDEN AGE is here—thanks to @POTUS’ bold leadership and unwavering commitment to our Nation’s Workforce 🇺🇸 https://t.co/4ZltVgiT4d; source URL: https://video.twimg.com/amplify_video/2052064882711736322/vid/avc1/1280x720/Mp8yvVDX-ORrMCJf.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_2052064882711736322.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 42.6s; 3.88 MiB; archived; tweet context: The GOLDEN AGE is here—thanks to @POTUS’ bold leadership and unwavering commitment to our Nation’s Workforce 🇺🇸 https://t.co/4ZltVgiT4d; source URL: https://video.twimg.com/amplify_video/2052064882711736322/vid/avc1/1280x720/Mp8yvVDX-ORrMCJf.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_2052064882711736322.mp4; needs OCR, transcript, or frame-level vision before content claims. The GOLDEN AGE is here—thanks to @POTUS’ bold leadership and unwavering commitment to our Nation’s Workforce 🇺🇸 https://t.co/4ZltVgiT4d"
     },
     {
-      "tweet_id": "2052084721186725958",
-      "account_handle": "DHSgov",
-      "posted_at": "2026-05-06T17:54:58.000Z",
-      "tweet_url": "https://x.com/DHSgov/status/2052084721186725958",
-      "tweet_text": "A TERRIFYING story out of Suffolk County, New York. \n\nThis illegal alien BEAT a man unconscious then RAPED him behind a dumpster.\n\n@ICEgov is ensuring this MONSTER can never prey on another innocent victim again. https://t.co/Y8DJ7ld5rf",
-      "media_id": "13_2052084656799903746",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_2052084656799903746.mp4",
-      "duration_sec": 39.033,
-      "width": 960,
-      "height": 540,
-      "like_count": 6612,
-      "retweet_count": 2135,
-      "bucket": "genre-experiment",
-      "priority": 100,
-      "tags": [
-        "agency:ICEgov",
-        "audio:music-likely",
-        "crime:rape",
-        "crime:sexual",
-        "format:quote",
-        "frame:criminal",
-        "genre:music-video",
-        "media:archived",
-        "media:described",
-        "media:music-video",
-        "media:needs-vision",
-        "media:produced-video",
-        "media:video",
-        "slogan:illegal-alien",
-        "state:New-York",
-        "topic:immigration",
-        "video:medium"
-      ],
-      "genre_tags": [
-        "genre:music-video"
-      ],
-      "produced_video_tags": [
-        "media:music-video",
-        "media:produced-video"
-      ],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 960x540; 39.0s; 1.58 MiB; archived; tweet context: A TERRIFYING story out of Suffolk County, New York. This illegal alien BEAT a man unconscious then RAPED him behind a dumpster. @ICEgov is ensuring this MONSTER can never prey on another innocent victim again. https://t.co/Y8DJ7ld5rf; source URL: https://video.twimg.com/amplify_video/2052084656799903746/vid/avc1/960x540/o0VRCEDoZbkzIy8m.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2052084656799903746.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 960x540; 39.0s; 1.58 MiB; archived; tweet context: A TERRIFYING story out of Suffolk County, New York. This illegal alien BEAT a man unconscious then RAPED him behind a dumpster. @ICEgov is ensuring this MONSTER can never prey on another innocent victim again. https://t.co/Y8DJ7ld5rf; source URL: https://video.twimg.com/amplify_video/2052084656799903746/vid/avc1/960x540/o0VRCEDoZbkzIy8m.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2052084656799903746.mp4; needs OCR, transcript, or frame-level vision before content claims. A TERRIFYING story out of Suffolk Co"
-    },
-    {
       "tweet_id": "2054746869255778586",
       "account_handle": "RapidResponse47",
       "posted_at": "2026-05-14T02:13:23.000Z",
@@ -675,7 +527,6 @@
         "media:described",
         "media:music-video",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
         "video:medium"
@@ -684,8 +535,7 @@
         "genre:music-video"
       ],
       "produced_video_tags": [
-        "media:music-video",
-        "media:produced-video"
+        "media:music-video"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -739,105 +589,6 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 26.5s; 2.07 MiB; archived; tweet context: President Xi offers a toast at the state banquet dinner in Beijing: \"To the bright future of China-U.S. relations, and the friendship between the two peoples, and to the health of President Trump and all of the friends present.\" https://t.co/VmJeU4Xk1f; source URL: https://video.twimg.com/amplify_video/2054871972148842496/vid/avc1/1280x720/HMa2S5NFwhRYjxyd.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054871972148842496.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 26.5s; 2.07 MiB; archived; tweet context: President Xi offers a toast at the state banquet dinner in Beijing: \"To the bright future of China-U.S. relations, and the friendship between the two peoples, and to the health of President Trump and all of the friends present.\" https://t.co/VmJeU4Xk1f; source URL: https://video.twimg.com/amplify_video/2054871972148842496/vid/avc1/1280x720/HMa2S5NFwhRYjxyd.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054871972148842496.mp4; needs OCR, transcript, or frame-level vision"
-    },
-    {
-      "tweet_id": "2054970795403952144",
-      "account_handle": "RapidResponse47",
-      "posted_at": "2026-05-14T17:03:11.000Z",
-      "tweet_url": "https://x.com/RapidResponse47/status/2054970795403952144",
-      "tweet_text": "\"I'm talking about the construction worker who can’t buy a cellphone, because when an illegal alien goes and steals their identity, and applies for SNAP benefits, now, all of a sudden, they’re tagged in the banking system, their credit score is ruined—not because they did a single thing wrong, but because somebody stole their identity.\"\n\n@VP on why the efforts of the @WHFraudTF are so important:",
-      "media_id": "13_2054969804247748608",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054969804247748608.mp4",
-      "duration_sec": 187.22,
-      "width": 1280,
-      "height": 720,
-      "like_count": 9641,
-      "retweet_count": 1703,
-      "bucket": "genre-experiment",
-      "priority": 100,
-      "tags": [
-        "audio:has-audio",
-        "audio:music-likely",
-        "crime:theft",
-        "frame:criminal",
-        "genre:music-video",
-        "media:archived",
-        "media:described",
-        "media:music-video",
-        "media:needs-vision",
-        "media:produced-video",
-        "media:video",
-        "slogan:illegal-alien",
-        "topic:economy",
-        "topic:immigration",
-        "video:long"
-      ],
-      "genre_tags": [
-        "genre:music-video"
-      ],
-      "produced_video_tags": [
-        "media:music-video",
-        "media:produced-video"
-      ],
-      "missing_steps": [],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 1280x720; 187.2s; 23.86 MiB; archived; tweet context: \"I'm talking about the construction worker who can’t buy a cellphone, because when an illegal alien goes and steals their identity, and applies for SNAP benefits, now, all of a sudden, they’re tagged in the banking system, their credit score is ruined—not bec...; source URL: https://video.twimg.com/amplify_video/2054969804247748608/vid/avc1/1280x720/4MKmHhuaCu_vndH8.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054969804247748608.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 187.2s; 23.86 MiB; archived; tweet context: \"I'm talking about the construction worker who can’t buy a cellphone, because when an illegal alien goes and steals their identity, and applies for SNAP benefits, now, all of a sudden, they’re tagged in the banking system, their credit score is ruined—not bec...; source URL: https://video.twimg.com/amplify_video/2054969804247748608/vid/avc1/1280x720/4MKmHhuaCu_vndH8.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054969804247748608.mp4; needs OCR, transcrip"
-    },
-    {
-      "tweet_id": "2057136781452009644",
-      "account_handle": "CBP",
-      "posted_at": "2026-05-20T16:30:03.000Z",
-      "tweet_url": "https://x.com/CBP/status/2057136781452009644",
-      "tweet_text": "If you're here illegally, you have until the end of this song to go. Download the CBP Home App and self-deport today. https://t.co/bIuXwEgdxQ",
-      "media_id": "7_2057135594724048896",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-CBP/7_2057135594724048896.mp4",
-      "duration_sec": 13.68,
-      "width": 720,
-      "height": 1280,
-      "like_count": 1045,
-      "retweet_count": 201,
-      "bucket": "genre-experiment",
-      "priority": 100,
-      "tags": [
-        "action:self-deportation",
-        "agency:CBP",
-        "audio:music-likely",
-        "genre:music-video",
-        "media:archived",
-        "media:described",
-        "media:music-video",
-        "media:needs-vision",
-        "media:produced-video",
-        "media:short-video",
-        "media:video",
-        "subject:cbp-home-app",
-        "theme:cbp-home",
-        "topic:immigration",
-        "video:short"
-      ],
-      "genre_tags": [
-        "genre:music-video"
-      ],
-      "produced_video_tags": [
-        "media:music-video",
-        "media:produced-video"
-      ],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 720x1280; 13.7s; 2.84 MiB; archived; tweet context: If you're here illegally, you have until the end of this song to go. Download the CBP Home App and self-deport today. https://t.co/bIuXwEgdxQ; source URL: https://video.twimg.com/ext_tw_video/2057135594724048896/pu/vid/avc1/720x1280/SAPNTFuvjOG0yf8K.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/7_2057135594724048896.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 720x1280; 13.7s; 2.84 MiB; archived; tweet context: If you're here illegally, you have until the end of this song to go. Download the CBP Home App and self-deport today. https://t.co/bIuXwEgdxQ; source URL: https://video.twimg.com/ext_tw_video/2057135594724048896/pu/vid/avc1/720x1280/SAPNTFuvjOG0yf8K.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/7_2057135594724048896.mp4; needs OCR, transcript, or frame-level vision before content claims. If you're here illegally, you have until the end of this song to go. Download the CBP Home App and self-deport today. https://t.co/bIuXwEgdxQ"
     },
     {
       "tweet_id": "1969163310869205404",
@@ -1871,9 +1622,6 @@
         "media:text-overlay",
         "media:video",
         "topic:economy",
-        "video:ad",
-        "video:news-clip",
-        "video:psa",
         "video:short"
       ],
       "genre_tags": [
@@ -1971,7 +1719,6 @@
         "media:video",
         "topic:immigration",
         "topic:military",
-        "video:ad",
         "video:short"
       ],
       "genre_tags": [
@@ -1988,7 +1735,7 @@
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
-      "description": "video; 720x1280; 23.2s; 2.55 MiB; archived; tweet context: You know you wanna be her 🇺🇸 https://t.co/ZHq3Nx0TyY; source URL: https://video.twimg.com/amplify_video/2056861025304018946/vid/avc1/720x1280/qLpTnxlRlf2B21oD.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2056861025304018946.mp4; visual observation: Polished produced recruitment-style montage of female DHS / Coast Guard / Secret Service / HSI personnel in uniform, ending on a U.S. Department of Homeland Security end-card.; tagging gap: Text is too sparse for the existing video:ad / branch:coast-guard / video:music-video regexes. Needs Layer 3a (CLIP), 3b (OCR on the end-card seal), or 3c (audio) before any of these tags become deterministic.. | video; 720x1280; 23.2s; 2.55 MiB; archived; tweet context: You know you wanna be her 🇺🇸 https://t.co/ZHq3Nx0TyY; source URL: https://video.twimg.com/amplify_video/2056861025304018946/vid/avc1/720x1280/qLpTnxlRlf2B21oD.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2056861025304018946.mp4; visual observation: Polished produced recruitment-style montage of female DHS / Coast Guard / Secret Service "
+      "description": "video; 720x1280; 23.2s; 2.55 MiB; archived; tweet context: You know you wanna be her 🇺🇸 https://t.co/ZHq3Nx0TyY; source URL: https://video.twimg.com/amplify_video/2056861025304018946/vid/avc1/720x1280/qLpTnxlRlf2B21oD.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2056861025304018946.mp4; visual observation: Polished produced recruitment-style montage of female DHS / Coast Guard / Secret Service / HSI personnel in uniform, ending on a U.S. Department of Homeland Security end-card.; tagging gap: Text is too sparse for the existing genre:advertisement / branch:coast-guard regexes. Needs Layer 3a (CLIP), 3b (OCR on the end-card seal), or 3c (audio) before any of these tags become deterministic.. | video; 720x1280; 23.2s; 2.55 MiB; archived; tweet context: You know you wanna be her 🇺🇸 https://t.co/ZHq3Nx0TyY; source URL: https://video.twimg.com/amplify_video/2056861025304018946/vid/avc1/720x1280/qLpTnxlRlf2B21oD.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2056861025304018946.mp4; visual observation: Polished produced recruitment-style montage of female DHS / Coast Guard / Secret Service / HSI per"
     },
     {
       "tweet_id": "1022916782233989120",
@@ -5568,7 +5315,6 @@
         "media:video",
         "topic:general",
         "topic:immigration",
-        "video:psa",
         "video:short"
       ],
       "genre_tags": [
@@ -5853,6 +5599,49 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 126.8s; 9.50 MiB; archived; tweet context: Learn more about the denaturalization of immigrants who fraudulently gained U.S. citizenship and ICE’s role in the process. ⬇️ https://t.co/CyE3sTod7w; source URL: https://video.twimg.com/ext_tw_video/2057129281994584064/pu/vid/avc1/1280x720/Nqiw8CKbyafnEYU6.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2057129281994584064.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 126.8s; 9.50 MiB; archived; tweet context: Learn more about the denaturalization of immigrants who fraudulently gained U.S. citizenship and ICE’s role in the process. ⬇️ https://t.co/CyE3sTod7w; source URL: https://video.twimg.com/ext_tw_video/2057129281994584064/pu/vid/avc1/1280x720/Nqiw8CKbyafnEYU6.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2057129281994584064.mp4; needs OCR, transcript, or frame-level vision before content claims. Learn more about the denaturalization of immigrants who fraudulently gained U.S. citizenship and ICE’s role in the process. ⬇️ https://t.co/CyE3sTod7w"
+    },
+    {
+      "tweet_id": "2057136781452009644",
+      "account_handle": "CBP",
+      "posted_at": "2026-05-20T16:30:03.000Z",
+      "tweet_url": "https://x.com/CBP/status/2057136781452009644",
+      "tweet_text": "If you're here illegally, you have until the end of this song to go. Download the CBP Home App and self-deport today. https://t.co/bIuXwEgdxQ",
+      "media_id": "7_2057135594724048896",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-CBP/7_2057135594724048896.mp4",
+      "duration_sec": 13.68,
+      "width": 720,
+      "height": 1280,
+      "like_count": 1045,
+      "retweet_count": 201,
+      "bucket": "needs-recognition",
+      "priority": 83,
+      "tags": [
+        "action:self-deportation",
+        "agency:CBP",
+        "audio:music-likely",
+        "media:archived",
+        "media:described",
+        "media:needs-vision",
+        "media:short-video",
+        "media:video",
+        "subject:cbp-home-app",
+        "theme:cbp-home",
+        "topic:immigration",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes",
+        "detect-audio"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": false,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 720x1280; 13.7s; 2.84 MiB; archived; tweet context: If you're here illegally, you have until the end of this song to go. Download the CBP Home App and self-deport today. https://t.co/bIuXwEgdxQ; source URL: https://video.twimg.com/ext_tw_video/2057135594724048896/pu/vid/avc1/720x1280/SAPNTFuvjOG0yf8K.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/7_2057135594724048896.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 720x1280; 13.7s; 2.84 MiB; archived; tweet context: If you're here illegally, you have until the end of this song to go. Download the CBP Home App and self-deport today. https://t.co/bIuXwEgdxQ; source URL: https://video.twimg.com/ext_tw_video/2057135594724048896/pu/vid/avc1/720x1280/SAPNTFuvjOG0yf8K.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/7_2057135594724048896.mp4; needs OCR, transcript, or frame-level vision before content claims. If you're here illegally, you have until the end of this song to go. Download the CBP Home App and self-deport today. https://t.co/bIuXwEgdxQ"
     },
     {
       "tweet_id": "1620816038312177664",
@@ -14062,6 +13851,44 @@
       "description": "video; 960x540; 32.6s; 1.27 MiB; archived; tweet context: This sick illegal alien MURDERED his wife and then dumped her body. He should NOT have been in our country, but entered illegally under the Obama administration. We will continue working with our partners in Tulsa to ensure this monster is NEVER released back...; source URL: https://video.twimg.com/amplify_video/2045209593429569536/vid/avc1/960x540/SvNPExqHda_sZ_8G.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2045209593429569536.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 960x540; 32.6s; 1.27 MiB; archived; tweet context: This sick illegal alien MURDERED his wife and then dumped her body. He should NOT have been in our country, but entered illegally under the Obama administration. We will continue working with our partners in Tulsa to ensure this monster is NEVER released back...; source URL: https://video.twimg.com/amplify_video/2045209593429569536/vid/avc1/960x540/SvNPExqHda_sZ_8G.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2045209593429569536.mp4; needs OCR, transcript, or frame-level vision b"
     },
     {
+      "tweet_id": "2045268086119694377",
+      "account_handle": "RapidResponse47",
+      "posted_at": "2026-04-17T22:28:05.000Z",
+      "tweet_url": "https://x.com/RapidResponse47/status/2045268086119694377",
+      "tweet_text": ".@POTUS: For years, we were ruled by fools who let every third-rate country push us around and bleed us dry — but those days are OVER. America was not founded by weak and timid men who cowered in the face of evil or sat by as danger loomed. Our ancestors knew exactly what to do with America's enemies — BEAT THEM and beat them good.",
+      "media_id": "13_2045267532475506688",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2045267532475506688.mp4",
+      "duration_sec": 74.474,
+      "width": 1280,
+      "height": 720,
+      "like_count": 13068,
+      "retweet_count": 2929,
+      "bucket": "needs-recognition",
+      "priority": 75,
+      "tags": [
+        "agency:POTUS",
+        "media:archived",
+        "media:described",
+        "media:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes",
+        "detect-audio"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": false,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 74.5s; 4.26 MiB; archived; tweet context: .@POTUS: For years, we were ruled by fools who let every third-rate country push us around and bleed us dry — but those days are OVER. America was not founded by weak and timid men who cowered in the face of evil or sat by as danger loomed. Our ancestors knew...; source URL: https://video.twimg.com/amplify_video/2045267532475506688/vid/avc1/1280x720/jrndPuUzp96WdVyM.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2045267532475506688.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 74.5s; 4.26 MiB; archived; tweet context: .@POTUS: For years, we were ruled by fools who let every third-rate country push us around and bleed us dry — but those days are OVER. America was not founded by weak and timid men who cowered in the face of evil or sat by as danger loomed. Our ancestors knew...; source URL: https://video.twimg.com/amplify_video/2045267532475506688/vid/avc1/1280x720/jrndPuUzp96WdVyM.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2045267532475506688.mp4; needs OCR, transcript, o"
+    },
+    {
       "tweet_id": "2045268548193329625",
       "account_handle": "RapidResponse47",
       "posted_at": "2026-04-17T22:29:55.000Z",
@@ -18092,6 +17919,45 @@
       "description": "video; 1280x720; 29.3s; 1.94 MiB; archived; tweet context: “We’re doing exactly what we’re supposed to do. We’re enforcing immigration policies throughout the nation. @ICEgov is doing a phenomenal job.” @SecMullinDHS https://t.co/zWAfHNvlzN; source URL: https://video.twimg.com/amplify_video/2051795974675140610/vid/avc1/1280x720/Z2AFKSBJDgw0EjGh.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2051795974675140610.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 29.3s; 1.94 MiB; archived; tweet context: “We’re doing exactly what we’re supposed to do. We’re enforcing immigration policies throughout the nation. @ICEgov is doing a phenomenal job.” @SecMullinDHS https://t.co/zWAfHNvlzN; source URL: https://video.twimg.com/amplify_video/2051795974675140610/vid/avc1/1280x720/Z2AFKSBJDgw0EjGh.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2051795974675140610.mp4; needs OCR, transcript, or frame-level vision before content claims. “We’re doing exactly what we’re supposed to do. We’re enforcing immigration policies throughout the nation. @ICEgov is doing a phenomena"
     },
     {
+      "tweet_id": "2051810460865896871",
+      "account_handle": "DHSgov",
+      "posted_at": "2026-05-05T23:45:09.000Z",
+      "tweet_url": "https://x.com/DHSgov/status/2051810460865896871",
+      "tweet_text": "ICE IS NOT SLOWING DOWN.\n\n“We haven’t missed a beat. We’re still on track — pushing as hard as we can. We just are doing it in a different way by using local law enforcement to work with us. \" @SecMullinDHS https://t.co/3r5Sr3Xz6g",
+      "media_id": "13_2051810371954958340",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_2051810371954958340.mp4",
+      "duration_sec": 94.727,
+      "width": 1280,
+      "height": 720,
+      "like_count": 17525,
+      "retweet_count": 3195,
+      "bucket": "needs-recognition",
+      "priority": 75,
+      "tags": [
+        "agency:ICEgov",
+        "agency:SecMullinDHS",
+        "media:archived",
+        "media:described",
+        "media:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes",
+        "detect-audio"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": false,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 94.7s; 9.96 MiB; archived; tweet context: ICE IS NOT SLOWING DOWN. “We haven’t missed a beat. We’re still on track — pushing as hard as we can. We just are doing it in a different way by using local law enforcement to work with us. \" @SecMullinDHS https://t.co/3r5Sr3Xz6g; source URL: https://video.twimg.com/amplify_video/2051810371954958340/vid/avc1/1280x720/vvIPIixrHU56o5Ss.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2051810371954958340.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 94.7s; 9.96 MiB; archived; tweet context: ICE IS NOT SLOWING DOWN. “We haven’t missed a beat. We’re still on track — pushing as hard as we can. We just are doing it in a different way by using local law enforcement to work with us. \" @SecMullinDHS https://t.co/3r5Sr3Xz6g; source URL: https://video.twimg.com/amplify_video/2051810371954958340/vid/avc1/1280x720/vvIPIixrHU56o5Ss.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2051810371954958340.mp4; needs OCR, transcript, or frame-level vision before content claims. ICE IS NOT SLOWING DOWN. “We haven’t mis"
+    },
+    {
       "tweet_id": "2052011563314188489",
       "account_handle": "RapidResponse47",
       "posted_at": "2026-05-06T13:04:15.000Z",
@@ -18167,6 +18033,50 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 960x540; 35.8s; 1.57 MiB; archived; tweet context: “We had a historic illegal immigration crisis for four years. So what’s required now? A historic mass deportation.” @RealTomHoman https://t.co/IjHBmi8dUR; source URL: https://video.twimg.com/amplify_video/2052017270398836742/vid/avc1/960x540/0GgypUPl8czetpkS.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2052017270398836742.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 960x540; 35.8s; 1.57 MiB; archived; tweet context: “We had a historic illegal immigration crisis for four years. So what’s required now? A historic mass deportation.” @RealTomHoman https://t.co/IjHBmi8dUR; source URL: https://video.twimg.com/amplify_video/2052017270398836742/vid/avc1/960x540/0GgypUPl8czetpkS.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2052017270398836742.mp4; needs OCR, transcript, or frame-level vision before content claims. “We had a historic illegal immigration crisis for four years. So what’s required now? A historic mass deportation.” @RealTomHoman https://t.co/IjHBmi8dUR"
+    },
+    {
+      "tweet_id": "2052084721186725958",
+      "account_handle": "DHSgov",
+      "posted_at": "2026-05-06T17:54:58.000Z",
+      "tweet_url": "https://x.com/DHSgov/status/2052084721186725958",
+      "tweet_text": "A TERRIFYING story out of Suffolk County, New York. \n\nThis illegal alien BEAT a man unconscious then RAPED him behind a dumpster.\n\n@ICEgov is ensuring this MONSTER can never prey on another innocent victim again. https://t.co/Y8DJ7ld5rf",
+      "media_id": "13_2052084656799903746",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_2052084656799903746.mp4",
+      "duration_sec": 39.033,
+      "width": 960,
+      "height": 540,
+      "like_count": 6612,
+      "retweet_count": 2135,
+      "bucket": "needs-recognition",
+      "priority": 75,
+      "tags": [
+        "agency:ICEgov",
+        "crime:rape",
+        "crime:sexual",
+        "format:quote",
+        "frame:criminal",
+        "media:archived",
+        "media:described",
+        "media:needs-vision",
+        "media:video",
+        "slogan:illegal-alien",
+        "state:New-York",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes",
+        "detect-audio"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": false,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 960x540; 39.0s; 1.58 MiB; archived; tweet context: A TERRIFYING story out of Suffolk County, New York. This illegal alien BEAT a man unconscious then RAPED him behind a dumpster. @ICEgov is ensuring this MONSTER can never prey on another innocent victim again. https://t.co/Y8DJ7ld5rf; source URL: https://video.twimg.com/amplify_video/2052084656799903746/vid/avc1/960x540/o0VRCEDoZbkzIy8m.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2052084656799903746.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 960x540; 39.0s; 1.58 MiB; archived; tweet context: A TERRIFYING story out of Suffolk County, New York. This illegal alien BEAT a man unconscious then RAPED him behind a dumpster. @ICEgov is ensuring this MONSTER can never prey on another innocent victim again. https://t.co/Y8DJ7ld5rf; source URL: https://video.twimg.com/amplify_video/2052084656799903746/vid/avc1/960x540/o0VRCEDoZbkzIy8m.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2052084656799903746.mp4; needs OCR, transcript, or frame-level vision before content claims. A TERRIFYING story out of Suffolk Co"
     },
     {
       "tweet_id": "2052101486109200731",
@@ -44762,6 +44672,49 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 54.4s; 7.06 MiB; archived; tweet context: .@VP in Bangor, Maine: \"Because you all work hard, because you all pay your taxes, because you do things the right way, it is time to have leadership in Washington that treats you the right way, and protects those hard-earned tax dollars.\" https://t.co/CrQUwr...; source URL: https://video.twimg.com/amplify_video/2054966788929077248/vid/avc1/1280x720/aW9vlX0APv_83Z_8.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054966788929077248.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 54.4s; 7.06 MiB; archived; tweet context: .@VP in Bangor, Maine: \"Because you all work hard, because you all pay your taxes, because you do things the right way, it is time to have leadership in Washington that treats you the right way, and protects those hard-earned tax dollars.\" https://t.co/CrQUwr...; source URL: https://video.twimg.com/amplify_video/2054966788929077248/vid/avc1/1280x720/aW9vlX0APv_83Z_8.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054966788929077248.mp4; needs OCR, transcript, o"
+    },
+    {
+      "tweet_id": "2054970795403952144",
+      "account_handle": "RapidResponse47",
+      "posted_at": "2026-05-14T17:03:11.000Z",
+      "tweet_url": "https://x.com/RapidResponse47/status/2054970795403952144",
+      "tweet_text": "\"I'm talking about the construction worker who can’t buy a cellphone, because when an illegal alien goes and steals their identity, and applies for SNAP benefits, now, all of a sudden, they’re tagged in the banking system, their credit score is ruined—not because they did a single thing wrong, but because somebody stole their identity.\"\n\n@VP on why the efforts of the @WHFraudTF are so important:",
+      "media_id": "13_2054969804247748608",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054969804247748608.mp4",
+      "duration_sec": 187.22,
+      "width": 1280,
+      "height": 720,
+      "like_count": 9641,
+      "retweet_count": 1703,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "audio:has-audio",
+        "crime:fraud",
+        "crime:theft",
+        "frame:criminal",
+        "media:archived",
+        "media:described",
+        "media:video",
+        "slogan:illegal-alien",
+        "speaker:Vice President Vance",
+        "subject:official",
+        "topic:economy",
+        "topic:general",
+        "topic:immigration",
+        "video:long",
+        "video:speech"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 187.2s; 23.86 MiB; archived; tweet context: \"I'm talking about the construction worker who can’t buy a cellphone, because when an illegal alien goes and steals their identity, and applies for SNAP benefits, now, all of a sudden, they’re tagged in the banking system, their credit score is ruined—not bec...; source URL: https://video.twimg.com/amplify_video/2054969804247748608/vid/avc1/1280x720/4MKmHhuaCu_vndH8.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054969804247748608.mp4; review tweet excerpt: \"I'm talking about the construction worker who can't buy a cellphone...\" @VP on why the efforts of the @WHFraudTF are so important:; visual observation: Human-reviewed clip of Vice President JD Vance giving remarks about identity theft and SNAP benefit fraud. This is long speech/remarks footage.; tagging gap: Tweet text identifies @VP and quotes the remarks, but the prior metadata heuristic misread 'credit score' as a media-format cue. Manual review confirms speech/speaker tags and excludes entertainment-format tags.. | video; 1280x720; 187.2s; 23.86 MiB; archived; tweet context: \"I'm talking about the construction "
     },
     {
       "tweet_id": "2054971975689248930",

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from scripts.describe_media import describe_media_item, input_hash_for
+from scripts.describe_media import describe_media_item, derive_description_tags, input_hash_for
 
 
 def _tweet() -> dict[str, Any]:
@@ -125,6 +125,64 @@ def test_manual_review_observation_promotes_visual_tags() -> None:
     assert "video:news-clip" not in tags
     assert "media:needs-vision" not in tags
     assert [entry["tag"] for entry in row["tags"]].count("media:text-overlay") == 1
+
+
+def test_manual_review_aliases_legacy_video_genre_tags() -> None:
+    media = {
+        "media_id": "v1",
+        "media_type": "video",
+        "release_asset_url": "https://github.com/asset.mp4",
+    }
+    manual_review = {
+        "visual_observation": "Produced public-service spot with title cards.",
+        "candidate_visual_tags": ["video:ad", "video:psa"],
+    }
+    row = describe_media_item(
+        _tweet(),
+        media,
+        generated_at="2026-05-20T00:00:00Z",
+        manual_review=manual_review,
+    )
+    tags = {entry["tag"] for entry in row["tags"]}
+
+    assert "genre:advertisement" in tags
+    assert "genre:psa" in tags
+    assert "video:ad" not in tags
+    assert "video:psa" not in tags
+
+
+def test_credit_score_context_does_not_become_music_video() -> None:
+    tags = derive_description_tags(
+        "video; tweet context: their credit score is ruined after identity theft",
+        media_type="video",
+    )
+
+    assert "media:produced-video" not in tags
+    assert "media:music-video" not in tags
+    assert "genre:music-video" not in tags
+
+
+def test_negated_music_video_note_does_not_become_music_video() -> None:
+    tags = derive_description_tags(
+        "Human review says this is speech footage, not a music video or music-led montage.",
+        media_type="video",
+    )
+
+    assert "media:produced-video" not in tags
+    assert "media:music-video" not in tags
+    assert "media:montage" not in tags
+    assert "genre:music-video" not in tags
+
+
+def test_musical_score_context_still_marks_music_video() -> None:
+    tags = derive_description_tags(
+        "polished montage with a dramatic musical score and background music",
+        media_type="video",
+    )
+
+    assert "media:produced-video" in tags
+    assert "media:music-video" in tags
+    assert "genre:music-video" in tags
 
 
 def test_input_hash_changes_when_media_evidence_changes() -> None:

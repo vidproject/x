@@ -5,6 +5,21 @@
   "notes": "Items where direct inspection of archived media surfaced visual signal that the Layer-1 lexical tagger and the Layer-3m metadata sidecar cannot represent today. These are queued for a later OCR (Layer 3b), CLIP (Layer 3a), audio-transcript (Layer 3c), or vision-LLM (Layer 4) pass to turn into deterministic tags. The queue is additive: nothing here mutates the canonical parquets or the existing tag sidecars.",
   "items": [
     {
+      "tweet_id": "2054970795403952144",
+      "account_handle": "RapidResponse47",
+      "media_id": "13_2054969804247748608",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054969804247748608.mp4",
+      "tweet_text_excerpt": "\"I'm talking about the construction worker who can't buy a cellphone...\" @VP on why the efforts of the @WHFraudTF are so important:",
+      "visual_observation": "Human-reviewed clip of Vice President JD Vance giving remarks about identity theft and SNAP benefit fraud. This is long speech/remarks footage.",
+      "candidate_visual_tags": [
+        "video:speech",
+        "speaker:Vice President Vance",
+        "subject:official"
+      ],
+      "deterministic_signal_missing": "Tweet text identifies @VP and quotes the remarks, but the prior metadata heuristic misread 'credit score' as a media-format cue. Manual review confirms speech/speaker tags and excludes entertainment-format tags."
+    },
+    {
       "tweet_id": "2056861089363611960",
       "account_handle": "DHSgov",
       "media_id": "13_2056861025304018946",
@@ -15,11 +30,11 @@
       "candidate_visual_tags": [
         "media:produced-video",
         "media:montage",
-        "video:ad",
+        "genre:advertisement",
         "branch:coast-guard",
         "agency:DHSgov"
       ],
-      "deterministic_signal_missing": "Text is too sparse for the existing video:ad / branch:coast-guard / video:music-video regexes. Needs Layer 3a (CLIP), 3b (OCR on the end-card seal), or 3c (audio) before any of these tags become deterministic."
+      "deterministic_signal_missing": "Text is too sparse for the existing genre:advertisement / branch:coast-guard regexes. Needs Layer 3a (CLIP), 3b (OCR on the end-card seal), or 3c (audio) before any of these tags become deterministic."
     },
     {
       "tweet_id": "2056735360147730868",
@@ -60,7 +75,7 @@
       "candidate_visual_tags": [
         "media:produced-video",
         "media:text-overlay",
-        "video:psa"
+        "genre:psa"
       ],
       "deterministic_signal_missing": "PATTERN_VIDEO_PSA wants a hotline / 'learn more at' / 'did you know' phrase in the body. OCR on the title-card text would catch this PSA deterministically."
     },
@@ -90,8 +105,8 @@
       "candidate_visual_tags": [
         "media:produced-video",
         "media:text-overlay",
-        "video:ad",
-        "video:psa"
+        "genre:advertisement",
+        "genre:psa"
       ],
       "deterministic_signal_missing": "Already deterministic on genre:directive via 'Find your medication'. The video-kind tags need a screencast cue source (URL pattern + visible 'TrumpRx.Gov' chyron) that today's regexes don't carry."
     },
@@ -106,7 +121,7 @@
       "candidate_visual_tags": [
         "media:text-overlay"
       ],
-      "deterministic_signal_missing": "No photo equivalent of media:text-overlay in the taxonomy yet (the tag is video-scoped). Either broaden media:text-overlay to images or add a parallel photo:text-overlay slug."
+      "deterministic_signal_missing": "The text-overlay signal is inside the image, so OCR or vision review is needed before this can become deterministic from machine-readable evidence."
     },
     {
       "tweet_id": "2056831719039181284",
@@ -209,8 +224,6 @@
       "visual_observation": "Fox News-branded social card: photo of Secretary Mullin in DHS vest at night, FOX NEWS logo, headline 'Mullin rips Spanberger for criminalizing DHS while ICE arrests illegal alien felon in her sanctuary state', DHS seal at bottom.",
       "candidate_visual_tags": [
         "media:text-overlay",
-        "video:news-clip",
-        "speaker:Secretary Mullin",
         "state:Virginia"
       ],
       "deterministic_signal_missing": "Photo not video, so video:news-clip can't apply; but a media:news-card or shape:news-graphic slug would. Speaker / outlet / state are all OCR-recoverable."

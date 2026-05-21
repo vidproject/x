@@ -592,6 +592,93 @@ def test_promises_kept_video_triggers_advertisement_genre() -> None:
     assert "media:produced-video" in tags
 
 
+def test_credit_score_does_not_trigger_music_video_tags() -> None:
+    out = tag_text(
+        (
+            "\"I'm talking about the construction worker who can't buy a cellphone, "
+            "because when an illegal alien steals their identity, their credit score is ruined.\" "
+            "@VP on why the efforts of the @WHFraudTF are so important."
+        ),
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        video_count=1,
+        video_max_duration_sec=187.22,
+    )
+    tags = _tags(out)
+
+    assert "genre:music-video" not in tags
+    assert "media:music-video" not in tags
+    assert "audio:music-likely" not in tags
+    assert "video:long" in tags
+
+
+def test_nonmusical_score_beat_and_track_phrases_stay_out_of_music_video() -> None:
+    for text in (
+        "We have not missed a beat and are still on track.",
+        "This illegal alien beat a man unconscious.",
+        "Track by GPS when detention space is unavailable.",
+        "He tried to score political points.",
+    ):
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=1,
+            account_category="public",
+            video_count=1,
+        )
+        tags = _tags(out)
+        assert "genre:music-video" not in tags, text
+        assert "audio:music-likely" not in tags, text
+
+
+def test_music_video_genre_requires_video_media() -> None:
+    out = tag_text(
+        "A political score is not a music video when there is no video attached.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+        video_count=0,
+    )
+
+    assert "genre:music-video" not in _tags(out)
+
+
+def test_contextual_musical_score_still_marks_music_video() -> None:
+    out = tag_text(
+        "New montage set to music with a dramatic orchestral score.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="public",
+        video_count=1,
+    )
+    tags = _tags(out)
+
+    assert "genre:music-video" in tags
+    assert "audio:music-likely" in tags
+    assert "media:produced-video" in tags
+
+
+def test_song_deadline_copy_is_audio_cue_not_music_video_genre() -> None:
+    out = tag_text(
+        "If you're here illegally, you have until the end of this song to go.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="public",
+        video_count=1,
+    )
+    tags = _tags(out)
+
+    assert "audio:music-likely" in tags
+    assert "genre:music-video" not in tags
+    assert "media:music-video" not in tags
+
+
 def test_music_likely_tag_uses_video_text_and_reply_context() -> None:
     own_text = tag_text(
         "New montage set to music.",

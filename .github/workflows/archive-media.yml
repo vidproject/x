@@ -29,15 +29,15 @@ on:
       max_items:
         description: 'Max uncached items to process per analyzer step'
         required: false
-        default: '80'
+        default: '160'
       llm_max_items:
         description: 'Max uncached media items to send to OpenAI vision'
         required: false
-        default: '20'
+        default: '120'
       llm_budget_usd:
         description: 'Approximate budget cap for paid vision calls'
         required: false
-        default: '2.00'
+        default: '6.00'
 
 permissions:
   contents: write
@@ -81,7 +81,7 @@ jobs:
           args=()
           max_items="${{ inputs.max_items }}"
           if [ -z "$max_items" ]; then
-            max_items="80"
+            max_items="160"
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
@@ -109,7 +109,7 @@ jobs:
           args=()
           max_items="${{ inputs.max_items }}"
           if [ -z "$max_items" ]; then
-            max_items="80"
+            max_items="160"
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
@@ -127,7 +127,7 @@ jobs:
           args=()
           max_items="${{ inputs.max_items }}"
           if [ -z "$max_items" ]; then
-            max_items="80"
+            max_items="160"
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
@@ -141,7 +141,7 @@ jobs:
           args=()
           max_items="${{ inputs.max_items }}"
           if [ -z "$max_items" ]; then
-            max_items="80"
+            max_items="160"
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
@@ -155,7 +155,7 @@ jobs:
           args=()
           max_items="${{ inputs.max_items }}"
           if [ -z "$max_items" ]; then
-            max_items="80"
+            max_items="160"
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
@@ -173,17 +173,16 @@ jobs:
           OPENAI_MEDIA_LLM_MODEL: ${{ vars.OPENAI_MEDIA_LLM_MODEL }}
         run: |
           if [ -z "$OPENAI_API_KEY" ]; then
-            echo "OPENAI_API_KEY not configured; skipping paid media recognition"
-            exit 0
+            echo "OPENAI_API_KEY not configured; media LLM layer will record skipped_no_api_key"
           fi
           args=()
           llm_max_items="${{ inputs.llm_max_items }}"
           if [ -z "$llm_max_items" ]; then
-            llm_max_items="20"
+            llm_max_items="120"
           fi
           llm_budget_usd="${{ inputs.llm_budget_usd }}"
           if [ -z "$llm_budget_usd" ]; then
-            llm_budget_usd="2.00"
+            llm_budget_usd="6.00"
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")

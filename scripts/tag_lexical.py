@@ -810,9 +810,10 @@ PATTERN_VIDEO_MUSIC_VIDEO = _compile(
     r"|\bset\s+to\s+(?:music|the\s+song|the\s+track)\b"
     r"|\b(?:🎵|🎶)\b"
     r"|\b(?:song|anthem|ballad)\s+(?:by|about|for)\b"
-    r"|\btrack\s+by\b"
     r"|\b(?:soundtrack|background\s+music|music\s+bed|needle\s+drop)\b"
-    r"|\b(?:cinematic\s+)?score\b"
+    r"|\b(?:musical|orchestral|cinematic|dramatic|film|movie|trailer)\s+score\b"
+    r"|\b(?:backing|driving|dance|rap|musical)\s+beat\b"
+    r"|\bbeat\s+drops?\b"
 )
 PATTERN_PRODUCED_VIDEO_STYLE = _compile(
     r"\b(?:polished|produced|edited|cinematic|trailer[- ]style|multi[- ]shot|rapid[- ]cut|"
@@ -824,6 +825,8 @@ PATTERN_AUDIO_MUSIC_CONTEXT = _compile(
     r"|\b(?:name|title)\s+of\s+(?:the\s+)?song\b"
     r"|\bsong\s+(?:name|title|id|identifier)\b"
     r"|\b(?:this|that|the)\s+song\b"
+    r"|\bnational\s+anthem\b"
+    r"|\banthem\s+(?:plays?|performance)\b"
     r"|\bbackground\s+music\b"
     r"|\bsoundtrack\b"
     r"|\b(?:music|beat|track)\s+(?:goes\s+hard|slaps|is\s+fire)\b"
@@ -1280,6 +1283,8 @@ def tag_text(
         add("theme:religion", span=m.span())
 
     for tag, pat in PRODUCED_VIDEO_GENRE_PATTERNS:
+        if tag == "genre:music-video" and video_count <= 0:
+            continue
         if m := pat.search(text):
             add(tag, span=m.span())
 
