@@ -41,11 +41,12 @@ OUT_PATH = TAGS_DIR / "media_vision.parquet"
 MANIFEST_PATH = TAGS_DIR / "manifest.json"
 
 MODEL = "metadata"
-MODEL_VERSION = "media-metadata-v2"
+MODEL_VERSION = "media-metadata-v3"
 PROMPT = (
     "Describe public X media from canonical capture metadata. "
     "Do not infer visual content beyond alt text, captured metadata, or "
-    "curated manual media-review observations."
+    "curated manual media-review observations. Include tweet card and link "
+    "context when available, labeling it as metadata rather than visual fact."
 )
 PROMPT_HASH = hashlib.sha256(PROMPT.encode("utf-8")).hexdigest()[:16]
 MANUAL_REVIEW_QUEUE_PATH = TAGS_DIR / "manual_media_review_queue.json"
@@ -76,6 +77,7 @@ def input_hash_for(
         "height": media.get("height"),
         "alt_text": str(media.get("alt_text") or ""),
         "text": tweet_text(tweet)[:1200],
+        "card": card_hash_payload(tweet),
         "manual_review": manual_review_hash_payload(manual_review),
         "model_version": MODEL_VERSION,
         "prompt_hash": PROMPT_HASH,
@@ -90,6 +92,20 @@ def manual_review_hash_payload(manual_review: dict[str, Any] | None) -> dict[str
         "visual_observation": manual_review.get("visual_observation"),
         "candidate_visual_tags": manual_review.get("candidate_visual_tags"),
         "deterministic_signal_missing": manual_review.get("deterministic_signal_missing"),
+    }
+
+
+def card_hash_payload(tweet: dict[str, Any]) -> dict[str, Any] | None:
+    card = tweet.get("card")
+    if not isinstance(card, dict):
+        return None
+    return {
+        "name": card.get("name"),
+        "title": card.get("title"),
+        "description": card.get("description"),
+        "card_url": card.get("card_url"),
+        "vendor_url": card.get("vendor_url"),
+        "image_url": card.get("image_url"),
     }
 
 
@@ -119,10 +135,13 @@ def describe_media_item(
     media_id = str(media.get("media_id") or "")
     alt_text = clean_text(str(media.get("alt_text") or ""))
     context = clean_text(tweet_text(tweet))
+    card_context = card_context_parts(tweet)
     archived = bool(media.get("release_asset_url"))
     dimensions = dimension_text(media)
     duration = duration_text(media)
     byte_count = bytes_text(media)
+    archive_url = clean_text(str(media.get("release_asset_url") or ""))
+    original_url = clean_text(str(media.get("original_url") or ""))
     visual_observation = clean_text(str((manual_review or {}).get("visual_observation") or ""))
     tweet_excerpt = clean_text(str((manual_review or {}).get("tweet_text_excerpt") or ""))
     missing_signal = clean_text(
@@ -147,6 +166,15 @@ def describe_media_item(
     if context:
         parts.append(f"tweet context: {truncate(context, 260)}")
         source_fields.append("text_resolved")
+    for label, value, field in card_context:
+        parts.append(f"{label}: {truncate(value, 260)}")
+        source_fields.append(field)
+    if original_url:
+        parts.append(f"source URL: {truncate(original_url, 180)}")
+        source_fields.append("original_url")
+    if archive_url:
+        parts.append(f"archive URL: {truncate(archive_url, 180)}")
+        source_fields.append("release_asset_url")
     if tweet_excerpt and tweet_excerpt not in context:
         parts.append(f"review tweet excerpt: {truncate(tweet_excerpt, 260)}")
         source_fields.append("manual_media_review_queue")
@@ -175,17 +203,42 @@ def describe_media_item(
     if media_type in {"video", "animated_gif"} and 0 < duration_seconds <= 30:
         tags.append(tag_entry("media:short-video"))
     for tag in derive_description_tags(
-        " ".join(p for p in [description, alt_text, context] if p),
+        " ".join(
+            p
+            for p in [
+                description,
+                alt_text,
+                context,
+                " ".join(value for _, value, _ in card_context),
+                original_url,
+            ]
+            if p
+        ),
         media_type=media_type,
     ):
         tags.append(tag_entry(tag, source="media-description"))
     if manual_review:
         tags.extend(candidate_visual_tag_entries(manual_review, media_type=media_type))
+    tags = dedupe_tag_entries(tags)
 
     status = (
-        "manual-review" if visual_observation else "metadata-alt" if alt_text else "metadata-only"
+        "manual-review"
+        if visual_observation
+        else "metadata-alt"
+        if alt_text
+        else "metadata-context"
+        if context or card_context or original_url
+        else "metadata-only"
     )
-    confidence = 0.92 if visual_observation else 0.68 if alt_text else 0.35
+    confidence = (
+        0.92
+        if visual_observation
+        else 0.68
+        if alt_text
+        else 0.45
+        if status == "metadata-context"
+        else 0.35
+    )
     return {
         "tweet_id": str(tweet.get("tweet_id") or ""),
         "account_handle": str(tweet.get("account_handle") or ""),
@@ -285,6 +338,30 @@ def candidate_visual_tag_entries(
         seen.add(tag)
         entries.append(tag_entry(tag, source="manual-media-review"))
     return entries
+
+
+def dedupe_tag_entries(tags: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    priority = {
+        "manual-media-review": 4,
+        "media-description": 3,
+        "media-metadata": 2,
+    }
+    out: list[dict[str, Any]] = []
+    index: dict[str, int] = {}
+    for entry in tags:
+        tag = str(entry.get("tag") or "")
+        if not tag:
+            continue
+        if tag not in index:
+            index[tag] = len(out)
+            out.append(entry)
+            continue
+        current = out[index[tag]]
+        current_priority = priority.get(str(current.get("source") or ""), 0)
+        next_priority = priority.get(str(entry.get("source") or ""), 0)
+        if next_priority > current_priority:
+            out[index[tag]] = entry
+    return out
 
 
 def media_candidates(tweet: dict[str, Any], *, include_pending: bool) -> list[dict[str, Any]]:
@@ -419,6 +496,23 @@ def update_manifest(rows: list[dict[str, Any]], stats: dict[str, int], generated
 
 def tweet_text(tweet: dict[str, Any]) -> str:
     return str(tweet.get("text_resolved") or tweet.get("text") or "")
+
+
+def card_context_parts(tweet: dict[str, Any]) -> list[tuple[str, str, str]]:
+    card = tweet.get("card")
+    if not isinstance(card, dict):
+        return []
+    out: list[tuple[str, str, str]] = []
+    for label, key in (
+        ("card title", "title"),
+        ("card description", "description"),
+        ("card vendor URL", "vendor_url"),
+        ("card URL", "card_url"),
+    ):
+        value = clean_text(str(card.get(key) or ""))
+        if value:
+            out.append((label, value, f"card.{key}"))
+    return out
 
 
 def clean_text(text: str) -> str:

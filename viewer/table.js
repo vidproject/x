@@ -337,6 +337,7 @@ export function renderTable(args) {
     }
     if (col.filterable) {
       const btn = document.createElement('button');
+      btn.type = 'button';
       btn.className = 'col-filter-btn';
       btn.title = `Filter ${col.label}`;
       btn.setAttribute('aria-label', `Filter ${col.label}`);
@@ -605,6 +606,7 @@ export function openColumnFilterPopup({
     const sortRow = document.createElement('div');
     sortRow.className = 'col-sort-row';
     const asc = document.createElement('button');
+    asc.type = 'button';
     asc.className = 'btn ghost';
     asc.textContent = 'Sort A → Z';
     asc.addEventListener('click', () => {
@@ -612,6 +614,7 @@ export function openColumnFilterPopup({
       close();
     });
     const desc = document.createElement('button');
+    desc.type = 'button';
     desc.className = 'btn ghost';
     desc.textContent = 'Sort Z → A';
     desc.addEventListener('click', () => {
@@ -785,7 +788,9 @@ export function openColumnFilterPopup({
   cancel.type = 'button';
   cancel.className = 'btn ghost';
   cancel.textContent = 'Cancel';
-  apply.addEventListener('click', () => {
+  apply.addEventListener('mousedown', stopPopupButtonEvent);
+  apply.addEventListener('click', (event) => {
+    stopPopupButtonEvent(event);
     if (colKey === 'tags') normalizeTagSelections(active, allValues, childValuesByParent);
     if (allValueKeys.every((value) => active.has(value))) {
       onChange(colKey, new Set());
@@ -798,16 +803,26 @@ export function openColumnFilterPopup({
     close();
   });
   clear.title = 'Clear this column filter';
+  clear.addEventListener('mousedown', stopPopupButtonEvent);
   clear.addEventListener('click', (event) => {
-    event.preventDefault();
-    event.stopPropagation();
+    stopPopupButtonEvent(event);
+    active.clear();
+    renderList(search.value);
+    onChange(colKey, new Set());
     close();
-    requestAnimationFrame(() => onChange(colKey, new Set()));
   });
-  cancel.addEventListener('click', close);
+  cancel.addEventListener('mousedown', stopPopupButtonEvent);
+  cancel.addEventListener('click', (event) => {
+    stopPopupButtonEvent(event);
+    close();
+  });
   actions.append(apply, clear, cancel);
   popEl.append(actions);
 
+  function stopPopupButtonEvent(event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
   function close() {
     popEl.hidden = true;
     document.removeEventListener('mousedown', away);

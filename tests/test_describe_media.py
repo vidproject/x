@@ -48,11 +48,41 @@ def test_describe_media_item_marks_video_without_alt_text_for_followup() -> None
     row = describe_media_item(_tweet(), media, generated_at="2026-05-20T00:00:00Z")
     tags = {entry["tag"] for entry in row["tags"]}
 
-    assert row["status"] == "metadata-only"
+    assert row["status"] == "metadata-context"
     assert "media:video" in tags
     assert "media:short-video" in tags
     assert "media:needs-vision" in tags
     assert "needs OCR, transcript, or frame-level vision" in row["description"]
+
+
+def test_describe_media_item_uses_card_and_url_context_without_visual_claims() -> None:
+    tweet = {
+        **_tweet(),
+        "text_resolved": "https://t.co/example",
+        "card": {
+            "title": "DHS Announces New Immigration Fees & Enforcement Measures",
+            "description": "A public notice about immigration forms.",
+            "vendor_url": "https://www.dhs.gov/news/example",
+        },
+    }
+    media = {
+        "media_id": "p2",
+        "media_type": "photo",
+        "release_asset_url": "https://github.com/asset.jpg",
+        "original_url": "https://pbs.twimg.com/media/example.jpg",
+        "width": 1200,
+        "height": 800,
+    }
+
+    row = describe_media_item(tweet, media, generated_at="2026-05-20T00:00:00Z")
+    tags = {entry["tag"] for entry in row["tags"]}
+
+    assert row["status"] == "metadata-context"
+    assert "card title: DHS Announces New Immigration Fees" in row["description"]
+    assert "source URL: https://pbs.twimg.com/media/example.jpg" in row["description"]
+    assert "archive URL: https://github.com/asset.jpg" in row["description"]
+    assert "needs OCR, transcript, or frame-level vision" in row["description"]
+    assert "media:needs-vision" in tags
 
 
 def test_describe_media_item_does_not_mark_unknown_duration_as_short() -> None:
@@ -94,6 +124,7 @@ def test_manual_review_observation_promotes_visual_tags() -> None:
     assert "media:text-overlay" in tags
     assert "video:news-clip" not in tags
     assert "media:needs-vision" not in tags
+    assert [entry["tag"] for entry in row["tags"]].count("media:text-overlay") == 1
 
 
 def test_input_hash_changes_when_media_evidence_changes() -> None:

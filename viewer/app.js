@@ -331,7 +331,7 @@ async function loadSidecars() {
 }
 
 async function loadLexicalTags() {
-  const cacheKey = manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
+  const cacheKey = tagLayerCacheKey('lexical');
   const url = `data/tags/lexical.parquet${cacheKey}`;
   try {
     const rows = await loadParquetRows(url);
@@ -360,7 +360,7 @@ async function loadLexicalTags() {
 }
 
 async function loadMediaInsights() {
-  const cacheKey = manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
+  const cacheKey = tagLayerCacheKey('media_vision');
   const url = `data/tags/media_vision.parquet${cacheKey}`;
   try {
     const rows = await loadParquetRows(url);
@@ -388,7 +388,7 @@ async function loadMediaInsights() {
 }
 
 async function loadKeyframePosters() {
-  const cacheKey = manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
+  const cacheKey = tagLayerCacheKey('keyframes');
   const url = `data/tags/keyframes.parquet${cacheKey}`;
   try {
     const rows = await loadParquetRows(url);
@@ -397,7 +397,7 @@ async function loadKeyframePosters() {
       if (String(row?.status || '') !== 'ok') continue;
       const sha = String(row?.media_sha256 || '');
       if (!sha || map.has(sha)) continue;
-      const poster = posterPathFromFrames(row?.frames);
+      const poster = stringOrNull(row?.thumbnail_path) || posterPathFromFrames(row?.frames);
       if (poster) map.set(sha, poster);
     }
     return map;
@@ -413,6 +413,16 @@ async function loadKeyframePosters() {
     }
     return new Map();
   }
+}
+
+function tagLayerCacheKey(layerName) {
+  const layerGeneratedAt = manifest?.layers?.[layerName]?.generated_at;
+  const version = layerGeneratedAt || manifest?.generated_at || '';
+  return version ? `?v=${encodeURIComponent(version)}` : '';
+}
+
+function stringOrNull(value) {
+  return typeof value === 'string' && value.length > 0 ? value : null;
 }
 
 function posterPathFromFrames(frames) {
@@ -1094,18 +1104,19 @@ function refresh() {
         allRows: store.allRows,
         activeFilters: visibleColFilters,
         onChange: (col, set) => {
+          const nextSet = set instanceof Set ? set : new Set(set || []);
           urlState.page = 1;
           if (col === 'tags') {
             // Tags filter rides on urlState so it survives reloads and
             // can be deep-linked, unlike the other col filters which
             // are session-local. Mirror the selection out.
             delete colFilters.tags;
-            urlState.tags = [...set];
+            urlState.tags = [...nextSet];
             applyToUrl(urlState);
-          } else if (set.size === 0) {
+          } else if (nextSet.size === 0) {
             delete colFilters[col];
           } else {
-            colFilters[col] = set;
+            colFilters[col] = new Set(nextSet);
           }
           refresh();
         },

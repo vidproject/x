@@ -340,16 +340,16 @@
     "media_vision": {
       "cost_estimate_usd": 0.0,
       "generated": 3732,
-      "generated_at": "2026-05-21T00:09:08Z",
+      "generated_at": "2026-05-21T00:29:49Z",
       "model": "metadata",
-      "model_version": "media-metadata-v2",
-      "prompt_hash": "41e469925c96a8a5",
+      "model_version": "media-metadata-v3",
+      "prompt_hash": "b18b19292ec51484",
       "row_count": 3732,
       "rows": 3732,
       "status_counts": {
         "manual-review": 14,
         "metadata-alt": 151,
-        "metadata-only": 3567
+        "metadata-context": 3567
       },
       "tag_frequency": {
         "action:deportation": 1,
@@ -363,13 +363,13 @@
         "media:archived": 3732,
         "media:described": 3732,
         "media:has-alt-text": 151,
-        "media:montage": 2,
+        "media:montage": 1,
         "media:music-video": 2,
         "media:needs-vision": 3567,
         "media:photo": 2528,
-        "media:produced-video": 12,
+        "media:produced-video": 9,
         "media:short-video": 249,
-        "media:text-overlay": 22,
+        "media:text-overlay": 15,
         "media:video": 1143,
         "shape:lineup": 1,
         "speaker:First Lady Melania Trump": 1,
@@ -380,10 +380,10 @@
         "theme:religion": 1,
         "topic:economy": 1,
         "topic:immigration": 2,
-        "video:ad": 10,
-        "video:news-clip": 9,
-        "video:psa": 25,
-        "video:speech": 11
+        "video:ad": 9,
+        "video:news-clip": 8,
+        "video:psa": 24,
+        "video:speech": 10
       }
     }
   },
