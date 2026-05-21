@@ -14,6 +14,12 @@ on:
       handle:
         description: 'Restrict to one handle (optional)'
         required: false
+      tweet_ids_file:
+        description: 'Restrict archive step to tweet IDs listed in this repo file (optional)'
+        required: false
+      media_ids_file:
+        description: 'Restrict archive step to media IDs listed in this repo file (optional)'
+        required: false
       max_items:
         description: 'Max uncached items to process per analyzer step'
         required: false
@@ -73,6 +79,12 @@ jobs:
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
+          fi
+          if [ -n "${{ inputs.tweet_ids_file }}" ]; then
+            args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
+          fi
+          if [ -n "${{ inputs.media_ids_file }}" ]; then
+            args+=(--media-ids-file "${{ inputs.media_ids_file }}")
           fi
           args+=(--max-items "$max_items")
           uv run python -m scripts.archive_media "${args[@]}"
