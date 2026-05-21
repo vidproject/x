@@ -88,6 +88,7 @@ Current sidecars:
 - `data/tags/keyframes.parquet`: video keyframe metadata and tiny poster thumbnails from `scripts/extract_video_frames.py`.
 - `data/tags/image_ocr.parquet`: Tesseract OCR text from archived photos and extracted video keyframes from `scripts/tag_image_ocr.py`.
 - `data/tags/audio_music.parquet`: ffmpeg-only audio stream/music-likelihood tags from `scripts/detect_audio_music.py`.
+- `data/tags/media_llm.parquet`: optional paid OpenAI image/video keyframe descriptions from `scripts/tag_media_llm.py`; Gemini is used only as a narrow watermark/provenance verifier for suspected AI-generated media.
 - `data/tags/news_mentions.parquet`: exact X/Twitter status-URL mentions of core tweets in a local news article export from `scripts/news_mentions.py`.
 - `data/account_categories.json`: corpus-wide public figure / government / official categories from `scripts/build_account_categories.py`.
 - `config/tag_overrides.yaml`: editor-confirmed tags for cases the capture layer cannot prove from canonical fields alone.
@@ -111,6 +112,8 @@ This gives later OCR, transcript, keyframe, CLIP, audio, or vision-model jobs a 
 `scripts.tag_image_ocr` is the first true pixel-reading image layer. It OCRs archived photos and the keyframes extracted in the same workflow run, then `scripts.tag_lexical` imports that recovered text so image-only slogans, agency names, religious language, and other text-overlay tags are searchable and filterable.
 
 `scripts.detect_audio_music` is the first audio pass. It uses ffprobe/ffmpeg only: detect whether an archived video has audio, decode a short mono sample, compute simple energy/zero-crossing features, and emit conservative `audio:has-audio`, `audio:no-audio`, `audio:silent`, and tentative `audio:music-likely` tags. The lexical layer still uses video text and direct replies as additional cheap context when people explicitly reference the song, soundtrack, or background music.
+
+`scripts.tag_media_llm` is the paid image/video recognition tier. OpenAI (`OPENAI_API_KEY`) is the first-line recognizer for archived photos and bounded video keyframes. Gemini (`GEMINI_API_KEY` or `GOOGLE_API_KEY`) is called only when the OpenAI result already suspects `media:ai-generated`, and then only as a narrow watermark/provenance verifier capped at 5 calls per minute. The tier emits neutral descriptions plus tags for produced-video structure (`media:produced-video`, `media:montage`, `media:text-overlay`, `media:voiceover`, `video:*` genre labels), visible slogans, evidence-supported `speaker:*`, and tentative `media:ai-generated` when synthetic cues are visible. The workflow caps this tier with `llm_max_items` and `llm_budget_usd`.
 
 ## News Mentions
 
@@ -142,6 +145,8 @@ extension
       data/tags/image_ocr.parquet
     scripts.detect_audio_music
       data/tags/audio_music.parquet
+    scripts.tag_media_llm
+      data/tags/media_llm.parquet
     scripts.news_mentions
       data/tags/news_mentions.parquet
     scripts.tag_lexical
@@ -161,6 +166,7 @@ uv run python -m scripts.describe_media
 uv run python -m scripts.extract_video_frames
 uv run python -m scripts.tag_image_ocr
 uv run python -m scripts.detect_audio_music
+uv run python -m scripts.tag_media_llm --max-items 20 --budget-usd 2.00
 uv run python -m scripts.news_mentions --articles data/news/articles.jsonl
 npm run lint
 npm run typecheck

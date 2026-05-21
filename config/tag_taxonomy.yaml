@@ -121,6 +121,12 @@ tags:
   media:voiceover:
     description: Video includes narration or speech over other visuals.
     classification: tentative
+  media:ai-generated:
+    description: >-
+      Media appears AI-generated or heavily synthetic. The tag is firm
+      only when based on C2PA, watermark, or other explicit provenance
+      signals; visual-cue-only detections remain tentative.
+    classification: tentative
 
   # ===== audio:* - audio-track / sound cues ==========================
   audio:music-likely:

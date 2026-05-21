@@ -24,7 +24,7 @@ implementation hand-off for the layers that have actually shipped.
 | 3b    | OCR for in-image text (Tesseract)                                        | `data/tags/image_ocr.parquet`                               | **shipped** — see `scripts/tag_image_ocr.py`; consumes archived photos and Layer 2 keyframes                                             |
 | 3c    | Audio stream/music heuristic (ffprobe/ffmpeg)                            | `data/tags/audio_music.parquet`                             | **shipped** — see `scripts/detect_audio_music.py`; detects audio/no-audio/silent and tentative music                                    |
 | 3t    | Audio transcripts (whisper.cpp / faster-whisper or API transcription)     | `data/tags/audio_transcript.parquet`                        | not started; transcripts feed Layer 1 the same way OCR does                                                                              |
-| 4     | vision LLM for high-value items (budget-gated)                           | merged into 1 + 3a namespaces                               | not started                                                                                                                              |
+| 4     | OpenAI vision LLM for high-value images/video keyframes (budget-gated)   | `data/tags/media_llm.parquet`                               | **shipped** — see `scripts/tag_media_llm.py`; Gemini is used only for suspected-AI watermark/provenance checks                           |
 
 ## Tag schema (`data/tags/lexical.parquet`)
 
@@ -64,6 +64,38 @@ The sidecar emits media tags such as `media:video`, `media:photo`,
 `media:needs-vision`. The viewer merges those tags with the lexical tags
 and shows searchable media descriptions in the table, CSV export, and
 sidepanel.
+
+## Paid image/video recognition sidecar (`data/tags/media_llm.parquet`)
+
+`scripts.tag_media_llm` is the optional paid Layer-4 recognizer. OpenAI
+(`OPENAI_API_KEY`) is the first-line recognizer for image/video
+descriptions and tags. Gemini (`GEMINI_API_KEY`, with `GOOGLE_API_KEY`
+accepted as an alias) is used only when the OpenAI result already
+suspects `media:ai-generated`, and then only as a narrow watermark /
+provenance verifier capped at 5 calls per minute by default. The
+workflow runs it after keyframes/OCR/audio and before lexical tagging,
+so descriptions and model-generated tags feed back into
+`data/tags/lexical.parquet`.
+
+The recognizer is capped by `--max-items` and `--budget-usd`. It never
+runs in the public viewer and never writes API keys. For videos it sends
+the tiny extracted keyframes, not the full video file, which keeps
+bandwidth and token spend bounded.
+
+It emits neutral descriptions and tags for produced-video structure:
+`media:produced-video`, `media:music-video`, `media:montage`,
+`media:text-overlay`, `media:voiceover`, and supported `video:*` genre
+labels such as `video:bodycam`, `video:news-clip`, `video:psa`,
+`video:speech`, and `video:ad`. `speaker:*` tags require tweet text,
+visible captions, or other explicit context identifying the speaker.
+
+The tag `media:ai-generated` is tentative when it is based on visible
+synthetic cues plus model judgment. It is firm only when the recognizer
+reports a provenance signal such as C2PA, watermark text, or another
+explicit AI-generation marker. The Gemini verifier is one such narrow
+provenance check, not a second general-purpose visual tagger. A true
+C2PA/SynthID batch detector should be added as a separate provenance
+sidecar if a usable API becomes available.
 
 ## Keyframe sidecar (`data/tags/keyframes.parquet`)
 

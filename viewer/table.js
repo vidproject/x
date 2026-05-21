@@ -17,6 +17,11 @@ import { combineTagMainSub, formatForFilter, tagNames, tagNamespace, tagSubtype 
 import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js';
 
 const MEDIA_COL_KEY = 'media_kinds';
+export const TAG_CERTAINTY_LABELS = {
+  all: 'Firm + tentative',
+  firm: 'Firm only',
+  tentative: 'Tentative only',
+};
 const MEDIA_THUMBNAIL_KEYS = [
   'thumbnail_url',
   'thumbnailUrl',
@@ -602,6 +607,8 @@ export function openColumnFilterPopup({
   activeFilters,
   onChange,
   onSort,
+  tagCertainty = 'all',
+  onTagCertaintyChange,
   mediaSettings,
   onMediaSettingsChange,
 }) {
@@ -615,6 +622,9 @@ export function openColumnFilterPopup({
 
   if (colKey === MEDIA_COL_KEY) {
     popEl.append(buildMediaPopupSettings(mediaSettings, onMediaSettingsChange));
+  }
+  if (colKey === 'tags') {
+    popEl.append(buildTagCertaintyControl(tagCertainty, onTagCertaintyChange));
   }
 
   if (colKey !== 'tags' && col.sortable) {
@@ -821,9 +831,8 @@ export function openColumnFilterPopup({
   clear.addEventListener('mousedown', stopPopupButtonEvent);
   clear.addEventListener('click', (event) => {
     stopPopupButtonEvent(event);
-    active.clear();
-    close();
     onChange(colKey, new Set());
+    close();
   });
   cancel.addEventListener('mousedown', stopPopupButtonEvent);
   cancel.addEventListener('click', (event) => {
@@ -845,6 +854,25 @@ export function openColumnFilterPopup({
     if (!popEl.contains(e.target) && e.target !== anchorBtn) close();
   }
   setTimeout(() => document.addEventListener('mousedown', away), 0);
+}
+
+function buildTagCertaintyControl(tagCertainty = 'all', onTagCertaintyChange) {
+  const wrap = document.createElement('div');
+  wrap.className = 'tag-certainty-control';
+  const label = document.createElement('span');
+  label.textContent = 'Certainty';
+  const select = document.createElement('select');
+  select.className = 'select';
+  for (const [value, text] of Object.entries(TAG_CERTAINTY_LABELS)) {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = text;
+    select.append(option);
+  }
+  select.value = TAG_CERTAINTY_LABELS[tagCertainty] ? tagCertainty : 'all';
+  select.addEventListener('change', () => onTagCertaintyChange?.(select.value));
+  wrap.append(label, select);
+  return wrap;
 }
 
 function buildMediaPopupSettings(mediaSettings = {}, onMediaSettingsChange) {

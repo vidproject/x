@@ -364,8 +364,21 @@ async function loadLexicalTags() {
 }
 
 async function loadMediaInsights() {
-  const cacheKey = tagLayerCacheKey('media_vision');
-  const url = `data/tags/media_vision.parquet${cacheKey}`;
+  const map = new Map();
+  for (const layerName of ['media_vision', 'media_llm']) {
+    const layerMap = await loadMediaInsightLayer(layerName);
+    for (const [id, insights] of layerMap.entries()) {
+      const list = map.get(id) ?? [];
+      list.push(...insights);
+      map.set(id, list);
+    }
+  }
+  return map;
+}
+
+async function loadMediaInsightLayer(layerName) {
+  const cacheKey = tagLayerCacheKey(layerName);
+  const url = `data/tags/${layerName}.parquet${cacheKey}`;
   try {
     const rows = await loadParquetRows(url);
     const map = new Map();
@@ -383,7 +396,7 @@ async function loadMediaInsights() {
       pushLoadError({
         resource: url,
         status: status ? Number(status) : null,
-        kind: 'media-tags',
+        kind: layerName,
         message: err?.message ?? String(err),
       });
     }
@@ -1381,6 +1394,7 @@ function refresh() {
     to: urlState.to,
     type: urlState.type,
     media: urlState.media,
+    tagCertainty: urlState.tagcert || 'all',
     sort: urlState.sort,
     dir: urlState.dir,
     colFilters,
@@ -1474,6 +1488,13 @@ function refresh() {
         onSort: (dir) => {
           urlState.sort = key;
           urlState.dir = dir;
+          applyToUrl(urlState);
+          refresh();
+        },
+        tagCertainty: urlState.tagcert || 'all',
+        onTagCertaintyChange: (mode) => {
+          urlState.tagcert = mode === 'all' ? 'all' : mode;
+          urlState.page = 1;
           applyToUrl(urlState);
           refresh();
         },

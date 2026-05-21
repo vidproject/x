@@ -96,7 +96,7 @@ export class Store {
     this.search = null; // rebuild so tags enter the search corpus
   }
 
-  /** Attach optional media-recognition rows from `data/tags/media_vision.parquet`.
+  /** Attach optional media-recognition rows from `data/tags/media_*.parquet`.
    * These are downstream annotations, not canonical tweet data. */
   applyMediaInsights(insightMap) {
     for (const r of this.allRows) {
@@ -187,6 +187,7 @@ export class Store {
    *   accounts: string[], q: string, from: string, to: string,
    *   type: string, media: string, sort: string, dir: 'asc'|'desc',
    *   qfield?: string,
+   *   tagCertainty?: string,
    *   colFilters?: Record<string, Set<string>>,
    *   tags?: string[],
    *   accountCategories?: string[],
@@ -223,7 +224,10 @@ export class Store {
       // selector useless once you exceed 1-2 selections — every tweet
       // would drop out.
       const want = new Set(filt.tags);
-      rows = rows.filter((r) => tagFilterMatches(r, want));
+      rows = rows.filter((r) => tagFilterMatches(r, want, filt.tagCertainty || 'all'));
+    }
+    if (!(filt.tags && filt.tags.length > 0) && filt.tagCertainty && filt.tagCertainty !== 'all') {
+      rows = rows.filter((r) => tagCertaintyMatches(r, filt.tagCertainty));
     }
     if (filt.colFilters) {
       for (const [col, allowed] of Object.entries(filt.colFilters)) {
@@ -380,7 +384,7 @@ function isPrivilegedReplyCategory(category) {
   return category === 'core' || category === 'officials' || category === 'government';
 }
 
-function tagFilterMatches(row, selections) {
+function tagFilterMatches(row, selections, certainty = 'all') {
   const exact = new Set();
   const namespaces = new Set();
   for (const value of selections) {
@@ -391,7 +395,32 @@ function tagFilterMatches(row, selections) {
     else if (main.includes(':')) exact.add(main);
     else namespaces.add(main);
   }
-  return tagNames(row).some((tag) => exact.has(tag) || namespaces.has(tagNamespace(tag)));
+  return tagEntries(row).some(({ name, tentative }) => {
+    const matches = exact.has(name) || namespaces.has(tagNamespace(name));
+    return matches && tagEntryCertaintyMatches(tentative, certainty);
+  });
+}
+
+function tagCertaintyMatches(row, mode) {
+  return tagEntries(row).some(({ tentative }) => tagEntryCertaintyMatches(tentative, mode));
+}
+
+function tagEntryCertaintyMatches(tentative, mode) {
+  if (mode === 'firm') return !tentative;
+  if (mode === 'tentative') return Boolean(tentative);
+  return true;
+}
+
+function tagEntries(row) {
+  const ts = row.tags;
+  if (!Array.isArray(ts)) return [];
+  const out = [];
+  for (const t of ts) {
+    const name = typeof t === 'string' ? t : t && typeof t.tag === 'string' ? t.tag : '';
+    if (!name) continue;
+    out.push({ name, tentative: typeof t === 'object' && Boolean(t?.tentative) });
+  }
+  return out;
 }
 
 function derivedRowTags(row, sourceTags) {

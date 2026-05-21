@@ -264,6 +264,19 @@ def test_inheritance_language_needs_nativism_context() -> None:
     assert "theme:nativism" not in _tags(probate)
 
 
+def test_forefathers_language_can_trigger_nativism_context() -> None:
+    out = tag_text(
+        "This nation is the inheritance of our forefathers, and citizens must defend it.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    tags = _tags(out)
+    assert "theme:nativism" in tags
+    assert "topic:immigration" in tags
+
+
 def test_homeland_theme_matches_capital_h_homeland_framing() -> None:
     out = tag_text(
         "Our mission is securing the Homeland and protecting American communities.",
