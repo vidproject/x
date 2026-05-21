@@ -511,7 +511,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 3872,
+      "observations": 3881,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1033,7 +1033,7 @@
     "ICEgov": {
       "category": "core",
       "label": "U.S. Immigration and Customs Enforcement",
-      "observations": 1169,
+      "observations": 1170,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1530,7 +1530,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 834,
+      "observations": 836,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1615,7 +1615,7 @@
     "PressSec": {
       "category": "core",
       "label": "White House Press Secretary",
-      "observations": 168,
+      "observations": 169,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1656,7 +1656,7 @@
     "RapidResponse47": {
       "category": "core",
       "label": "Rapid Response 47",
-      "observations": 718,
+      "observations": 721,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1943,7 +1943,7 @@
     "SecMullinDHS": {
       "category": "officials",
       "label": "Secretary Markwayne Mullin",
-      "observations": 545,
+      "observations": 547,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2435,7 +2435,7 @@
       ],
       "category": "government",
       "label": "U.S. Coast Guard",
-      "observations": 49,
+      "observations": 50,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2593,7 +2593,7 @@
     "WhiteHouse": {
       "category": "core",
       "label": "The White House",
-      "observations": 483,
+      "observations": 484,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3200,7 +3200,7 @@
     "public": 141,
     "public_figures": 71
   },
-  "generated_at": "2026-05-21T03:39:03Z",
+  "generated_at": "2026-05-21T03:40:06Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
