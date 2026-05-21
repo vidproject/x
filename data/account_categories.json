@@ -93,6 +93,16 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "AmericanMargo": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "American Margo \u271d\ufe0f\ud83c\uddfa\ud83c\uddf8\ud83c\udf96\ufe0f",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "Anastasia7882": {
       "category": "government",
       "label": "Anastasia3\ud83c\uddec\ud83c\uddf7\ud83c\uddec\ud83c\uddf7\ud83c\uddec\ud83c\uddf7\ud83c\uddec\ud83c\uddf7\ud83c\udfdb\ud83d\udc08\u200d\u2b1b \ud83d\udc15\u200d\ud83e\uddba\ud800\udc00\ud800\udc19\ud800\udc2d\ud800\udc32\ud800\udc2f\ud800\udc00",
@@ -501,7 +511,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 3810,
+      "observations": 3850,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1023,7 +1033,7 @@
     "ICEgov": {
       "category": "core",
       "label": "U.S. Immigration and Customs Enforcement",
-      "observations": 1141,
+      "observations": 1161,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1324,6 +1334,13 @@
       "category": "public_figures",
       "label": "Lindsey Graham",
       "observations": 9,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "MGMMacIsaac": {
+      "category": "public_figures",
+      "label": "MGM",
+      "observations": 1,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -3180,10 +3197,10 @@
     "core": 12,
     "government": 81,
     "officials": 78,
-    "public": 140,
-    "public_figures": 70
+    "public": 141,
+    "public_figures": 71
   },
-  "generated_at": "2026-05-21T03:13:57Z",
+  "generated_at": "2026-05-21T03:16:57Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
