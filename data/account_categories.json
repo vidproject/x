@@ -44,7 +44,7 @@
     "AGPamBondi": {
       "category": "officials",
       "label": "Attorney General Pamela Bondi",
-      "observations": 14,
+      "observations": 16,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -53,6 +53,13 @@
       "label": "ATF HQ",
       "observations": 2,
       "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "ATJackson47": {
+      "category": "officials",
+      "label": "Abigail Jackson",
+      "observations": 2,
+      "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "AT_PDX_OR": {
@@ -292,7 +299,7 @@
     "CBP": {
       "category": "core",
       "label": "U.S. Customs and Border Protection",
-      "observations": 720,
+      "observations": 748,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -422,6 +429,16 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "ChazDogs": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Free River Girl",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "CherokeeUSMCVet": {
       "badges": [
         "veteran"
@@ -511,14 +528,14 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 3882,
+      "observations": 3969,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "DMAnews1": {
       "category": "officials",
       "label": "U.S. Attorney Massachusetts",
-      "observations": 3,
+      "observations": 4,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -602,6 +619,16 @@
       "label": "DerFalke\uea00",
       "observations": 3,
       "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "DesoxynSUD": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Vinnland \ud83c\uddfa\ud83c\uddf8",
+      "observations": 1,
+      "reason": "service-history badge only",
       "source": "data/users.json"
     },
     "Doggonitagain": {
@@ -697,7 +724,7 @@
     "ERONewark": {
       "category": "government",
       "label": "ERO Newark",
-      "observations": 9,
+      "observations": 10,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -732,7 +759,7 @@
     "EROSeattle": {
       "category": "government",
       "label": "ICE Seattle",
-      "observations": 4,
+      "observations": 5,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -965,17 +992,24 @@
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
+    "HSINewEngland": {
+      "category": "government",
+      "label": "HSI New England",
+      "observations": 4,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
     "HSISanJuan": {
       "category": "government",
       "label": "HSI San Juan",
-      "observations": 4,
+      "observations": 6,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSI_HQ": {
       "category": "government",
       "label": "Homeland Security Investigations",
-      "observations": 29,
+      "observations": 30,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1033,7 +1067,7 @@
     "ICEgov": {
       "category": "core",
       "label": "U.S. Immigration and Customs Enforcement",
-      "observations": 1171,
+      "observations": 1290,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1530,7 +1564,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 838,
+      "observations": 848,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1615,7 +1649,7 @@
     "PressSec": {
       "category": "core",
       "label": "White House Press Secretary",
-      "observations": 174,
+      "observations": 177,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1656,7 +1690,7 @@
     "RapidResponse47": {
       "category": "core",
       "label": "Rapid Response 47",
-      "observations": 724,
+      "observations": 746,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1943,7 +1977,7 @@
     "SecMullinDHS": {
       "category": "officials",
       "label": "Secretary Markwayne Mullin",
-      "observations": 547,
+      "observations": 571,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2213,7 +2247,7 @@
     "TSA": {
       "category": "government",
       "label": "TSA",
-      "observations": 9,
+      "observations": 53,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2442,7 +2476,7 @@
       ],
       "category": "government",
       "label": "U.S. Coast Guard",
-      "observations": 50,
+      "observations": 51,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2566,7 +2600,7 @@
     "WHTaskForceFIFA": {
       "category": "government",
       "label": "White House FIFA Task Force",
-      "observations": 8,
+      "observations": 10,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2600,7 +2634,7 @@
     "WhiteHouse": {
       "category": "core",
       "label": "The White House",
-      "observations": 485,
+      "observations": 507,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3042,7 +3076,7 @@
     "realDonaldTrump": {
       "category": "government",
       "label": "Donald J. Trump",
-      "observations": 34,
+      "observations": 36,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3099,6 +3133,16 @@
       "label": "Rodney Scott",
       "observations": 44,
       "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "rsevan45": {
+      "badges": [
+        "retired-police"
+      ],
+      "category": "public",
+      "label": "R Sevan",
+      "observations": 1,
+      "reason": "service-history badge only",
       "source": "data/users.json"
     },
     "semper_audent": {
@@ -3202,12 +3246,12 @@
   },
   "category_counts": {
     "core": 12,
-    "government": 81,
-    "officials": 78,
-    "public": 141,
+    "government": 82,
+    "officials": 79,
+    "public": 144,
     "public_figures": 72
   },
-  "generated_at": "2026-05-21T03:48:04Z",
+  "generated_at": "2026-05-21T03:49:39Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
