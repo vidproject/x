@@ -9,6 +9,12 @@ on:
   # picked up if the ingest workflow didn't fire (e.g. weekend lull).
   schedule:
     - cron: '17 */6 * * *'
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/archive-media.yml'
+      - 'data/tags/core_produced_missing_tweet_ids.txt'
+      - 'data/tags/core_produced_missing_media_ids.txt'
   workflow_dispatch:
     inputs:
       handle:
@@ -79,6 +85,14 @@ jobs:
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
+          fi
+          if [ "${{ github.event_name }}" = "push" ]; then
+            if [ -f data/tags/core_produced_missing_tweet_ids.txt ]; then
+              args+=(--tweet-ids-file data/tags/core_produced_missing_tweet_ids.txt)
+            fi
+            if [ -f data/tags/core_produced_missing_media_ids.txt ]; then
+              args+=(--media-ids-file data/tags/core_produced_missing_media_ids.txt)
+            fi
           fi
           if [ -n "${{ inputs.tweet_ids_file }}" ]; then
             args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
