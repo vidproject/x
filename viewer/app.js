@@ -5,7 +5,7 @@ import { exportCsv } from './csv.js';
 import { loadParquetRows } from './parquet.js';
 import { applyToUrl, defaults as defaultState, fromHash } from './state.js';
 import { SEARCH_FIELD_OPTIONS, Store } from './store.js';
-import { initChartsPanel, updateChartsPanel } from './charts.js';
+import { initChartsPanel, updateChartsPanel } from './charts.js?v=e677463';
 import {
   openColumnFilterPopup,
   parseVisibleColumns,
