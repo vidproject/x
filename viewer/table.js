@@ -1054,15 +1054,19 @@ function buildResearchTagFilterPopup({
     onApply(normalizeResearchTagSelections(active, valueByKey), { tagCertainty: certainty });
     close();
   });
-  clear.addEventListener('mousedown', stopPopupButtonEvent);
-  clear.addEventListener('click', (event) => {
+  let clearHandled = false;
+  function clearTagFilter(event) {
     stopPopupButtonEvent(event);
+    if (clearHandled) return;
+    clearHandled = true;
     active.clear();
     certainty = 'all';
     if (certaintySelect) certaintySelect.value = certainty;
     onApply(new Set(), { tagCertainty: 'all' });
     close();
-  });
+  }
+  clear.addEventListener('mousedown', clearTagFilter);
+  clear.addEventListener('click', clearTagFilter);
   cancel.addEventListener('mousedown', stopPopupButtonEvent);
   cancel.addEventListener('click', (event) => {
     stopPopupButtonEvent(event);
