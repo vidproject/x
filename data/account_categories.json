@@ -282,7 +282,7 @@
     "CBP": {
       "category": "core",
       "label": "U.S. Customs and Border Protection",
-      "observations": 719,
+      "observations": 720,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -442,7 +442,7 @@
       ],
       "category": "public",
       "label": "\ud83c\uddfa\ud83c\uddf8ColonelMAGAMark\ud83c\uddfa\ud83c\uddf8",
-      "observations": 6,
+      "observations": 7,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -532,7 +532,7 @@
       ],
       "category": "public",
       "label": "Dan Holbrook",
-      "observations": 1,
+      "observations": 2,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -790,7 +790,7 @@
       ],
       "category": "public",
       "label": "\ud83d\udcab \ud83c\uddfa\ud83c\uddf8 NEWS WATCH \ud83c\uddfa\ud83c\uddf8 \ud83d\udcab",
-      "observations": 10,
+      "observations": 11,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -907,7 +907,7 @@
     "GregoryKBovino": {
       "category": "core",
       "label": "Gregory Bovino",
-      "observations": 2624,
+      "observations": 2730,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1053,7 +1053,7 @@
     "JDVance": {
       "category": "government",
       "label": "JD Vance",
-      "observations": 25,
+      "observations": 26,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1127,6 +1127,16 @@
       "label": "Jessica Vaughan",
       "observations": 6,
       "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "JimB11883": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "U.S Veteran 1958",
+      "observations": 1,
+      "reason": "service-history badge only",
       "source": "data/users.json"
     },
     "JimSatala": {
@@ -1265,7 +1275,7 @@
       ],
       "category": "public",
       "label": "Laura Johnson",
-      "observations": 1,
+      "observations": 2,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -1379,6 +1389,16 @@
       "category": "public",
       "label": "MishaSki",
       "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "MissBeck12": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "MissBeck71 \u271d\ufe0f \ud83c\uddfa\ud83c\uddf8",
+      "observations": 5,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -1532,6 +1552,16 @@
       "label": "Andrew Leyden",
       "observations": 1,
       "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "PensivePoet97": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Jordan M. Thomas",
+      "observations": 1,
+      "reason": "service-history badge only",
       "source": "data/users.json"
     },
     "PeteHegseth": {
@@ -2083,7 +2113,7 @@
     "StephenM": {
       "category": "core",
       "label": "Stephen Miller",
-      "observations": 2060,
+      "observations": 2198,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2525,7 +2555,7 @@
     "WhiteHouse": {
       "category": "core",
       "label": "The White House",
-      "observations": 478,
+      "observations": 479,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2967,7 +2997,7 @@
     "realDonaldTrump": {
       "category": "government",
       "label": "Donald J. Trump",
-      "observations": 31,
+      "observations": 33,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3073,6 +3103,16 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "sturmgeist69": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "SturmGeist",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "tedcruz": {
       "category": "public_figures",
       "label": "Ted Cruz",
@@ -3119,10 +3159,10 @@
     "core": 12,
     "government": 81,
     "officials": 76,
-    "public": 136,
+    "public": 140,
     "public_figures": 69
   },
-  "generated_at": "2026-05-21T01:44:34Z",
+  "generated_at": "2026-05-21T01:46:39Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
