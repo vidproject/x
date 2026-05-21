@@ -1501,6 +1501,7 @@ html[data-media-fit='vertical'] .media-thumb {
 .col-pop {
   position: fixed;
   z-index: 60;
+  box-sizing: border-box;
   background: var(--bg);
   color: var(--fg);
   border: 1px solid var(--border-strong);

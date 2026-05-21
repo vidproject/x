@@ -727,9 +727,11 @@ export function openColumnFilterPopup({
   const col = KEY_TO_COL[colKey];
   if (!col) return;
   const rect = anchorBtn.getBoundingClientRect();
+  const top = Math.round(rect.bottom + 4);
   const popupWidth = colKey === 'tags' ? 460 : 240;
-  popEl.style.top = `${Math.round(rect.bottom + 4)}px`;
+  popEl.style.top = `${top}px`;
   popEl.style.left = `${Math.max(8, Math.round(rect.right - popupWidth))}px`;
+  popEl.style.maxHeight = `${Math.max(220, window.innerHeight - top - 8)}px`;
   popEl.hidden = false;
   popEl.classList.toggle('tag-pop', colKey === 'tags');
   popEl.replaceChildren();
