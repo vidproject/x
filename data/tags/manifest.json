@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-22T17:45:48Z",
+  "generated_at": "2026-05-22T17:48:41Z",
   "layers": {
     "audio_music": {
       "analyzed": 148,
@@ -70,7 +70,7 @@
       "status_ok": 148
     },
     "lexical": {
-      "generated_at": "2026-05-22T17:45:48Z",
+      "generated_at": "2026-05-22T17:48:41Z",
       "parquets_scanned": {
         "CBP.parquet": 515,
         "DHSgov.parquet": 4497,
@@ -286,7 +286,7 @@
         "media:has-alt-text": 245,
         "media:montage": 4,
         "media:needs-ocr": 3956,
-        "media:needs-vision": 3399,
+        "media:needs-vision": 3286,
         "media:photo": 2295,
         "media:short-video": 287,
         "media:text-overlay": 20,
@@ -438,30 +438,30 @@
         "topic:laudatory": 62,
         "topic:military": 843,
         "video:bodycam": 4,
-        "video:interview": 27,
+        "video:interview": 64,
         "video:long": 314,
         "video:medium": 1251,
-        "video:news-clip": 48,
+        "video:news-clip": 58,
         "video:produced": 150,
         "video:short": 461,
-        "video:speech": 46
+        "video:speech": 88
       },
       "tagger_version": "lexical-v2"
     },
     "media_vision": {
-      "cache_hits": 4127,
+      "cache_hits": 4016,
       "cost_estimate_usd": 0.0,
-      "generated": 2,
-      "generated_at": "2026-05-22T15:22:26Z",
+      "generated": 113,
+      "generated_at": "2026-05-22T17:48:39Z",
       "model": "metadata",
       "model_version": "media-metadata-v4",
       "prompt_hash": "b18b19292ec51484",
       "row_count": 4129,
       "rows": 4129,
       "status_counts": {
-        "manual-review": 53,
+        "manual-review": 166,
         "metadata-alt": 284,
-        "metadata-context": 3792
+        "metadata-context": 3679
       },
       "tag_frequency": {
         "action:deportation": 1,
@@ -479,7 +479,7 @@
         "media:described": 4129,
         "media:has-alt-text": 284,
         "media:montage": 4,
-        "media:needs-vision": 3792,
+        "media:needs-vision": 3679,
         "media:photo": 2725,
         "media:short-video": 287,
         "media:text-overlay": 20,
@@ -495,10 +495,10 @@
         "topic:economy": 1,
         "topic:immigration": 2,
         "topic:military": 1,
-        "video:interview": 5,
-        "video:news-clip": 12,
+        "video:interview": 42,
+        "video:news-clip": 22,
         "video:produced": 22,
-        "video:speech": 31
+        "video:speech": 73
       }
     },
     "news_mentions": {
@@ -744,7 +744,7 @@
     "media:has-alt-text": 245,
     "media:montage": 4,
     "media:needs-ocr": 3956,
-    "media:needs-vision": 3399,
+    "media:needs-vision": 3286,
     "media:photo": 2295,
     "media:short-video": 287,
     "media:text-overlay": 20,
@@ -896,13 +896,13 @@
     "topic:laudatory": 62,
     "topic:military": 843,
     "video:bodycam": 4,
-    "video:interview": 27,
+    "video:interview": 64,
     "video:long": 314,
     "video:medium": 1251,
-    "video:news-clip": 48,
+    "video:news-clip": 58,
     "video:produced": 150,
     "video:short": 461,
-    "video:speech": 46
+    "video:speech": 88
   },
   "tagger_version": "lexical-v2"
 }
