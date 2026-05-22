@@ -14,6 +14,7 @@ from typing import Any
 
 import polars as pl
 
+from scripts import tag_lexical
 from scripts.tag_lexical import tag_one_parquet, tag_text
 
 
@@ -1436,3 +1437,20 @@ def test_country_synonyms_normalize() -> None:
     # USA → United-States; Mexico stays.
     assert "country:United-States" in tags
     assert "country:Mexico" in tags
+
+
+def test_manifest_tag_frequency_merges_country_state_case_variants() -> None:
+    freq = tag_lexical.manifest_tag_frequency(
+        {
+            "country:CHINA": 2,
+            "country:China": 3,
+            "state:TEXAS": 4,
+            "state:Texas": 5,
+            "agency:ICEgov": 6,
+        }
+    )
+    assert freq["country:China"] == 5
+    assert freq["state:Texas"] == 9
+    assert "country:CHINA" not in freq
+    assert "state:TEXAS" not in freq
+    assert freq["agency:ICEgov"] == 6

@@ -1990,6 +1990,31 @@ def write_tag_manifest(stats: dict[str, Any]) -> None:
     os.replace(tmp, manifest_path)
 
 
+def canonical_manifest_tag(tag: str) -> str:
+    """Return a stable display key for manifest-only frequency stats.
+
+    The row-level tag sidecar preserves exact tags. The JSON manifest is also
+    consumed by tools with case-insensitive object keys, so merge obvious
+    country/state case variants there.
+    """
+    if ":" not in tag:
+        return tag
+    namespace, value = tag.split(":", 1)
+    if namespace not in {"country", "state"}:
+        return tag
+    if not value or value != value.upper():
+        return tag
+    return f"{namespace}:{value.title()}"
+
+
+def manifest_tag_frequency(freq: dict[str, int]) -> dict[str, int]:
+    merged: dict[str, int] = {}
+    for tag, count in freq.items():
+        key = canonical_manifest_tag(tag)
+        merged[key] = merged.get(key, 0) + count
+    return dict(sorted(merged.items(), key=lambda kv: (-kv[1], kv[0])))
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument(
@@ -2077,7 +2102,7 @@ def main(argv: list[str] | None = None) -> int:
             "generated_at": tagged_at,
             "row_count": df.height,
             "parquets_scanned": per_file,
-            "tag_frequency": dict(sorted(freq.items(), key=lambda kv: (-kv[1], kv[0]))),
+            "tag_frequency": manifest_tag_frequency(freq),
         }
     )
     LOG.info(
