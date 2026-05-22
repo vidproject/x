@@ -244,6 +244,11 @@ let hydrationRefreshQueued = false;
 
 async function loadManifest() {
   try {
+    // The manifest is the freshness root: its `generated_at` is the cache key
+    // appended to every other (large) data URL. It is tiny (~8 KB) and must
+    // always be current so those version keys are right, so it stays
+    // uncached. The big bodies it points at are cacheable (see parquet.js and
+    // the catalog/preview/sidecar loaders).
     const res = await fetch('data/manifest.json', { cache: 'no-store' });
     if (!res.ok) throw new Error(`manifest: ${res.status}`);
     manifest = await res.json();
@@ -268,9 +273,12 @@ async function loadManifest() {
   await loadAccountCategorySidecar(catMap);
   store.setAccountCategories(catMap);
   // Best-effort users.json — totally optional, viewer still works without
-  // avatars / display names.
+  // avatars / display names. It is ~2 MB and has no version key in its URL,
+  // so use `no-cache` (revalidate): the browser keeps the body and the server
+  // can answer a conditional request with a cheap 304 when it hasn't changed,
+  // instead of re-downloading the whole file on every visit.
   try {
-    const res = await fetch('data/users.json', { cache: 'no-store' });
+    const res = await fetch('data/users.json', { cache: 'no-cache' });
     if (res.ok) {
       const payload = await res.json();
       const map = new Map();
@@ -307,7 +315,8 @@ async function loadAccountCategorySidecar(catMap) {
   const cacheKey = manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
   const url = `data/account_categories.json${cacheKey}`;
   try {
-    const res = await fetch(url, { cache: 'no-store' });
+    // Version-keyed URL — safe to let the HTTP cache serve repeat visits.
+    const res = await fetch(url, { cache: 'default' });
     if (!res.ok) {
       if (res.status !== 404) throw new Error(`HTTP ${res.status} ${res.statusText}`);
       return;
@@ -795,7 +804,10 @@ async function loadCatalogDataset() {
   setSpinner(true);
   syncFullDbButton();
   try {
-    const res = await fetch(url, { cache: 'no-store' });
+    // Version-keyed URL (?v=generated_at). The catalog parquet it points at is
+    // ~4 MB, so letting the browser cache both keeps repeat visits cheap; a new
+    // deploy bumps the version and invalidates the entry.
+    const res = await fetch(url, { cache: 'default' });
     if (!res.ok) throw new Error(`fetch ${url}: ${res.status} ${res.statusText}`);
     const payload = await res.json();
     catalogDateRange = normalizeDateRange(payload?.date_range);
@@ -853,7 +865,8 @@ async function loadPreviewDataset(size) {
   setSpinner(true);
   syncFullDbButton();
   try {
-    const res = await fetch(url, { cache: 'no-store' });
+    // Version-keyed URL — cacheable across visits.
+    const res = await fetch(url, { cache: 'default' });
     if (!res.ok) throw new Error(`fetch ${url}: ${res.status} ${res.statusText}`);
     const payload = await res.json();
     const rows = Array.isArray(payload?.rows) ? payload.rows : [];

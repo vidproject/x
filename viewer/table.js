@@ -26,9 +26,9 @@ import { archiveShareUrlForRow, copyTextToClipboard, xTweetUrlForRow } from './l
 
 const MEDIA_COL_KEY = 'media_kinds';
 export const TAG_CERTAINTY_LABELS = {
-  all: 'Firm + tentative',
-  firm: 'Firm only',
-  tentative: 'Tentative only',
+  all: 'Include tentative tags (default)',
+  firm: 'Firm tags only',
+  tentative: 'Only tentative tags',
 };
 const TAG_FACET_SECTIONS = [
   {
@@ -973,6 +973,26 @@ function buildResearchTagFilterPopup({
   const expandedGroups = new Set();
   let certainty = TAG_CERTAINTY_LABELS[tagCertainty] ? tagCertainty : 'all';
 
+  // The tag counts shown in the browser depend only on the certainty mode
+  // (the caller scopes the rows with the tag filter excluded), so they don't
+  // change as the user picks tags. Build the namespace groups once per
+  // certainty and reuse them, which lets every toggle apply live without
+  // re-deriving the value map. Recompute only when certainty changes.
+  let groups = buildResearchTagGroups(tagCountsForRows(rowsForCounts, certainty));
+  let valueByKey = researchTagValueMap(groups);
+  function rebuildGroups() {
+    groups = buildResearchTagGroups(tagCountsForRows(rowsForCounts, certainty));
+    valueByKey = researchTagValueMap(groups);
+  }
+
+  // Selections apply live: every checkbox toggle, chip removal, and certainty
+  // change pushes straight to the URL/table so results update immediately and
+  // a shared link always matches what the user sees. There is no staged
+  // "Apply" step to forget.
+  function liveApply() {
+    onApply(normalizeResearchTagSelections(active, valueByKey), { tagCertainty: certainty });
+  }
+
   const header = document.createElement('div');
   header.className = 'tag-filter-head';
   const title = document.createElement('div');
@@ -985,6 +1005,8 @@ function buildResearchTagFilterPopup({
 
   const certaintyControl = buildTagCertaintyControl(certainty, (mode) => {
     certainty = TAG_CERTAINTY_LABELS[mode] ? mode : 'all';
+    rebuildGroups();
+    liveApply();
     render();
   });
   const certaintySelect = certaintyControl.querySelector('select');
@@ -993,7 +1015,11 @@ function buildResearchTagFilterPopup({
   const search = document.createElement('input');
   search.type = 'search';
   search.className = 'col-search';
-  search.placeholder = 'Search namespaces and tags...';
+  search.placeholder = 'Search any tag, e.g. vance, music, ice...';
+  search.setAttribute(
+    'aria-label',
+    'Search tags by namespace or value (matches the full namespace:slug text)'
+  );
   popEl.append(search);
 
   const selectedBlock = document.createElement('div');
@@ -1006,32 +1032,35 @@ function buildResearchTagFilterPopup({
 
   const actions = document.createElement('div');
   actions.className = 'col-actions';
-  const apply = document.createElement('button');
-  apply.type = 'button';
-  apply.className = 'btn';
-  apply.textContent = 'Apply';
   const clear = document.createElement('button');
   clear.type = 'button';
   clear.className = 'btn ghost';
   clear.textContent = 'Clear';
-  clear.title = 'Clear tag selections and certainty mode';
-  const cancel = document.createElement('button');
-  cancel.type = 'button';
-  cancel.className = 'btn ghost';
-  cancel.textContent = 'Cancel';
-  actions.append(apply, clear, cancel);
+  clear.title = 'Clear all selected tags, the search box, and the certainty mode';
+  const done = document.createElement('button');
+  done.type = 'button';
+  done.className = 'btn';
+  done.textContent = 'Done';
+  done.title = 'Close (your tag selections are already applied)';
+  actions.append(clear, done);
   popEl.append(actions);
 
   function render() {
-    const groups = buildResearchTagGroups(tagCountsForRows(rowsForCounts, certainty));
-    const valueByKey = researchTagValueMap(groups);
     const filter = search.value.trim().toLowerCase();
     summary.textContent = `${fmtNum(totalTagOccurrences(groups))} tag hit${
       totalTagOccurrences(groups) === 1 ? '' : 's'
     } in scope`;
 
-    renderSelectedTags(selectedBlock, active, valueByKey, () => render());
+    renderSelectedTags(selectedBlock, active, valueByKey, () => {
+      liveApply();
+      render();
+    });
     list.replaceChildren();
+
+    const onToggle = () => {
+      liveApply();
+      render();
+    };
 
     let rendered = 0;
     let lastSection = '';
@@ -1040,8 +1069,12 @@ function buildResearchTagFilterPopup({
       const matchingChildren = group.children.filter(
         (child) => groupMatches || tagFilterPairMatches(child, filter)
       );
+      // With a search active, show any namespace whose header OR a child
+      // matches — so a specific subtype (e.g. "vance") is directly reachable
+      // and selectable without first picking its namespace. With no search,
+      // show every namespace; selecting just the header filters the whole
+      // namespace, and its subtypes are one click away below it.
       if (filter && !groupMatches && matchingChildren.length === 0) continue;
-      if (!filter && matchingChildren.length === 0) continue;
 
       if (group.section !== lastSection) {
         const section = document.createElement('div');
@@ -1051,13 +1084,13 @@ function buildResearchTagFilterPopup({
         lastSection = group.section;
       }
 
-      list.append(buildTagNamespaceRow(group, active, () => render()));
+      list.append(buildTagNamespaceRow(group, active, onToggle));
       const visibleChildren =
         filter || expandedGroups.has(group.value)
           ? matchingChildren
           : matchingChildren.slice(0, TAG_CHILD_VISIBLE_LIMIT);
       for (const child of visibleChildren) {
-        list.append(buildTagChildRow(child, active, () => render()));
+        list.append(buildTagChildRow(child, active, onToggle));
       }
       const hidden = matchingChildren.length - visibleChildren.length;
       if (hidden > 0) {
@@ -1083,15 +1116,7 @@ function buildResearchTagFilterPopup({
   }
 
   search.addEventListener('input', () => render());
-  apply.addEventListener('mousedown', stopPopupButtonEvent);
-  apply.addEventListener('click', (event) => {
-    stopPopupButtonEvent(event);
-    const valueByKey = researchTagValueMap(
-      buildResearchTagGroups(tagCountsForRows(rowsForCounts, certainty))
-    );
-    onApply(normalizeResearchTagSelections(active, valueByKey), { tagCertainty: certainty });
-    close();
-  });
+
   let clearHandled = false;
   function clearTagFilter(event) {
     stopPopupButtonEvent(event);
@@ -1100,13 +1125,15 @@ function buildResearchTagFilterPopup({
     active.clear();
     certainty = 'all';
     if (certaintySelect) certaintySelect.value = certainty;
+    search.value = '';
+    expandedGroups.clear();
     onApply(new Set(), { tagCertainty: 'all' });
     close();
   }
   clear.addEventListener('mousedown', clearTagFilter);
   clear.addEventListener('click', clearTagFilter);
-  cancel.addEventListener('mousedown', stopPopupButtonEvent);
-  cancel.addEventListener('click', (event) => {
+  done.addEventListener('mousedown', stopPopupButtonEvent);
+  done.addEventListener('click', (event) => {
     stopPopupButtonEvent(event);
     close();
   });
@@ -1123,10 +1150,13 @@ function buildTagCertaintyControl(tagCertainty = 'all', onTagCertaintyChange) {
   const wrap = document.createElement('div');
   wrap.className = 'tag-certainty-control';
   const label = document.createElement('span');
-  label.textContent = 'Certainty';
+  label.textContent = 'Tentative';
+  label.title =
+    'Tentative tags are best-guess model/heuristic assignments. They are included by default; this control only narrows by certainty and never blocks normal tag filtering.';
   const select = document.createElement('select');
   select.className = 'select';
-  select.title = 'Choose whether tag filters include tentative model-derived tags';
+  select.title =
+    'Tentative tags are included by default. Switch to "Firm tags only" to drop best-guess tags, or "Only tentative tags" to inspect them. This narrows results; it does not gate the tag picker.';
   for (const [value, text] of Object.entries(TAG_CERTAINTY_LABELS)) {
     const option = document.createElement('option');
     option.value = value;
@@ -1284,14 +1314,22 @@ function renderSelectedTags(wrap, active, valueByKey, onRemove) {
 
   const title = document.createElement('div');
   title.className = 'tag-selected-title';
-  title.textContent = 'Selected';
+  title.textContent = `Selected (${fmtNum(selected.length)})`;
   wrap.append(title);
   for (const item of selected) {
     const pill = document.createElement('button');
     pill.type = 'button';
     pill.className = 'tag-selection-pill';
     pill.title = `Remove ${item.label}`;
-    pill.textContent = item.label;
+    pill.setAttribute('aria-label', `Remove tag filter ${item.label}`);
+    const text = document.createElement('span');
+    text.className = 'tag-selection-pill-label';
+    text.textContent = item.label;
+    const x = document.createElement('span');
+    x.className = 'tag-selection-pill-x';
+    x.setAttribute('aria-hidden', 'true');
+    x.textContent = '×';
+    pill.append(text, x);
     pill.addEventListener('click', () => {
       active.delete(item.value);
       onRemove();

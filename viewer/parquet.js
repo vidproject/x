@@ -42,12 +42,17 @@ const parquetFiles = new Map();
 
 async function parquetFile(url, byteLength) {
   if (!parquetFiles.has(url)) {
+    // Parquet bodies are addressed by a stable, deploy-versioned URL
+    // (callers append `?v=<manifest.generated_at>`), so the browser/CDN
+    // cache can and should serve them on repeat visits instead of
+    // re-downloading multi-MB files every page load. A new deploy bumps
+    // the version and naturally invalidates the cache entry.
     const promise = asyncBufferFromUrl({
       url,
       ...(Number.isFinite(byteLength) && byteLength > 0
         ? { byteLength: Math.floor(byteLength) }
         : {}),
-      requestInit: { cache: 'no-store' },
+      requestInit: { cache: 'default' },
     }).catch((err) => {
       parquetFiles.delete(url);
       throw err;
@@ -58,7 +63,9 @@ async function parquetFile(url, byteLength) {
 }
 
 async function loadParquetRowsWhole(url, onProgress) {
-  const res = await fetch(url, { cache: 'no-store' });
+  // Same caching rationale as parquetFile(): version-keyed URL, so let the
+  // HTTP cache serve repeat visits rather than forcing a full re-download.
+  const res = await fetch(url, { cache: 'default' });
   if (!res.ok) {
     throw new Error(`fetch ${url}: ${res.status} ${res.statusText}`);
   }
