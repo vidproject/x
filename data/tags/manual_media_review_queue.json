@@ -705,6 +705,94 @@
       "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
       "certainty": "reviewed",
       "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2013620691661164617",
+      "account_handle": "WhiteHouse",
+      "media_id": "13_2013619240939515905",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2013619240939515905.mp4",
+      "tweet_text_excerpt": "365 DAYS OF PRESIDENT DONALD J. TRUMP. A Golden Age just getting started. 🇺🇸 https://t.co/Nz3mHNGZW0",
+      "visual_observation": "Reviewed produced montage with text overlay.",
+      "candidate_visual_tags": [
+        "genre:utopian",
+        "media:montage",
+        "video:produced"
+      ],
+      "review_method": "Direct triage: 96px keyframe poster + tweet text (produced-video review).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Produced-video form/genre confirmed by direct keyframe review; recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2034746418246701089",
+      "account_handle": "USDOL",
+      "media_id": "7_2034746399338762240",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USDOL/7_2034746399338762240.mp4",
+      "tweet_text_excerpt": "Under @POTUS, we’re equipping our workforce with the in-demand skills needed to build a Golden Age of Prosperity for generations to come 🇺🇸\n\nhttp://APPRENTICESHIP.GOV https://t.co/1NVSaEtmKP",
+      "visual_observation": "Reviewed produced montage with text overlay.",
+      "candidate_visual_tags": [
+        "genre:utopian",
+        "media:montage",
+        "media:text-overlay",
+        "video:produced"
+      ],
+      "review_method": "Direct triage: 96px keyframe poster + tweet text (produced-video review).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Produced-video form/genre confirmed by direct keyframe review; recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2051473750873321574",
+      "account_handle": "WhiteHouse",
+      "media_id": "13_2051473238694170633",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2051473238694170633.mp4",
+      "tweet_text_excerpt": "BEST I CAN DO IS THE GOLDEN AGE FOR SMALL BUSINESSES 🔥\n\nPawn Stars' Rick Harrison x White House 🇺🇸 https://t.co/lIaSBg3duK",
+      "visual_observation": "Reviewed produced advertisement / promotional video.",
+      "candidate_visual_tags": [
+        "genre:utopian",
+        "media:text-overlay",
+        "theme:pop-culture-enforcement",
+        "video:produced"
+      ],
+      "review_method": "Direct triage: 96px keyframe poster + tweet text (produced-video review).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Produced-video form/genre confirmed by direct keyframe review; recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2051478685484490758",
+      "account_handle": "POTUS",
+      "media_id": "13_2051473238694170633",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-POTUS/13_2051473238694170633.mp4",
+      "tweet_text_excerpt": "RT @WhiteHouse: BEST I CAN DO IS THE GOLDEN AGE FOR SMALL BUSINESSES 🔥\n\nPawn Stars' Rick Harrison x White House 🇺🇸 https://t.co/lIaSBg3duK",
+      "visual_observation": "Reviewed produced advertisement / promotional video.",
+      "candidate_visual_tags": [
+        "genre:utopian",
+        "media:text-overlay",
+        "theme:pop-culture-enforcement",
+        "video:produced"
+      ],
+      "review_method": "Direct triage: 96px keyframe poster + tweet text (produced-video review).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Produced-video form/genre confirmed by direct keyframe review; recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2048816591085650318",
+      "account_handle": "USDOL",
+      "media_id": "7_2048816554402562048",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USDOL/7_2048816554402562048.mp4",
+      "tweet_text_excerpt": "This National Apprenticeship Week, @USDOL is proud to highlight stories from apprentices across the country.\n\nThanks to Registered Apprenticeship programs at @ETI569, apprentices like Matthew are buil",
+      "visual_observation": "Reviewed produced advertisement / promotional video.",
+      "candidate_visual_tags": [
+        "genre:recruitment",
+        "media:montage",
+        "video:produced"
+      ],
+      "review_method": "Direct triage: 96px keyframe poster + tweet text (produced-video review).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Produced-video form/genre confirmed by direct keyframe review; recorded via the candidate tags above."
     }
   ]
 }
