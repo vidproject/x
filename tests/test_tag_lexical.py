@@ -51,7 +51,7 @@ def test_possibly_sensitive_marks_graphic_content() -> None:
         possibly_sensitive=True,
     )
     tags = _tags(out)
-    assert "media:graphic-content" in tags
+    assert "media-status:graphic-content" in tags
 
 
 def test_immigration_default_applies_to_tracked_categories() -> None:
@@ -137,7 +137,8 @@ def test_frame_criminal_and_action_combo_marks_enforcement_op() -> None:
         account_category="core",
     )
     tags = _tags(out)
-    assert "frame:criminal" in tags
+    assert "theme:criminal" in tags
+    assert "frame:criminal" not in tags
     assert "action:detention" in tags
     assert "subject:enforcement-op" in tags
     # Vocabulary-validated extractions.
@@ -145,7 +146,7 @@ def test_frame_criminal_and_action_combo_marks_enforcement_op() -> None:
     assert "country:Mexico" in tags
     assert "state:Texas" in tags
     assert "crime:assault" in tags
-    # Composite: reply + frame:criminal + exactly 1 photo.
+    # Composite: reply + theme:criminal + exactly 1 photo.
     assert "genre:lineup" in tags
     assert "shape:lineup" not in tags
 
@@ -817,7 +818,7 @@ def test_music_likely_tag_uses_video_text_and_reply_context() -> None:
         media_count=1,
         account_category="public",
         video_count=1,
-        media_tags=[{"tag": "media:music-video", "source": "manual-media-review"}],
+        media_tags=[{"tag": "genre:music-video", "source": "manual-media-review"}],
     )
     assert "audio:music-likely" in _tags(imported_media_tag)
 
@@ -1103,12 +1104,14 @@ def test_needs_ocr_is_separate_from_needs_vision() -> None:
         "", tweet_type="original", mentions=[], media_count=1, account_category="core", needs_ocr=True
     )
     t = _tags(out)
-    assert "media:needs-ocr" in t
+    assert "media-status:needs-ocr" in t
+    assert "media-status:needs-vision" not in t
+    assert "media:needs-ocr" not in t
     assert "media:needs-vision" not in t
     out2 = tag_text(
         "", tweet_type="original", mentions=[], media_count=1, account_category="core", needs_ocr=False
     )
-    assert "media:needs-ocr" not in _tags(out2)
+    assert "media-status:needs-ocr" not in _tags(out2)
 
 
 def test_general_topic_matches_multi_problem_posts() -> None:
@@ -1259,7 +1262,8 @@ def test_criminal_illegal_alien_slogan_also_marks_generic_phrase() -> None:
     tags = _tags(out)
     assert "slogan:criminal-illegal-alien" in tags
     assert "slogan:illegal-alien" in tags
-    assert "frame:criminal" in tags
+    assert "theme:criminal" in tags
+    assert "frame:criminal" not in tags
     assert "topic:immigration" in tags
 
 
@@ -1311,13 +1315,13 @@ def test_media_description_text_can_drive_immigration_slogans() -> None:
             "A social card says ICE arrested an illegal alien felon after release "
             "from a sanctuary city."
         ),
-        media_tags=[{"tag": "media:text-overlay", "source": "manual-media-review"}],
+        media_tags=[{"tag": "video:text-overlay", "source": "manual-media-review"}],
     )
     tags = _tags(out)
-    assert "media:text-overlay" in tags
+    assert "video:text-overlay" in tags
     assert "agency:ICEgov" in tags
     assert "slogan:illegal-alien" in tags
-    assert "theme:sanctuary-cities" in tags
+    assert "policy:sanctuary-cities" in tags
     assert "topic:immigration" in tags
 
 
@@ -1416,7 +1420,8 @@ def test_cbp_home_theme_pairs_with_slogans_and_self_deport_action() -> None:
     )
     tags = _tags(out)
     assert "subject:cbp-home-app" in tags
-    assert "theme:cbp-home" in tags
+    assert "policy:cbp-home" in tags
+    assert "theme:cbp-home" not in tags
     assert "slogan:project-homecoming" in tags
     assert "slogan:free-ticket-home" in tags
     assert "action:self-deportation" in tags
@@ -1504,7 +1509,8 @@ def test_statistics_theme_requires_digits_with_keyword() -> None:
         media_count=0,
         account_category="core",
     )
-    assert "theme:statistics" in _tags(yes)
+    assert "format:statistics" in _tags(yes)
+    assert "theme:statistics" not in _tags(yes)
     no = tag_text(
         "We did some arrests this week.",
         tweet_type="original",
@@ -1512,7 +1518,7 @@ def test_statistics_theme_requires_digits_with_keyword() -> None:
         media_count=0,
         account_category="core",
     )
-    assert "theme:statistics" not in _tags(no)
+    assert "format:statistics" not in _tags(no)
 
 
 def test_homicide_murder_subtype_matches_plain_murder_and_homicide_terms() -> None:
@@ -1657,7 +1663,8 @@ def test_ocr_text_confirms_immigration_and_emits_tags() -> None:
     )
     tags = _tags(out)
     assert "action:deportation" in tags
-    assert "frame:criminal" in tags  # "illegal aliens" — plural form now covered
+    assert "theme:criminal" in tags  # "illegal aliens" — plural form now covered
+    assert "frame:criminal" not in tags
     assert "country:Mexico" in tags
     assert "state:Texas" in tags
     # The presence of explicit signals (via OCR) should promote

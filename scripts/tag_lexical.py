@@ -1075,10 +1075,10 @@ PRODUCED_VIDEO_GENRE_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
 )
 PRODUCED_VIDEO_STRUCTURE_TAGS = {
     "video:produced",
-    "media:music-video",
-    "media:montage",
-    "media:text-overlay",
-    "media:voiceover",
+    "genre:music-video",
+    "video:montage",
+    "video:text-overlay",
+    "video:voiceover",
 }
 # Explicit textual AI-generation signals (body / OCR / transcript). Kept
 # high-precision to avoid firing on bare "AI" mentions; emitted tentative
@@ -1276,13 +1276,15 @@ MEDIA_TAG_PREFIXES_ALLOWED_IN_LEXICAL: tuple[str, ...] = (
     "country:",
     "crime:",
     "event:",
-    "frame:",
+    "format:",
     "genre:",
     "legal:",
     "media:",
+    "media-status:",
     "military:",
     "parody:",
     "phrase:",
+    "policy:",
     "religion:",
     "slogan:",
     "speaker:",
@@ -1306,6 +1308,27 @@ LEGACY_MEDIA_TAG_ALIASES: dict[str, tuple[str, ...]] = {
     "branch:marines": ("military:marines",),
     "branch:coast-guard": ("military:coast-guard",),
     "branch:national-guard": ("military:national-guard",),
+    # Namespace-migration aliases (media:* production attrs -> video:/genre:)
+    "media:montage": ("video:montage",),
+    "media:text-overlay": ("video:text-overlay",),
+    "media:voiceover": ("video:voiceover",),
+    "media:music-video": ("genre:music-video",),
+    "media:short-video": ("video:short",),
+    # Namespace-migration aliases (media:* status flags -> media-status:*)
+    "media:archived": ("media-status:archived",),
+    "media:described": ("media-status:described",),
+    "media:has-alt-text": ("media-status:has-alt-text",),
+    "media:needs-vision": ("media-status:needs-vision",),
+    "media:needs-ocr": ("media-status:needs-ocr",),
+    "media:graphic-content": ("media-status:graphic-content",),
+    # Namespace-migration aliases (theme:*/frame: -> policy:/format:/theme:)
+    "theme:border": ("policy:border",),
+    "theme:sanctuary-cities": ("policy:sanctuary-cities",),
+    "theme:worksite-enforcement": ("policy:worksite-enforcement",),
+    "theme:cbp-home": ("policy:cbp-home",),
+    "theme:statistics": ("format:statistics",),
+    "theme:directive": ("format:directive",),
+    "frame:criminal": ("theme:criminal",),
 }
 
 
@@ -1416,7 +1439,7 @@ def tag_text(
     # X's own media/content warning. This is not an interpretation of the
     # image; it records that the platform flagged the tweet as sensitive.
     if possibly_sensitive:
-        add("media:graphic-content", source="platform")
+        add("media-status:graphic-content", source="platform")
 
     # agency:<HANDLE> — derived from mentions[]
     for mention in mentions or []:
@@ -1447,7 +1470,7 @@ def tag_text(
     # layer); needs-vision means the frame/scene itself has not been analyzed
     # (resolved only by an actual visual description, never by OCR).
     if needs_ocr:
-        add("media:needs-ocr", tentative=True, source="media-metadata")
+        add("media-status:needs-ocr", tentative=True, source="media-metadata")
 
     # Concatenate OCR and media-description text so a poster's stamped
     # slogan or manually reviewed image description earns the same tags
@@ -1465,7 +1488,7 @@ def tag_text(
 
     # Single-shot regex tags
     for pat, tag in (
-        (PATTERN_FRAME_CRIMINAL, "frame:criminal"),
+        (PATTERN_FRAME_CRIMINAL, "theme:criminal"),
         (PATTERN_ACTION_DETENTION, "action:detention"),
         (PATTERN_ACTION_SELF_DEPORTATION, "action:self-deportation"),
         (PATTERN_ACTION_DEPORTATION, "action:deportation"),
@@ -1478,15 +1501,15 @@ def tag_text(
         (PATTERN_TOPIC_MILITARY, "topic:military"),
         (PATTERN_TOPIC_LAUDATORY, "topic:laudatory"),
         (PATTERN_EVENT_PALESTINE, "event:palestine"),
-        (PATTERN_THEME_BORDER, "theme:border"),
-        (PATTERN_THEME_SANCTUARY, "theme:sanctuary-cities"),
-        (PATTERN_THEME_WORKSITE, "theme:worksite-enforcement"),
+        (PATTERN_THEME_BORDER, "policy:border"),
+        (PATTERN_THEME_SANCTUARY, "policy:sanctuary-cities"),
+        (PATTERN_THEME_WORKSITE, "policy:worksite-enforcement"),
         (PATTERN_THEME_HOMELAND, "theme:homeland"),
         (PATTERN_THEME_NATIVISM, "theme:nativism"),
         (PATTERN_THEME_CHRISTIANITY, "religion:christianity"),
         (PATTERN_THEME_TRANSGENDER, "theme:transgender"),
         (PATTERN_THEME_CIVIL_DISTURBANCE, "theme:civil-disturbance"),
-        (PATTERN_THEME_CBP_HOME, "theme:cbp-home"),
+        (PATTERN_THEME_CBP_HOME, "policy:cbp-home"),
         (PATTERN_THEME_POP_CULTURE_REFERENCE, "theme:pop-culture-reference"),
         (PATTERN_LEGAL_BIRTHRIGHT_CITIZENSHIP, "legal:birthright-citizenship"),
         (PATTERN_THEME_NATIVISM_BIRTHRIGHT, "theme:nativism"),
@@ -1514,8 +1537,8 @@ def tag_text(
         (PATTERN_SLOGAN_IMPORT_THIRD_WORLD, "slogan:import-third-world"),
         (PATTERN_PHRASE_MIGRANT, "phrase:migrant"),
         (PATTERN_PHRASE_IMMIGRANT, "phrase:immigrant"),
-        (PATTERN_THEME_STATISTICS, "theme:statistics"),
-        (PATTERN_THEME_DIRECTIVE, "theme:directive"),
+        (PATTERN_THEME_STATISTICS, "format:statistics"),
+        (PATTERN_THEME_DIRECTIVE, "format:directive"),
         (PATTERN_ANGEL_FAMILY, "subject:angel-family"),
         (PATTERN_NATIVE_BORN_CITIZEN, "subject:native-born-citizen"),
     ):
@@ -1635,19 +1658,19 @@ def tag_text(
         if candidate.lower() in STATE_LOWER:
             add(f"state:{_normalize_state(candidate)}", span=m.span(1))
 
-    # genre:lineup: composite replies that hit frame:criminal with one photo.
+    # genre:lineup: composite replies that hit theme:criminal with one photo.
     if (
         tweet_type == "reply"
-        and any(e["tag"] == "frame:criminal" for e in entries)
+        and any(e["tag"] == "theme:criminal" for e in entries)
         and media_count == 1
     ):
         add("genre:lineup")
 
     # subject:enforcement-op heuristic from the deterministic rules above:
-    # if both action:detention and frame:criminal fire, that's strong enough
+    # if both action:detention and theme:criminal fire, that's strong enough
     # to set this without tentative.
     if any(e["tag"] == "action:detention" for e in entries) and any(
-        e["tag"] == "frame:criminal" for e in entries
+        e["tag"] == "theme:criminal" for e in entries
     ):
         add("subject:enforcement-op")
 
@@ -1673,7 +1696,7 @@ def tag_text(
             add("audio:music-likely")
         if PATTERN_AUDIO_MUSIC_CONTEXT.search(reply_context_text):
             add("audio:music-likely", source="reply-context")
-        if any(e["tag"] in {"media:music-video", "genre:music-video"} for e in entries):
+        if any(e["tag"] in {"genre:music-video"} for e in entries):
             add("audio:music-likely")
         if m := PATTERN_PRODUCED_VIDEO_STYLE.search(text):
             add("video:produced", span=m.span())
@@ -1684,12 +1707,12 @@ def tag_text(
                 add("video:medium")
             else:
                 add("video:long")
-        # Derive genre:music-video ONLY from an explicit media:/genre:music-video
+        # Derive genre:music-video ONLY from an explicit genre:music-video
         # signal (set by the conservative describe_media / manual-review rules) —
         # NEVER from audio:music-likely, which is an incidental acoustic heuristic.
         # Also suppress it on speech / press-conference clips.
         if not speech_indicator_present and any(
-            e["tag"] in {"media:music-video", "genre:music-video"} for e in entries
+            e["tag"] == "genre:music-video" for e in entries
         ):
             add("genre:music-video")
         if any(
@@ -1798,18 +1821,18 @@ INTRINSIC_PARENT_TOPICS_EXACT: dict[str, tuple[str, ...]] = {
     "agency:USArmyNorth": ("topic:military",),
     "agency:USNationalGuard": ("topic:military",),
     "agency:USNorthernCmd": ("topic:military",),
-    "frame:criminal": ("topic:immigration",),
+    "theme:criminal": ("topic:immigration",),
     "genre:lineup": ("topic:immigration",),
     "subject:angel-family": ("theme:martyrdom", "topic:immigration"),
     "subject:crime-victim": ("theme:martyrdom", "topic:immigration"),
     "subject:cbp-home-app": ("topic:immigration",),
     "subject:enforcement-op": ("topic:immigration",),
-    "theme:border": ("topic:immigration",),
-    "theme:cbp-home": ("topic:immigration",),
+    "policy:border": ("topic:immigration",),
+    "policy:cbp-home": ("topic:immigration",),
+    "policy:sanctuary-cities": ("topic:immigration",),
+    "policy:worksite-enforcement": ("topic:economy", "topic:immigration"),
     "theme:nativism": ("topic:immigration",),
     "theme:pop-culture-reference": ("topic:immigration",),
-    "theme:sanctuary-cities": ("topic:immigration",),
-    "theme:worksite-enforcement": ("topic:economy", "topic:immigration"),
     "religion:christianity": ("theme:religion",),
     "slogan:criminal-illegal-alien": ("topic:immigration",),
     "slogan:free-ticket-home": ("topic:immigration",),
@@ -1821,7 +1844,7 @@ INTRINSIC_PARENT_TOPICS_EXACT: dict[str, tuple[str, ...]] = {
     "slogan:import-third-world": ("topic:immigration",),
     "legal:birthright-citizenship": ("topic:immigration",),
     "genre:parody": ("theme:pop-culture-reference",),
-    "slogan:most-secure-border": ("topic:immigration", "theme:border"),
+    "slogan:most-secure-border": ("topic:immigration", "policy:border"),
     "slogan:catch-release": ("topic:immigration",),
     "slogan:project-homecoming": ("topic:immigration",),
     "slogan:maga": ("topic:general",),
@@ -1867,7 +1890,7 @@ def _ensure_intrinsic_parent_topics(
     if PATTERN_EXPLICIT_IMMIGRATION_TOPIC.search(text):
         add("topic:immigration")
     if (
-        any(e["tag"] == "theme:worksite-enforcement" for e in entries)
+        any(e["tag"] == "policy:worksite-enforcement" for e in entries)
         and "topic:economy" not in existing_tags
     ):
         add("topic:economy")
@@ -1879,15 +1902,15 @@ def _ensure_intrinsic_parent_topics(
 # country pattern, deportation verb, border keyword, ICE/CBP/DHS handle,
 # the criminal-alien frame, etc.) clears the bar.
 IMMIGRATION_CONFIRMING_PREFIXES: tuple[str, ...] = (
-    "frame:",
     "action:",
     "origin:",
     "country:",
-    "theme:border",
-    "theme:sanctuary",
-    "theme:worksite",
+    "policy:border",
+    "policy:sanctuary",
+    "policy:worksite",
+    "policy:cbp-home",
     "theme:nativism",
-    "theme:cbp-home",
+    "theme:criminal",
     "shape:",
     "subject:cbp-home-app",
     "subject:enforcement-op",

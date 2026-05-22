@@ -64,6 +64,19 @@ LEGACY_MANUAL_TAG_ALIASES = {
     "video:ad": "genre:advertisement",
     "video:music-video": "genre:music-video",
     "video:psa": "genre:psa",
+    # Namespace-migration aliases (media:* production attrs -> video:/genre:)
+    "media:montage": "video:montage",
+    "media:text-overlay": "video:text-overlay",
+    "media:voiceover": "video:voiceover",
+    "media:music-video": "genre:music-video",
+    "media:short-video": "video:short",
+    # Namespace-migration aliases (media:* status flags -> media-status:*)
+    "media:archived": "media-status:archived",
+    "media:described": "media-status:described",
+    "media:has-alt-text": "media-status:has-alt-text",
+    "media:needs-vision": "media-status:needs-vision",
+    "media:needs-ocr": "media-status:needs-ocr",
+    "media:graphic-content": "media-status:graphic-content",
 }
 
 
@@ -209,16 +222,16 @@ def describe_media_item(
         parts.append("needs OCR, transcript, or frame-level vision before content claims")
 
     description = "; ".join(parts) + "."
-    tags = [tag_entry("media:described"), tag_entry(f"media:{tag_slug_for(media_type)}")]
+    tags = [tag_entry("media-status:described"), tag_entry(f"media:{tag_slug_for(media_type)}")]
     if archived:
-        tags.append(tag_entry("media:archived"))
+        tags.append(tag_entry("media-status:archived"))
     if alt_text:
-        tags.append(tag_entry("media:has-alt-text"))
+        tags.append(tag_entry("media-status:has-alt-text"))
     if needs_vision:
-        tags.append(tag_entry("media:needs-vision", tentative=True))
+        tags.append(tag_entry("media-status:needs-vision", tentative=True))
     duration_seconds = numeric(media.get("duration_sec"))
     if media_type in {"video", "animated_gif"} and 0 < duration_seconds <= 30:
-        tags.append(tag_entry("media:short-video"))
+        tags.append(tag_entry("video:short"))
     tag_derivation_text = " ".join(
         p
         for p in [
@@ -305,7 +318,7 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
         r"\b(text[- ]only|text overlay|title[- ]card|caption|chyron|lower-third|headline|press-release card|graphic text)\b",
         haystack,
     ):
-        add("media:text-overlay")
+        add("video:text-overlay")
     musical_score = (
         r"\b(?:musical|orchestral|cinematic|dramatic|film|movie|trailer)\s+score\b"
     )
@@ -322,8 +335,8 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
         r"\bb-roll\b|\brapid[- ]cut\b|\bcuts between\b",
         media_form_haystack,
     ):
-        add("media:montage")
-    # media:/genre:music-video requires STRONG, explicit music-video evidence.
+        add("video:montage")
+    # genre:music-video requires STRONG, explicit music-video evidence.
     # Generic / metaphorical music wording ("background music", "soundtrack",
     # "musical score", "beat drops", "the soundtrack of America") is NOT enough
     # and is intentionally excluded — it over-tagged speeches and incidental
@@ -339,10 +352,9 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
             media_form_haystack,
         )
     ):
-        add("media:music-video")
         add("genre:music-video")
     if is_video and re_search(r"\bvoiceover\b|\bvoice-over\b|\bnarration\b|\bnarrator\b|\bnarrated\b", haystack):
-        add("media:voiceover")
+        add("video:voiceover")
     if is_video and re_search(
         r"\b(cnn|fox news|msnbc|cbs news|abc news|nbc news|newsmax|lower-third|chyron|broadcast)\b",
         haystack,

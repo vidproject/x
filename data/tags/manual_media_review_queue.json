@@ -29,7 +29,7 @@
       "visual_observation": "Polished produced recruitment-style montage of female DHS / Coast Guard / Secret Service / HSI personnel in uniform, ending on a U.S. Department of Homeland Security end-card.",
       "candidate_visual_tags": [
         "video:produced",
-        "media:montage",
+        "video:montage",
         "genre:advertisement",
         "military:coast-guard",
         "agency:DHSgov"
@@ -46,7 +46,7 @@
       "visual_observation": "CNN News Central broadcast: CNN logo, 'CNN NEWS CENTRAL' banner, '8 RESCUED AFTER RISING TIDES TRAPS GROUP IN CAVE' lower-third, 'LIVE CNN' bug, 'CAL FIRE C2T' source watermark, on-screen anchor at a desk.",
       "candidate_visual_tags": [
         "video:news-clip",
-        "media:text-overlay"
+        "video:text-overlay"
       ],
       "deterministic_signal_missing": "Outlet name (CNN) is in the chyron, not the tweet body, so PATTERN_VIDEO_NEWS_CLIP misses it. OCR on the lower-third would lift it to deterministic."
     },
@@ -74,7 +74,7 @@
       "visual_observation": "Animated PSA-style infographic: gavel / courtroom imagery, USCIS+DHS seal, title cards progressively reveal 'Immigration Fraud is a CRIME'.",
       "candidate_visual_tags": [
         "video:produced",
-        "media:text-overlay",
+        "video:text-overlay",
         "genre:psa"
       ],
       "deterministic_signal_missing": "PATTERN_VIDEO_PSA wants a hotline / 'learn more at' / 'did you know' phrase in the body. OCR on the title-card text would catch this PSA deterministically."
@@ -88,7 +88,7 @@
       "tweet_text_excerpt": "First Lady Melania Trump delivers an announcement that the House has passed the Fostering the Future Act!",
       "visual_observation": "White House balcony shot: Melania Trump at podium with Presidential Seal, Donald Trump standing behind, U.S. flag, title-card overlay 'First Lady Melania Trump Announces House Passes Fostering The Future Act'.",
       "candidate_visual_tags": [
-        "media:text-overlay",
+        "video:text-overlay",
         "video:speech",
         "speaker:First Lady Melania Trump"
       ],
@@ -104,7 +104,7 @@
       "visual_observation": "Screen recording demo of the TrumpRx.Gov search UI: typed queries ('we', 'infer') populate Wegovy / Vfend / Zyvox results with prices. Pure produced screencast, no human on camera.",
       "candidate_visual_tags": [
         "video:produced",
-        "media:text-overlay",
+        "video:text-overlay",
         "genre:advertisement",
         "genre:psa"
       ],
@@ -119,7 +119,7 @@
       "tweet_text_excerpt": "U.S. House of Representatives unanimously passes Fostering the Future Act championed by First Lady Melania Trump",
       "visual_observation": "Dark-navy text-only White House press-release card with Office of the First Lady masthead.",
       "candidate_visual_tags": [
-        "media:text-overlay"
+        "video:text-overlay"
       ],
       "deterministic_signal_missing": "The text-overlay signal is inside the image, so OCR or vision review is needed before this can become deterministic from machine-readable evidence."
     },
@@ -132,7 +132,7 @@
       "tweet_text_excerpt": "@DHSgov @POTUS @SecMullinDHS That's truly fact and we definitely,",
       "visual_observation": "American-flag background with white text 'God bless the US Border Patrol & ICE'.",
       "candidate_visual_tags": [
-        "media:text-overlay",
+        "video:text-overlay",
         "theme:religion",
         "agency:ICEgov",
         "agency:CBP",
@@ -163,7 +163,7 @@
       "tweet_text_excerpt": "https://www.whitehouse.gov/briefings-statements/2026/05/first-lady-melania-trump-americas-tradition-fosters-unity/",
       "visual_observation": "White House press-release card: navy background, 'OFFICE OF THE FIRST LADY' kicker, headline 'First Lady Melania Trump: America's Tradition Fosters Unity', date stamp.",
       "candidate_visual_tags": [
-        "media:text-overlay",
+        "video:text-overlay",
         "subject:official"
       ],
       "deterministic_signal_missing": "Tweet body is just the URL, so the lexical tagger emits nothing. The URL itself carries the headline, but resolved_url.title is not part of the buffer the tagger reads."
@@ -177,7 +177,7 @@
       "tweet_text_excerpt": "@DHSgov Announces New Immigration Fees & Enforcement Measures",
       "visual_observation": "DHS-branded infographic: 'DHS Announces New Immigration Fees & Enforcement Measures', body text references H.R. 1 Reconciliation Act of 2025, Annual Asylum Fee, Form I-589, Form I-102.",
       "candidate_visual_tags": [
-        "media:text-overlay",
+        "video:text-overlay",
         "topic:immigration",
         "action:deportation"
       ],
@@ -192,7 +192,7 @@
       "tweet_text_excerpt": "While vetting an alien from Colombia, our staff uncovered a DUI conviction and charges for felony aggravated assault",
       "visual_observation": "USCIS-branded warning graphic: 'Violent criminals identified through thorough vetting / KEEPING THREATS OFF OUR STREETS', binary-code overlay, red warning triangle, laptop image, USCIS+DHS seal.",
       "candidate_visual_tags": [
-        "media:text-overlay",
+        "video:text-overlay",
         "theme:nativism"
       ],
       "deterministic_signal_missing": "Body covers DUI / assault / Colombia adequately for crime/origin tags. The 'KEEPING THREATS OFF OUR STREETS' nativism framing exists only in the image. OCR would catch it."
@@ -206,7 +206,7 @@
       "tweet_text_excerpt": "indictment underscores Homeland Security Investigations ongoing commitment to follow the money, expose foreign corruption",
       "visual_observation": "Composite ICE press graphic: embedded mugshot of named subject + headline 'MADURO REGIME ALLY ALEX SAAB ARRESTED FOR MONEY LAUNDERING CONNECTED TO VENEZUELAN FOOD CONTRACTS AND OIL', ICE+DHS seal.",
       "candidate_visual_tags": [
-        "media:text-overlay",
+        "video:text-overlay",
         "genre:lineup",
         "crime:fraud",
         "country:Venezuela",
@@ -223,7 +223,7 @@
       "tweet_text_excerpt": "Virginia sanctuary politicians are fighting to protect criminals. We're fighting to protect Americans.",
       "visual_observation": "Fox News-branded social card: photo of Secretary Mullin in DHS vest at night, FOX NEWS logo, headline 'Mullin rips Spanberger for criminalizing DHS while ICE arrests illegal alien felon in her sanctuary state', DHS seal at bottom.",
       "candidate_visual_tags": [
-        "media:text-overlay",
+        "video:text-overlay",
         "state:Virginia"
       ],
       "deterministic_signal_missing": "Photo not video, so video:news-clip can't apply; but a media:news-card or shape:news-graphic slug would. Speaker / outlet / state are all OCR-recoverable."
@@ -716,7 +716,7 @@
       "visual_observation": "Reviewed produced montage with text overlay.",
       "candidate_visual_tags": [
         "genre:utopian",
-        "media:montage",
+        "video:montage",
         "video:produced"
       ],
       "review_method": "Direct triage: 96px keyframe poster + tweet text (produced-video review).",
@@ -733,8 +733,8 @@
       "visual_observation": "Reviewed produced montage with text overlay.",
       "candidate_visual_tags": [
         "genre:utopian",
-        "media:montage",
-        "media:text-overlay",
+        "video:montage",
+        "video:text-overlay",
         "video:produced"
       ],
       "review_method": "Direct triage: 96px keyframe poster + tweet text (produced-video review).",
@@ -751,7 +751,7 @@
       "visual_observation": "Reviewed produced advertisement / promotional video.",
       "candidate_visual_tags": [
         "genre:utopian",
-        "media:text-overlay",
+        "video:text-overlay",
         "theme:pop-culture-reference",
         "video:produced"
       ],
@@ -769,7 +769,7 @@
       "visual_observation": "Reviewed produced advertisement / promotional video.",
       "candidate_visual_tags": [
         "genre:utopian",
-        "media:text-overlay",
+        "video:text-overlay",
         "theme:pop-culture-reference",
         "video:produced"
       ],
@@ -787,7 +787,7 @@
       "visual_observation": "Reviewed produced advertisement / promotional video.",
       "candidate_visual_tags": [
         "genre:recruitment",
-        "media:montage",
+        "video:montage",
         "video:produced"
       ],
       "review_method": "Direct triage: 96px keyframe poster + tweet text (produced-video review).",
@@ -803,7 +803,7 @@
       "tweet_text_excerpt": "In a galaxy that demands strength - America stands ready.\n\nThis is the way. May the 4th be with you. https://t.co/S8dOKOVd5P",
       "visual_observation": "Reviewed captioned/meme image (OCR text + tweet context).",
       "candidate_visual_tags": [
-        "media:text-overlay",
+        "video:text-overlay",
         "theme:pop-culture-reference"
       ],
       "review_method": "Direct triage: Tesseract OCR text + tweet text (image pixels not viewed).",
@@ -819,7 +819,7 @@
       "tweet_text_excerpt": "@DHSgov @POTUS @SecMullinDHS We want mass deportations. https://t.co/7Rz39K4sIA",
       "visual_observation": "Reviewed captioned/meme image (OCR text + tweet context).",
       "candidate_visual_tags": [
-        "media:text-overlay"
+        "video:text-overlay"
       ],
       "review_method": "Direct triage: Tesseract OCR text + tweet text (image pixels not viewed).",
       "certainty": "reviewed",

@@ -31,9 +31,9 @@ def test_describe_media_item_uses_alt_text_and_metadata() -> None:
     assert row["cost_estimate_usd"] == 0.0
     assert "alt text: Agents standing outside a building." in row["description"]
     assert "media:photo" in tags
-    assert "media:archived" in tags
-    assert "media:has-alt-text" in tags
-    assert "media:needs-vision" not in tags
+    assert "media-status:archived" in tags
+    assert "media-status:has-alt-text" in tags
+    assert "media-status:needs-vision" not in tags
 
 
 def test_describe_media_item_marks_video_without_alt_text_for_followup() -> None:
@@ -50,8 +50,8 @@ def test_describe_media_item_marks_video_without_alt_text_for_followup() -> None
 
     assert row["status"] == "metadata-context"
     assert "media:video" in tags
-    assert "media:short-video" in tags
-    assert "media:needs-vision" in tags
+    assert "video:short" in tags
+    assert "media-status:needs-vision" in tags
     assert "needs OCR, transcript, or frame-level vision" in row["description"]
 
 
@@ -82,7 +82,7 @@ def test_describe_media_item_uses_card_and_url_context_without_visual_claims() -
     assert "source URL: https://pbs.twimg.com/media/example.jpg" in row["description"]
     assert "archive URL: https://github.com/asset.jpg" in row["description"]
     assert "needs OCR, transcript, or frame-level vision" in row["description"]
-    assert "media:needs-vision" in tags
+    assert "media-status:needs-vision" in tags
 
 
 def test_describe_media_item_does_not_mark_unknown_duration_as_short() -> None:
@@ -95,6 +95,7 @@ def test_describe_media_item_does_not_mark_unknown_duration_as_short() -> None:
     tags = {entry["tag"] for entry in row["tags"]}
 
     assert "media:video" in tags
+    assert "video:short" not in tags
     assert "media:short-video" not in tags
 
 
@@ -107,7 +108,7 @@ def test_manual_review_observation_promotes_visual_tags() -> None:
     manual_review = {
         "visual_observation": "Press-photo of President Trump at a podium with visible title-card text.",
         "tweet_text_excerpt": "MAKE AMERICA GREAT AGAIN!!!",
-        "candidate_visual_tags": ["subject:official", "media:text-overlay", "video:news-clip"],
+        "candidate_visual_tags": ["subject:official", "video:text-overlay", "video:news-clip"],
     }
     row = describe_media_item(
         _tweet(),
@@ -121,10 +122,11 @@ def test_manual_review_observation_promotes_visual_tags() -> None:
     assert row["confidence"] == 0.92
     assert "visual observation: Press-photo of President Trump" in row["description"]
     assert "subject:official" in tags
-    assert "media:text-overlay" in tags
+    assert "video:text-overlay" in tags
+    assert "media:text-overlay" not in tags
     assert "video:news-clip" not in tags
-    assert "media:needs-vision" not in tags
-    assert [entry["tag"] for entry in row["tags"]].count("media:text-overlay") == 1
+    assert "media-status:needs-vision" not in tags
+    assert [entry["tag"] for entry in row["tags"]].count("video:text-overlay") == 1
 
 
 def test_manual_review_aliases_legacy_video_genre_tags() -> None:
@@ -179,7 +181,7 @@ def test_negated_music_video_note_does_not_become_music_video() -> None:
     )
 
     assert "video:produced" not in tags
-    assert "media:music-video" not in tags
+    assert "video:montage" not in tags
     assert "media:montage" not in tags
     assert "genre:music-video" not in tags
 
@@ -204,8 +206,8 @@ def test_explicit_music_video_phrasing_still_marks_music_video() -> None:
         "official audio for the campaign anthem",
     ):
         tags = derive_description_tags(phrase, media_type="video")
-        assert "media:music-video" in tags, phrase
         assert "genre:music-video" in tags, phrase
+        assert "media:music-video" not in tags, phrase
 
 
 def test_speech_clip_with_background_music_is_not_music_video() -> None:

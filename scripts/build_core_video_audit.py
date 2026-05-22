@@ -37,10 +37,10 @@ MISSING_MEDIA_IDS_OUT = TAGS_DIR / "core_produced_missing_media_ids.txt"
 VIDEO_TYPES = {"video", "animated_gif"}
 PRODUCED_TAGS = {
     "video:produced",
-    "media:music-video",
-    "media:montage",
-    "media:text-overlay",
-    "media:voiceover",
+    "genre:music-video",
+    "video:montage",
+    "video:text-overlay",
+    "video:voiceover",
 }
 GENRE_TAGS = {
     "genre:music-video",
@@ -187,11 +187,11 @@ def classify_from_text(text: str) -> set[str]:
     if any(word in haystack for word in produced_words):
         tags.add("video:produced")
     if any(word in haystack for word in ("montage", "multiple shot", "sequence of clips", "series of clips", "b-roll")):
-        tags.add("media:montage")
+        tags.add("video:montage")
     if any(word in haystack for word in ("text overlay", "title-card", "end-card", "chyron", "lower-third", "caption")):
-        tags.add("media:text-overlay")
+        tags.add("video:text-overlay")
     if any(word in haystack for word in ("voiceover", "voice-over", "narration", "narrator", "narrated")):
-        tags.add("media:voiceover")
+        tags.add("video:voiceover")
     # Only explicit music-video phrasing implies a music video. Incidental
     # music wording ("soundtrack", "background music", "music bed", "anthem")
     # is NOT enough and previously over-tagged speeches. Never synthesize
@@ -207,7 +207,7 @@ def classify_from_text(text: str) -> set[str]:
             haystack,
         )
     ):
-        tags.update({"media:music-video", "genre:music-video"})
+        tags.update({"genre:music-video"})
     if any(word in haystack for word in ("psa", "public service announcement", "did you know", "learn more", "hotline")):
         tags.update({"video:produced", "genre:psa"})
     if any(word in haystack for word in ("join.ice.gov", "recruitment", "apply now", "apply today", "hiring", "career")):

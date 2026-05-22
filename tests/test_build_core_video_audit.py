@@ -73,8 +73,8 @@ def test_classify_from_text_ignores_incidental_music_wording() -> None:
 
 def test_classify_from_text_keeps_explicit_music_video() -> None:
     tags = classify_from_text("the official music video for the campaign anthem")
-    assert "media:music-video" in tags
     assert "genre:music-video" in tags
+    assert "media:music-video" not in tags
     assert "audio:music-likely" not in tags
 
 
@@ -114,4 +114,3 @@ def test_audio_music_likely_alone_is_not_upgraded_to_music_video() -> None:
     )
     assert "audio:music-likely" in item["tags"]
     assert "genre:music-video" not in item["tags"]
-    assert "media:music-video" not in item["tags"]

@@ -99,7 +99,7 @@ tags:
   genre:lineup:
     description: >-
       The templated mugshot-reply form: tweet_type=reply AND
-      frame:criminal AND exactly one photo. Highly stable visual genre.
+      theme:criminal AND exactly one photo. Highly stable visual genre.
     classification: deterministic
   genre:parody:
     description: >-
@@ -222,26 +222,55 @@ tags:
       do not guess from faces or setting.
     classification: deterministic
 
+  # ===== media-status:* — pipeline / recognition flags =============
+  # Migrated from media:* (state/pipeline flags). See docs/TAGGING.md.
+  media-status:archived:
+    description: Media item has an archived GitHub Release asset.
+    classification: deterministic
+  media-status:described:
+    description: Media item has a generated sidecar description.
+    classification: deterministic
+  media-status:has-alt-text:
+    description: Media item includes source-provided alt text.
+    classification: deterministic
+  media-status:needs-vision:
+    description: >-
+      Media item still needs actual frame/scene analysis (a visual description
+      of what is shown) before content claims. Cleared only by a real visual
+      description (manual/agent review, alt text, or a future vision layer) —
+      never by OCR, which only recovers on-image text. Distinct from
+      media-status:needs-ocr.
+    classification: tentative
+  media-status:needs-ocr:
+    description: >-
+      Attached image text has not been extracted yet (OCR pending). Resolved by
+      the OCR layer recovering non-empty text. Orthogonal to media-status:needs-vision:
+      an image can need OCR (text) and frame analysis (scene) independently.
+    classification: tentative
+  media-status:graphic-content:
+    description: X/Twitter marked the tweet as possibly sensitive or graphic content.
+    classification: deterministic
+
   # ===== media:* — attached media labels ============================
   # media:photo-detainee removed: no emitter in any script.
   # media:photo-operation removed: no emitter in any script.
   # media:video-testimonial removed: no emitter in any script.
   # Re-add any of these with a real emitter when a detector is written.
-  media:music-video:
-    description: Video whose pacing or presentation is built around a music track.
-    classification: tentative
-  media:montage:
-    description: Video assembled from multiple shots, scenes, or clips in an edited sequence.
-    classification: tentative
-  media:text-overlay:
-    description: Video or image contains visible title cards, captions, chyron text, or graphic text overlays.
-    classification: tentative
-  media:voiceover:
-    description: >-
-      Video includes narration or speech over other visuals. (forward-looking:
-      emitted by describe_media.py and build_core_video_audit.py; coverage
-      grows as media descriptions and transcripts fill in)
-    classification: tentative
+  #
+  # Retired production-attr slugs (migrated):
+  #   media:music-video  -> genre:music-video  (dedupe; genre:music-video already existed)
+  #   media:montage      -> video:montage
+  #   media:text-overlay -> video:text-overlay
+  #   media:voiceover    -> video:voiceover
+  #   media:short-video  -> video:short        (dedupe; video:short already existed)
+  #
+  # Retired state/pipeline slugs (migrated to media-status:*):
+  #   media:archived      -> media-status:archived
+  #   media:described     -> media-status:described
+  #   media:has-alt-text  -> media-status:has-alt-text
+  #   media:needs-vision  -> media-status:needs-vision
+  #   media:needs-ocr     -> media-status:needs-ocr
+  #   media:graphic-content -> media-status:graphic-content
   media:ai-generated:
     description: >-
       Media appears AI-generated or heavily synthetic. The tag is firm
@@ -298,9 +327,6 @@ tags:
       Israel-Palestine / Israel-Hamas conflict.
     classification: deterministic
 
-  media:described:
-    description: Media item has a generated sidecar description.
-    classification: deterministic
   media:photo:
     description: Media item is a still image.
     classification: deterministic
@@ -309,32 +335,6 @@ tags:
     classification: deterministic
   media:animated-gif:
     description: Media item is an animated GIF/video loop.
-    classification: deterministic
-  media:archived:
-    description: Media item has an archived GitHub Release asset.
-    classification: deterministic
-  media:has-alt-text:
-    description: Media item includes source-provided alt text.
-    classification: deterministic
-  media:needs-vision:
-    description: >-
-      Media item still needs actual frame/scene analysis (a visual description
-      of what is shown) before content claims. Cleared only by a real visual
-      description (manual/agent review, alt text, or a future vision layer) —
-      never by OCR, which only recovers on-image text. Distinct from
-      media:needs-ocr.
-    classification: tentative
-  media:needs-ocr:
-    description: >-
-      Attached image text has not been extracted yet (OCR pending). Resolved by
-      the OCR layer recovering non-empty text. Orthogonal to media:needs-vision:
-      an image can need OCR (text) and frame analysis (scene) independently.
-    classification: tentative
-  media:short-video:
-    description: Video or animated GIF is 30 seconds or shorter.
-    classification: deterministic
-  media:graphic-content:
-    description: X/Twitter marked the tweet as possibly sensitive or graphic content.
     classification: deterministic
 
   # ===== format:* — purely structural; derived from tweet_type ======
@@ -346,6 +346,40 @@ tags:
     classification: deterministic
   format:reply:
     description: Reply (redundant with tweet_type=reply; kept for symmetry).
+    classification: deterministic
+  format:statistics:
+    description: >-
+      Uses statistics, numbered lists, totals, rankings, or quantified
+      evidence as the primary rhetorical mode. (migrated from theme:statistics)
+    classification: deterministic
+  format:directive:
+    description: >-
+      Gives direct instructions, commands, compliance steps, or explicit
+      calls to action. (migrated from theme:directive)
+    classification: deterministic
+
+  # ===== policy:* — specific immigration/enforcement policy areas ===
+  # Migrated from theme:* (non-ideological policy references).
+  policy:border:
+    description: References to the southern border, border wall, crossings. (migrated from theme:border)
+    classification: deterministic
+    pattern: |
+      \b(border|southwest border|crossing|border wall)\b
+  policy:sanctuary-cities:
+    description: References to sanctuary cities / sanctuary policies. (migrated from theme:sanctuary-cities)
+    classification: deterministic
+    pattern: |
+      \b(sanctuary (?:cit(?:y|ies)|jurisdiction|polic(?:y|ies))|sanctuary state)\b
+  policy:worksite-enforcement:
+    description: Worksite raids / employment-related enforcement. (migrated from theme:worksite-enforcement)
+    classification: deterministic
+    pattern: |
+      \b(worksite|workplace|I-9|E-Verify|employer (?:audit|raid))\b
+  policy:cbp-home:
+    description: >-
+      CBP Home / Project Homecoming / self-deportation incentive campaign,
+      including free flight, exit bonus, and "go home" variants.
+      (migrated from theme:cbp-home)
     classification: deterministic
 
   # ===== status:* - availability / moderation state =================
@@ -362,13 +396,7 @@ tags:
     classification: deterministic
 
   # ===== frame:* - recurring rhetorical scaffolds ===================
-  frame:criminal:
-    description: >-
-      DHS templated "Name, a criminal illegal alien from X, convicted of
-      Y in Z, State" reply pattern.
-    classification: deterministic
-    pattern: |
-      \b(criminal illegal alien|illegal alien|criminal alien|aggravated felon|convicted (?:for|of))\b
+  # frame:criminal retired; merged into theme:criminal. See theme:criminal below.
 
   # ===== action:* — enforcement verbs ===============================
   action:detention:
@@ -476,21 +504,26 @@ tags:
     classification: deterministic
 
   # ===== theme:* - rhetorical / ideological frames ==================
-  theme:border:
-    description: References to the southern border, border wall, crossings.
+  #
+  # Retired non-ideological policy entries (migrated to policy:*):
+  #   theme:border              -> policy:border
+  #   theme:sanctuary-cities    -> policy:sanctuary-cities
+  #   theme:worksite-enforcement -> policy:worksite-enforcement
+  #   theme:cbp-home            -> policy:cbp-home
+  #
+  # Retired format entries (migrated to format:*):
+  #   theme:statistics -> format:statistics
+  #   theme:directive  -> format:directive
+  #
+  # Merged from frame:* (frame: namespace retired):
+  #   frame:criminal -> theme:criminal
+  theme:criminal:
+    description: >-
+      DHS templated "Name, a criminal illegal alien from X, convicted of
+      Y in Z, State" reply pattern. (merged from frame:criminal; frame: namespace retired)
     classification: deterministic
     pattern: |
-      \b(border|southwest border|crossing|border wall)\b
-  theme:sanctuary-cities:
-    description: References to sanctuary cities / sanctuary policies.
-    classification: deterministic
-    pattern: |
-      \b(sanctuary (?:cit(?:y|ies)|jurisdiction|polic(?:y|ies))|sanctuary state)\b
-  theme:worksite-enforcement:
-    description: Worksite raids / employment-related enforcement.
-    classification: deterministic
-    pattern: |
-      \b(worksite|workplace|I-9|E-Verify|employer (?:audit|raid))\b
+      \b(criminal illegal alien|illegal alien|criminal alien|aggravated felon|convicted (?:for|of))\b
 
   theme:homeland:
     description: >-
@@ -535,25 +568,10 @@ tags:
       References riots, violent protests, civil unrest, anti-ICE
       disturbances, or similar large-scale street disorder.
     classification: deterministic
-  theme:cbp-home:
-    description: >-
-      CBP Home / Project Homecoming / self-deportation incentive campaign,
-      including free flight, exit bonus, and "go home" variants.
-    classification: deterministic
   theme:pop-culture-reference:
     description: >-
       Uses a celebrity, ad campaign, entertainment meme, or pop-culture
       reference in the context of immigration or enforcement messaging.
-    classification: deterministic
-  theme:statistics:
-    description: >-
-      Uses statistics, numbered lists, totals, rankings, or quantified
-      evidence as the primary rhetorical mode.
-    classification: deterministic
-  theme:directive:
-    description: >-
-      Gives direct instructions, commands, compliance steps, or explicit
-      calls to action.
     classification: deterministic
 
   # ===== video:* - video-nature heuristics ==========================
@@ -561,6 +579,18 @@ tags:
   # Only emitted when the tweet actually has video media attached; a
   # tweet's text alone never earns a video:* tag. Multiple kinds can
   # co-apply (e.g. a music video that's also a recruitment ad).
+  video:montage:
+    description: Video assembled from multiple shots, scenes, or clips in an edited sequence.
+    classification: tentative
+  video:text-overlay:
+    description: Video or image contains visible title cards, captions, chyron text, or graphic text overlays.
+    classification: tentative
+  video:voiceover:
+    description: >-
+      Video includes narration or speech over other visuals. (forward-looking:
+      emitted by describe_media.py and build_core_video_audit.py; coverage
+      grows as media descriptions and transcripts fill in)
+    classification: tentative
   video:bodycam:
     description: >-
       Body-worn camera or raid/arrest footage. Catches "bodycam",
