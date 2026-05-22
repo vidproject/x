@@ -783,8 +783,8 @@ PATTERN_THEME_CBP_HOME = _compile(
     r"|\bexit\s+bonus\b"
     r"|\btake\s+control\s+of\s+(?:your|their|his|her)\s+departure\b"
     r"|\b(?:illegal\s+aliens?|aliens?|migrants?|CBP\s+Home|self[- ]deport|deport)\b"
-    r".{0,120}\bgo\s+home\b"
-    r"|\bgo\s+home\b.{0,120}\b"
+    r"[\s\S]{0,120}\bgo\s+home\b"
+    r"|\bgo\s+home\b[\s\S]{0,120}\b"
     r"(?:illegal\s+aliens?|aliens?|migrants?|CBP\s+Home|self[- ]deport|deport)\b"
 )
 PATTERN_SUBJECT_CELEBRITY = _compile(
@@ -979,26 +979,31 @@ PATTERN_SLOGAN_REPORTRECON = _compile(r"\bReport\.\s*Recon\.\s*Raid\.")
 PATTERN_SLOGAN_CRIMINAL_ILLEGAL_ALIEN = _compile(r"\bcriminal\s+illegal\s+aliens?\b")
 PATTERN_SLOGAN_ILLEGAL_ALIEN = _compile(r"\billegal\s+aliens?\b")
 PATTERN_SLOGAN_FREE_TICKET_HOME = _compile(
-    r"\bFREE\s+(?:TICKET|FLIGHT|PLANE\s+TICKET)\s+HOME\b"
-    r"|\bfree\s+(?:ticket|flight|plane\s+ticket)\s+home\b"
+    r"\bfree\s+(?:ticket|flight|plane\s+ticket)\s+home\b"
     r"|\bcomplimentary\s+plane\s+ticket\s+home\b"
+    r"|\bfree\s+flight\s+to\s+(?:your|their|his|her)\s+home\s+country\b"
 )
 PATTERN_SLOGAN_GO_HOME = _compile(
     r"\b(?:illegal\s+aliens?|aliens?|migrants?|CBP\s+Home|self[- ]deport|deport)\b"
-    r".{0,120}\bgo\s+home\b"
-    r"|\bgo\s+home\b.{0,120}\b"
+    r"[\s\S]{0,120}\bgo\s+home\b"
+    r"|\bgo\s+home\b[\s\S]{0,120}\b"
     r"(?:illegal\s+aliens?|aliens?|migrants?|CBP\s+Home|self[- ]deport|deport)\b"
 )
-PATTERN_SLOGAN_PROJECT_HOMECOMING = _compile(r"\bPROJECT\s+HOMECOMING\b")
+PATTERN_SLOGAN_PROJECT_HOMECOMING = _compile(r"\bProject\s+Homecoming\b")
 PATTERN_SLOGAN_MAGA = _compile(r"\bMAGA\b|\bMake\s+America\s+Great\s+Again\b")
 PATTERN_SLOGAN_MAHA = _compile(r"\bMAHA\b|\bMake\s+America\s+Healthy\s+Again\b")
+PATTERN_SLOGAN_MASA = _compile(r"\bMake\s+America\s+Safe\s+Again\b")
 PATTERN_SLOGAN_AMERICA_FIRST = _compile(r"\bAmerica\s+First\b|\bAmericaFirst\b")
 PATTERN_SLOGAN_GOLDEN_AGE = _compile(r"\bGolden\s+Age\b|\bWelcome\s+to\s+the\s+Golden\s+Age\b")
 PATTERN_SLOGAN_SAVE_AMERICA = _compile(r"\bSave\s+America\b|\bSAVEAMERICA\b")
 PATTERN_SLOGAN_LAW_AND_ORDER = _compile(r"\bLaw\s+and\s+Order\b|\bLaw\s*&\s*Order\b")
 PATTERN_SLOGAN_PEACE_THROUGH_STRENGTH = _compile(r"\bPeace\s+Through\s+Strength\b")
-PATTERN_SLOGAN_PROMISES_KEPT = _compile(r"\bPromises?\s+Made[,;:]?\s+Promises?\s+Kept\b")
+PATTERN_SLOGAN_PROMISES_KEPT = _compile(
+    r"\bPromises?\s+Made[,;:]?\s+Promises?\s+Kept\b|\bPromises?\s+Kept\b"
+)
 PATTERN_SLOGAN_MASS_DEPORTATION = _compile(r"\bMass\s+Deportations?\b")
+PATTERN_SLOGAN_MOST_SECURE_BORDER = _compile(r"\bmost\s+secure(?:d)?\s+border\b")
+PATTERN_SLOGAN_CATCH_RELEASE = _compile(r"\bcatch(?:-and-|\s+and\s+)release\b")
 PATTERN_PHRASE_MIGRANT = _compile(r"\bmigrants?\b")
 PATTERN_PHRASE_IMMIGRANT = _compile(r"\bimmigrants?\b")
 PATTERN_LEGAL_CRIMINAL_PROSECUTION = _compile(
@@ -1274,6 +1279,7 @@ def tag_text(
         (PATTERN_SLOGAN_PROJECT_HOMECOMING, "slogan:project-homecoming"),
         (PATTERN_SLOGAN_MAGA, "slogan:maga"),
         (PATTERN_SLOGAN_MAHA, "slogan:maha"),
+        (PATTERN_SLOGAN_MASA, "slogan:masa"),
         (PATTERN_SLOGAN_AMERICA_FIRST, "slogan:america-first"),
         (PATTERN_SLOGAN_GOLDEN_AGE, "slogan:golden-age"),
         (PATTERN_SLOGAN_SAVE_AMERICA, "slogan:save-america"),
@@ -1281,6 +1287,8 @@ def tag_text(
         (PATTERN_SLOGAN_PEACE_THROUGH_STRENGTH, "slogan:peace-through-strength"),
         (PATTERN_SLOGAN_PROMISES_KEPT, "slogan:promises-kept"),
         (PATTERN_SLOGAN_MASS_DEPORTATION, "slogan:mass-deportation"),
+        (PATTERN_SLOGAN_MOST_SECURE_BORDER, "slogan:most-secure-border"),
+        (PATTERN_SLOGAN_CATCH_RELEASE, "slogan:catch-release"),
         (PATTERN_PHRASE_MIGRANT, "phrase:migrant"),
         (PATTERN_PHRASE_IMMIGRANT, "phrase:immigrant"),
         (PATTERN_THEME_STATISTICS, "theme:statistics"),
@@ -1545,6 +1553,9 @@ INTRINSIC_PARENT_TOPICS_EXACT: dict[str, tuple[str, ...]] = {
     "slogan:go-home": ("topic:immigration",),
     "slogan:illegal-alien": ("topic:immigration",),
     "slogan:mass-deportation": ("topic:immigration",),
+    "slogan:masa": ("topic:immigration",),
+    "slogan:most-secure-border": ("topic:immigration", "theme:border"),
+    "slogan:catch-release": ("topic:immigration",),
     "slogan:project-homecoming": ("topic:immigration",),
     "slogan:maga": ("topic:general",),
     "slogan:maha": ("topic:general",),
@@ -1626,6 +1637,9 @@ IMMIGRATION_CONFIRMING_EXACT: frozenset[str] = frozenset(
         "slogan:go-home",
         "slogan:illegal-alien",
         "slogan:mass-deportation",
+        "slogan:masa",
+        "slogan:most-secure-border",
+        "slogan:catch-release",
         "slogan:nice",
         "slogan:project-homecoming",
         "slogan:reportrecon",

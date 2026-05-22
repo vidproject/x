@@ -505,6 +505,9 @@ tags:
   slogan:maha:
     description: '"MAHA" / "Make America Healthy Again" slogan.'
     classification: deterministic
+  slogan:masa:
+    description: '"Make America Safe Again" DHS/enforcement administration slogan.'
+    classification: deterministic
   slogan:america-first:
     description: '"America First" slogan.'
     classification: deterministic
@@ -525,6 +528,12 @@ tags:
     classification: deterministic
   slogan:mass-deportation:
     description: '"Mass deportation(s)" recurring campaign/enforcement slogan.'
+    classification: deterministic
+  slogan:most-secure-border:
+    description: '"Most secure border in (American) history" administration boast.'
+    classification: deterministic
+  slogan:catch-release:
+    description: '"Catch and release" immigration enforcement policy phrase.'
     classification: deterministic
 
   # ===== phrase:* - recurring domain terms ===========================

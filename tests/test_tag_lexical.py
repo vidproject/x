@@ -1009,6 +1009,30 @@ def test_laudatory_topic_ignores_incidental_booster_words() -> None:
         assert "topic:laudatory" not in _tags(out), text
 
 
+def test_new_slogan_patterns_match() -> None:
+    cases = {
+        "We will Make America Safe Again!": "slogan:masa",
+        "Now the most secure border in American history.": "slogan:most-secure-border",
+        "Ending catch and release once and for all.": "slogan:catch-release",
+    }
+    for text, slug in cases.items():
+        out = tag_text(
+            text, tweet_type="original", mentions=[], media_count=0, account_category="core"
+        )
+        assert slug in _tags(out), text
+
+
+def test_go_home_slogan_crosses_newline() -> None:
+    out = tag_text(
+        "It's time to go HOME!\n\nTake the CBP Home Deal we offer to illegal aliens.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    assert "slogan:go-home" in _tags(out)
+
+
 def test_general_topic_matches_multi_problem_posts() -> None:
     out = tag_text(
         "Crime, inflation, fraud, and border chaos are hurting families.",
