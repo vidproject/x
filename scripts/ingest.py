@@ -28,7 +28,12 @@ import yaml
 
 from scripts._logging import configure
 from scripts._schema import REQUIRED_TWEET_KEYS, RETWEET_EDGE_SCHEMA, TWEET_SCHEMA, empty_dataframe
-from scripts.build_viewer_preview import CATALOG_PARQUET_FILENAME, write_catalog, write_previews
+from scripts.build_viewer_preview import (
+    CATALOG_PARQUET_FILENAME,
+    stabilize_volatile,
+    write_catalog,
+    write_previews,
+)
 
 LOG = configure()
 
@@ -688,9 +693,13 @@ def build_manifest(accounts: list[dict[str, str]]) -> dict[str, Any]:
 
 def write_manifest(manifest: dict[str, Any]) -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
+    path = DATA_DIR / "manifest.json"
+    # Reuse the committed timestamp when nothing else changed so an idempotent
+    # re-ingest doesn't churn the file (and trigger a redundant Pages deploy).
+    manifest = stabilize_volatile(path, manifest)
     tmp = DATA_DIR / "manifest.tmp.json"
     tmp.write_text(json.dumps(manifest, indent=2, sort_keys=False) + "\n", encoding="utf-8")
-    os.replace(tmp, DATA_DIR / "manifest.json")
+    os.replace(tmp, path)
 
 
 # --------------------------------------------------------------------------
@@ -769,13 +778,17 @@ def aggregate_users() -> dict[str, dict[str, Any]]:
 
 def write_users(users: dict[str, dict[str, Any]]) -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    payload = {
+    path = DATA_DIR / "users.json"
+    payload: dict[str, Any] = {
         "generated_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "users": users,
     }
+    # Idempotent re-runs should not bump the timestamp when the user snapshot
+    # is unchanged — otherwise every no-op ingest rewrites this ~2MB file.
+    payload = stabilize_volatile(path, payload)
     tmp = DATA_DIR / "users.tmp.json"
     tmp.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    os.replace(tmp, DATA_DIR / "users.json")
+    os.replace(tmp, path)
 
 
 # --------------------------------------------------------------------------
@@ -928,11 +941,7 @@ def prune_misc_rows_to_related(
                 wanted_ids.update(targets)
                 changed = True
 
-    return [
-        row
-        for row in misc_rows
-        if str(row.get("tweet_id") or "").strip() in kept_ids
-    ]
+    return [row for row in misc_rows if str(row.get("tweet_id") or "").strip() in kept_ids]
 
 
 # --------------------------------------------------------------------------
@@ -947,7 +956,6 @@ def main(argv: list[str] | None = None) -> int:
 
     tracked_accounts = load_accounts(args.accounts)
     tracked_handles = {a["handle"] for a in tracked_accounts}
-    tracked_labels = {a["handle"]: a["label"] for a in tracked_accounts}
 
     # Bucket existing _misc rows so we can re-seed each handle's merge with
     # the slice that previously lived in misc. Empty when the file doesn't
@@ -1044,14 +1052,17 @@ def main(argv: list[str] | None = None) -> int:
             LOG.info("collapsed legacy per-handle parquet into _misc", handle=h)
 
     # --- Manifest --------------------------------------------------------
-    tracked_categories = {a["handle"]: a["category"] for a in tracked_accounts}
+    # Iterate the ordered accounts list (config/accounts.yaml order), not the
+    # `tracked_handles` set: set iteration order is process-dependent, so using
+    # it here rewrote the manifest in a different account order on every run —
+    # a churn commit (and Pages redeploy) for no real change.
     manifest_accounts: list[dict[str, str]] = [
         {
-            "handle": h,
-            "label": tracked_labels.get(h, h),
-            "category": tracked_categories.get(h, "core"),
+            "handle": a["handle"],
+            "label": a.get("label", a["handle"]),
+            "category": a.get("category", "core"),
         }
-        for h in tracked_handles
+        for a in tracked_accounts
     ]
     if (DATA_DIR / f"{MISC_HANDLE}.parquet").exists():
         manifest_accounts.append(

@@ -1,7 +1,12 @@
 name: ingest
 on:
   push:
-    branches: ['**']
+    # Only ingest+commit on the default branch. The extension commits raw/ to
+    # master, and the job pushes generated data/ back; running it on every
+    # feature branch produced redundant pipeline runs (and bot commits/pushes
+    # on branches that should stay code-only). CI (ci.yml) still runs on all
+    # branches for tests.
+    branches: [master, main]
     paths:
       - 'raw/**'
       - 'config/accounts.yaml'

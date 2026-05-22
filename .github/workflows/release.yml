@@ -1,7 +1,11 @@
 name: build-extension
 on:
   push:
-    branches: ['**']
+    # Build + commit the extension zips only on the default branch. This job
+    # pushes regenerated extension.zip/extension-chrome.zip back to the repo,
+    # which also feeds the Pages deploy; doing that per feature branch caused
+    # redundant runs and stray bot commits on branches.
+    branches: [master, main]
     paths:
       - '.github/workflows/release.yml'
       - 'extension/**'

@@ -27,6 +27,7 @@ import polars as pl
 import yaml
 
 from scripts._logging import configure
+from scripts.build_viewer_preview import stabilize_volatile
 
 LOG = configure()
 
@@ -267,6 +268,11 @@ def build() -> dict[str, Any]:
 
 def write(payload: dict[str, Any], path: Path = OUT_PATH) -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
+    # Classification is fully deterministic from the parquet corpus + users.json,
+    # so the only field that changes on an unchanged corpus is ``generated_at``.
+    # Reuse the committed timestamp in that case to avoid a churn commit (and the
+    # Pages redeploy it triggers) on every ingest run.
+    payload = stabilize_volatile(path, payload)
     tmp = path.with_suffix(".tmp.json")
     tmp.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     os.replace(tmp, path)

@@ -117,9 +117,7 @@ def catalog_parquet_path(data_dir: Path) -> Path:
 
 def canonical_parquet_paths(data_dir: Path) -> list[Path]:
     return sorted(
-        p
-        for p in data_dir.glob("*.parquet")
-        if p.is_file() and p.name != CATALOG_PARQUET_FILENAME
+        p for p in data_dir.glob("*.parquet") if p.is_file() and p.name != CATALOG_PARQUET_FILENAME
     )
 
 
@@ -218,11 +216,7 @@ def write_catalog(
     payload = build_catalog_payload(data_dir, generated_at=generated_at)
     parquet = catalog_parquet_path(data_dir)
     write_catalog_parquet(parquet, payload["rows"])
-    summary = {
-        key: value
-        for key, value in payload.items()
-        if key not in {"rows"}
-    }
+    summary = {key: value for key, value in payload.items() if key not in {"rows"}}
     summary["parquet"] = f"data/{parquet.name}"
     path = catalog_path(data_dir)
     atomic_write_json(path, summary)
@@ -402,9 +396,7 @@ def compact_dict(value: Any, keys: Iterable[str]) -> dict[str, Any]:
     if not isinstance(value, dict):
         return {}
     out = {
-        key: _json_safe(value.get(key))
-        for key in keys
-        if value.get(key) not in (None, "", [], {})
+        key: _json_safe(value.get(key)) for key in keys if value.get(key) not in (None, "", [], {})
     }
     return out
 
@@ -525,7 +517,9 @@ def load_keyframe_posters(tags_dir: Path, row_ids: set[str]) -> dict[str, str]:
         sha = str(row.get("media_sha256") or "")
         if not sha or sha in out:
             continue
-        poster = _string_or_none(row.get("thumbnail_path")) or poster_path_from_frames(row.get("frames"))
+        poster = _string_or_none(row.get("thumbnail_path")) or poster_path_from_frames(
+            row.get("frames")
+        )
         if poster:
             out[sha] = poster
     return out
@@ -562,8 +556,55 @@ def filter_posters(value: Any, rows: list[dict[str, Any]]) -> dict[str, str]:
     return {sha: str(path) for sha, path in value.items() if sha in shas}
 
 
-def atomic_write_json(path: Path, payload: dict[str, Any]) -> None:
+DEFAULT_VOLATILE_KEYS = ("generated_at",)
+
+
+def strip_volatile_keys(value: Any, keys: frozenset[str]) -> Any:
+    """Recursively drop ``keys`` so two payloads can be compared for meaningful
+    equality while ignoring run-stamped fields like ``generated_at``."""
+    if isinstance(value, dict):
+        return {k: strip_volatile_keys(v, keys) for k, v in value.items() if k not in keys}
+    if isinstance(value, list):
+        return [strip_volatile_keys(v, keys) for v in value]
+    return value
+
+
+def stabilize_volatile(
+    path: Path,
+    payload: dict[str, Any],
+    *,
+    volatile_keys: Iterable[str] = DEFAULT_VOLATILE_KEYS,
+) -> dict[str, Any]:
+    """Return ``payload`` unless the committed file at ``path`` already holds the
+    same content (ignoring ``volatile_keys``), in which case return the existing
+    parsed payload so the file is rewritten byte-for-byte and git sees no diff.
+
+    This keeps idempotent re-runs (the common case in CI) from churning a
+    committed artifact — and thus from triggering a redundant Pages deploy —
+    purely because a timestamp field advanced.
+    """
+    keys = frozenset(volatile_keys)
+    if not path.exists():
+        return payload
+    try:
+        existing = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return payload
+    if not isinstance(existing, dict):
+        return payload
+    if strip_volatile_keys(existing, keys) == strip_volatile_keys(_json_safe(payload), keys):
+        return existing
+    return payload
+
+
+def atomic_write_json(
+    path: Path,
+    payload: dict[str, Any],
+    *,
+    volatile_keys: Iterable[str] = DEFAULT_VOLATILE_KEYS,
+) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    payload = stabilize_volatile(path, payload, volatile_keys=volatile_keys)
     tmp = path.with_suffix(".tmp.json")
     tmp.write_text(
         json.dumps(_json_safe(payload), ensure_ascii=False, separators=(",", ":")) + "\n",

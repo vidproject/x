@@ -644,11 +644,17 @@ def build_row(
     extra_mentions: list[dict[str, Any]] | None = None,
     error: str | None = None,
 ) -> dict[str, Any]:
-    local = local_mentions if local_mentions is not None else local_mentions_for_tweet(tweet, articles)
+    local = (
+        local_mentions if local_mentions is not None else local_mentions_for_tweet(tweet, articles)
+    )
     mentions = dedupe_mentions([*local, *(extra_mentions or [])])
     confirmed = has_confirmed_coverage(mentions)
     tags = [tag_entry("news:mentioned"), tag_entry("news:covered")] if confirmed else []
-    status = "mentioned" if confirmed else ("candidate" if mentions else ("error" if error else "no-match"))
+    status = (
+        "mentioned"
+        if confirmed
+        else ("candidate" if mentions else ("error" if error else "no-match"))
+    )
     return {
         "tweet_id": str(tweet.get("tweet_id") or ""),
         "account_handle": str(tweet.get("account_handle") or ""),
@@ -843,9 +849,45 @@ def write_query_export(rows: list[dict[str, Any]], path: Path) -> None:
     os.replace(tmp, path)
 
 
+def load_prior_generated_at(path: Path) -> dict[tuple[str, str], str]:
+    """Map ``(tweet_id, input_hash) -> generated_at`` from the committed parquet.
+
+    ``input_hash`` already captures everything that determines a row's content,
+    so a row whose hash is unchanged is byte-identical apart from the timestamp.
+    Reusing the prior timestamp for those rows keeps an unchanged sidecar from
+    being rewritten on every run (which would commit + redeploy Pages for
+    nothing) while still bumping ``generated_at`` for rows that genuinely change.
+    """
+    if not path.exists():
+        return {}
+    try:
+        prior = pl.read_parquet(path, columns=["tweet_id", "input_hash", "generated_at"])
+    except Exception:
+        return {}
+    out: dict[tuple[str, str], str] = {}
+    for row in prior.iter_rows(named=True):
+        key = (str(row.get("tweet_id") or ""), str(row.get("input_hash") or ""))
+        ts = row.get("generated_at")
+        if ts:
+            out[key] = str(ts)
+    return out
+
+
+def stabilize_row_timestamps(rows: list[dict[str, Any]], path: Path) -> list[dict[str, Any]]:
+    prior = load_prior_generated_at(path)
+    if not prior:
+        return rows
+    for row in rows:
+        key = (str(row.get("tweet_id") or ""), str(row.get("input_hash") or ""))
+        if key in prior:
+            row["generated_at"] = prior[key]
+    return rows
+
+
 def write_parquet(rows: list[dict[str, Any]], path: Path) -> None:
     TAGS_DIR.mkdir(parents=True, exist_ok=True)
     path.parent.mkdir(parents=True, exist_ok=True)
+    rows = stabilize_row_timestamps(rows, path)
     df = (
         pl.DataFrame(rows, schema=NEWS_MENTIONS_SCHEMA, strict=False)
         if rows
@@ -877,7 +919,7 @@ def update_manifest(
         for entry in row.get("tags") or []:
             if isinstance(entry, dict) and entry.get("tag"):
                 tag_counts[str(entry["tag"])] += 1
-    layers["news_mentions"] = {
+    news_layer: dict[str, Any] = {
         "generated_at": generated_at,
         "detector": DETECTOR,
         "detector_version": DETECTOR_VERSION,
@@ -889,6 +931,15 @@ def update_manifest(
         "tag_frequency": dict(sorted(tag_counts.items(), key=lambda kv: (-kv[1], kv[0]))),
         **stats,
     }
+    # Reuse the committed news-layer timestamp when nothing else in the layer
+    # changed, so an unchanged corpus doesn't churn the shared tag manifest.
+    prior_layer = layers.get("news_mentions")
+    if isinstance(prior_layer, dict):
+        prior_compare = {k: v for k, v in prior_layer.items() if k != "generated_at"}
+        new_compare = {k: v for k, v in news_layer.items() if k != "generated_at"}
+        if prior_compare == new_compare and prior_layer.get("generated_at"):
+            news_layer["generated_at"] = prior_layer["generated_at"]
+    layers["news_mentions"] = news_layer
     manifest["layers"] = layers
     tmp = MANIFEST_PATH.with_suffix(".tmp.json")
     tmp.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
