@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-22T04:20:29Z",
+  "generated_at": "2026-05-22T04:35:54Z",
   "layers": {
     "audio_music": {
       "analyzed": 148,
@@ -70,7 +70,7 @@
       "status_ok": 148
     },
     "lexical": {
-      "generated_at": "2026-05-22T04:20:29Z",
+      "generated_at": "2026-05-22T04:35:54Z",
       "parquets_scanned": {
         "CBP.parquet": 515,
         "DHSgov.parquet": 4497,
@@ -498,14 +498,14 @@
       "article_count": 279,
       "article_mentions": 251,
       "article_sources": [
-        "data\\news\\articles.jsonl"
+        "data/news/articles.jsonl"
       ],
       "candidate_or_mentioned_tweets": 57,
       "core_tweets_scanned": 10954,
       "cost_estimate_usd": 0.0,
       "detector": "exact-status-url",
       "detector_version": "news-mentions-v3",
-      "generated_at": "2026-05-22T03:51:39Z",
+      "generated_at": "2026-05-22T04:30:53Z",
       "local_article_mentions": 251,
       "mentioned_tweets": 57,
       "query_export_path": "",
@@ -517,7 +517,9 @@
       "tag_frequency": {
         "news:covered": 57,
         "news:mentioned": 57
-      }
+      },
+      "web_article_mentions": 0,
+      "web_tweets_scanned": 100
     }
   },
   "parquets_scanned": {
