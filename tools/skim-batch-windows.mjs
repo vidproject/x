@@ -18,6 +18,7 @@ const DEFAULTS = {
   scrollDelayMs: 700,
   scrollFactor: 1.05,
   allowStyles: true,
+  headless: false,
   stopOnZero: true,
   zeroFailureLimit: 6,
 };
@@ -40,6 +41,7 @@ Options:
   --scroll-delay-ms <n>          Per-scroll delay. Default: ${DEFAULTS.scrollDelayMs}
   --scroll-factor <n>            Viewport heights per scroll. Default: ${DEFAULTS.scrollFactor}
   --block-styles                 Block stylesheets.
+  --headless                     Run child skims without visible browser windows.
   --allow-zero-responses         Keep going even if a window captures no GraphQL.
   --zero-failure-limit <n>       Stop after this many zero-response windows. Default: ${DEFAULTS.zeroFailureLimit}
 `.trim()
@@ -89,6 +91,9 @@ function parseArgs(argv) {
         break;
       case '--block-styles':
         options.allowStyles = false;
+        break;
+      case '--headless':
+        options.headless = true;
         break;
       case '--allow-zero-responses':
         options.stopOnZero = false;
@@ -249,6 +254,7 @@ function commandForTask(task, profileDir, options) {
     '--fail-on-zero-responses',
   ];
   if (options.allowStyles) args.push('--allow-styles');
+  if (options.headless) args.push('--headless');
   return { query, args };
 }
 

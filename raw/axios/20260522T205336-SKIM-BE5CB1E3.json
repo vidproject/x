@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-20250101-partial-20260522-20260522T205217Z-d4df7ee4-axios",
+  "account_handle": "axios",
+  "captured_at": "2026-05-22T20:53:36.151Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2025-04-01%20until%3A2025-05-01",
+  "tweets": [
+    {
+      "tweet_id": "1916896692038701468",
+      "account_handle": "axios",
+      "account_id": "800707492346925056",
+      "posted_at": "2025-04-28T16:46:00.000Z",
+      "first_captured_at": "2026-05-22T20:52:49.535Z",
+      "last_seen_at": "2026-05-22T20:52:49.535Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/axios/status/1916896692038701468",
+      "tweet_type": "original",
+      "conversation_id": "1916896692038701468",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "What to know about the U.S. citizen children removed with their mothers https://t.co/g7olEG6R5z",
+      "text_resolved": "What to know about the U.S. citizen children removed with their mothers https://trib.al/FpZjmnx",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/g7olEG6R5z",
+          "expanded": "https://trib.al/FpZjmnx",
+          "display": "trib.al/FpZjmnx"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/g7olEG6R5z",
+        "vendor_url": "axios.com",
+        "title": "What to know about the U.S. citizen children removed with their mothers",
+        "description": "U.S. citizen children aged 2, 4 and 7 were removed to Honduras Friday.",
+        "image_url": "https://pbs.twimg.com/card_img/2056153109563359232/45NahsQu?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 0,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 212221,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-22T20:52:49.535Z",
+          "likes": 0,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 0,
+          "views": 212221,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Axios",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1641458976049995776/GtO-0zYe_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Business",
+        "description": "Smart Brevity worthy of people's time, attention and trust. Subscribe to our newsletters: https://t.co/uMitaJIcpz",
+        "location": null,
+        "url": "https://t.co/93DAtB3Ljt",
+        "followers_count": 829491,
+        "friends_count": 1047,
+        "statuses_count": 204835,
+        "account_created_at": "2016-11-21T14:28:37.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-20250101-partial-20260522-20260522T205217Z-d4df7ee4",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-20250101-20260523-20260522/x-com-search-20260522T205217Z-d4df7ee4.summary.json",
+    "jsonl": ".skim/raw-core-20250101-20260523-20260522/x-com-search-20260522T205217Z-d4df7ee4.jsonl",
+    "source_handle": "DHSgov"
+  }
+}
