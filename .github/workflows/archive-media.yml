@@ -155,6 +155,23 @@ jobs:
           args+=(--max-items "$max_items")
           uv run python -m scripts.detect_audio_music "${args[@]}"
 
+      - name: transcribe audio (optional local ASR)
+        timeout-minutes: 30
+        # Local, free speech-to-text (faster-whisper). Heavier than the other
+        # layers, so capped lower and allowed to fail without breaking the
+        # archive pipeline; it caches by media_sha256 and catches up over runs.
+        continue-on-error: true
+        run: |
+          args=()
+          asr_max="${{ inputs.max_items }}"
+          if [ -z "$asr_max" ]; then asr_max="40"; fi
+          if [ "$asr_max" -gt 60 ]; then asr_max="60"; fi
+          if [ -n "${{ inputs.handle }}" ]; then
+            args+=(--handle "${{ inputs.handle }}")
+          fi
+          args+=(--max-items "$asr_max")
+          uv run --group asr python -m scripts.transcribe_audio "${args[@]}"
+
       - name: refresh lexical tags
         run: uv run python -m scripts.tag_lexical
 

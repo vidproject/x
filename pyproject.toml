@@ -19,6 +19,12 @@ dev = [
   "pytest>=8.3",
   "types-PyYAML",
 ]
+# Optional, local, free speech-to-text backend for scripts.transcribe_audio.
+# Not in the default install: tests stub the recognizer, and CI installs this
+# group only in the archive-media workflow. No paid API, no credentials.
+asr = [
+  "faster-whisper>=1.0",
+]
 
 [tool.uv]
 package = false
@@ -42,7 +48,7 @@ files = ["scripts", "tests"]
 exclude = ["tests/fixtures"]
 
 [[tool.mypy.overrides]]
-module = ["pyarrow.*", "polars.*"]
+module = ["pyarrow.*", "polars.*", "faster_whisper.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]

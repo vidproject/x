@@ -321,6 +321,46 @@ def empty_audio_music_dataframe() -> pl.DataFrame:
 
 
 # --------------------------------------------------------------------------
+# Transcript sidecar (Layer 3c)
+#
+# One row per archived video / animated-gif media item with an audio stream.
+# A local, free speech-to-text pass (faster-whisper / whisper.cpp) decodes a
+# bounded audio sample through ffmpeg and records the recognized speech. No
+# paid API and no credentials: the recognizer is optional and the script skips
+# cleanly when it is not installed. The lexical tagger folds the recovered
+# transcript text into its regex pass, exactly like the OCR overlay.
+
+TRANSCRIPT_SCHEMA: dict[str, Any] = {
+    "tweet_id": pl.Utf8,
+    "account_handle": pl.Utf8,
+    "media_id": pl.Utf8,
+    "media_type": pl.Utf8,
+    "media_sha256": pl.Utf8,
+    "release_asset_url": pl.Utf8,
+    "input_hash": pl.Utf8,
+    "generated_at": pl.Utf8,
+    "transcriber": pl.Utf8,
+    "transcriber_version": pl.Utf8,
+    "model": pl.Utf8,
+    "language": pl.Utf8,
+    "language_prob": pl.Float64,
+    "audio_duration_sec": pl.Float64,
+    "sample_duration_sec": pl.Float64,
+    "segment_count": pl.Int64,
+    "text": pl.Utf8,
+    "avg_logprob": pl.Float64,
+    "status": pl.Utf8,
+    "cost_estimate_usd": pl.Float64,
+    "error": pl.Utf8,
+}
+
+
+def empty_transcript_dataframe() -> pl.DataFrame:
+    """Return an empty DataFrame with the transcript sidecar schema."""
+    return pl.DataFrame(schema=TRANSCRIPT_SCHEMA)
+
+
+# --------------------------------------------------------------------------
 # News-mentions sidecar
 #
 # One row per core tweet scanned against a deterministic, local news-corpus
