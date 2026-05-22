@@ -329,11 +329,16 @@ export class Store {
         rows = rows.filter((r) => idSet.has(String(r.tweet_id)));
       }
     }
-    // Sort.
+    // Collapse retweets to their originals BEFORE sorting. A retweet row
+    // carries its own retweet_count (different from the original's) and
+    // like_count=0, so sorting first anchored the row by the wrong number and
+    // then swapped in the original at that wrong slot — producing the
+    // out-of-order "sort by RTS/Likes" the user saw. Collapsing first lets the
+    // sort order the surviving originals by their real engagement counts.
+    const collapsed = this.collapseRetweetsToOriginals(rows);
     const dir = filt.dir === 'asc' ? 1 : -1;
     const sortKey = filt.sort || 'posted_at';
-    rows = rows.slice().sort((a, b) => compare(a, b, sortKey) * dir);
-    return this.collapseRetweetsToOriginals(rows);
+    return collapsed.slice().sort((a, b) => compare(a, b, sortKey) * dir);
   }
 
   /**
