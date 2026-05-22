@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-icegov-resume-20260522-20260522T211133Z-eb3938ad-EROSanDiego",
+  "account_handle": "EROSanDiego",
+  "captured_at": "2026-05-22T21:12:30.466Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AICEgov%20since%3A2025-01-01%20until%3A2025-02-01",
+  "tweets": [
+    {
+      "tweet_id": "1879613779060928851",
+      "account_handle": "EROSanDiego",
+      "account_id": "1303320732575899653",
+      "posted_at": "2025-01-15T19:37:01.000Z",
+      "first_captured_at": "2026-05-22T21:12:11.154Z",
+      "last_seen_at": "2026-05-22T21:12:11.154Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/EROSanDiego/status/1879613779060928851",
+      "tweet_type": "original",
+      "conversation_id": "1879613779060928851",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "On Jan. 5, @EROSanDiego arrested a Guatemalan national in San Diego, CA. The noncitizen was previously convicted of threaten crime with intent to terrorize, exhibit deadly weapon. The noncitizen will remain in ERO custody pending immigration proceedings. https://t.co/4LKQ79mPbO",
+      "text_resolved": "On Jan. 5, @EROSanDiego arrested a Guatemalan national in San Diego, CA. The noncitizen was previously convicted of threaten crime with intent to terrorize, exhibit deadly weapon. The noncitizen will remain in ERO custody pending immigration proceedings. https://t.co/4LKQ79mPbO",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "EROSanDiego"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1879613774665248768",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GhW6xPnacAASyRM.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 667,
+          "height": 536,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 0,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 379843,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-22T21:12:11.154Z",
+          "likes": 0,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 0,
+          "views": 379843,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "ICE San Diego",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1910340825927864320/azHU_olD_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "ICE’s San Diego office enforces immigration laws to preserve national security and public safety in San Diego & Imperial Valley. https://t.co/vl2IrFzJ2D",
+        "location": "San Diego, California",
+        "url": "https://t.co/TpEqvWQXu0",
+        "followers_count": 11216,
+        "friends_count": 85,
+        "statuses_count": 805,
+        "account_created_at": "2020-09-08T13:14:19.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-icegov-resume-20260522-20260522T211133Z-eb3938ad",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-fresh-resume-20260522/x-com-search-20260522T211133Z-eb3938ad.summary.json",
+    "jsonl": ".skim/raw-core-fresh-resume-20260522/x-com-search-20260522T211133Z-eb3938ad.jsonl",
+    "source_handle": "ICEgov"
+  }
+}
