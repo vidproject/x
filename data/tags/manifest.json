@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-22T15:20:06Z",
+  "generated_at": "2026-05-22T15:22:27Z",
   "layers": {
     "audio_music": {
       "analyzed": 148,
@@ -70,7 +70,7 @@
       "status_ok": 148
     },
     "lexical": {
-      "generated_at": "2026-05-22T15:20:06Z",
+      "generated_at": "2026-05-22T15:22:27Z",
       "parquets_scanned": {
         "CBP.parquet": 515,
         "DHSgov.parquet": 4497,
@@ -285,10 +285,10 @@
         "media:graphic-content": 2,
         "media:has-alt-text": 245,
         "media:montage": 4,
-        "media:needs-vision": 3401,
+        "media:needs-vision": 3399,
         "media:photo": 2295,
         "media:short-video": 287,
-        "media:text-overlay": 18,
+        "media:text-overlay": 20,
         "media:video": 1344,
         "military:air-force": 62,
         "military:army": 57,
@@ -425,7 +425,7 @@
         "theme:homeland": 40,
         "theme:martyrdom": 143,
         "theme:nativism": 104,
-        "theme:pop-culture-enforcement": 3,
+        "theme:pop-culture-enforcement": 4,
         "theme:religion": 393,
         "theme:sanctuary-cities": 112,
         "theme:statistics": 142,
@@ -448,19 +448,19 @@
       "tagger_version": "lexical-v2"
     },
     "media_vision": {
-      "cache_hits": 4124,
+      "cache_hits": 4127,
       "cost_estimate_usd": 0.0,
-      "generated": 5,
-      "generated_at": "2026-05-22T15:20:04Z",
+      "generated": 2,
+      "generated_at": "2026-05-22T15:22:26Z",
       "model": "metadata",
       "model_version": "media-metadata-v4",
       "prompt_hash": "b18b19292ec51484",
       "row_count": 4129,
       "rows": 4129,
       "status_counts": {
-        "manual-review": 51,
+        "manual-review": 53,
         "metadata-alt": 284,
-        "metadata-context": 3794
+        "metadata-context": 3792
       },
       "tag_frequency": {
         "action:deportation": 1,
@@ -478,10 +478,10 @@
         "media:described": 4129,
         "media:has-alt-text": 284,
         "media:montage": 4,
-        "media:needs-vision": 3794,
+        "media:needs-vision": 3792,
         "media:photo": 2725,
         "media:short-video": 287,
-        "media:text-overlay": 18,
+        "media:text-overlay": 20,
         "media:video": 1344,
         "military:coast-guard": 1,
         "speaker:First Lady Melania Trump": 1,
@@ -489,7 +489,7 @@
         "subject:detainee": 1,
         "subject:official": 3,
         "theme:nativism": 1,
-        "theme:pop-culture-enforcement": 3,
+        "theme:pop-culture-enforcement": 4,
         "theme:religion": 1,
         "topic:economy": 1,
         "topic:immigration": 2,
@@ -742,10 +742,10 @@
     "media:graphic-content": 2,
     "media:has-alt-text": 245,
     "media:montage": 4,
-    "media:needs-vision": 3401,
+    "media:needs-vision": 3399,
     "media:photo": 2295,
     "media:short-video": 287,
-    "media:text-overlay": 18,
+    "media:text-overlay": 20,
     "media:video": 1344,
     "military:air-force": 62,
     "military:army": 57,
@@ -882,7 +882,7 @@
     "theme:homeland": 40,
     "theme:martyrdom": 143,
     "theme:nativism": 104,
-    "theme:pop-culture-enforcement": 3,
+    "theme:pop-culture-enforcement": 4,
     "theme:religion": 393,
     "theme:sanctuary-cities": 112,
     "theme:statistics": 142,

@@ -793,6 +793,37 @@
       "review_method": "Direct triage: 96px keyframe poster + tweet text (produced-video review).",
       "certainty": "reviewed",
       "deterministic_signal_missing": "Produced-video form/genre confirmed by direct keyframe review; recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2051321953022042350",
+      "account_handle": "WhiteHouse",
+      "media_id": "3_2051320581149085696",
+      "media_type": "photo",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/3_2051320581149085696.jpg",
+      "tweet_text_excerpt": "In a galaxy that demands strength - America stands ready.\n\nThis is the way. May the 4th be with you. https://t.co/S8dOKOVd5P",
+      "visual_observation": "Reviewed captioned/meme image (OCR text + tweet context).",
+      "candidate_visual_tags": [
+        "media:text-overlay",
+        "theme:pop-culture-enforcement"
+      ],
+      "review_method": "Direct triage: Tesseract OCR text + tweet text (image pixels not viewed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Image-form (captioned meme) confirmed via OCR; recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2056756792437231843",
+      "account_handle": "hernandoarce",
+      "media_id": "3_2056756788217692161",
+      "media_type": "photo",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/3_2056756788217692161.jpg",
+      "tweet_text_excerpt": "@DHSgov @POTUS @SecMullinDHS We want mass deportations. https://t.co/7Rz39K4sIA",
+      "visual_observation": "Reviewed captioned/meme image (OCR text + tweet context).",
+      "candidate_visual_tags": [
+        "media:text-overlay"
+      ],
+      "review_method": "Direct triage: Tesseract OCR text + tweet text (image pixels not viewed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Image-form (captioned meme) confirmed via OCR; recorded via the candidate tags above."
     }
   ]
 }
