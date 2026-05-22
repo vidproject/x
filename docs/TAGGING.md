@@ -206,7 +206,7 @@ See `config/tag_taxonomy.yaml` for the authoritative list. Quick map:
 | ---------- | -------------------------------------- | -------------------------- |
 | `subject:` | who/what the post is about             | `subject:detainee`         |
 | `genre:`   | produced-video genre / aesthetic       | `genre:recruitment`        |
-| `media:`   | content of attached media (Layer 3a)   | `media:photo-detainee`     |
+| `media:`   | content of attached media (Layer 3)    | `media:montage`            |
 | `speaker:` | evidence-supported speaker attribution | `speaker:Secretary Noem`   |
 | `format:`  | structural (derived from `tweet_type`) | `format:retweet`           |
 | `status:`  | availability / moderation state        | `status:copyright-removal` |
@@ -225,6 +225,75 @@ See `config/tag_taxonomy.yaml` for the authoritative list. Quick map:
 | `phrase:`  | recurring domain terms                 | `phrase:migrant`           |
 | `military:`| military branch subtopics              | `military:navy`            |
 | `news:`    | local article export cited this tweet  | `news:mentioned`           |
+| `audio:`   | audio-track / sound properties         | `audio:music-likely`       |
+| `video:`   | video kind / duration bucket           | `video:bodycam`            |
+| `legal:`   | legal posture / litigation type        | `legal:birthright-citizenship` |
+| `parody:`  | franchise-specific parody              | `parody:star-wars`         |
+| `artist:`  | named cultural figures / musicians     | `artist:taylor-swift`      |
+
+## Namespace guide — decision tree
+
+Use this section when you are not sure which namespace to use for a new slug.
+The 21 active namespaces group into five purposes.
+
+### "Aboutness" — what is the post about?
+
+The five aboutness namespaces are the most commonly confused. Pick the **narrowest fit**:
+
+| Namespace | Use this when… | Contrast |
+| --------- | -------------- | -------- |
+| `topic:`  | The post is broadly about a subject domain — immigration, economy, military. Additive; a post can carry multiple topic tags. | The coarsest level; fires even when framing is neutral. |
+| `theme:`  | The post deploys a specific ideological or rhetorical frame — nativism, martyrdom, border, sanctuary-cities. More precise than `topic:`; describes *how* the subject is treated, not just *what*. | `topic:immigration` fires on any immigration content; `theme:nativism` fires only when the framing positions native-born Americans as threatened by immigrants. |
+| `frame:`  | A recurring **structural scaffold** — currently only `frame:criminal` for the templated mugshot-reply form. Note: `frame:` is a candidate for absorption into `theme:`; new scaffolds should go into `theme:` first. | Unlike `theme:`, `frame:` implies a highly specific template match, not just rhetorical tone. |
+| `subject:`| The post features a specific **person or named entity** — a detainee, an Angel Family, a celebrity. Answers "who or what is depicted?" | `subject:` is about presence/depiction; `topic:` is about subject domain; `theme:` is about rhetorical stance. |
+| `event:`  | The post references a **named, bounded event or conflict** — a city disturbance, a named conflict (Gaza). | Use `event:` only for clusters with a defined name; prefer `topic:` + `country:` for general geographic coverage. |
+
+### "Media form" — what kind of media is attached?
+
+| Namespace | Use this when… | Contrast |
+| --------- | -------------- | -------- |
+| `media:`  | Describing the **content or provenance** of an attached media item — its type (photo, video, GIF), state (archived, described, needs-OCR), or inferred content (montage, text-overlay, voiceover, AI-generated). | The broadest media namespace; covers both structural properties and content labels. |
+| `video:`  | Describing the **kind or duration** of a video — bodycam footage, interview, speech, news clip; or a duration bucket (short/medium/long). Only emitted when the tweet actually has a video. | `media:video` = "there is a video"; `video:bodycam` = "that video is bodycam footage." |
+| `audio:`  | Describing **audio-track properties** — whether audio is present, silent, likely musical, or confirmed music. | `audio:` describes the track; `genre:music-video` describes the video's production form. |
+| `genre:`  | Describing the **produced-video genre or aesthetic** — music video, PSA, recruitment ad, war-movie style, utopian, dystopian. Applies to intentionally edited / produced videos. | `video:` = raw footage type; `genre:` = produced aesthetic category. |
+| `parody:` | Identifying the **specific franchise** being parodied — `parody:star-wars`, `parody:rocky`, etc. Always co-emitted with `genre:parody`. | `genre:parody` = "this is a parody"; `parody:<franchise>` = "…of this franchise." |
+| `artist:` | Naming a **specific cultural figure or musician** referenced in text, OCR, or transcript. Covers both the artist name and signature songs. | `artist:` requires an explicit name/song match; `audio:music` or `audio:music-likely` fires on the presence of music without identifying the artist. |
+
+### "Origin / place" — where are people or events located?
+
+| Namespace | Use this when… | Contrast |
+| --------- | -------------- | -------- |
+| `origin:` | The post attributes a person's **country of origin** using the "from \<COUNTRY\>" templated pattern, validated against a sovereign-state vocabulary. | Narrow: requires the attributed-origin framing. |
+| `country:`| The post **mentions** a sovereign-state name in any context — not necessarily an origin claim. Validated against the same vocabulary but with looser proximity rules. | Superset of `origin:`. Use `origin:` when the DHS templated reply form fires; `country:` when the country is merely mentioned. |
+| `state:`  | The post includes a **U.S.-state place reference** in the "\<city\>, \<state\>" pattern, validated against the 50-state list. | `state:` is U.S. states only; `country:` covers international. |
+
+### "Phrases" — recurring text patterns
+
+| Namespace | Use this when… | Contrast |
+| --------- | -------------- | -------- |
+| `slogan:` | The post contains a **branded or campaign phrase** closely associated with DHS, ICE, or the administration — "MAGA", "illegal alien", "criminal illegal alien", "mass deportation". | High-specificity; each slug has a dedicated pattern. |
+| `phrase:`  | The post contains a **recurring domain term** that implies topic context but is not a branded slogan — "migrant(s)", "immigrant(s)". | Lower specificity than `slogan:`; use for plain domain vocabulary. |
+
+### "People and organizations"
+
+| Namespace | Use this when… | Contrast |
+| --------- | -------------- | -------- |
+| `speaker:`| The post has evidence-supported **speaker attribution** — the speaker is identified from tweet text, captions, alt text, or transcript. Do not guess from faces or setting. | Open-ended; slug is the speaker's name or title (e.g. `speaker:Secretary Noem`). |
+| `agency:` | The post **mentions** an enforcement-adjacent account handle in its `mentions[]` field — ICEgov, CBP, DHSgov, HSI_HQ, etc. | Distinct from the post's own `account_handle`; lets you find tweets *about* ICE without being *by* ICE. |
+| `subject:`| As above (Aboutness): the post **features** a specific person or named entity. | `speaker:` = who is speaking; `agency:` = who is mentioned by handle; `subject:` = who/what is depicted. |
+
+### Remaining namespaces (structural / metadata)
+
+| Namespace  | Use this when… |
+| ---------- | -------------- |
+| `format:`  | Describing tweet structure derived from `tweet_type` — retweet, quote, reply. |
+| `status:`  | Recording availability or moderation state — unavailable, copyright-removal, community-note. |
+| `action:`  | An enforcement verb fires — detention, deportation, self-deportation, report-immigrants. |
+| `legal:`   | The post invokes a legal posture — birthright-citizenship debate, criminal prosecution, civil lawsuit. |
+| `military:`| Narrowing a `topic:military` hit to a specific branch — army, navy, air-force, space-force, marines, coast-guard, national-guard. |
+| `religion:`| Narrowing a `theme:religion` hit to a specific faith — currently only `religion:christianity`. |
+| `crime:`   | A crime-type vocabulary word fires — rape, murder, DUI, trafficking, etc. |
+| `news:`    | An external news article's exact status URL matches this tweet — `news:mentioned` and `news:covered`. |
 
 ## The `topic:immigration` default
 

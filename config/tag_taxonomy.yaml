@@ -42,11 +42,9 @@ tags:
       Post explicitly uses the "Angel Family" framing or names a family
       in that program.
     classification: deterministic
-  subject:crime-victim:
-    description: >-
-      Post features a victim of a crime attributed to an immigrant
-      (superset of angel-family).
-    classification: tentative
+  # subject:crime-victim removed: no emitter in any script (only referenced
+  # as an "if already present" guard in tag_lexical.py intrinsic-topic logic).
+  # Re-add with a real emitter when a detector is written.
   subject:native-born-citizen:
     description: >-
       Post explicitly references native-born U.S. citizens or Americans
@@ -58,7 +56,9 @@ tags:
   subject:celebrity:
     description: >-
       Post explicitly references a named entertainer, influencer, model,
-      athlete, or other non-government celebrity/public persona.
+      athlete, or other non-government celebrity/public persona. Emitted by
+      PATTERN_SUBJECT_CELEBRITY in tag_lexical.py (forward-looking: fires
+      more broadly once OCR/transcripts are present).
     classification: deterministic
   subject:enforcement-op:
     description: >-
@@ -72,7 +72,11 @@ tags:
 
   # ===== genre:* — produced-video genre / aesthetic =================
   genre:music-video:
-    description: Produced video paced around a music track or presented as a music video.
+    description: >-
+      Produced video paced around a music track or presented as a music video.
+      (forward-looking: fires once OCR/transcripts/news data is present;
+      also emitted directly by tag_lexical.py, describe_media.py, and
+      build_core_video_audit.py on explicit cues)
     classification: tentative
   genre:psa:
     description: Produced public-service announcement or public-information spot.
@@ -116,31 +120,47 @@ tags:
     description: 'Parody of Superman (man of steel, kryptonite, fortress of solitude).'
     classification: deterministic
   parody:top-gun:
-    description: 'Parody of Top Gun ("the need for speed", "danger zone").'
+    description: >-
+      Parody of Top Gun ("the need for speed", "danger zone").
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   parody:game-of-thrones:
-    description: 'Parody of Game of Thrones ("winter is coming", "the iron throne").'
+    description: >-
+      Parody of Game of Thrones ("winter is coming", "the iron throne").
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   parody:lord-of-the-rings:
-    description: 'Parody of The Lord of the Rings ("you shall not pass", "one ring to rule them all").'
+    description: >-
+      Parody of The Lord of the Rings ("you shall not pass", "one ring to rule them all").
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   parody:terminator:
-    description: 'Parody of The Terminator ("hasta la vista, baby", Skynet).'
+    description: >-
+      Parody of The Terminator ("hasta la vista, baby", Skynet).
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   parody:rocky:
-    description: 'Parody of Rocky ("eye of the tiger", "gonna fly now").'
+    description: >-
+      Parody of Rocky ("eye of the tiger", "gonna fly now").
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   parody:james-bond:
-    description: 'Parody of James Bond / 007 ("shaken, not stirred", "licence to kill").'
+    description: >-
+      Parody of James Bond / 007 ("shaken, not stirred", "licence to kill").
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   parody:marvel:
-    description: 'Parody of Marvel / Avengers ("avengers assemble", Thanos, infinity gauntlet).'
+    description: >-
+      Parody of Marvel / Avengers ("avengers assemble", Thanos, infinity gauntlet).
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   parody:ghostbusters:
     description: 'Parody of Ghostbusters ("who you gonna call").'
     classification: deterministic
   parody:godfather:
-    description: 'Parody of The Godfather ("an offer he can''t refuse").'
+    description: >-
+      Parody of The Godfather ("an offer he can't refuse").
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   parody:pawn-stars:
     description: 'Parody/tie-in of Pawn Stars.'
@@ -149,30 +169,48 @@ tags:
   # ===== artist:* - named cultural figures / musicians ==============
   # Fired only when the artist or a signature song is NAMED in text / OCR /
   # transcript (audio cannot be identified by ear). Coverage grows as the OCR
-  # and transcript layers fill in.
+  # and transcript layers fill in. All artist:* entries are forward-looking:
+  # gazetteers exist in ARTIST_GAZETTEER (tag_lexical.py) but most matches
+  # are currently buried in un-OCR'd images or un-transcribed audio.
   artist:sydney-sweeney:
-    description: 'Sydney Sweeney (e.g. the American Eagle ad) named in text/OCR.'
+    description: >-
+      Sydney Sweeney (e.g. the American Eagle ad) named in text/OCR.
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   artist:lee-greenwood:
-    description: 'Lee Greenwood / "God Bless the USA" / "Proud to be an American".'
+    description: >-
+      Lee Greenwood / "God Bless the USA" / "Proud to be an American".
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   artist:kid-rock:
-    description: 'Kid Rock named in text/OCR/transcript.'
+    description: >-
+      Kid Rock named in text/OCR/transcript.
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   artist:village-people:
-    description: 'Village People / "Macho Man" (rally staple).'
+    description: >-
+      Village People / "Macho Man" (rally staple).
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   artist:jason-aldean:
-    description: 'Jason Aldean / "Try That in a Small Town".'
+    description: >-
+      Jason Aldean / "Try That in a Small Town".
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   artist:oliver-anthony:
-    description: 'Oliver Anthony / "Rich Men North of Richmond".'
+    description: >-
+      Oliver Anthony / "Rich Men North of Richmond".
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   artist:taylor-swift:
-    description: 'Taylor Swift named in text/OCR/transcript.'
+    description: >-
+      Taylor Swift named in text/OCR/transcript.
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
   artist:beyonce:
-    description: 'Beyoncé named in text/OCR/transcript.'
+    description: >-
+      Beyoncé named in text/OCR/transcript.
+      (forward-looking: fires once OCR/transcripts/news data is present)
     classification: deterministic
 
   # ===== speaker:* - evidence-supported speaker attribution =========
@@ -185,15 +223,10 @@ tags:
     classification: deterministic
 
   # ===== media:* — attached media labels ============================
-  media:photo-detainee:
-    description: Photographic media of a detained person.
-    classification: tentative
-  media:photo-operation:
-    description: Photographic media of agents/raid scene.
-    classification: tentative
-  media:video-testimonial:
-    description: Video of a named individual addressing camera.
-    classification: tentative
+  # media:photo-detainee removed: no emitter in any script.
+  # media:photo-operation removed: no emitter in any script.
+  # media:video-testimonial removed: no emitter in any script.
+  # Re-add any of these with a real emitter when a detector is written.
   media:music-video:
     description: Video whose pacing or presentation is built around a music track.
     classification: tentative
@@ -204,13 +237,18 @@ tags:
     description: Video or image contains visible title cards, captions, chyron text, or graphic text overlays.
     classification: tentative
   media:voiceover:
-    description: Video includes narration or speech over other visuals.
+    description: >-
+      Video includes narration or speech over other visuals. (forward-looking:
+      emitted by describe_media.py and build_core_video_audit.py; coverage
+      grows as media descriptions and transcripts fill in)
     classification: tentative
   media:ai-generated:
     description: >-
       Media appears AI-generated or heavily synthetic. The tag is firm
       only when based on C2PA, watermark, or other explicit provenance
-      signals; visual-cue-only detections remain tentative.
+      signals; visual-cue-only detections remain tentative. (forward-looking:
+      emitted by tag_lexical.py on explicit provenance cues; Gemini verifier
+      in tag_media_llm.py provides secondary confirmation)
     classification: tentative
 
   # ===== audio:* - audio-track / sound cues ==========================
@@ -232,7 +270,9 @@ tags:
   audio:music:
     description: >-
       Confirmed music detected in the archived video's audio track by a
-      future audio classifier sidecar.
+      future audio classifier sidecar. (forward-looking: fires once the
+      audio-classifier sidecar is present; current scripts only emit
+      audio:music-likely as a heuristic)
     classification: model
 
   # ===== news:* - external news coverage ============================
@@ -240,14 +280,16 @@ tags:
     description: >-
       A local news-corpus export, or high-confidence exact-status-URL
       news-index query, contains an exact X/Twitter status URL for this
-      archived core tweet.
+      archived core tweet. (forward-looking: fires once OCR/transcripts/news
+      data is present; emitted by scripts/news_mentions.py)
     classification: deterministic
   news:covered:
     description: >-
       Alias for news:mentioned, kept as a user-friendly filter for
       tweets cited or embedded by external news coverage. Emitted only
       when article provenance is exact or high-confidence, not from
-      vague text similarity.
+      vague text similarity. (forward-looking: fires once OCR/transcripts/news
+      data is present; emitted by scripts/news_mentions.py)
     classification: deterministic
 
   event:palestine:
