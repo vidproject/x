@@ -367,7 +367,9 @@ def update_manifest(
 
 
 def discover_canonical_parquets() -> list[Path]:
-    return sorted(p for p in DATA_DIR.glob("*.parquet") if p.is_file())
+    return sorted(
+        p for p in DATA_DIR.glob("*.parquet") if p.is_file() and p.name != "catalog.parquet"
+    )
 
 
 def run(

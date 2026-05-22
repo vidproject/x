@@ -33,7 +33,7 @@ The archive also preserves replies, quotes, retweets, and public accounts that a
 
 ## Viewer
 
-The viewer starts with a small `data/preview-*.json` slice for low-bandwidth browsing. Click the lightning button to load every account Parquet listed in `data/manifest.json` for fast full-archive browsing. Search runs in the browser. Filters support account, account category, date, tweet type, media type, tag, and column values. The URL updates with the current view, so filtered pages can be shared.
+The viewer starts with `data/catalog.parquet`, a lightweight full-archive catalog for global search, tags, filters, charts, and the date histogram without downloading every full account Parquet. `data/catalog.json` is only the tiny summary/poster map. Full tweet records hydrate lazily as rows come into view, are opened, or are reached from a shared link. Click the lightning button only to download every account Parquet listed in `data/manifest.json` for fast full-record browsing. Search runs in the browser. Filters support account, account category, date, tweet type, media type, tag, and column values. The URL updates with the current view, so filtered pages can be shared.
 
 Search covers tweet text, resolved links, handles, mentions, tags, and media descriptions. CSV export uses the currently filtered rows.
 
@@ -184,9 +184,9 @@ The audit also emits queue files for GitHub-side recovery of likely produced or 
 
 ## News Mentions
 
-`scripts.news_mentions` checks whether archived core tweets are cited by news coverage using a deterministic local article export. It accepts JSON, JSONL, or CSV records with fields such as `url`, `title`, `description`, `body`, `content`, or `text`, then matches exact `x.com/<handle>/status/<tweet_id>`, `twitter.com/<handle>/status/<tweet_id>`, and `x.com/i/web/status/<tweet_id>` URLs. Tests and normal offline runs need no network. For cheap ad-hoc discovery, run `uv run python -m scripts.news_mentions --discover-web google-news-rss --max-web-tweets 100 --matched-only`; this queries Google News RSS, or `--discover-web gdelt` for GDELT, for exact status URL strings and records returned article metadata at lower confidence.
+`scripts.news_mentions` checks whether archived core tweets are cited by news coverage using a deterministic local article export when one exists. It accepts JSON, JSONL, or CSV records with fields such as `url`, `title`, `description`, `body`, `content`, or `text`, then matches exact `x.com/<handle>/status/<tweet_id>`, `twitter.com/<handle>/status/<tweet_id>`, and `x.com/i/web/status/<tweet_id>` URLs. Tests and normal offline runs can still use `--discover-web none` to avoid network. For cheap discovery, run `uv run python -m scripts.news_mentions --discover-web google-news-rss --max-web-tweets 100 --matched-only`; this checks Google News RSS only for core tweets missing from the local article export. Use `--discover-web gdelt` to query GDELT instead.
 
-When `data/news/articles.jsonl` exists, the ingest workflow refreshes `data/tags/news_mentions.parquet`; otherwise it skips the step unless a manual workflow dispatch `news_discover` provider is selected. Mentioned tweets receive `news:mentioned` and `news:covered` tags that the viewer loads like other optional sidecars.
+The ingest workflow now defaults to `google-news-rss`, capped by `news_max_web_tweets`, and uses `data/news/articles.jsonl` as an optional first-pass corpus. Mentioned tweets receive `news:mentioned` and `news:covered` tags that the viewer loads like other optional sidecars.
 
 ## Pipeline
 

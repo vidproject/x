@@ -28,7 +28,7 @@
       "tweet_text_excerpt": "You know you wanna be her",
       "visual_observation": "Polished produced recruitment-style montage of female DHS / Coast Guard / Secret Service / HSI personnel in uniform, ending on a U.S. Department of Homeland Security end-card.",
       "candidate_visual_tags": [
-        "media:produced-video",
+        "video:produced",
         "media:montage",
         "genre:advertisement",
         "branch:coast-guard",
@@ -59,7 +59,7 @@
       "tweet_text_excerpt": "RT @MargoMartin47: .@SecMullinDHS arrives to the United States Coast Guard Academy",
       "visual_observation": "USCGA 145th Commencement: dress-uniform cadets saluting, USCGA banner, U.S. flag, Secretary Mullin walking down the line. Already gets branch:coast-guard / topic:military / agency:SecMullinDHS via text; visual confirms.",
       "candidate_visual_tags": [
-        "media:produced-video",
+        "video:produced",
         "video:speech"
       ],
       "deterministic_signal_missing": "Lexical tagger already covers this one well. Queue entry kept as a positive control — visual lines up with current deterministic tags."
@@ -73,7 +73,7 @@
       "tweet_text_excerpt": "A Moldovan alien fraudster with multiple extradition warrants",
       "visual_observation": "Animated PSA-style infographic: gavel / courtroom imagery, USCIS+DHS seal, title cards progressively reveal 'Immigration Fraud is a CRIME'.",
       "candidate_visual_tags": [
-        "media:produced-video",
+        "video:produced",
         "media:text-overlay",
         "genre:psa"
       ],
@@ -103,7 +103,7 @@
       "tweet_text_excerpt": "Find your medication, with ease. TrumpRx.Gov",
       "visual_observation": "Screen recording demo of the TrumpRx.Gov search UI: typed queries ('we', 'infer') populate Wegovy / Vfend / Zyvox results with prices. Pure produced screencast, no human on camera.",
       "candidate_visual_tags": [
-        "media:produced-video",
+        "video:produced",
         "media:text-overlay",
         "genre:advertisement",
         "genre:psa"
@@ -207,12 +207,12 @@
       "visual_observation": "Composite ICE press graphic: embedded mugshot of named subject + headline 'MADURO REGIME ALLY ALEX SAAB ARRESTED FOR MONEY LAUNDERING CONNECTED TO VENEZUELAN FOOD CONTRACTS AND OIL', ICE+DHS seal.",
       "candidate_visual_tags": [
         "media:text-overlay",
-        "shape:lineup",
+        "genre:lineup",
         "crime:fraud",
         "country:Venezuela",
         "subject:detainee"
       ],
-      "deterministic_signal_missing": "shape:lineup currently requires tweet_type=reply, but ICE's composite-graphic pattern (single embedded mugshot + headline) is structurally identical. Consider relaxing shape:lineup or adding shape:press-graphic. OCR would catch the headline text deterministically."
+      "deterministic_signal_missing": "genre:lineup currently requires tweet_type=reply, but ICE's composite-graphic pattern (single embedded mugshot + headline) is structurally identical. Consider relaxing genre:lineup or adding genre:press-graphic. OCR would catch the headline text deterministically."
     },
     {
       "tweet_id": "2055384322866110467",

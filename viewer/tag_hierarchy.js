@@ -14,7 +14,7 @@ const EXACT_PARENTS = new Map([
   ['agency:HSI_HQ', ['topic:immigration']],
   ['agency:USBPChief', ['topic:immigration']],
   ['frame:criminal', ['topic:immigration']],
-  ['shape:lineup', ['topic:immigration']],
+  ['genre:lineup', ['topic:immigration']],
   ['subject:angel-family', ['theme:martyrdom', 'topic:immigration']],
   ['subject:crime-victim', ['theme:martyrdom', 'topic:immigration']],
   ['subject:cbp-home-app', ['topic:immigration']],
@@ -45,6 +45,8 @@ const EXACT_PARENTS = new Map([
   ['event:los-angeles-disturbance', ['theme:civil-disturbance']],
   ['event:minneapolis-disturbance', ['theme:civil-disturbance']],
   ['event:portland-disturbance', ['theme:civil-disturbance']],
+  ['video:produced', ['media:video']],
+  ['crime:murder', ['crime:homicide']],
   ['crime:rape', ['crime:sexual']],
   ['crime:sodomy', ['crime:sexual']],
   ['crime:child-sexual', ['crime:sexual']],
@@ -60,8 +62,15 @@ const PREFIX_PARENTS = [
   ['country:', ['topic:immigration']],
 ];
 
+const TAG_ALIASES = new Map([
+  ['media:produced-video', 'video:produced'],
+  ['homicide:murder', 'crime:murder'],
+  ['shape:lineup', 'genre:lineup'],
+]);
+
 export function tagEntryName(entry) {
-  return typeof entry === 'string' ? entry : entry?.tag;
+  const name = typeof entry === 'string' ? entry : entry?.tag;
+  return TAG_ALIASES.get(name) ?? name;
 }
 
 export function tagNamespaceFor(name) {
@@ -113,10 +122,6 @@ function parentTagFor(name, byName) {
   if (!name) return null;
   const exact = EXACT_PARENTS.get(name);
   if (exact) return firstPresent(exact, byName);
-
-  if (name.startsWith('homicide:')) {
-    return firstPresent(['crime:homicide', 'crime:murder'], byName);
-  }
 
   for (const [prefix, parents] of PREFIX_PARENTS) {
     if (name.startsWith(prefix)) return firstPresent(parents, byName);

@@ -1,19 +1,32 @@
 // Side-panel detail view: opens when a table row is clicked.
 
-import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js';
-import { archiveShareUrlForRow, xTweetLinkLabel, xTweetUrlForRow } from './links.js';
+import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js?v=lazycat1';
+import {
+  archiveShareUrlForRow,
+  copyTextToClipboard,
+  xTweetLinkLabel,
+  xTweetUrlForRow,
+} from './links.js?v=lazycat1';
 
-export function openSidepanel(panelEl, titleEl, bodyEl, row, thread) {
+export function openSidepanel(panelEl, titleEl, bodyEl, row, thread, options = {}) {
   if (!row) return;
   titleEl.textContent = `@${row.account_handle} · ${shortDate(row.posted_at)}`;
   updateTitleShareLink(titleEl, row);
   bodyEl.replaceChildren();
+  const newsSection =
+    Array.isArray(row.news_mentions) && row.news_mentions.length > 0
+      ? section('News Coverage', newsMentionsBlock(row.news_mentions))
+      : null;
+  if (newsSection) newsSection.id = 'sp-news-coverage';
   bodyEl.append(
     section('Tweet', tweetContent(row)),
     section('Tags', tagsBlock(row), suggestButton(row)),
     section('Identifiers', grid(idRows(row))),
     section('Engagement', grid(engagementRows(row)))
   );
+  if (row.__catalog && !row.__hydrated) {
+    bodyEl.append(section('Full Record', mutedText('Loading full archived row...')));
+  }
   // When the clicked row is a thread master, surface its sibling
   // replies that the table doesn't inline (everything that isn't a
   // self-reply from the same handle). This is the "click to see the
@@ -28,9 +41,6 @@ export function openSidepanel(panelEl, titleEl, bodyEl, row, thread) {
   }
   if (Array.isArray(row.media_insights) && row.media_insights.length > 0) {
     bodyEl.append(section('Media Recognition', mediaInsightsBlock(row.media_insights)));
-  }
-  if (Array.isArray(row.news_mentions) && row.news_mentions.length > 0) {
-    bodyEl.append(section('News Coverage', newsMentionsBlock(row.news_mentions)));
   }
   if (Array.isArray(row.engagement_history) && row.engagement_history.length > 1) {
     bodyEl.append(section('Engagement history', engagementHistory(row.engagement_history)));
@@ -48,8 +58,14 @@ export function openSidepanel(panelEl, titleEl, bodyEl, row, thread) {
   if (row.unavailable_detected_at) {
     bodyEl.append(section('Unavailable', grid(unavailableRows(row))));
   }
+  if (newsSection) bodyEl.append(newsSection);
   panelEl.hidden = false;
   panelEl.setAttribute('aria-hidden', 'false');
+  if (options.scrollToNews && newsSection) {
+    requestAnimationFrame(() => {
+      newsSection.scrollIntoView({ block: 'end' });
+    });
+  }
 }
 
 export function closeSidepanel(panelEl) {
@@ -64,10 +80,34 @@ function updateTitleShareLink(titleEl, row) {
   if (!shareEl) return;
   if (!row.tweet_id) {
     shareEl.hidden = true;
+    shareEl.onclick = null;
     return;
   }
   shareEl.href = archiveShareUrlForRow(row);
+  shareEl.setAttribute('aria-label', 'Copy share link');
+  shareEl.setAttribute('title', 'Copy share link');
+  shareEl.onclick = async (event) => {
+    event.preventDefault();
+    await copyShareLink(shareEl);
+  };
   shareEl.hidden = false;
+}
+
+async function copyShareLink(link) {
+  const href = link.getAttribute('href') || '';
+  if (!href) return;
+  const oldTitle = link.getAttribute('title') || '';
+  try {
+    const copied = await copyTextToClipboard(href);
+    link.classList.toggle('copied', copied);
+    link.setAttribute('title', copied ? 'Copied share link' : 'Could not copy link');
+  } catch {
+    link.setAttribute('title', 'Could not copy link');
+  }
+  window.setTimeout(() => {
+    link.classList.remove('copied');
+    if (oldTitle) link.setAttribute('title', oldTitle);
+  }, 1500);
 }
 
 function section(title, ...children) {
@@ -77,6 +117,13 @@ function section(title, ...children) {
   h.textContent = title;
   sec.append(h, ...children);
   return sec;
+}
+
+function mutedText(text) {
+  const div = document.createElement('div');
+  div.className = 'muted';
+  div.textContent = text;
+  return div;
 }
 
 function tweetContent(row) {

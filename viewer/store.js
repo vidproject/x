@@ -83,6 +83,33 @@ export class Store {
     this.byHandle.set(handle, rows);
     this.rebuild();
   }
+  setCatalogRows(rows, handle = '__catalog__') {
+    this.byHandle.clear();
+    this.byHandle.set(handle, rows);
+    this.rebuild();
+  }
+  hydrateRow(id, fullRow) {
+    const row = this.getById(id);
+    if (!row || !fullRow) return null;
+    const overlays = {};
+    for (const key of [
+      'tags',
+      'media_insights',
+      'news_mentions',
+      'news_mention_count',
+      'news_mention_status',
+      'news_mention_detector',
+    ]) {
+      if (row[key] !== undefined && fullRow[key] === undefined) overlays[key] = row[key];
+    }
+    const catalog = row.__catalog || fullRow.__catalog;
+    Object.assign(row, fullRow, overlays, {
+      __catalog: catalog,
+      __hydrated: true,
+    });
+    this.search = null;
+    return row;
+  }
   removeHandle(handle) {
     this.byHandle.delete(handle);
     this.rebuild();

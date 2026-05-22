@@ -1,4 +1,4 @@
-import { tagNames, tagNamespace } from './store.js';
+import { tagNames, tagNamespace } from './store.js?v=lazycat1';
 
 export const CHART_JS_URL = 'https://esm.sh/chart.js@4.5.0/auto?bundle';
 
@@ -63,7 +63,7 @@ export const CHART_TYPE_OPTIONS = [
 
 export const CHART_SCOPE_OPTIONS = [
   { value: 'filtered', label: 'Filtered rows' },
-  { value: 'all', label: 'All loaded rows' },
+  { value: 'all', label: 'All catalog rows' },
 ];
 
 export const CHART_SORT_OPTIONS = [

@@ -18,3 +18,27 @@ export function xTweetLinkLabel(row) {
     ? 'Open original on x.com'
     : 'Open on x.com';
 }
+
+export async function copyTextToClipboard(text) {
+  const value = String(text ?? '');
+  if (!value) return false;
+  if (navigator.clipboard?.writeText && window.isSecureContext) {
+    await navigator.clipboard.writeText(value);
+    return true;
+  }
+  const area = document.createElement('textarea');
+  area.value = value;
+  area.setAttribute('readonly', '');
+  area.style.position = 'fixed';
+  area.style.left = '-9999px';
+  area.style.top = '0';
+  document.body.append(area);
+  area.select();
+  let copied = false;
+  try {
+    copied = document.execCommand('copy');
+  } finally {
+    area.remove();
+  }
+  return copied;
+}

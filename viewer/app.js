@@ -2,10 +2,10 @@
 // column visibility, CSV export, and lazy parquet loading.
 
 import { exportCsv } from './csv.js';
-import { loadParquetRows } from './parquet.js';
+import { loadParquetRows } from './parquet.js?v=lazycat1';
 import { applyToUrl, defaults as defaultState, fromHash } from './state.js';
-import { SEARCH_FIELD_OPTIONS, Store } from './store.js';
-import { initChartsPanel, updateChartsPanel } from './charts.js?v=e677463';
+import { SEARCH_FIELD_OPTIONS, Store } from './store.js?v=lazycat1';
+import { initChartsPanel, updateChartsPanel } from './charts.js?v=lazycat1';
 import {
   openColumnFilterPopup,
   parseVisibleColumns,
@@ -13,8 +13,8 @@ import {
   renderTable,
   setMediaColumnConfig,
   setUserLookup,
-} from './table.js?v=9587694';
-import { closeSidepanel, openSidepanel } from './sidepanel.js';
+} from './table.js?v=lazycat1';
+import { closeSidepanel, openSidepanel } from './sidepanel.js?v=lazycat1';
 
 const $ = (id) => {
   const el = document.getElementById(id);
@@ -215,26 +215,31 @@ els.tipsBtn.addEventListener('click', () => {
   els.tipsBtn.setAttribute('aria-pressed', next ? 'true' : 'false');
 });
 
-// --- Manifest + auto-load every account ---
+// --- Manifest + catalog-first loading ---
 //
 // The viewer treats the archive as a single combined database — there is
-// no per-account opt-in download. On boot we fetch every parquet listed
-// in the manifest in parallel (bounded by `LOAD_CONCURRENCY`) and merge
-// them into one row set. The "Accounts" dropdown becomes a read-only
-// directory: clicking a handle adds it to the account-filter on the
-// table; clicking again clears it.
+// enough metadata for global search, tags, filters, charts, and the date
+// histogram. Full per-account Parquet rows are hydrated lazily for the
+// current page and when a row/profile/deep link needs detail fields.
 
 const LOAD_CONCURRENCY = 6;
 const PREVIEW_LIMITS = [20, 50, 100, 200];
 const PREVIEW_HANDLE = '__preview__';
+const CATALOG_HANDLE = '__catalog__';
+const HYDRATE_RANGE_PAD = 2;
+const HYDRATE_MAX_SPAN = 200;
 // Re-render every N completed loads while loading, so the table fills in
 // progressively instead of waiting for the slowest parquet.
 const PROGRESSIVE_REFRESH_EVERY = 10;
 
 let loadProgress = { completed: 0, total: 0, failed: 0 };
+let catalogLoaded = false;
+let catalogDateRange = { start: '', end: '' };
 let fullDatabaseLoaded = false;
 let fullDatabaseLoading = false;
 let previewLimitLoaded = 0;
+const hydrationRangePromises = new Map();
+let hydrationRefreshQueued = false;
 
 async function loadManifest() {
   try {
@@ -596,7 +601,9 @@ function paintHdrStats() {
   const preview = previewing ? ` · preview ${fmtNum(loadedTotal)} loaded` : '';
   els.hdrStats.textContent =
     `${fmtNum(totalPosts)} tweets · ${fmtNum(totalReplies)} replies · ${fmtNum(totalMedia)} media · ` +
-    `${accounts.length} account${accounts.length === 1 ? '' : 's'}${preview}${loading}${failed}`;
+    `${accounts.length} account${accounts.length === 1 ? '' : 's'}${preview}${loading}${failed}${
+      catalogLoaded && !fullDatabaseLoaded && !previewing ? ' | catalog loaded; details on demand' : ''
+    }`;
 }
 
 function _paintDlMenu() {
@@ -778,6 +785,55 @@ function updateSearchPlaceholder() {
   els.search.placeholder = `Search ${scope}... (use * and ? wildcards)`;
 }
 
+function catalogCacheKey() {
+  return manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
+}
+
+async function loadCatalogDataset() {
+  const url = `data/catalog.json${catalogCacheKey()}`;
+  setSpinner(true);
+  syncFullDbButton();
+  try {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`fetch ${url}: ${res.status} ${res.statusText}`);
+    const payload = await res.json();
+    catalogDateRange = normalizeDateRange(payload?.date_range);
+    const rows = Array.isArray(payload?.rows)
+      ? payload.rows
+      : await loadParquetRows(`${payload?.parquet || 'data/catalog.parquet'}${catalogCacheKey()}`);
+    store.setCatalogRows(rows, CATALOG_HANDLE);
+    catalogLoaded = true;
+    previewLimitLoaded = 0;
+    loadProgress = { completed: 1, total: 1, failed: 0 };
+    mediaPosterBySha = objectToMap(payload?.poster_by_sha);
+    applyMediaSettings({ persist: false });
+    revealUi();
+    paintHdrStats();
+    paintCategoryFilter();
+    refresh();
+  } catch (err) {
+    catalogLoaded = false;
+    loadProgress = { completed: 0, total: 0, failed: 1 };
+    pushLoadError({
+      resource: url,
+      status: extractHttpStatus(err),
+      kind: 'catalog',
+      message: err?.message ?? String(err),
+    });
+    showError('Catalog data is unavailable. Falling back to the limited newest-row preview.', 8000);
+    await loadPreviewDataset(urlState.size);
+  } finally {
+    setSpinner(false);
+    syncFullDbButton();
+  }
+}
+
+function normalizeDateRange(value) {
+  const start = typeof value?.start === 'string' ? value.start.slice(0, 10) : '';
+  const end = typeof value?.end === 'string' ? value.end.slice(0, 10) : '';
+  return { start, end };
+}
+
 function previewLimitForSize(size) {
   const n = Number(size) || PREVIEW_LIMITS[0];
   for (const limit of PREVIEW_LIMITS) {
@@ -852,6 +908,7 @@ async function loadFullDatabase() {
   store.byHandle.clear();
   store.rebuild();
   previewLimitLoaded = 0;
+  catalogLoaded = false;
   try {
     const sidecarsPromise = loadSidecars();
     await loadAllAccounts(sidecarsPromise);
@@ -873,7 +930,7 @@ function syncFullDbButton() {
     ? 'Full database loaded'
     : fullDatabaseLoading
       ? 'Loading full database...'
-      : 'Load the full database for fast browsing. By default, the viewer only downloads a small first-page preview.';
+      : 'Load every full Parquet row for fast offline-style browsing. By default, the viewer uses the full catalog and hydrates details on demand.';
 }
 
 async function loadAllAccounts(sidecarsPromise) {
@@ -1041,6 +1098,151 @@ function revealUi() {
   els.pager.hidden = false;
 }
 
+function rowNeedsHydration(row) {
+  return Boolean(row?.__catalog && !row.__hydrated && !fullDatabaseLoaded);
+}
+
+async function openRowInSidepanel(row, options = {}) {
+  if (!row) return;
+  selectedRowId = String(row.tweet_id || '');
+  urlState.tweet = selectedRowId;
+  urlState.profile = '';
+  applyToUrl(urlState);
+  const display = store.displayRowFor(row) || row;
+  openSidepanelForRow(display, options);
+  refreshSelectionHighlight();
+  if (!rowNeedsHydration(display)) return;
+  const hydrated = await hydrateRow(display, { showSpinner: true });
+  if (!hydrated) return;
+  openSidepanelForRow(hydrated, options);
+  refreshSelectionHighlight();
+}
+
+function openSidepanelForRow(row, options = {}) {
+  const thread = store.groupIntoThreads([row])[0] || null;
+  openSidepanel(els.sidepanel, els.spTitle, els.spBody, row, thread, options);
+}
+
+async function hydrateRow(row, { showSpinner = false } = {}) {
+  if (!rowNeedsHydration(row)) return row;
+  const catalog = row.__catalog || {};
+  const url = parquetUrlForCatalog(catalog);
+  const rowIndex = Number(catalog.row_index);
+  if (!url || !Number.isFinite(rowIndex)) return row;
+  if (showSpinner) setSpinner(true);
+  try {
+    await hydrateRange(url, rowIndex, rowIndex + 1);
+    return store.getDisplayRowById(row.tweet_id) || store.getById(row.tweet_id) || row;
+  } catch (err) {
+    pushLoadError({
+      resource: url,
+      status: extractHttpStatus(err),
+      kind: 'hydrate',
+      message: err?.message ?? String(err),
+    });
+    showError(`Could not load full detail for tweet ${row.tweet_id}.`, 5000);
+    return row;
+  } finally {
+    if (showSpinner) setSpinner(false);
+  }
+}
+
+function scheduleHydrateVisibleRows(threads, page, pageSize) {
+  if (fullDatabaseLoaded || !catalogLoaded || !Array.isArray(threads) || threads.length === 0) return;
+  const start = (page - 1) * pageSize;
+  const pageThreads = threads.slice(start, start + pageSize);
+  const rows = [];
+  for (const thread of pageThreads) {
+    if (thread?.master) rows.push(thread.master);
+    if (expandedThreads.has(thread?.threadId)) {
+      rows.push(...(thread.selfSlaves || []), ...(thread.privilegedSlaves || []));
+    }
+  }
+  void hydrateRows(rows, { refreshWhenDone: true });
+}
+
+async function hydrateRows(rows, { refreshWhenDone = false } = {}) {
+  const ranges = hydrationRangesForRows(rows);
+  if (ranges.length === 0) return;
+  try {
+    await Promise.all(ranges.map((range) => hydrateRange(range.url, range.start, range.end)));
+    if (refreshWhenDone) queueHydrationRefresh();
+  } catch (err) {
+    pushLoadError({
+      resource: 'visible rows',
+      status: extractHttpStatus(err),
+      kind: 'hydrate',
+      message: err?.message ?? String(err),
+    });
+  }
+}
+
+function hydrationRangesForRows(rows) {
+  const byUrl = new Map();
+  for (const row of rows || []) {
+    if (!rowNeedsHydration(row)) continue;
+    const catalog = row.__catalog || {};
+    const url = parquetUrlForCatalog(catalog);
+    const idx = Number(catalog.row_index);
+    if (!url || !Number.isFinite(idx)) continue;
+    const list = byUrl.get(url) || [];
+    list.push(idx);
+    byUrl.set(url, list);
+  }
+  const ranges = [];
+  for (const [url, indices] of byUrl.entries()) {
+    const sorted = [...new Set(indices)].sort((a, b) => a - b);
+    let current = null;
+    for (const idx of sorted) {
+      const start = Math.max(0, idx - HYDRATE_RANGE_PAD);
+      const end = idx + HYDRATE_RANGE_PAD + 1;
+      if (!current || start > current.end || end - current.start > HYDRATE_MAX_SPAN) {
+        if (current) ranges.push(current);
+        current = { url, start, end };
+      } else {
+        current.end = Math.max(current.end, end);
+      }
+    }
+    if (current) ranges.push(current);
+  }
+  return ranges;
+}
+
+async function hydrateRange(url, start, end) {
+  const cacheKey = manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
+  const fullUrl = `${url}${cacheKey}`;
+  const key = `${fullUrl}:${start}:${end}`;
+  if (!hydrationRangePromises.has(key)) {
+    hydrationRangePromises.set(
+      key,
+      loadParquetRows(fullUrl, { rowStart: start, rowEnd: end }).then((rows) => {
+        for (const fullRow of rows) {
+          const id = String(fullRow?.tweet_id || '');
+          if (id) store.hydrateRow(id, fullRow);
+        }
+        return rows;
+      })
+    );
+  }
+  return hydrationRangePromises.get(key);
+}
+
+function parquetUrlForCatalog(catalog) {
+  const parquet = typeof catalog?.parquet === 'string' ? catalog.parquet : '';
+  if (parquet) return parquet.replace(/\\/g, '/');
+  const handle = typeof catalog?.handle === 'string' ? catalog.handle : '';
+  return handle ? `data/${handle}.parquet` : '';
+}
+
+function queueHydrationRefresh() {
+  if (hydrationRefreshQueued) return;
+  hydrationRefreshQueued = true;
+  window.setTimeout(() => {
+    hydrationRefreshQueued = false;
+    refresh();
+  }, 0);
+}
+
 // --- Toolbar wiring ---
 paintSearchFieldMenu();
 els.searchField.value = urlState.qfield || 'all';
@@ -1117,10 +1319,6 @@ els.pageSize.addEventListener('change', async () => {
   urlState.size = Math.min(Number(els.pageSize.value) || 20, 200);
   urlState.page = 1;
   applyToUrl(urlState);
-  if (!fullDatabaseLoaded) {
-    await loadPreviewDataset(urlState.size);
-    return;
-  }
   refresh();
 });
 els.resetBtn.addEventListener('click', async () => {
@@ -1140,10 +1338,6 @@ els.resetBtn.addEventListener('click', async () => {
   applyToUrl(urlState);
   paintAccountFilter();
   paintCategoryFilter();
-  if (!fullDatabaseLoaded) {
-    await loadPreviewDataset(urlState.size);
-    return;
-  }
   refresh();
 });
 
@@ -1380,13 +1574,7 @@ function profileTweetItem(row) {
   item.type = 'button';
   item.className = 'profile-tweet';
   item.addEventListener('click', () => {
-    selectedRowId = row.tweet_id;
-    urlState.tweet = String(row.tweet_id || '');
-    urlState.profile = '';
-    applyToUrl(urlState);
-    const thread = store.groupIntoThreads([row])[0] || null;
-    openSidepanel(els.sidepanel, els.spTitle, els.spBody, row, thread);
-    refreshSelectionHighlight();
+    void openRowInSidepanel(row);
   });
   const meta = document.createElement('div');
   meta.className = 'profile-tweet-meta';
@@ -1546,11 +1734,29 @@ function goto(p) {
   refresh();
 }
 
-function renderTimelinePager(rows, threads) {
+function datasetDateRange() {
+  if (catalogDateRange.start && catalogDateRange.end) return catalogDateRange;
+  const starts = [];
+  const ends = [];
+  for (const account of manifest?.accounts ?? []) {
+    const start = dayKey(account.first_post_at);
+    const end = dayKey(account.latest_post_at);
+    if (start) starts.push(start);
+    if (end) ends.push(end);
+  }
+  starts.sort();
+  ends.sort();
+  return {
+    start: starts[0] || '',
+    end: ends[ends.length - 1] || '',
+  };
+}
+
+function renderTimelinePager(rows, threads, bounds = null) {
   els.timelineBars.replaceChildren();
   const dateFilterActive = Boolean(urlState.from || urlState.to);
   els.timelineClear.hidden = !dateFilterActive;
-  const bins = buildTimelineBins(rows, threads);
+  const bins = buildTimelineBins(rows, threads, bounds);
   if (bins.length === 0) {
     els.timelineLabel.textContent = 'Date histogram';
     const empty = document.createElement('div');
@@ -1619,12 +1825,14 @@ function renderTimelinePager(rows, threads) {
   els.timelineBars.append(track, axis);
 }
 
-function buildTimelineBins(rows, threads) {
+function buildTimelineBins(rows, threads, bounds = null) {
   const dates = rows.map((row) => dateFromDay(dayKey(row.posted_at))).filter(Boolean);
-  if (dates.length === 0) return [];
   dates.sort((a, b) => a - b);
-  const min = dates[0];
-  const max = dates[dates.length - 1];
+  const boundStart = dateFromDay(bounds?.start);
+  const boundEnd = dateFromDay(bounds?.end);
+  if (dates.length === 0 && (!boundStart || !boundEnd)) return [];
+  const min = boundStart || dates[0];
+  const max = boundEnd || dates[dates.length - 1];
   const coverageStart = dayFromDate(min);
   const coverageEnd = dayFromDate(max);
   const unit = timelineUnit(min, max);
@@ -1664,29 +1872,16 @@ function buildTimelineBins(rows, threads) {
   return bins;
 }
 
-const TIMELINE_MAX_BINS = 72;
+const TIMELINE_DAILY_MAX_DAYS = 31;
 
 function timelineUnit(min, max) {
   const days = Math.max(1, Math.round((max - min) / 86_400_000) + 1);
-  if (days <= TIMELINE_MAX_BINS) return 'day';
-  if (Math.ceil(days / 7) <= TIMELINE_MAX_BINS) return 'week';
-  const months = (max.getUTCFullYear() - min.getUTCFullYear()) * 12 + max.getUTCMonth() - min.getUTCMonth() + 1;
-  if (months <= TIMELINE_MAX_BINS) return 'month';
-  if (Math.ceil(months / 3) <= TIMELINE_MAX_BINS) return 'quarter';
-  return 'year';
+  return days <= TIMELINE_DAILY_MAX_DAYS ? 'day' : 'month';
 }
 
 function timelineBinStart(date, unit) {
   const d = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
   if (unit === 'day') return d;
-  if (unit === 'week') {
-    d.setUTCDate(d.getUTCDate() - d.getUTCDay());
-    return d;
-  }
-  if (unit === 'quarter') {
-    return new Date(Date.UTC(d.getUTCFullYear(), Math.floor(d.getUTCMonth() / 3) * 3, 1));
-  }
-  if (unit === 'year') return new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
   return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1));
 }
 
@@ -1699,9 +1894,6 @@ function timelineBinEnd(start, unit) {
 function nextTimelineBin(start, unit) {
   const next = new Date(start.valueOf());
   if (unit === 'day') next.setUTCDate(next.getUTCDate() + 1);
-  else if (unit === 'week') next.setUTCDate(next.getUTCDate() + 7);
-  else if (unit === 'quarter') next.setUTCMonth(next.getUTCMonth() + 3);
-  else if (unit === 'year') next.setUTCFullYear(next.getUTCFullYear() + 1);
   else next.setUTCMonth(next.getUTCMonth() + 1);
   return next;
 }
@@ -1710,9 +1902,6 @@ function timelineBinLabel(start, unit) {
   const year = start.getUTCFullYear();
   const month = String(start.getUTCMonth() + 1).padStart(2, '0');
   if (unit === 'day') return dayFromDate(start);
-  if (unit === 'week') return `${dayFromDate(start)} week`;
-  if (unit === 'quarter') return `${year} Q${Math.floor(start.getUTCMonth() / 3) + 1}`;
-  if (unit === 'year') return String(year);
   return `${year}-${month}`;
 }
 
@@ -1753,10 +1942,6 @@ window.addEventListener('hashchange', () => {
   visibleCols = parseVisibleColumns(urlState.cols);
   paintAccountFilter();
   paintCategoryFilter();
-  if (!fullDatabaseLoaded && previewLimitLoaded !== previewLimitForSize(urlState.size)) {
-    void loadPreviewDataset(urlState.size);
-    return;
-  }
   refresh();
 });
 
@@ -1818,7 +2003,7 @@ function refresh() {
       : filteredRows;
   const timelineThreads =
     timelineRows === filteredRows ? filteredThreads : store.groupIntoThreads(timelineRows);
-  renderTimelinePager(timelineRows, timelineThreads);
+  renderTimelinePager(timelineRows, timelineThreads, datasetDateRange());
 
   const visibleColFilters =
     urlState.tags && urlState.tags.length > 0
@@ -1837,18 +2022,8 @@ function refresh() {
     colFilters: visibleColFilters,
     tagCertainty: urlState.tagcert || 'all',
     expandedThreads,
-    onRowClick: (r) => {
-      selectedRowId = r.tweet_id;
-      urlState.tweet = String(r.tweet_id || '');
-      urlState.profile = '';
-      applyToUrl(urlState);
-      // When the clicked row is a master that owns non-self replies,
-      // hand the thread along so the sidepanel can render its "Other
-      // replies" section. Lookup is O(threads) but called only on
-      // click, so it stays cheap.
-      const thread = filteredThreads.find((t) => t.master === r) || null;
-      openSidepanel(els.sidepanel, els.spTitle, els.spBody, r, thread);
-      refreshSelectionHighlight();
+    onRowClick: (r, options = {}) => {
+      void openRowInSidepanel(r, options);
     },
     onAccountOpen: (handle) => openProfileForHandle(handle),
     onSortToggle: (key) => {
@@ -1916,6 +2091,7 @@ function refresh() {
     },
   });
 
+  scheduleHydrateVisibleRows(filteredThreads, urlState.page, urlState.size);
   if (!openSharedProfileFromUrl()) openSharedEntryFromUrl();
   refreshSelectionHighlight();
   updateChartsPanel();
@@ -1948,17 +2124,15 @@ function rowsForColumnCounts(key) {
 function openSharedEntryFromUrl() {
   const tweetId = String(urlState.tweet || '');
   if (!tweetId) return;
-  if (selectedRowId === tweetId && !els.sidepanel.hidden) return;
   const row = store.getDisplayRowById(tweetId);
+  if (selectedRowId === tweetId && !els.sidepanel.hidden && !rowNeedsHydration(row)) return;
   if (!row) {
     if (loadProgress.total > 0 && loadProgress.completed >= loadProgress.total) {
       showError(`No archived entry found for tweet ${tweetId}.`, 4000);
     }
     return;
   }
-  selectedRowId = String(row.tweet_id || tweetId);
-  const thread = store.groupIntoThreads([row])[0] || null;
-  openSidepanel(els.sidepanel, els.spTitle, els.spBody, row, thread);
+  void openRowInSidepanel(row);
 }
 
 function refreshSelectionHighlight() {
@@ -2009,5 +2183,5 @@ function shortDate(value) {
 loadTheme();
 syncFullDbButton();
 loadManifest().then(async () => {
-  await loadPreviewDataset(urlState.size);
+  await loadCatalogDataset();
 });

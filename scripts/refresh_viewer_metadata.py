@@ -1,9 +1,9 @@
 """Refresh lightweight viewer metadata after Parquet-producing jobs.
 
 Archive/media jobs can edit existing Parquet files without running the full
-raw ingest. This script updates the root manifest, user profile sidecar, and
-small preview JSON files so the static viewer's cache-busting and quick boot
-data stay aligned with the database currently committed.
+raw ingest. This script updates the root manifest, user profile sidecar,
+full lightweight catalog, and legacy preview JSON files so the static viewer's
+cache-busting and quick boot data stay aligned with the committed database.
 """
 
 from __future__ import annotations
@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Any
 
 from scripts import ingest
-from scripts.build_viewer_preview import write_previews
+from scripts.build_viewer_preview import write_catalog, write_previews
 
 
 def manifest_accounts_for_existing_data(
@@ -54,6 +54,7 @@ def refresh(accounts_path: Path = ingest.CONFIG_PATH) -> dict[str, object]:
     manifest = stable_generated_at(previous_manifest, manifest)
     ingest.write_manifest(manifest)
     write_users_stable(ingest.aggregate_users(), str(manifest["generated_at"]))
+    write_catalog(ingest.DATA_DIR, generated_at=str(manifest["generated_at"]))
     write_previews(ingest.DATA_DIR, generated_at=str(manifest["generated_at"]))
     return manifest
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Immigration Social Media Archive</title>
-    <link rel="stylesheet" href="viewer/style.css?v=9587694" />
+    <link rel="stylesheet" href="viewer/style.css?v=lazycat1" />
   </head>
   <body class="theme-auto">
     <header class="hdr">
@@ -53,9 +53,9 @@
           type="button"
           class="btn ghost icon-only"
           id="full-db-btn"
-          aria-label="Load full database"
+          aria-label="Load full records"
           aria-pressed="false"
-          title="Load the full database for fast browsing. By default, the viewer only downloads a small first-page preview."
+          title="Load every full Parquet row for fast browsing. By default, the viewer uses the full catalog and loads details on demand."
         >
           ⚡
         </button>
@@ -131,9 +131,9 @@
       <h2>Tips</h2>
       <ul>
         <li>
-          The viewer starts with a small newest-row preview. Use the lightning button to load the
-          full archive into one unified view, then narrow by account, category, date, type, media,
-          tags, or column values.
+          The viewer starts with the full searchable catalog. It loads full tweet records as rows
+          come into view, are opened, or are reached from a shared link. Use the lightning button
+          only when you want every full Parquet row downloaded for fast browsing.
         </li>
         <li>
           Search defaults to all fields. Change the field selector beside it to search only text,
@@ -347,8 +347,8 @@
             class="sp-title-share"
             id="sp-share"
             href="#"
-            aria-label="Share entry"
-            title="Share entry"
+            aria-label="Copy share link"
+            title="Copy share link"
             hidden
             ><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
               <path d="M6.2 4.4 7.3 3.3a3.1 3.1 0 0 1 4.4 4.4l-1.4 1.4a3.1 3.1 0 0 1-4.2.2" />
@@ -371,6 +371,6 @@
       >
     </footer>
 
-    <script type="module" src="viewer/app.js?v=9587694"></script>
+    <script type="module" src="viewer/app.js?v=lazycat1"></script>
   </body>
 </html>

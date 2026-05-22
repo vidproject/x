@@ -647,7 +647,50 @@ body {
   text-decoration: underline;
 }
 .share-link {
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  font-family: 'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji', sans-serif;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+.share-link.copied,
+.sp-title-share.copied {
+  color: var(--ok);
+  border-color: var(--ok);
+}
+.share-link:hover,
+.share-link:focus-visible {
+  text-decoration: none;
+}
+.news-mention-link {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--fg-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  padding: 0;
+  cursor: pointer;
+  font-family: 'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji', sans-serif;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+.news-mention-link:hover,
+.news-mention-link:focus-visible {
+  color: var(--accent-2);
+  background: var(--bg-3);
+  text-decoration: none;
 }
 .deleted-cell {
   color: var(--err);

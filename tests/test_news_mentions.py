@@ -192,6 +192,25 @@ def test_jsonl_loader_and_parquet_output_need_no_network(tmp_path: Path) -> None
     assert manifest["layers"]["news_mentions"]["tag_frequency"]["news:mentioned"] == 1
 
 
+def test_search_result_article_links_are_marked_lower_confidence() -> None:
+    tweet = make_tweet("1234567890", handle="DHSgov")
+    article = {
+        "source": "Search",
+        "title": "Search-derived article",
+        "url": "https://example.test/story",
+        "links": ["https://x.com/DHSgov/status/1234567890"],
+        "coverage_basis": "search_result_for_exact_status_url",
+        "match_method": "google-exact-status-url-search",
+    }
+
+    mention = news_mentions.mention_for_article(tweet, article)
+
+    assert mention is not None
+    assert mention["match_type"] == "local-search-result-exact-status-url"
+    assert mention["confidence"] == 0.85
+    assert mention["confirmed"] is True
+
+
 def test_gdelt_query_uses_exact_status_url_variants() -> None:
     tweet = make_tweet("4444444444", handle="DHSgov")
 
@@ -245,6 +264,59 @@ def test_gdelt_discovery_can_crosslink_without_local_article_export(tmp_path: Pa
     assert rows[0]["articles"][0]["confidence"] == 0.85
     assert rows[0]["articles"][0]["confirmed"] is True
     assert {entry["tag"] for entry in rows[0]["tags"]} == {"news:covered", "news:mentioned"}
+
+
+def test_web_discovery_only_checks_tweets_missing_from_local_articles(tmp_path: Path) -> None:
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    _write_parquet(
+        data_dir / "DHSgov.parquet",
+        [
+            make_tweet("1111111111", handle="DHSgov"),
+            make_tweet("2222222222", handle="DHSgov"),
+        ],
+    )
+    articles = [
+        {
+            "source": "Local News",
+            "title": "Local match",
+            "body": "Embedded post: https://x.com/DHSgov/status/1111111111",
+        }
+    ]
+    seen_queries: list[str] = []
+
+    def fake_search(query: str, *, max_records: int, timeout_sec: float) -> list[dict[str, object]]:
+        seen_queries.append(query)
+        return [
+            {
+                "source": "RSS News",
+                "title": "RSS match",
+                "url": "https://example.test/rss-match",
+                "published_at": "2026-05-20T12:00:00Z",
+            }
+        ]
+
+    rows, stats = news_mentions.build_rows(
+        [data_dir / "DHSgov.parquet"],
+        articles,
+        core_handles={"DHSgov"},
+        generated_at="2026-05-20T00:00:00Z",
+        matched_only=True,
+        discover_web="google-news-rss",
+        max_web_tweets=10,
+        web_delay_sec=0.0,
+        web_searcher=fake_search,
+    )
+
+    assert len(seen_queries) == 1
+    assert "2222222222" in seen_queries[0]
+    assert "1111111111" not in seen_queries[0]
+    assert stats["local_article_mentions"] == 1
+    assert stats["web_tweets_scanned"] == 1
+    assert stats["mentioned_tweets"] == 2
+    assert [row["tweet_id"] for row in rows] == ["1111111111", "2222222222"]
+    assert rows[0]["articles"][0]["match_type"] == "local-exact-status-url"
+    assert rows[1]["articles"][0]["matched_fields"] == ["google-news-rss-query"]
 
 
 def test_query_export_sorts_high_value_core_tweets(tmp_path: Path) -> None:

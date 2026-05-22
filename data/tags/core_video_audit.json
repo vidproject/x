@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-22T01:49:21Z",
+  "generated_at": "2026-05-22T04:22:29Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -42,7 +42,7 @@
       "topic:economy": 145,
       "frame:criminal": 142,
       "slogan:illegal-alien": 135,
-      "media:produced-video": 127,
+      "video:produced": 127,
       "agency:USCIS": 96,
       "format:retweet": 93,
       "agency:CBP": 88,
@@ -57,7 +57,7 @@
       "slogan:criminal-illegal-alien": 58,
       "action:detention": 54,
       "crime:homicide": 51,
-      "homicide:murder": 50,
+      "crime:murder": 50,
       "crime:fraud": 48,
       "topic:general": 47,
       "action:deportation": 41,
@@ -109,18 +109,18 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "slogan:golden-age",
         "topic:general",
         "topic:laudatory",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:utopian"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -151,19 +151,19 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "slogan:golden-age",
         "topic:economy",
         "topic:general",
         "topic:laudatory",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:utopian"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -198,14 +198,14 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "assign-produced-video-genre"
@@ -240,18 +240,18 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "slogan:golden-age",
         "topic:general",
         "topic:laudatory",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:utopian"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -285,18 +285,18 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "slogan:golden-age",
         "topic:general",
         "topic:laudatory",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:utopian"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -332,19 +332,19 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "slogan:golden-age",
         "topic:economy",
         "topic:general",
         "topic:laudatory",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:utopian"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -377,20 +377,20 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "slogan:golden-age",
         "topic:economy",
         "topic:general",
         "topic:laudatory",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:utopian"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -422,20 +422,20 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "slogan:golden-age",
         "topic:economy",
         "topic:general",
         "topic:laudatory",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:utopian"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -469,20 +469,20 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "slogan:golden-age",
         "topic:economy",
         "topic:general",
         "topic:laudatory",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:utopian"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -515,19 +515,19 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "slogan:golden-age",
         "topic:economy",
         "topic:general",
         "topic:laudatory",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:utopian"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -603,17 +603,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:utopian"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -646,18 +646,18 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "slogan:promises-kept",
         "topic:general",
         "topic:laudatory",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -687,20 +687,20 @@
         "audio:has-audio",
         "media:archived",
         "media:described",
-        "media:produced-video",
         "media:short-video",
         "media:text-overlay",
         "media:video",
         "speaker:First Lady Melania Trump",
         "speaker:President Trump",
         "topic:immigration",
+        "video:produced",
         "video:short",
         "video:speech"
       ],
       "genre_tags": [],
       "produced_video_tags": [
-        "media:produced-video",
-        "media:text-overlay"
+        "media:text-overlay",
+        "video:produced"
       ],
       "missing_steps": [
         "assign-produced-video-genre"
@@ -736,16 +736,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -779,17 +779,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "theme:directive",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -823,16 +823,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -866,17 +866,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "theme:directive",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -907,18 +907,18 @@
         "branch:coast-guard",
         "media:archived",
         "media:described",
-        "media:produced-video",
         "media:short-video",
         "media:text-overlay",
         "media:video",
         "topic:military",
         "video:news-clip",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [],
       "produced_video_tags": [
-        "media:produced-video",
-        "media:text-overlay"
+        "media:text-overlay",
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -955,16 +955,16 @@
         "format:retweet",
         "media:archived",
         "media:described",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:military",
+        "video:produced",
         "video:short",
         "video:speech"
       ],
       "genre_tags": [],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1000,23 +1000,23 @@
         "crime:gang",
         "crime:homicide",
         "crime:ms13",
+        "crime:murder",
         "crime:trafficking",
         "genre:psa",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -1048,17 +1048,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:economy",
-        "video:long"
+        "video:long",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement",
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1093,17 +1093,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:long"
+        "video:long",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement",
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1138,17 +1138,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement",
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1184,17 +1184,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement",
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1232,17 +1232,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement",
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1277,17 +1277,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement",
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1321,18 +1321,18 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "religion:christianity",
         "theme:religion",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1367,17 +1367,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:long"
+        "video:long",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement",
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1412,16 +1412,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1456,17 +1456,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "slogan:illegal-alien",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1501,16 +1501,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:military",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1542,25 +1542,25 @@
       "tags": [
         "agency:ICEgov",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
         "genre:advertisement",
         "genre:recruitment",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "slogan:illegal-alien",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement",
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1597,16 +1597,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -1637,16 +1637,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1681,19 +1681,19 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "speaker:President Trump",
         "topic:economy",
         "topic:laudatory",
         "video:medium",
+        "video:produced",
         "video:speech"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1729,20 +1729,20 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "slogan:promises-kept",
         "theme:border",
         "topic:general",
         "topic:immigration",
         "topic:laudatory",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1779,19 +1779,19 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "origin:India",
         "slogan:illegal-alien",
         "theme:sanctuary-cities",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -1827,11 +1827,11 @@
         "genre:psa",
         "media:archived",
         "media:described",
-        "media:produced-video",
         "media:short-video",
         "media:text-overlay",
         "media:video",
         "topic:economy",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
@@ -1839,8 +1839,8 @@
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video",
-        "media:text-overlay"
+        "media:text-overlay",
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -1873,17 +1873,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "speaker:Vice President Vance",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -1918,12 +1918,12 @@
         "media:archived",
         "media:described",
         "media:montage",
-        "media:produced-video",
         "media:short-video",
         "media:text-overlay",
         "media:video",
         "topic:immigration",
         "topic:military",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
@@ -1932,8 +1932,8 @@
       ],
       "produced_video_tags": [
         "media:montage",
-        "media:produced-video",
-        "media:text-overlay"
+        "media:text-overlay",
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -1965,17 +1965,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "theme:directive",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -2007,17 +2007,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -2049,18 +2049,18 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "theme:directive",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -2092,16 +2092,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -2133,17 +2133,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -2175,16 +2175,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -2216,17 +2216,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -2258,17 +2258,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -2300,17 +2300,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -2342,17 +2342,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -2387,16 +2387,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:long"
+        "video:long",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -2428,17 +2428,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -2471,16 +2471,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:long"
+        "video:long",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -2511,16 +2511,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:military",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -2554,16 +2554,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -2598,16 +2598,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:military",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -2643,16 +2643,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -2687,15 +2687,15 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -2730,16 +2730,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -2773,16 +2773,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -2817,16 +2817,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -2860,16 +2860,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -2903,16 +2903,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -2947,16 +2947,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:economy",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -2991,16 +2991,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3035,16 +3035,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3078,16 +3078,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3121,16 +3121,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3164,16 +3164,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3207,16 +3207,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3251,16 +3251,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3294,15 +3294,15 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3336,16 +3336,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:laudatory",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3379,16 +3379,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3423,18 +3423,18 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:economy",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3469,17 +3469,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3513,17 +3513,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3558,17 +3558,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3604,18 +3604,18 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:economy",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3650,17 +3650,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3697,17 +3697,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -3740,17 +3740,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
         "topic:military",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -3785,16 +3785,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:long"
+        "video:long",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -3827,16 +3827,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -3871,16 +3871,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -3912,16 +3912,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:military",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -3958,16 +3958,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4001,17 +4001,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
         "topic:military",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4046,17 +4046,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
         "topic:military",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4089,17 +4089,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:economy",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4132,17 +4132,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4175,17 +4175,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4219,16 +4219,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4262,16 +4262,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4305,16 +4305,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4346,17 +4346,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:economy",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -4390,16 +4390,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -4437,16 +4437,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4480,17 +4480,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "speaker:President Trump",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4525,17 +4525,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4568,16 +4568,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4609,11 +4609,11 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "theme:directive",
         "topic:economy",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
@@ -4621,7 +4621,7 @@
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -4657,18 +4657,18 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "slogan:promises-kept",
         "topic:general",
         "topic:laudatory",
-        "video:long"
+        "video:long",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4701,17 +4701,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -4747,16 +4747,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4789,16 +4789,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4831,16 +4831,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4874,17 +4874,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -4916,16 +4916,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -4960,16 +4960,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -5004,17 +5004,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:long"
+        "video:long",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement",
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -5049,17 +5049,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:economy",
-        "video:long"
+        "video:long",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement",
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -5095,19 +5095,19 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "slogan:america-first",
         "topic:general",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement",
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -5142,17 +5142,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:economy",
-        "video:long"
+        "video:long",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement",
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -5189,18 +5189,18 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "subject:cbp-home-app",
         "theme:cbp-home",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -5236,16 +5236,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -5281,16 +5281,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -5328,20 +5328,20 @@
         "genre:psa",
         "media:archived",
         "media:described",
-        "media:produced-video",
         "media:short-video",
         "media:text-overlay",
         "media:video",
         "topic:general",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video",
-        "media:text-overlay"
+        "media:text-overlay",
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -5377,17 +5377,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -5421,17 +5421,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "theme:border",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -5468,17 +5468,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:economy",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement",
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -5511,10 +5511,10 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:short-video",
         "media:video",
         "topic:economy",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
@@ -5522,7 +5522,7 @@
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -5556,16 +5556,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:long"
+        "video:long",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -5597,16 +5597,16 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "extract-keyframes",
@@ -5642,17 +5642,17 @@
         "media:archived",
         "media:described",
         "media:needs-vision",
-        "media:produced-video",
         "media:video",
         "phrase:immigrant",
         "topic:immigration",
-        "video:long"
+        "video:long",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:psa"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [],
       "has_keyframes": true,
@@ -6388,7 +6388,7 @@
         "agency:DHSgov",
         "agency:USCIS",
         "crime:homicide",
-        "homicide:murder",
+        "crime:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -7414,7 +7414,7 @@
         "crime:fraud",
         "crime:gang",
         "crime:homicide",
-        "homicide:murder",
+        "crime:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -8558,10 +8558,10 @@
       "tags": [
         "agency:DeptofWar",
         "crime:homicide",
+        "crime:murder",
         "crime:rape",
         "crime:sexual",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -9119,9 +9119,9 @@
       "priority": 75,
       "tags": [
         "crime:homicide",
+        "crime:murder",
         "format:quote",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -9209,8 +9209,8 @@
       "tags": [
         "agency:DHSgov",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -9737,8 +9737,8 @@
         "agency:ICEgov",
         "country:Guatemala",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "legal:criminal-prosecution",
         "media:archived",
         "media:described",
@@ -9903,8 +9903,8 @@
         "agency:ICEgov",
         "crime:gang",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -10063,8 +10063,8 @@
       "tags": [
         "agency:ICEgov",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -10553,9 +10553,9 @@
       "priority": 75,
       "tags": [
         "crime:homicide",
+        "crime:murder",
         "format:quote",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -10918,7 +10918,7 @@
       "tags": [
         "agency:DHSgov",
         "crime:homicide",
-        "homicide:murder",
+        "crime:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -11209,7 +11209,7 @@
       "tags": [
         "agency:ICEgov",
         "crime:homicide",
-        "homicide:murder",
+        "crime:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -11332,8 +11332,8 @@
       "tags": [
         "agency:SecMullinDHS",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -11569,7 +11569,7 @@
       "priority": 75,
       "tags": [
         "crime:homicide",
-        "homicide:murder",
+        "crime:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -11733,9 +11733,9 @@
       "tags": [
         "agency:ICEgov",
         "crime:homicide",
+        "crime:murder",
         "format:quote",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -11939,8 +11939,8 @@
         "country:Jamaica",
         "crime:gang",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -12025,8 +12025,8 @@
         "crime:assault",
         "crime:battery",
         "crime:homicide",
+        "crime:murder",
         "crime:weapon",
-        "homicide:murder",
         "legal:criminal-prosecution",
         "media:archived",
         "media:described",
@@ -12148,8 +12148,8 @@
       "priority": 75,
       "tags": [
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -12426,7 +12426,7 @@
         "agency:POTUS",
         "agency:USCIS",
         "crime:homicide",
-        "homicide:murder",
+        "crime:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -12671,8 +12671,8 @@
       "tags": [
         "agency:ICEgov",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -12713,9 +12713,9 @@
       "priority": 75,
       "tags": [
         "crime:homicide",
+        "crime:murder",
         "format:quote",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -13400,9 +13400,9 @@
         "agency:CBP",
         "country:Venezuela",
         "crime:homicide",
+        "crime:murder",
         "format:quote",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -13496,8 +13496,8 @@
       "priority": 75,
       "tags": [
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -13538,8 +13538,8 @@
       "priority": 75,
       "tags": [
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -13584,8 +13584,8 @@
         "action:detention",
         "agency:ICEgov",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -14955,8 +14955,8 @@
         "agency:ICEgov",
         "crime:gang",
         "crime:homicide",
+        "crime:murder",
         "format:quote",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -15266,10 +15266,10 @@
       "tags": [
         "agency:SecMullinDHS",
         "crime:homicide",
+        "crime:murder",
         "crime:rape",
         "crime:sexual",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -15467,9 +15467,9 @@
       "tags": [
         "agency:POTUS",
         "crime:homicide",
+        "crime:murder",
         "format:quote",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -16652,8 +16652,8 @@
       "priority": 75,
       "tags": [
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -17812,9 +17812,9 @@
         "agency:ICEgov",
         "country:Mexico",
         "crime:homicide",
+        "crime:murder",
         "format:quote",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -17936,12 +17936,12 @@
       "tags": [
         "crime:assault",
         "crime:homicide",
+        "crime:murder",
         "crime:rape",
         "crime:sexual",
         "crime:theft",
         "crime:weapon",
         "format:quote",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -18431,7 +18431,7 @@
         "agency:SecMullinDHS",
         "crime:child",
         "crime:homicide",
-        "homicide:murder",
+        "crime:murder",
         "legal:criminal-prosecution",
         "media:archived",
         "media:described",
@@ -18714,9 +18714,9 @@
       "priority": 75,
       "tags": [
         "crime:homicide",
+        "crime:murder",
         "format:quote",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -27066,12 +27066,12 @@
         "genre:advertisement",
         "genre:recruitment",
         "genre:utopian",
-        "media:produced-video",
         "slogan:golden-age",
         "topic:general",
         "topic:immigration",
         "topic:laudatory",
-        "video:medium"
+        "video:medium",
+        "video:produced"
       ],
       "genre_tags": [
         "genre:advertisement",
@@ -27079,7 +27079,7 @@
         "genre:utopian"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "archive-media",
@@ -27524,9 +27524,9 @@
         "agency:ICEgov",
         "genre:advertisement",
         "genre:recruitment",
-        "media:produced-video",
         "status:copyright-removal",
         "topic:immigration",
+        "video:produced",
         "video:short"
       ],
       "genre_tags": [
@@ -27534,7 +27534,7 @@
         "genre:recruitment"
       ],
       "produced_video_tags": [
-        "media:produced-video"
+        "video:produced"
       ],
       "missing_steps": [
         "archive-media",
@@ -28866,9 +28866,9 @@
       "tags": [
         "agency:ICEgov",
         "crime:homicide",
+        "crime:murder",
         "crime:rape",
         "crime:sexual",
-        "homicide:murder",
         "theme:martyrdom",
         "theme:sanctuary-cities",
         "topic:immigration",
@@ -33605,7 +33605,7 @@
         "audio:has-audio",
         "audio:music-likely",
         "crime:homicide",
-        "homicide:murder",
+        "crime:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -36509,8 +36509,8 @@
       "tags": [
         "audio:has-audio",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -36551,8 +36551,8 @@
         "action:detention",
         "audio:has-audio",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -36702,8 +36702,8 @@
       "tags": [
         "audio:has-audio",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -37043,8 +37043,8 @@
         "agency:ICEgov",
         "audio:has-audio",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -37124,8 +37124,8 @@
         "agency:POTUS",
         "audio:has-audio",
         "crime:homicide",
+        "crime:murder",
         "format:quote",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -37499,8 +37499,8 @@
       "tags": [
         "audio:has-audio",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -37656,8 +37656,8 @@
         "audio:has-audio",
         "crime:assault",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -37957,7 +37957,7 @@
         "audio:has-audio",
         "crime:arson",
         "crime:homicide",
-        "homicide:murder",
+        "crime:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -38107,8 +38107,8 @@
         "agency:ICEgov",
         "audio:has-audio",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -39923,7 +39923,7 @@
         "agency:FBI",
         "audio:has-audio",
         "crime:homicide",
-        "homicide:murder",
+        "crime:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -48709,8 +48709,8 @@
         "agency:ICEgov",
         "audio:has-audio",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -49401,8 +49401,8 @@
       "tags": [
         "audio:has-audio",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "legal:criminal-prosecution",
         "media:archived",
         "media:described",
@@ -49595,8 +49595,8 @@
         "agency:POTUS",
         "audio:has-audio",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -49802,8 +49802,8 @@
         "action:deportation",
         "audio:has-audio",
         "crime:homicide",
+        "crime:murder",
         "frame:criminal",
-        "homicide:murder",
         "media:archived",
         "media:described",
         "media:needs-vision",

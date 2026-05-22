@@ -141,7 +141,7 @@ def main(argv: list[str] | None = None) -> int:
         handles = [args.handle]
     else:
         handles = sorted(p.name for p in DATA_DIR.glob("*.parquet"))
-        handles = [h[: -len(".parquet")] for h in handles if h != "manifest.json"]
+        handles = [h[: -len(".parquet")] for h in handles if h != "catalog.parquet"]
     total = 0
     for h in handles:
         total += mark_deletions(h, now=now, dry_run=args.dry_run)

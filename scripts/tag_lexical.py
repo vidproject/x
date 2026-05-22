@@ -40,6 +40,7 @@ ACCOUNTS_CONFIG_PATH = REPO_ROOT / "config" / "accounts.yaml"
 TAG_OVERRIDES_PATH = REPO_ROOT / "config" / "tag_overrides.yaml"
 
 TAGGER_VERSION = "lexical-v2"
+GENERATED_DATA_PARQUETS = frozenset({"catalog.parquet"})
 
 # Countries the auto-tagger validates `origin:<X>` and `country:<X>`
 # matches against. Sovereign UN-recognized state names only; common
@@ -319,9 +320,10 @@ CRIME_VOCAB: tuple[tuple[str, str], ...] = (
     ("firearm", r"\bfirearm[s]?\b"),
 )
 
-HOMICIDE_SUBTYPE_VOCAB: tuple[tuple[str, str], ...] = (("murder", r"\bmurder(?:s|ed|ers?|ing)?\b"),)
+CRIME_SUBTYPE_VOCAB: tuple[tuple[str, str], ...] = (("murder", r"\bmurder(?:s|ed|ers?|ing)?\b"),)
 
 CRIME_PARENT_TAGS: dict[str, tuple[str, ...]] = {
+    "crime:murder": ("crime:homicide",),
     "crime:rape": ("crime:sexual",),
     "crime:sodomy": ("crime:sexual",),
     "crime:child-sexual": ("crime:sexual",),
@@ -906,7 +908,7 @@ PRODUCED_VIDEO_GENRE_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ),
 )
 PRODUCED_VIDEO_STRUCTURE_TAGS = {
-    "media:produced-video",
+    "video:produced",
     "media:music-video",
     "media:montage",
     "media:text-overlay",
@@ -1045,12 +1047,10 @@ MEDIA_TAG_PREFIXES_ALLOWED_IN_LEXICAL: tuple[str, ...] = (
     "event:",
     "frame:",
     "genre:",
-    "homicide:",
     "legal:",
     "media:",
     "phrase:",
     "religion:",
-    "shape:",
     "slogan:",
     "speaker:",
     "state:",
@@ -1061,6 +1061,8 @@ MEDIA_TAG_PREFIXES_ALLOWED_IN_LEXICAL: tuple[str, ...] = (
     "video:",
 )
 LEGACY_MEDIA_TAG_ALIASES: dict[str, tuple[str, ...]] = {
+    "media:produced-video": ("video:produced",),
+    "shape:lineup": ("genre:lineup",),
     "video:ad": ("genre:advertisement",),
     "video:music-video": ("genre:music-video",),
     "video:psa": ("genre:psa",),
@@ -1303,10 +1305,12 @@ def tag_text(
             add(f"crime:{slug}", span=m.span())
             for parent in CRIME_PARENT_TAGS.get(f"crime:{slug}", ()):
                 add(parent, span=m.span())
-    for slug, pat_str in HOMICIDE_SUBTYPE_VOCAB:
+    for slug, pat_str in CRIME_SUBTYPE_VOCAB:
         for m in re.finditer(pat_str, text, re.I):
-            add("crime:homicide", span=m.span())
-            add(f"homicide:{slug}", span=m.span())
+            tag = f"crime:{slug}"
+            add(tag, span=m.span())
+            for parent in CRIME_PARENT_TAGS.get(tag, ()):
+                add(parent, span=m.span())
 
     if m := _martyrdom_match(text, account_category, entries):
         add("theme:martyrdom", span=m.span())
@@ -1329,13 +1333,13 @@ def tag_text(
         if candidate.lower() in STATE_LOWER:
             add(f"state:{_normalize_state(candidate)}", span=m.span(1))
 
-    # shape:lineup — composite: replies that hit frame:criminal with 1 photo.
+    # genre:lineup: composite replies that hit frame:criminal with one photo.
     if (
         tweet_type == "reply"
         and any(e["tag"] == "frame:criminal" for e in entries)
         and media_count == 1
     ):
-        add("shape:lineup")
+        add("genre:lineup")
 
     # subject:enforcement-op heuristic from the deterministic rules above:
     # if both action:detention and frame:criminal fire, that's strong enough
@@ -1370,7 +1374,7 @@ def tag_text(
         if any(e["tag"] in {"media:music-video", "genre:music-video"} for e in entries):
             add("audio:music-likely")
         if m := PATTERN_PRODUCED_VIDEO_STYLE.search(text):
-            add("media:produced-video", span=m.span())
+            add("video:produced", span=m.span())
         if video_max_duration_sec is not None and video_max_duration_sec > 0:
             if video_max_duration_sec <= 30:
                 add("video:short")
@@ -1384,7 +1388,7 @@ def tag_text(
             e["tag"] in PRODUCED_VIDEO_STRUCTURE_TAGS or str(e["tag"]).startswith("genre:")
             for e in entries
         ):
-            add("media:produced-video")
+            add("video:produced")
 
     _ensure_intrinsic_parent_topics(entries, text, add)
     _maybe_immigration_default(entries, account_category, text, add)
@@ -1487,7 +1491,7 @@ INTRINSIC_PARENT_TOPICS_EXACT: dict[str, tuple[str, ...]] = {
     "agency:USNationalGuard": ("topic:military",),
     "agency:USNorthernCmd": ("topic:military",),
     "frame:criminal": ("topic:immigration",),
-    "shape:lineup": ("topic:immigration",),
+    "genre:lineup": ("topic:immigration",),
     "subject:angel-family": ("theme:martyrdom", "topic:immigration"),
     "subject:crime-victim": ("theme:martyrdom", "topic:immigration"),
     "subject:cbp-home-app": ("topic:immigration",),
@@ -1852,7 +1856,11 @@ def discover_canonical_parquets() -> list[Path]:
     sidecars under `data/tags/`."""
     if not DATA_DIR.exists():
         return []
-    return sorted(p for p in DATA_DIR.glob("*.parquet") if p.parent == DATA_DIR)
+    return sorted(
+        p
+        for p in DATA_DIR.glob("*.parquet")
+        if p.parent == DATA_DIR and p.name not in GENERATED_DATA_PARQUETS
+    )
 
 
 def tag_one_parquet(

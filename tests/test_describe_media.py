@@ -135,7 +135,7 @@ def test_manual_review_aliases_legacy_video_genre_tags() -> None:
     }
     manual_review = {
         "visual_observation": "Produced public-service spot with title cards.",
-        "candidate_visual_tags": ["video:ad", "video:psa"],
+        "candidate_visual_tags": ["media:produced-video", "video:ad", "video:psa"],
     }
     row = describe_media_item(
         _tweet(),
@@ -145,8 +145,10 @@ def test_manual_review_aliases_legacy_video_genre_tags() -> None:
     )
     tags = {entry["tag"] for entry in row["tags"]}
 
+    assert "video:produced" in tags
     assert "genre:advertisement" in tags
     assert "genre:psa" in tags
+    assert "media:produced-video" not in tags
     assert "video:ad" not in tags
     assert "video:psa" not in tags
 
@@ -157,7 +159,7 @@ def test_credit_score_context_does_not_become_music_video() -> None:
         media_type="video",
     )
 
-    assert "media:produced-video" not in tags
+    assert "video:produced" not in tags
     assert "media:music-video" not in tags
     assert "genre:music-video" not in tags
 
@@ -168,7 +170,7 @@ def test_negated_music_video_note_does_not_become_music_video() -> None:
         media_type="video",
     )
 
-    assert "media:produced-video" not in tags
+    assert "video:produced" not in tags
     assert "media:music-video" not in tags
     assert "media:montage" not in tags
     assert "genre:music-video" not in tags
@@ -180,7 +182,7 @@ def test_musical_score_context_still_marks_music_video() -> None:
         media_type="video",
     )
 
-    assert "media:produced-video" in tags
+    assert "video:produced" in tags
     assert "media:music-video" in tags
     assert "genre:music-video" in tags
 

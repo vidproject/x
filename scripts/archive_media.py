@@ -418,7 +418,7 @@ def archive_one_handle(
 def discover_handles(only: str | None) -> list[str]:
     if only:
         return [only]
-    return sorted(p.stem for p in DATA_DIR.glob("*.parquet"))
+    return sorted(p.stem for p in DATA_DIR.glob("*.parquet") if p.name != "catalog.parquet")
 
 
 def load_id_file(path: Path | None) -> set[str] | None:

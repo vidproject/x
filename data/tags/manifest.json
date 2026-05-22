@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-22T01:48:19Z",
+  "generated_at": "2026-05-22T04:20:29Z",
   "layers": {
     "audio_music": {
       "analyzed": 148,
@@ -70,7 +70,7 @@
       "status_ok": 148
     },
     "lexical": {
-      "generated_at": "2026-05-22T01:48:19Z",
+      "generated_at": "2026-05-22T04:20:29Z",
       "parquets_scanned": {
         "CBP.parquet": 515,
         "DHSgov.parquet": 4497,
@@ -258,6 +258,7 @@
         "crime:kidnap": 168,
         "crime:meth": 196,
         "crime:ms13": 190,
+        "crime:murder": 1053,
         "crime:narcotics": 1046,
         "crime:perjury": 2,
         "crime:rape": 434,
@@ -277,11 +278,11 @@
         "frame:criminal": 1414,
         "genre:advertisement": 132,
         "genre:dystopian": 1,
+        "genre:lineup": 247,
         "genre:psa": 249,
         "genre:recruitment": 77,
         "genre:utopian": 56,
         "genre:war-movie": 2,
-        "homicide:murder": 1053,
         "legal:civil-lawsuit": 49,
         "legal:criminal-prosecution": 802,
         "media:animated-gif": 60,
@@ -292,7 +293,6 @@
         "media:montage": 1,
         "media:needs-vision": 3437,
         "media:photo": 2295,
-        "media:produced-video": 136,
         "media:short-video": 287,
         "media:text-overlay": 14,
         "media:video": 1344,
@@ -334,7 +334,6 @@
         "phrase:immigrant": 255,
         "phrase:migrant": 185,
         "religion:christianity": 65,
-        "shape:lineup": 248,
         "slogan:america-first": 149,
         "slogan:criminal-illegal-alien": 539,
         "slogan:free-ticket-home": 21,
@@ -438,16 +437,17 @@
         "video:long": 314,
         "video:medium": 1251,
         "video:news-clip": 48,
+        "video:produced": 136,
         "video:short": 461,
         "video:speech": 25
       },
       "tagger_version": "lexical-v2"
     },
     "media_vision": {
-      "cache_hits": 3981,
+      "cache_hits": 4124,
       "cost_estimate_usd": 0.0,
-      "generated": 148,
-      "generated_at": "2026-05-22T00:27:10Z",
+      "generated": 5,
+      "generated_at": "2026-05-22T04:20:14Z",
       "model": "metadata",
       "model_version": "media-metadata-v4",
       "prompt_hash": "b18b19292ec51484",
@@ -477,11 +477,9 @@
         "media:montage": 1,
         "media:needs-vision": 3830,
         "media:photo": 2725,
-        "media:produced-video": 11,
         "media:short-video": 287,
         "media:text-overlay": 14,
         "media:video": 1344,
-        "shape:lineup": 1,
         "speaker:First Lady Melania Trump": 1,
         "speaker:Vice President Vance": 1,
         "subject:detainee": 1,
@@ -492,7 +490,33 @@
         "topic:economy": 1,
         "topic:immigration": 2,
         "video:news-clip": 12,
+        "video:produced": 11,
         "video:speech": 11
+      }
+    },
+    "news_mentions": {
+      "article_count": 279,
+      "article_mentions": 251,
+      "article_sources": [
+        "data\\news\\articles.jsonl"
+      ],
+      "candidate_or_mentioned_tweets": 57,
+      "core_tweets_scanned": 10954,
+      "cost_estimate_usd": 0.0,
+      "detector": "exact-status-url",
+      "detector_version": "news-mentions-v3",
+      "generated_at": "2026-05-22T03:51:39Z",
+      "local_article_mentions": 251,
+      "mentioned_tweets": 57,
+      "query_export_path": "",
+      "row_count": 57,
+      "rows": 57,
+      "status_counts": {
+        "mentioned": 57
+      },
+      "tag_frequency": {
+        "news:covered": 57,
+        "news:mentioned": 57
       }
     }
   },
@@ -683,6 +707,7 @@
     "crime:kidnap": 168,
     "crime:meth": 196,
     "crime:ms13": 190,
+    "crime:murder": 1053,
     "crime:narcotics": 1046,
     "crime:perjury": 2,
     "crime:rape": 434,
@@ -702,11 +727,11 @@
     "frame:criminal": 1414,
     "genre:advertisement": 132,
     "genre:dystopian": 1,
+    "genre:lineup": 247,
     "genre:psa": 249,
     "genre:recruitment": 77,
     "genre:utopian": 56,
     "genre:war-movie": 2,
-    "homicide:murder": 1053,
     "legal:civil-lawsuit": 49,
     "legal:criminal-prosecution": 802,
     "media:animated-gif": 60,
@@ -717,7 +742,6 @@
     "media:montage": 1,
     "media:needs-vision": 3437,
     "media:photo": 2295,
-    "media:produced-video": 136,
     "media:short-video": 287,
     "media:text-overlay": 14,
     "media:video": 1344,
@@ -759,7 +783,6 @@
     "phrase:immigrant": 255,
     "phrase:migrant": 185,
     "religion:christianity": 65,
-    "shape:lineup": 248,
     "slogan:america-first": 149,
     "slogan:criminal-illegal-alien": 539,
     "slogan:free-ticket-home": 21,
@@ -863,6 +886,7 @@
     "video:long": 314,
     "video:medium": 1251,
     "video:news-clip": 48,
+    "video:produced": 136,
     "video:short": 461,
     "video:speech": 25
   },

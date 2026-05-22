@@ -146,7 +146,8 @@ def test_frame_criminal_and_action_combo_marks_enforcement_op() -> None:
     assert "state:Texas" in tags
     assert "crime:assault" in tags
     # Composite: reply + frame:criminal + exactly 1 photo.
-    assert "shape:lineup" in tags
+    assert "genre:lineup" in tags
+    assert "shape:lineup" not in tags
 
 
 def test_action_report_immigrants_matches_direct_reporting_appeals() -> None:
@@ -186,7 +187,7 @@ def test_shape_lineup_requires_all_three_conditions() -> None:
         media_count=1,
         account_category="core",
     )
-    assert "shape:lineup" not in _tags(out)
+    assert "genre:lineup" not in _tags(out)
     # Right text + reply but no photo.
     out = tag_text(
         "Jane Doe, a criminal illegal alien, was arrested.",
@@ -195,7 +196,7 @@ def test_shape_lineup_requires_all_three_conditions() -> None:
         media_count=0,
         account_category="core",
     )
-    assert "shape:lineup" not in _tags(out)
+    assert "genre:lineup" not in _tags(out)
 
 
 def test_agency_tag_derives_from_mentions() -> None:
@@ -515,7 +516,7 @@ def test_produced_video_genres_use_genre_namespace() -> None:
         video_max_duration_sec=45,
     )
     tags = _tags(out)
-    assert "media:produced-video" in tags
+    assert "video:produced" in tags
     assert "genre:advertisement" in tags
     assert "genre:recruitment" in tags
     assert "genre:war-movie" in tags
@@ -535,7 +536,36 @@ def test_legacy_video_kind_tags_promote_to_produced_genres() -> None:
     tags = _tags(out)
     assert "genre:psa" in tags
     assert "video:psa" not in tags
-    assert "media:produced-video" in tags
+    assert "video:produced" in tags
+
+
+def test_legacy_produced_video_media_tag_normalizes_to_video_namespace() -> None:
+    out = tag_text(
+        "Archived media review says this is produced.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        video_count=1,
+        media_tags=[{"tag": "media:produced-video", "source": "media-description"}],
+    )
+    tags = _tags(out)
+    assert "video:produced" in tags
+    assert "media:produced-video" not in tags
+
+
+def test_legacy_shape_lineup_media_tag_normalizes_to_genre_namespace() -> None:
+    out = tag_text(
+        "Archived visual audit says this is a lineup.",
+        tweet_type="reply",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        media_tags=[{"tag": "shape:lineup", "source": "media-description"}],
+    )
+    tags = _tags(out)
+    assert "genre:lineup" in tags
+    assert "shape:lineup" not in tags
 
 
 def test_join_ice_url_triggers_recruitment_genre_for_video() -> None:
@@ -550,7 +580,7 @@ def test_join_ice_url_triggers_recruitment_genre_for_video() -> None:
     tags = _tags(out)
     assert "genre:recruitment" in tags
     assert "genre:advertisement" in tags
-    assert "media:produced-video" in tags
+    assert "video:produced" in tags
 
 
 def test_psa_and_recruitment_genres_are_not_video_only() -> None:
@@ -564,7 +594,7 @@ def test_psa_and_recruitment_genres_are_not_video_only() -> None:
     )
     psa_tags = _tags(psa)
     assert "genre:psa" in psa_tags
-    assert "media:produced-video" not in psa_tags
+    assert "video:produced" not in psa_tags
 
     recruitment = tag_text(
         "Apply now at join.ice.gov.",
@@ -576,7 +606,7 @@ def test_psa_and_recruitment_genres_are_not_video_only() -> None:
     )
     recruitment_tags = _tags(recruitment)
     assert "genre:recruitment" in recruitment_tags
-    assert "media:produced-video" not in recruitment_tags
+    assert "video:produced" not in recruitment_tags
 
 
 def test_promises_kept_video_triggers_advertisement_genre() -> None:
@@ -590,7 +620,7 @@ def test_promises_kept_video_triggers_advertisement_genre() -> None:
     )
     tags = _tags(out)
     assert "genre:advertisement" in tags
-    assert "media:produced-video" in tags
+    assert "video:produced" in tags
 
 
 def test_credit_score_does_not_trigger_music_video_tags() -> None:
@@ -661,7 +691,7 @@ def test_contextual_musical_score_still_marks_music_video() -> None:
 
     assert "genre:music-video" in tags
     assert "audio:music-likely" in tags
-    assert "media:produced-video" in tags
+    assert "video:produced" in tags
 
 
 def test_song_deadline_copy_is_audio_cue_not_music_video_genre() -> None:
@@ -1282,7 +1312,8 @@ def test_homicide_murder_subtype_matches_plain_murder_and_homicide_terms() -> No
         tags = _tags(out)
         assert "crime:homicide" in tags, text
         if "murder" in text.lower():
-            assert "homicide:murder" in tags, text
+            assert "crime:murder" in tags, text
+            assert "homicide:murder" not in tags, text
 
 
 def test_crime_hierarchy_adds_broad_buckets_for_suboffenses() -> None:

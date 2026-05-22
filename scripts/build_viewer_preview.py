@@ -1,9 +1,13 @@
-"""Build small JSON preview datasets for the static viewer.
+"""Build lightweight JSON boot data for the static viewer.
 
 The full archive lives in per-account Parquet files. Those are efficient for
-storage, but expensive for a browser that only needs the first page. This
-script writes small, cacheable JSON slices of the newest rows so the viewer can
-boot without downloading every Parquet file.
+storage, but expensive for a browser that only needs a current page plus global
+facets. This script writes:
+
+* data/catalog.parquet: compact metadata for the whole archive, with Parquet
+  row locators so the browser can lazily hydrate full rows.
+* data/catalog.json: tiny summary and poster map for the catalog.
+* data/preview-*.json: legacy newest-row slices kept for compatibility.
 """
 
 from __future__ import annotations
@@ -27,6 +31,72 @@ DATA_DIR = REPO_ROOT / "data"
 TAGS_DIRNAME = "tags"
 PREVIEW_LIMITS = (20, 50, 100, 200)
 SCHEMA_VERSION = 1
+CATALOG_FILENAME = "catalog.json"
+CATALOG_PARQUET_FILENAME = "catalog.parquet"
+CATALOG_SCALAR_COLUMNS = (
+    "tweet_id",
+    "account_handle",
+    "account_id",
+    "posted_at",
+    "first_captured_at",
+    "last_seen_at",
+    "deletion_detected_at",
+    "unavailable_detected_at",
+    "unavailable_reason",
+    "unavailable_text",
+    "unavailable_source_url",
+    "tweet_url",
+    "tweet_type",
+    "conversation_id",
+    "reply_to_tweet_id",
+    "reply_to_account",
+    "reply_to_account_id",
+    "quoted_tweet_id",
+    "retweeted_tweet_id",
+    "text",
+    "text_resolved",
+    "lang",
+    "possibly_sensitive",
+    "source",
+    "place_full_name",
+    "hashtags",
+    "mentions",
+    "like_count",
+    "retweet_count",
+    "reply_count",
+    "quote_count",
+    "view_count",
+    "bookmark_count",
+    "is_truncated",
+    "wayback_url",
+    "wayback_submitted_at",
+    "capture_source",
+)
+MEDIA_CATALOG_KEYS = (
+    "media_id",
+    "media_type",
+    "release_asset_url",
+    "sha256",
+    "duration_sec",
+    "alt_text",
+)
+URL_CATALOG_KEYS = ("short", "expanded", "display")
+CARD_CATALOG_KEYS = ("name", "card_url", "vendor_url", "title", "description", "image_url")
+MEDIA_INSIGHT_CATALOG_KEYS = (
+    "media_id",
+    "media_type",
+    "description",
+    "summary_text",
+    "tags",
+)
+COMMUNITY_NOTE_CATALOG_KEYS = (
+    "note_id",
+    "title",
+    "short_title",
+    "summary",
+    "destination_url",
+    "observed_at",
+)
 
 
 def now_iso() -> str:
@@ -37,8 +107,20 @@ def preview_path(data_dir: Path, limit: int) -> Path:
     return data_dir / f"preview-{limit}.json"
 
 
+def catalog_path(data_dir: Path) -> Path:
+    return data_dir / CATALOG_FILENAME
+
+
+def catalog_parquet_path(data_dir: Path) -> Path:
+    return data_dir / CATALOG_PARQUET_FILENAME
+
+
 def canonical_parquet_paths(data_dir: Path) -> list[Path]:
-    return sorted(p for p in data_dir.glob("*.parquet") if p.is_file())
+    return sorted(
+        p
+        for p in data_dir.glob("*.parquet")
+        if p.is_file() and p.name != CATALOG_PARQUET_FILENAME
+    )
 
 
 def load_preview_rows(data_dir: Path, limit: int) -> list[dict[str, Any]]:
@@ -102,6 +184,236 @@ def write_previews(
         written.append(path)
         LOG.info("preview: wrote viewer preview", path=str(path), rows=sliced["row_count"])
     return written
+
+
+def build_catalog_payload(
+    data_dir: Path = DATA_DIR,
+    *,
+    generated_at: str | None = None,
+) -> dict[str, Any]:
+    rows = load_catalog_rows(data_dir)
+    row_ids = _tweet_ids(rows)
+    tags_dir = data_dir / TAGS_DIRNAME
+    apply_catalog_overlays(
+        rows,
+        tag_map=load_tag_slices(tags_dir, row_ids),
+        media_insight_map=load_media_insight_slices(tags_dir, row_ids),
+        news_mention_map=load_news_mention_slices(tags_dir, row_ids),
+    )
+    return {
+        "generated_at": generated_at or now_iso(),
+        "schema_version": SCHEMA_VERSION,
+        "row_count": len(rows),
+        "date_range": catalog_date_range(rows),
+        "rows": rows,
+        "poster_by_sha": load_keyframe_posters(tags_dir, row_ids),
+    }
+
+
+def write_catalog(
+    data_dir: Path = DATA_DIR,
+    *,
+    generated_at: str | None = None,
+) -> Path:
+    payload = build_catalog_payload(data_dir, generated_at=generated_at)
+    parquet = catalog_parquet_path(data_dir)
+    write_catalog_parquet(parquet, payload["rows"])
+    summary = {
+        key: value
+        for key, value in payload.items()
+        if key not in {"rows"}
+    }
+    summary["parquet"] = f"data/{parquet.name}"
+    path = catalog_path(data_dir)
+    atomic_write_json(path, summary)
+    LOG.info(
+        "catalog: wrote viewer catalog",
+        path=str(path),
+        parquet=str(parquet),
+        rows=payload["row_count"],
+    )
+    return path
+
+
+def write_catalog_parquet(path: Path, rows: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".tmp.parquet")
+    df = pl.DataFrame(rows, infer_schema_length=None) if rows else pl.DataFrame()
+    df.write_parquet(tmp, compression="zstd")
+    os.replace(tmp, path)
+
+
+def load_catalog_rows(data_dir: Path) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for path in canonical_parquet_paths(data_dir):
+        try:
+            df = pl.read_parquet(path)
+        except Exception:
+            LOG.exception("catalog: could not read parquet", path=str(path))
+            continue
+        if df.height == 0:
+            continue
+        if hasattr(df, "with_row_index"):
+            df = df.with_row_index("__row_index")
+        else:
+            df = df.with_row_count("__row_index")
+        source_handle = path.stem
+        parquet_url = f"data/{path.name}"
+        for row in df.iter_rows(named=True):
+            rows.append(
+                compact_catalog_row(row, source_handle=source_handle, parquet_url=parquet_url)
+            )
+    rows.sort(key=catalog_sort_key, reverse=True)
+    return rows
+
+
+def compact_catalog_row(
+    row: dict[str, Any],
+    *,
+    source_handle: str,
+    parquet_url: str,
+) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key in CATALOG_SCALAR_COLUMNS:
+        if key not in row:
+            continue
+        value = compact_scalar(key, row.get(key), out.get("text"))
+        if value is not None:
+            out[key] = _json_safe(value)
+    out["urls"] = compact_dict_list(row.get("urls"), URL_CATALOG_KEYS)
+    out["media"] = compact_dict_list(row.get("media"), MEDIA_CATALOG_KEYS)
+    card = compact_dict(row.get("card"), CARD_CATALOG_KEYS)
+    if card:
+        out["card"] = card
+    note = compact_dict(row.get("community_note"), COMMUNITY_NOTE_CATALOG_KEYS)
+    if note:
+        out["community_note"] = note
+    out["__catalog"] = {
+        "handle": source_handle,
+        "parquet": parquet_url,
+        "row_index": int(row.get("__row_index") or 0),
+    }
+    out["__hydrated"] = False
+    return _json_safe(out)
+
+
+def apply_catalog_overlays(
+    rows: list[dict[str, Any]],
+    *,
+    tag_map: dict[str, list[dict[str, Any]]],
+    media_insight_map: dict[str, list[dict[str, Any]]],
+    news_mention_map: dict[str, dict[str, Any]],
+) -> None:
+    for row in rows:
+        tweet_id = str(row.get("tweet_id") or "")
+        tags = list(tag_map.get(tweet_id) or [])
+        news = news_mention_map.get(tweet_id)
+        if news:
+            tags.extend(news.get("tags") or [])
+            row["news_mentions"] = news.get("articles") or []
+            row["news_mention_count"] = int(news.get("mention_count") or 0)
+            row["news_mention_status"] = news.get("status") or ""
+            row["news_mention_detector"] = news.get("detector") or ""
+        insights = media_insight_map.get(tweet_id) or []
+        if insights:
+            row["media_insights"] = compact_media_insights(insights)
+            for insight in insights:
+                tags.extend(insight.get("tags") or [])
+        if tags:
+            row["tags"] = dedupe_tag_entries(tags)
+
+
+def dedupe_tag_entries(entries: Iterable[Any]) -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
+    seen: set[tuple[str, bool, str]] = set()
+    for entry in entries:
+        if isinstance(entry, str):
+            normalized: dict[str, Any] = {"tag": entry}
+        elif isinstance(entry, dict):
+            normalized = dict(entry)
+        else:
+            continue
+        tag = str(normalized.get("tag") or "")
+        if not tag:
+            continue
+        normalized = compact_tag_entry({**normalized, "tag": tag})
+        key = (
+            normalized["tag"],
+            bool(normalized.get("tentative")),
+            str(normalized.get("source") or ""),
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(_json_safe(normalized))
+    return out
+
+
+def compact_tag_entry(entry: dict[str, Any]) -> dict[str, Any]:
+    out = {"tag": str(entry.get("tag") or "")}
+    if entry.get("tentative"):
+        out["tentative"] = True
+    source = str(entry.get("source") or "")
+    if source:
+        out["source"] = source
+    return out
+
+
+def compact_media_insights(insights: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
+    for insight in insights:
+        compacted = compact_dict(insight, MEDIA_INSIGHT_CATALOG_KEYS)
+        if isinstance(compacted.get("tags"), list):
+            compacted["tags"] = dedupe_tag_entries(compacted["tags"])
+        if compacted:
+            out.append(compacted)
+    return out
+
+
+def compact_scalar(key: str, value: Any, text: Any = None) -> Any:
+    if value in (None, "", [], {}):
+        return None
+    if key == "text_resolved" and value == text:
+        return None
+    return value
+
+
+def compact_dict_list(value: Any, keys: Iterable[str]) -> list[dict[str, Any]]:
+    if not isinstance(value, list):
+        return []
+    out = []
+    for item in value:
+        compacted = compact_dict(item, keys)
+        if compacted:
+            out.append(compacted)
+    return out
+
+
+def compact_dict(value: Any, keys: Iterable[str]) -> dict[str, Any]:
+    if not isinstance(value, dict):
+        return {}
+    out = {
+        key: _json_safe(value.get(key))
+        for key in keys
+        if value.get(key) not in (None, "", [], {})
+    }
+    return out
+
+
+def catalog_sort_key(row: dict[str, Any]) -> tuple[str, str, str]:
+    return (
+        str(row.get("posted_at") or ""),
+        str(row.get("last_seen_at") or ""),
+        str(row.get("tweet_id") or ""),
+    )
+
+
+def catalog_date_range(rows: list[dict[str, Any]]) -> dict[str, str]:
+    days = sorted({str(row.get("posted_at") or "")[:10] for row in rows if row.get("posted_at")})
+    return {
+        "start": days[0] if days else "",
+        "end": days[-1] if days else "",
+    }
 
 
 def slice_preview_payload(payload: dict[str, Any], limit: int) -> dict[str, Any]:
@@ -283,8 +595,11 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-dir", type=Path, default=DATA_DIR)
     parser.add_argument("--generated-at", default=None)
+    parser.add_argument("--no-previews", action="store_true", help="Only write data/catalog.json")
     args = parser.parse_args(argv)
-    write_previews(args.data_dir, generated_at=args.generated_at)
+    write_catalog(args.data_dir, generated_at=args.generated_at)
+    if not args.no_previews:
+        write_previews(args.data_dir, generated_at=args.generated_at)
     return 0
 
 

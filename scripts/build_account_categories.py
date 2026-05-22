@@ -144,6 +144,8 @@ def observed_handles() -> tuple[set[str], Counter[str]]:
     handles: set[str] = set()
     counts: Counter[str] = Counter()
     for path in DATA_DIR.glob("*.parquet"):
+        if path.name == "catalog.parquet":
+            continue
         df = pl.read_parquet(path)
         for col in ("account_handle", "reply_to_account"):
             if col not in df.columns:

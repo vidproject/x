@@ -92,6 +92,11 @@ tags:
   genre:dystopian:
     description: Produced video using bleak, apocalyptic, hellscape, or dark-future imagery.
     classification: tentative
+  genre:lineup:
+    description: >-
+      The templated mugshot-reply form: tweet_type=reply AND
+      frame:criminal AND exactly one photo. Highly stable visual genre.
+    classification: deterministic
 
   # ===== speaker:* - evidence-supported speaker attribution =========
   speaker:*:
@@ -111,9 +116,6 @@ tags:
     classification: tentative
   media:video-testimonial:
     description: Video of a named individual addressing camera.
-    classification: tentative
-  media:produced-video:
-    description: Professionally edited or intentionally produced video rather than raw footage.
     classification: tentative
   media:music-video:
     description: Video whose pacing or presentation is built around a music track.
@@ -435,6 +437,9 @@ tags:
       Speech, address, press conference, or remarks (Oval Office, Rose
       Garden, podium, etc.).
     classification: deterministic
+  video:produced:
+    description: Professionally edited or intentionally produced video rather than raw footage.
+    classification: tentative
   video:short:
     description: >-
       Duration bucket — longest video on the tweet is 30 seconds or
@@ -527,12 +532,6 @@ tags:
     classification: deterministic
     pattern: |
       \bimmigrants?\b
-
-  shape:lineup:
-    description: >-
-      The templated mugshot-reply form: tweet_type=reply AND
-      frame:criminal AND exactly one photo. Highly stable visual genre.
-    classification: deterministic
 
 # ===== Open-ended namespaces (extracted, validated) =================
 #

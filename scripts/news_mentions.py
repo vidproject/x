@@ -91,7 +91,9 @@ type NewsSearchFn = Any
 
 
 def discover_canonical_parquets() -> list[Path]:
-    return sorted(p for p in DATA_DIR.glob("*.parquet") if p.is_file())
+    return sorted(
+        p for p in DATA_DIR.glob("*.parquet") if p.is_file() and p.name != "catalog.parquet"
+    )
 
 
 def load_core_handles(path: Path = CONFIG_PATH) -> set[str]:
@@ -331,17 +333,43 @@ def mention_for_article(tweet: dict[str, Any], article: dict[str, Any]) -> dict[
         return None
 
     source, title, url, published_at = article_identity(article)
+    basis = string_field(article, "coverage_basis")
+    match_method = string_field(article, "match_method")
+    matched_field_names = sorted(matched_fields)
+    search_result_basis = (
+        basis == "search_result_for_exact_status_url"
+        or match_method == "google-exact-status-url-search"
+    )
+    link_only_match = bool(matched_field_names) and all(
+        field == "links" or field.startswith("links[") for field in matched_field_names
+    )
+    if search_result_basis and link_only_match:
+        match_type = "local-search-result-exact-status-url"
+        confidence = 0.85
+    else:
+        match_type = "local-exact-status-url"
+        confidence = 1.0
     return {
         "source": source or None,
         "title": title or None,
         "url": url or None,
         "published_at": published_at or None,
-        "match_type": "local-exact-status-url",
-        "matched_fields": sorted(matched_fields),
+        "match_type": match_type,
+        "matched_fields": matched_field_names,
         "matched_terms": sorted(matched_terms),
-        "confidence": 1.0,
+        "confidence": confidence,
         "confirmed": True,
     }
+
+
+def local_mentions_for_tweet(
+    tweet: dict[str, Any], articles: Iterable[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    return [
+        mention
+        for article in articles
+        if (mention := mention_for_article(tweet, article)) is not None
+    ]
 
 
 def status_url_regex(tweet_id: str, handle: str) -> re.Pattern[str]:
@@ -612,15 +640,12 @@ def build_row(
     *,
     generated_at: str,
     corpus_hash: str,
+    local_mentions: list[dict[str, Any]] | None = None,
     extra_mentions: list[dict[str, Any]] | None = None,
     error: str | None = None,
 ) -> dict[str, Any]:
-    local_mentions = [
-        mention
-        for article in articles
-        if (mention := mention_for_article(tweet, article)) is not None
-    ]
-    mentions = dedupe_mentions([*local_mentions, *(extra_mentions or [])])
+    local = local_mentions if local_mentions is not None else local_mentions_for_tweet(tweet, articles)
+    mentions = dedupe_mentions([*local, *(extra_mentions or [])])
     confirmed = has_confirmed_coverage(mentions)
     tags = [tag_entry("news:mentioned"), tag_entry("news:covered")] if confirmed else []
     status = "mentioned" if confirmed else ("candidate" if mentions else ("error" if error else "no-match"))
@@ -661,9 +686,15 @@ def build_rows(
     corpus_hash = article_corpus_hash(articles)
     for tweet in iter_core_tweets(parquets, core_handles):
         stats["core_tweets_scanned"] += 1
+        local_mentions = local_mentions_for_tweet(tweet, articles)
+        stats["local_article_mentions"] += len(local_mentions)
         web_mentions: list[dict[str, Any]] = []
         web_error: str | None = None
-        if discover_web != "none" and stats["web_tweets_scanned"] < max_web_tweets:
+        if (
+            discover_web != "none"
+            and not local_mentions
+            and stats["web_tweets_scanned"] < max_web_tweets
+        ):
             stats["web_tweets_scanned"] += 1
             web_mentions, web_error = discover_web_mentions_for_tweet(
                 tweet,
@@ -688,6 +719,7 @@ def build_rows(
             articles,
             generated_at=generated_at,
             corpus_hash=corpus_hash,
+            local_mentions=local_mentions,
             extra_mentions=web_mentions,
             error=web_error,
         )

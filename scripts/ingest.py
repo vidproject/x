@@ -28,7 +28,7 @@ import yaml
 
 from scripts._logging import configure
 from scripts._schema import REQUIRED_TWEET_KEYS, RETWEET_EDGE_SCHEMA, TWEET_SCHEMA, empty_dataframe
-from scripts.build_viewer_preview import write_previews
+from scripts.build_viewer_preview import CATALOG_PARQUET_FILENAME, write_catalog, write_previews
 
 LOG = configure()
 
@@ -59,7 +59,7 @@ RAW_SENTINEL_DIRS = frozenset({"_quarantine", "_purged"})
 
 # Parquet stems under `data/` that aren't per-handle archives. Same reason:
 # a handle like `_aktrades` is legal and must not be confused with a sentinel.
-DATA_SENTINEL_STEMS = frozenset({MISC_HANDLE})
+DATA_SENTINEL_STEMS = frozenset({MISC_HANDLE, Path(CATALOG_PARQUET_FILENAME).stem})
 
 # Valid over-categories an account in accounts.yaml may declare. The `_misc`
 # bucket is always `public` regardless. Listed entries with a missing or
@@ -725,6 +725,8 @@ def aggregate_users() -> dict[str, dict[str, Any]]:
     # handle -> {observed_at, fields...}
     out: dict[str, dict[str, Any]] = {}
     for parquet_path in sorted(DATA_DIR.glob("*.parquet")):
+        if parquet_path.name == CATALOG_PARQUET_FILENAME:
+            continue
         try:
             df = pl.read_parquet(parquet_path, columns=["account_handle", "author", "last_seen_at"])
         except Exception:
@@ -960,6 +962,7 @@ def main(argv: list[str] | None = None) -> int:
         LOG.warning("no handles found; nothing to ingest")
         manifest = build_manifest([])
         write_manifest(manifest)
+        write_catalog(DATA_DIR, generated_at=str(manifest["generated_at"]))
         write_previews(DATA_DIR, generated_at=str(manifest["generated_at"]))
         return 0
 
@@ -1057,6 +1060,7 @@ def main(argv: list[str] | None = None) -> int:
     manifest = build_manifest(manifest_accounts)
     write_manifest(manifest)
     write_retweet_edges(merge_retweet_edges(retweet_edges))
+    write_catalog(DATA_DIR, generated_at=str(manifest["generated_at"]))
 
     # Aggregate per-author user snapshots into data/users.json so the
     # viewer can render avatars + display names inline without scanning

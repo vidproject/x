@@ -20,9 +20,9 @@ import {
   retweetedByHandles,
   tagNamespace,
   tagSubtype,
-} from './store.js';
-import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js';
-import { archiveShareUrlForRow, xTweetUrlForRow } from './links.js';
+} from './store.js?v=lazycat1';
+import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js?v=lazycat1';
+import { archiveShareUrlForRow, copyTextToClipboard, xTweetUrlForRow } from './links.js?v=lazycat1';
 
 const MEDIA_COL_KEY = 'media_kinds';
 export const TAG_CERTAINTY_LABELS = {
@@ -261,7 +261,7 @@ export const COLUMNS = [
     sortable: false,
     render: (r) =>
       r.tweet_id
-        ? `<a class="tweet-link share-link" href="${escape(archiveShareUrlForRow(r))}">share</a>`
+        ? `<a class="tweet-link share-link" href="${escape(archiveShareUrlForRow(r))}" data-copy-share="1" aria-label="Copy share link" title="Copy share link">&#128279;</a>`
         : '',
   },
   {
@@ -344,7 +344,7 @@ export function renderColumnsMenu(menuEl, visible, onChange) {
  *   colFilters: Record<string, Set<string>>,
  *   tagCertainty?: string,
  *   expandedThreads?: Set<string>,
- *   onRowClick: (row:any)=>void,
+ *   onRowClick: (row:any, options?:Record<string, unknown>)=>void,
  *   onAccountOpen?: (handle:string, row:any)=>void,
  *   onSortToggle: (key:string)=>void,
  *   onOpenColPop: (key:string, btn:HTMLElement)=>void,
@@ -689,10 +689,46 @@ function buildRow(r, visible, onRowClick, onAccountOpen) {
           if (handle) onAccountOpen?.(handle, r);
         });
       }
+      for (const btn of td.querySelectorAll('[data-news-mentions]')) {
+        btn.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          onRowClick(r, { scrollToNews: true });
+        });
+      }
+      for (const link of td.querySelectorAll('.news-mention-link[href]')) {
+        link.addEventListener('click', (event) => {
+          event.stopPropagation();
+        });
+      }
+    }
+    for (const link of td.querySelectorAll('[data-copy-share]')) {
+      link.addEventListener('click', async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        await copyShareLink(link);
+      });
     }
     tr.append(td);
   }
   return tr;
+}
+
+async function copyShareLink(link) {
+  const href = link.getAttribute('href') || '';
+  if (!href) return;
+  const oldTitle = link.getAttribute('title') || '';
+  try {
+    const copied = await copyTextToClipboard(href);
+    link.classList.toggle('copied', copied);
+    link.setAttribute('title', copied ? 'Copied share link' : 'Could not copy link');
+  } catch {
+    link.setAttribute('title', 'Could not copy link');
+  }
+  window.setTimeout(() => {
+    link.classList.remove('copied');
+    if (oldTitle) link.setAttribute('title', oldTitle);
+  }, 1500);
 }
 
 function emptyMessage(tbodyEl, colspan) {
@@ -1417,7 +1453,7 @@ function renderAccountCell(r) {
   const nameHtml = displayName
     ? `<button type="button" class="account-profile-link display-name" data-account-profile="${escape(handle)}" title="Open @${escape(handle)} profile">${escape(displayName)}${verifiedBadge}</button>`
     : '';
-  return `<span class="acc-cell">${avatarHtml}${handleHtml}${renderAccountBadges(userMeta)}${nameHtml}</span>`;
+  return `<span class="acc-cell">${avatarHtml}${handleHtml}${renderNewsMentionBadge(r)}${renderAccountBadges(userMeta)}${nameHtml}</span>`;
 }
 
 function userMetaForRow(r) {
@@ -1441,6 +1477,20 @@ function renderAccountBadges(userMeta) {
       return `<span class="acc-badge acc-badge-${escape(key)}" title="${escape(label)}" aria-label="${escape(label)}"></span>`;
     })
     .join('');
+}
+
+function renderNewsMentionBadge(row) {
+  const mentions = Array.isArray(row?.news_mentions) ? row.news_mentions.filter(Boolean) : [];
+  if (mentions.length === 0) return '';
+  const rawCount = Number(row?.news_mention_count ?? mentions.length);
+  const count = Number.isFinite(rawCount) && rawCount > 0 ? rawCount : mentions.length;
+  const label = count === 1 ? '1 news mention' : `${count} news mentions`;
+  const mention = mentions[0] ?? {};
+  const href = typeof mention.url === 'string' && mention.url ? mention.url : '';
+  if (count === 1 && href) {
+    return `<a class="news-mention-link" href="${escape(href)}" target="_blank" rel="noopener" aria-label="${escape(label)}" title="${escape(label)}">&#128240;</a>`;
+  }
+  return `<button type="button" class="news-mention-link news-mention-jump" data-news-mentions="1" aria-label="${escape(label)}" title="${escape(label)}">&#128240;</button>`;
 }
 
 function serviceBadgesForUserMeta(userMeta) {

@@ -15,14 +15,14 @@ on:
   workflow_dispatch:
     inputs:
       news_discover:
-        description: 'Optional external news discovery provider'
+        description: 'External news discovery provider for core tweets missing from data/news/articles.jsonl'
         required: false
-        default: 'none'
+        default: 'google-news-rss'
         type: choice
         options:
-          - none
-          - gdelt
           - google-news-rss
+          - gdelt
+          - none
       news_max_web_tweets:
         description: 'Maximum core tweets to query when news_discover is enabled'
         required: false
@@ -85,7 +85,7 @@ jobs:
       - name: refresh news mentions
         if: steps.cooldown.outputs.skip != '1'
         env:
-          NEWS_DISCOVER: ${{ github.event.inputs.news_discover || 'none' }}
+          NEWS_DISCOVER: ${{ github.event.inputs.news_discover || 'google-news-rss' }}
           NEWS_MAX_WEB_TWEETS: ${{ github.event.inputs.news_max_web_tweets || '100' }}
         run: |
           if [ -f data/news/articles.jsonl ] || [ "$NEWS_DISCOVER" != "none" ]; then

@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import re
 from collections import Counter, defaultdict
 from datetime import UTC, datetime
 from pathlib import Path
@@ -35,7 +36,7 @@ MISSING_TWEET_IDS_OUT = TAGS_DIR / "core_produced_missing_tweet_ids.txt"
 MISSING_MEDIA_IDS_OUT = TAGS_DIR / "core_produced_missing_media_ids.txt"
 VIDEO_TYPES = {"video", "animated_gif"}
 PRODUCED_TAGS = {
-    "media:produced-video",
+    "video:produced",
     "media:music-video",
     "media:montage",
     "media:text-overlay",
@@ -55,6 +56,9 @@ GENRE_EXPERIMENT_TAGS = {
     "genre:war-movie",
     "genre:utopian",
     "genre:dystopian",
+}
+TAG_ALIASES = {
+    "media:produced-video": "video:produced",
 }
 
 
@@ -82,6 +86,7 @@ def tag_values(values: Any) -> list[str]:
     for entry in values or []:
         tag = entry.get("tag") if isinstance(entry, dict) else str(entry or "")
         tag = str(tag or "").strip()
+        tag = TAG_ALIASES.get(tag, tag)
         if tag and tag not in out:
             out.append(tag)
     return out
@@ -161,7 +166,7 @@ def classify_from_text(text: str) -> set[str]:
         "background music",
     )
     if any(word in haystack for word in produced_words):
-        tags.add("media:produced-video")
+        tags.add("video:produced")
     if any(word in haystack for word in ("montage", "multiple shot", "sequence of clips", "series of clips", "b-roll")):
         tags.add("media:montage")
     if any(word in haystack for word in ("text overlay", "title-card", "end-card", "chyron", "lower-third", "caption")):
@@ -171,17 +176,17 @@ def classify_from_text(text: str) -> set[str]:
     if any(word in haystack for word in ("music video", "set to music", "music track", "soundtrack", "music bed", "background music", "anthem")):
         tags.update({"media:music-video", "genre:music-video", "audio:music-likely"})
     if any(word in haystack for word in ("psa", "public service announcement", "did you know", "learn more", "hotline")):
-        tags.update({"media:produced-video", "genre:psa"})
+        tags.update({"video:produced", "genre:psa"})
     if any(word in haystack for word in ("join.ice.gov", "recruitment", "apply now", "apply today", "hiring", "career")):
-        tags.update({"media:produced-video", "genre:recruitment", "genre:advertisement"})
+        tags.update({"video:produced", "genre:recruitment", "genre:advertisement"})
     if any(word in haystack for word in ("campaign ad", "ad spot", "commercial", "promotional video")):
-        tags.update({"media:produced-video", "genre:advertisement"})
+        tags.update({"video:produced", "genre:advertisement"})
     if any(word in haystack for word in ("war movie", "war film", "action movie", "trailer-style", "combat", "battle")) and "cinematic" in haystack:
-        tags.update({"media:produced-video", "genre:war-movie"})
+        tags.update({"video:produced", "genre:war-movie"})
     if any(word in haystack for word in ("dystopian", "sci-fi", "science fiction", "cyberpunk", "apocalyptic", "hellscape", "surveillance-state")):
-        tags.update({"media:produced-video", "genre:dystopian"})
+        tags.update({"video:produced", "genre:dystopian"})
     if any(word in haystack for word in ("utopian", "aspirational", "bright future", "golden age", "sunlit", "triumphal")):
-        tags.update({"media:produced-video", "genre:utopian"})
+        tags.update({"video:produced", "genre:utopian"})
     return tags
 
 
@@ -407,13 +412,19 @@ def write_csv(items: list[dict[str, Any]], path: Path) -> None:
         "description",
     ]
     with path.open("w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fields)
+        writer = csv.DictWriter(f, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         for item in items:
-            row = {field: item.get(field) for field in fields}
+            row = {field: csv_cell(item.get(field)) for field in fields}
             for field in ("genre_tags", "produced_video_tags", "missing_steps"):
                 row[field] = ";".join(item.get(field) or [])
             writer.writerow(row)
+
+
+def csv_cell(value: Any) -> Any:
+    if not isinstance(value, str):
+        return value
+    return re.sub(r"\s+", " ", value).strip()
 
 
 def archive_recovery_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:

@@ -37,6 +37,7 @@ LOG = configure()
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = REPO_ROOT / "data"
 TAGS_DIR = DATA_DIR / "tags"
+GENERATED_DATA_PARQUETS = frozenset({"catalog.parquet"})
 OUT_PATH = TAGS_DIR / "media_vision.parquet"
 MANIFEST_PATH = TAGS_DIR / "manifest.json"
 
@@ -51,14 +52,24 @@ PROMPT = (
 PROMPT_HASH = hashlib.sha256(PROMPT.encode("utf-8")).hexdigest()[:16]
 MANUAL_REVIEW_QUEUE_PATH = TAGS_DIR / "manual_media_review_queue.json"
 LEGACY_MANUAL_TAG_ALIASES = {
+    "media:produced-video": "video:produced",
+    "shape:lineup": "genre:lineup",
     "video:ad": "genre:advertisement",
     "video:music-video": "genre:music-video",
     "video:psa": "genre:psa",
 }
 
 
+def normalize_tag_name(tag: str) -> str:
+    return LEGACY_MANUAL_TAG_ALIASES.get(tag, tag)
+
+
 def discover_canonical_parquets() -> list[Path]:
-    return sorted(p for p in DATA_DIR.glob("*.parquet") if p.is_file())
+    return sorted(
+        p
+        for p in DATA_DIR.glob("*.parquet")
+        if p.is_file() and p.name not in GENERATED_DATA_PARQUETS
+    )
 
 
 def stable_json(value: Any) -> str:
@@ -297,7 +308,7 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
         + musical_score,
         media_form_haystack,
     ):
-        add("media:produced-video")
+        add("video:produced")
     if is_video and re_search(
         r"\bmontage\b|\bmultiple shots?\b|\bsequence of clips?\b|\bseries of clips?\b|"
         r"\bb-roll\b|\brapid[- ]cut\b|\bcuts between\b",
@@ -388,7 +399,7 @@ def candidate_visual_tag_entries(
     seen: set[str] = set()
     for value in raw:
         tag = str(value or "").strip()
-        tag = LEGACY_MANUAL_TAG_ALIASES.get(tag, tag)
+        tag = normalize_tag_name(tag)
         if not tag or tag in seen:
             continue
         # Do not apply video:* tags to still-image review rows. Those notes
@@ -409,9 +420,10 @@ def dedupe_tag_entries(tags: list[dict[str, Any]]) -> list[dict[str, Any]]:
     out: list[dict[str, Any]] = []
     index: dict[str, int] = {}
     for entry in tags:
-        tag = str(entry.get("tag") or "")
+        tag = normalize_tag_name(str(entry.get("tag") or ""))
         if not tag:
             continue
+        entry = {**entry, "tag": tag}
         if tag not in index:
             index[tag] = len(out)
             out.append(entry)
@@ -447,6 +459,8 @@ def load_existing(path: Path) -> dict[tuple[str, str], dict[str, Any]]:
     for row in df.iter_rows(named=True):
         key = (str(row.get("tweet_id") or ""), str(row.get("media_id") or ""))
         if all(key):
+            if isinstance(row.get("tags"), list):
+                row["tags"] = dedupe_tag_entries(row["tags"])
             out[key] = row
     return out
 
