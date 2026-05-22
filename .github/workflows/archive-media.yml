@@ -155,11 +155,21 @@ jobs:
           args+=(--max-items "$max_items")
           uv run python -m scripts.detect_audio_music "${args[@]}"
 
+      - name: cache whisper model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: whisper-base-${{ runner.os }}-v1
+
       - name: transcribe audio (optional local ASR)
         timeout-minutes: 30
+        env:
+          ASR_MODEL: base
         # Local, free speech-to-text (faster-whisper). Heavier than the other
         # layers, so capped lower and allowed to fail without breaking the
         # archive pipeline; it caches by media_sha256 and catches up over runs.
+        # The whisper weights are cached above so they download once, not every
+        # run; if the runner can't reach the model host, the step skips cleanly.
         continue-on-error: true
         run: |
           args=()
