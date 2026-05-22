@@ -3,7 +3,7 @@
 import { spawn, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { accessSync, constants as fsConstants } from 'node:fs';
-import { appendFile, mkdir, writeFile } from 'node:fs/promises';
+import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import net from 'node:net';
 import path from 'node:path';
 
@@ -68,6 +68,8 @@ const DEFAULTS = {
   saturationStop: true,
   saturationLimit: 4,
   minScrolls: 5,
+  knownIdsFile: null,
+  incrementalLimit: 2,
   maxBodyBytes: 15_000_000,
   headless: false,
   keepOpen: false,
@@ -207,6 +209,8 @@ Options:
   --saturation-limit <n>     Stop after this many scrolls with no new tweets. Default: ${DEFAULTS.saturationLimit}
   --min-scrolls <n>          Always scroll at least this many times first. Default: ${DEFAULTS.minScrolls}
   --no-saturation-stop       Disable early stop; scroll the full count regardless.
+  --known-ids-file <path>    Newline-delimited already-archived tweet IDs; stop on reaching them.
+  --incremental-limit <n>    Scrolls with no new unarchived tweets before stopping. Default: ${DEFAULTS.incrementalLimit}
   --chrome-path <path>       Chrome/Edge executable path.
   --headless                 Run without a visible browser window.
   --keep-open                Leave the browser open after the skim finishes.
@@ -291,6 +295,12 @@ function parseArgs(argv) {
         break;
       case '--no-saturation-stop':
         options.saturationStop = false;
+        break;
+      case '--known-ids-file':
+        options.knownIdsFile = readValue();
+        break;
+      case '--incremental-limit':
+        options.incrementalLimit = positiveNumber(arg, readValue());
         break;
       case '--chrome-path':
         options.chromePath = readValue();
@@ -429,6 +439,8 @@ async function main() {
     rateLimitWaits: 0,
     rateLimitWaitMs: 0,
     stoppedReason: null,
+    knownIds: null,
+    unknownNewCount: 0,
   };
   let writeChain = Promise.resolve();
 
@@ -443,6 +455,14 @@ async function main() {
   };
   process.once('SIGINT', () => void shutdown(130));
   process.once('SIGTERM', () => void shutdown(143));
+
+  const knownIds = await loadKnownTweetIds(options);
+  if (knownIds.size > 0) {
+    stats.knownIds = knownIds;
+    console.log(
+      `Incremental mode: ${knownIds.size} archived tweet IDs loaded; will stop on reaching the backlog.`
+    );
+  }
 
   try {
     const target = await createTarget(port, chrome);
@@ -584,6 +604,27 @@ async function handlePausedRequest(client, event, options, stats) {
   }
 }
 
+// Load the set of tweet IDs we have already archived, so an incremental skim
+// can stop once it scrolls into the existing backlog instead of re-fetching a
+// whole timeline. The file is newline-delimited IDs; generate it from the
+// canonical catalog with `python -m scripts.dump_known_tweet_ids`.
+async function loadKnownTweetIds(options) {
+  const ids = new Set();
+  if (!options.knownIdsFile) return ids;
+  let text;
+  try {
+    text = await readFile(options.knownIdsFile, 'utf8');
+  } catch (error) {
+    console.warn(`Could not read --known-ids-file ${options.knownIdsFile}: ${error.message}`);
+    return ids;
+  }
+  for (const line of text.split(/\r?\n/)) {
+    const id = line.trim();
+    if (/^\d{15,22}$/.test(id)) ids.add(id);
+  }
+  return ids;
+}
+
 function headerValue(headers, name) {
   for (const [key, value] of Object.entries(headers)) {
     if (key.toLowerCase() === name) return value;
@@ -684,7 +725,11 @@ async function captureResponse(client, requestId, meta, options, stats, runId, w
     }
 
     const scan = parsed ? scanJson(parsed) : { tweetIds: new Set(), mediaUrls: new Set() };
-    for (const id of scan.tweetIds) stats.candidateTweetIds.add(id);
+    for (const id of scan.tweetIds) {
+      if (stats.candidateTweetIds.has(id)) continue;
+      stats.candidateTweetIds.add(id);
+      if (stats.knownIds && !stats.knownIds.has(id)) stats.unknownNewCount += 1;
+    }
     for (const mediaUrl of scan.mediaUrls) stats.mediaUrlCandidates.add(mediaUrl);
     increment(stats.endpoints, meta.endpoint);
     stats.responseCount += 1;
@@ -802,6 +847,8 @@ async function skimPage(client, options, stats) {
   }
   let lastUniqueCount = 0;
   let stagnantScrolls = 0;
+  let lastUnknownCount = 0;
+  let dryKnownScrolls = 0;
   for (let index = 0; index < options.scrolls && Date.now() < stopAt; index += 1) {
     const waitedMs = await respectRateLimit(options, stats);
     stats.showMoreClicks += await expandShowMore(client);
@@ -845,6 +892,30 @@ async function skimPage(client, options, stats) {
     } else {
       stagnantScrolls += 1;
     }
+
+    // Incremental dedup: when a set of already-archived IDs is loaded, stop once
+    // we scroll into it — several scrolls in a row that surface no *new
+    // (unarchived)* tweets mean we have reached the existing backlog. That is a
+    // stronger end signal than plain saturation, so it fires sooner. Throttle
+    // pauses and retry tiles are recoverable stalls and reset the counter.
+    if (stats.knownIds) {
+      if (stats.unknownNewCount > lastUnknownCount) {
+        lastUnknownCount = stats.unknownNewCount;
+        dryKnownScrolls = 0;
+      } else if (waitedMs > 0 || retryClicked) {
+        dryKnownScrolls = 0;
+      } else {
+        dryKnownScrolls += 1;
+      }
+      if (index + 1 >= options.minScrolls && dryKnownScrolls >= options.incrementalLimit) {
+        stats.stoppedReason = 'incremental-known';
+        console.log(
+          `No new unarchived tweets for ${dryKnownScrolls} scrolls; reached archived backlog, stopping at ${index + 1}/${options.scrolls}.`
+        );
+        break;
+      }
+    }
+
     if (
       options.saturationStop &&
       index + 1 >= options.minScrolls &&
@@ -1072,6 +1143,10 @@ function buildSummary({ options, runId, startedAt, outPath, summaryPath, stats }
       throttle_events: stats.rateLimit.throttleEvents,
       backoff_waits: stats.rateLimitWaits,
       backoff_total_ms: stats.rateLimitWaitMs,
+    },
+    incremental: {
+      known_ids: stats.knownIds ? stats.knownIds.size : 0,
+      new_unarchived_ids: stats.unknownNewCount,
     },
     response_errors: stats.responseErrors,
   };
