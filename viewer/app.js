@@ -30,6 +30,7 @@ const els = {
   colsMenu: $('cols-menu'),
   csvBtn: $('csv-btn'),
   chartsBtn: $('charts-btn'),
+  fullDbBtn: $('full-db-btn'),
   chartsPanel: $('chartpanel'),
   chartsClose: $('charts-close'),
   chartsSummary: $('charts-summary'),
@@ -224,11 +225,16 @@ els.tipsBtn.addEventListener('click', () => {
 // table; clicking again clears it.
 
 const LOAD_CONCURRENCY = 6;
+const PREVIEW_LIMITS = [20, 50, 100, 200];
+const PREVIEW_HANDLE = '__preview__';
 // Re-render every N completed loads while loading, so the table fills in
 // progressively instead of waiting for the slowest parquet.
 const PROGRESSIVE_REFRESH_EVERY = 10;
 
 let loadProgress = { completed: 0, total: 0, failed: 0 };
+let fullDatabaseLoaded = false;
+let fullDatabaseLoading = false;
+let previewLimitLoaded = 0;
 
 async function loadManifest() {
   try {
@@ -574,8 +580,9 @@ function paintHdrStats() {
     (s, a) => s + (a.post_count ?? Math.max(0, (a.row_count || 0) - (a.reply_count || 0))),
     0
   );
-  const totalPosts = loadedTotal > 0 ? loadedTotal - loadedReplies : manifestPosts;
-  const totalReplies = loadedTotal > 0 ? loadedReplies : manifestReplies;
+  const previewing = !fullDatabaseLoaded && previewLimitLoaded > 0;
+  const totalPosts = loadedTotal > 0 && !previewing ? loadedTotal - loadedReplies : manifestPosts;
+  const totalReplies = loadedTotal > 0 && !previewing ? loadedReplies : manifestReplies;
   const totalMedia = accounts.reduce((s, a) => s + (a.media_count || 0), 0);
   if (accounts.length === 0) {
     els.hdrStats.textContent = '';
@@ -586,9 +593,10 @@ function paintHdrStats() {
       ? ` · loading ${fmtNum(loadProgress.completed)} / ${fmtNum(loadProgress.total)}`
       : '';
   const failed = loadProgress.failed > 0 ? ` · ${loadProgress.failed} failed` : '';
+  const preview = previewing ? ` · preview ${fmtNum(loadedTotal)} loaded` : '';
   els.hdrStats.textContent =
     `${fmtNum(totalPosts)} tweets · ${fmtNum(totalReplies)} replies · ${fmtNum(totalMedia)} media · ` +
-    `${accounts.length} account${accounts.length === 1 ? '' : 's'}${loading}${failed}`;
+    `${accounts.length} account${accounts.length === 1 ? '' : 's'}${preview}${loading}${failed}`;
 }
 
 function _paintDlMenu() {
@@ -770,6 +778,104 @@ function updateSearchPlaceholder() {
   els.search.placeholder = `Search ${scope}... (use * and ? wildcards)`;
 }
 
+function previewLimitForSize(size) {
+  const n = Number(size) || PREVIEW_LIMITS[0];
+  for (const limit of PREVIEW_LIMITS) {
+    if (n <= limit) return limit;
+  }
+  return PREVIEW_LIMITS[PREVIEW_LIMITS.length - 1];
+}
+
+function previewCacheKey() {
+  return manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
+}
+
+async function loadPreviewDataset(size) {
+  const limit = previewLimitForSize(size);
+  const url = `data/preview-${limit}.json${previewCacheKey()}`;
+  setSpinner(true);
+  syncFullDbButton();
+  try {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`fetch ${url}: ${res.status} ${res.statusText}`);
+    const payload = await res.json();
+    const rows = Array.isArray(payload?.rows) ? payload.rows : [];
+    store.byHandle.clear();
+    store.byHandle.set(PREVIEW_HANDLE, rows);
+    store.rebuild();
+    previewLimitLoaded = limit;
+    loadProgress = { completed: 1, total: 1, failed: 0 };
+    applyPreviewSidecars(payload);
+    revealUi();
+    paintHdrStats();
+    paintCategoryFilter();
+    refresh();
+  } catch (err) {
+    previewLimitLoaded = 0;
+    loadProgress = { completed: 0, total: 0, failed: 1 };
+    pushLoadError({
+      resource: url,
+      status: extractHttpStatus(err),
+      kind: 'preview',
+      message: err?.message ?? String(err),
+    });
+    revealUi();
+    refresh();
+    showError('Preview data is unavailable. Click the lightning bolt to load the full database.', 8000);
+  } finally {
+    setSpinner(false);
+    syncFullDbButton();
+  }
+}
+
+function applyPreviewSidecars(payload) {
+  const tagMap = objectToMap(payload?.tags);
+  const mediaInsightMap = objectToMap(payload?.media_insights);
+  const newsMentionMap = objectToMap(payload?.news_mentions);
+  mediaPosterBySha = objectToMap(payload?.poster_by_sha);
+  applyMediaSettings({ persist: false });
+  store.applyTags(tagMap);
+  store.applyMediaInsights(mediaInsightMap);
+  store.applyNewsMentions(newsMentionMap);
+}
+
+function objectToMap(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return new Map();
+  return new Map(Object.entries(value));
+}
+
+async function loadFullDatabase() {
+  if (fullDatabaseLoaded || fullDatabaseLoading) return;
+  fullDatabaseLoading = true;
+  syncFullDbButton();
+  showError('', 0);
+  store.byHandle.clear();
+  store.rebuild();
+  previewLimitLoaded = 0;
+  try {
+    const sidecarsPromise = loadSidecars();
+    await loadAllAccounts(sidecarsPromise);
+    fullDatabaseLoaded = true;
+    paintHdrStats();
+    refresh();
+  } catch (err) {
+    showError(`Full database load failed: ${err?.message ?? String(err)}`, 10000);
+  } finally {
+    fullDatabaseLoading = false;
+    syncFullDbButton();
+  }
+}
+
+function syncFullDbButton() {
+  els.fullDbBtn.disabled = fullDatabaseLoading || fullDatabaseLoaded;
+  els.fullDbBtn.setAttribute('aria-pressed', fullDatabaseLoaded ? 'true' : 'false');
+  els.fullDbBtn.title = fullDatabaseLoaded
+    ? 'Full database loaded'
+    : fullDatabaseLoading
+      ? 'Loading full database...'
+      : 'Load the full database for fast browsing. By default, the viewer only downloads a small first-page preview.';
+}
+
 async function loadAllAccounts(sidecarsPromise) {
   const accounts = manifest?.accounts ?? [];
   if (accounts.length === 0) return;
@@ -787,16 +893,25 @@ async function loadAllAccounts(sidecarsPromise) {
   /** @type {Map<string, any>} */
   let newsMentionMap = new Map();
   let sidecarsResolved = false;
-  sidecarsPromise.then((sidecars) => {
-    tagMap = sidecars.tagMap;
-    mediaInsightMap = sidecars.mediaInsightMap;
-    newsMentionMap = sidecars.newsMentionMap;
-    mediaPosterBySha = sidecars.posterBySha;
-    sidecarsResolved = true;
-    applyMediaSettings({ persist: false });
-    applySidecars();
-    refresh();
-  });
+  sidecarsPromise
+    .then((sidecars) => {
+      tagMap = sidecars.tagMap;
+      mediaInsightMap = sidecars.mediaInsightMap;
+      newsMentionMap = sidecars.newsMentionMap;
+      mediaPosterBySha = sidecars.posterBySha;
+      sidecarsResolved = true;
+      applyMediaSettings({ persist: false });
+      applySidecars();
+      refresh();
+    })
+    .catch((err) => {
+      pushLoadError({
+        resource: 'data/tags/*',
+        status: extractHttpStatus(err),
+        kind: 'sidecars',
+        message: err?.message ?? String(err),
+      });
+    });
 
   const queue = [...accounts];
   const inFlight = new Set();
@@ -835,8 +950,7 @@ async function loadAllAccounts(sidecarsPromise) {
   }
 
   function extractStatus(err) {
-    const m = /:\s*(\d{3})\s*(.*)$/.exec(err?.message ?? String(err));
-    return m ? Number(m[1]) : null;
+    return extractHttpStatus(err);
   }
 
   function recordLoadFailure(resource, handle, err, retried) {
@@ -903,6 +1017,11 @@ async function loadAllAccounts(sidecarsPromise) {
   }
 }
 
+function extractHttpStatus(err) {
+  const m = /:\s*(\d{3})\s*(.*)$/.exec(err?.message ?? String(err));
+  return m ? Number(m[1]) : null;
+}
+
 // Wire the load-errors panel: button toggles, X closes.
 els.loadErrorsBtn.addEventListener('click', () => {
   paintLoadErrorsPanel();
@@ -936,6 +1055,9 @@ els.pageSize.value = String(urlState.size);
 
 els.filtersBtn.addEventListener('click', () => {
   setFilterbarVisible(!filterbarVisible);
+});
+els.fullDbBtn.addEventListener('click', () => {
+  void loadFullDatabase();
 });
 
 let searchDebounce;
@@ -991,13 +1113,17 @@ els.mediaType.addEventListener('change', () => {
   applyToUrl(urlState);
   refresh();
 });
-els.pageSize.addEventListener('change', () => {
+els.pageSize.addEventListener('change', async () => {
   urlState.size = Math.min(Number(els.pageSize.value) || 20, 200);
   urlState.page = 1;
   applyToUrl(urlState);
+  if (!fullDatabaseLoaded) {
+    await loadPreviewDataset(urlState.size);
+    return;
+  }
   refresh();
 });
-els.resetBtn.addEventListener('click', () => {
+els.resetBtn.addEventListener('click', async () => {
   urlState = defaultState();
   colFilters = {};
   expandedThreads = new Set();
@@ -1014,6 +1140,10 @@ els.resetBtn.addEventListener('click', () => {
   applyToUrl(urlState);
   paintAccountFilter();
   paintCategoryFilter();
+  if (!fullDatabaseLoaded) {
+    await loadPreviewDataset(urlState.size);
+    return;
+  }
   refresh();
 });
 
@@ -1623,6 +1753,10 @@ window.addEventListener('hashchange', () => {
   visibleCols = parseVisibleColumns(urlState.cols);
   paintAccountFilter();
   paintCategoryFilter();
+  if (!fullDatabaseLoaded && previewLimitLoaded !== previewLimitForSize(urlState.size)) {
+    void loadPreviewDataset(urlState.size);
+    return;
+  }
   refresh();
 });
 
@@ -1873,10 +2007,7 @@ function shortDate(value) {
 
 // --- Boot ---
 loadTheme();
+syncFullDbButton();
 loadManifest().then(async () => {
-  // Kick off sidecar and account loads in parallel; the sidecar merge
-  // happens in `loadAllAccounts` after each progressive parquet flush so
-  // tags and media descriptions appear in lock-step with their rows.
-  const sidecarsPromise = loadSidecars();
-  await loadAllAccounts(sidecarsPromise);
+  await loadPreviewDataset(urlState.size);
 });

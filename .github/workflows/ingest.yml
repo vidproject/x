@@ -102,6 +102,10 @@ jobs:
         if: steps.cooldown.outputs.skip != '1'
         run: uv run python -m scripts.tag_lexical
 
+      - name: refresh viewer metadata
+        if: steps.cooldown.outputs.skip != '1'
+        run: uv run python -m scripts.refresh_viewer_metadata
+
       - name: update README coverage
         if: steps.cooldown.outputs.skip != '1'
         run: uv run python -m scripts.update_readme

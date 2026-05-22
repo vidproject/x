@@ -31,6 +31,8 @@ TAGS_DIR = DATA_DIR / "tags"
 ACCOUNT_CATEGORIES_PATH = DATA_DIR / "account_categories.json"
 JSON_OUT = TAGS_DIR / "core_video_audit.json"
 CSV_OUT = TAGS_DIR / "core_video_audit.csv"
+MISSING_TWEET_IDS_OUT = TAGS_DIR / "core_produced_missing_tweet_ids.txt"
+MISSING_MEDIA_IDS_OUT = TAGS_DIR / "core_produced_missing_media_ids.txt"
 VIDEO_TYPES = {"video", "animated_gif"}
 PRODUCED_TAGS = {
     "media:produced-video",
@@ -219,11 +221,12 @@ def missing_steps(
     tags: set[str],
 ) -> list[str]:
     steps: list[str] = []
-    if media.get("archive_status") != "archived" or not media.get("release_asset_url"):
+    archived = bool(media.get("release_asset_url"))
+    if not archived:
         steps.append("archive-media")
-    if media.get("archive_status") == "archived" and not any(r.get("status") == "ok" for r in keyframe_rows):
+    if archived and not any(r.get("status") == "ok" for r in keyframe_rows):
         steps.append("extract-keyframes")
-    if media.get("archive_status") == "archived" and not audio_rows:
+    if archived and not audio_rows:
         steps.append("detect-audio")
     if not vision_rows:
         steps.append("describe-with-vision")
@@ -413,6 +416,30 @@ def write_csv(items: list[dict[str, Any]], path: Path) -> None:
             writer.writerow(row)
 
 
+def archive_recovery_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        item
+        for item in items
+        if "archive-media" in (item.get("missing_steps") or [])
+        and (set(item.get("produced_video_tags") or []) or set(item.get("genre_tags") or []))
+    ]
+
+
+def write_id_file(path: Path, ids: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
+        for value in ids:
+            f.write(f"{value}\n")
+
+
+def write_archive_recovery_queues(items: list[dict[str, Any]]) -> None:
+    recovery = archive_recovery_items(items)
+    tweet_ids = sorted({str(item.get("tweet_id") or "") for item in recovery if item.get("tweet_id")})
+    media_ids = sorted({str(item.get("media_id") or "") for item in recovery if item.get("media_id")})
+    write_id_file(MISSING_TWEET_IDS_OUT, tweet_ids)
+    write_id_file(MISSING_MEDIA_IDS_OUT, media_ids)
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--json-out", type=Path, default=JSON_OUT)
@@ -424,9 +451,11 @@ def main(argv: list[str] | None = None) -> int:
         json.dump(result, f, ensure_ascii=False, indent=2)
         f.write("\n")
     write_csv(result["items"], args.csv_out)
+    write_archive_recovery_queues(result["items"])
     LOG.info(
         "core video audit built",
         videos=result["summary"]["videos"],
+        archive_recovery=len(archive_recovery_items(result["items"])),
         json_out=str(args.json_out),
         csv_out=str(args.csv_out),
     )

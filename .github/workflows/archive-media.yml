@@ -161,6 +161,9 @@ jobs:
       - name: refresh core video audit
         run: uv run python -m scripts.build_core_video_audit
 
+      - name: refresh viewer metadata
+        run: uv run python -m scripts.refresh_viewer_metadata
+
       - name: commit parquet updates
         run: |
           git config user.name "github-actions[bot]"

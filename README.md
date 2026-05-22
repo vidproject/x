@@ -33,7 +33,7 @@ The archive also preserves replies, quotes, retweets, and public accounts that a
 
 ## Viewer
 
-The viewer loads every account Parquet listed in `data/manifest.json`. Search runs in the browser. Filters support account, account category, date, tweet type, media type, tag, and column values. The URL updates with the current view, so filtered pages can be shared.
+The viewer starts with a small `data/preview-*.json` slice for low-bandwidth browsing. Click the lightning button to load every account Parquet listed in `data/manifest.json` for fast full-archive browsing. Search runs in the browser. Filters support account, account category, date, tweet type, media type, tag, and column values. The URL updates with the current view, so filtered pages can be shared.
 
 Search covers tweet text, resolved links, handles, mentions, tags, and media descriptions. CSV export uses the currently filtered rows.
 

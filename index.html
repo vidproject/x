@@ -51,6 +51,16 @@
         </button>
         <button
           type="button"
+          class="btn ghost icon-only"
+          id="full-db-btn"
+          aria-label="Load full database"
+          aria-pressed="false"
+          title="Load the full database for fast browsing. By default, the viewer only downloads a small first-page preview."
+        >
+          ⚡
+        </button>
+        <button
+          type="button"
           class="btn ghost"
           id="tips-btn"
           aria-pressed="false"
@@ -121,8 +131,9 @@
       <h2>Tips</h2>
       <ul>
         <li>
-          Every tracked account loads automatically into a single unified view. Use the filter bar
-          to narrow by account, category, date, type, media, tags, or column values.
+          The viewer starts with a small newest-row preview. Use the lightning button to load the
+          full archive into one unified view, then narrow by account, category, date, type, media,
+          tags, or column values.
         </li>
         <li>
           Search defaults to all fields. Change the field selector beside it to search only text,

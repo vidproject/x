@@ -28,6 +28,7 @@ import yaml
 
 from scripts._logging import configure
 from scripts._schema import REQUIRED_TWEET_KEYS, RETWEET_EDGE_SCHEMA, TWEET_SCHEMA, empty_dataframe
+from scripts.build_viewer_preview import write_previews
 
 LOG = configure()
 
@@ -957,7 +958,9 @@ def main(argv: list[str] | None = None) -> int:
     # set produced by discover_handles will include it iff it lives somewhere.
     if not handles:
         LOG.warning("no handles found; nothing to ingest")
-        write_manifest(build_manifest([]))
+        manifest = build_manifest([])
+        write_manifest(manifest)
+        write_previews(DATA_DIR, generated_at=str(manifest["generated_at"]))
         return 0
 
     totals = {"files": 0, "tweets": 0, "rows": 0}

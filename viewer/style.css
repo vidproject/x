@@ -159,6 +159,13 @@ body {
 .btn .icon {
   font-size: 14px;
 }
+.btn.icon-only {
+  width: 28px;
+  min-width: 28px;
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
 .btn[disabled] {
   opacity: 0.5;
   cursor: not-allowed;
