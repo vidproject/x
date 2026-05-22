@@ -1033,6 +1033,28 @@ def test_go_home_slogan_crosses_newline() -> None:
     assert "slogan:go-home" in _tags(out)
 
 
+def test_ai_generated_media_tag() -> None:
+    for text in (
+        "This whole clip is AI-generated propaganda.",
+        "A deepfake of the President went viral.",
+        "Made with Midjourney.",
+        "AI video of the border wall.",
+    ):
+        out = tag_text(
+            text, tweet_type="original", mentions=[], media_count=1, account_category="core"
+        )
+        assert "media:ai-generated" in _tags(out), text
+    # Bare "AI" usage must NOT fire the tag.
+    out = tag_text(
+        "Our AI tools help officers work faster.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+    )
+    assert "media:ai-generated" not in _tags(out)
+
+
 def test_general_topic_matches_multi_problem_posts() -> None:
     out = tag_text(
         "Crime, inflation, fraud, and border chaos are hurting families.",

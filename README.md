@@ -152,6 +152,7 @@ Current sidecars:
 - `data/tags/keyframes.parquet`: video keyframe metadata and tiny poster thumbnails from `scripts/extract_video_frames.py`.
 - `data/tags/image_ocr.parquet`: Tesseract OCR text from archived photos and extracted video keyframes from `scripts/tag_image_ocr.py`.
 - `data/tags/audio_music.parquet`: ffmpeg-only audio stream/music-likelihood tags from `scripts/detect_audio_music.py`.
+- `data/tags/transcripts.parquet`: local, free speech-to-text of archived videos from `scripts/detect_audio_music.py`'s sibling `scripts/transcribe_audio.py` (optional `faster-whisper`; no API keys).
 - `data/tags/news_mentions.parquet`: exact X/Twitter status-URL mentions of core tweets in a local news article export from `scripts/news_mentions.py`.
 - `data/account_categories.json`: corpus-wide public figure / government / official categories from `scripts/build_account_categories.py`.
 - `config/tag_overrides.yaml`: editor-confirmed tags for cases the capture layer cannot prove from canonical fields alone.
@@ -175,6 +176,12 @@ This gives later OCR, transcript, keyframe, CLIP, audio, or external analysis jo
 `scripts.tag_image_ocr` is the first true pixel-reading image layer. It OCRs archived photos and the keyframes extracted in the same workflow run, then `scripts.tag_lexical` imports that recovered text so image-only slogans, agency names, religious language, and other text-overlay tags are searchable and filterable.
 
 `scripts.detect_audio_music` is the first audio pass. It uses ffprobe/ffmpeg only: detect whether an archived video has audio, decode a short mono sample, compute simple energy/zero-crossing features, and emit conservative `audio:has-audio`, `audio:no-audio`, `audio:silent`, and tentative `audio:music-likely` tags. The lexical layer still uses video text and direct replies as additional cheap context when people explicitly reference the song, soundtrack, or background music.
+
+`scripts.transcribe_audio` is the first true speech layer (Layer 3c). It fetches each archived video, decodes a bounded mono sample with ffmpeg, and transcribes it with a local, free recognizer (`faster-whisper`) — no paid API and no credentials. The recognizer is optional: it is imported lazily and the run records `skipped-no-asr` when it is not installed (`uv sync --group asr` installs it; CI runs it in `archive-media`). `scripts.tag_lexical` folds the recovered transcript text into its regex pass exactly like OCR, so spoken slogans, agency names, and other speech become searchable and taggable.
+
+`media:ai-generated` is emitted by `scripts.tag_lexical` from explicit, high-precision textual signals (e.g. "AI-generated", "deepfake", "made with AI", "Midjourney", "synthetic media") in the tweet body, OCR, or transcript. It is tentative by default — per `docs/TAGGING.md` the tag is only firm with C2PA/watermark provenance, which this layer does not have — and bare "AI" mentions deliberately do not fire it.
+
+`data/tags/produced_likely_unprocessed_{tweet,media}_ids.txt` lists archived videos that carry a produced/genre text signal but have no keyframes yet, so keyframe coverage can be widened for the likely-produced set without processing the whole archive. Run `uv run python -m scripts.extract_video_frames --tweet-ids-file data/tags/produced_likely_unprocessed_tweet_ids.txt` (or dispatch `archive-media` with it) to extract just those.
 
 External LLM review is intentionally kept outside this repository. Curated results can be folded back through `data/tags/manual_media_review_queue.json` or another reviewed sidecar without storing provider credentials or running paid model calls from CI.
 
@@ -212,6 +219,8 @@ extension
       data/tags/image_ocr.parquet
     scripts.detect_audio_music
       data/tags/audio_music.parquet
+    scripts.transcribe_audio
+      data/tags/transcripts.parquet
     scripts.build_core_video_audit
       data/tags/core_video_audit.json
       data/tags/core_video_audit.csv
@@ -234,6 +243,7 @@ uv run python -m scripts.describe_media
 uv run python -m scripts.extract_video_frames
 uv run python -m scripts.tag_image_ocr
 uv run python -m scripts.detect_audio_music
+uv run --group asr python -m scripts.transcribe_audio
 uv run python -m scripts.build_core_video_audit
 uv run python -m scripts.news_mentions --articles data/news/articles.jsonl
 npm run lint

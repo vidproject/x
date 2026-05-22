@@ -932,6 +932,20 @@ PRODUCED_VIDEO_STRUCTURE_TAGS = {
     "media:text-overlay",
     "media:voiceover",
 }
+# Explicit textual AI-generation signals (body / OCR / transcript). Kept
+# high-precision to avoid firing on bare "AI" mentions; emitted tentative
+# because text can describe/accuse rather than declare provenance (the tag is
+# only firm with C2PA/watermark evidence, which this layer doesn't have).
+PATTERN_MEDIA_AI_GENERATED = _compile(
+    r"\bAI[- ]generated\b"
+    r"|\b(?:generated|made|created|produced)\s+(?:by|with|using)\s+AI\b"
+    r"|\bAI[- ](?:image|video|art|clip|render|footage|animation|slop)\b"
+    r"|\bdeepfakes?\b"
+    r"|\bsynthetic\s+(?:media|video|imagery|image|footage)\b"
+    r"|\bMidjourney\b|\bDALL[- ]?E\b|\bStable\s+Diffusion\b"
+    r"|\b(?:Sora|Veo)\s+(?:video|clip|generated|model|AI)\b"
+    r"|#AI(?:generated|art|video|slop)\b"
+)
 SPEAKER_ACTION_CONTEXT = (
     r"(?:deliver(?:s|ed|ing)?|giv(?:e|es|ing)|gave|announce(?:s|d|ment)?|"
     r"say|says|said|speak(?:s|ing)?|spoke|remark(?:s|ed)?|brief(?:s|ed|ing)?|"
@@ -1144,6 +1158,7 @@ def tag_text(
     media_count: int,
     account_category: str,
     ocr_text: str = "",
+    transcript_text: str = "",
     media_text: str = "",
     media_tags: list[Any] | None = None,
     reply_context_text: str = "",
@@ -1233,7 +1248,7 @@ def tag_text(
     # Concatenate OCR and media-description text so a poster's stamped
     # slogan or manually reviewed image description earns the same tags
     # as if the words had been typed into the tweet body.
-    body_parts = [part for part in (text, ocr_text, media_text) if part]
+    body_parts = [part for part in (text, ocr_text, transcript_text, media_text) if part]
     body = " || ".join(body_parts)
 
     if not body:
@@ -1329,6 +1344,9 @@ def tag_text(
             continue
         if m := pat.search(text):
             add(tag, span=m.span())
+
+    if m := PATTERN_MEDIA_AI_GENERATED.search(text):
+        add("media:ai-generated", span=m.span(), tentative=True)
 
     # military:<BRANCH> subtopics. These are narrower than topic:military.
     for slug, pat in MILITARY_VOCAB:
@@ -1777,6 +1795,35 @@ def load_ocr_map() -> dict[str, str]:
     return out
 
 
+def load_transcript_map() -> dict[str, str]:
+    """Return {tweet_id: speech transcript} from the Layer-3c ASR sidecar.
+
+    ``scripts.transcribe_audio`` writes recognized speech for archived videos.
+    Folding it into the regex pass (like OCR) lets a spoken slogan or agency
+    name in a video earn the same tags as if it were typed in the tweet body.
+    Only successful, non-empty transcripts are used; multiple media per tweet
+    are joined into one blob.
+    """
+    p = TAGS_DIR / "transcripts.parquet"
+    if not p.exists():
+        return {}
+    df = pl.read_parquet(p)
+    if df.is_empty() or "tweet_id" not in df.columns or "text" not in df.columns:
+        return {}
+    if "status" in df.columns:
+        df = df.filter(pl.col("status") == "ok")
+    df = df.filter(pl.col("text").is_not_null() & (pl.col("text").str.strip_chars() != ""))
+    if df.is_empty():
+        return {}
+    grouped = df.group_by("tweet_id").agg(pl.col("text").str.concat(" | ").alias("text"))
+    out: dict[str, str] = {}
+    for row in grouped.iter_rows(named=True):
+        tid = str(row.get("tweet_id") or "")
+        if tid:
+            out[tid] = str(row.get("text") or "")
+    return out
+
+
 def load_media_context_map() -> dict[str, dict[str, Any]]:
     """Return per-tweet media descriptions and tags from media sidecars.
 
@@ -1921,6 +1968,7 @@ def tag_one_parquet(
     account_categories: dict[str, str],
     tagged_at: str,
     ocr_map: dict[str, str] | None = None,
+    transcript_map: dict[str, str] | None = None,
     media_context_map: dict[str, dict[str, Any]] | None = None,
     audio_context_map: dict[str, dict[str, Any]] | None = None,
     reply_context_map: dict[str, str] | None = None,
@@ -1934,6 +1982,7 @@ def tag_one_parquet(
     pass `None` and the tagger silently runs against tweet text alone.
     """
     ocr_map = ocr_map or {}
+    transcript_map = transcript_map or {}
     media_context_map = media_context_map or {}
     audio_context_map = audio_context_map or {}
     reply_context_map = reply_context_map or {}
@@ -1993,6 +2042,7 @@ def tag_one_parquet(
             media_count=media_count,
             account_category=category,
             ocr_text=ocr_map.get(tweet_id, ""),
+            transcript_text=transcript_map.get(tweet_id, ""),
             media_text=str(media_context.get("text") or ""),
             media_tags=media_tags,
             reply_context_text=reply_context_map.get(tweet_id, ""),
@@ -2164,6 +2214,9 @@ def main(argv: list[str] | None = None) -> int:
     ocr_map = load_ocr_map()
     if ocr_map:
         LOG.info("loaded OCR sidecar overlay", tweets_with_ocr=len(ocr_map))
+    transcript_map = load_transcript_map()
+    if transcript_map:
+        LOG.info("loaded transcript sidecar overlay", tweets_with_transcript=len(transcript_map))
     media_context_map = load_media_context_map()
     if media_context_map:
         LOG.info(
@@ -2190,6 +2243,7 @@ def main(argv: list[str] | None = None) -> int:
             account_categories,
             tagged_at,
             ocr_map=ocr_map,
+            transcript_map=transcript_map,
             media_context_map=media_context_map,
             audio_context_map=audio_context_map,
             reply_context_map=reply_context_map,

@@ -583,6 +583,7 @@ def run(
     out_path: Path | None = None,
     derived_root: Path | None = None,
     thumbnail_root: Path | None = None,
+    only_tweet_ids: set[str] | None = None,
     extractor: Callable[[VideoCandidate], ExtractResult] | None = None,
 ) -> dict[str, int]:
     """Core run loop, factored out of ``main`` so tests can substitute a
@@ -635,6 +636,9 @@ def run(
     try:
         seen_sha: set[str] = set()
         for cand in discover_candidates(parquets):
+            if only_tweet_ids is not None and cand.tweet_id not in only_tweet_ids:
+                stats["skipped_not_in_filter"] += 1
+                continue
             # A single physical video can be attached to many tweets (RTs,
             # cross-posts). We extract once per sha256, but every tweet that
             # references it still gets a row so the viewer's tweet_id join
@@ -722,11 +726,26 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--dry-run", action="store_true", help="Report planned rows without writing."
     )
+    parser.add_argument(
+        "--tweet-ids-file",
+        type=Path,
+        help="Only extract videos whose tweet_id is listed (one per line) in this file. "
+        "Use with data/tags/produced_likely_unprocessed_tweet_ids.txt to widen keyframe "
+        "coverage for likely-produced videos without processing the whole archive.",
+    )
     args = parser.parse_args(argv)
 
     parquets = discover_canonical_parquets()
     if args.handle:
         parquets = [p for p in parquets if p.stem == args.handle]
+
+    only_tweet_ids: set[str] | None = None
+    if args.tweet_ids_file:
+        only_tweet_ids = {
+            line.strip()
+            for line in args.tweet_ids_file.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        }
 
     stats = run(
         parquets=parquets,
@@ -735,6 +754,7 @@ def main(argv: list[str] | None = None) -> int:
         max_items=args.max_items,
         force=args.force,
         dry_run=args.dry_run,
+        only_tweet_ids=only_tweet_ids,
     )
     LOG.info("keyframe extraction complete", **stats)
     return 0
