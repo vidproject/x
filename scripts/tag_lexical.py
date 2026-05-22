@@ -794,12 +794,136 @@ PATTERN_SUBJECT_CELEBRITY = _compile(
     r"|\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+,\s+(?:an?\s+)?"
     r"(?:actress|influencer|celebrity|pop\s+star|movie\s+star)\b"
 )
-PATTERN_THEME_POP_CULTURE_ENFORCEMENT = _compile(
+PATTERN_THEME_POP_CULTURE_REFERENCE = _compile(
     r"\bSydney\s+Sweeney\b"
     r"|\bAmerican\s+Eagle\b.{0,100}\b(?:ICE|DHS|CBP|deport|illegal\s+alien|border)\b"
     r"|\b(?:ICE|DHS|CBP|deport|illegal\s+alien|border)\b.{0,100}\bAmerican\s+Eagle\b"
     r"|\bgood\s+genes\b.{0,100}\b(?:jeans|ICE|DHS|CBP|deport|border|illegal\s+alien)\b"
 )
+# --- legal:birthright-citizenship ----------------------------------------
+# Fires on the explicit policy phrase regardless of framing.
+PATTERN_LEGAL_BIRTHRIGHT_CITIZENSHIP = _compile(r"\bbirthright\s+citizenship\b")
+
+# Nativist birthright framing: "actual/real/true birthright of (every/all)
+# Americans", "American('s) birthright", "our birthright" + harm verb.
+# This is SEPARATE from bare "birthright citizenship" (which is just a policy
+# term) — we want nativism only when the framing posits Americans' heritage
+# entitlement as being stolen/diluted/erased/destroyed.
+PATTERN_THEME_NATIVISM_BIRTHRIGHT = _compile(
+    r"\b(?:actual|real|true)\s+birthright\s+of\s+(?:every|all)?\s*americans?\b"
+    r"|\bamerican(?:'?s?)?\s+birthright\b"
+    r"|\b(?:our|the)\s+birthright\b.{0,160}\b(?:steal|steals?|stolen|dilut|eras|destroy|destroyed|replac|betray|undermin)\b"
+    r"|\b(?:steal|steals?|stolen|dilut|eras|destroy|destroyed|replac|betray|undermin)\b.{0,160}\b(?:our|the)\s+birthright\b"
+    r"|\b(?:destroy(?:ing)?|destroys?|erasing?|replac(?:e|ing)?|betray(?:ing)?|undermin(?:e|ing)?|dilut(?:e|ing)?)"
+    r"\b.{0,120}\b(?:our|the|american(?:'?s?)?)\s+birthright\b"
+)
+
+# --- slogan:find-and-kill -------------------------------------------------
+# Note: OCR text may render "&" instead of "and".
+PATTERN_SLOGAN_FIND_AND_KILL = _compile(
+    r"\bwe\s+will\s+find\s+you\s+(?:and|&)\s+(?:we\s+will\s+)?kill\s+you\b"
+    r"|\bfind\s+you\s+(?:and|&)\s+kill\s+you\b"
+)
+
+# --- slogan:import-third-world --------------------------------------------
+PATTERN_SLOGAN_IMPORT_THIRD_WORLD = _compile(
+    r"\bimport\s+the\s+third\s+world\b"
+    r"|\bif\s+you\s+import\s+the\s+third\s+world\b"
+)
+
+# --- genre:parody + parody:<franchise> ------------------------------------
+# A political/spoof parody of a recognizable media franchise.
+# Franchise gazetteer: distinctive phrase -> franchise slug.
+# "this is the way" alone is too generic (e.g. Mandalorian is pop-culture but
+# appears in non-parody political text too), so we require at least ONE other
+# Star Wars cue in the same text, OR the canonical "May the 4th/fourth be with
+# you" phrase which is uniquely Star Wars in context.
+PARODY_FRANCHISE_GAZETTEER: tuple[tuple[re.Pattern[str], str], ...] = (
+    (
+        _compile(
+            r"\bmay\s+the\s+(?:4th|fourth)\s+be\s+with\s+you\b"
+            r"|\bthe\s+force\s+(?:is|be|will\s+be)\s+with\b"
+            r"|\b(?:jedi|sith|death\s+star|lightsaber|darth\s+vader|skywalker)\b"
+            r"|\b(?:galaxy|republic|empire|rebellion|mandalorian)\b.{0,200}\b(?:jedi|sith|death\s+star|the\s+way)\b"
+        ),
+        "star-wars",
+    ),
+    (
+        _compile(
+            r"\bman\s+of\s+steel\b|\bkrypton(?:ite)?\b|\bfortress\s+of\s+solitude\b"
+            r"|\bup,?\s+up,?\s+and\s+away\b|\bsuperman\b.{0,80}\b(?:cape|hero|krypton|steel|villain)\b"
+        ),
+        "superman",
+    ),
+    (
+        _compile(
+            r"\btop\s+gun\b|\bthe\s+need\s+for\s+speed\b|\bi\s+feel\s+the\s+need\b"
+            r"|\bdanger\s+zone\b.{0,80}\b(?:maverick|jet|fly|top\s+gun)\b"
+        ),
+        "top-gun",
+    ),
+    (
+        _compile(
+            r"\bwinter\s+is\s+coming\b|\bgame\s+of\s+thrones\b|\bthe\s+iron\s+throne\b"
+            r"|\byou\s+know\s+nothing,?\s+jon\s+snow\b"
+        ),
+        "game-of-thrones",
+    ),
+    (
+        _compile(
+            r"\bone\s+ring\s+to\s+rule\s+them\s+all\b|\byou\s+shall\s+not\s+pass\b"
+            r"|\bmy\s+precious\b|\b(?:mordor|gandalf|frodo|the\s+shire)\b"
+        ),
+        "lord-of-the-rings",
+    ),
+    (
+        _compile(
+            r"\bhasta\s+la\s+vista,?\s+baby\b|\bskynet\b|\bthe\s+terminator\b"
+            r"|\bi'?ll\s+be\s+back\b.{0,80}\b(?:terminator|machine|robot|cyborg)\b"
+        ),
+        "terminator",
+    ),
+    (
+        _compile(r"\beye\s+of\s+the\s+tiger\b|\brocky\s+balboa\b|\bgonna\s+fly\s+now\b"),
+        "rocky",
+    ),
+    (
+        _compile(
+            r"\bshaken,?\s+not\s+stirred\b|\blicen[sc]e\s+to\s+kill\b|\bagent\s+007\b|\bjames\s+bond\b"
+        ),
+        "james-bond",
+    ),
+    (
+        _compile(
+            r"\bavengers\s+assemble\b|\bwakanda\s+forever\b|\binfinity\s+(?:gauntlet|stones?)\b"
+            r"|\bi\s+am\s+iron\s+man\b|\bthanos\b"
+        ),
+        "marvel",
+    ),
+    (
+        _compile(r"\bwho\s+(?:you|ya)\s+gonna\s+call\b|\bghostbusters\b"),
+        "ghostbusters",
+    ),
+    (
+        _compile(r"\boffer\s+(?:he|you|they)\s+can'?t\s+refuse\b|\bthe\s+godfather\b"),
+        "godfather",
+    ),
+    (
+        _compile(r"\bpawn\s+stars\b"),
+        "pawn-stars",
+    ),
+)
+# Emit genre:parody ONLY when a franchise match fires; it never fires alone.
+# A broader multi-cue Star Wars check: text must contain "this is the way"
+# AND at least one other signature Star Wars cue.
+PATTERN_PARODY_STAR_WARS_MULTI = _compile(
+    r"\bthis\s+is\s+the\s+way\b"
+)
+PATTERN_PARODY_STAR_WARS_EXTRA_CUE = _compile(
+    r"\b(?:may\s+the\s+(?:4th|fourth)\s+be\s+with\s+you|the\s+force|jedi|sith|death\s+star|"
+    r"a\s+galaxy|galaxy\s+(?:far|that)|lightsaber|darth|yoda|skywalker|mandalorian)\b"
+)
+
 # --- video:<kind> --------------------------------------------------------
 #
 # Video-nature heuristics. Federal accounts post a few recognizable
@@ -1133,6 +1257,7 @@ MEDIA_TAG_PREFIXES_ALLOWED_IN_LEXICAL: tuple[str, ...] = (
     "legal:",
     "media:",
     "military:",
+    "parody:",
     "phrase:",
     "religion:",
     "slogan:",
@@ -1338,7 +1463,9 @@ def tag_text(
         (PATTERN_THEME_TRANSGENDER, "theme:transgender"),
         (PATTERN_THEME_CIVIL_DISTURBANCE, "theme:civil-disturbance"),
         (PATTERN_THEME_CBP_HOME, "theme:cbp-home"),
-        (PATTERN_THEME_POP_CULTURE_ENFORCEMENT, "theme:pop-culture-enforcement"),
+        (PATTERN_THEME_POP_CULTURE_REFERENCE, "theme:pop-culture-reference"),
+        (PATTERN_LEGAL_BIRTHRIGHT_CITIZENSHIP, "legal:birthright-citizenship"),
+        (PATTERN_THEME_NATIVISM_BIRTHRIGHT, "theme:nativism"),
         (PATTERN_SLOGAN_NICE, "slogan:nice"),
         (PATTERN_SLOGAN_WORST, "slogan:worst"),
         (PATTERN_SLOGAN_REPORTRECON, "slogan:reportrecon"),
@@ -1359,6 +1486,8 @@ def tag_text(
         (PATTERN_SLOGAN_MASS_DEPORTATION, "slogan:mass-deportation"),
         (PATTERN_SLOGAN_MOST_SECURE_BORDER, "slogan:most-secure-border"),
         (PATTERN_SLOGAN_CATCH_RELEASE, "slogan:catch-release"),
+        (PATTERN_SLOGAN_FIND_AND_KILL, "slogan:find-and-kill"),
+        (PATTERN_SLOGAN_IMPORT_THIRD_WORLD, "slogan:import-third-world"),
         (PATTERN_PHRASE_MIGRANT, "phrase:migrant"),
         (PATTERN_PHRASE_IMMIGRANT, "phrase:immigrant"),
         (PATTERN_THEME_STATISTICS, "theme:statistics"),
@@ -1426,6 +1555,24 @@ def tag_text(
 
     if m := _martyrdom_match(text, account_category, entries):
         add("theme:martyrdom", span=m.span())
+
+    # genre:parody + parody:<franchise> — high-precision franchise detection.
+    for franchise_pat, franchise_slug in PARODY_FRANCHISE_GAZETTEER:
+        if m := franchise_pat.search(text):
+            add("genre:parody", span=m.span())
+            add(f"parody:{franchise_slug}", span=m.span())
+            add("theme:pop-culture-reference")
+    # Also catch "this is the way" + one more Star Wars cue (e.g. "a galaxy").
+    if (
+        PATTERN_PARODY_STAR_WARS_MULTI.search(text)
+        and PATTERN_PARODY_STAR_WARS_EXTRA_CUE.search(text)
+        and not any(e["tag"] == "parody:star-wars" for e in entries)
+    ):
+        m_way = PATTERN_PARODY_STAR_WARS_MULTI.search(text)
+        if m_way:
+            add("genre:parody", span=m_way.span())
+            add("parody:star-wars", span=m_way.span())
+            add("theme:pop-culture-reference")
 
     # origin:<COUNTRY> — validated against the sovereign-state vocab.
     for m in PATTERN_ORIGIN_CANDIDATE.finditer(text):
@@ -1631,7 +1778,7 @@ INTRINSIC_PARENT_TOPICS_EXACT: dict[str, tuple[str, ...]] = {
     "theme:border": ("topic:immigration",),
     "theme:cbp-home": ("topic:immigration",),
     "theme:nativism": ("topic:immigration",),
-    "theme:pop-culture-enforcement": ("topic:immigration",),
+    "theme:pop-culture-reference": ("topic:immigration",),
     "theme:sanctuary-cities": ("topic:immigration",),
     "theme:worksite-enforcement": ("topic:economy", "topic:immigration"),
     "religion:christianity": ("theme:religion",),
@@ -1641,6 +1788,10 @@ INTRINSIC_PARENT_TOPICS_EXACT: dict[str, tuple[str, ...]] = {
     "slogan:illegal-alien": ("topic:immigration",),
     "slogan:mass-deportation": ("topic:immigration",),
     "slogan:masa": ("topic:immigration",),
+    "slogan:find-and-kill": ("topic:immigration",),
+    "slogan:import-third-world": ("topic:immigration",),
+    "legal:birthright-citizenship": ("topic:immigration",),
+    "genre:parody": ("theme:pop-culture-reference",),
     "slogan:most-secure-border": ("topic:immigration", "theme:border"),
     "slogan:catch-release": ("topic:immigration",),
     "slogan:project-homecoming": ("topic:immigration",),

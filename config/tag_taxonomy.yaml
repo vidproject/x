@@ -97,6 +97,54 @@ tags:
       The templated mugshot-reply form: tweet_type=reply AND
       frame:criminal AND exactly one photo. Highly stable visual genre.
     classification: deterministic
+  genre:parody:
+    description: >-
+      Post is a political or spoof parody of a recognizable media franchise
+      or pop-culture work (e.g. Star Wars). Emitted alongside the specific
+      parody:<franchise> tag identifying the source material.
+    classification: deterministic
+
+  # ===== parody:* — franchise-specific parody tags ==================
+  parody:star-wars:
+    description: >-
+      Parody of Star Wars universe content, detected via high-precision
+      franchise cues: "May the 4th/fourth be with you", "the force",
+      "Jedi/Sith/Death Star" with other SW-universe terms, or "this is
+      the way" co-occurring with another Star Wars cue.
+    classification: deterministic
+  parody:superman:
+    description: 'Parody of Superman (man of steel, kryptonite, fortress of solitude).'
+    classification: deterministic
+  parody:top-gun:
+    description: 'Parody of Top Gun ("the need for speed", "danger zone").'
+    classification: deterministic
+  parody:game-of-thrones:
+    description: 'Parody of Game of Thrones ("winter is coming", "the iron throne").'
+    classification: deterministic
+  parody:lord-of-the-rings:
+    description: 'Parody of The Lord of the Rings ("you shall not pass", "one ring to rule them all").'
+    classification: deterministic
+  parody:terminator:
+    description: 'Parody of The Terminator ("hasta la vista, baby", Skynet).'
+    classification: deterministic
+  parody:rocky:
+    description: 'Parody of Rocky ("eye of the tiger", "gonna fly now").'
+    classification: deterministic
+  parody:james-bond:
+    description: 'Parody of James Bond / 007 ("shaken, not stirred", "licence to kill").'
+    classification: deterministic
+  parody:marvel:
+    description: 'Parody of Marvel / Avengers ("avengers assemble", Thanos, infinity gauntlet).'
+    classification: deterministic
+  parody:ghostbusters:
+    description: 'Parody of Ghostbusters ("who you gonna call").'
+    classification: deterministic
+  parody:godfather:
+    description: 'Parody of The Godfather ("an offer he can''t refuse").'
+    classification: deterministic
+  parody:pawn-stars:
+    description: 'Parody/tie-in of Pawn Stars.'
+    classification: deterministic
 
   # ===== speaker:* - evidence-supported speaker attribution =========
   speaker:*:
@@ -276,6 +324,14 @@ tags:
       \b(?:(?:call|contact)\s+(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b(?=.{0,180}\b(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b)|(?:report|tip|submit|send|notify)\b.{0,80}\b(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b.{0,80}\b(?:to|at|with)\s+(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|DHS|Department of Homeland Security|Homeland Security|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b|(?:submit|send)\s+(?:a\s+)?tip\b.{0,80}\b(?:to|with)\s+(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|DHS|Department of Homeland Security|Homeland Security|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b(?=.{0,120}\b(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b)|(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b.{0,240}\b(?:call|contact)\s+(?:(?:our|the)\s+)?(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|ICE\s+)?(?:tip\s*line|hotline|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b)
 
   # ===== legal:* - legal posture / litigation =======================
+  legal:birthright-citizenship:
+    description: >-
+      Post references "birthright citizenship" as a policy term (the
+      constitutional / legislative debate, executive orders, court cases,
+      or travel-tourism exploitation). Fires on the bare policy phrase
+      regardless of framing; theme:nativism fires separately when the
+      framing is nativist (e.g. "steals the actual birthright of every American").
+    classification: deterministic
   legal:criminal-prosecution:
     description: >-
       Criminal prosecution posture: indictment, charges, plea,
@@ -413,10 +469,10 @@ tags:
       CBP Home / Project Homecoming / self-deportation incentive campaign,
       including free flight, exit bonus, and "go home" variants.
     classification: deterministic
-  theme:pop-culture-enforcement:
+  theme:pop-culture-reference:
     description: >-
       Uses a celebrity, ad campaign, entertainment meme, or pop-culture
-      reference to frame immigration or enforcement messaging.
+      reference in the context of immigration or enforcement messaging.
     classification: deterministic
   theme:statistics:
     description: >-
@@ -545,6 +601,19 @@ tags:
     classification: deterministic
   slogan:catch-release:
     description: '"Catch and release" immigration enforcement policy phrase.'
+    classification: deterministic
+  slogan:find-and-kill:
+    description: >-
+      "We will find you and kill you" / "find you and kill you" — Trump
+      administration threat phrase directed at violent criminals or those
+      who attack Americans; appears in image OCR overlays as well as tweet
+      body text.
+    classification: deterministic
+  slogan:import-third-world:
+    description: >-
+      "Import the Third World" / "if you import the Third World" — anti-immigration
+      demographic-change slogan attributed to Trump or used in administration
+      messaging.
     classification: deterministic
 
   # ===== phrase:* - recurring domain terms ===========================

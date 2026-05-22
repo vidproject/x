@@ -150,7 +150,7 @@
       "visual_observation": "Caricature illustration: Trump's head on a taco body with MAGA hats and stars; bold caption 'DO YOU WANT TARIFFS WITH THAT?'",
       "candidate_visual_tags": [
         "topic:economy",
-        "theme:pop-culture-enforcement"
+        "theme:pop-culture-reference"
       ],
       "deterministic_signal_missing": "Image is a tariff-economy meme; the reply body triggers crime:rape from 'RAPIST' even though the image isn't crime-related. Manual-review flag to avoid over-attributing crime:* on image-driven posts; resolution needs OCR plus a guard that decays tag confidence when the textual cue is a single epithet."
     },
@@ -752,7 +752,7 @@
       "candidate_visual_tags": [
         "genre:utopian",
         "media:text-overlay",
-        "theme:pop-culture-enforcement",
+        "theme:pop-culture-reference",
         "video:produced"
       ],
       "review_method": "Direct triage: 96px keyframe poster + tweet text (produced-video review).",
@@ -770,7 +770,7 @@
       "candidate_visual_tags": [
         "genre:utopian",
         "media:text-overlay",
-        "theme:pop-culture-enforcement",
+        "theme:pop-culture-reference",
         "video:produced"
       ],
       "review_method": "Direct triage: 96px keyframe poster + tweet text (produced-video review).",
@@ -804,7 +804,7 @@
       "visual_observation": "Reviewed captioned/meme image (OCR text + tweet context).",
       "candidate_visual_tags": [
         "media:text-overlay",
-        "theme:pop-culture-enforcement"
+        "theme:pop-culture-reference"
       ],
       "review_method": "Direct triage: Tesseract OCR text + tweet text (image pixels not viewed).",
       "certainty": "reviewed",

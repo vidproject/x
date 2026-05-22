@@ -1429,7 +1429,7 @@ def test_self_deportation_does_not_flatten_into_deportation() -> None:
     assert "action:deportation" in forced_tags
 
 
-def test_pop_culture_enforcement_and_celebrity_tags() -> None:
+def test_pop_culture_reference_and_celebrity_tags() -> None:
     out = tag_text(
         "Sydney Sweeney has good genes. DHS says illegal aliens should leave.",
         tweet_type="original",
@@ -1439,7 +1439,9 @@ def test_pop_culture_enforcement_and_celebrity_tags() -> None:
     )
     tags = _tags(out)
     assert "subject:celebrity" in tags
-    assert "theme:pop-culture-enforcement" in tags
+    assert "theme:pop-culture-reference" in tags
+    # Old slug must not appear
+    assert "theme:pop-culture-enforcement" not in tags
 
 
 def test_pop_culture_celebrity_false_positives_stay_silent() -> None:
@@ -1461,6 +1463,7 @@ def test_pop_culture_celebrity_false_positives_stay_silent() -> None:
     )
     tags = _tags(bio_noise)
     assert "subject:celebrity" not in tags
+    assert "theme:pop-culture-reference" not in tags
     assert "theme:pop-culture-enforcement" not in tags
 
     retail_only = tag_text(
@@ -1470,6 +1473,7 @@ def test_pop_culture_celebrity_false_positives_stay_silent() -> None:
         media_count=0,
         account_category="public",
     )
+    assert "theme:pop-culture-reference" not in _tags(retail_only)
     assert "theme:pop-culture-enforcement" not in _tags(retail_only)
 
 
@@ -1685,3 +1689,161 @@ def test_manifest_tag_frequency_merges_country_state_case_variants() -> None:
     assert "country:CHINA" not in freq
     assert "state:TEXAS" not in freq
     assert freq["agency:ICEgov"] == 6
+
+
+# ---------------------------------------------------------------------------
+# New regression tests for tasks 1-4
+# ---------------------------------------------------------------------------
+
+
+def test_birthright_citizenship_policy_term_emits_legal_tag() -> None:
+    """Bare policy phrase -> legal:birthright-citizenship, NOT theme:nativism."""
+    bare = tag_text(
+        "The administration is ending birthright citizenship by executive order.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    bare_tags = _tags(bare)
+    assert "legal:birthright-citizenship" in bare_tags
+    assert "theme:nativism" not in bare_tags
+
+
+def test_birthright_nativist_framing_fires_both_tags() -> None:
+    """Nativist framing of birthright -> BOTH legal: and theme:nativism.
+
+    Covers tweet 2031921611415208357:
+    "Offering 'birthright citizenship' to the world ... steals the actual
+    birthright of every American."
+    """
+    nativist = tag_text(
+        'Offering "birthright citizenship" to the world when the world is just one plane trip '
+        "from the United States steals the actual birthright of every American.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    nativist_tags = _tags(nativist)
+    assert "legal:birthright-citizenship" in nativist_tags
+    assert "theme:nativism" in nativist_tags
+
+
+def test_birthright_framing_variants_fire_nativism() -> None:
+    """Other nativist birthright framings."""
+    for text in (
+        "Our birthright is being stolen by open borders.",
+        "The American birthright is erased by mass immigration.",
+        "They are destroying our birthright with these policies.",
+    ):
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="public",
+        )
+        assert "theme:nativism" in _tags(out), text
+
+
+def test_slogan_find_and_kill_fires_on_text() -> None:
+    """slogan:find-and-kill fires on tweet body (and OCR)."""
+    out = tag_text(
+        "If you hurt Americans, or are planning to hurt Americans, We Will Find You & We Will Kill You.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    tags = _tags(out)
+    assert "slogan:find-and-kill" in tags
+    assert "topic:immigration" in tags
+
+
+def test_slogan_find_and_kill_fires_on_ocr() -> None:
+    """slogan:find-and-kill is detected via OCR overlay (tweet 2055697898130551229)."""
+    out = tag_text(
+        "NO GAMES.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        ocr_text=(
+            "If you hurt Americans, or are planning to hurt Americans, "
+            "We Will Find You & We Will Kill You President Donald J. Trump"
+        ),
+    )
+    tags = _tags(out)
+    assert "slogan:find-and-kill" in tags
+
+
+def test_slogan_import_third_world_fires() -> None:
+    """slogan:import-third-world fires on the phrase (tweet 2040507389812568086)."""
+    for text in (
+        "'If you import The Third World, you become The Third World!'",
+        "If you import the third world, you become the third world.",
+        "We won't import the third world into America.",
+    ):
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="core",
+        )
+        assert "slogan:import-third-world" in _tags(out), text
+
+
+def test_genre_parody_star_wars_multi_cue() -> None:
+    """genre:parody + parody:star-wars + theme:pop-culture-reference fire on Star Wars cues.
+
+    Covers tweet 2051321953022042350:
+    "In a galaxy that demands strength - America stands ready.
+     This is the way. May the 4th be with you."
+    """
+    out = tag_text(
+        "In a galaxy that demands strength - America stands ready. "
+        "This is the way. May the 4th be with you.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+    )
+    tags = _tags(out)
+    assert "genre:parody" in tags
+    assert "parody:star-wars" in tags
+    assert "theme:pop-culture-reference" in tags
+
+
+def test_genre_parody_star_wars_force_cue() -> None:
+    """The Force / Jedi cues alone trigger parody:star-wars."""
+    out = tag_text(
+        "May the 4th be with you, patriots. The Force is strong with America.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="public",
+    )
+    tags = _tags(out)
+    assert "genre:parody" in tags
+    assert "parody:star-wars" in tags
+
+
+def test_genre_parody_does_not_fire_on_generic_phrases() -> None:
+    """Incidental words that look vaguely Star Wars-adjacent must NOT fire."""
+    for text in (
+        "The economy is showing force.",
+        "This is the way forward for immigration reform.",
+        "Our galaxy of options includes many reforms.",
+    ):
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="public",
+        )
+        tags = _tags(out)
+        assert "genre:parody" not in tags, text
+        assert "parody:star-wars" not in tags, text

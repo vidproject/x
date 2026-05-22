@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-22T20:17:17Z",
+  "generated_at": "2026-05-22T20:45:54Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -21,9 +21,9 @@
     "bucket_counts": {
       "genre-experiment": 10,
       "missing-media": 210,
-      "needs-recognition": 515,
+      "needs-recognition": 514,
       "ordinary-video": 484,
-      "produced-video": 118
+      "produced-video": 119
     },
     "top_tags": {
       "topic:immigration": 1180,
@@ -42,7 +42,7 @@
       "topic:economy": 145,
       "frame:criminal": 142,
       "slogan:illegal-alien": 135,
-      "video:produced": 130,
+      "video:produced": 131,
       "video:interview": 123,
       "agency:USCIS": 96,
       "format:retweet": 93,
@@ -79,7 +79,7 @@
     },
     "missing_step_counts": {
       "archive-media": 210,
-      "assign-produced-video-genre": 4,
+      "assign-produced-video-genre": 5,
       "describe-with-vision": 210,
       "detect-audio": 580,
       "extract-keyframes": 592
@@ -377,14 +377,16 @@
       "tags": [
         "audio:has-audio",
         "genre:advertisement",
+        "genre:parody",
         "genre:utopian",
         "media:archived",
         "media:described",
         "media:short-video",
         "media:text-overlay",
         "media:video",
+        "parody:pawn-stars",
         "slogan:golden-age",
-        "theme:pop-culture-enforcement",
+        "theme:pop-culture-reference",
         "topic:economy",
         "topic:general",
         "topic:immigration",
@@ -393,6 +395,7 @@
       ],
       "genre_tags": [
         "genre:advertisement",
+        "genre:parody",
         "genre:utopian"
       ],
       "produced_video_tags": [
@@ -428,14 +431,16 @@
         "audio:has-audio",
         "format:retweet",
         "genre:advertisement",
+        "genre:parody",
         "genre:utopian",
         "media:archived",
         "media:described",
         "media:short-video",
         "media:text-overlay",
         "media:video",
+        "parody:pawn-stars",
         "slogan:golden-age",
-        "theme:pop-culture-enforcement",
+        "theme:pop-culture-reference",
         "topic:economy",
         "topic:general",
         "topic:immigration",
@@ -444,6 +449,7 @@
       ],
       "genre_tags": [
         "genre:advertisement",
+        "genre:parody",
         "genre:utopian"
       ],
       "produced_video_tags": [
@@ -674,6 +680,52 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1080x1920; 14.2s; 2.59 MiB; archived; tweet context: RT @MargoMartin47: .@SecMullinDHS arrives to the United States Coast Guard Academy 🇺🇸 https://t.co/vEmKkVoXZy; source URL: https://video.twimg.com/amplify_video/2057124383311740929/vid/avc1/1080x1920/uyaQ3E8saUxtYE3r.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2057124383311740929.mp4; visual observation: USCGA 145th Commencement: dress-uniform cadets saluting, USCGA banner, U.S. flag, Secretary Mullin walking down the line. Already gets military:coast-guard / topic:military / agency:SecMullinDHS via text; visual confirms.. | video; 1080x1920; 14.2s; 2.59 MiB; archived; tweet context: RT @MargoMartin47: .@SecMullinDHS arrives to the United States Coast Guard Academy 🇺🇸 https://t.co/vEmKkVoXZy; source URL: https://video.twimg.com/amplify_video/2057124383311740929/vid/avc1/1080x1920/uyaQ3E8saUxtYE3r.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2057124383311740929.mp4; visual observation: USCGA 145th Commencement: dress-uniform cadets saluting, USCGA banner, U.S. flag, Secretary Mullin walking down the line. Already gets military:coast"
+    },
+    {
+      "tweet_id": "2051304096922255867",
+      "account_handle": "GregoryKBovino",
+      "posted_at": "2026-05-04T14:13:02.000Z",
+      "tweet_url": "https://x.com/GregoryKBovino/status/2051304096922255867",
+      "tweet_text": "May the 4th be with you, El Centro Sector ( Premier).\n https://t.co/YPuQrmAbYi",
+      "media_id": "13_1919022832845197312",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-GregoryKBovino/13_1919022832845197312.mp4",
+      "duration_sec": 68.051,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 704,
+      "retweet_count": 154,
+      "bucket": "produced-video",
+      "priority": 93,
+      "tags": [
+        "genre:parody",
+        "media:archived",
+        "media:described",
+        "media:needs-vision",
+        "media:video",
+        "parody:star-wars",
+        "theme:pop-culture-reference",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "genre_tags": [
+        "genre:parody"
+      ],
+      "produced_video_tags": [
+        "video:produced"
+      ],
+      "missing_steps": [
+        "extract-keyframes",
+        "detect-audio",
+        "assign-produced-video-genre"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": false,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1920x1080; 68.1s; 19.09 MiB; archived; tweet context: May the 4th be with you, El Centro Sector ( Premier). https://t.co/YPuQrmAbYi; source URL: https://video.twimg.com/amplify_video/1919022832845197312/vid/avc1/1920x1080/eRi-nF9bmAdoOCjW.mp4?tag=16; archive URL: https://github.com/vidproject/x/releases/download/media-GregoryKBovino/13_1919022832845197312.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 68.1s; 19.09 MiB; archived; tweet context: May the 4th be with you, El Centro Sector ( Premier). https://t.co/YPuQrmAbYi; source URL: https://video.twimg.com/amplify_video/1919022832845197312/vid/avc1/1920x1080/eRi-nF9bmAdoOCjW.mp4?tag=16; archive URL: https://github.com/vidproject/x/releases/download/media-GregoryKBovino/13_1919022832845197312.mp4; needs OCR, transcript, or frame-level vision before content claims. May the 4th be with you, El Centro Sector ( Premier). https://t.co/YPuQrmAbYi"
     },
     {
       "tweet_id": "2056735360147730868",
@@ -11628,6 +11680,7 @@
         "media:described",
         "media:needs-vision",
         "media:video",
+        "slogan:import-third-world",
         "topic:immigration",
         "video:medium"
       ],
@@ -13557,6 +13610,7 @@
         "media:needs-vision",
         "media:video",
         "slogan:illegal-alien",
+        "slogan:import-third-world",
         "topic:economy",
         "topic:immigration",
         "video:medium"
@@ -25627,43 +25681,6 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 720x1280; 15.5s; 2.62 MiB; archived; tweet context: The eye in the sky! @CBPCommissioner Scott is flying along with @CBPAMO. The Air and Marine Operations team is a very integral part of CBP. They protect our airspace as well as all oceans, rivers, and lakes that border the United States. #CBP #HonorFirst #CBP...; source URL: https://video.twimg.com/ext_tw_video/2050392498380460032/pu/vid/avc1/720x1280/e9NikwOyssuAZDpd.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/7_2050392498380460032.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 720x1280; 15.5s; 2.62 MiB; archived; tweet context: The eye in the sky! @CBPCommissioner Scott is flying along with @CBPAMO. The Air and Marine Operations team is a very integral part of CBP. They protect our airspace as well as all oceans, rivers, and lakes that border the United States. #CBP #HonorFirst #CBP...; source URL: https://video.twimg.com/ext_tw_video/2050392498380460032/pu/vid/avc1/720x1280/e9NikwOyssuAZDpd.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/7_2050392498380460032.mp4; needs OCR, transcript, or frame-level vision b"
-    },
-    {
-      "tweet_id": "2051304096922255867",
-      "account_handle": "GregoryKBovino",
-      "posted_at": "2026-05-04T14:13:02.000Z",
-      "tweet_url": "https://x.com/GregoryKBovino/status/2051304096922255867",
-      "tweet_text": "May the 4th be with you, El Centro Sector ( Premier).\n https://t.co/YPuQrmAbYi",
-      "media_id": "13_1919022832845197312",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-GregoryKBovino/13_1919022832845197312.mp4",
-      "duration_sec": 68.051,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 704,
-      "retweet_count": 154,
-      "bucket": "needs-recognition",
-      "priority": 70,
-      "tags": [
-        "media:archived",
-        "media:described",
-        "media:needs-vision",
-        "media:video",
-        "topic:immigration",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 1920x1080; 68.1s; 19.09 MiB; archived; tweet context: May the 4th be with you, El Centro Sector ( Premier). https://t.co/YPuQrmAbYi; source URL: https://video.twimg.com/amplify_video/1919022832845197312/vid/avc1/1920x1080/eRi-nF9bmAdoOCjW.mp4?tag=16; archive URL: https://github.com/vidproject/x/releases/download/media-GregoryKBovino/13_1919022832845197312.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 68.1s; 19.09 MiB; archived; tweet context: May the 4th be with you, El Centro Sector ( Premier). https://t.co/YPuQrmAbYi; source URL: https://video.twimg.com/amplify_video/1919022832845197312/vid/avc1/1920x1080/eRi-nF9bmAdoOCjW.mp4?tag=16; archive URL: https://github.com/vidproject/x/releases/download/media-GregoryKBovino/13_1919022832845197312.mp4; needs OCR, transcript, or frame-level vision before content claims. May the 4th be with you, El Centro Sector ( Premier). https://t.co/YPuQrmAbYi"
     },
     {
       "tweet_id": "2052070972954378370",
