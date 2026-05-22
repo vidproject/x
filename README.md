@@ -150,6 +150,7 @@ Current sidecars:
 - `data/tags/lexical.parquet`: regex and structural tags from `scripts/tag_lexical.py`.
 - `data/tags/media_vision.parquet`: media descriptions from `scripts/describe_media.py`.
 - `data/tags/keyframes.parquet`: video keyframe metadata and tiny poster thumbnails from `scripts/extract_video_frames.py`.
+- `data/tags/photo_thumbnails.parquet`: tiny downscaled photo thumbnails (under `data/thumbnails/photo/`) from `scripts/extract_photo_thumbnails.py`, so archived photos are locally inspectable for `media:needs-vision` review.
 - `data/tags/image_ocr.parquet`: Tesseract OCR text from archived photos and extracted video keyframes from `scripts/tag_image_ocr.py`.
 - `data/tags/audio_music.parquet`: ffmpeg-only audio stream/music-likelihood tags from `scripts/detect_audio_music.py`.
 - `data/tags/transcripts.parquet`: local, free speech-to-text of archived videos from `scripts/detect_audio_music.py`'s sibling `scripts/transcribe_audio.py` (optional `faster-whisper`; no API keys).
@@ -215,6 +216,9 @@ extension
     scripts.extract_video_frames
       data/tags/keyframes.parquet
       data/thumbnails/video/*.jpg
+    scripts.extract_photo_thumbnails
+      data/tags/photo_thumbnails.parquet
+      data/thumbnails/photo/*.jpg
     scripts.tag_image_ocr
       data/tags/image_ocr.parquet
     scripts.detect_audio_music
@@ -241,6 +245,7 @@ uv run python -m scripts.build_account_categories
 uv run python -m scripts.archive_media
 uv run python -m scripts.describe_media
 uv run python -m scripts.extract_video_frames
+uv run python -m scripts.extract_photo_thumbnails
 uv run python -m scripts.tag_image_ocr
 uv run python -m scripts.detect_audio_music
 uv run --group asr python -m scripts.transcribe_audio

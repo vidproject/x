@@ -361,6 +361,39 @@ def empty_transcript_dataframe() -> pl.DataFrame:
 
 
 # --------------------------------------------------------------------------
+# Photo thumbnail sidecar
+#
+# One row per archived photo. A tiny downscaled JPEG is written under
+# data/thumbnails/photo/ (mirroring the video posters) so the photo can be
+# inspected locally and cheaply — turning the photo needs-vision backlog into
+# something drainable without re-fetching the full release asset each time.
+
+PHOTO_THUMBNAIL_SCHEMA: dict[str, Any] = {
+    "tweet_id": pl.Utf8,
+    "account_handle": pl.Utf8,
+    "media_id": pl.Utf8,
+    "media_sha256": pl.Utf8,
+    "release_asset_url": pl.Utf8,
+    "input_hash": pl.Utf8,
+    "generated_at": pl.Utf8,
+    "extractor_version": pl.Utf8,
+    "thumbnail_path": pl.Utf8,
+    "thumbnail_sha256": pl.Utf8,
+    "thumbnail_width": pl.Int64,
+    "thumbnail_height": pl.Int64,
+    "thumbnail_bytes": pl.Int64,
+    "status": pl.Utf8,
+    "cost_estimate_usd": pl.Float64,
+    "error": pl.Utf8,
+}
+
+
+def empty_photo_thumbnail_dataframe() -> pl.DataFrame:
+    """Return an empty DataFrame with the photo-thumbnail sidecar schema."""
+    return pl.DataFrame(schema=PHOTO_THUMBNAIL_SCHEMA)
+
+
+# --------------------------------------------------------------------------
 # News-mentions sidecar
 #
 # One row per core tweet scanned against a deterministic, local news-corpus

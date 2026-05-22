@@ -127,6 +127,21 @@ jobs:
           args+=(--max-items "$max_items")
           uv run python -m scripts.extract_video_frames "${args[@]}"
 
+      - name: extract photo thumbnails
+        timeout-minutes: 20
+        # Downscales archived photos to tiny committed thumbnails (like the
+        # video posters) so the photo needs-vision backlog becomes locally
+        # inspectable. Capped + cached, so it catches up over runs.
+        run: |
+          args=()
+          max_items="${{ inputs.max_items }}"
+          if [ -z "$max_items" ]; then max_items="160"; fi
+          if [ -n "${{ inputs.handle }}" ]; then
+            args+=(--handle "${{ inputs.handle }}")
+          fi
+          args+=(--max-items "$max_items")
+          uv run python -m scripts.extract_photo_thumbnails "${args[@]}"
+
       - name: OCR archived images and keyframes
         timeout-minutes: 20
         run: |
