@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-icegov-remainder-20260522-20260522T212941Z-6c21a8f6-StudyinStates",
+  "account_handle": "StudyinStates",
+  "captured_at": "2026-05-22T21:30:57.381Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AICEgov%20since%3A2025-11-01%20until%3A2025-12-01",
+  "tweets": [
+    {
+      "tweet_id": "1985384180872855954",
+      "account_handle": "StudyinStates",
+      "account_id": "330369516",
+      "posted_at": "2025-11-03T16:30:50.000Z",
+      "first_captured_at": "2026-05-22T21:30:14.776Z",
+      "last_seen_at": "2026-05-22T21:30:14.776Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/StudyinStates/status/1985384180872855954",
+      "tweet_type": "original",
+      "conversation_id": "1985384180872855954",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "#DSOs: Visit Study in the States to review new fraud resources and learn how to better protect U.S. national security: https://t.co/m0BvwfhoBg",
+      "text_resolved": "#DSOs: Visit Study in the States to review new fraud resources and learn how to better protect U.S. national security: https://studyinthestates.dhs.gov/2025/11/new-initiative-fraud-training-and-resources-for-dsos",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "DSOs"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/m0BvwfhoBg",
+          "expanded": "https://studyinthestates.dhs.gov/2025/11/new-initiative-fraud-training-and-resources-for-dsos",
+          "display": "studyinthestates.dhs.gov/2025/11/new-in…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/m0BvwfhoBg",
+        "vendor_url": "studyinthestates.dhs.gov",
+        "title": "New Initiative: Fraud Training and Resources for DSOs",
+        "description": "To address rising fraud among foreign students and Student and Exchange Visitor Program (SEVP)-certified schools, SEVP created a new Fraud Hub on Study in the States with resources to train school...",
+        "image_url": "https://pbs.twimg.com/card_img/2056955347554758656/yIMK-9Wm?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 21,
+      "retweet_count": 6,
+      "reply_count": 2,
+      "quote_count": 0,
+      "view_count": 51603,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-22T21:30:14.776Z",
+          "likes": 21,
+          "retweets": 6,
+          "replies": 2,
+          "quotes": 0,
+          "views": 51603,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Study in the States",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1276146872424554496/JbhOT2fo_normal.png",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Study in the States provides information for nonimmigrant students about studying opportunities in the United States.",
+        "location": "United States of America",
+        "url": "https://t.co/ChC4VDYmqi",
+        "followers_count": 23523,
+        "friends_count": 192,
+        "statuses_count": 9381,
+        "account_created_at": "2011-07-06T14:28:33.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-icegov-remainder-20260522-20260522T212941Z-6c21a8f6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-ice-remainder-20260522/x-com-search-20260522T212941Z-6c21a8f6.summary.json",
+    "jsonl": ".skim/raw-ice-remainder-20260522/x-com-search-20260522T212941Z-6c21a8f6.jsonl",
+    "source_handle": "ICEgov"
+  }
+}
