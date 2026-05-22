@@ -167,9 +167,6 @@ def describe_media_item(
     original_url = clean_text(str(media.get("original_url") or ""))
     visual_observation = clean_text(str((manual_review or {}).get("visual_observation") or ""))
     tweet_excerpt = clean_text(str((manual_review or {}).get("tweet_text_excerpt") or ""))
-    missing_signal = clean_text(
-        str((manual_review or {}).get("deterministic_signal_missing") or "")
-    )
 
     source_fields = ["media_type", "archive_status"]
     parts = [kind_label(media_type)]
@@ -203,9 +200,6 @@ def describe_media_item(
         source_fields.append("manual_media_review_queue")
     if visual_observation:
         parts.append(f"visual observation: {visual_observation}")
-        source_fields.append("manual_media_review_queue")
-    if missing_signal:
-        parts.append(f"tagging gap: {missing_signal}")
         source_fields.append("manual_media_review_queue")
 
     needs_vision = (
@@ -293,6 +287,14 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
     haystack = text.lower()
     media_form_haystack = without_negated_media_form_claims(haystack)
     is_video = media_type in {"video", "animated_gif"}
+    # Speech / press-conference indicators. When present, this clip is oratory,
+    # not a music video, even if the description mentions incidental music.
+    has_speech_indicator = re_search(
+        r"\b(podium|remarks|speech|address|press\s+conference|press\s+briefing|"
+        r"press\s+gaggle|oval\s+office|rose\s+garden|delivers?\s+remarks|"
+        r"delivered\s+remarks|interview|spoke\s+to\s+reporters)\b",
+        haystack,
+    )
     out: list[str] = []
 
     def add(tag: str) -> None:
@@ -307,7 +309,6 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
     musical_score = (
         r"\b(?:musical|orchestral|cinematic|dramatic|film|movie|trailer)\s+score\b"
     )
-    musical_beat = r"\b(?:backing|driving|dance|rap|musical)\s+beat\b|\bbeat\s+drops?\b"
     if is_video and re_search(
         r"\b(polished|produced|edited|multi-shot|multi shot|rapid[- ]cut|b-roll|screencast|"
         r"recruitment|psa|public service announcement|commercial|cinematic|trailer[- ]style|"
@@ -322,14 +323,21 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
         media_form_haystack,
     ):
         add("media:montage")
-    if is_video and re_search(
-        r"\bmusic\s+video\b|\bset to music\b|\bmusic track\b|"
-        r"\b(?:song|ballad)\s+(?:by|about|for)\b|"
-        r"\bsoundtrack\b|\bbackground music\b|\bmusic bed\b|\bneedle drop\b|"
-        + musical_score
-        + "|"
-        + musical_beat,
-        media_form_haystack,
+    # media:/genre:music-video requires STRONG, explicit music-video evidence.
+    # Generic / metaphorical music wording ("background music", "soundtrack",
+    # "musical score", "beat drops", "the soundtrack of America") is NOT enough
+    # and is intentionally excluded — it over-tagged speeches and incidental
+    # mentions. Speech / press-conference clips never get music-video.
+    if (
+        is_video
+        and not has_speech_indicator
+        and re_search(
+            r"\b(?:official\s+)?music\s+video\b"
+            r"|\bset\s+to\s+(?:music|the\s+song|the\s+track)\b"
+            r"|\bofficial\s+(?:video|audio)\s+for\b"
+            r"|\b(?:lyric|lyrics)\s+video\b",
+            media_form_haystack,
+        )
     ):
         add("media:music-video")
         add("genre:music-video")

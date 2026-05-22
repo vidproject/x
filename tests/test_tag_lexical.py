@@ -694,6 +694,73 @@ def test_contextual_musical_score_still_marks_music_video() -> None:
     assert "video:produced" in tags
 
 
+def test_background_music_wording_is_not_music_video() -> None:
+    for text in (
+        "Background music plays during his remarks.",
+        "This captures the soundtrack of America.",
+        "A dramatic orchestral score underscores the moment.",
+        "The anthem plays as the flag is raised.",
+    ):
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=1,
+            account_category="public",
+            video_count=1,
+        )
+        tags = _tags(out)
+        assert "genre:music-video" not in tags, text
+        assert "media:music-video" not in tags, text
+
+
+def test_speech_clip_never_becomes_music_video() -> None:
+    out = tag_text(
+        "The Vice President delivers remarks at a press conference. "
+        "Set to music for the highlight reel.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        video_count=1,
+    )
+    tags = _tags(out)
+    assert "video:speech" in tags
+    assert "genre:music-video" not in tags
+
+
+def test_explicit_music_video_phrasing_still_marks_genre() -> None:
+    out = tag_text(
+        "Official music video for the new campaign anthem.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="public",
+        video_count=1,
+    )
+    assert "genre:music-video" in _tags(out)
+
+
+def test_imported_audio_music_likely_does_not_derive_music_video() -> None:
+    # An audio:music-likely tag from the audio sidecar must NEVER be upgraded
+    # into media:/genre:music-video by the lexical tagger.
+    out = tag_text(
+        "Watch this update.",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="public",
+        video_count=1,
+        media_tags=[
+            {"tag": "audio:music-likely", "tentative": True, "source": "audio-heuristic"}
+        ],
+    )
+    tags = _tags(out)
+    assert "audio:music-likely" in tags
+    assert "genre:music-video" not in tags
+    assert "media:music-video" not in tags
+
+
 def test_song_deadline_copy_is_audio_cue_not_music_video_genre() -> None:
     out = tag_text(
         "If you're here illegally, you have until the end of this song to go.",
@@ -921,6 +988,25 @@ def test_laudatory_topic_matches_accomplishment_posts() -> None:
         account_category="core",
     )
     assert "topic:laudatory" in _tags(out)
+
+
+def test_laudatory_topic_ignores_incidental_booster_words() -> None:
+    # Bare booster words must not trip topic:laudatory; it is reserved for a
+    # general listing/touting of administration accomplishments.
+    for text in (
+        "Enjoy Massie winning tonight",
+        "COVID-19 vaccine was developed and delivered",
+        "Secretary Rubio delivering remarks at the podium",
+        "Welcomes the astronauts after their historic flight",
+    ):
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="core",
+        )
+        assert "topic:laudatory" not in _tags(out), text
 
 
 def test_general_topic_matches_multi_problem_posts() -> None:

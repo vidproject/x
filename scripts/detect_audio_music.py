@@ -55,6 +55,16 @@ DETECTOR_VERSION = "ffmpeg-audio-heuristic-v1"
 DEFAULT_SAMPLE_SECONDS = 45.0
 DEFAULT_SAMPLE_RATE = 16_000
 DEFAULT_MUSIC_THRESHOLD = 0.88
+# ``audio:music-likely`` is only emitted when music clearly dominates speech.
+# The continuous/low-variance audio that earns a high music_score also
+# describes sustained oratory (speeches, press conferences), which is why the
+# raw music_score alone over-tags. These two gates require speech_score to sit
+# below a cap AND music_score to lead speech_score by a margin. They were tuned
+# offline against data/tags/audio_music.parquet: every historical false
+# positive sat at speech_score in [0.65, 0.82], while a genuinely
+# music-dominated clip sat near speech_score 0.52, leaving a clean gap at 0.62.
+DEFAULT_SPEECH_SCORE_CAP = 0.62
+DEFAULT_MUSIC_SPEECH_MARGIN = 0.12
 HTTP_TIMEOUT_SECS = 60.0
 MAX_VIDEO_BYTES = 600 * 1024 * 1024
 CACHEABLE_STATUSES = {"ok", "no-audio-stream", "silent-audio", "too-short"}
@@ -257,12 +267,19 @@ def analyze_pcm(
     *,
     sample_rate: int,
     music_threshold: float = DEFAULT_MUSIC_THRESHOLD,
+    speech_score_cap: float = DEFAULT_SPEECH_SCORE_CAP,
+    music_speech_margin: float = DEFAULT_MUSIC_SPEECH_MARGIN,
 ) -> AudioResult:
     sample_count = len(pcm) // 2
     if sample_count <= sample_rate:
         result = AudioResult(status="too-short", sample_rate=sample_rate)
         result.sample_duration_sec = sample_count / sample_rate if sample_rate else 0.0
-        result.tags = tags_for_result(result, music_threshold=music_threshold)
+        result.tags = tags_for_result(
+            result,
+            music_threshold=music_threshold,
+            speech_score_cap=speech_score_cap,
+            music_speech_margin=music_speech_margin,
+        )
         result.features = {"sample_count": sample_count}
         return result
 
@@ -284,7 +301,12 @@ def analyze_pcm(
     if not rms_values:
         result = AudioResult(status="too-short", sample_rate=sample_rate)
         result.sample_duration_sec = sample_count / sample_rate if sample_rate else 0.0
-        result.tags = tags_for_result(result, music_threshold=music_threshold)
+        result.tags = tags_for_result(
+            result,
+            music_threshold=music_threshold,
+            speech_score_cap=speech_score_cap,
+            music_speech_margin=music_speech_margin,
+        )
         result.features = {"sample_count": sample_count}
         return result
 
@@ -330,9 +352,16 @@ def analyze_pcm(
             "level": level,
             "duration_bonus": duration_bonus,
             "music_threshold": music_threshold,
+            "speech_score_cap": speech_score_cap,
+            "music_speech_margin": music_speech_margin,
         },
     )
-    result.tags = tags_for_result(result, music_threshold=music_threshold)
+    result.tags = tags_for_result(
+        result,
+        music_threshold=music_threshold,
+        speech_score_cap=speech_score_cap,
+        music_speech_margin=music_speech_margin,
+    )
     return result
 
 
@@ -362,6 +391,8 @@ def tags_for_result(
     result: AudioResult,
     *,
     music_threshold: float = DEFAULT_MUSIC_THRESHOLD,
+    speech_score_cap: float = DEFAULT_SPEECH_SCORE_CAP,
+    music_speech_margin: float = DEFAULT_MUSIC_SPEECH_MARGIN,
 ) -> list[dict[str, Any]]:
     tags: list[dict[str, Any]] = []
     if result.status == "no-audio-stream":
@@ -371,7 +402,9 @@ def tags_for_result(
         tags.append(tag_entry("audio:has-audio"))
     if result.status == "silent-audio":
         tags.append(tag_entry("audio:silent"))
-    likely_music = (
+    # Base acoustic gate: enough continuous, mid-band, non-silent audio to be
+    # worth a reviewer's attention at all.
+    base_gate = (
         result.status == "ok"
         and result.music_score >= music_threshold
         and result.sample_duration_sec >= 12.0
@@ -379,7 +412,16 @@ def tags_for_result(
         and result.rms_mean >= 0.012
         and 0.015 <= result.zero_crossing_rate <= 0.22
     )
-    if likely_music:
+    # Speech-dominance gate: music must clearly lead speech. Sustained oratory
+    # scores high on the music heuristic (continuous, low variance), so without
+    # this a speech/press-conference clip is mislabelled music. Requiring a low
+    # speech_score AND a music>speech margin keeps the tag for clips where music
+    # genuinely dominates while excluding speech-like audio.
+    music_dominates_speech = (
+        result.speech_score <= speech_score_cap
+        and (result.music_score - result.speech_score) >= music_speech_margin
+    )
+    if base_gate and music_dominates_speech:
         tags.append(tag_entry("audio:music-likely", tentative=True))
     return tags
 
@@ -408,6 +450,8 @@ def analyze_candidate(
     sample_seconds: float,
     sample_rate: int,
     music_threshold: float,
+    speech_score_cap: float = DEFAULT_SPEECH_SCORE_CAP,
+    music_speech_margin: float = DEFAULT_MUSIC_SPEECH_MARGIN,
 ) -> AudioResult:
     if not ffmpeg_available():
         return AudioResult(
@@ -441,7 +485,12 @@ def analyze_candidate(
                 audio_duration_sec=cand.declared_duration_sec,
                 audio_stream_count=0,
             )
-            result.tags = tags_for_result(result, music_threshold=music_threshold)
+            result.tags = tags_for_result(
+                result,
+                music_threshold=music_threshold,
+                speech_score_cap=speech_score_cap,
+                music_speech_margin=music_speech_margin,
+            )
             result.features = {"probe_streams": 0}
             return result_with_probe_metadata(result, probe)
         try:
@@ -455,7 +504,13 @@ def analyze_candidate(
                 AudioResult(status="ffmpeg-failed", error=str(e)),
                 probe,
             )
-        result = analyze_pcm(pcm, sample_rate=sample_rate, music_threshold=music_threshold)
+        result = analyze_pcm(
+            pcm,
+            sample_rate=sample_rate,
+            music_threshold=music_threshold,
+            speech_score_cap=speech_score_cap,
+            music_speech_margin=music_speech_margin,
+        )
         return result_with_probe_metadata(result, probe)
     finally:
         with contextlib.suppress(OSError):
@@ -506,6 +561,12 @@ def write_parquet(rows: list[dict[str, Any]], path: Path) -> None:
     os.replace(tmp, path)
 
 
+def _layer_without_timestamp(layer: Any) -> dict[str, Any]:
+    if not isinstance(layer, dict):
+        return {}
+    return {k: v for k, v in layer.items() if k != "generated_at"}
+
+
 def update_manifest(rows: list[dict[str, Any]], stats: dict[str, int], generated_at: str) -> None:
     TAGS_DIR.mkdir(parents=True, exist_ok=True)
     manifest: dict[str, Any] = {}
@@ -520,7 +581,7 @@ def update_manifest(rows: list[dict[str, Any]], stats: dict[str, int], generated
         for entry in row.get("tags") or []:
             if isinstance(entry, dict) and entry.get("tag"):
                 tag_counts[str(entry["tag"])] += 1
-    layers["audio_music"] = {
+    new_layer = {
         "generated_at": generated_at,
         "detector": DETECTOR,
         "detector_version": DETECTOR_VERSION,
@@ -530,6 +591,18 @@ def update_manifest(rows: list[dict[str, Any]], stats: dict[str, int], generated
         "tag_frequency": dict(sorted(tag_counts.items(), key=lambda kv: (-kv[1], kv[0]))),
         **stats,
     }
+    # Keep the committed manifest deterministic: when nothing but the timestamp
+    # would change, preserve the prior generated_at and skip the rewrite so a
+    # no-op run does not churn the artifact (which would force a needless Pages
+    # re-deploy on every pipeline run).
+    prev_layer = layers.get("audio_music")
+    if _layer_without_timestamp(prev_layer) == _layer_without_timestamp(new_layer):
+        prev_ts = prev_layer.get("generated_at") if isinstance(prev_layer, dict) else None
+        if prev_ts:
+            new_layer["generated_at"] = str(prev_ts)
+        if layers.get("audio_music") == new_layer:
+            return
+    layers["audio_music"] = new_layer
     manifest["layers"] = layers
     tmp = MANIFEST_PATH.with_suffix(".tmp.json")
     tmp.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -551,6 +624,8 @@ def run(
     sample_seconds: float = DEFAULT_SAMPLE_SECONDS,
     sample_rate: int = DEFAULT_SAMPLE_RATE,
     music_threshold: float = DEFAULT_MUSIC_THRESHOLD,
+    speech_score_cap: float = DEFAULT_SPEECH_SCORE_CAP,
+    music_speech_margin: float = DEFAULT_MUSIC_SPEECH_MARGIN,
     out_path: Path | None = None,
     analyzer: Callable[[AudioCandidate], AudioResult] | None = None,
 ) -> dict[str, int]:
@@ -579,6 +654,8 @@ def run(
                 sample_seconds=sample_seconds,
                 sample_rate=sample_rate,
                 music_threshold=music_threshold,
+                speech_score_cap=speech_score_cap,
+                music_speech_margin=music_speech_margin,
             )
 
         runner = _real_analyzer
@@ -661,6 +738,25 @@ def main(argv: list[str] | None = None) -> int:
         default=DEFAULT_MUSIC_THRESHOLD,
         help=f"Score threshold for audio:music-likely (default {DEFAULT_MUSIC_THRESHOLD}).",
     )
+    parser.add_argument(
+        "--speech-score-cap",
+        type=float,
+        default=DEFAULT_SPEECH_SCORE_CAP,
+        help=(
+            "Maximum speech_score allowed for audio:music-likely "
+            f"(default {DEFAULT_SPEECH_SCORE_CAP}). Speeches score high on the "
+            "music heuristic; this caps them out."
+        ),
+    )
+    parser.add_argument(
+        "--music-speech-margin",
+        type=float,
+        default=DEFAULT_MUSIC_SPEECH_MARGIN,
+        help=(
+            "Minimum (music_score - speech_score) margin required for "
+            f"audio:music-likely (default {DEFAULT_MUSIC_SPEECH_MARGIN})."
+        ),
+    )
     args = parser.parse_args(argv)
 
     parquets = discover_canonical_parquets()
@@ -674,6 +770,8 @@ def main(argv: list[str] | None = None) -> int:
         dry_run=args.dry_run,
         sample_seconds=args.sample_seconds,
         music_threshold=args.music_threshold,
+        speech_score_cap=args.speech_score_cap,
+        music_speech_margin=args.music_speech_margin,
     )
     LOG.info("audio music detection complete", **stats)
     return 0

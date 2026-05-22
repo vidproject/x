@@ -184,15 +184,40 @@ def test_negated_music_video_note_does_not_become_music_video() -> None:
     assert "genre:music-video" not in tags
 
 
-def test_musical_score_context_still_marks_music_video() -> None:
+def test_musical_score_context_is_not_music_video() -> None:
+    # "musical score" / "background music" are incidental/metaphorical music
+    # wording. They mark the clip as produced but must NOT make it a music video.
     tags = derive_description_tags(
         "polished montage with a dramatic musical score and background music",
         media_type="video",
     )
 
     assert "video:produced" in tags
-    assert "media:music-video" in tags
-    assert "genre:music-video" in tags
+    assert "media:music-video" not in tags
+    assert "genre:music-video" not in tags
+
+
+def test_explicit_music_video_phrasing_still_marks_music_video() -> None:
+    for phrase in (
+        "official music video for the new single",
+        "a short clip set to music",
+        "official audio for the campaign anthem",
+    ):
+        tags = derive_description_tags(phrase, media_type="video")
+        assert "media:music-video" in tags, phrase
+        assert "genre:music-video" in tags, phrase
+
+
+def test_speech_clip_with_background_music_is_not_music_video() -> None:
+    tags = derive_description_tags(
+        "the Vice President delivers remarks at a press conference; "
+        "background music plays softly during his remarks",
+        media_type="video",
+    )
+
+    assert "video:speech" in tags
+    assert "media:music-video" not in tags
+    assert "genre:music-video" not in tags
 
 
 def test_input_hash_changes_when_media_evidence_changes() -> None:

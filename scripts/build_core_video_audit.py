@@ -150,6 +150,18 @@ def load_manual_review() -> dict[tuple[str, str], dict[str, Any]]:
     return out
 
 
+SPEECH_INDICATOR_PATTERN = re.compile(
+    r"\b(?:podium|remarks|speech|address|press\s+conference|press\s+briefing|"
+    r"press\s+gaggle|oval\s+office|rose\s+garden|delivers?\s+remarks|"
+    r"delivered\s+remarks|spoke\s+to\s+reporters)\b",
+    re.I,
+)
+
+
+def _has_speech_indicator(haystack: str) -> bool:
+    return SPEECH_INDICATOR_PATTERN.search(haystack) is not None
+
+
 def classify_from_text(text: str) -> set[str]:
     haystack = text.lower()
     tags: set[str] = set()
@@ -180,8 +192,22 @@ def classify_from_text(text: str) -> set[str]:
         tags.add("media:text-overlay")
     if any(word in haystack for word in ("voiceover", "voice-over", "narration", "narrator", "narrated")):
         tags.add("media:voiceover")
-    if any(word in haystack for word in ("music video", "set to music", "music track", "soundtrack", "music bed", "background music", "anthem")):
-        tags.update({"media:music-video", "genre:music-video", "audio:music-likely"})
+    # Only explicit music-video phrasing implies a music video. Incidental
+    # music wording ("soundtrack", "background music", "music bed", "anthem")
+    # is NOT enough and previously over-tagged speeches. Never synthesize
+    # audio:music-likely from text — that tag is an acoustic heuristic owned by
+    # the audio sidecar, not a text classification.
+    if (
+        not _has_speech_indicator(haystack)
+        and re.search(
+            r"\b(?:official\s+)?music\s+video\b"
+            r"|\bset\s+to\s+(?:music|the\s+song|the\s+track)\b"
+            r"|\bofficial\s+(?:video|audio)\s+for\b"
+            r"|\b(?:lyric|lyrics)\s+video\b",
+            haystack,
+        )
+    ):
+        tags.update({"media:music-video", "genre:music-video"})
     if any(word in haystack for word in ("psa", "public service announcement", "did you know", "learn more", "hotline")):
         tags.update({"video:produced", "genre:psa"})
     if any(word in haystack for word in ("join.ice.gov", "recruitment", "apply now", "apply today", "hiring", "career")):
@@ -450,6 +476,40 @@ def write_id_file(path: Path, ids: list[str]) -> None:
             f.write(f"{value}\n")
 
 
+def _payload_without_timestamp(payload: Any) -> dict[str, Any]:
+    if not isinstance(payload, dict):
+        return {}
+    return {k: v for k, v in payload.items() if k != "generated_at"}
+
+
+def write_json_audit(result: dict[str, Any], path: Path) -> bool:
+    """Write the audit JSON deterministically.
+
+    The only volatile field is ``generated_at``. To keep the committed artifact
+    stable across no-op runs (so a pipeline run does not force a Pages re-deploy
+    and re-upload every time), reuse the previous timestamp and skip the write
+    entirely when nothing but the timestamp would change. Returns True if the
+    file was (re)written.
+    """
+    path.parent.mkdir(parents=True, exist_ok=True)
+    existing: Any = None
+    if path.exists():
+        try:
+            existing = read_json(path)
+        except (json.JSONDecodeError, OSError):
+            existing = None
+    if _payload_without_timestamp(existing) == _payload_without_timestamp(result):
+        prev_ts = existing.get("generated_at") if isinstance(existing, dict) else None
+        if prev_ts:
+            result["generated_at"] = str(prev_ts)
+        # Content (including the preserved timestamp) is identical: no churn.
+        return False
+    with path.open("w", encoding="utf-8") as f:
+        json.dump(result, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+    return True
+
+
 def write_archive_recovery_queues(items: list[dict[str, Any]]) -> None:
     recovery = archive_recovery_items(items)
     tweet_ids = sorted({str(item.get("tweet_id") or "") for item in recovery if item.get("tweet_id")})
@@ -464,10 +524,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--csv-out", type=Path, default=CSV_OUT)
     args = parser.parse_args(argv)
     result = build()
-    args.json_out.parent.mkdir(parents=True, exist_ok=True)
-    with args.json_out.open("w", encoding="utf-8") as f:
-        json.dump(result, f, ensure_ascii=False, indent=2)
-        f.write("\n")
+    write_json_audit(result, args.json_out)
     write_csv(result["items"], args.csv_out)
     write_archive_recovery_queues(result["items"])
     LOG.info(

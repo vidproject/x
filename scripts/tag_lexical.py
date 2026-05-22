@@ -610,9 +610,22 @@ MILITARY_MENTION_ALIASES: dict[str, str] = {
     "uscg_tri_state": "coast-guard",
 }
 PATTERN_TOPIC_LAUDATORY = _compile(
-    r"\b(accomplishments?|wins?|success(?:es)?|historic|record[- ]breaking|"
-    r"promises? made[,;:]?\s+promises? kept|delivering|delivered|momentum|"
-    r"golden age|winning)\b"
+    # Laudatory = a general touting of the administration's accomplishments
+    # (a "laundry list" of wins), NOT any single booster word. Bare words like
+    # "historic", "delivering", "winning", "momentum", "success" produced heavy
+    # false positives ("delivering remarks", "Massie winning", "vaccine
+    # delivered", "historic astronauts"), so require explicit accomplishment-
+    # list framing: signature slogans, check-marked bullet lists, or an
+    # accomplishment noun qualified as historic/record/biggest/etc.
+    r"\bpromises?\s+made[,;:.]?\s+promises?\s+kept\b"
+    r"|\bgolden\s+age\s+of\s+america\b"
+    r"|(?:[✅✔☑][^✅✔☑\n]{1,90}){2,}"
+    r"|\bdeliver(?:s|ing|ed)\s+(?:on\s+(?:his|our|its|their|the)\s+promises\b|for\s+(?:the\s+)?american\b)"
+    r"|\b(?:historic|record(?:[- ](?:breaking|setting))?|biggest|greatest|unprecedented|largest)"
+    r"\s+(?:list\s+of\s+)?(?:accomplishments?|achievements?|wins?|victories|progress|results|deals?)\b"
+    r"|\b(?:list|litany|series)\s+of\s+(?:accomplishments?|achievements?|wins?|victories)\b"
+    r"|\b(?:the\s+administration|president|trump)(?:'s)?\s+(?:historic\s+|record\s+)?"
+    r"(?:accomplishments?|achievements?|track\s+record)\b"
 )
 PATTERN_EVENT_PALESTINE = _compile(
     r"\b(?:palestin(?:e|ian)s?|gaza(?:n)?s?|hamas|israel[- ]hamas|"
@@ -811,15 +824,16 @@ PATTERN_VIDEO_INTERVIEW = _compile(
     r"|\b(?:secretary|director|administrator|chief|spokesperson|senator|representative|congressman|congresswoman|press\s+secretary)\s+\w+\s+(?:joins?|joined|spoke|speaks|sat\s+down)\b"
     r"|\b(?:joins?|joined)\s+(?:fox|cnn|msnbc|cbs|abc|nbc|newsmax|oan|cspan|c-span|newsnation|the\s+\w+\s+show)\b"
 )
+# Explicit music-video phrasing ONLY. Generic / metaphorical music wording
+# ("soundtrack", "background music", "musical score", "beat drops", "anthem")
+# is intentionally excluded: it over-tagged speeches and incidental mentions
+# as music videos. "set to music" / "set to the song" stays as it is strong,
+# explicit music-video evidence.
 PATTERN_VIDEO_MUSIC_VIDEO = _compile(
-    r"\bmusic\s+video\b"
+    r"\b(?:official\s+)?music\s+video\b"
     r"|\bset\s+to\s+(?:music|the\s+song|the\s+track)\b"
-    r"|\b(?:🎵|🎶)\b"
-    r"|\b(?:song|anthem|ballad)\s+(?:by|about|for)\b"
-    r"|\b(?:soundtrack|background\s+music|music\s+bed|needle\s+drop)\b"
-    r"|\b(?:musical|orchestral|cinematic|dramatic|film|movie|trailer)\s+score\b"
-    r"|\b(?:backing|driving|dance|rap|musical)\s+beat\b"
-    r"|\bbeat\s+drops?\b"
+    r"|\bofficial\s+(?:video|audio)\s+for\b"
+    r"|\b(?:lyric|lyrics)\s+video\b"
 )
 PATTERN_PRODUCED_VIDEO_STYLE = _compile(
     r"\b(?:polished|produced|edited|cinematic|trailer[- ]style|multi[- ]shot|rapid[- ]cut|"
@@ -1296,8 +1310,14 @@ def tag_text(
     if m := _theme_religion_match(text):
         add("theme:religion", span=m.span())
 
+    # Speech / press-conference clips are oratory, not music videos, even if
+    # the text mentions incidental music. Suppress music-video when a speech
+    # indicator is present.
+    speech_indicator_present = PATTERN_VIDEO_SPEECH.search(text) is not None
     for tag, pat in PRODUCED_VIDEO_GENRE_PATTERNS:
         if tag == "genre:music-video" and video_count <= 0:
+            continue
+        if tag == "genre:music-video" and speech_indicator_present:
             continue
         if m := pat.search(text):
             add(tag, span=m.span())
@@ -1393,7 +1413,13 @@ def tag_text(
                 add("video:medium")
             else:
                 add("video:long")
-        if any(e["tag"] in {"media:music-video", "genre:music-video"} for e in entries):
+        # Derive genre:music-video ONLY from an explicit media:/genre:music-video
+        # signal (set by the conservative describe_media / manual-review rules) —
+        # NEVER from audio:music-likely, which is an incidental acoustic heuristic.
+        # Also suppress it on speech / press-conference clips.
+        if not speech_indicator_present and any(
+            e["tag"] in {"media:music-video", "genre:music-video"} for e in entries
+        ):
             add("genre:music-video")
         if any(
             e["tag"] in PRODUCED_VIDEO_STRUCTURE_TAGS or str(e["tag"]).startswith("genre:")
@@ -2004,6 +2030,15 @@ def write_tag_manifest(stats: dict[str, Any]) -> None:
     layers = manifest.get("layers")
     if not isinstance(layers, dict):
         layers = {}
+    # Reuse the prior layer timestamp when nothing but generated_at would change,
+    # so an unchanged tag run doesn't churn the manifest (and the viewer cache
+    # key derived from it) on every pipeline run.
+    prior_lexical = layers.get("lexical")
+    if isinstance(prior_lexical, dict) and prior_lexical.get("generated_at"):
+        prior_cmp = {k: v for k, v in prior_lexical.items() if k != "generated_at"}
+        new_cmp = {k: v for k, v in stats.items() if k != "generated_at"}
+        if prior_cmp == new_cmp:
+            stats = {**stats, "generated_at": prior_lexical["generated_at"]}
     layers["lexical"] = stats
     manifest = {**stats, "layers": layers}
     tmp = TAGS_DIR / "manifest.tmp.json"
@@ -2034,6 +2069,55 @@ def manifest_tag_frequency(freq: dict[str, int]) -> dict[str, int]:
         key = canonical_manifest_tag(tag)
         merged[key] = merged.get(key, 0) + count
     return dict(sorted(merged.items(), key=lambda kv: (-kv[1], kv[0])))
+
+
+def _lexical_row_signature(row: dict[str, Any]) -> tuple[Any, ...]:
+    """Order-independent fingerprint of a row's tag content (sans tagged_at)."""
+    tags = row.get("tags") or []
+    sig = sorted(
+        (
+            str(t.get("tag") or ""),
+            bool(t.get("tentative")),
+            str(t.get("source") or ""),
+            -1 if t.get("span_start") is None else int(t.get("span_start")),
+            -1 if t.get("span_end") is None else int(t.get("span_end")),
+        )
+        for t in tags
+    )
+    return (str(row.get("tagger_version") or ""), tuple(sig))
+
+
+def load_prior_tagged_at(path: Path) -> dict[str, tuple[tuple[Any, ...], str]]:
+    if not path.exists():
+        return {}
+    try:
+        prior = pl.read_parquet(path)
+    except Exception:
+        return {}
+    out: dict[str, tuple[tuple[Any, ...], str]] = {}
+    for r in prior.iter_rows(named=True):
+        tid = str(r.get("tweet_id") or "")
+        if tid:
+            out[tid] = (_lexical_row_signature(r), str(r.get("tagged_at") or ""))
+    return out
+
+
+def stabilize_tagged_at(
+    rows: list[dict[str, Any]], prior: dict[str, tuple[tuple[Any, ...], str]]
+) -> None:
+    """Reuse the prior ``tagged_at`` for any row whose tag content is unchanged.
+
+    The tagger reruns on every ingest and every archive-media run. Stamping a
+    fresh ``tagged_at`` on all ~16k rows each time rewrote lexical.parquet on
+    every run, which forced a data/ commit and a full GitHub Pages redeploy
+    even when no tag actually changed. Keying the timestamp to tag content
+    keeps the sidecar byte-stable across no-op runs.
+    """
+    for row in rows:
+        tid = str(row.get("tweet_id") or "")
+        prev = prior.get(tid)
+        if prev and prev[1] and prev[0] == _lexical_row_signature(row):
+            row["tagged_at"] = prev[1]
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -2101,13 +2185,29 @@ def main(argv: list[str] | None = None) -> int:
         per_file[path.name] = len(rows)
         LOG.info("tagged parquet", file=path.name, rows=len(rows))
 
+    TAGS_DIR.mkdir(parents=True, exist_ok=True)
+    out_path = TAGS_DIR / "lexical.parquet"
+    # Deterministic within-row tag order: tags are assembled from sets/dicts and
+    # several sidecar overlays, so their order varied run-to-run and rewrote the
+    # sidecar (and triggered a Pages redeploy) even when the tag set was
+    # identical. Sorting on stable fields makes the parquet byte-stable.
+    for row in all_rows:
+        row["tags"] = sorted(
+            row["tags"] or [],
+            key=lambda t: (
+                str(t.get("tag") or ""),
+                str(t.get("source") or ""),
+                -1 if t.get("span_start") is None else int(t.get("span_start")),
+                -1 if t.get("span_end") is None else int(t.get("span_end")),
+                bool(t.get("tentative")),
+            ),
+        )
+    stabilize_tagged_at(all_rows, load_prior_tagged_at(out_path))
     df = (
         pl.DataFrame(all_rows, schema=LEXICAL_TAG_SCHEMA)
         if all_rows
         else empty_lexical_tag_dataframe()
     )
-    TAGS_DIR.mkdir(parents=True, exist_ok=True)
-    out_path = TAGS_DIR / "lexical.parquet"
     atomic_write_parquet(df, out_path)
 
     # Tag-frequency stats for the manifest — useful for spot-checking

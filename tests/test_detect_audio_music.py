@@ -123,6 +123,98 @@ def test_no_audio_stream_gets_no_audio_tag() -> None:
     assert [entry["tag"] for entry in result.tags] == ["audio:no-audio"]
 
 
+def _speechlike_result() -> AudioResult:
+    # Sustained oratory: continuous, non-silent, high RMS, mid-band ZCR. It
+    # scores high on the music heuristic but speech_score is nearly as high.
+    # This mirrors the JD Vance reference clip (music ~0.87, speech ~0.75).
+    return AudioResult(
+        status="ok",
+        sample_duration_sec=45.0,
+        music_score=0.91,
+        speech_score=0.75,
+        non_silent_ratio=0.98,
+        zero_crossing_rate=0.09,
+        rms_mean=0.12,
+    )
+
+
+def _music_dominant_result() -> AudioResult:
+    # Genuinely music-dominated: high music_score, low speech_score.
+    return AudioResult(
+        status="ok",
+        sample_duration_sec=45.0,
+        music_score=0.91,
+        speech_score=0.50,
+        non_silent_ratio=0.99,
+        zero_crossing_rate=0.07,
+        rms_mean=0.04,
+    )
+
+
+def test_speech_like_vector_is_not_music_likely() -> None:
+    result = _speechlike_result()
+    tags = {entry["tag"] for entry in detect_audio_music.tags_for_result(result)}
+    assert "audio:has-audio" in tags
+    assert "audio:music-likely" not in tags
+
+
+def test_music_dominant_vector_is_music_likely() -> None:
+    result = _music_dominant_result()
+    tags = {entry["tag"] for entry in detect_audio_music.tags_for_result(result)}
+    assert "audio:music-likely" in tags
+
+
+def test_jd_vance_reference_scores_are_not_music_likely() -> None:
+    # The actual reference false positive: music_score below threshold AND a
+    # speech_score that the dominance gate caps out either way.
+    result = AudioResult(
+        status="ok",
+        sample_duration_sec=45.0,
+        music_score=0.874,
+        speech_score=0.747,
+        non_silent_ratio=0.989,
+        zero_crossing_rate=0.097,
+        rms_mean=0.120,
+    )
+    tags = {entry["tag"] for entry in detect_audio_music.tags_for_result(result)}
+    assert "audio:music-likely" not in tags
+    # Even if a future score formula nudged music_score above threshold, the
+    # speech-dominance gate must still block this speech-like clip.
+    bumped = AudioResult(
+        status="ok",
+        sample_duration_sec=45.0,
+        music_score=0.92,
+        speech_score=0.747,
+        non_silent_ratio=0.989,
+        zero_crossing_rate=0.097,
+        rms_mean=0.120,
+    )
+    bumped_tags = {entry["tag"] for entry in detect_audio_music.tags_for_result(bumped)}
+    assert "audio:music-likely" not in bumped_tags
+
+
+def test_music_threshold_and_gate_are_configurable() -> None:
+    # The margin gate can be relaxed to admit a borderline clip when explicitly
+    # configured, keeping behaviour tunable.
+    result = AudioResult(
+        status="ok",
+        sample_duration_sec=45.0,
+        music_score=0.90,
+        speech_score=0.61,
+        non_silent_ratio=0.98,
+        zero_crossing_rate=0.07,
+        rms_mean=0.04,
+    )
+    strict = {e["tag"] for e in detect_audio_music.tags_for_result(result)}
+    assert "audio:music-likely" in strict  # margin 0.29 >= default 0.12
+
+    capped_out = {
+        e["tag"]
+        for e in detect_audio_music.tags_for_result(result, speech_score_cap=0.50)
+    }
+    assert "audio:music-likely" not in capped_out  # speech 0.61 > cap 0.50
+
+
 def test_is_cache_hit_uses_cacheable_status_and_version() -> None:
     assert is_cache_hit({"detector_version": DETECTOR_VERSION, "status": "ok"}, DETECTOR_VERSION)
     assert is_cache_hit(

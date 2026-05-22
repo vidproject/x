@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-20T22:28:23Z",
+  "generated_at": "2026-05-22T00:00:00Z",
   "reviewer": "claude-inspect-archived-media",
-  "notes": "Items where direct inspection of archived media surfaced visual signal that the Layer-1 lexical tagger and the Layer-3m metadata sidecar cannot represent today. These are queued for a later OCR (Layer 3b), CLIP (Layer 3a), audio-transcript (Layer 3c), or vision-LLM (Layer 4) pass to turn into deterministic tags. The queue is additive: nothing here mutates the canonical parquets or the existing tag sidecars.",
+  "notes": "Items where direct inspection of archived media surfaced visual signal that the Layer-1 lexical tagger and the Layer-3m metadata sidecar cannot represent today. These are queued for a later OCR (Layer 3b), CLIP (Layer 3a), audio-transcript (Layer 3c), or vision-LLM (Layer 4) pass to turn into deterministic tags. The queue is additive: nothing here mutates the canonical parquets or the existing tag sidecars. | 2026-05 batch: 31 audio:music-likely false positives (federal speeches/interviews/PSAs) reviewed by direct keyframe+text triage; music-likely removed deterministically (speech-dominance gate) and spoken-word form tags added.",
   "items": [
     {
       "tweet_id": "2054970795403952144",
@@ -240,6 +240,471 @@
         "subject:official"
       ],
       "deterministic_signal_missing": "Per the rules, no speaker:* without name in tweet text / alt text / caption / nearby metadata; tweet body is 'MAKE AMERICA GREAT AGAIN!!!' only. Hold for manual review or wait until a face-detection layer with a named-individuals gazetteer ships."
+    },
+    {
+      "tweet_id": "2049939173973307740",
+      "account_handle": "WhiteHouse",
+      "media_id": "13_2049938527731748864",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2049938527731748864.mp4",
+      "tweet_text_excerpt": "PROMISES MADE, PROMISES KEPT.\n\nPresident Trump signs an executive order that grants Americans access to retirement accounts that federal employees use, opening the door for great retirement account pl",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera statement clip featuring Trump Administration.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2053874853002789053",
+      "account_handle": "Sonderling47",
+      "media_id": "13_2053874796891344896",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2053874796891344896.mp4",
+      "tweet_text_excerpt": "It was great to be with @POTUS today as he highlighted @USDOL’s new rule to create a fertility benefit option for American workers: “It’s a big deal!”\n\nThe Trump Administration remains committed to su",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera spoken-word clip (remarks/statement) featuring POTUS.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2054737901208863204",
+      "account_handle": "RapidResponse47",
+      "media_id": "13_2054736588668592128",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054736588668592128.mp4",
+      "tweet_text_excerpt": ".@SecRubio: \"They were going to have so many drones and missiles that no one could attack Iran because the result would be catastrophic for the region — and once they had that immunity, then they woul",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera spoken-word clip (remarks/statement) featuring Secretary Rubio.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2055137099406287135",
+      "account_handle": "RapidResponse47",
+      "media_id": "13_2055136774502916096",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2055136774502916096.mp4",
+      "tweet_text_excerpt": ".@POTUS meets with President Xi in Zhongnanhai: \"I want to thank you very much. This has been an incredible visit. I think a lot of good has come of it. We've made some fantastic trade deals—great for",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera statement at a press event featuring POTUS.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2055451479234781407",
+      "account_handle": "WhiteHouse",
+      "media_id": "13_2055449486906793984",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2055449486906793984.mp4",
+      "tweet_text_excerpt": "President Donald J. Trump sits down for a wide ranging interview on his historic trip to China with @SpecialReport. 🇺🇸\n\nWatch the key moments in under two minutes. https://t.co/fjYzSSFKsI",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera sit-down interview featuring Trump.",
+      "candidate_visual_tags": [
+        "video:interview"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2056400018035089910",
+      "account_handle": "RapidResponse47",
+      "media_id": "13_2056398114387279872",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2056398114387279872.mp4",
+      "tweet_text_excerpt": ".@SecretaryBurgum at the Pikka development on the North Slope, says Alaska will play \"a huge role going forward in the major shift in the geopolitics of energy.\"\n\n\"It is 8 days from Anchorage to Tokyo",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera spoken-word clip (remarks/statement) featuring Secretary Burgum.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2056744160531820629",
+      "account_handle": "RapidResponse47",
+      "media_id": "13_2056743687275659264",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2056743687275659264.mp4",
+      "tweet_text_excerpt": ".@POTUS on the site of the East Wing modernization project: \"It will be something very special... there will never be another building like this built.\" https://t.co/0vAJRGfTeH",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera spoken-word clip (remarks/statement) featuring POTUS.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "1541216804152004608",
+      "account_handle": "CBP",
+      "media_id": "13_1541216743858868224",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-CBP/13_1541216743858868224.mp4",
+      "tweet_text_excerpt": "#ICYMI - Learn how CBP will implement the Uyghur Forced Labor Prevention Act #UFLPA ⬇️ https://t.co/wgFSBD4PJO",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera statement clip featuring CBP.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "1904702427858641191",
+      "account_handle": "DHSgov",
+      "media_id": "13_1904702342982758400",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_1904702342982758400.mp4",
+      "tweet_text_excerpt": "We just wrapped up a weeklong enforcement operation where @ICEgov arrested 370 illegal aliens in Massachusetts. 205 of those arrested had significant criminal convictions or charges.\n\nDoes Boston’s Ma",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera statement clip featuring ICE/DHS.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "1914710866592772398",
+      "account_handle": "USCIS",
+      "media_id": "13_1914710796644339712",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCIS/13_1914710796644339712.mp4",
+      "tweet_text_excerpt": "Need to learn more about the Alien Registration Requirement? To find out if you are already registered, if you need to register, and the requirements and steps for registration, visit: http://uscis.go",
+      "visual_observation": "Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS.",
+      "candidate_visual_tags": [
+        "genre:psa"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "1920871469078192365",
+      "account_handle": "USCIS",
+      "media_id": "13_1920871391794024448",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCIS/13_1920871391794024448.mp4",
+      "tweet_text_excerpt": "Not sure if you need to register under the Alien Registration Requirement? \nFind that answer and more, here: http://uscis.gov/alienregistration https://t.co/Uqaycvibtn",
+      "visual_observation": "Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS.",
+      "candidate_visual_tags": [
+        "genre:psa"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "1922622975762710741",
+      "account_handle": "USCIS",
+      "media_id": "13_1922622933060497408",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCIS/13_1922622933060497408.mp4",
+      "tweet_text_excerpt": "Do you need to register with the U.S. government as an alien? Do it now!\nVisit http://uscis.gov/alienregistration to learn more. https://t.co/ofCJDPEGvH",
+      "visual_observation": "Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS.",
+      "candidate_visual_tags": [
+        "genre:psa"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "1969163310869205404",
+      "account_handle": "WhiteHouse",
+      "media_id": "13_1969161482400038913",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_1969161482400038913.mp4",
+      "tweet_text_excerpt": "President Trump signs an Executive Order to open new pathways for extraordinary people who are committed to supporting the United States to come and contribute to America through expedited immigration",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera statement clip featuring Trump/White House.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2036081789374964190",
+      "account_handle": "RapidResponse47",
+      "media_id": "13_2036081299077885952",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2036081299077885952.mp4",
+      "tweet_text_excerpt": ".@POTUS on the Democrat shutdown of @DHSgov: This is all caused by the Democrats. Just so you know, all of this money was approved. Everything was approved. The Democrats want to have drug dealers, mu",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera spoken-word clip (remarks/statement) featuring Trump/POTUS.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2038432141030138086",
+      "account_handle": "RapidResponse47",
+      "media_id": "13_2038431856215883776",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2038431856215883776.mp4",
+      "tweet_text_excerpt": ".@POTUS: \"@ICEgov is vital to the wellbeing of our country.\" https://t.co/P53RxaSrfs",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera spoken-word clip (remarks/statement) featuring Trump/POTUS.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2054733019013861734",
+      "account_handle": "RapidResponse47",
+      "media_id": "13_2054732313095770112",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054732313095770112.mp4",
+      "tweet_text_excerpt": ".@SecRubio on President Trump's state visit to China: \"It's both our top political challenge geopolitically — and it's also the most important relationship for us to manage.\" https://t.co/Rr4d3ZDmQJ",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera sit-down interview featuring Secretary Rubio.",
+      "candidate_visual_tags": [
+        "video:interview"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2055670467407536298",
+      "account_handle": "JDVance",
+      "media_id": "13_2055670379297812480",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2055670379297812480.mp4",
+      "tweet_text_excerpt": "The good people of Maine are fired up and ready to stop the fraudsters. Great event with my friend @MainePaulLePage. https://t.co/mm2dx6EWGm",
+      "visual_observation": "Direct keyframe + tweet-text review: on-camera remarks at a campaign event featuring JD Vance.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2056414912960704845",
+      "account_handle": "VP",
+      "media_id": "13_2056414675831537664",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2056414675831537664.mp4",
+      "tweet_text_excerpt": "Last week, Vice President Vance honored fallen officers at the Peace Officer Memorial Service:\n\n\"God bless the fallen and may he continue to bless the great United States of America.\" https://t.co/OhS",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera spoken-word clip (remarks/statement) featuring VP Vance.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2056745936328478780",
+      "account_handle": "MargoMartin47",
+      "media_id": "13_2056745815859712000",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2056745815859712000.mp4",
+      "tweet_text_excerpt": "President @realDonaldTrump gives the press a look into the White House ballroom construction 🇺🇸\n\n“This is all my money and donors money. This is tax free.” https://t.co/ooGvYYfoND",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera statement clip featuring Trump.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "1802777067127185595",
+      "account_handle": "DHSgov",
+      "media_id": "13_1802776981760565249",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_1802776981760565249.mp4",
+      "tweet_text_excerpt": "DHS recognized 12 years of Deferred Action for Childhood Arrivals (DACA). Established by President Obama in 2012, DACA has given young people the ability to contribute to their communities, our econom",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera statement clip featuring DHS (Department of Homeland Security).",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "1869820814423388558",
+      "account_handle": "DHSgov",
+      "media_id": "13_1869820748937719808",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_1869820748937719808.mp4",
+      "tweet_text_excerpt": "Since its launch in 2011, @TSA Pre✅ has transformed the travel experience, making airport security faster and more efficient for the traveling public and #TSAWorkforce alike. With shorter lines and le",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera spoken-word clip (remarks/statement) featuring TSA (Transportation Security Administration).",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "1906117628378440072",
+      "account_handle": "DHSgov",
+      "media_id": "7_1906117097756696576",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/7_1906117097756696576.mp4",
+      "tweet_text_excerpt": "This past week, @Sec_Noem met with the leaders of El Salvador, Colombia, and Mexico. This trip underscored the importance of our partner countries to help remove violent criminal illegal aliens from t",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera statement clip featuring Secretary Noem.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "1913200923549041096",
+      "account_handle": "USCIS",
+      "media_id": "13_1913200847036534784",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCIS/13_1913200847036534784.mp4",
+      "tweet_text_excerpt": "Not sure if you need to register under the Alien Registration Requirement?  Find that answer and more, here http://www.uscis.gov/alienregistration https://t.co/v8XswpNMNa",
+      "visual_observation": "Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS (U.S. Citizenship and Immigration Services).",
+      "candidate_visual_tags": [
+        "genre:psa"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "1915012834703888734",
+      "account_handle": "USCIS",
+      "media_id": "13_1915012784565125120",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCIS/13_1915012784565125120.mp4",
+      "tweet_text_excerpt": "Do you need to register with the U.S. government as an alien? Do it now!\nVisit http://uscis.gov/alienregistration to learn more. https://t.co/dmtsy6HCS8",
+      "visual_observation": "Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS (U.S. Citizenship and Immigration Services).",
+      "candidate_visual_tags": [
+        "genre:psa"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "1921898228913414344",
+      "account_handle": "USCIS",
+      "media_id": "13_1921898154691051520",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCIS/13_1921898154691051520.mp4",
+      "tweet_text_excerpt": "You MUST register under the Alien Registration Requirement if you: \noAre 14 or older;\n- Were not registered and fingerprinted when you applied for a U.S. visa; and\n- Stay in the U.S, for 30 days or lo",
+      "visual_observation": "Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS (U.S. Citizenship and Immigration Services).",
+      "candidate_visual_tags": [
+        "genre:psa"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2036082280037515279",
+      "account_handle": "WhiteHouse",
+      "media_id": "13_2036080088748544000",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2036080088748544000.mp4",
+      "tweet_text_excerpt": "Preventable tragedies. Lives that should still be here.\n\nAngel families speak out—calling for the deportation of criminal illegal aliens and thanking President Trump for fighting to protect Americans.",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera sit-down interview featuring Angel families.",
+      "candidate_visual_tags": [
+        "video:interview"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2038435020369498300",
+      "account_handle": "DHSgov",
+      "media_id": "13_2038431856215883776",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_2038431856215883776.mp4",
+      "tweet_text_excerpt": "RT @RapidResponse47: .@POTUS: \"@ICEgov is vital to the wellbeing of our country.\" https://t.co/P53RxaSrfs",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera statement clip featuring President Trump.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2051690787792888260",
+      "account_handle": "WhiteHouse",
+      "media_id": "13_2051690520909316099",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2051690520909316099.mp4",
+      "tweet_text_excerpt": "🇺🇸MUST WATCH: @GaryPlayer joins President Trump in the Oval Office to sign a proclamation restoring the Presidential Fitness Test.\n\nHis advice? Only in America do you have that opportunity… Just love ",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera statement clip featuring President Trump.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2054734030235385996",
+      "account_handle": "RapidResponse47",
+      "media_id": "13_2054733523106340864",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054733523106340864.mp4",
+      "tweet_text_excerpt": ".@SecRubio: \"We're not trying to constrain China — but their rise cannot come at our expense. Their rise cannot come at our fall... When [China's] plan is in conflict with the national interest of the",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera sit-down interview featuring Secretary Rubio.",
+      "candidate_visual_tags": [
+        "video:interview"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2055089814412669107",
+      "account_handle": "RapidResponse47",
+      "media_id": "13_2055089666596986880",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2055089666596986880.mp4",
+      "tweet_text_excerpt": ".@USTradeRep Amb. Greer: \"You heard @POTUS today talk about the Boeings... We already have a soybean deal... and we expect to also see an agreement for double-digit billion purchases of Ags over the n",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera sit-down interview featuring Ambassador Greer.",
+      "candidate_visual_tags": [
+        "video:interview"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2055213171242086605",
+      "account_handle": "WhiteHouse",
+      "media_id": "13_2055211968588324864",
+      "media_type": "video",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2055211968588324864.mp4",
+      "tweet_text_excerpt": "President Trump meets with President Xi in Zhongnanhai.\n\n\"I want to thank you very much. This has been an incredible visit. I think a lot of good has come of it. We've made some fantastic trade deals—",
+      "visual_observation": "Direct keyframe + tweet-text review: an on-camera statement clip featuring President Trump.",
+      "candidate_visual_tags": [
+        "video:speech"
+      ],
+      "review_method": "Direct triage: extracted 96px keyframe poster + tweet text + ffmpeg audio feature scores (audio not heard, full video not streamed).",
+      "certainty": "reviewed",
+      "deterministic_signal_missing": "Automated ffmpeg audio heuristic over-flagged this clip as music-likely (sustained speech scores high on the music heuristic). Direct review confirmed spoken-word content; the music-likely tag was removed at the source and the correct form is recorded via the candidate tags above."
     }
   ]
 }
