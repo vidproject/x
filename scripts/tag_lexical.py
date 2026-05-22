@@ -2058,7 +2058,7 @@ def load_ocr_map() -> dict[str, str]:
     df = pl.read_parquet(p)
     if df.is_empty() or "tweet_id" not in df.columns or "text" not in df.columns:
         return {}
-    grouped = df.group_by("tweet_id").agg(pl.col("text").str.concat(" | ").alias("text"))
+    grouped = df.group_by("tweet_id").agg(pl.col("text").str.join(" | ").alias("text"))
     out: dict[str, str] = {}
     for row in grouped.iter_rows(named=True):
         tid = str(row.get("tweet_id") or "")
@@ -2087,7 +2087,7 @@ def load_transcript_map() -> dict[str, str]:
     df = df.filter(pl.col("text").is_not_null() & (pl.col("text").str.strip_chars() != ""))
     if df.is_empty():
         return {}
-    grouped = df.group_by("tweet_id").agg(pl.col("text").str.concat(" | ").alias("text"))
+    grouped = df.group_by("tweet_id").agg(pl.col("text").str.join(" | ").alias("text"))
     out: dict[str, str] = {}
     for row in grouped.iter_rows(named=True):
         tid = str(row.get("tweet_id") or "")
