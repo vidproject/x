@@ -2078,6 +2078,7 @@ function refresh() {
         urlState.sort = key;
         urlState.dir = 'desc';
       }
+      urlState.page = 1;
       applyToUrl(urlState);
       refresh();
     },
@@ -2110,6 +2111,7 @@ function refresh() {
         onSort: (dir) => {
           urlState.sort = key;
           urlState.dir = dir;
+          urlState.page = 1;
           applyToUrl(urlState);
           refresh();
         },
