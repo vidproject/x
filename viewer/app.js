@@ -341,13 +341,15 @@ async function loadAccountCategorySidecar(catMap) {
  * sidecars are normal on a fresh archive; the viewer still works without them.
  */
 async function loadSidecars() {
-  const [tagMap, audioTagMap, newsMentions, mediaInsightMap, posterBySha] = await Promise.all([
-    loadLexicalTags(),
-    loadAudioMusicTags(),
-    loadNewsMentions(),
-    loadMediaInsights(),
-    loadKeyframePosters(),
-  ]);
+  const [tagMap, audioTagMap, newsMentions, mediaInsightMap, posterBySha, ocrMap] =
+    await Promise.all([
+      loadLexicalTags(),
+      loadAudioMusicTags(),
+      loadNewsMentions(),
+      loadMediaInsights(),
+      loadKeyframePosters(),
+      loadImageOcr(),
+    ]);
   for (const [id, tags] of audioTagMap.entries()) {
     mergeTags(tagMap, id, tags);
   }
@@ -359,7 +361,7 @@ async function loadSidecars() {
       if (Array.isArray(insight.tags)) mergeTags(tagMap, id, insight.tags);
     }
   }
-  return { tagMap, mediaInsightMap, newsMentionMap: newsMentions.mentionMap, posterBySha };
+  return { tagMap, mediaInsightMap, newsMentionMap: newsMentions.mentionMap, posterBySha, ocrMap };
 }
 
 async function loadLexicalTags() {
@@ -515,6 +517,35 @@ async function loadKeyframePosters() {
         resource: url,
         status: status ? Number(status) : null,
         kind: 'keyframes',
+        message: err?.message ?? String(err),
+      });
+    }
+    return new Map();
+  }
+}
+
+async function loadImageOcr() {
+  const cacheKey = tagLayerCacheKey('image_ocr');
+  const url = `data/tags/image_ocr.parquet${cacheKey}`;
+  try {
+    const rows = await loadParquetRows(url);
+    // Build per-tweet OCR string: join multiple media rows with " | ".
+    const map = new Map();
+    for (const r of rows) {
+      const id = String(r?.tweet_id ?? '');
+      const text = String(r?.text ?? '').trim();
+      if (!id || !text) continue;
+      const existing = map.get(id);
+      map.set(id, existing ? `${existing} | ${text}` : text);
+    }
+    return map;
+  } catch (err) {
+    const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
+    if (status !== '404') {
+      pushLoadError({
+        resource: url,
+        status: status ? Number(status) : null,
+        kind: 'image-ocr',
         message: err?.message ?? String(err),
       });
     }
@@ -963,12 +994,15 @@ async function loadAllAccounts(sidecarsPromise) {
   let mediaInsightMap = new Map();
   /** @type {Map<string, any>} */
   let newsMentionMap = new Map();
+  /** @type {Map<string, string>} */
+  let ocrMap = new Map();
   let sidecarsResolved = false;
   sidecarsPromise
     .then((sidecars) => {
       tagMap = sidecars.tagMap;
       mediaInsightMap = sidecars.mediaInsightMap;
       newsMentionMap = sidecars.newsMentionMap;
+      ocrMap = sidecars.ocrMap;
       mediaPosterBySha = sidecars.posterBySha;
       sidecarsResolved = true;
       applyMediaSettings({ persist: false });
@@ -1085,6 +1119,7 @@ async function loadAllAccounts(sidecarsPromise) {
     store.applyTags(tagMap);
     store.applyMediaInsights(mediaInsightMap);
     store.applyNewsMentions(newsMentionMap);
+    store.applyOcrText(ocrMap);
   }
 }
 

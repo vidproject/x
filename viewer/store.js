@@ -56,6 +56,7 @@ export const SEARCH_FIELD_OPTIONS = [
   { value: 'tags', label: 'Tags' },
   { value: 'mentions', label: 'Mentions' },
   { value: 'media_description', label: 'Media description' },
+  { value: 'ocr_text', label: 'Image OCR' },
   { value: 'news_coverage', label: 'News coverage' },
   { value: 'tweet_type', label: 'Type' },
   { value: 'media_kinds', label: 'Media' },
@@ -110,6 +111,7 @@ export class Store {
       'news_mention_count',
       'news_mention_status',
       'news_mention_detector',
+      'ocr_text',
     ]) {
       if (row[key] !== undefined && fullRow[key] === undefined) overlays[key] = row[key];
     }
@@ -144,6 +146,17 @@ export class Store {
     for (const r of this.allRows) {
       const id = String(r.tweet_id ?? '');
       r.media_insights = insightMap.get(id) ?? [];
+    }
+    this.search = null;
+  }
+
+  /** Attach optional image-OCR text from `data/tags/image_ocr.parquet`.
+   * Multiple media rows for the same tweet are joined with " | ".
+   * When the sidecar is missing, rows simply carry an empty string. */
+  applyOcrText(ocrMap) {
+    for (const r of this.allRows) {
+      const id = String(r.tweet_id ?? '');
+      r.ocr_text = ocrMap.get(id) ?? '';
     }
     this.search = null;
   }
@@ -230,6 +243,7 @@ export class Store {
         'media_insight_text',
         'news_mention_text',
         'retweeted_by_str',
+        'ocr_text_str',
       ],
       storeFields: ['tweet_id'],
       searchOptions: {
@@ -248,6 +262,7 @@ export class Store {
       media_insight_text: mediaInsightText(r),
       news_mention_text: newsMentionText(r),
       retweeted_by_str: retweetedByHandles(r).join(' '),
+      ocr_text_str: String(r.ocr_text || ''),
     }));
     mini.addAll(docs);
     this.search = mini;
@@ -627,6 +642,7 @@ function haystack(r) {
     mediaInsightText(r),
     newsMentionText(r),
     retweetedByHandles(r).join(' '),
+    String(r.ocr_text || ''),
   ];
   return parts.join(' ');
 }
@@ -637,6 +653,7 @@ function fieldHaystack(row, field) {
   if (field === 'tags') return tagNames(row).join(' ');
   if (field === 'mentions') return Array.isArray(row.mentions) ? row.mentions.join(' ') : '';
   if (field === 'media_description') return mediaInsightText(row);
+  if (field === 'ocr_text') return String(row.ocr_text || '');
   if (field === 'news_coverage') return newsMentionText(row);
   if (field === 'media_kinds') return formatForFilter(row, 'media_kinds');
   if (field === 'posted_at') return formatForFilter(row, 'posted_at');

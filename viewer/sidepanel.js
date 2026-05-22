@@ -42,6 +42,9 @@ export function openSidepanel(panelEl, titleEl, bodyEl, row, thread, options = {
   if (Array.isArray(row.media_insights) && row.media_insights.length > 0) {
     bodyEl.append(section('Media Recognition', mediaInsightsBlock(row.media_insights)));
   }
+  if (row.ocr_text) {
+    bodyEl.append(section('Image OCR', ocrTextBlock(row.ocr_text)));
+  }
   if (Array.isArray(row.engagement_history) && row.engagement_history.length > 1) {
     bodyEl.append(section('Engagement history', engagementHistory(row.engagement_history)));
   }
@@ -369,6 +372,33 @@ function mediaLinks(m, archiveUrl, originalUrl) {
     links.textContent = 'No media URL';
   }
   return links;
+}
+
+function ocrTextBlock(ocrText) {
+  const wrap = document.createElement('div');
+  wrap.className = 'sp-ocr-text';
+  const parts = String(ocrText || '')
+    .split(' | ')
+    .filter(Boolean);
+  if (parts.length <= 1) {
+    const div = document.createElement('div');
+    div.className = 'sp-text';
+    div.textContent = ocrText;
+    wrap.append(div);
+  } else {
+    parts.forEach((part, index) => {
+      const item = document.createElement('div');
+      item.className = 'sp-ocr-item';
+      const label = document.createElement('span');
+      label.className = 'meta';
+      label.textContent = `Image ${index + 1}: `;
+      const text = document.createElement('span');
+      text.textContent = part;
+      item.append(label, text);
+      wrap.append(item);
+    });
+  }
+  return wrap;
 }
 
 function mediaInsightsBlock(insights) {

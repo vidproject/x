@@ -22,6 +22,7 @@ const COLS = [
   'media_count',
   'media_descriptions',
   'media_release_urls',
+  'ocr_text',
   'news_mention_count',
   'news_articles',
   'retweeted_by',
@@ -58,6 +59,7 @@ export function exportCsv(rows, filename) {
         .map((m) => m && m.release_asset_url)
         .filter(Boolean)
         .join('|'),
+      ocr_text: String(r.ocr_text || ''),
       news_mention_count: Array.isArray(r.news_mentions) ? r.news_mentions.length : 0,
       news_articles: Array.isArray(r.news_mentions)
         ? r.news_mentions

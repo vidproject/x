@@ -144,6 +144,14 @@ export const COLUMNS = [
     render: (r) => renderMediaDescription(r),
   },
   {
+    key: 'ocr_text',
+    label: 'OCR',
+    default: false,
+    filterable: false,
+    sortable: false,
+    render: (r) => renderOcrCell(r),
+  },
+  {
     key: 'video_duration',
     label: 'Video length',
     default: false,
@@ -1691,6 +1699,12 @@ function renderMediaDescription(r) {
     .map((entry) => entry?.description)
     .filter(Boolean)
     .join(' ');
+  if (!text) return '<span class="muted">—</span>';
+  return `<span class="cell-text" title="${escape(text)}">${escape(text)}</span>`;
+}
+
+function renderOcrCell(r) {
+  const text = String(r.ocr_text || '');
   if (!text) return '<span class="muted">—</span>';
   return `<span class="cell-text" title="${escape(text)}">${escape(text)}</span>`;
 }
