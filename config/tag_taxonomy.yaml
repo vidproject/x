@@ -146,6 +146,35 @@ tags:
     description: 'Parody/tie-in of Pawn Stars.'
     classification: deterministic
 
+  # ===== artist:* - named cultural figures / musicians ==============
+  # Fired only when the artist or a signature song is NAMED in text / OCR /
+  # transcript (audio cannot be identified by ear). Coverage grows as the OCR
+  # and transcript layers fill in.
+  artist:sydney-sweeney:
+    description: 'Sydney Sweeney (e.g. the American Eagle ad) named in text/OCR.'
+    classification: deterministic
+  artist:lee-greenwood:
+    description: 'Lee Greenwood / "God Bless the USA" / "Proud to be an American".'
+    classification: deterministic
+  artist:kid-rock:
+    description: 'Kid Rock named in text/OCR/transcript.'
+    classification: deterministic
+  artist:village-people:
+    description: 'Village People / "Macho Man" (rally staple).'
+    classification: deterministic
+  artist:jason-aldean:
+    description: 'Jason Aldean / "Try That in a Small Town".'
+    classification: deterministic
+  artist:oliver-anthony:
+    description: 'Oliver Anthony / "Rich Men North of Richmond".'
+    classification: deterministic
+  artist:taylor-swift:
+    description: 'Taylor Swift named in text/OCR/transcript.'
+    classification: deterministic
+  artist:beyonce:
+    description: 'Beyoncé named in text/OCR/transcript.'
+    classification: deterministic
+
   # ===== speaker:* - evidence-supported speaker attribution =========
   speaker:*:
     description: >-

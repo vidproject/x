@@ -1055,6 +1055,25 @@ def test_country_from_demonym_and_city() -> None:
     assert "origin:Venezuela" in _tags(out2)
 
 
+def test_artist_gazetteer_from_named_text() -> None:
+    out = tag_text(
+        "Lee Greenwood performed God Bless the USA at the rally",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    assert "artist:lee-greenwood" in _tags(out)
+    out2 = tag_text(
+        "the new spot featuring Sydney Sweeney",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    assert "artist:sydney-sweeney" in _tags(out2)
+
+
 def test_ai_generated_media_tag() -> None:
     for text in (
         "This whole clip is AI-generated propaganda.",

@@ -924,6 +924,30 @@ PATTERN_PARODY_STAR_WARS_EXTRA_CUE = _compile(
     r"a\s+galaxy|galaxy\s+(?:far|that)|lightsaber|darth|yoda|skywalker|mandalorian)\b"
 )
 
+# --- artist:<name> -------------------------------------------------------
+# Named cultural figures / musicians and their signature songs. Identifying an
+# artist from audio is impossible (the track can't be heard), so these fire only
+# when the artist or a signature song is NAMED in tweet text, OCR, or a
+# transcript. Coverage therefore grows as the OCR and transcript layers fill in
+# — right now artist names are almost entirely in the (un-OCR'd) images / audio,
+# not the tweet bodies.
+ARTIST_GAZETTEER: tuple[tuple[re.Pattern[str], str], ...] = (
+    (_compile(r"\bsydney\s+sweeney\b"), "sydney-sweeney"),
+    (
+        _compile(
+            r"\blee\s+greenwood\b|\bgod\s+bless\s+the\s+u\.?s\.?a\.?\b"
+            r"|\bproud\s+to\s+be\s+an\s+american\b"
+        ),
+        "lee-greenwood",
+    ),
+    (_compile(r"\bkid\s+rock\b"), "kid-rock"),
+    (_compile(r"\bvillage\s+people\b|\bmacho\s+man\b"), "village-people"),
+    (_compile(r"\bjason\s+aldean\b|\btry\s+that\s+in\s+a\s+small\s+town\b"), "jason-aldean"),
+    (_compile(r"\boliver\s+anthony\b|\brich\s+men\s+north\s+of\s+richmond\b"), "oliver-anthony"),
+    (_compile(r"\btaylor\s+swift\b"), "taylor-swift"),
+    (_compile(r"\bbeyonc[eé]\b"), "beyonce"),
+)
+
 # --- video:<kind> --------------------------------------------------------
 #
 # Video-nature heuristics. Federal accounts post a few recognizable
@@ -1573,6 +1597,11 @@ def tag_text(
             add("genre:parody", span=m_way.span())
             add("parody:star-wars", span=m_way.span())
             add("theme:pop-culture-reference")
+
+    # artist:<name> — named cultural figures / musicians (and signature songs).
+    for artist_pat, artist_slug in ARTIST_GAZETTEER:
+        if m := artist_pat.search(text):
+            add(f"artist:{artist_slug}", span=m.span())
 
     # origin:<COUNTRY> — validated against the sovereign-state vocab.
     for m in PATTERN_ORIGIN_CANDIDATE.finditer(text):
