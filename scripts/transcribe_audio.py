@@ -423,6 +423,7 @@ def run(
     sample_seconds: float = DEFAULT_SAMPLE_SECONDS,
     sample_rate: int = DEFAULT_SAMPLE_RATE,
     out_path: Path | None = None,
+    only_tweet_ids: set[str] | None = None,
     transcriber: Callable[[TranscribeCandidate], TranscriptResult] | None = None,
 ) -> dict[str, int]:
     if out_path is None:
@@ -467,6 +468,9 @@ def run(
     try:
         seen_sha: set[str] = set()
         for cand in discover_candidates(parquets):
+            if only_tweet_ids is not None and cand.tweet_id not in only_tweet_ids:
+                stats["skipped_not_in_filter"] += 1
+                continue
             cached = existing.get(cand.media_sha256)
             if not force and is_cache_hit(cached or {}, model=model):
                 row = {**(cached or {})}
@@ -524,11 +528,24 @@ def main(argv: list[str] | None = None) -> int:
         default=DEFAULT_SAMPLE_SECONDS,
         help=f"Seconds of audio to transcribe per video (default {DEFAULT_SAMPLE_SECONDS}).",
     )
+    parser.add_argument(
+        "--tweet-ids-file",
+        type=Path,
+        help="Only transcribe videos whose tweet_id is listed (one per line) in this file.",
+    )
     args = parser.parse_args(argv)
 
     parquets = discover_canonical_parquets()
     if args.handle:
         parquets = [p for p in parquets if p.stem == args.handle]
+
+    only_tweet_ids: set[str] | None = None
+    if args.tweet_ids_file:
+        only_tweet_ids = {
+            line.strip()
+            for line in args.tweet_ids_file.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        }
 
     stats = run(
         parquets=parquets,
@@ -537,6 +554,7 @@ def main(argv: list[str] | None = None) -> int:
         dry_run=args.dry_run,
         model=args.model,
         sample_seconds=args.sample_seconds,
+        only_tweet_ids=only_tweet_ids,
     )
     LOG.info("audio transcription complete", **stats)
     return 0

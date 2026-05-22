@@ -1,0 +1,129 @@
+name: priority-review-media
+# Fully prepares the highest-engagement (and news-linked) videos for a deep,
+# frame-by-frame + transcript review: archives them, extracts keyframes,
+# transcribes the audio, and — unlike the normal pipeline — COMMITS the
+# extracted review frames (data/derived is normally gitignored as regenerable)
+# so a later reviewer/agent can actually see every frame. The target set is
+# data/tags/priority_review_tweet_ids.txt. Runs on push to that queue, on a
+# cadence, and on demand; capped per run so it completes over several runs
+# (transcription is the slow step on CPU).
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'data/tags/priority_review_tweet_ids.txt'
+      - '.github/workflows/priority-review-media.yml'
+  schedule:
+    - cron: '23 */3 * * *'
+  workflow_dispatch:
+    inputs:
+      max_items:
+        description: 'Max uncached items per archive/keyframe step'
+        required: false
+        default: '120'
+      transcribe_max:
+        description: 'Max uncached videos to transcribe this run (slow)'
+        required: false
+        default: '25'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: priority-review-media
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+
+      - name: install python deps
+        run: uv sync
+
+      - name: install media tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg tesseract-ocr
+
+      - name: cache whisper model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: whisper-base-${{ runner.os }}-v1
+
+      - name: stop if no queue
+        id: guard
+        run: |
+          if [ ! -s data/tags/priority_review_tweet_ids.txt ]; then
+            echo "no priority queue; nothing to do"
+            echo "skip=1" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: archive queued media
+        if: steps.guard.outputs.skip != '1'
+        timeout-minutes: 30
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+        run: |
+          mx="${{ inputs.max_items }}"; [ -z "$mx" ] && mx="120"
+          uv run python -m scripts.archive_media \
+            --tweet-ids-file data/tags/priority_review_tweet_ids.txt \
+            --media-ids-file data/tags/priority_review_media_ids.txt \
+            --max-items "$mx"
+
+      - name: extract keyframes (queued)
+        if: steps.guard.outputs.skip != '1'
+        timeout-minutes: 30
+        run: |
+          mx="${{ inputs.max_items }}"; [ -z "$mx" ] && mx="120"
+          uv run python -m scripts.extract_video_frames \
+            --tweet-ids-file data/tags/priority_review_tweet_ids.txt \
+            --frames 8 --frame-width 480 --max-items "$mx"
+
+      - name: transcribe queued audio
+        if: steps.guard.outputs.skip != '1'
+        timeout-minutes: 40
+        continue-on-error: true
+        env:
+          ASR_MODEL: base
+        run: |
+          tm="${{ inputs.transcribe_max }}"; [ -z "$tm" ] && tm="25"
+          uv run --group asr python -m scripts.transcribe_audio \
+            --tweet-ids-file data/tags/priority_review_tweet_ids.txt \
+            --max-items "$tm"
+
+      - name: refresh tags + viewer
+        if: steps.guard.outputs.skip != '1'
+        run: |
+          uv run python -m scripts.tag_lexical
+          uv run python -m scripts.build_core_video_audit
+          uv run python -m scripts.refresh_viewer_metadata
+
+      - name: commit (including the review frames)
+        if: steps.guard.outputs.skip != '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          # data/derived is gitignored as regenerable, but for the bounded
+          # priority set we DO want the extracted frames committed so a reviewer
+          # can see every frame. Force-add this run's derived keyframes.
+          if [ -d data/derived/keyframes ]; then git add -f data/derived/keyframes; fi
+          if [ -n "$(git status --porcelain data/)" ]; then
+            n=$(git diff --cached --name-only data/ | wc -l | tr -d ' ')
+            git commit -m "[bot] priority-review: ${n} file(s) for deep video review"
+            git push
+          else
+            echo "no changes"
+          fi
