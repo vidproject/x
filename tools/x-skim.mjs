@@ -63,6 +63,11 @@ const DEFAULTS = {
   scrollFactor: 0.85,
   seekScrollFactor: 8,
   seekDelayMs: 350,
+  rateLimitFloor: 3,
+  maxBackoffMs: 90_000,
+  saturationStop: true,
+  saturationLimit: 4,
+  minScrolls: 5,
   maxBodyBytes: 15_000_000,
   headless: false,
   keepOpen: false,
@@ -197,6 +202,11 @@ Options:
   --seek-year <yyyy>         Fast-scroll until visible tweets reach this year.
   --seek-scroll-factor <n>   Viewport heights per seek scroll. Default: ${DEFAULTS.seekScrollFactor}
   --seek-delay-ms <n>        Delay between seek scrolls. Default: ${DEFAULTS.seekDelayMs}
+  --rate-limit-floor <n>     Pause for reset when X reports this many calls left. Default: ${DEFAULTS.rateLimitFloor}
+  --max-backoff-ms <n>       Cap on a single rate-limit pause. Default: ${DEFAULTS.maxBackoffMs}
+  --saturation-limit <n>     Stop after this many scrolls with no new tweets. Default: ${DEFAULTS.saturationLimit}
+  --min-scrolls <n>          Always scroll at least this many times first. Default: ${DEFAULTS.minScrolls}
+  --no-saturation-stop       Disable early stop; scroll the full count regardless.
   --chrome-path <path>       Chrome/Edge executable path.
   --headless                 Run without a visible browser window.
   --keep-open                Leave the browser open after the skim finishes.
@@ -267,6 +277,21 @@ function parseArgs(argv) {
       case '--seek-delay-ms':
         options.seekDelayMs = positiveNumber(arg, readValue());
         break;
+      case '--rate-limit-floor':
+        options.rateLimitFloor = nonNegativeNumber(arg, readValue());
+        break;
+      case '--max-backoff-ms':
+        options.maxBackoffMs = positiveNumber(arg, readValue());
+        break;
+      case '--saturation-limit':
+        options.saturationLimit = positiveNumber(arg, readValue());
+        break;
+      case '--min-scrolls':
+        options.minScrolls = nonNegativeNumber(arg, readValue());
+        break;
+      case '--no-saturation-stop':
+        options.saturationStop = false;
+        break;
       case '--chrome-path':
         options.chromePath = readValue();
         break;
@@ -331,6 +356,14 @@ function positiveNumber(name, raw) {
   return value;
 }
 
+function nonNegativeNumber(name, raw) {
+  const value = Number(raw);
+  if (!Number.isFinite(value) || value < 0) {
+    throw new Error(`${name} must be zero or a positive number.`);
+  }
+  return value;
+}
+
 function stripHandle(raw) {
   return raw
     .trim()
@@ -386,6 +419,16 @@ async function main() {
     responseErrors: [],
     retryClicks: 0,
     showMoreClicks: 0,
+    rateLimit: {
+      remaining: null,
+      reset: null,
+      minRemaining: Infinity,
+      observedAt: 0,
+      throttleEvents: 0,
+    },
+    rateLimitWaits: 0,
+    rateLimitWaitMs: 0,
+    stoppedReason: null,
   };
   let writeChain = Promise.resolve();
 
@@ -420,6 +463,7 @@ async function main() {
       const endpoint = endpointFromUrl(event.response?.url ?? '');
       if (!endpoint) return;
       const status = event.response?.status ?? 0;
+      recordRateLimit(stats, event.response?.headers ?? {}, status);
       const mimeType = event.response?.mimeType ?? '';
       if (status < 200 || status >= 400) return;
       if (mimeType && !/json|javascript|text/i.test(mimeType)) return;
@@ -493,6 +537,9 @@ async function main() {
     console.log(`Candidate tweet IDs: ${summary.unique_candidate_tweet_ids}`);
     console.log(`Media URL candidates: ${summary.unique_media_url_candidates}`);
     console.log(`Blocked requests: ${summary.blocked_request_count}`);
+    console.log(
+      `Rate-limit pauses: ${stats.rateLimitWaits} (${Math.round(stats.rateLimitWaitMs / 1000)}s); 429s: ${stats.rateLimit.throttleEvents}; stop reason: ${stats.stoppedReason ?? 'scroll/time limit'}.`
+    );
     console.log(`Summary: ${summaryPath}`);
     if (options.failOnZeroResponses && summary.captured_response_count === 0) {
       console.error('No GraphQL responses captured; treating this as a failed skim.');
@@ -535,6 +582,59 @@ async function handlePausedRequest(client, event, options, stats) {
   } catch {
     // The request may already be gone.
   }
+}
+
+function headerValue(headers, name) {
+  for (const [key, value] of Object.entries(headers)) {
+    if (key.toLowerCase() === name) return value;
+  }
+  return null;
+}
+
+// Track X's advertised rate-limit budget so we can pace ourselves instead of
+// scrolling into a 429. X returns `x-rate-limit-remaining` (calls left in the
+// window) and `x-rate-limit-reset` (epoch seconds when it refills) on its
+// GraphQL responses; a 429 means we already overran and must wait for reset.
+function recordRateLimit(stats, headers, status) {
+  const rl = stats.rateLimit;
+  const remaining = Number.parseInt(headerValue(headers, 'x-rate-limit-remaining'), 10);
+  const reset = Number.parseInt(headerValue(headers, 'x-rate-limit-reset'), 10);
+  if (Number.isFinite(remaining)) {
+    rl.remaining = remaining;
+    rl.observedAt = Date.now();
+    if (remaining < rl.minRemaining) rl.minRemaining = remaining;
+    if (Number.isFinite(reset)) rl.reset = reset;
+  }
+  if (status === 429) {
+    rl.throttleEvents += 1;
+    rl.remaining = 0;
+    const nowSec = Math.floor(Date.now() / 1000);
+    if (!Number.isFinite(rl.reset) || rl.reset <= nowSec) rl.reset = nowSec + 60;
+  }
+}
+
+// If the budget is at/below the floor and we know when it resets, sleep until
+// then (capped) before issuing more activity. This is both faster (every later
+// request succeeds instead of bouncing off a 429) and safer (we stop hammering
+// an endpoint that has explicitly told us to wait).
+async function respectRateLimit(options, stats) {
+  const rl = stats.rateLimit;
+  if (rl.remaining === null || rl.remaining > options.rateLimitFloor) return 0;
+  if (!Number.isFinite(rl.reset)) return 0;
+  let waitMs = rl.reset * 1000 - Date.now() + 1000;
+  if (waitMs <= 0) {
+    rl.remaining = null;
+    return 0;
+  }
+  waitMs = Math.min(waitMs, options.maxBackoffMs);
+  console.log(
+    `Rate limit low (remaining=${rl.remaining}); pausing ${Math.round(waitMs / 1000)}s for reset.`
+  );
+  stats.rateLimitWaits += 1;
+  stats.rateLimitWaitMs += waitMs;
+  await wait(waitMs);
+  rl.remaining = null;
+  return waitMs;
 }
 
 function requestBlockDecision(event, options) {
@@ -698,9 +798,12 @@ function stripTrackingQuery(raw) {
 async function skimPage(client, options, stats) {
   const stopAt = Date.now() + options.seconds * 1000;
   if (options.seekYear) {
-    await seekToYear(client, options, stopAt);
+    await seekToYear(client, options, stopAt, stats);
   }
+  let lastUniqueCount = 0;
+  let stagnantScrolls = 0;
   for (let index = 0; index < options.scrolls && Date.now() < stopAt; index += 1) {
+    const waitedMs = await respectRateLimit(options, stats);
     stats.showMoreClicks += await expandShowMore(client);
     const retryClicked = await clickRetryIfVisible(client);
     if (retryClicked) stats.retryClicks += 1;
@@ -727,12 +830,39 @@ async function skimPage(client, options, stats) {
       );
     }
     await wait(options.scrollDelayMs);
+
+    // Stop once the timeline stops yielding anything new: repeated scrolls with
+    // no fresh tweet IDs mean we have reached the end (or already-loaded
+    // content), so more scrolling only wastes time and requests. A throttle
+    // pause or a retry-tile click is a recoverable stall, not saturation, so it
+    // does not count toward the stagnation limit.
+    const uniqueNow = stats.candidateTweetIds.size;
+    if (uniqueNow > lastUniqueCount) {
+      lastUniqueCount = uniqueNow;
+      stagnantScrolls = 0;
+    } else if (waitedMs > 0 || retryClicked) {
+      stagnantScrolls = 0;
+    } else {
+      stagnantScrolls += 1;
+    }
+    if (
+      options.saturationStop &&
+      index + 1 >= options.minScrolls &&
+      stagnantScrolls >= options.saturationLimit
+    ) {
+      stats.stoppedReason = 'saturated';
+      console.log(
+        `No new tweets for ${stagnantScrolls} scrolls; timeline saturated, stopping at ${index + 1}/${options.scrolls}.`
+      );
+      break;
+    }
   }
 }
 
-async function seekToYear(client, options, stopAt) {
+async function seekToYear(client, options, stopAt, stats) {
   console.log(`Seeking quickly to visible ${options.seekYear} content before normal capture...`);
   for (let index = 0; Date.now() < stopAt; index += 1) {
+    await respectRateLimit(options, stats);
     const range = await visibleTweetYearRange(client);
     if (range.minYear !== null && range.minYear <= options.seekYear) {
       console.log(
@@ -782,10 +912,14 @@ async function visibleTweetYearRange(client) {
 })()
 `;
   try {
-    const result = await client.send('Runtime.evaluate', {
-      expression,
-      returnByValue: true,
-    }, 8_000);
+    const result = await client.send(
+      'Runtime.evaluate',
+      {
+        expression,
+        returnByValue: true,
+      },
+      8_000
+    );
     return result.result?.value ?? { minYear: null, maxYear: null };
   } catch {
     return { minYear: null, maxYear: null };
@@ -833,10 +967,14 @@ async function expandShowMore(client) {
 })()
 `;
   try {
-    const result = await client.send('Runtime.evaluate', {
-      expression,
-      returnByValue: true,
-    }, 8_000);
+    const result = await client.send(
+      'Runtime.evaluate',
+      {
+        expression,
+        returnByValue: true,
+      },
+      8_000
+    );
     return Number(result.result?.value ?? 0) || 0;
   } catch {
     return 0;
@@ -859,10 +997,14 @@ async function clickRetryIfVisible(client) {
 })()
 `;
   try {
-    const result = await client.send('Runtime.evaluate', {
-      expression,
-      returnByValue: true,
-    }, 8_000);
+    const result = await client.send(
+      'Runtime.evaluate',
+      {
+        expression,
+        returnByValue: true,
+      },
+      8_000
+    );
     return Boolean(result.result?.value);
   } catch {
     return false;
@@ -922,6 +1064,15 @@ function buildSummary({ options, runId, startedAt, outPath, summaryPath, stats }
     blocked_by_host_top: sortedObject(stats.blockedByHost, 30),
     retry_clicks: stats.retryClicks,
     show_more_clicks: stats.showMoreClicks,
+    stopped_reason: stats.stoppedReason,
+    rate_limit: {
+      min_remaining: Number.isFinite(stats.rateLimit.minRemaining)
+        ? stats.rateLimit.minRemaining
+        : null,
+      throttle_events: stats.rateLimit.throttleEvents,
+      backoff_waits: stats.rateLimitWaits,
+      backoff_total_ms: stats.rateLimitWaitMs,
+    },
     response_errors: stats.responseErrors,
   };
 }
