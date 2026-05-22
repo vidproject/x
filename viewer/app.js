@@ -2,10 +2,10 @@
 // column visibility, CSV export, and lazy parquet loading.
 
 import { exportCsv } from './csv.js';
-import { loadParquetRows } from './parquet.js?v=lazycat1';
+import { loadParquetRows } from './parquet.js?v=lazycat2';
 import { applyToUrl, defaults as defaultState, fromHash } from './state.js';
-import { SEARCH_FIELD_OPTIONS, Store } from './store.js?v=lazycat1';
-import { initChartsPanel, updateChartsPanel } from './charts.js?v=lazycat1';
+import { SEARCH_FIELD_OPTIONS, Store } from './store.js?v=lazycat2';
+import { initChartsPanel, updateChartsPanel } from './charts.js?v=lazycat2';
 import {
   openColumnFilterPopup,
   parseVisibleColumns,
@@ -13,8 +13,8 @@ import {
   renderTable,
   setMediaColumnConfig,
   setUserLookup,
-} from './table.js?v=lazycat1';
-import { closeSidepanel, openSidepanel } from './sidepanel.js?v=lazycat1';
+} from './table.js?v=lazycat2';
+import { closeSidepanel, openSidepanel } from './sidepanel.js?v=lazycat2';
 
 const $ = (id) => {
   const el = document.getElementById(id);
@@ -239,6 +239,7 @@ let fullDatabaseLoaded = false;
 let fullDatabaseLoading = false;
 let previewLimitLoaded = 0;
 const hydrationRangePromises = new Map();
+const hydrationWholeSourcePromises = new Map();
 let hydrationRefreshQueued = false;
 
 async function loadManifest() {
@@ -1131,7 +1132,10 @@ async function hydrateRow(row, { showSpinner = false } = {}) {
   if (!url || !Number.isFinite(rowIndex)) return row;
   if (showSpinner) setSpinner(true);
   try {
-    await hydrateRange(url, rowIndex, rowIndex + 1);
+    await hydrateRange(url, rowIndex, rowIndex + 1, {
+      byteLength: catalogByteLength(catalog),
+      allowWholeFallback: true,
+    });
     return store.getDisplayRowById(row.tweet_id) || store.getById(row.tweet_id) || row;
   } catch (err) {
     pushLoadError({
@@ -1165,7 +1169,11 @@ async function hydrateRows(rows, { refreshWhenDone = false } = {}) {
   const ranges = hydrationRangesForRows(rows);
   if (ranges.length === 0) return;
   try {
-    await Promise.all(ranges.map((range) => hydrateRange(range.url, range.start, range.end)));
+    await Promise.all(
+      ranges.map((range) =>
+        hydrateRange(range.url, range.start, range.end, { byteLength: range.byteLength })
+      )
+    );
     if (refreshWhenDone) queueHydrationRefresh();
   } catch (err) {
     pushLoadError({
@@ -1183,14 +1191,19 @@ function hydrationRangesForRows(rows) {
     if (!rowNeedsHydration(row)) continue;
     const catalog = row.__catalog || {};
     const url = parquetUrlForCatalog(catalog);
+    const byteLength = catalogByteLength(catalog);
     const idx = Number(catalog.row_index);
     if (!url || !Number.isFinite(idx)) continue;
-    const list = byUrl.get(url) || [];
-    list.push(idx);
-    byUrl.set(url, list);
+    const group = byUrl.get(url) || { indices: [], byteLength };
+    group.indices.push(idx);
+    if (!Number.isFinite(group.byteLength) && Number.isFinite(byteLength)) {
+      group.byteLength = byteLength;
+    }
+    byUrl.set(url, group);
   }
   const ranges = [];
-  for (const [url, indices] of byUrl.entries()) {
+  for (const [url, group] of byUrl.entries()) {
+    const indices = group.indices || [];
     const sorted = [...new Set(indices)].sort((a, b) => a - b);
     let current = null;
     for (const idx of sorted) {
@@ -1198,7 +1211,7 @@ function hydrationRangesForRows(rows) {
       const end = idx + HYDRATE_RANGE_PAD + 1;
       if (!current || start > current.end || end - current.start > HYDRATE_MAX_SPAN) {
         if (current) ranges.push(current);
-        current = { url, start, end };
+        current = { url, start, end, byteLength: group.byteLength };
       } else {
         current.end = Math.max(current.end, end);
       }
@@ -1208,23 +1221,50 @@ function hydrationRangesForRows(rows) {
   return ranges;
 }
 
-async function hydrateRange(url, start, end) {
+async function hydrateRange(url, start, end, { byteLength = null, allowWholeFallback = false } = {}) {
   const cacheKey = manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
   const fullUrl = `${url}${cacheKey}`;
   const key = `${fullUrl}:${start}:${end}`;
   if (!hydrationRangePromises.has(key)) {
     hydrationRangePromises.set(
       key,
-      loadParquetRows(fullUrl, { rowStart: start, rowEnd: end }).then((rows) => {
-        for (const fullRow of rows) {
-          const id = String(fullRow?.tweet_id || '');
-          if (id) store.hydrateRow(id, fullRow);
-        }
-        return rows;
-      })
+      loadParquetRows(fullUrl, { rowStart: start, rowEnd: end, byteLength })
+        .then((rows) => hydrateFullRows(rows))
+        .catch((err) => {
+          hydrationRangePromises.delete(key);
+          throw err;
+        })
     );
   }
-  return hydrationRangePromises.get(key);
+  try {
+    return await hydrationRangePromises.get(key);
+  } catch (err) {
+    if (!allowWholeFallback) throw err;
+    return hydrateWholeSource(fullUrl);
+  }
+}
+
+async function hydrateWholeSource(fullUrl) {
+  if (!hydrationWholeSourcePromises.has(fullUrl)) {
+    hydrationWholeSourcePromises.set(
+      fullUrl,
+      loadParquetRows(fullUrl)
+        .then((rows) => hydrateFullRows(rows))
+        .catch((err) => {
+          hydrationWholeSourcePromises.delete(fullUrl);
+          throw err;
+        })
+    );
+  }
+  return hydrationWholeSourcePromises.get(fullUrl);
+}
+
+function hydrateFullRows(rows) {
+  for (const fullRow of rows || []) {
+    const id = String(fullRow?.tweet_id || '');
+    if (id) store.hydrateRow(id, fullRow);
+  }
+  return rows;
 }
 
 function parquetUrlForCatalog(catalog) {
@@ -1232,6 +1272,11 @@ function parquetUrlForCatalog(catalog) {
   if (parquet) return parquet.replace(/\\/g, '/');
   const handle = typeof catalog?.handle === 'string' ? catalog.handle : '';
   return handle ? `data/${handle}.parquet` : '';
+}
+
+function catalogByteLength(catalog) {
+  const value = Number(catalog?.byte_length);
+  return Number.isFinite(value) && value > 0 ? value : null;
 }
 
 function queueHydrationRefresh() {

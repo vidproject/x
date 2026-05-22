@@ -31,10 +31,10 @@
         "video:produced",
         "media:montage",
         "genre:advertisement",
-        "branch:coast-guard",
+        "military:coast-guard",
         "agency:DHSgov"
       ],
-      "deterministic_signal_missing": "Text is too sparse for the existing genre:advertisement / branch:coast-guard regexes. Needs Layer 3a (CLIP), 3b (OCR on the end-card seal), or 3c (audio) before any of these tags become deterministic."
+      "deterministic_signal_missing": "Text is too sparse for the existing genre:advertisement / military:coast-guard regexes. Needs Layer 3a (CLIP), 3b (OCR on the end-card seal), or 3c (audio) before any of these tags become deterministic."
     },
     {
       "tweet_id": "2056735360147730868",
@@ -57,7 +57,7 @@
       "media_type": "video",
       "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_2057124383311740929.mp4",
       "tweet_text_excerpt": "RT @MargoMartin47: .@SecMullinDHS arrives to the United States Coast Guard Academy",
-      "visual_observation": "USCGA 145th Commencement: dress-uniform cadets saluting, USCGA banner, U.S. flag, Secretary Mullin walking down the line. Already gets branch:coast-guard / topic:military / agency:SecMullinDHS via text; visual confirms.",
+      "visual_observation": "USCGA 145th Commencement: dress-uniform cadets saluting, USCGA banner, U.S. flag, Secretary Mullin walking down the line. Already gets military:coast-guard / topic:military / agency:SecMullinDHS via text; visual confirms.",
       "candidate_visual_tags": [
         "video:produced",
         "video:speech"

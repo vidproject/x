@@ -111,6 +111,7 @@ def test_write_catalog_covers_all_rows_with_locators_and_tags(tmp_repo: Path) ->
 
     payload = json.loads((tmp_repo / "data" / "catalog.json").read_text(encoding="utf-8"))
     catalog_rows = pl.read_parquet(tmp_repo / "data" / "catalog.parquet").to_dicts()
+    source_size = (tmp_repo / "data" / "test-handle.parquet").stat().st_size
     assert payload["generated_at"] == "2026-05-22T00:00:00Z"
     assert payload["row_count"] == 2
     assert payload["date_range"] == {"start": "2025-04-10", "end": "2025-04-12"}
@@ -121,5 +122,6 @@ def test_write_catalog_covers_all_rows_with_locators_and_tags(tmp_repo: Path) ->
         "handle": "test-handle",
         "parquet": "data/test-handle.parquet",
         "row_index": 0,
+        "byte_length": source_size,
     }
     assert catalog_rows[1]["tags"][0]["tag"] == "crime:homicide"

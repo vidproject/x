@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-22T04:22:29Z",
+  "generated_at": "2026-05-22T05:32:14Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -71,7 +71,7 @@
       "format:reply": 25,
       "country:China": 23,
       "crime:trafficking": 23,
-      "branch:coast-guard": 21,
+      "military:coast-guard": 21,
       "genre:recruitment": 20,
       "theme:directive": 19,
       "theme:sanctuary-cities": 19,
@@ -904,12 +904,12 @@
       "priority": 93,
       "tags": [
         "agency:USCG",
-        "branch:coast-guard",
         "media:archived",
         "media:described",
         "media:short-video",
         "media:text-overlay",
         "media:video",
+        "military:coast-guard",
         "topic:military",
         "video:news-clip",
         "video:produced",
@@ -951,12 +951,12 @@
       "tags": [
         "agency:SecMullinDHS",
         "agency:USCG",
-        "branch:coast-guard",
         "format:retweet",
         "media:archived",
         "media:described",
         "media:short-video",
         "media:video",
+        "military:coast-guard",
         "topic:military",
         "video:produced",
         "video:short",
@@ -975,7 +975,7 @@
       "has_audio_analysis": false,
       "has_vision_description": true,
       "has_ocr": false,
-      "description": "video; 1080x1920; 14.2s; 2.59 MiB; archived; tweet context: RT @MargoMartin47: .@SecMullinDHS arrives to the United States Coast Guard Academy 🇺🇸 https://t.co/vEmKkVoXZy; source URL: https://video.twimg.com/amplify_video/2057124383311740929/vid/avc1/1080x1920/uyaQ3E8saUxtYE3r.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2057124383311740929.mp4; visual observation: USCGA 145th Commencement: dress-uniform cadets saluting, USCGA banner, U.S. flag, Secretary Mullin walking down the line. Already gets branch:coast-guard / topic:military / agency:SecMullinDHS via text; visual confirms.; tagging gap: Lexical tagger already covers this one well. Queue entry kept as a positive control — visual lines up with current deterministic tags.. | video; 1080x1920; 14.2s; 2.59 MiB; archived; tweet context: RT @MargoMartin47: .@SecMullinDHS arrives to the United States Coast Guard Academy 🇺🇸 https://t.co/vEmKkVoXZy; source URL: https://video.twimg.com/amplify_video/2057124383311740929/vid/avc1/1080x1920/uyaQ3E8saUxtYE3r.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2057124383311740929.mp4; visual observation: US"
+      "description": "video; 1080x1920; 14.2s; 2.59 MiB; archived; tweet context: RT @MargoMartin47: .@SecMullinDHS arrives to the United States Coast Guard Academy 🇺🇸 https://t.co/vEmKkVoXZy; source URL: https://video.twimg.com/amplify_video/2057124383311740929/vid/avc1/1080x1920/uyaQ3E8saUxtYE3r.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2057124383311740929.mp4; visual observation: USCGA 145th Commencement: dress-uniform cadets saluting, USCGA banner, U.S. flag, Secretary Mullin walking down the line. Already gets military:coast-guard / topic:military / agency:SecMullinDHS via text; visual confirms.; tagging gap: Lexical tagger already covers this one well. Queue entry kept as a positive control — visual lines up with current deterministic tags.. | video; 1080x1920; 14.2s; 2.59 MiB; archived; tweet context: RT @MargoMartin47: .@SecMullinDHS arrives to the United States Coast Guard Academy 🇺🇸 https://t.co/vEmKkVoXZy; source URL: https://video.twimg.com/amplify_video/2057124383311740929/vid/avc1/1080x1920/uyaQ3E8saUxtYE3r.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2057124383311740929.mp4; visual observation: "
     },
     {
       "tweet_id": "1943080402513441200",
@@ -1912,7 +1912,6 @@
       "tags": [
         "agency:DHSgov",
         "audio:has-audio",
-        "branch:coast-guard",
         "genre:advertisement",
         "genre:recruitment",
         "media:archived",
@@ -1921,6 +1920,7 @@
         "media:short-video",
         "media:text-overlay",
         "media:video",
+        "military:coast-guard",
         "topic:immigration",
         "topic:military",
         "video:produced",
@@ -1940,7 +1940,7 @@
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
-      "description": "video; 720x1280; 23.2s; 2.55 MiB; archived; tweet context: You know you wanna be her 🇺🇸 https://t.co/ZHq3Nx0TyY; source URL: https://video.twimg.com/amplify_video/2056861025304018946/vid/avc1/720x1280/qLpTnxlRlf2B21oD.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2056861025304018946.mp4; visual observation: Polished produced recruitment-style montage of female DHS / Coast Guard / Secret Service / HSI personnel in uniform, ending on a U.S. Department of Homeland Security end-card.; tagging gap: Text is too sparse for the existing genre:advertisement / branch:coast-guard regexes. Needs Layer 3a (CLIP), 3b (OCR on the end-card seal), or 3c (audio) before any of these tags become deterministic.. | video; 720x1280; 23.2s; 2.55 MiB; archived; tweet context: You know you wanna be her 🇺🇸 https://t.co/ZHq3Nx0TyY; source URL: https://video.twimg.com/amplify_video/2056861025304018946/vid/avc1/720x1280/qLpTnxlRlf2B21oD.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2056861025304018946.mp4; visual observation: Polished produced recruitment-style montage of female DHS / Coast Guard / Secret Service / HSI per"
+      "description": "video; 720x1280; 23.2s; 2.55 MiB; archived; tweet context: You know you wanna be her 🇺🇸 https://t.co/ZHq3Nx0TyY; source URL: https://video.twimg.com/amplify_video/2056861025304018946/vid/avc1/720x1280/qLpTnxlRlf2B21oD.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2056861025304018946.mp4; visual observation: Polished produced recruitment-style montage of female DHS / Coast Guard / Secret Service / HSI personnel in uniform, ending on a U.S. Department of Homeland Security end-card.; tagging gap: Text is too sparse for the existing genre:advertisement / military:coast-guard regexes. Needs Layer 3a (CLIP), 3b (OCR on the end-card seal), or 3c (audio) before any of these tags become deterministic.. | video; 720x1280; 23.2s; 2.55 MiB; archived; tweet context: You know you wanna be her 🇺🇸 https://t.co/ZHq3Nx0TyY; source URL: https://video.twimg.com/amplify_video/2056861025304018946/vid/avc1/720x1280/qLpTnxlRlf2B21oD.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2056861025304018946.mp4; visual observation: Polished produced recruitment-style montage of female DHS / Coast Guard / Secret Service / HSI p"
     },
     {
       "tweet_id": "1022916782233989120",
@@ -9162,7 +9162,6 @@
       "tags": [
         "action:deportation",
         "agency:ICEgov",
-        "branch:air-force",
         "crime:assault",
         "crime:weapon",
         "frame:criminal",
@@ -9170,6 +9169,7 @@
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:air-force",
         "slogan:criminal-illegal-alien",
         "slogan:illegal-alien",
         "topic:general",
@@ -10673,13 +10673,13 @@
       "priority": 75,
       "tags": [
         "agency:DeptofWar",
-        "branch:air-force",
-        "branch:navy",
         "format:quote",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:air-force",
+        "military:navy",
         "topic:military",
         "video:long"
       ],
@@ -12629,11 +12629,11 @@
       "priority": 75,
       "tags": [
         "agency:DHSgov",
-        "branch:coast-guard",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:coast-guard",
         "topic:economy",
         "topic:immigration",
         "topic:military",
@@ -13071,11 +13071,11 @@
       "tags": [
         "agency:DHSgov",
         "agency:USCG",
-        "branch:coast-guard",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:coast-guard",
         "topic:economy",
         "topic:immigration",
         "topic:military",
@@ -13193,11 +13193,11 @@
       "tags": [
         "agency:ICEgov",
         "agency:USCG",
-        "branch:coast-guard",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:coast-guard",
         "state:Alaska",
         "topic:immigration",
         "topic:military",
@@ -15225,12 +15225,12 @@
       "priority": 75,
       "tags": [
         "agency:USCG",
-        "branch:coast-guard",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:short-video",
         "media:video",
+        "military:coast-guard",
         "topic:military",
         "video:short"
       ],
@@ -15820,11 +15820,11 @@
       "priority": 75,
       "tags": [
         "agency:TSA",
-        "branch:army",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:army",
         "topic:military",
         "video:medium"
       ],
@@ -17527,12 +17527,12 @@
       "tags": [
         "agency:USCG",
         "agency:USCGSoutheast",
-        "branch:coast-guard",
         "format:quote",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:coast-guard",
         "state:Florida",
         "topic:military",
         "video:medium"
@@ -17894,12 +17894,12 @@
       "priority": 75,
       "tags": [
         "agency:USCGSoutheast",
-        "branch:coast-guard",
         "format:quote",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:coast-guard",
         "theme:religion",
         "topic:military",
         "video:medium"
@@ -23910,12 +23910,12 @@
       "tags": [
         "agency:USCIS",
         "agency:USNationalGuard",
-        "branch:national-guard",
         "country:Afghanistan",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:national-guard",
         "phrase:immigrant",
         "topic:immigration",
         "topic:military",
@@ -24427,11 +24427,11 @@
         "agency:DHSgov",
         "agency:FEMA",
         "agency:USCG",
-        "branch:coast-guard",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:coast-guard",
         "topic:economy",
         "topic:immigration",
         "topic:military",
@@ -26098,11 +26098,11 @@
         "agency:POTUS",
         "agency:SecMullinDHS",
         "agency:USCGAcademy",
-        "branch:coast-guard",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:coast-guard",
         "slogan:peace-through-strength",
         "topic:general",
         "topic:military",
@@ -26140,11 +26140,11 @@
       "tags": [
         "agency:SecMullinDHS",
         "agency:USCGAcademy",
-        "branch:coast-guard",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:coast-guard",
         "topic:military",
         "video:medium"
       ],
@@ -26180,11 +26180,11 @@
       "tags": [
         "agency:USCG",
         "agency:USCGAcademy",
-        "branch:coast-guard",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:coast-guard",
         "topic:laudatory",
         "topic:military",
         "video:medium"
@@ -27669,9 +27669,9 @@
       "priority": 55,
       "tags": [
         "agency:USCG",
-        "branch:coast-guard",
         "crime:cocaine",
         "crime:narcotics",
+        "military:coast-guard",
         "topic:military",
         "video:short"
       ],
@@ -31163,7 +31163,7 @@
       "priority": 55,
       "tags": [
         "agency:USCG",
-        "branch:coast-guard",
+        "military:coast-guard",
         "speaker:First Lady Melania Trump",
         "topic:military",
         "video:interview",
@@ -31444,7 +31444,7 @@
         "agency:DHSgov",
         "agency:ICEgov",
         "agency:USCG",
-        "branch:coast-guard",
+        "military:coast-guard",
         "topic:economy",
         "topic:immigration",
         "topic:military",
@@ -31652,7 +31652,7 @@
       "priority": 55,
       "tags": [
         "agency:USCG",
-        "branch:coast-guard",
+        "military:coast-guard",
         "topic:military",
         "video:medium"
       ],
@@ -32729,9 +32729,9 @@
       "tags": [
         "agency:DHSgov",
         "agency:USCG",
-        "branch:coast-guard",
         "crime:cocaine",
         "crime:narcotics",
+        "military:coast-guard",
         "topic:immigration",
         "topic:military",
         "video:medium"
@@ -32802,7 +32802,7 @@
       "tags": [
         "agency:DHSgov",
         "agency:USCG",
-        "branch:coast-guard",
+        "military:coast-guard",
         "topic:immigration",
         "topic:military",
         "video:short"
@@ -33306,7 +33306,7 @@
       "bucket": "missing-media",
       "priority": 55,
       "tags": [
-        "branch:navy",
+        "military:navy",
         "theme:religion",
         "topic:military",
         "video:medium"
@@ -38449,11 +38449,11 @@
         "agency:DHSgov",
         "agency:USCG",
         "audio:has-audio",
-        "branch:coast-guard",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:coast-guard",
         "topic:immigration",
         "topic:military",
         "video:long"
@@ -39996,12 +39996,12 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
-        "branch:marines",
-        "branch:navy",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:marines",
+        "military:navy",
         "topic:economy",
         "topic:military",
         "video:long"
@@ -40444,12 +40444,12 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
-        "branch:air-force",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:short-video",
         "media:video",
+        "military:air-force",
         "topic:laudatory",
         "topic:military",
         "video:short"
@@ -41899,12 +41899,12 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
-        "branch:army",
         "crime:weapon",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:army",
         "topic:military",
         "video:medium"
       ],
@@ -43014,7 +43014,6 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
-        "branch:air-force",
         "country:China",
         "format:quote",
         "media:archived",
@@ -43022,6 +43021,7 @@
         "media:needs-vision",
         "media:short-video",
         "media:video",
+        "military:air-force",
         "speaker:President Trump",
         "topic:immigration",
         "topic:laudatory",
@@ -43901,12 +43901,12 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
-        "branch:air-force",
         "country:China",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:air-force",
         "topic:immigration",
         "topic:laudatory",
         "topic:military",
@@ -44016,12 +44016,12 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
-        "branch:air-force",
         "country:China",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:air-force",
         "speaker:President Trump",
         "topic:immigration",
         "topic:laudatory",
@@ -44277,13 +44277,13 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
-        "branch:navy",
         "format:retweet",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:short-video",
         "media:video",
+        "military:navy",
         "topic:military",
         "video:short"
       ],
@@ -48521,12 +48521,12 @@
       "priority": 30,
       "tags": [
         "audio:no-audio",
-        "branch:space-force",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:short-video",
         "media:video",
+        "military:space-force",
         "topic:military",
         "video:short"
       ],
@@ -48597,11 +48597,11 @@
         "agency:CBP",
         "agency:USCG",
         "audio:no-audio",
-        "branch:coast-guard",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:coast-guard",
         "topic:immigration",
         "topic:military",
         "video:medium"
@@ -49052,12 +49052,12 @@
       "tags": [
         "action:deportation",
         "audio:has-audio",
-        "branch:national-guard",
         "frame:criminal",
         "media:archived",
         "media:described",
         "media:needs-vision",
         "media:video",
+        "military:national-guard",
         "slogan:illegal-alien",
         "theme:border",
         "topic:general",

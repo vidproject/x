@@ -135,7 +135,12 @@ def test_manual_review_aliases_legacy_video_genre_tags() -> None:
     }
     manual_review = {
         "visual_observation": "Produced public-service spot with title cards.",
-        "candidate_visual_tags": ["media:produced-video", "video:ad", "video:psa"],
+        "candidate_visual_tags": [
+            "media:produced-video",
+            "video:ad",
+            "video:psa",
+            "branch:coast-guard",
+        ],
     }
     row = describe_media_item(
         _tweet(),
@@ -148,7 +153,10 @@ def test_manual_review_aliases_legacy_video_genre_tags() -> None:
     assert "video:produced" in tags
     assert "genre:advertisement" in tags
     assert "genre:psa" in tags
+    assert "military:coast-guard" in tags
+    assert "topic:military" in tags
     assert "media:produced-video" not in tags
+    assert "branch:coast-guard" not in tags
     assert "video:ad" not in tags
     assert "video:psa" not in tags
 

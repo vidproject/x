@@ -12,6 +12,17 @@
 
 import MiniSearch from 'https://esm.sh/minisearch@7.1.2';
 
+const NUMERIC_SORT_KEYS = new Set([
+  'bookmark_count',
+  'like_count',
+  'media_count',
+  'quote_count',
+  'reply_count',
+  'retweet_count',
+  'video_duration',
+  'view_count',
+]);
+
 export const TAG_SUB_SEPARATOR = ' ⊂ ';
 
 export function combineTagMainSub(main, sub) {
@@ -694,8 +705,29 @@ function compare(a, b, key) {
   if (va == null && vb == null) return 0;
   if (va == null) return -1;
   if (vb == null) return 1;
+  if (NUMERIC_SORT_KEYS.has(key)) {
+    const na = numericSortValue(va);
+    const nb = numericSortValue(vb);
+    if (na == null && nb == null) return 0;
+    if (na == null) return -1;
+    if (nb == null) return 1;
+    return na - nb;
+  }
   if (typeof va === 'number' && typeof vb === 'number') return va - vb;
   return String(va).localeCompare(String(vb));
+}
+
+function numericSortValue(value) {
+  if (typeof value === 'number') return Number.isFinite(value) ? value : null;
+  if (typeof value === 'bigint') return Number(value);
+  if (typeof value === 'string') {
+    const text = value.trim();
+    if (/^-?\d+(?:\.\d+)?$/.test(text)) {
+      const n = Number(text);
+      return Number.isFinite(n) ? n : null;
+    }
+  }
+  return null;
 }
 
 function valueOf(row, key) {

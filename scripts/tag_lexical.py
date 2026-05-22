@@ -567,7 +567,7 @@ PATTERN_TOPIC_MILITARY = _compile(
     r"air force academy|west point|USMA|USNA|USCGA|cadets?|midshipmen|"
     r"commander[- ]in[- ]chief|commandant)\b"
 )
-BRANCH_VOCAB: tuple[tuple[str, re.Pattern[str]], ...] = (
+MILITARY_VOCAB: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("army", _compile(r"\b(?:(?:u\.s\.\s+)?army|soldiers?|west\s+point|USMA)\b")),
     (
         "navy",
@@ -589,7 +589,7 @@ BRANCH_VOCAB: tuple[tuple[str, re.Pattern[str]], ...] = (
     ),
     ("national-guard", _compile(r"\b(?:national\s+guard|national\s+guards?m[ae]n)\b")),
 )
-BRANCH_MENTION_ALIASES: dict[str, str] = {
+MILITARY_MENTION_ALIASES: dict[str, str] = {
     "usarmynorth": "army",
     "usnationalguard": "national-guard",
     "usguard": "national-guard",
@@ -613,6 +613,10 @@ PATTERN_TOPIC_LAUDATORY = _compile(
     r"\b(accomplishments?|wins?|success(?:es)?|historic|record[- ]breaking|"
     r"promises? made[,;:]?\s+promises? kept|delivering|delivered|momentum|"
     r"golden age|winning)\b"
+)
+PATTERN_EVENT_PALESTINE = _compile(
+    r"\b(?:palestin(?:e|ian)s?|gaza(?:n)?s?|hamas|israel[- ]hamas|"
+    r"israel[- ]palestin(?:e|ian)|west\s+bank)\b"
 )
 GENERAL_TOPIC_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("immigration", _compile(r"\b(immigration|migrant|border|illegal alien|asylum)\b")),
@@ -1041,7 +1045,6 @@ MEDIA_TAG_PREFIXES_ALLOWED_IN_LEXICAL: tuple[str, ...] = (
     "action:",
     "agency:",
     "audio:",
-    "branch:",
     "country:",
     "crime:",
     "event:",
@@ -1049,6 +1052,7 @@ MEDIA_TAG_PREFIXES_ALLOWED_IN_LEXICAL: tuple[str, ...] = (
     "genre:",
     "legal:",
     "media:",
+    "military:",
     "phrase:",
     "religion:",
     "slogan:",
@@ -1066,6 +1070,13 @@ LEGACY_MEDIA_TAG_ALIASES: dict[str, tuple[str, ...]] = {
     "video:ad": ("genre:advertisement",),
     "video:music-video": ("genre:music-video",),
     "video:psa": ("genre:psa",),
+    "branch:army": ("military:army",),
+    "branch:navy": ("military:navy",),
+    "branch:air-force": ("military:air-force",),
+    "branch:space-force": ("military:space-force",),
+    "branch:marines": ("military:marines",),
+    "branch:coast-guard": ("military:coast-guard",),
+    "branch:national-guard": ("military:national-guard",),
 }
 
 
@@ -1182,9 +1193,9 @@ def tag_text(
         canonical = AGENCY_MENTION_ALIASES.get(mention_key)
         if canonical:
             add(f"agency:{canonical}")
-        branch = BRANCH_MENTION_ALIASES.get(mention_key)
-        if branch:
-            add(f"branch:{branch}")
+        military = MILITARY_MENTION_ALIASES.get(mention_key)
+        if military:
+            add(f"military:{military}")
 
     if is_unavailable:
         add("status:unavailable")
@@ -1228,6 +1239,7 @@ def tag_text(
         (PATTERN_TOPIC_ECONOMY, "topic:economy"),
         (PATTERN_TOPIC_MILITARY, "topic:military"),
         (PATTERN_TOPIC_LAUDATORY, "topic:laudatory"),
+        (PATTERN_EVENT_PALESTINE, "event:palestine"),
         (PATTERN_THEME_BORDER, "theme:border"),
         (PATTERN_THEME_SANCTUARY, "theme:sanctuary-cities"),
         (PATTERN_THEME_WORKSITE, "theme:worksite-enforcement"),
@@ -1290,11 +1302,10 @@ def tag_text(
         if m := pat.search(text):
             add(tag, span=m.span())
 
-    # branch:<BRANCH> - military branch subtopics. These are narrower than
-    # topic:military; the parent is enforced below for branch-only aliases.
-    for slug, pat in BRANCH_VOCAB:
+    # military:<BRANCH> subtopics. These are narrower than topic:military.
+    for slug, pat in MILITARY_VOCAB:
         for m in pat.finditer(text):
-            add(f"branch:{slug}", span=m.span())
+            add(f"military:{slug}", span=m.span())
 
     if _general_topic_score(text) >= 3:
         add("topic:general")
@@ -1536,7 +1547,7 @@ def _ensure_intrinsic_parent_topics(
     """Add broad topic parents implied by narrower deterministic tags."""
     existing_tags = {str(e["tag"]) for e in entries}
     if (
-        any(tag.startswith("branch:") for tag in existing_tags)
+        any(tag.startswith("military:") for tag in existing_tags)
         and "topic:military" not in existing_tags
     ):
         add("topic:military")
@@ -1643,6 +1654,8 @@ def _maybe_immigration_default(
     has_signal = _has_immigration_signal(entries, text)
     if has_signal:
         add("topic:immigration")
+        return
+    if any(e["tag"] == "event:palestine" for e in entries):
         return
     for pat in NON_IMMIGRATION_PATTERNS:
         if pat.search(text):

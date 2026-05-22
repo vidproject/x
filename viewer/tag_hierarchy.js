@@ -57,7 +57,7 @@ const EXACT_PARENTS = new Map([
 ]);
 
 const PREFIX_PARENTS = [
-  ['branch:', ['topic:military']],
+  ['military:', ['topic:military']],
   ['origin:', ['topic:immigration']],
   ['country:', ['topic:immigration']],
 ];
@@ -66,6 +66,13 @@ const TAG_ALIASES = new Map([
   ['media:produced-video', 'video:produced'],
   ['homicide:murder', 'crime:murder'],
   ['shape:lineup', 'genre:lineup'],
+  ['branch:army', 'military:army'],
+  ['branch:navy', 'military:navy'],
+  ['branch:air-force', 'military:air-force'],
+  ['branch:space-force', 'military:space-force'],
+  ['branch:marines', 'military:marines'],
+  ['branch:coast-guard', 'military:coast-guard'],
+  ['branch:national-guard', 'military:national-guard'],
 ]);
 
 export function tagEntryName(entry) {

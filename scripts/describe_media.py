@@ -54,6 +54,13 @@ MANUAL_REVIEW_QUEUE_PATH = TAGS_DIR / "manual_media_review_queue.json"
 LEGACY_MANUAL_TAG_ALIASES = {
     "media:produced-video": "video:produced",
     "shape:lineup": "genre:lineup",
+    "branch:army": "military:army",
+    "branch:navy": "military:navy",
+    "branch:air-force": "military:air-force",
+    "branch:space-force": "military:space-force",
+    "branch:marines": "military:marines",
+    "branch:coast-guard": "military:coast-guard",
+    "branch:national-guard": "military:national-guard",
     "video:ad": "genre:advertisement",
     "video:music-video": "genre:music-video",
     "video:psa": "genre:psa",
@@ -433,6 +440,8 @@ def dedupe_tag_entries(tags: list[dict[str, Any]]) -> list[dict[str, Any]]:
         next_priority = priority.get(str(entry.get("source") or ""), 0)
         if next_priority > current_priority:
             out[index[tag]] = entry
+    if any(entry["tag"].startswith("military:") for entry in out) and "topic:military" not in index:
+        out.append(tag_entry("topic:military", source="media-description"))
     return out
 
 

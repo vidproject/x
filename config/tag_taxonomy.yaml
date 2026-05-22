@@ -173,6 +173,12 @@ tags:
       vague text similarity.
     classification: deterministic
 
+  event:palestine:
+    description: >-
+      References to Palestine, Palestinians, Gaza, Hamas, or the
+      Israel-Palestine / Israel-Hamas conflict.
+    classification: deterministic
+
   media:described:
     description: Media item has a generated sidecar description.
     classification: deterministic
@@ -306,28 +312,28 @@ tags:
     description: Broad or mixed-problem posts that are not a narrower topic.
     classification: deterministic
 
-  # ===== branch:* - military branch subtopics ========================
-  branch:army:
+  # ===== military:* - military branch subtopics ======================
+  military:army:
     description: References the U.S. Army, soldiers, West Point, or Army-specific handles.
     classification: deterministic
-  branch:navy:
+  military:navy:
     description: >-
       References the U.S. Navy, sailors, carrier strike groups, aircraft
       carriers, USS/USNS ships, naval academy, or midshipmen.
     classification: deterministic
-  branch:air-force:
+  military:air-force:
     description: References the U.S. Air Force, airmen, or the Air Force Academy.
     classification: deterministic
-  branch:space-force:
+  military:space-force:
     description: References the U.S. Space Force.
     classification: deterministic
-  branch:marines:
+  military:marines:
     description: References the U.S. Marine Corps or Marines.
     classification: deterministic
-  branch:coast-guard:
+  military:coast-guard:
     description: References the U.S. Coast Guard, Coast Guard Academy, or USCG handles.
     classification: deterministic
-  branch:national-guard:
+  military:national-guard:
     description: References the National Guard or National Guard handles.
     classification: deterministic
 

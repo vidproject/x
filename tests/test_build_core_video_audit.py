@@ -47,3 +47,7 @@ def test_archive_recovery_queue_is_limited_to_produced_or_genre_items() -> None:
 
 def test_tag_values_normalizes_legacy_produced_video_tag() -> None:
     assert tag_values([{"tag": "media:produced-video"}]) == ["video:produced"]
+
+
+def test_tag_values_normalizes_legacy_branch_tags() -> None:
+    assert tag_values([{"tag": "branch:coast-guard"}]) == ["military:coast-guard"]

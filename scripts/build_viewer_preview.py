@@ -259,9 +259,15 @@ def load_catalog_rows(data_dir: Path) -> list[dict[str, Any]]:
             df = df.with_row_count("__row_index")
         source_handle = path.stem
         parquet_url = f"data/{path.name}"
+        parquet_byte_length = path.stat().st_size
         for row in df.iter_rows(named=True):
             rows.append(
-                compact_catalog_row(row, source_handle=source_handle, parquet_url=parquet_url)
+                compact_catalog_row(
+                    row,
+                    source_handle=source_handle,
+                    parquet_url=parquet_url,
+                    parquet_byte_length=parquet_byte_length,
+                )
             )
     rows.sort(key=catalog_sort_key, reverse=True)
     return rows
@@ -272,6 +278,7 @@ def compact_catalog_row(
     *,
     source_handle: str,
     parquet_url: str,
+    parquet_byte_length: int | None = None,
 ) -> dict[str, Any]:
     out: dict[str, Any] = {}
     for key in CATALOG_SCALAR_COLUMNS:
@@ -293,6 +300,8 @@ def compact_catalog_row(
         "parquet": parquet_url,
         "row_index": int(row.get("__row_index") or 0),
     }
+    if parquet_byte_length is not None:
+        out["__catalog"]["byte_length"] = int(parquet_byte_length)
     out["__hydrated"] = False
     return _json_safe(out)
 

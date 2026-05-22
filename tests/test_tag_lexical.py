@@ -934,6 +934,33 @@ def test_general_topic_matches_multi_problem_posts() -> None:
     assert "topic:general" in _tags(out)
 
 
+def test_palestine_event_covers_gaza_hamas_and_palestinian_terms() -> None:
+    examples = (
+        "The President discussed humanitarian aid for Gaza.",
+        "Hamas released another statement today.",
+        "Palestinian families need relief.",
+        "The Israel-Hamas conflict remains central to the briefing.",
+    )
+    for text in examples:
+        out = tag_text(
+            text,
+            tweet_type="original",
+            mentions=[],
+            media_count=0,
+            account_category="core",
+        )
+        tags = _tags(out)
+        assert "event:palestine" in tags, text
+        forbidden = (
+            ("topic", "palestine"),
+            ("country", "Palestine"),
+            ("region", "gaza"),
+            ("org", "hamas"),
+        )
+        assert not any(f"{namespace}:{value}" in tags for namespace, value in forbidden), text
+        assert "topic:immigration" not in tags, text
+
+
 def test_explicit_military_language_emits_military_topic() -> None:
     out = tag_text(
         "Military veterans and service members attended the briefing.",
@@ -944,18 +971,19 @@ def test_explicit_military_language_emits_military_topic() -> None:
     )
     tags = _tags(out)
     assert "topic:military" in tags
+    assert not any(t.startswith("military:") for t in tags)
     assert not any(t.startswith("branch:") for t in tags)
 
 
-def test_military_branch_mentions_emit_branch_and_military_topic() -> None:
+def test_military_branch_mentions_emit_military_subtopic_and_parent_topic() -> None:
     examples = (
-        ("The Army deployed soldiers overseas.", "branch:army"),
-        ("The Navy honored sailors at the ceremony.", "branch:navy"),
-        ("The USAF recognized airmen for their service.", "branch:air-force"),
-        ("The USSF launched a new mission.", "branch:space-force"),
-        ("The Marine Corps honored Marines today.", "branch:marines"),
-        ("The Coast Guard rescued families after the storm.", "branch:coast-guard"),
-        ("The National Guard deployed today.", "branch:national-guard"),
+        ("The Army deployed soldiers overseas.", "military:army"),
+        ("The Navy honored sailors at the ceremony.", "military:navy"),
+        ("The USAF recognized airmen for their service.", "military:air-force"),
+        ("The USSF launched a new mission.", "military:space-force"),
+        ("The Marine Corps honored Marines today.", "military:marines"),
+        ("The Coast Guard rescued families after the storm.", "military:coast-guard"),
+        ("The National Guard deployed today.", "military:national-guard"),
     )
     for text, expected in examples:
         out = tag_text(
@@ -967,6 +995,7 @@ def test_military_branch_mentions_emit_branch_and_military_topic() -> None:
         )
         tags = _tags(out)
         assert expected in tags, text
+        assert not any(t.startswith("branch:") for t in tags), text
         assert "topic:military" in tags, text
         assert "topic:immigration" not in tags, text
 
@@ -982,12 +1011,13 @@ def test_naval_carrier_context_marks_military_for_southcom_retweet() -> None:
     )
     tags = _tags(out)
     assert "agency:Southcom" in tags
-    assert "branch:navy" in tags
+    assert "military:navy" in tags
+    assert "branch:navy" not in tags
     assert "topic:military" in tags
     assert "topic:immigration" not in tags
 
 
-def test_military_branch_mentions_from_handles_emit_branch_and_parent_topic() -> None:
+def test_military_branch_mentions_from_handles_emit_military_subtopic_and_parent_topic() -> None:
     out = tag_text(
         "Training the next generation of cadets.",
         tweet_type="original",
@@ -997,7 +1027,8 @@ def test_military_branch_mentions_from_handles_emit_branch_and_parent_topic() ->
     )
     tags = _tags(out)
     assert "agency:USCGAcademy" in tags
-    assert "branch:coast-guard" in tags
+    assert "military:coast-guard" in tags
+    assert "branch:coast-guard" not in tags
     assert "topic:military" in tags
 
 

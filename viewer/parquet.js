@@ -12,7 +12,7 @@ import { compressors } from 'https://esm.sh/hyparquet-compressors@1?bundle';
 /**
  * Load a parquet file into an array of plain JS objects.
  * @param {string} url
- * @param {((loaded: number, total: number) => void)|{rowStart?: number, rowEnd?: number, columns?: string[], onProgress?: (loaded: number, total: number) => void}} [options]
+ * @param {((loaded: number, total: number) => void)|{rowStart?: number, rowEnd?: number, columns?: string[], byteLength?: number, onProgress?: (loaded: number, total: number) => void}} [options]
  * @returns {Promise<Array<Record<string, unknown>>>}
  */
 export async function loadParquetRows(url, options) {
@@ -20,7 +20,7 @@ export async function loadParquetRows(url, options) {
   const hasRange = Number.isFinite(opts.rowStart) || Number.isFinite(opts.rowEnd) || opts.columns;
   if (!opts.onProgress || hasRange) {
     try {
-      const file = await parquetFile(url);
+      const file = await parquetFile(url, opts.byteLength);
       return await parquetReadObjects({
         file,
         compressors,
@@ -40,9 +40,15 @@ export async function loadParquetRows(url, options) {
 
 const parquetFiles = new Map();
 
-async function parquetFile(url) {
+async function parquetFile(url, byteLength) {
   if (!parquetFiles.has(url)) {
-    const promise = asyncBufferFromUrl({ url, requestInit: { cache: 'no-store' } }).catch((err) => {
+    const promise = asyncBufferFromUrl({
+      url,
+      ...(Number.isFinite(byteLength) && byteLength > 0
+        ? { byteLength: Math.floor(byteLength) }
+        : {}),
+      requestInit: { cache: 'no-store' },
+    }).catch((err) => {
       parquetFiles.delete(url);
       throw err;
     });

@@ -1915,6 +1915,10 @@ html[data-media-fit='vertical'] .media-thumb {
   background: rgba(114, 91, 190, 0.16);
   border-color: rgba(114, 91, 190, 0.46);
 }
+.tag-pill.ns-event {
+  background: rgba(22, 160, 133, 0.16);
+  border-color: rgba(22, 160, 133, 0.48);
+}
 .tag-pill.ns-status {
   background: rgba(192, 57, 43, 0.14);
   border-color: rgba(192, 57, 43, 0.48);
@@ -1938,6 +1942,10 @@ html[data-media-fit='vertical'] .media-thumb {
 .tag-pill.ns-agency {
   background: rgba(127, 140, 141, 0.18);
   border-color: rgba(127, 140, 141, 0.5);
+}
+.tag-pill.ns-military {
+  background: rgba(94, 106, 113, 0.2);
+  border-color: rgba(94, 106, 113, 0.55);
 }
 .tag-pill.ns-slogan {
   background: rgba(243, 156, 18, 0.18);

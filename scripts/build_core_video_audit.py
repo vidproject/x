@@ -59,6 +59,13 @@ GENRE_EXPERIMENT_TAGS = {
 }
 TAG_ALIASES = {
     "media:produced-video": "video:produced",
+    "branch:army": "military:army",
+    "branch:navy": "military:navy",
+    "branch:air-force": "military:air-force",
+    "branch:space-force": "military:space-force",
+    "branch:marines": "military:marines",
+    "branch:coast-guard": "military:coast-guard",
+    "branch:national-guard": "military:national-guard",
 }
 
 

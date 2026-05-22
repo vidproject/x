@@ -20,9 +20,9 @@ import {
   retweetedByHandles,
   tagNamespace,
   tagSubtype,
-} from './store.js?v=lazycat1';
-import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js?v=lazycat1';
-import { archiveShareUrlForRow, copyTextToClipboard, xTweetUrlForRow } from './links.js?v=lazycat1';
+} from './store.js?v=lazycat2';
+import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js?v=lazycat2';
+import { archiveShareUrlForRow, copyTextToClipboard, xTweetUrlForRow } from './links.js?v=lazycat2';
 
 const MEDIA_COL_KEY = 'media_kinds';
 export const TAG_CERTAINTY_LABELS = {
@@ -33,7 +33,7 @@ export const TAG_CERTAINTY_LABELS = {
 const TAG_FACET_SECTIONS = [
   {
     label: 'Primary facets',
-    namespaces: ['topic', 'media', 'theme', 'religion', 'legal', 'crime'],
+    namespaces: ['topic', 'event', 'media', 'theme', 'religion', 'legal', 'crime'],
   },
   {
     label: 'Evidence terms',
@@ -52,7 +52,7 @@ const TAG_FACET_SECTIONS = [
   },
   {
     label: 'Analysis fields',
-    namespaces: ['agency', 'country', 'origin', 'state', 'branch', 'status', 'format'],
+    namespaces: ['agency', 'country', 'origin', 'state', 'military', 'status', 'format'],
   },
 ];
 const TAG_NAMESPACE_RANK = new Map(

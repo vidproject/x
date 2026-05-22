@@ -213,6 +213,7 @@ See `config/tag_taxonomy.yaml` for the authoritative list. Quick map:
 | `frame:`   | recurring rhetorical scaffolds         | `frame:criminal`           |
 | `action:`  | enforcement verbs                      | `action:deportation`       |
 | `topic:`   | broad subject areas; additive          | `topic:immigration`        |
+| `event:`   | named event/conflict groupings         | `event:palestine`          |
 | `theme:`   | rhetorical / ideological frames        | `theme:nativism`           |
 | `religion:`| religion-specific subcategories        | `religion:christianity`    |
 | `origin:`  | "from <country>," pattern              | `origin:Mexico`            |
@@ -222,7 +223,7 @@ See `config/tag_taxonomy.yaml` for the authoritative list. Quick map:
 | `agency:`  | mentioned enforcement-adjacent handle  | `agency:ICEgov`            |
 | `slogan:`  | DHS branded phrases                    | `slogan:nice`              |
 | `phrase:`  | recurring domain terms                 | `phrase:migrant`           |
-| `shape:`   | composite (e.g. mugshot-reply form)    | `shape:lineup`             |
+| `military:`| military branch subtopics              | `military:navy`            |
 | `news:`    | local article export cited this tweet  | `news:mentioned`           |
 
 ## The `topic:immigration` default
@@ -261,11 +262,11 @@ service academies, deployments, troops / service members, carrier
 strike groups, aircraft carriers, USS / USNS ship references, CVN hull
 numbers, and similar high-signal military terms.
 
-Branch tags are narrower children. For example, `branch:navy` covers
+Military tags are narrower children. For example, `military:navy` covers
 Navy / sailor language and naval carrier cues such as "Carrier Strike
 Group," "aircraft carrier," "USS Nimitz," and "CVN 68"; those narrower
 tags automatically imply `topic:military`. Known branch handles such as
-`@USCGAcademy` also emit the relevant branch tag. Combatant-command
+`@USCGAcademy` also emit the relevant military tag. Combatant-command
 agency tags such as `agency:Southcom`, `agency:CENTCOM`, and
 `agency:DeptofWar` also imply `topic:military`.
 
