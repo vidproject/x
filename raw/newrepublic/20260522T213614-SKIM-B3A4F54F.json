@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-icegov-remainder-20260522-20260522T213459Z-1909a413-newrepublic",
+  "account_handle": "newrepublic",
+  "captured_at": "2026-05-22T21:36:14.385Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AICEgov%20since%3A2026-03-01%20until%3A2026-04-01",
+  "tweets": [
+    {
+      "tweet_id": "2039034321646837813",
+      "account_handle": "newrepublic",
+      "account_id": "82689705",
+      "posted_at": "2026-03-31T17:37:20.000Z",
+      "first_captured_at": "2026-05-22T21:35:23.494Z",
+      "last_seen_at": "2026-05-22T21:35:23.494Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/newrepublic/status/2039034321646837813",
+      "tweet_type": "original",
+      "conversation_id": "2039034321646837813",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "ICE Plans to Target Family Members of U.S. Marines Next https://t.co/k0LCYKJL0o",
+      "text_resolved": "ICE Plans to Target Family Members of U.S. Marines Next https://trib.al/XajNzvw",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/k0LCYKJL0o",
+          "expanded": "https://trib.al/XajNzvw",
+          "display": "trib.al/XajNzvw"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/k0LCYKJL0o",
+        "vendor_url": "newrepublic.com",
+        "title": "ICE Plans to Target Family Members of U.S. Marines Next",
+        "description": "ICE is using heightened security amid the war on Iran to target military recruits’ family members.",
+        "image_url": "https://pbs.twimg.com/card_img/2055658923831517184/tQNtiuHW?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 19,
+      "retweet_count": 15,
+      "reply_count": 31,
+      "quote_count": 0,
+      "view_count": 29688,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-22T21:35:23.494Z",
+          "likes": 19,
+          "retweets": 15,
+          "replies": 31,
+          "quotes": 0,
+          "views": 29688,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "The New Republic",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1230590491965652997/V_c9TZOr_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Ideas. Influence. Impact.\n\nTNR is a must-read if you want to know the ideas impacting politics and culture today.",
+        "location": "New York, NY",
+        "url": "https://t.co/XiAWbx1eh9",
+        "followers_count": 189576,
+        "friends_count": 1681,
+        "statuses_count": 286712,
+        "account_created_at": "2009-10-15T19:15:18.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-icegov-remainder-20260522-20260522T213459Z-1909a413",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-ice-remainder-20260522/x-com-search-20260522T213459Z-1909a413.summary.json",
+    "jsonl": ".skim/raw-ice-remainder-20260522/x-com-search-20260522T213459Z-1909a413.jsonl",
+    "source_handle": "ICEgov"
+  }
+}
