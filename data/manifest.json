@@ -1,24 +1,7 @@
 {
-  "generated_at": "2026-05-22T01:39:44Z",
+  "generated_at": "2026-05-22T01:42:59Z",
   "schema_version": 1,
   "accounts": [
-    {
-      "handle": "RealTomHoman",
-      "label": "Thomas D. Homan",
-      "category": "core",
-      "parquet": "data/RealTomHoman.parquet",
-      "parquet_bytes": 162246,
-      "row_count": 528,
-      "post_count": 508,
-      "reply_count": 20,
-      "first_post_at": "2023-01-21T21:24:53.000Z",
-      "latest_post_at": "2024-11-12T15:34:15.000Z",
-      "latest_capture_at": "2026-05-20T23:28:16.442Z",
-      "deleted_count": 0,
-      "media_count": 176,
-      "video_count": 97,
-      "releases": []
-    },
     {
       "handle": "CBP",
       "label": "U.S. Customs and Border Protection",
@@ -37,20 +20,20 @@
       "releases": []
     },
     {
-      "handle": "USDOL",
-      "label": "U.S. Department of Labor",
+      "handle": "RealTomHoman",
+      "label": "Thomas D. Homan",
       "category": "core",
-      "parquet": "data/USDOL.parquet",
-      "parquet_bytes": 248815,
-      "row_count": 848,
-      "post_count": 832,
-      "reply_count": 16,
-      "first_post_at": "2025-01-14T20:28:05.000Z",
-      "latest_post_at": "2026-05-20T16:03:30.000Z",
-      "latest_capture_at": "2026-05-21T10:22:07.631Z",
+      "parquet": "data/RealTomHoman.parquet",
+      "parquet_bytes": 162246,
+      "row_count": 528,
+      "post_count": 508,
+      "reply_count": 20,
+      "first_post_at": "2023-01-21T21:24:53.000Z",
+      "latest_post_at": "2024-11-12T15:34:15.000Z",
+      "latest_capture_at": "2026-05-20T23:28:16.442Z",
       "deleted_count": 0,
-      "media_count": 574,
-      "video_count": 76,
+      "media_count": 176,
+      "video_count": 97,
       "releases": []
     },
     {
@@ -68,6 +51,23 @@
       "deleted_count": 0,
       "media_count": 359,
       "video_count": 75,
+      "releases": []
+    },
+    {
+      "handle": "StephenM",
+      "label": "Stephen Miller",
+      "category": "core",
+      "parquet": "data/StephenM.parquet",
+      "parquet_bytes": 282804,
+      "row_count": 1084,
+      "post_count": 961,
+      "reply_count": 123,
+      "first_post_at": "2021-01-20T20:28:48.000Z",
+      "latest_post_at": "2026-05-20T21:14:51.000Z",
+      "latest_capture_at": "2026-05-21T10:32:47.155Z",
+      "deleted_count": 0,
+      "media_count": 91,
+      "video_count": 24,
       "releases": []
     },
     {
@@ -105,23 +105,6 @@
       "releases": []
     },
     {
-      "handle": "StephenM",
-      "label": "Stephen Miller",
-      "category": "core",
-      "parquet": "data/StephenM.parquet",
-      "parquet_bytes": 282804,
-      "row_count": 1084,
-      "post_count": 961,
-      "reply_count": 123,
-      "first_post_at": "2021-01-20T20:28:48.000Z",
-      "latest_post_at": "2026-05-20T21:14:51.000Z",
-      "latest_capture_at": "2026-05-21T10:32:47.155Z",
-      "deleted_count": 0,
-      "media_count": 91,
-      "video_count": 24,
-      "releases": []
-    },
-    {
       "handle": "POTUS",
       "label": "President of the United States",
       "category": "core",
@@ -156,6 +139,23 @@
       "releases": []
     },
     {
+      "handle": "USDOL",
+      "label": "U.S. Department of Labor",
+      "category": "core",
+      "parquet": "data/USDOL.parquet",
+      "parquet_bytes": 248815,
+      "row_count": 848,
+      "post_count": 832,
+      "reply_count": 16,
+      "first_post_at": "2025-01-14T20:28:05.000Z",
+      "latest_post_at": "2026-05-20T16:03:30.000Z",
+      "latest_capture_at": "2026-05-21T10:22:07.631Z",
+      "deleted_count": 0,
+      "media_count": 574,
+      "video_count": 76,
+      "releases": []
+    },
+    {
       "handle": "PressSec",
       "label": "White House Press Secretary",
       "category": "core",
@@ -173,23 +173,6 @@
       "releases": []
     },
     {
-      "handle": "DHSgov",
-      "label": "Department of Homeland Security",
-      "category": "core",
-      "parquet": "data/DHSgov.parquet",
-      "parquet_bytes": 1129166,
-      "row_count": 4497,
-      "post_count": 3986,
-      "reply_count": 511,
-      "first_post_at": "2016-01-11T19:45:09.000Z",
-      "latest_post_at": "2026-05-21T02:44:27.000Z",
-      "latest_capture_at": "2026-05-21T10:22:23.103Z",
-      "deleted_count": 0,
-      "media_count": 2600,
-      "video_count": 526,
-      "releases": []
-    },
-    {
       "handle": "USCIS",
       "label": "U.S. Citizenship and Immigration Services",
       "category": "core",
@@ -204,6 +187,23 @@
       "deleted_count": 0,
       "media_count": 505,
       "video_count": 85,
+      "releases": []
+    },
+    {
+      "handle": "DHSgov",
+      "label": "Department of Homeland Security",
+      "category": "core",
+      "parquet": "data/DHSgov.parquet",
+      "parquet_bytes": 1129154,
+      "row_count": 4497,
+      "post_count": 3986,
+      "reply_count": 511,
+      "first_post_at": "2016-01-11T19:45:09.000Z",
+      "latest_post_at": "2026-05-21T02:44:27.000Z",
+      "latest_capture_at": "2026-05-21T10:22:23.103Z",
+      "deleted_count": 0,
+      "media_count": 2600,
+      "video_count": 526,
       "releases": []
     },
     {
