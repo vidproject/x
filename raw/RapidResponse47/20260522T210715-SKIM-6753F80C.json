@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-dhsgov-smoke-20260522-20260522T210651Z-b30ac39e-RapidResponse47",
+  "account_handle": "RapidResponse47",
+  "captured_at": "2026-05-22T21:07:15.027Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-05-01%20until%3A2026-05-23",
+  "tweets": [
+    {
+      "tweet_id": "2057457966740111590",
+      "account_handle": "RapidResponse47",
+      "account_id": "1881451105454002176",
+      "posted_at": "2026-05-21T13:46:19.000Z",
+      "first_captured_at": "2026-05-22T21:07:12.747Z",
+      "last_seen_at": "2026-05-22T21:07:12.747Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/RapidResponse47/status/2057457966740111590",
+      "tweet_type": "original",
+      "conversation_id": "2057457966740111590",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Trump administration onboards 82 new immigration judges in bid to speed up deportation cases\nhttps://t.co/NLusYpOyfc",
+      "text_resolved": "Trump administration onboards 82 new immigration judges in bid to speed up deportation cases\nhttps://www.cbsnews.com/news/trump-administration-82-new-immigration-judges-deportation-cases/",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/NLusYpOyfc",
+          "expanded": "https://www.cbsnews.com/news/trump-administration-82-new-immigration-judges-deportation-cases/",
+          "display": "cbsnews.com/news/trump-adm…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/NLusYpOyfc",
+        "vendor_url": "cbsnews.com",
+        "title": "Trump administration onboards largest-ever class of new immigration judges in bid to speed up...",
+        "description": "The additions come after the ouster of dozens of immigration judges across the country by the Trump administration over the past year.",
+        "image_url": "https://pbs.twimg.com/card_img/2057452139002445824/GDWdGwOw?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 6681,
+      "retweet_count": 1659,
+      "reply_count": 159,
+      "quote_count": 62,
+      "view_count": 263857,
+      "bookmark_count": 115,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-22T21:07:12.747Z",
+          "likes": 6681,
+          "retweets": 1659,
+          "replies": 159,
+          "quotes": 62,
+          "views": 263857,
+          "bookmarks": 115
+        }
+      ],
+      "author": {
+        "display_name": "Rapid Response 47",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1883970867215876096/HK4lwY1m_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official White House Rapid Response account. Supporting @POTUS's America First agenda and holding the Fake News accountable. MAGA!",
+        "location": "🇺🇸🇺🇸🇺🇸",
+        "url": "https://t.co/8qhSUMpp7C",
+        "followers_count": 1858496,
+        "friends_count": 74,
+        "statuses_count": 27114,
+        "account_created_at": "2025-01-20T21:18:05.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-dhsgov-smoke-20260522-20260522T210651Z-b30ac39e",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-fresh-smoke-20260522b/x-com-search-20260522T210651Z-b30ac39e.summary.json",
+    "jsonl": ".skim/raw-fresh-smoke-20260522b/x-com-search-20260522T210651Z-b30ac39e.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

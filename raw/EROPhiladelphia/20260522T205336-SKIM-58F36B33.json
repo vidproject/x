@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-20250101-partial-20260522-20260522T205217Z-d4df7ee4-EROPhiladelphia",
+  "account_handle": "EROPhiladelphia",
+  "captured_at": "2026-05-22T20:53:36.151Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2025-04-01%20until%3A2025-05-01",
+  "tweets": [
+    {
+      "tweet_id": "1912946695656395067",
+      "account_handle": "EROPhiladelphia",
+      "account_id": "1301499190019846146",
+      "posted_at": "2025-04-17T19:10:07.000Z",
+      "first_captured_at": "2026-05-22T20:53:00.136Z",
+      "last_seen_at": "2026-05-22T20:53:00.136Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/EROPhiladelphia/status/1912946695656395067",
+      "tweet_type": "original",
+      "conversation_id": "1912946695656395067",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": ".@ICEgov Philadelphia arrested Fermin Eslava-Burgos, a citizen of Venezuela, in Honesdale, Pennsylvania. Eslava was arrested as a suspected TdA gang member who entered the U.S. without admission by an immigration official. He will remain in custody pending removal proceedings. https://t.co/2j3k3n4XAJ",
+      "text_resolved": ".@ICEgov Philadelphia arrested Fermin Eslava-Burgos, a citizen of Venezuela, in Honesdale, Pennsylvania. Eslava was arrested as a suspected TdA gang member who entered the U.S. without admission by an immigration official. He will remain in custody pending removal proceedings. https://t.co/2j3k3n4XAJ",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "ICEgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1912946643831226369",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Gowm1lvWAAEraX2.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 640,
+          "height": 480,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_1912946643835453440",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Gowm1lwWgAA9OjO.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 2048,
+          "height": 1537,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 0,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 73374,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-22T20:53:00.136Z",
+          "likes": 0,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 0,
+          "views": 73374,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "ERO Philadelphia",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1960032812230156289/OUQZObk3_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official account for @ICEgov Enforcement and Removal Operations Philadelphia field office covering Pennsylvania, Delaware and West Virginia.",
+        "location": "PA, DE, and WV",
+        "url": "https://t.co/e3An0wkYvI",
+        "followers_count": 1854,
+        "friends_count": 49,
+        "statuses_count": 554,
+        "account_created_at": "2020-09-03T12:36:12.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-20250101-partial-20260522-20260522T205217Z-d4df7ee4",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-20250101-20260523-20260522/x-com-search-20260522T205217Z-d4df7ee4.summary.json",
+    "jsonl": ".skim/raw-core-20250101-20260523-20260522/x-com-search-20260522T205217Z-d4df7ee4.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-dhsgov-resume-20260522-20260522T211130Z-b30ac39e-priscialva",
+  "account_handle": "priscialva",
+  "captured_at": "2026-05-22T21:12:28.218Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-05-01%20until%3A2026-05-23",
+  "tweets": [
+    {
+      "tweet_id": "2055340379910578527",
+      "account_handle": "priscialva",
+      "account_id": "553840400",
+      "posted_at": "2026-05-15T17:31:47.000Z",
+      "first_captured_at": "2026-05-22T21:12:24.157Z",
+      "last_seen_at": "2026-05-22T21:12:24.157Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/priscialva/status/2055340379910578527",
+      "tweet_type": "original",
+      "conversation_id": "2055340379910578527",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "EXCLUSIVE: A CNN investigation into ICE detainee deaths found deadly outcomes in more than a dozen cases could be linked, in part, to substandard treatment by at-times understaffed medical teams dealing with escalating detainee populations. https://t.co/NaDhAqm5LC",
+      "text_resolved": "EXCLUSIVE: A CNN investigation into ICE detainee deaths found deadly outcomes in more than a dozen cases could be linked, in part, to substandard treatment by at-times understaffed medical teams dealing with escalating detainee populations. https://www.cnn.com/2026/05/15/us/ice-immigration-detention-centers-medical-care-deaths-invs-vis?brand-site=cnn&language=en&agent=any&region=any",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/NaDhAqm5LC",
+          "expanded": "https://www.cnn.com/2026/05/15/us/ice-immigration-detention-centers-medical-care-deaths-invs-vis?brand-site=cnn&language=en&agent=any&region=any",
+          "display": "cnn.com/2026/05/15/us/…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/NaDhAqm5LC",
+        "vendor_url": "cnn.com",
+        "title": "How understaffing and DHS policy drives rising deaths in ICE detention centers | CNN",
+        "description": "More ICE detainees died in custody in 2025 than in any year in at least two decades, and 2026 is on track to be even higher.",
+        "image_url": "https://pbs.twimg.com/card_img/2057873168778530816/_NJpGIXs?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 75,
+      "retweet_count": 55,
+      "reply_count": 109,
+      "quote_count": 8,
+      "view_count": 53785,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-22T21:12:24.157Z",
+          "likes": 75,
+          "retweets": 55,
+          "replies": 109,
+          "quotes": 8,
+          "views": 53785,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Priscilla Alvarez",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1675183532543557635/EQNXpRDf_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "CNN correspondent covering immigration. Former: @TheAtlantic. @NAHJDC Student Outreach Committee Chair. Signal: PriscillaAlvarez.59",
+        "location": "Washington, DC",
+        "url": null,
+        "followers_count": 29758,
+        "friends_count": 1954,
+        "statuses_count": 8777,
+        "account_created_at": "2012-04-14T21:16:32.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-dhsgov-resume-20260522-20260522T211130Z-b30ac39e",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-fresh-resume-20260522/x-com-search-20260522T211130Z-b30ac39e.summary.json",
+    "jsonl": ".skim/raw-core-fresh-resume-20260522/x-com-search-20260522T211130Z-b30ac39e.jsonl",
+    "source_handle": "DHSgov"
+  }
+}
