@@ -525,6 +525,42 @@ def test_promoting_handle_to_tracked_migrates_rows_out_of_misc(tmp_repo: Path) -
     assert misc_after is None or "extra" not in misc_after["account_handle"].to_list()
 
 
+def test_backfill_retweet_engagement_copies_counts_from_original() -> None:
+    """Retweets get like/reply/quote from their original (X zeroes them on the
+    RT wrapper); retweet_count is left alone and orphan RTs stay at 0."""
+    original = {
+        "tweet_id": "100",
+        "tweet_type": "original",
+        "like_count": 500,
+        "reply_count": 30,
+        "quote_count": 7,
+    }
+    retweet = {
+        "tweet_id": "200",
+        "tweet_type": "retweet",
+        "retweeted_tweet_id": "100",
+        "like_count": 0,
+        "reply_count": 0,
+        "quote_count": 0,
+        "retweet_count": 42,
+    }
+    orphan_rt = {
+        "tweet_id": "300",
+        "tweet_type": "retweet",
+        "retweeted_tweet_id": "999",
+        "like_count": 0,
+        "reply_count": 0,
+        "quote_count": 0,
+    }
+    updated = ingest.backfill_retweet_engagement(
+        {"DHSgov": {"200": retweet, "300": orphan_rt}}, [original]
+    )
+    assert updated == 1
+    assert (retweet["like_count"], retweet["reply_count"], retweet["quote_count"]) == (500, 30, 7)
+    assert retweet["retweet_count"] == 42
+    assert orphan_rt["like_count"] == 0
+
+
 def test_media_never_dropped_when_later_payload_returns_fewer(tmp_repo: Path) -> None:
     """An earlier capture had a 4-photo tweet; a later capture returns
     just 1 photo (X stripped some media after rate-limit churn). The merged

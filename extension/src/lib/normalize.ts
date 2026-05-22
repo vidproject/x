@@ -377,6 +377,13 @@ function buildTweet(raw: unknown, ctx: NormalizeContext): CanonicalTweet | null 
 
   const tweetType = classifyTweetType(t, legacy);
 
+  // X omits favorite_count / reply_count / quote_count from a retweet
+  // wrapper's legacy block (only retweet_count is propagated) — the real
+  // counts live on the retweeted status. Read engagement from there for
+  // retweets so we don't record 0 likes/replies/quotes on every retweet.
+  const retweetedLegacy = obj(obj(obj(legacy.retweeted_status_result)?.result)?.legacy);
+  const engLegacy = tweetType === 'retweet' && retweetedLegacy ? retweetedLegacy : legacy;
+
   // posted_at: legacy.created_at remains the canonical location; if that's
   // missing in a future schema we fall back to top-level created_at.
   const postedAt =
@@ -423,19 +430,19 @@ function buildTweet(raw: unknown, ctx: NormalizeContext): CanonicalTweet | null 
     urls,
     card,
     media,
-    like_count: numOrZero(legacy.favorite_count),
+    like_count: numOrZero(engLegacy.favorite_count),
     retweet_count: numOrZero(legacy.retweet_count),
-    reply_count: numOrZero(legacy.reply_count),
-    quote_count: numOrZero(legacy.quote_count),
+    reply_count: numOrZero(engLegacy.reply_count),
+    quote_count: numOrZero(engLegacy.quote_count),
     view_count: viewCount,
     bookmark_count: numOrNull(legacy.bookmark_count),
     engagement_history: [
       {
         captured_at: ctx.capturedAt,
-        likes: numOrZero(legacy.favorite_count),
+        likes: numOrZero(engLegacy.favorite_count),
         retweets: numOrZero(legacy.retweet_count),
-        replies: numOrZero(legacy.reply_count),
-        quotes: numOrZero(legacy.quote_count),
+        replies: numOrZero(engLegacy.reply_count),
+        quotes: numOrZero(engLegacy.quote_count),
         views: viewCount,
         bookmarks: numOrNull(legacy.bookmark_count),
       },

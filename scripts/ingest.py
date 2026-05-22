@@ -944,6 +944,56 @@ def prune_misc_rows_to_related(
     return [row for row in misc_rows if str(row.get("tweet_id") or "").strip() in kept_ids]
 
 
+def backfill_retweet_engagement(
+    tracked_results: dict[str, dict[str, dict[str, Any]]],
+    misc_rows: list[dict[str, Any]],
+) -> int:
+    """Copy like/reply/quote counts from original tweets onto their retweets.
+
+    X's GraphQL omits favorite_count / reply_count / quote_count from a retweet
+    wrapper's legacy block (only retweet_count is propagated), so the extension
+    normalizes those to 0 on every retweet. When the original tweet is archived
+    anywhere in the corpus, propagate its real counts onto the retweet row so
+    parquet queries and CSV exports are coherent. Retweets whose original is not
+    archived keep 0. Runs once globally because a tracked handle's retweet may
+    point at an original that lives in _misc (or another handle).
+    """
+    counts: dict[str, dict[str, int]] = {}
+
+    def remember(row: dict[str, Any]) -> None:
+        tid = str(row.get("tweet_id") or "")
+        if not tid:
+            return
+        counts[tid] = {
+            "like_count": int(row.get("like_count") or 0),
+            "reply_count": int(row.get("reply_count") or 0),
+            "quote_count": int(row.get("quote_count") or 0),
+        }
+
+    all_rows: list[dict[str, Any]] = [
+        row for merged in tracked_results.values() for row in merged.values()
+    ]
+    all_rows.extend(misc_rows)
+    for row in all_rows:
+        remember(row)
+
+    updated = 0
+    for row in all_rows:
+        if str(row.get("tweet_type") or "") != "retweet":
+            continue
+        src = counts.get(str(row.get("retweeted_tweet_id") or ""))
+        if not src:
+            continue
+        changed = False
+        for field in ("like_count", "reply_count", "quote_count"):
+            if not row.get(field) and src.get(field):
+                row[field] = src[field]
+                changed = True
+        if changed:
+            updated += 1
+    return updated
+
+
 # --------------------------------------------------------------------------
 # CLI
 
@@ -1012,6 +1062,10 @@ def main(argv: list[str] | None = None) -> int:
     misc_rows = prune_misc_rows_to_related(misc_rows, tracked_results)
     if before_prune != len(misc_rows):
         LOG.info("pruned unrelated _misc rows", before=before_prune, after=len(misc_rows))
+
+    backfilled = backfill_retweet_engagement(tracked_results, misc_rows)
+    if backfilled:
+        LOG.info("backfilled retweet engagement from originals", rows=backfilled)
 
     # --- Write tracked parquets ------------------------------------------
     for handle, merged in tracked_results.items():
