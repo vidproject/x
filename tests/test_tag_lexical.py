@@ -1055,6 +1055,21 @@ def test_ai_generated_media_tag() -> None:
     assert "media:ai-generated" not in _tags(out)
 
 
+def test_needs_ocr_is_separate_from_needs_vision() -> None:
+    # A photo with no extracted text earns needs-ocr; OCR is not vision, so this
+    # layer never emits needs-vision (that comes from the visual-description layer).
+    out = tag_text(
+        "", tweet_type="original", mentions=[], media_count=1, account_category="core", needs_ocr=True
+    )
+    t = _tags(out)
+    assert "media:needs-ocr" in t
+    assert "media:needs-vision" not in t
+    out2 = tag_text(
+        "", tweet_type="original", mentions=[], media_count=1, account_category="core", needs_ocr=False
+    )
+    assert "media:needs-ocr" not in _tags(out2)
+
+
 def test_general_topic_matches_multi_problem_posts() -> None:
     out = tag_text(
         "Crime, inflation, fraud, and border chaos are hurting families.",

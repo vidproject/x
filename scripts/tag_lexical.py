@@ -1168,6 +1168,7 @@ def tag_text(
     video_count: int = 0,
     video_max_duration_sec: float | None = None,
     possibly_sensitive: bool = False,
+    needs_ocr: bool = False,
 ) -> list[dict[str, Any]]:
     """Apply every deterministic rule to a single tweet, returning a
     list of tag-entry dicts in the shape expected by
@@ -1244,6 +1245,13 @@ def tag_text(
             tentative=bool(media_tag.get("tentative")),
             source=str(media_tag.get("source") or "media-description"),
         )
+
+    # media:needs-ocr is orthogonal to media:needs-vision. needs-ocr means an
+    # attached image's text has not been extracted yet (resolved by the OCR
+    # layer); needs-vision means the frame/scene itself has not been analyzed
+    # (resolved only by an actual visual description, never by OCR).
+    if needs_ocr:
+        add("media:needs-ocr", tentative=True, source="media-metadata")
 
     # Concatenate OCR and media-description text so a poster's stamped
     # slogan or manually reviewed image description earns the same tags
@@ -2005,12 +2013,15 @@ def tag_one_parquet(
         media = r.get("media") or []
         media_count = len(media) if isinstance(media, list) else 0
         video_count = 0
+        photo_count = 0
         video_max_duration_sec: float | None = None
         if isinstance(media, list):
             for m in media:
                 if not isinstance(m, dict):
                     continue
                 mt = m.get("media_type")
+                if mt == "photo":
+                    photo_count += 1
                 if mt == "video" or mt == "animated_gif":
                     video_count += 1
                     dur = m.get("duration_sec")
@@ -2043,6 +2054,7 @@ def tag_one_parquet(
             account_category=category,
             ocr_text=ocr_map.get(tweet_id, ""),
             transcript_text=transcript_map.get(tweet_id, ""),
+            needs_ocr=photo_count > 0 and not ocr_map.get(tweet_id, "").strip(),
             media_text=str(media_context.get("text") or ""),
             media_tags=media_tags,
             reply_context_text=reply_context_map.get(tweet_id, ""),

@@ -198,7 +198,18 @@ tags:
     description: Media item includes source-provided alt text.
     classification: deterministic
   media:needs-vision:
-    description: Media item needs OCR, transcript, or frame-level vision before content claims.
+    description: >-
+      Media item still needs actual frame/scene analysis (a visual description
+      of what is shown) before content claims. Cleared only by a real visual
+      description (manual/agent review, alt text, or a future vision layer) —
+      never by OCR, which only recovers on-image text. Distinct from
+      media:needs-ocr.
+    classification: tentative
+  media:needs-ocr:
+    description: >-
+      Attached image text has not been extracted yet (OCR pending). Resolved by
+      the OCR layer recovering non-empty text. Orthogonal to media:needs-vision:
+      an image can need OCR (text) and frame analysis (scene) independently.
     classification: tentative
   media:short-video:
     description: Video or animated GIF is 30 seconds or shorter.
