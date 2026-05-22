@@ -1033,6 +1033,28 @@ def test_go_home_slogan_crosses_newline() -> None:
     assert "slogan:go-home" in _tags(out)
 
 
+def test_country_from_demonym_and_city() -> None:
+    # Demonyms ("Iranian") and foreign cities ("Tehran") now resolve to country,
+    # which the preposition+exact-name validator missed.
+    out = tag_text(
+        "an outspoken supporter of the Iranian regime in Tehran",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    assert "country:Iran" in _tags(out)
+    out2 = tag_text(
+        "A Venezuelan national was arrested at the border",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    assert "country:Venezuela" in _tags(out2)
+    assert "origin:Venezuela" in _tags(out2)
+
+
 def test_ai_generated_media_tag() -> None:
     for text in (
         "This whole clip is AI-generated propaganda.",

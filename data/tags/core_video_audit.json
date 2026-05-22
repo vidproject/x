@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-22T18:09:05Z",
+  "generated_at": "2026-05-22T20:17:17Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -26,7 +26,7 @@
       "produced-video": 118
     },
     "top_tags": {
-      "topic:immigration": 1177,
+      "topic:immigration": 1180,
       "media:archived": 1127,
       "media:described": 1127,
       "media:video": 1117,
@@ -60,6 +60,7 @@
       "crime:murder": 50,
       "topic:general": 49,
       "crime:fraud": 48,
+      "country:China": 46,
       "action:deportation": 41,
       "theme:religion": 35,
       "legal:criminal-prosecution": 35,
@@ -70,7 +71,6 @@
       "agency:TSA": 27,
       "crime:weapon": 27,
       "format:reply": 25,
-      "country:China": 23,
       "crime:trafficking": 23,
       "military:coast-guard": 21,
       "genre:recruitment": 20,
@@ -741,6 +741,7 @@
       "tags": [
         "agency:ICEgov",
         "audio:no-audio",
+        "country:El-Salvador",
         "crime:gang",
         "crime:homicide",
         "crime:ms13",
@@ -10196,6 +10197,7 @@
       "tags": [
         "action:detention",
         "agency:ICEgov",
+        "country:Israel",
         "legal:criminal-prosecution",
         "media:archived",
         "media:described",
@@ -10275,6 +10277,7 @@
       "tags": [
         "action:detention",
         "agency:ICEgov",
+        "country:Iran",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -15001,6 +15004,7 @@
       "tags": [
         "action:detention",
         "agency:ICEgov",
+        "country:Vietnam",
         "crime:gang",
         "crime:homicide",
         "crime:murder",
@@ -15009,6 +15013,7 @@
         "media:described",
         "media:needs-vision",
         "media:video",
+        "origin:Vietnam",
         "topic:immigration",
         "video:medium"
       ],
@@ -15513,6 +15518,7 @@
       "priority": 75,
       "tags": [
         "agency:POTUS",
+        "country:Dominican-Republic",
         "crime:homicide",
         "crime:murder",
         "format:quote",
@@ -15907,6 +15913,7 @@
       "tags": [
         "action:detention",
         "agency:ICEgov",
+        "country:Nigeria",
         "crime:assault",
         "format:quote",
         "frame:criminal",
@@ -16655,6 +16662,7 @@
       "bucket": "needs-recognition",
       "priority": 75,
       "tags": [
+        "country:Nicaragua",
         "crime:assault",
         "format:quote",
         "frame:criminal",
@@ -20564,6 +20572,7 @@
       "bucket": "needs-recognition",
       "priority": 70,
       "tags": [
+        "country:Israel",
         "media:archived",
         "media:described",
         "media:needs-vision",
@@ -20675,6 +20684,7 @@
       "bucket": "needs-recognition",
       "priority": 70,
       "tags": [
+        "country:Venezuela",
         "format:reply",
         "media:archived",
         "media:described",
@@ -24755,6 +24765,7 @@
         "action:deportation",
         "action:detention",
         "agency:ICEgov",
+        "country:Haiti",
         "format:quote",
         "frame:criminal",
         "media:archived",
@@ -26473,6 +26484,7 @@
       "priority": 60,
       "tags": [
         "action:detention",
+        "country:Guatemala",
         "crime:rape",
         "crime:sexual",
         "format:quote",
@@ -32923,6 +32935,8 @@
       "tags": [
         "agency:CISAgov",
         "agency:DHSgov",
+        "country:Ukraine",
+        "origin:Ukraine",
         "topic:immigration",
         "video:short"
       ],
@@ -33462,6 +33476,7 @@
         "agency:POTUS",
         "audio:has-audio",
         "audio:music-likely",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -33941,6 +33956,7 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
+        "country:Russia",
         "frame:criminal",
         "media:archived",
         "media:described",
@@ -35005,6 +35021,7 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
+        "country:Venezuela",
         "crime:homicide",
         "crime:murder",
         "frame:criminal",
@@ -35377,6 +35394,7 @@
         "agency:DHSgov",
         "agency:ICEgov",
         "audio:has-audio",
+        "country:Venezuela",
         "crime:homicide",
         "crime:murder",
         "frame:criminal",
@@ -36057,6 +36075,7 @@
         "action:deportation",
         "agency:ICEgov",
         "audio:has-audio",
+        "country:Venezuela",
         "crime:assault",
         "crime:homicide",
         "crime:murder",
@@ -36064,6 +36083,7 @@
         "media:archived",
         "media:described",
         "media:video",
+        "origin:Venezuela",
         "topic:immigration",
         "video:interview",
         "video:medium"
@@ -38257,6 +38277,7 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:Iran",
         "media:archived",
         "media:described",
         "media:video",
@@ -39102,11 +39123,13 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:short-video",
         "media:video",
         "military:air-force",
+        "topic:immigration",
         "topic:military",
         "video:short"
       ],
@@ -39177,11 +39200,13 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:short-video",
         "media:video",
         "speaker:President Trump",
+        "topic:immigration",
         "topic:military",
         "video:short"
       ],
@@ -39214,6 +39239,7 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -39283,6 +39309,7 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:short-video",
@@ -40040,6 +40067,7 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -40075,6 +40103,7 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -40110,9 +40139,11 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
+        "topic:immigration",
         "topic:military",
         "video:long"
       ],
@@ -40144,6 +40175,7 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -40180,6 +40212,7 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -40215,6 +40248,7 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -40285,6 +40319,7 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:short-video",
@@ -40427,6 +40462,7 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -40501,6 +40537,7 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -40573,6 +40610,7 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -40684,6 +40722,7 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -40719,6 +40758,7 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -40866,6 +40906,7 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:short-video",
@@ -40902,6 +40943,7 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:short-video",
@@ -41311,6 +41353,7 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -41753,6 +41796,7 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -43067,6 +43111,7 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -43396,6 +43441,7 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "country:China",
         "media:archived",
         "media:described",
         "media:video",
@@ -44429,6 +44475,7 @@
       "tags": [
         "agency:FBI",
         "audio:has-audio",
+        "country:Venezuela",
         "media:archived",
         "media:described",
         "media:video",
@@ -45691,6 +45738,7 @@
         "agency:POTUS",
         "agency:SecMullinDHS",
         "audio:has-audio",
+        "country:Guatemala",
         "crime:assault",
         "frame:criminal",
         "legal:criminal-prosecution",
@@ -49550,6 +49598,8 @@
       "tags": [
         "agency:USCIS",
         "audio:has-audio",
+        "country:Cuba",
+        "country:Russia",
         "crime:gang",
         "crime:trafficking",
         "crime:tren-de-aragua",

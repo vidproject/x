@@ -1074,6 +1074,53 @@ PATTERN_STATE_CANDIDATE = re.compile(
     r"\b[A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+)?,\s+([A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+)?)\b"
 )
 
+# Demonyms and major foreign cities -> country. The validators above need a
+# preposition + the exact country name, so they miss "Iranian regime" (demonym)
+# and "in Tehran" (city) — the most common way countries actually appear. These
+# maps recover them; demonyms are distinctive enough to match without a
+# preposition. Curated for precision: food/ambiguous demonyms ("French",
+# "German", "Indian", "Korean") are intentionally omitted.
+DEMONYM_TO_COUNTRY: dict[str, str] = {
+    "iranian": "Iran", "mexican": "Mexico", "venezuelan": "Venezuela",
+    "chinese": "China", "russian": "Russia", "cuban": "Cuba",
+    "colombian": "Colombia", "salvadoran": "El Salvador", "salvadorian": "El Salvador",
+    "honduran": "Honduras", "guatemalan": "Guatemala", "haitian": "Haiti",
+    "somali": "Somalia", "somalian": "Somalia", "afghan": "Afghanistan",
+    "syrian": "Syria", "nigerian": "Nigeria", "pakistani": "Pakistan",
+    "ukrainian": "Ukraine", "israeli": "Israel", "iraqi": "Iraq",
+    "egyptian": "Egypt", "yemeni": "Yemen", "brazilian": "Brazil",
+    "nicaraguan": "Nicaragua", "ecuadorian": "Ecuador", "peruvian": "Peru",
+    "jamaican": "Jamaica", "filipino": "Philippines", "vietnamese": "Vietnam",
+    "lebanese": "Lebanon", "libyan": "Libya", "sudanese": "Sudan",
+    "ethiopian": "Ethiopia", "kenyan": "Kenya", "moroccan": "Morocco",
+    "algerian": "Algeria", "bangladeshi": "Bangladesh", "cambodian": "Cambodia",
+    "indonesian": "Indonesia", "dominican": "Dominican Republic", "panamanian": "Panama",
+    "bolivian": "Bolivia", "chilean": "Chile", "argentine": "Argentina",
+    "argentinian": "Argentina", "saudi": "Saudi Arabia", "turkish": "Turkey",
+}
+FOREIGN_CITY_TO_COUNTRY: dict[str, str] = {
+    "tehran": "Iran", "caracas": "Venezuela", "beijing": "China",
+    "moscow": "Russia", "havana": "Cuba", "kabul": "Afghanistan",
+    "damascus": "Syria", "baghdad": "Iraq", "tripoli": "Libya",
+    "mogadishu": "Somalia", "bogota": "Colombia", "managua": "Nicaragua",
+    "tegucigalpa": "Honduras", "kyiv": "Ukraine",
+}
+
+
+def _alternation_pattern(keys: list[str]) -> re.Pattern[str]:
+    alts = sorted((re.escape(k) for k in keys), key=len, reverse=True)
+    return re.compile(r"\b(" + "|".join(alts) + r")\b", re.IGNORECASE)
+
+
+PATTERN_DEMONYM = _alternation_pattern(list(DEMONYM_TO_COUNTRY))
+PATTERN_FOREIGN_CITY = _alternation_pattern(list(FOREIGN_CITY_TO_COUNTRY))
+# A demonym that immediately precedes one of these nouns describes a person's
+# nationality, so it also earns origin:<country>, not just a contextual country:.
+PATTERN_DEMONYM_PERSON = _compile(
+    r"^\W*(?:national|nationals|citizen|citizens|immigrant|immigrants|migrant|migrants|"
+    r"refugee|refugees|nationals?|man|woman|men|women|descent|origin|national)\b"
+)
+
 MEDIA_TAG_PREFIXES_ALLOWED_IN_LEXICAL: tuple[str, ...] = (
     "action:",
     "agency:",
@@ -1391,6 +1438,20 @@ def tag_text(
         candidate = (m.group(1) or "").strip()
         if candidate.lower() in COUNTRY_LOWER:
             add(f"country:{_normalize_country(candidate)}", span=m.span(1))
+
+    # Demonyms ("Iranian regime") and major foreign cities ("in Tehran") ->
+    # country, which the bare-name validators above can't see. A demonym
+    # followed by a person noun also earns origin:.
+    for m in PATTERN_DEMONYM.finditer(text):
+        country = DEMONYM_TO_COUNTRY.get(m.group(1).lower())
+        if country and country.lower() in COUNTRY_LOWER:
+            add(f"country:{_normalize_country(country)}", span=m.span(1))
+            if PATTERN_DEMONYM_PERSON.search(text[m.end() : m.end() + 24]):
+                add(f"origin:{_normalize_country(country)}", span=m.span(1))
+    for m in PATTERN_FOREIGN_CITY.finditer(text):
+        country = FOREIGN_CITY_TO_COUNTRY.get(m.group(1).lower())
+        if country and country.lower() in COUNTRY_LOWER:
+            add(f"country:{_normalize_country(country)}", span=m.span(1))
 
     # state:<NAME> — the "<City>, <State>" pattern, validated.
     for m in PATTERN_STATE_CANDIDATE.finditer(text):
