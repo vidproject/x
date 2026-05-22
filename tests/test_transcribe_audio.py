@@ -115,6 +115,22 @@ def test_manifest_generated_at_stable_on_noop(tmp_corpus: Path) -> None:
     assert ts1 == ts2
 
 
+def test_run_skips_cleanly_when_model_unavailable(
+    tmp_corpus: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    p = _write_handle(
+        tmp_corpus,
+        "DHSgov",
+        [make_tweet("t1", handle="DHSgov", media=[_archived_video("13_1", "shaA")])],
+    )
+    out = tmp_corpus / "data" / "tags" / "transcripts.parquet"
+    monkeypatch.setattr(transcribe_audio, "load_whisper_model", lambda _model: None)
+    stats = transcribe_audio.run(parquets=[p], out_path=out)
+    assert stats.get("skipped_no_asr") == 1
+    # No model -> the sidecar is left untouched (no all-skipped rewrite/churn).
+    assert not out.exists()
+
+
 def test_is_cache_hit_respects_version_and_model() -> None:
     base = {"transcriber_version": transcribe_audio.TRANSCRIBER_VERSION, "model": "base", "status": "ok"}
     assert is_cache_hit(base, model="base")

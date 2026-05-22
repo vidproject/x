@@ -176,13 +176,22 @@ def ffmpeg_available() -> bool:
 
 
 def load_whisper_model(model: str) -> Any | None:
-    """Return a faster-whisper model, or None when the package is absent."""
+    """Return a faster-whisper model, or None when the recognizer is unusable.
+
+    None is returned both when the package is absent and when the model weights
+    can't be loaded (e.g. the weights host is unreachable). Returning None lets
+    the run skip transcription cleanly instead of crashing the pipeline step.
+    """
     try:
         from faster_whisper import WhisperModel
     except Exception:
         return None
-    compute_type = os.environ.get("ASR_COMPUTE_TYPE", "int8")
-    return WhisperModel(model, device="cpu", compute_type=compute_type)
+    try:
+        compute_type = os.environ.get("ASR_COMPUTE_TYPE", "int8")
+        return WhisperModel(model, device="cpu", compute_type=compute_type)
+    except Exception as e:
+        LOG.warning("asr: could not load whisper model; skipping transcription", model=model, error=str(e))
+        return None
 
 
 def fetch_to_tempfile(url: str, http: httpx.Client) -> Path:
@@ -433,6 +442,13 @@ def run(
             headers={"user-agent": "imm-archive-asr/1.0"},
         )
         whisper_model = load_whisper_model(model)
+        if whisper_model is None:
+            http.close()
+            # Recognizer or model unavailable: leave the existing sidecar
+            # untouched (no all-skipped rewrite) so we don't churn the data dir
+            # on environments without the model.
+            LOG.warning("asr unavailable; transcripts sidecar left unchanged", model=model)
+            return {"skipped_no_asr": 1, "rows": 0}
         _http = http
 
         def _real(c: TranscribeCandidate) -> TranscriptResult:
