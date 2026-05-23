@@ -1,23 +1,16 @@
 # Immigration Social Media Archive
 
-Public archive of immigration-related posts from federal X accounts.
+Public research archive of immigration-related posts captured from X/Twitter.
 
-[Open the searchable archive](https://vidproject.github.io/x/)
+[Open the searchable viewer](https://vidproject.github.io/x/)
 
-This repo is the database. A browser extension captures public X timeline data in the browser, commits raw JSON to GitHub, and GitHub Actions turns it into Parquet, archived media assets, tag sidecars, and a static viewer.
+This repository contains the archive and the tooling around it: browser capture, raw JSON, canonical Parquet files, media archival, annotation sidecars, and the static viewer published through GitHub Pages.
 
-No X API credentials. No X Developer Agreement. Capture uses what the public web UI served at the time.
-
-The viewer is published to GitHub Pages by `.github/workflows/pages.yml` on every push to `master` that touches `index.html`, `viewer/**`, `data/**`, `extension.zip`, or `extension-chrome.zip`. Repo settings need **Pages -> Build and deployment -> Source: GitHub Actions** for the workflow to actually deploy.
-
-The extension zips are rebuilt automatically by the `build-extension` workflow whenever the extension changes, committed back to the repo, and published by Pages:
-
-- Firefox: **[vidproject.github.io/x/extension.zip](https://vidproject.github.io/x/extension.zip)**
-- Chrome: **[vidproject.github.io/x/extension-chrome.zip](https://vidproject.github.io/x/extension-chrome.zip)**
+Capture uses the public web UI responses served to a logged-in browser. It does not use the X API or X developer credentials.
 
 ## Scope
 
-Tracked core accounts:
+The tracked account list lives in `config/accounts.yaml`. Current core handles:
 
 - `@DHSgov`
 - `@ICEgov`
@@ -28,63 +21,98 @@ Tracked core accounts:
 - `@POTUS`
 - `@USDOL`
 - `@RapidResponse47`
+- `@StephenM`
+- `@GregoryKBovino`
+- `@RealTomHoman`
 
-The archive also preserves replies, quotes, retweets, and public accounts that appear in captured threads.
+Replies, quotes, retweets, and non-tracked accounts encountered in captured threads are preserved in `data/_misc.parquet`.
+
+## Repository Layout
+
+- `raw/`: browser-extension capture payloads.
+- `data/*.parquet`: canonical per-account tweet tables.
+- `data/catalog.parquet`: compact whole-archive catalog used by the viewer.
+- `data/catalog.json`: small catalog manifest and poster map.
+- `data/manifest.json`: account-level counts, date ranges, and capture metadata.
+- `data/tags/*.parquet`: downstream annotation sidecars.
+- `data/relationships/retweets.parquet`: retweet relationship table.
+- `extension/`: Firefox/Chrome extension source.
+- `viewer/`: static browser viewer.
+- `scripts/`: ingest, tagging, media, OCR, audio, news, and README tooling.
+- `tools/`: low-overhead X skim tools that use Chrome DevTools Protocol.
+
+Canonical Parquet rows are the record of what X served at capture time. Tags and media analysis are separate, reversible overlays.
 
 ## Viewer
 
-The viewer starts with `data/catalog.parquet`, a lightweight full-archive catalog for global search, tags, filters, charts, and the date histogram without downloading every full account Parquet. `data/catalog.json` is only the tiny summary/poster map. Full tweet records hydrate lazily as rows come into view, are opened, or are reached from a shared link. Click the lightning button only to download every account Parquet listed in `data/manifest.json` for fast full-record browsing. Search runs in the browser. Filters support account, account category, date, tweet type, media type, tag, and column values. The URL updates with the current view, so filtered pages can be shared.
+The viewer is a static browser app. It starts with `data/catalog.json` and `data/catalog.parquet`, so global search, filters, charts, and the date histogram work without downloading every full account table. Full tweet records hydrate when a row is opened, scrolled into view, or reached from a shared URL. The lightning control downloads all account Parquets listed in `data/manifest.json` for faster full-record browsing.
 
-Search covers tweet text, resolved links, handles, mentions, tags, and media descriptions. CSV export uses the currently filtered rows.
+Search covers tweet text, resolved links, handles, mentions, tags, and media descriptions. Filters cover account, account category, date, tweet type, media type, tag, and visible column values. CSV export uses the current filtered rows. The URL tracks the current view, so filtered pages can be shared.
 
-GitHub Pages publishes the viewer and extension zips through `.github/workflows/pages.yml` when `index.html`, `viewer/**`, `data/**`, `extension.zip`, or `extension-chrome.zip` changes. Repo settings must use:
+Tags are grouped by namespace in the filter UI. Tentative tags remain visible but are marked as tentative.
+
+GitHub Pages publishes the viewer through `.github/workflows/pages.yml` on pushes to `master` or `main` that touch `index.html`, `viewer/**`, `data/**`, `extension.zip`, `extension-chrome.zip`, or the Pages workflow. Repository settings must use:
 
 `Pages -> Build and deployment -> Source: GitHub Actions`
 
 ## Browser Extension
 
-The extension captures public X posts and commits structured JSON to this repository.
+The extension captures public X/Twitter posts from browser tabs and commits structured JSON to this repository. It also maintains local state for queued refetches, media crawl targets, thread-opening work, recent sightings, and per-account capture counters.
+
+Built extension zips are committed by `.github/workflows/release.yml` when extension source changes:
+
+- Firefox: [vidproject.github.io/x/extension.zip](https://vidproject.github.io/x/extension.zip)
+- Chrome: [vidproject.github.io/x/extension-chrome.zip](https://vidproject.github.io/x/extension-chrome.zip)
 
 ### Firefox
 
-1. Download the latest auto-built [`extension.zip`](https://vidproject.github.io/x/extension.zip) and unzip it.
-2. In Firefox, open `about:debugging`.
+1. Download `extension.zip` and unzip it.
+2. Open `about:debugging`.
 3. Select `This Firefox`.
 4. Select `Load Temporary Add-on`.
-5. Pick `manifest.json` from the unzipped extension folder.
+5. Pick `manifest.json` from the unzipped folder.
+
+Temporary Firefox extensions disappear when Firefox closes.
 
 ### Chrome
 
-1. Download the latest auto-built [`extension-chrome.zip`](https://vidproject.github.io/x/extension-chrome.zip) and unzip it.
-2. In Chrome, open `chrome://extensions`.
+1. Download `extension-chrome.zip` and unzip it.
+2. Open `chrome://extensions`.
 3. Enable `Developer mode`.
 4. Select `Load unpacked`.
-5. Pick the unzipped extension folder.
+5. Pick the unzipped folder.
 
-The sidebar includes a **Low-bandwidth X tabs** option. When enabled, the
-extension blocks images, video/audio resources, fonts, and known X/Twitter
-video chunk URLs inside open X/Twitter tabs while leaving GraphQL/API capture
-and background archive downloads alone.
+### Configuration
 
 After loading either build:
 
 1. Open the extension sidebar.
 2. Open `Settings`.
-3. Paste a fine-grained GitHub PAT.
+3. Paste a fine-grained GitHub personal access token.
 4. Visit a tracked account on `x.com`, for example <https://x.com/DHSgov>.
 
-Temporary Firefox extensions disappear when Firefox closes. Reinstalling takes about ten seconds.
+If X tabs were already open when the extension was reloaded, close and reopen them before testing capture. The service worker does reinject the page hook on wake, but fresh tabs are the cleaner path.
 
-If you reload the extension while X tabs are open, those tabs may keep old content scripts. The extension does reinject its page hook on wake, but the cleanest test path is to close X tabs, reload the extension, and let `Capture now` open a fresh tab.
+### Low-Bandwidth Mode
+
+The sidebar has a `Low-bandwidth X tabs` toggle. When enabled, the extension blocks images, video/audio resources, fonts, and known X/Twitter video chunk URLs inside open X/Twitter tabs. GraphQL/API capture and GitHub archive downloads continue to work.
+
+## Personal Access Token
+
+Use a fine-grained GitHub personal access token scoped only to this repository.
+
+| Permission | Access |
+| ---------- | ------ |
+| Repository Contents | Read and write |
+| Repository Metadata | Read |
+
+Create it at <https://github.com/settings/personal-access-tokens/new>.
+
+The token is stored in `browser.storage.local`. Anyone with filesystem access to the browser profile can read it. Do not use a classic `repo` token.
 
 ## Low-Overhead Skim Shell
 
-For account skims where the extension UI is more browser than you need, the repo
-also includes a standalone Chrome/Edge shell that talks directly to the Chrome
-DevTools Protocol. It opens X with a persistent local profile, blocks images,
-video/audio, fonts, stylesheets, and common tracking hosts by default, scrolls
-the target page, clicks visible retry prompts, and writes the served X GraphQL
-responses to local JSONL.
+For quick account skims, the repository includes a standalone Chrome/Edge shell that talks to the Chrome DevTools Protocol. It uses a persistent local profile, blocks heavy assets by default, scrolls the target page, clicks visible retry prompts, and writes served X GraphQL responses to local JSONL.
 
 First run it visibly and log in to X if the profile is new:
 
@@ -101,133 +129,75 @@ npm run skim:x -- --url https://x.com/DHSgov/with_replies --seek-year 2025 --sec
 npm run skim:x -- --url https://x.com/DHSgov/media --metadata-only
 ```
 
-If the CDP/manual shell itself is needed for inspection, use
-`--manual --allow-styles`; it captures network traffic but does not scroll or
-click retry prompts.
+For manual inspection through the same shell, use:
 
-Output goes under `.skim/raw/` and the browser profile lives under
-`.skim/profile/`; both are ignored by git. The JSONL is intentionally separate
-from canonical `raw/` captures because it preserves raw GraphQL responses and
-candidate tweet/media IDs rather than extension-normalized tweet envelopes. Use
-it for low-bandwidth discovery, gap checks, and deciding what the normal archive
-collector should fetch next.
+```bash
+npm run skim:x -- --manual --allow-styles
+```
 
-By default the skim shell is stricter than the extension's low-bandwidth mode.
-If a page needs a blocked class of asset to paginate, selectively relax it:
+Output goes under `.skim/raw/`; the browser profile lives under `.skim/profile/`. Both are ignored by git. The JSONL is separate from canonical `raw/` captures because it preserves raw GraphQL responses and candidate tweet/media IDs, not normalized tweet envelopes.
+
+The skim shell is stricter than the extension low-bandwidth mode. If a page needs a blocked asset class to paginate, relax it explicitly:
 
 ```bash
 npm run skim:x -- --handle DHSgov --allow-styles
 npm run skim:x -- --handle DHSgov --allow-images --metadata-only
 ```
 
-## PAT
-
-Use a fine-grained Personal Access Token. Select only this repository.
-
-| Permission          | Access         |
-| ------------------- | -------------- |
-| Repository Contents | Read and write |
-| Repository Metadata | Read           |
-
-Create it at <https://github.com/settings/personal-access-tokens/new>.
-
-The PAT is stored in `browser.storage.local`. Anyone with filesystem access to the Firefox profile can read it. Do not use a classic `repo` token.
-
-## Capture Notes
-
-The sidebar can auto-scroll open X tabs. This works around profile tabs that stop paginating unless the page keeps moving. The default cadence is 6 seconds.
-
-Long-form tweets often appear in timeline responses as a 280-character head plus a `show more` link. The normalizer marks those rows with `is_truncated=true` and queues detail-page refetch. The sidebar has a refetch button for that queue.
-
-Media crawl follows attached media from the captured tweet data and stores archived assets in GitHub Releases. The canonical Parquet row records the Release URL only after upload succeeds.
-
-## Tags
-
-Tags are downstream annotations. They are not written into the canonical tweet Parquets.
-
-Current sidecars:
-
-- `data/tags/lexical.parquet`: regex and structural tags from `scripts/tag_lexical.py`.
-- `data/tags/media_vision.parquet`: media descriptions from `scripts/describe_media.py`.
-- `data/tags/keyframes.parquet`: video keyframe metadata and tiny poster thumbnails from `scripts/extract_video_frames.py`.
-- `data/tags/image_ocr.parquet`: Tesseract OCR text from archived photos and extracted video keyframes from `scripts/tag_image_ocr.py`.
-- `data/tags/audio_music.parquet`: ffmpeg-only audio stream/music-likelihood tags from `scripts/detect_audio_music.py`.
-- `data/tags/news_mentions.parquet`: exact X/Twitter status-URL mentions of core tweets in a local news article export from `scripts/news_mentions.py`.
-- `data/account_categories.json`: corpus-wide public figure / government / official categories from `scripts/build_account_categories.py`.
-- `config/tag_overrides.yaml`: editor-confirmed tags for cases the capture layer cannot prove from canonical fields alone.
-
-The viewer joins sidecars by `tweet_id`. Missing sidecars are tolerated.
-
-Tag namespaces use the form `namespace:slug`. The namespace is the broad category. The slug is the subtype. The viewer groups tag filters by namespace so a user can filter whole categories or specific subtypes.
-
-The immigration-reporting tag is `action:report-immigrants`. Generic non-immigration reporting can use other `action:report-*` tags later.
-
-## Media Recognition
-
-`scripts.describe_media` is the first recognition layer. It is deliberately cheap. It uses archived media metadata, source alt text, dimensions, duration, byte count, tweet context, and curated manual media-review observations. It does not infer visual content from pixels unless a reviewed observation or later OCR/vision sidecar supplies that evidence.
-
-Each media row carries cache and provenance fields: `input_hash`, `model`, `model_version`, `prompt_hash`, `confidence`, `cost_estimate_usd`, `status`, `source_fields`, and `error`.
-
-This gives later OCR, transcript, keyframe, CLIP, audio, or external analysis jobs a stable place to write results without changing canonical capture data. Items that need deeper inspection get tentative `media:needs-vision`.
-
-`scripts.extract_video_frames` pulls bounded keyframes from archived videos and also writes a tiny 96px JPEG poster under `data/thumbnails/video/` for the viewer. The table uses those posters before falling back to larger frame paths, so video thumbnails are automatic and cheap to load.
-
-`scripts.tag_image_ocr` is the first true pixel-reading image layer. It OCRs archived photos and the keyframes extracted in the same workflow run, then `scripts.tag_lexical` imports that recovered text so image-only slogans, agency names, religious language, and other text-overlay tags are searchable and filterable.
-
-`scripts.detect_audio_music` is the first audio pass. It uses ffprobe/ffmpeg only: detect whether an archived video has audio, decode a short mono sample, compute simple energy/zero-crossing features, and emit conservative `audio:has-audio`, `audio:no-audio`, `audio:silent`, and tentative `audio:music-likely` tags. The lexical layer still uses video text and direct replies as additional cheap context when people explicitly reference the song, soundtrack, or background music.
-
-External LLM review is intentionally kept outside this repository. Curated results can be folded back through `data/tags/manual_media_review_queue.json` or another reviewed sidecar without storing provider credentials or running paid model calls from CI.
-
-`scripts.build_core_video_audit` joins core-account videos against keyframes, OCR, audio, metadata vision, manual-review, and lexical tags. It writes `data/tags/core_video_audit.json` and `data/tags/core_video_audit.csv`, prioritized for produced-video and genre review (`genre:music-video`, `genre:dystopian`, `genre:war-movie`, `genre:utopian`, recruitment, advertisement, and PSA).
-
-The audit also emits queue files for GitHub-side recovery of likely produced or genre-relevant videos whose media is still missing: `data/tags/core_produced_missing_tweet_ids.txt` and `data/tags/core_produced_missing_media_ids.txt`. Dispatch `archive-media` with those files, or push changes to them, to have GitHub fetch the queued media instead of using local bandwidth.
-
-## News Mentions
-
-`scripts.news_mentions` checks whether archived core tweets are cited by news coverage using a deterministic local article export when one exists. It accepts JSON, JSONL, or CSV records with fields such as `url`, `title`, `description`, `body`, `content`, or `text`, then matches exact `x.com/<handle>/status/<tweet_id>`, `twitter.com/<handle>/status/<tweet_id>`, and `x.com/i/web/status/<tweet_id>` URLs. Tests and normal offline runs can still use `--discover-web none` to avoid network. For cheap discovery, run `uv run python -m scripts.news_mentions --discover-web google-news-rss --max-web-tweets 100 --matched-only`; this checks Google News RSS only for core tweets missing from the local article export. Use `--discover-web gdelt` to query GDELT instead.
-
-The ingest workflow now defaults to `google-news-rss`, capped by `news_max_web_tweets`, and uses `data/news/articles.jsonl` as an optional first-pass corpus. Mentioned tweets receive `news:mentioned` and `news:covered` tags that the viewer loads like other optional sidecars.
-
 ## Pipeline
+
+Primary workflow:
 
 ```text
 extension
   raw/*.json
     scripts.ingest
       data/*.parquet
+      data/catalog.parquet
+      data/catalog.json
       data/manifest.json
-    scripts.tag_lexical
-      data/tags/lexical.parquet
+    scripts.detect_deletions
     scripts.build_account_categories
-      data/account_categories.json
-    scripts.archive_media
-      GitHub Release assets
-      data/*.parquet media URLs
-    scripts.describe_media
-      data/tags/media_vision.parquet
-    scripts.extract_video_frames
-      data/tags/keyframes.parquet
-      data/thumbnails/video/*.jpg
-    scripts.tag_image_ocr
-      data/tags/image_ocr.parquet
-    scripts.detect_audio_music
-      data/tags/audio_music.parquet
-    scripts.build_core_video_audit
-      data/tags/core_video_audit.json
-      data/tags/core_video_audit.csv
     scripts.news_mentions
-      data/tags/news_mentions.parquet
     scripts.tag_lexical
-      data/tags/lexical.parquet with media/audio-description tags
-    GitHub Pages
-      viewer
+    scripts.refresh_viewer_metadata
+    scripts.update_readme
+  scripts.archive_media
+    GitHub Release assets
+    data/*.parquet media URLs
+    scripts.describe_media
+    scripts.extract_video_frames
+    scripts.tag_image_ocr
+    scripts.detect_audio_music
+    scripts.build_core_video_audit
+    scripts.tag_lexical
+  GitHub Pages
 ```
 
-Main commands:
+GitHub Actions:
+
+- `.github/workflows/ci.yml`: Python lint, format check, mypy; Node lint, typecheck, Prettier.
+- `.github/workflows/release.yml`: builds and commits Firefox/Chrome extension zips.
+- `.github/workflows/ingest.yml`: ingests raw captures, refreshes deterministic metadata, tags, news mentions, catalog files, and README coverage.
+- `.github/workflows/archive-media.yml`: archives media to GitHub Releases, runs media sidecars, and refreshes media-derived tags.
+- `.github/workflows/pages.yml`: deploys the viewer and extension zips to GitHub Pages.
+
+Local commands:
 
 ```bash
+uv sync
+npm install
+
+uv run pytest -q
+uv run ruff check .
+uv run ruff format --check .
+uv run mypy
+npm run lint
+npm run typecheck
+npx prettier --check .
+
 uv run python -m scripts.ingest
-uv run python -m scripts.tag_lexical
+uv run python -m scripts.detect_deletions
 uv run python -m scripts.build_account_categories
 uv run python -m scripts.archive_media
 uv run python -m scripts.describe_media
@@ -236,9 +206,62 @@ uv run python -m scripts.tag_image_ocr
 uv run python -m scripts.detect_audio_music
 uv run python -m scripts.build_core_video_audit
 uv run python -m scripts.news_mentions --articles data/news/articles.jsonl
-npm run lint
-npm run typecheck
+uv run python -m scripts.refresh_viewer_metadata
+uv run python -m scripts.update_readme
 ```
+
+The `justfile` wraps the common `setup`, `lint`, `test`, `fmt`, `build-extension`, and `ingest` tasks.
+
+## Tags
+
+Tags are annotations, not capture data. They live in sidecar Parquets under `data/tags/` and are joined by `tweet_id` in the viewer. Missing sidecars are tolerated.
+
+Current sidecars and files:
+
+- `data/tags/lexical.parquet`: regex, structural, OCR-fed, audio-fed, and manually reviewed lexical tags from `scripts/tag_lexical.py`.
+- `data/tags/media_vision.parquet`: archived media metadata, source alt text, manual review observations, and low-cost media descriptions from `scripts/describe_media.py`.
+- `data/tags/keyframes.parquet`: bounded video keyframe metadata and tiny poster thumbnails from `scripts.extract_video_frames`.
+- `data/tags/image_ocr.parquet`: Tesseract OCR from archived photos and extracted video keyframes from `scripts.tag_image_ocr`.
+- `data/tags/audio_music.parquet`: ffprobe/ffmpeg audio stream and music-likelihood tags from `scripts.detect_audio_music`.
+- `data/tags/news_mentions.parquet`: exact X/Twitter status-URL mentions in local or configured news discovery results from `scripts/news_mentions.py`.
+- `data/tags/core_video_audit.json` and `.csv`: review queue for core-account video analysis from `scripts/build_core_video_audit.py`.
+- `data/account_categories.json`: account categories from `scripts/build_account_categories.py`.
+- `config/tag_overrides.yaml`: editor-confirmed corrections where canonical fields are not enough.
+
+Tag names use `namespace:slug`. The namespace is the broad category; the slug is the narrower tag. See `config/tag_taxonomy.yaml` and `docs/TAGGING.md`.
+
+Uncertain model-derived or review-derived labels should be stored as tentative. Deterministic tags should stay deterministic.
+
+## Media Recognition
+
+The shipped media pipeline is deliberately low-cost and auditable:
+
+- `scripts.describe_media` uses archived media metadata, source alt text, dimensions, duration, byte count, tweet context, and curated manual-review observations. It does not claim visual content from pixels unless OCR, reviewed observations, or another sidecar supplies that evidence.
+- `scripts.extract_video_frames` extracts bounded keyframes from archived videos and writes small poster thumbnails for the viewer.
+- `scripts.tag_image_ocr` reads archived photos and video keyframes with Tesseract, then feeds recovered text back into lexical tagging.
+- `scripts.detect_audio_music` uses ffprobe/ffmpeg only. It emits conservative `audio:has-audio`, `audio:no-audio`, `audio:silent`, and tentative `audio:music-likely` tags.
+- `scripts.build_core_video_audit` joins video rows against keyframes, OCR, audio, metadata vision, manual review, and lexical tags. It also writes queue files for GitHub-side recovery of likely produced or genre-relevant videos whose media is still missing.
+
+Provider-backed visual review should enter through reviewed sidecars or overrides. It should not mutate canonical Parquet rows.
+
+## News Mentions
+
+`scripts.news_mentions` checks whether archived core tweets are cited by news coverage. It accepts JSON, JSONL, CSV, directories, or globs of article records with fields such as `url`, `title`, `description`, `body`, `content`, or `text`.
+
+The matcher counts exact status URL variants only:
+
+- `x.com/<handle>/status/<tweet_id>`
+- `twitter.com/<handle>/status/<tweet_id>`
+- `x.com/i/web/status/<tweet_id>`
+
+Normal offline runs can use `--discover-web none`. For low-cost discovery, use Google News RSS or GDELT:
+
+```bash
+uv run python -m scripts.news_mentions --articles data/news/articles.jsonl --discover-web google-news-rss --max-web-tweets 100 --matched-only
+uv run python -m scripts.news_mentions --articles data/news/articles.jsonl --discover-web gdelt --max-web-tweets 100 --matched-only
+```
+
+Confirmed matches receive `news:mentioned` and `news:covered`. Vague text or title similarity does not emit firm news tags.
 
 ## Coverage
 
@@ -268,11 +291,11 @@ _Generated 2026-05-22T04:30:49Z._
 
 ## Data Rules
 
-- Canonical Parquet rows mirror what X served at capture time.
+- Canonical rows mirror what X served at capture time.
 - Parse failures go to `raw/_quarantine/`.
 - Parquet rewrites are atomic.
-- Release uploads must succeed before a row records the asset URL.
-- Credentials stay out of the repo.
+- Release uploads must succeed before a row records the archived asset URL.
+- Credentials stay out of the repository.
 - Annotation is reversible and separate from capture.
 
 ## Documentation
