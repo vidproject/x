@@ -6,8 +6,6 @@ Public research archive of immigration-related posts captured from X/Twitter.
 
 This repository contains the archive and the tooling around it: browser capture, raw JSON, canonical Parquet files, media archival, annotation sidecars, and the static viewer published through GitHub Pages.
 
-Capture uses the public web UI responses served to a logged-in browser. It does not use the X API or X developer credentials.
-
 ## Scope
 
 The tracked account list lives in `config/accounts.yaml`. Current core handles:
