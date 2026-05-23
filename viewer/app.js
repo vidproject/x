@@ -1,11 +1,11 @@
 // Orchestrator: wires the UI controls to the Store, manages URL state, theme,
 // column visibility, CSV export, and lazy parquet loading.
 
-import { exportCsv } from './csv.js?v=lazycat5';
-import { loadParquetRows } from './parquet.js?v=lazycat5';
-import { applyToUrl, defaults as defaultState, fromHash } from './state.js?v=lazycat5';
-import { SEARCH_FIELD_OPTIONS, Store } from './store.js?v=lazycat5';
-import { initChartsPanel, updateChartsPanel } from './charts.js?v=lazycat5';
+import { exportCsv } from './csv.js?v=lazycat6';
+import { loadParquetRows } from './parquet.js?v=lazycat6';
+import { applyToUrl, defaults as defaultState, fromHash } from './state.js?v=lazycat6';
+import { SEARCH_FIELD_OPTIONS, Store } from './store.js?v=lazycat6';
+import { initChartsPanel, updateChartsPanel } from './charts.js?v=lazycat6';
 import {
   openColumnFilterPopup,
   parseVisibleColumns,
@@ -13,8 +13,8 @@ import {
   renderTable,
   setMediaColumnConfig,
   setUserLookup,
-} from './table.js?v=lazycat5';
-import { closeSidepanel, openSidepanel } from './sidepanel.js?v=lazycat5';
+} from './table.js?v=lazycat6';
+import { closeSidepanel, openSidepanel } from './sidepanel.js?v=lazycat6';
 
 const $ = (id) => {
   const el = document.getElementById(id);
@@ -350,16 +350,20 @@ async function loadAccountCategorySidecar(catMap) {
  * sidecars are normal on a fresh archive; the viewer still works without them.
  */
 async function loadSidecars() {
-  const [tagMap, audioTagMap, newsMentions, mediaInsightMap, posterBySha, ocrMap] =
+  const [tagMap, audioTagMap, reviewTagMap, newsMentions, mediaInsightMap, posterBySha, ocrMap] =
     await Promise.all([
       loadLexicalTags(),
       loadAudioMusicTags(),
+      loadReviewCurationTags(),
       loadNewsMentions(),
       loadMediaInsights(),
       loadKeyframePosters(),
       loadImageOcr(),
     ]);
   for (const [id, tags] of audioTagMap.entries()) {
+    mergeTags(tagMap, id, tags);
+  }
+  for (const [id, tags] of reviewTagMap.entries()) {
     mergeTags(tagMap, id, tags);
   }
   for (const [id, tags] of newsMentions.tagMap.entries()) {
@@ -463,6 +467,33 @@ async function loadAudioMusicTags() {
         resource: url,
         status: status ? Number(status) : null,
         kind: 'audio-tags',
+        message: err?.message ?? String(err),
+      });
+    }
+    return new Map();
+  }
+}
+
+async function loadReviewCurationTags() {
+  const cacheKey = tagLayerCacheKey('review_curation');
+  const url = `data/tags/review_curation.parquet${cacheKey}`;
+  try {
+    const rows = await loadParquetRows(url);
+    const map = new Map();
+    for (const r of rows) {
+      const id = String(r?.tweet_id ?? '');
+      if (!id) continue;
+      const tags = Array.isArray(r.tags) ? r.tags : [];
+      if (tags.length > 0) mergeTags(map, id, tags);
+    }
+    return map;
+  } catch (err) {
+    const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
+    if (status !== '404') {
+      pushLoadError({
+        resource: url,
+        status: status ? Number(status) : null,
+        kind: 'review-tags',
         message: err?.message ?? String(err),
       });
     }

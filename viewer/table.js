@@ -16,13 +16,14 @@
 import {
   combineTagMainSub,
   formatForFilter,
+  rowEngagement,
   splitTagMainSub,
   retweetedByHandles,
   tagNamespace,
   tagSubtype,
-} from './store.js?v=lazycat5';
-import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js?v=lazycat5';
-import { archiveShareUrlForRow, copyTextToClipboard, xTweetUrlForRow } from './links.js?v=lazycat5';
+} from './store.js?v=lazycat6';
+import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js?v=lazycat6';
+import { archiveShareUrlForRow, copyTextToClipboard, xTweetUrlForRow } from './links.js?v=lazycat6';
 
 const MEDIA_COL_KEY = 'media_kinds';
 export const TAG_CERTAINTY_LABELS = {
@@ -182,6 +183,18 @@ export const COLUMNS = [
     sortable: true,
     className: 'col-stats cell-num',
     render: (r) => fmtNum(r.retweet_count),
+  },
+  {
+    // Derived score = likes + RTs + replies + quotes (see store.js
+    // rowEngagement). Off by default; surfaced via Columns and the
+    // `sort=engagement` deep link / share links.
+    key: 'engagement',
+    label: 'Engagement',
+    default: false,
+    filterable: false,
+    sortable: true,
+    className: 'col-stats cell-num',
+    render: (r) => fmtNum(rowEngagement(r)),
   },
   {
     key: 'reply_count',

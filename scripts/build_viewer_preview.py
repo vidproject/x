@@ -434,7 +434,7 @@ def slice_preview_payload(payload: dict[str, Any], limit: int) -> dict[str, Any]
 
 def load_tag_slices(tags_dir: Path, row_ids: set[str]) -> dict[str, list[dict[str, Any]]]:
     out: dict[str, list[dict[str, Any]]] = {}
-    for layer in ("lexical", "audio_music"):
+    for layer in ("lexical", "audio_music", "review_curation"):
         path = tags_dir / f"{layer}.parquet"
         if not path.exists():
             continue

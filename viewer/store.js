@@ -14,6 +14,7 @@ import MiniSearch from 'https://esm.sh/minisearch@7.1.2';
 
 const NUMERIC_SORT_KEYS = new Set([
   'bookmark_count',
+  'engagement',
   'like_count',
   'media_count',
   'quote_count',
@@ -22,6 +23,25 @@ const NUMERIC_SORT_KEYS = new Set([
   'video_duration',
   'view_count',
 ]);
+
+/**
+ * Engagement is a derived per-row score, not a stored field. It sums the four
+ * public interaction counts on a tweet:
+ *
+ *   engagement = like_count + retweet_count + reply_count + quote_count
+ *
+ * (view_count and bookmark_count are deliberately excluded — views are an
+ * impression metric, not an interaction, and bookmarks are largely private.)
+ * Derived here at sort/render time so no data regeneration is required.
+ */
+export function rowEngagement(row) {
+  let total = 0;
+  for (const key of ['like_count', 'retweet_count', 'reply_count', 'quote_count']) {
+    const n = Number(row?.[key]);
+    if (Number.isFinite(n)) total += n;
+  }
+  return total;
+}
 
 export const TAG_SUB_SEPARATOR = ' ⊂ ';
 
@@ -819,6 +839,9 @@ function numericSortValue(value) {
 }
 
 function valueOf(row, key) {
+  if (key === 'engagement') {
+    return rowEngagement(row);
+  }
   if (key === 'media_count') {
     return Array.isArray(row.media) ? row.media.length : 0;
   }
