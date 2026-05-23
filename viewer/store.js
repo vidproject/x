@@ -225,7 +225,9 @@ export class Store {
 
   displayRowFor(row) {
     if (!row) return null;
-    return row.__retweet_original || this.retweetOriginalById.get(String(row.tweet_id ?? '')) || row;
+    return (
+      row.__retweet_original || this.retweetOriginalById.get(String(row.tweet_id ?? '')) || row
+    );
   }
 
   /** Build the full-text index on demand. */
@@ -276,6 +278,7 @@ export class Store {
    *   type: string, media: string, sort: string, dir: 'asc'|'desc',
    *   qfield?: string,
    *   tagCertainty?: string,
+   *   tagMode?: 'or'|'and',
    *   colFilters?: Record<string, Set<string>>,
    *   tags?: string[],
    *   accountCategories?: string[],
@@ -307,12 +310,14 @@ export class Store {
       rows = rows.filter((r) => matchMediaFilter(r, filt.media));
     }
     if (filt.tags && filt.tags.length > 0) {
-      // Tag filter is OR-across-selected, so a tweet matches when its
-      // tag set intersects the selected set. ANDing would make the
-      // selector useless once you exceed 1-2 selections — every tweet
-      // would drop out.
+      // Tag filter defaults to OR-across-selected (match any), so a tweet
+      // matches when its tag set intersects the selected set. AND mode
+      // (match all) is opt-in via filt.tagMode for narrowing intersections
+      // like country:Mexico + action:deportation.
       const want = new Set(filt.tags);
-      rows = rows.filter((r) => tagFilterMatches(r, want, filt.tagCertainty || 'all'));
+      rows = rows.filter((r) =>
+        tagFilterMatches(r, want, filt.tagCertainty || 'all', filt.tagMode || 'or')
+      );
     }
     if (!(filt.tags && filt.tags.length > 0) && filt.tagCertainty && filt.tagCertainty !== 'all') {
       rows = rows.filter((r) => tagCertaintyMatches(r, filt.tagCertainty));
@@ -433,7 +438,11 @@ export class Store {
     // the tweet.
     const meta = this.accountCategoryByHandle.get(handle);
     const own =
-      typeof meta === 'string' ? meta : meta && typeof meta.category === 'string' ? meta.category : 'public';
+      typeof meta === 'string'
+        ? meta
+        : meta && typeof meta.category === 'string'
+          ? meta.category
+          : 'public';
     return dominantCategory(own, promotedCategoryOf(row));
   }
 
@@ -519,21 +528,27 @@ function isPrivilegedReplyCategory(category) {
   return category === 'core' || category === 'officials' || category === 'government';
 }
 
-function tagFilterMatches(row, selections, certainty = 'all') {
-  const exact = new Set();
-  const namespaces = new Set();
+function tagFilterMatches(row, selections, certainty = 'all', mode = 'or') {
+  const wanted = [];
   for (const value of selections) {
     const text = String(value ?? '');
     if (!text) continue;
     const { main, sub } = splitTagMainSub(text);
-    if (sub) exact.add(sub);
-    else if (main.includes(':')) exact.add(main);
-    else namespaces.add(main);
+    if (sub) wanted.push({ kind: 'exact', value: sub });
+    else if (main.includes(':')) wanted.push({ kind: 'exact', value: main });
+    else wanted.push({ kind: 'namespace', value: main });
   }
-  return tagEntries(row).some(({ name, tentative }) => {
-    const matches = exact.has(name) || namespaces.has(tagNamespace(name));
-    return matches && tagEntryCertaintyMatches(tentative, certainty);
-  });
+  if (wanted.length === 0) return true;
+  // Only entries that clear the certainty gate can satisfy a selection.
+  const entries = tagEntries(row).filter(({ tentative }) =>
+    tagEntryCertaintyMatches(tentative, certainty)
+  );
+  const satisfies = (sel) =>
+    entries.some(({ name }) =>
+      sel.kind === 'exact' ? name === sel.value : tagNamespace(name) === sel.value
+    );
+  // OR: any selection present. AND: every selection present (across distinct tags).
+  return mode === 'and' ? wanted.every(satisfies) : wanted.some(satisfies);
 }
 
 function tagCertaintyMatches(row, mode) {
@@ -696,13 +711,17 @@ export function retweetedByHandles(row) {
   const handles = new Set();
   if (Array.isArray(row?.retweeted_by)) {
     for (const handle of row.retweeted_by) {
-      const text = String(handle || '').replace(/^@/, '').trim();
+      const text = String(handle || '')
+        .replace(/^@/, '')
+        .trim();
       if (text) handles.add(text);
     }
   }
   const promotions = Array.isArray(row?.__retweet_promotions) ? row.__retweet_promotions : [];
   for (const promo of promotions) {
-    const handle = String(promo?.retweet?.account_handle || '').replace(/^@/, '').trim();
+    const handle = String(promo?.retweet?.account_handle || '')
+      .replace(/^@/, '')
+      .trim();
     if (handle) handles.add(handle);
   }
   return [...handles].sort((a, b) => a.localeCompare(b));

@@ -643,7 +643,9 @@ function paintHdrStats() {
   els.hdrStats.textContent =
     `${fmtNum(totalPosts)} tweets · ${fmtNum(totalReplies)} replies · ${fmtNum(totalMedia)} media · ` +
     `${accounts.length} account${accounts.length === 1 ? '' : 's'}${preview}${loading}${failed}${
-      catalogLoaded && !fullDatabaseLoaded && !previewing ? ' | catalog loaded; details on demand' : ''
+      catalogLoaded && !fullDatabaseLoaded && !previewing
+        ? ' | catalog loaded; details on demand'
+        : ''
     }`;
 }
 
@@ -922,7 +924,10 @@ async function loadPreviewDataset(size) {
     });
     revealUi();
     refresh();
-    showError('Preview data is unavailable. Click the lightning bolt to load the full database.', 8000);
+    showError(
+      'Preview data is unavailable. Click the lightning bolt to load the full database.',
+      8000
+    );
   } finally {
     setSpinner(false);
     syncFullDbButton();
@@ -1029,6 +1034,11 @@ async function loadAllAccounts(sidecarsPromise) {
     return loadParquetRows(resource + suffix);
   }
 
+  // Pages CDN can lag after a manifest+data commit pair, so a 404 here is
+  // usually transient. Retry with bounded backoff before giving up, instead
+  // of failing the row after a single attempt.
+  const RETRY_DELAYS_MS = [15_000, 30_000, 60_000];
+
   async function loadOne(account) {
     const resource = `data/${account.handle}.parquet`;
     try {
@@ -1036,21 +1046,24 @@ async function loadAllAccounts(sidecarsPromise) {
       store.byHandle.set(account.handle, rows);
       return;
     } catch (err) {
-      // Retry exactly once on a 404 after a 30s pause — Pages CDN takes a
-      // little while to catch up after a manifest+data commit pair.
-      const status = extractStatus(err);
-      if (status === 404) {
-        await new Promise((r) => setTimeout(r, 30_000));
+      if (extractStatus(err) !== 404) {
+        recordLoadFailure(resource, account.handle, err, 0);
+        return;
+      }
+      let lastErr = err;
+      for (let attempt = 0; attempt < RETRY_DELAYS_MS.length; attempt += 1) {
+        await new Promise((r) => setTimeout(r, RETRY_DELAYS_MS[attempt]));
         try {
           const rows = await fetchOnce(resource, `?v=retry-${Date.now()}`);
           store.byHandle.set(account.handle, rows);
           return;
         } catch (retryErr) {
-          recordLoadFailure(resource, account.handle, retryErr, true);
-          return;
+          lastErr = retryErr;
+          // Stop early if it's no longer a CDN-lag 404 (e.g. a corrupt body).
+          if (extractStatus(retryErr) !== 404) break;
         }
       }
-      recordLoadFailure(resource, account.handle, err, false);
+      recordLoadFailure(resource, account.handle, lastErr, RETRY_DELAYS_MS.length);
     }
   }
 
@@ -1058,13 +1071,13 @@ async function loadAllAccounts(sidecarsPromise) {
     return extractHttpStatus(err);
   }
 
-  function recordLoadFailure(resource, handle, err, retried) {
+  function recordLoadFailure(resource, handle, err, retries) {
     loadProgress.failed += 1;
     const status = extractStatus(err);
     const raw = err?.message ?? String(err);
     const friendly =
       status === 404
-        ? `${resource} is in the manifest but hasn't been deployed to Pages yet (manifest commit beat the parquet commit through the CDN${retried ? '; still missing after a 30s retry' : ''}). Refresh in ~60s.`
+        ? `${resource} is in the manifest but hasn't been deployed to Pages yet (manifest commit beat the parquet commit through the CDN${retries ? `; still missing after ${retries} retries` : ''}). Refresh in ~60s.`
         : raw;
     pushLoadError({
       resource,
@@ -1200,7 +1213,8 @@ async function hydrateRow(row, { showSpinner = false } = {}) {
 }
 
 function scheduleHydrateVisibleRows(threads, page, pageSize) {
-  if (fullDatabaseLoaded || !catalogLoaded || !Array.isArray(threads) || threads.length === 0) return;
+  if (fullDatabaseLoaded || !catalogLoaded || !Array.isArray(threads) || threads.length === 0)
+    return;
   const start = (page - 1) * pageSize;
   const pageThreads = threads.slice(start, start + pageSize);
   const rows = [];
@@ -1269,7 +1283,12 @@ function hydrationRangesForRows(rows) {
   return ranges;
 }
 
-async function hydrateRange(url, start, end, { byteLength = null, allowWholeFallback = false } = {}) {
+async function hydrateRange(
+  url,
+  start,
+  end,
+  { byteLength = null, allowWholeFallback = false } = {}
+) {
   const cacheKey = manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
   const fullUrl = `${url}${cacheKey}`;
   const key = `${fullUrl}:${start}:${end}`;
@@ -1491,7 +1510,9 @@ els.spClose.addEventListener('click', () => {
 });
 
 function openProfileForHandle(handle, { updateUrl = true } = {}) {
-  const cleanHandle = String(handle ?? '').replace(/^@/, '').trim();
+  const cleanHandle = String(handle ?? '')
+    .replace(/^@/, '')
+    .trim();
   if (!cleanHandle) return;
   selectedRowId = null;
   if (updateUrl) {
@@ -1503,7 +1524,9 @@ function openProfileForHandle(handle, { updateUrl = true } = {}) {
     .filter((row) => row.account_handle === cleanHandle)
     .slice()
     .sort((a, b) => String(b.posted_at ?? '').localeCompare(String(a.posted_at ?? '')));
-  const manifestAccount = (manifest?.accounts ?? []).find((account) => account.handle === cleanHandle);
+  const manifestAccount = (manifest?.accounts ?? []).find(
+    (account) => account.handle === cleanHandle
+  );
   const user = users.get(cleanHandle) ?? {};
   els.spTitle.textContent = `@${cleanHandle}`;
   const shareEl = els.sidepanel.querySelector('#sp-share');
@@ -1537,7 +1560,9 @@ function profileHeader(handle, rows, user, manifestAccount) {
   const head = document.createElement('section');
   head.className = 'profile-head';
   const avatar = document.createElement(user.avatar_url ? 'img' : 'span');
-  avatar.className = user.avatar_url ? 'profile-avatar' : 'profile-avatar profile-avatar-placeholder';
+  avatar.className = user.avatar_url
+    ? 'profile-avatar'
+    : 'profile-avatar profile-avatar-placeholder';
   if (user.avatar_url) {
     avatar.src = user.avatar_url;
     avatar.alt = '';
@@ -1605,7 +1630,10 @@ function profileStats(rows, user, manifestAccount) {
   grid.className = 'profile-stat-grid';
   const mediaRows = rows.filter((row) => Array.isArray(row.media) && row.media.length > 0).length;
   const replyRows = rows.filter((row) => row.tweet_type === 'reply').length;
-  const dates = rows.map((row) => dayKey(row.posted_at)).filter(Boolean).sort();
+  const dates = rows
+    .map((row) => dayKey(row.posted_at))
+    .filter(Boolean)
+    .sort();
   const firstLast = dates.length ? `${dates[0]} to ${dates[dates.length - 1]}` : 'No posted dates';
   for (const [label, value] of [
     ['Archived tweets', fmtNum(rows.length)],
@@ -1671,7 +1699,9 @@ function profileTweetItem(row) {
   });
   const meta = document.createElement('div');
   meta.className = 'profile-tweet-meta';
-  meta.textContent = [shortDate(row.posted_at), row.tweet_type || 'original'].filter(Boolean).join(' · ');
+  meta.textContent = [shortDate(row.posted_at), row.tweet_type || 'original']
+    .filter(Boolean)
+    .join(' · ');
   const text = document.createElement('div');
   text.className = 'profile-tweet-text';
   text.textContent = row.text_resolved || row.text || '(no text)';
@@ -1706,7 +1736,12 @@ function profileActivityModel(rows) {
 function inferredScannedDays() {
   const days = new Set();
   for (const row of store.allRows) {
-    for (const key of ['captured_at', 'first_captured_at', 'last_seen_at', 'unavailable_detected_at']) {
+    for (const key of [
+      'captured_at',
+      'first_captured_at',
+      'last_seen_at',
+      'unavailable_detected_at',
+    ]) {
       const day = dayKey(row[key]);
       if (day) days.add(day);
     }
@@ -1755,7 +1790,8 @@ function profileCalendar(buckets, scannedDays) {
   for (const bucket of buckets.slice(-120)) {
     const cell = document.createElement('span');
     cell.className = 'profile-day';
-    if (bucket.count > 0) cell.classList.add(`level-${Math.min(4, Math.ceil((bucket.count / max) * 4))}`);
+    if (bucket.count > 0)
+      cell.classList.add(`level-${Math.min(4, Math.ceil((bucket.count / max) * 4))}`);
     else if (!scannedDays.has(bucket.day)) cell.classList.add('unscanned');
     else cell.classList.add('empty');
     cell.title = `${bucket.day}: ${bucket.count} archived tweet${bucket.count === 1 ? '' : 's'}${scannedDays.has(bucket.day) ? '' : '; scan not inferred'}`;
@@ -2051,6 +2087,7 @@ function refresh() {
     type: urlState.type,
     media: urlState.media,
     tagCertainty: urlState.tagcert || 'all',
+    tagMode: urlState.tagmode || 'or',
     sort: urlState.sort,
     dir: urlState.dir,
     colFilters,
@@ -2089,6 +2126,7 @@ function refresh() {
           type: urlState.type,
           media: urlState.media,
           tagCertainty: urlState.tagcert || 'all',
+          tagMode: urlState.tagmode || 'or',
           sort: urlState.sort,
           dir: urlState.dir,
           colFilters,
@@ -2147,6 +2185,7 @@ function refresh() {
             // are session-local. Mirror the selection out.
             delete colFilters.tags;
             if (opts.tagCertainty) urlState.tagcert = opts.tagCertainty;
+            if (opts.tagMode) urlState.tagmode = opts.tagMode;
             urlState.tags = [...nextSet];
             applyToUrl(urlState);
           } else if (nextSet.size === 0) {
@@ -2164,6 +2203,7 @@ function refresh() {
           refresh();
         },
         tagCertainty: urlState.tagcert || 'all',
+        tagMode: urlState.tagmode || 'or',
         mediaSettings,
         onMediaSettingsChange: (next) => {
           mediaSettings = normalizeMediaSettings({ ...mediaSettings, ...next });
@@ -2210,6 +2250,7 @@ function rowsForColumnCounts(key) {
     type: urlState.type,
     media: urlState.media,
     tagCertainty: includeTagFilter ? urlState.tagcert || 'all' : 'all',
+    tagMode: includeTagFilter ? urlState.tagmode || 'or' : 'or',
     sort: urlState.sort,
     dir: urlState.dir,
     colFilters: scopedColFilters,

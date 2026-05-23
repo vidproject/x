@@ -556,8 +556,12 @@ body {
   border: 1px solid var(--border-strong);
 }
 .acc-badge-veteran {
-  background:
-    linear-gradient(135deg, rgba(67, 94, 49, 0.95) 0 35%, rgba(119, 113, 66, 0.95) 35% 58%, rgba(42, 66, 45, 0.95) 58% 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(67, 94, 49, 0.95) 0 35%,
+    rgba(119, 113, 66, 0.95) 35% 58%,
+    rgba(42, 66, 45, 0.95) 58% 100%
+  );
   border-color: rgba(67, 94, 49, 0.9);
 }
 .acc-badge-police {
@@ -1674,7 +1678,8 @@ html[data-media-fit='vertical'] .media-thumb {
   font-variant-numeric: tabular-nums;
   text-align: right;
 }
-.col-pop .tag-certainty-control {
+.col-pop .tag-certainty-control,
+.col-pop .tag-mode-control {
   display: grid;
   grid-template-columns: 72px minmax(0, 1fr);
   gap: 6px;

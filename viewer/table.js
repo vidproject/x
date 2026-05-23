@@ -30,6 +30,10 @@ export const TAG_CERTAINTY_LABELS = {
   firm: 'Firm tags only',
   tentative: 'Only tentative tags',
 };
+export const TAG_MODE_LABELS = {
+  or: 'Match any selected (OR, default)',
+  and: 'Match all selected (AND)',
+};
 const TAG_FACET_SECTIONS = [
   {
     label: 'Primary facets',
@@ -765,6 +769,7 @@ export function openColumnFilterPopup({
   onChange,
   onSort,
   tagCertainty = 'all',
+  tagMode = 'or',
   mediaSettings,
   onMediaSettingsChange,
 }) {
@@ -789,6 +794,7 @@ export function openColumnFilterPopup({
       rows: Array.isArray(countRows) ? countRows : allRows,
       activeValues: activeFilters[colKey],
       tagCertainty,
+      tagMode,
       onApply: (next, opts) => onChange(colKey, next, opts),
       close,
     });
@@ -878,8 +884,7 @@ export function openColumnFilterPopup({
     const allVisibleCb = document.createElement('input');
     allVisibleCb.type = 'checkbox';
     allVisibleCb.checked = visible.every((p) => active.has(p.value));
-    allVisibleCb.indeterminate =
-      !allVisibleCb.checked && visible.some((p) => active.has(p.value));
+    allVisibleCb.indeterminate = !allVisibleCb.checked && visible.some((p) => active.has(p.value));
     allVisibleCb.addEventListener('change', () => {
       for (const p of visible) {
         if (allVisibleCb.checked) active.add(p.value);
@@ -973,6 +978,7 @@ function buildResearchTagFilterPopup({
   rows,
   activeValues,
   tagCertainty = 'all',
+  tagMode = 'or',
   onApply,
   close,
 }) {
@@ -980,6 +986,7 @@ function buildResearchTagFilterPopup({
   const active = new Set(filterValuesArray(activeValues));
   const expandedGroups = new Set();
   let certainty = TAG_CERTAINTY_LABELS[tagCertainty] ? tagCertainty : 'all';
+  let mode = TAG_MODE_LABELS[tagMode] ? tagMode : 'or';
 
   // The tag counts shown in the browser depend only on the certainty mode
   // (the caller scopes the rows with the tag filter excluded), so they don't
@@ -998,7 +1005,10 @@ function buildResearchTagFilterPopup({
   // a shared link always matches what the user sees. There is no staged
   // "Apply" step to forget.
   function liveApply() {
-    onApply(normalizeResearchTagSelections(active, valueByKey), { tagCertainty: certainty });
+    onApply(normalizeResearchTagSelections(active, valueByKey), {
+      tagCertainty: certainty,
+      tagMode: mode,
+    });
   }
 
   const header = document.createElement('div');
@@ -1019,6 +1029,14 @@ function buildResearchTagFilterPopup({
   });
   const certaintySelect = certaintyControl.querySelector('select');
   popEl.append(certaintyControl);
+
+  const modeControl = buildTagModeControl(mode, (next) => {
+    mode = TAG_MODE_LABELS[next] ? next : 'or';
+    liveApply();
+    render();
+  });
+  const modeSelect = modeControl.querySelector('select');
+  popEl.append(modeControl);
 
   const search = document.createElement('input');
   search.type = 'search';
@@ -1133,9 +1151,11 @@ function buildResearchTagFilterPopup({
     active.clear();
     certainty = 'all';
     if (certaintySelect) certaintySelect.value = certainty;
+    mode = 'or';
+    if (modeSelect) modeSelect.value = mode;
     search.value = '';
     expandedGroups.clear();
-    onApply(new Set(), { tagCertainty: 'all' });
+    onApply(new Set(), { tagCertainty: 'all', tagMode: 'or' });
     close();
   }
   clear.addEventListener('mousedown', clearTagFilter);
@@ -1173,6 +1193,29 @@ function buildTagCertaintyControl(tagCertainty = 'all', onTagCertaintyChange) {
   }
   select.value = TAG_CERTAINTY_LABELS[tagCertainty] ? tagCertainty : 'all';
   select.addEventListener('change', () => onTagCertaintyChange?.(select.value));
+  wrap.append(label, select);
+  return wrap;
+}
+
+function buildTagModeControl(tagMode = 'or', onTagModeChange) {
+  const wrap = document.createElement('div');
+  wrap.className = 'tag-mode-control';
+  const label = document.createElement('span');
+  label.textContent = 'Combine';
+  label.title =
+    'How multiple selected tags combine. "Match any" (OR) returns tweets with at least one selected tag; "Match all" (AND) returns only tweets carrying every selected tag.';
+  const select = document.createElement('select');
+  select.className = 'select';
+  select.title =
+    'OR (default) widens results; AND narrows to the intersection, e.g. country:Mexico + action:deportation.';
+  for (const [value, text] of Object.entries(TAG_MODE_LABELS)) {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = text;
+    select.append(option);
+  }
+  select.value = TAG_MODE_LABELS[tagMode] ? tagMode : 'or';
+  select.addEventListener('change', () => onTagModeChange?.(select.value));
   wrap.append(label, select);
   return wrap;
 }
@@ -1352,8 +1395,7 @@ function buildTagNamespaceRow(group, active, onChange) {
   const cb = document.createElement('input');
   cb.type = 'checkbox';
   cb.checked = active.has(group.value);
-  cb.indeterminate =
-    !cb.checked && group.children.some((child) => active.has(child.value));
+  cb.indeterminate = !cb.checked && group.children.some((child) => active.has(child.value));
   cb.addEventListener('change', () => {
     if (cb.checked) {
       active.add(group.value);
