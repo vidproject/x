@@ -85,6 +85,44 @@ def media_release_name(handle: str, shard: int = 1) -> str:
 # GitHub Releases helpers
 
 
+def rate_limit_wait_seconds(r: httpx.Response) -> float | None:
+    """Seconds to wait if ``r`` is a GitHub rate-limit response, else ``None``.
+
+    GitHub answers secondary rate limits with 403/429 plus a ``Retry-After``
+    header (or ``x-ratelimit-remaining: 0`` with a reset time). Honoring it lets
+    a bulk upload pace itself instead of marking rate-limited items as failed
+    (which would eventually expire perfectly recoverable media)."""
+    if r.status_code not in (403, 429):
+        return None
+    try:
+        message = str((r.json() or {}).get("message") or "").lower()
+    except Exception:
+        message = (r.text or "").lower()
+    retry_after = r.headers.get("retry-after")
+    remaining = r.headers.get("x-ratelimit-remaining")
+    looks_rate_limited = (
+        retry_after is not None
+        or remaining == "0"
+        or "rate limit" in message
+        or "secondary rate" in message
+        or "abuse" in message
+    )
+    if not looks_rate_limited:
+        return None
+    if retry_after is not None:
+        try:
+            return max(1.0, min(float(retry_after), 300.0))
+        except ValueError:
+            pass
+    reset = r.headers.get("x-ratelimit-reset")
+    if reset:
+        try:
+            return max(1.0, min(float(reset) - time.time(), 300.0))
+        except ValueError:
+            pass
+    return 60.0
+
+
 class GitHubReleaseClient:
     def __init__(self, owner: str, repo: str, token: str) -> None:
         self.owner = owner
@@ -169,13 +207,22 @@ class GitHubReleaseClient:
         # "https://uploads.github.com/.../assets{?name,label}". Strip the
         # template suffix and pass `name` ourselves.
         base = re.sub(r"\{\?.*\}$", "", upload_url)
-        r = self.session.post(
-            base,
-            params={"name": name},
-            content=data,
-            headers={"Content-Type": content_type},
-            timeout=UPLOAD_TIMEOUT,
-        )
+        for _attempt in range(8):
+            r = self.session.post(
+                base,
+                params={"name": name},
+                content=data,
+                headers={"Content-Type": content_type},
+                timeout=UPLOAD_TIMEOUT,
+            )
+            wait = rate_limit_wait_seconds(r)
+            if wait is not None:
+                LOG.warning("archive: upload rate-limited; backing off", name=name, wait_s=wait)
+                time.sleep(wait)
+                continue
+            r.raise_for_status()
+            return cast(dict[str, Any], r.json())
+        # Exhausted backoff retries — surface the last rate-limit response.
         r.raise_for_status()
         return cast(dict[str, Any], r.json())
 
@@ -210,6 +257,7 @@ class ReleaseShardSet:
         shard_index = 1
         while True:
             tag = media_release_tag(handle, shard_index)
+            release: dict[str, Any] | None
             if shard_index == 1:
                 release = gh.get_or_create_release(tag, media_release_name(handle, shard_index))
             else:

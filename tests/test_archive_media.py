@@ -182,3 +182,24 @@ def test_archive_does_not_construct_download_url_for_unverified_422(
     media = _read_media(parquet_path)
     assert media["archive_status"] == "failed"
     assert media["release_asset_url"] is None
+
+
+def test_rate_limit_wait_seconds_honors_retry_after() -> None:
+    r = httpx.Response(403, headers={"Retry-After": "30"}, json={"message": "secondary rate limit"})
+    assert archive_media.rate_limit_wait_seconds(r) == 30.0
+
+
+def test_rate_limit_wait_seconds_caps_and_defaults() -> None:
+    # Retry-After is capped so a bogus huge value can't stall forever.
+    big = httpx.Response(429, headers={"Retry-After": "99999"}, json={"message": "rate limit"})
+    assert archive_media.rate_limit_wait_seconds(big) == 300.0
+    # Rate-limited 403 with no Retry-After falls back to a sane default.
+    nohdr = httpx.Response(403, json={"message": "You have exceeded a secondary rate limit"})
+    assert archive_media.rate_limit_wait_seconds(nohdr) == 60.0
+
+
+def test_rate_limit_wait_seconds_ignores_non_rate_limit() -> None:
+    # A 200 and a genuine permission/404 403 are not rate limits → no wait.
+    assert archive_media.rate_limit_wait_seconds(httpx.Response(200)) is None
+    perm = httpx.Response(403, json={"message": "Resource not accessible by personal access token"})
+    assert archive_media.rate_limit_wait_seconds(perm) is None
