@@ -18,8 +18,13 @@ export function openSidepanel(panelEl, titleEl, bodyEl, row, thread, options = {
       ? section('News Coverage', newsMentionsBlock(row.news_mentions))
       : null;
   if (newsSection) newsSection.id = 'sp-news-coverage';
+  bodyEl.append(section('Tweet', tweetContent(row)));
+  if (row.quoted_tweet_id) {
+    bodyEl.append(
+      section('Quoted Tweet', quotedTweetBlock(options.quotedRow, String(row.quoted_tweet_id)))
+    );
+  }
   bodyEl.append(
-    section('Tweet', tweetContent(row)),
     section('Tags', tagsBlock(row), suggestButton(row)),
     section('Identifiers', grid(idRows(row))),
     section('Engagement', grid(engagementRows(row)))
@@ -152,6 +157,57 @@ function tweetText(row) {
   div.className = 'sp-text';
   div.textContent = row.text_resolved || row.text || '';
   return div;
+}
+
+// Embedded card for the tweet a quote-tweet is quoting. When that tweet is in
+// the archive we reproduce its author, text, and media; otherwise we link out
+// so the quote is still followable.
+function quotedTweetBlock(quotedRow, quotedId) {
+  if (quotedRow) return quotedTweetCard(quotedRow);
+  const wrap = document.createElement('div');
+  wrap.className = 'sp-quoted sp-quoted-missing';
+  wrap.append(mutedText(`Quoted tweet ${quotedId} isn't in the archive.`));
+  const a = document.createElement('a');
+  a.className = 'sp-link';
+  a.href = `https://x.com/i/web/status/${encodeURIComponent(quotedId)}`;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.textContent = 'View on X';
+  wrap.append(a);
+  return wrap;
+}
+
+function quotedTweetCard(row) {
+  const card = document.createElement('div');
+  card.className = 'sp-quoted';
+  const head = document.createElement('div');
+  head.className = 'sp-quoted-head';
+  head.textContent = row.posted_at
+    ? `@${row.account_handle} · ${shortDate(row.posted_at)}`
+    : `@${row.account_handle}`;
+  card.append(head);
+  const text = row.text_resolved || row.text || '';
+  if (text) {
+    const t = document.createElement('div');
+    t.className = 'sp-quoted-text';
+    t.textContent = text;
+    card.append(t);
+  }
+  if (Array.isArray(row.media) && row.media.length > 0) {
+    card.append(mediaGridWithPreviews(row.media));
+  }
+  const url = xTweetUrlForRow(row);
+  if (url) {
+    const a = document.createElement('a');
+    a.className = 'sp-link';
+    a.style.fontSize = '12px';
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = xTweetLinkLabel(row);
+    card.append(a);
+  }
+  return card;
 }
 
 function tweetLinks(row) {

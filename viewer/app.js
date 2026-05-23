@@ -1182,7 +1182,9 @@ async function openRowInSidepanel(row, options = {}) {
 
 function openSidepanelForRow(row, options = {}) {
   const thread = store.groupIntoThreads([row])[0] || null;
-  openSidepanel(els.sidepanel, els.spTitle, els.spBody, row, thread, options);
+  const quotedId = String(row.quoted_tweet_id || '');
+  const quotedRow = quotedId ? store.getDisplayRowById(quotedId) : null;
+  openSidepanel(els.sidepanel, els.spTitle, els.spBody, row, thread, { ...options, quotedRow });
 }
 
 async function hydrateRow(row, { showSpinner = false } = {}) {

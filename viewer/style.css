@@ -1384,6 +1384,29 @@ html[data-media-fit='vertical'] .media-thumb {
 .sp-link:hover {
   text-decoration: underline;
 }
+.sp-quoted {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  background: var(--bg-2);
+}
+.sp-quoted-head {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--fg-2);
+}
+.sp-quoted-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+.sp-quoted-missing {
+  color: var(--fg-3);
+  font-size: 12px;
+}
 .sp-media {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
