@@ -7,7 +7,13 @@
  */
 
 import { ACTIVITY_TAIL_MAX } from './lib/config.js';
-import type { ExtensionState, LogEvent, RuntimeMessage, TweetSighting } from './lib/types.js';
+import type {
+  CoverageGap,
+  ExtensionState,
+  LogEvent,
+  RuntimeMessage,
+  TweetSighting,
+} from './lib/types.js';
 
 const $ = <T extends HTMLElement = HTMLElement>(id: string): T => {
   const el = document.getElementById(id);
@@ -54,12 +60,79 @@ const threadOpenStartBtn = $<HTMLButtonElement>('thread-open-start');
 const threadOpenCancelBtn = $<HTMLButtonElement>('thread-open-cancel');
 const threadOpenProgress = $<HTMLSpanElement>('thread-open-progress');
 const purgeLink = $<HTMLAnchorElement>('purge-unrelated');
+const coverageGapsFindBtn = $<HTMLButtonElement>('coverage-gaps-find');
+const coverageGapsList = $<HTMLUListElement>('coverage-gaps-list');
+const coverageGapsCount = $<HTMLSpanElement>('coverage-gaps-count');
 
 let lastState: ExtensionState | null = null;
 
 async function send<T>(msg: RuntimeMessage): Promise<T> {
   return browser.runtime.sendMessage(msg) as Promise<T>;
 }
+
+const GAP_KIND_LABEL: Record<CoverageGap['kind'], string> = {
+  recent: 'new since last capture',
+  empty: 'empty',
+  sparse: 'sparse',
+};
+
+function renderCoverageGaps(gaps: CoverageGap[]): void {
+  coverageGapsList.replaceChildren();
+  if (gaps.length === 0) {
+    coverageGapsCount.textContent = 'no holes';
+    const li = document.createElement('li');
+    li.className = 'muted gap-empty';
+    li.textContent = 'Coverage looks complete across tracked accounts.';
+    coverageGapsList.append(li);
+    return;
+  }
+  coverageGapsCount.textContent = `${gaps.length} gap${gaps.length === 1 ? '' : 's'}`;
+  for (const g of gaps) {
+    const li = document.createElement('li');
+    li.className = `gap-row gap-${g.kind}`;
+    const info = document.createElement('div');
+    info.className = 'gap-info';
+    const head = document.createElement('div');
+    head.className = 'gap-head';
+    head.textContent =
+      g.fromMonth === g.toMonth
+        ? `@${g.handle} · ${g.fromMonth}`
+        : `@${g.handle} · ${g.fromMonth} → ${g.toMonth}`;
+    const meta = document.createElement('div');
+    meta.className = 'gap-meta muted';
+    const span = g.monthCount > 0 ? `${g.monthCount} mo` : 'partial';
+    meta.textContent = `${GAP_KIND_LABEL[g.kind]} · ${span} · ${g.capturedInRange} captured`;
+    info.append(head, meta);
+    const open = document.createElement('button');
+    open.type = 'button';
+    open.className = 'btn gap-open';
+    open.textContent = 'Open';
+    open.title = `Open X search ${g.fromDate}–${g.toDate} for @${g.handle}`;
+    open.addEventListener('click', () => {
+      void send({ type: 'open-url', url: g.searchUrl });
+    });
+    li.append(info, open);
+    coverageGapsList.append(li);
+  }
+}
+
+coverageGapsFindBtn.addEventListener('click', async () => {
+  coverageGapsFindBtn.disabled = true;
+  coverageGapsCount.textContent = 'scanning…';
+  try {
+    const res = await send<{ ok: boolean; gaps?: CoverageGap[]; error?: string }>({
+      type: 'get-coverage-gaps',
+    });
+    if (!res.ok || !res.gaps) {
+      coverageGapsCount.textContent = res.error ?? 'failed';
+      coverageGapsList.replaceChildren();
+      return;
+    }
+    renderCoverageGaps(res.gaps);
+  } finally {
+    coverageGapsFindBtn.disabled = false;
+  }
+});
 
 function setConnStatus(state: ExtensionState): void {
   const { connection, settings } = state;

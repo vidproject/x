@@ -82,10 +82,12 @@ import {
   type RunBuffer,
   updateSettings,
 } from './lib/storage.js';
+import { findCoverageGaps, rankGaps } from './lib/gaps.js';
 import type {
   CanonicalTweet,
   CapturePayload,
   ArchiveSnapshot,
+  CoverageGap,
   ConnectionState,
   ExtensionState,
   LogEvent,
@@ -447,10 +449,7 @@ async function autoScrollTick(): Promise<void> {
               .toLowerCase();
           const clickRetryIfReloadError = (): boolean => {
             const bodyText = (document.body?.innerText ?? '').toLowerCase();
-            if (
-              !bodyText.includes('something went wrong') &&
-              !bodyText.includes('try reloading')
-            ) {
+            if (!bodyText.includes('something went wrong') && !bodyText.includes('try reloading')) {
               return false;
             }
             const controls = Array.from(
@@ -572,17 +571,21 @@ browser.alarms.onAlarm.addListener((alarm) => {
 if (browser.action?.onClicked) {
   browser.action.onClicked.addListener(async (tab) => {
     try {
-      const sidebarAction = (browser as unknown as {
-        sidebarAction?: { toggle?: () => Promise<void> };
-      }).sidebarAction;
+      const sidebarAction = (
+        browser as unknown as {
+          sidebarAction?: { toggle?: () => Promise<void> };
+        }
+      ).sidebarAction;
       if (sidebarAction?.toggle) {
         await sidebarAction.toggle();
         return;
       }
 
-      const sidePanel = (browser as unknown as {
-        sidePanel?: { open?: (options: { windowId?: number }) => Promise<void> };
-      }).sidePanel;
+      const sidePanel = (
+        browser as unknown as {
+          sidePanel?: { open?: (options: { windowId?: number }) => Promise<void> };
+        }
+      ).sidePanel;
       if (sidePanel?.open) {
         const options: { windowId?: number } = {};
         if (typeof tab.windowId === 'number') options.windowId = tab.windowId;
@@ -814,6 +817,25 @@ async function handleMessage(
       const s = await getSettings();
       const url = viewerUrl(s);
       await browser.tabs.create({ url });
+      return { ok: true };
+    }
+    case 'get-coverage-gaps': {
+      const snapshot = await getArchiveSnapshot();
+      if (!snapshot) {
+        return { ok: false, error: 'no archive snapshot yet — check connection in Settings' };
+      }
+      const all: CoverageGap[] = [];
+      for (const account of Object.values(snapshot.accounts)) {
+        all.push(...findCoverageGaps(account));
+      }
+      return { ok: true, gaps: rankGaps(all), generatedAt: snapshot.generated_at };
+    }
+    case 'open-url': {
+      const url = msg.url;
+      if (typeof url !== 'string' || !/^https:\/\/(x\.com|twitter\.com)\//.test(url)) {
+        return { ok: false, error: 'refusing to open a non-X url' };
+      }
+      await browser.tabs.create({ url, active: true });
       return { ok: true };
     }
     default:
@@ -2838,11 +2860,19 @@ function parseArchiveSnapshot(raw: unknown): ArchiveSnapshot {
     const row = entry as Record<string, unknown>;
     const handle = typeof row.handle === 'string' ? row.handle : '';
     if (!handle || handle === '_misc') continue;
+    const months: Record<string, number> = {};
+    if (row.months && typeof row.months === 'object') {
+      for (const [k, v] of Object.entries(row.months as Record<string, unknown>)) {
+        if (typeof v === 'number') months[k] = v;
+      }
+    }
     accounts[handle.toLowerCase()] = {
       handle,
+      first_post_at: typeof row.first_post_at === 'string' ? row.first_post_at : null,
       latest_post_at: typeof row.latest_post_at === 'string' ? row.latest_post_at : null,
       latest_capture_at: typeof row.latest_capture_at === 'string' ? row.latest_capture_at : null,
       row_count: typeof row.row_count === 'number' ? row.row_count : null,
+      months,
     };
   }
   return {

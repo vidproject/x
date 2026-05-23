@@ -653,6 +653,21 @@ def build_manifest(accounts: list[dict[str, str]]) -> dict[str, Any]:
         first_post = df.select(pl.col("posted_at").min()).item() if row_count else None
         latest_post = df.select(pl.col("posted_at").max()).item() if row_count else None
         latest_capture = df.select(pl.col("last_seen_at").max()).item() if row_count else None
+        # Per-month post counts (keyed YYYY-MM) so the extension can spot
+        # coverage holes — empty or unusually sparse months — and target a
+        # date-bounded re-scan at them instead of re-walking whole timelines.
+        months: dict[str, int] = {}
+        if row_count:
+            month_counts = (
+                df.select(pl.col("posted_at").cast(pl.Utf8).str.slice(0, 7).alias("month"))
+                .filter(pl.col("month").is_not_null() & (pl.col("month").str.len_chars() == 7))
+                .group_by("month")
+                .len()
+                .sort("month")
+            )
+            months = {
+                str(r["month"]): int(r["len"]) for r in month_counts.iter_rows(named=True)
+            }
         deleted = df.filter(pl.col("deletion_detected_at").is_not_null()).height if row_count else 0
         media_count = df.select(pl.col("media").list.len().sum()).item() if row_count else 0
         video_count = (
@@ -678,6 +693,7 @@ def build_manifest(accounts: list[dict[str, str]]) -> dict[str, Any]:
                 "first_post_at": first_post,
                 "latest_post_at": latest_post,
                 "latest_capture_at": latest_capture,
+                "months": months,
                 "deleted_count": deleted,
                 "media_count": int(media_count or 0),
                 "video_count": int(video_count or 0),

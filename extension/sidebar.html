@@ -144,6 +144,21 @@
       </div>
     </section>
 
+    <section class="loop" id="coverage-gaps-section">
+      <div class="section-head">
+        <h2 class="section-title">Coverage gaps</h2>
+        <span class="muted" id="coverage-gaps-count"></span>
+      </div>
+      <p class="muted loop-blurb">
+        Empty or unusually sparse months in the archive, plus tweets posted since the last capture.
+        Open a gap to load that exact date range in X; auto-scroll then fills it.
+      </p>
+      <div class="row">
+        <button class="btn" id="coverage-gaps-find">Find gaps</button>
+      </div>
+      <ul class="gap-list" id="coverage-gaps-list" aria-live="polite"></ul>
+    </section>
+
     <section class="accounts">
       <h2 class="section-title">Accounts</h2>
       <ul class="account-list" id="account-list" aria-live="polite"></ul>

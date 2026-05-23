@@ -84,9 +84,26 @@ export interface ConnectionState {
 
 export interface ArchiveSnapshotAccount {
   handle: string;
+  first_post_at: string | null;
   latest_post_at: string | null;
   latest_capture_at: string | null;
   row_count: number | null;
+  /** Post counts keyed by YYYY-MM, used to find coverage holes. */
+  months: Record<string, number>;
+}
+
+/** A date range where an account's archive is empty or unusually sparse,
+ * with a ready-to-open X search that targets exactly that window. */
+export interface CoverageGap {
+  handle: string;
+  fromMonth: string; // YYYY-MM, first hole month (inclusive)
+  toMonth: string; // YYYY-MM, last hole month (inclusive)
+  fromDate: string; // YYYY-MM-DD for search `since:` (inclusive)
+  toDate: string; // YYYY-MM-DD for search `until:` (exclusive)
+  monthCount: number; // number of hole months spanned
+  capturedInRange: number; // tweets already captured inside the range
+  kind: 'empty' | 'sparse' | 'recent';
+  searchUrl: string;
 }
 
 export interface ArchiveSnapshot {
@@ -415,6 +432,8 @@ export type RuntimeMessage =
   | { type: 'clear-activity' }
   | { type: 'open-options' }
   | { type: 'open-viewer' }
+  | { type: 'get-coverage-gaps' }
+  | { type: 'open-url'; url: string }
   | { type: 'log-event'; event: LogEvent }
   | { type: 'state-changed'; state: ExtensionState }
   | { type: 'activity-tail'; events: LogEvent[] };
