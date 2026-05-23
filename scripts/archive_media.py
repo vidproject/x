@@ -54,6 +54,11 @@ MAX_ATTEMPTS = 4
 # archive falls behind, so CI minutes don't blow up. Override with --max-items.
 DEFAULT_MAX_ITEMS = 200
 
+# Proactive pause after each successful upload. Tiny by default (CI does small
+# capped runs), but a bulk backfill can set ARCHIVE_UPLOAD_DELAY to stay under
+# GitHub's ~500-content-writes/hour secondary limit and avoid Retry-After stalls.
+UPLOAD_DELAY_SEC = float(os.environ.get("ARCHIVE_UPLOAD_DELAY", "0.05"))
+
 # httpx fetch is fairly tolerant — we want a generous timeout for large videos.
 DOWNLOAD_TIMEOUT = httpx.Timeout(connect=10, read=120, write=30, pool=10)
 
@@ -207,7 +212,7 @@ class GitHubReleaseClient:
         # "https://uploads.github.com/.../assets{?name,label}". Strip the
         # template suffix and pass `name` ourselves.
         base = re.sub(r"\{\?.*\}$", "", upload_url)
-        for _attempt in range(8):
+        for _attempt in range(5):
             r = self.session.post(
                 base,
                 params={"name": name},
@@ -614,8 +619,9 @@ def archive_one_handle(
             "last_attempt_at": now_iso,
         }
         archived += 1
-        # twimg can rate-limit; a tiny pause is friendly.
-        time.sleep(0.05)
+        # Pace uploads: friendly to twimg, and (when ARCHIVE_UPLOAD_DELAY is
+        # raised for a bulk backfill) keeps us under GitHub's hourly write limit.
+        time.sleep(UPLOAD_DELAY_SEC)
 
     if updates:
         df = update_media_in_df(df, updates)
