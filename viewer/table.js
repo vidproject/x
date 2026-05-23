@@ -20,9 +20,9 @@ import {
   retweetedByHandles,
   tagNamespace,
   tagSubtype,
-} from './store.js?v=lazycat4';
-import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js?v=lazycat4';
-import { archiveShareUrlForRow, copyTextToClipboard, xTweetUrlForRow } from './links.js?v=lazycat4';
+} from './store.js?v=lazycat5';
+import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js?v=lazycat5';
+import { archiveShareUrlForRow, copyTextToClipboard, xTweetUrlForRow } from './links.js?v=lazycat5';
 
 const MEDIA_COL_KEY = 'media_kinds';
 export const TAG_CERTAINTY_LABELS = {
@@ -356,6 +356,13 @@ export function renderColumnsMenu(menuEl, visible, onChange) {
  *   colFilters: Record<string, Set<string>>,
  *   tagCertainty?: string,
  *   expandedThreads?: Set<string>,
+ *   selection?: {
+ *     enabled: boolean,
+ *     selectedIds: Set<string>,
+ *     allFilteredIds: Set<string>,
+ *     onToggleRow: (id:string, checked:boolean)=>void,
+ *     onToggleAll: (checked:boolean)=>void,
+ *   },
  *   onRowClick: (row:any, options?:Record<string, unknown>)=>void,
  *   onAccountOpen?: (handle:string, row:any)=>void,
  *   onSortToggle: (key:string)=>void,
@@ -377,15 +384,20 @@ export function renderTable(args) {
     colFilters,
     tagCertainty = 'all',
     expandedThreads,
+    selection,
     onRowClick,
     onAccountOpen,
     onSortToggle,
     onOpenColPop,
     onToggleThread,
   } = args;
+  const selectionMode = Boolean(selection && selection.enabled);
   const visibleKeys = normalizeVisibleColumns(visible);
   // header
   theadEl.replaceChildren();
+  if (selectionMode) {
+    theadEl.append(buildSelectAllHeaderCell(selection));
+  }
   for (const key of visibleKeys) {
     const col = KEY_TO_COL[key];
     if (!col) continue;
@@ -429,6 +441,8 @@ export function renderTable(args) {
 
   // body — threads-or-rows
   tbodyEl.replaceChildren();
+  const selectionForBody = selectionMode ? selection : null;
+  const extraCols = selectionMode ? 1 : 0;
   if (threads && threads.length > 0) {
     paintThreaded({
       tbodyEl,
@@ -437,6 +451,7 @@ export function renderTable(args) {
       page,
       pageSize,
       expandedThreads: expandedThreads ?? new Set(),
+      selection: selectionForBody,
       onRowClick,
       onAccountOpen,
       onToggleThread,
@@ -448,12 +463,61 @@ export function renderTable(args) {
   const start = (page - 1) * pageSize;
   const slice = rows.slice(start, start + pageSize);
   if (slice.length === 0) {
-    emptyMessage(tbodyEl, visibleKeys.length || 1);
+    emptyMessage(tbodyEl, visibleKeys.length + extraCols || 1);
     return;
   }
   for (const r of slice) {
-    tbodyEl.append(buildRow(r, visibleKeys, onRowClick, onAccountOpen));
+    tbodyEl.append(buildRow(r, visibleKeys, onRowClick, onAccountOpen, selectionForBody));
   }
+}
+
+function buildSelectAllHeaderCell(selection) {
+  const th = document.createElement('th');
+  th.className = 'col-select';
+  const wrap = document.createElement('span');
+  wrap.className = 'col-head col-select-head';
+  const cb = document.createElement('input');
+  cb.type = 'checkbox';
+  cb.className = 'row-select-all';
+  const allIds = selection.allFilteredIds instanceof Set ? selection.allFilteredIds : new Set();
+  const selectedIds = selection.selectedIds instanceof Set ? selection.selectedIds : new Set();
+  let selectedInScope = 0;
+  for (const id of allIds) {
+    if (selectedIds.has(id)) selectedInScope += 1;
+  }
+  cb.checked = allIds.size > 0 && selectedInScope === allIds.size;
+  cb.indeterminate = selectedInScope > 0 && selectedInScope < allIds.size;
+  cb.disabled = allIds.size === 0;
+  cb.title = 'Select or clear every row in the current filtered set';
+  cb.setAttribute('aria-label', 'Select all filtered rows');
+  cb.addEventListener('click', (e) => e.stopPropagation());
+  cb.addEventListener('change', () => {
+    selection.onToggleAll(cb.checked);
+  });
+  wrap.append(cb);
+  th.append(wrap);
+  return th;
+}
+
+function buildSelectCell(row, selection) {
+  const td = document.createElement('td');
+  td.className = 'col-select';
+  const id = String(row?.tweet_id ?? '');
+  const cb = document.createElement('input');
+  cb.type = 'checkbox';
+  cb.className = 'row-select';
+  const selectedIds = selection.selectedIds instanceof Set ? selection.selectedIds : new Set();
+  cb.checked = Boolean(id) && selectedIds.has(id);
+  cb.disabled = !id;
+  cb.setAttribute('aria-label', 'Select row for export');
+  // Stop the click from bubbling to the row handler (which opens the
+  // sidepanel); the checkbox must only toggle selection.
+  cb.addEventListener('click', (e) => e.stopPropagation());
+  cb.addEventListener('change', () => {
+    if (id) selection.onToggleRow(id, cb.checked);
+  });
+  td.append(cb);
+  return td;
 }
 
 function paintThreaded({
@@ -463,6 +527,7 @@ function paintThreaded({
   page,
   pageSize,
   expandedThreads,
+  selection,
   onRowClick,
   onAccountOpen,
   onToggleThread,
@@ -471,13 +536,14 @@ function paintThreaded({
   // how big they are when expanded. Keeps page sizes predictable.
   const start = (page - 1) * pageSize;
   const slice = threads.slice(start, start + pageSize);
+  const extraCols = selection ? 1 : 0;
   if (slice.length === 0) {
-    emptyMessage(tbodyEl, visible.length || 1);
+    emptyMessage(tbodyEl, visible.length + extraCols || 1);
     return;
   }
   for (const thread of slice) {
     const expanded = expandedThreads.has(thread.threadId);
-    const masterRow = buildRow(thread.master, visible, onRowClick, onAccountOpen);
+    const masterRow = buildRow(thread.master, visible, onRowClick, onAccountOpen, selection);
     masterRow.classList.add('thread-master');
     masterRow.dataset.threadId = thread.threadId;
     const hasSelf = thread.selfSlaves.length > 0;
@@ -504,7 +570,7 @@ function paintThreaded({
     // random reactions to a viral DHS tweet.
     if (expanded && (hasSelf || hasPrivileged)) {
       for (const slave of [...thread.selfSlaves, ...privilegedSlaves]) {
-        const sr = buildRow(slave, visible, onRowClick, onAccountOpen);
+        const sr = buildRow(slave, visible, onRowClick, onAccountOpen, selection);
         sr.classList.add('thread-slave');
         const privileged = slave.__thread_privileged_category;
         if (privileged) {
@@ -520,7 +586,9 @@ function paintThreaded({
 
 function decorateMasterFirstCell(masterRow, thread, expanded, onToggleThread) {
   const targetCell =
-    masterRow.querySelector('td[data-col-key="account_handle"]') ?? masterRow.firstElementChild;
+    masterRow.querySelector('td[data-col-key="account_handle"]') ??
+    masterRow.querySelector('td:not(.col-select)') ??
+    masterRow.firstElementChild;
   if (!targetCell) return;
   const promotions = Array.isArray(thread.promotedReplies) ? thread.promotedReplies : [];
   const retweets = Array.isArray(thread.master.__retweet_promotions)
@@ -681,10 +749,13 @@ function retweetBadge(group) {
   return badge;
 }
 
-function buildRow(r, visible, onRowClick, onAccountOpen) {
+function buildRow(r, visible, onRowClick, onAccountOpen, selection = null) {
   const tr = document.createElement('tr');
   tr.dataset.tweetId = r.tweet_id;
   tr.addEventListener('click', () => onRowClick(r));
+  if (selection) {
+    tr.append(buildSelectCell(r, selection));
+  }
   for (const key of visible) {
     const col = KEY_TO_COL[key];
     if (!col) continue;
