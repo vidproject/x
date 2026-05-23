@@ -1,11 +1,11 @@
 // Orchestrator: wires the UI controls to the Store, manages URL state, theme,
 // column visibility, CSV export, and lazy parquet loading.
 
-import { exportCsv } from './csv.js?v=lazycat4';
-import { loadParquetRows } from './parquet.js?v=lazycat4';
-import { applyToUrl, defaults as defaultState, fromHash } from './state.js?v=lazycat4';
-import { SEARCH_FIELD_OPTIONS, Store } from './store.js?v=lazycat4';
-import { initChartsPanel, updateChartsPanel } from './charts.js?v=lazycat4';
+import { exportCsv } from './csv.js?v=lazycat5';
+import { loadParquetRows } from './parquet.js?v=lazycat5';
+import { applyToUrl, defaults as defaultState, fromHash } from './state.js?v=lazycat5';
+import { SEARCH_FIELD_OPTIONS, Store } from './store.js?v=lazycat5';
+import { initChartsPanel, updateChartsPanel } from './charts.js?v=lazycat5';
 import {
   openColumnFilterPopup,
   parseVisibleColumns,
@@ -13,8 +13,8 @@ import {
   renderTable,
   setMediaColumnConfig,
   setUserLookup,
-} from './table.js?v=lazycat4';
-import { closeSidepanel, openSidepanel } from './sidepanel.js?v=lazycat4';
+} from './table.js?v=lazycat5';
+import { closeSidepanel, openSidepanel } from './sidepanel.js?v=lazycat5';
 
 const $ = (id) => {
   const el = document.getElementById(id);
@@ -28,7 +28,9 @@ const els = {
   filtersBtn: $('filters-btn'),
   colsBtn: $('cols-btn'),
   colsMenu: $('cols-menu'),
-  csvBtn: $('csv-btn'),
+  exportBtn: $('export-btn'),
+  exportCaretBtn: $('export-caret-btn'),
+  exportMenu: $('export-menu'),
   chartsBtn: $('charts-btn'),
   fullDbBtn: $('full-db-btn'),
   chartsPanel: $('chartpanel'),
@@ -100,6 +102,13 @@ let filteredThreads = [];
 /** @type {Record<string, Set<string>>} */
 let colFilters = {};
 let selectedRowId = null;
+// Export scope: 'page' (current page), 'range' (all filtered rows), or
+// 'selection' (only rows ticked in the left checkbox column). Page is the
+// default. Selection mode is the only scope that reveals the checkbox column.
+/** @type {'page'|'range'|'selection'} */
+let exportScope = 'page';
+/** @type {Set<string>} */
+let selectedExportIds = new Set();
 /** @type {Set<string>} */
 let expandedThreads = new Set();
 let uiRevealed = false;
@@ -1439,6 +1448,7 @@ els.resetBtn.addEventListener('click', async () => {
   urlState = defaultState();
   colFilters = {};
   expandedThreads = new Set();
+  selectedExportIds = new Set();
   els.searchField.value = 'all';
   updateSearchPlaceholder();
   els.search.value = '';
@@ -1466,9 +1476,10 @@ function onColumnsChange(next) {
 renderColumnsMenu(els.colsMenu, visibleCols, onColumnsChange);
 
 // --- Dropdown toggles ---
-const dropdownMenus = [els.colsMenu];
-const dropdownButtons = [els.colsBtn];
+const dropdownMenus = [els.colsMenu, els.exportMenu];
+const dropdownButtons = [els.colsBtn, els.exportCaretBtn];
 wireDropdown(els.colsBtn, els.colsMenu);
+wireDropdown(els.exportCaretBtn, els.exportMenu);
 function wireDropdown(btn, menu) {
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -1482,22 +1493,144 @@ function wireDropdown(btn, menu) {
   });
 }
 document.addEventListener('mousedown', (e) => {
+  // A click on a toggle button (or an icon inside it) is handled by that
+  // button's own click listener; don't also close here or the two race.
+  const onToggleButton = dropdownButtons.some((btn) => btn.contains(e.target));
+  if (onToggleButton) return;
   for (const m of dropdownMenus) {
     if (m.hidden) continue;
     if (m.contains(e.target)) continue;
-    if (dropdownButtons.includes(e.target)) continue;
     m.hidden = true;
   }
 });
 
-// --- CSV ---
-els.csvBtn.addEventListener('click', () => {
-  if (filteredRows.length === 0) {
-    showError('Nothing to export — no rows match the current filters.', 3000);
+// --- Export (CSV, scoped) ---
+//
+// One "Export" button downloads CSV for the currently chosen scope; a caret
+// beside it opens a small menu to pick the scope. Output format is unchanged —
+// only WHICH rows are written varies:
+//   page      — the rows visible on the current page (master rows plus any
+//               inline-expanded thread replies, mirroring what's on screen).
+//   range     — every row in the active filtered/search result set.
+//   selection — only the rows ticked in the left checkbox column. Selecting
+//               this scope turns that column on.
+const EXPORT_SCOPE_LABELS = {
+  page: 'Export · Page',
+  range: 'Export · Range',
+  selection: 'Export · Selection',
+};
+
+function syncExportControls() {
+  for (const opt of els.exportMenu.querySelectorAll('.export-scope-opt')) {
+    const active = opt.dataset.scope === exportScope;
+    opt.classList.toggle('active', active);
+    opt.setAttribute('aria-checked', active ? 'true' : 'false');
+  }
+  els.exportBtn.title =
+    exportScope === 'selection'
+      ? 'Download a CSV of the rows checked in the left column'
+      : exportScope === 'range'
+        ? 'Download a CSV of every row matching the current filters'
+        : 'Download a CSV of the current page';
+  els.exportBtn.textContent = 'Export';
+  els.exportBtn.setAttribute('aria-label', EXPORT_SCOPE_LABELS[exportScope] || 'Export');
+}
+
+function setExportScope(scope) {
+  const next = EXPORT_SCOPE_LABELS[scope] ? scope : 'page';
+  if (next === exportScope) {
+    syncExportControls();
     return;
   }
-  exportCsv(filteredRows);
+  exportScope = next;
+  syncExportControls();
+  // Toggling Selection on/off shows/hides the checkbox column, so re-render.
+  refresh();
+}
+
+// Rows visible on the current page: replicate table.js#paintThreaded's slice so
+// the export matches exactly what the user sees (including inline replies of
+// expanded threads).
+function currentPageRows() {
+  const start = (urlState.page - 1) * urlState.size;
+  const pageThreads = filteredThreads.slice(start, start + urlState.size);
+  const rows = [];
+  for (const thread of pageThreads) {
+    if (thread?.master) rows.push(thread.master);
+    if (expandedThreads.has(thread?.threadId)) {
+      const inline = [
+        ...(Array.isArray(thread.selfSlaves) ? thread.selfSlaves : []),
+        ...(Array.isArray(thread.privilegedSlaves) ? thread.privilegedSlaves : []),
+      ];
+      rows.push(...inline);
+    }
+  }
+  return rows;
+}
+
+function rowsForExportScope() {
+  if (exportScope === 'range') return filteredRows;
+  if (exportScope === 'selection') {
+    return filteredRows.filter((r) => selectedExportIds.has(String(r.tweet_id ?? '')));
+  }
+  return currentPageRows();
+}
+
+// Build the selection-column config handed to renderTable. The checkbox column
+// only appears in Selection mode. The header select-all and per-row toggles
+// operate on tweet_id and update the tracked set, then re-render so checkbox
+// state stays in sync with the data.
+function buildSelectionConfig() {
+  if (exportScope !== 'selection') {
+    return { enabled: false };
+  }
+  const allFilteredIds = new Set();
+  for (const r of filteredRows) {
+    const id = String(r.tweet_id ?? '');
+    if (id) allFilteredIds.add(id);
+  }
+  return {
+    enabled: true,
+    selectedIds: selectedExportIds,
+    allFilteredIds,
+    onToggleRow: (id, checked) => {
+      if (checked) selectedExportIds.add(id);
+      else selectedExportIds.delete(id);
+      refresh();
+    },
+    onToggleAll: (checked) => {
+      if (checked) {
+        for (const id of allFilteredIds) selectedExportIds.add(id);
+      } else {
+        for (const id of allFilteredIds) selectedExportIds.delete(id);
+      }
+      refresh();
+    },
+  };
+}
+
+els.exportBtn.addEventListener('click', () => {
+  const rows = rowsForExportScope();
+  if (rows.length === 0) {
+    const msg =
+      exportScope === 'selection'
+        ? 'Nothing to export — no rows are checked. Tick rows in the left column, or switch the export scope.'
+        : 'Nothing to export — no rows match the current filters.';
+    showError(msg, 4000);
+    return;
+  }
+  exportCsv(rows);
 });
+
+for (const opt of els.exportMenu.querySelectorAll('.export-scope-opt')) {
+  opt.addEventListener('click', () => {
+    setExportScope(opt.dataset.scope);
+    els.exportMenu.hidden = true;
+    els.exportCaretBtn.setAttribute('aria-expanded', 'false');
+  });
+}
+
+syncExportControls();
 
 // --- Sidepanel ---
 els.spClose.addEventListener('click', () => {
@@ -2155,6 +2288,7 @@ function refresh() {
     colFilters: visibleColFilters,
     tagCertainty: urlState.tagcert || 'all',
     expandedThreads,
+    selection: buildSelectionConfig(),
     onRowClick: (r, options = {}) => {
       void openRowInSidepanel(r, options);
     },

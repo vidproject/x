@@ -242,6 +242,65 @@ body {
   color: var(--accent-2);
 }
 
+/* Export split control: an "Export" button joined to a caret that opens the
+   scope menu. */
+.export-split {
+  display: inline-flex;
+  align-items: stretch;
+}
+.export-split .export-btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.export-split .export-caret {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-left: -1px;
+}
+.export-caret-icon {
+  font-size: 10px;
+  line-height: 1;
+}
+.export-dropdown {
+  min-width: 200px;
+}
+.export-scope-opt {
+  justify-content: flex-start;
+  gap: 8px;
+}
+.export-scope-opt .export-scope-hint {
+  margin-left: auto;
+  font-size: 11px;
+}
+.export-scope-opt.active {
+  background: rgba(43, 108, 176, 0.12);
+}
+.export-scope-opt.active .label {
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+/* Selection-mode checkbox column (left-most). Only present in Selection scope. */
+.data-table th.col-select,
+.data-table td.col-select {
+  width: 32px;
+  min-width: 32px;
+  max-width: 32px;
+  padding: 3px 6px;
+  text-align: center;
+  vertical-align: middle;
+}
+.data-table th.col-select .col-select-head {
+  justify-content: center;
+}
+.data-table td.col-select .row-select,
+.data-table th.col-select .row-select-all {
+  cursor: pointer;
+  margin: 0;
+}
+
 .tips {
   background: var(--bg-2);
   border-bottom: 1px solid var(--border);

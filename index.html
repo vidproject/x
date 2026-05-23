@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Immigration Social Media Archive</title>
-    <link rel="stylesheet" href="viewer/style.css?v=lazycat4" />
+    <link rel="stylesheet" href="viewer/style.css?v=lazycat5" />
   </head>
   <body class="theme-auto">
     <header class="hdr">
@@ -37,9 +37,58 @@
           </button>
           <div class="dropdown" id="cols-menu" role="menu" hidden></div>
         </div>
-        <button type="button" class="btn ghost" id="csv-btn" title="Export current view to CSV">
-          CSV
-        </button>
+        <div class="menu export-menu">
+          <div class="export-split">
+            <button
+              type="button"
+              class="btn ghost export-btn"
+              id="export-btn"
+              title="Download a CSV of the chosen scope"
+            >
+              Export
+            </button>
+            <button
+              type="button"
+              class="btn ghost export-caret"
+              id="export-caret-btn"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-label="Choose export scope"
+              title="Choose what gets exported"
+            >
+              <span class="export-caret-icon" aria-hidden="true">▾</span>
+            </button>
+          </div>
+          <div class="dropdown export-dropdown" id="export-menu" role="menu" hidden>
+            <button
+              type="button"
+              class="dl-row dl-row-btn export-scope-opt"
+              role="menuitemradio"
+              data-scope="selection"
+            >
+              <span class="label">Selection</span>
+              <span class="muted export-scope-hint">checked rows</span>
+            </button>
+            <button
+              type="button"
+              class="dl-row dl-row-btn export-scope-opt"
+              role="menuitemradio"
+              data-scope="page"
+            >
+              <span class="label">Page</span>
+              <span class="muted export-scope-hint">current page</span>
+            </button>
+            <button
+              type="button"
+              class="dl-row dl-row-btn export-scope-opt"
+              role="menuitemradio"
+              data-scope="range"
+            >
+              <span class="label">Range</span>
+              <span class="muted export-scope-hint">all filtered rows</span>
+            </button>
+          </div>
+        </div>
         <button
           type="button"
           class="btn ghost"
@@ -153,6 +202,11 @@
         </li>
         <li>Click any row to open the full tweet detail panel on the right.</li>
         <li>Use Columns to toggle visibility, including Deletion detected.</li>
+        <li>
+          Export downloads a CSV. Use the caret beside it to pick the scope: Selection (only the
+          rows you tick in the left checkbox column), Page (just the current page), or Range (every
+          row matching the active filters and search).
+        </li>
         <li>The URL updates as you filter; bookmark or share it to come back to the same view.</li>
         <li>
           This is a public archive. Captures mirror what X served the browser at capture time.
@@ -377,6 +431,6 @@
       >
     </footer>
 
-    <script type="module" src="viewer/app.js?v=lazycat4"></script>
+    <script type="module" src="viewer/app.js?v=lazycat5"></script>
   </body>
 </html>
