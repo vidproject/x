@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Immigration Social Media Archive</title>
-    <link rel="stylesheet" href="viewer/style.css?v=lazycat3" />
+    <link rel="stylesheet" href="viewer/style.css?v=lazycat4" />
   </head>
   <body class="theme-auto">
     <header class="hdr">
@@ -92,7 +92,8 @@
           id="search"
           class="search"
           type="search"
-          placeholder="Search all fields... (use * and ? wildcards)"
+          placeholder="Search all fields... (use * and ? wildcards; -tag:ns:slug or -tag:ns to exclude)"
+          aria-label="Search. Use * and ? wildcards. Use -tag:namespace:slug or -tag:namespace to exclude tags."
           autocomplete="off"
           spellcheck="false"
         />
@@ -141,6 +142,13 @@
         </li>
         <li><kbd>?</kbd> in search matches any single character; <kbd>*</kbd> matches any run.</li>
         <li>
+          Exclude tags right in the search box with <code>-tag:</code>. Use
+          <code>-tag:namespace:slug</code> to drop one exact tag, or <code>-tag:namespace</code> to
+          drop a whole namespace. Add more <code>-tag:</code> tokens to exclude additional tags; the
+          rest of the box still runs as a normal search. Example:
+          <code>deportation -tag:genre:music-video -tag:format</code>.
+        </li>
+        <li>
           Click the filter button on any column header to filter by that column's unique values.
         </li>
         <li>Click any row to open the full tweet detail panel on the right.</li>
@@ -175,9 +183,7 @@
     <section class="load-errors" id="load-errors" hidden>
       <div class="load-errors-head">
         <strong>Load failures</strong>
-        <button type="button" class="btn ghost" id="load-errors-close" aria-label="Close">
-          x
-        </button>
+        <button type="button" class="btn ghost" id="load-errors-close" aria-label="Close">x</button>
       </div>
       <table class="data-table load-errors-tbl">
         <thead>
@@ -371,6 +377,6 @@
       >
     </footer>
 
-    <script type="module" src="viewer/app.js?v=lazycat3"></script>
+    <script type="module" src="viewer/app.js?v=lazycat4"></script>
   </body>
 </html>

@@ -1,11 +1,11 @@
 // Orchestrator: wires the UI controls to the Store, manages URL state, theme,
 // column visibility, CSV export, and lazy parquet loading.
 
-import { exportCsv } from './csv.js?v=lazycat3';
-import { loadParquetRows } from './parquet.js?v=lazycat3';
-import { applyToUrl, defaults as defaultState, fromHash } from './state.js?v=lazycat3';
-import { SEARCH_FIELD_OPTIONS, Store } from './store.js?v=lazycat3';
-import { initChartsPanel, updateChartsPanel } from './charts.js?v=lazycat3';
+import { exportCsv } from './csv.js?v=lazycat4';
+import { loadParquetRows } from './parquet.js?v=lazycat4';
+import { applyToUrl, defaults as defaultState, fromHash } from './state.js?v=lazycat4';
+import { SEARCH_FIELD_OPTIONS, Store } from './store.js?v=lazycat4';
+import { initChartsPanel, updateChartsPanel } from './charts.js?v=lazycat4';
 import {
   openColumnFilterPopup,
   parseVisibleColumns,
@@ -13,8 +13,8 @@ import {
   renderTable,
   setMediaColumnConfig,
   setUserLookup,
-} from './table.js?v=lazycat3';
-import { closeSidepanel, openSidepanel } from './sidepanel.js?v=lazycat3';
+} from './table.js?v=lazycat4';
+import { closeSidepanel, openSidepanel } from './sidepanel.js?v=lazycat4';
 
 const $ = (id) => {
   const el = document.getElementById(id);
@@ -825,7 +825,7 @@ function updateSearchPlaceholder() {
   const value = els.searchField.value || 'all';
   const label = SEARCH_FIELD_OPTIONS.find((field) => field.value === value)?.label || 'All fields';
   const scope = value === 'all' ? 'all fields' : label.toLocaleLowerCase();
-  els.search.placeholder = `Search ${scope}... (use * and ? wildcards)`;
+  els.search.placeholder = `Search ${scope}... (use * and ? wildcards; -tag:ns:slug or -tag:ns to exclude)`;
 }
 
 function catalogCacheKey() {

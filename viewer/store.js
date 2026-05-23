@@ -337,16 +337,25 @@ export class Store {
       }
     }
     if (filt.q && filt.q.trim()) {
-      const q = filt.q.trim();
+      // Pull inline `-tag:` exclusions out of the query first. They drop rows
+      // carrying any matching tag/namespace; the remaining free text then runs
+      // through the normal search path (field-scoped, wildcard, or MiniSearch).
+      const { exclusions, rest } = parseTagExclusions(filt.q);
+      if (exclusions.length > 0) {
+        rows = rows.filter((r) => !rowMatchesAnyExclusion(r, exclusions));
+      }
+      const q = rest.trim();
       const qfield = filt.qfield || 'all';
-      if (qfield !== 'all') {
-        rows = rows.filter((r) => fieldSearchMatches(r, qfield, q));
-      } else if (/[*?]/.test(q)) {
-        const re = wildcardToRegex(q);
-        rows = rows.filter((r) => re.test(haystack(r)));
-      } else {
-        const idSet = runMiniSearch(this.ensureSearch(), q);
-        rows = rows.filter((r) => idSet.has(String(r.tweet_id)));
+      if (q) {
+        if (qfield !== 'all') {
+          rows = rows.filter((r) => fieldSearchMatches(r, qfield, q));
+        } else if (/[*?]/.test(q)) {
+          const re = wildcardToRegex(q);
+          rows = rows.filter((r) => re.test(haystack(r)));
+        } else {
+          const idSet = runMiniSearch(this.ensureSearch(), q);
+          rows = rows.filter((r) => idSet.has(String(r.tweet_id)));
+        }
       }
     }
     // Collapse retweets to their originals BEFORE sorting. A retweet row
@@ -549,6 +558,44 @@ function tagFilterMatches(row, selections, certainty = 'all', mode = 'or') {
     );
   // OR: any selection present. AND: every selection present (across distinct tags).
   return mode === 'and' ? wanted.every(satisfies) : wanted.some(satisfies);
+}
+
+/**
+ * Split inline `-tag:<value>` exclusion tokens out of a free-text query.
+ * `<value>` is either a full `namespace:slug` (exclude that exact tag) or a
+ * bare `namespace` (exclude the whole namespace). Everything else is returned
+ * as `rest` to run through the normal search path. A leading `-` on a normal
+ * word is NOT an exclusion — only the `-tag:` prefix triggers one.
+ *
+ * @param {string} query
+ * @returns {{ exclusions: Array<{kind: 'exact'|'namespace', value: string}>, rest: string }}
+ */
+function parseTagExclusions(query) {
+  const exclusions = [];
+  const kept = [];
+  for (const token of String(query ?? '').split(/\s+/)) {
+    if (!token) continue;
+    const m = /^-tag:(.+)$/i.exec(token);
+    if (!m) {
+      kept.push(token);
+      continue;
+    }
+    const value = m[1];
+    if (value.includes(':')) exclusions.push({ kind: 'exact', value });
+    else exclusions.push({ kind: 'namespace', value });
+  }
+  return { exclusions, rest: kept.join(' ') };
+}
+
+/** True when the row carries any tag that matches one of the exclusions. */
+function rowMatchesAnyExclusion(row, exclusions) {
+  const entries = tagEntries(row);
+  if (entries.length === 0) return false;
+  return entries.some(({ name }) =>
+    exclusions.some((ex) =>
+      ex.kind === 'exact' ? name === ex.value : tagNamespace(name) === ex.value
+    )
+  );
 }
 
 function tagCertaintyMatches(row, mode) {

@@ -1,12 +1,12 @@
 // Side-panel detail view: opens when a table row is clicked.
 
-import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js?v=lazycat3';
+import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js?v=lazycat4';
 import {
   archiveShareUrlForRow,
   copyTextToClipboard,
   xTweetLinkLabel,
   xTweetUrlForRow,
-} from './links.js?v=lazycat3';
+} from './links.js?v=lazycat4';
 
 export function openSidepanel(panelEl, titleEl, bodyEl, row, thread, options = {}) {
   if (!row) return;

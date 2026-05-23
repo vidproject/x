@@ -2,7 +2,7 @@
 // canonical schema — nested arrays/structs are joined into pipe-separated
 // strings to keep the file usable in spreadsheets.
 
-import { retweetedByHandles } from './store.js?v=lazycat3';
+import { retweetedByHandles } from './store.js?v=lazycat4';
 
 const COLS = [
   'tweet_id',
