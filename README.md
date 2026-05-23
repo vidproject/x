@@ -4,9 +4,9 @@ A public, searchable archive of immigration-related posts from US federal X (Twi
 
 [Open the searchable archive](https://vidproject.github.io/x/)
 
-**What it does.** This repository _is_ the database. It permanently preserves the public posts these accounts make — text, media (photos and videos), engagement counts over time, replies, quotes, and retweets — so the record survives even after a post is edited, deleted, or its media expires from X's servers.
+This is a research resource maintained as part of a project at the University of California, Berkeley, School of Law. It gathers publicly posted material from these accounts — text, media (photos and videos), engagement counts over time, replies, quotes, and retweets — and makes it browsable and searchable in one place for study and reference.
 
-**How capture works.** A browser extension reads the public X web timeline as you view it, normalizes what the site serves, and commits raw JSON to this repo. There is **no X API and no X Developer Agreement** — capture only uses the public web data the browser already received. A Python pipeline (`scripts/*`) then turns that raw JSON into per-account Parquet files, copies attached media into permanent GitHub Releases assets, derives optional tag sidecars (OCR, transcripts, vision descriptions, keyframes), and builds a static viewer.
+**How capture works.** A browser extension reads the public X web timeline as you view it, normalizes what the site serves, and commits raw JSON to this repo. There is no X API and no X Developer Agreement — capture only uses the public web data the browser already received. A Python pipeline (`scripts/*`) then turns that raw JSON into per-account Parquet files, copies attached media into GitHub Releases assets, derives optional tag sidecars (OCR, transcripts, vision descriptions, keyframes), and builds a static viewer.
 
 **The viewer** is a single-page site published to GitHub Pages. It lets anyone full-text search, filter, chart, and export the archive in the browser, with no backend.
 
