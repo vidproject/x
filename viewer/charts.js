@@ -1,4 +1,4 @@
-import { tagNames, tagNamespace } from './store.js?v=lazycat2';
+import { tagNames, tagNamespace } from './store.js?v=lazycat3';
 
 export const CHART_JS_URL = 'https://esm.sh/chart.js@4.5.0/auto?bundle';
 

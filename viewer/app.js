@@ -1,11 +1,11 @@
 // Orchestrator: wires the UI controls to the Store, manages URL state, theme,
 // column visibility, CSV export, and lazy parquet loading.
 
-import { exportCsv } from './csv.js';
-import { loadParquetRows } from './parquet.js?v=lazycat2';
-import { applyToUrl, defaults as defaultState, fromHash } from './state.js';
-import { SEARCH_FIELD_OPTIONS, Store } from './store.js?v=lazycat2';
-import { initChartsPanel, updateChartsPanel } from './charts.js?v=lazycat2';
+import { exportCsv } from './csv.js?v=lazycat3';
+import { loadParquetRows } from './parquet.js?v=lazycat3';
+import { applyToUrl, defaults as defaultState, fromHash } from './state.js?v=lazycat3';
+import { SEARCH_FIELD_OPTIONS, Store } from './store.js?v=lazycat3';
+import { initChartsPanel, updateChartsPanel } from './charts.js?v=lazycat3';
 import {
   openColumnFilterPopup,
   parseVisibleColumns,
@@ -13,8 +13,8 @@ import {
   renderTable,
   setMediaColumnConfig,
   setUserLookup,
-} from './table.js?v=lazycat2';
-import { closeSidepanel, openSidepanel } from './sidepanel.js?v=lazycat2';
+} from './table.js?v=lazycat3';
+import { closeSidepanel, openSidepanel } from './sidepanel.js?v=lazycat3';
 
 const $ = (id) => {
   const el = document.getElementById(id);
