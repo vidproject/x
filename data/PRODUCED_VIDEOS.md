@@ -2,7 +2,7 @@
 
 Videos disseminated by US federal immigration agencies (DHS, ICE, CBP, USCIS, White House, POTUS, DOL and related accounts) that are produced as **entertainment/spectacle to appeal to a mass/young audience** — set to music, with pop-culture genre styling (music video, dystopian/sci-fi, war-movie, utopian hype montage, ASMR, anime/meme, true-crime, recruitment-as-trailer, parody). Raw speeches, interviews, news clips and plain informational PSAs are excluded.
 
-_Identified by Opus agents reading the archived keyframes + transcripts. 77 videos._
+_Identified by Opus agents reading the archived keyframes + transcripts. 80 videos._
 
 ## Background / commentary
 
@@ -634,6 +634,18 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 77 vide
     - `0:22` An unmarked white airliner taxis on the runway; large neon-blue overlay 'DHS.GOV/CBPHOME' across the frame.
     - `0:29` Animated full-color U.S. Department of Homeland Security seal on a light background as the closing brand card.
 
+### 2026-02-25 — @ICEgov — TV-show trailer (To Catch a Smuggler)
+- **Link:** https://x.com/ICEgov/status/2026659717540409641
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 15.015s  |  **Likes:** 0  **RTs:** 0
+- **On-screen / notable text:** TO CATCH A SMUGGLER; hulu; DON'T DO IT; WHEN YOU'RE CAUGHT; We wear many hats.; Running out the back.; That's at the front door with your hands up.
+- **Summary:** A professionally cut promo/trailer for National Geographic's reality series 'To Catch a Smuggler' Season 10 (streaming on Hulu), which ICE is amplifying because it stars HSI special agents. Dramatic yellow title cards ('DON'T DO IT', 'WHEN YOU'RE CAUGHT') punctuate fast-cut footage of agents searching luggage on an airport conveyor and conducting a tense nighttime house raid, scored with tense trailer music. By packaging real enforcement as a suspenseful, binge-worthy TV drama, it is a trailer-style produced spectacle aimed at a mass/entertainment audience, so it is in scope.
+- **Script (timestamped):**
+    - `0:01` Black screen with NatGeo 'To Catch a Smuggler' logo (top-left) and 'hulu' (top-right); bold yellow title card 'DON'T DO IT' over tense music.
+    - `0:04` An agent in gloves pulls a dark duffel bag off a stainless airport baggage conveyor; caption 'We wear many hats.'
+    - `0:07` Yellow title card 'WHEN YOU'RE CAUGHT' on black with the show/Hulu branding.
+    - `0:10` Night exterior of a tile-roofed house lit pink/red, NatGeo bug centered; caption 'Running out the back.'
+    - `0:13` Dark, handheld shot of officers' legs surrounding a person on the ground during a nighttime raid; caption 'That's at the front door with your hands up.'
+
 ### 2026-02-25 — @USDOL — utopian hype montage
 - **Link:** https://x.com/USDOL/status/2026800042414063937
 - **Genre/tags:** genre:utopian  |  **Set to music:** True  |  **Duration:** 35.476s  |  **Likes:** 484  **RTs:** 126
@@ -669,6 +681,18 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 77 vide
     - `0:24` B-roll of a large migrant caravan/crowd walking up a road past vehicles in daylight; caption '...ALL OVER OUR COUNTRY.' with 'COUNTRY' highlighted in red.
     - `0:34` Back to Trump speaking at the rostrum, red tie, flag backdrop; vertical-crop news-style framing continuing the address.
     - `0:44` Split/overlay of a male suspect's face beside a smiling young woman (victim); red-highlighted caption 'DANGEROUS REPEAT OFFENDERS' over giant white word 'GUILTY' filling the lower frame.
+
+### 2026-04-16 — @WhiteHouse — animated cinematic short (Pixar/Disney-style)
+- **Link:** https://x.com/WhiteHouse/status/2044887080602304744
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 43.501s  |  **Likes:** 9391  **RTs:** 1650
+- **On-screen / notable text:** NO TAX ON OVERTIME (signed Donald Trump); THE WHITE HOUSE WASHINGTON; tweet: 'reward the American hustle... rewarding the grind: NO TAX ON OVERTIME'; narration: 'You did the time. Now keep every dime.'
+- **Summary:** A fully 3D-animated, Pixar/Disney-style short following a heroic cartoon construction/blue-collar worker through his day: kneeling on a sunlit rooftop with his tool belt, coming home at dusk to a cozy animated house, and opening an official White House letter reading 'NO TAX ON OVERTIME' signed by Donald Trump while his dog sleeps nearby. Warm cinematic lighting, a sentimental music bed, and an upbeat narration ('You did the time. Now keep every dime.') sell the Working Families Tax Cuts as a feel-good reward for the everyman. This is a clear youth-appeal genre experiment, borrowing the visual language of family animated films to make tax policy emotionally resonant and shareable.
+- **Script (timestamped):**
+    - `0:04` Animated blue-collar worker (suspenders, tool belt with hammer) kneels smiling on a shingled rooftop, sun flaring behind him over a cartoon suburban neighborhood; warm Pixar-style lighting. Narration about the country being built on sacrifice and rewarding 'the American hustle.'
+    - `0:13` Interior of a cozy animated home at dusk: the worker arrives through the front door, smiling, and sets mail on an entry table with a digital clock reading ~11:30; kids' crayon drawings and a hat rack on the wall. Narration: 'he followed through with his working family's tax cuts by no longer taxing your overtime.'
+    - `0:21` Overhead shot of the gloved worker at the table holding a White House letter; a yellow dog sleeps on the floor, hard hat hanging nearby. 'It's a new day for the American worker because he's rewarded the grind.'
+    - `0:30` Close-up of the letter: 'THE WHITE HOUSE / WASHINGTON / NO TAX ON OVERTIME.' with Trump's signature, an open envelope and lamp beside it. 'No tax on overtime. He promised, and he delivered.'
+    - `0:39` Title/animation resolves into a stylized White House line-drawing with kinetic text reading 'President Donald Trump' on black. Tagline narration: 'You did the time. Now keep every dime.'
 
 ### 2026-05-03 — @USDOL — recruitment hype montage
 - **Link:** https://x.com/USDOL/status/2051022799414645118
@@ -881,6 +905,18 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 77 vide
     - `0:35` Cinematic interior of a formal banquet/Cabinet-style table with seated officials, shallow depth of field. VO: 'Fraud, waste, and abuse are unacceptable... has exposed tens of billions of dollars of fraud against you.'
     - `0:49` Handheld slow-motion shot of VP Vance moving through a crowded diner, greeting people. VO: 'The whole of government approach is working. And that's only the beginning.'
     - `1:03` Gold kinetic title 'MAKING AMERICA' over a clean shot of Trump and Vance walking the White House colonnade. VO closes: 'The American dream is meant for builders, not scammers... Eliminating fraud, restoring trust, making America great again.'
+
+### 2026-05-19 — @CBP — stylized enforcement montage
+- **Link:** https://x.com/CBP/status/2056752821811253621
+- **Genre/tags:** —  |  **Set to music:** False  |  **Duration:** 15.766s  |  **Likes:** 12981  **RTs:** 2319
+- **On-screen / notable text:** CBP is Watching! ; U.S. CUSTOMS AND BORDER PROTECTION / DEPARTMENT OF HOMELAND SECURITY (seal); tweet: 'Do not cross the border illegally! With trained personnel and advanced technology, you have no chance of winning against us at hide and seek.'
+- **Summary:** A short, fast-cut surveillance montage of border crossers being detected and tracked via aerial/IR/thermal cameras (night-vision figures running, an aerial daylight shot of suspects lying flat on rooftops surrendering, a monitor showing software target-boxes locked onto people), capped by a polished branded outro: a glowing CBP seal composited over a starry-night silhouette of migrants and a surveillance/scope truck, with the slogan 'CBP is Watching!'. The tweet frames it as a taunt -- 'you have no chance of winning against us at hide and seek' -- turning enforcement into a game/flex aimed at deterrence and social-media virality. It fits youth-appeal produced content as a designed, captioned hype/enforcement spot with a graphic title card and meme-like framing, even though it carries no music track (has_audio=false).
+- **Script (timestamped):**
+    - `0:01` Grainy black-and-white aerial/IR night surveillance footage: two figures move across a lit path/road, tracked from above.
+    - `0:04` Darker thermal/aerial night shot along a fence line; a figure crouches near equipment, still under overhead surveillance.
+    - `0:07` Daylight aerial shot of rooftops in a residential neighborhood: several suspects lie flat/spread-eagle on a roof, apparently cornered and surrendering as they are watched from the air.
+    - `0:11` Close shot of a monitor displaying thermal tracking software in a wooded area; gray and green target-boxes lock onto two standing human figures, demonstrating automated detection.
+    - `0:14` Branded outro card: large glowing 'U.S. Customs and Border Protection / Department of Homeland Security' seal composited over a green-tinted starry night sky with silhouettes of migrants walking and a surveillance/scope-equipped pickup truck below; white text reads 'CBP is Watching!'.
 
 ### 2026-05-19 — @WhiteHouse — cinematic promo reel
 - **Link:** https://x.com/WhiteHouse/status/2056831393678704817
