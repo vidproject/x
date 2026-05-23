@@ -2,29 +2,31 @@
   "generated_at": "2026-05-23T02:07:57Z",
   "layers": {
     "audio_music": {
-      "analyzed": 62,
+      "analyzed": 57,
       "attempted": 400,
-      "cache_hits": 656,
+      "cache_hits": 718,
       "cost_estimate_usd": 0.0,
       "detector": "ffmpeg-audio-heuristic",
       "detector_version": "ffmpeg-audio-heuristic-v1",
-      "generated_at": "2026-05-23T05:20:08Z",
+      "generated_at": "2026-05-23T05:21:39Z",
       "intra_run_dedup": 2,
-      "row_count": 1058,
-      "rows": 1058,
-      "skipped_max_items": 693,
+      "row_count": 1120,
+      "rows": 1120,
+      "skipped_max_items": 631,
       "status_counts": {
-        "fetch-failed": 340,
-        "no-audio-stream": 58,
-        "ok": 655,
-        "silent-audio": 5
+        "fetch-failed": 345,
+        "no-audio-stream": 60,
+        "ok": 708,
+        "silent-audio": 7
       },
-      "status_fetch-failed": 338,
-      "status_ok": 62,
+      "status_fetch-failed": 343,
+      "status_no-audio-stream": 2,
+      "status_ok": 53,
+      "status_silent-audio": 2,
       "tag_frequency": {
-        "audio:has-audio": 660,
-        "audio:no-audio": 58,
-        "audio:silent": 5
+        "audio:has-audio": 715,
+        "audio:no-audio": 60,
+        "audio:silent": 7
       }
     },
     "image_ocr": {
