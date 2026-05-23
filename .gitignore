@@ -43,3 +43,6 @@ skim/profile/
 # the CI runner; the metadata about each artifact lives in data/tags/*.parquet
 # but the bytes themselves are regenerable.
 data/derived/
+
+# Local Claude agent worktrees/state
+.claude/
