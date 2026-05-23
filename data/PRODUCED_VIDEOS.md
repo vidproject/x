@@ -2,7 +2,7 @@
 
 Videos disseminated by US federal immigration agencies (DHS, ICE, CBP, USCIS, White House, POTUS, DOL and related accounts) that are produced as **entertainment/spectacle to appeal to a mass/young audience** — set to music, with pop-culture genre styling (music video, dystopian/sci-fi, war-movie, utopian hype montage, ASMR, anime/meme, true-crime, recruitment-as-trailer, parody). Raw speeches, interviews, news clips and plain informational PSAs are excluded.
 
-_Identified by Opus agents reading the archived keyframes + transcripts. 80 videos._
+_Identified by Opus agents reading the archived keyframes + transcripts. 84 videos._
 
 ## Background / commentary
 
@@ -694,6 +694,30 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 80 vide
     - `0:30` Close-up of the letter: 'THE WHITE HOUSE / WASHINGTON / NO TAX ON OVERTIME.' with Trump's signature, an open envelope and lamp beside it. 'No tax on overtime. He promised, and he delivered.'
     - `0:39` Title/animation resolves into a stylized White House line-drawing with kinetic text reading 'President Donald Trump' on black. Tagline narration: 'You did the time. Now keep every dime.'
 
+### 2026-04-17 — @CBP — cinematic patriotic hype montage
+- **Link:** https://x.com/CBP/status/2045218248048672783
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 25.458s  |  **Likes:** 679  **RTs:** 154
+- **On-screen / notable text:** Every domain. Every day. One team securing the homeland. / Border Security is National Security.
+- **Summary:** A slickly edited, cinematic CBP brand montage cut to the slogans 'Every domain. Every day. One team securing the homeland' and 'Border Security is National Security.' It strings together moody, high-production B-roll across 'domains' — a drone fly-over of an American suburb at golden hour, a top-down aerial of a sprawling container port, an ominous backlit close-up of a heavily tattooed man (coded as the criminal threat), a family eating together outdoors, and a hero shot of a black CBP Black Hawk helicopter carrying a giant American flag over the desert. The fast-cut, color-graded, emotionally heroic styling is built for social-media spectacle and youth appeal, framing CBP as a cinematic protector of the homeland rather than delivering plain information. (Audio track was not detected in metadata, but the editing is unmistakably a music-driven montage.)
+- **Script (timestamped):**
+    - `0:02` Golden-hour drone aerial gliding over an American suburban neighborhood — autumn trees, quiet streets, single-family homes — establishing the 'homeland' being protected.
+    - `0:07` Top-down aerial of a massive shipping container terminal, gantry cranes moving stacks of colorful containers; evokes the trade/maritime 'domain.'
+    - `0:12` Tightly cropped, backlit close-up of a man with heavy face and neck tattoos in profile against a desert sunset — stylized as the menacing criminal/threat element.
+    - `0:17` Warm shot of a family (mother and several children) sitting outdoors eating together by a hedge — the wholesome 'why' CBP protects.
+    - `0:23` Hero finale: a black CBP UH-60 Black Hawk hovers over open desert hoisting an enormous American flag on a long line, mountains in the background. Pairs with on-screen/tweet slogan 'Border Security is National Security.'
+
+### 2026-04-24 — @USDOL — cinematic utopian hype montage (Morning in America homage)
+- **Link:** https://x.com/USDOL/status/2047691101297906126
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 74.729s  |  **Likes:** 3713  **RTs:** 675
+- **On-screen / notable text:** 'It's morning again in America'; 'the American worker is what makes America great'; 'prouder, stronger, and working again'; 'we put America first by putting American workers first'; tweet: 'Thanks to @POTUS, America is back'
+- **Summary:** A polished, cinematic Department of Labor brand film that explicitly homages Reagan's 'Morning Again in America,' opening with that exact line over a soaring music bed and uplifting, color-graded B-roll of American work. It cuts between a hard-hatted worker walking through an industrial plant, the engraved 'United States Department of Labor' building, a steelworker with ear protection gazing off heroically, an American flag being hoisted by a construction crane atop an industrial tower, and a closing shot of the DOL seal over a waving flag. The smooth narration ('the American worker is what makes America great... prouder, stronger, and working again') and aspirational, emotionally swelling edit make it a produced patriotic spectacle aimed at projecting optimism, not a plain informational clip.
+- **Script (timestamped):**
+    - `0:07` Worker in a white hard hat and dark jacket walks away from camera through a vast industrial factory/plant with overhead lighting and gantry structures. Narration: 'It's morning again in America. Across the country, Americans are getting up and getting to work.'
+    - `0:22` Low-angle hero shot of the engraved bronze sign 'United States Department of Labor, 200 Constitution Avenue NW,' Frances Perkins Building behind it, with light flares. Narration about supporting the American worker and strengthening the workforce.
+    - `0:37` Cinematic close-up of a Black steelworker in an orange hard hat and ear protection, looking off-frame with warm industrial backlighting. Narration: 'From job training to safer workplaces, we're helping Americans build a future they can count on.'
+    - `0:52` A large American flag is hoisted by a construction crane to the top of an industrial tower/refinery shrouded in mist. Narration: 'the American worker keeps America moving, and the American worker is what makes America great.'
+    - `1:07` Closing graphic: the U.S. Department of Labor seal centered over a slowly waving American flag, sepia/dark tone. Narration: 'under the leadership of President Trump, our country is prouder, stronger, and working again... we put America first by putting American workers first.'
+
 ### 2026-05-03 — @USDOL — recruitment hype montage
 - **Link:** https://x.com/USDOL/status/2051022799414645118
 - **Genre/tags:** genre:advertisement; genre:recruitment  |  **Set to music:** True  |  **Duration:** 30.95s  |  **Likes:** 180  **RTs:** 37
@@ -727,6 +751,30 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 80 vide
     - `0:04` Cut to black; animated letters scramble onto the screen.
     - `0:06` Letters resolve into a stylized 'THE WHITE HOUSE' wordmark over a line-art White House.
     - `0:08` Final 'THE WHITE HOUSE' title card with the flag detail completes the outro.
+
+### 2026-05-06 — @WhiteHouse — utopian hype montage
+- **Link:** https://x.com/WhiteHouse/status/2052067500024856606
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 82.196s  |  **Likes:** 12679  **RTs:** 1557
+- **On-screen / notable text:** CLASS IS IN SESSION; THE PRESIDENTIAL FITNESS TEST IS BACK!; on-shirt text 'PRESIDENTIAL FITNESS TEST'
+- **Summary:** A glossy, music-driven sports/hype montage announcing the return of the Presidential Fitness Test, shot cinematically on the White House South Lawn with the Washington Monument as backdrop. Slow-motion shots of teen athletes in 'Presidential Fitness Test' shirts doing pushups, a coach dribbling a basketball, and a diving soccer save are intercut with Trump fist-bumping and playfully boxing/dancing with the youth participants. The sparse audio ('Class is in session... boom, boom, boom... good job') over a music bed plus the polished slow-mo editing make it an aspirational, youth-targeted spectacle rather than a raw event recording.
+- **Script (timestamped):**
+    - `0:08` Cinematic low-angle slow-motion: a man in a suit dribbles a basketball across the South Lawn while a line of teens in matching navy 'Presidential Fitness Test' shirts watches; the Washington Monument rises in the background under blue sky. Music bed; voice: 'Class is in session.'
+    - `0:24` Wide shot of the White House lawn: Trump and an official in suits stand chatting as a row of youth participants do pushups in the grass; aides and Secret Service look on. Upbeat instructional vibe ('Okay, so what we're gonna do...').
+    - `0:41` Action slow-motion at a soccer goal: a coach in a blue shirt dives across the frame as a red-white-and-blue ball flies toward the net, trees and balustrade behind. Energetic music.
+    - `0:57` Trump, flanked by a coach and a woman in white plus a DHS/agency-shirted staffer, points and gestures enthusiastically toward the activity; crowd hands point along. Celebratory tone ('That's how you do it').
+    - `1:14` Trump stands in a circle of smiling teen athletes in navy shirts, fists up, mock-boxing and bantering with them on the sunlit lawn; participants laugh. Voice: 'Good job.' Music swells to close.
+
+### 2026-05-06 — @POTUS — utopian hype montage
+- **Link:** https://x.com/POTUS/status/2052068256605692209
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 82.196s  |  **Likes:** 12679  **RTs:** 1557
+- **On-screen / notable text:** CLASS IS IN SESSION; THE PRESIDENTIAL FITNESS TEST IS BACK!; on-shirt text 'PRESIDENTIAL FITNESS TEST'
+- **Summary:** POTUS retweet of the WhiteHouse Presidential Fitness Test video: a glossy, music-driven sports/hype montage shot cinematically on the White House South Lawn with the Washington Monument behind. Slow-motion footage of teens in 'Presidential Fitness Test' shirts doing pushups, a coach dribbling and diving for a soccer ball, and Trump fist-bumping and mock-boxing with youth participants. Sparse audio ('Class is in session... boom, boom, boom... good job') over a music bed makes it an aspirational, youth-targeted spectacle, not a raw event recording.
+- **Script (timestamped):**
+    - `0:08` Cinematic low-angle slow-motion: a man in a suit dribbles a basketball across the South Lawn while a line of teens in matching navy 'Presidential Fitness Test' shirts watches; the Washington Monument rises in the background. Music bed; voice: 'Class is in session.'
+    - `0:24` Wide shot of the White House lawn: Trump and an official in suits chat as a row of youth participants do pushups in the grass; aides and Secret Service look on.
+    - `0:41` Action slow-motion at a soccer goal: a coach in a blue shirt dives across the frame as a red-white-and-blue ball flies toward the net. Energetic music.
+    - `0:57` Trump, flanked by a coach, a woman in white, and an agency-shirted staffer, points and gestures enthusiastically toward the activity; crowd hands point along.
+    - `1:14` Trump stands in a circle of smiling teen athletes in navy shirts, fists up, mock-boxing and bantering on the sunlit lawn. Voice: 'Good job.' Music swells to close.
 
 ### 2026-05-08 — @WhiteHouse — utopian hype montage
 - **Link:** https://x.com/WhiteHouse/status/2052839882507088126
