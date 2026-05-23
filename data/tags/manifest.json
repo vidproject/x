@@ -2,26 +2,27 @@
   "generated_at": "2026-05-23T06:47:12Z",
   "layers": {
     "audio_music": {
-      "attempted": 160,
-      "cache_hits": 845,
+      "analyzed": 73,
+      "attempted": 73,
+      "cache_hits": 844,
       "cost_estimate_usd": 0.0,
       "detector": "ffmpeg-audio-heuristic",
       "detector_version": "ffmpeg-audio-heuristic-v1",
-      "generated_at": "2026-05-23T06:43:26Z",
-      "row_count": 1005,
-      "rows": 1005,
-      "skipped_max_items": 746,
+      "generated_at": "2026-05-23T07:25:24Z",
+      "row_count": 917,
+      "rows": 917,
       "status_counts": {
-        "fetch-failed": 160,
-        "no-audio-stream": 62,
-        "ok": 776,
-        "silent-audio": 7
+        "no-audio-stream": 70,
+        "ok": 839,
+        "silent-audio": 8
       },
-      "status_fetch-failed": 160,
+      "status_no-audio-stream": 9,
+      "status_ok": 63,
+      "status_silent-audio": 1,
       "tag_frequency": {
-        "audio:has-audio": 783,
-        "audio:no-audio": 62,
-        "audio:silent": 7
+        "audio:has-audio": 847,
+        "audio:no-audio": 70,
+        "audio:silent": 8
       }
     },
     "image_ocr": {
@@ -42,20 +43,20 @@
       "status_fetch-failed": 160
     },
     "keyframes": {
-      "attempted": 160,
-      "cache_hits": 656,
+      "attempted": 855,
+      "cache_hits": 34,
       "cost_estimate_usd": 0.0,
+      "extracted": 855,
       "extractor_version": "ffmpeg-keyframes-v2",
-      "frame_count": 3280,
-      "generated_at": "2026-05-23T06:42:20Z",
-      "row_count": 816,
-      "rows": 816,
-      "skipped_max_items": 935,
+      "frame_count": 4584,
+      "generated_at": "2026-05-23T07:39:33Z",
+      "intra_run_dedup": 28,
+      "row_count": 917,
+      "rows": 917,
       "status_counts": {
-        "fetch-failed": 160,
-        "ok": 656
+        "ok": 917
       },
-      "status_fetch-failed": 160
+      "status_ok": 855
     },
     "lexical": {
       "generated_at": "2026-05-23T06:47:12Z",
@@ -477,18 +478,18 @@
       "tagger_version": "lexical-v2"
     },
     "media_vision": {
-      "cache_hits": 9300,
+      "cache_hits": 5316,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-05-23T06:42:17Z",
+      "generated_at": "2026-05-23T07:24:00Z",
       "model": "metadata",
       "model_version": "media-metadata-v4",
       "prompt_hash": "b18b19292ec51484",
-      "row_count": 9300,
-      "rows": 9300,
+      "row_count": 5316,
+      "rows": 5316,
       "status_counts": {
         "manual-review": 633,
-        "metadata-alt": 746,
-        "metadata-context": 7921
+        "metadata-alt": 296,
+        "metadata-context": 4387
       },
       "tag_frequency": {
         "action:deportation": 1,
@@ -497,17 +498,17 @@
         "agency:ICEgov": 1,
         "country:Venezuela": 1,
         "crime:fraud": 1,
-        "genre:advertisement": 15,
-        "genre:psa": 76,
-        "genre:recruitment": 6,
-        "genre:utopian": 13,
-        "media-status:archived": 9300,
-        "media-status:described": 9300,
-        "media-status:has-alt-text": 746,
-        "media-status:needs-vision": 7921,
-        "media:animated-gif": 94,
-        "media:photo": 6882,
-        "media:video": 2324,
+        "genre:advertisement": 12,
+        "genre:psa": 73,
+        "genre:recruitment": 5,
+        "genre:utopian": 12,
+        "media-status:archived": 5316,
+        "media-status:described": 5316,
+        "media-status:has-alt-text": 296,
+        "media-status:needs-vision": 4387,
+        "media:animated-gif": 64,
+        "media:photo": 3734,
+        "media:video": 1518,
         "military:coast-guard": 1,
         "speaker:First Lady Melania Trump": 1,
         "speaker:Vice President Vance": 1,
@@ -521,11 +522,11 @@
         "topic:military": 1,
         "video:interview": 117,
         "video:montage": 4,
-        "video:news-clip": 48,
-        "video:produced": 26,
-        "video:short": 529,
-        "video:speech": 103,
-        "video:text-overlay": 18
+        "video:news-clip": 36,
+        "video:produced": 24,
+        "video:short": 326,
+        "video:speech": 96,
+        "video:text-overlay": 17
       }
     },
     "news_mentions": {
@@ -556,40 +557,39 @@
       "web_tweets_scanned": 100
     },
     "photo_thumbnails": {
-      "attempted": 160,
-      "cache_hits": 100,
+      "attempted": 1982,
+      "cache_hits": 98,
       "cost_estimate_usd": 0.0,
+      "extracted": 1982,
       "extractor_version": "photo-thumbnail-v1",
-      "generated_at": "2026-05-23T06:42:46Z",
-      "intra_run_dedup": 2,
-      "row_count": 262,
-      "rows": 262,
-      "skipped_max_items": 5147,
+      "generated_at": "2026-05-23T07:24:00Z",
+      "intra_run_dedup": 181,
+      "row_count": 2261,
+      "rows": 2261,
       "status_counts": {
-        "fetch-failed": 162,
-        "ok": 100
+        "ok": 2261
       },
-      "status_fetch-failed": 160,
-      "thumbnails": 100
+      "status_ok": 1982,
+      "thumbnails": 2261
     },
     "transcripts": {
-      "attempted": 40,
-      "cache_hits": 15,
+      "attempted": 200,
+      "cache_hits": 36,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-05-23T06:43:50Z",
-      "intra_run_dedup": 1,
-      "row_count": 56,
-      "rows": 56,
-      "skipped_max_items": 1695,
+      "generated_at": "2026-05-23T07:32:34Z",
+      "intra_run_dedup": 2,
+      "row_count": 238,
+      "rows": 238,
+      "skipped_max_items": 679,
       "status_counts": {
-        "empty-transcript": 6,
-        "fetch-failed": 21,
-        "ok": 29
+        "empty-transcript": 31,
+        "no-audio-stream": 14,
+        "ok": 193
       },
-      "status_empty-transcript": 1,
-      "status_fetch-failed": 21,
-      "status_ok": 18,
-      "transcribed": 19,
+      "status_empty-transcript": 25,
+      "status_no-audio-stream": 14,
+      "status_ok": 161,
+      "transcribed": 200,
       "transcriber": "faster-whisper",
       "transcriber_version": "faster-whisper-v1"
     }
