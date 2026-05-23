@@ -638,12 +638,13 @@ export async function purgeUnrelatedState(targeted: ReadonlySet<string>): Promis
   await setRaw('refetchQueue', rq);
 
   // Media-crawl queue: buckets are hint-handles (or "_unknown"). Drop
-  // entries whose bucket isn't targeted — including "_unknown" since we
-  // can't verify relation.
+  // entries whose bucket isn't targeted, but KEEP "_unknown": those are
+  // captures awaiting handle resolution for later full-detail recapture, so
+  // purging them would silently discard pending work.
   const mq = await getMediaCrawlQueue();
   let mediaCrawlIdsRemoved = 0;
   for (const h of Object.keys(mq)) {
-    if (!isTargeted(h)) {
+    if (h !== '_unknown' && !isTargeted(h)) {
       mediaCrawlIdsRemoved += (mq[h] ?? []).length;
       delete mq[h];
     }
