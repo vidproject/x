@@ -68,7 +68,7 @@ _Each video reviewed from its archived keyframes and transcript. 37 videos, sort
     - `0:04` Near-black frame: a gloved hand holds a suppressed rifle in faint blue-grey light. Text fades in: 'THE WICKED FLEE WHEN NO MAN PURSUETH'.
     - `0:12` Silhouette of an agent in a helmet and night-vision mount in a dim interior. Full verse shown: 'THE WICKED FLEE WHEN NO MAN PURSUETH; BUT THE RIGHTEOUS ARE BOLD AS A LION.' -PROVERBS 28:1.
     - `0:20` Two agents move through a doorway glowing deep red, backlit, with deep shadows; verse overlay continues.
-    - `0:29` Agents silhouetted against an orange and purple sunset sky, low-angle framing; verse overlay continues.
+    - `0:29` Agents silhouetted against an orange and purple sunset sky, shot from a low camera angle; verse overlay continues.
     - `0:37` Rear silhouette of an agent with night-vision gear and a rifle walking down a dim street toward a lit doorway; verse overlay remains.
 
 ### 2025-12-20 · @DHSgov · stylized cinematic Christmas montage
@@ -95,16 +95,16 @@ _Each video reviewed from its archived keyframes and transcript. 37 videos, sort
     - `0:12` Wide shot of a masked female agent directing a line of detainees across a lot toward transport. Caption: 'DEPORTATION THIS WEEK.'
     - `0:15` Interior of a bus filled with seated, restrained detainees, heads bowed. Caption persists: 'DEPORTATION THIS WEEK.' ICE logo.
 
-### 2026-05-19 · @CBP · stylized enforcement montage
+### 2026-05-19 · @CBP · montage
 - Link: https://x.com/CBP/status/2056752821811253621
 - Genre tags: none. Set to music: False. Duration: 15.766s. Likes: 12981. Retweets: 2319.
 - On-screen text: CBP is Watching! ; U.S. CUSTOMS AND BORDER PROTECTION / DEPARTMENT OF HOMELAND SECURITY (seal); tweet: 'Do not cross the border illegally! With trained personnel and advanced technology, you have no chance of winning against us at hide and seek.'
-- Description: Short video with fast cuts and no audio track, of aerial, infrared and thermal camera footage: figures running at night, an aerial daylight shot of people lying flat on rooftops, and a monitor showing tracking software with target-boxes around two figures. It ends on a branded card: a glowing 'U.S. Customs and Border Protection / Department of Homeland Security' seal over a green-tinted night sky with silhouettes of people walking and a pickup truck with a mounted scope, and the text 'CBP is Watching!'.
+- Description: Short video with fast cuts and no audio track, of aerial, infrared and thermal camera footage: figures running at night, an aerial daylight shot of people lying flat on rooftops, and a monitor showing tracking software with boxes around two figures. It ends on a card: a glowing 'U.S. Customs and Border Protection / Department of Homeland Security' seal over a green-tinted night sky with silhouettes of people walking and a pickup truck with a mounted scope, and the text 'CBP is Watching!'.
 - Script (timestamped):
     - `0:01` Grainy black and white aerial infrared night footage: two figures move across a lit path; the camera tracks them from above.
     - `0:04` Darker thermal aerial night shot along a fence line; a figure crouches near equipment.
     - `0:07` Daylight aerial shot of rooftops in a residential neighborhood: several people lie flat on a roof.
-    - `0:11` Close shot of a monitor displaying thermal tracking software over a wooded area; gray and green target-boxes appear around two standing figures.
+    - `0:11` Close shot of a monitor displaying thermal tracking software over a wooded area; gray and green boxes appear around two standing figures.
     - `0:14` Outro card: a large glowing 'U.S. Customs and Border Protection / Department of Homeland Security' seal over a green-tinted starry night sky with silhouettes of people walking and a pickup truck with a mounted scope below; white text reads 'CBP is Watching!'.
 
 ### 2025-10-29 · @ICEgov · montage set to music
@@ -200,7 +200,7 @@ _Each video reviewed from its archived keyframes and transcript. 37 videos, sort
     - `0:05` Trump at the rostrum of a joint session of Congress (flags behind), tight punch-in shot. Large gray typography over him: 'FIRST DUTY OF THE AMERICAN GOVERNMENT'.
     - `0:14` Wide handheld-style shot of the congressional chamber with members seated; white caption '*DEMOCRATS REMAIN SEATED*' at bottom.
     - `0:24` Footage of a large crowd walking up a road past vehicles in daylight; caption '...ALL OVER OUR COUNTRY.' with 'COUNTRY' highlighted in red.
-    - `0:34` Trump speaking at the rostrum, red tie, flag backdrop; vertical-crop framing.
+    - `0:34` Trump speaking at the rostrum, red tie, flag backdrop; vertical crop.
     - `0:44` Overlay of a man's face beside a smiling young woman; red caption 'DANGEROUS REPEAT OFFENDERS' over the white word 'GUILTY' filling the lower frame.
 
 ### 2026-02-23 · @ICEgov · stylized deportation montage
@@ -298,13 +298,13 @@ _Each video reviewed from its archived keyframes and transcript. 37 videos, sort
     - `0:17` Shot of a woman and several children sitting outdoors eating together by a hedge.
     - `0:23` A black CBP UH-60 Black Hawk hovers over open desert hoisting a large American flag on a long line, mountains behind. On-screen and tweet text 'Border Security is National Security.'
 
-### 2025-12-19 · @CBP · cinematic narrative promo spot
+### 2025-12-19 · @CBP · video spot
 - Link: https://x.com/CBP/status/2002063883624648729
 - Genre tags: none. Set to music: True. Duration: 62.52s. Likes: 575. Retweets: 116.
 - On-screen text: Even Santa has made his travel plans easy and simplified!; Global Entry
-- Description: Staged holiday video set to music in which Santa Claus rides a reindeer-drawn sleigh onto a nighttime airport tarmac, appears on a Global Entry kiosk screen, then walks through the terminal with his sack as wrapped presents ride the baggage carousel, and poses for the camera. On-screen and tweet text reference CBP's Global Entry program.
+- Description: Holiday video set to music in which Santa Claus rides a reindeer-drawn sleigh onto a nighttime airport tarmac, appears on a Global Entry kiosk screen, then walks through the terminal with his sack as wrapped presents ride the baggage carousel, and faces the camera. On-screen and tweet text reference CBP's Global Entry program.
 - Script (timestamped):
-    - `0:06` Over-the-shoulder shot from behind Santa Claus driving his reindeer-drawn sleigh down a dark airport runway, jet and runway lights in the distance; night cinematography.
+    - `0:06` Over-the-shoulder shot from behind Santa Claus driving his reindeer-drawn sleigh down a dark airport runway, jet and runway lights in the distance; nighttime footage.
     - `0:19` Close-up of a Global Entry kiosk screen showing Santa standing in the terminal as travelers pass in the blurred background.
     - `0:31` Wide terminal shot: Santa crouches near a baggage carousel in the arrivals hall as passengers queue; wrapped Christmas presents with bows ride the conveyor belt in the foreground.
     - `0:43` Tracking shot following Santa from behind, a red sack over his shoulder, walking through the bright airport concourse.
@@ -446,10 +446,10 @@ _Each video reviewed from its archived keyframes and transcript. 37 videos, sort
 - Link: https://x.com/DHSgov/status/1905643039487627688
 - Genre tags: none. Set to music: True. Duration: 72.666s. Likes: 0. Retweets: 0.
 - On-screen text: SECRETARY NOEM VISITS EL SALVADOR; President Trump will not allow a foreign terrorist organization to operate; NEVER TO RETURN; CECOT - CENTRO DE CONFINAMIENTO DEL TERRORISMO
-- Description: A vertical (9:16) montage set to music of Sec. Noem's visit to the CECOT prison. It opens on a title card ('SECRETARY NOEM VISITS EL SALVADOR') over the CECOT facade, shows Noem speaking to camera in front of a cage holding shaved, tattooed prisoners, then desaturated black-and-white footage of armored guards and a bolted cellblock gate with ALL-CAPS captions ('President Trump will not allow a foreign terrorist organization to operate', 'NEVER TO RETURN'), and closes on a warm sepia-toned close-up of a smiling young girl with braces. Across 73 seconds there is one Noem soundbite over a music bed.
+- Description: Vertical (9:16) video set to music of Sec. Noem's visit to the CECOT prison. It opens on a title card ('SECRETARY NOEM VISITS EL SALVADOR') over the CECOT facade, shows Noem speaking to camera in front of a cage holding shaved, tattooed prisoners, then desaturated black-and-white footage of armored guards and a bolted cellblock gate with all-caps captions ('President Trump will not allow a foreign terrorist organization to operate', 'NEVER TO RETURN'), and closes on a warm sepia-toned close-up of a smiling young girl with braces. Across 73 seconds there is one Noem soundbite over a music bed.
 - Script (timestamped):
-    - `0:07` Title card 'SECRETARY NOEM VISITS EL SALVADOR' over a low-angle shot of Noem (DHS cap, white top) standing before the concrete CECOT prison sign ('CENTRO DE CONFINAMIENTO DEL TERRORISMO'); color-graded.
+    - `0:07` Title card 'SECRETARY NOEM VISITS EL SALVADOR' over a low-angle shot of Noem (in a DHS cap and white top) standing before the concrete CECOT prison sign ('CENTRO DE CONFINAMIENTO DEL TERRORISMO'); the footage is color-graded.
     - `0:21` Noem speaks to camera in front of a steel cage holding shaved, shirtless, tattooed inmates; Noem (soundbite): '...to bring our terrorists here and to incarcerate them and have consequences for the violence that they have perpetuated in our communities.'
-    - `0:36` Desaturated black-and-white footage of a helmeted, armored guard at the barred cellblock; blue-highlighted caption 'President Trump will not allow a foreign terrorist organization to operate'.
-    - `0:50` Black-and-white shot of the bolted, perforated steel cellblock gate with inmates visible behind bars; white caption 'NEVER TO RETURN'.
+    - `0:36` Desaturated black-and-white footage of a helmeted, armored guard at the barred cellblock; a blue-highlighted caption reads 'President Trump will not allow a foreign terrorist organization to operate'.
+    - `0:50` Black-and-white shot of the bolted, perforated steel cellblock gate with inmates visible behind bars; a white caption reads 'NEVER TO RETURN'.
     - `1:05` Warm sepia-toned close-up of a smiling young girl with braces.
