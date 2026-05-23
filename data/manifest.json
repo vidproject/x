@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-23T05:35:35Z",
+  "generated_at": "2026-05-23T10:03:50Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -7,7 +7,7 @@
       "label": "Department of Homeland Security",
       "category": "core",
       "parquet": "data/DHSgov.parquet",
-      "parquet_bytes": 1465856,
+      "parquet_bytes": 1448591,
       "row_count": 5253,
       "post_count": 4479,
       "reply_count": 774,
@@ -127,7 +127,7 @@
       "label": "U.S. Immigration and Customs Enforcement",
       "category": "core",
       "parquet": "data/ICEgov.parquet",
-      "parquet_bytes": 483989,
+      "parquet_bytes": 483135,
       "row_count": 1396,
       "post_count": 1260,
       "reply_count": 136,
@@ -175,7 +175,7 @@
       "label": "U.S. Customs and Border Protection",
       "category": "core",
       "parquet": "data/CBP.parquet",
-      "parquet_bytes": 182741,
+      "parquet_bytes": 190640,
       "row_count": 515,
       "post_count": 496,
       "reply_count": 19,
@@ -504,7 +504,7 @@
       "label": "Miscellaneous (replies / quotes / retweets of non-tracked accounts)",
       "category": "public",
       "parquet": "data/_misc.parquet",
-      "parquet_bytes": 2306799,
+      "parquet_bytes": 2286846,
       "row_count": 5899,
       "post_count": 2490,
       "reply_count": 3409,
