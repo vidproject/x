@@ -31,24 +31,21 @@
       }
     },
     "image_ocr": {
-      "analyzed": 142,
-      "attempted": 160,
-      "cache_hits": 720,
+      "attempted": 200,
+      "cache_hits": 862,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-05-22T00:30:57Z",
+      "generated_at": "2026-05-23T05:06:54Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.3.4",
-      "row_count": 880,
-      "rows": 880,
-      "skipped_max_items": 1134,
+      "row_count": 1062,
+      "rows": 1062,
+      "skipped_max_items": 4347,
       "status_counts": {
-        "fetch-failed": 18,
+        "fetch-failed": 200,
         "no-text": 5,
         "ok": 857
       },
-      "status_fetch-failed": 18,
-      "status_no-text": 1,
-      "status_ok": 141
+      "status_fetch-failed": 200
     },
     "keyframes": {
       "attempted": 200,
