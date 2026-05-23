@@ -352,11 +352,6 @@ tags:
       Uses statistics, numbered lists, totals, rankings, or quantified
       evidence as the primary rhetorical mode. (migrated from theme:statistics)
     classification: deterministic
-  format:directive:
-    description: >-
-      Gives direct instructions, commands, compliance steps, or explicit
-      calls to action. (migrated from theme:directive)
-    classification: deterministic
 
   # ===== policy:* — specific immigration/enforcement policy areas ===
   # Migrated from theme:* (non-ideological policy references).
@@ -513,10 +508,14 @@ tags:
   #
   # Retired format entries (migrated to format:*):
   #   theme:statistics -> format:statistics
-  #   theme:directive  -> format:directive
   #
   # Merged from frame:* (frame: namespace retired):
   #   frame:criminal -> theme:criminal
+  theme:directive:
+    description: >-
+      Gives direct instructions, commands, compliance steps, or explicit
+      calls to action.
+    classification: deterministic
   theme:criminal:
     description: >-
       DHS templated "Name, a criminal illegal alien from X, convicted of

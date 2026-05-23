@@ -1328,7 +1328,7 @@ LEGACY_MEDIA_TAG_ALIASES: dict[str, tuple[str, ...]] = {
     "theme:worksite-enforcement": ("policy:worksite-enforcement",),
     "theme:cbp-home": ("policy:cbp-home",),
     "theme:statistics": ("format:statistics",),
-    "theme:directive": ("format:directive",),
+    "format:directive": ("theme:directive",),
     "frame:criminal": ("theme:criminal",),
 }
 
@@ -1539,7 +1539,7 @@ def tag_text(
         (PATTERN_PHRASE_MIGRANT, "phrase:migrant"),
         (PATTERN_PHRASE_IMMIGRANT, "phrase:immigrant"),
         (PATTERN_THEME_STATISTICS, "format:statistics"),
-        (PATTERN_THEME_DIRECTIVE, "format:directive"),
+        (PATTERN_THEME_DIRECTIVE, "theme:directive"),
         (PATTERN_ANGEL_FAMILY, "subject:angel-family"),
         (PATTERN_NATIVE_BORN_CITIZEN, "subject:native-born-citizen"),
     ):

@@ -91,7 +91,7 @@ const TAG_ALIASES = new Map([
   ['theme:worksite-enforcement', 'policy:worksite-enforcement'],
   ['theme:cbp-home', 'policy:cbp-home'],
   ['theme:statistics', 'format:statistics'],
-  ['theme:directive', 'format:directive'],
+  ['format:directive', 'theme:directive'],
 ]);
 
 export function tagEntryName(entry) {
