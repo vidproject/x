@@ -131,6 +131,27 @@ def test_run_skips_cleanly_when_model_unavailable(
     assert not out.exists()
 
 
+def test_scoped_run_preserves_prior_transcripts(tmp_corpus: Path) -> None:
+    # A run scoped to one handle (or tweet-ids file) must carry forward
+    # transcripts for media it didn't revisit, instead of shrinking the sidecar.
+    out = tmp_corpus / "data" / "tags" / "transcripts.parquet"
+    pa = _write_handle(
+        tmp_corpus,
+        "DHSgov",
+        [make_tweet("t1", handle="DHSgov", media=[_archived_video("13_1", "shaA")])],
+    )
+    transcribe_audio.run(parquets=[pa], out_path=out, transcriber=_stub("alpha"))
+    pb = _write_handle(
+        tmp_corpus,
+        "ICEgov",
+        [make_tweet("t2", handle="ICEgov", media=[_archived_video("13_2", "shaB")])],
+    )
+    transcribe_audio.run(parquets=[pb], out_path=out, transcriber=_stub("bravo"))
+    df = pl.read_parquet(out)
+    texts = {r["media_sha256"]: r["text"] for r in df.iter_rows(named=True)}
+    assert texts == {"shaA": "alpha", "shaB": "bravo"}
+
+
 def test_is_cache_hit_respects_version_and_model() -> None:
     base = {"transcriber_version": transcribe_audio.TRANSCRIBER_VERSION, "model": "base", "status": "ok"}
     assert is_cache_hit(base, model="base")

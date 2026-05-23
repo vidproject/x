@@ -63,6 +63,11 @@ MAX_VIDEO_BYTES = 600 * 1024 * 1024
 # A cached row is reused as-is (keeping its generated_at) when the recognizer
 # version is unchanged and the status was a real, repeatable outcome.
 CACHEABLE_STATUSES = {"ok", "no-audio-stream", "silent-audio", "too-short", "empty-transcript"}
+# Persist progress every N new transcriptions. CPU whisper is slow, so a CI
+# step can hit its time limit mid-run; flushing means a killed run keeps what it
+# finished (and seeds the cache) instead of losing everything and repeating from
+# zero on the next run.
+FLUSH_EVERY = 5
 
 
 @dataclass(frozen=True)
@@ -434,6 +439,18 @@ def run(
     stats: Counter[str] = Counter()
     generated_at = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
+    def _leftover_rows() -> list[dict[str, Any]]:
+        # Prior transcripts for media not (re)visited this run — filtered out by
+        # --handle / --tweet-ids-file, or not yet reached. Carried forward so a
+        # partial/early write never shrinks the sidecar.
+        done = {str(r.get("media_sha256") or "") for r in rows}
+        return [r for sha, r in existing.items() if sha not in done]
+
+    def _flush() -> None:
+        if dry_run:
+            return
+        write_parquet(rows + _leftover_rows(), out_path)
+
     http: httpx.Client | None = None
     runner: Callable[[TranscribeCandidate], TranscriptResult]
     if transcriber is None:
@@ -504,13 +521,16 @@ def run(
                 stats["transcribed"] += 1
             rows.append(build_row(cand, result, model=model, generated_at=generated_at))
             seen_sha.add(cand.media_sha256)
+            if stats["attempted"] % FLUSH_EVERY == 0:
+                _flush()
+                LOG.info("asr: progress flush", attempted=int(stats["attempted"]), rows=len(rows))
     finally:
         if http is not None:
             http.close()
 
     stats["rows"] = len(rows)
     if not dry_run:
-        write_parquet(rows, out_path)
+        write_parquet(rows + _leftover_rows(), out_path)
         update_manifest(rows, dict(stats), generated_at)
     return dict(stats)
 
