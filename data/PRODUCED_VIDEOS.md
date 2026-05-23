@@ -2,7 +2,7 @@
 
 Videos disseminated by US federal immigration agencies (DHS, ICE, CBP, USCIS, White House, POTUS, DOL and related accounts) that are produced as **entertainment/spectacle to appeal to a mass/young audience** — set to music, with pop-culture genre styling (music video, dystopian/sci-fi, war-movie, utopian hype montage, ASMR, anime/meme, true-crime, recruitment-as-trailer, parody). Raw speeches, interviews, news clips and plain informational PSAs are excluded.
 
-_Identified by Opus agents reading the archived keyframes + transcripts. 45 videos._
+_Identified by Opus agents reading the archived keyframes + transcripts. 48 videos._
 
 ## Background / commentary
 
@@ -34,6 +34,18 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 45 vide
     - `0:20` Continued close shot of multiple sets of chains and cuffs strewn on the ground as boots step through them.
     - `0:28` Extreme close-up of handcuffs being ratcheted onto a detainee's wrist inside a vehicle/seat, foregrounding the click of the cuffs.
     - `0:36` Upward-angle shot of a detainee in a plaid jacket climbing the metal airplane stairs against a cloudy sky, completing the boarding sequence.
+
+### 2025-03-28 — @DHSgov — cinematic montage
+- **Link:** https://x.com/DHSgov/status/1905643039487627688
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 72.666s  |  **Likes:** 0  **RTs:** 0
+- **On-screen / notable text:** SECRETARY NOEM VISITS EL SALVADOR; President Trump will not allow a foreign terrorist organization to operate; NEVER TO RETURN; CECOT - CENTRO DE CONFINAMIENTO DEL TERRORISMO
+- **Summary:** A vertical (9:16), heavily produced DHS spectacle marking Sec. Noem's CECOT prison tour, edited as a cinematic montage rather than a raw clip: a clean title card ('SECRETARY NOEM VISITS EL SALVADOR') over the CECOT facade, Noem delivering a piece-to-camera in front of a cage packed with shaved, tattooed prisoners, then dramatic desaturated black-and-white footage of armored guards and the bolted cellblock gate carrying kinetic ALL-CAPS captions ('President Trump will not allow a foreign terrorist organization to operate', 'NEVER TO RETURN'), capped by a warm sepia-toned close-up of a smiling young girl with braces as the emotional 'protected America' payoff. With only a single brief Noem soundbite across 73 seconds, the piece is carried by an underscore and stylized editing. Its color grading, hero framing of detainees, hype typography and fear/safety emotional arc make it a produced, shareable spectacle, not a press clip.
+- **Script (timestamped):**
+    - `0:07` Title card 'SECRETARY NOEM VISITS EL SALVADOR' over a low-angle shot of Noem (DHS cap, white top) standing before the concrete CECOT prison sign ('CENTRO DE CONFINAMIENTO DEL TERRORISMO'); cinematic, color-graded.
+    - `0:21` Noem delivers a piece-to-camera directly in front of a steel cage crammed with shaved, shirtless, heavily tattooed inmates; Noem (soundbite): '...to bring our terrorists here and to incarcerate them and have consequences for the violence that they have perpetuated in our communities.'
+    - `0:36` Desaturated black-and-white footage of a helmeted, armored guard at the barred cellblock; kinetic blue-highlighted caption 'President Trump will not allow a foreign terrorist organization to operate'.
+    - `0:50` Black-and-white shot of the bolted, perforated steel cellblock gate with inmates visible behind bars; bold white caption 'NEVER TO RETURN'.
+    - `1:05` Warm sepia-toned tight close-up of a smiling young girl with braces, the emotional 'safe America' payoff contrasting the grim prison imagery.
 
 ### 2025-03-29 — @DHSgov — utopian hype montage
 - **Link:** https://x.com/DHSgov/status/1906068840938979658
@@ -94,6 +106,18 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 45 vide
     - `0:13` Detainee held between two masked agents in 'POLICE' vests in front of an armored 'SPECIAL WEAPONS TEAM' BearCat, fire extinguisher and yellow floor lines visible.
     - `0:17` Continued perp-walk beat: cuffed detainee centered between masked operators with the armored vehicle filling the background.
 
+### 2025-04-29 — @ICEgov — enforcement hype montage
+- **Link:** https://x.com/ICEgov/status/1917211352004964563
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 62.545s  |  **Likes:** 0  **RTs:** 0
+- **On-screen / notable text:** Caption: FIRST 100 DAYS IN 1 MINUTE; 'Make sure we clean up our streets and give the American people back their country' — SecNoem; POLICE / POLICE ICE / POLICE ERO (on vests and vehicles); 866-DHS-2-ICE
+- **Summary:** Billed in the caption as 'FIRST 100 DAYS IN 1 MINUTE,' this is a fast-cut, music-driven montage recapping ICE's nationwide immigration-enforcement operations over the administration's first 100 days: nighttime tactical raids, armored 'POLICE' vehicles, an in-business salon raid, a blurred-face detainee being led away, and migrants being marched up the stairs of a deportation plane by POLICE ERO/ICE agents. The only spoken audio is a single short Sec. Noem soundbite ('make sure we clean up our streets and give the American people back their country') laid over the montage; the rest is cinematic, social-media-native action footage. It fits youth-appeal produced content as an action-recap hype reel that packages enforcement as spectacle and a show of force.
+- **Script (timestamped):**
+    - `0:06` Low-angle night shot of a tactical agent in a 'POLICE' vest and helmet standing by an SUV with its trunk open under floodlights, palm trees and a building behind; dark, cinematic tone. Noem voiceover: 'make sure we clean up our streets...'
+    - `0:18` Rear doors of an armored 'POLICE' tactical vehicle swing open at night, red interior lights glowing as geared-up officers stage; high-energy raid imagery.
+    - `0:31` Daytime interior raid of a hair salon (red-lipped wall art) as an agent in a 'POLICE ICE' vest moves through with a detainee; operation-in-progress footage.
+    - `0:43` Outdoors, a masked agent walks a detainee in a blue robe (face blurred) across a dirt lot past a second tactical officer beside an apartment building.
+    - `0:56` From behind, agents in 'POLICE ERO' and 'POLICE ICE' jackets escort detainees up the airstairs of a chartered deportation jet on the tarmac; closing image of removals underway.
+
 ### 2025-05-20 — @USCIS — TV-tabloid-style branded montage
 - **Link:** https://x.com/USCIS/status/1924812403738390736
 - **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 90.266s  |  **Likes:** 241  **RTs:** 37
@@ -117,6 +141,18 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 45 vide
     - `0:29` Masked tactical agents in body armor escort a handcuffed man in a white shirt through wooded brush, other detainees and a vehicle marked POLICE visible among the trees.
     - `0:40` Stylized motion-blur radial-zoom transition over a tight crowd of detained people with their hands up surrounded by armored agents; caption 'and strengthening our local law enforcement partnerships.'
     - `0:52` A masked agent in a green tactical vest reading POLICE / HOMELAND SECURITY INVESTIGATIONS HSI stands beside a silver van; caption 'self-deport now.'
+
+### 2025-05-30 — @DHSgov — war-movie-style enforcement edit
+- **Link:** https://x.com/DHSgov/status/1928554100884472181
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 28.266s  |  **Likes:** 3711  **RTs:** 639
+- **On-screen / notable text:** On-screen: music credit 'Young Jeezy - Soul Survivor (E)'; '@CBPAMO' with Instagram logo throughout and on the closing black end card. Tweet: 'MAKING AMERICA SAFE AGAIN... we will hunt you down, arrest you, and lock you up. That's a promise.'
+- **Summary:** A vertical, social-media-native enforcement spectacle: dark, cinematic night-vision/handheld footage of CBP tactical agents conducting a nighttime raid, intercut with green-tinted aerial helicopter FLIR shots overlaid with a targeting reticle and compass (S/W) tracking suspects and a marked unit by a vehicle. It is cut to a hip-hop track ('Young Jeezy - Soul Survivor') and branded with the @CBPAMO Instagram handle, styling routine enforcement as a moody, military-thriller montage explicitly aimed at a young social-media audience. Fits youth-appeal produced content: music-driven, stylized, genre-flavored 'hunt them down' messaging matching the tweet's 'we will hunt you down, arrest you, and lock you up' promise.
+- **Script (timestamped):**
+    - `0:02` Near-black night frame; a tactical agent silhouetted against a red light, suburban houses faintly visible. On-screen music credit 'Young Jeezy - Soul Survivor' and Instagram @CBPAMO branding appear.
+    - `0:08` Dark handheld shot of an armed CBP agent in gear moving through a residential yard at night, lit by red/blue tactical lighting; music credit and @CBPAMO still overlaid.
+    - `0:14` Switch to green-tinted aerial helicopter FLIR/night-vision view with a crosshair reticle locked on figures and bursts of light below; @CBPAMO overlay.
+    - `0:19` Aerial surveillance continues: compass headings (S, W) at top; reticle tracks agents (blue flashlight beams) detaining people beside a marked patrol vehicle with red/blue lights on a road.
+    - `0:25` Fades to a fully black end card showing only the glowing Instagram logo and @CBPAMO handle, closing the branded spot.
 
 ### 2025-05-31 — @ICEgov — cinematic enforcement edit
 - **Link:** https://x.com/ICEgov/status/1928784776833425532
