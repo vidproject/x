@@ -563,6 +563,24 @@
       },
       "web_article_mentions": 0,
       "web_tweets_scanned": 100
+    },
+    "photo_thumbnails": {
+      "attempted": 400,
+      "cost_estimate_usd": 0.0,
+      "extracted": 68,
+      "extractor_version": "photo-thumbnail-v1",
+      "generated_at": "2026-05-23T04:51:30Z",
+      "intra_run_dedup": 14,
+      "row_count": 414,
+      "rows": 414,
+      "skipped_max_items": 4995,
+      "status_counts": {
+        "fetch-failed": 338,
+        "ok": 76
+      },
+      "status_fetch-failed": 332,
+      "status_ok": 68,
+      "thumbnails": 76
     }
   },
   "parquets_scanned": {
