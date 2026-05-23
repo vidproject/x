@@ -462,6 +462,11 @@ def extract_candidate(
                     video_height=height or cand.declared_height,
                     error=f"frame {i} ts={ts:.3f}: {e}",
                 )
+            if not frame_path.exists():
+                # ffmpeg can exit 0 yet write no file when the seek lands at or
+                # past the true end of a short video. Skip the frame instead of
+                # crashing the whole run on the missing file.
+                continue
             sha, size = hash_file(frame_path)
             fw, fh = jpeg_dimensions(frame_path)
             frames.append(
@@ -474,6 +479,15 @@ def extract_candidate(
                     height=fh,
                     bytes=size,
                 )
+            )
+        if not frames:
+            return ExtractResult(
+                status="no-frames",
+                frames=[],
+                video_duration_sec=effective_duration,
+                video_width=width or cand.declared_width,
+                video_height=height or cand.declared_height,
+                error="ffmpeg produced no frame files",
             )
         return ExtractResult(
             status="ok",
@@ -673,7 +687,24 @@ def run(
                 continue
 
             stats["attempted"] += 1
-            result = runner(cand)
+            try:
+                result = runner(cand)
+            except Exception as e:
+                # One bad video must never abort the whole pass and lose every
+                # other extracted row (the sidecar is only written at the end).
+                LOG.exception(
+                    "keyframes: extractor raised; recording error row",
+                    media_sha256=cand.media_sha256,
+                    tweet_id=cand.tweet_id,
+                )
+                result = ExtractResult(
+                    status="extractor-error",
+                    frames=[],
+                    video_duration_sec=0.0,
+                    video_width=cand.declared_width,
+                    video_height=cand.declared_height,
+                    error=str(e)[:1000],
+                )
             stats[f"status_{result.status}"] += 1
             if result.status == "ok":
                 stats["extracted"] += 1

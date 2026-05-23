@@ -228,6 +228,45 @@ def test_run_caches_on_media_sha256(tmp_corpus: Path) -> None:
     assert stats.get("extracted", 0) == 0
 
 
+def test_run_survives_extractor_exception_and_still_writes(tmp_corpus: Path) -> None:
+    """A single video that makes the extractor raise must not abort the whole
+    pass and lose every other row. Regression: a short video whose last frame
+    file was never written by ffmpeg raised FileNotFoundError and took down the
+    entire keyframe run (the sidecar is only written at the end)."""
+    good = _archived_video("vid-good", sha="a" * 64, duration=50.0)
+    bad = _archived_video("vid-bad", sha="b" * 64, duration=2.0)
+    _write_handle_parquet(
+        tmp_corpus,
+        "DHSgov",
+        [
+            make_tweet("t-good", handle="DHSgov", media=[good]),
+            make_tweet("t-bad", handle="DHSgov", media=[bad]),
+        ],
+    )
+
+    ok = _fake_extractor_factory({})
+
+    def flaky(cand: VideoCandidate) -> ExtractResult:
+        if cand.media_sha256 == "b" * 64:
+            raise FileNotFoundError("simulated missing frame file")
+        return ok(cand)
+
+    stats = extract_video_frames.run(
+        parquets=[tmp_corpus / "data" / "DHSgov.parquet"],
+        extractor=flaky,
+    )
+    assert stats["status_ok"] == 1
+    assert stats["status_extractor-error"] == 1
+
+    out = pl.read_parquet(tmp_corpus / "data" / "tags" / "keyframes.parquet")
+    assert out.height == 2
+    by_sha = {r["media_sha256"]: r for r in out.to_dicts()}
+    assert by_sha["a" * 64]["status"] == "ok"
+    assert by_sha["b" * 64]["status"] == "extractor-error"
+    # The error row is not cacheable, so a later run retries it.
+    assert not is_cache_hit(by_sha["b" * 64], EXTRACTOR_VERSION)
+
+
 def test_run_intra_run_dedup_across_tweets_with_same_sha(tmp_corpus: Path) -> None:
     """A retweet (and other cross-references) share the same media
     sha256. We extract once and replicate the row for each tweet
