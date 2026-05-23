@@ -5,7 +5,7 @@ Two human/LLM review passes live under `data/tags/`:
 * `produced_review/*.json`  — one file per candidate video. Files whose
   ``produced`` field is ``true`` are the produced / genre-experiment videos.
 * `meme_image_review/*.json` — one file per candidate image. Files whose
-  ``is_designed`` field is ``true`` are the designed meme / propaganda images.
+  ``is_designed`` field is ``true`` are the designed graphic images.
 
 This script turns those decisions into two viewer tags joined on tweet_id:
 
@@ -104,6 +104,9 @@ def collect_tagged_tweets() -> dict[str, dict[str, Any]]:
                 LOG.warning("review-curation: skipping unreadable file", path=path, error=str(err))
                 continue
             if record.get(gate_field) is not True:
+                skipped += 1
+                continue
+            if record.get("immigration_related") is not True:
                 skipped += 1
                 continue
             tweet_id = str(record.get("tweet_id") or "").strip()
