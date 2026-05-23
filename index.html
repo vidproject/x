@@ -37,33 +37,24 @@
           </button>
           <div class="dropdown" id="cols-menu" role="menu" hidden></div>
         </div>
-        <div class="menu export-menu">
-          <div class="export-split">
-            <button
-              type="button"
-              class="btn ghost export-btn"
-              id="export-btn"
-              title="Download a CSV of the chosen scope"
-            >
-              Export
-            </button>
-            <button
-              type="button"
-              class="btn ghost export-caret"
-              id="export-caret-btn"
-              aria-haspopup="true"
-              aria-expanded="false"
-              aria-label="Choose export scope"
-              title="Choose what gets exported"
-            >
-              <span class="export-caret-icon" aria-hidden="true">▾</span>
-            </button>
-          </div>
-          <div class="dropdown export-dropdown" id="export-menu" role="menu" hidden>
+        <div class="menu share-menu">
+          <button
+            type="button"
+            class="btn ghost share-btn"
+            id="share-btn"
+            aria-haspopup="true"
+            aria-expanded="false"
+            title="Copy a link or download a CSV (Page, Selection, or Query)"
+          >
+            Export / Share <span class="export-caret-icon" aria-hidden="true">▾</span>
+          </button>
+          <div class="dropdown export-dropdown" id="share-menu" role="menu" hidden>
+            <div class="dropdown-section">Share link</div>
             <button
               type="button"
               class="dl-row dl-row-btn export-scope-opt"
-              role="menuitemradio"
+              role="menuitem"
+              data-act="share"
               data-scope="selection"
             >
               <span class="label">Selection</span>
@@ -72,7 +63,40 @@
             <button
               type="button"
               class="dl-row dl-row-btn export-scope-opt"
-              role="menuitemradio"
+              role="menuitem"
+              data-act="share"
+              data-scope="page"
+            >
+              <span class="label">Page</span>
+              <span class="muted export-scope-hint">this page</span>
+            </button>
+            <button
+              type="button"
+              class="dl-row dl-row-btn export-scope-opt"
+              role="menuitem"
+              data-act="share"
+              data-scope="query"
+            >
+              <span class="label">Query</span>
+              <span class="muted export-scope-hint">current filters</span>
+            </button>
+            <div class="dropdown-divider" role="separator"></div>
+            <div class="dropdown-section">Export CSV</div>
+            <button
+              type="button"
+              class="dl-row dl-row-btn export-scope-opt"
+              role="menuitem"
+              data-act="export"
+              data-scope="selection"
+            >
+              <span class="label">Selection</span>
+              <span class="muted export-scope-hint">checked rows</span>
+            </button>
+            <button
+              type="button"
+              class="dl-row dl-row-btn export-scope-opt"
+              role="menuitem"
+              data-act="export"
               data-scope="page"
             >
               <span class="label">Page</span>
@@ -81,10 +105,11 @@
             <button
               type="button"
               class="dl-row dl-row-btn export-scope-opt"
-              role="menuitemradio"
-              data-scope="range"
+              role="menuitem"
+              data-act="export"
+              data-scope="query"
             >
-              <span class="label">Range</span>
+              <span class="label">Query</span>
               <span class="muted export-scope-hint">all filtered rows</span>
             </button>
           </div>
@@ -203,15 +228,25 @@
         <li>Click any row to open the full tweet detail panel on the right.</li>
         <li>Use Columns to toggle visibility, including Deletion detected.</li>
         <li>
-          Export downloads a CSV. Use the caret beside it to pick the scope: Selection (only the
-          rows you tick in the left checkbox column), Page (just the current page), or Range (every
-          row matching the active filters and search).
+          Export / Share offers six actions. <strong>Share</strong> copies a link;
+          <strong>Export</strong> downloads a CSV. Each comes in three scopes: Selection (only the
+          rows you tick in the left checkbox column), Page (just the current page), or Query (every
+          row matching the active filters and search). <strong>Share · Selection</strong> hands
+          someone a link to exactly the items you picked — tick across several searches to gather a
+          subset, then share it.
         </li>
-        <li>The URL updates as you filter; bookmark or share it to come back to the same view.</li>
+        <li>
+          The URL also updates as you filter; bookmark or share it to come back to the same view.
+        </li>
         <li>
           This is a public archive. Captures mirror what X served the browser at capture time.
         </li>
       </ul>
+    </div>
+
+    <div class="sel-banner" id="sel-banner" hidden>
+      <span id="sel-banner-text"></span>
+      <button type="button" class="btn ghost" id="sel-banner-clear">Show all</button>
     </div>
 
     <section class="result-bar" id="result-bar" hidden>

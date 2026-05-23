@@ -307,6 +307,11 @@ export class Store {
    */
   apply(filt) {
     let rows = this.allRows;
+    if (filt.sel && filt.sel.length > 0) {
+      // Shared-subset view: restrict to an explicit hand-picked id list.
+      const set = new Set(filt.sel.map((v) => String(v)));
+      rows = rows.filter((r) => set.has(String(r.tweet_id)));
+    }
     if (filt.accounts && filt.accounts.length > 0) {
       const set = new Set(filt.accounts);
       rows = rows.filter((r) => set.has(r.account_handle));

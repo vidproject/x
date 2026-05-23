@@ -9,6 +9,7 @@ const KEYS = [
   'tags',
   'profile',
   'tweet',
+  'sel',
   'q',
   'qfield',
   'from',
@@ -40,6 +41,7 @@ export function defaults() {
     tags: [],
     profile: '',
     tweet: '',
+    sel: [], // shared-subset: explicit list of tweet_ids to show
     q: '',
     qfield: 'all',
     from: '',
@@ -64,7 +66,7 @@ export function fromHash(hash) {
   for (const key of KEYS) {
     const v = params.get(key);
     if (v === null) continue;
-    if (key === 'accounts' || key === 'categories' || key === 'tags') {
+    if (key === 'accounts' || key === 'categories' || key === 'tags' || key === 'sel') {
       out[key] = v.split(',').filter(Boolean);
     } else if (key === 'page' || key === 'size') {
       const n = Number(v);
@@ -85,7 +87,7 @@ export function toHash(state) {
   const params = new URLSearchParams();
   for (const key of KEYS) {
     const value = state[key];
-    if (key === 'accounts' || key === 'categories' || key === 'tags') {
+    if (key === 'accounts' || key === 'categories' || key === 'tags' || key === 'sel') {
       if (value && value.length > 0) params.set(key, value.join(','));
       continue;
     }

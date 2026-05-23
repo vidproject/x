@@ -3,7 +3,8 @@
 
 import { exportCsv } from './csv.js?v=lazycat6';
 import { loadParquetRows } from './parquet.js?v=lazycat6';
-import { applyToUrl, defaults as defaultState, fromHash } from './state.js?v=lazycat6';
+import { applyToUrl, defaults as defaultState, fromHash, toHash } from './state.js?v=lazycat6';
+import { copyTextToClipboard } from './links.js?v=lazycat6';
 import { SEARCH_FIELD_OPTIONS, Store } from './store.js?v=lazycat6';
 import { initChartsPanel, updateChartsPanel } from './charts.js?v=lazycat6';
 import {
@@ -28,9 +29,11 @@ const els = {
   filtersBtn: $('filters-btn'),
   colsBtn: $('cols-btn'),
   colsMenu: $('cols-menu'),
-  exportBtn: $('export-btn'),
-  exportCaretBtn: $('export-caret-btn'),
-  exportMenu: $('export-menu'),
+  shareBtn: $('share-btn'),
+  shareMenu: $('share-menu'),
+  selBanner: $('sel-banner'),
+  selBannerText: $('sel-banner-text'),
+  selBannerClear: $('sel-banner-clear'),
   chartsBtn: $('charts-btn'),
   fullDbBtn: $('full-db-btn'),
   chartsPanel: $('chartpanel'),
@@ -102,11 +105,10 @@ let filteredThreads = [];
 /** @type {Record<string, Set<string>>} */
 let colFilters = {};
 let selectedRowId = null;
-// Export scope: 'page' (current page), 'range' (all filtered rows), or
-// 'selection' (only rows ticked in the left checkbox column). Page is the
-// default. Selection mode is the only scope that reveals the checkbox column.
-/** @type {'page'|'range'|'selection'} */
-let exportScope = 'page';
+// Selection mode reveals the left checkbox column so rows can be hand-picked.
+// The checked set feeds both "Selection" CSV export and the shared-subset link,
+// and persists across filtering so a subset can be gathered from several searches.
+let selectionMode = false;
 /** @type {Set<string>} */
 let selectedExportIds = new Set();
 /** @type {Set<string>} */
@@ -1480,6 +1482,7 @@ els.resetBtn.addEventListener('click', async () => {
   colFilters = {};
   expandedThreads = new Set();
   selectedExportIds = new Set();
+  selectionMode = false;
   els.searchField.value = 'all';
   updateSearchPlaceholder();
   els.search.value = '';
@@ -1507,10 +1510,10 @@ function onColumnsChange(next) {
 renderColumnsMenu(els.colsMenu, visibleCols, onColumnsChange);
 
 // --- Dropdown toggles ---
-const dropdownMenus = [els.colsMenu, els.exportMenu];
-const dropdownButtons = [els.colsBtn, els.exportCaretBtn];
+const dropdownMenus = [els.colsMenu, els.shareMenu];
+const dropdownButtons = [els.colsBtn, els.shareBtn];
 wireDropdown(els.colsBtn, els.colsMenu);
-wireDropdown(els.exportCaretBtn, els.exportMenu);
+wireDropdown(els.shareBtn, els.shareMenu);
 function wireDropdown(btn, menu) {
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -1535,49 +1538,20 @@ document.addEventListener('mousedown', (e) => {
   }
 });
 
-// --- Export (CSV, scoped) ---
+// --- Export & Share (six scoped actions) ---
 //
-// One "Export" button downloads CSV for the currently chosen scope; a caret
-// beside it opens a small menu to pick the scope. Output format is unchanged —
-// only WHICH rows are written varies:
+// One menu offers two action types over three row scopes:
+//   Export — download a CSV of the scope's rows.
+//   Share  — copy a link that reproduces the scope for someone else.
+// Scopes:
 //   page      — the rows visible on the current page (master rows plus any
 //               inline-expanded thread replies, mirroring what's on screen).
-//   range     — every row in the active filtered/search result set.
-//   selection — only the rows ticked in the left checkbox column. Selecting
-//               this scope turns that column on.
-const EXPORT_SCOPE_LABELS = {
-  page: 'Export · Page',
-  range: 'Export · Range',
-  selection: 'Export · Selection',
-};
-
-function syncExportControls() {
-  for (const opt of els.exportMenu.querySelectorAll('.export-scope-opt')) {
-    const active = opt.dataset.scope === exportScope;
-    opt.classList.toggle('active', active);
-    opt.setAttribute('aria-checked', active ? 'true' : 'false');
-  }
-  els.exportBtn.title =
-    exportScope === 'selection'
-      ? 'Download a CSV of the rows checked in the left column'
-      : exportScope === 'range'
-        ? 'Download a CSV of every row matching the current filters'
-        : 'Download a CSV of the current page';
-  els.exportBtn.textContent = 'Export';
-  els.exportBtn.setAttribute('aria-label', EXPORT_SCOPE_LABELS[exportScope] || 'Export');
-}
-
-function setExportScope(scope) {
-  const next = EXPORT_SCOPE_LABELS[scope] ? scope : 'page';
-  if (next === exportScope) {
-    syncExportControls();
-    return;
-  }
-  exportScope = next;
-  syncExportControls();
-  // Toggling Selection on/off shows/hides the checkbox column, so re-render.
-  refresh();
-}
+//   query     — every row in the active filtered/search result set.
+//   selection — only the rows ticked in the left checkbox column. Picking a
+//               Selection action turns that column on; the checked set persists
+//               across filtering so a subset can be gathered from several
+//               searches and then exported or shared as a hand-picked group.
+const SHARE_SELECTION_CAP = 1000;
 
 // Rows visible on the current page: replicate table.js#paintThreaded's slice so
 // the export matches exactly what the user sees (including inline replies of
@@ -1599,12 +1573,25 @@ function currentPageRows() {
   return rows;
 }
 
-function rowsForExportScope() {
-  if (exportScope === 'range') return filteredRows;
-  if (exportScope === 'selection') {
-    return filteredRows.filter((r) => selectedExportIds.has(String(r.tweet_id ?? '')));
-  }
+// The hand-picked subset, resolved against the full catalog so checked rows
+// count even when the current filters would hide them.
+function selectionRows() {
+  if (selectedExportIds.size === 0) return [];
+  return store.allRows.filter((r) => selectedExportIds.has(String(r.tweet_id ?? '')));
+}
+
+function rowsForScope(scope) {
+  if (scope === 'selection') return selectionRows();
+  if (scope === 'query') return filteredRows;
   return currentPageRows();
+}
+
+function setSelectionMode(on) {
+  const next = Boolean(on);
+  if (next === selectionMode) return;
+  selectionMode = next;
+  els.shareBtn.setAttribute('aria-pressed', next ? 'true' : 'false');
+  refresh(); // toggles the checkbox column
 }
 
 // Build the selection-column config handed to renderTable. The checkbox column
@@ -1612,7 +1599,7 @@ function rowsForExportScope() {
 // operate on tweet_id and update the tracked set, then re-render so checkbox
 // state stays in sync with the data.
 function buildSelectionConfig() {
-  if (exportScope !== 'selection') {
+  if (!selectionMode) {
     return { enabled: false };
   }
   const allFilteredIds = new Set();
@@ -1640,28 +1627,119 @@ function buildSelectionConfig() {
   };
 }
 
-els.exportBtn.addEventListener('click', () => {
-  const rows = rowsForExportScope();
+function viewerUrlFromHash(hash) {
+  return `${location.origin}${location.pathname}${location.search}${hash || ''}`;
+}
+
+// Build the link for a share scope.
+//   selection — a clean view of just the checked ids (filters dropped, sort kept).
+//   query     — the current filters, reset to the first page.
+//   page      — the current view exactly as-is.
+function buildShareUrl(scope) {
+  if (scope === 'selection') {
+    const ids = [...selectedExportIds].filter(Boolean).slice(0, SHARE_SELECTION_CAP);
+    const state = { ...defaultState(), sort: urlState.sort, dir: urlState.dir, sel: ids };
+    return viewerUrlFromHash(toHash(state));
+  }
+  if (scope === 'query') {
+    return viewerUrlFromHash(toHash({ ...urlState, page: 1, tweet: '' }));
+  }
+  return viewerUrlFromHash(toHash(urlState));
+}
+
+// Briefly swap the trigger button's label to confirm a copy, then restore it
+// (the label contains a caret span, so capture/restore innerHTML).
+function flashShareButton(msg) {
+  const btn = els.shareBtn;
+  if (!btn) return;
+  if (btn.dataset.label == null) btn.dataset.label = btn.innerHTML;
+  btn.textContent = msg;
+  btn.classList.add('copied');
+  window.setTimeout(() => {
+    btn.classList.remove('copied');
+    if (btn.dataset.label != null) {
+      btn.innerHTML = btn.dataset.label;
+      delete btn.dataset.label;
+    }
+  }, 1400);
+}
+
+function doExport(scope) {
+  if (scope === 'selection' && !selectionMode) {
+    setSelectionMode(true);
+    showError('Selection on — tick rows in the left column, then choose Export · Selection.', 5000);
+    return;
+  }
+  const rows = rowsForScope(scope);
   if (rows.length === 0) {
-    const msg =
-      exportScope === 'selection'
-        ? 'Nothing to export — no rows are checked. Tick rows in the left column, or switch the export scope.'
-        : 'Nothing to export — no rows match the current filters.';
-    showError(msg, 4000);
+    showError(
+      scope === 'selection'
+        ? 'Nothing to export — no rows are checked. Tick rows in the left column first.'
+        : 'Nothing to export — no rows match the current filters.',
+      4000
+    );
     return;
   }
   exportCsv(rows);
-});
+}
 
-for (const opt of els.exportMenu.querySelectorAll('.export-scope-opt')) {
+async function doShare(scope) {
+  if (scope === 'selection') {
+    if (!selectionMode) {
+      setSelectionMode(true);
+      showError('Selection on — tick the items you want, then choose Share · Selection.', 5000);
+      return;
+    }
+    if (selectedExportIds.size === 0) {
+      showError('No items checked. Tick rows in the left column to build a subset.', 4000);
+      return;
+    }
+  }
+  if (scope === 'query' && filteredRows.length === 0) {
+    showError('Nothing to share — no rows match the current filters.', 4000);
+    return;
+  }
+  const url = buildShareUrl(scope);
+  let copied = false;
+  try {
+    copied = await copyTextToClipboard(url);
+  } catch {
+    copied = false;
+  }
+  if (!copied) {
+    showError('Could not copy the link to the clipboard.', 4000);
+    return;
+  }
+  if (scope === 'selection') {
+    const n = Math.min(selectedExportIds.size, SHARE_SELECTION_CAP);
+    flashShareButton(`Copied · ${n} item${n === 1 ? '' : 's'}`);
+    if (selectedExportIds.size > SHARE_SELECTION_CAP) {
+      showError(
+        `Link covers the first ${SHARE_SELECTION_CAP} of ${selectedExportIds.size} checked items (URL length limit).`,
+        6000
+      );
+    }
+  } else {
+    flashShareButton('Link copied');
+  }
+}
+
+for (const opt of els.shareMenu.querySelectorAll('.export-scope-opt')) {
   opt.addEventListener('click', () => {
-    setExportScope(opt.dataset.scope);
-    els.exportMenu.hidden = true;
-    els.exportCaretBtn.setAttribute('aria-expanded', 'false');
+    const { act, scope } = opt.dataset;
+    els.shareMenu.hidden = true;
+    els.shareBtn.setAttribute('aria-expanded', 'false');
+    if (act === 'share') void doShare(scope);
+    else doExport(scope);
   });
 }
 
-syncExportControls();
+els.selBannerClear.addEventListener('click', () => {
+  urlState.sel = [];
+  urlState.page = 1;
+  applyToUrl(urlState);
+  refresh();
+});
 
 // --- Sidepanel ---
 els.spClose.addEventListener('click', () => {
@@ -2243,6 +2321,7 @@ window.addEventListener('hashchange', () => {
 // --- Render pipeline ---
 function refresh() {
   filteredRows = store.apply({
+    sel: urlState.sel,
     accounts: urlState.accounts,
     accountCategories: urlState.categories,
     tags: urlState.tags,
@@ -2279,9 +2358,16 @@ function refresh() {
   els.pgPrev.disabled = page === 1;
   els.pgNext.disabled = page === lastPage();
   els.pgLast.disabled = page === lastPage();
+  const selActive = Array.isArray(urlState.sel) && urlState.sel.length > 0;
+  els.selBanner.hidden = !selActive;
+  if (selActive) {
+    const n = urlState.sel.length;
+    els.selBannerText.textContent = `Shared selection active — ${fmtNum(n)} item${n === 1 ? '' : 's'}.`;
+  }
   const timelineRows =
     urlState.from || urlState.to
       ? store.apply({
+          sel: urlState.sel,
           accounts: urlState.accounts,
           accountCategories: urlState.categories,
           tags: urlState.tags,

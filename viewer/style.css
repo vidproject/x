@@ -281,6 +281,45 @@ body {
   color: var(--accent-2);
   font-weight: 600;
 }
+.dropdown-section {
+  padding: 6px 6px 2px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fg-3);
+}
+.dropdown-divider {
+  height: 1px;
+  margin: 6px 2px;
+  background: var(--border);
+}
+.share-btn .export-caret-icon {
+  margin-left: 4px;
+}
+.share-btn.copied {
+  color: var(--accent-2);
+  border-color: var(--accent-2);
+}
+
+/* Shared-subset banner: shown when the URL carries an explicit id list. */
+.sel-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 0;
+  padding: 8px 12px;
+  border: 1px solid var(--accent-2);
+  border-radius: var(--radius);
+  background: rgba(43, 108, 176, 0.1);
+  font-size: 13px;
+}
+.sel-banner[hidden] {
+  display: none;
+}
+.sel-banner button {
+  margin-left: auto;
+}
 
 /* Selection-mode checkbox column (left-most). Only present in Selection scope. */
 .data-table th.col-select,
