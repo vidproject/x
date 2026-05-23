@@ -148,7 +148,7 @@ The sidebar can auto-scroll open X tabs. This works around profile tabs that sto
 
 Long-form tweets often appear in timeline responses as a 280-character head plus a `show more` link. The normalizer marks those rows with `is_truncated=true` and queues detail-page refetch. The sidebar has a refetch button for that queue.
 
-Media crawl follows attached media from the captured tweet data and stores archived assets in GitHub Releases. The canonical Parquet row records the Release URL only after upload succeeds.
+Media crawl follows attached media from the captured tweet data and stores archived assets in GitHub Releases. Large handles are sharded across per-handle releases: `media-<handle>` first, then `media-<handle>-0002`, `media-<handle>-0003`, and so on. The canonical Parquet row records the Release URL only after upload succeeds or after the asset is found in a real release listing.
 
 ## Tags
 
@@ -218,7 +218,7 @@ extension
     scripts.build_account_categories
       data/account_categories.json
     scripts.archive_media
-      GitHub Release assets
+      GitHub Release asset shards
       data/*.parquet media URLs
     scripts.describe_media
       data/tags/media_vision.parquet
@@ -316,7 +316,7 @@ _Generated 2026-05-23T00:55:10Z._
 - Canonical Parquet rows mirror what X served at capture time.
 - Parse failures go to `raw/_quarantine/`.
 - Parquet rewrites are atomic.
-- Release uploads must succeed before a row records the asset URL.
+- Release uploads must succeed, or the asset must be found in a release listing, before a row records the asset URL.
 - Credentials stay out of the repo.
 - Annotation is reversible and separate from capture.
 

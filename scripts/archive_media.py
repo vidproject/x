@@ -5,7 +5,7 @@ within the retry budget), this script:
 
   1. Downloads the bytes from ``original_url`` via httpx.
   2. Computes sha256 and byte length.
-  3. Uploads them to a per-handle GitHub Release as an asset.
+  3. Uploads them to per-handle GitHub Release shards as assets.
   4. Patches the parquet row so ``release_asset_url``, ``sha256``, ``bytes``,
      ``archive_status="archived"``, ``archive_attempts``, and
      ``last_attempt_at`` reflect the result.
@@ -29,6 +29,7 @@ import re
 import sys
 import time
 from collections.abc import Iterable
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, cast
@@ -59,12 +60,24 @@ DOWNLOAD_TIMEOUT = httpx.Timeout(connect=10, read=120, write=30, pool=10)
 # GitHub release asset upload happens on a different host.
 UPLOAD_TIMEOUT = httpx.Timeout(connect=10, read=300, write=300, pool=10)
 
+# GitHub caps each release at 1000 assets. Keep the legacy unnumbered release
+# as shard 1 so existing URLs remain stable, then add numbered overflow shards.
+RELEASE_ASSET_LIMIT = 1000
 
-def media_release_tag(handle: str) -> str:
-    return f"media-{handle}"
+
+def media_release_tag(handle: str, shard: int = 1) -> str:
+    if shard < 1:
+        raise ValueError("release shard must be >= 1")
+    if shard == 1:
+        return f"media-{handle}"
+    return f"media-{handle}-{shard:04d}"
 
 
-def media_release_name(handle: str) -> str:
+def media_release_name(handle: str, shard: int = 1) -> str:
+    if shard < 1:
+        raise ValueError("release shard must be >= 1")
+    if shard > 1:
+        return f"Media archive - @{handle} shard {shard:04d}"
     return f"Media archive — @{handle}"
 
 
@@ -89,12 +102,19 @@ class GitHubReleaseClient:
     def close(self) -> None:
         self.session.close()
 
-    def get_or_create_release(self, tag: str, name: str) -> dict[str, Any]:
+    def get_release(self, tag: str) -> dict[str, Any] | None:
         r = self.session.get(f"{API_BASE}/repos/{self.owner}/{self.repo}/releases/tags/{tag}")
         if r.status_code == 200:
             return cast(dict[str, Any], r.json())
-        if r.status_code != 404:
-            r.raise_for_status()
+        if r.status_code == 404:
+            return None
+        r.raise_for_status()
+        raise AssertionError("unreachable")
+
+    def get_or_create_release(self, tag: str, name: str) -> dict[str, Any]:
+        existing = self.get_release(tag)
+        if existing is not None:
+            return existing
         # Create.
         body = {
             "tag_name": tag,
@@ -159,12 +179,121 @@ class GitHubReleaseClient:
         r.raise_for_status()
         return cast(dict[str, Any], r.json())
 
-    def browser_download_url(self, tag: str, asset_name: str) -> str:
-        return f"https://github.com/{self.owner}/{self.repo}/releases/download/{tag}/{asset_name}"
-
-
 # --------------------------------------------------------------------------
 # Per-tweet processing
+
+
+@dataclass
+class ReleaseShard:
+    index: int
+    release: dict[str, Any]
+    assets: dict[str, dict[str, Any]]
+
+    @property
+    def tag(self) -> str:
+        return str(self.release["tag_name"])
+
+    @property
+    def is_full(self) -> bool:
+        return len(self.assets) >= RELEASE_ASSET_LIMIT
+
+
+class ReleaseShardSet:
+    def __init__(self, handle: str, gh: GitHubReleaseClient, shards: list[ReleaseShard]) -> None:
+        self.handle = handle
+        self.gh = gh
+        self.shards = shards
+
+    @classmethod
+    def load(cls, handle: str, gh: GitHubReleaseClient) -> ReleaseShardSet:
+        shards: list[ReleaseShard] = []
+        shard_index = 1
+        while True:
+            tag = media_release_tag(handle, shard_index)
+            if shard_index == 1:
+                release = gh.get_or_create_release(tag, media_release_name(handle, shard_index))
+            else:
+                release = gh.get_release(tag)
+                if release is None:
+                    break
+            assets = gh.list_existing_assets(int(release["id"]))
+            shards.append(ReleaseShard(shard_index, release, assets))
+            shard_index += 1
+        return cls(handle, gh, shards)
+
+    def find_asset(self, name: str) -> dict[str, Any] | None:
+        for shard in self.shards:
+            existing = shard.assets.get(name)
+            if existing and existing.get("browser_download_url"):
+                existing["_release_tag"] = shard.tag
+                return existing
+        return None
+
+    def upload_asset(self, name: str, content_type: str, data: bytes) -> dict[str, Any]:
+        while True:
+            shard = self._upload_shard()
+            try:
+                uploaded = self.gh.upload_asset(shard.release["upload_url"], name, content_type, data)
+            except httpx.HTTPStatusError as e:
+                if e.response.status_code != 422:
+                    raise
+                existing = self.refresh_and_find_asset(name)
+                if existing:
+                    LOG.info(
+                        "archive: asset already exists on release shard; stitched parquet URL",
+                        handle=self.handle,
+                        release_tag=existing.get("_release_tag"),
+                    )
+                    return existing
+                if self._refresh_shard(shard).is_full:
+                    LOG.info(
+                        "archive: release shard full; retrying next shard",
+                        handle=self.handle,
+                        release_tag=shard.tag,
+                    )
+                    continue
+                raise
+            if not uploaded.get("browser_download_url"):
+                raise ValueError("release asset upload response missing browser_download_url")
+            shard.assets[name] = uploaded
+            return uploaded
+
+    def refresh_and_find_asset(self, name: str) -> dict[str, Any] | None:
+        for shard in self.shards:
+            self._refresh_shard(shard)
+            existing = shard.assets.get(name)
+            if existing and existing.get("browser_download_url"):
+                existing["_release_tag"] = shard.tag
+                return existing
+        return None
+
+    def _upload_shard(self) -> ReleaseShard:
+        if not self.shards:
+            return self._append_shard(1)
+        while self.shards[-1].is_full:
+            self._append_shard(self.shards[-1].index + 1)
+        return self.shards[-1]
+
+    def _append_shard(self, shard_index: int) -> ReleaseShard:
+        release = self.gh.get_or_create_release(
+            media_release_tag(self.handle, shard_index),
+            media_release_name(self.handle, shard_index),
+        )
+        shard = ReleaseShard(shard_index, release, self.gh.list_existing_assets(int(release["id"])))
+        self.shards.append(shard)
+        LOG.info(
+            "archive: using release shard",
+            handle=self.handle,
+            release_tag=shard.tag,
+            assets=len(shard.assets),
+        )
+        return shard
+
+    def _refresh_shard(self, shard: ReleaseShard) -> ReleaseShard:
+        shard.assets = self.gh.list_existing_assets(int(shard.release["id"]))
+        for asset in shard.assets.values():
+            asset["_release_tag"] = shard.tag
+        return shard
 
 
 def extension_for(media_type: str | None, url: str) -> str:
@@ -207,11 +336,17 @@ def fetch_bytes(url: str, http: httpx.Client) -> bytes:
     return r.content
 
 
+def is_managed_release_asset_url(url: str, gh: GitHubReleaseClient) -> bool:
+    prefix = f"https://github.com/{gh.owner}/{gh.repo}/releases/download/media-".lower()
+    return url.lower().startswith(prefix)
+
+
 def candidates_from_row(
     row: dict[str, Any],
     *,
     tweet_ids: set[str] | None = None,
     media_ids: set[str] | None = None,
+    include_archived: bool = False,
 ) -> Iterable[tuple[int, dict[str, Any]]]:
     tid = str(row.get("tweet_id") or "")
     if tweet_ids is not None and tid not in tweet_ids:
@@ -223,7 +358,7 @@ def candidates_from_row(
         mid = str(m.get("media_id") or "")
         if media_ids is not None and mid not in media_ids:
             continue
-        if m.get("release_asset_url"):
+        if m.get("release_asset_url") and not include_archived:
             continue  # already archived
         if not m.get("original_url"):
             continue
@@ -297,36 +432,74 @@ def archive_one_handle(
     if df.height == 0:
         return 0, 0, 0
 
-    # Collect candidates.
-    todo: list[tuple[str, dict[str, Any]]] = []  # (tweet_id, media)
+    updates: dict[str, dict[str, dict[str, Any]]] = {}
+    archived = failed = skipped = 0
+    now_iso = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+    release_shards: ReleaseShardSet | None = None
+
+    # Collect candidates. Managed release URLs are verified against the actual
+    # release asset listing so earlier false-positive 422 stitching can heal.
+    todo: list[tuple[str, dict[str, Any], str]] = []  # (tweet_id, media, asset_name)
     for r in df.iter_rows(named=True):
-        for _idx, m in candidates_from_row(r, tweet_ids=tweet_ids, media_ids=media_ids):
-            todo.append((str(r["tweet_id"]), m))
+        for _idx, m in candidates_from_row(
+            r,
+            tweet_ids=tweet_ids,
+            media_ids=media_ids,
+            include_archived=True,
+        ):
+            try:
+                asset_name = asset_name_for(m)
+            except ValueError:
+                skipped += 1
+                continue
+            release_url = str(m.get("release_asset_url") or "")
+            if release_url:
+                if not is_managed_release_asset_url(release_url, gh):
+                    continue
+                if release_shards is None:
+                    release_shards = ReleaseShardSet.load(handle, gh)
+                existing = release_shards.find_asset(asset_name)
+                if existing:
+                    actual_url = str(existing["browser_download_url"])
+                    if release_url != actual_url or m.get("archive_status") != "archived":
+                        per = updates.setdefault(str(r["tweet_id"]), {})
+                        per[str(m.get("media_id"))] = {
+                            "release_asset_url": actual_url,
+                            "bytes": int(existing.get("size") or 0) or m.get("bytes"),
+                            "archive_status": "archived",
+                            "last_attempt_at": now_iso,
+                            "archive_attempts": int(m.get("archive_attempts") or 0),
+                        }
+                        archived += 1
+                    continue
+                LOG.warning(
+                    "archive: recorded release asset missing; re-archiving",
+                    handle=handle,
+                    tweet_id=str(r["tweet_id"]),
+                    media_id=str(m.get("media_id") or ""),
+                    release_asset_url=release_url,
+                )
+            todo.append((str(r["tweet_id"]), m, asset_name))
             if len(todo) >= max_items:
                 break
         if len(todo) >= max_items:
             break
     if not todo:
-        return 0, 0, 0
+        if updates:
+            df = update_media_in_df(df, updates)
+            write_parquet(df, parquet_path)
+        return archived, failed, skipped
 
     LOG.info("archive: pending", handle=handle, count=len(todo))
-    release = gh.get_or_create_release(media_release_tag(handle), media_release_name(handle))
-    existing_assets = gh.list_existing_assets(release["id"])
+    if release_shards is None:
+        release_shards = ReleaseShardSet.load(handle, gh)
 
-    updates: dict[str, dict[str, dict[str, Any]]] = {}
-    archived = failed = skipped = 0
-    now_iso = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-    for tweet_id, media in todo:
-        try:
-            asset_name = asset_name_for(media)
-        except ValueError:
-            skipped += 1
-            continue
+    for tweet_id, media, asset_name in todo:
         per = updates.setdefault(tweet_id, {})
         mid = str(media.get("media_id"))
         attempts = int(media.get("archive_attempts") or 0)
-        existing = existing_assets.get(asset_name)
+        had_unverified_url = bool(media.get("release_asset_url"))
+        existing = release_shards.find_asset(asset_name)
         if existing and existing.get("browser_download_url"):
             # Asset already on the release; just stitch up the parquet so the
             # next run isn't waste work.
@@ -348,6 +521,8 @@ def archive_one_handle(
                 "archive_attempts": attempts + 1,
                 "last_attempt_at": now_iso,
             }
+            if had_unverified_url:
+                per[mid]["release_asset_url"] = None
             if attempts + 1 >= MAX_ATTEMPTS:
                 per[mid]["archive_status"] = "expired"
             LOG.warning(
@@ -362,25 +537,8 @@ def archive_one_handle(
         ext = Path(asset_name).suffix
         ct = content_type_for(ext)
         try:
-            uploaded = gh.upload_asset(release["upload_url"], asset_name, ct, data)
+            uploaded = release_shards.upload_asset(asset_name, ct, data)
         except Exception as e:
-            if isinstance(e, httpx.HTTPStatusError) and e.response.status_code == 422:
-                per[mid] = {
-                    "release_asset_url": gh.browser_download_url(media_release_tag(handle), asset_name),
-                    "sha256": sha,
-                    "bytes": len(data),
-                    "archive_status": "archived",
-                    "archive_attempts": attempts + 1,
-                    "last_attempt_at": now_iso,
-                }
-                archived += 1
-                LOG.info(
-                    "archive: asset already exists; stitched parquet URL",
-                    handle=handle,
-                    tweet_id=tweet_id,
-                    media_id=mid,
-                )
-                continue
             failed += 1
             per[mid] = {
                 "archive_status": "failed",
@@ -389,6 +547,8 @@ def archive_one_handle(
                 "sha256": sha,
                 "bytes": len(data),
             }
+            if had_unverified_url:
+                per[mid]["release_asset_url"] = None
             LOG.warning(
                 "archive: upload failed",
                 handle=handle,
