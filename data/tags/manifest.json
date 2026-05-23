@@ -566,21 +566,22 @@
     },
     "photo_thumbnails": {
       "attempted": 400,
+      "cache_hits": 76,
       "cost_estimate_usd": 0.0,
-      "extracted": 68,
+      "extracted": 24,
       "extractor_version": "photo-thumbnail-v1",
-      "generated_at": "2026-05-23T04:51:30Z",
-      "intra_run_dedup": 14,
-      "row_count": 414,
-      "rows": 414,
-      "skipped_max_items": 4995,
+      "generated_at": "2026-05-23T04:52:29Z",
+      "intra_run_dedup": 8,
+      "row_count": 484,
+      "rows": 484,
+      "skipped_max_items": 4925,
       "status_counts": {
-        "fetch-failed": 338,
-        "ok": 76
+        "fetch-failed": 384,
+        "ok": 100
       },
-      "status_fetch-failed": 332,
-      "status_ok": 68,
-      "thumbnails": 76
+      "status_fetch-failed": 376,
+      "status_ok": 24,
+      "thumbnails": 100
     }
   },
   "parquets_scanned": {
