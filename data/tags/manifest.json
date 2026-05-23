@@ -566,21 +566,19 @@
     },
     "photo_thumbnails": {
       "attempted": 400,
-      "cache_hits": 76,
+      "cache_hits": 100,
       "cost_estimate_usd": 0.0,
-      "extracted": 24,
       "extractor_version": "photo-thumbnail-v1",
-      "generated_at": "2026-05-23T04:52:29Z",
+      "generated_at": "2026-05-23T04:53:11Z",
       "intra_run_dedup": 8,
-      "row_count": 484,
-      "rows": 484,
-      "skipped_max_items": 4925,
+      "row_count": 508,
+      "rows": 508,
+      "skipped_max_items": 4901,
       "status_counts": {
-        "fetch-failed": 384,
+        "fetch-failed": 408,
         "ok": 100
       },
-      "status_fetch-failed": 376,
-      "status_ok": 24,
+      "status_fetch-failed": 400,
       "thumbnails": 100
     }
   },
