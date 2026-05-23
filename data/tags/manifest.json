@@ -51,23 +51,20 @@
       "status_ok": 141
     },
     "keyframes": {
-      "attempted": 160,
-      "cache_hits": 505,
+      "attempted": 200,
+      "cache_hits": 656,
       "cost_estimate_usd": 0.0,
-      "extracted": 148,
       "extractor_version": "ffmpeg-keyframes-v2",
-      "frame_count": 3270,
-      "generated_at": "2026-05-22T00:27:12Z",
-      "intra_run_dedup": 1,
-      "row_count": 666,
-      "rows": 666,
-      "skipped_max_items": 92,
+      "frame_count": 3280,
+      "generated_at": "2026-05-23T04:43:32Z",
+      "row_count": 856,
+      "rows": 856,
+      "skipped_max_items": 895,
       "status_counts": {
-        "fetch-failed": 12,
-        "ok": 654
+        "fetch-failed": 200,
+        "ok": 656
       },
-      "status_fetch-failed": 12,
-      "status_ok": 148
+      "status_fetch-failed": 200
     },
     "lexical": {
       "generated_at": "2026-05-23T02:07:57Z",
