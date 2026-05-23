@@ -2,7 +2,7 @@
 
 Videos disseminated by US federal immigration agencies (DHS, ICE, CBP, USCIS, White House, POTUS, DOL and related accounts) that are produced as **entertainment/spectacle to appeal to a mass/young audience** — set to music, with pop-culture genre styling (music video, dystopian/sci-fi, war-movie, utopian hype montage, ASMR, anime/meme, true-crime, recruitment-as-trailer, parody). Raw speeches, interviews, news clips and plain informational PSAs are excluded.
 
-_Identified by Opus agents reading the archived keyframes + transcripts. 56 videos._
+_Identified by Opus agents reading the archived keyframes + transcripts. 77 videos._
 
 ## Background / commentary
 
@@ -202,6 +202,18 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 56 vide
     - `0:29` Operators silhouetted against a dramatic orange-and-purple sunset sky, low-angle heroic framing; verse overlay continues.
     - `0:37` Rear silhouette of an operator with night-vision/rifle moving down a dim street toward a lit doorway; verse overlay remains, closing the montage.
 
+### 2025-08-25 — @USDOL — cinematic hype montage
+- **Link:** https://x.com/USDOL/status/1960022944081408224
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 73.14s  |  **Likes:** 2222  **RTs:** 517
+- **On-screen / notable text:** HE PROMISED / AND BUSINESS / JOBS OVERSEAS / THE GOLDEN AGE / AND INDUSTRY TOGETHER / WHO PUT THE AMERICAN [WORKER FIRST] / banner: AMERICAN WORKERS FIRST
+- **Summary:** A polished, music-driven Labor Day montage from the Department of Labor that frames Teddy Roosevelt and Donald Trump as the two 'transformational' presidents who put the American worker first. It weaves sepia/black-and-white archival footage of Roosevelt-era crowds, skylines and rail lines (one shot drenched in a red color-wash over 'JOBS OVERSEAS') with modern footage of a Trump factory rally under a 'THE GOLDEN AGE' banner and the DOL headquarters draped in twin 'AMERICAN WORKERS FIRST' banners. With swelling music, bold kinetic all-caps captions and trailer-style narration, it is a produced patriotic spectacle built for shareable emotional appeal, fitting the in-scope hype/cinematic montage category.
+- **Script (timestamped):**
+    - `0:07` Grainy black-and-white archival footage of a packed early-1900s crowd/grandstand around a draped platform; caption 'HE PROMISED' as narration recounts Roosevelt promising a 'square deal' for the American people.
+    - `0:22` Vintage black-and-white skyline of an early-20th-century city with old signage (B.T. BABBITT 'BEST SOAP'); caption 'AND BUSINESS' as narrator describes uniting leaders and unions and using tariff revenue to build prosperity.
+    - `0:36` Color shot of an overgrown, abandoned railway curve flooded in a heavy red wash; caption 'JOBS OVERSEAS' as the narration condemns decades of failed leadership and shipping jobs abroad.
+    - `0:51` Modern Trump factory/steel-plant rally: rows of workers in orange hard hats and high-vis behind a large blue 'THE GOLDEN AGE' banner, phones raised, a figure in a suit at right; caption 'AND INDUSTRY TOGETHER' as narrator says Trump is bringing workers and industry together like Roosevelt did.
+    - `1:05` Wide hero shot of the U.S. Department of Labor building under a blue sky, draped with a giant central American flag flanked by twin banners showing Trump and Roosevelt portraits reading 'AMERICAN WORKERS FIRST'; caption 'WHO PUT THE AMERICAN [worker first]' as the Labor Day tribute closes.
+
 ### 2025-08-26 — @USDOL — patriotic hype montage
 - **Link:** https://x.com/USDOL/status/1960141946355085771
 - **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 16.316s  |  **Likes:** 4129  **RTs:** 785
@@ -250,6 +262,18 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 56 vide
     - `0:13` Fade toward black with a partial circular Department of Labor seal/eagle crest emerging.
     - `0:17` Black end card: white Department of Labor seal ('DEPARTMENT OF LABOR / UNITED STATES OF AMERICA') with 'LORI CHAVEZ-DEREMER / SECRETARY of LABOR.'
 
+### 2025-10-21 — @CBP — trailer-style edit
+- **Link:** https://x.com/CBP/status/1980679571180540073
+- **Genre/tags:** —  |  **Set to music:** False  |  **Duration:** 46.463s  |  **Likes:** 3343  **RTs:** 554
+- **On-screen / notable text:** CBP PRESENTS; In collaboration with USBP and partners; THE MOST SECURE BORDER IN HISTORY; CNN chyron 'CARTEL LEADER WARNS: ONCE YOU GET IN, YOU CAN'T GET OUT'; tweet: 'Making life harder for cartel members, it's what we do.'
+- **Summary:** A trailer-style promo framed like a movie: it opens on a cinematic aerial drone shot tracking the border wall, splices in a repurposed CNN interview of a masked 'cartel leader' warning 'once you get in, you can't get out' and news B-roll of migrants crossing a river, then resolves to a film-style title card reading 'CBP PRESENTS ... THE MOST SECURE BORDER IN HISTORY.' The 'CBP presents' framing, dramatic drone cinematography, and repurposed cartel/news clips package an enforcement message as a cinematic trailer aimed at spectacle, fitting produced content, though metadata flags no audio track.
+- **Script (timestamped):**
+    - `0:04` Cinematic aerial drone shot tracking the steel border wall stretching toward mountains, with a Mexican border town on one side and a road/rail line on the U.S. side; sweeping establishing tone.
+    - `0:14` Repurposed CNN clip interior of an SUV: a masked man in sunglasses and tactical vest (a 'cartel leader') sits for an interview; LIVE bug visible.
+    - `0:23` CNN two-shot, reporter facing the masked cartel figure; chyron 'CARTEL LEADER WARNS: ONCE YOU GET IN, YOU CAN'T GET OUT.'
+    - `0:32` News B-roll of a group of migrants wading across a river between brushy banks with scattered debris on the shore.
+    - `0:41` Final film-style title card over a bright drone shot of the border wall and open road: 'CBP PRESENTS / In collaboration with USBP and partners / THE MOST SECURE BORDER IN HISTORY.'
+
 ### 2025-10-24 — @ICEgov — trailer-style slogan montage
 - **Link:** https://x.com/ICEgov/status/1981541201367953441
 - **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 6.256s  |  **Likes:** 0  **RTs:** 0
@@ -297,6 +321,66 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 56 vide
     - `0:09` A chained detainee in a navy sweatshirt stands while an agent works at his restraints in a parking area. Caption: 'FOR THE FINAL LEG.'
     - `0:12` Wide shot of a masked female agent directing a line of detainees across a lot toward transport. Caption: 'DEPORTATION THIS WEEK.'
     - `0:15` Interior of a bus filled with seated, restrained detainees, heads bowed. Caption persists: 'DEPORTATION THIS WEEK.' ICE logo.
+
+### 2025-11-01 — @DHSgov — recruitment trailer
+- **Link:** https://x.com/DHSgov/status/1984763456096989598
+- **Genre/tags:** —  |  **Set to music:** False  |  **Duration:** 32.533s  |  **Likes:** 10665  **RTs:** 1802
+- **On-screen / notable text:** CBP.GOV/CAREERS; U.S. BORDER PATROL; BORTAC; tweet: 'Run with us.'
+- **Summary:** A cinematic, color-graded vertical recruitment spot built like a movie trailer: tight slow-motion close-ups of a BORTAC/U.S. Border Patrol agent's kit, a dramatic night raid with a vehicle on fire, and agents sprinting toward a crowd in an action-film style, capped by a glowing 'CBP.GOV/CAREERS' title card. The tweet 'Run with us.' and the heroic, high-production cinematography make this a clear youth-appeal recruitment-as-trailer piece, even though the metadata flags no audio track.
+- **Script (timestamped):**
+    - `0:03` Extreme close-up, shallow-focus and color-graded, of a camo-clad agent's shoulder showing a U.S. BORDER PATROL / BORTAC patch and radio antenna; cinematic teal-and-tan tone.
+    - `0:09` Dark night street: a silhouetted agent (marked POLICE/HSI vest) runs toward a vehicle engulfed in fire, lens flares and orange glow, dramatic action-film framing.
+    - `0:16` Daytime arrest scene, handheld energy: an agent in camo restrains a detainee in a hoodie against vehicles, gritty saturated tone.
+    - `0:22` Wide cinematic shot from behind a sprinting tactical agent (marked vest) running down a street toward a building and a gathered crowd; film-like desaturated grade.
+    - `0:29` Final title card: glowing backlit silhouette of an agent in haze/smoke with 'CBP.GOV/CAREERS' superimposed across the frame.
+
+### 2025-11-01 — @CBP — recruitment trailer
+- **Link:** https://x.com/CBP/status/1984765722522685630
+- **Genre/tags:** —  |  **Set to music:** False  |  **Duration:** 32.533s  |  **Likes:** 10665  **RTs:** 1802
+- **On-screen / notable text:** CBP.GOV/CAREERS; U.S. BORDER PATROL; BORTAC; tweet: 'Run with us.'
+- **Summary:** CBP retweet of the DHS 'Run with us.' spot: a cinematic, color-graded vertical recruitment trailer with slow-motion close-ups of a BORTAC agent's gear, a dramatic night raid with a vehicle on fire, and agents sprinting toward a crowd in action-movie style, ending on a glowing 'CBP.GOV/CAREERS' title card. The heroic, high-production cinematography makes this a clear youth-appeal recruitment-as-trailer piece, despite metadata flagging no audio track.
+- **Script (timestamped):**
+    - `0:03` Extreme close-up, shallow-focus and color-graded, of a camo-clad agent's shoulder showing a U.S. BORDER PATROL / BORTAC patch and radio antenna; cinematic teal-and-tan tone.
+    - `0:09` Dark night street: a silhouetted agent (marked POLICE/HSI vest) runs toward a vehicle engulfed in fire, lens flares and orange glow, dramatic action-film framing.
+    - `0:16` Daytime arrest scene, handheld energy: an agent in camo restrains a detainee in a hoodie against vehicles, gritty saturated tone.
+    - `0:22` Wide cinematic shot from behind a sprinting tactical agent (marked vest) running down a street toward a building and a gathered crowd; film-like desaturated grade.
+    - `0:29` Final title card: glowing backlit silhouette of an agent in haze/smoke with 'CBP.GOV/CAREERS' superimposed across the frame.
+
+### 2025-12-19 — @CBP — cinematic narrative promo spot
+- **Link:** https://x.com/CBP/status/2002063883624648729
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 62.52s  |  **Likes:** 575  **RTs:** 116
+- **On-screen / notable text:** ['Even Santa has made his travel plans easy and simplified!', 'Global Entry']
+- **Summary:** A staged, cinematic holiday narrative spot in which Santa Claus 'travels' to the United States: he rides his reindeer-drawn sleigh onto a nighttime airport tarmac, appears on a Global Entry biometric kiosk screen, then strolls through the terminal with his gift sack as wrapped presents ride the baggage carousel and he poses cheerfully for the camera. It is a polished, commercial-style promotion for CBP's Global Entry expedited-arrival program, using a whimsical Santa character and movie-quality lighting/editing to make travel processing feel magical and friendly. This fits produced content: it is a scripted, acted, cinematically shot promotional spot rather than a raw clip, speech, or news segment.
+- **Script (timestamped):**
+    - `0:06` Over-the-shoulder shot from behind Santa Claus driving his reindeer-drawn sleigh down a darkened airport runway, jet and runway lights in the distance; cinematic night cinematography.
+    - `0:19` Close-up of a Global Entry biometric kiosk screen displaying Santa standing in the terminal as travelers blur past in the background.
+    - `0:31` Wide terminal shot: Santa crouches near a baggage carousel in the arrivals hall as passengers queue; foreground wrapped Christmas presents with bows ride the conveyor belt.
+    - `0:43` Tracking shot following Santa from behind, red sack over his shoulder, walking briskly through the bright airport concourse.
+    - `0:56` Cheerful close-up of Santa smiling and gesturing to the camera under terminal lights, capping the spot promoting Global Entry.
+
+### 2025-12-20 — @DHSgov — stylized cinematic Christmas montage
+- **Link:** https://x.com/DHSgov/status/2002424827798585786
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 40.006s  |  **Likes:** 28432  **RTs:** 3570
+- **On-screen / notable text:** ['Christmas After Mass Deportations', 'MIRTHNUKE', 'This Christmas, our hearts grow as our illegal population shrinks.']
+- **Summary:** A heavily stylized, fast-cut holiday montage titled 'Christmas After Mass Deportations' / 'MIRTHNUKE' that intercuts cinematic, color-graded vignettes (a man gazing out over a glowing city skyline, Santa Claus, a sunglasses-wearing figure in festive military/elf garb, candlelit Christmas scenes) with a CGI snow-globe-style explosion blooming over a night-lit Earth, all overlaid with ornate glowing-green gothic title text and snowflake VFX. The emotional appeal is triumphalist holiday spectacle, celebrating mass deportations as a Christmas 'gift' to America ('our hearts grow as our illegal population shrinks') wrapped in a meme-y, internet-native edit aesthetic. This fits youth-appeal produced content: it is a designed entertainment piece with VFX, dramatic color grading and edgy ironic styling rather than a speech, interview, or raw clip.
+- **Script (timestamped):**
+    - `0:04` Cinematic profile of a man silhouetted against a glowing golden city skyline seen through a window; ornate glowing-green gothic title text 'Christmas After Mass Deportations' overlaid.
+    - `0:12` Stylized red-and-white close-up of Santa Claus figure with dramatic green-tinted lighting; same 'Christmas After Mass Deportations' title text held on screen.
+    - `0:20` Close-up of a stern figure in sunglasses wearing a festive red beret and green/red military-style uniform with candy-cane tie; cinematic shallow-focus look, title text persists.
+    - `0:28` Dark, candlelit outdoor Christmas scene with string lights on a house and figures moving, washed in deep green tones; gothic title text glowing center-frame.
+    - `0:36` CGI shot of a colorful confetti/snow explosion blooming over a night-lit planet Earth amid falling snowflakes; large glowing-green gothic title 'MIRTHNUKE' across the globe.
+
+### 2025-12-24 — @DHSgov — nostalgic cinematic Christmas montage
+- **Link:** https://x.com/DHSgov/status/2003862964336759062
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 85.118s  |  **Likes:** 48354  **RTs:** 7807
+- **On-screen / notable text:** ['MERRY CHRISTMAS', 'Merry Christmas, America. We are blessed to share a nation and a Savior.']
+- **Summary:** A heavily stylized, vintage-graded Christmas montage built from warm, grainy archival/home-movie-style footage: a giddy red-haired toddler amid torn wrapping paper, a bespectacled boy in plaid pajamas hugging a big red-and-green wrapped gift (an 'A Christmas Story' homage), an abstract glowing warm-toned shot, a figure cradling a burst of golden light, and a retro film clip of planet Earth from space with a yellow 'MERRY CHRISTMAS' title. The emotional appeal is sentimental, faith-and-nostalgia patriotism ('We are blessed to share a nation and a Savior'), trading on Americana memory and warmth. This fits youth-appeal produced content: it is a deliberately designed, film-graded montage with VFX and retro aesthetic, not a speech, interview, or raw clip.
+- **Script (timestamped):**
+    - `0:08` Grainy, warm home-movie-style shot of a laughing red-haired toddler standing among torn Christmas wrapping paper and toys, an adult hand reaching toward a red gift.
+    - `0:25` Vintage-toned shot of a young boy in plaid pajamas and round glasses smiling as he hugs a large red gift with a green ribbon and bow (evoking 'A Christmas Story').
+    - `0:42` Soft, abstract warm-amber glowing texture/close-up, dreamlike transitional imagery with film-grain styling.
+    - `0:59` Cinematic shot of a figure in winter clothing cradling a brilliant burst of golden light/sparkles against a snowy backdrop.
+    - `1:16` Retro film clip of planet Earth seen from space against black, with yellow caption 'MERRY CHRISTMAS' across the bottom.
 
 ### 2025-12-24 — @USDOL — music video
 - **Link:** https://x.com/USDOL/status/2003952188234911825
@@ -358,6 +442,30 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 56 vide
     - `0:24` Interior of what appears to be a small food/restaurant counter; an agent confronts a blurred-face individual in a plaid shirt.
     - `0:30` Animated U.S. Department of Homeland Security seal on a white background as the closing brand card.
 
+### 2025-12-30 — @USDOL — utopian hype montage
+- **Link:** https://x.com/USDOL/status/2005822001559060987
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 14.381s  |  **Likes:** 4524  **RTs:** 892
+- **On-screen / notable text:** OUR ANCESTORS CLIMBED; CROSSED DESERTS; WIDE OPEN PLAINS; WHO NEVER GAVE UP; EVER GAVE IN; (tweet) One American Heritage.
+- **Summary:** A cinematic, stylized Department of Labor montage built from desaturated sepia/black-and-white historical paintings (Founding Fathers, colonial soldiers, a gilded George Washington equestrian statue, sailing ships, a young serviceman gazing upward) with bold word-by-word animated captions and a swelling musical/scored bed under reverent narration about ancestors who 'climbed mountains, crossed deserts, never gave up.' The mythologizing, heritage-pride tone and slick motion-graphics treatment make it a produced patriotic spectacle aimed at evoking national grandeur, fitting the youth-appeal genre-experiment category.
+- **Script (timestamped):**
+    - `0:01` Sepia/B&W painting of Founding-era figures (Constitutional convention scene); animated white caption fades in: 'OUR ANCESTORS CLIMBED'; reverent music with narration begins.
+    - `0:04` Desaturated montage layering colonial figures with a gilded statue and a soldier-on-horseback motif; caption 'CROSSED DESERTS,' narration: 'crossed deserts...'
+    - `0:07` Ranks of colonial soldiers with a Revolutionary flag and the gold Washington equestrian statue; caption 'WIDE OPEN PLAINS.'
+    - `0:10` Close-up of a young uniformed serviceman gazing upward over a smoky battlefield, gold statue in foreground; caption 'WHO NEVER GAVE UP,' narration: 'champions who never gave up...'
+    - `0:13` Gold Washington-on-horseback statue silhouetted against a misty harbor with a tall sailing ship; caption 'EVER GAVE IN,' narration: 'who never ever gave in.'
+
+### 2025-12-30 — @USDOL — utopian hype montage
+- **Link:** https://x.com/USDOL/status/2006057318476022191
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 14.381s  |  **Likes:** 4524  **RTs:** 892
+- **On-screen / notable text:** OUR ANCESTORS CLIMBED; CROSSED DESERTS; WIDE OPEN PLAINS; WHO NEVER GAVE UP; EVER GAVE IN; (tweet) One American Heritage.
+- **Summary:** A retweet of the same 'One American Heritage' Department of Labor video: a cinematic, stylized montage of desaturated sepia/B&W historical paintings (Founding Fathers, colonial soldiers, gilded Washington equestrian statue, sailing ships, a young serviceman) with word-by-word animated captions and scored narration glorifying American ancestors. The mythologizing heritage-pride tone and slick motion graphics make it a produced patriotic spectacle, in scope for the youth-appeal genre-experiment category.
+- **Script (timestamped):**
+    - `0:01` Sepia/B&W painting of Founding-era figures; animated caption 'OUR ANCESTORS CLIMBED'; reverent scored narration begins.
+    - `0:04` Desaturated layered montage of colonial figures and a gilded statue; caption 'CROSSED DESERTS,' narration: 'crossed deserts...'
+    - `0:07` Ranks of colonial soldiers with Revolutionary flag and gold Washington equestrian statue; caption 'WIDE OPEN PLAINS.'
+    - `0:10` Close-up of a young serviceman gazing upward over a smoky battlefield; caption 'WHO NEVER GAVE UP.'
+    - `0:13` Gold Washington-on-horseback statue against a misty harbor with tall ship; caption 'EVER GAVE IN,' narration: 'who never ever gave in.'
+
 ### 2025-12-31 — @ICEgov — year-in-review hype montage
 - **Link:** https://x.com/ICEgov/status/2006475169221562434
 - **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 43.293s  |  **Likes:** 8373  **RTs:** 1409
@@ -370,6 +478,30 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 56 vide
     - `0:30` Agent in 'POLICE / Homeland Security Investigations' vest breaches and moves through an interior doorway during a raid.
     - `0:39` Cinematic macro close-up of a gold HSI/federal agent badge lying beside a holstered/black pistol.
 
+### 2026-01-01 — @USDOL — utopian hype montage
+- **Link:** https://x.com/USDOL/status/2006531496903856392
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 14.614s  |  **Likes:** 4356  **RTs:** 886
+- **On-screen / notable text:** THE AMERICAN REVIVAL; (tweet) Patriotism is Prevailing. The American Revival is here.
+- **Summary:** A cinematic Department of Labor 'American Revival' spot mixing vintage B&W illustrations of jubilant Americans with high-contrast, color-graded footage of Trump and Melania descending the White House stairs, Trump silhouetted pointing at a giant U.S. flag, and a low-angle hero shot of Trump against the sky, all under a recurring 'THE AMERICAN REVIVAL' title, scored music, and Trump narration ('one year ago our country was dead, now we are the hottest country anywhere in the world'). The triumphant, stylized hagiographic treatment makes it a produced political hype montage built for shareable patriotic spectacle, in scope.
+- **Script (timestamped):**
+    - `0:01` Vintage B&W illustration of a crowd of cheering Americans; centered title 'THE AMERICAN REVIVAL'; uplifting scored music begins, Trump VO: 'one year ago our country was dead...'
+    - `0:04` Sepia-toned footage of Trump and Melania descending a White House staircase holding hands; title 'THE AMERICAN REVIVAL' overlaid.
+    - `0:07` Dramatic silhouette of Trump pointing toward a huge backlit American flag onstage; title 'THE AMERICAN REVIVAL.'
+    - `0:10` Low-angle heroic shot of Trump gazing into the distance against a bright cloudy sky; title 'THE AMERICAN REVIVAL,' VO: 'now we are the hottest country anywhere in the world.'
+    - `0:13` Black end card with the white Department of Labor seal; music swells out.
+
+### 2026-01-01 — @USDOL — utopian hype montage
+- **Link:** https://x.com/USDOL/status/2006551546666914245
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 14.614s  |  **Likes:** 4356  **RTs:** 886
+- **On-screen / notable text:** THE AMERICAN REVIVAL; (tweet) Patriotism is Prevailing. The American Revival is here.
+- **Summary:** A retweet of the same 'American Revival' Department of Labor spot: a cinematic montage mixing vintage B&W illustrations of cheering Americans with color-graded hero footage of Trump and Melania at the White House, Trump silhouetted pointing at a giant flag, and a low-angle shot of Trump against the sky, under a recurring 'THE AMERICAN REVIVAL' title, scored music, and Trump narration. The triumphant, stylized treatment makes it a produced political hype montage, in scope for the youth-appeal genre-experiment category.
+- **Script (timestamped):**
+    - `0:01` Vintage B&W illustration of a cheering American crowd; title 'THE AMERICAN REVIVAL'; scored music and Trump VO begin: 'one year ago our country was dead...'
+    - `0:04` Sepia footage of Trump and Melania descending a White House staircase; 'THE AMERICAN REVIVAL' overlay.
+    - `0:07` Silhouette of Trump pointing toward a giant backlit U.S. flag onstage; 'THE AMERICAN REVIVAL.'
+    - `0:10` Low-angle heroic shot of Trump against a cloudy sky; 'THE AMERICAN REVIVAL,' VO: 'now we are the hottest country anywhere in the world.'
+    - `0:13` Black end card with white Department of Labor seal.
+
 ### 2026-01-03 — @USDOL — patriotic hype montage
 - **Link:** https://x.com/USDOL/status/2007252191564779739
 - **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 16.0s  |  **Likes:** 52640  **RTs:** 10300
@@ -381,6 +513,30 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 56 vide
     - `0:08` A lone worker harnessed and climbing/restoring the curved surface of the statue high against cloudy sky.
     - `0:11` Hazy monochrome view of a Mount Rushmore presidential face emerging through mist; slogan persists.
     - `0:14` Cut to black with the animated white U.S. Department of Labor seal ('DEPARTMENT OF LABOR / UNITED STATES OF AMERICA') as the closing brand card.
+
+### 2026-01-06 — @USDOL — utopian hype montage
+- **Link:** https://x.com/USDOL/status/2008352603252380027
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 12.483s  |  **Likes:** 8057  **RTs:** 1796
+- **On-screen / notable text:** ONE AMERICAN HERITAGE; (VO) one family, one glorious nation under God... the future's ours; (tweet) The Future is Ours
+- **Summary:** A cinematic Department of Labor 'One American Heritage / The Future Is Ours' montage built from desaturated B&W heroic illustrations (pioneers and settlers with a horse and dog marching through a redwood forest, wholesome youths saluting and holding the U.S. flag) with the recurring animated title 'ONE AMERICAN HERITAGE,' scored music, and narration ('one family, one glorious nation under God... the future's ours'). The mythologizing pioneer-pride imagery and slick motion graphics make it a produced patriotic spectacle aimed at stirring national pride, in scope.
+- **Script (timestamped):**
+    - `0:01` B&W illustration of pioneers/settlers with a horse and dog marching through a sunlit redwood forest; animated title 'ONE AMERICAN HERITAGE'; scored music with narration begins.
+    - `0:04` B&W illustration of wholesome young Americans gazing upward while holding a U.S. flag; title 'ONE AMERICAN HERITAGE,' VO: 'one family, one glorious nation under God...'
+    - `0:06` Continued heroic illustration montage of flag-bearing youths; title 'ONE AMERICAN HERITAGE.'
+    - `0:09` Patriotic illustration with rising music, VO: 'nothing will stand in our way because we are Americans, the future's ours.'
+    - `0:11` Black end card with the white Department of Labor seal.
+
+### 2026-01-06 — @USDOL — utopian hype montage
+- **Link:** https://x.com/USDOL/status/2008681911485690312
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 18.416s  |  **Likes:** 8073  **RTs:** 1168
+- **On-screen / notable text:** RIGHTFUL PLACE; AND ADMIRATION; THE FUTURE IS OURS; (VO) America will reclaim its rightful place as the greatest, most powerful nation on Earth; (tweet) The Future is Ours, American.
+- **Summary:** A cinematic Department of Labor 'The Future Is Ours' spot with dramatic color-graded imagery: a tattered U.S. flag whipping in gray wind ('RIGHTFUL PLACE'), a B-2 stealth bomber flanked by fighter jets in formation ('AND ADMIRATION'), and a hero tracking shot of Trump walking through a steel mill flanked by rows of hard-hatted workers ('THE FUTURE IS OURS'), all under a swelling score and grand narration ('America will reclaim its rightful place as the greatest, most powerful nation on Earth'). The militaristic, triumphalist montage styling makes it a produced patriotic hype piece, clearly in scope for the youth-appeal genre-experiment category.
+- **Script (timestamped):**
+    - `0:02` Moody, desaturated shot of a worn U.S. flag flapping on a pole against an overcast sky; caption 'RIGHTFUL PLACE'; cinematic score with grand narration: 'America will reclaim its rightful place...'
+    - `0:05` Low-angle shot of a B-2 stealth bomber escorted by fighter jets flying in formation; caption 'AND ADMIRATION,' VO: '...the admiration of the entire world.'
+    - `0:09` Hero tracking shot of Trump walking through an industrial steel mill (giant steel coils) flanked by ranks of hard-hatted workers; caption 'THE FUTURE IS OURS.'
+    - `0:12` Continued steelworker hero imagery; VO: 'nothing will stand in our way because we are Americans...'
+    - `0:16` Final triumphant frame with the music peaking, VO: '...the future's ours.'
 
 ### 2026-01-07 — @USDOL — utopian hype montage
 - **Link:** https://x.com/USDOL/status/2008955144503714070
@@ -442,6 +598,18 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 56 vide
     - `2:37` Aerial window view over dense green forest past a blue aircraft wing/engine; montage of economic and border claims ('zero illegal crossing,' 'the economy is soaring,' 'the one big beautiful bill on July 4th').
     - `3:21` Low silhouette of a large aircraft's landing gear at dusk on a runway with sunset glow; closing build toward 2026 with 'the American people have so much to look forward to' and patriotic music swell.
 
+### 2026-01-29 — @DHSgov — trailer-style self-deportation ad (CGI)
+- **Link:** https://x.com/DHSgov/status/2016895448644976835
+- **Genre/tags:** —  |  **Set to music:** False  |  **Duration:** 20.854s  |  **Likes:** 36238  **RTs:** 8820
+- **On-screen / notable text:** HOMESICK?; LIMITED TIME ONLY; $2600 STIPEND; OFFER ONLY VALID FOR ILLEGAL ALIENS; COLOMBIA; MYANMAR; What would you like to do today?; I'm ready to leave the U.S.; Verify I left the U.S.; DHS.GOV/CBPHOME
+- **Summary:** A slickly produced, social-media-native self-deportation advertisement: aerial drone shots of foreign locales (Tehran's Azadi Tower, an African village) under a repeated 'HOMESICK?' hook, cutting to glossy CGI/3D-rendered airliners painted with country names (COLOMBIA, MYANMAR) cruising through golden sunset clouds, a floating smartphone demoing the CBP Home app ('I'm ready to leave the U.S.'), and a closing DHS seal. The messaging weaponizes nostalgia and dark irony to push voluntary 'remigration' with a $2,600 stipend, styled like a commercial/travel ad rather than raw footage. The heavy CGI compositing, meme-ad tone, and viral framing make it a produced, youth-targeted spectacle, so it is in scope despite having no audio track.
+- **Script (timestamped):**
+    - `0:02` Aerial drone shot of Tehran's Azadi (Freedom) Tower and surrounding plaza under clear sky; bold white text 'HOMESICK?' centered over the monument.
+    - `0:06` Aerial drone shot over a sun-baked African village of tin-roof homes and trees; 'HOMESICK?' text again overlaid, reinforcing the nostalgia hook.
+    - `0:10` CGI/3D-rendered white commercial airliner labeled 'COLOMBIA' flying through pink-gold sunset clouds; large text 'LIMITED TIME ONLY $2600 STIPEND' with fine print 'OFFER ONLY VALID FOR ILLEGAL ALIENS'.
+    - `0:14` A floating smartphone composited over a rendered 'MYANMAR'-labeled jet in the clouds, showing the CBP Home app screen: 'What would you like to do today?' with buttons 'I'm ready to leave the U.S.' and 'Verify I left the U.S.'
+    - `0:18` DHS Department of Homeland Security seal in white over a soft blue cloudscape; URL 'DHS.GOV/CBPHOME' at bottom.
+
 ### 2026-02-11 — @USDOL — patriotic hype montage
 - **Link:** https://x.com/USDOL/status/2021379766037754164
 - **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 29.312s  |  **Likes:** 2251  **RTs:** 625
@@ -477,6 +645,30 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 56 vide
     - `0:17` Trump speaking at the State of the Union rostrum, VP Vance and Speaker Mike Johnson seated behind him against draped American flags; 'more Americans are working today than at any time in our history.'
     - `0:24` Continued State of the Union shot, Johnson applauding; Trump: '100% of all jobs created under my administration have been in the private sector.'
     - `0:32` Closing brand card: white 'DEPARTMENT OF LABOR / UNITED STATES OF AMERICA' seal superimposed over a slow-motion waving American flag in muted tones.
+
+### 2026-02-27 — @CBP — meme-style self-deport promo
+- **Link:** https://x.com/CBP/status/2027383375669977550
+- **Genre/tags:** —  |  **Set to music:** False  |  **Duration:** 11.935s  |  **Likes:** 98  **RTs:** 25
+- **On-screen / notable text:** WHEN YOU DECIDE TO SELF-DEPORT THE EASY WAY... ...AND GET PAID $2,600! / Home - Getting You Home Quickly And Easily - Receive an exit bonus / CBP Detroit Field Office / tweet: 'Use the CBP Home App to self-depart and you could receive a $2,600 exit bonus-up from $1,000! ... leave with cash and a smile!'
+- **Summary:** A stylized social-media-native CBP (Detroit Field Office) promo pushing the CBP Home self-deport app and its raised $2,600 exit bonus. It opens on a phone screen of the app's 'Home / Getting You Home Quickly And Easily / Receive an exit bonus' page overlaid with glowing purple meme-caption typography ('WHEN YOU DECIDE TO SELF-DEPORT THE EASY WAY...'), then cuts to dark, blue-lit cinematic film-style footage of a man with kinetic neon money text exploding across the screen ('...AND GET PAID $2,600!'). The sarcastic meme framing, animated neon typography, and borrowed movie-clip aesthetic make this a produced, youth-targeted spectacle rather than a plain informational promo, even though it carries no audio track.
+- **Script (timestamped):**
+    - `0:01` Phone screenshot of the CBP Home app 'Home' screen ('Getting You Home Quickly And Easily', 'Receive an exit bonus', blue 'Continue' button). Glowing purple/magenta meme caption overlaid at top: 'WHEN YOU DECIDE TO SELF-DEPORT THE EASY WAY...' with a cartoon of an adult swinging a child. CBP / Detroit Field Office seal at bottom.
+    - `0:04` Same app screen held, meme caption still on screen, building the setup.
+    - `0:06` Cut to dark blue-lit, film-style footage of a man in a moody nightclub/cinematic scene; neon caption begins to appear.
+    - `0:08` Kinetic neon dollar-amount typography explodes/zooms across the frame in stacked red, yellow and pink layers: 'AND GET PAID $2,600!' over the blue cinematic footage.
+    - `0:11` Final beat: glowing purple/black-outline text '...AND GET PAID $2,600!' settles over the blue-lit man; CBP Field Operations seal in corner.
+
+### 2026-02-27 — @DHSgov — kinetic-typography political montage
+- **Link:** https://x.com/DHSgov/status/2027455656404386161
+- **Genre/tags:** —  |  **Set to music:** False  |  **Duration:** 48.381s  |  **Likes:** 5194  **RTs:** 1417
+- **On-screen / notable text:** FIRST DUTY OF THE AMERICAN GOVERNMENT / *DEMOCRATS REMAIN SEATED* / ...ALL OVER OUR COUNTRY. / DANGEROUS REPEAT OFFENDERS / GUILTY / tweet: 'We STAND with @POTUS Trump. We STAND with Angel Families. We STAND with AMERICANS.'
+- **Summary:** A heavily produced DHS montage built around Trump's joint-address speech footage, cut together with B-roll of migrant caravans and perpetrator/victim imagery and driven by large kinetic-typography captions. Big animated word-blocks ('FIRST DUTY OF THE AMERICAN GOVERNMENT', '*DEMOCRATS REMAIN SEATED*', 'ALL OVER OUR COUNTRY', 'DANGEROUS REPEAT OFFENDERS / GUILTY') hammer a fear-and-grievance message tying immigration to crime and casting Democrats as obstructionist. The stylized typographic editing, scene cutting, and emotional villain/victim framing make it a produced spectacle aimed at shareable social engagement rather than a raw speech clip.
+- **Script (timestamped):**
+    - `0:05` Trump at the rostrum of a joint session of Congress (flags behind), tight punch-in shot. Large gray kinetic typography over him: 'FIRST DUTY OF THE AMERICAN GOVERNMENT'.
+    - `0:14` Wide handheld-style shot of the congressional chamber with members seated; white caption '*DEMOCRATS REMAIN SEATED*' at bottom, framing Democrats as refusing to applaud.
+    - `0:24` B-roll of a large migrant caravan/crowd walking up a road past vehicles in daylight; caption '...ALL OVER OUR COUNTRY.' with 'COUNTRY' highlighted in red.
+    - `0:34` Back to Trump speaking at the rostrum, red tie, flag backdrop; vertical-crop news-style framing continuing the address.
+    - `0:44` Split/overlay of a male suspect's face beside a smiling young woman (victim); red-highlighted caption 'DANGEROUS REPEAT OFFENDERS' over giant white word 'GUILTY' filling the lower frame.
 
 ### 2026-05-03 — @USDOL — recruitment hype montage
 - **Link:** https://x.com/USDOL/status/2051022799414645118
@@ -632,6 +824,28 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 56 vide
     - `0:30` Tilting interior shot looking up at the richly painted, gilded temple ceiling beams and red columns.
     - `0:39` Slow-motion wide hero shot of Trump, Melania, Xi and Eric Trump walking abreast across the plaza flanked by security, with stylized white lower-third graphic text reading 'PRESIDENT DONALD ... TRUMP.'
 
+### 2026-05-16 — @RapidResponse47 — meme war-clip edit
+- **Link:** https://x.com/RapidResponse47/status/2055706696379408598
+- **Genre/tags:** —  |  **Set to music:** False  |  **Duration:** 5.78s  |  **Likes:** 6360  **RTs:** 1196
+- **On-screen / notable text:** ['Donald J. Trump @realDonaldTrump', 'Bop, bop, bop, bop, ok we have it in our sight. Fire boom!']
+- **Summary:** A short shareable meme clip presented as a screen-recorded repost of a @realDonaldTrump tweet: a U.S. Navy destroyer fires a glowing laser/CIWS tracer beam that shoots down an incoming drone over the ocean, with a small picture-in-picture of Trump gesturing at a desk and a goofy onomatopoeia voiceover ('Bop bop bop... Fire boom!'). The appeal is punchy, jokey, internet-native militarism celebrating force as spectacle; the meme styling, sound-effect comedy and PIP composite make it a produced social-media meme edit rather than raw footage.
+- **Script (timestamped):**
+    - `0:00` Screen-recorded Trump tweet (avatar + 'Donald J. Trump @realDonaldTrump'); embedded video shows a gray Navy destroyer flying a U.S. flag underway on open water under a bright sun, a small drone visible in the sky. Inset PIP of Trump at a desk gesturing.
+    - `0:02` The drone closes in toward the warship; sunny seascape, Trump PIP still bottom-right. Comedic VO: 'Bop, bop, bop, bop, ok we have it in our sight.'
+    - `0:04` The destroyer fires a vivid orange laser/tracer beam striking the drone in a burst of flame. VO: 'Fire boom!' Trump PIP reacts at the desk.
+
+### 2026-05-16 — @WhiteHouse — cinematic diplomacy montage
+- **Link:** https://x.com/WhiteHouse/status/2055743427963142194
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 38.1s  |  **Likes:** 14055  **RTs:** 2612
+- **On-screen / notable text:** ['WELCOMING BANQUET', 'MAY 14, 2026', 'PRESIDENT DONALD J. TRUMP', 'This bond of commerce and respect that stretches back 250 years is the foundation for a future that benefits both of our nations.']
+- **Summary:** A glossy, cinematically graded montage of Trump's state visit to China, set to music under a Trump voiceover about the 250-year 'bond of commerce and respect' between the American and Chinese people. Stylized title cards ('WELCOMING BANQUET / MAY 14, 2026'), a moody nighttime wide shot with elegant tracking typography 'PRESIDENT DONALD J. TRUMP' and animated architectural line-graphics over the Great Hall, plus slow prestige shots of ornate chandeliers and the Trump-Xi handshake. The appeal is grandeur and statesmanship-as-spectacle, packaging diplomacy like a prestige film trailer, which fits produced entertainment-style content.
+- **Script (timestamped):**
+    - `0:03` Slow upward-tracking shot of ornate Great Hall ceiling with massive gold chandeliers and richly painted coffers; deep cinematic color. VO: 'The relationship between the American and Chinese people goes all the way back to America's founding.'
+    - `0:11` Trump at a podium on a red-lit stage, title card overlay 'WELCOMING BANQUET / 2026 / MAY 14, 2026'; audience silhouetted in foreground. VO: 'From the beginning, our citizens have shared a deep sense of mutual respect.'
+    - `0:19` Wide banquet-hall shot, Trump greeting Xi amid red drapery and floral tables, blurred press cameras; saturated red/blue grade. VO: 'The bond of commerce and respect that stretches back 250 years is the foundation for a future that benefits both of our nations.'
+    - `0:26` Trump and Xi shake hands in a receiving line flanked by delegations; warm cinematic lighting. VO: 'The American and Chinese people share much in common. We value hard work.'
+    - `0:34` Dramatic nighttime wide of the floodlit Great Hall, Trump's motorcade and walking delegation on a red carpet, animated white architectural line-graphic and elegant tracking text 'PRESIDENT DONALD J. TRUMP.' VO: 'We value courage and achievement. We love our families and we love our countries.'
+
 ### 2026-05-18 — @WhiteHouse — utopian hype montage
 - **Link:** https://x.com/WhiteHouse/status/2056392364495626330
 - **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 26.089s  |  **Likes:** 39780  **RTs:** 7116
@@ -656,6 +870,18 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 56 vide
     - `0:18` Warm, shallow-focus shot lit with red and gold bokeh of Trump and a woman seen from behind walking into an ornate room.
     - `0:23` End card on black: white line-art illustration of the White House with text 'PRESIDENT DONALD J. TRUMP.'
 
+### 2026-05-18 — @WhiteHouse — utopian hype montage
+- **Link:** https://x.com/WhiteHouse/status/2056439572695814292
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 70.845s  |  **Likes:** 5892  **RTs:** 1120
+- **On-screen / notable text:** ['IS A BROKEN PROMISE TO A VETERAN', 'MAKING AMERICA', "you don't get a pass. You get a reckoning", 'Eliminating fraud, restoring trust, making America great again', 'VP Vance and the @WHFraudTF are working around the clock to eliminate fraud and Make America great Again']
+- **Summary:** A polished, cinematically color-graded campaign-style hype montage promoting VP Vance and the White House Fraud Task Force, narrated in voiceover over swelling music and patriotic imagery (giant American flag, veterans saluting, Trump and Vance saluting at Arlington, Vance working a diner crowd in slow motion). Big animated gold kinetic typography punches in emotional beats ('a broken promise to a veteran,' 'MAKING AMERICA'). The emotional appeal is heroic, sentimental and tough-on-crime ('you don't get a pass, you get a reckoning'), packaging anti-fraud policy as an inspirational builders-vs-scammers spectacle, which fits youth-appeal produced content.
+- **Script (timestamped):**
+    - `0:07` Color-graded shot of uniformed veterans in caps saluting beneath an enormous waving American flag; gold animated caption '...IS A BROKEN PROMISE TO A VETERAN.' VO: 'Every dollar lost to fraud is a broken promise to a senior on a fixed income, a veteran waiting for care, or a family trying to catch a break.'
+    - `0:21` Backlit wide shot of Trump and VP Vance saluting on a flag-draped colonnade (Arlington-style ceremony), warm dusk tones. VO continues on consequences for fraud: 'if you take something that isn't yours, you don't get a pass. You get a reckoning.'
+    - `0:35` Cinematic interior of a formal banquet/Cabinet-style table with seated officials, shallow depth of field. VO: 'Fraud, waste, and abuse are unacceptable... has exposed tens of billions of dollars of fraud against you.'
+    - `0:49` Handheld slow-motion shot of VP Vance moving through a crowded diner, greeting people. VO: 'The whole of government approach is working. And that's only the beginning.'
+    - `1:03` Gold kinetic title 'MAKING AMERICA' over a clean shot of Trump and Vance walking the White House colonnade. VO closes: 'The American dream is meant for builders, not scammers... Eliminating fraud, restoring trust, making America great again.'
+
 ### 2026-05-19 — @WhiteHouse — cinematic promo reel
 - **Link:** https://x.com/WhiteHouse/status/2056831393678704817
 - **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 26.046s  |  **Likes:** 9637  **RTs:** 1633
@@ -667,6 +893,30 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 56 vide
     - `0:13` Trump gestures and points toward the easel boards showing classical-columned architectural renderings of the planned ballroom; construction materials and workers behind.
     - `0:18` Cinematic close-up of Trump speaking, eyes closed mid-word, warm sunlight, blurred construction site and White House structures behind him.
     - `0:23` End card on black: white line-art illustration of the White House with text 'PRESIDENT DONALD J. TRUMP.'
+
+### 2026-05-20 — @CBP — stylized enforcement hype montage
+- **Link:** https://x.com/CBP/status/2057136781452009644
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 13.68s  |  **Likes:** 1045  **RTs:** 201
+- **On-screen / notable text:** On-screen lyric-style captions: HEAR / ONLY / YOU / GO. Tweet: 'If you're here illegally, you have until the end of this song to go. Download the CBP Home App and self-deport today.'
+- **Summary:** A fast-cut CBP enforcement montage set to a music track, with large bold word-by-word lyric-style captions (HEAR / ONLY / YOU / GO) flashing over the action. Footage includes aerial thermal/drone surveillance of agents chasing a suspect, a nighttime vehicle pursuit, a patrol helicopter, and an agent grabbing a man trying to climb a spiked fence. The tweet frames it as a self-deportation ultimatum ('you have until the end of this song to go'), packaging hard enforcement as a punchy, social-media-native, music-driven spectacle aimed at going viral.
+- **Script (timestamped):**
+    - `0:01` Aerial drone/thermal-overlay view (green HUD crosshairs, compass markings) looking down on a dirt lot; agents and vehicles converge on a fleeing figure. Bold white caption 'HEAR' centered.
+    - `0:04` Nighttime shot of a dark SUV (spare-tire cover visible) driving down a rural road with red tail-lights, a pursuit/patrol scene in low light.
+    - `0:06` Dark night-vision/dashboard interior view of an agent driving, headlights cutting through black, dashboard instrument cluster glowing. Bold caption 'ONLY'.
+    - `0:09` A white CBP patrol helicopter hovers against a blue cloudy sky. Bold caption 'YOU' appears over it.
+    - `0:12` Daytime: a man in dark clothing perched atop a tall black spiked metal fence as a CBP agent in tactical vest leaps up to grab him and pull him down. Bold caption 'GO'.
+
+### 2026-05-20 — @DHSgov — stylized remigration montage
+- **Link:** https://x.com/DHSgov/status/2057225541757903141
+- **Genre/tags:** —  |  **Set to music:** False  |  **Duration:** 50.183s  |  **Likes:** 9096  **RTs:** 2313
+- **On-screen / notable text:** On-screen title card: 'REMIGRATE'. Tweet: 'Americans are the inheritors of the most incredible civilization that has ever existed. Our job is to defend it.'
+- **Summary:** A heavily stylized DHS montage built around the slogan/title card 'REMIGRATE,' mixing a deliberate VHS/glitch grain filter over aerial surveillance footage with dramatic serif title cards and edited clips of immigration arrests and detention processing. The aesthetic (retro-degraded filter, stark black title card, fast cuts of cuffed detainees) is engineered as shareable ideological spectacle rather than informational reporting. Paired with grandiose civilizational rhetoric ('inheritors of the most incredible civilization... Our job is to defend it'), it markets mass deportation as a heroic, edgy, online-native cause, fitting the youth-appeal produced category.
+- **Script (timestamped):**
+    - `0:05` Aerial/overhead shot of a lone figure standing on pavement, rendered through a heavy black-and-white VHS static/glitch grain filter for a degraded, ominous aesthetic.
+    - `0:15` Stark full-screen black title card with bold white serif text 'REMIGRATE' centered.
+    - `0:25` Sun-lit street scene by a Mobil gas station: a man in a backwards cap and tan shirt being detained/escorted by a pl-clothes agent (face blurred); patrol vehicle tail-light in foreground.
+    - `0:35` Motion-blurred whip-pan transition over grass and a roadway, used as a kinetic cut between scenes.
+    - `0:45` Interior of a processing facility: two men in handcuffs, one in a blue patterned shirt and one in a dark sweater, stand against a cinderblock wall being processed/moved through a doorway.
 
 ### 2026-05-22 — @ICEgov — cinematic PSA
 - **Link:** https://x.com/ICEgov/status/2057900574268375128
