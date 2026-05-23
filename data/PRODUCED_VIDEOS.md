@@ -2,7 +2,7 @@
 
 Videos disseminated by US federal immigration agencies (DHS, ICE, CBP, USCIS, White House, POTUS, DOL and related accounts) that are produced as **entertainment/spectacle to appeal to a mass/young audience** — set to music, with pop-culture genre styling (music video, dystopian/sci-fi, war-movie, utopian hype montage, ASMR, anime/meme, true-crime, recruitment-as-trailer, parody). Raw speeches, interviews, news clips and plain informational PSAs are excluded.
 
-_Identified by Opus agents reading the archived keyframes + transcripts. 48 videos._
+_Identified by Opus agents reading the archived keyframes + transcripts. 56 videos._
 
 ## Background / commentary
 
@@ -130,6 +130,30 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 48 vide
     - `1:03` Map of the Northeast, New York highlighted red, pin region. Dark trapezoid card in italic serif: 'New York: Rwandan Genocide Criminal Arrested for Lying on Green Card & Citizenship Applications.' DHS/USCIS lockup.
     - `1:21` Map returns to Massachusetts, pin on the coast. Card: 'Boston, MA: Former Haitian Mayor Convicted on Three Counts of Visa Fraud for Lying about his Involvement in Political Killings.' 'BUSTED & BOOTED' logo and DHS/USCIS branding throughout.
 
+### 2025-05-28 — @DHSgov — war-movie-style edit
+- **Link:** https://x.com/DHSgov/status/1927762687427039689
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 26.8s  |  **Likes:** 1305  **RTs:** 282
+- **On-screen / notable text:** ['AN ANCIENT [...] STILL USED [...] BORDER PATROL [...] IN MODERN LAW ENFORCEMENT', 'U.S. BORDER PATROL', '101 YEAR ANNIVERSARY', "tweet: On Border Patrol's 101st anniversary, we honor and thank all who've worn the uniform. A nation without borders is no nation at all."]
+- **Summary:** A cinematic, fast-cut Border Patrol 101st-anniversary tribute that blends vintage black-and-white archival imagery with dramatic modern tactical footage. It opens on a B&W historical photo of a uniformed agent beside a museum text card ('AN ANCIENT [tactic] STILL USED... IN MODERN LAW ENFORCEMENT'), cuts to color footage of agents mounting an armored vehicle, then high-contrast slow-motion of a masked operator in multicam (CZ15 patch), a blurred-face tactical stack breaching a door, and resolves on a stylized 'U.S. BORDER PATROL 101 YEAR ANNIVERSARY' title card. The heroic, military trailer-style framing and editing are aimed at glorifying the agency and appealing to a youth/recruitment-minded audience, so it fits produced genre content despite metadata flagging no audio track.
+- **Script (timestamped):**
+    - `0:03` Vintage black-and-white photo of a Border Patrol agent in old-style uniform and campaign hat standing in front of a museum display; overlaid white text card reads 'AN ANCIENT [...] STILL USED [...] BORDER PATROL [...] IN MODERN LAW ENFORCEMENT'. Sets a historical-legacy tone.
+    - `0:08` Color footage of a green-uniformed agent in beret climbing onto a tan armored/tactical vehicle near a bridge and water; rugged operational feel.
+    - `0:13` Dramatic high-contrast black-and-white slow-motion of a masked agent in helmet, NODs mount, balaclava and multicam plate carrier (visible 'CZ15' patch) standing in an open field; war-movie hero shot.
+    - `0:18` Tactical entry team in camo with blurred (redacted) faces stacked against a dark interior door mid-breach; SWAT-style action.
+    - `0:24` Black title card with the yellow circular 'U.S. BORDER PATROL' shield logo and red/white text '101 YEAR ANNIVE[RSARY]'; closing brand card.
+
+### 2025-05-28 — @DHSgov — utopian hype montage
+- **Link:** https://x.com/DHSgov/status/1927853958464426363
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 83.04s  |  **Likes:** 0  **RTs:** 0
+- **On-screen / notable text:** ['U.S. BORDER PATROL', 'THE U.S. BORDER PATROL', '274303', "tweet: On the 101st anniversary of the U.S. Border Patrol, we thank all who've worn the green for their honorable service. We will ALWAYS have your back!"]
+- **Summary:** A polished Border Patrol 101st-anniversary tribute montage with a persistent yellow 'U.S. BORDER PATROL' logo watermark throughout. It moves from vintage black-and-white archival photos (agents posing with confiscated liquor barrels, captioned 'THE U.S. BORDER PATROL') into a sweeping reel of modern agents across dramatic terrains: snowmobile patrol on snow, a river patrol boat, agents carrying a rescued person on a stretcher through desert dust, and mounted horseback patrol (including Sec. Noem in a cowboy hat). The historical-to-present arc, consistent branding, and heroic multi-environment B-roll make it a celebratory produced commemorative piece with emotional/patriotic appeal, fitting the produced category even though metadata reports no audio.
+- **Script (timestamped):**
+    - `0:08` Yellow circular 'U.S. BORDER PATROL' logo top-left over a framed vintage B&W photo of two early agents standing beside a large stack of confiscated liquor barrels and bottles; caption 'THE U.S. BORDER PATROL'. Establishes century-long legacy.
+    - `0:25` Two agents in green cold-weather uniforms and helmets ride snowmobiles across a white snowfield; logo watermark persists. Highlights northern-border operations.
+    - `0:42` A gray Border Patrol rigid-hull patrol boat (hull number 274303) cuts across calm water at dawn; maritime patrol segment.
+    - `0:58` Two tactical agents in helmets and packs carry a person strapped to a rescue litter down a dusty desert road, another figure ahead in the haze; depicts agents performing a rescue/medevac.
+    - `1:14` Two agents on horseback in cowboy hats and green uniforms ride through bare-tree brush; the right rider appears to be Sec. Kristi Noem. Western-styled mounted patrol closing imagery.
+
 ### 2025-05-29 — @ICEgov — war-movie-style enforcement edit
 - **Link:** https://x.com/ICEgov/status/1928195392983945254
 - **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 57.975s  |  **Likes:** 0  **RTs:** 0
@@ -166,6 +190,18 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 48 vide
     - `0:34` A bearded 'SRT'-helmeted operator with an ICE patch escorts the cuffed suspect (green shirt) past a black SUV outside a house with orange fencing.
     - `0:44` Dramatic low close-up of an operator's back/plate carrier ('POST-...') lit with a red wash as he leans into a vehicle; narration tag 'We'll talk in the next video.'
 
+### 2025-07-28 — @DHSgov — war-movie-style cinematic edit
+- **Link:** https://x.com/DHSgov/status/1949913619644493930
+- **Genre/tags:** —  |  **Set to music:** False  |  **Duration:** 41.5s  |  **Likes:** 35674  **RTs:** 7253
+- **On-screen / notable text:** "THE WICKED FLEE WHEN NO MAN PURSUETH; BUT THE RIGHTEOUS ARE BOLD AS A LION." -PROVERBS 28:1; (tweet) TO EVERY CRIMINAL ILLEGAL ALIEN IN AMERICA: Darkness is no longer your ally... US Border Patrol's Special Operations Group will stop at nothing to hunt you down.
+- **Summary:** A heavily color-graded, cinematic montage of US Border Patrol Special Operations Group (SOG) tactical operators kitting up with rifles and night-vision, breaching a red-lit doorway, and standing silhouetted against an orange sunset sky, all overlaid with the recurring Bible verse Proverbs 28:1 ('The wicked flee when no man pursueth; but the righteous are bold as a lion'). The dark, movie-trailer aesthetic and scripture frame the agents as righteous warriors hunting criminals, an explicit dramatized hype/intimidation piece aimed at projecting menace. It is a clear genre experiment (war-movie/cinematic) built for spectacle and virality (35k+ likes), so it is in scope despite metadata flagging no audio track.
+- **Script (timestamped):**
+    - `0:04` Dark, near-black frame: a gloved operator's hand racks/holds a suppressed rifle, faint blue-grey light. Text fades in: 'THE WICKED FLEE WHEN NO MAN PURSUETH'.
+    - `0:12` Silhouette of a tactical operator in helmet and night-vision mount, dim interior. Full verse now shown: 'THE WICKED FLEE WHEN NO MAN PURSUETH; BUT THE RIGHTEOUS ARE BOLD AS A LION.' -PROVERBS 28:1.
+    - `0:20` Two operators breach/move through a doorway glowing deep red, heavily backlit, cinematic shadows; verse overlay continues.
+    - `0:29` Operators silhouetted against a dramatic orange-and-purple sunset sky, low-angle heroic framing; verse overlay continues.
+    - `0:37` Rear silhouette of an operator with night-vision/rifle moving down a dim street toward a lit doorway; verse overlay remains, closing the montage.
+
 ### 2025-08-26 — @USDOL — patriotic hype montage
 - **Link:** https://x.com/USDOL/status/1960141946355085771
 - **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 16.316s  |  **Likes:** 4129  **RTs:** 785
@@ -189,6 +225,18 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 48 vide
     - `0:17` Black-and-white footage of cattle and farmhands at a ranch; caption 'AND REARED THE LIVESTOCK' over VO about growing crops and rearing livestock that fed the world.
     - `0:24` Modern color footage of firefighters in a station, one on crutches shaking hands; caption 'HONORS 250 YEARS' as VO honors the grit and determination of the American Worker.
     - `0:30` Closing card: white Department of Labor / United States of America seal on a black background.
+
+### 2025-09-02 — @USDOL — cinematic montage
+- **Link:** https://x.com/USDOL/status/1963001582066532442
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 41.408s  |  **Likes:** 2708  **RTs:** 668
+- **On-screen / notable text:** PURSUED ENDLESS AMERICA LAST; BUT NOW; HAVE THE OPPORTUNITY; COME FIRST; LORI CHAVEZ-DEREMER; FORGOTTEN NO MORE
+- **Summary:** A polished, cinematically graded Dept. of Labor spot that contrasts a desaturated black-and-white 'forgotten' industrial past with a dramatically backlit, flag-draped present: Trump in hero silhouette under stage lights and JD Vance applauded at a factory rally. Scripted patriotic voiceover over a swelling score sells the 'American workers forgotten no more / Americans come first' message with an emotional, almost movie-trailer appeal aimed at a broad patriotic audience, making it a produced spectacle rather than a raw speech.
+- **Script (timestamped):**
+    - `0:04` Grainy black-and-white footage of an abandoned/decaying factory complex; caption 'PURSUED ENDLESS AMERICA[ LAST]' as VO describes decades of 'America last' trade deals leaving workers behind and forgotten.
+    - `0:12` Dramatic backlit silhouette of Trump pointing, framed by stage spotlights and a large American flag; caption 'BUT NOW,' as VO pivots to Trump's fair trade policies.
+    - `0:20` JD Vance walking through a factory/warehouse rally as workers in red caps applaud; caption 'HAVE THE OPPORTUNITY' over VO about good-paying jobs and the American dream.
+    - `0:29` Low-angle shot of an American flag hanging in a dark industrial space lit by a single work light; caption 'COME FIRST,' as VO says Americans come first.
+    - `0:37` Black screen with the U.S. Department of Labor seal and text 'LORI CHAVEZ-DEREMER'; VO closes that hardworking men and women are 'forgotten no more.'
 
 ### 2025-09-14 — @USDOL — patriotic worker hype montage
 - **Link:** https://x.com/USDOL/status/1967319255793434898
@@ -250,6 +298,42 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 48 vide
     - `0:12` Wide shot of a masked female agent directing a line of detainees across a lot toward transport. Caption: 'DEPORTATION THIS WEEK.'
     - `0:15` Interior of a bus filled with seated, restrained detainees, heads bowed. Caption persists: 'DEPORTATION THIS WEEK.' ICE logo.
 
+### 2025-12-24 — @USDOL — music video
+- **Link:** https://x.com/USDOL/status/2003952188234911825
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 56.74s  |  **Likes:** 11025  **RTs:** 2037
+- **On-screen / notable text:** ['MERRY CHRISTMAS, AMERICA', 'Department of Labor / United States of America (seal)']
+- **Summary:** A nostalgia-driven Christmas music video set to a crooned rendition of 'Have Yourself a Merry Little Christmas,' cutting between beloved mid-century holiday cartoons (Rudolph, Frosty the Snowman), vintage black-and-white Americana footage of a man raising a U.S. flag, and sepia-toned scenes of an old-fashioned family Christmas around the tree, closing on the Department of Labor seal. The emotional appeal is sentimental patriotism and warm Americana, fusing classic pop-culture holiday imagery with national identity. It fits youth-appeal produced content as a music-driven, fully edited nostalgia montage rather than any informational or speech material.
+- **Script (timestamped):**
+    - `0:05` Stop-motion Rudolph the Red-Nosed Reindeer (his red nose glowing) in soft purple-lit set; white serif caption 'MERRY CHRISTMAS, AMERICA' over the image; soft vocal 'Have yourself a merry little Christmas.'
+    - `0:17` Animated Frosty the Snowman with green top hat and pink flower, corncob pipe; same 'MERRY CHRISTMAS, AMERICA' caption; the holiday song continues.
+    - `0:28` Vintage black-and-white footage of a man climbing to raise/wave an American flag against a gray sky; nostalgic Americana tone; caption persists.
+    - `0:39` Faded color archival film of an elderly man in a suit beside a decorated Christmas tree handing a gift to children gathered at his knees; warm sepia family-Christmas mood.
+    - `0:51` Cut to black with the white Department of Labor / United States of America seal centered; song resolves.
+
+### 2025-12-25 — @CBP — cinematic hype montage
+- **Link:** https://x.com/CBP/status/2004041736855998871
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 28.266s  |  **Likes:** 4551  **RTs:** 836
+- **On-screen / notable text:** ['Merry Christmas', 'POLICE - Air and Marine Operations (agent patch)']
+- **Summary:** A stylized CBP Air and Marine Operations Christmas spot: cinematic aerial b-roll of a Black Hawk helicopter banking over a coastal city, AMO interceptor boats throwing huge wakes across turquoise water shot from a helicopter, and a tactical AMO 'POLICE / Air and Marine Operations' agent watching helicopters fly overhead, all dressed up with a flowing cursive 'Merry Christmas' title card and twinkling sparkle/glitter overlays. The appeal is action-spectacle and pride in AMO's hardware and operators, packaging holiday greetings as a slick, share-ready hype reel. It fits youth-appeal produced content as a fully stylized, fast-cut cinematic montage rather than raw footage or an informational card.
+- **Script (timestamped):**
+    - `0:02` Aerial shot of an AMO Black Hawk helicopter banking over a dense coastal city with the sea behind; flowing white cursive title 'Merry Christmas' top-center; sparkle/glitter particles overlaid.
+    - `0:08` Top-down shot skimming over blue water and green mangrove islets, with subtle sparkle overlay continuing the festive, dreamy tone.
+    - `0:14` An AMO patrol boat speeds across deep blue ocean throwing a white wake under a bright sky dotted with glitter sparkles.
+    - `0:19` Helicopter point-of-view (a crew helmet in frame) looking down as two interceptor boats race side by side across turquoise water, carving foamy trails.
+    - `0:25` Ground shot from behind a tactical agent in tan uniform and 'POLICE / Air and Marine Operations' vest and helmet, watching two helicopters fly over a green field; sparkle overlay continues.
+
+### 2025-12-25 — @DHSgov — utopian Americana cinematic montage
+- **Link:** https://x.com/DHSgov/status/2004208041605128250
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 60.56s  |  **Likes:** 63620  **RTs:** 10970
+- **On-screen / notable text:** ['AMERICA', 'Rejoice America, Christ is born! (tweet)']
+- **Summary:** A DHS Christmas spot ('Rejoice America, Christ is born!') built as a sweeping cinematic montage of majestic American winter wilderness: snow-laden mountain forests, a lone bison weathering a blizzard, a misty waterfall in a frozen gorge, a frozen lake under a fiery sunset, and aerial passes over snowy peaks, anchored by an elegant serif 'AMERICA' title. The emotional appeal is reverent national grandeur and religious-patriotic uplift, framing the country itself as sublime and divinely blessed. It fits youth-appeal produced content as a polished, color-graded, music-style utopian landscape montage rather than any speech, news, or informational clip.
+- **Script (timestamped):**
+    - `0:06` Aerial of snow-covered pine forest with a misty snow-capped mountain behind; large white serif title 'AMERICA' centered.
+    - `0:18` A lone bison standing in a windswept snowy plain during falling snow; stark, majestic winter wildlife shot.
+    - `0:30` A tall waterfall pouring into a snow-rimmed gorge with sun breaking through mist; dramatic natural cathedral imagery.
+    - `0:42` A frozen lake with cracked ice in the foreground and snowy mountains under a vivid orange-and-purple sunset sky.
+    - `0:54` Sweeping aerial over jagged snow-covered mountain ridges with a prominent volcanic peak (Mt. Baker-like) on the horizon.
+
 ### 2025-12-25 — @ICEgov — retro pixel-art animated Christmas card / meme spectacle
 - **Link:** https://x.com/ICEgov/status/2004213733946777826
 - **Genre/tags:** genre:advertisement  |  **Set to music:** True  |  **Duration:** 32.018s  |  **Likes:** 52186  **RTs:** 7286
@@ -297,6 +381,18 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 48 vide
     - `0:08` A lone worker harnessed and climbing/restoring the curved surface of the statue high against cloudy sky.
     - `0:11` Hazy monochrome view of a Mount Rushmore presidential face emerging through mist; slogan persists.
     - `0:14` Cut to black with the animated white U.S. Department of Labor seal ('DEPARTMENT OF LABOR / UNITED STATES OF AMERICA') as the closing brand card.
+
+### 2026-01-07 — @USDOL — utopian hype montage
+- **Link:** https://x.com/USDOL/status/2008955144503714070
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 18.416s  |  **Likes:** 8073  **RTs:** 1168
+- **On-screen / notable text:** ['RIGHTFUL PLACE', 'NATION ON EARTH,', 'AND ADMIRATION', 'WILL STAND IN OUR WAY', 'THE FUTURE IS OURS.', '60TH PRESIDENTIAL', 'The Future is Ours, American.']
+- **Summary:** A short, slickly produced patriotic hype reel built around a Trump voiceover ('America will reclaim its rightful place as the greatest... nation on Earth... the future is ours') over swelling cinematic scoring and big kinetic on-screen captions. Desaturated, color-graded hero shots (a windblown American flag, Trump saluting in a MAGA cap beside a uniformed officer, a B-2 stealth bomber with fighter escort, a packed '60th Presidential' arena, Trump striding through a steel mill flanked by hardhat workers) are cut to the music for maximal grandeur. The emotional appeal is nationalist triumphalism and strength, packaged as social-media-native cinematic spectacle rather than a plain speech, which puts it squarely in the produced/genre-experiment category.
+- **Script (timestamped):**
+    - `0:01` Desaturated low-angle of a tattered American flag whipping on a pole against a grey sky; kinetic caption 'RIGHTFUL PLACE'. Trump VO begins: 'America will reclaim its rightful place as the greatest, most powerful... nation on Earth.'
+    - `0:05` Trump in a red MAGA cap and dark suit saluting on a reviewing stand beside a uniformed Army officer; caption 'NATION ON EARTH,'. Heroic, color-graded military-event look.
+    - `0:09` Low-angle silhouette of a B-2 stealth bomber flanked by fighter jets flying overhead in a teal sky; caption 'AND ADMIRATION'. VO: 'inspiring the awe and admiration of the entire world.'
+    - `0:12` Backlit Trump gesturing before a packed arena, banner reading '60TH PRESIDENTIAL'; caption 'WILL STAND IN OUR WAY'. VO: 'nothing will stand in our way because we are Americans.'
+    - `0:16` Trump walking through an industrial steel mill (giant steel coils) past rows of hardhat workers; caption 'THE FUTURE IS OURS.' VO closes: 'the future's ours.'
 
 ### 2026-01-11 — @USDOL — patriotic hype montage
 - **Link:** https://x.com/USDOL/status/2010141673389769214
