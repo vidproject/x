@@ -582,23 +582,22 @@
       "thumbnails": 2261
     },
     "transcripts": {
-      "attempted": 200,
-      "cache_hits": 36,
+      "attempted": 658,
+      "cache_hits": 238,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-05-23T07:32:34Z",
-      "intra_run_dedup": 2,
-      "row_count": 238,
-      "rows": 238,
-      "skipped_max_items": 679,
+      "generated_at": "2026-05-23T08:12:29Z",
+      "intra_run_dedup": 21,
+      "row_count": 917,
+      "rows": 917,
       "status_counts": {
-        "empty-transcript": 31,
-        "no-audio-stream": 14,
-        "ok": 193
+        "empty-transcript": 113,
+        "no-audio-stream": 70,
+        "ok": 734
       },
-      "status_empty-transcript": 25,
-      "status_no-audio-stream": 14,
-      "status_ok": 161,
-      "transcribed": 200,
+      "status_empty-transcript": 77,
+      "status_no-audio-stream": 54,
+      "status_ok": 527,
+      "transcribed": 658,
       "transcriber": "faster-whisper",
       "transcriber_version": "faster-whisper-v1"
     }
