@@ -2,28 +2,29 @@
   "generated_at": "2026-05-23T02:07:57Z",
   "layers": {
     "audio_music": {
-      "analyzed": 41,
+      "analyzed": 20,
       "attempted": 400,
-      "cache_hits": 775,
+      "cache_hits": 816,
       "cost_estimate_usd": 0.0,
       "detector": "ffmpeg-audio-heuristic",
       "detector_version": "ffmpeg-audio-heuristic-v1",
-      "generated_at": "2026-05-23T05:23:05Z",
-      "intra_run_dedup": 2,
-      "row_count": 1177,
-      "rows": 1177,
-      "skipped_max_items": 574,
+      "generated_at": "2026-05-23T05:24:10Z",
+      "intra_run_dedup": 4,
+      "row_count": 1220,
+      "rows": 1220,
+      "skipped_max_items": 531,
       "status_counts": {
-        "fetch-failed": 361,
-        "no-audio-stream": 60,
-        "ok": 749,
+        "fetch-failed": 383,
+        "no-audio-stream": 62,
+        "ok": 768,
         "silent-audio": 7
       },
-      "status_fetch-failed": 359,
-      "status_ok": 41,
+      "status_fetch-failed": 380,
+      "status_no-audio-stream": 1,
+      "status_ok": 19,
       "tag_frequency": {
-        "audio:has-audio": 756,
-        "audio:no-audio": 60,
+        "audio:has-audio": 775,
+        "audio:no-audio": 62,
         "audio:silent": 7
       }
     },
