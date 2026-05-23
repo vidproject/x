@@ -229,6 +229,7 @@ COUNTRIES: tuple[str, ...] = (
     "Zimbabwe",
 )
 COUNTRY_LOWER: frozenset[str] = frozenset(c.lower() for c in COUNTRIES)
+COUNTRY_BY_LOWER: dict[str, str] = {c.lower(): c for c in COUNTRIES}
 
 US_STATES: tuple[str, ...] = (
     "Alabama",
@@ -282,7 +283,7 @@ US_STATES: tuple[str, ...] = (
     "Wisconsin",
     "Wyoming",
 )
-STATE_LOWER: frozenset[str] = frozenset(s.lower() for s in US_STATES)
+STATE_BY_LOWER: dict[str, str] = {s.lower(): s for s in US_STATES}
 
 # Vocabulary for `crime:<TYPE>`. Each entry is (slug, pattern). The slug
 # becomes the tag suffix (`crime:assault`, `crime:fentanyl`, etc.).
@@ -1205,22 +1206,22 @@ PATTERN_ANGEL_FAMILY = _compile(
 PATTERN_NATIVE_BORN_CITIZEN = _compile(
     r"\bnative[- ]born\s+(?:citizens?|americans?|u\.?s\.?\s+citizens?|people|workers|taxpayers)\b"
 )
-# "from <Country>," — anchors the COUNTRY validator. The preposition is
-# scoped-case-insensitive ((?i:...)) so "From"/"FROM"/"from" all match,
-# but the country-name capture stays case-sensitive. Combining the two
-# under `re.I` over-matches: lowercase prepositions then satisfy the
-# second `[A-Z][a-zA-Z]+` slot too ("From USA to" -> "USA to").
-PATTERN_ORIGIN_CANDIDATE = re.compile(r"\b(?i:from)\s+([A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+)?)\s*,")
-# Any sovereign-state mention after a small set of prepositions. Kept
-# conservative because raw country names false-positive easily ("Chad",
-# "Georgia") if you allow bare occurrences.
-PATTERN_COUNTRY_CANDIDATE = re.compile(
-    r"\b(?i:from|in|to|of|with|by)\s+([A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+)?)\b"
-)
+# Place names are captured case-insensitively (so "from mexico" is caught,
+# not just "from Mexico") after a small set of prepositions. The optional
+# second word excludes those same prepositions via lookahead, so a greedy
+# capture can't swallow the preposition that introduces the *next* place
+# ("from USA to Mexico" -> "USA" + "Mexico", not "USA to"). `_resolve_vocab`
+# then validates against the vocab and falls back to the leading word for any
+# other trailing token. Kept conservative because raw country names
+# false-positive easily ("Chad", "Georgia").
+_PREPOSITIONS = "from|in|to|of|with|by"
+_PLACE = rf"[A-Za-z][a-zA-Z]+(?:\s+(?!(?i:{_PREPOSITIONS})\b)[A-Za-z][a-zA-Z]+)?"
+# "from <Country>," — anchors the ORIGIN validator.
+PATTERN_ORIGIN_CANDIDATE = re.compile(rf"\b(?i:from)\s+({_PLACE})\s*,")
+# Any sovereign-state mention after a preposition.
+PATTERN_COUNTRY_CANDIDATE = re.compile(rf"\b(?i:{_PREPOSITIONS})\s+({_PLACE})\b")
 # "<Place>, <State>" — anchors the STATE validator.
-PATTERN_STATE_CANDIDATE = re.compile(
-    r"\b[A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+)?,\s+([A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+)?)\b"
-)
+PATTERN_STATE_CANDIDATE = re.compile(rf"\b{_PLACE},\s+({_PLACE})\b")
 
 # Demonyms and major foreign cities -> country. The validators above need a
 # preposition + the exact country name, so they miss "Iranian regime" (demonym)
@@ -1405,7 +1406,7 @@ def tag_text(
     they're stable per-tweet but not directly comparable across the
     original text/OCR/media-description boundaries."""
     entries: list[dict[str, Any]] = []
-    seen: set[str] = set()  # dedupe identical (tag, span) pairs
+    seen: set[str] = set()  # dedupe identical (tag, span_start, span_end) triples
 
     def add(
         tag: str,
@@ -1414,7 +1415,7 @@ def tag_text(
         tentative: bool = False,
         source: str = "auto",
     ) -> None:
-        key = f"{tag}@{span[0] if span else ''}"
+        key = f"{tag}@{span[0] if span else ''}:{span[1] if span else ''}"
         if key in seen:
             return
         seen.add(key)
@@ -1628,15 +1629,15 @@ def tag_text(
 
     # origin:<COUNTRY> — validated against the sovereign-state vocab.
     for m in PATTERN_ORIGIN_CANDIDATE.finditer(text):
-        candidate = (m.group(1) or "").strip()
-        if candidate.lower() in COUNTRY_LOWER:
-            add(f"origin:{_normalize_country(candidate)}", span=m.span(1))
+        resolved = _resolve_vocab(m.group(1) or "", COUNTRY_BY_LOWER)
+        if resolved:
+            add(f"origin:{_normalize_country(resolved)}", span=m.span(1))
 
     # country:<NAME> — broader: any contextual country mention.
     for m in PATTERN_COUNTRY_CANDIDATE.finditer(text):
-        candidate = (m.group(1) or "").strip()
-        if candidate.lower() in COUNTRY_LOWER:
-            add(f"country:{_normalize_country(candidate)}", span=m.span(1))
+        resolved = _resolve_vocab(m.group(1) or "", COUNTRY_BY_LOWER)
+        if resolved:
+            add(f"country:{_normalize_country(resolved)}", span=m.span(1))
 
     # Demonyms ("Iranian regime") and major foreign cities ("in Tehran") ->
     # country, which the bare-name validators above can't see. A demonym
@@ -1654,9 +1655,9 @@ def tag_text(
 
     # state:<NAME> — the "<City>, <State>" pattern, validated.
     for m in PATTERN_STATE_CANDIDATE.finditer(text):
-        candidate = (m.group(1) or "").strip()
-        if candidate.lower() in STATE_LOWER:
-            add(f"state:{_normalize_state(candidate)}", span=m.span(1))
+        resolved = _resolve_vocab(m.group(1) or "", STATE_BY_LOWER)
+        if resolved:
+            add(f"state:{_normalize_state(resolved)}", span=m.span(1))
 
     # genre:lineup: composite replies that hit theme:criminal with one photo.
     if (
@@ -2010,6 +2011,24 @@ def _normalize_country(s: str) -> str:
 
 def _normalize_state(s: str) -> str:
     return s.replace(" ", "-")
+
+
+def _resolve_vocab(candidate: str, vocab: dict[str, str]) -> str | None:
+    """Resolve a candidate (any case, possibly two words) to its canonical
+    vocab spelling.
+
+    Tries the full phrase first, then its leading word, so a greedy
+    case-insensitive capture that swallowed a trailing lowercase token
+    ("USA to") still resolves ("USA"). Returning the canonical spelling keeps
+    slugs case-stable no matter how the name was written in the tweet."""
+    cand = candidate.strip()
+    if not cand:
+        return None
+    canonical = vocab.get(cand.lower())
+    if canonical:
+        return canonical
+    head = cand.split(maxsplit=1)[0]
+    return vocab.get(head.lower())
 
 
 # ---------------------------------------------------------------------------

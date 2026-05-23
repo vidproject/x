@@ -1649,6 +1649,57 @@ def test_origin_only_fires_for_valid_country() -> None:
     assert not any(t.startswith("origin:") for t in _tags(out))
 
 
+def test_country_state_lowercase_mentions_are_tagged() -> None:
+    out = tag_text(
+        "Deported from mexico, then arrested in houston, texas.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    tags = _tags(out)
+    assert "origin:Mexico" in tags
+    assert "country:Mexico" in tags
+    assert "state:Texas" in tags
+
+
+def test_country_slug_is_case_stable_across_source_casing() -> None:
+    common = dict(tweet_type="original", mentions=[], media_count=0, account_category="core")
+    lower = _tags(tag_text("removed from mexico, today", **common))
+    title = _tags(tag_text("removed from Mexico, today", **common))
+    # Same canonical slug no matter how the name was written.
+    assert "origin:Mexico" in lower
+    assert "origin:Mexico" in title
+
+
+def test_greedy_lowercase_capture_resolves_to_leading_country() -> None:
+    # "from mexico yesterday" captures two words; the resolver falls back to
+    # the leading word and still tags the country.
+    out = tag_text(
+        "He returned from mexico yesterday.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    assert "country:Mexico" in _tags(out)
+
+
+def test_adjacent_prepositional_countries_both_tag() -> None:
+    # Regression guard: the second word's preposition lookahead keeps the
+    # greedy capture from eating the "to" that introduces Mexico.
+    out = tag_text(
+        "From USA to Mexico, enforcement works.",
+        tweet_type="original",
+        mentions=[],
+        media_count=0,
+        account_category="core",
+    )
+    tags = _tags(out)
+    assert "country:United-States" in tags
+    assert "country:Mexico" in tags
+
+
 def test_ocr_text_confirms_immigration_and_emits_tags() -> None:
     # Tweet body is just a slogan with no immigration signal; the OCR'd
     # overlay carries the actual evidence — "DEPORT ILLEGAL ALIENS"
