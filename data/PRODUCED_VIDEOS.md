@@ -2,7 +2,7 @@
 
 Videos disseminated by US federal immigration agencies (DHS, ICE, CBP, USCIS, White House, POTUS, DOL and related accounts) that are produced as **entertainment/spectacle to appeal to a mass/young audience** — set to music, with pop-culture genre styling (music video, dystopian/sci-fi, war-movie, utopian hype montage, ASMR, anime/meme, true-crime, recruitment-as-trailer, parody). Raw speeches, interviews, news clips and plain informational PSAs are excluded.
 
-_Identified by Opus agents reading the archived keyframes + transcripts. 41 videos._
+_Identified by Opus agents reading the archived keyframes + transcripts. 45 videos._
 
 ## Background / commentary
 
@@ -166,6 +166,30 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 41 vide
     - `0:13` Fade toward black with a partial circular Department of Labor seal/eagle crest emerging.
     - `0:17` Black end card: white Department of Labor seal ('DEPARTMENT OF LABOR / UNITED STATES OF AMERICA') with 'LORI CHAVEZ-DEREMER / SECRETARY of LABOR.'
 
+### 2025-10-24 — @ICEgov — trailer-style slogan montage
+- **Link:** https://x.com/ICEgov/status/1981541201367953441
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 6.256s  |  **Likes:** 0  **RTs:** 0
+- **On-screen / notable text:** ['THE DEPORTATIONS WILL CONTINUE', 'GLOBAL (deportation aircraft livery)', 'Day or night, ICE Air remains filled and fueled']
+- **Summary:** A short, polished slogan spot: bold all-caps cinematic text 'THE DEPORTATIONS WILL CONTINUE' held over slow drifting blue-sky/cloud footage, with a chartered deportation jet ('GLOBAL' livery) composited rising behind the text mid-clip. The empty transcript and high music_score indicate a music-driven bed, and the stylized typography, sky imagery, and aircraft reveal give it a menacing trailer/hype aesthetic aimed at virality rather than information. It reads as produced spectacle (a 'flex' montage), so it is in scope.
+- **Script (timestamped):**
+    - `0:00` Bold white all-caps title 'THE DEPORTATIONS / WILL CONTINUE' centered over bright blue sky with soft drifting clouds; slow cinematic motion, music bed.
+    - `0:01` Same slogan held; clouds continue to drift, sky deepening blue.
+    - `0:03` A white deportation jet with 'GLOBAL' lettering climbs into frame behind/through the text as it takes off, partially obscuring the slogan.
+    - `0:04` Plane clears frame; 'THE DEPORTATIONS WILL CONTINUE' slogan resolves crisp again over open blue sky.
+    - `0:05` Final hold on the slogan over clouds, ending the loop.
+
+### 2025-10-25 — @ICEgov — stylized criminal-alien reveal edit
+- **Link:** https://x.com/ICEgov/status/1982208263203553551
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 23.633s  |  **Likes:** 10118  **RTs:** 1892
+- **On-screen / notable text:** ['POLICE FEDERAL AGENT', 'CARLOS RAMIREZ GUZMAN', 'CHARGED WITH AGGRAVATED ASSAULT WITH A DEADLY WEAPON ON A LAW ENFORCEMENT OFFICER AND DOMESTIC BATTERY', 'U.S. DEPARTMENT OF HOMELAND SECURITY']
+- **Summary:** An edited 'wanted/rap-sheet reveal' piece on the arrest of Salvadoran national Carlos Ramirez: it intercuts raw handheld arrest footage of camo 'POLICE FEDERAL AGENT' officers detaining the suspect at a vehicle with a clearly produced centerpiece - a desaturated grayscale background, an animated targeting-reticle locking onto the suspect, and red callout typography naming him and listing his charges. The treatment is designed as a dramatic name-and-shame spectacle (motion graphics, color grade, music bed; the only audio is shouted 'hands on the floor'), closing on the DHS seal. The stylized graphic reveal and scoring make it produced youth-appeal content rather than plain bodycam footage.
+- **Script (timestamped):**
+    - `0:02` Raw handheld shot: a man in a black 'Hurley' cap is detained beside a gray pickup truck by plainclothes/camo agents on a sunny suburban street; shouted audio 'hands on the floor.'
+    - `0:07` Produced graphic frame: desaturated grayscale of the cap-wearing suspect (arms restrained behind back) with an animated blue targeting reticle locked on him and a red callout beginning 'CARLOS RAMIREZ...'
+    - `0:11` Graphic resolves: red name banner 'CARLOS RAMIREZ GUZMAN' with caption 'CHARGED WITH AGGRAVATED ASSAULT WITH A DEADLY WEAPON ON A LAW ENFORCEMENT OFFICER AND DOMESTIC BATTERY' over the grayscale arrest image.
+    - `0:16` Back to color handheld footage: a 'POLICE FEDERAL AGENT' vested officer and camo agents walk the cuffed suspect (face blurred) past an SUV toward a brick building.
+    - `0:21` Clean light-gray end card with the U.S. Department of Homeland Security seal.
+
 ### 2025-10-29 — @ICEgov — stylized enforcement montage
 - **Link:** https://x.com/ICEgov/status/1983348136501215239
 - **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 40.123s  |  **Likes:** 12826  **RTs:** 2257
@@ -285,6 +309,30 @@ _Identified by Opus agents reading the archived keyframes + transcripts. 41 vide
     - `1:52` Trump silhouetted in a dark overcoat climbing the Air Force One stairway against a cool teal sky, shot through an out-of-focus foreground; narration calls his win 'the greatest comeback of all time' over rising music.
     - `2:37` Aerial window view over dense green forest past a blue aircraft wing/engine; montage of economic and border claims ('zero illegal crossing,' 'the economy is soaring,' 'the one big beautiful bill on July 4th').
     - `3:21` Low silhouette of a large aircraft's landing gear at dusk on a runway with sunset glow; closing build toward 2026 with 'the American people have so much to look forward to' and patriotic music swell.
+
+### 2026-02-11 — @USDOL — patriotic hype montage
+- **Link:** https://x.com/USDOL/status/2021379766037754164
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 29.312s  |  **Likes:** 2251  **RTs:** 625
+- **On-screen / notable text:** ['CELEBRATING 250 YEARS OF THE AMERICAN WORKER', 'dol.gov/Freedom250', "As America turns 250, we're honoring the workers who built our nation."]
+- **Summary:** A music-driven black-and-white photo montage celebrating American workers across the decades: assembly-line factory hands, an industrial machinist inside a giant turbine, a smiling WWII-era female welder, a Bethlehem Steel ironworker on cables, and a modern female mine worker, all under a serif title card 'CELEBRATING 250 YEARS OF THE AMERICAN WORKER' with a persistent Betsy Ross flag and 'dol.gov/Freedom250' lower-third. The emotional appeal is sentimental, dignified pride in the American worker tied to the America250 / Freedom250 campaign. It fits produced content via its curated archival-portrait montage, branded title and URL graphics, monochrome grade, and scored-with-no-speech build.
+- **Script (timestamped):**
+    - `0:02` Vintage factory floor: rows of capped men assembling parts on a line; title overlay 'CELEBRATING 250 YEARS OF THE AMERICAN WORKER'; Betsy Ross flag and 'dol.gov/Freedom250' at bottom.
+    - `0:08` A grimy machinist crouched inside the curved interior of a massive industrial turbine/generator, hammer in hand; flag and URL lower-third persist.
+    - `0:14` Portrait of a smiling young Black woman in a welder's flip-up mask and heavy gloves (WWII home-front era); 'dol.gov/Freedom250' below.
+    - `0:20` An ironworker in a 'BETHLEHEM' steel hard hat leaning among thick cables on a construction beam, looking to camera.
+    - `0:26` A modern female mine worker in hard hat, safety glasses and reflective vest standing before a giant haul-truck tire; flag and URL held.
+
+### 2026-02-23 — @ICEgov — stylized deportation montage
+- **Link:** https://x.com/ICEgov/status/2026052502336999772
+- **Genre/tags:** —  |  **Set to music:** True  |  **Duration:** 31.798s  |  **Likes:** 4331  **RTs:** 1004
+- **On-screen / notable text:** ['LEAVES ON YOUR OWN TERMS', 'DHS.GOV/CBPHOME', 'POLICE ERO', 'Self-deport or be deported: the choice is yours.']
+- **Summary:** A music-driven, cinematically graded edit showing ICE ERO 'POLICE' agents loading detainees onto a charter bus and a deportation aircraft taxiing and taking off, stitched with a glowing light-streak motion-blur transition and animated neon-blue text overlays ('LEAVES ON YOUR OWN TERMS', 'DHS.GOV/CBPHOME'), closing on the animated DHS seal. The messaging pairs an ominous 'self-deport or be deported' ultimatum with a slick, almost trailer-like presentation to pressure undocumented people toward the CBP Home app. It fits youth-appeal produced content via its stylized typography, light-leak transitions, dramatic scoring with no speech, and branded animated outro.
+- **Script (timestamped):**
+    - `0:03` Backlit dusk shot from behind an agent whose vest reads 'POLICE / ERO' as detainees in vests board a charter bus on a tarmac; speckled film-grain overlay.
+    - `0:09` Abstract vertical light-streak / motion-blur transition in blue, orange and green tones with floating particles.
+    - `0:16` A deportation jet lifts off a runway at dusk; glowing stylized overlay 'LEAVES ON YOUR OWN TERMS'; water tower and tree line behind.
+    - `0:22` An unmarked white airliner taxis on the runway; large neon-blue overlay 'DHS.GOV/CBPHOME' across the frame.
+    - `0:29` Animated full-color U.S. Department of Homeland Security seal on a light background as the closing brand card.
 
 ### 2026-02-25 — @USDOL — utopian hype montage
 - **Link:** https://x.com/USDOL/status/2026800042414063937
