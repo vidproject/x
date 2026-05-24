@@ -222,7 +222,14 @@ def describe_media_item(
         parts.append("needs OCR, transcript, or frame-level vision before content claims")
 
     description = "; ".join(parts) + "."
-    tags = [tag_entry("media-status:described"), tag_entry(f"media:{tag_slug_for(media_type)}")]
+    # ``media-status:described`` means the item has real descriptive content
+    # (alt text, a manual visual observation, or a later vision-review overlay),
+    # NOT merely that this placeholder row exists. ``needs_vision`` is True for a
+    # visual item that still lacks any such content, so the two are mutually
+    # exclusive per media row: a placeholder awaiting vision is not "described".
+    tags = [tag_entry(f"media:{tag_slug_for(media_type)}")]
+    if not needs_vision:
+        tags.insert(0, tag_entry("media-status:described"))
     if archived:
         tags.append(tag_entry("media-status:archived"))
     if alt_text:
