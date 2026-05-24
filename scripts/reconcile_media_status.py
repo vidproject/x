@@ -135,6 +135,30 @@ def compute_genuine_media(
     return genuine
 
 
+def compute_review_descriptions(df: pl.DataFrame) -> dict[tuple[str, str], dict[str, Any]]:
+    """Map (tweet_id, media_id) -> the vision-review prose for that media.
+
+    Only ``opus-vision-review`` rows carry a real description. The catalog and
+    preview ``media_insights`` cache a copy of this prose for the viewer; this
+    map lets the overlay refresh those copies so newly-applied descriptions
+    appear without a full ``build_viewer_preview`` rebuild.
+    """
+    out: dict[tuple[str, str], dict[str, Any]] = {}
+    for row in df.iter_rows(named=True):
+        if str(row.get("model") or "") != VISION_REVIEW_MODEL:
+            continue
+        key = (str(row.get("tweet_id") or ""), str(row.get("media_id") or ""))
+        out[key] = {
+            "description": row.get("description"),
+            "summary_text": row.get("summary_text"),
+            "model": row.get("model"),
+            "model_version": row.get("model_version"),
+            "status": row.get("status"),
+            "confidence": row.get("confidence"),
+        }
+    return out
+
+
 def compute_tweet_status(
     df: pl.DataFrame, genuine: set[tuple[str, str]]
 ) -> tuple[set[str], set[str]]:
@@ -269,6 +293,7 @@ def overlay_catalog(
     described_tweets: set[str],
     needs_vision_tweets: set[str],
     genuine: set[tuple[str, str]],
+    descriptions: dict[tuple[str, str], dict[str, Any]],
 ) -> int:
     df = pl.read_parquet(CATALOG_PARQUET_PATH)
     if "tweet_id" not in df.columns:
@@ -293,7 +318,7 @@ def overlay_catalog(
             new_tags.append(fixed)
         else:
             new_tags.append(tags)
-        new_mi.append(_fix_insight_list(insights, tid, genuine))
+        new_mi.append(_fix_insight_list(insights, tid, genuine, descriptions))
     df = df.with_columns(
         pl.Series("tags", new_tags, dtype=CATALOG_TAG_DTYPE),
         pl.Series("media_insights", new_mi, dtype=df.schema["media_insights"]),
@@ -311,9 +336,12 @@ def _has_media_status(tags: Any) -> bool:
 
 
 def _fix_insight_list(
-    insights: Any, tweet_id: str, genuine: set[tuple[str, str]]
+    insights: Any,
+    tweet_id: str,
+    genuine: set[tuple[str, str]],
+    descriptions: dict[tuple[str, str], dict[str, Any]],
 ) -> Any:
-    """Fix media-status tags inside a tweet's media_insights[].tags (per media)."""
+    """Fix media-status tags + refresh prose in a tweet's media_insights (per media)."""
     if not insights:
         return insights
     out = []
@@ -328,6 +356,11 @@ def _fix_insight_list(
         ins["tags"] = _overlay_tweet_tags(
             ins.get("tags"), described=row_described, needs_vision=row_needs, compact=False
         )
+        prose = descriptions.get((tweet_id, mid))
+        if prose:
+            for field in ("description", "summary_text"):
+                if field in ins and prose.get(field) is not None:
+                    ins[field] = prose[field]
         out.append(ins)
     return out
 
@@ -336,6 +369,7 @@ def overlay_previews(
     described_tweets: set[str],
     needs_vision_tweets: set[str],
     genuine: set[tuple[str, str]],
+    descriptions: dict[tuple[str, str], dict[str, Any]],
 ) -> int:
     total = 0
     for path in sorted(glob.glob(str(DATA_DIR / "preview-*.json"))):
@@ -370,9 +404,9 @@ def overlay_previews(
             if fixed != current:
                 tags_map[tweet_id] = fixed
                 touched += 1
-        # Per-media insight tags.
+        # Per-media insight tags + prose.
         for tweet_id, insights in mi_map.items():
-            fixed = _fix_insight_compact(insights, tweet_id, genuine)
+            fixed = _fix_insight_compact(insights, tweet_id, genuine, descriptions)
             if fixed != insights:
                 mi_map[tweet_id] = fixed
                 touched += 1
@@ -387,7 +421,10 @@ def overlay_previews(
 
 
 def _fix_insight_compact(
-    insights: Any, tweet_id: str, genuine: set[tuple[str, str]]
+    insights: Any,
+    tweet_id: str,
+    genuine: set[tuple[str, str]],
+    descriptions: dict[tuple[str, str], dict[str, Any]],
 ) -> Any:
     if not isinstance(insights, list):
         return insights
@@ -406,6 +443,12 @@ def _fix_insight_compact(
         ins["tags"] = _overlay_tweet_tags(
             ins.get("tags"), described=row_described, needs_vision=row_needs, compact=True
         )
+        prose = descriptions.get((tweet_id, mid))
+        if prose:
+            for field in ("description", "summary_text", "model", "model_version", "status",
+                          "confidence"):
+                if field in ins and prose.get(field) is not None:
+                    ins[field] = prose[field]
         out.append(ins)
     return out
 
@@ -429,6 +472,7 @@ def main(argv: list[str] | None = None) -> int:
     df = pl.read_parquet(MEDIA_VISION_PATH)
     visual_observations = load_visual_observations()
     genuine = compute_genuine_media(df, visual_observations)
+    descriptions = compute_review_descriptions(df)
     described_tweets, needs_vision_tweets = compute_tweet_status(df, genuine)
     LOG.info(
         "reconcile: computed status",
@@ -436,6 +480,7 @@ def main(argv: list[str] | None = None) -> int:
         described_tweets=len(described_tweets),
         needs_vision_tweets=len(needs_vision_tweets),
         overlap=len(described_tweets & needs_vision_tweets),
+        review_descriptions=len(descriptions),
     )
     if args.dry_run:
         LOG.info("reconcile: dry run, nothing written")
@@ -443,8 +488,8 @@ def main(argv: list[str] | None = None) -> int:
 
     reconcile_media_vision(genuine)
     if not args.sidecar_only:
-        overlay_catalog(described_tweets, needs_vision_tweets, genuine)
-        overlay_previews(described_tweets, needs_vision_tweets, genuine)
+        overlay_catalog(described_tweets, needs_vision_tweets, genuine, descriptions)
+        overlay_previews(described_tweets, needs_vision_tweets, genuine, descriptions)
     return 0
 
 
