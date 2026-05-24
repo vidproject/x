@@ -195,7 +195,7 @@
     "BPUnion": {
       "category": "government",
       "label": "Border Patrol Union - NBPC",
-      "observations": 16,
+      "observations": 18,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -212,7 +212,7 @@
     "BasedMikeLee": {
       "category": "government",
       "label": "Mike Lee",
-      "observations": 3,
+      "observations": 4,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -249,6 +249,16 @@
       ],
       "category": "public",
       "label": "Beverly Wendling",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "Big_Orange44": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "BIG ORANGE SOLDIER",
       "observations": 1,
       "reason": "service-history badge only",
       "source": "data/users.json"
@@ -344,14 +354,14 @@
     "CBP": {
       "category": "core",
       "label": "U.S. Customs and Border Protection",
-      "observations": 980,
+      "observations": 986,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "CBPAMO": {
       "category": "government",
       "label": "CBP AMO",
-      "observations": 56,
+      "observations": 60,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -639,6 +649,16 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "Cybertwip": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "government",
+      "label": "Cybertwip",
+      "observations": 1,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
     "DAGToddBlanche": {
       "category": "officials",
       "label": "Acting AG Todd Blanche",
@@ -733,7 +753,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 8977,
+      "observations": 9407,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -761,7 +781,7 @@
     "DOWResponse": {
       "category": "government",
       "label": "DOW Rapid Response",
-      "observations": 7,
+      "observations": 9,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -829,7 +849,7 @@
     "DeptofWar": {
       "category": "government",
       "label": "Department of War \ud83c\uddfa\ud83c\uddf8",
-      "observations": 34,
+      "observations": 36,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1138,6 +1158,16 @@
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
+    "EstergrenSue": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Sue Ellen",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "FAFOVETERAN": {
       "badges": [
         "veteran"
@@ -1172,7 +1202,7 @@
     "FBIDirectorKash": {
       "category": "officials",
       "label": "FBI Director Kash Patel",
-      "observations": 20,
+      "observations": 24,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -1375,7 +1405,7 @@
     "GregoryKBovino": {
       "category": "core",
       "label": "Gregory Bovino",
-      "observations": 2743,
+      "observations": 2900,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1524,7 +1554,7 @@
     "HUDgov": {
       "category": "government",
       "label": "Department of Housing and Urban Development",
-      "observations": 3,
+      "observations": 4,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1582,7 +1612,7 @@
     "ICEgov": {
       "category": "core",
       "label": "U.S. Immigration and Customs Enforcement",
-      "observations": 2688,
+      "observations": 2691,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1593,6 +1623,16 @@
       "category": "public",
       "label": "Independent American Exceptionalist \ud83c\uddfa\ud83c\uddf8",
       "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "ILA_NewsX": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "I Love America News",
+      "observations": 2,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -1635,6 +1675,16 @@
       "label": "US Department of the Interior",
       "observations": 6,
       "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "Ironball_T": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Ironball",
+      "observations": 1,
+      "reason": "service-history badge only",
       "source": "data/users.json"
     },
     "JDVance": {
@@ -1763,6 +1813,13 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "JoaquinCastrotx": {
+      "category": "public_figures",
+      "label": "Joaquin Castro",
+      "observations": 1,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
     "JohnBoozman": {
       "badges": [
         "veteran"
@@ -1821,6 +1878,16 @@
       "category": "public",
       "label": "Julio Rosas",
       "observations": 3,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "JuliusPitts8": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Eleven",
+      "observations": 1,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -1967,6 +2034,16 @@
       "label": "FatandSassyAudits",
       "observations": 1,
       "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "MattyWorthy32B": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Matt Worthington \ud83c\udde8\ud83c\udde6",
+      "observations": 1,
+      "reason": "service-history badge only",
       "source": "data/users.json"
     },
     "Mayhawwoman": {
@@ -2172,7 +2249,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 1174,
+      "observations": 1177,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2267,7 +2344,7 @@
     "PressSec": {
       "category": "core",
       "label": "White House Press Secretary",
-      "observations": 184,
+      "observations": 186,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2332,7 +2409,7 @@
     "RapidResponse47": {
       "category": "core",
       "label": "Rapid Response 47",
-      "observations": 761,
+      "observations": 765,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2386,7 +2463,7 @@
     "RealTomHoman": {
       "category": "core",
       "label": "Thomas D. Homan",
-      "observations": 619,
+      "observations": 648,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2407,7 +2484,7 @@
     "RepChipRoy": {
       "category": "public_figures",
       "label": "Rep. Chip Roy Press Office",
-      "observations": 2,
+      "observations": 3,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -2647,7 +2724,7 @@
     "SBA_Kelly": {
       "category": "officials",
       "label": "Kelly Loeffler",
-      "observations": 10,
+      "observations": 12,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2683,6 +2760,13 @@
       "label": "Sarah Fields",
       "observations": 2,
       "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "ScottBradyPA": {
+      "category": "officials",
+      "label": "Scott Brady",
+      "observations": 3,
+      "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "ScottforFlorida": {
@@ -2764,7 +2848,7 @@
     "SecRubio": {
       "category": "officials",
       "label": "Secretary Marco Rubio",
-      "observations": 20,
+      "observations": 22,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2775,10 +2859,20 @@
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
+    "SecVetAffairs": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "officials",
+      "label": "VA Secretary Doug Collins",
+      "observations": 2,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
     "SecWar": {
       "category": "officials",
       "label": "Secretary of War Pete Hegseth",
-      "observations": 28,
+      "observations": 31,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2792,7 +2886,7 @@
     "SecretSvcSpox": {
       "category": "government",
       "label": "U.S. Secret Service Office of Communications",
-      "observations": 2,
+      "observations": 4,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2813,7 +2907,7 @@
     "SecretaryTurner": {
       "category": "officials",
       "label": "Scott Turner",
-      "observations": 10,
+      "observations": 11,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2956,6 +3050,16 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "Skull__969": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "OLD-SKULL \ud83c\udff4\u200d\u2620\ufe0f",
+      "observations": 6,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "Snorfy115": {
       "badges": [
         "veteran"
@@ -3021,7 +3125,7 @@
     "StevenCheung47": {
       "category": "officials",
       "label": "Steven Cheung",
-      "observations": 17,
+      "observations": 21,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -3319,7 +3423,7 @@
     "USBPChiefSDC": {
       "category": "government",
       "label": "Chief Patrol Agent - San Diego Sector",
-      "observations": 7,
+      "observations": 8,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3471,7 +3575,7 @@
     "VP": {
       "category": "government",
       "label": "Vice President JD Vance",
-      "observations": 103,
+      "observations": 106,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3509,6 +3613,16 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "Veteran4Librty": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Libertarian Conspiracy Scientist",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "VictorAvilaTX": {
       "category": "officials",
       "label": "Victor Avila",
@@ -3526,7 +3640,7 @@
     "WHFraudTF": {
       "category": "government",
       "label": "White House Task Force to Eliminate Fraud",
-      "observations": 28,
+      "observations": 31,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3567,7 +3681,7 @@
     "WhiteHouse": {
       "category": "core",
       "label": "The White House",
-      "observations": 552,
+      "observations": 659,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3595,6 +3709,16 @@
       "category": "public",
       "label": "Billy Joe Santiago",
       "observations": 6,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "WilltellTi33608": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Minuteman Roost",
+      "observations": 3,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -3635,6 +3759,16 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "_jokeocracy": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Duck Enlightenment",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "akawombat42": {
       "badges": [
         "veteran"
@@ -3655,6 +3789,16 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "amanda_booberry": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Amanda Berry",
+      "observations": 2,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "arnoldog21": {
       "badges": [
         "veteran"
@@ -3672,6 +3816,16 @@
       "category": "public",
       "label": "Lieutenant Colonel Reagan",
       "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "brent_maz": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Bravo Charlie Mike",
+      "observations": 3,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -3881,6 +4035,13 @@
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
+    "gleng1": {
+      "category": "officials",
+      "label": "Glen",
+      "observations": 1,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
     "glubold": {
       "badges": [
         "veteran"
@@ -3903,6 +4064,16 @@
       "label": "John Darwin Kurc",
       "observations": 14,
       "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "jamespmanley": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public_figures",
+      "label": "jim manley",
+      "observations": 1,
+      "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
     "jmhumire": {
@@ -4077,6 +4248,16 @@
       ],
       "category": "public",
       "label": "My moms caregiver",
+      "observations": 2,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "nayrb_s": {
+      "badges": [
+        "retired-police"
+      ],
+      "category": "public",
+      "label": "Desert (MEGA MAGA) Deplorable",
       "observations": 1,
       "reason": "service-history badge only",
       "source": "data/users.json"
@@ -4221,6 +4402,13 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "ryantyre": {
+      "category": "public_figures",
+      "label": "Ryan Tyre \ud83c\uddfa\ud83c\uddf8",
+      "observations": 1,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
     "semper_audent": {
       "badges": [
         "veteran"
@@ -4346,12 +4534,12 @@
   },
   "category_counts": {
     "core": 12,
-    "government": 160,
-    "officials": 102,
-    "public": 157,
-    "public_figures": 104
+    "government": 161,
+    "officials": 105,
+    "public": 170,
+    "public_figures": 107
   },
-  "generated_at": "2026-05-22T21:42:07Z",
+  "generated_at": "2026-05-24T14:35:41Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
