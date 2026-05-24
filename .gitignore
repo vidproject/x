@@ -44,5 +44,10 @@ skim/profile/
 # but the bytes themselves are regenerable.
 data/derived/
 
+# Tag-audit read-only signal bundles — regenerable from catalog.parquet via
+# scripts/build_tag_audit_bundles.py. Only the decision JSONs + _suggestions.jsonl
+# under data/tags/tag_audit/ are committed.
+data/tags/tag_audit/_bundles/
+
 # Local Claude agent worktrees/state
 .claude/
