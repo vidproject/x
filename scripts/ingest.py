@@ -665,9 +665,7 @@ def build_manifest(accounts: list[dict[str, str]]) -> dict[str, Any]:
                 .len()
                 .sort("month")
             )
-            months = {
-                str(r["month"]): int(r["len"]) for r in month_counts.iter_rows(named=True)
-            }
+            months = {str(r["month"]): int(r["len"]) for r in month_counts.iter_rows(named=True)}
         deleted = df.filter(pl.col("deletion_detected_at").is_not_null()).height if row_count else 0
         media_count = df.select(pl.col("media").list.len().sum()).item() if row_count else 0
         video_count = (

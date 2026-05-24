@@ -195,7 +195,9 @@ def load_whisper_model(model: str) -> Any | None:
         compute_type = os.environ.get("ASR_COMPUTE_TYPE", "int8")
         return WhisperModel(model, device="cpu", compute_type=compute_type)
     except Exception as e:
-        LOG.warning("asr: could not load whisper model; skipping transcription", model=model, error=str(e))
+        LOG.warning(
+            "asr: could not load whisper model; skipping transcription", model=model, error=str(e)
+        )
         return None
 
 
@@ -322,7 +324,9 @@ def analyze_candidate(
             result = transcribe_with_model(model, wav)
         except Exception as e:
             return TranscriptResult(status="asr-failed", error=str(e))
-        result.sample_duration_sec = min(sample_seconds, cand.declared_duration_sec or sample_seconds)
+        result.sample_duration_sec = min(
+            sample_seconds, cand.declared_duration_sec or sample_seconds
+        )
         if not result.audio_duration_sec:
             result.audio_duration_sec = cand.declared_duration_sec
         return result
@@ -541,7 +545,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--max-items", type=int, help="Maximum uncached videos to transcribe.")
     parser.add_argument("--force", action="store_true", help="Ignore the cache and re-transcribe.")
     parser.add_argument("--dry-run", action="store_true", help="Report planned rows; do not write.")
-    parser.add_argument("--model", default=DEFAULT_MODEL, help=f"Whisper model (default {DEFAULT_MODEL}).")
+    parser.add_argument(
+        "--model", default=DEFAULT_MODEL, help=f"Whisper model (default {DEFAULT_MODEL})."
+    )
     parser.add_argument(
         "--sample-seconds",
         type=float,

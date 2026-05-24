@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Any
+
 from scripts.build_core_video_audit import (
     archive_recovery_items,
     build_item,
@@ -9,7 +11,7 @@ from scripts.build_core_video_audit import (
 )
 
 
-def _empty_maps() -> dict[str, dict]:
+def _empty_maps() -> dict[str, Any]:
     return {"vision": {}, "audio": {}, "keyframes": {}, "ocr": {}, "manual": {}}
 
 
@@ -79,9 +81,7 @@ def test_classify_from_text_keeps_explicit_music_video() -> None:
 
 
 def test_classify_from_text_suppresses_music_video_on_speech() -> None:
-    tags = classify_from_text(
-        "delivers remarks at a press conference, set to music for the reel"
-    )
+    tags = classify_from_text("delivers remarks at a press conference, set to music for the reel")
     assert "genre:music-video" not in tags
     assert "media:music-video" not in tags
 

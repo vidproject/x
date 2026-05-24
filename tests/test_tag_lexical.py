@@ -628,7 +628,7 @@ def test_credit_score_does_not_trigger_music_video_tags() -> None:
     out = tag_text(
         (
             "\"I'm talking about the construction worker who can't buy a cellphone, "
-            "because when an illegal alien steals their identity, their credit score is ruined.\" "
+            'because when an illegal alien steals their identity, their credit score is ruined." '
             "@VP on why the efforts of the @WHFraudTF are so important."
         ),
         tweet_type="original",
@@ -752,9 +752,7 @@ def test_imported_audio_music_likely_does_not_derive_music_video() -> None:
         media_count=1,
         account_category="public",
         video_count=1,
-        media_tags=[
-            {"tag": "audio:music-likely", "tentative": True, "source": "audio-heuristic"}
-        ],
+        media_tags=[{"tag": "audio:music-likely", "tentative": True, "source": "audio-heuristic"}],
     )
     tags = _tags(out)
     assert "audio:music-likely" in tags
@@ -1101,7 +1099,12 @@ def test_needs_ocr_is_separate_from_needs_vision() -> None:
     # A photo with no extracted text earns needs-ocr; OCR is not vision, so this
     # layer never emits needs-vision (that comes from the visual-description layer).
     out = tag_text(
-        "", tweet_type="original", mentions=[], media_count=1, account_category="core", needs_ocr=True
+        "",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        needs_ocr=True,
     )
     t = _tags(out)
     assert "media-status:needs-ocr" in t
@@ -1109,7 +1112,12 @@ def test_needs_ocr_is_separate_from_needs_vision() -> None:
     assert "media:needs-ocr" not in t
     assert "media:needs-vision" not in t
     out2 = tag_text(
-        "", tweet_type="original", mentions=[], media_count=1, account_category="core", needs_ocr=False
+        "",
+        tweet_type="original",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+        needs_ocr=False,
     )
     assert "media-status:needs-ocr" not in _tags(out2)
 
@@ -1331,7 +1339,10 @@ def test_speaker_tags_require_named_speech_context() -> None:
             "First Lady Melania Trump delivers an announcement that the House passed the bill.",
             "speaker:First Lady Melania Trump",
         ),
-        (".@SecMullinDHS delivered remarks at the Coast Guard Academy.", "speaker:Secretary Mullin"),
+        (
+            ".@SecMullinDHS delivered remarks at the Coast Guard Academy.",
+            "speaker:Secretary Mullin",
+        ),
         ("Remarks by @POTUS in the Oval Office.", "speaker:President Trump"),
         (
             "Vice President Vance joined Fox News for an interview on border security.",
@@ -1664,7 +1675,9 @@ def test_country_state_lowercase_mentions_are_tagged() -> None:
 
 
 def test_country_slug_is_case_stable_across_source_casing() -> None:
-    common = dict(tweet_type="original", mentions=[], media_count=0, account_category="core")
+    common: dict[str, Any] = dict(
+        tweet_type="original", mentions=[], media_count=0, account_category="core"
+    )
     lower = _tags(tag_text("removed from mexico, today", **common))
     title = _tags(tag_text("removed from Mexico, today", **common))
     # Same canonical slug no matter how the name was written.

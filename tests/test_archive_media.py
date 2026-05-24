@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import httpx
 import polars as pl
@@ -100,7 +100,8 @@ def _write_handle(path: Path, media: dict[str, Any]) -> None:
 
 def _read_media(path: Path) -> dict[str, Any]:
     row = pl.read_parquet(path).to_dicts()[0]
-    return row["media"][0]
+    media: dict[str, Any] = row["media"][0]
+    return media
 
 
 def test_archive_uploads_to_numbered_release_when_primary_is_full(
@@ -113,7 +114,11 @@ def test_archive_uploads_to_numbered_release_when_primary_is_full(
     monkeypatch.setattr(archive_media, "fetch_bytes", lambda url, http: b"video-bytes")
 
     archived, failed, skipped = archive_media.archive_one_handle(
-        "DHSgov", parquet_path, gh, object(), 1
+        "DHSgov",
+        parquet_path,
+        cast(archive_media.GitHubReleaseClient, gh),
+        cast(httpx.Client, object()),
+        1,
     )
 
     assert (archived, failed, skipped) == (1, 0, 0)
@@ -149,7 +154,11 @@ def test_archive_stitches_existing_asset_from_numbered_release_without_refetch(
     )
 
     archived, failed, skipped = archive_media.archive_one_handle(
-        "DHSgov", parquet_path, gh, object(), 1
+        "DHSgov",
+        parquet_path,
+        cast(archive_media.GitHubReleaseClient, gh),
+        cast(httpx.Client, object()),
+        1,
     )
 
     assert (archived, failed, skipped) == (1, 0, 0)
@@ -175,7 +184,11 @@ def test_archive_does_not_construct_download_url_for_unverified_422(
     monkeypatch.setattr(archive_media, "fetch_bytes", lambda url, http: b"video-bytes")
 
     archived, failed, skipped = archive_media.archive_one_handle(
-        "DHSgov", parquet_path, gh, object(), 1
+        "DHSgov",
+        parquet_path,
+        cast(archive_media.GitHubReleaseClient, gh),
+        cast(httpx.Client, object()),
+        1,
     )
 
     assert (archived, failed, skipped) == (0, 1, 0)

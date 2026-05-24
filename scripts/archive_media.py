@@ -231,6 +231,7 @@ class GitHubReleaseClient:
         r.raise_for_status()
         return cast(dict[str, Any], r.json())
 
+
 # --------------------------------------------------------------------------
 # Per-tweet processing
 
@@ -286,7 +287,9 @@ class ReleaseShardSet:
         while True:
             shard = self._upload_shard()
             try:
-                uploaded = self.gh.upload_asset(shard.release["upload_url"], name, content_type, data)
+                uploaded = self.gh.upload_asset(
+                    shard.release["upload_url"], name, content_type, data
+                )
             except httpx.HTTPStatusError as e:
                 if e.response.status_code != 422:
                     raise
@@ -651,8 +654,14 @@ def load_id_file(path: Path | None) -> set[str] | None:
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--handle", help="Archive only this handle.")
-    p.add_argument("--tweet-ids-file", type=Path, help="Archive only tweets listed in this newline/CSV file.")
-    p.add_argument("--media-ids-file", type=Path, help="Archive only media IDs listed in this newline/CSV file.")
+    p.add_argument(
+        "--tweet-ids-file", type=Path, help="Archive only tweets listed in this newline/CSV file."
+    )
+    p.add_argument(
+        "--media-ids-file",
+        type=Path,
+        help="Archive only media IDs listed in this newline/CSV file.",
+    )
     p.add_argument(
         "--max-items",
         type=int,

@@ -23,9 +23,7 @@ def tmp_corpus(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[Path
     monkeypatch.setattr(tag_image_ocr, "REPO_ROOT", tmp_path)
     monkeypatch.setattr(tag_image_ocr, "DATA_DIR", tmp_path / "data")
     monkeypatch.setattr(tag_image_ocr, "TAGS_DIR", tmp_path / "data" / "tags")
-    monkeypatch.setattr(
-        tag_image_ocr, "OUT_PATH", tmp_path / "data" / "tags" / "image_ocr.parquet"
-    )
+    monkeypatch.setattr(tag_image_ocr, "OUT_PATH", tmp_path / "data" / "tags" / "image_ocr.parquet")
     monkeypatch.setattr(
         tag_image_ocr, "KEYFRAMES_PATH", tmp_path / "data" / "tags" / "keyframes.parquet"
     )

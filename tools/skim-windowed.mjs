@@ -167,7 +167,9 @@ function parseArgs(argv) {
 }
 
 function stripHandle(value) {
-  return String(value || '').trim().replace(/^@/, '');
+  return String(value || '')
+    .trim()
+    .replace(/^@/, '');
 }
 
 function positiveInteger(name, value) {
@@ -289,7 +291,10 @@ function buildCommand(handle, window, options) {
 }
 
 function safeLabel(value) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
 }
 
 async function runWindow(job, index, total, options) {
@@ -339,7 +344,10 @@ async function main() {
   for (const handle of options.handles) {
     for (const window of windows) jobs.push({ handle, window });
   }
-  const selected = jobs.slice(options.offset, Number.isFinite(options.limit) ? options.offset + options.limit : undefined);
+  const selected = jobs.slice(
+    options.offset,
+    Number.isFinite(options.limit) ? options.offset + options.limit : undefined
+  );
   console.log(
     `Prepared ${selected.length}/${jobs.length} windowed skim jobs (${options.unit}, ${options.from}..${options.to}).`
   );

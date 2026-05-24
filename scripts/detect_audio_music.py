@@ -162,7 +162,9 @@ def _to_int(value: Any) -> int:
         return 0
 
 
-def tag_entry(tag: str, *, tentative: bool = False, source: str = "audio-heuristic") -> dict[str, Any]:
+def tag_entry(
+    tag: str, *, tentative: bool = False, source: str = "audio-heuristic"
+) -> dict[str, Any]:
     return {
         "tag": tag,
         "tentative": True if tentative else None,
@@ -230,7 +232,8 @@ def ffprobe_audio(path: Path) -> dict[str, Any]:
         ],
         timeout=60,
     )
-    return json.loads(out)
+    data: dict[str, Any] = json.loads(out)
+    return data
 
 
 def decode_audio_sample(
@@ -328,9 +331,7 @@ def analyze_pcm(
         + 0.07 * duration_bonus
     )
     speech_score = clamp(
-        0.45 * non_silent_ratio
-        + 0.40 * min(1.0, rel_std / 0.8)
-        + 0.15 * duration_bonus
+        0.45 * non_silent_ratio + 0.40 * min(1.0, rel_std / 0.8) + 0.15 * duration_bonus
     )
     status = "silent-audio" if non_silent_ratio == 0 or rms_mean < 0.002 else "ok"
     result = AudioResult(
@@ -725,7 +726,9 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Ignore the existing sidecar cache and re-analyze every video.",
     )
-    parser.add_argument("--dry-run", action="store_true", help="Report planned rows without writing.")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Report planned rows without writing."
+    )
     parser.add_argument(
         "--sample-seconds",
         type=float,

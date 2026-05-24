@@ -198,13 +198,15 @@ def fix_row_tags(tags: Any, *, described: bool, needs_vision: bool) -> list[dict
     for entry in tags or []:
         if isinstance(entry, dict):
             name = str(entry.get("tag") or "")
+            normalized = dict(entry)
         elif isinstance(entry, str):
-            entry, name = {"tag": entry}, entry
+            name = entry
+            normalized = {"tag": entry}
         else:
             continue
         if name in (DESCRIBED_TAG, NEEDS_VISION_TAG):
             continue
-        out.append(dict(entry))
+        out.append(normalized)
     if described:
         out.insert(0, _full_tag(DESCRIBED_TAG, tentative=None))
     if needs_vision:
@@ -248,9 +250,7 @@ def reconcile_media_vision(
         # A non-visual media row (none today) still gets "described"; a visual
         # row is described only when genuine.
         row_described = (not is_visual) or is_genuine
-        row["tags"] = fix_row_tags(
-            row.get("tags"), described=row_described, needs_vision=row_needs
-        )
+        row["tags"] = fix_row_tags(row.get("tags"), described=row_described, needs_vision=row_needs)
         described += int(row_described)
         needs += int(row_needs)
     out = pl.DataFrame(rows, schema=MEDIA_VISION_SCHEMA, strict=False)
@@ -274,13 +274,15 @@ def _overlay_tweet_tags(
     for entry in existing or []:
         if isinstance(entry, dict):
             name = str(entry.get("tag") or "")
+            normalized = dict(entry)
         elif isinstance(entry, str):
-            entry, name = {"tag": entry}, entry
+            name = entry
+            normalized = {"tag": entry}
         else:
             continue
         if name in (DESCRIBED_TAG, NEEDS_VISION_TAG):
             continue
-        out.append(dict(entry))
+        out.append(normalized)
     mk = _compact_tag if compact else _full_tag
     if described:
         out.append(mk(DESCRIBED_TAG, tentative=None))
@@ -445,8 +447,14 @@ def _fix_insight_compact(
         )
         prose = descriptions.get((tweet_id, mid))
         if prose:
-            for field in ("description", "summary_text", "model", "model_version", "status",
-                          "confidence"):
+            for field in (
+                "description",
+                "summary_text",
+                "model",
+                "model_version",
+                "status",
+                "confidence",
+            ):
                 if field in ins and prose.get(field) is not None:
                     ins[field] = prose[field]
         out.append(ins)
@@ -460,9 +468,7 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Only fix media_vision.parquet; skip the catalog/preview overlay.",
     )
-    parser.add_argument(
-        "--dry-run", action="store_true", help="Report counts; write nothing."
-    )
+    parser.add_argument("--dry-run", action="store_true", help="Report counts; write nothing.")
     args = parser.parse_args(argv)
 
     if not MEDIA_VISION_PATH.exists():

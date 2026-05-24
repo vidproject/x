@@ -74,7 +74,9 @@ function parseArgs(argv) {
 }
 
 function stripHandle(value) {
-  return String(value || '').trim().replace(/^@/, '');
+  return String(value || '')
+    .trim()
+    .replace(/^@/, '');
 }
 
 async function importNormalizer() {
@@ -87,7 +89,9 @@ async function importNormalizer() {
     path.join(REPO_ROOT, 'extension', 'src', 'lib', 'normalize.ts'),
     path.join(NORMALIZE_CACHE_DIR, 'normalize.js')
   );
-  return import(`${pathToFileURL(path.join(NORMALIZE_CACHE_DIR, 'normalize.js')).href}?v=${Date.now()}`);
+  return import(
+    `${pathToFileURL(path.join(NORMALIZE_CACHE_DIR, 'normalize.js')).href}?v=${Date.now()}`
+  );
 }
 
 async function transpileTsModule(inPath, outPath) {
@@ -212,7 +216,7 @@ function buildRetweetEdges(tweets, accounts, capturedAt, endpoint, sourceUrl, ru
       original_author_handle: originalHandle,
       original_author_account_id: original?.account_id ?? null,
       original_author_category: originalHandle
-        ? categoryByHandle.get(originalHandle.toLowerCase()) ?? 'public'
+        ? (categoryByHandle.get(originalHandle.toLowerCase()) ?? 'public')
         : null,
       captured_at: capturedAt,
       capture_run_id: runId,
@@ -232,7 +236,8 @@ function pushMap(map, key, value) {
 
 function compactTimestamp(iso) {
   const date = new Date(iso);
-  if (Number.isNaN(date.getTime())) return new Date().toISOString().replace(/[-:.]/g, '').slice(0, 15);
+  if (Number.isNaN(date.getTime()))
+    return new Date().toISOString().replace(/[-:.]/g, '').slice(0, 15);
   return date.toISOString().replace(/[-:.]/g, '').slice(0, 15);
 }
 
@@ -278,7 +283,14 @@ async function convertSummary(item, options, normalizer, accounts) {
     });
     const related = normalizer.filterRelated(normalized.tweets, tracked, core);
     const captureRunId = `${options.runPrefix}-${record.run_id || item.summary.run_id}`;
-    const edges = buildRetweetEdges(related, accounts, recordCapturedAt, endpoint, sourceUrl, captureRunId);
+    const edges = buildRetweetEdges(
+      related,
+      accounts,
+      recordCapturedAt,
+      endpoint,
+      sourceUrl,
+      captureRunId
+    );
     for (const tweet of related) {
       pushMap(groupedTweets, tweet.account_handle, { ...tweet, capture_run_id: captureRunId });
       built += 1;

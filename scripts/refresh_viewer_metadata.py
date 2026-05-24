@@ -25,7 +25,9 @@ def manifest_accounts_for_existing_data(
     by_handle = {a["handle"]: a for a in tracked_accounts}
     existing_order = existing_manifest_order(previous_manifest)
     ordered_handles = [h for h in existing_order if h in by_handle]
-    ordered_handles.extend(a["handle"] for a in tracked_accounts if a["handle"] not in ordered_handles)
+    ordered_handles.extend(
+        a["handle"] for a in tracked_accounts if a["handle"] not in ordered_handles
+    )
     accounts = [dict(by_handle[handle]) for handle in ordered_handles]
     if (ingest.DATA_DIR / f"{ingest.MISC_HANDLE}.parquet").exists():
         accounts.append(
@@ -50,7 +52,9 @@ def existing_manifest_order(payload: dict[str, Any] | None) -> list[str]:
 
 def refresh(accounts_path: Path = ingest.CONFIG_PATH) -> dict[str, object]:
     previous_manifest = read_json_or_none(ingest.DATA_DIR / "manifest.json")
-    manifest = ingest.build_manifest(manifest_accounts_for_existing_data(accounts_path, previous_manifest))
+    manifest = ingest.build_manifest(
+        manifest_accounts_for_existing_data(accounts_path, previous_manifest)
+    )
     manifest = stable_generated_at(previous_manifest, manifest)
     ingest.write_manifest(manifest)
     write_users_stable(ingest.aggregate_users(), str(manifest["generated_at"]))
@@ -73,7 +77,10 @@ def stable_generated_at(previous: dict[str, Any] | None, payload: dict[str, Any]
     if previous is None:
         return payload
     if without_generated_at(previous) == without_generated_at(payload):
-        return {**payload, "generated_at": previous.get("generated_at", payload.get("generated_at"))}
+        return {
+            **payload,
+            "generated_at": previous.get("generated_at", payload.get("generated_at")),
+        }
     return payload
 
 

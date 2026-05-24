@@ -197,7 +197,9 @@ def tesseract_available() -> bool:
 
 def tesseract_version() -> str:
     try:
-        out = subprocess.check_output(["tesseract", "--version"], timeout=15, stderr=subprocess.STDOUT)
+        out = subprocess.check_output(
+            ["tesseract", "--version"], timeout=15, stderr=subprocess.STDOUT
+        )
     except Exception:
         return OCR_VERSION
     first = out.decode("utf-8", errors="replace").splitlines()[0].strip()
@@ -450,7 +452,9 @@ def main(argv: list[str] | None = None) -> int:
         help="Maximum number of uncached images/keyframes to OCR this run.",
     )
     parser.add_argument("--force", action="store_true", help="Ignore the existing OCR cache.")
-    parser.add_argument("--dry-run", action="store_true", help="Report planned rows without writing.")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Report planned rows without writing."
+    )
     args = parser.parse_args(argv)
 
     parquets = discover_canonical_parquets()

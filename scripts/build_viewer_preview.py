@@ -297,7 +297,8 @@ def compact_catalog_row(
     if parquet_byte_length is not None:
         out["__catalog"]["byte_length"] = int(parquet_byte_length)
     out["__hydrated"] = False
-    return _json_safe(out)
+    safe: dict[str, Any] = _json_safe(out)
+    return safe
 
 
 def apply_catalog_overlays(
@@ -353,7 +354,7 @@ def dedupe_tag_entries(entries: Iterable[Any]) -> list[dict[str, Any]]:
 
 
 def compact_tag_entry(entry: dict[str, Any]) -> dict[str, Any]:
-    out = {"tag": str(entry.get("tag") or "")}
+    out: dict[str, Any] = {"tag": str(entry.get("tag") or "")}
     if entry.get("tentative"):
         out["tentative"] = True
     source = str(entry.get("source") or "")

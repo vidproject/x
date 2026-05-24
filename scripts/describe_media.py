@@ -326,14 +326,11 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
         haystack,
     ):
         add("video:text-overlay")
-    musical_score = (
-        r"\b(?:musical|orchestral|cinematic|dramatic|film|movie|trailer)\s+score\b"
-    )
+    musical_score = r"\b(?:musical|orchestral|cinematic|dramatic|film|movie|trailer)\s+score\b"
     if is_video and re_search(
         r"\b(polished|produced|edited|multi-shot|multi shot|rapid[- ]cut|b-roll|screencast|"
         r"recruitment|psa|public service announcement|commercial|cinematic|trailer[- ]style|"
-        r"title[- ]card|end[- ]card|color[- ]graded|soundtrack|music bed)\b|"
-        + musical_score,
+        r"title[- ]card|end[- ]card|color[- ]graded|soundtrack|music bed)\b|" + musical_score,
         media_form_haystack,
     ):
         add("video:produced")
@@ -360,7 +357,9 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
         )
     ):
         add("genre:music-video")
-    if is_video and re_search(r"\bvoiceover\b|\bvoice-over\b|\bnarration\b|\bnarrator\b|\bnarrated\b", haystack):
+    if is_video and re_search(
+        r"\bvoiceover\b|\bvoice-over\b|\bnarration\b|\bnarrator\b|\bnarrated\b", haystack
+    ):
         add("video:voiceover")
     if is_video and re_search(
         r"\b(cnn|fox news|msnbc|cbs news|abc news|nbc news|newsmax|lower-third|chyron|broadcast)\b",
@@ -404,7 +403,7 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
 
 
 NEGATED_MEDIA_FORM_PATTERN = re.compile(
-    r"\b(?:not|no|without|never|isn['’]?t|is\s+not|does\s+not\s+appear\s+to\s+be)\b"
+    r"\b(?:not|no|without|never|isn['’]?t|is\s+not|does\s+not\s+appear\s+to\s+be)\b"  # noqa: RUF001 - char class intentionally matches both apostrophe forms
     r".{0,90}\b(?:music\s+videos?|music[- ](?:led|driven)\s+(?:clips?|montages?|videos?)|"
     r"produced[- ]videos?|produced\s+videos?|montages?|soundtracks?|music\s+beds?)\b",
     re.I,

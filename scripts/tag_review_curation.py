@@ -124,7 +124,7 @@ def _read_parquet_safe(path: Path, *, columns: list[str] | None = None) -> pl.Da
         return None
     try:
         return pl.read_parquet(path, columns=columns)
-    except Exception as err:  # noqa: BLE001 - any read failure should skip, not abort
+    except Exception as err:
         LOG.warning("review-curation: skipping unreadable parquet", path=str(path), error=str(err))
         return None
 
@@ -246,8 +246,7 @@ def collect_media_status_tweets(by_tweet: dict[str, dict[str, Any]]) -> None:
             df=vision,
             tag=SCREENED_PHOTO_TAG,
             source=SOURCE_REVIEW_CURATION,
-            predicate=(pl.col("model") == "opus-vision-review")
-            & (pl.col("media_type") == "photo"),
+            predicate=(pl.col("model") == "opus-vision-review") & (pl.col("media_type") == "photo"),
         )
 
     transcripts = _read_parquet_safe(

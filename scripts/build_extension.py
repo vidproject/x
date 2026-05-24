@@ -105,7 +105,7 @@ def bundle(dist: Path) -> None:
 
 
 def load_manifest(browser: str) -> dict[str, object]:
-    manifest = json.loads((EXT / "manifest.json").read_text(encoding="utf-8"))
+    manifest: dict[str, object] = json.loads((EXT / "manifest.json").read_text(encoding="utf-8"))
     if browser == "firefox":
         return manifest
     if browser != "chrome":

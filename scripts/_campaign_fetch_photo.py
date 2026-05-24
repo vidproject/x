@@ -107,7 +107,7 @@ def fetch_one(media_id: str, url: str, http: httpx.Client) -> Path | None:
             dest.unlink(missing_ok=True)
             return None
         return dest
-    except Exception as e:  # noqa: BLE001 - report and continue
+    except Exception as e:
         print(f"SKIP {media_id}: {e}", file=sys.stderr)
         return None
 

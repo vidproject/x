@@ -80,7 +80,7 @@ def read_json(path: Path) -> Any:
 
 def core_handles() -> set[str]:
     data = read_json(ACCOUNT_CATEGORIES_PATH)
-    categories = data.get("categories") if isinstance(data, dict) else {}
+    categories = (data.get("categories") or {}) if isinstance(data, dict) else {}
     return {
         str(handle)
         for handle, meta in categories.items()
@@ -186,39 +186,87 @@ def classify_from_text(text: str) -> set[str]:
     )
     if any(word in haystack for word in produced_words):
         tags.add("video:produced")
-    if any(word in haystack for word in ("montage", "multiple shot", "sequence of clips", "series of clips", "b-roll")):
+    if any(
+        word in haystack
+        for word in ("montage", "multiple shot", "sequence of clips", "series of clips", "b-roll")
+    ):
         tags.add("video:montage")
-    if any(word in haystack for word in ("text overlay", "title-card", "end-card", "chyron", "lower-third", "caption")):
+    if any(
+        word in haystack
+        for word in ("text overlay", "title-card", "end-card", "chyron", "lower-third", "caption")
+    ):
         tags.add("video:text-overlay")
-    if any(word in haystack for word in ("voiceover", "voice-over", "narration", "narrator", "narrated")):
+    if any(
+        word in haystack
+        for word in ("voiceover", "voice-over", "narration", "narrator", "narrated")
+    ):
         tags.add("video:voiceover")
     # Only explicit music-video phrasing implies a music video. Incidental
     # music wording ("soundtrack", "background music", "music bed", "anthem")
     # is NOT enough and previously over-tagged speeches. Never synthesize
     # audio:music-likely from text — that tag is an acoustic heuristic owned by
     # the audio sidecar, not a text classification.
-    if (
-        not _has_speech_indicator(haystack)
-        and re.search(
-            r"\b(?:official\s+)?music\s+video\b"
-            r"|\bset\s+to\s+(?:music|the\s+song|the\s+track)\b"
-            r"|\bofficial\s+(?:video|audio)\s+for\b"
-            r"|\b(?:lyric|lyrics)\s+video\b",
-            haystack,
-        )
+    if not _has_speech_indicator(haystack) and re.search(
+        r"\b(?:official\s+)?music\s+video\b"
+        r"|\bset\s+to\s+(?:music|the\s+song|the\s+track)\b"
+        r"|\bofficial\s+(?:video|audio)\s+for\b"
+        r"|\b(?:lyric|lyrics)\s+video\b",
+        haystack,
     ):
         tags.update({"genre:music-video"})
-    if any(word in haystack for word in ("psa", "public service announcement", "did you know", "learn more", "hotline")):
+    if any(
+        word in haystack
+        for word in ("psa", "public service announcement", "did you know", "learn more", "hotline")
+    ):
         tags.update({"video:produced", "genre:psa"})
-    if any(word in haystack for word in ("join.ice.gov", "recruitment", "apply now", "apply today", "hiring", "career")):
+    if any(
+        word in haystack
+        for word in ("join.ice.gov", "recruitment", "apply now", "apply today", "hiring", "career")
+    ):
         tags.update({"video:produced", "genre:recruitment", "genre:advertisement"})
-    if any(word in haystack for word in ("campaign ad", "ad spot", "commercial", "promotional video")):
+    if any(
+        word in haystack for word in ("campaign ad", "ad spot", "commercial", "promotional video")
+    ):
         tags.update({"video:produced", "genre:advertisement"})
-    if any(word in haystack for word in ("war movie", "war film", "action movie", "trailer-style", "combat", "battle")) and "cinematic" in haystack:
+    if (
+        any(
+            word in haystack
+            for word in (
+                "war movie",
+                "war film",
+                "action movie",
+                "trailer-style",
+                "combat",
+                "battle",
+            )
+        )
+        and "cinematic" in haystack
+    ):
         tags.update({"video:produced", "genre:war-movie"})
-    if any(word in haystack for word in ("dystopian", "sci-fi", "science fiction", "cyberpunk", "apocalyptic", "hellscape", "surveillance-state")):
+    if any(
+        word in haystack
+        for word in (
+            "dystopian",
+            "sci-fi",
+            "science fiction",
+            "cyberpunk",
+            "apocalyptic",
+            "hellscape",
+            "surveillance-state",
+        )
+    ):
         tags.update({"video:produced", "genre:dystopian"})
-    if any(word in haystack for word in ("utopian", "aspirational", "bright future", "golden age", "sunlit", "triumphal")):
+    if any(
+        word in haystack
+        for word in (
+            "utopian",
+            "aspirational",
+            "bright future",
+            "golden age",
+            "sunlit",
+            "triumphal",
+        )
+    ):
         tags.update({"video:produced", "genre:utopian"})
     return tags
 
@@ -407,7 +455,9 @@ def build() -> dict[str, Any]:
                         manual=manual,
                     )
                 )
-    items.sort(key=lambda i: (-int(i["priority"]), str(i.get("posted_at") or ""), str(i["tweet_id"])))
+    items.sort(
+        key=lambda i: (-int(i["priority"]), str(i.get("posted_at") or ""), str(i["tweet_id"]))
+    )
     bucket_counts = Counter(str(item["bucket"]) for item in items)
     tag_counts = Counter(tag for item in items for tag in item["tags"])
     missing_counts = Counter(step for item in items for step in item["missing_steps"])
@@ -512,8 +562,12 @@ def write_json_audit(result: dict[str, Any], path: Path) -> bool:
 
 def write_archive_recovery_queues(items: list[dict[str, Any]]) -> None:
     recovery = archive_recovery_items(items)
-    tweet_ids = sorted({str(item.get("tweet_id") or "") for item in recovery if item.get("tweet_id")})
-    media_ids = sorted({str(item.get("media_id") or "") for item in recovery if item.get("media_id")})
+    tweet_ids = sorted(
+        {str(item.get("tweet_id") or "") for item in recovery if item.get("tweet_id")}
+    )
+    media_ids = sorted(
+        {str(item.get("media_id") or "") for item in recovery if item.get("media_id")}
+    )
     write_id_file(MISSING_TWEET_IDS_OUT, tweet_ids)
     write_id_file(MISSING_MEDIA_IDS_OUT, media_ids)
 

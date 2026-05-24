@@ -24,9 +24,13 @@ export async function loadParquetRows(url, options) {
       return await parquetReadObjects({
         file,
         compressors,
-        ...(Number.isFinite(opts.rowStart) ? { rowStart: Math.max(0, Math.floor(opts.rowStart)) } : {}),
+        ...(Number.isFinite(opts.rowStart)
+          ? { rowStart: Math.max(0, Math.floor(opts.rowStart)) }
+          : {}),
         ...(Number.isFinite(opts.rowEnd) ? { rowEnd: Math.max(0, Math.floor(opts.rowEnd)) } : {}),
-        ...(Array.isArray(opts.columns) && opts.columns.length > 0 ? { columns: opts.columns } : {}),
+        ...(Array.isArray(opts.columns) && opts.columns.length > 0
+          ? { columns: opts.columns }
+          : {}),
       });
     } catch (err) {
       if (hasRange) throw err;

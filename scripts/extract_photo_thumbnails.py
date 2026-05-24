@@ -417,7 +417,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--force", action="store_true", help="Ignore cache and re-extract.")
     parser.add_argument("--dry-run", action="store_true", help="Report planned rows; do not write.")
     parser.add_argument(
-        "--width", type=int, default=DEFAULT_THUMB_WIDTH, help=f"Thumbnail width (default {DEFAULT_THUMB_WIDTH})."
+        "--width",
+        type=int,
+        default=DEFAULT_THUMB_WIDTH,
+        help=f"Thumbnail width (default {DEFAULT_THUMB_WIDTH}).",
     )
     parser.add_argument(
         "--tweet-ids-file",

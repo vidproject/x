@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from scripts.describe_media import describe_media_item, derive_description_tags, input_hash_for
+from scripts.describe_media import derive_description_tags, describe_media_item, input_hash_for
 
 
 def _tweet() -> dict[str, Any]:

@@ -27,8 +27,12 @@ def tmp_corpus(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[Path
     monkeypatch.setattr(transcribe_audio, "REPO_ROOT", tmp_path)
     monkeypatch.setattr(transcribe_audio, "DATA_DIR", tmp_path / "data")
     monkeypatch.setattr(transcribe_audio, "TAGS_DIR", tmp_path / "data" / "tags")
-    monkeypatch.setattr(transcribe_audio, "OUT_PATH", tmp_path / "data" / "tags" / "transcripts.parquet")
-    monkeypatch.setattr(transcribe_audio, "MANIFEST_PATH", tmp_path / "data" / "tags" / "manifest.json")
+    monkeypatch.setattr(
+        transcribe_audio, "OUT_PATH", tmp_path / "data" / "tags" / "transcripts.parquet"
+    )
+    monkeypatch.setattr(
+        transcribe_audio, "MANIFEST_PATH", tmp_path / "data" / "tags" / "manifest.json"
+    )
     yield tmp_path
 
 
@@ -70,7 +74,9 @@ def test_transcribes_and_writes_text(tmp_corpus: Path) -> None:
         [make_tweet("t1", handle="DHSgov", media=[_archived_video("13_1", "shaA")])],
     )
     out = tmp_corpus / "data" / "tags" / "transcripts.parquet"
-    stats = transcribe_audio.run(parquets=[p], out_path=out, transcriber=_stub("We will make America safe again."))
+    stats = transcribe_audio.run(
+        parquets=[p], out_path=out, transcriber=_stub("We will make America safe again.")
+    )
     assert stats["status_ok"] == 1
     df = pl.read_parquet(out)
     assert df.height == 1
@@ -153,7 +159,11 @@ def test_scoped_run_preserves_prior_transcripts(tmp_corpus: Path) -> None:
 
 
 def test_is_cache_hit_respects_version_and_model() -> None:
-    base = {"transcriber_version": transcribe_audio.TRANSCRIBER_VERSION, "model": "base", "status": "ok"}
+    base = {
+        "transcriber_version": transcribe_audio.TRANSCRIBER_VERSION,
+        "model": "base",
+        "status": "ok",
+    }
     assert is_cache_hit(base, model="base")
     assert not is_cache_hit({**base, "model": "small"}, model="base")
     assert not is_cache_hit({**base, "transcriber_version": "old"}, model="base")

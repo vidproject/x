@@ -174,11 +174,17 @@ def main(argv: list[str] | None = None) -> int:
         videos_without_media_row=len(missing_videos),
     )
     if missing_images:
-        LOG.warning("apply-desc: image reviews with no media_vision row", count=len(missing_images),
-                    sample=missing_images[:5])
+        LOG.warning(
+            "apply-desc: image reviews with no media_vision row",
+            count=len(missing_images),
+            sample=missing_images[:5],
+        )
     if missing_videos:
-        LOG.warning("apply-desc: video reviews with no media_vision row", count=len(missing_videos),
-                    sample=missing_videos[:5])
+        LOG.warning(
+            "apply-desc: video reviews with no media_vision row",
+            count=len(missing_videos),
+            sample=missing_videos[:5],
+        )
 
     if args.dry_run:
         LOG.info("apply-desc: dry run, nothing written")

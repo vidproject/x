@@ -314,7 +314,10 @@ CRIME_VOCAB: tuple[tuple[str, str], ...] = (
     ("tren-de-aragua", r"\bTren de Aragua\b|\bTdA\b"),
     ("narcotics", r"\bnarcotic[s]?\b"),
     ("fraud", r"\bfraud(?:ulent|ster)?\b"),
-    ("disobedience", r"\b(?:contempt\s+of\s+court|violat(?:e|ed|ing|ion)\s+(?:of\s+)?(?:a\s+)?court\s+order|disobey(?:ed|ing)?\s+(?:a\s+)?court\s+order)\b"),
+    (
+        "disobedience",
+        r"\b(?:contempt\s+of\s+court|violat(?:e|ed|ing|ion)\s+(?:of\s+)?(?:a\s+)?court\s+order|disobey(?:ed|ing)?\s+(?:a\s+)?court\s+order)\b",
+    ),
     ("perjury", r"\bperjur(?:y|ed)\b|\blying\s+under\s+oath\b"),
     ("arson", r"\barson(?:ist)?\b"),
     ("weapon", r"\bweapon[s]?\b|\billegal firearm[s]?\b"),
@@ -492,7 +495,10 @@ AGENCY_TEXT_PATTERNS: tuple[tuple[re.Pattern[str], str], ...] = (
     (_compile(r"\bSOUTHCOM\b|\bU\.?S\.?\s+Southern Command\b"), "agency:Southcom"),
     (_compile(r"\bUSCG\b|\bU\.?S\.?\s+Coast Guard\b|\bUnited States Coast Guard\b"), "agency:USCG"),
     (_compile(r"\bTSA\b|\bTransportation Security Administration\b"), "agency:TSA"),
-    (_compile(r"\bU\.?S\.?\s+Secret Service\b|\bUnited States Secret Service\b"), "agency:SecretService"),
+    (
+        _compile(r"\bU\.?S\.?\s+Secret Service\b|\bUnited States Secret Service\b"),
+        "agency:SecretService",
+    ),
     (_compile(r"\bCISA\b|\bCybersecurity and Infrastructure Security Agency\b"), "agency:CISAgov"),
     (
         _compile(r"\bODNI\b|\bOffice of the Director of National Intelligence\b"),
@@ -586,7 +592,9 @@ MILITARY_VOCAB: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("marines", _compile(r"\b(?:marine\s+corps|u\.s\.\s+marines?|usmc|marines)\b")),
     (
         "coast-guard",
-        _compile(r"\b(?:coast\s+guard|USCG|USCGA|coast\s+guard\s+academy|coasties?|coast\s+guards?m[ae]n)\b"),
+        _compile(
+            r"\b(?:coast\s+guard|USCG|USCGA|coast\s+guard\s+academy|coasties?|coast\s+guards?m[ae]n)\b"
+        ),
     ),
     ("national-guard", _compile(r"\b(?:national\s+guard|national\s+guards?m[ae]n)\b")),
 )
@@ -917,9 +925,7 @@ PARODY_FRANCHISE_GAZETTEER: tuple[tuple[re.Pattern[str], str], ...] = (
 # Emit genre:parody ONLY when a franchise match fires; it never fires alone.
 # A broader multi-cue Star Wars check: text must contain "this is the way"
 # AND at least one other signature Star Wars cue.
-PATTERN_PARODY_STAR_WARS_MULTI = _compile(
-    r"\bthis\s+is\s+the\s+way\b"
-)
+PATTERN_PARODY_STAR_WARS_MULTI = _compile(r"\bthis\s+is\s+the\s+way\b")
 PATTERN_PARODY_STAR_WARS_EXTRA_CUE = _compile(
     r"\b(?:may\s+the\s+(?:4th|fourth)\s+be\s+with\s+you|the\s+force|jedi|sith|death\s+star|"
     r"a\s+galaxy|galaxy\s+(?:far|that)|lightsaber|darth|yoda|skywalker|mandalorian)\b"
@@ -1230,29 +1236,70 @@ PATTERN_STATE_CANDIDATE = re.compile(rf"\b{_PLACE},\s+({_PLACE})\b")
 # preposition. Curated for precision: food/ambiguous demonyms ("French",
 # "German", "Indian", "Korean") are intentionally omitted.
 DEMONYM_TO_COUNTRY: dict[str, str] = {
-    "iranian": "Iran", "mexican": "Mexico", "venezuelan": "Venezuela",
-    "chinese": "China", "russian": "Russia", "cuban": "Cuba",
-    "colombian": "Colombia", "salvadoran": "El Salvador", "salvadorian": "El Salvador",
-    "honduran": "Honduras", "guatemalan": "Guatemala", "haitian": "Haiti",
-    "somali": "Somalia", "somalian": "Somalia", "afghan": "Afghanistan",
-    "syrian": "Syria", "nigerian": "Nigeria", "pakistani": "Pakistan",
-    "ukrainian": "Ukraine", "israeli": "Israel", "iraqi": "Iraq",
-    "egyptian": "Egypt", "yemeni": "Yemen", "brazilian": "Brazil",
-    "nicaraguan": "Nicaragua", "ecuadorian": "Ecuador", "peruvian": "Peru",
-    "jamaican": "Jamaica", "filipino": "Philippines", "vietnamese": "Vietnam",
-    "lebanese": "Lebanon", "libyan": "Libya", "sudanese": "Sudan",
-    "ethiopian": "Ethiopia", "kenyan": "Kenya", "moroccan": "Morocco",
-    "algerian": "Algeria", "bangladeshi": "Bangladesh", "cambodian": "Cambodia",
-    "indonesian": "Indonesia", "dominican": "Dominican Republic", "panamanian": "Panama",
-    "bolivian": "Bolivia", "chilean": "Chile", "argentine": "Argentina",
-    "argentinian": "Argentina", "saudi": "Saudi Arabia", "turkish": "Turkey",
+    "iranian": "Iran",
+    "mexican": "Mexico",
+    "venezuelan": "Venezuela",
+    "chinese": "China",
+    "russian": "Russia",
+    "cuban": "Cuba",
+    "colombian": "Colombia",
+    "salvadoran": "El Salvador",
+    "salvadorian": "El Salvador",
+    "honduran": "Honduras",
+    "guatemalan": "Guatemala",
+    "haitian": "Haiti",
+    "somali": "Somalia",
+    "somalian": "Somalia",
+    "afghan": "Afghanistan",
+    "syrian": "Syria",
+    "nigerian": "Nigeria",
+    "pakistani": "Pakistan",
+    "ukrainian": "Ukraine",
+    "israeli": "Israel",
+    "iraqi": "Iraq",
+    "egyptian": "Egypt",
+    "yemeni": "Yemen",
+    "brazilian": "Brazil",
+    "nicaraguan": "Nicaragua",
+    "ecuadorian": "Ecuador",
+    "peruvian": "Peru",
+    "jamaican": "Jamaica",
+    "filipino": "Philippines",
+    "vietnamese": "Vietnam",
+    "lebanese": "Lebanon",
+    "libyan": "Libya",
+    "sudanese": "Sudan",
+    "ethiopian": "Ethiopia",
+    "kenyan": "Kenya",
+    "moroccan": "Morocco",
+    "algerian": "Algeria",
+    "bangladeshi": "Bangladesh",
+    "cambodian": "Cambodia",
+    "indonesian": "Indonesia",
+    "dominican": "Dominican Republic",
+    "panamanian": "Panama",
+    "bolivian": "Bolivia",
+    "chilean": "Chile",
+    "argentine": "Argentina",
+    "argentinian": "Argentina",
+    "saudi": "Saudi Arabia",
+    "turkish": "Turkey",
 }
 FOREIGN_CITY_TO_COUNTRY: dict[str, str] = {
-    "tehran": "Iran", "caracas": "Venezuela", "beijing": "China",
-    "moscow": "Russia", "havana": "Cuba", "kabul": "Afghanistan",
-    "damascus": "Syria", "baghdad": "Iraq", "tripoli": "Libya",
-    "mogadishu": "Somalia", "bogota": "Colombia", "managua": "Nicaragua",
-    "tegucigalpa": "Honduras", "kyiv": "Ukraine",
+    "tehran": "Iran",
+    "caracas": "Venezuela",
+    "beijing": "China",
+    "moscow": "Russia",
+    "havana": "Cuba",
+    "kabul": "Afghanistan",
+    "damascus": "Syria",
+    "baghdad": "Iraq",
+    "tripoli": "Libya",
+    "mogadishu": "Somalia",
+    "bogota": "Colombia",
+    "managua": "Nicaragua",
+    "tegucigalpa": "Honduras",
+    "kyiv": "Ukraine",
 }
 
 
@@ -1712,9 +1759,7 @@ def tag_text(
         # signal (set by the conservative describe_media / manual-review rules) —
         # NEVER from audio:music-likely, which is an incidental acoustic heuristic.
         # Also suppress it on speech / press-conference clips.
-        if not speech_indicator_present and any(
-            e["tag"] == "genre:music-video" for e in entries
-        ):
+        if not speech_indicator_present and any(e["tag"] == "genre:music-video" for e in entries):
             add("genre:music-video")
         if any(
             e["tag"] in PRODUCED_VIDEO_STRUCTURE_TAGS or str(e["tag"]).startswith("genre:")

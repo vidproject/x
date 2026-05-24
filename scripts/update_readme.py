@@ -25,7 +25,7 @@ import json
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from scripts._logging import configure
 
@@ -130,7 +130,7 @@ def build_core_accounts(manifest: dict[str, object]) -> str:
     this stays in sync with the source of truth without a second hardcoded
     copy. The ``_misc`` bucket is described separately, not listed.
     """
-    accounts = manifest.get("accounts", [])
+    accounts = cast(list[Any], manifest.get("accounts", []))
     tracked = [
         a
         for a in accounts
@@ -214,9 +214,7 @@ def _scan_parquet_gaps(data_dir: Path) -> dict[str, Any]:
         return out
 
     parquets = [
-        p
-        for p in sorted(data_dir.glob("*.parquet"))
-        if p.stem not in NON_HANDLE_PARQUET_STEMS
+        p for p in sorted(data_dir.glob("*.parquet")) if p.stem not in NON_HANDLE_PARQUET_STEMS
     ]
     if not parquets:
         return out
@@ -233,9 +231,7 @@ def _scan_parquet_gaps(data_dir: Path) -> dict[str, Any]:
         if df.height == 0:
             continue
         truncated += int(df.select(pl.col("is_truncated").fill_null(False).sum()).item() or 0)
-        unavailable += int(
-            df.filter(pl.col("unavailable_detected_at").is_not_null()).height
-        )
+        unavailable += int(df.filter(pl.col("unavailable_detected_at").is_not_null()).height)
         statuses = (
             df.select("media")
             .explode("media")
@@ -263,7 +259,7 @@ def _scan_parquet_gaps(data_dir: Path) -> dict[str, Any]:
 
 def compute_gaps(manifest: dict[str, object], data_dir: Path) -> dict[str, Any]:
     """Gather coverage-gap metrics from the manifest plus parquet data."""
-    accounts = [a for a in manifest.get("accounts", []) if isinstance(a, dict)]
+    accounts = [a for a in cast(list[Any], manifest.get("accounts", [])) if isinstance(a, dict)]
     generated = parse_iso(str(manifest.get("generated_at") or "")) if accounts else None
 
     deleted = sum(int(a.get("deleted_count") or 0) for a in accounts)

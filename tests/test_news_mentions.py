@@ -59,12 +59,7 @@ def test_status_url_match_handles_bare_encoded_nested_and_renamed_handles() -> N
         "source": {"name": "Wire"},
         "headline": "Embed roundup",
         "links": [
-            {
-                "href": (
-                    "https%3A%2F%2Ftwitter.com%2FSomeOldHandle%2Fstatuses%2F1234567890"
-                    "%3Fs%3D20"
-                )
-            }
+            {"href": ("https%3A%2F%2Ftwitter.com%2FSomeOldHandle%2Fstatuses%2F1234567890%3Fs%3D20")}
         ],
         "body": "Mirror: x.com/DHSgov/status/1234567890.",
     }

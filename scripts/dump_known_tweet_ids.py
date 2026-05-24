@@ -40,13 +40,7 @@ def known_tweet_ids(catalog: pl.DataFrame, handle: str | None = None) -> list[st
         if "account_handle" not in frame.columns:
             return []
         frame = frame.filter(pl.col("account_handle") == handle)
-    ids = (
-        frame.select(pl.col("tweet_id").cast(pl.Utf8))
-        .drop_nulls()
-        .unique()
-        .to_series()
-        .to_list()
-    )
+    ids = frame.select(pl.col("tweet_id").cast(pl.Utf8)).drop_nulls().unique().to_series().to_list()
     return sorted(i for i in ids if i)
 
 

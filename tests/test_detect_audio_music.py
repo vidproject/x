@@ -209,8 +209,7 @@ def test_music_threshold_and_gate_are_configurable() -> None:
     assert "audio:music-likely" in strict  # margin 0.29 >= default 0.12
 
     capped_out = {
-        e["tag"]
-        for e in detect_audio_music.tags_for_result(result, speech_score_cap=0.50)
+        e["tag"] for e in detect_audio_music.tags_for_result(result, speech_score_cap=0.50)
     }
     assert "audio:music-likely" not in capped_out  # speech 0.61 > cap 0.50
 

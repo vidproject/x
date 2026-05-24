@@ -240,7 +240,7 @@ def build() -> dict[str, Any]:
         user = users.get(handle)
         if not isinstance(user, dict):
             continue
-        result = classify(handle, user)
+        result: dict[str, Any] | None = classify(handle, user)
         badges = service_badges(user)
         if not result and not badges:
             continue
