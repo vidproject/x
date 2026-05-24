@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-24T16:00:45Z",
+  "generated_at": "2026-05-24T19:54:36Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -26,7 +26,7 @@
       "produced-video": 402
     },
     "top_tags": {
-      "topic:immigration": 1426,
+      "topic:immigration": 1427,
       "media-status:archived": 1209,
       "media:video": 1198,
       "audio:has-audio": 1137,
@@ -36,22 +36,22 @@
       "video:produced": 395,
       "agency:DHSgov": 371,
       "video:short": 353,
-      "topic:economy": 314,
       "agency:ICEgov": 314,
+      "topic:economy": 313,
       "theme:criminal": 294,
       "agency:POTUS": 261,
       "slogan:illegal-alien": 260,
-      "topic:general": 228,
+      "topic:general": 227,
       "video:text-overlay": 225,
       "video:long": 210,
+      "topic:military": 191,
       "policy:border": 189,
-      "topic:military": 189,
       "video:news-clip": 189,
       "action:detention": 177,
       "video:interview": 172,
       "video:speech": 138,
       "agency:CBP": 137,
-      "action:deportation": 136,
+      "action:deportation": 135,
       "speaker:President Trump": 134,
       "slogan:criminal-illegal-alien": 118,
       "legal:criminal-prosecution": 118,
@@ -67,7 +67,7 @@
       "theme:religion": 84,
       "country:China": 81,
       "crime:fraud": 73,
-      "theme:martyrdom": 71,
+      "theme:martyrdom": 70,
       "audio:music-likely": 65,
       "genre:advertisement": 64,
       "agency:SecMullinDHS": 64,
@@ -82,7 +82,7 @@
       "assign-produced-video-genre": 244,
       "describe-with-vision": 452,
       "detect-audio": 336,
-      "extract-keyframes": 928
+      "extract-keyframes": 1422
     }
   },
   "items": [
@@ -133,9 +133,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -179,9 +180,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -280,8 +282,10 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -328,8 +332,10 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -382,8 +388,10 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -438,8 +446,10 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -492,8 +502,10 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -550,8 +562,10 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -600,8 +614,10 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -792,9 +808,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -1821,8 +1838,7 @@
         "media-status:archived",
         "media-status:described",
         "media:video",
-        "slogan:america-first",
-        "topic:general",
+        "topic:immigration",
         "video:produced",
         "video:short",
         "video:voiceover"
@@ -2502,8 +2518,10 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -3843,8 +3861,10 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -3984,9 +4004,10 @@
         "video:voiceover"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4043,9 +4064,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4090,9 +4112,10 @@
         "video:voiceover"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4132,9 +4155,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4178,9 +4202,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4229,9 +4254,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4290,9 +4316,10 @@
         "video:voiceover"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4448,9 +4475,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -6610,9 +6638,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -6812,9 +6841,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -6910,9 +6940,10 @@
         "video:voiceover"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -6956,9 +6987,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7043,9 +7075,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7077,7 +7110,6 @@
         "media-status:archived",
         "media-status:described",
         "media:video",
-        "theme:religion",
         "topic:immigration",
         "video:medium",
         "video:speech",
@@ -7088,9 +7120,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7178,9 +7211,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7226,9 +7260,10 @@
         "video:voiceover"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7280,9 +7315,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7380,9 +7416,10 @@
         "video:voiceover"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7472,9 +7509,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7506,7 +7544,6 @@
         "media-status:archived",
         "media-status:described",
         "media:video",
-        "topic:economy",
         "topic:immigration",
         "video:medium",
         "video:produced",
@@ -7517,9 +7554,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7601,9 +7639,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7767,21 +7806,15 @@
       "bucket": "produced-video",
       "priority": 98,
       "tags": [
-        "action:deportation",
         "agency:ICEgov",
         "agency:POTUS",
         "audio:has-audio",
-        "country:Venezuela",
-        "crime:homicide",
-        "crime:murder",
         "media-status:archived",
         "media-status:described",
         "media:video",
         "military:air-force",
-        "origin:Venezuela",
         "policy:border",
         "speaker:President Trump",
-        "topic:general",
         "topic:immigration",
         "topic:military",
         "video:medium",
@@ -7795,9 +7828,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7852,9 +7886,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -8508,7 +8543,6 @@
         "media-status:archived",
         "media-status:described",
         "media:video",
-        "theme:martyrdom",
         "topic:immigration",
         "video:medium",
         "video:montage",
@@ -11541,9 +11575,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -11698,9 +11733,10 @@
         "video:voiceover"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -11741,9 +11777,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -11782,9 +11819,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -11827,9 +11865,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -11874,9 +11913,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -11934,9 +11974,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -11991,9 +12032,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12045,9 +12087,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12096,9 +12139,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12150,9 +12194,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12197,9 +12242,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12240,9 +12286,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12296,9 +12343,10 @@
         "video:voiceover"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12348,9 +12396,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12466,9 +12515,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12513,9 +12563,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12562,9 +12613,10 @@
         "video:voiceover"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12620,9 +12672,10 @@
         "video:voiceover"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12670,9 +12723,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12720,9 +12774,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12767,9 +12822,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -13581,10 +13637,11 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -14514,9 +14571,10 @@
         "video:text-overlay"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -15095,9 +15153,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -15515,8 +15574,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -15647,9 +15708,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -15751,8 +15813,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -15834,8 +15898,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -15966,8 +16032,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -16147,8 +16215,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -16390,8 +16460,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -16540,8 +16612,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -19549,8 +19623,10 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -19592,8 +19668,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -19640,8 +19718,10 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -19686,8 +19766,10 @@
         "video:montage",
         "video:produced"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -19769,9 +19851,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -19812,9 +19895,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -19856,9 +19940,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -19966,8 +20051,10 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -20017,8 +20104,10 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -21196,9 +21285,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -21529,9 +21619,10 @@
         "video:produced"
       ],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -21797,8 +21888,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -21839,8 +21932,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -21940,8 +22035,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -22034,8 +22131,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -22076,8 +22175,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -22881,9 +22982,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -22919,9 +23021,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -22955,9 +23058,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -22988,9 +23092,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23024,9 +23129,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23065,9 +23171,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23107,9 +23214,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23141,9 +23249,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23176,9 +23285,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23216,9 +23326,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23251,9 +23362,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23289,9 +23401,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23327,9 +23440,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23364,9 +23478,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23401,9 +23516,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23436,9 +23552,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23475,9 +23592,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23514,9 +23632,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23553,9 +23672,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23590,9 +23710,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23629,9 +23750,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23670,9 +23792,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23706,9 +23829,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23744,9 +23868,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23778,9 +23903,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23817,9 +23943,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23853,9 +23980,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23932,9 +24060,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -23967,9 +24096,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24002,9 +24132,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24040,9 +24171,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24079,9 +24211,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24133,9 +24266,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24171,9 +24305,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24205,9 +24340,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24242,9 +24378,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24323,9 +24460,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24359,9 +24497,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24393,9 +24532,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24435,9 +24575,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24470,9 +24611,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24504,9 +24646,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24550,9 +24693,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24584,9 +24728,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24623,9 +24768,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24692,9 +24838,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24725,9 +24872,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24763,9 +24911,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -24801,9 +24950,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25021,9 +25171,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25047,6 +25198,7 @@
       "bucket": "needs-recognition",
       "priority": 75,
       "tags": [
+        "theme:religion",
         "topic:immigration",
         "video:medium"
       ],
@@ -25276,9 +25428,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25321,9 +25474,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25360,9 +25514,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25396,9 +25551,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25437,9 +25593,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25471,9 +25628,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25507,9 +25665,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25612,9 +25771,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25645,9 +25805,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25680,9 +25841,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25716,9 +25878,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25750,9 +25913,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25793,9 +25957,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25826,9 +25991,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25859,9 +26025,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25893,9 +26060,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25927,9 +26095,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -25963,9 +26132,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -26003,9 +26173,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -26037,9 +26208,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -26072,9 +26244,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -26106,9 +26279,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -26143,9 +26317,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -26220,9 +26395,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -26248,6 +26424,7 @@
       "tags": [
         "agency:DHSgov",
         "audio:has-audio",
+        "country:Jordan",
         "crime:fraud",
         "topic:immigration",
         "video:medium"
@@ -26255,9 +26432,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -26285,15 +26463,19 @@
         "agency:DHSgov",
         "audio:has-audio",
         "crime:fraud",
+        "theme:religion",
+        "topic:economy",
+        "topic:general",
         "topic:immigration",
         "video:short"
       ],
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -26326,9 +26508,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -26363,9 +26546,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -26399,9 +26583,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -26432,9 +26617,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -26945,8 +27131,14 @@
       "bucket": "needs-recognition",
       "priority": 75,
       "tags": [
+        "country:Iran",
+        "country:Iraq",
+        "crime:homicide",
+        "crime:murder",
         "format:retweet",
+        "theme:directive",
         "topic:immigration",
+        "topic:military",
         "video:long"
       ],
       "genre_tags": [],
@@ -27968,9 +28160,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -28256,6 +28449,7 @@
       "bucket": "needs-recognition",
       "priority": 75,
       "tags": [
+        "religion:christianity",
         "speaker:President Trump",
         "theme:religion",
         "topic:immigration",
@@ -28799,9 +28993,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -28834,9 +29029,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -32564,8 +32760,13 @@
       "priority": 75,
       "tags": [
         "agency:DOJgov",
+        "country:Cuba",
+        "crime:homicide",
+        "crime:murder",
         "legal:criminal-prosecution",
+        "origin:Cuba",
         "topic:immigration",
+        "topic:military",
         "video:long"
       ],
       "genre_tags": [],
@@ -37718,9 +37919,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -37752,9 +37954,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -37785,9 +37988,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -37819,9 +38023,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -37852,9 +38057,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -37885,9 +38091,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -37919,9 +38126,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -37956,9 +38164,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -37992,9 +38201,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38026,9 +38236,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38058,9 +38269,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38091,9 +38303,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38126,9 +38339,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38159,9 +38373,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38194,9 +38409,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38228,9 +38444,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38262,9 +38479,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38299,9 +38517,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38336,9 +38555,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38368,9 +38588,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38402,9 +38623,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38437,9 +38659,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38474,9 +38697,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38509,9 +38733,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38546,9 +38771,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38583,9 +38809,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38617,9 +38844,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38658,9 +38886,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38693,9 +38922,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38727,9 +38957,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38761,9 +38992,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38799,9 +39031,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38839,9 +39072,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38872,9 +39106,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38912,9 +39147,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38948,9 +39184,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -38983,9 +39220,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39022,9 +39260,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39061,9 +39300,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39104,9 +39344,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39141,9 +39382,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39181,9 +39423,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39216,9 +39459,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39256,9 +39500,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39293,9 +39538,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39329,9 +39575,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39368,9 +39615,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39402,9 +39650,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39443,9 +39692,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39477,9 +39727,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39512,9 +39763,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39548,9 +39800,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39581,9 +39834,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39616,9 +39870,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39650,9 +39905,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39686,9 +39942,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39720,9 +39977,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39760,9 +40018,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39799,9 +40058,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39833,9 +40093,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39871,9 +40132,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39906,9 +40168,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39947,9 +40210,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -39982,9 +40246,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -40018,9 +40283,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -40053,9 +40319,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -40087,9 +40354,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -40164,9 +40432,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -40201,9 +40470,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -40685,9 +40955,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -40728,9 +40999,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -40840,9 +41112,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -40877,9 +41150,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -40919,9 +41193,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -40952,9 +41227,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -41213,9 +41489,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -41931,9 +42208,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -41972,9 +42250,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -42154,9 +42433,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -42188,9 +42468,10 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
+        "extract-keyframes",
         "describe-with-vision"
       ],
-      "has_keyframes": true,
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": false,
       "has_ocr": false,
@@ -47776,8 +48057,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -47942,8 +48225,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -47982,8 +48267,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48023,8 +48310,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48070,8 +48359,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48678,8 +48969,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48715,8 +49008,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48795,8 +49090,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48883,8 +49180,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48923,8 +49222,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48960,8 +49261,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49002,8 +49305,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49038,8 +49343,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49195,8 +49502,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49270,8 +49579,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49424,8 +49735,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49467,8 +49780,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49502,8 +49817,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49578,8 +49895,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49619,8 +49938,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49698,8 +50019,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49737,8 +50060,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49779,8 +50104,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49823,8 +50150,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49859,8 +50188,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49899,8 +50230,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49935,8 +50268,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50020,8 +50355,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50056,8 +50393,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50092,8 +50431,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50171,8 +50512,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50209,8 +50552,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50250,8 +50595,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50288,8 +50635,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50364,8 +50713,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50401,8 +50752,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50440,8 +50793,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50476,8 +50831,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50605,8 +50962,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50653,8 +51012,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50736,8 +51097,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50768,15 +51131,16 @@
         "media-status:archived",
         "media-status:described",
         "media:video",
-        "theme:religion",
         "topic:immigration",
         "video:medium",
         "video:speech"
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50814,8 +51178,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50854,8 +51220,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50891,8 +51259,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51144,8 +51514,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51186,8 +51558,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51230,8 +51604,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51270,8 +51646,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51306,8 +51684,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51378,8 +51758,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51499,8 +51881,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51535,8 +51919,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51571,8 +51957,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51709,8 +52097,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51787,8 +52177,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51832,8 +52224,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51875,8 +52269,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51914,8 +52310,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51952,8 +52350,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51989,8 +52389,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52030,8 +52432,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52069,8 +52473,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52112,8 +52518,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52192,8 +52600,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52228,8 +52638,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52268,8 +52680,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52305,8 +52719,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52344,8 +52760,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52430,8 +52848,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52471,8 +52891,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52509,8 +52931,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52551,8 +52975,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52672,8 +53098,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52708,8 +53136,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52781,8 +53211,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52864,8 +53296,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52902,8 +53336,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52942,8 +53378,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52983,8 +53421,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53027,8 +53467,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53069,8 +53511,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53112,8 +53556,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53150,8 +53596,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53203,8 +53651,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53243,8 +53693,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53285,8 +53737,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53423,8 +53877,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53464,8 +53920,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53666,8 +54124,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53705,8 +54165,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53747,8 +54209,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53786,8 +54250,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53835,8 +54301,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53884,8 +54352,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53937,8 +54407,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -53985,8 +54457,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -54083,8 +54557,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -54124,8 +54600,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -54163,8 +54641,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -54213,8 +54693,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -54257,8 +54739,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -54298,8 +54782,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -54334,8 +54820,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -54422,8 +54910,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -54574,8 +55064,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -54654,8 +55146,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -54693,8 +55187,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -54981,8 +55477,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -55124,8 +55622,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -55169,8 +55669,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -55215,8 +55717,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -55257,8 +55761,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -55300,8 +55806,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -55580,8 +56088,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -55663,8 +56173,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -55710,8 +56222,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -55745,8 +56259,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -55788,8 +56304,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -55825,8 +56343,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -55909,8 +56429,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -55950,8 +56472,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -55991,8 +56515,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -56026,8 +56552,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -56063,8 +56591,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -56118,8 +56648,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -56155,8 +56687,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -56270,8 +56804,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -56348,8 +56884,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -56384,8 +56922,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -56421,8 +56961,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -57534,8 +58076,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -57581,8 +58125,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -58058,8 +58604,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -58420,8 +58968,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -58623,8 +59173,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -59274,8 +59826,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -59423,8 +59977,6 @@
       "priority": 35,
       "tags": [
         "audio:has-audio",
-        "crime:homicide",
-        "crime:murder",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
@@ -59435,8 +59987,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -59554,8 +60108,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -60159,8 +60715,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -60203,8 +60761,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -61155,8 +61715,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -61269,8 +61831,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -61731,8 +62295,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -61842,16 +62408,16 @@
         "media-status:described",
         "media:video",
         "speaker:Vice President Vance",
-        "theme:nativism",
-        "topic:economy",
         "topic:immigration",
         "video:medium",
         "video:speech"
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62056,8 +62622,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62274,8 +62842,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62313,8 +62883,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62349,8 +62921,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62392,8 +62966,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62435,8 +63011,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62491,8 +63069,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62526,8 +63106,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62641,8 +63223,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62767,8 +63351,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62802,8 +63388,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62847,8 +63435,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62884,8 +63474,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62924,8 +63516,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62961,8 +63555,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62997,8 +63593,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63032,8 +63630,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63069,8 +63669,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63104,8 +63706,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63142,8 +63746,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63180,8 +63786,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63215,8 +63823,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63257,8 +63867,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63297,8 +63909,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63332,8 +63946,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63368,8 +63984,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63405,8 +64023,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63441,8 +64061,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63477,8 +64099,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63513,8 +64137,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63549,8 +64175,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63585,8 +64213,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63620,8 +64250,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63656,8 +64288,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63690,8 +64324,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63726,8 +64362,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63761,8 +64399,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63796,8 +64436,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63831,8 +64473,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63866,8 +64510,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63935,8 +64581,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63971,8 +64619,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64007,8 +64657,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64044,8 +64696,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64082,8 +64736,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64118,8 +64774,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64154,8 +64812,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64190,8 +64850,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64225,8 +64887,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64261,8 +64925,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64299,8 +64965,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64334,8 +65002,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64369,8 +65039,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64404,8 +65076,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64447,8 +65121,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64500,8 +65176,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64553,8 +65231,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64599,8 +65279,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64637,8 +65319,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64682,8 +65366,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64724,8 +65410,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64768,8 +65456,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64820,8 +65510,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64865,8 +65557,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64922,8 +65616,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -64969,8 +65665,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65410,8 +66108,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65447,8 +66147,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65484,8 +66186,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65523,8 +66227,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65565,8 +66271,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65602,8 +66310,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65688,8 +66398,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65725,8 +66437,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65768,8 +66482,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65806,8 +66522,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65843,8 +66561,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65924,8 +66644,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65960,8 +66682,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65996,8 +66720,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66083,8 +66809,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66125,8 +66853,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66162,8 +66892,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66332,8 +67064,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66369,8 +67103,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66406,8 +67142,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66485,8 +67223,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66521,8 +67261,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66574,8 +67316,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66610,8 +67354,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66646,8 +67392,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66685,8 +67433,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66722,8 +67472,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66758,8 +67510,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66794,8 +67548,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66832,8 +67588,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66907,8 +67665,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -67110,8 +67870,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -67185,8 +67947,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -67476,8 +68240,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -67515,8 +68281,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -67554,8 +68322,10 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
