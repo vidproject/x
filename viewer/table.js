@@ -21,9 +21,9 @@ import {
   retweetedByHandles,
   tagNamespace,
   tagSubtype,
-} from './store.js?v=lazycat7';
-import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js?v=lazycat7';
-import { archiveShareUrlForRow, copyTextToClipboard, xTweetUrlForRow } from './links.js?v=lazycat7';
+} from './store.js?v=lazycat8';
+import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js?v=lazycat8';
+import { archiveShareUrlForRow, copyTextToClipboard, xTweetUrlForRow } from './links.js?v=lazycat8';
 
 const MEDIA_COL_KEY = 'media_kinds';
 export const TAG_CERTAINTY_LABELS = {
@@ -531,6 +531,43 @@ function buildSelectCell(row, selection) {
   });
   td.append(cb);
   return td;
+}
+
+/**
+ * Sync the visual state of the already-rendered selection checkboxes to a
+ * selected-id set, without a data recompute or a full re-render. Used on every
+ * per-row / select-all toggle so ticking a box is O(visible rows), and also
+ * after a legitimate re-render (page/filter change) so the checkbox column keeps
+ * reflecting the persisted selection.
+ *
+ * @param {{
+ *   tbodyEl: HTMLElement, theadEl: HTMLElement,
+ *   selectedIds: Set<string>, allFilteredIds: Set<string>,
+ * }} args
+ */
+export function syncSelectionCheckboxes({ tbodyEl, theadEl, selectedIds, allFilteredIds }) {
+  const selected = selectedIds instanceof Set ? selectedIds : new Set();
+  if (tbodyEl) {
+    for (const tr of tbodyEl.querySelectorAll('tr[data-tweet-id]')) {
+      const cb = tr.querySelector('.col-select .row-select');
+      if (!cb) continue;
+      const id = String(tr.dataset.tweetId ?? '');
+      cb.checked = Boolean(id) && selected.has(id);
+    }
+  }
+  if (theadEl) {
+    const headCb = theadEl.querySelector('.col-select .row-select-all');
+    if (headCb) {
+      const scope = allFilteredIds instanceof Set ? allFilteredIds : new Set();
+      let selectedInScope = 0;
+      for (const id of scope) {
+        if (selected.has(id)) selectedInScope += 1;
+      }
+      headCb.checked = scope.size > 0 && selectedInScope === scope.size;
+      headCb.indeterminate = selectedInScope > 0 && selectedInScope < scope.size;
+      headCb.disabled = scope.size === 0;
+    }
+  }
 }
 
 function paintThreaded({

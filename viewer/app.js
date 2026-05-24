@@ -1,12 +1,12 @@
 // Orchestrator: wires the UI controls to the Store, manages URL state, theme,
 // column visibility, CSV export, and lazy parquet loading.
 
-import { exportCsv } from './csv.js?v=lazycat7';
-import { loadParquetRows } from './parquet.js?v=lazycat7';
-import { applyToUrl, defaults as defaultState, fromHash, toHash } from './state.js?v=lazycat7';
-import { copyTextToClipboard } from './links.js?v=lazycat7';
-import { SEARCH_FIELD_OPTIONS, Store } from './store.js?v=lazycat7';
-import { initChartsPanel, updateChartsPanel } from './charts.js?v=lazycat7';
+import { exportCsv } from './csv.js?v=lazycat8';
+import { loadParquetRows } from './parquet.js?v=lazycat8';
+import { applyToUrl, defaults as defaultState, fromHash, toHash } from './state.js?v=lazycat8';
+import { copyTextToClipboard } from './links.js?v=lazycat8';
+import { SEARCH_FIELD_OPTIONS, Store } from './store.js?v=lazycat8';
+import { initChartsPanel, updateChartsPanel } from './charts.js?v=lazycat8';
 import {
   openColumnFilterPopup,
   parseVisibleColumns,
@@ -14,8 +14,9 @@ import {
   renderTable,
   setMediaColumnConfig,
   setUserLookup,
-} from './table.js?v=lazycat7';
-import { closeSidepanel, openSidepanel } from './sidepanel.js?v=lazycat7';
+  syncSelectionCheckboxes,
+} from './table.js?v=lazycat8';
+import { closeSidepanel, openSidepanel } from './sidepanel.js?v=lazycat8';
 
 const $ = (id) => {
   const el = document.getElementById(id);
@@ -1594,19 +1595,41 @@ function setSelectionMode(on) {
   refresh(); // toggles the checkbox column
 }
 
+// The set of tweet ids in the current filtered result set, used to scope the
+// header select-all. Derived from `filteredRows`, which `refresh()` keeps
+// current, so it is correct without re-running the filter on every toggle.
+function currentFilteredIds() {
+  const ids = new Set();
+  for (const r of filteredRows) {
+    const id = String(r.tweet_id ?? '');
+    if (id) ids.add(id);
+  }
+  return ids;
+}
+
+// Update only the rendered checkboxes (per-row state + header tri-state) to
+// match `selectedExportIds`. No filter, sort, thread-group, or table re-render —
+// selection never affects filtering, so the full recompute that `refresh()`
+// does would be pure waste (and the hang this fixes).
+function syncSelectionUi(allFilteredIds = currentFilteredIds()) {
+  syncSelectionCheckboxes({
+    tbodyEl: els.tbody,
+    theadEl: els.theadRow,
+    selectedIds: selectedExportIds,
+    allFilteredIds,
+  });
+}
+
 // Build the selection-column config handed to renderTable. The checkbox column
 // only appears in Selection mode. The header select-all and per-row toggles
-// operate on tweet_id and update the tracked set, then re-render so checkbox
-// state stays in sync with the data.
+// operate on tweet_id and update the tracked set, then patch just the rendered
+// checkboxes — they deliberately do NOT call refresh(), since selection has no
+// effect on filtering/sorting and a full recompute per click is the perf bug.
 function buildSelectionConfig() {
   if (!selectionMode) {
     return { enabled: false };
   }
-  const allFilteredIds = new Set();
-  for (const r of filteredRows) {
-    const id = String(r.tweet_id ?? '');
-    if (id) allFilteredIds.add(id);
-  }
+  const allFilteredIds = currentFilteredIds();
   return {
     enabled: true,
     selectedIds: selectedExportIds,
@@ -1614,7 +1637,8 @@ function buildSelectionConfig() {
     onToggleRow: (id, checked) => {
       if (checked) selectedExportIds.add(id);
       else selectedExportIds.delete(id);
-      refresh();
+      // O(visible rows): refresh the toggled box implicitly + header tri-state.
+      syncSelectionUi(allFilteredIds);
     },
     onToggleAll: (checked) => {
       if (checked) {
@@ -1622,7 +1646,8 @@ function buildSelectionConfig() {
       } else {
         for (const id of allFilteredIds) selectedExportIds.delete(id);
       }
-      refresh();
+      // Update only the checkboxes currently on the page (plus the header).
+      syncSelectionUi(allFilteredIds);
     },
   };
 }
@@ -2482,6 +2507,9 @@ function refresh() {
   scheduleHydrateVisibleRows(filteredThreads, urlState.page, urlState.size);
   if (!openSharedProfileFromUrl()) openSharedEntryFromUrl();
   refreshSelectionHighlight();
+  // After a legitimate re-render (page/filter change) ensure the freshly
+  // painted checkbox column reflects the persisted selection set.
+  if (selectionMode) syncSelectionUi();
   updateChartsPanel();
 }
 
