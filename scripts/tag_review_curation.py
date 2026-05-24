@@ -1,20 +1,36 @@
-"""Curation tagger for the produced-video and meme-image review sets.
+"""Curation tagger for the review and media-status filter sets.
 
-Two human/LLM review passes live under `data/tags/`:
+Two human/LLM review passes live under `data/tags/` as one JSON file per
+candidate:
 
 * `produced_review/*.json`  — one file per candidate video. Files whose
   ``produced`` field is ``true`` are the produced / genre-experiment videos.
 * `meme_image_review/*.json` — one file per candidate image. Files whose
   ``is_designed`` field is ``true`` are the designed graphic images.
 
-This script turns those decisions into two viewer tags joined on tweet_id:
+Four more filter sets are derived deterministically from the analysis
+sidecars (no JSON review files needed):
 
-    review:produced-video   (produced == true)
-    review:meme-image       (is_designed == true)
+* `review:screened-video`  — tweets whose video / animated-gif media went
+  through the vision review pass (``media_vision.parquet``,
+  ``model == 'opus-vision-review'``, video media types).
+* `review:screened-photo`  — same, for photo media.
+* `media-status:transcribed` — tweets with a completed speech-to-text pass
+  (``transcripts.parquet``, ``status == 'ok'``).
+* `media-status:ocr-done`   — tweets whose image OCR ran to completion
+  (``image_ocr.parquet``, ``status`` in ``ok`` / ``no-text``).
 
-so the viewer can filter to each curated set via ``#tags=review:produced-video``
-or ``#tags=review:meme-image``. Combined with ``sort=engagement`` this yields
-the two shareable links.
+This script turns those decisions into viewer tags joined on tweet_id:
+
+    review:produced-video      (produced == true)
+    review:meme-image          (is_designed == true)
+    review:screened-video      (vision-reviewed video/gif media)
+    review:screened-photo      (vision-reviewed photo media)
+    media-status:transcribed   (transcript status ok)
+    media-status:ocr-done      (image OCR completed)
+
+so the viewer can filter to each set via ``#tags=<tag>``. Combined with
+``sort=engagement`` this yields the shareable links.
 
 Outputs (all purely additive — existing tags are never removed):
 
@@ -30,9 +46,10 @@ Outputs (all purely additive — existing tags are never removed):
    overlaid the same way.
 
 Idempotent: re-running rebuilds the sidecar from scratch and re-applies the
-overlay (dedupe-aware), so it is safe to run again after more review files
-land. Corrupt / half-written review JSONs (other agents may be writing them
-concurrently) are skipped with a warning rather than aborting the run.
+overlay (dedupe-aware), so it is safe to run again after more review files or
+analysis rows land. Corrupt / half-written input files (other agents may be
+writing them concurrently) are skipped with a warning rather than aborting the
+run.
 
 Run with:  uv run python -m scripts.tag_review_curation
 """
@@ -60,18 +77,34 @@ TAGS_DIR = DATA_DIR / "tags"
 PRODUCED_REVIEW_DIR = TAGS_DIR / "produced_review"
 MEME_REVIEW_DIR = TAGS_DIR / "meme_image_review"
 
+MEDIA_VISION_PATH = TAGS_DIR / "media_vision.parquet"
+TRANSCRIPTS_PATH = TAGS_DIR / "transcripts.parquet"
+IMAGE_OCR_PATH = TAGS_DIR / "image_ocr.parquet"
+
 SIDECAR_PATH = TAGS_DIR / "review_curation.parquet"
 CATALOG_PARQUET_PATH = DATA_DIR / "catalog.parquet"
 
 PRODUCED_VIDEO_TAG = "review:produced-video"
 MEME_IMAGE_TAG = "review:meme-image"
-TAG_SOURCE = "human"
-TAGGER_VERSION = "review-curation-v1"
+SCREENED_VIDEO_TAG = "review:screened-video"
+SCREENED_PHOTO_TAG = "review:screened-photo"
+TRANSCRIBED_TAG = "media-status:transcribed"
+OCR_DONE_TAG = "media-status:ocr-done"
 
-# Each entry: (review dir, gate field that must be exactly True, tag to apply).
-REVIEW_SETS: list[tuple[Path, str, str]] = [
-    (PRODUCED_REVIEW_DIR, "produced", PRODUCED_VIDEO_TAG),
-    (MEME_REVIEW_DIR, "is_designed", MEME_IMAGE_TAG),
+# Tag-entry ``source`` values. The human review JSONs are editor decisions;
+# the screened-* sets come from the curation review pass; the media-status:*
+# sets are derived metadata (matching the existing ``media-status:needs-ocr``
+# source so the viewer groups them consistently).
+SOURCE_HUMAN = "human"
+SOURCE_REVIEW_CURATION = "review-curation"
+SOURCE_MEDIA_METADATA = "media-metadata"
+
+TAGGER_VERSION = "review-curation-v2"
+
+# Each entry: (review dir, gate field that must be exactly True, tag, source).
+REVIEW_SETS: list[tuple[Path, str, str, str]] = [
+    (PRODUCED_REVIEW_DIR, "produced", PRODUCED_VIDEO_TAG, SOURCE_HUMAN),
+    (MEME_REVIEW_DIR, "is_designed", MEME_IMAGE_TAG, SOURCE_HUMAN),
 ]
 
 
@@ -79,16 +112,52 @@ def _now_iso() -> str:
     return datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def collect_tagged_tweets() -> dict[str, dict[str, Any]]:
-    """Return {tweet_id: {"tags": {tag, ...}, "account_handle": str}}.
+def _read_parquet_safe(path: Path, *, columns: list[str] | None = None) -> pl.DataFrame | None:
+    """Read a sidecar parquet, returning None (with a warning) if unreadable.
+
+    Other pipeline steps may be writing these files concurrently; a half-written
+    or missing file should be skipped rather than aborting the whole tagging
+    run.
+    """
+    if not path.exists():
+        LOG.warning("review-curation: input parquet missing", path=str(path))
+        return None
+    try:
+        return pl.read_parquet(path, columns=columns)
+    except Exception as err:  # noqa: BLE001 - any read failure should skip, not abort
+        LOG.warning("review-curation: skipping unreadable parquet", path=str(path), error=str(err))
+        return None
+
+
+def _add_tag(
+    by_tweet: dict[str, dict[str, Any]],
+    tweet_id: str,
+    tag: str,
+    source: str,
+    *,
+    handle: str = "",
+) -> None:
+    """Record ``tag`` (with its ``source``) for ``tweet_id`` in the accumulator.
+
+    A tweet can collect more than one tag. Tags are stored as a {tag: source}
+    mapping; the first source seen for a given tag wins (the sets are disjoint
+    in practice, so this is just a deterministic tie-break).
+    """
+    slot = by_tweet.setdefault(tweet_id, {"tags": {}, "account_handle": ""})
+    slot["tags"].setdefault(tag, source)
+    handle = (handle or "").strip()
+    if handle and not slot["account_handle"]:
+        slot["account_handle"] = handle
+
+
+def collect_review_json_tweets(by_tweet: dict[str, dict[str, Any]]) -> None:
+    """Fold the JSON review-pass decisions into ``by_tweet``.
 
     Reads every review JSON, keeps only files whose gate field is exactly
-    ``True``, and accumulates the matching tag per tweet_id. A single tweet can
-    legitimately collect more than one tag (e.g. a designed image that is also
-    a produced video), so tags are stored in a set.
+    ``True`` (and which are flagged immigration-related), and accumulates the
+    matching tag per tweet_id.
     """
-    by_tweet: dict[str, dict[str, Any]] = {}
-    for review_dir, gate_field, tag in REVIEW_SETS:
+    for review_dir, gate_field, tag, source in REVIEW_SETS:
         if not review_dir.is_dir():
             LOG.warning("review-curation: dir missing", dir=str(review_dir))
             continue
@@ -113,11 +182,8 @@ def collect_tagged_tweets() -> dict[str, dict[str, Any]]:
             if not tweet_id:
                 skipped += 1
                 continue
-            slot = by_tweet.setdefault(tweet_id, {"tags": set(), "account_handle": ""})
-            slot["tags"].add(tag)
             handle = str(record.get("account_handle") or record.get("handle") or "").strip()
-            if handle and not slot["account_handle"]:
-                slot["account_handle"] = handle
+            _add_tag(by_tweet, tweet_id, tag, source, handle=handle)
             matched += 1
         LOG.info(
             "review-curation: scanned review set",
@@ -127,16 +193,101 @@ def collect_tagged_tweets() -> dict[str, dict[str, Any]]:
             skipped=skipped,
             corrupt=corrupt,
         )
+
+
+def _collect_parquet_tag(
+    by_tweet: dict[str, dict[str, Any]],
+    *,
+    df: pl.DataFrame | None,
+    tag: str,
+    source: str,
+    predicate: pl.Expr,
+) -> int:
+    """Apply ``tag`` to every distinct tweet_id in ``df`` matching ``predicate``.
+
+    Returns the number of distinct tweet_ids tagged.
+    """
+    if df is None:
+        return 0
+    needed = {"tweet_id", "account_handle"}
+    if not needed.issubset(df.columns):
+        LOG.warning("review-curation: sidecar missing columns", tag=tag, columns=df.columns)
+        return 0
+    sub = df.filter(predicate)
+    count = 0
+    seen: set[str] = set()
+    for row in sub.select(["tweet_id", "account_handle"]).iter_rows(named=True):
+        tweet_id = str(row.get("tweet_id") or "").strip()
+        if not tweet_id or tweet_id in seen:
+            continue
+        seen.add(tweet_id)
+        _add_tag(by_tweet, tweet_id, tag, source, handle=str(row.get("account_handle") or ""))
+        count += 1
+    LOG.info("review-curation: tagged from sidecar", tag=tag, source=source, distinct=count)
+    return count
+
+
+def collect_media_status_tweets(by_tweet: dict[str, dict[str, Any]]) -> None:
+    """Fold the analysis-sidecar-derived filter sets into ``by_tweet``."""
+    vision = _read_parquet_safe(
+        MEDIA_VISION_PATH, columns=["tweet_id", "account_handle", "model", "media_type"]
+    )
+    if vision is not None and "model" in vision.columns and "media_type" in vision.columns:
+        _collect_parquet_tag(
+            by_tweet,
+            df=vision,
+            tag=SCREENED_VIDEO_TAG,
+            source=SOURCE_REVIEW_CURATION,
+            predicate=(pl.col("model") == "opus-vision-review")
+            & pl.col("media_type").is_in(["video", "animated_gif"]),
+        )
+        _collect_parquet_tag(
+            by_tweet,
+            df=vision,
+            tag=SCREENED_PHOTO_TAG,
+            source=SOURCE_REVIEW_CURATION,
+            predicate=(pl.col("model") == "opus-vision-review")
+            & (pl.col("media_type") == "photo"),
+        )
+
+    transcripts = _read_parquet_safe(
+        TRANSCRIPTS_PATH, columns=["tweet_id", "account_handle", "status"]
+    )
+    if transcripts is not None and "status" in transcripts.columns:
+        _collect_parquet_tag(
+            by_tweet,
+            df=transcripts,
+            tag=TRANSCRIBED_TAG,
+            source=SOURCE_MEDIA_METADATA,
+            predicate=pl.col("status") == "ok",
+        )
+
+    ocr = _read_parquet_safe(IMAGE_OCR_PATH, columns=["tweet_id", "account_handle", "status"])
+    if ocr is not None and "status" in ocr.columns:
+        _collect_parquet_tag(
+            by_tweet,
+            df=ocr,
+            tag=OCR_DONE_TAG,
+            source=SOURCE_MEDIA_METADATA,
+            predicate=pl.col("status").is_in(["ok", "no-text"]),
+        )
+
+
+def collect_tagged_tweets() -> dict[str, dict[str, Any]]:
+    """Return {tweet_id: {"tags": {tag: source, ...}, "account_handle": str}}."""
+    by_tweet: dict[str, dict[str, Any]] = {}
+    collect_review_json_tweets(by_tweet)
+    collect_media_status_tweets(by_tweet)
     return by_tweet
 
 
-def tag_entries_for(tags: set[str]) -> list[dict[str, Any]]:
+def tag_entries_for(tags: dict[str, str]) -> list[dict[str, Any]]:
     """Build lexical-schema tag-entry structs (sorted for stable output)."""
     return [
         {
             "tag": tag,
             "tentative": None,
-            "source": TAG_SOURCE,
+            "source": tags[tag],
             "span_start": None,
             "span_end": None,
         }
@@ -163,9 +314,9 @@ def write_sidecar(by_tweet: dict[str, dict[str, Any]]) -> pl.DataFrame:
     return df
 
 
-def _compact_overlay_entries(tags: set[str]) -> list[dict[str, Any]]:
+def _compact_overlay_entries(tags: dict[str, str]) -> list[dict[str, Any]]:
     """Catalog/preview tag entries use the compact {tag, source} shape."""
-    return [{"tag": tag, "source": TAG_SOURCE} for tag in sorted(tags)]
+    return [{"tag": tag, "source": tags[tag]} for tag in sorted(tags)]
 
 
 def _merge_tag_lists(
@@ -267,6 +418,10 @@ def overlay_previews(by_tweet: dict[str, dict[str, Any]]) -> int:
     return total_touched
 
 
+def _count(by_tweet: dict[str, dict[str, Any]], tag: str) -> int:
+    return sum(1 for slot in by_tweet.values() if tag in slot["tags"])
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -277,13 +432,15 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     by_tweet = collect_tagged_tweets()
-    produced = sum(1 for s in by_tweet.values() if PRODUCED_VIDEO_TAG in s["tags"])
-    meme = sum(1 for s in by_tweet.values() if MEME_IMAGE_TAG in s["tags"])
     LOG.info(
         "review-curation: tagged tweets",
         total=len(by_tweet),
-        produced_videos=produced,
-        meme_images=meme,
+        produced_videos=_count(by_tweet, PRODUCED_VIDEO_TAG),
+        meme_images=_count(by_tweet, MEME_IMAGE_TAG),
+        screened_videos=_count(by_tweet, SCREENED_VIDEO_TAG),
+        screened_photos=_count(by_tweet, SCREENED_PHOTO_TAG),
+        transcribed=_count(by_tweet, TRANSCRIBED_TAG),
+        ocr_done=_count(by_tweet, OCR_DONE_TAG),
     )
     if not by_tweet:
         LOG.warning("review-curation: nothing to tag; leaving outputs untouched")

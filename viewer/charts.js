@@ -1,4 +1,4 @@
-import { tagNames, tagNamespace } from './store.js?v=lazycat6';
+import { tagNames, tagNamespace } from './store.js?v=lazycat7';
 
 export const CHART_JS_URL = 'https://esm.sh/chart.js@4.5.0/auto?bundle';
 
@@ -425,8 +425,16 @@ function buildCrosstabData(rows, opts, sourceRowCount) {
     labels: pairs.map((pair) => pair.label),
     values: pairs.map((pair) => pair.match),
     datasets: [
-      { label: `With ${focus}`, data: pairs.map((pair) => pair.match), backgroundColor: PALETTE[0] },
-      { label: `Without ${focus}`, data: pairs.map((pair) => pair.other), backgroundColor: PALETTE[7] },
+      {
+        label: `With ${focus}`,
+        data: pairs.map((pair) => pair.match),
+        backgroundColor: PALETTE[0],
+      },
+      {
+        label: `Without ${focus}`,
+        data: pairs.map((pair) => pair.other),
+        backgroundColor: PALETTE[7],
+      },
     ],
     pairs,
     rowCount: rows.length,
@@ -473,7 +481,10 @@ function applyBindings(options) {
     options.status ?? options.statusEl ?? options.message ?? options.messageEl
   );
   assignElement('summaryEl', options.summary ?? options.summaryEl);
-  assignElement('tableEl', options.table ?? options.tableEl ?? options.details ?? options.detailsEl);
+  assignElement(
+    'tableEl',
+    options.table ?? options.tableEl ?? options.details ?? options.detailsEl
+  );
 
   const controls = options.controls && typeof options.controls === 'object' ? options.controls : {};
   for (const [name, def] of Object.entries(CONTROL_DEFS)) {
@@ -738,7 +749,11 @@ function attachListeners() {
   for (const [name, control] of Object.entries(state.controls)) {
     if (!isDomControl(control)) continue;
     const eventName =
-      name === 'limit' || name === 'minCount' || name === 'from' || name === 'to' || name === 'focusTag'
+      name === 'limit' ||
+      name === 'minCount' ||
+      name === 'from' ||
+      name === 'to' ||
+      name === 'focusTag'
         ? 'input'
         : 'change';
     listen(control, eventName, () => scheduleRender());
@@ -814,7 +829,10 @@ async function renderChartsPanel({ force = false } = {}) {
 
   if (model.labels.length === 0) {
     destroyChart();
-    setStatus('empty', model.message || 'No chartable values for the selected metric and dimension.');
+    setStatus(
+      'empty',
+      model.message || 'No chartable values for the selected metric and dimension.'
+    );
     return;
   }
 
@@ -941,16 +959,21 @@ function currentRows(opts = currentOptions()) {
 }
 
 function applyChartFilters(rows, opts) {
-  const account = String(opts.account || '').replace(/^@/, '').toLocaleLowerCase();
+  const account = String(opts.account || '')
+    .replace(/^@/, '')
+    .toLocaleLowerCase();
   return rows.filter((row) => {
     if (account) {
-      const handle = String(row?.account_handle ?? '').replace(/^@/, '').toLocaleLowerCase();
+      const handle = String(row?.account_handle ?? '')
+        .replace(/^@/, '')
+        .toLocaleLowerCase();
       if (handle !== account) return false;
     }
     const postedDate = postedDateString(row?.posted_at);
     if (opts.from && (!postedDate || postedDate < opts.from)) return false;
     if (opts.to && (!postedDate || postedDate > opts.to)) return false;
-    if (opts.focusTag && opts.view !== 'crosstab' && !rowMatchesTag(row, opts.focusTag)) return false;
+    if (opts.focusTag && opts.view !== 'crosstab' && !rowMatchesTag(row, opts.focusTag))
+      return false;
     return true;
   });
 }
@@ -991,7 +1014,8 @@ function destroyChart() {
 function elementEntries(row, element) {
   if (element === 'tweets') return [{ row, value: row }];
   if (element === 'replies') return row?.tweet_type === 'reply' ? [{ row, value: row }] : [];
-  if (element === 'categories') return [{ row, category: categoryLabel(row, state.categoryOf), value: row }];
+  if (element === 'categories')
+    return [{ row, category: categoryLabel(row, state.categoryOf), value: row }];
 
   if (element === 'media') {
     return toArray(row?.media)
@@ -1113,7 +1137,11 @@ function isRealTimeBucket(value) {
 }
 
 function sortedTimeLabels(labels, granularity) {
-  return labels.slice().sort((a, b) => timeBucketSortKey(a, granularity).localeCompare(timeBucketSortKey(b, granularity)));
+  return labels
+    .slice()
+    .sort((a, b) =>
+      timeBucketSortKey(a, granularity).localeCompare(timeBucketSortKey(b, granularity))
+    );
 }
 
 function timeBucketSortKey(label, granularity) {
@@ -1220,7 +1248,9 @@ function emptyAware(values, includeEmpty, emptyLabel) {
 }
 
 function rowMatchesTag(row, selection) {
-  const want = String(selection ?? '').trim().toLocaleLowerCase();
+  const want = String(selection ?? '')
+    .trim()
+    .toLocaleLowerCase();
   if (!want) return true;
   const wantNamespace = want.endsWith(':') ? want.slice(0, -1) : '';
   return tagNames(row).some((tag) => {
@@ -1289,20 +1319,21 @@ function chartConfig(model, opts) {
   const isLine = chartType.type === 'line';
   const colors = model.labels.map((_, idx) => PALETTE[idx % PALETTE.length]);
   const title = chartTitle(model, opts);
-  const datasets = (model.datasets.length > 0 ? model.datasets : [{ label: title, data: model.values }]).map(
-    (dataset, datasetIdx) => {
-      const color = dataset.borderColor || dataset.backgroundColor || PALETTE[datasetIdx % PALETTE.length];
-      return {
-        label: dataset.label || title,
-        data: dataset.data,
-        backgroundColor: isDoughnut ? colors : dataset.backgroundColor || color,
-        borderColor: dataset.borderColor || color,
-        borderWidth: isLine ? 2 : 1,
-        fill: false,
-        tension: isLine ? 0.2 : 0,
-      };
-    }
-  );
+  const datasets = (
+    model.datasets.length > 0 ? model.datasets : [{ label: title, data: model.values }]
+  ).map((dataset, datasetIdx) => {
+    const color =
+      dataset.borderColor || dataset.backgroundColor || PALETTE[datasetIdx % PALETTE.length];
+    return {
+      label: dataset.label || title,
+      data: dataset.data,
+      backgroundColor: isDoughnut ? colors : dataset.backgroundColor || color,
+      borderColor: dataset.borderColor || color,
+      borderWidth: isLine ? 2 : 1,
+      fill: false,
+      tension: isLine ? 0.2 : 0,
+    };
+  });
 
   return {
     type: chartType.type,
@@ -1325,8 +1356,7 @@ function chartConfig(model, opts) {
         },
         tooltip: {
           callbacks: {
-            label: (ctx) =>
-              `${ctx.dataset.label}: ${ctx.parsed.y ?? ctx.parsed.x ?? ctx.parsed}`,
+            label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y ?? ctx.parsed.x ?? ctx.parsed}`,
           },
         },
       },

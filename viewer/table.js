@@ -21,9 +21,9 @@ import {
   retweetedByHandles,
   tagNamespace,
   tagSubtype,
-} from './store.js?v=lazycat6';
-import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js?v=lazycat6';
-import { archiveShareUrlForRow, copyTextToClipboard, xTweetUrlForRow } from './links.js?v=lazycat6';
+} from './store.js?v=lazycat7';
+import { tagEntryName, tagNamespaceFor, tagTreeFromEntries } from './tag_hierarchy.js?v=lazycat7';
+import { archiveShareUrlForRow, copyTextToClipboard, xTweetUrlForRow } from './links.js?v=lazycat7';
 
 const MEDIA_COL_KEY = 'media_kinds';
 export const TAG_CERTAINTY_LABELS = {
