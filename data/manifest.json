@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-24T15:09:45Z",
+  "generated_at": "2026-05-24T15:35:55Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -7,7 +7,7 @@
       "label": "Department of Homeland Security",
       "category": "core",
       "parquet": "data/DHSgov.parquet",
-      "parquet_bytes": 1461174,
+      "parquet_bytes": 1461167,
       "row_count": 5254,
       "post_count": 4480,
       "reply_count": 774,
@@ -263,13 +263,13 @@
       "label": "The White House",
       "category": "core",
       "parquet": "data/WhiteHouse.parquet",
-      "parquet_bytes": 135274,
-      "row_count": 309,
-      "post_count": 291,
-      "reply_count": 18,
+      "parquet_bytes": 146698,
+      "row_count": 360,
+      "post_count": 339,
+      "reply_count": 21,
       "first_post_at": "2025-02-15T02:07:29.000Z",
       "latest_post_at": "2026-05-24T04:38:26.000Z",
-      "latest_capture_at": "2026-05-24T14:27:32.823Z",
+      "latest_capture_at": "2026-05-24T14:42:46.522Z",
       "months": {
         "2025-02": 4,
         "2025-04": 2,
@@ -284,11 +284,11 @@
         "2026-02": 8,
         "2026-03": 21,
         "2026-04": 37,
-        "2026-05": 211
+        "2026-05": 262
       },
       "deleted_count": 0,
-      "media_count": 243,
-      "video_count": 64,
+      "media_count": 278,
+      "video_count": 75,
       "releases": []
     },
     {
@@ -377,13 +377,13 @@
       "label": "Rapid Response 47",
       "category": "core",
       "parquet": "data/RapidResponse47.parquet",
-      "parquet_bytes": 207943,
-      "row_count": 466,
-      "post_count": 461,
+      "parquet_bytes": 208644,
+      "row_count": 468,
+      "post_count": 463,
       "reply_count": 5,
       "first_post_at": "2025-04-18T14:48:06.000Z",
-      "latest_post_at": "2026-05-22T01:05:34.000Z",
-      "latest_capture_at": "2026-05-22T21:37:48.677Z",
+      "latest_post_at": "2026-05-22T21:06:31.000Z",
+      "latest_capture_at": "2026-05-24T14:41:19.981Z",
       "months": {
         "2025-04": 2,
         "2025-06": 1,
@@ -396,11 +396,11 @@
         "2026-02": 9,
         "2026-03": 41,
         "2026-04": 95,
-        "2026-05": 291
+        "2026-05": 293
       },
       "deleted_count": 0,
-      "media_count": 390,
-      "video_count": 315,
+      "media_count": 392,
+      "video_count": 317,
       "releases": []
     },
     {
@@ -509,13 +509,13 @@
       "label": "Miscellaneous (replies / quotes / retweets of non-tracked accounts)",
       "category": "public",
       "parquet": "data/_misc.parquet",
-      "parquet_bytes": 2390919,
-      "row_count": 6241,
-      "post_count": 2526,
+      "parquet_bytes": 2398551,
+      "row_count": 6255,
+      "post_count": 2540,
       "reply_count": 3715,
       "first_post_at": "2016-01-13T16:10:59.000Z",
       "latest_post_at": "2026-05-24T00:17:22.000Z",
-      "latest_capture_at": "2026-05-24T14:27:32.823Z",
+      "latest_capture_at": "2026-05-24T14:43:42.325Z",
       "months": {
         "2016-01": 3,
         "2016-02": 2,
@@ -608,11 +608,11 @@
         "2026-02": 294,
         "2026-03": 323,
         "2026-04": 1366,
-        "2026-05": 2663
+        "2026-05": 2677
       },
       "deleted_count": 0,
-      "media_count": 3120,
-      "video_count": 774,
+      "media_count": 3140,
+      "video_count": 779,
       "releases": []
     }
   ]

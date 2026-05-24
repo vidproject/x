@@ -753,7 +753,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 9407,
+      "observations": 9409,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -781,7 +781,7 @@
     "DOWResponse": {
       "category": "government",
       "label": "DOW Rapid Response",
-      "observations": 9,
+      "observations": 11,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -849,7 +849,7 @@
     "DeptofWar": {
       "category": "government",
       "label": "Department of War \ud83c\uddfa\ud83c\uddf8",
-      "observations": 36,
+      "observations": 38,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1690,7 +1690,7 @@
     "JDVance": {
       "category": "government",
       "label": "JD Vance",
-      "observations": 26,
+      "observations": 30,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2249,7 +2249,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 1177,
+      "observations": 1186,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2409,7 +2409,7 @@
     "RapidResponse47": {
       "category": "core",
       "label": "Rapid Response 47",
-      "observations": 765,
+      "observations": 770,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2731,7 +2731,7 @@
     "SBAgov": {
       "category": "officials",
       "label": "SBA",
-      "observations": 9,
+      "observations": 11,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2848,7 +2848,7 @@
     "SecRubio": {
       "category": "officials",
       "label": "Secretary Marco Rubio",
-      "observations": 22,
+      "observations": 26,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2872,7 +2872,7 @@
     "SecWar": {
       "category": "officials",
       "label": "Secretary of War Pete Hegseth",
-      "observations": 31,
+      "observations": 32,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2893,7 +2893,7 @@
     "SecretaryBurgum": {
       "category": "officials",
       "label": "Secretary Doug Burgum",
-      "observations": 14,
+      "observations": 16,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -3101,7 +3101,7 @@
     "StateDept": {
       "category": "government",
       "label": "Department of State",
-      "observations": 29,
+      "observations": 31,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3354,6 +3354,13 @@
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
+    "USAfricaCommand": {
+      "category": "government",
+      "label": "U.S. Africa Command (AFRICOM)",
+      "observations": 1,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
     "USArmyNorth": {
       "badges": [
         "veteran"
@@ -3454,7 +3461,7 @@
     "USCGAcademy": {
       "category": "government",
       "label": "U.S. Coast Guard Academy",
-      "observations": 54,
+      "observations": 55,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3537,7 +3544,7 @@
     "USTradeRep": {
       "category": "public_figures",
       "label": "United States Trade Representative",
-      "observations": 11,
+      "observations": 13,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -3681,7 +3688,7 @@
     "WhiteHouse": {
       "category": "core",
       "label": "The White House",
-      "observations": 659,
+      "observations": 713,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -4534,12 +4541,12 @@
   },
   "category_counts": {
     "core": 12,
-    "government": 161,
+    "government": 162,
     "officials": 105,
     "public": 170,
     "public_figures": 107
   },
-  "generated_at": "2026-05-24T14:35:41Z",
+  "generated_at": "2026-05-24T15:36:00Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
