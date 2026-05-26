@@ -35,6 +35,9 @@ CSV_OUT = TAGS_DIR / "core_video_audit.csv"
 MISSING_TWEET_IDS_OUT = TAGS_DIR / "core_produced_missing_tweet_ids.txt"
 MISSING_MEDIA_IDS_OUT = TAGS_DIR / "core_produced_missing_media_ids.txt"
 VIDEO_TYPES = {"video", "animated_gif"}
+HIGH_VALUE_MIN_LIKES = 50_000
+HIGH_VALUE_MIN_RETWEETS = 5_000
+HIGH_VALUE_MIN_VIEWS = 5_000_000
 PRODUCED_TAGS = {
     "video:produced",
     "genre:music-video",
@@ -416,6 +419,7 @@ def build_item(
         "height": media.get("height"),
         "like_count": row.get("like_count") or 0,
         "retweet_count": row.get("retweet_count") or 0,
+        "view_count": row.get("view_count") or 0,
         "bucket": bucket,
         "priority": priority_for(tags, missing, bucket, row),
         "tags": sorted(tags),
@@ -499,6 +503,9 @@ def write_csv(items: list[dict[str, Any]], path: Path) -> None:
         "media_id",
         "duration_sec",
         "archive_status",
+        "like_count",
+        "retweet_count",
+        "view_count",
         "genre_tags",
         "produced_video_tags",
         "missing_steps",
@@ -524,12 +531,31 @@ def csv_cell(value: Any) -> Any:
     return re.sub(r"\s+", " ", value).strip()
 
 
+def is_high_value_missing_video(item: dict[str, Any]) -> bool:
+    return (
+        int(item.get("like_count") or 0) >= HIGH_VALUE_MIN_LIKES
+        or int(item.get("retweet_count") or 0) >= HIGH_VALUE_MIN_RETWEETS
+        or int(item.get("view_count") or 0) >= HIGH_VALUE_MIN_VIEWS
+    )
+
+
 def archive_recovery_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Items worth sending through the low-bandwidth archive workflow.
+
+    The primary queue is produced/genre candidates. Very high-engagement core
+    videos also belong here even before visual recognition has run, because
+    otherwise viral clips can sit unarchived solely because their genre tags
+    require the missing media to inspect.
+    """
     return [
         item
         for item in items
         if "archive-media" in (item.get("missing_steps") or [])
-        and (set(item.get("produced_video_tags") or []) or set(item.get("genre_tags") or []))
+        and (
+            set(item.get("produced_video_tags") or [])
+            or set(item.get("genre_tags") or [])
+            or is_high_value_missing_video(item)
+        )
     ]
 
 

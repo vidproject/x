@@ -53,9 +53,25 @@ def test_archive_recovery_queue_is_limited_to_produced_or_genre_items() -> None:
                 "produced_video_tags": [],
                 "genre_tags": [],
             },
+            {
+                "tweet_id": "4",
+                "media_id": "m4",
+                "missing_steps": ["archive-media"],
+                "produced_video_tags": [],
+                "genre_tags": [],
+                "view_count": 5_000_000,
+            },
+            {
+                "tweet_id": "5",
+                "media_id": "m5",
+                "missing_steps": ["archive-media"],
+                "produced_video_tags": [],
+                "genre_tags": [],
+                "like_count": 50_000,
+            },
         ]
     )
-    assert [item["tweet_id"] for item in recovery] == ["1", "2"]
+    assert [item["tweet_id"] for item in recovery] == ["1", "2", "4", "5"]
 
 
 def test_tag_values_normalizes_legacy_produced_video_tag() -> None:

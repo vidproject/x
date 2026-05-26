@@ -130,8 +130,9 @@ considered.
 For GitHub-side media recovery, the audit also writes
 `data/tags/core_produced_missing_tweet_ids.txt` and
 `data/tags/core_produced_missing_media_ids.txt`. Those files are intended
-for the `archive-media` workflow queue path, so likely produced-video
-candidates can be fetched by GitHub Actions without local video bandwidth.
+for the `archive-media` workflow queue path, so likely produced-video and
+very high-engagement core-video candidates can be fetched by GitHub Actions
+without local video bandwidth.
 
 ## News-mentions sidecar (`data/tags/news_mentions.parquet`)
 
