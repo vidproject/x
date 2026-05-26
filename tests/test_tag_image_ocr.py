@@ -157,6 +157,32 @@ def test_run_writes_sidecar_and_manifest(tmp_corpus: Path) -> None:
     assert manifest["layers"]["image_ocr"]["status_counts"] == {"ok": 1}
 
 
+def test_scoped_run_preserves_prior_ocr_rows(tmp_corpus: Path) -> None:
+    _write_handle_parquet(
+        tmp_corpus,
+        "DHSgov",
+        [make_tweet("t-1", handle="DHSgov", media=[_archived_photo("pic-1", "a" * 64)])],
+    )
+    tag_image_ocr.run(
+        parquets=[tmp_corpus / "data" / "DHSgov.parquet"],
+        ocr_runner=lambda _c: OcrResult(status="ok", text="ICE", confidence=0.93),
+    )
+
+    def fail(_c: OcrCandidate) -> OcrResult:
+        raise AssertionError("filtered OCR candidate should not run")
+
+    tag_image_ocr.run(
+        parquets=[tmp_corpus / "data" / "DHSgov.parquet"],
+        only_tweet_ids={"missing"},
+        ocr_runner=fail,
+    )
+
+    out = pl.read_parquet(tmp_corpus / "data" / "tags" / "image_ocr.parquet")
+    assert out.height == 1
+    manifest = json.loads((tmp_corpus / "data" / "tags" / "manifest.json").read_text())
+    assert manifest["layers"]["image_ocr"]["row_count"] == 1
+
+
 def test_failures_are_not_cached(tmp_corpus: Path) -> None:
     _write_handle_parquet(
         tmp_corpus,

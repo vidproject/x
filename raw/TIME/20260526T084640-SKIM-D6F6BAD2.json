@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-gov-trawl-20260526-20260526T084625Z-22d128df-TIME",
+  "account_handle": "TIME",
+  "captured_at": "2026-05-26T08:46:40.087Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ARapidResponse47%20since%3A2025-10-01%20until%3A2025-11-01&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1189286502318198784",
+      "account_handle": "TIME",
+      "account_id": "14293310",
+      "posted_at": "2019-10-29T21:02:52.000Z",
+      "first_captured_at": "2026-05-26T08:46:28.423Z",
+      "last_seen_at": "2026-05-26T08:46:28.423Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/TIME/status/1189286502318198784",
+      "tweet_type": "original",
+      "conversation_id": "1189286502318198784",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Trump puts candy bar on head of White House trick-or-treater dressed as minion https://t.co/ja4NyQZpcq https://t.co/Tru7B5FphM",
+      "text_resolved": "Trump puts candy bar on head of White House trick-or-treater dressed as minion https://ti.me/2PtFw4c https://t.co/Tru7B5FphM",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.sprinklr.com\" rel=\"nofollow\">Sprinklr</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/ja4NyQZpcq",
+          "expanded": "https://ti.me/2PtFw4c",
+          "display": "ti.me/2PtFw4c"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_1189286428443844608",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/1189286428443844608/pu/vid/720x720/ZcFBFKeKiff8ilAn.mp4?tag=10",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 37.938,
+          "width": 720,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 6106,
+      "retweet_count": 1202,
+      "reply_count": 696,
+      "quote_count": 1220,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T08:46:28.423Z",
+          "likes": 6106,
+          "retweets": 1202,
+          "replies": 696,
+          "quotes": 1220,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "TIME",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1821984581915987968/cv44xY5x_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": "News and current events from around the globe. Since 1923. \nSubscribe: https://t.co/yT0dueLEm0",
+        "location": null,
+        "url": "https://t.co/vl89LXOvyB",
+        "followers_count": 18535894,
+        "friends_count": 474,
+        "statuses_count": 439770,
+        "account_created_at": "2008-04-03T13:54:30.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-gov-trawl-20260526-20260526T084625Z-22d128df",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/x-com-search-20260526T084625Z-22d128df.summary.json",
+    "jsonl": ".skim/raw/x-com-search-20260526T084625Z-22d128df.jsonl",
+    "source_handle": "RapidResponse47"
+  }
+}

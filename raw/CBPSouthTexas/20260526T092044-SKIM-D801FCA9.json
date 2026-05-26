@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-dhs-gap-20260526-20260526T092030Z-f573b449-CBPSouthTexas",
+  "account_handle": "CBPSouthTexas",
+  "captured_at": "2026-05-26T09:20:44.347Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBP%20since%3A2025-05-01%20until%3A2025-06-01&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1927800704632025346",
+      "account_handle": "CBPSouthTexas",
+      "account_id": "331060519",
+      "posted_at": "2025-05-28T18:54:39.000Z",
+      "first_captured_at": "2026-05-26T09:20:33.244Z",
+      "last_seen_at": "2026-05-26T09:20:33.244Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBPSouthTexas/status/1927800704632025346",
+      "tweet_type": "original",
+      "conversation_id": "1927800704632025346",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Cocaine nabbed: @DFOLaredo @CBP officers seize $318K in cocaine hidden in passenger vehicle at #Laredo’s Juarez-Lincoln Bridge. Driver arrested. @HSI_SanAntonio is investigating. Read more: https://t.co/zD33FNPhSD https://t.co/2YBUD6RAJC",
+      "text_resolved": "Cocaine nabbed: @DFOLaredo @CBP officers seize $318K in cocaine hidden in passenger vehicle at #Laredo’s Juarez-Lincoln Bridge. Driver arrested. @HSI_SanAntonio is investigating. Read more: https://go.dhs.gov/wEp https://t.co/2YBUD6RAJC",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "Laredo"
+      ],
+      "mentions": [
+        "DFOLaredo",
+        "CBP",
+        "HSI_SanAntonio"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/zD33FNPhSD",
+          "expanded": "https://go.dhs.gov/wEp",
+          "display": "go.dhs.gov/wEp"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1927800699913433088",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GsDshcwW8AAu94g.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1316,
+          "height": 2048,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 0,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 11267,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T09:20:33.244Z",
+          "likes": 0,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 0,
+          "views": 11267,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "CBP South Texas",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1355253016191004676/7LxlM1FY_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Official account for U.S. Customs and Border Protection (CBP) operations in South Texas.",
+        "location": "South Texas",
+        "url": "https://t.co/OphLrb8gE7",
+        "followers_count": 31160,
+        "friends_count": 54,
+        "statuses_count": 8799,
+        "account_created_at": "2011-07-07T15:53:55.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-dhs-gap-20260526-20260526T092030Z-f573b449",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/x-com-search-20260526T092030Z-f573b449.summary.json",
+    "jsonl": ".skim/raw/x-com-search-20260526T092030Z-f573b449.jsonl",
+    "source_handle": "CBP"
+  }
+}

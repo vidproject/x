@@ -532,11 +532,20 @@ def run(
         if http is not None:
             http.close()
 
-    stats["rows"] = len(rows)
+    final_rows = rows if dry_run else rows + _leftover_rows()
+    stats["rows"] = len(final_rows)
     if not dry_run:
-        write_parquet(rows + _leftover_rows(), out_path)
-        update_manifest(rows, dict(stats), generated_at)
+        write_parquet(final_rows, out_path)
+        update_manifest(final_rows, dict(stats), generated_at)
     return dict(stats)
+
+
+def refresh_manifest_from_existing(out_path: Path | None = None) -> None:
+    out_path = out_path or OUT_PATH
+    rows = pl.read_parquet(out_path).to_dicts() if out_path.exists() else []
+    generated_at = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+    stats = {"rows": len(rows)}
+    update_manifest(rows, stats, generated_at)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -545,6 +554,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--max-items", type=int, help="Maximum uncached videos to transcribe.")
     parser.add_argument("--force", action="store_true", help="Ignore the cache and re-transcribe.")
     parser.add_argument("--dry-run", action="store_true", help="Report planned rows; do not write.")
+    parser.add_argument(
+        "--refresh-manifest-only",
+        action="store_true",
+        help="Recompute data/tags/manifest.json counts from the existing transcripts sidecar.",
+    )
     parser.add_argument(
         "--model", default=DEFAULT_MODEL, help=f"Whisper model (default {DEFAULT_MODEL})."
     )
@@ -560,6 +574,11 @@ def main(argv: list[str] | None = None) -> int:
         help="Only transcribe videos whose tweet_id is listed (one per line) in this file.",
     )
     args = parser.parse_args(argv)
+
+    if args.refresh_manifest_only:
+        refresh_manifest_from_existing()
+        LOG.info("transcripts manifest refreshed")
+        return 0
 
     parquets = discover_canonical_parquets()
     if args.handle:

@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-gov-trawl-20260526-20260526T090335Z-2348d5b1-WSJ",
+  "account_handle": "WSJ",
+  "captured_at": "2026-05-26T09:04:30.045Z",
+  "endpoint": "UserByScreenName,UserMedia",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/WhiteHouse/media",
+  "tweets": [
+    {
+      "tweet_id": "2054899066182471824",
+      "account_handle": "WSJ",
+      "account_id": "3108351",
+      "posted_at": "2026-05-14T12:18:10.000Z",
+      "first_captured_at": "2026-05-26T09:03:46.053Z",
+      "last_seen_at": "2026-05-26T09:03:46.053Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/WSJ/status/2054899066182471824",
+      "tweet_type": "original",
+      "conversation_id": "2054899066182471824",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "A WSJ analysis of thousands of posts found that President Trump uses Truth Social to spread conspiracy theories and attack his adversaries. 🔗 https://t.co/CRt2atVTyp https://t.co/CmtkMbpSVF",
+      "text_resolved": "A WSJ analysis of thousands of posts found that President Trump uses Truth Social to spread conspiracy theories and attack his adversaries. 🔗 https://on.wsj.com/4uF6K8a https://t.co/CmtkMbpSVF",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/CRt2atVTyp",
+          "expanded": "https://on.wsj.com/4uF6K8a",
+          "display": "on.wsj.com/4uF6K8a"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2054899050168700928",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HIR3zH6X0AAiOHR.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 4500,
+          "height": 5625,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 925,
+      "retweet_count": 424,
+      "reply_count": 448,
+      "quote_count": 69,
+      "view_count": 748794,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T09:03:46.053Z",
+          "likes": 925,
+          "retweets": 424,
+          "replies": 448,
+          "quotes": 69,
+          "views": 748794,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "The Wall Street Journal",
+        "avatar_url": "https://pbs.twimg.com/profile_images/971415515754266624/zCX0q9d5_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": "Sign up for our newsletters and alerts: https://t.co/QevH0DLQi8 | Got a tip? https://t.co/iXIigdPjEZ | For WSJ customer support: https://t.co/DZgH9n53qg",
+        "location": "New York, NY",
+        "url": "https://t.co/9rMrYLFvJ1",
+        "followers_count": 21402882,
+        "friends_count": 1060,
+        "statuses_count": 499915,
+        "account_created_at": "2007-04-01T06:22:13.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-gov-trawl-20260526-20260526T090335Z-2348d5b1",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/whitehouse-20260526T090335Z-2348d5b1.summary.json",
+    "jsonl": ".skim/raw/whitehouse-20260526T090335Z-2348d5b1.jsonl",
+    "source_handle": "WhiteHouse"
+  }
+}

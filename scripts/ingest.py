@@ -588,7 +588,17 @@ def union_media(
                     int(prev["archive_attempts"]), int(m["archive_attempts"])
                 )
         by_id[k] = merged
-    return [by_id[k] for k in order]
+    return [normalize_media_archive_status(by_id[k]) for k in order]
+
+
+def normalize_media_archive_status(media: dict[str, Any]) -> dict[str, Any]:
+    """Treat a row with a release asset URL as archived even if status drifted."""
+    out = dict(media)
+    if out.get("release_asset_url") and (
+        not out.get("archive_status") or out["archive_status"] == "pending"
+    ):
+        out["archive_status"] = "archived"
+    return out
 
 
 # --------------------------------------------------------------------------

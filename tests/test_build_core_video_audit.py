@@ -12,7 +12,7 @@ from scripts.build_core_video_audit import (
 
 
 def _empty_maps() -> dict[str, Any]:
-    return {"vision": {}, "audio": {}, "keyframes": {}, "ocr": {}, "manual": {}}
+    return {"vision": {}, "audio": {}, "transcripts": {}, "keyframes": {}, "ocr": {}, "manual": {}}
 
 
 def test_release_asset_url_counts_as_archived_for_missing_steps() -> None:
@@ -20,6 +20,7 @@ def test_release_asset_url_counts_as_archived_for_missing_steps() -> None:
         {"archive_status": "pending", "release_asset_url": "https://example.invalid/video.mp4"},
         keyframe_rows=[],
         audio_rows=[],
+        transcript_rows=[],
         vision_rows=[],
         tags=set(),
     )
@@ -52,9 +53,25 @@ def test_archive_recovery_queue_is_limited_to_produced_or_genre_items() -> None:
                 "produced_video_tags": [],
                 "genre_tags": [],
             },
+            {
+                "tweet_id": "4",
+                "media_id": "m4",
+                "missing_steps": ["archive-media"],
+                "produced_video_tags": [],
+                "genre_tags": [],
+                "view_count": 5_000_000,
+            },
+            {
+                "tweet_id": "5",
+                "media_id": "m5",
+                "missing_steps": ["archive-media"],
+                "produced_video_tags": [],
+                "genre_tags": [],
+                "like_count": 50_000,
+            },
         ]
     )
-    assert [item["tweet_id"] for item in recovery] == ["1", "2"]
+    assert [item["tweet_id"] for item in recovery] == ["1", "2", "4", "5"]
 
 
 def test_tag_values_normalizes_legacy_produced_video_tag() -> None:
@@ -108,9 +125,22 @@ def test_audio_music_likely_alone_is_not_upgraded_to_music_video() -> None:
         lexical={},
         vision=maps["vision"],
         audio=maps["audio"],
+        transcripts=maps["transcripts"],
         keyframes=maps["keyframes"],
         ocr=maps["ocr"],
         manual=maps["manual"],
     )
     assert "audio:music-likely" in item["tags"]
     assert "genre:music-video" not in item["tags"]
+
+
+def test_audio_video_without_transcript_is_flagged() -> None:
+    missing = missing_steps(
+        {"release_asset_url": "https://example.invalid/video.mp4"},
+        keyframe_rows=[{"status": "ok"}],
+        audio_rows=[{"status": "ok", "tags": [{"tag": "audio:has-audio"}]}],
+        transcript_rows=[],
+        vision_rows=[{"status": "metadata-context"}],
+        tags={"audio:has-audio"},
+    )
+    assert "transcribe-audio" in missing

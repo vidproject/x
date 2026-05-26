@@ -322,6 +322,47 @@ def test_release_asset_url_preserved_across_reingest(tmp_repo: Path) -> None:
     assert media_after[0]["sha256"] == "deadbeef"
 
 
+def test_release_asset_url_normalizes_pending_status(tmp_repo: Path) -> None:
+    media = make_media(media_type="video", media_id="v-status")
+    write_capture(
+        tmp_repo, "test-handle", "01.json", make_capture([make_tweet("aa02", media=[media])])
+    )
+    assert ingest.main([]) == 0
+
+    parquet = tmp_repo / "data" / "test-handle.parquet"
+    df = pl.read_parquet(parquet)
+    enriched = df.with_columns(
+        pl.col("media").list.eval(
+            pl.element().struct.with_fields(
+                release_asset_url=pl.lit("https://github.com/.../v-status.mp4"),
+                sha256=pl.lit("facefeed"),
+                archive_status=pl.lit("pending"),
+            )
+        )
+    )
+    enriched.write_parquet(parquet, compression="zstd")
+
+    write_capture(
+        tmp_repo,
+        "test-handle",
+        "02.json",
+        make_capture(
+            [
+                make_tweet(
+                    "aa02",
+                    captured_at="2025-04-13T15:00:00Z",
+                    media=[make_media(media_type="video", media_id="v-status")],
+                )
+            ]
+        ),
+    )
+    assert ingest.main([]) == 0
+
+    media_after = pl.read_parquet(parquet)["media"].to_list()[0]
+    assert media_after[0]["release_asset_url"] == "https://github.com/.../v-status.mp4"
+    assert media_after[0]["archive_status"] == "archived"
+
+
 def test_tracked_handle_gets_own_parquet_non_tracked_consolidates_into_misc(
     tmp_repo: Path,
 ) -> None:

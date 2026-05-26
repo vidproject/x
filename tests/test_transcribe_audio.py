@@ -156,6 +156,9 @@ def test_scoped_run_preserves_prior_transcripts(tmp_corpus: Path) -> None:
     df = pl.read_parquet(out)
     texts = {r["media_sha256"]: r["text"] for r in df.iter_rows(named=True)}
     assert texts == {"shaA": "alpha", "shaB": "bravo"}
+    manifest = json.loads((tmp_corpus / "data" / "tags" / "manifest.json").read_text())
+    assert manifest["layers"]["transcripts"]["row_count"] == 2
+    assert manifest["layers"]["transcripts"]["status_counts"] == {"ok": 2}
 
 
 def test_is_cache_hit_respects_version_and_model() -> None:

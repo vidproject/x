@@ -35,6 +35,9 @@ CSV_OUT = TAGS_DIR / "core_video_audit.csv"
 MISSING_TWEET_IDS_OUT = TAGS_DIR / "core_produced_missing_tweet_ids.txt"
 MISSING_MEDIA_IDS_OUT = TAGS_DIR / "core_produced_missing_media_ids.txt"
 VIDEO_TYPES = {"video", "animated_gif"}
+HIGH_VALUE_MIN_LIKES = 50_000
+HIGH_VALUE_MIN_RETWEETS = 5_000
+HIGH_VALUE_MIN_VIEWS = 5_000_000
 PRODUCED_TAGS = {
     "video:produced",
     "genre:music-video",
@@ -303,6 +306,7 @@ def missing_steps(
     *,
     keyframe_rows: list[dict[str, Any]],
     audio_rows: list[dict[str, Any]],
+    transcript_rows: list[dict[str, Any]],
     vision_rows: list[dict[str, Any]],
     tags: set[str],
 ) -> list[str]:
@@ -314,6 +318,8 @@ def missing_steps(
         steps.append("extract-keyframes")
     if archived and not audio_rows:
         steps.append("detect-audio")
+    if archived and "audio:has-audio" in tags and not transcript_rows:
+        steps.append("transcribe-audio")
     if not vision_rows:
         steps.append("describe-with-vision")
     if (tags & PRODUCED_TAGS) and not (tags & GENRE_TAGS):
@@ -328,7 +334,11 @@ def bucket_for(tags: set[str], missing: list[str]) -> str:
         return "genre-experiment"
     if tags & PRODUCED_TAGS or tags & GENRE_TAGS:
         return "produced-video"
-    if "describe-with-vision" in missing or "detect-audio" in missing:
+    if (
+        "describe-with-vision" in missing
+        or "detect-audio" in missing
+        or "transcribe-audio" in missing
+    ):
         return "needs-recognition"
     return "ordinary-video"
 
@@ -357,6 +367,7 @@ def build_item(
     lexical: dict[str, set[str]],
     vision: dict[tuple[str, str], list[dict[str, Any]]],
     audio: dict[tuple[str, str], list[dict[str, Any]]],
+    transcripts: dict[tuple[str, str], list[dict[str, Any]]],
     keyframes: dict[tuple[str, str], list[dict[str, Any]]],
     ocr: dict[tuple[str, str], list[dict[str, Any]]],
     manual: dict[tuple[str, str], dict[str, Any]],
@@ -366,10 +377,11 @@ def build_item(
     key = (tweet_id, media_id)
     vision_rows = vision.get(key, [])
     audio_rows = audio.get(key, [])
+    transcript_rows = transcripts.get(key, [])
     keyframe_rows = keyframes.get(key, [])
     ocr_rows = ocr.get(key, [])
     manual_row = manual.get(key, {})
-    descriptions = sidecar_descriptions(vision_rows + ocr_rows)
+    descriptions = sidecar_descriptions(vision_rows + ocr_rows + transcript_rows)
     if manual_row.get("visual_observation"):
         descriptions.append(str(manual_row["visual_observation"]))
     context = "\n".join(
@@ -387,6 +399,7 @@ def build_item(
         media,
         keyframe_rows=keyframe_rows,
         audio_rows=audio_rows,
+        transcript_rows=transcript_rows,
         vision_rows=vision_rows,
         tags=tags,
     )
@@ -406,6 +419,7 @@ def build_item(
         "height": media.get("height"),
         "like_count": row.get("like_count") or 0,
         "retweet_count": row.get("retweet_count") or 0,
+        "view_count": row.get("view_count") or 0,
         "bucket": bucket,
         "priority": priority_for(tags, missing, bucket, row),
         "tags": sorted(tags),
@@ -414,6 +428,7 @@ def build_item(
         "missing_steps": missing,
         "has_keyframes": any(r.get("status") == "ok" for r in keyframe_rows),
         "has_audio_analysis": bool(audio_rows),
+        "has_transcript": bool(transcript_rows),
         "has_vision_description": bool(vision_rows),
         "has_ocr": bool(ocr_rows),
         "description": " | ".join(descriptions)[:1200],
@@ -435,6 +450,7 @@ def build() -> dict[str, Any]:
     lexical = load_lexical_tags(handles)
     vision = load_media_sidecar("media_vision", handles)
     audio = load_media_sidecar("audio_music", handles)
+    transcripts = load_media_sidecar("transcripts", handles)
     keyframes = load_media_sidecar("keyframes", handles)
     ocr = load_media_sidecar("image_ocr", handles)
     manual = load_manual_review()
@@ -450,6 +466,7 @@ def build() -> dict[str, Any]:
                         lexical=lexical,
                         vision=vision,
                         audio=audio,
+                        transcripts=transcripts,
                         keyframes=keyframes,
                         ocr=ocr,
                         manual=manual,
@@ -486,9 +503,13 @@ def write_csv(items: list[dict[str, Any]], path: Path) -> None:
         "media_id",
         "duration_sec",
         "archive_status",
+        "like_count",
+        "retweet_count",
+        "view_count",
         "genre_tags",
         "produced_video_tags",
         "missing_steps",
+        "has_transcript",
         "tweet_url",
         "release_asset_url",
         "tweet_text",
@@ -510,12 +531,31 @@ def csv_cell(value: Any) -> Any:
     return re.sub(r"\s+", " ", value).strip()
 
 
+def is_high_value_missing_video(item: dict[str, Any]) -> bool:
+    return (
+        int(item.get("like_count") or 0) >= HIGH_VALUE_MIN_LIKES
+        or int(item.get("retweet_count") or 0) >= HIGH_VALUE_MIN_RETWEETS
+        or int(item.get("view_count") or 0) >= HIGH_VALUE_MIN_VIEWS
+    )
+
+
 def archive_recovery_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Items worth sending through the low-bandwidth archive workflow.
+
+    The primary queue is produced/genre candidates. Very high-engagement core
+    videos also belong here even before visual recognition has run, because
+    otherwise viral clips can sit unarchived solely because their genre tags
+    require the missing media to inspect.
+    """
     return [
         item
         for item in items
         if "archive-media" in (item.get("missing_steps") or [])
-        and (set(item.get("produced_video_tags") or []) or set(item.get("genre_tags") or []))
+        and (
+            set(item.get("produced_video_tags") or [])
+            or set(item.get("genre_tags") or [])
+            or is_high_value_missing_video(item)
+        )
     ]
 
 

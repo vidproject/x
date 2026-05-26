@@ -202,6 +202,7 @@ def _scan_parquet_gaps(data_dir: Path) -> dict[str, Any]:
         "media_archived": 0,
         "media_pending": 0,
         "media_failed": 0,
+        "media_expired": 0,
         "truncated": 0,
         "unavailable": 0,
     }
@@ -251,6 +252,7 @@ def _scan_parquet_gaps(data_dir: Path) -> dict[str, Any]:
         media_archived=media_counts.get("archived", 0),
         media_pending=media_counts.get("pending", 0),
         media_failed=media_counts.get("failed", 0),
+        media_expired=media_counts.get("expired", 0),
         truncated=truncated,
         unavailable=unavailable,
     )
@@ -314,6 +316,12 @@ def build_gaps(manifest: dict[str, object], data_dir: Path) -> str:
             items.append(
                 f"**Failed media archives:** {fmt_int(g['media_failed'])} media items have "
                 "`archive_status = failed` after retries and may be unrecoverable."
+            )
+        if g["media_expired"]:
+            items.append(
+                f"**Expired media source URLs:** {fmt_int(g['media_expired'])} media items have "
+                "`archive_status = expired` after retry exhaustion; they need recapture or "
+                "another source before archival can succeed."
             )
 
     if g["truncated"]:

@@ -148,7 +148,11 @@ function handleFromSearchUrl(rawUrl) {
     const url = new URL(rawUrl);
     const query = url.searchParams.get('q') ?? '';
     const match = query.match(/\bfrom:([A-Za-z0-9_]{1,15})\b/i);
-    return match?.[1] ?? null;
+    if (match?.[1]) return match[1];
+    if (!/(^|\.)((x|twitter)\.com)$/i.test(url.hostname)) return null;
+    const [first] = url.pathname.split('/').filter(Boolean);
+    if (!first || first === 'i' || first === 'search' || first === 'home') return null;
+    return /^[A-Za-z0-9_]{1,15}$/.test(first) ? first : null;
   } catch {
     const decoded = safeDecode(rawUrl);
     const match = decoded.match(/\bfrom:([A-Za-z0-9_]{1,15})\b/i);
@@ -252,6 +256,7 @@ async function convertSummary(item, options, normalizer, accounts) {
   if (!wanted.has(sourceHandle.toLowerCase())) return null;
 
   const tracked = new Set(accounts.map((account) => account.handle.toLowerCase()));
+  for (const handle of wanted) tracked.add(handle);
   const core = new Set(
     accounts
       .filter((account) => account.category === 'core')
