@@ -815,7 +815,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 9884,
+      "observations": 9885,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1292,7 +1292,7 @@
     "FBIDirectorKash": {
       "category": "officials",
       "label": "FBI Director Kash Patel",
-      "observations": 54,
+      "observations": 56,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2435,7 +2435,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 1871,
+      "observations": 1872,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2544,7 +2544,7 @@
     "PressSec": {
       "category": "core",
       "label": "White House Press Secretary",
-      "observations": 550,
+      "observations": 551,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2626,7 +2626,7 @@
     "RapidResponse47": {
       "category": "core",
       "label": "Rapid Response 47",
-      "observations": 1689,
+      "observations": 1691,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3151,7 +3151,7 @@
     "SecRubio": {
       "category": "officials",
       "label": "Secretary Marco Rubio",
-      "observations": 460,
+      "observations": 464,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3691,7 +3691,7 @@
     "TulsiGabbard": {
       "category": "public_figures",
       "label": "Tulsi Gabbard \ud83c\udf3a",
-      "observations": 3,
+      "observations": 5,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -4068,7 +4068,7 @@
     "WhiteHouse": {
       "category": "core",
       "label": "The White House",
-      "observations": 1866,
+      "observations": 1880,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -4973,7 +4973,7 @@
     "public": 178,
     "public_figures": 119
   },
-  "generated_at": "2026-05-26T14:05:05Z",
+  "generated_at": "2026-05-26T14:27:51Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
