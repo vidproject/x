@@ -91,6 +91,17 @@ jobs:
             --tweet-ids-file data/tags/priority_review_tweet_ids.txt \
             --frames 8 --frame-width 480 --max-items "$mx"
 
+      - name: OCR queued keyframes
+        if: steps.guard.outputs.skip != '1'
+        timeout-minutes: 25
+        run: |
+          mx="${{ inputs.max_items }}"; [ -z "$mx" ] && mx="120"
+          uv run python -m scripts.tag_image_ocr \
+            --tweet-ids-file data/tags/priority_review_tweet_ids.txt \
+            --media-ids-file data/tags/priority_review_media_ids.txt \
+            --source-kind keyframe \
+            --max-items "$mx"
+
       - name: transcribe queued audio
         if: steps.guard.outputs.skip != '1'
         timeout-minutes: 40

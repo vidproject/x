@@ -13,25 +13,25 @@ implementation hand-off for the layers that have actually shipped.
 
 ## Layers, status
 
-| Layer | Source                                                                   | Output                                                      | Status                                                                                                         |
-| ----- | ------------------------------------------------------------------------ | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| 0     | passthrough — existing `hashtags`, `card.title/description`, URL domains | viewer columns / facets                                     | viewer pulls `tags_str` from `hashtags`; not yet broadened                                                     |
-| 1     | regex / structural rules on `text_resolved` (+ OCR when present)         | `data/tags/lexical.parquet`                                 | **shipped** — see `scripts/tag_lexical.py`                                                                     |
-| 2     | ffmpeg keyframe extraction (5 evenly-spaced frames per archived video)   | `data/tags/keyframes.parquet` (+ `data/derived/keyframes/`) | **shipped** — see `scripts/extract_video_frames.py`                                                            |
-| 3m    | archived media metadata + source alt text                                | `data/tags/media_vision.parquet`                            | **shipped** — see `scripts/describe_media.py`                                                                  |
-| 3n    | local news-corpus exact status-URL matching                              | `data/tags/news_mentions.parquet`                           | **shipped** — see `scripts/news_mentions.py`                                                                   |
-| 3a    | CLIP zero-shot image labels                                              | `data/tags/image_clip.parquet`                              | not started; consumes the keyframe sidecar from Layer 2                                                        |
-| 3b    | OCR for in-image text (Tesseract)                                        | `data/tags/image_ocr.parquet`                               | **shipped** — see `scripts/tag_image_ocr.py`; consumes archived photos and Layer 2 keyframes                   |
-| 3c    | Audio stream/music heuristic (ffprobe/ffmpeg)                            | `data/tags/audio_music.parquet`                             | **shipped** — see `scripts/detect_audio_music.py`; detects audio/no-audio/silent and tentative music           |
-| 3t    | Audio transcripts (whisper.cpp / faster-whisper or API transcription)    | `data/tags/audio_transcript.parquet`                        | not started; transcripts feed Layer 1 the same way OCR does                                                    |
-| 4     | OpenAI vision LLM for high-value images/video keyframes (budget-gated)   | `data/tags/media_llm.parquet`                               | **shipped** — see `scripts/tag_media_llm.py`; Gemini is used only for suspected-AI watermark/provenance checks |
+| Layer | Source                                                                   | Output                                                      | Status                                                                                                    |
+| ----- | ------------------------------------------------------------------------ | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| 0     | passthrough — existing `hashtags`, `card.title/description`, URL domains | viewer columns / facets                                     | viewer pulls `tags_str` from `hashtags`; not yet broadened                                                |
+| 1     | regex / structural rules on `text_resolved` (+ OCR when present)         | `data/tags/lexical.parquet`                                 | **shipped** — see `scripts/tag_lexical.py`                                                                |
+| 2     | ffmpeg keyframe extraction (5 evenly-spaced frames per archived video)   | `data/tags/keyframes.parquet` (+ `data/derived/keyframes/`) | **shipped** — see `scripts/extract_video_frames.py`                                                       |
+| 3m    | archived media metadata + source alt text                                | `data/tags/media_vision.parquet`                            | **shipped** — see `scripts/describe_media.py`                                                             |
+| 3n    | local news-corpus exact status-URL matching                              | `data/tags/news_mentions.parquet`                           | **shipped** — see `scripts/news_mentions.py`                                                              |
+| 3a    | CLIP zero-shot image labels                                              | `data/tags/image_clip.parquet`                              | not started; consumes the keyframe sidecar from Layer 2                                                   |
+| 3b    | OCR for in-image text (Tesseract)                                        | `data/tags/image_ocr.parquet`                               | **shipped** — see `scripts/tag_image_ocr.py`; consumes archived photos and Layer 2 keyframes              |
+| 3c    | Audio stream/music heuristic (ffprobe/ffmpeg)                            | `data/tags/audio_music.parquet`                             | **shipped** — see `scripts/detect_audio_music.py`; detects audio/no-audio/silent and tentative music      |
+| 3t    | Audio transcripts (faster-whisper, optional local ASR)                   | `data/tags/transcripts.parquet`                             | **shipped** — see `scripts/transcribe_audio.py`; transcripts feed Layer 1 the same way OCR does           |
+| 4     | External or curated vision/LLM review for high-value media               | optional `data/tags/media_llm.parquet` or manual queue      | not shipped as an in-repo runner; curated observations live in `data/tags/manual_media_review_queue.json` |
 
 ## Tag schema (`data/tags/lexical.parquet`)
 
 ```
 tweet_id        : str
 account_handle  : str
-tagger_version  : str    ("lexical-v1")
+tagger_version  : str    ("lexical-v2")
 tagged_at       : str    (ISO timestamp)
 tags            : list<struct{
                     tag         : str         "namespace:slug"
@@ -59,46 +59,33 @@ The row is shaped for later video recognition work. It carries an
 transcript, keyframe, CLIP, or vision-model jobs can reuse the same
 sidecar, skip unchanged inputs, and enforce per-run budgets.
 
-The sidecar emits media tags such as `media:video`, `media:photo`,
-`media:archived`, `media:has-alt-text`, and tentative
-`media:needs-vision`. The viewer merges those tags with the lexical tags
-and shows searchable media descriptions in the table, CSV export, and
-sidepanel.
+The sidecar emits media tags such as `media:video` and `media:photo`,
+plus media-status tags such as `media-status:archived`,
+`media-status:has-alt-text`, and tentative `media-status:needs-vision`.
+The viewer merges those tags with the lexical tags and shows searchable
+media descriptions in the table, CSV export, and sidepanel.
 
-## Paid image/video recognition sidecar (`data/tags/media_llm.parquet`)
+## External image/video review sidecars
 
-`scripts.tag_media_llm` is the optional paid Layer-4 recognizer. OpenAI
-(`OPENAI_API_KEY`) is the first-line recognizer for image/video
-descriptions and tags. Gemini (`GEMINI_API_KEY`, with `GOOGLE_API_KEY`
-accepted as an alias) is used only when the OpenAI result already
-suspects `media:ai-generated`, and then only as a narrow watermark /
-provenance verifier capped at 5 calls per minute by default. The
-workflow runs it after keyframes/OCR/audio and before lexical tagging,
-so descriptions and model-generated tags feed back into
-`data/tags/lexical.parquet`.
+There is no paid model runner shipped in this repository. External
+vision/LLM review is intentionally kept out of CI and out of the public
+viewer; reviewed observations can be folded back through
+`data/tags/manual_media_review_queue.json` or through an optional sidecar
+such as `data/tags/media_llm.parquet` if one is produced outside the repo.
 
-The recognizer is capped by `--max-items` and `--budget-usd`. It never
-runs in the public viewer and never writes API keys. For videos it sends
-the tiny extracted keyframes, not the full video file, which keeps
-bandwidth and token spend bounded.
+Reviewed media descriptions should use the current production namespaces:
+`video:produced`, `video:montage`, `video:text-overlay`,
+`video:voiceover`, supported `genre:*` labels such as `genre:psa`,
+`genre:advertisement`, `genre:recruitment`, `genre:music-video`,
+`genre:war-movie`, `genre:utopian`, and `genre:dystopian`, and `video:*`
+source/kind labels such as `video:bodycam`, `video:news-clip`, and
+`video:speech`. `speaker:*` tags require tweet text, visible captions,
+alt text, transcripts, or other explicit context identifying the speaker.
 
-It emits neutral descriptions and tags for produced-video structure:
-`media:produced-video`, `media:music-video`, `media:montage`,
-`media:text-overlay`, `media:voiceover`, supported `genre:*` labels
-such as `genre:psa`, `genre:advertisement`, `genre:recruitment`, and
-`genre:music-video`, `genre:war-movie`, `genre:utopian`, and
-`genre:dystopian`, and `video:*` source/kind labels such as
-`video:bodycam`, `video:news-clip`, and `video:speech`. `speaker:*` tags
-require tweet text, visible captions, or other explicit context identifying
-the speaker.
-
-The tag `media:ai-generated` is tentative when it is based on visible
-synthetic cues plus model judgment. It is firm only when the recognizer
-reports a provenance signal such as C2PA, watermark text, or another
-explicit AI-generation marker. The Gemini verifier is one such narrow
-provenance check, not a second general-purpose visual tagger. A true
-C2PA/SynthID batch detector should be added as a separate provenance
-sidecar if a usable API becomes available.
+The tag `media:ai-generated` is tentative unless it is based on a
+provenance signal such as C2PA, watermark text, or another explicit
+AI-generation marker. A true C2PA/SynthID batch detector should be added
+as a separate provenance sidecar if a usable API becomes available.
 
 ## Keyframe sidecar (`data/tags/keyframes.parquet`)
 
@@ -189,52 +176,55 @@ external RSS/search tooling. The context query is never used by the
 tagger to infer coverage.
 
 For later video-enrichment passes, use descriptive production labels:
-`media:produced-video`, `media:music-video`, `media:montage`,
-`media:text-overlay`, and `media:voiceover`. These tags should be based
-on observed video/audio structure: editing, music, multi-shot sequences,
-visible text, and narration. Speaker attribution uses `speaker:<title or
-name>`. A speaker may be tagged only when the tweet text, source alt
-text, transcript/captions, or captured replies/comments support it;
-otherwise write "unknown speaker" in the description or omit the speaker
-field.
+`video:produced`, `video:montage`, `video:text-overlay`,
+`video:voiceover`, and the relevant `genre:*` tag. These tags should be
+based on observed video/audio structure: editing, music, multi-shot
+sequences, visible text, and narration. Speaker attribution uses
+`speaker:<title or name>`. A speaker may be tagged only when the tweet
+text, source alt text, transcript/captions, or captured replies/comments
+support it; otherwise write "unknown speaker" in the description or omit
+the speaker field.
 
 ## Tag namespaces
 
 See `config/tag_taxonomy.yaml` for the authoritative list. Quick map:
 
-| Namespace   | What it labels                         | Example                        |
-| ----------- | -------------------------------------- | ------------------------------ |
-| `subject:`  | who/what the post is about             | `subject:detainee`             |
-| `genre:`    | produced-video genre / aesthetic       | `genre:recruitment`            |
-| `media:`    | content of attached media (Layer 3)    | `media:montage`                |
-| `speaker:`  | evidence-supported speaker attribution | `speaker:Secretary Noem`       |
-| `format:`   | structural (derived from `tweet_type`) | `format:retweet`               |
-| `status:`   | availability / moderation state        | `status:copyright-removal`     |
-| `frame:`    | recurring rhetorical scaffolds         | `frame:criminal`               |
-| `action:`   | enforcement verbs                      | `action:deportation`           |
-| `topic:`    | broad subject areas; additive          | `topic:immigration`            |
-| `event:`    | named event/conflict groupings         | `event:palestine`              |
-| `theme:`    | rhetorical / ideological frames        | `theme:nativism`               |
-| `religion:` | religion-specific subcategories        | `religion:christianity`        |
-| `origin:`   | "from <country>," pattern              | `origin:Mexico`                |
-| `country:`  | any contextual country mention         | `country:Mexico`               |
-| `state:`    | "<place>, <state>" pattern             | `state:Texas`                  |
-| `crime:`    | crime type vocabulary                  | `crime:assault`                |
-| `agency:`   | mentioned enforcement-adjacent handle  | `agency:ICEgov`                |
-| `slogan:`   | DHS branded phrases                    | `slogan:nice`                  |
-| `phrase:`   | recurring domain terms                 | `phrase:migrant`               |
-| `military:` | military branch subtopics              | `military:navy`                |
-| `news:`     | local article export cited this tweet  | `news:mentioned`               |
-| `audio:`    | audio-track / sound properties         | `audio:music-likely`           |
-| `video:`    | video kind / duration bucket           | `video:bodycam`                |
-| `legal:`    | legal posture / litigation type        | `legal:birthright-citizenship` |
-| `parody:`   | franchise-specific parody              | `parody:star-wars`             |
-| `artist:`   | named cultural figures / musicians     | `artist:taylor-swift`          |
+| Namespace       | What it labels                         | Example                        |
+| --------------- | -------------------------------------- | ------------------------------ |
+| `subject:`      | who/what the post is about             | `subject:detainee`             |
+| `genre:`        | produced-video genre / aesthetic       | `genre:recruitment`            |
+| `media:`        | attached media type or provenance      | `media:video`                  |
+| `media-status:` | media archival / recognition state     | `media-status:needs-vision`    |
+| `review:`       | curated review workflow markers        | `review:produced-video`        |
+| `speaker:`      | evidence-supported speaker attribution | `speaker:Secretary Noem`       |
+| `format:`       | structural (derived from `tweet_type`) | `format:retweet`               |
+| `status:`       | availability / moderation state        | `status:copyright-removal`     |
+| `frame:`        | recurring rhetorical scaffolds         | `frame:criminal`               |
+| `action:`       | enforcement verbs                      | `action:deportation`           |
+| `topic:`        | broad subject areas; additive          | `topic:immigration`            |
+| `event:`        | named event/conflict groupings         | `event:palestine`              |
+| `theme:`        | rhetorical / ideological frames        | `theme:nativism`               |
+| `policy:`       | specific policy areas                  | `policy:border`                |
+| `religion:`     | religion-specific subcategories        | `religion:christianity`        |
+| `origin:`       | "from <country>," pattern              | `origin:Mexico`                |
+| `country:`      | any contextual country mention         | `country:Mexico`               |
+| `state:`        | "<place>, <state>" pattern             | `state:Texas`                  |
+| `crime:`        | crime type vocabulary                  | `crime:assault`                |
+| `agency:`       | mentioned enforcement-adjacent handle  | `agency:ICEgov`                |
+| `slogan:`       | DHS branded phrases                    | `slogan:nice`                  |
+| `phrase:`       | recurring domain terms                 | `phrase:migrant`               |
+| `military:`     | military branch subtopics              | `military:navy`                |
+| `news:`         | local article export cited this tweet  | `news:mentioned`               |
+| `audio:`        | audio-track / sound properties         | `audio:music-likely`           |
+| `video:`        | video kind / duration bucket           | `video:bodycam`                |
+| `legal:`        | legal posture / litigation type        | `legal:birthright-citizenship` |
+| `parody:`       | franchise-specific parody              | `parody:star-wars`             |
+| `artist:`       | named cultural figures / musicians     | `artist:taylor-swift`          |
 
 ## Namespace guide — decision tree
 
 Use this section when you are not sure which namespace to use for a new slug.
-The 21 active namespaces group into five purposes.
+The active namespaces group into five purposes.
 
 ### "Aboutness" — what is the post about?
 
@@ -250,14 +240,15 @@ The five aboutness namespaces are the most commonly confused. Pick the **narrowe
 
 ### "Media form" — what kind of media is attached?
 
-| Namespace | Use this when…                                                                                                                                                                                                   | Contrast                                                                                                                                             |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `media:`  | Describing the **content or provenance** of an attached media item — its type (photo, video, GIF), state (archived, described, needs-OCR), or inferred content (montage, text-overlay, voiceover, AI-generated). | The broadest media namespace; covers both structural properties and content labels.                                                                  |
-| `video:`  | Describing the **kind or duration** of a video — bodycam footage, interview, speech, news clip; or a duration bucket (short/medium/long). Only emitted when the tweet actually has a video.                      | `media:video` = "there is a video"; `video:bodycam` = "that video is bodycam footage."                                                               |
-| `audio:`  | Describing **audio-track properties** — whether audio is present, silent, likely musical, or confirmed music.                                                                                                    | `audio:` describes the track; `genre:music-video` describes the video's production form.                                                             |
-| `genre:`  | Describing the **produced-video genre or aesthetic** — music video, PSA, recruitment ad, war-movie style, utopian, dystopian. Applies to intentionally edited / produced videos.                                 | `video:` = raw footage type; `genre:` = produced aesthetic category.                                                                                 |
-| `parody:` | Identifying the **specific franchise** being parodied — `parody:star-wars`, `parody:rocky`, etc. Always co-emitted with `genre:parody`.                                                                          | `genre:parody` = "this is a parody"; `parody:<franchise>` = "…of this franchise."                                                                    |
-| `artist:` | Naming a **specific cultural figure or musician** referenced in text, OCR, or transcript. Covers both the artist name and signature songs.                                                                       | `artist:` requires an explicit name/song match; `audio:music` or `audio:music-likely` fires on the presence of music without identifying the artist. |
+| Namespace       | Use this when…                                                                                                                                                                              | Contrast                                                                                                                                             |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `media:`        | Describing the **type or provenance** of an attached media item — photo, video, animated GIF, or AI-generation provenance.                                                                  | Keep pipeline state in `media-status:*` and produced-video structure in `video:*` / `genre:*`.                                                       |
+| `media-status:` | Describing **archive and recognition state** — archived, described, needs OCR, needs vision, source alt text, or graphic-content flag.                                                      | State flags are separate from content labels so researchers can filter gaps directly.                                                                |
+| `video:`        | Describing the **kind or duration** of a video — bodycam footage, interview, speech, news clip; or a duration bucket (short/medium/long). Only emitted when the tweet actually has a video. | `media:video` = "there is a video"; `video:bodycam` = "that video is bodycam footage."                                                               |
+| `audio:`        | Describing **audio-track properties** — whether audio is present, silent, likely musical, or confirmed music.                                                                               | `audio:` describes the track; `genre:music-video` describes the video's production form.                                                             |
+| `genre:`        | Describing the **produced-video genre or aesthetic** — music video, PSA, recruitment ad, war-movie style, utopian, dystopian. Applies to intentionally edited / produced videos.            | `video:` = raw footage type; `genre:` = produced aesthetic category.                                                                                 |
+| `parody:`       | Identifying the **specific franchise** being parodied — `parody:star-wars`, `parody:rocky`, etc. Always co-emitted with `genre:parody`.                                                     | `genre:parody` = "this is a parody"; `parody:<franchise>` = "…of this franchise."                                                                    |
+| `artist:`       | Naming a **specific cultural figure or musician** referenced in text, OCR, or transcript. Covers both the artist name and signature songs.                                                  | `artist:` requires an explicit name/song match; `audio:music` or `audio:music-likely` fires on the presence of music without identifying the artist. |
 
 ### "Origin / place" — where are people or events located?
 
@@ -438,8 +429,8 @@ uv run python -m scripts.news_mentions --articles data/news/articles.jsonl
 # 4. After frame/OCR/audio passes:
 uv run python -m scripts.tag_image_ocr          # data/tags/image_ocr.parquet
 uv run python -m scripts.detect_audio_music     # data/tags/audio_music.parquet
+uv run --group asr python -m scripts.transcribe_audio  # data/tags/transcripts.parquet
 # uv run python -m scripts.tag_image_clip       # data/tags/image_clip.parquet
-# uv run python -m scripts.tag_audio_transcript # data/tags/audio_transcript.parquet
 # 5. Re-run scripts/tag_lexical so OCR + transcript text feed Layer-1 rules.
 ```
 

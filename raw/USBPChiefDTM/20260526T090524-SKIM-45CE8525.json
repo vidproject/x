@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-gov-trawl-20260526-20260526T090430Z-e40c3d1f-USBPChiefDTM",
+  "account_handle": "USBPChiefDTM",
+  "captured_at": "2026-05-26T09:05:24.763Z",
+  "endpoint": "UserByScreenName,UserMedia",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/DHSgov/media",
+  "tweets": [
+    {
+      "tweet_id": "2055408006808957121",
+      "account_handle": "USBPChiefDTM",
+      "account_id": "1207053431447441409",
+      "posted_at": "2026-05-15T22:00:31.000Z",
+      "first_captured_at": "2026-05-26T09:04:37.895Z",
+      "last_seen_at": "2026-05-26T09:04:37.895Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USBPChiefDTM/status/2055408006808957121",
+      "tweet_type": "original",
+      "conversation_id": "2055408006808957121",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "#DetroitSector was recently recognized as the Northern Border's leader in drug seizures for last two years!\n\nFull story: https://t.co/GESwGK5wvq \n\n#BorderPatrol #BorderSecurity https://t.co/i2PQEg0muM",
+      "text_resolved": "#DetroitSector was recently recognized as the Northern Border's leader in drug seizures for last two years!\n\nFull story: https://go.dhs.gov/5J8 \n\n#BorderPatrol #BorderSecurity https://t.co/i2PQEg0muM",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "DetroitSector",
+        "BorderPatrol",
+        "BorderSecurity"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/GESwGK5wvq",
+          "expanded": "https://go.dhs.gov/5J8",
+          "display": "go.dhs.gov/5J8"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2055408005173166080",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HIZGsNDXQAAl5HC.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 400,
+          "height": 267,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 60,
+      "retweet_count": 19,
+      "reply_count": 2,
+      "quote_count": 4,
+      "view_count": 56556,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T09:04:37.895Z",
+          "likes": 60,
+          "retweets": 19,
+          "replies": 2,
+          "quotes": 4,
+          "views": 56556,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "(A) Chief Patrol Agent Javier Geronimo, Jr.",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2001649776157204481/kL6kX_M7_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Chief Patrol Agent, Detroit Sector, United States Border Patrol.\nCall 1-800-537-3220 for suspicious activity.",
+        "location": "Detroit, MI",
+        "url": "https://t.co/luydjfxU5V",
+        "followers_count": 4177,
+        "friends_count": 301,
+        "statuses_count": 2288,
+        "account_created_at": "2019-12-17T21:42:26.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-gov-trawl-20260526-20260526T090430Z-e40c3d1f",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/dhsgov-20260526T090430Z-e40c3d1f.summary.json",
+    "jsonl": ".skim/raw/dhsgov-20260526T090430Z-e40c3d1f.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

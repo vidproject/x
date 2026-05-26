@@ -51,7 +51,14 @@
     "AGPamBondi": {
       "category": "officials",
       "label": "Attorney General Pamela Bondi",
-      "observations": 16,
+      "observations": 22,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
+    },
+    "ASDylanJohnson": {
+      "category": "officials",
+      "label": "Dylan Johnson",
+      "observations": 6,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -74,10 +81,10 @@
     },
     "ATFHQ": {
       "category": "government",
-      "label": "ATF HQ",
-      "observations": 13,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "label": "ATF Headquarters",
+      "observations": 17,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "ATJackson47": {
       "category": "officials",
@@ -151,7 +158,7 @@
     "AnnaKelly47": {
       "category": "officials",
       "label": "Anna Kelly",
-      "observations": 7,
+      "observations": 10,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -195,7 +202,7 @@
     "BPUnion": {
       "category": "government",
       "label": "Border Patrol Union - NBPC",
-      "observations": 18,
+      "observations": 19,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -340,30 +347,30 @@
     "ByronDonalds": {
       "category": "public_figures",
       "label": "Byron Donalds",
-      "observations": 2,
+      "observations": 3,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
     "CAgovernor": {
       "category": "public_figures",
       "label": "Governor Gavin Newsom",
-      "observations": 87,
+      "observations": 88,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
     "CBP": {
       "category": "core",
       "label": "U.S. Customs and Border Protection",
-      "observations": 986,
+      "observations": 1842,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "CBPAMO": {
       "category": "government",
-      "label": "CBP AMO",
-      "observations": 60,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "label": "CBP Air and Marine Operations",
+      "observations": 94,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "CBPAMODEAC": {
       "badges": [
@@ -385,6 +392,16 @@
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
+    "CBPAMORegDirN": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "officials",
+      "label": "CBP AMO Northern Region XD Jeremy Thompson",
+      "observations": 1,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
     "CBPAMORegDirSW": {
       "badges": [
         "veteran"
@@ -393,6 +410,13 @@
       "label": "CBP AMO Southwest Region XD Hunter Robinson",
       "observations": 6,
       "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "CBPChicago": {
+      "category": "government",
+      "label": "CBP Chicago",
+      "observations": 3,
+      "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "CBPChrisMagnus": {
@@ -405,14 +429,14 @@
     "CBPCommissioner": {
       "category": "officials",
       "label": "CBP Commissioner Rodney Scott",
-      "observations": 89,
-      "reason": "federal executive official language in profile",
-      "source": "data/users.json"
+      "observations": 115,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "CBPElCentro": {
       "category": "government",
       "label": "CBP El Centro",
-      "observations": 4,
+      "observations": 5,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -426,14 +450,14 @@
     "CBPJobs": {
       "category": "government",
       "label": "CBP Jobs",
-      "observations": 28,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "observations": 50,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "CBPLSSAC": {
       "category": "officials",
       "label": "CBP Laboratories & Scientific Services",
-      "observations": 5,
+      "observations": 6,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -447,21 +471,21 @@
     "CBPOpsSpprtEAC": {
       "category": "officials",
       "label": "CBP Ops Support EAC Casey Durst",
-      "observations": 6,
+      "observations": 8,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "CBPPortDirNOG": {
       "category": "officials",
       "label": "Sr. Official Performing Duties of Area PD J. Acuna",
-      "observations": 7,
+      "observations": 10,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "CBPSouthTexas": {
       "category": "government",
       "label": "CBP South Texas",
-      "observations": 9,
+      "observations": 53,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -475,7 +499,7 @@
     "CBPTradeGov": {
       "category": "government",
       "label": "CBP Office of Trade",
-      "observations": 10,
+      "observations": 12,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -492,7 +516,7 @@
     "CENTCOM": {
       "category": "government",
       "label": "U.S. Central Command",
-      "observations": 12,
+      "observations": 14,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -509,7 +533,7 @@
     "CISACyber": {
       "category": "government",
       "label": "CISA Cyber",
-      "observations": 3,
+      "observations": 8,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -533,9 +557,9 @@
     "CISAgov": {
       "category": "government",
       "label": "Cybersecurity and Infrastructure Security Agency",
-      "observations": 121,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "observations": 145,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "CarmenGisselle7": {
       "badges": [
@@ -559,6 +583,16 @@
       "label": "Chad Gilmartin",
       "observations": 2,
       "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "Charles61592281": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Mutant Dwarf",
+      "observations": 1,
+      "reason": "service-history badge only",
       "source": "data/users.json"
     },
     "CharlieSue_USA": {
@@ -662,7 +696,7 @@
     "DAGToddBlanche": {
       "category": "officials",
       "label": "Acting AG Todd Blanche",
-      "observations": 28,
+      "observations": 45,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -683,6 +717,27 @@
     "DFOBaltimore": {
       "category": "officials",
       "label": "Director, Field Operations Matthew F. Suarez",
+      "observations": 10,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "DFOBuffalo": {
+      "category": "officials",
+      "label": "Buffalo DFO Rose Brophy",
+      "observations": 1,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "DFODetroit": {
+      "category": "officials",
+      "label": "CBP Director of Field Operations Marty C. Raybon",
+      "observations": 5,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "DFOFlorida": {
+      "category": "officials",
+      "label": "Director of Field Operations",
       "observations": 8,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
@@ -690,30 +745,37 @@
     "DFOHouston": {
       "category": "officials",
       "label": "Director of Field Operations Jud Murdock",
-      "observations": 1,
+      "observations": 2,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "DFONewYork": {
+      "category": "officials",
+      "label": "Director of Field Operations, Francis J. Russo",
+      "observations": 9,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "DFOSanFrancisco": {
       "category": "officials",
       "label": "Director of Field Operations San Francisco",
-      "observations": 3,
+      "observations": 4,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "DFOSanJuan": {
       "category": "officials",
       "label": "San Juan DFO Roberto Vaquero",
-      "observations": 2,
+      "observations": 4,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "DHSBlueCampaign": {
       "category": "government",
       "label": "DHS Blue Campaign",
-      "observations": 54,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "observations": 75,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "DHSMcAleenan": {
       "category": "officials",
@@ -753,7 +815,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 9409,
+      "observations": 9754,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -767,23 +829,44 @@
     "DNIGabbard": {
       "category": "officials",
       "label": "DNI Tulsi Gabbard",
-      "observations": 9,
+      "observations": 10,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "DOGE": {
       "category": "government",
       "label": "Department of Government Efficiency",
-      "observations": 6,
+      "observations": 9,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "DOJCrimDiv": {
+      "category": "government",
+      "label": "Criminal Division",
+      "observations": 2,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "DOJEnvironment": {
+      "category": "government",
+      "label": "DOJ Environment and Natural Resources Division",
+      "observations": 2,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "DOJFraudDiv": {
+      "category": "government",
+      "label": "National Fraud Enforcement Division",
+      "observations": 18,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "DOWResponse": {
       "category": "government",
       "label": "DOW Rapid Response",
-      "observations": 11,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "observations": 42,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "DallasKing2022": {
       "category": "officials",
@@ -825,7 +908,7 @@
     "David_J_Bier": {
       "category": "officials",
       "label": "David J. Bier",
-      "observations": 4,
+      "observations": 5,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -848,10 +931,10 @@
     },
     "DeptofWar": {
       "category": "government",
-      "label": "Department of War \ud83c\uddfa\ud83c\uddf8",
-      "observations": 38,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "label": "Department of War",
+      "observations": 71,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "DerFalkeBlog": {
       "category": "public_figures",
@@ -893,7 +976,7 @@
     "DrOzCMS": {
       "category": "officials",
       "label": "DrOzCMS",
-      "observations": 14,
+      "observations": 24,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -910,7 +993,7 @@
     "EDSecMcMahon": {
       "category": "officials",
       "label": "Secretary Linda McMahon",
-      "observations": 10,
+      "observations": 12,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -928,7 +1011,7 @@
     "ENERGY": {
       "category": "government",
       "label": "U.S. Department of Energy",
-      "observations": 3,
+      "observations": 4,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -948,10 +1031,10 @@
     },
     "EROBoston": {
       "category": "government",
-      "label": "ICE Boston",
-      "observations": 57,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "label": "ICE ERO Boston",
+      "observations": 80,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "EROBuffalo": {
       "category": "government",
@@ -984,30 +1067,30 @@
     "EROHouston": {
       "category": "government",
       "label": "ICE Houston",
-      "observations": 22,
+      "observations": 25,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "EROLosAngeles": {
       "category": "government",
-      "label": "ICE Los Angeles",
-      "observations": 48,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "label": "ICE ERO Los Angeles",
+      "observations": 63,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "EROMiami": {
       "category": "government",
       "label": "ERO Miami",
-      "observations": 6,
+      "observations": 11,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "ERONewOrleans": {
       "category": "government",
-      "label": "ICE New Orleans",
-      "observations": 40,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "label": "ICE ERO New Orleans",
+      "observations": 63,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "ERONewYork": {
       "category": "government",
@@ -1018,10 +1101,10 @@
     },
     "ERONewark": {
       "category": "government",
-      "label": "ERO Newark",
-      "observations": 20,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "label": "ICE ERO Newark",
+      "observations": 25,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "EROPhiladelphia": {
       "category": "government",
@@ -1039,10 +1122,10 @@
     },
     "EROSaltLakeCity": {
       "category": "government",
-      "label": "ICE Salt Lake City",
-      "observations": 29,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "label": "ICE ERO Salt Lake City",
+      "observations": 34,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "EROSanAntonio": {
       "category": "government",
@@ -1068,7 +1151,7 @@
     "EROSeattle": {
       "category": "government",
       "label": "ICE Seattle",
-      "observations": 18,
+      "observations": 19,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1081,10 +1164,10 @@
     },
     "ERO__Phoenix": {
       "category": "government",
-      "label": "ERO Phoenix",
+      "label": "ICE ERO Phoenix",
       "observations": 51,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "EdGallrein": {
       "badges": [
@@ -1123,7 +1206,7 @@
     "EnvoyNoem": {
       "category": "officials",
       "label": "Special Envoy Kristi Noem",
-      "observations": 21,
+      "observations": 27,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -1180,15 +1263,15 @@
     },
     "FBI": {
       "category": "government",
-      "label": "FBI",
-      "observations": 49,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "label": "Federal Bureau of Investigation",
+      "observations": 81,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "FBIAtlanta": {
       "category": "government",
       "label": "FBI Atlanta",
-      "observations": 1,
+      "observations": 4,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1199,12 +1282,19 @@
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
+    "FBICyberDiv": {
+      "category": "government",
+      "label": "FBI Cyber Division",
+      "observations": 2,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
     "FBIDirectorKash": {
       "category": "officials",
       "label": "FBI Director Kash Patel",
-      "observations": 24,
-      "reason": "federal executive official language in profile",
-      "source": "data/users.json"
+      "observations": 37,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "FBIIndianapolis": {
       "category": "government",
@@ -1216,7 +1306,7 @@
     "FBIMinneapolis": {
       "category": "government",
       "label": "FBI Minneapolis",
-      "observations": 5,
+      "observations": 8,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1230,7 +1320,24 @@
     "FBIWFO": {
       "category": "government",
       "label": "FBI Washington Field",
-      "observations": 1,
+      "observations": 3,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "FEMARegion10": {
+      "category": "government",
+      "label": "FEMA Region 10",
+      "observations": 2,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "FEMARegion9": {
+      "badges": [
+        "police"
+      ],
+      "category": "government",
+      "label": "FEMA Region 9",
+      "observations": 4,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1275,9 +1382,16 @@
     "FLOTUS": {
       "category": "officials",
       "label": "First Lady Melania Trump",
-      "observations": 23,
+      "observations": 53,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
+    },
+    "FPSDHS": {
+      "category": "government",
+      "label": "Federal Protective Service",
+      "observations": 7,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "FireNewz": {
       "badges": [
@@ -1302,7 +1416,7 @@
     "FirstLadyOffice": {
       "category": "officials",
       "label": "Office of the First Lady",
-      "observations": 4,
+      "observations": 5,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -1316,7 +1430,7 @@
     "GOPMajorityWhip": {
       "category": "public_figures",
       "label": "Tom Emmer",
-      "observations": 2,
+      "observations": 4,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -1330,10 +1444,17 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "GavinNewsom": {
+      "category": "public_figures",
+      "label": "Gavin Newsom",
+      "observations": 3,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
     "GlennYoungkin": {
       "category": "public_figures",
       "label": "Glenn Youngkin",
-      "observations": 1,
+      "observations": 3,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -1374,7 +1495,7 @@
       ],
       "category": "public_figures",
       "label": "Governor Mikie Sherrill",
-      "observations": 1,
+      "observations": 2,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -1384,14 +1505,14 @@
       ],
       "category": "public_figures",
       "label": "Governor Tim Walz",
-      "observations": 13,
+      "observations": 15,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
     "GovernorVA": {
       "category": "public_figures",
       "label": "Governor Abigail Spanberger",
-      "observations": 83,
+      "observations": 85,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -1405,7 +1526,7 @@
     "GregoryKBovino": {
       "category": "core",
       "label": "Gregory Bovino",
-      "observations": 2900,
+      "observations": 2918,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1442,21 +1563,21 @@
     "HSIAtlanta": {
       "category": "government",
       "label": "HSI Atlanta",
-      "observations": 1,
+      "observations": 3,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSIDenver": {
       "category": "government",
       "label": "HSI Rocky Mountain Division",
-      "observations": 2,
+      "observations": 3,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSIElPaso": {
       "category": "government",
       "label": "HSI El Paso",
-      "observations": 1,
+      "observations": 5,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1470,7 +1591,7 @@
     "HSILosAngeles": {
       "category": "government",
       "label": "HSI Los Angeles",
-      "observations": 9,
+      "observations": 12,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1484,56 +1605,56 @@
     "HSINewEngland": {
       "category": "government",
       "label": "HSI New England",
-      "observations": 10,
+      "observations": 16,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSINewark": {
       "category": "government",
       "label": "HSI Newark",
-      "observations": 6,
+      "observations": 10,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSISanDiego": {
       "category": "government",
       "label": "HSI San Diego",
-      "observations": 2,
+      "observations": 3,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSISanJuan": {
       "category": "government",
       "label": "HSI San Juan",
-      "observations": 7,
+      "observations": 11,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSITampa": {
       "category": "government",
       "label": "HSI Tampa",
-      "observations": 26,
+      "observations": 27,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSI_Dallas": {
       "category": "government",
       "label": "HSI Dallas",
-      "observations": 1,
+      "observations": 2,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSI_HQ": {
       "category": "government",
       "label": "Homeland Security Investigations",
-      "observations": 73,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "observations": 131,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "HSI_Miami": {
       "category": "government",
       "label": "HSI Miami",
-      "observations": 10,
+      "observations": 13,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1547,7 +1668,7 @@
     "HSI_SanAntonio": {
       "category": "government",
       "label": "HSI San Antonio",
-      "observations": 3,
+      "observations": 4,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1609,10 +1730,17 @@
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
+    "ICEDeputy": {
+      "category": "officials",
+      "label": "ICE Deputy Director",
+      "observations": 5,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
     "ICEgov": {
       "category": "core",
       "label": "U.S. Immigration and Customs Enforcement",
-      "observations": 2691,
+      "observations": 3303,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1673,7 +1801,7 @@
     "Interior": {
       "category": "government",
       "label": "US Department of the Interior",
-      "observations": 6,
+      "observations": 10,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1690,7 +1818,7 @@
     "JDVance": {
       "category": "government",
       "label": "JD Vance",
-      "observations": 30,
+      "observations": 35,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1816,7 +1944,7 @@
     "JoaquinCastrotx": {
       "category": "public_figures",
       "label": "Joaquin Castro",
-      "observations": 1,
+      "observations": 5,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -1891,6 +2019,26 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "Justin_Story_": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public_figures",
+      "label": "Justin",
+      "observations": 1,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "Kalor1965": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "The Marine Master Sergeant Ret.",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "KarenBassLA": {
       "category": "public_figures",
       "label": "Karen Bass",
@@ -1915,7 +2063,7 @@
     "Know2Protect": {
       "category": "government",
       "label": "Know2Protect",
-      "observations": 55,
+      "observations": 57,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1929,7 +2077,7 @@
     "KushDesai47": {
       "category": "officials",
       "label": "Kush Desai",
-      "observations": 10,
+      "observations": 11,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -1983,8 +2131,18 @@
     "LindseyGrahamSC": {
       "category": "public_figures",
       "label": "Lindsey Graham",
-      "observations": 10,
+      "observations": 13,
       "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "LongRonaldp": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Ron",
+      "observations": 1,
+      "reason": "service-history badge only",
       "source": "data/users.json"
     },
     "MDPAnews": {
@@ -2004,7 +2162,7 @@
     "MargoMartin47": {
       "category": "officials",
       "label": "Margo Martin",
-      "observations": 14,
+      "observations": 17,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2025,7 +2183,7 @@
     "MarshaBlackburn": {
       "category": "government",
       "label": "Sen. Marsha Blackburn",
-      "observations": 4,
+      "observations": 7,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2131,10 +2289,17 @@
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
+    "NASA": {
+      "category": "government",
+      "label": "NASA",
+      "observations": 4,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
     "NASAAdmin": {
       "category": "officials",
       "label": "NASA Administrator Jared Isaacman",
-      "observations": 4,
+      "observations": 8,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2145,11 +2310,25 @@
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
+    "NDILnews": {
+      "category": "officials",
+      "label": "U.S. Attorney\u2019s Office (NDIL)",
+      "observations": 2,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
     "NMalliotakis": {
       "category": "public_figures",
       "label": "Nicole Malliotakis",
       "observations": 1,
       "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "NOAA": {
+      "category": "government",
+      "label": "NOAA",
+      "observations": 6,
+      "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "NSAGov": {
@@ -2180,6 +2359,13 @@
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
+    "NWSSPC": {
+      "category": "government",
+      "label": "NWS Storm Prediction Center",
+      "observations": 3,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
     "NatPoliceAssoc": {
       "badges": [
         "police"
@@ -2193,16 +2379,16 @@
     "ODNIgov": {
       "category": "officials",
       "label": "Office of the DNI",
-      "observations": 7,
+      "observations": 8,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "OFOEAC": {
       "category": "officials",
-      "label": "Executive Asst. Commissioner Diane J. Sabatino",
-      "observations": 39,
-      "reason": "federal executive official language in profile",
-      "source": "data/users.json"
+      "label": "Executive Assistant Commissioner Diane J. Sabatino",
+      "observations": 60,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "OIGUSDA": {
       "category": "government",
@@ -2249,7 +2435,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 1186,
+      "observations": 1698,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2293,7 +2479,7 @@
     "PatAdams96": {
       "category": "officials",
       "label": "Pat Adams",
-      "observations": 11,
+      "observations": 12,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2332,19 +2518,33 @@
       "source": "data/users.json"
     },
     "PeteHegseth": {
+      "category": "officials",
+      "label": "Pete Hegseth",
+      "observations": 18,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
+    },
+    "Pfeiffer47": {
+      "category": "officials",
+      "label": "Alex Pfeiffer",
+      "observations": 1,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "PlumbNick": {
       "badges": [
         "veteran"
       ],
-      "category": "government",
-      "label": "Pete Hegseth",
-      "observations": 16,
-      "reason": "government verified type or official agency/office language",
+      "category": "public",
+      "label": "Nick Plumb",
+      "observations": 1,
+      "reason": "service-history badge only",
       "source": "data/users.json"
     },
     "PressSec": {
       "category": "core",
       "label": "White House Press Secretary",
-      "observations": 186,
+      "observations": 549,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2365,6 +2565,16 @@
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
+    "RICHBICH": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Anonymous Girl",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "RLZee2": {
       "badges": [
         "veteran"
@@ -2378,7 +2588,7 @@
     "RNCResearch": {
       "category": "government",
       "label": "RNC Research",
-      "observations": 4,
+      "observations": 5,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2387,6 +2597,13 @@
       "label": "Portugal na UE \ud83c\uddf5\ud83c\uddf9\ud83c\uddea\ud83c\uddfa",
       "observations": 1,
       "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "RWrasse": {
+      "category": "public_figures",
+      "label": "Ryan Wrasse",
+      "observations": 1,
+      "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
     "RandyClarkBBTX": {
@@ -2409,7 +2626,7 @@
     "RapidResponse47": {
       "category": "core",
       "label": "Rapid Response 47",
-      "observations": 770,
+      "observations": 1688,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2425,10 +2642,10 @@
     },
     "Readygov": {
       "category": "government",
-      "label": "Readygov",
+      "label": "Ready.gov",
       "observations": 53,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "RealJaySwizzle": {
       "badges": [
@@ -2463,7 +2680,7 @@
     "RealTomHoman": {
       "category": "core",
       "label": "Thomas D. Homan",
-      "observations": 648,
+      "observations": 667,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2509,10 +2726,48 @@
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
+    "RepDanGoldman": {
+      "category": "public_figures",
+      "label": "Rep. Dan Goldman",
+      "observations": 1,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "RepDeborahRoss": {
+      "category": "public_figures",
+      "label": "Congresswoman Deborah Ross",
+      "observations": 1,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
     "RepDonaldsPress": {
       "category": "public_figures",
       "label": "Congressman Byron Donalds",
       "observations": 1,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "RepEliCrane": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public_figures",
+      "label": "Rep. Eli Crane",
+      "observations": 1,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "RepEricBurlison": {
+      "category": "public_figures",
+      "label": "Rep. Eric Burlison",
+      "observations": 1,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "RepGaramendi": {
+      "category": "public_figures",
+      "label": "John Garamendi",
+      "observations": 2,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -2564,7 +2819,7 @@
     "RepKnott": {
       "category": "public_figures",
       "label": "Congressman Brad Knott",
-      "observations": 4,
+      "observations": 5,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -2581,7 +2836,7 @@
     "RepMarkHarrisNC": {
       "category": "public_figures",
       "label": "Rep. Mark Harris",
-      "observations": 5,
+      "observations": 6,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -2609,8 +2864,15 @@
     "RepOgles": {
       "category": "public_figures",
       "label": "Rep. Andy Ogles",
-      "observations": 3,
+      "observations": 4,
       "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "RepPeteStauber": {
+      "category": "government",
+      "label": "Pete Stauber",
+      "observations": 1,
+      "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "RepRileyMoore": {
@@ -2639,6 +2901,20 @@
       "label": "Rep. Claudia Tenney",
       "observations": 3,
       "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "Rep_Grijalva": {
+      "category": "public_figures",
+      "label": "Rep. Adelita Grijalva",
+      "observations": 1,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "RepublicanStudy": {
+      "category": "government",
+      "label": "Republican Study Committee",
+      "observations": 2,
+      "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "ReyRey_Stacy": {
@@ -2724,14 +3000,14 @@
     "SBA_Kelly": {
       "category": "officials",
       "label": "Kelly Loeffler",
-      "observations": 12,
+      "observations": 16,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "SBAgov": {
       "category": "officials",
       "label": "SBA",
-      "observations": 11,
+      "observations": 14,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2740,6 +3016,13 @@
       "label": "US Attorney SDNY",
       "observations": 2,
       "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "SLOTUS": {
+      "category": "government",
+      "label": "Second Lady Usha Vance",
+      "observations": 6,
+      "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "SaraHigdon": {
@@ -2767,6 +3050,16 @@
       "label": "Scott Brady",
       "observations": 3,
       "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "ScottFaulk7108": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Ultra MAGA Badass",
+      "observations": 1,
+      "reason": "service-history badge only",
       "source": "data/users.json"
     },
     "ScottforFlorida": {
@@ -2806,14 +3099,14 @@
     "SecDuffy": {
       "category": "officials",
       "label": "Secretary Sean Duffy",
-      "observations": 9,
+      "observations": 13,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "SecKennedy": {
       "category": "officials",
       "label": "Secretary Kennedy",
-      "observations": 8,
+      "observations": 17,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2827,7 +3120,17 @@
     "SecMullinDHS": {
       "category": "officials",
       "label": "Secretary Markwayne Mullin",
-      "observations": 576,
+      "observations": 607,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
+    },
+    "SecNavPhelan": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "officials",
+      "label": "Archive: Secretary of the Navy John C. Phelan",
+      "observations": 1,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2841,21 +3144,21 @@
     "SecRollins": {
       "category": "officials",
       "label": "Secretary Brooke Rollins",
-      "observations": 4,
+      "observations": 16,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "SecRubio": {
       "category": "officials",
       "label": "Secretary Marco Rubio",
-      "observations": 26,
-      "reason": "federal executive official language in profile",
-      "source": "data/users.json"
+      "observations": 84,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "SecScottBessent": {
       "category": "officials",
       "label": "Treasury Secretary Scott Bessent",
-      "observations": 21,
+      "observations": 44,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2865,49 +3168,49 @@
       ],
       "category": "officials",
       "label": "VA Secretary Doug Collins",
-      "observations": 2,
+      "observations": 8,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "SecWar": {
       "category": "officials",
       "label": "Secretary of War Pete Hegseth",
-      "observations": 32,
-      "reason": "federal executive official language in profile",
-      "source": "data/users.json"
+      "observations": 93,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "SecretService": {
-      "category": "public_figures",
+      "category": "government",
       "label": "U.S. Secret Service",
-      "observations": 117,
-      "reason": "elected/public-office language in profile",
-      "source": "data/users.json"
+      "observations": 143,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "SecretSvcSpox": {
       "category": "government",
       "label": "U.S. Secret Service Office of Communications",
-      "observations": 4,
+      "observations": 7,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "SecretaryBurgum": {
       "category": "officials",
       "label": "Secretary Doug Burgum",
-      "observations": 16,
+      "observations": 19,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "SecretaryLCD": {
       "category": "officials",
       "label": "Secretary Lori Chavez-DeRemer",
-      "observations": 207,
+      "observations": 215,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "SecretaryTurner": {
       "category": "officials",
       "label": "Scott Turner",
-      "observations": 11,
+      "observations": 13,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2915,6 +3218,20 @@
       "category": "public_figures",
       "label": "Senator Ashley Moody",
       "observations": 1,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "SenBooker": {
+      "category": "government",
+      "label": "Sen. Cory Booker",
+      "observations": 3,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "SenCortezMasto": {
+      "category": "public_figures",
+      "label": "Senator Cortez Masto",
+      "observations": 2,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -2928,7 +3245,7 @@
     "SenFettermanPA": {
       "category": "public_figures",
       "label": "U.S. Senator John Fetterman",
-      "observations": 2,
+      "observations": 3,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -2942,6 +3259,13 @@
     "SenKatieBritt": {
       "category": "public_figures",
       "label": "Senator Katie Boyd Britt",
+      "observations": 5,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "SenLummis": {
+      "category": "public_figures",
+      "label": "Senator Cynthia Lummis",
       "observations": 2,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
@@ -2963,28 +3287,28 @@
     "SenMullin": {
       "category": "public_figures",
       "label": "Markwayne Mullin",
-      "observations": 14,
+      "observations": 16,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
     "SenRickScott": {
       "category": "public_figures",
       "label": "Rick Scott",
-      "observations": 2,
+      "observations": 3,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
     "SenSchumer": {
       "category": "public_figures",
       "label": "Chuck Schumer",
-      "observations": 115,
+      "observations": 118,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
     "SenTedCruz": {
       "category": "public_figures",
       "label": "Senator Ted Cruz",
-      "observations": 5,
+      "observations": 6,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -2998,7 +3322,7 @@
     "SenWarren": {
       "category": "public_figures",
       "label": "Elizabeth Warren",
-      "observations": 4,
+      "observations": 6,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -3073,21 +3397,21 @@
     "Sonderling47": {
       "category": "officials",
       "label": "Acting Secretary Keith Sonderling",
-      "observations": 180,
+      "observations": 182,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "Southcom": {
       "category": "government",
       "label": "U.S. Southern Command",
-      "observations": 20,
+      "observations": 21,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "SpeakerJohnson": {
       "category": "public_figures",
       "label": "Speaker Mike Johnson",
-      "observations": 11,
+      "observations": 13,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -3101,9 +3425,9 @@
     "StateDept": {
       "category": "government",
       "label": "Department of State",
-      "observations": 31,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "observations": 63,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "StateDeptDSS": {
       "badges": [
@@ -3118,14 +3442,14 @@
     "StephenM": {
       "category": "core",
       "label": "Stephen Miller",
-      "observations": 2952,
+      "observations": 2980,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "StevenCheung47": {
       "category": "officials",
       "label": "Steven Cheung",
-      "observations": 21,
+      "observations": 22,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -3156,7 +3480,7 @@
     "SusieWiles47": {
       "category": "officials",
       "label": "Susie Wiles",
-      "observations": 6,
+      "observations": 7,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -3170,12 +3494,19 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "TRadabaughDOW": {
+      "category": "officials",
+      "label": "Tami Radabaugh",
+      "observations": 2,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
     "TSA": {
       "category": "government",
-      "label": "TSA",
-      "observations": 299,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "label": "Transportation Security Administration",
+      "observations": 340,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "TXAG": {
       "category": "officials",
@@ -3184,10 +3515,17 @@
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
+    "Taylor47": {
+      "category": "officials",
+      "label": "Taylor Budowich",
+      "observations": 1,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
     "TaylorRogers47": {
       "category": "officials",
       "label": "Taylor Rogers",
-      "observations": 6,
+      "observations": 7,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -3209,6 +3547,16 @@
       "label": "\ud83c\uddfa\ud83c\uddf8 Texas Patriot MAGA",
       "observations": 1,
       "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "Th14278048David": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "officials",
+      "label": "Nureochiba",
+      "observations": 1,
+      "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "The1LC": {
@@ -3234,9 +3582,9 @@
     "TheJusticeDept": {
       "category": "government",
       "label": "U.S. Department of Justice",
-      "observations": 63,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "observations": 94,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "TheNewArrogator": {
       "badges": [
@@ -3326,7 +3674,7 @@
     "TomCottonAR": {
       "category": "public_figures",
       "label": "Tom Cotton",
-      "observations": 2,
+      "observations": 3,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -3340,11 +3688,25 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "TulsiGabbard": {
+      "category": "public_figures",
+      "label": "Tulsi Gabbard \ud83c\udf3a",
+      "observations": 3,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
     "TurnSeattleRed": {
       "category": "public_figures",
       "label": "\ud83c\uddfa\ud83c\uddf8STOP SEATTLE DEMs 2026\ud83c\uddfa\ud83c\uddf8",
       "observations": 2,
       "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "USAO_NDOK": {
+      "category": "officials",
+      "label": "U.S. Attorney NDOK",
+      "observations": 3,
+      "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "USAO_WDTX": {
@@ -3358,6 +3720,13 @@
       "category": "government",
       "label": "U.S. Africa Command (AFRICOM)",
       "observations": 1,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "USAndIndia": {
+      "category": "government",
+      "label": "U.S. Embassy India",
+      "observations": 2,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3381,37 +3750,37 @@
     "USAttyPirro": {
       "category": "officials",
       "label": "US Attorney Pirro",
-      "observations": 5,
+      "observations": 8,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "USBPChief": {
       "category": "government",
       "label": "U.S. Border Patrol Chief",
-      "observations": 73,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "observations": 111,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "USBPChiefDRT": {
       "category": "government",
       "label": "U.S. Border Patrol Del Rio Sector",
-      "observations": 4,
+      "observations": 6,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "USBPChiefDTM": {
       "category": "government",
       "label": "(A) Chief Patrol Agent Javier Geronimo, Jr.",
-      "observations": 9,
+      "observations": 10,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "USBPChiefELC": {
       "category": "government",
       "label": "El Centro Sector Border Patrol",
-      "observations": 30,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "observations": 43,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "USBPChiefELCarc": {
       "category": "government",
@@ -3423,73 +3792,77 @@
     "USBPChiefMIP": {
       "category": "government",
       "label": "Samuel B. Briggs II",
-      "observations": 9,
+      "observations": 11,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "USBPChiefSDC": {
       "category": "government",
       "label": "Chief Patrol Agent - San Diego Sector",
-      "observations": 8,
+      "observations": 14,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "USBPChiefSPW": {
+      "category": "government",
+      "label": "Spokane Sector Chief Patrol Agent",
+      "observations": 4,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "USBPChiefTCA": {
       "category": "government",
       "label": "Chief Patrol Agent - Tucson Sector",
-      "observations": 5,
+      "observations": 12,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "USBPChiefYUM": {
       "category": "government",
       "label": "Chief Patrol Agent - Yuma Sector",
-      "observations": 3,
+      "observations": 7,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "USCG": {
-      "badges": [
-        "police"
-      ],
       "category": "government",
       "label": "U.S. Coast Guard",
-      "observations": 250,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "observations": 281,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "USCGAcademy": {
       "category": "government",
       "label": "U.S. Coast Guard Academy",
-      "observations": 55,
+      "observations": 69,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "USCGLANTAREA": {
       "category": "government",
       "label": "USCG Atlantic Area",
-      "observations": 3,
+      "observations": 4,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "USCIS": {
       "category": "core",
       "label": "U.S. Citizenship and Immigration Services",
-      "observations": 902,
+      "observations": 1290,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "USCISJoe": {
       "category": "officials",
       "label": "USCIS Director Joseph B. Edlow",
-      "observations": 72,
-      "reason": "federal executive official language in profile",
-      "source": "data/users.json"
+      "observations": 81,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "USDOL": {
       "category": "core",
       "label": "U.S. Department of Labor",
-      "observations": 1181,
+      "observations": 1295,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3503,7 +3876,7 @@
     "USLaborIG": {
       "category": "public_figures",
       "label": "Inspector General Anthony D'Esposito",
-      "observations": 17,
+      "observations": 18,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -3523,35 +3896,35 @@
       ],
       "category": "government",
       "label": "U.S. Marshals Service",
-      "observations": 12,
+      "observations": 20,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "USNationalGuard": {
       "category": "government",
       "label": "National Guard",
-      "observations": 5,
+      "observations": 6,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "USNorthernCmd": {
       "category": "government",
       "label": "U.S. Northern Command",
-      "observations": 4,
+      "observations": 5,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "USTradeRep": {
       "category": "public_figures",
       "label": "United States Trade Representative",
-      "observations": 13,
+      "observations": 22,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
     "USTreasury": {
       "category": "government",
       "label": "Treasury Department",
-      "observations": 11,
+      "observations": 13,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3575,14 +3948,14 @@
       ],
       "category": "government",
       "label": "Veterans\u2019 Employment and Training Service",
-      "observations": 5,
+      "observations": 8,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "VP": {
       "category": "government",
       "label": "Vice President JD Vance",
-      "observations": 106,
+      "observations": 142,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3647,14 +4020,14 @@
     "WHFraudTF": {
       "category": "government",
       "label": "White House Task Force to Eliminate Fraud",
-      "observations": 31,
+      "observations": 34,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "WHTaskForceFIFA": {
       "category": "government",
       "label": "White House FIFA Task Force",
-      "observations": 10,
+      "observations": 11,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3688,7 +4061,7 @@
     "WhiteHouse": {
       "category": "core",
       "label": "The White House",
-      "observations": 713,
+      "observations": 1865,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3873,6 +4246,16 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "chelsey36928": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "\ud835\udcd2\ud835\udcf1\ud835\udcee\ud835\udcf5\ud835\udcfc\ud835\udcee\ud835\udd02 (independent)",
+      "observations": 1,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "chiproytx": {
       "category": "public_figures",
       "label": "Chip Roy",
@@ -3894,6 +4277,16 @@
       "category": "public",
       "label": "Darkblue714 \ud83c\uddfa\ud83c\uddf8",
       "observations": 8,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "denise_bar90994": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public",
+      "label": "Denise barham",
+      "observations": 1,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -3947,7 +4340,7 @@
     "epaleezeldin": {
       "category": "officials",
       "label": "Lee Zeldin",
-      "observations": 7,
+      "observations": 14,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -3973,10 +4366,10 @@
     },
     "fema": {
       "category": "government",
-      "label": "FEMA",
-      "observations": 103,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "label": "Federal Emergency Management Agency",
+      "observations": 167,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "femaregion2": {
       "badges": [
@@ -3991,7 +4384,17 @@
     "femaregion4": {
       "category": "government",
       "label": "FEMA Region 4",
-      "observations": 5,
+      "observations": 18,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "femaregion7": {
+      "badges": [
+        "police"
+      ],
+      "category": "government",
+      "label": "FEMA Region 7",
+      "observations": 3,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -4120,7 +4523,7 @@
     "karolineleavitt": {
       "category": "officials",
       "label": "Karoline Leavitt",
-      "observations": 3,
+      "observations": 4,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -4161,7 +4564,7 @@
     "ksorbs": {
       "category": "officials",
       "label": "Kevin Sorbo",
-      "observations": 3,
+      "observations": 4,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -4245,7 +4648,7 @@
     "migraUSAoficial": {
       "category": "government",
       "label": "Migraci\u00f3n USA Oficial",
-      "observations": 27,
+      "observations": 29,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -4333,7 +4736,7 @@
     "realDonaldTrump": {
       "category": "government",
       "label": "Donald J. Trump",
-      "observations": 51,
+      "observations": 66,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -4356,6 +4759,16 @@
       "label": "Bruce A. Caramante \ud835\udd4f \ud83c\uddfa\ud83c\uddf8",
       "observations": 3,
       "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
+    "realannapaulina": {
+      "badges": [
+        "veteran"
+      ],
+      "category": "public_figures",
+      "label": "Anna Paulina Luna",
+      "observations": 2,
+      "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
     "repdarrellissa": {
@@ -4521,6 +4934,13 @@
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
+    "usfire": {
+      "category": "government",
+      "label": "U.S. Fire (USFA)",
+      "observations": 14,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
     "usphscc": {
       "category": "government",
       "label": "USPHS Commissioned Corps",
@@ -4541,12 +4961,12 @@
   },
   "category_counts": {
     "core": 12,
-    "government": 162,
-    "officials": 105,
-    "public": 170,
-    "public_figures": 107
+    "government": 181,
+    "officials": 120,
+    "public": 178,
+    "public_figures": 119
   },
-  "generated_at": "2026-05-24T15:36:00Z",
+  "generated_at": "2026-05-26T09:21:58Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }

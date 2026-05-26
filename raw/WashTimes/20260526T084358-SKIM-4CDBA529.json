@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-whitehouse-20260526-20260526T084339Z-9d71133e-WashTimes",
+  "account_handle": "WashTimes",
+  "captured_at": "2026-05-26T08:43:58.591Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APressSec%20since%3A2026-04-01%20until%3A2026-05-01&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2048711623368458292",
+      "account_handle": "WashTimes",
+      "account_id": "14662354",
+      "posted_at": "2026-04-27T10:31:28.000Z",
+      "first_captured_at": "2026-05-26T08:43:50.776Z",
+      "last_seen_at": "2026-05-26T08:43:50.776Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/WashTimes/status/2048711623368458292",
+      "tweet_type": "original",
+      "conversation_id": "2048711623368458292",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "EDITORS' PICK |  Progressivism's attack dog SPLC blows itself up https://t.co/H46kBBWBSY",
+      "text_resolved": "EDITORS' PICK |  Progressivism's attack dog SPLC blows itself up https://trib.al/eHbbu7e",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/H46kBBWBSY",
+          "expanded": "https://trib.al/eHbbu7e",
+          "display": "trib.al/eHbbu7e"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/H46kBBWBSY",
+        "vendor_url": "washingtontimes.com",
+        "title": "Progressivism’s attack dog SPLC blows itself up",
+        "description": "The Southern Poverty Law Center helped stoke hate by funneling millions of dollars to the Ku Klux Klan, neo-Nazis and other extremists and engaged in criminal activity to cover it up.",
+        "image_url": "https://pbs.twimg.com/card_img/2058958781904494592/geZGFMsp?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 252,
+      "retweet_count": 62,
+      "reply_count": 18,
+      "quote_count": 0,
+      "view_count": 239739,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T08:43:50.776Z",
+          "likes": 252,
+          "retweets": 62,
+          "replies": 18,
+          "quotes": 0,
+          "views": 239739,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "The Washington Times",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1755281859146080256/D-S95q4t_normal.png",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Business",
+        "description": "Reliable reporting, hard-hitting analysis & breaking news, plus RTs from our writers and reporters. Also at @WashTimesOpEd, @WashTimesLocal, @WashTimesSports",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/lz8D7wwtBk",
+        "followers_count": 488879,
+        "friends_count": 1875,
+        "statuses_count": 1069901,
+        "account_created_at": "2008-05-05T17:43:25.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-whitehouse-20260526-20260526T084339Z-9d71133e",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/x-com-search-20260526T084339Z-9d71133e.summary.json",
+    "jsonl": ".skim/raw/x-com-search-20260526T084339Z-9d71133e.jsonl",
+    "source_handle": "PressSec"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-gov-trawl-20260526-20260526T090240Z-ad4ebf14-USAndIndia",
+  "account_handle": "USAndIndia",
+  "captured_at": "2026-05-26T09:02:54.350Z",
+  "endpoint": "UserByScreenName,UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/StateDept",
+  "tweets": [
+    {
+      "tweet_id": "2058537681228005725",
+      "account_handle": "USAndIndia",
+      "account_id": "41533816",
+      "posted_at": "2026-05-24T13:16:43.000Z",
+      "first_captured_at": "2026-05-26T09:02:43.496Z",
+      "last_seen_at": "2026-05-26T09:02:43.496Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USAndIndia/status/2058537681228005725",
+      "tweet_type": "original",
+      "conversation_id": "2058537681228005725",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "From Kolkata to New Delhi, Day 1 of @SecRubio’s visit to India highlighted the strength of the U.S.-India partnership. From paying tribute to Mother Teresa at Mother House and meeting with Prime Minister Modi to opening a new U.S. Embassy facility and engaging with government and business leaders, the day showcased our shared commitment to a stronger, safer, and more prosperous future.",
+      "text_resolved": "From Kolkata to New Delhi, Day 1 of @SecRubio’s visit to India highlighted the strength of the U.S.-India partnership. From paying tribute to Mother Teresa at Mother House and meeting with Prime Minister Modi to opening a new U.S. Embassy facility and engaging with government and business leaders, the day showcased our shared commitment to a stronger, safer, and more prosperous future.",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "SecRubio"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_2058537564840374272",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2058537564840374272/vid/avc1/1920x1080/ZYf1TuWgXn67wYwe.mp4?tag=27",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 47.72,
+          "width": 1920,
+          "height": 1080,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 868,
+      "retweet_count": 120,
+      "reply_count": 83,
+      "quote_count": 9,
+      "view_count": 51778,
+      "bookmark_count": 46,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T09:02:43.496Z",
+          "likes": 868,
+          "retweets": 120,
+          "replies": 83,
+          "quotes": 9,
+          "views": 51778,
+          "bookmarks": 46
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Embassy India",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1202092623017713664/ZvXw3vLs_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official account of U.S. Embassy in India. RTs/links are not endorsement. Follow US Ambassador to India at @USAmbIndia. Terms of use: https://t.co/Hz0PCXRUZ7",
+        "location": "New Delhi, India",
+        "url": "https://t.co/l48dXo8WBU",
+        "followers_count": 363609,
+        "friends_count": 202,
+        "statuses_count": 1663,
+        "account_created_at": "2009-05-21T05:09:38.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-gov-trawl-20260526-20260526T090240Z-ad4ebf14",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/statedept-20260526T090240Z-ad4ebf14.summary.json",
+    "jsonl": ".skim/raw/statedept-20260526T090240Z-ad4ebf14.jsonl",
+    "source_handle": "StateDept"
+  }
+}

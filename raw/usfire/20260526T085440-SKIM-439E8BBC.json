@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-gov-trawl-20260526-20260526T085421Z-c408ff31-usfire",
+  "account_handle": "usfire",
+  "captured_at": "2026-05-26T08:54:40.971Z",
+  "endpoint": "UserByScreenName,UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/FEMA",
+  "tweets": [
+    {
+      "tweet_id": "2057472788974207488",
+      "account_handle": "usfire",
+      "account_id": "17904241",
+      "posted_at": "2026-05-21T14:45:13.000Z",
+      "first_captured_at": "2026-05-26T08:54:32.841Z",
+      "last_seen_at": "2026-05-26T08:54:32.841Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/usfire/status/2057472788974207488",
+      "tweet_type": "original",
+      "conversation_id": "2057472788974207488",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Check your 5: clear leaves and debris from gutters, roofs, and under decks. Trim tree branches at least 10 feet from your home. #WUIAwareness https://t.co/85eBa93DhF",
+      "text_resolved": "Check your 5: clear leaves and debris from gutters, roofs, and under decks. Trim tree branches at least 10 feet from your home. #WUIAwareness https://t.co/85eBa93DhF",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "WUIAwareness"
+      ],
+      "mentions": [],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2057472787137093633",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HI2cmVRW4AEnWFD.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 600,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 9,
+      "retweet_count": 8,
+      "reply_count": 1,
+      "quote_count": 0,
+      "view_count": 2012,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T08:54:32.841Z",
+          "likes": 9,
+          "retweets": 8,
+          "replies": 1,
+          "quotes": 0,
+          "views": 2012,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Fire (USFA)",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1770888097372295169/JAB9Ifwp_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "USFA supports and strengthens fire and EMS to prepare for, prevent, mitigate and respond to all hazards.",
+        "location": "Emmitsburg, MD",
+        "url": "https://t.co/7srwI2HDHF",
+        "followers_count": 53777,
+        "friends_count": 2319,
+        "statuses_count": 17716,
+        "account_created_at": "2008-12-05T18:40:59.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-gov-trawl-20260526-20260526T085421Z-c408ff31",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/fema-20260526T085421Z-c408ff31.summary.json",
+    "jsonl": ".skim/raw/fema-20260526T085421Z-c408ff31.jsonl",
+    "source_handle": "FEMA"
+  }
+}

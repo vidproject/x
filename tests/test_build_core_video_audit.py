@@ -12,7 +12,7 @@ from scripts.build_core_video_audit import (
 
 
 def _empty_maps() -> dict[str, Any]:
-    return {"vision": {}, "audio": {}, "keyframes": {}, "ocr": {}, "manual": {}}
+    return {"vision": {}, "audio": {}, "transcripts": {}, "keyframes": {}, "ocr": {}, "manual": {}}
 
 
 def test_release_asset_url_counts_as_archived_for_missing_steps() -> None:
@@ -20,6 +20,7 @@ def test_release_asset_url_counts_as_archived_for_missing_steps() -> None:
         {"archive_status": "pending", "release_asset_url": "https://example.invalid/video.mp4"},
         keyframe_rows=[],
         audio_rows=[],
+        transcript_rows=[],
         vision_rows=[],
         tags=set(),
     )
@@ -108,9 +109,22 @@ def test_audio_music_likely_alone_is_not_upgraded_to_music_video() -> None:
         lexical={},
         vision=maps["vision"],
         audio=maps["audio"],
+        transcripts=maps["transcripts"],
         keyframes=maps["keyframes"],
         ocr=maps["ocr"],
         manual=maps["manual"],
     )
     assert "audio:music-likely" in item["tags"]
     assert "genre:music-video" not in item["tags"]
+
+
+def test_audio_video_without_transcript_is_flagged() -> None:
+    missing = missing_steps(
+        {"release_asset_url": "https://example.invalid/video.mp4"},
+        keyframe_rows=[{"status": "ok"}],
+        audio_rows=[{"status": "ok", "tags": [{"tag": "audio:has-audio"}]}],
+        transcript_rows=[],
+        vision_rows=[{"status": "metadata-context"}],
+        tags={"audio:has-audio"},
+    )
+    assert "transcribe-audio" in missing

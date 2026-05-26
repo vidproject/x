@@ -374,6 +374,16 @@ def discover_canonical_parquets() -> list[Path]:
     )
 
 
+def read_id_file(path: Path | None) -> set[str] | None:
+    if path is None:
+        return None
+    return {
+        line.strip()
+        for line in path.read_text(encoding="utf-8").splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    }
+
+
 def run(
     *,
     parquets: list[Path] | None = None,
@@ -381,6 +391,9 @@ def run(
     force: bool = False,
     dry_run: bool = False,
     out_path: Path | None = None,
+    only_tweet_ids: set[str] | None = None,
+    only_media_ids: set[str] | None = None,
+    source_kind: str = "all",
     ocr_runner: Callable[[OcrCandidate], OcrResult] | None = None,
 ) -> dict[str, int]:
     if out_path is None:
@@ -409,8 +422,21 @@ def run(
     else:
         runner = ocr_runner
 
+    def _leftover_rows() -> list[dict[str, Any]]:
+        done = {str(r.get("input_hash") or "") for r in rows}
+        return [r for key, r in existing.items() if key not in done]
+
     try:
         for cand in discover_candidates(parquets):
+            if only_tweet_ids is not None and cand.tweet_id not in only_tweet_ids:
+                stats["skipped_not_in_filter"] += 1
+                continue
+            if only_media_ids is not None and cand.media_id not in only_media_ids:
+                stats["skipped_not_in_filter"] += 1
+                continue
+            if source_kind != "all" and cand.source_kind != source_kind:
+                stats["skipped_not_source_kind"] += 1
+                continue
             input_hash = input_hash_for(cand)
             cached = existing.get(input_hash)
             if not force and is_cache_hit(cached or {}, ocr_version):
@@ -436,10 +462,11 @@ def run(
         if http is not None:
             http.close()
 
-    stats["rows"] = len(rows)
+    final_rows = rows if dry_run else rows + _leftover_rows()
+    stats["rows"] = len(final_rows)
     if not dry_run:
-        write_parquet(rows, out_path)
-        update_manifest(rows, dict(stats), generated_at, ocr_version=ocr_version)
+        write_parquet(final_rows, out_path)
+        update_manifest(final_rows, dict(stats), generated_at, ocr_version=ocr_version)
     return dict(stats)
 
 
@@ -455,13 +482,40 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--dry-run", action="store_true", help="Report planned rows without writing."
     )
+    parser.add_argument(
+        "--tweet-ids-file",
+        type=Path,
+        help="Only OCR images/keyframes whose tweet_id is listed in this file.",
+    )
+    parser.add_argument(
+        "--media-ids-file",
+        type=Path,
+        help="Only OCR images/keyframes whose media_id is listed in this file.",
+    )
+    parser.add_argument(
+        "--source-kind",
+        choices=("all", "photo", "keyframe"),
+        default="all",
+        help="Restrict OCR to photos or extracted video keyframes.",
+    )
     args = parser.parse_args(argv)
 
     parquets = discover_canonical_parquets()
     if args.handle:
         parquets = [p for p in parquets if p.stem == args.handle]
 
-    stats = run(parquets=parquets, max_items=args.max_items, force=args.force, dry_run=args.dry_run)
+    only_tweet_ids = read_id_file(args.tweet_ids_file)
+    only_media_ids = read_id_file(args.media_ids_file)
+
+    stats = run(
+        parquets=parquets,
+        max_items=args.max_items,
+        force=args.force,
+        dry_run=args.dry_run,
+        only_tweet_ids=only_tweet_ids,
+        only_media_ids=only_media_ids,
+        source_kind=args.source_kind,
+    )
     LOG.info("image OCR complete", **stats)
     return 0
 

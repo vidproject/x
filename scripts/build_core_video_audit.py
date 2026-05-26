@@ -303,6 +303,7 @@ def missing_steps(
     *,
     keyframe_rows: list[dict[str, Any]],
     audio_rows: list[dict[str, Any]],
+    transcript_rows: list[dict[str, Any]],
     vision_rows: list[dict[str, Any]],
     tags: set[str],
 ) -> list[str]:
@@ -314,6 +315,8 @@ def missing_steps(
         steps.append("extract-keyframes")
     if archived and not audio_rows:
         steps.append("detect-audio")
+    if archived and "audio:has-audio" in tags and not transcript_rows:
+        steps.append("transcribe-audio")
     if not vision_rows:
         steps.append("describe-with-vision")
     if (tags & PRODUCED_TAGS) and not (tags & GENRE_TAGS):
@@ -328,7 +331,11 @@ def bucket_for(tags: set[str], missing: list[str]) -> str:
         return "genre-experiment"
     if tags & PRODUCED_TAGS or tags & GENRE_TAGS:
         return "produced-video"
-    if "describe-with-vision" in missing or "detect-audio" in missing:
+    if (
+        "describe-with-vision" in missing
+        or "detect-audio" in missing
+        or "transcribe-audio" in missing
+    ):
         return "needs-recognition"
     return "ordinary-video"
 
@@ -357,6 +364,7 @@ def build_item(
     lexical: dict[str, set[str]],
     vision: dict[tuple[str, str], list[dict[str, Any]]],
     audio: dict[tuple[str, str], list[dict[str, Any]]],
+    transcripts: dict[tuple[str, str], list[dict[str, Any]]],
     keyframes: dict[tuple[str, str], list[dict[str, Any]]],
     ocr: dict[tuple[str, str], list[dict[str, Any]]],
     manual: dict[tuple[str, str], dict[str, Any]],
@@ -366,10 +374,11 @@ def build_item(
     key = (tweet_id, media_id)
     vision_rows = vision.get(key, [])
     audio_rows = audio.get(key, [])
+    transcript_rows = transcripts.get(key, [])
     keyframe_rows = keyframes.get(key, [])
     ocr_rows = ocr.get(key, [])
     manual_row = manual.get(key, {})
-    descriptions = sidecar_descriptions(vision_rows + ocr_rows)
+    descriptions = sidecar_descriptions(vision_rows + ocr_rows + transcript_rows)
     if manual_row.get("visual_observation"):
         descriptions.append(str(manual_row["visual_observation"]))
     context = "\n".join(
@@ -387,6 +396,7 @@ def build_item(
         media,
         keyframe_rows=keyframe_rows,
         audio_rows=audio_rows,
+        transcript_rows=transcript_rows,
         vision_rows=vision_rows,
         tags=tags,
     )
@@ -414,6 +424,7 @@ def build_item(
         "missing_steps": missing,
         "has_keyframes": any(r.get("status") == "ok" for r in keyframe_rows),
         "has_audio_analysis": bool(audio_rows),
+        "has_transcript": bool(transcript_rows),
         "has_vision_description": bool(vision_rows),
         "has_ocr": bool(ocr_rows),
         "description": " | ".join(descriptions)[:1200],
@@ -435,6 +446,7 @@ def build() -> dict[str, Any]:
     lexical = load_lexical_tags(handles)
     vision = load_media_sidecar("media_vision", handles)
     audio = load_media_sidecar("audio_music", handles)
+    transcripts = load_media_sidecar("transcripts", handles)
     keyframes = load_media_sidecar("keyframes", handles)
     ocr = load_media_sidecar("image_ocr", handles)
     manual = load_manual_review()
@@ -450,6 +462,7 @@ def build() -> dict[str, Any]:
                         lexical=lexical,
                         vision=vision,
                         audio=audio,
+                        transcripts=transcripts,
                         keyframes=keyframes,
                         ocr=ocr,
                         manual=manual,
@@ -489,6 +502,7 @@ def write_csv(items: list[dict[str, Any]], path: Path) -> None:
         "genre_tags",
         "produced_video_tags",
         "missing_steps",
+        "has_transcript",
         "tweet_url",
         "release_asset_url",
         "tweet_text",

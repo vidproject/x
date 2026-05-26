@@ -17,6 +17,7 @@ const DEFAULTS = {
   scrollDelayMs: 700,
   scrollFactor: 1.05,
   allowStyles: true,
+  latest: false,
   headless: false,
   stopOnZero: true,
   zeroFailureLimit: 6,
@@ -40,6 +41,7 @@ Options:
   --scroll-delay-ms <n>          Per-scroll delay. Default: ${DEFAULTS.scrollDelayMs}
   --scroll-factor <n>            Viewport heights per scroll. Default: ${DEFAULTS.scrollFactor}
   --block-styles                 Block stylesheets.
+  --latest                       Use X's Latest search tab. Default: plain search.
   --headless                     Run child skims without visible browser windows.
   --allow-zero-responses         Keep going even if a window captures no GraphQL.
   --zero-failure-limit <n>       Stop after this many zero-response windows. Default: ${DEFAULTS.zeroFailureLimit}
@@ -90,6 +92,9 @@ function parseArgs(argv) {
         break;
       case '--block-styles':
         options.allowStyles = false;
+        break;
+      case '--latest':
+        options.latest = true;
         break;
       case '--headless':
         options.headless = true;
@@ -233,7 +238,9 @@ async function cloneProfile(sourceProfile, destProfile) {
 
 function commandForTask(task, profileDir, options) {
   const query = `from:${task.handle} since:${task.window.from} until:${task.window.to}`;
-  const url = `https://x.com/search?q=${encodeURIComponent(query)}`;
+  const url = `https://x.com/search?q=${encodeURIComponent(query)}${
+    options.latest ? '&src=typed_query&f=live' : ''
+  }`;
   const args = [
     'tools/x-skim.mjs',
     '--url',
@@ -250,10 +257,10 @@ function commandForTask(task, profileDir, options) {
     String(options.scrollDelayMs),
     '--scroll-factor',
     String(options.scrollFactor),
-    '--fail-on-zero-responses',
   ];
   if (options.allowStyles) args.push('--allow-styles');
   if (options.headless) args.push('--headless');
+  if (options.stopOnZero) args.push('--fail-on-zero-responses');
   return { query, args };
 }
 

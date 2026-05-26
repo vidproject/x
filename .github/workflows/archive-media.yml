@@ -153,6 +153,20 @@ jobs:
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
           fi
+          if [ "${{ github.event_name }}" = "push" ]; then
+            if [ -f data/tags/core_produced_missing_tweet_ids.txt ]; then
+              args+=(--tweet-ids-file data/tags/core_produced_missing_tweet_ids.txt)
+            fi
+            if [ -f data/tags/core_produced_missing_media_ids.txt ]; then
+              args+=(--media-ids-file data/tags/core_produced_missing_media_ids.txt)
+            fi
+          fi
+          if [ -n "${{ inputs.tweet_ids_file }}" ]; then
+            args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
+          fi
+          if [ -n "${{ inputs.media_ids_file }}" ]; then
+            args+=(--media-ids-file "${{ inputs.media_ids_file }}")
+          fi
           args+=(--max-items "$max_items")
           uv run python -m scripts.tag_image_ocr "${args[@]}"
 

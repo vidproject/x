@@ -99,6 +99,7 @@ let users = new Map();
 // --- State ---
 const store = new Store();
 let manifest = null;
+let tagManifest = null;
 let urlState = fromHash();
 let visibleCols = parseVisibleColumns(urlState.cols);
 let filteredRows = [];
@@ -275,6 +276,7 @@ async function loadManifest() {
     els.emptyDetail.textContent =
       'No data/manifest.json found yet. Once captures land and the ingest workflow runs, accounts will appear here.';
   }
+  await loadTagManifest();
   // Push account categories into the store so the category filter can
   // resolve handle → category in O(1) at filter time. Untracked authors
   // (anyone not in the manifest) implicitly fall through to `public`.
@@ -320,6 +322,30 @@ async function loadManifest() {
   paintHdrStats();
   if ((manifest.accounts || []).length === 0) {
     els.empty.hidden = false;
+  }
+}
+
+async function loadTagManifest() {
+  const cacheKey = manifest?.generated_at ? `?v=${encodeURIComponent(manifest.generated_at)}` : '';
+  const url = `data/tags/manifest.json${cacheKey}`;
+  try {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) {
+      if (res.status === 404) {
+        tagManifest = null;
+        return;
+      }
+      throw new Error(`tag manifest: ${res.status} ${res.statusText}`);
+    }
+    tagManifest = await res.json();
+  } catch (err) {
+    tagManifest = null;
+    pushLoadError({
+      resource: url,
+      status: extractHttpStatus(err),
+      kind: 'tag-manifest',
+      message: err?.message ?? String(err),
+    });
   }
 }
 
@@ -393,18 +419,7 @@ async function loadLexicalTags() {
     }
     return map;
   } catch (err) {
-    const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
-    // 404 is expected before the tagger workflow has run for the first
-    // time; record-but-don't-shout. Any other failure is a real error
-    // and surfaces in the load-failures panel.
-    if (status !== '404') {
-      pushLoadError({
-        resource: url,
-        status: status ? Number(status) : null,
-        kind: 'tags',
-        message: err?.message ?? String(err),
-      });
-    }
+    pushTagLayerLoadError('lexical', url, 'tags', err);
     return new Map();
   }
 }
@@ -437,15 +452,7 @@ async function loadMediaInsightLayer(layerName) {
     }
     return map;
   } catch (err) {
-    const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
-    if (status !== '404') {
-      pushLoadError({
-        resource: url,
-        status: status ? Number(status) : null,
-        kind: layerName,
-        message: err?.message ?? String(err),
-      });
-    }
+    pushTagLayerLoadError(layerName, url, layerName, err);
     return new Map();
   }
 }
@@ -464,15 +471,7 @@ async function loadAudioMusicTags() {
     }
     return map;
   } catch (err) {
-    const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
-    if (status !== '404') {
-      pushLoadError({
-        resource: url,
-        status: status ? Number(status) : null,
-        kind: 'audio-tags',
-        message: err?.message ?? String(err),
-      });
-    }
+    pushTagLayerLoadError('audio_music', url, 'audio-tags', err);
     return new Map();
   }
 }
@@ -491,15 +490,7 @@ async function loadReviewCurationTags() {
     }
     return map;
   } catch (err) {
-    const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
-    if (status !== '404') {
-      pushLoadError({
-        resource: url,
-        status: status ? Number(status) : null,
-        kind: 'review-tags',
-        message: err?.message ?? String(err),
-      });
-    }
+    pushTagLayerLoadError('review_curation', url, 'review-tags', err);
     return new Map();
   }
 }
@@ -526,15 +517,7 @@ async function loadNewsMentions() {
     }
     return { tagMap, mentionMap };
   } catch (err) {
-    const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
-    if (status !== '404') {
-      pushLoadError({
-        resource: url,
-        status: status ? Number(status) : null,
-        kind: 'news-tags',
-        message: err?.message ?? String(err),
-      });
-    }
+    pushTagLayerLoadError('news_mentions', url, 'news-tags', err);
     return { tagMap, mentionMap };
   }
 }
@@ -554,15 +537,7 @@ async function loadKeyframePosters() {
     }
     return map;
   } catch (err) {
-    const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
-    if (status !== '404') {
-      pushLoadError({
-        resource: url,
-        status: status ? Number(status) : null,
-        kind: 'keyframes',
-        message: err?.message ?? String(err),
-      });
-    }
+    pushTagLayerLoadError('keyframes', url, 'keyframes', err);
     return new Map();
   }
 }
@@ -583,23 +558,29 @@ async function loadImageOcr() {
     }
     return map;
   } catch (err) {
-    const status = (err && /:\s*(\d{3})\s/.exec(err.message ?? String(err))?.[1]) || null;
-    if (status !== '404') {
-      pushLoadError({
-        resource: url,
-        status: status ? Number(status) : null,
-        kind: 'image-ocr',
-        message: err?.message ?? String(err),
-      });
-    }
+    pushTagLayerLoadError('image_ocr', url, 'image-ocr', err);
     return new Map();
   }
 }
 
 function tagLayerCacheKey(layerName) {
-  const layerGeneratedAt = manifest?.layers?.[layerName]?.generated_at;
-  const version = layerGeneratedAt || manifest?.generated_at || '';
+  const layerGeneratedAt = tagManifest?.layers?.[layerName]?.generated_at;
+  const version = layerGeneratedAt || tagManifest?.generated_at || manifest?.generated_at || '';
   return version ? `?v=${encodeURIComponent(version)}` : '';
+}
+
+function pushTagLayerLoadError(layerName, url, kind, err) {
+  const status = extractHttpStatus(err);
+  // A first-run 404 for an optional sidecar is harmless. If the tag manifest
+  // advertises the layer, a 404 means the published viewer cannot reach a
+  // generated artifact and should be visible in the load-failures panel.
+  if (status === 404 && !tagManifest?.layers?.[layerName]) return;
+  pushLoadError({
+    resource: url,
+    status,
+    kind,
+    message: err?.message ?? String(err),
+  });
 }
 
 function stringOrNull(value) {
@@ -891,6 +872,7 @@ async function loadCatalogDataset() {
       ? payload.rows
       : await loadParquetRows(`${payload?.parquet || 'data/catalog.parquet'}${catalogCacheKey()}`);
     store.setCatalogRows(rows, CATALOG_HANDLE);
+    store.applyOcrText(await loadImageOcr());
     catalogLoaded = true;
     previewLimitLoaded = 0;
     loadProgress = { completed: 1, total: 1, failed: 0 };
@@ -1924,7 +1906,7 @@ function profileActivity(rows) {
   const section = document.createElement('section');
   section.className = 'profile-section';
   section.append(profileSectionTitle('Activity by posted date'));
-  const model = profileActivityModel(rows);
+  const model = profileActivityModel(rows, manifestAccount);
   section.append(profileBarChart(model.buckets), profileCalendar(model.buckets, model.scannedDays));
   const note = document.createElement('div');
   note.className = 'profile-note';
@@ -1978,14 +1960,14 @@ function profileTweetItem(row) {
   return item;
 }
 
-function profileActivityModel(rows) {
+function profileActivityModel(rows, manifestAccount) {
   const counts = new Map();
   for (const row of rows) {
     const day = dayKey(row.posted_at);
     if (!day) continue;
     counts.set(day, (counts.get(day) || 0) + 1);
   }
-  const scannedDays = inferredScannedDays();
+  const scannedDays = inferredScannedDays(rows, manifestAccount);
   const unique = [...counts.keys()].sort();
   if (unique.length === 0) unique.push(...scannedDays);
   unique.sort();
@@ -2002,9 +1984,9 @@ function profileActivityModel(rows) {
   return { buckets, scannedDays };
 }
 
-function inferredScannedDays() {
+function inferredScannedDays(rows, manifestAccount) {
   const days = new Set();
-  for (const row of store.allRows) {
+  for (const row of rows) {
     for (const key of [
       'captured_at',
       'first_captured_at',
@@ -2019,10 +2001,8 @@ function inferredScannedDays() {
       if (day) days.add(day);
     }
   }
-  for (const account of manifest?.accounts ?? []) {
-    const day = dayKey(account.latest_capture_at);
-    if (day) days.add(day);
-  }
+  const manifestDay = dayKey(manifestAccount?.latest_capture_at);
+  if (manifestDay) days.add(manifestDay);
   return days;
 }
 

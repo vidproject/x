@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from scripts import ingest, update_readme
-from tests.conftest import make_capture, make_tweet, write_capture
+from tests.conftest import make_capture, make_media, make_tweet, write_capture
 
 
 def test_coverage_table_written_between_markers(tmp_repo: Path) -> None:
@@ -25,3 +25,24 @@ def test_missing_manifest_leaves_empty_section(tmp_repo: Path) -> None:
     assert update_readme.update()
     readme = (tmp_repo / "README.md").read_text(encoding="utf-8")
     assert "No captures yet" in readme
+
+
+def test_gap_block_reports_expired_media(tmp_repo: Path) -> None:
+    (tmp_repo / "README.md").write_text(
+        "# Test\n\n"
+        "<!-- COVERAGE:START -->\n<!-- COVERAGE:END -->\n\n"
+        "<!-- GAPS:START -->\n<!-- GAPS:END -->\n",
+        encoding="utf-8",
+    )
+    media = make_media(media_id="expired-video")
+    media["archive_status"] = "expired"
+    write_capture(
+        tmp_repo, "test-handle", "01.json", make_capture([make_tweet("1", media=[media])])
+    )
+
+    ingest.main([])
+    assert update_readme.update()
+
+    readme = (tmp_repo / "README.md").read_text(encoding="utf-8")
+    assert "Expired media source URLs" in readme
+    assert "`archive_status = expired`" in readme
