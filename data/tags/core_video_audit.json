@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-29T21:06:49Z",
+  "generated_at": "2026-05-29T23:15:05Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -20,57 +20,57 @@
     "videos": 1660,
     "bucket_counts": {
       "genre-experiment": 70,
-      "missing-media": 33,
+      "missing-media": 14,
       "needs-recognition": 255,
-      "ordinary-video": 892,
-      "produced-video": 410
+      "ordinary-video": 908,
+      "produced-video": 413
     },
     "top_tags": {
-      "media-status:archived": 1627,
-      "media:video": 1608,
-      "topic:immigration": 1425,
-      "audio:has-audio": 1249,
+      "media-status:archived": 1646,
+      "media:video": 1627,
+      "topic:immigration": 1420,
+      "audio:has-audio": 1266,
       "video:medium": 1080,
-      "media-status:needs-vision": 921,
+      "media-status:needs-vision": 940,
       "media-status:described": 707,
+      "agency:DHSgov": 409,
       "video:produced": 403,
-      "agency:DHSgov": 399,
-      "topic:economy": 353,
+      "topic:economy": 361,
       "video:short": 353,
       "agency:ICEgov": 334,
-      "theme:criminal": 319,
-      "topic:general": 284,
-      "slogan:illegal-alien": 282,
+      "theme:criminal": 322,
+      "topic:general": 292,
+      "slogan:illegal-alien": 285,
       "agency:POTUS": 261,
-      "policy:border": 225,
+      "policy:border": 228,
       "video:text-overlay": 225,
-      "topic:military": 211,
+      "topic:military": 214,
+      "action:detention": 212,
       "video:long": 210,
-      "action:detention": 209,
-      "video:news-clip": 199,
+      "video:news-clip": 203,
       "video:interview": 174,
-      "action:deportation": 170,
-      "agency:CBP": 157,
-      "speaker:President Trump": 152,
-      "subject:enforcement-op": 146,
+      "action:deportation": 173,
+      "agency:CBP": 160,
+      "speaker:President Trump": 153,
+      "subject:enforcement-op": 149,
       "video:speech": 144,
       "legal:criminal-prosecution": 144,
-      "slogan:criminal-illegal-alien": 126,
-      "crime:homicide": 124,
-      "crime:murder": 120,
+      "slogan:criminal-illegal-alien": 127,
+      "crime:homicide": 127,
+      "crime:murder": 123,
       "video:montage": 107,
       "genre:psa": 107,
       "agency:USCIS": 101,
-      "theme:religion": 98,
+      "theme:religion": 100,
       "format:quote": 95,
       "format:retweet": 95,
       "video:voiceover": 89,
+      "theme:martyrdom": 84,
       "phrase:immigrant": 83,
       "country:China": 82,
-      "theme:martyrdom": 80,
       "crime:fraud": 78,
       "crime:assault": 72,
-      "crime:trafficking": 69,
+      "crime:trafficking": 70,
       "genre:advertisement": 66,
       "audio:music-likely": 65,
       "audio:no-audio": 65,
@@ -78,11 +78,11 @@
       "crime:sexual": 61
     },
     "missing_step_counts": {
-      "archive-media": 33,
+      "archive-media": 14,
       "assign-produced-video-genre": 244,
-      "describe-with-vision": 33,
-      "detect-audio": 312,
-      "extract-keyframes": 1346
+      "describe-with-vision": 14,
+      "detect-audio": 314,
+      "extract-keyframes": 1204
     }
   },
   "items": [
@@ -815,10 +815,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -1845,7 +1843,8 @@
         "media-status:archived",
         "media-status:described",
         "media:video",
-        "topic:immigration",
+        "slogan:america-first",
+        "topic:general",
         "video:produced",
         "video:short",
         "video:voiceover"
@@ -2525,10 +2524,8 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4259,10 +4256,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4321,10 +4317,9 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4480,10 +4475,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -6643,10 +6637,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -6846,10 +6839,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -6945,10 +6937,9 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -6992,10 +6983,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7080,10 +7070,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7115,6 +7104,7 @@
         "media-status:archived",
         "media-status:described",
         "media:video",
+        "theme:religion",
         "topic:immigration",
         "video:medium",
         "video:speech",
@@ -7125,10 +7115,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7216,10 +7205,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7265,10 +7253,9 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7320,10 +7307,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7421,10 +7407,9 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7514,10 +7499,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7549,6 +7533,7 @@
         "media-status:archived",
         "media-status:described",
         "media:video",
+        "topic:economy",
         "topic:immigration",
         "video:medium",
         "video:produced",
@@ -7559,10 +7544,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7864,18 +7848,24 @@
       "bucket": "produced-video",
       "priority": 98,
       "tags": [
+        "action:deportation",
         "agency:DHSgov",
         "agency:ICEgov",
         "agency:POTUS",
         "agency:RapidResponse47",
         "audio:has-audio",
+        "country:Venezuela",
+        "crime:homicide",
+        "crime:murder",
         "format:retweet",
         "media-status:archived",
         "media-status:described",
         "media:video",
         "military:air-force",
+        "origin:Venezuela",
         "policy:border",
         "speaker:President Trump",
+        "topic:general",
         "topic:immigration",
         "topic:military",
         "video:medium",
@@ -8590,6 +8580,7 @@
         "media-status:archived",
         "media-status:described",
         "media:video",
+        "theme:martyrdom",
         "topic:immigration",
         "video:medium",
         "video:montage",
@@ -12774,10 +12765,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12822,10 +12812,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -13640,10 +13629,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -14573,10 +14561,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -15722,10 +15709,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -15827,10 +15812,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -15963,10 +15946,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -16099,10 +16080,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -16151,10 +16130,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -16288,10 +16265,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -16387,10 +16362,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -17884,6 +17857,48 @@
       "description": "video; 1280x720; 87.9s; 12.22 MiB; archived; tweet context: #ICYMI Take a look at #HSI @IPRCenter @HSITampa @CBP @TampaPD @HCSOSheriff and other enforcement partners search for fakes at an int’l mail facility. Learn more: https://xsm.link/phvqqw https://t.co/kiXYTrFUBl; source URL: https://video.twimg.com/ext_tw_video/1357010863455170562/pu/vid/1280x720/O2vYL5AfKyGdRVe7.mp4?tag=10; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_1357010863455170562.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 87.9s; 12.22 MiB; archived; tweet context: #ICYMI Take a look at #HSI @IPRCenter @HSITampa @CBP @TampaPD @HCSOSheriff and other enforcement partners search for fakes at an int’l mail facility. Learn more: https://xsm.link/phvqqw https://t.co/kiXYTrFUBl; source URL: https://video.twimg.com/ext_tw_video/1357010863455170562/pu/vid/1280x720/O2vYL5AfKyGdRVe7.mp4?tag=10; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_1357010863455170562.mp4; needs OCR, transcript, or frame-level vision before content claims. #ICYMI Take a look at #HSI @IPRCenter @HSITampa @CBP @TampaPD @HCSOSheriff and other e"
     },
     {
+      "tweet_id": "1357123335704969220",
+      "account_handle": "ICEgov",
+      "posted_at": "2021-02-04T00:26:32.000Z",
+      "tweet_url": "https://x.com/ICEgov/status/1357123335704969220",
+      "tweet_text": "Since the conclusion of Super Bowl LIV, #OperationTeamPlayer has resulted in the seizure of nearly 169K+ counterfeit goods worth nearly $45M. @IPRCenter director explains why those numbers will increase as #SBLV week goes on. #HSIatSB55. Learn more: https://xsm.link/x548wp https://t.co/J87JmAWc4e",
+      "media_id": "7_1357123269275582464",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-ICEgov/7_1357123269275582464.mp4",
+      "duration_sec": 87.154,
+      "width": 1280,
+      "height": 720,
+      "like_count": 0,
+      "retweet_count": 0,
+      "bucket": "produced-video",
+      "priority": 85,
+      "tags": [
+        "agency:IPRCenter",
+        "genre:psa",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "video:medium",
+        "video:produced"
+      ],
+      "genre_tags": [
+        "genre:psa"
+      ],
+      "produced_video_tags": [
+        "video:produced"
+      ],
+      "missing_steps": [
+        "extract-keyframes",
+        "detect-audio"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": false,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 87.2s; 9.02 MiB; archived; tweet context: Since the conclusion of Super Bowl LIV, #OperationTeamPlayer has resulted in the seizure of nearly 169K+ counterfeit goods worth nearly $45M. @IPRCenter director explains why those numbers will increase as #SBLV week goes on. #HSIatSB55. Learn more: https://x...; source URL: https://video.twimg.com/ext_tw_video/1357123269275582464/pu/vid/1280x720/cToB0btK1fICTEha.mp4?tag=10; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_1357123269275582464.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 87.2s; 9.02 MiB; archived; tweet context: Since the conclusion of Super Bowl LIV, #OperationTeamPlayer has resulted in the seizure of nearly 169K+ counterfeit goods worth nearly $45M. @IPRCenter director explains why those numbers will increase as #SBLV week goes on. #HSIatSB55. Learn more: https://x...; source URL: https://video.twimg.com/ext_tw_video/1357123269275582464/pu/vid/1280x720/cToB0btK1fICTEha.mp4?tag=10; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_1357123269275582464.mp4; needs OCR, transcript, or frame-level vision befor"
+    },
+    {
       "tweet_id": "1357343722346717187",
       "account_handle": "ICEgov",
       "posted_at": "2021-02-04T15:02:16.000Z",
@@ -18391,6 +18406,49 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 96.7s; 9.08 MiB; archived; tweet context: Special agents with #HSITampa are part of a broader law enforcement effort to make #SBLV as safe as possible for the spectators, fans and players. This effort includes operations to stop #humantrafficking and counterfeit goods. #HSIatSB55 Learn more: https://...; source URL: https://video.twimg.com/ext_tw_video/1358509988201783302/pu/vid/1280x720/NpD-raH7ngU65lE1.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_1358509988201783302.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 96.7s; 9.08 MiB; archived; tweet context: Special agents with #HSITampa are part of a broader law enforcement effort to make #SBLV as safe as possible for the spectators, fans and players. This effort includes operations to stop #humantrafficking and counterfeit goods. #HSIatSB55 Learn more: https://...; source URL: https://video.twimg.com/ext_tw_video/1358509988201783302/pu/vid/1280x720/NpD-raH7ngU65lE1.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_1358509988201783302.mp4; needs OCR, transcript, or frame-level vision befor"
+    },
+    {
+      "tweet_id": "1358524393052381185",
+      "account_handle": "ICEgov",
+      "posted_at": "2021-02-07T21:13:50.000Z",
+      "tweet_url": "https://x.com/ICEgov/status/1358524393052381185",
+      "tweet_text": "All week we've taught you about misperceptions of #humantrafficking and how to spot potential victims. Now, take an insider’s look at HOW #HSI and its partners conduct human trafficking investigations. #HSIatSB55 Learn more: https://xsm.link/mhed8j https://t.co/2sksRQ1l7w",
+      "media_id": "7_1358524297061543936",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-ICEgov/7_1358524297061543936.mp4",
+      "duration_sec": 105.589,
+      "width": 1280,
+      "height": 720,
+      "like_count": 0,
+      "retweet_count": 0,
+      "bucket": "produced-video",
+      "priority": 85,
+      "tags": [
+        "crime:trafficking",
+        "genre:psa",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "genre_tags": [
+        "genre:psa"
+      ],
+      "produced_video_tags": [
+        "video:produced"
+      ],
+      "missing_steps": [
+        "extract-keyframes",
+        "detect-audio"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": false,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 105.6s; 11.76 MiB; archived; tweet context: All week we've taught you about misperceptions of #humantrafficking and how to spot potential victims. Now, take an insider’s look at HOW #HSI and its partners conduct human trafficking investigations. #HSIatSB55 Learn more: https://xsm.link/mhed8j https://t....; source URL: https://video.twimg.com/ext_tw_video/1358524297061543936/pu/vid/1280x720/rXl5IKvV1rzZl0_X.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_1358524297061543936.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 105.6s; 11.76 MiB; archived; tweet context: All week we've taught you about misperceptions of #humantrafficking and how to spot potential victims. Now, take an insider’s look at HOW #HSI and its partners conduct human trafficking investigations. #HSIatSB55 Learn more: https://xsm.link/mhed8j https://t....; source URL: https://video.twimg.com/ext_tw_video/1358524297061543936/pu/vid/1280x720/rXl5IKvV1rzZl0_X.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_1358524297061543936.mp4; needs OCR, transcript, or frame-level vision b"
     },
     {
       "tweet_id": "1358538936222703616",
@@ -21609,10 +21667,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -21717,10 +21773,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -22009,10 +22063,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -22184,10 +22236,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -22934,6 +22984,49 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 126.8s; 9.50 MiB; archived; tweet context: Learn more about the denaturalization of immigrants who fraudulently gained U.S. citizenship and ICE’s role in the process. ⬇️ https://t.co/CyE3sTod7w; source URL: https://video.twimg.com/ext_tw_video/2057129281994584064/pu/vid/avc1/1280x720/Nqiw8CKbyafnEYU6.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2057129281994584064.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1280x720; 126.8s; 9.50 MiB; archived; tweet context: Learn more about the denaturalization of immigrants who fraudulently gained U.S. citizenship and ICE’s role in the process. ⬇️ https://t.co/CyE3sTod7w; source URL: https://video.twimg.com/ext_tw_video/2057129281994584064/pu/vid/avc1/1280x720/Nqiw8CKbyafnEYU6.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2057129281994584064.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. Learn more about the denaturalization of immigrants who fraudulently gained U.S. citizensh"
+    },
+    {
+      "tweet_id": "2057900574268375128",
+      "account_handle": "ICEgov",
+      "posted_at": "2026-05-22T19:05:05.000Z",
+      "tweet_url": "https://x.com/ICEgov/status/2057900574268375128",
+      "tweet_text": "Not everyone online is who they say they are. 🚨\n\nKendall Carter is serving 30 years in federal prison for victimizing more than a dozen teens and children.\n\nHis case from @DHSgov’s national public awareness campaign, @Know2Protect, is a powerful reminder: Offenders often use fake profiles to manipulate and exploit kids online.\n\nHelp young people spot #FakeProfiles before harm happens using the Tips2Identify Fake Profiles resource at http://dhs.gov/know2protect/publication/fake-profiles #K2PAnniversary",
+      "media_id": "7_2057899356548640768",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-ICEgov/7_2057899356548640768.mp4",
+      "duration_sec": 61.02,
+      "width": 608,
+      "height": 1080,
+      "like_count": 102,
+      "retweet_count": 32,
+      "bucket": "produced-video",
+      "priority": 85,
+      "tags": [
+        "agency:DHSgov",
+        "audio:has-audio",
+        "genre:psa",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "genre_tags": [
+        "genre:psa"
+      ],
+      "produced_video_tags": [
+        "video:produced"
+      ],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 608x1080; 61.0s; 5.46 MiB; archived; tweet context: Not everyone online is who they say they are. 🚨 Kendall Carter is serving 30 years in federal prison for victimizing more than a dozen teens and children. His case from @DHSgov’s national public awareness campaign, @Know2Protect, is a powerful reminder: Offen...; source URL: https://video.twimg.com/ext_tw_video/2057899356548640768/pu/vid/avc1/608x1080/Z7L1l0sVdDVztBZw.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2057899356548640768.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 608x1080; 61.0s; 5.46 MiB; archived; tweet context: Not everyone online is who they say they are. 🚨 Kendall Carter is serving 30 years in federal prison for victimizing more than a dozen teens and children. His case from @DHSgov’s national public awareness campaign, @Know2Protect, is a powerful reminder: Offen...; source URL: https://video.twimg.com/ext_tw_video/2057899356548640768/pu/vid/avc1/608x1080/Z7L1l0sVdDVztBZw.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2057899356548640768.mp4; needs OCR, transcript, or frame-level vi"
     },
     {
       "tweet_id": "1620816038312177664",
@@ -32600,7 +32693,7 @@
       "tweet_text": "This is our homeland. We have to defend it. https://t.co/sFvrTVMjjA",
       "media_id": "13_2001781954853605376",
       "media_type": "video",
-      "archive_status": "pending",
+      "archive_status": "expired",
       "release_asset_url": null,
       "duration_sec": 15.0,
       "width": 720,
@@ -32633,7 +32726,7 @@
       "tweet_text": "RT @DHSgov: Total Victory. No Retreat.\n\nAmerica Is Back. https://t.co/yND6QJvLAH",
       "media_id": "13_2026344232970059776",
       "media_type": "video",
-      "archive_status": "pending",
+      "archive_status": "expired",
       "release_asset_url": null,
       "duration_sec": 62.1,
       "width": 1080,
@@ -32668,7 +32761,7 @@
       "tweet_text": "ICE is HOT.\n\nhttp://JOIN.ICE.GOV https://t.co/0rHjdDvVOb",
       "media_id": "13_2042613720128385024",
       "media_type": "video",
-      "archive_status": "pending",
+      "archive_status": "expired",
       "release_asset_url": null,
       "duration_sec": 20.033,
       "width": 1080,
@@ -32711,7 +32804,7 @@
       "tweet_text": "GOD BLESS AMERICA AND THE PATRIOTS DEFENDING OUR HOMELAND 🇺🇸 https://t.co/MTTRr0YOgD",
       "media_id": "13_2047107850183344128",
       "media_type": "video",
-      "archive_status": "pending",
+      "archive_status": "expired",
       "release_asset_url": null,
       "duration_sec": 36.366,
       "width": 1080,
@@ -32745,7 +32838,7 @@
       "tweet_text": "RT @DHSgov: GOD BLESS AMERICA AND THE PATRIOTS DEFENDING OUR HOMELAND 🇺🇸 https://t.co/MTTRr0YOgD",
       "media_id": "13_2047107850183344128",
       "media_type": "video",
-      "archive_status": "pending",
+      "archive_status": "expired",
       "release_asset_url": null,
       "duration_sec": 36.366,
       "width": 1080,
@@ -33009,567 +33102,6 @@
       "description": ""
     },
     {
-      "tweet_id": "2057881803474481585",
-      "account_handle": "GregoryKBovino",
-      "posted_at": "2026-05-22T17:50:30.000Z",
-      "tweet_url": "https://x.com/GregoryKBovino/status/2057881803474481585",
-      "tweet_text": "Mass deportations stopped because of this??? \n\n@LaurenWitzkeDE \n\nhttps://www.breitbart.com/border/2026/05/22/exclusive-retired-border-patrol-chief-bovino-receives-cold-welcome-from-north-carolina-leftists/ https://t.co/BK8FyIIYuV",
-      "media_id": "13_2057881674432548864",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 107.6,
-      "width": 640,
-      "height": 360,
-      "like_count": 1521,
-      "retweet_count": 274,
-      "bucket": "missing-media",
-      "priority": 60,
-      "tags": [
-        "policy:border",
-        "slogan:mass-deportation",
-        "topic:immigration",
-        "video:medium",
-        "video:news-clip"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "2057881958785458645",
-      "account_handle": "RapidResponse47",
-      "posted_at": "2026-05-22T17:51:07.000Z",
-      "tweet_url": "https://x.com/RapidResponse47/status/2057881958785458645",
-      "tweet_text": ".@POTUS departs for New York, where he'll deliver remarks on the economy at Rockland Community College in Suffern 🛫 https://t.co/R1PQO7tIlx",
-      "media_id": "13_2057881905618362368",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 8.775,
-      "width": 1280,
-      "height": 720,
-      "like_count": 2403,
-      "retweet_count": 456,
-      "bucket": "missing-media",
-      "priority": 60,
-      "tags": [
-        "agency:POTUS",
-        "speaker:President Trump",
-        "topic:economy",
-        "video:short",
-        "video:speech"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "2057922427691106486",
-      "account_handle": "WhiteHouse",
-      "posted_at": "2026-05-22T20:31:55.000Z",
-      "tweet_url": "https://x.com/WhiteHouse/status/2057922427691106486",
-      "tweet_text": "NOW at Rockland Community College in New York, New York Giants Quarterback @JaxsonDart introduces President Donald J. Trump. 🔥🇺🇸 https://t.co/cGYL2DsZmv",
-      "media_id": "13_2057922064057561088",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 54.921,
-      "width": 1280,
-      "height": 720,
-      "like_count": 6484,
-      "retweet_count": 972,
-      "bucket": "missing-media",
-      "priority": 60,
-      "tags": [
-        "state:New-York",
-        "topic:immigration",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "2057923004835749982",
-      "account_handle": "WhiteHouse",
-      "posted_at": "2026-05-22T20:34:13.000Z",
-      "tweet_url": "https://x.com/WhiteHouse/status/2057923004835749982",
-      "tweet_text": "MAKE NEW YORK GREAT AGAIN! 🇺🇸🗽 https://t.co/7MvSuklIPR",
-      "media_id": "13_2057922616179011584",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 56.431,
-      "width": 1080,
-      "height": 1080,
-      "like_count": 7006,
-      "retweet_count": 1534,
-      "bucket": "missing-media",
-      "priority": 60,
-      "tags": [
-        "topic:immigration",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "2057926100655751217",
-      "account_handle": "WhiteHouse",
-      "posted_at": "2026-05-22T20:46:31.000Z",
-      "tweet_url": "https://x.com/WhiteHouse/status/2057926100655751217",
-      "tweet_text": "RECORD tax cuts. Boosting household take-home-pay. President Trump is fighting for American workers.  https://t.co/eSVOODqnGr",
-      "media_id": "13_2057919401559515136",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 34.067,
-      "width": 1280,
-      "height": 720,
-      "like_count": 3898,
-      "retweet_count": 759,
-      "bucket": "missing-media",
-      "priority": 60,
-      "tags": [
-        "topic:economy",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "2057931135972237501",
-      "account_handle": "RapidResponse47",
-      "posted_at": "2026-05-22T21:06:31.000Z",
-      "tweet_url": "https://x.com/RapidResponse47/status/2057931135972237501",
-      "tweet_text": ".@POTUS tells the mother of Welles Crowther — the 24-year-old \"Man in the Red Bandana\" who heroically gave his own life to save 18 people on 9/11 — that Welles will be posthumously awarded the Presidential Medal of Freedom ❤️🇺🇸 https://t.co/ogAsfyqpB0",
-      "media_id": "13_2057930878165110784",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 290.323,
-      "width": 1280,
-      "height": 720,
-      "like_count": 9528,
-      "retweet_count": 1253,
-      "bucket": "missing-media",
-      "priority": 60,
-      "tags": [
-        "agency:POTUS",
-        "speaker:President Trump",
-        "topic:immigration",
-        "video:long"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "2057968856161780061",
-      "account_handle": "WhiteHouse",
-      "posted_at": "2026-05-22T23:36:25.000Z",
-      "tweet_url": "https://x.com/WhiteHouse/status/2057968856161780061",
-      "tweet_text": "Bye-bye 👋 https://t.co/5dPeXDflyh",
-      "media_id": "13_2057968778395160576",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 22.366,
-      "width": 640,
-      "height": 420,
-      "like_count": 90692,
-      "retweet_count": 9931,
-      "bucket": "missing-media",
-      "priority": 60,
-      "tags": [
-        "topic:immigration",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "2058192944033677447",
-      "account_handle": "WhiteHouse",
-      "posted_at": "2026-05-23T14:26:51.000Z",
-      "tweet_url": "https://x.com/WhiteHouse/status/2058192944033677447",
-      "tweet_text": "RT @DHSgov: Honor the lions who defend our homeland.\n\nHave a blessed Memorial Day Weekend, patriots. https://t.co/FPtGMKL8zw",
-      "media_id": "13_2057940770452066304",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 31.031,
-      "width": 1080,
-      "height": 1920,
-      "like_count": 4820,
-      "retweet_count": 1092,
-      "bucket": "missing-media",
-      "priority": 60,
-      "tags": [
-        "agency:DHSgov",
-        "format:retweet",
-        "theme:religion",
-        "topic:immigration",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "2058216465359110473",
-      "account_handle": "WhiteHouse",
-      "posted_at": "2026-05-23T16:00:19.000Z",
-      "tweet_url": "https://x.com/WhiteHouse/status/2058216465359110473",
-      "tweet_text": "Kevin Warsh has been sworn in as the 17th Chairman of the Federal Reserve. 🇺🇸 https://t.co/0gIOh1dUss",
-      "media_id": "13_2058214734390759424",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 29.31,
-      "width": 4096,
-      "height": 2160,
-      "like_count": 20934,
-      "retweet_count": 3114,
-      "bucket": "missing-media",
-      "priority": 60,
-      "tags": [
-        "topic:immigration",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "2058219205091103050",
-      "account_handle": "WhiteHouse",
-      "posted_at": "2026-05-23T16:11:13.000Z",
-      "tweet_url": "https://x.com/WhiteHouse/status/2058219205091103050",
-      "tweet_text": "RT @DOWResponse: CONGRATULATIONS TO THE CLASS OF 2026—JOB WELL DONE!!! https://t.co/AjVk4zlRxn",
-      "media_id": "13_2058216651330400256",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 27.495,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 8583,
-      "retweet_count": 1200,
-      "bucket": "missing-media",
-      "priority": 60,
-      "tags": [
-        "format:retweet",
-        "topic:economy",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "687280306467028992",
-      "account_handle": "DHSgov",
-      "posted_at": "2016-01-13T14:29:28.000Z",
-      "tweet_url": "https://x.com/DHSgov/status/687280306467028992",
-      "tweet_text": "Secretary Johnson just landed in Michigan for @WhiteHouse Cabinet in Your Community engagements. #DHSinDearborn https://t.co/l8tjpsTNi6",
-      "media_id": "7_687279870783561728",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 13.533,
-      "width": 576,
-      "height": 320,
-      "like_count": 0,
-      "retweet_count": 0,
-      "bucket": "missing-media",
-      "priority": 55,
-      "tags": [
-        "agency:WhiteHouse",
-        "topic:immigration",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "1356614734242603016",
-      "account_handle": "ICEgov",
-      "posted_at": "2021-02-02T14:45:31.000Z",
-      "tweet_url": "https://x.com/ICEgov/status/1356614734242603016",
-      "tweet_text": "Day 1 of #HSIatSB55 is in the books. #ICYMI catch up on how #HSI and @IPRCenter crack down on sham sports apparel and merch to ensure you're getting what you paid for: https://xsm.link/qbe4y4\n\n👉 Continue to follow us here or @HSITampa for the latest from #SBLV https://t.co/11lbpVcguO",
-      "media_id": "7_1356614697215262727",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 18.085,
-      "width": 1280,
-      "height": 720,
-      "like_count": 0,
-      "retweet_count": 0,
-      "bucket": "missing-media",
-      "priority": 55,
-      "tags": [
-        "agency:IPRCenter",
-        "topic:immigration",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "1356750996077236229",
-      "account_handle": "ICEgov",
-      "posted_at": "2021-02-02T23:46:59.000Z",
-      "tweet_url": "https://x.com/ICEgov/status/1356750996077236229",
-      "tweet_text": "Take an insider’s look at an int’l parcel sort facility where #HSI @IPRCenter @HSITampa @CBP @TampaPD @HCSOSheriffand and other law enforcement partners search for #SBLV fakes. Spoiler 🚨 – if it sounds too good to be true, it probably is. #HSIatSB55 https://t.co/Iy2JxrzYjN",
-      "media_id": "7_1356750927596781568",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 87.855,
-      "width": 1280,
-      "height": 720,
-      "like_count": 0,
-      "retweet_count": 0,
-      "bucket": "missing-media",
-      "priority": 55,
-      "tags": [
-        "agency:CBP",
-        "agency:IPRCenter",
-        "topic:immigration",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "1357123335704969220",
-      "account_handle": "ICEgov",
-      "posted_at": "2021-02-04T00:26:32.000Z",
-      "tweet_url": "https://x.com/ICEgov/status/1357123335704969220",
-      "tweet_text": "Since the conclusion of Super Bowl LIV, #OperationTeamPlayer has resulted in the seizure of nearly 169K+ counterfeit goods worth nearly $45M. @IPRCenter director explains why those numbers will increase as #SBLV week goes on. #HSIatSB55. Learn more: https://xsm.link/x548wp https://t.co/J87JmAWc4e",
-      "media_id": "7_1357123269275582464",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 87.154,
-      "width": 1280,
-      "height": 720,
-      "like_count": 0,
-      "retweet_count": 0,
-      "bucket": "missing-media",
-      "priority": 55,
-      "tags": [
-        "agency:IPRCenter",
-        "genre:psa",
-        "video:medium",
-        "video:produced"
-      ],
-      "genre_tags": [
-        "genre:psa"
-      ],
-      "produced_video_tags": [
-        "video:produced"
-      ],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "1358524393052381185",
-      "account_handle": "ICEgov",
-      "posted_at": "2021-02-07T21:13:50.000Z",
-      "tweet_url": "https://x.com/ICEgov/status/1358524393052381185",
-      "tweet_text": "All week we've taught you about misperceptions of #humantrafficking and how to spot potential victims. Now, take an insider’s look at HOW #HSI and its partners conduct human trafficking investigations. #HSIatSB55 Learn more: https://xsm.link/mhed8j https://t.co/2sksRQ1l7w",
-      "media_id": "7_1358524297061543936",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 105.589,
-      "width": 1280,
-      "height": 720,
-      "like_count": 0,
-      "retweet_count": 0,
-      "bucket": "missing-media",
-      "priority": 55,
-      "tags": [
-        "crime:trafficking",
-        "genre:psa",
-        "topic:immigration",
-        "video:medium",
-        "video:produced"
-      ],
-      "genre_tags": [
-        "genre:psa"
-      ],
-      "produced_video_tags": [
-        "video:produced"
-      ],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "1475988322405212164",
-      "account_handle": "ICEgov",
-      "posted_at": "2021-12-29T00:33:33.000Z",
-      "tweet_url": "https://x.com/ICEgov/status/1475988322405212164",
-      "tweet_text": "ICE @HSISeattle and #HSI Nairobi agents helped spearhead 2 Seattle arrests and recover $3.5M in ivory, rhino horn and pangolin scale seizures in the Democratic Republic of Congo connected to wildlife trafficking. Details: https://xsm.link/gw2lm9\n\n🎥 Pangolin https://t.co/M0smtjRaCz",
-      "media_id": "7_1475988283020697612",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 9.728,
-      "width": 1280,
-      "height": 720,
-      "like_count": 0,
-      "retweet_count": 0,
-      "bucket": "missing-media",
-      "priority": 55,
-      "tags": [
-        "agency:ICEgov",
-        "country:Congo",
-        "crime:trafficking",
-        "topic:immigration",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
       "tweet_id": "1476214206336843778",
       "account_handle": "CBP",
       "posted_at": "2021-12-29T15:31:08.000Z",
@@ -33607,115 +33139,6 @@
       "has_vision_description": false,
       "has_ocr": false,
       "description": "Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
-    },
-    {
-      "tweet_id": "1905001909624115640",
-      "account_handle": "ICEgov",
-      "posted_at": "2025-03-26T21:00:23.000Z",
-      "tweet_url": "https://x.com/ICEgov/status/1905001909624115640",
-      "tweet_text": "ICYMI Honduran criminal fugitive Eswin Meija who killed 21-year-old Sarah Root of Omaha in a drunk driving crash was extradited to the U.S. last week after nine years on the run. https://t.co/sG5FOhtZvS",
-      "media_id": "7_1905000667900432384",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 15.1,
-      "width": 720,
-      "height": 1280,
-      "like_count": 0,
-      "retweet_count": 0,
-      "bucket": "missing-media",
-      "priority": 55,
-      "tags": [
-        "country:Honduras",
-        "topic:immigration",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "1978118599404388804",
-      "account_handle": "ICEgov",
-      "posted_at": "2025-10-14T15:20:00.000Z",
-      "tweet_url": "https://x.com/ICEgov/status/1978118599404388804",
-      "tweet_text": "Listen to Acting ICE Director Todd Lyons:\n\n➡️ Disclose the intel that triggered the multiagency raid on the Chicago apartment complex\n➡️Respond to accusations of racial profiling\n➡️Challenge city leaders to turn over violent criminal aliens to ICE instead of releasing them into the community",
-      "media_id": "13_1978090335977738240",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 736.192,
-      "width": 1080,
-      "height": 1920,
-      "like_count": 764,
-      "retweet_count": 210,
-      "bucket": "missing-media",
-      "priority": 55,
-      "tags": [
-        "agency:ICEgov",
-        "theme:criminal",
-        "topic:immigration",
-        "video:long"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "2057900574268375128",
-      "account_handle": "ICEgov",
-      "posted_at": "2026-05-22T19:05:05.000Z",
-      "tweet_url": "https://x.com/ICEgov/status/2057900574268375128",
-      "tweet_text": "Not everyone online is who they say they are. 🚨\n\nKendall Carter is serving 30 years in federal prison for victimizing more than a dozen teens and children.\n\nHis case from @DHSgov’s national public awareness campaign, @Know2Protect, is a powerful reminder: Offenders often use fake profiles to manipulate and exploit kids online.\n\nHelp young people spot #FakeProfiles before harm happens using the Tips2Identify Fake Profiles resource at http://dhs.gov/know2protect/publication/fake-profiles #K2PAnniversary",
-      "media_id": "7_2057899356548640768",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 61.02,
-      "width": 608,
-      "height": 1080,
-      "like_count": 102,
-      "retweet_count": 32,
-      "bucket": "missing-media",
-      "priority": 55,
-      "tags": [
-        "agency:DHSgov",
-        "genre:psa",
-        "topic:immigration",
-        "video:medium",
-        "video:produced"
-      ],
-      "genre_tags": [
-        "genre:psa"
-      ],
-      "produced_video_tags": [
-        "video:produced"
-      ],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
     },
     {
       "tweet_id": "2054746869255778586",
@@ -35014,10 +34437,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35063,10 +34484,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35101,10 +34520,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35159,10 +34576,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35205,10 +34620,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35249,10 +34662,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35294,10 +34705,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35343,10 +34752,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35387,10 +34794,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35426,10 +34831,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35471,10 +34874,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35508,10 +34909,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35555,10 +34954,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35596,10 +34993,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35691,10 +35086,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35733,10 +35126,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35771,10 +35162,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35820,10 +35209,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35862,10 +35249,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35930,10 +35315,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -35976,10 +35359,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36013,10 +35394,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36058,10 +35437,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36197,10 +35574,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36236,10 +35611,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36280,10 +35653,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36325,10 +35696,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36363,10 +35732,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36417,10 +35784,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36466,10 +35831,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36516,10 +35879,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36558,10 +35919,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36757,10 +36116,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36793,10 +36150,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36834,10 +36189,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36894,10 +36247,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -37449,10 +36800,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -37842,10 +37191,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38059,10 +37406,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38104,10 +37449,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38223,10 +37566,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38312,10 +37653,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38394,10 +37733,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38434,10 +37771,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38566,10 +37901,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38642,10 +37975,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38720,10 +38051,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38764,10 +38093,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38809,10 +38136,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38896,10 +38221,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39008,10 +38331,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39045,10 +38366,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39098,10 +38417,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39136,10 +38453,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39228,10 +38543,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39313,10 +38626,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39350,10 +38661,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39399,10 +38708,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39472,10 +38779,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39524,10 +38829,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39607,10 +38910,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39646,10 +38947,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39688,10 +38987,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39726,10 +39023,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39776,10 +39071,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39815,10 +39108,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39858,10 +39149,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39906,10 +39195,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39943,10 +39230,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -40021,10 +39306,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -40067,10 +39350,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -40153,10 +39434,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -40194,10 +39473,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -40239,10 +39516,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -40285,10 +39560,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -40323,10 +39596,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -40558,10 +39829,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -40644,10 +39913,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -40682,10 +39949,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -40841,10 +40106,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -40894,10 +40157,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -40940,10 +40201,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -41024,10 +40283,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -41077,10 +40334,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -41116,10 +40371,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -41403,10 +40656,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -41453,10 +40704,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -41623,10 +40872,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -41774,6 +41021,7 @@
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
+        "theme:religion",
         "topic:immigration",
         "video:medium"
       ],
@@ -41819,10 +41067,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -42112,10 +41358,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -42156,10 +41400,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -42248,10 +41490,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -42324,7 +41564,9 @@
         "media:video",
         "slogan:illegal-alien",
         "theme:criminal",
+        "theme:martyrdom",
         "topic:immigration",
+        "video:news-clip",
         "video:short"
       ],
       "genre_tags": [],
@@ -43521,14 +42763,17 @@
       "priority": 35,
       "tags": [
         "action:deportation",
+        "action:self-deportation",
         "agency:DHSgov",
         "audio:has-audio",
         "format:retweet",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
+        "policy:cbp-home",
         "slogan:illegal-alien",
         "theme:criminal",
+        "topic:economy",
         "topic:immigration",
         "video:short"
       ],
@@ -51999,6 +51244,8 @@
       "tags": [
         "agency:DHSgov",
         "audio:has-audio",
+        "crime:homicide",
+        "crime:murder",
         "format:retweet",
         "media-status:archived",
         "media-status:needs-vision",
@@ -54335,6 +53582,8 @@
         "media-status:described",
         "media:video",
         "speaker:Vice President Vance",
+        "theme:nativism",
+        "topic:economy",
         "topic:immigration",
         "video:medium",
         "video:speech"
@@ -55066,6 +54315,416 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 640x360; 50.5s; 1.53 MiB; archived; tweet context: .@ICEgov is working everyday to arrest violent, depraved criminals who NEVER should have been in our country in the first place. Under @POTUS Trump and @SecMullinDHS, we will continue Making America Safe Again. https://t.co/cgT3Aii6Nd; source URL: https://video.twimg.com/amplify_video/2057806299849478144/vid/avc1/640x360/NLbVLNVPM9Z8rbxm.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/13_2057806299849478144.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 640x360; 50.5s; 1.53 MiB; archived; tweet context: .@ICEgov is working everyday to arrest violent, depraved criminals who NEVER should have been in our country in the first place. Under @POTUS Trump and @SecMullinDHS, we will continue Making America Safe Again. https://t.co/cgT3Aii6Nd; source URL: https://video.twimg.com/amplify_video/2057806299849478144/vid/avc1/640x360/NLbVLNVPM9Z8rbxm.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/13_2057806299849478144.mp4; needs OCR, transcript, or frame-level vision before content claims. .@ICEgov is working ever"
+    },
+    {
+      "tweet_id": "2057881803474481585",
+      "account_handle": "GregoryKBovino",
+      "posted_at": "2026-05-22T17:50:30.000Z",
+      "tweet_url": "https://x.com/GregoryKBovino/status/2057881803474481585",
+      "tweet_text": "Mass deportations stopped because of this??? \n\n@LaurenWitzkeDE \n\nhttps://www.breitbart.com/border/2026/05/22/exclusive-retired-border-patrol-chief-bovino-receives-cold-welcome-from-north-carolina-leftists/ https://t.co/BK8FyIIYuV",
+      "media_id": "13_2057881674432548864",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-GregoryKBovino/13_2057881674432548864.mp4",
+      "duration_sec": 107.6,
+      "width": 640,
+      "height": 360,
+      "like_count": 1521,
+      "retweet_count": 274,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "policy:border",
+        "slogan:mass-deportation",
+        "topic:immigration",
+        "video:medium",
+        "video:news-clip"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 640x360; 107.6s; 3.40 MiB; archived; tweet context: Mass deportations stopped because of this??? @LaurenWitzkeDE https://www.breitbart.com/border/2026/05/22/exclusive-retired-border-patrol-chief-bovino-receives-cold-welcome-from-north-carolina-leftists/ https://t.co/BK8FyIIYuV; source URL: https://video.twimg.com/amplify_video/2057881674432548864/vid/avc1/640x360/NadZjF1m_ck5W_Zo.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-GregoryKBovino/13_2057881674432548864.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 640x360; 107.6s; 3.40 MiB; archived; tweet context: Mass deportations stopped because of this??? @LaurenWitzkeDE https://www.breitbart.com/border/2026/05/22/exclusive-retired-border-patrol-chief-bovino-receives-cold-welcome-from-north-carolina-leftists/ https://t.co/BK8FyIIYuV; source URL: https://video.twimg.com/amplify_video/2057881674432548864/vid/avc1/640x360/NadZjF1m_ck5W_Zo.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-GregoryKBovino/13_2057881674432548864.mp4; needs OCR, transcript, or frame-level vision before content claims. Mass deportations stopped because "
+    },
+    {
+      "tweet_id": "2057881958785458645",
+      "account_handle": "RapidResponse47",
+      "posted_at": "2026-05-22T17:51:07.000Z",
+      "tweet_url": "https://x.com/RapidResponse47/status/2057881958785458645",
+      "tweet_text": ".@POTUS departs for New York, where he'll deliver remarks on the economy at Rockland Community College in Suffern 🛫 https://t.co/R1PQO7tIlx",
+      "media_id": "13_2057881905618362368",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2057881905618362368.mp4",
+      "duration_sec": 8.775,
+      "width": 1280,
+      "height": 720,
+      "like_count": 2403,
+      "retweet_count": 456,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "agency:POTUS",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "speaker:President Trump",
+        "topic:economy",
+        "video:short",
+        "video:speech"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 8.8s; 0.89 MiB; archived; tweet context: .@POTUS departs for New York, where he'll deliver remarks on the economy at Rockland Community College in Suffern 🛫 https://t.co/R1PQO7tIlx; source URL: https://video.twimg.com/amplify_video/2057881905618362368/vid/avc1/1280x720/LbclZbp9XA3Hbvkd.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2057881905618362368.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 8.8s; 0.89 MiB; archived; tweet context: .@POTUS departs for New York, where he'll deliver remarks on the economy at Rockland Community College in Suffern 🛫 https://t.co/R1PQO7tIlx; source URL: https://video.twimg.com/amplify_video/2057881905618362368/vid/avc1/1280x720/LbclZbp9XA3Hbvkd.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2057881905618362368.mp4; needs OCR, transcript, or frame-level vision before content claims. .@POTUS departs for New York, where he'll deliver remarks on the economy at Rockland Community College in Suffern 🛫 https://t.co/R1PQO7tIlx"
+    },
+    {
+      "tweet_id": "2057922427691106486",
+      "account_handle": "WhiteHouse",
+      "posted_at": "2026-05-22T20:31:55.000Z",
+      "tweet_url": "https://x.com/WhiteHouse/status/2057922427691106486",
+      "tweet_text": "NOW at Rockland Community College in New York, New York Giants Quarterback @JaxsonDart introduces President Donald J. Trump. 🔥🇺🇸 https://t.co/cGYL2DsZmv",
+      "media_id": "13_2057922064057561088",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057922064057561088.mp4",
+      "duration_sec": 54.921,
+      "width": 1280,
+      "height": 720,
+      "like_count": 6484,
+      "retweet_count": 972,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "state:New-York",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 54.9s; 7.45 MiB; archived; tweet context: NOW at Rockland Community College in New York, New York Giants Quarterback @JaxsonDart introduces President Donald J. Trump. 🔥🇺🇸 https://t.co/cGYL2DsZmv; source URL: https://video.twimg.com/amplify_video/2057922064057561088/vid/avc1/1280x720/Dd_NDWbFbWoH6ka3.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057922064057561088.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 54.9s; 7.45 MiB; archived; tweet context: NOW at Rockland Community College in New York, New York Giants Quarterback @JaxsonDart introduces President Donald J. Trump. 🔥🇺🇸 https://t.co/cGYL2DsZmv; source URL: https://video.twimg.com/amplify_video/2057922064057561088/vid/avc1/1280x720/Dd_NDWbFbWoH6ka3.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057922064057561088.mp4; needs OCR, transcript, or frame-level vision before content claims. NOW at Rockland Community College in New York, New York Giants Quarterback @JaxsonDart introduces President Donald J. Trump. 🔥🇺🇸 https://t.co/cGYL2DsZmv"
+    },
+    {
+      "tweet_id": "2057923004835749982",
+      "account_handle": "WhiteHouse",
+      "posted_at": "2026-05-22T20:34:13.000Z",
+      "tweet_url": "https://x.com/WhiteHouse/status/2057923004835749982",
+      "tweet_text": "MAKE NEW YORK GREAT AGAIN! 🇺🇸🗽 https://t.co/7MvSuklIPR",
+      "media_id": "13_2057922616179011584",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057922616179011584.mp4",
+      "duration_sec": 56.431,
+      "width": 1080,
+      "height": 1080,
+      "like_count": 7006,
+      "retweet_count": 1534,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1080x1080; 56.4s; 5.86 MiB; archived; tweet context: MAKE NEW YORK GREAT AGAIN! 🇺🇸🗽 https://t.co/7MvSuklIPR; source URL: https://video.twimg.com/amplify_video/2057922616179011584/vid/avc1/1080x1080/xrXdGoT8MtGBwbrE.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057922616179011584.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1080; 56.4s; 5.86 MiB; archived; tweet context: MAKE NEW YORK GREAT AGAIN! 🇺🇸🗽 https://t.co/7MvSuklIPR; source URL: https://video.twimg.com/amplify_video/2057922616179011584/vid/avc1/1080x1080/xrXdGoT8MtGBwbrE.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057922616179011584.mp4; needs OCR, transcript, or frame-level vision before content claims. MAKE NEW YORK GREAT AGAIN! 🇺🇸🗽 https://t.co/7MvSuklIPR"
+    },
+    {
+      "tweet_id": "2057926100655751217",
+      "account_handle": "WhiteHouse",
+      "posted_at": "2026-05-22T20:46:31.000Z",
+      "tweet_url": "https://x.com/WhiteHouse/status/2057926100655751217",
+      "tweet_text": "RECORD tax cuts. Boosting household take-home-pay. President Trump is fighting for American workers.  https://t.co/eSVOODqnGr",
+      "media_id": "13_2057919401559515136",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057919401559515136.mp4",
+      "duration_sec": 34.067,
+      "width": 1280,
+      "height": 720,
+      "like_count": 3898,
+      "retweet_count": 759,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:economy",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 34.1s; 3.77 MiB; archived; tweet context: RECORD tax cuts. Boosting household take-home-pay. President Trump is fighting for American workers. https://t.co/eSVOODqnGr; source URL: https://video.twimg.com/amplify_video/2057919401559515136/vid/avc1/1280x720/qSS6mh2oy9bEQTv3.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057919401559515136.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 34.1s; 3.77 MiB; archived; tweet context: RECORD tax cuts. Boosting household take-home-pay. President Trump is fighting for American workers. https://t.co/eSVOODqnGr; source URL: https://video.twimg.com/amplify_video/2057919401559515136/vid/avc1/1280x720/qSS6mh2oy9bEQTv3.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057919401559515136.mp4; needs OCR, transcript, or frame-level vision before content claims. RECORD tax cuts. Boosting household take-home-pay. President Trump is fighting for American workers. https://t.co/eSVOODqnGr"
+    },
+    {
+      "tweet_id": "2057931135972237501",
+      "account_handle": "RapidResponse47",
+      "posted_at": "2026-05-22T21:06:31.000Z",
+      "tweet_url": "https://x.com/RapidResponse47/status/2057931135972237501",
+      "tweet_text": ".@POTUS tells the mother of Welles Crowther — the 24-year-old \"Man in the Red Bandana\" who heroically gave his own life to save 18 people on 9/11 — that Welles will be posthumously awarded the Presidential Medal of Freedom ❤️🇺🇸 https://t.co/ogAsfyqpB0",
+      "media_id": "13_2057930878165110784",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2057930878165110784.mp4",
+      "duration_sec": 290.323,
+      "width": 1280,
+      "height": 720,
+      "like_count": 9528,
+      "retweet_count": 1253,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "agency:POTUS",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "speaker:President Trump",
+        "topic:immigration",
+        "video:long"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 290.3s; 27.55 MiB; archived; tweet context: .@POTUS tells the mother of Welles Crowther — the 24-year-old \"Man in the Red Bandana\" who heroically gave his own life to save 18 people on 9/11 — that Welles will be posthumously awarded the Presidential Medal of Freedom ❤️🇺🇸 https://t.co/ogAsfyqpB0; source URL: https://video.twimg.com/amplify_video/2057930878165110784/vid/avc1/1280x720/7fD381x6Gewuw18E.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2057930878165110784.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 290.3s; 27.55 MiB; archived; tweet context: .@POTUS tells the mother of Welles Crowther — the 24-year-old \"Man in the Red Bandana\" who heroically gave his own life to save 18 people on 9/11 — that Welles will be posthumously awarded the Presidential Medal of Freedom ❤️🇺🇸 https://t.co/ogAsfyqpB0; source URL: https://video.twimg.com/amplify_video/2057930878165110784/vid/avc1/1280x720/7fD381x6Gewuw18E.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2057930878165110784.mp4; needs OCR, transcript, or frame-level visi"
+    },
+    {
+      "tweet_id": "2057968856161780061",
+      "account_handle": "WhiteHouse",
+      "posted_at": "2026-05-22T23:36:25.000Z",
+      "tweet_url": "https://x.com/WhiteHouse/status/2057968856161780061",
+      "tweet_text": "Bye-bye 👋 https://t.co/5dPeXDflyh",
+      "media_id": "13_2057968778395160576",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057968778395160576.mp4",
+      "duration_sec": 22.366,
+      "width": 640,
+      "height": 420,
+      "like_count": 90692,
+      "retweet_count": 9931,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 640x420; 22.4s; 1.00 MiB; archived; tweet context: Bye-bye 👋 https://t.co/5dPeXDflyh; source URL: https://video.twimg.com/amplify_video/2057968778395160576/vid/avc1/640x420/1kbh_W3ylgM3TTYR.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057968778395160576.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 640x420; 22.4s; 1.00 MiB; archived; tweet context: Bye-bye 👋 https://t.co/5dPeXDflyh; source URL: https://video.twimg.com/amplify_video/2057968778395160576/vid/avc1/640x420/1kbh_W3ylgM3TTYR.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057968778395160576.mp4; needs OCR, transcript, or frame-level vision before content claims. Bye-bye 👋 https://t.co/5dPeXDflyh"
+    },
+    {
+      "tweet_id": "2058192944033677447",
+      "account_handle": "WhiteHouse",
+      "posted_at": "2026-05-23T14:26:51.000Z",
+      "tweet_url": "https://x.com/WhiteHouse/status/2058192944033677447",
+      "tweet_text": "RT @DHSgov: Honor the lions who defend our homeland.\n\nHave a blessed Memorial Day Weekend, patriots. https://t.co/FPtGMKL8zw",
+      "media_id": "13_2057940770452066304",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057940770452066304.mp4",
+      "duration_sec": 31.031,
+      "width": 1080,
+      "height": 1920,
+      "like_count": 4820,
+      "retweet_count": 1092,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "agency:DHSgov",
+        "audio:has-audio",
+        "format:retweet",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "theme:religion",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1080x1920; 31.0s; 18.69 MiB; archived; tweet context: RT @DHSgov: Honor the lions who defend our homeland. Have a blessed Memorial Day Weekend, patriots. https://t.co/FPtGMKL8zw; source URL: https://video.twimg.com/amplify_video/2057940770452066304/vid/avc1/1080x1920/qfCwxN7IQ1lmfjCs.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057940770452066304.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1920; 31.0s; 18.69 MiB; archived; tweet context: RT @DHSgov: Honor the lions who defend our homeland. Have a blessed Memorial Day Weekend, patriots. https://t.co/FPtGMKL8zw; source URL: https://video.twimg.com/amplify_video/2057940770452066304/vid/avc1/1080x1920/qfCwxN7IQ1lmfjCs.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2057940770452066304.mp4; needs OCR, transcript, or frame-level vision before content claims. RT @DHSgov: Honor the lions who defend our homeland. Have a blessed Memorial Day Weekend, patriots. https://t.co/FPtGMKL8zw"
+    },
+    {
+      "tweet_id": "2058216465359110473",
+      "account_handle": "WhiteHouse",
+      "posted_at": "2026-05-23T16:00:19.000Z",
+      "tweet_url": "https://x.com/WhiteHouse/status/2058216465359110473",
+      "tweet_text": "Kevin Warsh has been sworn in as the 17th Chairman of the Federal Reserve. 🇺🇸 https://t.co/0gIOh1dUss",
+      "media_id": "13_2058214734390759424",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2058214734390759424.mp4",
+      "duration_sec": 29.31,
+      "width": 4096,
+      "height": 2160,
+      "like_count": 20934,
+      "retweet_count": 3114,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 4096x2160; 29.3s; 13.98 MiB; archived; tweet context: Kevin Warsh has been sworn in as the 17th Chairman of the Federal Reserve. 🇺🇸 https://t.co/0gIOh1dUss; source URL: https://video.twimg.com/amplify_video/2058214734390759424/vid/avc1/4096x2160/aTBCEa6PBaM7TAKT.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2058214734390759424.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 4096x2160; 29.3s; 13.98 MiB; archived; tweet context: Kevin Warsh has been sworn in as the 17th Chairman of the Federal Reserve. 🇺🇸 https://t.co/0gIOh1dUss; source URL: https://video.twimg.com/amplify_video/2058214734390759424/vid/avc1/4096x2160/aTBCEa6PBaM7TAKT.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2058214734390759424.mp4; needs OCR, transcript, or frame-level vision before content claims. Kevin Warsh has been sworn in as the 17th Chairman of the Federal Reserve. 🇺🇸 https://t.co/0gIOh1dUss"
+    },
+    {
+      "tweet_id": "2058219205091103050",
+      "account_handle": "WhiteHouse",
+      "posted_at": "2026-05-23T16:11:13.000Z",
+      "tweet_url": "https://x.com/WhiteHouse/status/2058219205091103050",
+      "tweet_text": "RT @DOWResponse: CONGRATULATIONS TO THE CLASS OF 2026—JOB WELL DONE!!! https://t.co/AjVk4zlRxn",
+      "media_id": "13_2058216651330400256",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2058216651330400256.mp4",
+      "duration_sec": 27.495,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 8583,
+      "retweet_count": 1200,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "audio:has-audio",
+        "format:retweet",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:economy",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1920x1080; 27.5s; 17.10 MiB; archived; tweet context: RT @DOWResponse: CONGRATULATIONS TO THE CLASS OF 2026—JOB WELL DONE!!! https://t.co/AjVk4zlRxn; source URL: https://video.twimg.com/amplify_video/2058216651330400256/vid/avc1/1920x1080/TZ_CULOG94VHETRb.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2058216651330400256.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 27.5s; 17.10 MiB; archived; tweet context: RT @DOWResponse: CONGRATULATIONS TO THE CLASS OF 2026—JOB WELL DONE!!! https://t.co/AjVk4zlRxn; source URL: https://video.twimg.com/amplify_video/2058216651330400256/vid/avc1/1920x1080/TZ_CULOG94VHETRb.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2058216651330400256.mp4; needs OCR, transcript, or frame-level vision before content claims. RT @DOWResponse: CONGRATULATIONS TO THE CLASS OF 2026—JOB WELL DONE!!! https://t.co/AjVk4zlRxn"
+    },
+    {
+      "tweet_id": "687280306467028992",
+      "account_handle": "DHSgov",
+      "posted_at": "2016-01-13T14:29:28.000Z",
+      "tweet_url": "https://x.com/DHSgov/status/687280306467028992",
+      "tweet_text": "Secretary Johnson just landed in Michigan for @WhiteHouse Cabinet in Your Community engagements. #DHSinDearborn https://t.co/l8tjpsTNi6",
+      "media_id": "7_687279870783561728",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/7_687279870783561728.mp4",
+      "duration_sec": 13.533,
+      "width": 576,
+      "height": 320,
+      "like_count": 0,
+      "retweet_count": 0,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:WhiteHouse",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 576x320; 13.5s; 0.34 MiB; archived; tweet context: Secretary Johnson just landed in Michigan for @WhiteHouse Cabinet in Your Community engagements. #DHSinDearborn https://t.co/l8tjpsTNi6; source URL: https://video.twimg.com/ext_tw_video/687279870783561728/pu/vid/324x180/7Isc7Fst2PfJtAWv.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/7_687279870783561728.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 576x320; 13.5s; 0.34 MiB; archived; tweet context: Secretary Johnson just landed in Michigan for @WhiteHouse Cabinet in Your Community engagements. #DHSinDearborn https://t.co/l8tjpsTNi6; source URL: https://video.twimg.com/ext_tw_video/687279870783561728/pu/vid/324x180/7Isc7Fst2PfJtAWv.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/7_687279870783561728.mp4; needs OCR, transcript, or frame-level vision before content claims. Secretary Johnson just landed in Michigan for @WhiteHouse Cabinet in Your Community engagements. #DHSinDearborn https://t.co/l8tjpsTNi6"
     },
     {
       "tweet_id": "714520123365847040",
@@ -57048,7 +56707,8 @@
         "media:video",
         "theme:civil-disturbance",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:news-clip"
       ],
       "genre_tags": [],
       "produced_video_tags": [],
@@ -57085,7 +56745,8 @@
         "media-status:needs-vision",
         "media:video",
         "topic:immigration",
-        "video:medium"
+        "video:medium",
+        "video:news-clip"
       ],
       "genre_tags": [],
       "produced_video_tags": [],
@@ -57121,6 +56782,7 @@
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
+        "topic:economy",
         "topic:immigration",
         "video:medium"
       ],
@@ -57263,9 +56925,12 @@
       "tags": [
         "agency:FEMA",
         "audio:has-audio",
+        "country:Cuba",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
+        "state:Louisiana",
+        "topic:immigration",
         "video:long"
       ],
       "genre_tags": [],
@@ -57405,11 +57070,14 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "agency:DHSgov",
         "audio:has-audio",
         "crime:assault",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
+        "topic:economy",
+        "topic:general",
         "topic:immigration",
         "video:medium"
       ],
@@ -57442,7 +57110,10 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "agency:DHSgov",
         "audio:has-audio",
+        "country:Guatemala",
+        "country:Mexico",
         "crime:trafficking",
         "media-status:archived",
         "media-status:needs-vision",
@@ -57481,12 +57152,17 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "action:detention",
+        "agency:CBP",
         "audio:has-audio",
+        "format:statistics",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
+        "policy:border",
         "slogan:catch-release",
         "slogan:illegal-alien",
+        "subject:enforcement-op",
         "theme:criminal",
         "topic:immigration",
         "video:medium"
@@ -57524,9 +57200,16 @@
         "action:detention",
         "agency:ICEgov",
         "audio:has-audio",
+        "crime:gang",
+        "format:statistics",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
+        "policy:border",
+        "slogan:illegal-alien",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:general",
         "topic:immigration",
         "video:medium"
       ],
@@ -57559,12 +57242,15 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "agency:CBP",
         "agency:USBPChief",
         "audio:has-audio",
+        "country:Mexico",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
         "policy:border",
+        "theme:martyrdom",
         "topic:immigration",
         "video:medium"
       ],
@@ -57597,13 +57283,21 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "action:detention",
         "agency:CBP",
+        "agency:DHSgov",
         "audio:has-audio",
+        "crime:cocaine",
+        "crime:fentanyl",
+        "crime:narcotics",
+        "crime:trafficking",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
         "policy:border",
+        "topic:general",
         "topic:immigration",
+        "topic:military",
         "video:long"
       ],
       "genre_tags": [],
@@ -57635,12 +57329,18 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "action:deportation",
         "agency:CBP",
+        "agency:DHSgov",
         "audio:has-audio",
+        "format:statistics",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
         "policy:border",
+        "slogan:illegal-alien",
+        "theme:criminal",
+        "topic:general",
         "topic:immigration",
         "video:long"
       ],
@@ -57674,14 +57374,20 @@
       "priority": 30,
       "tags": [
         "agency:CBP",
+        "agency:DHSgov",
         "agency:POTUS",
         "audio:has-audio",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
+        "military:army",
         "policy:border",
+        "speaker:President Trump",
+        "topic:general",
         "topic:immigration",
-        "video:long"
+        "topic:military",
+        "video:long",
+        "video:news-clip"
       ],
       "genre_tags": [],
       "produced_video_tags": [],
@@ -57712,11 +57418,22 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "action:detention",
+        "agency:CBP",
+        "agency:DHSgov",
         "audio:has-audio",
+        "crime:homicide",
+        "crime:murder",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
         "policy:border",
+        "slogan:criminal-illegal-alien",
+        "slogan:illegal-alien",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "theme:nativism",
+        "topic:general",
         "topic:immigration",
         "video:medium"
       ],
@@ -57823,6 +57540,7 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "agency:DHSgov",
         "audio:has-audio",
         "media-status:archived",
         "media-status:needs-vision",
@@ -57973,7 +57691,8 @@
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
-        "topic:immigration",
+        "military:national-guard",
+        "topic:military",
         "video:short"
       ],
       "genre_tags": [],
@@ -57986,6 +57705,82 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 888x492; 24.0s; 0.94 MiB; archived; tweet context: Watch: Acting Secretary Gaynor explains that his main focus is supporting the #NationalGuard, #LawEnforcement, and @DeptOfDefense officials working to ensure a safe, secure #Inauguration tomorrow. https://t.co/XgqzZMjH5p; source URL: https://video.twimg.com/ext_tw_video/1351587307082670081/pu/vid/888x492/Bk75rirpoCz9ZXmy.mp4?tag=10; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0003/7_1351587307082670081.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 888x492; 24.0s; 0.94 MiB; archived; tweet context: Watch: Acting Secretary Gaynor explains that his main focus is supporting the #NationalGuard, #LawEnforcement, and @DeptOfDefense officials working to ensure a safe, secure #Inauguration tomorrow. https://t.co/XgqzZMjH5p; source URL: https://video.twimg.com/ext_tw_video/1351587307082670081/pu/vid/888x492/Bk75rirpoCz9ZXmy.mp4?tag=10; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0003/7_1351587307082670081.mp4; needs OCR, transcript, or frame-level vision before content claims. Watch: Acting Secretary Gaynor explains that his main focus "
+    },
+    {
+      "tweet_id": "1356614734242603016",
+      "account_handle": "ICEgov",
+      "posted_at": "2021-02-02T14:45:31.000Z",
+      "tweet_url": "https://x.com/ICEgov/status/1356614734242603016",
+      "tweet_text": "Day 1 of #HSIatSB55 is in the books. #ICYMI catch up on how #HSI and @IPRCenter crack down on sham sports apparel and merch to ensure you're getting what you paid for: https://xsm.link/qbe4y4\n\n👉 Continue to follow us here or @HSITampa for the latest from #SBLV https://t.co/11lbpVcguO",
+      "media_id": "7_1356614697215262727",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-ICEgov-0002/7_1356614697215262727.mp4",
+      "duration_sec": 18.085,
+      "width": 1280,
+      "height": 720,
+      "like_count": 0,
+      "retweet_count": 0,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:IPRCenter",
+        "audio:has-audio",
+        "audio:silent",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 18.1s; 3.72 MiB; archived; tweet context: Day 1 of #HSIatSB55 is in the books. #ICYMI catch up on how #HSI and @IPRCenter crack down on sham sports apparel and merch to ensure you're getting what you paid for: https://xsm.link/qbe4y4 👉 Continue to follow us here or @HSITampa for the latest from #SBLV...; source URL: https://video.twimg.com/ext_tw_video/1356614697215262727/pu/vid/1280x720/1qIqk4QdM0Dhsv8o.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/7_1356614697215262727.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 18.1s; 3.72 MiB; archived; tweet context: Day 1 of #HSIatSB55 is in the books. #ICYMI catch up on how #HSI and @IPRCenter crack down on sham sports apparel and merch to ensure you're getting what you paid for: https://xsm.link/qbe4y4 👉 Continue to follow us here or @HSITampa for the latest from #SBLV...; source URL: https://video.twimg.com/ext_tw_video/1356614697215262727/pu/vid/1280x720/1qIqk4QdM0Dhsv8o.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/7_1356614697215262727.mp4; needs OCR, transcript, or frame-level vi"
+    },
+    {
+      "tweet_id": "1356750996077236229",
+      "account_handle": "ICEgov",
+      "posted_at": "2021-02-02T23:46:59.000Z",
+      "tweet_url": "https://x.com/ICEgov/status/1356750996077236229",
+      "tweet_text": "Take an insider’s look at an int’l parcel sort facility where #HSI @IPRCenter @HSITampa @CBP @TampaPD @HCSOSheriffand and other law enforcement partners search for #SBLV fakes. Spoiler 🚨 – if it sounds too good to be true, it probably is. #HSIatSB55 https://t.co/Iy2JxrzYjN",
+      "media_id": "7_1356750927596781568",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-ICEgov-0002/7_1356750927596781568.mp4",
+      "duration_sec": 87.855,
+      "width": 1280,
+      "height": 720,
+      "like_count": 0,
+      "retweet_count": 0,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:CBP",
+        "agency:IPRCenter",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 87.9s; 12.22 MiB; archived; tweet context: Take an insider’s look at an int’l parcel sort facility where #HSI @IPRCenter @HSITampa @CBP @TampaPD @HCSOSheriffand and other law enforcement partners search for #SBLV fakes. Spoiler 🚨 – if it sounds too good to be true, it probably is. #HSIatSB55 https://t...; source URL: https://video.twimg.com/ext_tw_video/1356750927596781568/pu/vid/1280x720/QxLEqNLagbIcUjs_.mp4?tag=10; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/7_1356750927596781568.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 87.9s; 12.22 MiB; archived; tweet context: Take an insider’s look at an int’l parcel sort facility where #HSI @IPRCenter @HSITampa @CBP @TampaPD @HCSOSheriffand and other law enforcement partners search for #SBLV fakes. Spoiler 🚨 – if it sounds too good to be true, it probably is. #HSIatSB55 https://t...; source URL: https://video.twimg.com/ext_tw_video/1356750927596781568/pu/vid/1280x720/QxLEqNLagbIcUjs_.mp4?tag=10; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/7_1356750927596781568.mp4; needs OCR, transcript, or frame-level "
     },
     {
       "tweet_id": "1357697471867150340",
@@ -58005,6 +57800,7 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "agency:DHSgov",
         "audio:has-audio",
         "media-status:archived",
         "media-status:needs-vision",
@@ -58126,7 +57922,7 @@
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
-        "topic:immigration",
+        "topic:economy",
         "video:short"
       ],
       "genre_tags": [],
@@ -58194,10 +57990,14 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "agency:DHSgov",
         "audio:has-audio",
+        "country:Cuba",
+        "country:Kenya",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
+        "policy:border",
         "topic:immigration",
         "video:long"
       ],
@@ -58231,10 +58031,12 @@
       "priority": 30,
       "tags": [
         "agency:DHSgov",
+        "agency:HHSGov",
         "audio:has-audio",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
+        "theme:martyrdom",
         "topic:immigration",
         "video:long"
       ],
@@ -58267,11 +58069,13 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "action:deportation",
         "agency:ICEgov",
         "audio:has-audio",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
+        "topic:economy",
         "topic:immigration",
         "video:short"
       ],
@@ -58309,7 +58113,7 @@
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
-        "topic:immigration",
+        "topic:economy",
         "video:short"
       ],
       "genre_tags": [],
@@ -58341,12 +58145,12 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "agency:FEMA",
         "agency:POTUS",
         "audio:has-audio",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
-        "topic:immigration",
         "video:long"
       ],
       "genre_tags": [],
@@ -58359,6 +58163,46 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 640x360; 290.1s; 38.29 MiB; archived; tweet context: .@SecMayorkas shares with @NewDay what he saw in Kentucky yesterday: \"It was absolutely devastating. Heartbreaking... But at @POTUS direction, it's also an extraordinary federal response... We will be there throughout to enable the people to recover and rebui...; source URL: https://video.twimg.com/amplify_video/1470458315620687876/vid/1280x720/8IHlz39pXp9d_EEx.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0003/13_1470458315620687876.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 640x360; 290.1s; 38.29 MiB; archived; tweet context: .@SecMayorkas shares with @NewDay what he saw in Kentucky yesterday: \"It was absolutely devastating. Heartbreaking... But at @POTUS direction, it's also an extraordinary federal response... We will be there throughout to enable the people to recover and rebui...; source URL: https://video.twimg.com/amplify_video/1470458315620687876/vid/1280x720/8IHlz39pXp9d_EEx.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0003/13_1470458315620687876.mp4; needs OCR, transcript, or frame-level vi"
+    },
+    {
+      "tweet_id": "1475988322405212164",
+      "account_handle": "ICEgov",
+      "posted_at": "2021-12-29T00:33:33.000Z",
+      "tweet_url": "https://x.com/ICEgov/status/1475988322405212164",
+      "tweet_text": "ICE @HSISeattle and #HSI Nairobi agents helped spearhead 2 Seattle arrests and recover $3.5M in ivory, rhino horn and pangolin scale seizures in the Democratic Republic of Congo connected to wildlife trafficking. Details: https://xsm.link/gw2lm9\n\n🎥 Pangolin https://t.co/M0smtjRaCz",
+      "media_id": "7_1475988283020697612",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-ICEgov-0002/7_1475988283020697612.mp4",
+      "duration_sec": 9.728,
+      "width": 1280,
+      "height": 720,
+      "like_count": 0,
+      "retweet_count": 0,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:ICEgov",
+        "audio:has-audio",
+        "audio:silent",
+        "country:Congo",
+        "crime:trafficking",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 9.7s; 1.29 MiB; archived; tweet context: ICE @HSISeattle and #HSI Nairobi agents helped spearhead 2 Seattle arrests and recover $3.5M in ivory, rhino horn and pangolin scale seizures in the Democratic Republic of Congo connected to wildlife trafficking. Details: https://xsm.link/gw2lm9 🎥 Pangolin ht...; source URL: https://video.twimg.com/ext_tw_video/1475988283020697612/pu/vid/1280x720/f8cvqgk8rdkFGP5p.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/7_1475988283020697612.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 9.7s; 1.29 MiB; archived; tweet context: ICE @HSISeattle and #HSI Nairobi agents helped spearhead 2 Seattle arrests and recover $3.5M in ivory, rhino horn and pangolin scale seizures in the Democratic Republic of Congo connected to wildlife trafficking. Details: https://xsm.link/gw2lm9 🎥 Pangolin ht...; source URL: https://video.twimg.com/ext_tw_video/1475988283020697612/pu/vid/1280x720/f8cvqgk8rdkFGP5p.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/7_1475988283020697612.mp4; needs OCR, transcript, or frame-level visi"
     },
     {
       "tweet_id": "1486758377304870912",
@@ -58378,7 +58222,11 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "agency:DHSgov",
         "audio:has-audio",
+        "country:France",
+        "country:Israel",
+        "country:Romania",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
@@ -58454,7 +58302,6 @@
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
-        "topic:immigration",
         "video:medium"
       ],
       "genre_tags": [],
@@ -64552,6 +64399,43 @@
       "description": "video; 1920x1080; 111.1s; 17.35 MiB; archived; tweet context: Thanks to the @USCG maritime security and interdiction efforts more than 45,000 pounds of illicit drugs NEVER reached American communities. @POTUS Trump and @Sec_Noem are dismantling drug cartels. https://t.co/WjrrSuJtyF; source URL: https://video.twimg.com/ext_tw_video/1903496847572062208/pu/vid/avc1/1280x720/THgl73zRhdRnTrwZ.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/7_1903496847572062208.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 111.1s; 17.35 MiB; archived; tweet context: Thanks to the @USCG maritime security and interdiction efforts more than 45,000 pounds of illicit drugs NEVER reached American communities. @POTUS Trump and @Sec_Noem are dismantling drug cartels. https://t.co/WjrrSuJtyF; source URL: https://video.twimg.com/ext_tw_video/1903496847572062208/pu/vid/avc1/1280x720/THgl73zRhdRnTrwZ.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/7_1903496847572062208.mp4; needs OCR, transcript, or frame-level vision before content claims. Thanks to the @USCG maritime security an"
     },
     {
+      "tweet_id": "1905001909624115640",
+      "account_handle": "ICEgov",
+      "posted_at": "2025-03-26T21:00:23.000Z",
+      "tweet_url": "https://x.com/ICEgov/status/1905001909624115640",
+      "tweet_text": "ICYMI Honduran criminal fugitive Eswin Meija who killed 21-year-old Sarah Root of Omaha in a drunk driving crash was extradited to the U.S. last week after nine years on the run. https://t.co/sG5FOhtZvS",
+      "media_id": "7_1905000667900432384",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-ICEgov-0002/7_1905000667900432384.mp4",
+      "duration_sec": 15.1,
+      "width": 720,
+      "height": 1280,
+      "like_count": 0,
+      "retweet_count": 0,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "audio:has-audio",
+        "country:Honduras",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 720x1280; 15.1s; 2.27 MiB; archived; tweet context: ICYMI Honduran criminal fugitive Eswin Meija who killed 21-year-old Sarah Root of Omaha in a drunk driving crash was extradited to the U.S. last week after nine years on the run. https://t.co/sG5FOhtZvS; source URL: https://video.twimg.com/ext_tw_video/1905000667900432384/pu/vid/avc1/720x1280/phnEfgIcp-bxgqI6.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/7_1905000667900432384.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 720x1280; 15.1s; 2.27 MiB; archived; tweet context: ICYMI Honduran criminal fugitive Eswin Meija who killed 21-year-old Sarah Root of Omaha in a drunk driving crash was extradited to the U.S. last week after nine years on the run. https://t.co/sG5FOhtZvS; source URL: https://video.twimg.com/ext_tw_video/1905000667900432384/pu/vid/avc1/720x1280/phnEfgIcp-bxgqI6.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/7_1905000667900432384.mp4; needs OCR, transcript, or frame-level vision before content claims. ICYMI Honduran criminal fugitive Eswin Meija who killed 21-year-old Sarah Root of "
+    },
+    {
       "tweet_id": "1906086276861706432",
       "account_handle": "DHSgov",
       "posted_at": "2025-03-29T20:49:16.000Z",
@@ -65131,10 +65015,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65192,10 +65074,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65277,10 +65157,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65334,10 +65212,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65371,10 +65247,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65410,10 +65284,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65449,10 +65321,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65489,10 +65359,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65529,10 +65397,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65578,10 +65444,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65621,10 +65485,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65659,10 +65521,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65715,10 +65575,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65762,10 +65620,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65803,10 +65659,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65851,10 +65705,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65914,10 +65766,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -65967,10 +65817,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66006,10 +65854,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66045,10 +65891,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66082,10 +65926,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66206,10 +66048,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66251,10 +66091,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66442,10 +66280,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66495,10 +66331,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66582,10 +66416,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66622,10 +66454,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66673,10 +66503,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66710,10 +66538,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -66955,6 +66781,44 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 16.9s; 1.23 MiB; archived; tweet context: USCIS has declared #WarOnFraud. It's our mission to stop public safety and national security threats by ending the rampant immigration fraud that has been allowed to happen before this administration. https://t.co/isMYMxBpxm; source URL: https://video.twimg.com/amplify_video/1976431855135002624/vid/avc1/1280x720/PlXp2nuutoq-sTyS.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USCIS/13_1976431855135002624.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 16.9s; 1.23 MiB; archived; tweet context: USCIS has declared #WarOnFraud. It's our mission to stop public safety and national security threats by ending the rampant immigration fraud that has been allowed to happen before this administration. https://t.co/isMYMxBpxm; source URL: https://video.twimg.com/amplify_video/1976431855135002624/vid/avc1/1280x720/PlXp2nuutoq-sTyS.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USCIS/13_1976431855135002624.mp4; needs OCR, transcript, or frame-level vision before content claims. USCIS has declared #WarOnFraud. It's our mission to "
+    },
+    {
+      "tweet_id": "1978118599404388804",
+      "account_handle": "ICEgov",
+      "posted_at": "2025-10-14T15:20:00.000Z",
+      "tweet_url": "https://x.com/ICEgov/status/1978118599404388804",
+      "tweet_text": "Listen to Acting ICE Director Todd Lyons:\n\n➡️ Disclose the intel that triggered the multiagency raid on the Chicago apartment complex\n➡️Respond to accusations of racial profiling\n➡️Challenge city leaders to turn over violent criminal aliens to ICE instead of releasing them into the community",
+      "media_id": "13_1978090335977738240",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-ICEgov-0002/13_1978090335977738240.mp4",
+      "duration_sec": 736.192,
+      "width": 1080,
+      "height": 1920,
+      "like_count": 764,
+      "retweet_count": 210,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:ICEgov",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "theme:criminal",
+        "topic:immigration",
+        "video:long"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1080x1920; 736.2s; 69.88 MiB; archived; tweet context: Listen to Acting ICE Director Todd Lyons: ➡️ Disclose the intel that triggered the multiagency raid on the Chicago apartment complex ➡️Respond to accusations of racial profiling ➡️Challenge city leaders to turn over violent criminal aliens to ICE instead of r...; source URL: https://video.twimg.com/amplify_video/1978090335977738240/vid/avc1/1080x1920/6C5yFYDUmgYQMO0P.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/13_1978090335977738240.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1920; 736.2s; 69.88 MiB; archived; tweet context: Listen to Acting ICE Director Todd Lyons: ➡️ Disclose the intel that triggered the multiagency raid on the Chicago apartment complex ➡️Respond to accusations of racial profiling ➡️Challenge city leaders to turn over violent criminal aliens to ICE instead of r...; source URL: https://video.twimg.com/amplify_video/1978090335977738240/vid/avc1/1080x1920/6C5yFYDUmgYQMO0P.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/13_1978090335977738240.mp4; needs OCR, transcript, o"
     },
     {
       "tweet_id": "1981402262866989202",
@@ -67220,10 +67084,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -67268,10 +67130,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -67442,10 +67302,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -67479,10 +67337,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -67796,10 +67652,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -67841,10 +67695,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -67881,10 +67733,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -67920,10 +67770,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
