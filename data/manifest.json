@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-29T12:42:45Z",
+  "generated_at": "2026-05-29T16:51:22Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -7,7 +7,7 @@
       "label": "Department of Homeland Security",
       "category": "core",
       "parquet": "data/DHSgov.parquet",
-      "parquet_bytes": 1473854,
+      "parquet_bytes": 1474235,
       "row_count": 5254,
       "post_count": 4480,
       "reply_count": 774,
@@ -117,7 +117,7 @@
         "2026-04": 520,
         "2026-05": 356
       },
-      "deleted_count": 0,
+      "deleted_count": 251,
       "media_count": 3233,
       "video_count": 712,
       "releases": []
@@ -127,7 +127,7 @@
       "label": "U.S. Immigration and Customs Enforcement",
       "category": "core",
       "parquet": "data/ICEgov.parquet",
-      "parquet_bytes": 484099,
+      "parquet_bytes": 484360,
       "row_count": 1396,
       "post_count": 1260,
       "reply_count": 136,
@@ -165,7 +165,7 @@
         "2026-04": 128,
         "2026-05": 181
       },
-      "deleted_count": 0,
+      "deleted_count": 6,
       "media_count": 1089,
       "video_count": 183,
       "releases": []
@@ -175,7 +175,7 @@
       "label": "U.S. Customs and Border Protection",
       "category": "core",
       "parquet": "data/CBP.parquet",
-      "parquet_bytes": 191741,
+      "parquet_bytes": 191983,
       "row_count": 519,
       "post_count": 499,
       "reply_count": 20,
@@ -214,7 +214,7 @@
         "2026-04": 102,
         "2026-05": 67
       },
-      "deleted_count": 0,
+      "deleted_count": 10,
       "media_count": 270,
       "video_count": 47,
       "releases": []
@@ -224,7 +224,7 @@
       "label": "U.S. Citizenship and Immigration Services",
       "category": "core",
       "parquet": "data/USCIS.parquet",
-      "parquet_bytes": 268075,
+      "parquet_bytes": 268355,
       "row_count": 768,
       "post_count": 757,
       "reply_count": 11,
@@ -253,7 +253,7 @@
         "2026-04": 26,
         "2026-05": 8
       },
-      "deleted_count": 0,
+      "deleted_count": 284,
       "media_count": 505,
       "video_count": 85,
       "releases": []
@@ -263,7 +263,7 @@
       "label": "The White House",
       "category": "core",
       "parquet": "data/WhiteHouse.parquet",
-      "parquet_bytes": 146698,
+      "parquet_bytes": 146969,
       "row_count": 360,
       "post_count": 339,
       "reply_count": 21,
@@ -286,7 +286,7 @@
         "2026-04": 37,
         "2026-05": 262
       },
-      "deleted_count": 0,
+      "deleted_count": 91,
       "media_count": 278,
       "video_count": 75,
       "releases": []
@@ -344,7 +344,7 @@
       "label": "U.S. Department of Labor",
       "category": "core",
       "parquet": "data/USDOL.parquet",
-      "parquet_bytes": 263854,
+      "parquet_bytes": 264125,
       "row_count": 848,
       "post_count": 832,
       "reply_count": 16,
@@ -367,7 +367,7 @@
         "2026-04": 80,
         "2026-05": 98
       },
-      "deleted_count": 0,
+      "deleted_count": 218,
       "media_count": 574,
       "video_count": 76,
       "releases": []
@@ -408,7 +408,7 @@
       "label": "Stephen Miller",
       "category": "core",
       "parquet": "data/StephenM.parquet",
-      "parquet_bytes": 288589,
+      "parquet_bytes": 288835,
       "row_count": 1084,
       "post_count": 961,
       "reply_count": 123,
@@ -434,7 +434,7 @@
         "2026-04": 112,
         "2026-05": 109
       },
-      "deleted_count": 0,
+      "deleted_count": 381,
       "media_count": 91,
       "video_count": 24,
       "releases": []
@@ -444,7 +444,7 @@
       "label": "Gregory Bovino",
       "category": "core",
       "parquet": "data/GregoryKBovino.parquet",
-      "parquet_bytes": 286457,
+      "parquet_bytes": 286718,
       "row_count": 1317,
       "post_count": 90,
       "reply_count": 1227,
@@ -455,7 +455,7 @@
         "2026-04": 489,
         "2026-05": 828
       },
-      "deleted_count": 0,
+      "deleted_count": 917,
       "media_count": 23,
       "video_count": 5,
       "releases": []
@@ -465,7 +465,7 @@
       "label": "Thomas D. Homan",
       "category": "core",
       "parquet": "data/RealTomHoman.parquet",
-      "parquet_bytes": 171379,
+      "parquet_bytes": 171626,
       "row_count": 548,
       "post_count": 525,
       "reply_count": 23,
@@ -499,7 +499,7 @@
         "2026-04": 4,
         "2026-05": 1
       },
-      "deleted_count": 0,
+      "deleted_count": 356,
       "media_count": 177,
       "video_count": 97,
       "releases": []

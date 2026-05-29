@@ -85,6 +85,43 @@ def test_only_tweet_ids_filter(tmp_corpus: Path) -> None:
     assert df.row(0, named=True)["tweet_id"] == "t2"
 
 
+def test_only_tweet_ids_filter_preserves_existing_rows(tmp_corpus: Path) -> None:
+    p = _write_handle(
+        tmp_corpus,
+        "DHSgov",
+        [
+            make_tweet("t1", handle="DHSgov", media=[_archived_photo("3_1", "shaA")]),
+            make_tweet("t2", handle="DHSgov", media=[_archived_photo("3_2", "shaB")]),
+        ],
+    )
+    out = tmp_corpus / "data" / "tags" / "photo_thumbnails.parquet"
+    ept.run(parquets=[p], out_path=out, extractor=_ok_stub)
+
+    def updated(_c: PhotoCandidate) -> ThumbResult:
+        return ThumbResult(
+            status="ok",
+            thumbnail_path="data/thumbnails/photo/updated.jpg",
+            thumbnail_sha256="updated",
+            thumbnail_width=160,
+            thumbnail_height=90,
+            thumbnail_bytes=4096,
+        )
+
+    stats = ept.run(
+        parquets=[p],
+        out_path=out,
+        extractor=updated,
+        force=True,
+        only_tweet_ids={"t2"},
+    )
+    assert stats["attempted"] == 1
+    df = pl.read_parquet(out)
+    assert set(df["tweet_id"].to_list()) == {"t1", "t2"}
+    by_tweet = {row["tweet_id"]: row for row in df.to_dicts()}
+    assert by_tweet["t1"]["thumbnail_path"] == "data/thumbnails/photo/shaA.jpg"
+    assert by_tweet["t2"]["thumbnail_path"] == "data/thumbnails/photo/updated.jpg"
+
+
 def test_is_cache_hit_requires_existing_thumbnail(tmp_corpus: Path) -> None:
     thumb = tmp_corpus / "data" / "thumbnails" / "photo" / "shaA.jpg"
     thumb.write_bytes(b"x")

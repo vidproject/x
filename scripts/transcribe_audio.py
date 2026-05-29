@@ -532,10 +532,11 @@ def run(
         if http is not None:
             http.close()
 
-    stats["rows"] = len(rows)
+    rows_to_write = rows + _leftover_rows()
+    stats["rows"] = len(rows_to_write)
     if not dry_run:
-        write_parquet(rows + _leftover_rows(), out_path)
-        update_manifest(rows, dict(stats), generated_at)
+        write_parquet(rows_to_write, out_path)
+        update_manifest(rows_to_write, dict(stats), generated_at)
     return dict(stats)
 
 

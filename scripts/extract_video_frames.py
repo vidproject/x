@@ -152,6 +152,12 @@ def _to_int(v: Any) -> int:
 # Cache (read existing sidecar, decide skip vs. re-extract)
 
 
+def load_existing_rows(path: Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    return pl.read_parquet(path).to_dicts()
+
+
 def load_existing_index(path: Path) -> dict[str, dict[str, Any]]:
     """Return ``{media_sha256: row_dict}`` from any existing sidecar.
 
@@ -159,15 +165,33 @@ def load_existing_index(path: Path) -> dict[str, dict[str, Any]]:
     cache key — duplicate uploads of the same physical video share an
     entry regardless of which tweet they're attached to.
     """
-    if not path.exists():
-        return {}
-    df = pl.read_parquet(path)
     out: dict[str, dict[str, Any]] = {}
-    for row in df.iter_rows(named=True):
+    for row in load_existing_rows(path):
         sha = str(row.get("media_sha256") or "")
         if sha:
             out[sha] = row
     return out
+
+
+def row_key(row: dict[str, Any]) -> tuple[str, str, str]:
+    return (
+        str(row.get("tweet_id") or ""),
+        str(row.get("media_id") or ""),
+        str(row.get("media_sha256") or ""),
+    )
+
+
+def merge_existing_rows(
+    rows: list[dict[str, Any]], existing_rows: list[dict[str, Any]], *, preserve_existing: bool
+) -> list[dict[str, Any]]:
+    if not preserve_existing:
+        return rows
+    merged: dict[tuple[str, str, str], dict[str, Any]] = {
+        row_key(row): row for row in existing_rows
+    }
+    for row in rows:
+        merged[row_key(row)] = row
+    return list(merged.values())
 
 
 def is_cache_hit(cached: dict[str, Any], extractor_version: str) -> bool:
@@ -323,6 +347,10 @@ def hash_file(path: Path) -> tuple[str, int]:
     return h.hexdigest(), size
 
 
+def repo_relative(path: Path) -> str:
+    return path.relative_to(REPO_ROOT).as_posix()
+
+
 def jpeg_dimensions(path: Path) -> tuple[int, int]:
     """Cheapest possible JPEG dimension probe: ffprobe one frame.
     Returns ``(0, 0)`` when probing fails — the dimensions are nice-to-have,
@@ -442,7 +470,7 @@ def extract_candidate(
         thumb_sha, thumb_size = hash_file(thumb_path)
         thumb_w, thumb_h = jpeg_dimensions(thumb_path)
         thumbnail = ThumbnailRecord(
-            path=str(thumb_path.relative_to(REPO_ROOT)),
+            path=repo_relative(thumb_path),
             sha256=thumb_sha,
             width=thumb_w,
             height=thumb_h,
@@ -473,7 +501,7 @@ def extract_candidate(
                 FrameRecord(
                     index=i,
                     timestamp_sec=ts,
-                    path=str(frame_path.relative_to(REPO_ROOT)),
+                    path=repo_relative(frame_path),
                     sha256=sha,
                     width=fw,
                     height=fh,
@@ -613,8 +641,17 @@ def run(
         derived_root = DERIVED_DIR
     if thumbnail_root is None:
         thumbnail_root = THUMBNAILS_DIR
-    parquets = parquets if parquets is not None else discover_canonical_parquets()
-    existing = load_existing_index(out_path)
+    all_parquets = discover_canonical_parquets()
+    parquets = parquets if parquets is not None else all_parquets
+    existing_rows = load_existing_rows(out_path)
+    existing = {
+        str(row.get("media_sha256") or ""): row
+        for row in existing_rows
+        if str(row.get("media_sha256") or "")
+    }
+    preserve_existing = only_tweet_ids is not None or {p.resolve() for p in parquets} != {
+        p.resolve() for p in all_parquets
+    }
     rows: list[dict[str, Any]] = []
     stats: Counter[str] = Counter()
     generated_at = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -715,7 +752,8 @@ def run(
         if http is not None:
             http.close()
 
-    stats["rows"] = len(rows)
+    rows_to_write = merge_existing_rows(rows, existing_rows, preserve_existing=preserve_existing)
+    stats["rows"] = len(rows_to_write)
     if not dry_run:
         if rows and all(str(r.get("status") or "") == "skipped-no-ffmpeg" for r in rows):
             stats["skipped_write_all_no_ffmpeg"] = 1
@@ -724,8 +762,8 @@ def run(
                 rows=len(rows),
             )
         else:
-            write_parquet(rows, out_path)
-            update_manifest(rows, dict(stats), generated_at)
+            write_parquet(rows_to_write, out_path)
+            update_manifest(rows_to_write, dict(stats), generated_at)
     return dict(stats)
 
 

@@ -96,6 +96,14 @@ def test_is_cache_hit_requires_status_ok_and_matching_version() -> None:
     assert not is_cache_hit({}, EXTRACTOR_VERSION)
 
 
+def test_repo_relative_uses_url_style_separators(tmp_corpus: Path) -> None:
+    rel = extract_video_frames.repo_relative(
+        tmp_corpus / "data" / "derived" / "keyframes" / "sha" / "000.jpg"
+    )
+    assert rel == "data/derived/keyframes/sha/000.jpg"
+    assert "\\" not in rel
+
+
 # --------------------------------------------------------------------------
 # Discovery
 
@@ -342,6 +350,39 @@ def test_run_respects_max_items_for_failed_attempts(tmp_corpus: Path) -> None:
     assert stats["attempted"] == 2
     assert stats.get("extracted", 0) == 0
     assert stats["skipped_max_items"] == 2
+
+
+def test_tweet_id_filter_preserves_existing_rows(tmp_corpus: Path) -> None:
+    m1 = _archived_video("vid-1", sha="a" * 64, duration=42.0)
+    m2 = _archived_video("vid-2", sha="b" * 64, duration=42.0)
+    path = _write_handle_parquet(
+        tmp_corpus,
+        "DHSgov",
+        [
+            make_tweet("t-1", handle="DHSgov", media=[m1]),
+            make_tweet("t-2", handle="DHSgov", media=[m2]),
+        ],
+    )
+    extract_video_frames.run(parquets=[path], extractor=_fake_extractor_factory({}))
+
+    def updated(cand: VideoCandidate) -> ExtractResult:
+        result = _fake_extractor_factory({})(cand)
+        result.frames[0].path = "data/derived/keyframes/updated/000.jpg"
+        return result
+
+    stats = extract_video_frames.run(
+        parquets=[path],
+        force=True,
+        extractor=updated,
+        only_tweet_ids={"t-2"},
+    )
+
+    assert stats["attempted"] == 1
+    out = pl.read_parquet(tmp_corpus / "data" / "tags" / "keyframes.parquet")
+    assert set(out["tweet_id"].to_list()) == {"t-1", "t-2"}
+    by_tweet = {row["tweet_id"]: row for row in out.to_dicts()}
+    assert by_tweet["t-1"]["frames"][0]["path"] != "data/derived/keyframes/updated/000.jpg"
+    assert by_tweet["t-2"]["frames"][0]["path"] == "data/derived/keyframes/updated/000.jpg"
 
 
 def test_all_no_ffmpeg_run_does_not_overwrite_existing_ok_sidecar(tmp_corpus: Path) -> None:
