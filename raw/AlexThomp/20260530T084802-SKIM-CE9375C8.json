@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "profile-skim-20260530T084746Z-849477ac-AlexThomp",
+  "account_handle": "AlexThomp",
+  "captured_at": "2026-05-30T08:48:02.137Z",
+  "endpoint": "UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/StephenM",
+  "tweets": [
+    {
+      "tweet_id": "1973063247822553595",
+      "account_handle": "AlexThomp",
+      "account_id": "370982639",
+      "posted_at": "2025-09-30T16:31:50.000Z",
+      "first_captured_at": "2026-05-30T08:47:53.182Z",
+      "last_seen_at": "2026-05-30T08:47:53.182Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/AlexThomp/status/1973063247822553595",
+      "tweet_type": "original",
+      "conversation_id": "1973063247822553595",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Tough poll for Democrats on a shutdown.\n\nhttps://t.co/R6HpXz6oXl https://t.co/3Hz1Muxlad",
+      "text_resolved": "Tough poll for Democrats on a shutdown.\n\nhttps://www.nytimes.com/2025/09/30/polls/trump-approval-poll.html https://t.co/3Hz1Muxlad",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/R6HpXz6oXl",
+          "expanded": "https://www.nytimes.com/2025/09/30/polls/trump-approval-poll.html",
+          "display": "nytimes.com/2025/09/30/pol…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1973062262391713796",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G2G5rIWWMAQ9Sm_.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1290,
+          "height": 1697,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 5117,
+      "retweet_count": 1355,
+      "reply_count": 773,
+      "quote_count": 408,
+      "view_count": 4323456,
+      "bookmark_count": 340,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-30T08:47:53.182Z",
+          "likes": 5117,
+          "retweets": 1355,
+          "replies": 773,
+          "quotes": 408,
+          "views": 4323456,
+          "bookmarks": 340
+        }
+      ],
+      "author": {
+        "display_name": "Alex Thompson",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1477329812339535877/Hz793EVE_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "national political correspondent for @Axios. @CNN contributor. co-author of #1 NYT bestseller “Original Sin.”",
+        "location": "Washington, DC",
+        "url": "https://t.co/myzbPxHgjK",
+        "followers_count": 110346,
+        "friends_count": 12424,
+        "statuses_count": 30141,
+        "account_created_at": "2011-09-10T00:19:31.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "profile-skim-20260530T084746Z-849477ac",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/stephenm-20260530T084746Z-849477ac.summary.json",
+    "jsonl": ".skim/raw/stephenm-20260530T084746Z-849477ac.jsonl",
+    "source_handle": "StephenM"
+  }
+}

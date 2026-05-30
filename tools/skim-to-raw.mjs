@@ -21,7 +21,7 @@ Usage:
   node tools/skim-to-raw.mjs --handles DHSgov ICEgov GregoryKBovino RealTomHoman
 
 Options:
-  --handles <h...>        Only convert skim files whose search query is from one of these handles.
+  --handles <h...>        Only convert skim files whose search query or profile URL is from one of these handles.
   --skim-dir <dir>        Directory containing x-skim *.summary.json / *.jsonl. Default: .skim/raw
   --raw-dir <dir>         Destination raw capture root. Default: raw
   --run-prefix <prefix>   Prefix for generated capture_run_id. Default: skim
@@ -142,17 +142,30 @@ async function discoverSummaries(skimDir) {
   return summaries.sort((a, b) => String(a.summary.run_id).localeCompare(String(b.summary.run_id)));
 }
 
-function handleFromSearchUrl(rawUrl) {
+function handleFromTargetUrl(rawUrl) {
   if (!rawUrl) return null;
   try {
     const url = new URL(rawUrl);
     const query = url.searchParams.get('q') ?? '';
     const match = query.match(/\bfrom:([A-Za-z0-9_]{1,15})\b/i);
-    return match?.[1] ?? null;
+    if (match) return match[1];
+    const [firstPathSegment] = url.pathname.split('/').filter(Boolean);
+    if (
+      firstPathSegment &&
+      /^[A-Za-z0-9_]{1,15}$/.test(firstPathSegment) &&
+      !['home', 'i', 'search', 'settings', 'notifications', 'messages'].includes(
+        firstPathSegment.toLowerCase()
+      )
+    ) {
+      return firstPathSegment;
+    }
+    return null;
   } catch {
     const decoded = safeDecode(rawUrl);
     const match = decoded.match(/\bfrom:([A-Za-z0-9_]{1,15})\b/i);
-    return match?.[1] ?? null;
+    if (match) return match[1];
+    const profile = decoded.match(/(?:x|twitter)\.com\/([A-Za-z0-9_]{1,15})(?:[/?#]|$)/i);
+    return profile?.[1] ?? null;
   }
 }
 
@@ -246,7 +259,7 @@ function shortHash(value) {
 }
 
 async function convertSummary(item, options, normalizer, accounts) {
-  const sourceHandle = handleFromSearchUrl(item.summary.target_url);
+  const sourceHandle = handleFromTargetUrl(item.summary.target_url);
   if (!sourceHandle) return null;
   const wanted = new Set(options.handles.map((h) => h.toLowerCase()));
   if (!wanted.has(sourceHandle.toLowerCase())) return null;
