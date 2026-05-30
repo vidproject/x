@@ -115,10 +115,14 @@ def test_misc_archive_only_processes_government_or_official_authors(
     ]
     pl.DataFrame(rows, schema=TWEET_SCHEMA, strict=False).write_parquet(parquet_path)
     gh = FakeGitHub()
-    monkeypatch.setattr(archive_media, "load_account_categories", lambda: {
-        "GovAgency": "government",
-        "PublicUser": "public",
-    })
+    monkeypatch.setattr(
+        archive_media,
+        "load_account_categories",
+        lambda: {
+            "GovAgency": "government",
+            "PublicUser": "public",
+        },
+    )
     monkeypatch.setattr(archive_media, "fetch_bytes", lambda url, http: b"video-bytes")
 
     archived, failed, skipped = archive_media.archive_one_handle(
@@ -131,7 +135,9 @@ def test_misc_archive_only_processes_government_or_official_authors(
 
     assert (archived, failed, skipped) == (1, 0, 0)
     assert gh.uploads == [("media-_misc", "m-gov.mp4")]
-    by_tweet = {row["tweet_id"]: row["media"][0] for row in pl.read_parquet(parquet_path).to_dicts()}
+    by_tweet = {
+        row["tweet_id"]: row["media"][0] for row in pl.read_parquet(parquet_path).to_dicts()
+    }
     assert by_tweet["tweet-gov"]["archive_status"] == "archived"
     assert by_tweet["tweet-public"]["archive_status"] == "pending"
 

@@ -97,9 +97,7 @@ def discover_photo_candidates(parquets: list[Path]) -> Iterator[OcrCandidate]:
             LOG.exception("image OCR: could not read parquet", path=str(path))
             continue
         for tweet in df.iter_rows(named=True):
-            if not row_is_in_media_scope(
-                tweet, handle=path.stem, categories=account_categories
-            ):
+            if not row_is_in_media_scope(tweet, handle=path.stem, categories=account_categories):
                 continue
             media = tweet.get("media") or []
             if not isinstance(media, list):
@@ -440,9 +438,11 @@ def run(
         for row in existing_rows
         if str(row.get("input_hash") or "")
     }
-    preserve_existing = max_items is not None or {p.resolve() for p in parquets} != {
-        p.resolve() for p in all_parquets
-    } or only_tweet_ids is not None
+    preserve_existing = (
+        max_items is not None
+        or {p.resolve() for p in parquets} != {p.resolve() for p in all_parquets}
+        or only_tweet_ids is not None
+    )
     rows: list[dict[str, Any]] = []
     stats: Counter[str] = Counter()
     generated_at = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -497,9 +497,7 @@ def run(
         if http is not None:
             http.close()
 
-    rows_to_write = merge_existing_rows(
-        rows, existing_rows, preserve_existing=preserve_existing
-    )
+    rows_to_write = merge_existing_rows(rows, existing_rows, preserve_existing=preserve_existing)
     stats["rows"] = len(rows_to_write)
     if not dry_run:
         write_parquet(rows_to_write, out_path)

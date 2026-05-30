@@ -109,9 +109,7 @@ def discover_candidates(parquets: list[Path]) -> Iterator[VideoCandidate]:
             LOG.exception("keyframes: could not read parquet", path=str(path))
             continue
         for tweet in df.iter_rows(named=True):
-            if not row_is_in_media_scope(
-                tweet, handle=path.stem, categories=account_categories
-            ):
+            if not row_is_in_media_scope(tweet, handle=path.stem, categories=account_categories):
                 continue
             media = tweet.get("media") or []
             if not isinstance(media, list):

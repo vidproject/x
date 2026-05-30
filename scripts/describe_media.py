@@ -537,12 +537,13 @@ def build_rows(
         account_categories = load_account_categories() if path.stem == MISC_HANDLE else None
         df = pl.read_parquet(path)
         for tweet in df.iter_rows(named=True):
-            if only_tweet_ids is not None and str(tweet.get("tweet_id") or "") not in only_tweet_ids:
+            if (
+                only_tweet_ids is not None
+                and str(tweet.get("tweet_id") or "") not in only_tweet_ids
+            ):
                 stats["skipped_not_in_filter"] += 1
                 continue
-            if not row_is_in_media_scope(
-                tweet, handle=path.stem, categories=account_categories
-            ):
+            if not row_is_in_media_scope(tweet, handle=path.stem, categories=account_categories):
                 continue
             for media in media_candidates(tweet, include_pending=include_pending):
                 key = (str(tweet.get("tweet_id") or ""), str(media.get("media_id") or ""))
