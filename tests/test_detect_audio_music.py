@@ -13,7 +13,7 @@ import polars as pl
 import pytest
 
 from scripts import detect_audio_music
-from scripts._schema import TWEET_SCHEMA
+from scripts._schema import AUDIO_MUSIC_SCHEMA, TWEET_SCHEMA
 from scripts.detect_audio_music import (
     DETECTOR_VERSION,
     AudioCandidate,
@@ -333,3 +333,55 @@ def test_run_caches_successful_rows(tmp_corpus: Path) -> None:
         parquets=[tmp_corpus / "data" / "DHSgov.parquet"], analyzer=explode
     )
     assert stats["cache_hits"] == 1
+
+
+def test_scoped_run_preserves_existing_rows_and_duplicates(tmp_corpus: Path) -> None:
+    shared_sha = "b" * 64
+    old_rows = [
+        detect_audio_music.build_row(
+            AudioCandidate(
+                tweet_id=f"old-{idx}",
+                account_handle="WhiteHouse",
+                media_id=f"old-video-{idx}",
+                media_type="video",
+                media_sha256=shared_sha,
+                release_asset_url=f"https://example.invalid/old-{idx}.mp4",
+                declared_duration_sec=60.0,
+                declared_bytes=123,
+            ),
+            _ok_result(),
+            generated_at="2026-05-20T00:00:00Z",
+        )
+        for idx in range(2)
+    ]
+    pl.DataFrame(old_rows, schema=AUDIO_MUSIC_SCHEMA, strict=False).write_parquet(
+        tmp_corpus / "data" / "tags" / "audio_music.parquet"
+    )
+    _write_handle_parquet(
+        tmp_corpus,
+        "WhiteHouse",
+        [
+            make_tweet(
+                "old-0",
+                handle="WhiteHouse",
+                media=[_archived_video("old-video-0", shared_sha)],
+            )
+        ],
+    )
+    scoped = _write_handle_parquet(
+        tmp_corpus,
+        "DHSgov",
+        [
+            make_tweet(
+                "new-tweet",
+                handle="DHSgov",
+                media=[_archived_video("new-video", "a" * 64)],
+            )
+        ],
+    )
+
+    stats = detect_audio_music.run(parquets=[scoped], analyzer=lambda _c: _ok_result())
+
+    out = pl.read_parquet(tmp_corpus / "data" / "tags" / "audio_music.parquet")
+    assert stats["rows"] == 3
+    assert set(out["tweet_id"].to_list()) == {"old-0", "old-1", "new-tweet"}

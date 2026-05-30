@@ -1,8 +1,15 @@
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any
 
+import polars as pl
+import pytest
+
+from scripts import describe_media
+from scripts._schema import MEDIA_VISION_SCHEMA, TWEET_SCHEMA
 from scripts.describe_media import derive_description_tags, describe_media_item, input_hash_for
+from tests.conftest import make_media, make_tweet
 
 
 def _tweet() -> dict[str, Any]:
@@ -227,3 +234,64 @@ def test_input_hash_changes_when_media_evidence_changes() -> None:
     changed = {**media, "duration_sec": 13.0}
 
     assert input_hash_for(_tweet(), media) != input_hash_for(_tweet(), changed)
+
+
+def _write_handle_parquet(repo: Path, handle: str, tweets: list[dict[str, Any]]) -> Path:
+    path = repo / "data" / f"{handle}.parquet"
+    pl.DataFrame(tweets, schema=TWEET_SCHEMA, strict=False).write_parquet(path)
+    return path
+
+
+def _archived_photo(media_id: str, sha: str) -> dict[str, Any]:
+    media = make_media(media_type="photo", media_id=media_id)
+    media["release_asset_url"] = f"https://example.invalid/{media_id}.jpg"
+    media["sha256"] = sha
+    media["archive_status"] = "archived"
+    return media
+
+
+def test_scoped_build_preserves_existing_rows(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    (tmp_path / "data" / "tags").mkdir(parents=True)
+    out_path = tmp_path / "data" / "tags" / "media_vision.parquet"
+    monkeypatch.setattr(describe_media, "OUT_PATH", out_path)
+    monkeypatch.setattr(describe_media, "TAGS_DIR", tmp_path / "data" / "tags")
+    monkeypatch.setattr(
+        describe_media,
+        "MANUAL_REVIEW_QUEUE_PATH",
+        tmp_path / "data" / "tags" / "manual_media_review_queue.json",
+    )
+
+    old_row = describe_media_item(
+        make_tweet("old-tweet", handle="WhiteHouse"),
+        _archived_photo("old-photo", "b" * 64),
+        generated_at="2026-05-20T00:00:00Z",
+    )
+    pl.DataFrame([old_row], schema=MEDIA_VISION_SCHEMA, strict=False).write_parquet(out_path)
+
+    scoped = _write_handle_parquet(
+        tmp_path,
+        "DHSgov",
+        [
+            make_tweet(
+                "new-tweet",
+                handle="DHSgov",
+                media=[_archived_photo("new-photo", "a" * 64)],
+            )
+        ],
+    )
+    rows, stats = describe_media.build_rows(
+        [scoped],
+        generated_at="2026-05-21T00:00:00Z",
+        include_pending=False,
+        force=False,
+        max_items=None,
+        preserve_existing=True,
+    )
+
+    assert stats["rows"] == 2
+    assert {(row["tweet_id"], row["media_id"]) for row in rows} == {
+        ("old-tweet", "old-photo"),
+        ("new-tweet", "new-photo"),
+    }

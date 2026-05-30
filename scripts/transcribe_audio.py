@@ -166,6 +166,31 @@ def load_existing_index(path: Path) -> dict[str, dict[str, Any]]:
     return out
 
 
+def load_existing_rows(path: Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    return pl.read_parquet(path).to_dicts()
+
+
+def row_key(row: dict[str, Any]) -> tuple[str, str, str]:
+    return (
+        str(row.get("tweet_id") or ""),
+        str(row.get("media_id") or ""),
+        str(row.get("media_sha256") or ""),
+    )
+
+
+def merge_existing_rows(
+    rows: list[dict[str, Any]], existing_rows: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    merged: dict[tuple[str, str, str], dict[str, Any]] = {
+        row_key(row): row for row in existing_rows
+    }
+    for row in rows:
+        merged[row_key(row)] = row
+    return list(merged.values())
+
+
 def is_cache_hit(cached: dict[str, Any], *, model: str) -> bool:
     if not cached:
         return False
@@ -438,7 +463,12 @@ def run(
     if out_path is None:
         out_path = OUT_PATH
     parquets = parquets if parquets is not None else discover_canonical_parquets()
-    existing = load_existing_index(out_path)
+    existing_rows = load_existing_rows(out_path)
+    existing = {
+        str(row.get("media_sha256") or ""): row
+        for row in existing_rows
+        if str(row.get("media_sha256") or "")
+    }
     rows: list[dict[str, Any]] = []
     stats: Counter[str] = Counter()
     generated_at = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -447,8 +477,8 @@ def run(
         # Prior transcripts for media not (re)visited this run — filtered out by
         # --handle / --tweet-ids-file, or not yet reached. Carried forward so a
         # partial/early write never shrinks the sidecar.
-        done = {str(r.get("media_sha256") or "") for r in rows}
-        return [r for sha, r in existing.items() if sha not in done]
+        done = {row_key(r) for r in rows}
+        return [r for r in existing_rows if row_key(r) not in done]
 
     def _flush() -> None:
         if dry_run:

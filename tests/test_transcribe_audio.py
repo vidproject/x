@@ -11,7 +11,7 @@ import polars as pl
 import pytest
 
 from scripts import transcribe_audio
-from scripts._schema import TWEET_SCHEMA
+from scripts._schema import TRANSCRIPT_SCHEMA, TWEET_SCHEMA
 from scripts.transcribe_audio import (
     TranscribeCandidate,
     TranscriptResult,
@@ -158,6 +158,41 @@ def test_scoped_run_preserves_prior_transcripts(tmp_corpus: Path) -> None:
     assert texts == {"shaA": "alpha", "shaB": "bravo"}
     manifest = json.loads((tmp_corpus / "data" / "tags" / "manifest.json").read_text())
     assert manifest["layers"]["transcripts"]["row_count"] == 2
+
+
+def test_scoped_run_preserves_duplicate_sha_transcripts(tmp_corpus: Path) -> None:
+    out = tmp_corpus / "data" / "tags" / "transcripts.parquet"
+    shared_sha = "shaShared"
+    old_rows = [
+        transcribe_audio.build_row(
+            TranscribeCandidate(
+                tweet_id=f"old-{idx}",
+                account_handle="WhiteHouse",
+                media_id=f"13_old_{idx}",
+                media_type="video",
+                media_sha256=shared_sha,
+                release_asset_url=f"https://example.invalid/old-{idx}.mp4",
+                declared_duration_sec=42.0,
+                declared_bytes=123,
+            ),
+            TranscriptResult(status="ok", text=f"old {idx}"),
+            model=transcribe_audio.DEFAULT_MODEL,
+            generated_at="2026-05-20T00:00:00Z",
+        )
+        for idx in range(2)
+    ]
+    pl.DataFrame(old_rows, schema=TRANSCRIPT_SCHEMA, strict=False).write_parquet(out)
+    p = _write_handle(
+        tmp_corpus,
+        "DHSgov",
+        [make_tweet("new", handle="DHSgov", media=[_archived_video("13_new", "shaNew")])],
+    )
+
+    stats = transcribe_audio.run(parquets=[p], out_path=out, transcriber=_stub("new text"))
+
+    df = pl.read_parquet(out)
+    assert stats["rows"] == 3
+    assert set(df["tweet_id"].to_list()) == {"old-0", "old-1", "new"}
 
 
 def test_is_cache_hit_respects_version_and_model() -> None:

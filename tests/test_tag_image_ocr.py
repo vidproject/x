@@ -11,7 +11,7 @@ import polars as pl
 import pytest
 
 from scripts import tag_image_ocr
-from scripts._schema import KEYFRAMES_SCHEMA, TWEET_SCHEMA
+from scripts._schema import IMAGE_OCR_SCHEMA, KEYFRAMES_SCHEMA, TWEET_SCHEMA
 from scripts.tag_image_ocr import OCR_VERSION, OcrCandidate, OcrResult, parse_tesseract_tsv
 from tests.conftest import make_media, make_tweet
 
@@ -192,3 +192,57 @@ def test_max_items_counts_attempts(tmp_corpus: Path) -> None:
     )
     assert stats["attempted"] == 2
     assert stats["skipped_max_items"] == 2
+
+
+def test_scoped_run_preserves_existing_rows(tmp_corpus: Path) -> None:
+    old_cand = OcrCandidate(
+        tweet_id="old-tweet",
+        account_handle="WhiteHouse",
+        media_id="old-photo",
+        media_type="photo",
+        media_sha256="b" * 64,
+        source_kind="photo",
+        source_path="https://example.invalid/old-photo.jpg",
+        release_asset_url="https://example.invalid/old-photo.jpg",
+        source_sha256="b" * 64,
+    )
+    old_row = tag_image_ocr.build_row(
+        old_cand,
+        OcrResult(status="ok", text="old text", confidence=0.9),
+        generated_at="2026-05-20T00:00:00Z",
+        ocr_version=OCR_VERSION,
+    )
+    pl.DataFrame([old_row], schema=IMAGE_OCR_SCHEMA, strict=False).write_parquet(
+        tmp_corpus / "data" / "tags" / "image_ocr.parquet"
+    )
+    _write_handle_parquet(
+        tmp_corpus,
+        "WhiteHouse",
+        [
+            make_tweet(
+                "old-tweet",
+                handle="WhiteHouse",
+                media=[_archived_photo("old-photo", "b" * 64)],
+            )
+        ],
+    )
+    scoped = _write_handle_parquet(
+        tmp_corpus,
+        "DHSgov",
+        [
+            make_tweet(
+                "new-tweet",
+                handle="DHSgov",
+                media=[_archived_photo("new-photo", "a" * 64)],
+            )
+        ],
+    )
+
+    stats = tag_image_ocr.run(
+        parquets=[scoped],
+        ocr_runner=lambda _c: OcrResult(status="ok", text="new text", confidence=0.8),
+    )
+
+    out = pl.read_parquet(tmp_corpus / "data" / "tags" / "image_ocr.parquet")
+    assert stats["rows"] == 2
+    assert set(out["tweet_id"].to_list()) == {"old-tweet", "new-tweet"}

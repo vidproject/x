@@ -500,6 +500,22 @@ def load_existing(path: Path) -> dict[tuple[str, str], dict[str, Any]]:
     return out
 
 
+def merge_existing_rows(
+    rows: list[dict[str, Any]],
+    existing: dict[tuple[str, str], dict[str, Any]],
+    *,
+    preserve_existing: bool,
+) -> list[dict[str, Any]]:
+    if not preserve_existing:
+        return rows
+    merged = dict(existing)
+    for row in rows:
+        key = (str(row.get("tweet_id") or ""), str(row.get("media_id") or ""))
+        if all(key):
+            merged[key] = row
+    return list(merged.values())
+
+
 def build_rows(
     parquets: list[Path],
     *,
@@ -507,6 +523,7 @@ def build_rows(
     include_pending: bool,
     force: bool,
     max_items: int | None,
+    preserve_existing: bool = False,
 ) -> tuple[list[dict[str, Any]], dict[str, int]]:
     existing = load_existing(OUT_PATH)
     manual_reviews = load_manual_review_queue()
@@ -536,13 +553,17 @@ def build_rows(
                     stats["cache_hits"] += 1
                     continue
                 if max_items is not None and generated >= max_items:
+                    if cached:
+                        rows.append(cached)
+                        stats["preserved_after_max_items"] += 1
                     stats["skipped_max_items"] += 1
                     continue
                 rows.append(draft)
                 generated += 1
                 stats["generated"] += 1
-    stats["rows"] = len(rows)
-    return rows, dict(stats)
+    rows_to_write = merge_existing_rows(rows, existing, preserve_existing=preserve_existing)
+    stats["rows"] = len(rows_to_write)
+    return rows_to_write, dict(stats)
 
 
 def load_manual_review_queue() -> dict[tuple[str, str], dict[str, Any]]:
@@ -691,9 +712,13 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
-    parquets = discover_canonical_parquets()
+    all_parquets = discover_canonical_parquets()
+    parquets = all_parquets
     if args.handle:
         parquets = [p for p in parquets if p.stem == args.handle]
+    preserve_existing = args.max_items is not None or {p.resolve() for p in parquets} != {
+        p.resolve() for p in all_parquets
+    }
     generated_at = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
     rows, stats = build_rows(
         parquets,
@@ -701,9 +726,10 @@ def main(argv: list[str] | None = None) -> int:
         include_pending=bool(args.include_pending),
         force=bool(args.force),
         max_items=args.max_items,
+        preserve_existing=preserve_existing,
     )
     if args.dry_run:
-        LOG.info("media recognition dry run", rows=len(rows), **stats)
+        LOG.info("media recognition dry run", sidecar_rows=len(rows), **stats)
         return 0
     write_parquet(rows, OUT_PATH)
     update_manifest(rows, stats, generated_at)

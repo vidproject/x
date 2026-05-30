@@ -186,6 +186,33 @@ def load_existing_index(path: Path) -> dict[str, dict[str, Any]]:
     return out
 
 
+def load_existing_rows(path: Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    return pl.read_parquet(path).to_dicts()
+
+
+def row_key(row: dict[str, Any]) -> tuple[str, str, str]:
+    return (
+        str(row.get("tweet_id") or ""),
+        str(row.get("media_id") or ""),
+        str(row.get("media_sha256") or ""),
+    )
+
+
+def merge_existing_rows(
+    rows: list[dict[str, Any]], existing_rows: list[dict[str, Any]], *, preserve_existing: bool
+) -> list[dict[str, Any]]:
+    if not preserve_existing:
+        return rows
+    merged: dict[tuple[str, str, str], dict[str, Any]] = {
+        row_key(row): row for row in existing_rows
+    }
+    for row in rows:
+        merged[row_key(row)] = row
+    return list(merged.values())
+
+
 def is_cache_hit(cached: dict[str, Any], detector_version: str) -> bool:
     if not cached:
         return False
@@ -632,8 +659,17 @@ def run(
 ) -> dict[str, int]:
     if out_path is None:
         out_path = OUT_PATH
-    parquets = parquets if parquets is not None else discover_canonical_parquets()
-    existing = load_existing_index(out_path)
+    all_parquets = discover_canonical_parquets()
+    parquets = parquets if parquets is not None else all_parquets
+    existing_rows = load_existing_rows(out_path)
+    existing = {
+        str(row.get("media_sha256") or ""): row
+        for row in existing_rows
+        if str(row.get("media_sha256") or "")
+    }
+    preserve_existing = max_items is not None or {p.resolve() for p in parquets} != {
+        p.resolve() for p in all_parquets
+    }
     rows: list[dict[str, Any]] = []
     stats: Counter[str] = Counter()
     generated_at = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -692,6 +728,9 @@ def run(
                     continue
 
             if max_items is not None and stats["attempted"] >= max_items:
+                if cached:
+                    rows.append(cached)
+                    stats["preserved_after_max_items"] += 1
                 stats["skipped_max_items"] += 1
                 continue
 
@@ -706,10 +745,13 @@ def run(
         if http is not None:
             http.close()
 
-    stats["rows"] = len(rows)
+    rows_to_write = merge_existing_rows(
+        rows, existing_rows, preserve_existing=preserve_existing
+    )
+    stats["rows"] = len(rows_to_write)
     if not dry_run:
-        write_parquet(rows, out_path)
-        update_manifest(rows, dict(stats), generated_at)
+        write_parquet(rows_to_write, out_path)
+        update_manifest(rows_to_write, dict(stats), generated_at)
     return dict(stats)
 
 
