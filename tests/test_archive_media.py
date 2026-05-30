@@ -104,6 +104,38 @@ def _read_media(path: Path) -> dict[str, Any]:
     return media
 
 
+def test_misc_archive_only_processes_government_or_official_authors(
+    tmp_path: Path,
+    monkeypatch: Any,
+) -> None:
+    parquet_path = tmp_path / "_misc.parquet"
+    rows = [
+        make_tweet("tweet-gov", handle="GovAgency", media=[make_media(media_id="m-gov")]),
+        make_tweet("tweet-public", handle="PublicUser", media=[make_media(media_id="m-public")]),
+    ]
+    pl.DataFrame(rows, schema=TWEET_SCHEMA, strict=False).write_parquet(parquet_path)
+    gh = FakeGitHub()
+    monkeypatch.setattr(archive_media, "load_account_categories", lambda: {
+        "GovAgency": "government",
+        "PublicUser": "public",
+    })
+    monkeypatch.setattr(archive_media, "fetch_bytes", lambda url, http: b"video-bytes")
+
+    archived, failed, skipped = archive_media.archive_one_handle(
+        "_misc",
+        parquet_path,
+        cast(archive_media.GitHubReleaseClient, gh),
+        cast(httpx.Client, object()),
+        10,
+    )
+
+    assert (archived, failed, skipped) == (1, 0, 0)
+    assert gh.uploads == [("media-_misc", "m-gov.mp4")]
+    by_tweet = {row["tweet_id"]: row["media"][0] for row in pl.read_parquet(parquet_path).to_dicts()}
+    assert by_tweet["tweet-gov"]["archive_status"] == "archived"
+    assert by_tweet["tweet-public"]["archive_status"] == "pending"
+
+
 def test_archive_uploads_to_numbered_release_when_primary_is_full(
     tmp_path: Path,
     monkeypatch: Any,

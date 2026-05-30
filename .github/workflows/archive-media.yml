@@ -63,6 +63,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y tesseract-ocr ffmpeg
 
+      - name: build _misc government scope
+        if: ${{ inputs.handle == '_misc' && inputs.tweet_ids_file == '' }}
+        run: uv run python -m scripts.dump_misc_government_tweet_ids
+
       - name: archive media
         timeout-minutes: 30
         env:
@@ -89,6 +93,9 @@ jobs:
           if [ -n "${{ inputs.tweet_ids_file }}" ]; then
             args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
           fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ inputs.handle }}" = "_misc" ]; then
+            args+=(--tweet-ids-file data/tags/_misc_government_tweet_ids.txt)
+          fi
           if [ -n "${{ inputs.media_ids_file }}" ]; then
             args+=(--media-ids-file "${{ inputs.media_ids_file }}")
           fi
@@ -105,6 +112,12 @@ jobs:
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
+          fi
+          if [ -n "${{ inputs.tweet_ids_file }}" ]; then
+            args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
+          fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ inputs.handle }}" = "_misc" ]; then
+            args+=(--tweet-ids-file data/tags/_misc_government_tweet_ids.txt)
           fi
           args+=(--max-items "$max_items")
           uv run python -m scripts.describe_media "${args[@]}"
@@ -124,6 +137,12 @@ jobs:
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
           fi
+          if [ -n "${{ inputs.tweet_ids_file }}" ]; then
+            args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
+          fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ inputs.handle }}" = "_misc" ]; then
+            args+=(--tweet-ids-file data/tags/_misc_government_tweet_ids.txt)
+          fi
           args+=(--max-items "$max_items")
           uv run python -m scripts.extract_video_frames "${args[@]}"
 
@@ -139,6 +158,12 @@ jobs:
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
           fi
+          if [ -n "${{ inputs.tweet_ids_file }}" ]; then
+            args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
+          fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ inputs.handle }}" = "_misc" ]; then
+            args+=(--tweet-ids-file data/tags/_misc_government_tweet_ids.txt)
+          fi
           args+=(--max-items "$max_items")
           uv run python -m scripts.extract_photo_thumbnails "${args[@]}"
 
@@ -153,6 +178,12 @@ jobs:
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
           fi
+          if [ -n "${{ inputs.tweet_ids_file }}" ]; then
+            args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
+          fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ inputs.handle }}" = "_misc" ]; then
+            args+=(--tweet-ids-file data/tags/_misc_government_tweet_ids.txt)
+          fi
           args+=(--max-items "$max_items")
           uv run python -m scripts.tag_image_ocr "${args[@]}"
 
@@ -166,6 +197,12 @@ jobs:
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
+          fi
+          if [ -n "${{ inputs.tweet_ids_file }}" ]; then
+            args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
+          fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ inputs.handle }}" = "_misc" ]; then
+            args+=(--tweet-ids-file data/tags/_misc_government_tweet_ids.txt)
           fi
           args+=(--max-items "$max_items")
           uv run python -m scripts.detect_audio_music "${args[@]}"
@@ -193,6 +230,12 @@ jobs:
           if [ "$asr_max" -gt 60 ]; then asr_max="60"; fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
+          fi
+          if [ -n "${{ inputs.tweet_ids_file }}" ]; then
+            args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
+          fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ inputs.handle }}" = "_misc" ]; then
+            args+=(--tweet-ids-file data/tags/_misc_government_tweet_ids.txt)
           fi
           args+=(--max-items "$asr_max")
           uv run --group asr python -m scripts.transcribe_audio "${args[@]}"

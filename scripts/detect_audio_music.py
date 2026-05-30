@@ -40,6 +40,7 @@ import httpx
 import polars as pl
 
 from scripts._logging import configure
+from scripts._misc_scope import MISC_HANDLE, load_account_categories, row_is_in_media_scope
 from scripts._schema import AUDIO_MUSIC_SCHEMA, empty_audio_music_dataframe
 
 LOG = configure()
@@ -105,12 +106,17 @@ class AudioResult:
 def discover_candidates(parquets: list[Path]) -> Iterator[AudioCandidate]:
     """Yield one candidate per archived video / animated-gif media item."""
     for path in parquets:
+        account_categories = load_account_categories() if path.stem == MISC_HANDLE else None
         try:
             df = pl.read_parquet(path)
         except Exception:
             LOG.exception("audio: could not read parquet", path=str(path))
             continue
         for tweet in df.iter_rows(named=True):
+            if not row_is_in_media_scope(
+                tweet, handle=path.stem, categories=account_categories
+            ):
+                continue
             media = tweet.get("media") or []
             if not isinstance(media, list):
                 continue
@@ -655,6 +661,7 @@ def run(
     speech_score_cap: float = DEFAULT_SPEECH_SCORE_CAP,
     music_speech_margin: float = DEFAULT_MUSIC_SPEECH_MARGIN,
     out_path: Path | None = None,
+    only_tweet_ids: set[str] | None = None,
     analyzer: Callable[[AudioCandidate], AudioResult] | None = None,
 ) -> dict[str, int]:
     if out_path is None:
@@ -669,7 +676,7 @@ def run(
     }
     preserve_existing = max_items is not None or {p.resolve() for p in parquets} != {
         p.resolve() for p in all_parquets
-    }
+    } or only_tweet_ids is not None
     rows: list[dict[str, Any]] = []
     stats: Counter[str] = Counter()
     generated_at = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -702,6 +709,9 @@ def run(
     try:
         seen_sha: set[str] = set()
         for cand in discover_candidates(parquets):
+            if only_tweet_ids is not None and cand.tweet_id not in only_tweet_ids:
+                stats["skipped_not_in_filter"] += 1
+                continue
             cached = existing.get(cand.media_sha256)
             if not force and is_cache_hit(cached or {}, DETECTOR_VERSION):
                 row = {**(cached or {})}
@@ -772,6 +782,11 @@ def main(argv: list[str] | None = None) -> int:
         "--dry-run", action="store_true", help="Report planned rows without writing."
     )
     parser.add_argument(
+        "--tweet-ids-file",
+        type=Path,
+        help="Only analyze videos whose tweet_id is listed (one per line) in this file.",
+    )
+    parser.add_argument(
         "--sample-seconds",
         type=float,
         default=DEFAULT_SAMPLE_SECONDS,
@@ -807,6 +822,13 @@ def main(argv: list[str] | None = None) -> int:
     parquets = discover_canonical_parquets()
     if args.handle:
         parquets = [p for p in parquets if p.stem == args.handle]
+    only_tweet_ids: set[str] | None = None
+    if args.tweet_ids_file:
+        only_tweet_ids = {
+            line.strip()
+            for line in args.tweet_ids_file.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        }
 
     stats = run(
         parquets=parquets,
@@ -817,6 +839,7 @@ def main(argv: list[str] | None = None) -> int:
         music_threshold=args.music_threshold,
         speech_score_cap=args.speech_score_cap,
         music_speech_margin=args.music_speech_margin,
+        only_tweet_ids=only_tweet_ids,
     )
     LOG.info("audio music detection complete", **stats)
     return 0

@@ -38,6 +38,7 @@ import httpx
 import polars as pl
 
 from scripts._logging import configure
+from scripts._misc_scope import MISC_HANDLE, load_account_categories, row_is_in_media_scope
 from scripts._schema import TWEET_SCHEMA
 
 LOG = configure()
@@ -496,7 +497,10 @@ def archive_one_handle(
     # Collect candidates. Managed release URLs are verified against the actual
     # release asset listing so earlier false-positive 422 stitching can heal.
     todo: list[tuple[str, dict[str, Any], str]] = []  # (tweet_id, media, asset_name)
+    account_categories = load_account_categories() if handle == MISC_HANDLE else None
     for r in df.iter_rows(named=True):
+        if not row_is_in_media_scope(r, handle=handle, categories=account_categories):
+            continue
         for _idx, m in candidates_from_row(
             r,
             tweet_ids=tweet_ids,

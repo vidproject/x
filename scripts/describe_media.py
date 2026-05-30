@@ -30,6 +30,7 @@ from typing import Any
 import polars as pl
 
 from scripts._logging import configure
+from scripts._misc_scope import MISC_HANDLE, load_account_categories, row_is_in_media_scope
 from scripts._schema import MEDIA_VISION_SCHEMA, empty_media_vision_dataframe
 
 LOG = configure()
@@ -524,6 +525,7 @@ def build_rows(
     force: bool,
     max_items: int | None,
     preserve_existing: bool = False,
+    only_tweet_ids: set[str] | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, int]]:
     existing = load_existing(OUT_PATH)
     manual_reviews = load_manual_review_queue()
@@ -532,8 +534,16 @@ def build_rows(
     generated = 0
 
     for path in parquets:
+        account_categories = load_account_categories() if path.stem == MISC_HANDLE else None
         df = pl.read_parquet(path)
         for tweet in df.iter_rows(named=True):
+            if only_tweet_ids is not None and str(tweet.get("tweet_id") or "") not in only_tweet_ids:
+                stats["skipped_not_in_filter"] += 1
+                continue
+            if not row_is_in_media_scope(
+                tweet, handle=path.stem, categories=account_categories
+            ):
+                continue
             for media in media_candidates(tweet, include_pending=include_pending):
                 key = (str(tweet.get("tweet_id") or ""), str(media.get("media_id") or ""))
                 manual_review = manual_reviews.get(key)
@@ -707,6 +717,11 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
         type=int,
         help="Maximum number of uncached media items to describe in this run.",
     )
+    parser.add_argument(
+        "--tweet-ids-file",
+        type=Path,
+        help="Only describe media whose tweet_id is listed (one per line) in this file.",
+    )
     return parser.parse_args(argv)
 
 
@@ -719,6 +734,14 @@ def main(argv: list[str] | None = None) -> int:
     preserve_existing = args.max_items is not None or {p.resolve() for p in parquets} != {
         p.resolve() for p in all_parquets
     }
+    only_tweet_ids: set[str] | None = None
+    if args.tweet_ids_file:
+        only_tweet_ids = {
+            line.strip()
+            for line in args.tweet_ids_file.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        }
+        preserve_existing = True
     generated_at = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
     rows, stats = build_rows(
         parquets,
@@ -727,6 +750,7 @@ def main(argv: list[str] | None = None) -> int:
         force=bool(args.force),
         max_items=args.max_items,
         preserve_existing=preserve_existing,
+        only_tweet_ids=only_tweet_ids,
     )
     if args.dry_run:
         LOG.info("media recognition dry run", sidecar_rows=len(rows), **stats)

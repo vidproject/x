@@ -43,6 +43,12 @@ import httpx
 import polars as pl
 
 from scripts._logging import configure
+from scripts._misc_scope import (
+    MISC_HANDLE,
+    account_handle_is_government_or_official,
+    load_account_categories,
+    row_is_in_media_scope,
+)
 from scripts._schema import IMAGE_OCR_SCHEMA, empty_image_ocr_dataframe
 
 LOG = configure()
@@ -84,12 +90,17 @@ class OcrResult:
 
 def discover_photo_candidates(parquets: list[Path]) -> Iterator[OcrCandidate]:
     for path in parquets:
+        account_categories = load_account_categories() if path.stem == MISC_HANDLE else None
         try:
             df = pl.read_parquet(path)
         except Exception:
             LOG.exception("image OCR: could not read parquet", path=str(path))
             continue
         for tweet in df.iter_rows(named=True):
+            if not row_is_in_media_scope(
+                tweet, handle=path.stem, categories=account_categories
+            ):
+                continue
             media = tweet.get("media") or []
             if not isinstance(media, list):
                 continue
@@ -126,8 +137,13 @@ def discover_keyframe_candidates(keyframes_path: Path | None = None) -> Iterator
     except Exception:
         LOG.exception("image OCR: could not read keyframes sidecar", path=str(keyframes_path))
         return
+    account_categories = load_account_categories()
     for row in df.iter_rows(named=True):
         if str(row.get("status") or "") != "ok":
+            continue
+        if not account_handle_is_government_or_official(
+            str(row.get("account_handle") or ""), account_categories
+        ):
             continue
         frames = row.get("frames") or []
         if not isinstance(frames, list):
@@ -410,6 +426,7 @@ def run(
     force: bool = False,
     dry_run: bool = False,
     out_path: Path | None = None,
+    only_tweet_ids: set[str] | None = None,
     ocr_runner: Callable[[OcrCandidate], OcrResult] | None = None,
 ) -> dict[str, int]:
     if out_path is None:
@@ -425,7 +442,7 @@ def run(
     }
     preserve_existing = max_items is not None or {p.resolve() for p in parquets} != {
         p.resolve() for p in all_parquets
-    }
+    } or only_tweet_ids is not None
     rows: list[dict[str, Any]] = []
     stats: Counter[str] = Counter()
     generated_at = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -449,6 +466,9 @@ def run(
 
     try:
         for cand in discover_candidates(parquets):
+            if only_tweet_ids is not None and cand.tweet_id not in only_tweet_ids:
+                stats["skipped_not_in_filter"] += 1
+                continue
             input_hash = input_hash_for(cand)
             cached = existing.get(input_hash)
             if not force and is_cache_hit(cached or {}, ocr_version):
@@ -499,13 +519,31 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--dry-run", action="store_true", help="Report planned rows without writing."
     )
+    parser.add_argument(
+        "--tweet-ids-file",
+        type=Path,
+        help="Only OCR media/keyframes whose tweet_id is listed (one per line) in this file.",
+    )
     args = parser.parse_args(argv)
 
     parquets = discover_canonical_parquets()
     if args.handle:
         parquets = [p for p in parquets if p.stem == args.handle]
+    only_tweet_ids: set[str] | None = None
+    if args.tweet_ids_file:
+        only_tweet_ids = {
+            line.strip()
+            for line in args.tweet_ids_file.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        }
 
-    stats = run(parquets=parquets, max_items=args.max_items, force=args.force, dry_run=args.dry_run)
+    stats = run(
+        parquets=parquets,
+        max_items=args.max_items,
+        force=args.force,
+        dry_run=args.dry_run,
+        only_tweet_ids=only_tweet_ids,
+    )
     LOG.info("image OCR complete", **stats)
     return 0
 

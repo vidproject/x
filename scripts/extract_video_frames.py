@@ -53,6 +53,7 @@ import httpx
 import polars as pl
 
 from scripts._logging import configure
+from scripts._misc_scope import MISC_HANDLE, load_account_categories, row_is_in_media_scope
 from scripts._schema import KEYFRAMES_SCHEMA, empty_keyframes_dataframe
 
 LOG = configure()
@@ -101,12 +102,17 @@ def discover_candidates(parquets: list[Path]) -> Iterator[VideoCandidate]:
     candidate isn't actionable.
     """
     for path in parquets:
+        account_categories = load_account_categories() if path.stem == MISC_HANDLE else None
         try:
             df = pl.read_parquet(path)
         except Exception:
             LOG.exception("keyframes: could not read parquet", path=str(path))
             continue
         for tweet in df.iter_rows(named=True):
+            if not row_is_in_media_scope(
+                tweet, handle=path.stem, categories=account_categories
+            ):
+                continue
             media = tweet.get("media") or []
             if not isinstance(media, list):
                 continue
