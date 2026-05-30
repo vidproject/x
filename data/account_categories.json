@@ -354,16 +354,16 @@
     "CBP": {
       "category": "core",
       "label": "U.S. Customs and Border Protection",
-      "observations": 1012,
+      "observations": 1016,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "CBPAMO": {
-      "category": "government",
-      "label": "CBP AMO",
-      "observations": 61,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "category": "core",
+      "label": "CBP Air and Marine Operations",
+      "observations": 64,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "CBPAMODEAC": {
       "badges": [
@@ -405,7 +405,7 @@
     "CBPCommissioner": {
       "category": "officials",
       "label": "CBP Commissioner Rodney Scott",
-      "observations": 90,
+      "observations": 91,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -711,7 +711,7 @@
     "DFOHouston": {
       "category": "officials",
       "label": "Director of Field Operations Jud Murdock",
-      "observations": 1,
+      "observations": 2,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -781,7 +781,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 9446,
+      "observations": 9454,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -884,7 +884,7 @@
     "DeptofWar": {
       "category": "government",
       "label": "Department of War \ud83c\uddfa\ud83c\uddf8",
-      "observations": 38,
+      "observations": 40,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2261,11 +2261,11 @@
       "source": "data/users.json"
     },
     "OFOEAC": {
-      "category": "officials",
-      "label": "Executive Asst. Commissioner Diane J. Sabatino",
-      "observations": 39,
-      "reason": "federal executive official language in profile",
-      "source": "data/users.json"
+      "category": "core",
+      "label": "CBP Office of Field Operations Executive Assistant Commissioner",
+      "observations": 42,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "OIGUSDA": {
       "category": "government",
@@ -2312,7 +2312,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 1224,
+      "observations": 1225,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2895,11 +2895,11 @@
       "source": "data/users.json"
     },
     "SecMullinDHS": {
-      "category": "officials",
+      "category": "core",
       "label": "Secretary Markwayne Mullin",
       "observations": 595,
-      "reason": "federal executive official language in profile",
-      "source": "data/users.json"
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "SecNielsen": {
       "category": "officials",
@@ -3019,7 +3019,7 @@
     "SenKatieBritt": {
       "category": "public_figures",
       "label": "Senator Katie Boyd Britt",
-      "observations": 2,
+      "observations": 3,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -3148,16 +3148,16 @@
       "source": "data/users.json"
     },
     "Sonderling47": {
-      "category": "officials",
+      "category": "core",
       "label": "Acting Secretary Keith Sonderling",
       "observations": 193,
-      "reason": "federal executive official language in profile",
-      "source": "data/users.json"
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "Southcom": {
       "category": "government",
       "label": "U.S. Southern Command",
-      "observations": 20,
+      "observations": 21,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3470,16 +3470,16 @@
       "source": "data/users.json"
     },
     "USBPChief": {
-      "category": "government",
+      "category": "core",
       "label": "U.S. Border Patrol Chief",
-      "observations": 73,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "observations": 80,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "USBPChiefDRT": {
       "category": "government",
       "label": "U.S. Border Patrol Del Rio Sector",
-      "observations": 4,
+      "observations": 5,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3491,11 +3491,11 @@
       "source": "data/users.json"
     },
     "USBPChiefELC": {
-      "category": "government",
+      "category": "core",
       "label": "El Centro Sector Border Patrol",
-      "observations": 31,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "observations": 41,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "USBPChiefELCarc": {
       "category": "government",
@@ -3533,14 +3533,11 @@
       "source": "data/users.json"
     },
     "USCG": {
-      "badges": [
-        "police"
-      ],
-      "category": "government",
+      "category": "core",
       "label": "U.S. Coast Guard",
-      "observations": 250,
-      "reason": "government verified type or official agency/office language",
-      "source": "data/users.json"
+      "observations": 259,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "USCGAcademy": {
       "category": "government",
@@ -3552,23 +3549,23 @@
     "USCGLANTAREA": {
       "category": "government",
       "label": "USCG Atlantic Area",
-      "observations": 3,
+      "observations": 4,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "USCIS": {
       "category": "core",
       "label": "U.S. Citizenship and Immigration Services",
-      "observations": 913,
+      "observations": 914,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "USCISJoe": {
-      "category": "officials",
+      "category": "core",
       "label": "USCIS Director Joseph B. Edlow",
-      "observations": 74,
-      "reason": "federal executive official language in profile",
-      "source": "data/users.json"
+      "observations": 75,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
     },
     "USDOL": {
       "category": "core",
@@ -4631,13 +4628,13 @@
     }
   },
   "category_counts": {
-    "core": 12,
-    "government": 165,
-    "officials": 109,
+    "core": 20,
+    "government": 161,
+    "officials": 105,
     "public": 170,
     "public_figures": 113
   },
-  "generated_at": "2026-05-30T14:13:51Z",
+  "generated_at": "2026-05-30T14:33:00Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
