@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-30T22:01:02Z",
+  "generated_at": "2026-05-31T10:12:24Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -30,8 +30,8 @@
       "genre-experiment": 71,
       "missing-media": 7,
       "needs-recognition": 273,
-      "ordinary-video": 1031,
-      "produced-video": 436
+      "ordinary-video": 1041,
+      "produced-video": 426
     },
     "top_tags": {
       "media-status:archived": 1811,
@@ -39,47 +39,47 @@
       "topic:immigration": 1535,
       "audio:has-audio": 1413,
       "video:medium": 1171,
-      "media-status:needs-vision": 1066,
-      "media-status:described": 746,
-      "agency:DHSgov": 473,
+      "media-status:needs-vision": 1076,
+      "media-status:described": 736,
+      "agency:DHSgov": 472,
       "topic:economy": 436,
-      "video:produced": 421,
+      "video:produced": 417,
       "video:short": 412,
       "agency:ICEgov": 355,
       "theme:criminal": 346,
-      "topic:general": 338,
+      "topic:general": 336,
       "slogan:illegal-alien": 307,
       "agency:POTUS": 288,
       "policy:border": 263,
-      "topic:military": 241,
+      "topic:military": 239,
       "action:detention": 239,
-      "video:text-overlay": 236,
+      "video:text-overlay": 225,
       "video:long": 218,
-      "video:news-clip": 214,
       "agency:CBP": 210,
-      "action:deportation": 193,
+      "video:news-clip": 208,
+      "action:deportation": 192,
       "video:interview": 174,
       "speaker:President Trump": 168,
       "subject:enforcement-op": 162,
       "legal:criminal-prosecution": 158,
-      "video:speech": 151,
+      "video:speech": 149,
       "crime:homicide": 140,
       "slogan:criminal-illegal-alien": 135,
       "crime:murder": 133,
-      "theme:religion": 128,
+      "theme:religion": 129,
       "genre:psa": 112,
-      "agency:USCIS": 111,
+      "agency:USCIS": 109,
       "video:montage": 107,
       "format:retweet": 104,
       "format:quote": 98,
       "crime:fraud": 95,
-      "video:voiceover": 94,
-      "theme:martyrdom": 92,
-      "phrase:immigrant": 87,
+      "theme:martyrdom": 94,
+      "video:voiceover": 89,
+      "phrase:immigrant": 86,
       "country:China": 83,
       "crime:assault": 82,
       "crime:trafficking": 74,
-      "genre:advertisement": 72,
+      "genre:advertisement": 73,
       "agency:SecMullinDHS": 67,
       "audio:music-likely": 65,
       "crime:weapon": 65,
@@ -87,10 +87,10 @@
     },
     "missing_step_counts": {
       "archive-media": 7,
-      "assign-produced-video-genre": 255,
+      "assign-produced-video-genre": 244,
       "describe-with-vision": 7,
       "detect-audio": 332,
-      "extract-keyframes": 612
+      "extract-keyframes": 453
     }
   },
   "items": [
@@ -2581,10 +2581,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4565,10 +4563,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4695,10 +4692,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -5136,10 +5132,9 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -6657,10 +6652,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -6760,10 +6754,9 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7321,10 +7314,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7422,10 +7414,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7641,10 +7632,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7949,141 +7939,6 @@
       "description": "Horizontal video. Cable-news broadcast footage (Newsmax / National Report) of President Trump receiving a McDonald's fast-food delivery at the Oval Office entrance, with LIVE chyrons and scrolling news tickers. It is TV news footage with anchor voiceover and no music track. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
-      "tweet_id": "2045555180695921102",
-      "account_handle": "USCISJoe",
-      "posted_at": "2026-04-18T17:28:54.000Z",
-      "tweet_url": "https://x.com/USCISJoe/status/2045555180695921102",
-      "tweet_text": "Our message is clear: If you hope to become a lawful resident or American citizen, you must show that you can take care of yourself.\n\nThere is no reason to admit aliens to the U.S. who would unfairly burden American taxpayers. https://t.co/WA0DqJ0Elk",
-      "media_id": "13_2045554888017690624",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2045554888017690624.mp4",
-      "duration_sec": 17.55,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 6918,
-      "retweet_count": 1279,
-      "bucket": "produced-video",
-      "priority": 98,
-      "tags": [
-        "agency:DHSgov",
-        "audio:has-audio",
-        "crime:fraud",
-        "media-status:archived",
-        "media-status:described",
-        "media:video",
-        "phrase:immigrant",
-        "topic:general",
-        "topic:immigration",
-        "topic:military",
-        "video:news-clip",
-        "video:short",
-        "video:text-overlay"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [
-        "video:text-overlay"
-      ],
-      "missing_steps": [
-        "assign-produced-video-genre"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Reposted One America News interview segment from 'Real America with Dan Ball.' A split-screen shows the host at a desk at left and a remote guest in a dark suit and glasses at right, both against Washington skyline backdrops. An OAN lower-third reads 'DHS AGENCY TO HIRE 200 SPECIAL AGENTS TO COMBAT IMMIGRATION FRAUD.' The audio is the guest describing a requirement that immigrants show they can support themselves. | Reposted One America News interview segment from 'Real America with Dan Ball.' A split-screen shows the host at a desk at left and a remote guest in a dark suit and glasses at right, both against Washington skyline backdrops. An OAN lower-third reads 'DHS AGENCY TO HIRE 200 SPECIAL AGENTS TO COMBAT IMMIGRATION FRAUD.' The audio is the guest describing a requirement that immigrants show they can support themselves.  [0:05] Split-screen OAN interview, host at left and guest in glasses at right; chyron 'DHS AGENCY TO HIRE 200 SPECIAL AGENTS TO COMBAT IMMIGRATION FRAUD.'"
-    },
-    {
-      "tweet_id": "2045859222290665758",
-      "account_handle": "USCISJoe",
-      "posted_at": "2026-04-19T13:37:03.000Z",
-      "tweet_url": "https://x.com/USCISJoe/status/2045859222290665758",
-      "tweet_text": "At USCIS, we’ve declared full-scale war on immigration fraud. We’re going back and revetting cases for people who were granted green cards and other benefits during the Biden administration—when vetting was lax.\n\nThere's rigorous vetting now, and we're reopening these old cases. https://t.co/ioZoquGLtr",
-      "media_id": "13_2045857534519443456",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2045857534519443456.mp4",
-      "duration_sec": 57.29,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 4660,
-      "retweet_count": 995,
-      "bucket": "produced-video",
-      "priority": 98,
-      "tags": [
-        "agency:CBP",
-        "agency:ICEgov",
-        "agency:USCIS",
-        "audio:has-audio",
-        "crime:fraud",
-        "media-status:archived",
-        "media-status:described",
-        "media:video",
-        "topic:general",
-        "topic:immigration",
-        "topic:military",
-        "video:medium",
-        "video:news-clip",
-        "video:text-overlay"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [
-        "video:text-overlay"
-      ],
-      "missing_steps": [
-        "assign-produced-video-genre"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Reposted One America News interview from 'Real America with Dan Ball.' A man in a dark suit and glasses speaks as a remote guest against a nighttime Washington skyline backdrop with the Capitol and Washington Monument. An OAN lower-third reads 'DECLARING WAR IN IMMIGRATION FRAUD.' The audio is the guest describing a USCIS effort to revet immigration cases and combat fraud. | Reposted One America News interview from 'Real America with Dan Ball.' A man in a dark suit and glasses speaks as a remote guest against a nighttime Washington skyline backdrop with the Capitol and Washington Monument. An OAN lower-third reads 'DECLARING WAR IN IMMIGRATION FRAUD.' The audio is the guest describing a USCIS effort to revet immigration cases and combat fraud.  [0:15] Man in a suit and glasses speaks as a remote guest before a DC skyline backdrop; chyron 'DECLARING WAR IN IMMIGRATION FRAUD.'"
-    },
-    {
-      "tweet_id": "2046350246645502190",
-      "account_handle": "USCISJoe",
-      "posted_at": "2026-04-20T22:08:12.000Z",
-      "tweet_url": "https://x.com/USCISJoe/status/2046350246645502190",
-      "tweet_text": "Fraud permeates our entire immigration system.\n\nOur new @USCIS special agents will ensure there are consequences for this type of fraud.\n\nNo one is entitled to immigration benefits &amp; naturalization. Immigration to the U.S. is an honor &amp; we will  make sure it’s done correctly. https://t.co/45JNDtQsMu",
-      "media_id": "13_2046349772093845504",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2046349772093845504.mp4",
-      "duration_sec": 46.813,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 2145,
-      "retweet_count": 541,
-      "bucket": "produced-video",
-      "priority": 98,
-      "tags": [
-        "agency:USCIS",
-        "audio:has-audio",
-        "crime:fraud",
-        "media-status:archived",
-        "media-status:described",
-        "media:video",
-        "topic:economy",
-        "topic:general",
-        "topic:immigration",
-        "video:medium",
-        "video:news-clip",
-        "video:text-overlay"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [
-        "video:text-overlay"
-      ],
-      "missing_steps": [
-        "assign-produced-video-genre"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Reposted Newsmax interview segment. A split-screen shows a man in a dark suit and glasses as a remote guest at left and footage of an office with people working at computer terminals at right. A lower-third reads 'NATIONAL UPDATE / FRAUD CASES SURGE NATIONWIDE,' with a 'LIVE' tag and a news ticker. The audio is the guest describing how immigration fraud permeates the system. The tweet text describes new USCIS special agents addressing fraud. | Reposted Newsmax interview segment. A split-screen shows a man in a dark suit and glasses as a remote guest at left and footage of an office with people working at computer terminals at right. A lower-third reads 'NATIONAL UPDATE / FRAUD CASES SURGE NATIONWIDE,' with a 'LIVE' tag and a news ticker. The audio is the guest describing how immigration fraud permeates the system. The tweet text describes new USCIS special agents addressing fraud.  [0:15] Split-screen Newsmax interview: guest in glasses at left, office with workers at computers at right; chyron 'NATIONAL UPDATE / FRAUD CASES SURGE NATIONWIDE.'"
-    },
-    {
       "tweet_id": "2048801967879618788",
       "account_handle": "WhiteHouse",
       "posted_at": "2026-04-27T16:30:28.000Z",
@@ -8210,10 +8065,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -8428,10 +8282,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -8478,10 +8331,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -8521,10 +8373,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -8661,52 +8512,6 @@
       "description": "POTUS retweet of the WhiteHouse Mother's Day clip: lightly captioned static podium footage of Trump thanking America's moms and Angel/Gold Star moms in the Rose Garden. A raw speech with a headline caption banner and subtitles; no music or cinematic styling. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
-      "tweet_id": "2053082563166576879",
-      "account_handle": "USCISJoe",
-      "posted_at": "2026-05-09T12:00:02.000Z",
-      "tweet_url": "https://x.com/USCISJoe/status/2053082563166576879",
-      "tweet_text": "When I became @USCIS Director, I inherited a staggering backlog of asylum cases: 1.5 million—up from 400k in 2021.\n\nThat was the result of 4 years of unchecked crossings at the border because the previous president didn’t care who they let into our homeland.\nThis @POTUS cares. https://t.co/YDvBqpVszX",
-      "media_id": "13_2052854621945602050",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2052854621945602050.mp4",
-      "duration_sec": 33.241,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 2064,
-      "retweet_count": 443,
-      "bucket": "produced-video",
-      "priority": 98,
-      "tags": [
-        "agency:POTUS",
-        "agency:USCIS",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:described",
-        "media:video",
-        "policy:border",
-        "topic:immigration",
-        "video:medium",
-        "video:produced",
-        "video:text-overlay",
-        "video:voiceover"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [
-        "video:produced",
-        "video:text-overlay",
-        "video:voiceover"
-      ],
-      "missing_steps": [
-        "assign-produced-video-genre"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A recorded Real America's Voice remote interview, posted by the USCIS Director, in a three-box split screen. A female host sits at left, the USCIS Director joins by video from center wearing glasses, a dark suit and a yellow tie with an American-flag lapel pin, and a male co-host joins at right; later the Director's feed fills the frame over a nighttime Washington skyline with the US Capitol dome. A chyron identifies him as 'DIRECTOR JOSEPH EDLOW / Director, USCIS' and a 'Just the News' bug appears; a scrolling lower ticker carries unrelated headlines. The narration concerns citizenship requirements, English ability, and assimilation. The audio is broadcast interview speech. | A recorded Real America's Voice remote interview, posted by the USCIS Director, in a three-box split screen. A female host sits at left, the USCIS Director joins by video from center wearing glasses, a dark suit and a yellow tie with an American-flag lapel pin, and a male co-host joins at right; later the Director's feed fills the frame over a nighttime Washington skyline with the US Capitol dome. A chyron identifies him as 'DIRECTOR JOSEPH EDLOW / Director, USCIS' and a 'Just the News' bug appears; a scrolli"
-    },
-    {
       "tweet_id": "2054015656807240122",
       "account_handle": "WhiteHouse",
       "posted_at": "2026-05-12T01:47:49.000Z",
@@ -8826,10 +8631,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -8868,10 +8672,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -8914,10 +8717,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -8961,10 +8763,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -9003,10 +8804,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -9051,10 +8851,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -9096,10 +8895,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -9142,10 +8940,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -9188,10 +8985,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -9234,10 +9030,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -9281,10 +9076,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -9327,10 +9121,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -9414,10 +9207,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -9462,10 +9254,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -9547,10 +9338,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -9632,14 +9422,13 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Fox News 'Hannity' sit-down interview with Secretary of State Marco Rubio aboard Air Force One, discussing China. Static interview footage with Fox chyrons. | Direct keyframe + tweet-text review: an on-camera sit-down interview featuring Secretary Rubio."
+      "has_ocr": true,
+      "description": "Fox News 'Hannity' sit-down interview with Secretary of State Marco Rubio aboard Air Force One, discussing China. Static interview footage with Fox chyrons. | - ; ) as i & 1/58) HANNITY SITS DOWN ON AIRFORCE ONE = 32m, OV) Vex WITH SECRETARY OF STATE MARCO RUBIO a pf BREAKING NEWS\" IP'Conine ur | 1/58) HANNITY SITS DOWN ON AIR FORCE ONE |: : Wrox WITH SECRETARY OF STATE MARCO RUBIO a aA | ‘ cae 4 ) & I 88| HANNITY SITS DOWN ON AIR FORCE ONE :e79m, OY) r AEox WITH SECRETARY OF STATE MARCO RUBIO a | B } . - il x a l, cof) i & ex HANNITY SITS DOWN ON AIR FORCE ONE — 277, a” /AaitS|__ WITH SECRETARY OF STATE MARCO RUBIO ay af a = [channei) [comic uP +? | ) f ae ao f' a 9 ) & — 7 =» e) HANNITY SITS DOWN ON AIR FORCE ONE Hannity a ' WITH SECRETARY OF STATE MARCO RUBIO ar at: ms | Direct keyframe + tweet-text review: an on-camera sit-down interview featuring Secretary Rubio."
     },
     {
       "tweet_id": "2054737901208863204",
@@ -9680,14 +9469,58 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Fox News 'Hannity' interview with Secretary of State Marco Rubio aboard Air Force One on Iran's drone/missile buildup and nuclear threat. Static interview shot with Fox chyrons. TV interview clip, not produced youth content. | Direct keyframe + tweet-text review: an on-camera spoken-word clip (remarks/statement) featuring Secretary Rubio."
+      "has_ocr": true,
+      "description": "Fox News 'Hannity' interview with Secretary of State Marco Rubio aboard Air Force One on Iran's drone/missile buildup and nuclear threat. Static interview shot with Fox chyrons. TV interview clip, not produced youth content. | : ) Ve e co “a er f// 259) HANNITY SITS DOWN ON AIRFORCE ONE = em, ON\" Veox WITH SECRETARY OF STATE MARCO RUBIO 97 (us sey cizer|__HANINITY EXCLUSIVE IE COMING UP_| | T 7 ; BS Silvia ° & W259) HANNITY SITS DOWN ON AIR FORCE ONE 2mm, Asc WITH SECRETARY OF STATE MARCO RUBIO |= 4 ul ey BREAKING NEWS conn uF | - y~ ‘ -_ a \\ SF \\ (Prox| HANNITY SITS DOWN ON AIR FORCE ONE 32) vs WITH SECRETARY OF STATE MARCO RUBIO 97 “us ™ [cnenneil BREAKING NEWS COMING UP] | f 4 é -_ a 259) HANNITY SITS DOWN ON AIRFORCE ONE 329m, ON\" Ase) WITH SECRETARY OF STATE MARCO RUBIO a 5 1 1 1 5 10 574 288 30 34 14.231422 [| 4 1 1 1 6 0 0 323 604 30 -1 5 1 1 1 6 1 0 336 18 17 16.224556 5 1 1 1 6 2 214 330 86 12 96.485359 BREAKIN 5 1 1 1 6 3 504 323 88 20 7.008240 fecomina 5 1 1 1 6 4 602 332 2 4 17.585007 test | ‘ ew “a — (558) HANNITY SITS DOWN ON AIR FORCE ONE 32m, Gal WITH SECRETARY OF STATE MARCO RUBIO ei NEWS] sone ania se p (oeerl____HANNITY EXCLUSIVE _|_cominc. up | Direct keyframe +"
+    },
+    {
+      "tweet_id": "2054746869255778586",
+      "account_handle": "RapidResponse47",
+      "posted_at": "2026-05-14T02:13:23.000Z",
+      "tweet_url": "https://x.com/RapidResponse47/status/2054746869255778586",
+      "tweet_text": "The U.S. national anthem plays for @POTUS upon his arrival at the Great Hall of the People in Beijing, China 🇺🇸 https://t.co/CTdaasVYxP",
+      "media_id": "13_2054746676363956224",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054746676363956224.mp4",
+      "duration_sec": 89.002,
+      "width": 1280,
+      "height": 720,
+      "like_count": 8137,
+      "retweet_count": 1304,
+      "bucket": "produced-video",
+      "priority": 98,
+      "tags": [
+        "agency:POTUS",
+        "audio:has-audio",
+        "audio:music-likely",
+        "country:China",
+        "genre:advertisement",
+        "media-status:archived",
+        "media-status:described",
+        "media:video",
+        "theme:martyrdom",
+        "topic:immigration",
+        "topic:military",
+        "video:medium",
+        "video:produced"
+      ],
+      "genre_tags": [
+        "genre:advertisement"
+      ],
+      "produced_video_tags": [
+        "video:produced"
+      ],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "Footage of Trump's formal arrival ceremony at the Great Hall of the People in Beijing. He stands on a red ceremonial dais and salutes as a Chinese military honor guard band plays the U.S. national anthem and children wave flags. The audio is the live ceremonial anthem, captured in static wide shots. | £40 A : ry ET SAE Bee Soest eT pag a se Zs aa LL let LU OW hee ve yo a | ae = age : i ‘t a : Ag ¥ i | te bans ne. en An P 7p : GAPS ULI NE ES BIE. ea LUV EVER UVE ES ae ae ee Tae) Wie “a RNa! cael sige a ee Sg | ad as { 4 am A 5 1 1 3 1 2 142 145 12 16 21.405800 ze 5 1 1 3 1 3 270 147 18 21 20.392746 hy 5 1 1 3 1 4 400 150 18 20 71.798111 aly 5 1 1 3 1 5 491 145 3 3 20.054558 ‘ 3 1 1 4 0 0 21 174 612 55 -1 4 1 1 4 1 0 21 174 573 55 -1 5 1 1 4 1 1 21 174 86 51 22.399940 ONE 5 1 1 4 1 2 127 205 54 24 36.450195 Der 5 1 1 4 1 3 191 215 83 13 13.700516 ‘aia 5 1 1 4 1 4 248 196 10 37 30.266922 ah 5 1 1 4 1 5 287 210 49 15 32.055344 ee 5 1 1 4 1 6 350 210 9 14 0.000000 P. 5 1 1 4 1 7 453 202 25 22 23.034988 ea 5 1 1 4 1 8 558 204 75 25 17.162407 PONE 3 1 1 5 0 0 83 226 554 27 -1 4 1 1 5 1 0 83 226 554 27 -1 5 1 1 5 1 1 83 231 80 22 31.053207 at 5 1 1 5 1 2 191 232 58 12 0.000000 peta 5 1 1 5"
     },
     {
       "tweet_id": "2054757875688292597",
@@ -9762,14 +9595,13 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Short vertical handheld clip (credited to Margo Martin) of Trump and Xi walking the red carpet outside the Great Hall of the People with the delegation lined up and a Chinese military band in the background. It is continuous footage with ambient audio (transcript 'Thank you') and no song track. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Short vertical handheld clip (credited to Margo Martin) of Trump and Xi walking the red carpet outside the Great Hall of the People with the delegation lined up and a Chinese military band in the background. It is continuous footage with ambient audio (transcript 'Thank you') and no song track. | ali ee +) : ifs Ce. “Ske ae t — aS : | I ' 7 wo tt hy the fas W 1% a TR ca ue = J = i a N i ‘N | “4 nD thy saab ae fl f rage Lo Retentfdasets i’ f S 4 1 1 1 6 0 0 860 161 39 -1 5 1 1 1 6 1 0 860 48 12 26.649757 — 5 1 1 1 6 2 99 866 62 33 57.091988 — | i “4 nD hh ty oe = Foe ae f tat Se Aivpniyehnnnataaa fas 3) rs LS ae atten aS c \\ BB, f —_— Ne — — | ut : ee ae inte A a ae = dieirntyetoisnesgbeatete, TD Lae ——a a \\ ‘ ‘ Iz | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2054762424209732018",
@@ -9803,55 +9635,13 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical handheld clip (credited to Margo Martin) of Trump and Xi standing together on the red-carpeted steps of the Great Hall of the People flanked by Chinese honor guards at the close of the arrival ceremony. Single continuous shot with ambient sound and no song track. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
-    },
-    {
-      "tweet_id": "2054766453975335375",
-      "account_handle": "RapidResponse47",
-      "posted_at": "2026-05-14T03:31:12.000Z",
-      "tweet_url": "https://x.com/RapidResponse47/status/2054766453975335375",
-      "tweet_text": ".@POTUS begins a meeting with President Xi at the Great Hall of the People: \n\n“You and I have known each other now for a long time—in fact, the longest relationship of our two countries that any president and president has had—and that’s, to me, an honor.”\n\n🎥: @MargoMartin47 https://t.co/HBNnrVY0Fr",
-      "media_id": "13_2054766109669105664",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054766109669105664.mp4",
-      "duration_sec": 26.871,
-      "width": 2160,
-      "height": 3840,
-      "like_count": 2490,
-      "retweet_count": 507,
-      "bucket": "produced-video",
-      "priority": 98,
-      "tags": [
-        "agency:POTUS",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:described",
-        "media:video",
-        "topic:immigration",
-        "video:produced",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [
-        "video:produced"
-      ],
-      "missing_steps": [
-        "extract-keyframes",
-        "assign-produced-video-genre"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A single fixed-camera vertical phone video (credited to Margo Martin) of Trump and Xi seated at a long table in a chandelier-lit room in the Great Hall of the People as their bilateral meeting begins, with Trump's opening remarks as the audio track. The frame is static across the clip and shows Trump talking. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Vertical handheld clip (credited to Margo Martin) of Trump and Xi standing together on the red-carpeted steps of the Great Hall of the People flanked by Chinese honor guards at the close of the arrival ceremony. Single continuous shot with ambient sound and no song track. | ll - iE r ‘ ~\" e es) \\ ¥ : ee SS en = i ——- = =—— & = j ——— —— ener ee a a = | il te } = 7 t s oh - Ni 2 4 ah ae cal eo =(ei=) peemenieepie | 4 il te [[ 2 } - Ny : ‘ ' IN be eA ry SS & 2S: = A — = = See a | ' il cm j E food [ +, a © Re ae 4 Py iif: _——= — le : L—===_ 7 een ———_——$£@ —\\ | ‘(ea il : Um —- ; F . oe GC = a — ee Se eee : manne | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2054792834272690235",
@@ -9887,14 +9677,13 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Brief pool footage of Trump and Xi standing for a photo op during the China visit, with Trump saying 'China is beautiful.' Static, unedited footage of the two leaders. Raw photo-op clip, not produced entertainment. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Brief pool footage of Trump and Xi standing for a photo op during the China visit, with Trump saying 'China is beautiful.' Static, unedited footage of the two leaders. Raw photo-op clip, not produced entertainment. | — Aiea ae. — ae y | [r—~ mee. > C—O ——' aS — 2 — 3= r= = = SS vo ee = — a “ a ‘ he bad E i + 3 1 1 4 0 0 99 296 404 48 -1 4 1 1 4 1 0 152 296 203 22 -1 5 1 1 4 1 1 152 296 9 3 32.535736 2 5 1 1 4 1 2 312 297 43 21 19.801292 rh. 4 1 1 4 2 0 99 313 404 31 -1 5 1 1 4 2 1 99 343 5 1 34.523911 Z 5 1 1 4 2 2 159 320 11 8 73.623810 5 1 1 4 2 3 301 313 58 26 0.000000 NS 5 1 1 4 2 4 487 323 16 14 61.570126 (4 | fl ri] = (9. ofinoe. at —. on = | ————1 emma — ——F \\i = f << m YY Ls } er 3 «ll 4 Vy | = tl . es 4 i SS J ’ Ys = 7 Fie i | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2054874145549083086",
@@ -9931,14 +9720,13 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Trump delivering remarks at the state banquet in the Great Hall of the People, thanking President Xi for the welcome. Static lectern shot against an orange backdrop. Raw event speech, no music or cinematic styling. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Trump delivering remarks at the state banquet in the Great Hall of the People, thanking President Xi for the welcome. Static lectern shot against an orange backdrop. Raw event speech, no music or cinematic styling. | oe ns i i , > A 5 1 1 3 1 4 478 258 158 36 28.499748 ieee 4 1 1 3 2 0 235 270 387 86 -1 5 1 1 3 2 1 235 270 70 81 63.080162 a 5 1 1 3 2 2 426 288 196 68 18.089539 FON | ay ‘Y Ht | Se | < | A : a | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2054876600890433712",
@@ -9974,14 +9762,13 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Trump at the Beijing state banquet noting WWII alliance and cultural ties (basketball, blue jeans, Chinese restaurants). Static lectern footage. Raw speech, not produced entertainment. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Trump at the Beijing state banquet noting WWII alliance and cultural ties (basketball, blue jeans, Chinese restaurants). Static lectern footage. Raw speech, not produced entertainment. | Aas i fe : | a | = = , ; i oo é ™ a, y ZA\" 3 | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2054877895068099047",
@@ -10017,14 +9804,13 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Trump at the Beijing state banquet inviting Xi and Madame Peng to the White House and proposing a toast. Static lectern shot. Raw event speech, no music or cinematic editing. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Trump at the Beijing state banquet inviting Xi and Madame Peng to the White House and proposing a toast. Static lectern shot. Raw event speech, no music or cinematic editing. | y Lees ® % at ff — | y Nos < @ : 4 ‘ y a . — | \\ f — | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2054878963126690062",
@@ -11834,10 +11620,9 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -13052,10 +12837,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -13103,10 +12887,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -13543,10 +13326,9 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -14775,140 +14557,6 @@
       "description": "Horizontal video. A clipped cable-news interview (Newsmax / 'Bianca Across the Nation') in which Labor Secretary Lori Chavez-DeRemer speaks about the March jobs report, saying '178,000 new jobs, we blew it out of the water'. It is a split-screen talking-head segment with news lower-thirds and a scrolling chyron about Iran. There is no music track. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
-      "tweet_id": "2044823546816307670",
-      "account_handle": "USCISJoe",
-      "posted_at": "2026-04-16T17:01:39.000Z",
-      "tweet_url": "https://x.com/USCISJoe/status/2044823546816307670",
-      "tweet_text": "\"Ultimately, my charge at @USCIS is to make sure that we are not cutting corners.\"\n\n\"At the end of the day, screening and vetting will be the primary focus of what we’re doing.\" https://t.co/W8r6XTez0f",
-      "media_id": "13_2044822006894596096",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2044822006894596096.mp4",
-      "duration_sec": 21.162,
-      "width": 720,
-      "height": 1280,
-      "like_count": 246,
-      "retweet_count": 63,
-      "bucket": "produced-video",
-      "priority": 93,
-      "tags": [
-        "agency:USCIS",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:described",
-        "media:video",
-        "topic:immigration",
-        "video:short",
-        "video:text-overlay"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [
-        "video:text-overlay"
-      ],
-      "missing_steps": [
-        "assign-produced-video-genre"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A vertical clip from a congressional hearing, posted by the USCIS Director. He sits at a witness table in a dark suit and tie with glasses, speaking into a microphone; a printed witness placard in front of him reads 'Joseph Edlow / Director / U.S. Citizenship and Immigration Services', with water bottles on the table and seated attendees behind him. Burned-in white captions with a red highlight box track his spoken remarks about screening and vetting and not cutting corners. The audio is hearing-room speech. | A vertical clip from a congressional hearing, posted by the USCIS Director. He sits at a witness table in a dark suit and tie with glasses, speaking into a microphone; a printed witness placard in front of him reads 'Joseph Edlow / Director / U.S. Citizenship and Immigration Services', with water bottles on the table and seated attendees behind him. Burned-in white captions with a red highlight box track his spoken remarks about screening and vetting and not cutting corners. The audio is hearing-room speech.  [0:02] A man in a dark suit and glasses speaks at a hearing witness table; placard reads 'Joseph Edlow / Director / U.S. Citizenship and Immigration Services'. Caption w"
-    },
-    {
-      "tweet_id": "2045600756405821890",
-      "account_handle": "USCISJoe",
-      "posted_at": "2026-04-18T20:30:00.000Z",
-      "tweet_url": "https://x.com/USCISJoe/status/2045600756405821890",
-      "tweet_text": "Our primary mission is to keep Americans safe. Despite challenges from radical, activist judges, we remain committed to protecting this country.\n\nKeeping America safe is our charge—and we will do it unapologetically. https://t.co/Iplew7X6ZM",
-      "media_id": "13_2045577638211723264",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2045577638211723264.mp4",
-      "duration_sec": 36.469,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 390,
-      "retweet_count": 75,
-      "bucket": "produced-video",
-      "priority": 93,
-      "tags": [
-        "action:deportation",
-        "agency:DOJgov",
-        "agency:USCIS",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:described",
-        "media:video",
-        "topic:immigration",
-        "video:medium",
-        "video:news-clip",
-        "video:produced",
-        "video:speech",
-        "video:text-overlay",
-        "video:voiceover"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [
-        "video:produced",
-        "video:text-overlay",
-        "video:voiceover"
-      ],
-      "missing_steps": [
-        "assign-produced-video-genre"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A recorded One America News remote interview, posted by the USCIS Director. He appears by video against a night Washington skyline showing the US Capitol and the Washington Monument, wearing glasses and a dark suit. An OAN bug and a 'Real America with Dan Ball' graphic appear, with a lower-third chyron reading 'APPEALS COURT ORDERS JUDGE TO END CONTEMPT INVESTIGATION OF TRUMP'S DEPORTATION FLIGHTS'. The narration concerns keeping the country safe and litigation over the agency's authority. The audio is broadcast interview speech. | A recorded One America News remote interview, posted by the USCIS Director. He appears by video against a night Washington skyline showing the US Capitol and the Washington Monument, wearing glasses and a dark suit. An OAN bug and a 'Real America with Dan Ball' graphic appear, with a lower-third chyron reading 'APPEALS COURT ORDERS JUDGE TO END CONTEMPT INVESTIGATION OF TRUMP'S DEPORTATION FLIGHTS'. The narration concerns keeping the country safe and litigation over the agency's authority. The audio is broadcast interview speech.  [0:03] The USCIS Director speaks by video against a night Washington skyline with the Capitol and Washington Monument; chyron"
-    },
-    {
-      "tweet_id": "2048056901825437865",
-      "account_handle": "USCISJoe",
-      "posted_at": "2026-04-25T15:09:51.000Z",
-      "tweet_url": "https://x.com/USCISJoe/status/2048056901825437865",
-      "tweet_text": "We’re cleaning up after the Biden admin, where criminals got an open door into the US through our legal immigration system.\n\nWe’re reviewing past immigration determinations &amp; correcting them as necessary.\n\nThe shutdown of @DHSgov undermines that work &amp; puts all Americans at risk. https://t.co/wQwRe9XDRV",
-      "media_id": "13_2048056745382014976",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2048056745382014976.mp4",
-      "duration_sec": 62.145,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 867,
-      "retweet_count": 172,
-      "bucket": "produced-video",
-      "priority": 93,
-      "tags": [
-        "agency:DHSgov",
-        "audio:has-audio",
-        "crime:fraud",
-        "crime:homicide",
-        "crime:murder",
-        "media-status:archived",
-        "media-status:described",
-        "media:video",
-        "status:community-note",
-        "theme:religion",
-        "topic:immigration",
-        "video:medium",
-        "video:news-clip",
-        "video:text-overlay"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [
-        "video:text-overlay"
-      ],
-      "missing_steps": [
-        "assign-produced-video-genre"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Reposted Newsmax interview segment. A man in a dark suit and glasses speaks as a remote guest against a Washington skyline backdrop with the Capitol behind. A lower-third reads 'FRAUD FEARS / APPROVALS FOR GREEN CARDS DROP UNDER TRUMP,' with a 'LIVE' tag and a news ticker. The audio is the guest describing a review of past immigration approvals and a drop in green-card approvals. | Reposted Newsmax interview segment. A man in a dark suit and glasses speaks as a remote guest against a Washington skyline backdrop with the Capitol behind. A lower-third reads 'FRAUD FEARS / APPROVALS FOR GREEN CARDS DROP UNDER TRUMP,' with a 'LIVE' tag and a news ticker. The audio is the guest describing a review of past immigration approvals and a drop in green-card approvals.  [0:15] Man in a suit and glasses speaks as a remote Newsmax guest before a DC skyline; chyron 'FRAUD FEARS / APPROVALS FOR GREEN CARDS DROP UNDER TRUMP.'"
-    },
-    {
       "tweet_id": "2049600739773743432",
       "account_handle": "USDOL",
       "posted_at": "2026-04-29T21:24:30.000Z",
@@ -14951,50 +14599,6 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "Video. A QC tech apprentice at AstraZeneca speaks to camera outside an office building about the apprenticeship program, bookended by a DOL 'Apprenticeship USA' title card and captions. It is a talking-head video with no music track. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
-    },
-    {
-      "tweet_id": "2049860340230348875",
-      "account_handle": "USCISJoe",
-      "posted_at": "2026-04-30T14:36:04.000Z",
-      "tweet_url": "https://x.com/USCISJoe/status/2049860340230348875",
-      "tweet_text": "Under @POTUS &amp; @SecMullinDHS, @USCIS is making sure only those who meet all requirements &amp; pose no threat to national security are granted Green Cards &amp; citizenship.\n\nThese benefits are an honor &amp; privilege, &amp; we’re making sure they go only to those who truly qualify. https://t.co/WgHZkXveA6",
-      "media_id": "13_2049860216213102592",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2049860216213102592.mp4",
-      "duration_sec": 31.281,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 657,
-      "retweet_count": 156,
-      "bucket": "produced-video",
-      "priority": 93,
-      "tags": [
-        "agency:POTUS",
-        "agency:SecMullinDHS",
-        "agency:USCIS",
-        "audio:has-audio",
-        "crime:fraud",
-        "media-status:archived",
-        "media-status:described",
-        "media:video",
-        "topic:general",
-        "video:medium",
-        "video:news-clip",
-        "video:text-overlay"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [
-        "video:text-overlay"
-      ],
-      "missing_steps": [
-        "assign-produced-video-genre"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Reposted Newsmax interview segment. Two anchors sit at a studio desk against a New York skyline backdrop at left and center, with a remote guest, a man in a suit and glasses, at right. A lower-third reads 'FRAUD FEARS / APPROVALS FOR GREEN CARDS DROP UNDER TRUMP,' with a 'LIVE' tag and a news ticker. The audio is the guest describing vetting of green-card and citizenship applicants. | Reposted Newsmax interview segment. Two anchors sit at a studio desk against a New York skyline backdrop at left and center, with a remote guest, a man in a suit and glasses, at right. A lower-third reads 'FRAUD FEARS / APPROVALS FOR GREEN CARDS DROP UNDER TRUMP,' with a 'LIVE' tag and a news ticker. The audio is the guest describing vetting of green-card and citizenship applicants.  [0:10] Newsmax studio with two anchors at a desk and a remote guest in glasses at right; chyron 'FRAUD FEARS / APPROVALS FOR GREEN CARDS DROP UNDER TRUMP.'"
     },
     {
       "tweet_id": "2049936025280024955",
@@ -15040,101 +14644,6 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "A clipped TV news interview of Acting Labor Secretary Keith Sonderling (Bloomberg 'Big Take' and Newsmax) saying jobs, manufacturing and industry are 'coming back,' intercut with a Fed/Powell news shot. It is a broadcast talking-head segment with channel bugs, a lower-third name plate, and a scrolling chyron, and it has no music bed. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
-    },
-    {
-      "tweet_id": "2049992010874962225",
-      "account_handle": "USCISJoe",
-      "posted_at": "2026-04-30T23:19:17.000Z",
-      "tweet_url": "https://x.com/USCISJoe/status/2049992010874962225",
-      "tweet_text": "The Biden administration knew exactly what they were doing when they opened the floodgates, let everyone come in, and reduced our standards of screening and vetting to the point they were meaningless.\n\nUnder @POTUS and @SecMullinDHS, we’re correcting that for the American people. https://t.co/GDNJlfnf8A",
-      "media_id": "13_2049991325529808896",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2049991325529808896.mp4",
-      "duration_sec": 24.482,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 401,
-      "retweet_count": 81,
-      "bucket": "produced-video",
-      "priority": 93,
-      "tags": [
-        "agency:POTUS",
-        "agency:SecMullinDHS",
-        "agency:USCIS",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:described",
-        "media:video",
-        "status:community-note",
-        "topic:immigration",
-        "video:produced",
-        "video:short",
-        "video:text-overlay",
-        "video:voiceover"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [
-        "video:produced",
-        "video:text-overlay",
-        "video:voiceover"
-      ],
-      "missing_steps": [
-        "assign-produced-video-genre"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A recorded Real America's Voice remote interview, posted by the USCIS Director. It opens on a two-box layout: at left, an exterior storefront shot of a 'U.S. CITIZENSHIP & IMMIGRATION SERVICES' office sign, and at right the Director joining by video in glasses, a dark suit and a yellow tie. A 'Just the News, No Noise' bug appears and a lower-third chyron reads 'DIRECTOR JOSEPH EDLOW / Director, USCIS' over a scrolling headline ticker. The narration concerns screening and vetting standards in the immigration system. The audio is broadcast interview speech. | A recorded Real America's Voice remote interview, posted by the USCIS Director. It opens on a two-box layout: at left, an exterior storefront shot of a 'U.S. CITIZENSHIP & IMMIGRATION SERVICES' office sign, and at right the Director joining by video in glasses, a dark suit and a yellow tie. A 'Just the News, No Noise' bug appears and a lower-third chyron reads 'DIRECTOR JOSEPH EDLOW / Director, USCIS' over a scrolling headline ticker. The narration concerns screening and vetting standards in the immigration system. The audio is broadcast interview speech.  [0:02] Two-box layout: exterior shot of a 'U.S. CITIZENSHIP & IMMIGRATION"
-    },
-    {
-      "tweet_id": "2050256038465548302",
-      "account_handle": "USCISJoe",
-      "posted_at": "2026-05-01T16:48:26.000Z",
-      "tweet_url": "https://x.com/USCISJoe/status/2050256038465548302",
-      "tweet_text": "The lengths the Biden administration went to in order to ignore the pervasive fraud in our immigration system are staggering.\n\nToday, under the Trump administration, @USCIS is proud to deploy dedicated special agents to specifically investigate, expose, &amp; eliminate this fraud. https://t.co/Y4qoOaQsAH",
-      "media_id": "13_2050255863349153792",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2050255863349153792.mp4",
-      "duration_sec": 67.317,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 394,
-      "retweet_count": 114,
-      "bucket": "produced-video",
-      "priority": 93,
-      "tags": [
-        "agency:USCIS",
-        "audio:has-audio",
-        "crime:fraud",
-        "media-status:archived",
-        "media-status:described",
-        "media:video",
-        "status:community-note",
-        "topic:economy",
-        "topic:general",
-        "topic:immigration",
-        "video:medium",
-        "video:produced",
-        "video:text-overlay",
-        "video:voiceover"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [
-        "video:produced",
-        "video:text-overlay",
-        "video:voiceover"
-      ],
-      "missing_steps": [
-        "assign-produced-video-genre"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A recorded Real America's Voice remote interview, posted by the USCIS Director, in a three-box split screen for the program 'Just the News, No Noise' with hosts John Solomon and Amanda Head. A female host sits at left, the USCIS Director joins by video in the center wearing glasses, a dark suit and a yellow tie with an American-flag lapel pin, and a male guest joins at right, both against night city-skyline backdrops. A lower-third chyron reads 'JUST THE NEWS, NO NOISE / With John Solomon & Amanda Head' and a headline ticker runs along the bottom. The narration concerns immigration fraud and USCIS deploying special agents. The audio is broadcast interview speech. | A recorded Real America's Voice remote interview, posted by the USCIS Director, in a three-box split screen for the program 'Just the News, No Noise' with hosts John Solomon and Amanda Head. A female host sits at left, the USCIS Director joins by video in the center wearing glasses, a dark suit and a yellow tie with an American-flag lapel pin, and a male guest joins at right, both against night city-skyline backdrops. A lower-third chyron reads 'JUST THE NEWS, NO NOISE / With John Solomon & Amanda Head' and a headline ti"
     },
     {
       "tweet_id": "2050307035493802132",
@@ -15351,10 +14860,9 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -15643,10 +15151,8 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -16250,10 +15756,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -17083,10 +16587,8 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -17232,14 +16734,53 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
       "description": "A clip of Secretary of War Pete Hegseth testifying at a Senate hearing about the defense budget, troop pay increases and barracks. All frames are the same static shot of Hegseth at the witness table behind his nameplate, with continuous spoken testimony. The clip shows congressional testimony with no music track. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+    },
+    {
+      "tweet_id": "2054766453975335375",
+      "account_handle": "RapidResponse47",
+      "posted_at": "2026-05-14T03:31:12.000Z",
+      "tweet_url": "https://x.com/RapidResponse47/status/2054766453975335375",
+      "tweet_text": ".@POTUS begins a meeting with President Xi at the Great Hall of the People: \n\n“You and I have known each other now for a long time—in fact, the longest relationship of our two countries that any president and president has had—and that’s, to me, an honor.”\n\n🎥: @MargoMartin47 https://t.co/HBNnrVY0Fr",
+      "media_id": "13_2054766109669105664",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054766109669105664.mp4",
+      "duration_sec": 26.871,
+      "width": 2160,
+      "height": 3840,
+      "like_count": 2490,
+      "retweet_count": 507,
+      "bucket": "produced-video",
+      "priority": 90,
+      "tags": [
+        "agency:POTUS",
+        "audio:has-audio",
+        "genre:advertisement",
+        "media-status:archived",
+        "media-status:described",
+        "media:video",
+        "topic:immigration",
+        "video:produced",
+        "video:short"
+      ],
+      "genre_tags": [
+        "genre:advertisement"
+      ],
+      "produced_video_tags": [
+        "video:produced"
+      ],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "A single fixed-camera vertical phone video (credited to Margo Martin) of Trump and Xi seated at a long table in a chandelier-lit room in the Great Hall of the People as their bilateral meeting begins, with Trump's opening remarks as the audio track. The frame is static across the clip and shows Trump talking. | y = BE aa aS. —_ ae “in. Ee ne ‘ie. ee ane ‘ a : z : —_ p/ as beet a a we me a 4 < ey ee? - ae EE ZOE < = a ec ———__— eae a ee - - — = - > - « : = oe —— ——— ai ™ —— a eee Z $< ——_ — tg eo loi ” Oo ” 5 (tA Pe. i ae La as i a» 8) ee ee eee =: Y, a rs = fate > = | A \\ = —_ 1 EES et 4 ( a OU oe * fd i S sae A i s: _<Z . ak = - SEee2,, ase Z a ——— —ameer i ee ee eee ——— = = x =. = SSS eee Stee 7 Pi = tna = Rarer Ol. c y Oo = ‘ , = = — ean Pe Waa ie i Get y \\S\" - © 2 ad a 2g = | : BD CHAS ' a _— a. a ee = 7 / Baas RN, 7 id . ai i i, a i oe me te oa by aa NSSe2, ’ : od rae i ea more oo gests Ow Sr Ey pare ae e = — Sui ——_—s = — -* — ee a a . a ——s a _— ST St {SES ioe a : : O Ve = =— a Se Oa ne a Ce = AN > an zi a a ae Se ae nl see | Aes ay A . pe a — — 7 7 goes Se — ab. g i F , J oe a “4 / Kas =< 2-2 E - mae meee SS a ‘ OTT eae - Read oe ray Soa pe NES - s - = saad - a oo 4 aay — a"
     },
     {
       "tweet_id": "2056012093388656890",
@@ -19493,10 +19034,8 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -19548,10 +19087,8 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -19612,10 +19149,8 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -23218,61 +22753,6 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 33.4s; 1.86 MiB; archived; tweet context: We have the most secure border in history — and thanks to our CBP agents, our homeland will be protected for generations to come. @CBPCommissioner https://t.co/bnyAd7oo6g; source URL: https://video.twimg.com/amplify_video/2044813016286556163/vid/avc1/1280x720/39sEqZ-A2l_qBhwu.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2044813016286556163.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 33.4s; 1.86 MiB; archived; tweet context: We have the most secure border in history — and thanks to our CBP agents, our homeland will be protected for generations to come. @CBPCommissioner https://t.co/bnyAd7oo6g; source URL: https://video.twimg.com/amplify_video/2044813016286556163/vid/avc1/1280x720/39sEqZ-A2l_qBhwu.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2044813016286556163.mp4; needs OCR, transcript, or frame-level vision before content claims. We have the most secure border in history — and thanks to our CBP agents, our homeland will be protected for generations to come. @CBPCommissioner https://t.c"
-    },
-    {
-      "tweet_id": "2045335451368665161",
-      "account_handle": "USCISJoe",
-      "posted_at": "2026-04-18T02:55:46.000Z",
-      "tweet_url": "https://x.com/USCISJoe/status/2045335451368665161",
-      "tweet_text": "Thanks to @DanNewsManBall for having me on to highlight the advanced measures @USCIS is taking under @SecMullinDHS’ and @POTUS' leadership to combat immigration fraud. \n\nUnlike under the previous administration, fraud is not something we’re going to ignore. https://t.co/RwBBr5FWBH",
-      "media_id": "13_2045331884385976320",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2045331884385976320.mp4",
-      "duration_sec": 41.207,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 323,
-      "retweet_count": 78,
-      "bucket": "produced-video",
-      "priority": 85,
-      "tags": [
-        "agency:POTUS",
-        "agency:SecMullinDHS",
-        "agency:USCIS",
-        "audio:has-audio",
-        "crime:fraud",
-        "genre:advertisement",
-        "genre:recruitment",
-        "media-status:archived",
-        "media-status:described",
-        "media:video",
-        "topic:economy",
-        "topic:general",
-        "topic:immigration",
-        "topic:military",
-        "video:medium",
-        "video:news-clip",
-        "video:produced",
-        "video:speech",
-        "video:text-overlay",
-        "video:voiceover"
-      ],
-      "genre_tags": [
-        "genre:advertisement",
-        "genre:recruitment"
-      ],
-      "produced_video_tags": [
-        "video:produced",
-        "video:text-overlay",
-        "video:voiceover"
-      ],
-      "missing_steps": [],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A recorded One America News remote interview, posted by the USCIS Director. He appears by video against a night Washington skyline showing the US Capitol and the Washington Monument, wearing glasses, a dark suit and tie. A lower-third chyron identifies him as 'JOSEPH EDLOW / DIRECTOR OF U.S. CITIZENSHIP AND IMMIGRATION SERVICES' beside an OAN bug and a 'Real America with Dan Ball' graphic. The narration concerns long-standing immigration fraud and USCIS hiring its first special agents to pursue it. The audio is broadcast interview speech. | A recorded One America News remote interview, posted by the USCIS Director. He appears by video against a night Washington skyline showing the US Capitol and the Washington Monument, wearing glasses, a dark suit and tie. A lower-third chyron identifies him as 'JOSEPH EDLOW / DIRECTOR OF U.S. CITIZENSHIP AND IMMIGRATION SERVICES' beside an OAN bug and a 'Real America with Dan Ball' graphic. The narration concerns long-standing immigration fraud and USCIS hiring its first special agents to pursue it. The audio is broadcast interview speech.  [0:04] The USCIS Director speaks by video against a night Washington skyline with the Capitol and Washingto"
     },
     {
       "tweet_id": "2046617482111111340",
@@ -34398,47 +33878,6 @@
       "description": "Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
-      "tweet_id": "2054746869255778586",
-      "account_handle": "RapidResponse47",
-      "posted_at": "2026-05-14T02:13:23.000Z",
-      "tweet_url": "https://x.com/RapidResponse47/status/2054746869255778586",
-      "tweet_text": "The U.S. national anthem plays for @POTUS upon his arrival at the Great Hall of the People in Beijing, China 🇺🇸 https://t.co/CTdaasVYxP",
-      "media_id": "13_2054746676363956224",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054746676363956224.mp4",
-      "duration_sec": 89.002,
-      "width": 1280,
-      "height": 720,
-      "like_count": 8137,
-      "retweet_count": 1304,
-      "bucket": "ordinary-video",
-      "priority": 43,
-      "tags": [
-        "agency:POTUS",
-        "audio:has-audio",
-        "audio:music-likely",
-        "country:China",
-        "media-status:archived",
-        "media-status:described",
-        "media:video",
-        "theme:martyrdom",
-        "topic:immigration",
-        "topic:military",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Footage of Trump's formal arrival ceremony at the Great Hall of the People in Beijing. He stands on a red ceremonial dais and salutes as a Chinese military honor guard band plays the U.S. national anthem and children wave flags. The audio is the live ceremonial anthem, captured in static wide shots. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
-    },
-    {
       "tweet_id": "2057136781452009644",
       "account_handle": "CBP",
       "posted_at": "2026-05-20T16:30:03.000Z",
@@ -34614,10 +34053,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -34654,10 +34091,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -34696,10 +34131,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -34735,10 +34168,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -34810,10 +34241,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -34889,10 +34318,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -34933,10 +34360,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36744,10 +36169,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -37341,10 +36764,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -37904,10 +37325,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -37942,10 +37361,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38056,10 +37473,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38094,10 +37509,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39063,10 +38476,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39264,10 +38675,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39750,10 +39159,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39996,10 +39403,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -41045,10 +40450,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -41410,10 +40813,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -41455,10 +40856,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -41501,10 +40900,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -41778,10 +41175,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -41968,10 +41363,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -42399,10 +41792,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -42513,10 +41904,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -42692,10 +42081,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -42860,10 +42247,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -43154,10 +42539,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -43355,10 +42738,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -43840,10 +43221,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -44139,10 +43518,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -44932,10 +44309,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -45758,10 +45133,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -45935,10 +45308,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -46060,10 +45431,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -46138,10 +45507,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -46613,10 +45980,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -46699,6 +46064,40 @@
       "description": "video; 1280x720; 91.0s; 6.64 MiB; archived; tweet context: The NYC district attorney called the deadly arson attack “an act of mass murder” after the suspect watched people jump from their burning apartments while sipping a beer. Despite this horrific incident, NYC remains adamant it will not honor the ICE detainers...; source URL: https://video.twimg.com/ext_tw_video/2045548440541630464/pu/vid/avc1/1280x720/VGUJCSvfm-XMWuzP.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2045548440541630464.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1280x720; 91.0s; 6.64 MiB; archived; tweet context: The NYC district attorney called the deadly arson attack “an act of mass murder” after the suspect watched people jump from their burning apartments while sipping a beer. Despite this horrific incident, NYC remains adamant it will not honor the ICE detainers...; source URL: https://video.twimg.com/ext_tw_video/2045548440541630464/pu/vid/avc1/1280x720/VGUJCSvfm-XMWuzP.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_204554844054163"
     },
     {
+      "tweet_id": "2045555180695921102",
+      "account_handle": "USCISJoe",
+      "posted_at": "2026-04-18T17:28:54.000Z",
+      "tweet_url": "https://x.com/USCISJoe/status/2045555180695921102",
+      "tweet_text": "Our message is clear: If you hope to become a lawful resident or American citizen, you must show that you can take care of yourself.\n\nThere is no reason to admit aliens to the U.S. who would unfairly burden American taxpayers. https://t.co/WA0DqJ0Elk",
+      "media_id": "13_2045554888017690624",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2045554888017690624.mp4",
+      "duration_sec": 17.55,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 6918,
+      "retweet_count": 1279,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1920x1080; 17.6s; 1.15 MiB; archived; tweet context: Our message is clear: If you hope to become a lawful resident or American citizen, you must show that you can take care of yourself. There is no reason to admit aliens to the U.S. who would unfairly burden American taxpayers. https://t.co/WA0DqJ0Elk; source URL: https://video.twimg.com/amplify_video/2045554888017690624/vid/avc1/1280x720/FuVuzwsRgGmRZKjQ.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2045554888017690624.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 17.6s; 1.15 MiB; archived; tweet context: Our message is clear: If you hope to become a lawful resident or American citizen, you must show that you can take care of yourself. There is no reason to admit aliens to the U.S. who would unfairly burden American taxpayers. https://t.co/WA0DqJ0Elk; source URL: https://video.twimg.com/amplify_video/2045554888017690624/vid/avc1/1280x720/FuVuzwsRgGmRZKjQ.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2045554888017690624.mp4; needs OCR, transcript, or frame-level vision before content cl"
+    },
+    {
       "tweet_id": "2045624667101106420",
       "account_handle": "ICEgov",
       "posted_at": "2026-04-18T22:05:01.000Z",
@@ -46736,6 +46135,45 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 56.8s; 4.46 MiB; archived; tweet context: Tom Steyer, ICE is not a political football. Our agents and officers are sworn to protect this nation from dangerous criminals ranging from child abusers to cartel members, and we urge you to join us in protecting Californians from these ongoing threats. http...; source URL: https://video.twimg.com/ext_tw_video/2045623471707680768/pu/vid/avc1/1280x720/xZfD4nrQglpr0kJi.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2045623471707680768.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1280x720; 56.8s; 4.46 MiB; archived; tweet context: Tom Steyer, ICE is not a political football. Our agents and officers are sworn to protect this nation from dangerous criminals ranging from child abusers to cartel members, and we urge you to join us in protecting Californians from these ongoing threats. http...; source URL: https://video.twimg.com/ext_tw_video/2045623471707680768/pu/vid/avc1/1280x720/xZfD4nrQglpr0kJi.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2045623471707"
+    },
+    {
+      "tweet_id": "2045859222290665758",
+      "account_handle": "USCISJoe",
+      "posted_at": "2026-04-19T13:37:03.000Z",
+      "tweet_url": "https://x.com/USCISJoe/status/2045859222290665758",
+      "tweet_text": "At USCIS, we’ve declared full-scale war on immigration fraud. We’re going back and revetting cases for people who were granted green cards and other benefits during the Biden administration—when vetting was lax.\n\nThere's rigorous vetting now, and we're reopening these old cases. https://t.co/ioZoquGLtr",
+      "media_id": "13_2045857534519443456",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2045857534519443456.mp4",
+      "duration_sec": 57.29,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 4660,
+      "retweet_count": 995,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "agency:CBP",
+        "agency:ICEgov",
+        "agency:USCIS",
+        "audio:has-audio",
+        "crime:fraud",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:general",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1920x1080; 57.3s; 3.77 MiB; archived; tweet context: At USCIS, we’ve declared full-scale war on immigration fraud. We’re going back and revetting cases for people who were granted green cards and other benefits during the Biden administration—when vetting was lax. There's rigorous vetting now, and we're reopeni...; source URL: https://video.twimg.com/amplify_video/2045857534519443456/vid/avc1/1280x720/AUrvLYIljPVcCB6C.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2045857534519443456.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 57.3s; 3.77 MiB; archived; tweet context: At USCIS, we’ve declared full-scale war on immigration fraud. We’re going back and revetting cases for people who were granted green cards and other benefits during the Biden administration—when vetting was lax. There's rigorous vetting now, and we're reopeni...; source URL: https://video.twimg.com/amplify_video/2045857534519443456/vid/avc1/1280x720/AUrvLYIljPVcCB6C.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2045857534519443456.mp4; needs OCR, transcript, or frame-leve"
     },
     {
       "tweet_id": "2046000911491719579",
@@ -46897,6 +46335,42 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 140.0s; 11.20 MiB; archived; tweet context: 📺Watch the @Newsmax piece, “ICE 'victim' to spa queen: Sheriff hits woman with $1M lawsuit over fake 40-hour detention” https://t.co/vrU2WNKD03; source URL: https://video.twimg.com/ext_tw_video/2046334807852953601/pu/vid/avc1/1280x720/nkl8rLRaVEjRNLaK.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2046334807852953601.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 140.0s; 11.20 MiB; archived; tweet context: 📺Watch the @Newsmax piece, “ICE 'victim' to spa queen: Sheriff hits woman with $1M lawsuit over fake 40-hour detention” https://t.co/vrU2WNKD03; source URL: https://video.twimg.com/ext_tw_video/2046334807852953601/pu/vid/avc1/1280x720/nkl8rLRaVEjRNLaK.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2046334807852953601.mp4; needs OCR, transcript, or frame-level vision before content claims. 📺Watch the @Newsmax piece, “ICE 'victim' to spa queen: Sheriff hits woman with $1M lawsuit over fake 40-hour detention” https://t.co/vrU2WNKD03"
+    },
+    {
+      "tweet_id": "2046350246645502190",
+      "account_handle": "USCISJoe",
+      "posted_at": "2026-04-20T22:08:12.000Z",
+      "tweet_url": "https://x.com/USCISJoe/status/2046350246645502190",
+      "tweet_text": "Fraud permeates our entire immigration system.\n\nOur new @USCIS special agents will ensure there are consequences for this type of fraud.\n\nNo one is entitled to immigration benefits &amp; naturalization. Immigration to the U.S. is an honor &amp; we will  make sure it’s done correctly. https://t.co/45JNDtQsMu",
+      "media_id": "13_2046349772093845504",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2046349772093845504.mp4",
+      "duration_sec": 46.813,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 2145,
+      "retweet_count": 541,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "agency:USCIS",
+        "audio:has-audio",
+        "crime:fraud",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1920x1080; 46.8s; 3.16 MiB; archived; tweet context: Fraud permeates our entire immigration system. Our new @USCIS special agents will ensure there are consequences for this type of fraud. No one is entitled to immigration benefits &amp; naturalization. Immigration to the U.S. is an honor &amp; we will make sur...; source URL: https://video.twimg.com/amplify_video/2046349772093845504/vid/avc1/1280x720/iw634_l3IUzizi31.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2046349772093845504.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 46.8s; 3.16 MiB; archived; tweet context: Fraud permeates our entire immigration system. Our new @USCIS special agents will ensure there are consequences for this type of fraud. No one is entitled to immigration benefits &amp; naturalization. Immigration to the U.S. is an honor &amp; we will make sur...; source URL: https://video.twimg.com/amplify_video/2046349772093845504/vid/avc1/1280x720/iw634_l3IUzizi31.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2046349772093845504.mp4; needs OCR, transcript, or frame-leve"
     },
     {
       "tweet_id": "2046358420438053281",
@@ -47302,10 +46776,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -47613,10 +47085,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -47891,10 +47361,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -47977,10 +47445,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48412,10 +47878,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48450,10 +47914,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48488,10 +47950,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48566,10 +48026,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48605,10 +48063,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48647,10 +48103,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48689,10 +48143,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48726,10 +48178,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48764,10 +48214,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48977,10 +48425,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49088,10 +48534,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49129,10 +48573,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -49960,10 +49402,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50141,7 +49581,7 @@
       "media_id": "13_2052793869863919622",
       "media_type": "video",
       "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2052793869863919622.mp4",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2052793869863919622.mp4",
       "duration_sec": 48.798,
       "width": 1920,
       "height": 1080,
@@ -50167,7 +49607,7 @@
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
-      "description": "video; 1920x1080; 48.8s; 4.93 MiB; archived; tweet context: There is nothing more precious than the gift of American citizenship. Earning that privilege means: ▪️Assimilation into our culture, ▪️English proficiency, &amp; ▪️A commitment to the principles of our Constitution. We’re taking major steps to reinforce those...; source URL: https://video.twimg.com/amplify_video/2052793869863919622/vid/avc1/1280x720/Uo62oa6TbUEiO6KR.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-_misc/13_2052793869863919622.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1920x1080; 48.8s; 4.93 MiB; archived; tweet context: There is nothing more precious than the gift of American citizenship. Earning that privilege means: ▪️Assimilation into our culture, ▪️English proficiency, &amp; ▪️A commitment to the principles of our Constitution. We’re taking major steps to reinforce those...; source URL: https://video.twimg.com/amplify_video/2052793869863919622/vid/avc1/1280x720/Uo62oa6TbUEiO6KR.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-_misc/13_205279386986391"
+      "description": "video; 1920x1080; 48.8s; 4.93 MiB; archived; tweet context: There is nothing more precious than the gift of American citizenship. Earning that privilege means: ▪️Assimilation into our culture, ▪️English proficiency, &amp; ▪️A commitment to the principles of our Constitution. We’re taking major steps to reinforce those...; source URL: https://video.twimg.com/amplify_video/2052793869863919622/vid/avc1/1280x720/Uo62oa6TbUEiO6KR.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2052793869863919622.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1920x1080; 48.8s; 4.93 MiB; archived; tweet context: There is nothing more precious than the gift of American citizenship. Earning that privilege means: ▪️Assimilation into our culture, ▪️English proficiency, &amp; ▪️A commitment to the principles of our Constitution. We’re taking major steps to reinforce those...; source URL: https://video.twimg.com/amplify_video/2052793869863919622/vid/avc1/1280x720/Uo62oa6TbUEiO6KR.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_205279386"
     },
     {
       "tweet_id": "2052801741389750768",
@@ -50336,6 +49776,44 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 2160x3840; 60.4s; 50.36 MiB; archived; tweet context: This week, we saw firsthand what happens when state and local law enforcement cooperate with @DHSgov. By working together, we can protect our homeland and keep our communities safe. https://t.co/RbD9qR6hgp; source URL: https://video.twimg.com/amplify_video/2052912078587846660/vid/avc1/2160x3840/6mENTCl90TGc7vb_.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-SecMullinDHS/13_2052912078587846660.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 2160x3840; 60.4s; 50.36 MiB; archived; tweet context: This week, we saw firsthand what happens when state and local law enforcement cooperate with @DHSgov. By working together, we can protect our homeland and keep our communities safe. https://t.co/RbD9qR6hgp; source URL: https://video.twimg.com/amplify_video/2052912078587846660/vid/avc1/2160x3840/6mENTCl90TGc7vb_.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-SecMullinDHS/13_2052912078587846660.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form record"
+    },
+    {
+      "tweet_id": "2053082563166576879",
+      "account_handle": "USCISJoe",
+      "posted_at": "2026-05-09T12:00:02.000Z",
+      "tweet_url": "https://x.com/USCISJoe/status/2053082563166576879",
+      "tweet_text": "When I became @USCIS Director, I inherited a staggering backlog of asylum cases: 1.5 million—up from 400k in 2021.\n\nThat was the result of 4 years of unchecked crossings at the border because the previous president didn’t care who they let into our homeland.\nThis @POTUS cares. https://t.co/YDvBqpVszX",
+      "media_id": "13_2052854621945602050",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2052854621945602050.mp4",
+      "duration_sec": 33.241,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 2064,
+      "retweet_count": 443,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "agency:POTUS",
+        "agency:USCIS",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:described",
+        "media:video",
+        "policy:border",
+        "theme:nativism",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1920x1080; 33.2s; 3.00 MiB; archived; tweet context: When I became @USCIS Director, I inherited a staggering backlog of asylum cases: 1.5 million—up from 400k in 2021. That was the result of 4 years of unchecked crossings at the border because the previous president didn’t care who they let into our homeland. T...; source URL: https://video.twimg.com/amplify_video/2052854621945602050/vid/avc1/1280x720/SgwZpopgJvyFHbYg.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2052854621945602050.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1920x1080; 33.2s; 3.00 MiB; archived; tweet context: When I became @USCIS Director, I inherited a staggering backlog of asylum cases: 1.5 million—up from 400k in 2021. That was the result of 4 years of unchecked crossings at the border because the previous president didn’t care who they let into our homeland. T...; source URL: https://video.twimg.com/amplify_video/2052854621945602050/vid/avc1/1280x720/SgwZpopgJvyFHbYg.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_205285462"
     },
     {
       "tweet_id": "2053160200152990105",
@@ -50641,10 +50119,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50829,10 +50305,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50908,10 +50382,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50947,10 +50419,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51022,10 +50492,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51074,10 +50542,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51113,10 +50579,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51158,10 +50622,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51196,10 +50658,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51274,10 +50734,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51357,10 +50815,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51432,10 +50888,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51476,10 +50930,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51551,10 +51003,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51592,10 +51042,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51668,10 +51116,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51707,10 +51153,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51749,10 +51193,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51789,10 +51231,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51832,10 +51272,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51875,10 +51313,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -51915,10 +51351,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -52116,13 +51550,11 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
+      "has_ocr": true,
       "description": "video; 1280x720; 116.7s; 9.65 MiB; archived; tweet context: .@SecRubio on President Trump's state visit to China: \"It's both our top political challenge geopolitically — and it's also the most important relationship for us to manage.\" https://t.co/Rr4d3ZDmQJ; source URL: https://video.twimg.com/amplify_video/2054732313095770112/vid/avc1/1280x720/-EN_fx8loHngLH9S.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054732313095770112.mp4; visual observation: Direct keyframe + tweet-text review: an on-camera sit-down interview featuring Secretary Rubio.. | video; 1280x720; 116.7s; 9.65 MiB; archived; tweet context: .@SecRubio on President Trump's state visit to China: \"It's both our top political challenge geopolitically — and it's also the most important relationship for us to manage.\" https://t.co/Rr4d3ZDmQJ; source URL: https://video.twimg.com/amplify_video/2054732313095770112/vid/avc1/1280x720/-EN_fx8loHngLH9S.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054732313095770112.mp4; visual observation: Direct keyframe + tweet-text review: an on-camera sit-down interview featuring Se"
     },
     {
@@ -52154,14 +51586,12 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A single static wide pool-camera shot in daylight of President Trump greeting Chinese President Xi Jinping on the steps of the Great Hall of the People. The two shake hands, exchange brief words, and stand for cameras alongside aides, with a red carpet at the base of the stone steps. It is event footage with ambient sound, no cuts, no music, and no graphics. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "A single static wide pool-camera shot in daylight of President Trump greeting Chinese President Xi Jinping on the steps of the Great Hall of the People. The two shake hands, exchange brief words, and stand for cameras alongside aides, with a red carpet at the base of the stone steps. It is event footage with ambient sound, no cuts, no music, and no graphics. | e.- os aa r a. {EILEEN Sky aml > 1 ) =! i a at a \\ ; =| LI ey @lile, JIA | We | \\ ESSE — = =e —a >. 3 = /—_—=< . ‘CS | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2054746562597675512",
@@ -52192,14 +51622,12 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Fixed-camera footage of Trump introducing his U.S. delegation (Rubio, Tim Cook, Elon Musk and others visible) to President Xi on the steps of the Great Hall of the People in Beijing, with a Chinese honor guard lining the staircase. It is a continuous greeting-line recording with ambient audio and no song track. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Fixed-camera footage of Trump introducing his U.S. delegation (Rubio, Tim Cook, Elon Musk and others visible) to President Xi on the steps of the Great Hall of the People in Beijing, with a Chinese honor guard lining the staircase. It is a continuous greeting-line recording with ambient audio and no song track. | WW J Ca — k= he 5 4” : OO) = oe a) — | 3 ———=_—— a ys = —— y a ‘ g J m= fs : f 7 ) Ri Bs a x | ar. es © ed te, je i. & N i \\7 ow } i we {Va > ? x | CAahaeCy. SSS = Vets VF ] - =F, LAP AR at) AWARE ae ESS es nd : a ‘ | St aS me ct J cater [= ——— NCR Pr er maar aah ian) id A hur. br \\ : \\ r 4 “se = ¥ rh) * 4 f~i Tae Ree | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2054748696173003095",
@@ -52231,14 +51659,12 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Recording of an arrival ceremony with an honor guard at the Great Hall of the People in Beijing. Trump stands on a dais as a Chinese military band plays, then he and Xi Jinping walk the red carpet past assembled troops while children wave U.S. and Chinese flags and flowers. Wide static-camera pool footage with no title cards or graphics. The audio is the live ceremonial band, with a brass section visible. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Recording of an arrival ceremony with an honor guard at the Great Hall of the People in Beijing. Trump stands on a dais as a Chinese military band plays, then he and Xi Jinping walk the red carpet past assembled troops while children wave U.S. and Chinese flags and flowers. Wide static-camera pool footage with no title cards or graphics. The audio is the live ceremonial band, with a brass section visible. | bg boinc ar aed saliialtiel . eer eis a Omi sieias Pian Ph A Re ee SOQ See (ar We Pa a ics pais = = Ss | f i Waiters BB ig {i Md i nd %, f EET iicsiccerccararae PP PPoa ie. pes Gig v phy AN 1 “ MANY — a i | Nh Aa Way” ‘eh, ow eh i i] i] lee | IN W rt F , ae | DAME an at ee | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2054749673223549000",
@@ -52269,14 +51695,12 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Footage of Trump and Xi standing at the top of the Great Hall steps at the conclusion of the arrival ceremony, with Xi gesturing and waving, a saluting honor guard, and a press photographer in the foreground. Single continuous shot with no song track. OCR reads 'U.S. Travel Home', a UI artifact. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Footage of Trump and Xi standing at the top of the Great Hall steps at the conclusion of the arrival ceremony, with Xi gesturing and waving, a saluting honor guard, and a press photographer in the foreground. Single continuous shot with no song track. OCR reads 'U.S. Travel Home', a UI artifact. | ees _f if Vy? a j r fall > wes = _— 8 E = lS = | + ) tl Bp elers 1) vey my 5 1 1 1 3 4 591 108 13 47 67.923561 1 4 1 1 1 4 0 0 163 640 80 -1 5 1 1 1 4 1 0 157 492 86 0.000000 BS 5 1 1 1 4 2 571 191 69 48 22.429413 & 4 1 1 1 5 0 0 227 640 49 -1 5 1 1 1 5 1 0 227 90 33 23.432205 cS 5 1 1 1 5 2 253 235 55 39 28.610725 hi 5 1 1 1 5 3 340 235 159 32 52.547306 = 5 1 1 1 5 4 554 240 86 30 86.531021 = 4 1 1 1 6 0 45 315 595 45 -1 5 1 1 1 6 1 45 315 493 45 19.566483 |) 5 1 1 1 6 2 557 321 83 39 61.170925 = | Sie 8 6 lavas cs ——o J . i 5 1 1 1 3 5 638 150 2 9 68.904953 4 1 1 1 4 0 68 168 172 50 -1 5 1 1 1 4 1 68 168 64 46 33.017143 a. 4 1 1 1 5 0 19 172 620 188 -1 5 1 1 1 5 1 19 176 143 184 61.492954 ay 5 1 1 1 5 2 232 172 222 121 45.379810 = 5 1 1 1 5 3 546 208 93 47 82.745262 = 4 1 1 1 6 0 234 279 277 21 -1 5 1 1 1 6 1 234 279 28 21 39.654102 = 5 1 1 1 6 2 334 280 177 18 27.336037 4 1 1 1 7 0 0 2"
     },
     {
       "tweet_id": "2054753057401893130",
@@ -52302,21 +51726,21 @@
         "media-status:archived",
         "media-status:described",
         "media:video",
+        "theme:martyrdom",
         "topic:economy",
         "topic:general",
         "topic:immigration",
         "topic:military",
-        "video:long"
+        "video:long",
+        "video:news-clip"
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
+      "has_ocr": true,
       "description": "video; 1280x720; 130.3s; 10.01 MiB; archived; tweet context: .@POTUS meets with President Xi at the Great Hall of the People in Beijing: \"It's an honor to be with you, it's an honor to be your friend, and the relationship between China and the U.S.A. is going to be better than ever before. Thank you very much!\" https:/...; source URL: https://video.twimg.com/amplify_video/2054752781349666816/vid/avc1/1280x720/zjEA10euejH9ozi0.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2054752781349666816.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1280x720; 130.3s; 10.01 MiB; archived; tweet context: .@POTUS meets with President Xi at the Great Hall of the People in Beijing: \"It's an honor to be with you, it's an honor to be your friend, and the relationship between China and the U.S.A. is going to be better than ever before. Thank you very much!\" https:/...; source URL: https://video.twimg.com/amplify_video/2054752781349666816/vid/avc1/1280x720/zjEA10euejH9ozi0.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-RapidRespons"
     },
     {
@@ -52387,14 +51811,12 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Fixed-camera footage of Trump and Xi walking the grounds at the Temple of Heaven in Beijing with their delegations and security following across the plaza. Continuous recording with ambient audio and no song track or fast cuts. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Fixed-camera footage of Trump and Xi walking the grounds at the Temple of Heaven in Beijing with their delegations and security following across the plaza. Continuous recording with ambient audio and no song track or fast cuts. | eat aR A ip ais WL ’ D | Ra Na ey: ae SS ee > - 7 1] ! acl 2 = | “i hui 2 An | rene i oe ' , | ae oa Wl a | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2054869676396601368",
@@ -52425,14 +51847,12 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Footage of Trump arriving for a state banquet hosted by Xi at the Great Hall of the People, walking through the banquet hall past set tables and U.S./Chinese flags. Continuous event recording with ambient audio and no song track. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Footage of Trump arriving for a state banquet hosted by Xi at the Great Hall of the People, walking through the banquet hall past set tables and U.S./Chinese flags. Continuous event recording with ambient audio and no song track. | os “~~ F ‘ 1 4 a j 7 ‘ 7 | zal > ah ai ai WW | Seat SS OE Eee “ ty we %: . he eae Sa al <3 “> ae iE ¢ 5 i = s = | ies \\ W \\ r UN 4 > we sie ey ae me on ia £ 7 a | me A i. aa : — # < Titel op | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2054874683552469205",
@@ -52464,14 +51884,12 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Trump at the Beijing state banquet recounting the history of US-China ties back to America's founding. Static lectern footage. There is no music track or visual styling. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Trump at the Beijing state banquet recounting the history of US-China ties back to America's founding. Static lectern footage. There is no music track or visual styling. | ‘ »\\ Sa s : | ‘ 7 a . | 3 | ae | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2054876032025473158",
@@ -52504,14 +51922,12 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Trump at the Beijing state banquet praising centuries of US-China exchange, citing Tsinghua University's founding. Single static lectern shot. Raw speech, no music or genre styling. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Trump at the Beijing state banquet praising centuries of US-China exchange, citing Tsinghua University's founding. Single static lectern shot. Raw speech, no music or genre styling. | . \\ Se ’ ‘ % Gx ae hy | * : w are\" : \\ Ss * i » BY Rie | oo ie SS | - : oN a : ‘ | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2054927575428796616",
@@ -57290,6 +56706,7 @@
       "bucket": "ordinary-video",
       "priority": 35,
       "tags": [
+        "artist:lee-greenwood",
         "audio:has-audio",
         "media-status:archived",
         "media-status:needs-vision",
@@ -58882,7 +58299,7 @@
       "media_id": "7_711990726633103360",
       "media_type": "video",
       "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc-0003/7_711990726633103360.mp4",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_711990726633103360.mp4",
       "duration_sec": 18.886,
       "width": 1280,
       "height": 720,
@@ -58891,6 +58308,7 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "agency:USCG",
         "agency:USCGHeartland",
         "audio:has-audio",
         "media-status:archived",
@@ -58907,7 +58325,7 @@
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "video; 1280x720; 18.9s; 4.04 MiB; archived; tweet context: .@USCGHeartland crews rescued 3 ppl from disabled sailboat drifting toward severe weather: http://goo.gl/D9tBti https://t.co/1UNKF1KKiX; source URL: https://video.twimg.com/ext_tw_video/711990726633103360/pu/vid/1280x720/b_Csrg8kU8neh-3-.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-_misc-0003/7_711990726633103360.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 18.9s; 4.04 MiB; archived; tweet context: .@USCGHeartland crews rescued 3 ppl from disabled sailboat drifting toward severe weather: http://goo.gl/D9tBti https://t.co/1UNKF1KKiX; source URL: https://video.twimg.com/ext_tw_video/711990726633103360/pu/vid/1280x720/b_Csrg8kU8neh-3-.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-_misc-0003/7_711990726633103360.mp4; needs OCR, transcript, or frame-level vision before content claims. .@USCGHeartland crews rescued 3 ppl from disabled sailboat drifting toward severe weather: http://goo.gl/D9tBti https://t.co/1UNKF1KKiX | i | \\ — . = — — = =a ee | ne “ => —— ——— | CT as —— = ——— | —— a Ss — —— — —"
+      "description": "video; 1280x720; 18.9s; 4.04 MiB; archived; tweet context: .@USCGHeartland crews rescued 3 ppl from disabled sailboat drifting toward severe weather: http://goo.gl/D9tBti https://t.co/1UNKF1KKiX; source URL: https://video.twimg.com/ext_tw_video/711990726633103360/pu/vid/1280x720/b_Csrg8kU8neh-3-.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_711990726633103360.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 18.9s; 4.04 MiB; archived; tweet context: .@USCGHeartland crews rescued 3 ppl from disabled sailboat drifting toward severe weather: http://goo.gl/D9tBti https://t.co/1UNKF1KKiX; source URL: https://video.twimg.com/ext_tw_video/711990726633103360/pu/vid/1280x720/b_Csrg8kU8neh-3-.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_711990726633103360.mp4; needs OCR, transcript, or frame-level vision before content claims. .@USCGHeartland crews rescued 3 ppl from disabled sailboat drifting toward severe weather: http://goo.gl/D9tBti https://t.co/1UNKF1KKiX | i | \\ — . = — — = =a ee | ne “ => —— ——— | CT as —— = ——— | —— a Ss — —— — —"
     },
     {
       "tweet_id": "714520123365847040",
@@ -59872,6 +59290,7 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
+        "agency:USCG",
         "agency:USCGLANTAREA",
         "audio:has-audio",
         "media-status:archived",
@@ -59888,7 +59307,7 @@
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "video; 1280x720; 37.7s; 6.83 MiB; archived; tweet context: On July 5th, the crew of Coast Guard Cutter Stratton (WMSL 752) moored in Sydney Harbor, kicking off the cutter’s second international port call on its Western Pacific patrol! Check out this day in the life! @USCGLANTAREA @US7thFleet https://t.co/RvmWVKw3zH; source URL: https://video.twimg.com/ext_tw_video/1149075915919560704/pu/vid/1280x720/5omnDRYHnNJCe0Ob.mp4?tag=10; archive URL: https://github.com/vidproject/x/releases/download/media-_misc-0003/7_1149075915919560704.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 37.7s; 6.83 MiB; archived; tweet context: On July 5th, the crew of Coast Guard Cutter Stratton (WMSL 752) moored in Sydney Harbor, kicking off the cutter’s second international port call on its Western Pacific patrol! Check out this day in the life! @USCGLANTAREA @US7thFleet https://t.co/RvmWVKw3zH; source URL: https://video.twimg.com/ext_tw_video/1149075915919560704/pu/vid/1280x720/5omnDRYHnNJCe0Ob.mp4?tag=10; archive URL: https://github.com/vidproject/x/releases/download/media-_misc-0003/7_1149075915919560704.mp4; needs OCR, transcript, or frame-level vision before "
+      "description": "video; 1280x720; 37.7s; 6.83 MiB; archived; tweet context: On July 5th, the crew of Coast Guard Cutter Stratton (WMSL 752) moored in Sydney Harbor, kicking off the cutter’s second international port call on its Western Pacific patrol! Check out this day in the life! @USCGLANTAREA @US7thFleet https://t.co/RvmWVKw3zH; source URL: https://video.twimg.com/ext_tw_video/1149075915919560704/pu/vid/1280x720/5omnDRYHnNJCe0Ob.mp4?tag=10; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1149075915919560704.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 37.7s; 6.83 MiB; archived; tweet context: On July 5th, the crew of Coast Guard Cutter Stratton (WMSL 752) moored in Sydney Harbor, kicking off the cutter’s second international port call on its Western Pacific patrol! Check out this day in the life! @USCGLANTAREA @US7thFleet https://t.co/RvmWVKw3zH; source URL: https://video.twimg.com/ext_tw_video/1149075915919560704/pu/vid/1280x720/5omnDRYHnNJCe0Ob.mp4?tag=10; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1149075915919560704.mp4; needs OCR, transcript, or frame-level vision before content clai"
     },
     {
       "tweet_id": "1163480236455092228",
@@ -61878,10 +61297,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -61919,10 +61336,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -62197,6 +61612,7 @@
       "priority": 30,
       "tags": [
         "agency:ComdtUSCG",
+        "agency:USCG",
         "agency:VComdtUSCG",
         "audio:has-audio",
         "media-status:archived",
@@ -62213,7 +61629,7 @@
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "video; 1280x720; 234.0s; 20.97 MiB; archived; tweet context: You've never seen a culinary showdown like this one! Watch @ComdtUSCG and @VComdtUSCG compete in a special holiday competition. Who will win? #HappyHolidays 🎄🎅 https://t.co/jl4dtN7y28; source URL: https://video.twimg.com/amplify_video/1473295884188278784/vid/1280x720/opaORI7VGgoNHAVd.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-_misc-0002/13_1473295884188278784.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 234.0s; 20.97 MiB; archived; tweet context: You've never seen a culinary showdown like this one! Watch @ComdtUSCG and @VComdtUSCG compete in a special holiday competition. Who will win? #HappyHolidays 🎄🎅 https://t.co/jl4dtN7y28; source URL: https://video.twimg.com/amplify_video/1473295884188278784/vid/1280x720/opaORI7VGgoNHAVd.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-_misc-0002/13_1473295884188278784.mp4; needs OCR, transcript, or frame-level vision before content claims. You've never seen a culinary showdown like this one! Watch @ComdtUSCG and @VComdtUSCG compete in a special holiday competition. Wh"
+      "description": "video; 1280x720; 234.0s; 20.97 MiB; archived; tweet context: You've never seen a culinary showdown like this one! Watch @ComdtUSCG and @VComdtUSCG compete in a special holiday competition. Who will win? #HappyHolidays 🎄🎅 https://t.co/jl4dtN7y28; source URL: https://video.twimg.com/amplify_video/1473295884188278784/vid/1280x720/opaORI7VGgoNHAVd.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/13_1473295884188278784.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 234.0s; 20.97 MiB; archived; tweet context: You've never seen a culinary showdown like this one! Watch @ComdtUSCG and @VComdtUSCG compete in a special holiday competition. Who will win? #HappyHolidays 🎄🎅 https://t.co/jl4dtN7y28; source URL: https://video.twimg.com/amplify_video/1473295884188278784/vid/1280x720/opaORI7VGgoNHAVd.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/13_1473295884188278784.mp4; needs OCR, transcript, or frame-level vision before content claims. You've never seen a culinary showdown like this one! Watch @ComdtUSCG and @VComdtUSCG compete in a special holiday competition. Who will win? "
     },
     {
       "tweet_id": "1475988322405212164",
@@ -63567,10 +62983,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63609,10 +63023,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63724,10 +63136,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63802,10 +63212,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63842,10 +63250,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -63913,10 +63319,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -69738,15 +69142,15 @@
         "media-status:needs-vision",
         "media:video",
         "theme:directive",
-        "topic:immigration",
+        "theme:martyrdom",
+        "theme:religion",
+        "topic:economy",
         "video:medium"
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -69902,10 +69306,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -70098,15 +69500,14 @@
         "media-status:needs-vision",
         "media:video",
         "theme:directive",
+        "topic:immigration",
         "topic:laudatory",
         "video:medium"
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -70338,6 +69739,7 @@
       "tags": [
         "agency:USCIS",
         "audio:has-audio",
+        "crime:fraud",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
@@ -70346,10 +69748,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -70505,10 +69905,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -70622,10 +70020,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -70960,10 +70356,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -71194,10 +70588,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -71236,10 +70628,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -71274,10 +70664,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -71406,10 +70794,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -71448,10 +70834,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -71493,10 +70877,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -71534,10 +70916,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -71615,10 +70995,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -72524,6 +71902,41 @@
       "description": "video; 1280x720; 64.7s; 5.11 MiB; archived; tweet context: Florida is one of the STRONGEST 287(g) partner states in our country. Local and state law enforcement work with ICE to seamlessly remove criminal illegal aliens off American streets and out of American neighborhoods. Having a 287(g) partnership with ICE saves...; source URL: https://video.twimg.com/ext_tw_video/2044820429307547648/pu/vid/avc1/1280x720/6vHL4tLDS1AkBYTW.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2044820429307547648.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1280x720; 64.7s; 5.11 MiB; archived; tweet context: Florida is one of the STRONGEST 287(g) partner states in our country. Local and state law enforcement work with ICE to seamlessly remove criminal illegal aliens off American streets and out of American neighborhoods. Having a 287(g) partnership with ICE saves...; source URL: https://video.twimg.com/ext_tw_video/2044820429307547648/pu/vid/avc1/1280x720/6vHL4tLDS1AkBYTW.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2044820429307"
     },
     {
+      "tweet_id": "2044823546816307670",
+      "account_handle": "USCISJoe",
+      "posted_at": "2026-04-16T17:01:39.000Z",
+      "tweet_url": "https://x.com/USCISJoe/status/2044823546816307670",
+      "tweet_text": "\"Ultimately, my charge at @USCIS is to make sure that we are not cutting corners.\"\n\n\"At the end of the day, screening and vetting will be the primary focus of what we’re doing.\" https://t.co/W8r6XTez0f",
+      "media_id": "13_2044822006894596096",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2044822006894596096.mp4",
+      "duration_sec": 21.162,
+      "width": 720,
+      "height": 1280,
+      "like_count": 246,
+      "retweet_count": 63,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:USCIS",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 720x1280; 21.2s; 1.44 MiB; archived; tweet context: \"Ultimately, my charge at @USCIS is to make sure that we are not cutting corners.\" \"At the end of the day, screening and vetting will be the primary focus of what we’re doing.\" https://t.co/W8r6XTez0f; source URL: https://video.twimg.com/amplify_video/2044822006894596096/vid/avc1/720x1280/qxybMqSqCxFWdEoV.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2044822006894596096.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 720x1280; 21.2s; 1.44 MiB; archived; tweet context: \"Ultimately, my charge at @USCIS is to make sure that we are not cutting corners.\" \"At the end of the day, screening and vetting will be the primary focus of what we’re doing.\" https://t.co/W8r6XTez0f; source URL: https://video.twimg.com/amplify_video/2044822006894596096/vid/avc1/720x1280/qxybMqSqCxFWdEoV.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2044822006894596096.mp4; needs OCR, transcript, or frame-level vision before content claims. \"Ultimately, my charge at @USCIS is to make sure that we are not cutting corners.\" \"At the end"
+    },
+    {
       "tweet_id": "2044842012705173938",
       "account_handle": "ICEgov",
       "posted_at": "2026-04-16T18:15:01.000Z",
@@ -72755,6 +72168,82 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 37.3s; 3.00 MiB; archived; tweet context: U.S. national security depends on a fully funded Department of Homeland Security — protecting American lives goes beyond politics. https://t.co/P4zItmvIfI; source URL: https://video.twimg.com/ext_tw_video/2045312339524636672/pu/vid/avc1/1280x720/O8mBJ9bZmjP2kFM-.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2045312339524636672.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1280x720; 37.3s; 3.00 MiB; archived; tweet context: U.S. national security depends on a fully funded Department of Homeland Security — protecting American lives goes beyond politics. https://t.co/P4zItmvIfI; source URL: https://video.twimg.com/ext_tw_video/2045312339524636672/pu/vid/avc1/1280x720/O8mBJ9bZmjP2kFM-.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2045312339524636672.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. U.S. national security depends on a fully funded Department of Homeland Security — p"
+    },
+    {
+      "tweet_id": "2045335451368665161",
+      "account_handle": "USCISJoe",
+      "posted_at": "2026-04-18T02:55:46.000Z",
+      "tweet_url": "https://x.com/USCISJoe/status/2045335451368665161",
+      "tweet_text": "Thanks to @DanNewsManBall for having me on to highlight the advanced measures @USCIS is taking under @SecMullinDHS’ and @POTUS' leadership to combat immigration fraud. \n\nUnlike under the previous administration, fraud is not something we’re going to ignore. https://t.co/RwBBr5FWBH",
+      "media_id": "13_2045331884385976320",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2045331884385976320.mp4",
+      "duration_sec": 41.207,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 323,
+      "retweet_count": 78,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:POTUS",
+        "agency:SecMullinDHS",
+        "agency:USCIS",
+        "audio:has-audio",
+        "crime:fraud",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:economy",
+        "topic:general",
+        "topic:immigration",
+        "topic:military",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1920x1080; 41.2s; 2.48 MiB; archived; tweet context: Thanks to @DanNewsManBall for having me on to highlight the advanced measures @USCIS is taking under @SecMullinDHS’ and @POTUS' leadership to combat immigration fraud. Unlike under the previous administration, fraud is not something we’re going to ignore. htt...; source URL: https://video.twimg.com/amplify_video/2045331884385976320/vid/avc1/1280x720/FovjyQe02XxH5S3G.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2045331884385976320.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 41.2s; 2.48 MiB; archived; tweet context: Thanks to @DanNewsManBall for having me on to highlight the advanced measures @USCIS is taking under @SecMullinDHS’ and @POTUS' leadership to combat immigration fraud. Unlike under the previous administration, fraud is not something we’re going to ignore. htt...; source URL: https://video.twimg.com/amplify_video/2045331884385976320/vid/avc1/1280x720/FovjyQe02XxH5S3G.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2045331884385976320.mp4; needs OCR, transcript, or frame-leve"
+    },
+    {
+      "tweet_id": "2045600756405821890",
+      "account_handle": "USCISJoe",
+      "posted_at": "2026-04-18T20:30:00.000Z",
+      "tweet_url": "https://x.com/USCISJoe/status/2045600756405821890",
+      "tweet_text": "Our primary mission is to keep Americans safe. Despite challenges from radical, activist judges, we remain committed to protecting this country.\n\nKeeping America safe is our charge—and we will do it unapologetically. https://t.co/Iplew7X6ZM",
+      "media_id": "13_2045577638211723264",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2045577638211723264.mp4",
+      "duration_sec": 36.469,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 390,
+      "retweet_count": 75,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:DOJgov",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1920x1080; 36.5s; 2.25 MiB; archived; tweet context: Our primary mission is to keep Americans safe. Despite challenges from radical, activist judges, we remain committed to protecting this country. Keeping America safe is our charge—and we will do it unapologetically. https://t.co/Iplew7X6ZM; source URL: https://video.twimg.com/amplify_video/2045577638211723264/vid/avc1/1280x720/_ZUEf9m6peVLo9Me.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2045577638211723264.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 36.5s; 2.25 MiB; archived; tweet context: Our primary mission is to keep Americans safe. Despite challenges from radical, activist judges, we remain committed to protecting this country. Keeping America safe is our charge—and we will do it unapologetically. https://t.co/Iplew7X6ZM; source URL: https://video.twimg.com/amplify_video/2045577638211723264/vid/avc1/1280x720/_ZUEf9m6peVLo9Me.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2045577638211723264.mp4; needs OCR, transcript, or frame-level vision before content claims. Our primary mi"
     },
     {
       "tweet_id": "2046719496849678400",
@@ -73050,6 +72539,46 @@
       "description": "video; 2160x3840; 126.7s; 22.18 MiB; archived; tweet context: This Colombian national was arrested illegally crossing into the United States. She embarked in this incredibly dangerous journey with her two young grandchildren. As she recounts here perilous journey, the truth is revealed. Criminal cartel organizations don...; source URL: https://video.twimg.com/amplify_video/2047859978707644416/vid/avc1/2160x3840/WQ-cbQc_6rENBtpn.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/13_2047859978707644416.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 2160x3840; 126.7s; 22.18 MiB; archived; tweet context: This Colombian national was arrested illegally crossing into the United States. She embarked in this incredibly dangerous journey with her two young grandchildren. As she recounts here perilous journey, the truth is revealed. Criminal cartel organizations don...; source URL: https://video.twimg.com/amplify_video/2047859978707644416/vid/avc1/2160x3840/WQ-cbQc_6rENBtpn.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/13_2047859978707644416.mp4; needs OCR, transcript, or fr"
     },
     {
+      "tweet_id": "2048056901825437865",
+      "account_handle": "USCISJoe",
+      "posted_at": "2026-04-25T15:09:51.000Z",
+      "tweet_url": "https://x.com/USCISJoe/status/2048056901825437865",
+      "tweet_text": "We’re cleaning up after the Biden admin, where criminals got an open door into the US through our legal immigration system.\n\nWe’re reviewing past immigration determinations &amp; correcting them as necessary.\n\nThe shutdown of @DHSgov undermines that work &amp; puts all Americans at risk. https://t.co/wQwRe9XDRV",
+      "media_id": "13_2048056745382014976",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2048056745382014976.mp4",
+      "duration_sec": 62.145,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 867,
+      "retweet_count": 172,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:DHSgov",
+        "audio:has-audio",
+        "crime:fraud",
+        "crime:homicide",
+        "crime:murder",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "status:community-note",
+        "theme:religion",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1920x1080; 62.1s; 3.85 MiB; archived; tweet context: We’re cleaning up after the Biden admin, where criminals got an open door into the US through our legal immigration system. We’re reviewing past immigration determinations &amp; correcting them as necessary. The shutdown of @DHSgov undermines that work &amp;...; source URL: https://video.twimg.com/amplify_video/2048056745382014976/vid/avc1/1280x720/H5IA_3XWqJfnLATF.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2048056745382014976.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 62.1s; 3.85 MiB; archived; tweet context: We’re cleaning up after the Biden admin, where criminals got an open door into the US through our legal immigration system. We’re reviewing past immigration determinations &amp; correcting them as necessary. The shutdown of @DHSgov undermines that work &amp;...; source URL: https://video.twimg.com/amplify_video/2048056745382014976/vid/avc1/1280x720/H5IA_3XWqJfnLATF.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2048056745382014976.mp4; needs OCR, transcript, or frame-level "
+    },
+    {
       "tweet_id": "2049549405485744172",
       "account_handle": "OFOEAC",
       "posted_at": "2026-04-29T18:00:31.000Z",
@@ -73125,6 +72654,44 @@
       "description": "video; 884x494; 42.6s; 2.35 MiB; archived; tweet context: Registered Apprenticeships strengthen our American workforce, businesses, and economy. They’re the fastest path to a skilled American workforce. At @USDOL, we’re proud this National Apprenticeship Week to be delivering on @POTUS’ goal of reaching 1 million ac...; source URL: https://video.twimg.com/amplify_video/2049624561239429120/vid/avc1/884x494/7Q-upkPY24PhfJyi.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-Sonderling47/13_2049624561239429120.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 884x494; 42.6s; 2.35 MiB; archived; tweet context: Registered Apprenticeships strengthen our American workforce, businesses, and economy. They’re the fastest path to a skilled American workforce. At @USDOL, we’re proud this National Apprenticeship Week to be delivering on @POTUS’ goal of reaching 1 million ac...; source URL: https://video.twimg.com/amplify_video/2049624561239429120/vid/avc1/884x494/7Q-upkPY24PhfJyi.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-Sonderling47/13_2049624561239429120.mp4; needs OCR, transcript, or frame-le"
     },
     {
+      "tweet_id": "2049860340230348875",
+      "account_handle": "USCISJoe",
+      "posted_at": "2026-04-30T14:36:04.000Z",
+      "tweet_url": "https://x.com/USCISJoe/status/2049860340230348875",
+      "tweet_text": "Under @POTUS &amp; @SecMullinDHS, @USCIS is making sure only those who meet all requirements &amp; pose no threat to national security are granted Green Cards &amp; citizenship.\n\nThese benefits are an honor &amp; privilege, &amp; we’re making sure they go only to those who truly qualify. https://t.co/WgHZkXveA6",
+      "media_id": "13_2049860216213102592",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2049860216213102592.mp4",
+      "duration_sec": 31.281,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 657,
+      "retweet_count": 156,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:POTUS",
+        "agency:SecMullinDHS",
+        "agency:USCIS",
+        "audio:has-audio",
+        "crime:fraud",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:general",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1920x1080; 31.3s; 2.49 MiB; archived; tweet context: Under @POTUS &amp; @SecMullinDHS, @USCIS is making sure only those who meet all requirements &amp; pose no threat to national security are granted Green Cards &amp; citizenship. These benefits are an honor &amp; privilege, &amp; we’re making sure they go only...; source URL: https://video.twimg.com/amplify_video/2049860216213102592/vid/avc1/1280x720/731a9rf8dHU3Fm3e.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2049860216213102592.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 31.3s; 2.49 MiB; archived; tweet context: Under @POTUS &amp; @SecMullinDHS, @USCIS is making sure only those who meet all requirements &amp; pose no threat to national security are granted Green Cards &amp; citizenship. These benefits are an honor &amp; privilege, &amp; we’re making sure they go only...; source URL: https://video.twimg.com/amplify_video/2049860216213102592/vid/avc1/1280x720/731a9rf8dHU3Fm3e.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2049860216213102592.mp4; needs OCR, transcript, or frame-leve"
+    },
+    {
       "tweet_id": "2049896576273776729",
       "account_handle": "CBP",
       "posted_at": "2026-04-30T17:00:03.000Z",
@@ -73159,6 +72726,82 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1080x1080; 17.0s; 1.51 MiB; archived; tweet context: Whether you’re a super fan or it’s your first game, when it comes to travel and safety—we got you. We get a kick out of ensuring you safely enjoy the @FIFAWorldCup 2026™. Here are some travel tips: http://go.dhs.gov/iaU https://t.co/ybiAK8Q14n; source URL: https://video.twimg.com/ext_tw_video/2049895391009628160/pu/vid/avc1/720x720/e_iyP1AtiuOL7kmU.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/7_2049895391009628160.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1080; 17.0s; 1.51 MiB; archived; tweet context: Whether you’re a super fan or it’s your first game, when it comes to travel and safety—we got you. We get a kick out of ensuring you safely enjoy the @FIFAWorldCup 2026™. Here are some travel tips: http://go.dhs.gov/iaU https://t.co/ybiAK8Q14n; source URL: https://video.twimg.com/ext_tw_video/2049895391009628160/pu/vid/avc1/720x720/e_iyP1AtiuOL7kmU.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/7_2049895391009628160.mp4; needs OCR, transcript, or frame-level vision before content claims. Whether you’re a"
+    },
+    {
+      "tweet_id": "2049992010874962225",
+      "account_handle": "USCISJoe",
+      "posted_at": "2026-04-30T23:19:17.000Z",
+      "tweet_url": "https://x.com/USCISJoe/status/2049992010874962225",
+      "tweet_text": "The Biden administration knew exactly what they were doing when they opened the floodgates, let everyone come in, and reduced our standards of screening and vetting to the point they were meaningless.\n\nUnder @POTUS and @SecMullinDHS, we’re correcting that for the American people. https://t.co/GDNJlfnf8A",
+      "media_id": "13_2049991325529808896",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2049991325529808896.mp4",
+      "duration_sec": 24.482,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 401,
+      "retweet_count": 81,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:POTUS",
+        "agency:SecMullinDHS",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "status:community-note",
+        "topic:immigration",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1920x1080; 24.5s; 2.04 MiB; archived; tweet context: The Biden administration knew exactly what they were doing when they opened the floodgates, let everyone come in, and reduced our standards of screening and vetting to the point they were meaningless. Under @POTUS and @SecMullinDHS, we’re correcting that for...; source URL: https://video.twimg.com/amplify_video/2049991325529808896/vid/avc1/1280x720/qKMiB6CuvRqqzLuy.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2049991325529808896.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 24.5s; 2.04 MiB; archived; tweet context: The Biden administration knew exactly what they were doing when they opened the floodgates, let everyone come in, and reduced our standards of screening and vetting to the point they were meaningless. Under @POTUS and @SecMullinDHS, we’re correcting that for...; source URL: https://video.twimg.com/amplify_video/2049991325529808896/vid/avc1/1280x720/qKMiB6CuvRqqzLuy.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2049991325529808896.mp4; needs OCR, transcript, or frame-level "
+    },
+    {
+      "tweet_id": "2050256038465548302",
+      "account_handle": "USCISJoe",
+      "posted_at": "2026-05-01T16:48:26.000Z",
+      "tweet_url": "https://x.com/USCISJoe/status/2050256038465548302",
+      "tweet_text": "The lengths the Biden administration went to in order to ignore the pervasive fraud in our immigration system are staggering.\n\nToday, under the Trump administration, @USCIS is proud to deploy dedicated special agents to specifically investigate, expose, &amp; eliminate this fraud. https://t.co/Y4qoOaQsAH",
+      "media_id": "13_2050255863349153792",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2050255863349153792.mp4",
+      "duration_sec": 67.317,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 394,
+      "retweet_count": 114,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:USCIS",
+        "audio:has-audio",
+        "crime:fraud",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "status:community-note",
+        "topic:economy",
+        "topic:general",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1920x1080; 67.3s; 5.85 MiB; archived; tweet context: The lengths the Biden administration went to in order to ignore the pervasive fraud in our immigration system are staggering. Today, under the Trump administration, @USCIS is proud to deploy dedicated special agents to specifically investigate, expose, &amp;...; source URL: https://video.twimg.com/amplify_video/2050255863349153792/vid/avc1/1280x720/rL1cVwIJfEijWoXr.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2050255863349153792.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 67.3s; 5.85 MiB; archived; tweet context: The lengths the Biden administration went to in order to ignore the pervasive fraud in our immigration system are staggering. Today, under the Trump administration, @USCIS is proud to deploy dedicated special agents to specifically investigate, expose, &amp;...; source URL: https://video.twimg.com/amplify_video/2050255863349153792/vid/avc1/1280x720/rL1cVwIJfEijWoXr.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2050255863349153792.mp4; needs OCR, transcript, or frame-level "
     },
     {
       "tweet_id": "2050392598666240167",
@@ -73463,7 +73106,7 @@
       "media_id": "13_2052826933684015110",
       "media_type": "video",
       "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2052826933684015110.mp4",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2052826933684015110.mp4",
       "duration_sec": 12.595,
       "width": 1920,
       "height": 1080,
@@ -73488,7 +73131,7 @@
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
-      "description": "video; 1920x1080; 12.6s; 1.09 MiB; archived; tweet context: When it comes to immigration, we’re upholding standards set by Congress and enforcing requirements that have long been ignored. The Trump administration is taking decisive steps to eliminate fraud and protect American citizens. https://t.co/OIjnsPYvkN; source URL: https://video.twimg.com/amplify_video/2052826933684015110/vid/avc1/1280x720/30PSXHHVrc-vhitb.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-_misc/13_2052826933684015110.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1920x1080; 12.6s; 1.09 MiB; archived; tweet context: When it comes to immigration, we’re upholding standards set by Congress and enforcing requirements that have long been ignored. The Trump administration is taking decisive steps to eliminate fraud and protect American citizens. https://t.co/OIjnsPYvkN; source URL: https://video.twimg.com/amplify_video/2052826933684015110/vid/avc1/1280x720/30PSXHHVrc-vhitb.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-_misc/13_2052826933684015110.mp4; visual obser"
+      "description": "video; 1920x1080; 12.6s; 1.09 MiB; archived; tweet context: When it comes to immigration, we’re upholding standards set by Congress and enforcing requirements that have long been ignored. The Trump administration is taking decisive steps to eliminate fraud and protect American citizens. https://t.co/OIjnsPYvkN; source URL: https://video.twimg.com/amplify_video/2052826933684015110/vid/avc1/1280x720/30PSXHHVrc-vhitb.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2052826933684015110.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1920x1080; 12.6s; 1.09 MiB; archived; tweet context: When it comes to immigration, we’re upholding standards set by Congress and enforcing requirements that have long been ignored. The Trump administration is taking decisive steps to eliminate fraud and protect American citizens. https://t.co/OIjnsPYvkN; source URL: https://video.twimg.com/amplify_video/2052826933684015110/vid/avc1/1280x720/30PSXHHVrc-vhitb.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-USCISJoe/13_2052826933684015110.mp4; visual"
     },
     {
       "tweet_id": "2052872434521452658",

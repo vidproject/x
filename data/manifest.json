@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-30T22:01:03Z",
+  "generated_at": "2026-05-31T10:12:25Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -598,7 +598,7 @@
       "label": "U.S. Coast Guard",
       "category": "core",
       "parquet": "data/USCG.parquet",
-      "parquet_bytes": 57700,
+      "parquet_bytes": 57680,
       "row_count": 29,
       "post_count": 29,
       "reply_count": 0,
@@ -635,7 +635,7 @@
       "label": "USCIS Director Joseph B. Edlow",
       "category": "core",
       "parquet": "data/USCISJoe.parquet",
-      "parquet_bytes": 54773,
+      "parquet_bytes": 55048,
       "row_count": 24,
       "post_count": 23,
       "reply_count": 1,
@@ -736,7 +736,7 @@
       "label": "Miscellaneous (replies / quotes / retweets of non-tracked accounts)",
       "category": "public",
       "parquet": "data/_misc.parquet",
-      "parquet_bytes": 2334540,
+      "parquet_bytes": 2334615,
       "row_count": 6104,
       "post_count": 2390,
       "reply_count": 3714,
