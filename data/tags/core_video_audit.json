@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-31T10:12:24Z",
+  "generated_at": "2026-05-31T16:49:48Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -36,7 +36,7 @@
     "top_tags": {
       "media-status:archived": 1811,
       "media:video": 1792,
-      "topic:immigration": 1535,
+      "topic:immigration": 1536,
       "audio:has-audio": 1413,
       "video:medium": 1171,
       "media-status:needs-vision": 1076,
@@ -56,7 +56,7 @@
       "video:text-overlay": 225,
       "video:long": 218,
       "agency:CBP": 210,
-      "video:news-clip": 208,
+      "video:news-clip": 209,
       "action:deportation": 192,
       "video:interview": 174,
       "speaker:President Trump": 168,
@@ -76,7 +76,7 @@
       "theme:martyrdom": 94,
       "video:voiceover": 89,
       "phrase:immigrant": 86,
-      "country:China": 83,
+      "country:China": 84,
       "crime:assault": 82,
       "crime:trafficking": 74,
       "genre:advertisement": 73,
@@ -90,7 +90,7 @@
       "assign-produced-video-genre": 244,
       "describe-with-vision": 7,
       "detect-audio": 332,
-      "extract-keyframes": 453
+      "extract-keyframes": 333
     }
   },
   "items": [
@@ -856,13 +856,11 @@
         "genre:music-video",
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
+      "has_ocr": true,
       "description": "Video set to music with no spoken transcript. A 'BUSTED & BOOTED' chrome logo recurs over an animated grey U.S. map that zooms and drops location pins from state to state. Each card names a foreign national arrested in an immigration or fraud case: a Brazilian national for selling fake Social Security cards and green cards in Boston, an Uzbek national for marriage fraud in Tampa, a card over Ohio, a Rwandan genocide criminal in New York, and a former Haitian mayor convicted of visa fraud in Boston. A DHS seal and 'U.S. Citizenship and Immigration Services' lockup appear throughout. | Video set to music with no spoken transcript. A 'BUSTED & BOOTED' chrome logo recurs over an animated grey U.S. map that zooms and drops location pins from state to state. Each card names a foreign national arrested in an immigration or fraud case: a Brazilian national for selling fake Social Security cards and green cards in Boston, an Uzbek national for marriage fraud in Tampa, a card over Ohio, a Rwandan genocide criminal in New York, and a former Haitian mayor convicted of visa fraud in Boston. A DHS seal and 'U.S. Citizenship and Immigration Services' lockup appear throughout.  [0:09] 'BUSTED & BO"
     },
     {
@@ -1019,10 +1017,8 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -1064,10 +1060,8 @@
         "genre:music-video",
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -1112,10 +1106,8 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -1204,10 +1196,8 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -1248,10 +1238,8 @@
         "genre:music-video",
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -1443,10 +1431,8 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -1489,10 +1475,8 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -1635,10 +1619,8 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -1688,10 +1670,8 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -1778,10 +1758,8 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -1827,10 +1805,8 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -1922,10 +1898,8 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -1970,10 +1944,8 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -2231,10 +2203,8 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -2378,10 +2348,8 @@
         "genre:music-video",
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -2431,10 +2399,8 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -2537,10 +2503,8 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -2628,10 +2592,8 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -2680,10 +2642,8 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -2833,10 +2793,8 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -2980,10 +2938,8 @@
         "video:montage",
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -3200,10 +3156,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -3807,10 +3762,8 @@
         "genre:music-video",
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -3908,10 +3861,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4509,10 +4461,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4649,10 +4600,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4731,10 +4681,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4864,10 +4813,9 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4907,10 +4855,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -4952,10 +4899,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -5672,10 +5618,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -5876,10 +5821,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -6068,10 +6012,9 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -6118,10 +6061,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -6555,10 +6497,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7120,10 +7061,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7545,10 +7485,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7884,10 +7823,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -7972,10 +7910,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -8106,10 +8043,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -8151,10 +8087,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -10950,10 +10885,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -11425,10 +11359,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -11469,10 +11402,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12786,14 +12718,13 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A recurring 'Busted & Booted' USCIS segment that is an animated U.S. map motion-graphic: a red, white, and blue title card and a pin that moves city to city (Fort Lauderdale, Santa Ana, Indianapolis, Miami, Atlanta) labeling each captured person. It carries a music bed and branding and contains no footage or characters. On-screen text reads 'BUSTED & BOOTED', 'Fort Lauderdale, FL: Pablo Escobar's Pilot', 'Santa Ana, CA Bank Robber', 'Indianapolis, IN Fugitive Narcotics Trafficker', 'Miami, FL: 14 Criminal Aliens in Accordance with the Laken Riley Act', and 'Atlanta, GA: Manufacturing Owner Under Investigation for Labor Trafficking'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "A recurring 'Busted & Booted' USCIS segment that is an animated U.S. map motion-graphic: a red, white, and blue title card and a pin that moves city to city (Fort Lauderdale, Santa Ana, Indianapolis, Miami, Atlanta) labeling each captured person. It carries a music bed and branding and contains no footage or characters. On-screen text reads 'BUSTED & BOOTED', 'Fort Lauderdale, FL: Pablo Escobar's Pilot', 'Santa Ana, CA Bank Robber', 'Indianapolis, IN Fugitive Narcotics Trafficker', 'Miami, FL: 14 Criminal Aliens in Accordance with the Laken Riley Act', and 'Atlanta, GA: Manufacturing Owner Under Investigation for Labor Trafficking'. | BUSTED?& BOOTED Fort Lauderdale, FL: Pablo Escobar’s Pilot N & => > Tyonigninan Sees | BUSTED3& BOOTED » Santa Ana, CA Bank Robber img a | BUSTED & BOOTED Indianapolis, IN Fugitive Narcotics Trafficker oe e@ « a. NX | BUSTED} & BOOTED Miami, FL: 14 Criminal Aliens in Accordance with the Laken Riley Act a @ ™“. @ Tuenigraionl Sones | — < BUSTED & ‘BOOTED. Atlanta, GA: Manufacturing Owner Under Investigation for Labor Trafficking inmigeon cara a } a | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "1916876717714534501",
@@ -12927,10 +12858,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -12976,14 +12906,13 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A narrated slideshow recapping USCIS work during Trump's first 100 days: title cards, a clip of Trump signing an executive order, B-roll of the USCIS building and a fingerprint and biometric station, and a closing USCIS.gov card. It is a voiceover-driven informational recap with no music track. On-screen text reads 'President Trump's First 100 Days: Shaping Immigration Policy' and 'USCIS.gov'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "A narrated slideshow recapping USCIS work during Trump's first 100 days: title cards, a clip of Trump signing an executive order, B-roll of the USCIS building and a fingerprint and biometric station, and a closing USCIS.gov card. It is a voiceover-driven informational recap with no music track. On-screen text reads 'President Trump's First 100 Days: Shaping Immigration Policy' and 'USCIS.gov'. | President Trump’s First 100 Days: Shaping Immigration Policy | ) t 1 SP —V 4 | 4 \\ \\ irs oa | LL ¢ | NA US. Citizenship (ey) and Immigration Re” Services USCIS.GOV | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "1924857727353807062",
@@ -13027,14 +12956,13 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video. A narrated USCIS recap explaining the Alien Registration Requirement and the new G-325R registration form created after Trump's 'Protecting the American People Against Invasion' executive order. It mixes faded B-roll of Trump signing an order, ARR-branded stock footage (typing, a naturalization-style oath), and infographic text slides citing about 47,000 registrations, ending on a USCIS.gov card. The voiceover delivers an informational policy recap with no music track. On-screen and spoken text includes 'Alien Registration Requirement', 'With almost 47,000 submissions as of April 29, USCIS is extensively promoting public awareness of this requirement and the penalties for non-compliance', and 'USCIS.GOV'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Vertical video. A narrated USCIS recap explaining the Alien Registration Requirement and the new G-325R registration form created after Trump's 'Protecting the American People Against Invasion' executive order. It mixes faded B-roll of Trump signing an order, ARR-branded stock footage (typing, a naturalization-style oath), and infographic text slides citing about 47,000 registrations, ending on a USCIS.gov card. The voiceover delivers an informational policy recap with no music track. On-screen and spoken text includes 'Alien Registration Requirement', 'With almost 47,000 submissions as of April 29, USCIS is extensively promoting public awareness of this requirement and the penalties for non-compliance', and 'USCIS.GOV'. | MN i pee ) | IA = — ee | With almost 47,000 submissions as of April 29, USCIS is extensively promoting public awareness of this requirement and the penalties for non-compliance. | : | & US. Citizenship q ) and Immigration “SZ Services USCIS.GOV | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "1928443447561597214",
@@ -13367,10 +13295,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -13414,10 +13341,9 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -13455,10 +13381,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -13890,10 +13815,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -14076,10 +14000,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -14417,10 +14340,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -14547,10 +14469,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -14591,10 +14512,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -14636,10 +14556,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -14677,10 +14596,9 @@
         "video:produced"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -14720,10 +14638,9 @@
         "video:text-overlay"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -14997,14 +14914,13 @@
         "video:voiceover"
       ],
       "missing_steps": [
-        "extract-keyframes",
         "assign-produced-video-genre"
       ],
-      "has_keyframes": false,
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A short stock B-roll intro (warehouse forklift workers, a MAGA-hat rally crowd) cuts into static footage of Acting Labor Secretary Keith Sonderling delivering Senate hearing testimony about the FY2027 DOL budget and the American workforce. The clip is mostly talking-head testimony with a narrated voice and no music track."
+      "has_ocr": true,
+      "description": "A short stock B-roll intro (warehouse forklift workers, a MAGA-hat rally crowd) cuts into static footage of Acting Labor Secretary Keith Sonderling delivering Senate hearing testimony about the FY2027 DOL budget and the American workforce. The clip is mostly talking-head testimony with a narrated voice and no music track. | =, ) 1 4 i 4 Nl ne wi 4 ud Se : ma nae ; 4 ie 6 Le ve ‘. } ez oa 8} — | me iy — 8 | ee eR J = a aN 4 “ates ) DY ee PI rp AZ ” ang —_— Call Ve | Si s lees ie 4 _—_ | Pv. sah: <i),"
     },
     {
       "tweet_id": "1891668421814755767",
@@ -15284,10 +15200,8 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -16635,10 +16549,8 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -16910,10 +16822,8 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -17050,10 +16960,8 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -17140,10 +17048,8 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -20671,14 +20577,12 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A USCIS Alien Registration Requirement (ARR) public service announcement titled 'Facing the Consequences', using branded title cards plus stock B-roll (handcuffs over a fingerprint card) under an instructional voiceover stating that failure to register makes one a priority for civil and criminal enforcement. It carries no music track. On-screen text reads 'ARR Alien Registration Requirement', 'FACING THE CONSEQUENCES', 'If you fail to comply, for civil and criminal enforcement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "A USCIS Alien Registration Requirement (ARR) public service announcement titled 'Facing the Consequences', using branded title cards plus stock B-roll (handcuffs over a fingerprint card) under an instructional voiceover stating that failure to register makes one a priority for civil and criminal enforcement. It carries no music track. On-screen text reads 'ARR Alien Registration Requirement', 'FACING THE CONSEQUENCES', 'If you fail to comply, for civil and criminal enforcement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | (ARR Alien Registration Requirement FACING THE CONSEQUENCES | a - , i = = +. — If you fail to comply, | Seale - ™,. 2 , . for civil and criminal enforcement. | agile) | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "1912244544432710093",
@@ -20764,14 +20668,12 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A USCIS Alien Registration Requirement public service announcement titled 'The Cost of Inaction', built from branded title cards and stock and file B-roll (handcuffs and fingerprint card, detainees seated on an ICE bus) over an instructional voiceover stating fines and incarceration follow failure to register. It carries no music track. On-screen text reads 'ARR Alien Registration Requirement', 'THE COST OF INACTION', 'If you fail to comply, and incarceration', 'POLICE ICE', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "A USCIS Alien Registration Requirement public service announcement titled 'The Cost of Inaction', built from branded title cards and stock and file B-roll (handcuffs and fingerprint card, detainees seated on an ICE bus) over an instructional voiceover stating fines and incarceration follow failure to register. It carries no music track. On-screen text reads 'ARR Alien Registration Requirement', 'THE COST OF INACTION', 'If you fail to comply, and incarceration', 'POLICE ICE', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | (ARR Alien Registration Requirement THE COST OF INACTION | J oe 1 ys _\\ ; eames » ; - FM ee ee If you fail to comply, | = of =z wif ‘oa aie NS x ser) Ar Va Til DP © bf rouce eS = % ‘ ICE y=) —— Dee of ¥ oe ' : , - RS Fm : ‘ @ ’ 7 a\\ i and e e incarceration. | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION Aliens are encouraged to visit | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "1912838519849971833",
@@ -20813,14 +20715,12 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A USCIS Alien Registration Requirement public service announcement ('Stay on the right side of the law'), using branded title cards and stock B-roll (a small-town street, hands typing on a laptop) under an instructional voiceover explaining who must register and who is exempt. It carries no music track. On-screen text reads 'ARR Alien Registration Requirement', 'Registering with USCIS ensures', 'You don't have to register', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "A USCIS Alien Registration Requirement public service announcement ('Stay on the right side of the law'), using branded title cards and stock B-roll (a small-town street, hands typing on a laptop) under an instructional voiceover explaining who must register and who is exempt. It carries no music track. On-screen text reads 'ARR Alien Registration Requirement', 'Registering with USCIS ensures', 'You don't have to register', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | ! UNS ) im) i : $e Loh ae aN 1 Le Saale ee hs oa Pe oe 4 4a Ke Rae Ree’ a 2 eas ns a) ORG Serie ‘i: Te fae Wie = Bn \\ 4 i A i = ié yt Ae 1 {3 ae ¥ —— a e e Registering e with USCIS ensures | a Sa 14 years or older. | 4 +) — You don't have to register | 4 Ae * { ope Bie. a Fa y ws MAL Me ; iy To 5 i ‘a Lae Zz : 4 were issued a form I-94 or 1-94W, | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "1913200923549041096",
@@ -20865,14 +20765,12 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A USCIS Alien Registration Requirement public service announcement: stock B-roll (typing hands, DHS flag, fingerprint, child raising hand in class) under large captions, with a voiceover reading the legal requirement to register under Trump's EO 14159. It is captioned and uses narration, with no music track. On-screen text reads 'all aliens to register', 'is making sure aliens comply', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS (U.S. Citizenship and Immigration Services)."
+      "has_ocr": true,
+      "description": "A USCIS Alien Registration Requirement public service announcement: stock B-roll (typing hands, DHS flag, fingerprint, child raising hand in class) under large captions, with a voiceover reading the legal requirement to register under Trump's EO 14159. It is captioned and uses narration, with no music track. On-screen text reads 'all aliens to register', 'is making sure aliens comply', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Mi q _— — all aliens to register | Py Eps BARS F * Ss 2 \\ Jip \\\\ Hy Q SECU “he, Ld & “agttarus is making sure aliens comply | when you applied fora U.S. visa, | f aM YW, A m~ oy A ; ‘ I ™ . Ti they register too. | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION | Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS (U.S. Citizenship and Immigration Services)."
     },
     {
       "tweet_id": "1914288082452361405",
@@ -20917,14 +20815,12 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A USCIS Alien Registration Requirement public service announcement: stock B-roll (DHS flag, fingerprint, INA document, child raising hand) under large captions, with a voiceover reading who must register under the Immigration and Nationality Act and Trump's directive. It is captioned and uses narration, with no music track. On-screen text reads 'Immigration and Nationality', 'is making sure all aliens comply', 'when you applied for a U.S. visa', 'you need to make sure they register too', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "A USCIS Alien Registration Requirement public service announcement: stock B-roll (DHS flag, fingerprint, INA document, child raising hand) under large captions, with a voiceover reading who must register under the Immigration and Nationality Act and Trump's directive. It is captioned and uses narration, with no music track. On-screen text reads 'Immigration and Nationality', 'is making sure all aliens comply', 'when you applied for a U.S. visa', 'you need to make sure they register too', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | mmigration and Né by the Senate a F American in Con Immigration and Nationality | Re ~*~ Sees VW “ \\\\ : {) Sy ‘ “te ! “8 . octkarus is making sure all aliens comply | when you applied fora U.S. visa, | 4d f : 4. wih A 7 ii) { BY ) ie d a 4% : you need to make sure | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "1914710866592772398",
@@ -20969,14 +20865,12 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Narrated USCIS public service announcement explaining the Alien Registration Requirement under Trump's EO 14159: who must register, the 14-and-older threshold, and the criminal and civil penalties for non-compliance. It uses stock B-roll (border checkpoint, fingerprint, classroom, person typing) under a full voiceover with large white caption text and an ARR logo end card. It uses spoken narration with no music track. On-screen text reads 'Security is making sure all aliens', '14 years or older', 'If you are a parent', 'ARR Alien Registration Requirement', 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION', and 'and civil penalties.'. | Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS."
+      "has_ocr": true,
+      "description": "Narrated USCIS public service announcement explaining the Alien Registration Requirement under Trump's EO 14159: who must register, the 14-and-older threshold, and the criminal and civil penalties for non-compliance. It uses stock B-roll (border checkpoint, fingerprint, classroom, person typing) under a full voiceover with large white caption text and an ARR logo end card. It uses spoken narration with no music track. On-screen text reads 'Security is making sure all aliens', '14 years or older', 'If you are a parent', 'ARR Alien Registration Requirement', 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION', and 'and civil penalties.'. | » Lei me a, See ey ee fg. ts Security is making sure all aliens | 4 14 years or older, | hd 6, “2 @e) <i If you area parent | J. tai J® and steps for registration, | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION and civil penalties. | Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS."
     },
     {
       "tweet_id": "1915012834703888734",
@@ -21020,14 +20914,12 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Narrated USCIS public service announcement ('Need to register? Do it now') telling aliens they may need to register with the U.S. government under Trump's EO 14159. It uses stock B-roll (person typing on a laptop, a waving DHS 'Semper Paratus 1790' flag, a classroom) with voiceover, white caption text, and an ARR logo and URL end card. It uses voiceover with no music track. On-screen text reads 'with the U.S. government as an alien?', 'aliens register with the U.S. government', 'and you are 14 or older', 'If you are a parent', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS (U.S. Citizenship and Immigration Services)."
+      "has_ocr": true,
+      "description": "Narrated USCIS public service announcement ('Need to register? Do it now') telling aliens they may need to register with the U.S. government under Trump's EO 14159. It uses stock B-roll (person typing on a laptop, a waving DHS 'Semper Paratus 1790' flag, a classroom) with voiceover, white caption text, and an ARR logo and URL end card. It uses voiceover with no music track. On-screen text reads 'with the U.S. government as an alien?', 'aliens register with the U.S. government', 'and you are 14 or older', 'If you are a parent', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | with the U.S. government as an alien? | Let —i a RV eg LN : A \\\\ ay se “Ye, a aFARarys aliens register with the U.S. government. | : be L w 9 ly <a and you are 14 or older, | £> / >» ; i C : ) 3h A = If you area parent | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION | Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS (U.S. Citizenship and Immigration Services)."
     },
     {
       "tweet_id": "1915375233449545767",
@@ -21065,14 +20957,12 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A USCIS how-to public service announcement walking aliens through filing Form G-325R online, using branded ARR title cards, a stock shot of blurred figures, and a screen recording of the myUSCIS account-creation website under a step-by-step instructional voiceover. It carries no music track. On-screen text reads 'ARR Alien Registration Requirement', 'Are you an alien in the United States', 'by creating an online account at', 'myUSCIS', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "A USCIS how-to public service announcement walking aliens through filing Form G-325R online, using branded ARR title cards, a stock shot of blurred figures, and a screen recording of the myUSCIS account-creation website under a step-by-step instructional voiceover. It carries no music track. On-screen text reads 'ARR Alien Registration Requirement', 'Are you an alien in the United States', 'by creating an online account at', 'myUSCIS', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Are you an alien in the United States | é 4 1 1 1 2 0 268 208 235 27 -1 5 1 1 1 2 1 268 208 69 27 48.597103 3029 5 1 1 1 2 2 501 212 2 15 94.641785 4 1 1 1 3 0 58 319 475 44 -1 5 1 1 1 3 1 58 311 120 49 47.670128 Gira 5 1 1 1 3 2 246 319 63 32 59.294350 US) 5 1 1 1 3 3 331 323 202 40 0.000000 Citizenship 4 1 1 1 4 0 93 358 462 51 -1 5 1 1 1 4 1 93 358 57 51 27.945114 uae 5 1 1 1 4 2 244 365 61 28 95.921341 and 5 1 1 1 4 3 333 363 222 41 51.677471 lminieration 4 1 1 1 5 0 0 545 638 23 -1 5 1 1 1 5 1 0 541 82 39 6.617966 Pn 5 1 1 1 5 2 0 545 468 14 7.863686 ee 5 1 1 1 5 3 477 551 161 17 31.888649 ee 4 1 1 1 6 0 91 560 549 51 -1 5 1 1 1 6 1 91 560 3 39 76.377525 5 1 1 1 6 2 347 587 9 6 89.145538 » 5 1 "
     },
     {
       "tweet_id": "1916824764229857341",
@@ -21112,14 +21002,12 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Narrated USCIS public service announcement ('apply online') walking through how to register and get fingerprinted online via a USCIS account, with a statement about criminal and civil penalties. Visuals are a high-contrast silhouette of figures, a calendar with day 30 circled in red, a USCIS website screenshot, and an ARR end card, all under voiceover with white caption text. It uses voiceover with no music track. On-screen text reads 'Did you know that if you are an alien', 'or more in the U.S.', 'Access USCIS online', 'and follow the step by step instructions', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Narrated USCIS public service announcement ('apply online') walking through how to register and get fingerprinted online via a USCIS account, with a statement about criminal and civil penalties. Visuals are a high-contrast silhouette of figures, a calendar with day 30 circled in red, a USCIS website screenshot, and an ARR end card, all under voiceover with white caption text. It uses voiceover with no music track. On-screen text reads 'Did you know that if you are an alien', 'or more in the U.S.', 'Access USCIS online', 'and follow the step by step instructions', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | 7 4 Did you know that if you are an alien | ; —! 20 6\" or more in the U.S. | Resources ¥ Signin # Access USCIS online tii —; and follow the step by step instructions. | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION and civil penalties. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "1917232519306522943",
@@ -21260,14 +21148,12 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video. A short public service announcement for the Alien Registration Requirement (ARR) with an 'ARR / Facing the Consequences' logo card, captioned voiceover narration over stock B-roll of handcuffs over a fingerprint and prison-bar shadows, ending on a USCIS.gov/alienregistration card. The captions transcribe the spoken statement ('If you fail to comply...'). It is a narration-driven public service announcement. On-screen text reads 'ARR Alien Registration Requirement', 'FACING THE CONSEQUENCES', 'If you fail to comply, for civil and criminal enforcement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Vertical video. A short public service announcement for the Alien Registration Requirement (ARR) with an 'ARR / Facing the Consequences' logo card, captioned voiceover narration over stock B-roll of handcuffs over a fingerprint and prison-bar shadows, ending on a USCIS.gov/alienregistration card. The captions transcribe the spoken statement ('If you fail to comply...'). It is a narration-driven public service announcement. On-screen text reads 'ARR Alien Registration Requirement', 'FACING THE CONSEQUENCES', 'If you fail to comply, for civil and criminal enforcement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | (ARR Alien Registration Requirement FACING THE CONSEQUENCES | a - , i = = +. — If you fail to comply, | Seale - ™,. 2 , . for civil and criminal enforcement. | agile) | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "1920176847872049569",
@@ -21310,14 +21196,12 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video. An entry in the USCIS Alien Registration Requirement PSA series, titled 'The Cost of Inaction.' It opens and closes with an ARR logo card and a USCIS.gov/alienregistration card. Captioned voiceover narration references fines and incarceration over stock B-roll of a man being handcuffed and detainees on an ICE detention bus. On-screen captions transcribe the speech. On-screen and spoken text includes 'ARR Alien Registration Requirement', 'THE COST OF INACTION', 'If you fail to comply, ... and incarceration', 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION', and 'Aliens are encouraged to visit'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Vertical video. An entry in the USCIS Alien Registration Requirement PSA series, titled 'The Cost of Inaction.' It opens and closes with an ARR logo card and a USCIS.gov/alienregistration card. Captioned voiceover narration references fines and incarceration over stock B-roll of a man being handcuffed and detainees on an ICE detention bus. On-screen captions transcribe the speech. On-screen and spoken text includes 'ARR Alien Registration Requirement', 'THE COST OF INACTION', 'If you fail to comply, ... and incarceration', 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION', and 'Aliens are encouraged to visit'. | (ARR Alien Registration Requirement THE COST OF INACTION | J oe 1 ys _\\ ; eames » ; - FM ee ee If you fail to comply, | = of =z wif ‘oa aie NS x ser) Ar Va Til DP © bf rouce eS = % ‘ ICE y=) —— Dee of ¥ oe ' : , - RS Fm : ‘ @ ’ 7 a\\ i and e e incarceration. | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION Aliens are encouraged to visit | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "1920509072740172210",
@@ -21361,14 +21245,12 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video. Part of the USCIS Alien Registration Requirement PSA series ('Stay on the right side of the law'), explaining who must register. Captioned voiceover narration plays over stock B-roll (a small-town street with pedestrians, hands typing on a laptop), bookended by an ARR logo card and a USCIS.gov/alienregistration card. There is no music. On-screen and spoken text includes 'ARR Alien Registration Requirement', 'Registering with USCIS ensures', 'You don't have to register', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Vertical video. Part of the USCIS Alien Registration Requirement PSA series ('Stay on the right side of the law'), explaining who must register. Captioned voiceover narration plays over stock B-roll (a small-town street with pedestrians, hands typing on a laptop), bookended by an ARR logo card and a USCIS.gov/alienregistration card. There is no music. On-screen and spoken text includes 'ARR Alien Registration Requirement', 'Registering with USCIS ensures', 'You don't have to register', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | ! UNS ) im) i : $e Loh ae aN 1 Le Saale ee hs oa Pe oe 4 4a Ke Rae Ree’ a 2 eas ns a) ORG Serie ‘i: Te fae Wie = Bn \\ 4 i A i = ié yt Ae 1 {3 ae ¥ —— a e e Registering e with USCIS ensures | a Sa 14 years or older. | 4 +) — You don't have to register | 4 Ae * { ope Bie. a Fa y ws MAL Me ; iy To 5 i ‘a Lae Zz : 4 were issued a form I-94 or 1-94W, | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "1920871469078192365",
@@ -21413,14 +21295,12 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video. A narrated USCIS PSA ('Who should register?') stating U.S. law requires all aliens to register and explaining the 14-and-older and 30-day criteria under Trump's EO 14159. It uses stock B-roll (laptop typing, a DHS flag, a fingerprint, a classroom) under a voiceover with white caption text and an ARR logo and URL end card. On-screen and spoken text includes 'all aliens to register', 'is making sure aliens comply', 'when you applied for a U.S. visa', 'they register too', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS."
+      "has_ocr": true,
+      "description": "Vertical video. A narrated USCIS PSA ('Who should register?') stating U.S. law requires all aliens to register and explaining the 14-and-older and 30-day criteria under Trump's EO 14159. It uses stock B-roll (laptop typing, a DHS flag, a fingerprint, a classroom) under a voiceover with white caption text and an ARR logo and URL end card. On-screen and spoken text includes 'all aliens to register', 'is making sure aliens comply', 'when you applied for a U.S. visa', 'they register too', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Mi q _— — all aliens to register | Py Eps BARS F * Ss 2 \\ Jip \\\\ Hy Q SECU “he, Ld & “agttarus is making sure aliens comply | when you applied fora U.S. visa, | f aM YW, A m~ oy A ; ‘ I ™ . Ti they register too. | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION | Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS."
     },
     {
       "tweet_id": "1921898228913414344",
@@ -21463,14 +21343,12 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video. A narrated USCIS PSA ('Who should register?') citing the Immigration and Nationality Act and Trump's executive order. It opens on a vintage INA statute document, then cuts to a DHS flag, a fingerprint, and a classroom under a voiceover with white caption text and an ARR logo and URL end card. The narration lays out the registration criteria and a penalty statement. On-screen and spoken text includes 'Immigration and Nationality', 'by the Senate and... of America in Congress', 'is making sure all aliens comply', 'when you applied for a U.S. visa', 'you need to make sure they register too', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS (U.S. Citizenship and Immigration Services)."
+      "has_ocr": true,
+      "description": "Vertical video. A narrated USCIS PSA ('Who should register?') citing the Immigration and Nationality Act and Trump's executive order. It opens on a vintage INA statute document, then cuts to a DHS flag, a fingerprint, and a classroom under a voiceover with white caption text and an ARR logo and URL end card. The narration lays out the registration criteria and a penalty statement. On-screen and spoken text includes 'Immigration and Nationality', 'by the Senate and... of America in Congress', 'is making sure all aliens comply', 'when you applied for a U.S. visa', 'you need to make sure they register too', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | mmigration and Né by the Senate a F American in Con Immigration and Nationality | Re ~*~ Sees VW “ \\\\ : {) Sy ‘ “te ! “8 . octkarus is making sure all aliens comply | when you applied fora U.S. visa, | 4d f : 4. wih A 7 ii) { BY ) ie d a 4% : you need to make sure | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION | Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS (U.S. Citizenship and Immigration Services)."
     },
     {
       "tweet_id": "1922260587616088140",
@@ -21515,14 +21393,12 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video. A re-post of the narrated USCIS Alien Registration Requirement PSA ('Finding registration information'), with stock B-roll of a border checkpoint, a fingerprint, a classroom, and typing under a full voiceover, captioned text, and an ARR logo end card. The narration explains who must register and states criminal and civil penalties. On-screen and spoken text includes 'Security is making sure all aliens', '14 years or older', 'If you are a parent', 'ARR Alien Registration Requirement', 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION', and 'and civil penalties.' | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Vertical video. A re-post of the narrated USCIS Alien Registration Requirement PSA ('Finding registration information'), with stock B-roll of a border checkpoint, a fingerprint, a classroom, and typing under a full voiceover, captioned text, and an ARR logo end card. The narration explains who must register and states criminal and civil penalties. On-screen and spoken text includes 'Security is making sure all aliens', '14 years or older', 'If you are a parent', 'ARR Alien Registration Requirement', 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION', and 'and civil penalties.' | » Lei me a, See ey ee fg. ts Security is making sure all aliens | 4 14 years or older, | hd 6, “2 @e) <i If you area parent | J. tai J® and steps for registration, | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION and civil penalties. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "1922622975762710741",
@@ -21566,14 +21442,12 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video. A re-post of the narrated USCIS 'Need to register? Do it now' PSA, with stock B-roll (laptop typing, a DHS flag, a classroom) under a voiceover, caption text, and an ARR logo and URL end card explaining the Alien Registration Requirement. On-screen and spoken text includes 'with the U.S. government as an alien?', 'aliens register with the U.S. government', 'and you are 14 or older', 'If you are a parent', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS."
+      "has_ocr": true,
+      "description": "Vertical video. A re-post of the narrated USCIS 'Need to register? Do it now' PSA, with stock B-roll (laptop typing, a DHS flag, a classroom) under a voiceover, caption text, and an ARR logo and URL end card explaining the Alien Registration Requirement. On-screen and spoken text includes 'with the U.S. government as an alien?', 'aliens register with the U.S. government', 'and you are 14 or older', 'If you are a parent', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | with the U.S. government as an alien? | Let —i a RV eg LN : A \\\\ ay se “Ye, a aFARarys aliens register with the U.S. government. | : be L w 9 ly <a and you are 14 or older, | £> / >» ; i C : ) 3h A = If you area parent | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION | Direct keyframe + tweet-text review: a produced government public service announcement featuring USCIS."
     },
     {
       "tweet_id": "1922985357424967982",
@@ -21613,14 +21487,12 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video. An Alien Registration Requirement how-to PSA ('Start the registration process') describing how to file Form G-325R online. Captioned voiceover narration plays over blurred silhouettes of people and a screen recording of the myUSCIS website sign-up page, framed by an ARR logo card and a URL card. There is no music track. On-screen and spoken text includes 'ARR Alien Registration Requirement', 'Are you an alien in the United States', 'by creating an online account at', 'my USCIS', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Vertical video. An Alien Registration Requirement how-to PSA ('Start the registration process') describing how to file Form G-325R online. Captioned voiceover narration plays over blurred silhouettes of people and a screen recording of the myUSCIS website sign-up page, framed by an ARR logo card and a URL card. There is no music track. On-screen and spoken text includes 'ARR Alien Registration Requirement', 'Are you an alien in the United States', 'by creating an online account at', 'my USCIS', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Are you an alien in the United States | é 4 1 1 1 2 0 268 208 235 27 -1 5 1 1 1 2 1 268 208 69 27 48.597103 3029 5 1 1 1 2 2 501 212 2 15 94.641785 4 1 1 1 3 0 58 319 475 44 -1 5 1 1 1 3 1 58 311 120 49 47.670128 Gira 5 1 1 1 3 2 246 319 63 32 59.294350 US) 5 1 1 1 3 3 331 323 202 40 0.000000 Citizenship 4 1 1 1 4 0 93 358 462 51 -1 5 1 1 1 4 1 93 358 57 51 27.945114 uae 5 1 1 1 4 2 244 365 61 28 95.921341 and 5 1 1 1 4 3 333 363 222 41 51.677471 lminieration 4 1 1 1 5 0 0 545 638 23 -1 5 1 1 1 5 1 0 541 82 39 6.617966 Pn 5 1 1 1 5 2 0 545 468 14 7.863686 ee 5 1 1 1 5 3 477 551 161 17 31.888649 ee 4 1 1 1 6 0 91 560 549 51 -1 5 1 1 1 6 1 91"
     },
     {
       "tweet_id": "1923347762747146326",
@@ -21659,14 +21531,12 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video. A step-by-step USCIS tutorial PSA covering the five steps to register under the Alien Registration Requirement: create a my.uscis.gov account, file Form G-325R, await review, attend a biometrics appointment, and download proof. Visuals are numbered step cards over a laptop, a USCIS.gov screenshot, a woman entering an Application Support Center, and gloved hands taking fingerprints, all under voiceover. There is no music. On-screen and spoken text includes 'with USCIS, follow these steps', 'STEP 1 uscis.gov/file-online/how-to-create-a-uscis-online-account', 'STEP 3 and let you know', 'STEP 4 a biometric services fee', 'Application Support Center', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Vertical video. A step-by-step USCIS tutorial PSA covering the five steps to register under the Alien Registration Requirement: create a my.uscis.gov account, file Form G-325R, await review, attend a biometrics appointment, and download proof. Visuals are numbered step cards over a laptop, a USCIS.gov screenshot, a woman entering an Application Support Center, and gloved hands taking fingerprints, all under voiceover. There is no music. On-screen and spoken text includes 'with USCIS, follow these steps', 'STEP 1 uscis.gov/file-online/how-to-create-a-uscis-online-account', 'STEP 3 and let you know', 'STEP 4 a biometric services fee', 'Application Support Center', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | ei ss 4 1 1 1 3 0 0 353 619 102 -1 5 1 1 1 3 1 0 400 83 22 46.619499 = 5 1 1 1 3 2 314 353 305 102 32.272331 Sz 4 1 1 1 4 0 129 728 381 69 -1 5 1 1 1 4 1 129 728 145 55 96.648804 with 5 1 1 1 4 2 298 733 212 64 95.942795 USCIS, 4 1 1 1 5 0 119 817 401 54 -1 5 1 1 1 5 1 119 817 205 54 96.542992 follow 5 1 1 1 5 2 342 818 178 53 96.474327 these 4 1 1 1 6 0 222 910 193 60 -1 5 1 1 1 6 1 222 910 193 60 96.124413 steps. | cael How to Create"
     },
     {
       "tweet_id": "1924434908102918337",
@@ -21706,14 +21576,12 @@
         "video:text-overlay",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video. A re-post of the narrated USCIS 'apply online' PSA explaining how to register and get fingerprinted online, with a silhouette shot, a red-circled calendar date, a USCIS website screenshot, and an ARR end card under a full voiceover and caption text. On-screen and spoken text includes 'Did you know that if you are an alien', 'or more in the U.S.', 'Access USCIS online', 'and follow the step by step instructions', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Vertical video. A re-post of the narrated USCIS 'apply online' PSA explaining how to register and get fingerprinted online, with a silhouette shot, a red-circled calendar date, a USCIS website screenshot, and an ARR end card under a full voiceover and caption text. On-screen and spoken text includes 'Did you know that if you are an alien', 'or more in the U.S.', 'Access USCIS online', 'and follow the step by step instructions', 'ARR Alien Registration Requirement', and 'FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION'. | 7 4 Did you know that if you are an alien | ; —! 20 6\" or more in the U.S. | Resources ¥ Signin # Access USCIS online tii —; and follow the step by step instructions. | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION | (ARR Alien Registration Requirement FOR MORE INFO: USCIS.GOV/ALIENREGISTRATION and civil penalties. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "1924846006811709902",
@@ -21817,14 +21685,12 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video. A narrated USCIS policy recap ('USCIS Reviews Categorical Parole Processes') on halting CHNV and other parole programs after Trump's 'Securing Our Borders' executive order. It uses title cards, B-roll of Trump signing an order, a Federal Register screenshot about terminating parole for Cubans, Haitians, Nicaraguans and Venezuelans, and a CBP Home app self-deportation promo, closing on a USCIS.gov card. The voiceover delivers an informational recap with no music. On-screen and spoken text includes 'USCIS Reviews Categorical Parole Processes', 'Termination of Parole Processes for Cubans, Haitians, Nicaraguans, and Venezuelans', 'CBP Home App - Use the CBP Home app today to self-deport and protect your future', and 'USCIS.gov'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Vertical video. A narrated USCIS policy recap ('USCIS Reviews Categorical Parole Processes') on halting CHNV and other parole programs after Trump's 'Securing Our Borders' executive order. It uses title cards, B-roll of Trump signing an order, a Federal Register screenshot about terminating parole for Cubans, Haitians, Nicaraguans and Venezuelans, and a CBP Home app self-deportation promo, closing on a USCIS.gov card. The voiceover delivers an informational recap with no music. On-screen and spoken text includes 'USCIS Reviews Categorical Parole Processes', 'Termination of Parole Processes for Cubans, Haitians, Nicaraguans, and Venezuelans', 'CBP Home App - Use the CBP Home app today to self-deport and protect your future', and 'USCIS.gov'. | A #, a : , i = oH ) 7° fg | (Seep) US. Citizenship Ay and Immigration SZ Services USCIS Reviews Categorical Parole Processes | ee ES (@, FEDERAL REGISTER (<.;) ee Notice Ml B por <= OOO or ee ACTON: woes ‘SUMMARY: | ——=—==— wy ee « CBPH — ome App —o_ Use the CBP Home app today to self-deport sy and protect your future. : a Oem | Seg? US. Citizenship Re. a) yy services em USCIS.GOV | Reviewed video keyframe (direct frame analysis); media form r"
     },
     {
       "tweet_id": "1927842372185940149",
@@ -21916,14 +21782,12 @@
         "video:produced",
         "video:voiceover"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video, 26 seconds. A USCIS 'First 100 Days Accomplishments' promo: a graphics title card, then stock-style B-roll of a USCIS building, a naturalization oath being administered, and biometric fingerprinting, closing on a USCIS.gov card. A narrator voiceover recaps the agency 'enforcing immigration laws' and 'making America safe again' over the B-roll. There is no music track. On-screen and spoken text includes 'First 100 Days Accomplishments', 'U.S. Citizenship and Immigration Services', 'USCIS.GOV', and 'make America safe again'. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Vertical video, 26 seconds. A USCIS 'First 100 Days Accomplishments' promo: a graphics title card, then stock-style B-roll of a USCIS building, a naturalization oath being administered, and biometric fingerprinting, closing on a USCIS.gov card. A narrator voiceover recaps the agency 'enforcing immigration laws' and 'making America safe again' over the B-roll. There is no music track. On-screen and spoken text includes 'First 100 Days Accomplishments', 'U.S. Citizenship and Immigration Services', 'USCIS.GOV', and 'make America safe again'. | First 100 Days Accomplishments | Cds | . A | , “as | Reg? US. Citizenship RY ae) yy ae USCIS.GOV | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "1945562831845286087",
@@ -22006,10 +21870,8 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -22881,10 +22743,8 @@
         "video:montage",
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -22971,10 +22831,8 @@
         "video:produced",
         "video:text-overlay"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -23324,13 +23182,11 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
+      "has_ocr": true,
       "description": "video; 1920x1080; 27.0s; 3.12 MiB; archived; tweet context: More opportunity. More skills. Stronger careers. 🇺🇸 In Tampa, Acting Secretary @Sonderling47 highlighted investments in workforce development and efforts to expand pathways to good-paying jobs for American workers. 💪 https://t.co/0K9xgWWGAE; source URL: https://video.twimg.com/amplify_video/2060474174787760129/vid/avc1/1920x1080/bxlGMsvWnizza9p8.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_2060474174787760129.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 27.0s; 3.12 MiB; archived; tweet context: More opportunity. More skills. Stronger careers. 🇺🇸 In Tampa, Acting Secretary @Sonderling47 highlighted investments in workforce development and efforts to expand pathways to good-paying jobs for American workers. 💪 https://t.co/0K9xgWWGAE; source URL: https://video.twimg.com/amplify_video/2060474174787760129/vid/avc1/1920x1080/bxlGMsvWnizza9p8.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_2060474174787760129.mp4; needs OCR, transcript, or frame-level vision before content claims. More opportunity"
     },
     {
@@ -36688,10 +36544,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -36971,10 +36825,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -37007,10 +36859,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -38757,10 +38607,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39282,10 +39130,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39596,10 +39442,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -39685,10 +39529,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -40408,10 +40250,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -41863,10 +41703,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -46827,10 +46665,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -48786,10 +48622,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -50340,10 +50174,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -54032,10 +53864,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -56717,10 +56547,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -56753,10 +56581,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -56789,10 +56615,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -56862,10 +56686,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -56901,10 +56723,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -56937,10 +56757,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -57120,14 +56938,12 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 2160x3840; 15.0s; 10.07 MiB; archived; tweet context: ☀️ 😎 🇺🇸 https://t.co/eSAP8Y43g7; source URL: https://video.twimg.com/amplify_video/2059753247053611009/vid/avc1/2160x3840/frDYI-XPnJzeuSJn.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_2059753247053611009.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 2160x3840; 15.0s; 10.07 MiB; archived; tweet context: ☀️ 😎 🇺🇸 https://t.co/eSAP8Y43g7; source URL: https://video.twimg.com/amplify_video/2059753247053611009/vid/avc1/2160x3840/frDYI-XPnJzeuSJn.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_2059753247053611009.mp4; needs OCR, transcript, or frame-level vision before content claims. ☀️ 😎 🇺🇸 https://t.co/eSAP8Y43g7"
+      "has_ocr": true,
+      "description": "video; 2160x3840; 15.0s; 10.07 MiB; archived; tweet context: ☀️ 😎 🇺🇸 https://t.co/eSAP8Y43g7; source URL: https://video.twimg.com/amplify_video/2059753247053611009/vid/avc1/2160x3840/frDYI-XPnJzeuSJn.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_2059753247053611009.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 2160x3840; 15.0s; 10.07 MiB; archived; tweet context: ☀️ 😎 🇺🇸 https://t.co/eSAP8Y43g7; source URL: https://video.twimg.com/amplify_video/2059753247053611009/vid/avc1/2160x3840/frDYI-XPnJzeuSJn.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_2059753247053611009.mp4; needs OCR, transcript, or frame-level vision before content claims. ☀️ 😎 🇺🇸 https://t.co/eSAP8Y43g7 | SSS SES; Z i t ai Sez i —_ A fob , Ly = oa helieanlbes tt ak (a rT . 7 eS ats a AY ; . es \\\\ co pil - 5 sunshine and rainbows = al! Nt SS | f 1 & , Lge tees gate Thee fs : ae RN BEA : a : hae Al = ic , i i , : fg ¥ ay, Pet 2 is = fq S524 ry tes : a geelene — ' a? ag ai i 72 a F i : hang on “i “=e ' es ee PL aN IN == WN Sa iN ee a EEN a a | a (CH 7 if 7 2 PAYCHE | CEA ‘EAT | Ket QFY Cb (37 No) iy"
     },
     {
       "tweet_id": "2059991947222147447",
@@ -57156,10 +56972,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -68257,13 +68071,11 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
+      "has_ocr": true,
       "description": "video; 1920x1080; 115.0s; 22.52 MiB; archived; tweet context: Some marriages are made in heaven. Some are just made up. Our work w/@ICEgov crushed a marriage fraud ring where U.S. citizens were paid to marry aliens. Under @Sec_Noem, fraudsters are walking out in handcuffs. Buying a spouse doesn't make you a citizen! htt...; source URL: https://video.twimg.com/amplify_video/1915841505975021568/vid/avc1/1920x1080/0jE3sFFVleygKUhX.mp4?tag=16; archive URL: https://github.com/vidproject/x/releases/download/media-USCIS/13_1915841505975021568.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1920x1080; 115.0s; 22.52 MiB; archived; tweet context: Some marriages are made in heaven. Some are just made up. Our work w/@ICEgov crushed a marriage fraud ring where U.S. citizens were paid to marry aliens. Under @Sec_Noem, fraudsters are walking out in handcuffs. Buying a spouse doesn't make you a citizen! htt...; source URL: https://video.twimg.com/amplify_video/1915841505975021568/vid/avc1/1920x1080/0jE3sFFVleygKUhX.mp4?tag=16; archive URL: https://github.com/vidproject/x/releases/download/media-USCIS/13_191584150"
     },
     {
@@ -69108,13 +68920,11 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
+      "has_ocr": true,
       "description": "video; 1920x1080; 103.9s; 12.79 MiB; archived; tweet context: Today USCIS released a new video from @POTUS welcoming #NewUSCitizens into our national family and requiring that they guard the American way of life. READ: https://www.uscis.gov/newsroom/news-releases/president-trump-tells-citizens-to-fiercely-guard-american...; source URL: https://video.twimg.com/amplify_video/1932211105285160960/vid/avc1/1920x1080/5eBPKi1P1d6h_Jah.mp4?tag=16; archive URL: https://github.com/vidproject/x/releases/download/media-USCIS/13_1932211105285160960.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1920x1080; 103.9s; 12.79 MiB; archived; tweet context: Today USCIS released a new video from @POTUS welcoming #NewUSCitizens into our national family and requiring that they guard the American way of life. READ: https://www.uscis.gov/newsroom/news-releases/president-trump-tells-citizens-to-fiercely-guard-american...; source URL: https://video.twimg.com/amplify_video/1932211105285160960/vid/avc1/1920x1080/5eBPKi1P1d6h_Jah.mp4?tag=16; archive URL: https://github.com/vidproject/x/releases/download/media-USCIS/13_193221110"
     },
     {
@@ -69340,10 +69150,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -69378,10 +69186,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -69710,10 +69516,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -69783,10 +69587,8 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
       "has_ocr": false,
@@ -73450,23 +73252,24 @@
         "agency:POTUS",
         "agency:USDOL",
         "audio:has-audio",
+        "country:China",
         "media-status:archived",
         "media-status:described",
         "media:video",
         "topic:economy",
+        "topic:immigration",
         "video:interview",
+        "video:news-clip",
         "video:short"
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Video. DOL official Sonderling speaking on AI, worker training, and the 'productivity boom' in an interview, shown as a single speaker facing the camera. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Video. DOL official Sonderling speaking on AI, worker training, and the 'productivity boom' in an interview, shown as a single speaker facing the camera. | * * it 7 Om BOW it 9 onsov § — ek : ¥ » OL, ew ® a <= @® — ’ * ’ \\ * & \\ ® ba cov oon wow r eoL 20v af , N, poveov om ev y é MARKET 5 1 1 1 10 3 207 275 53 15 75.395920 WATCH 5 1 1 1 10 4 331 265 31 7 12.590553 1 5 1 1 1 10 5 588 286 20 6 53.112659 = 4 1 1 1 11 0 24 295 541 29 -1 5 1 1 1 11 1 53 314 51 10 62.352501 QAM 5 1 1 1 11 2 115 291 41 37 44.237194 U.S. 5 1 1 1 11 3 171 291 108 37 82.594971 EMPLOYERS 5 1 1 1 11 4 287 295 73 22 96.990822 ADDED 5 1 1 1 11 5 368 296 49 21 96.281883 115K 5 1 1 1 11 6 424 296 48 24 94.853027 JOBS 5 1 1 1 11 7 479 296 18 21 94.853027 IN 5 1 1 1 11 8 510 291 55 37 96.354950 APRIL 4 1 1 1 12 0 0 331 636 14 -1 5 1 1 1 12 1 0 332 18 12 93.293938 ES 5 1 1 1 12 2 23 333 88 11 92.839417 GORSUCH... 5 1 1 1 12 3 117 333 71 11 96.770309 BARRETT 5 1 1 1 12 4 193 333 30 11 96.860085 FOR 5 1 1 1 12 5 228 332 50 12 96.498146 SIDING 5 1 1 1 12 6 283 332 68 12 96.731285 AGAINST 5 1 1 1 12 7 355 332 26 12 96.457596 HIM 5 1 1 1 12 8 392 331 2 14 92.806976 5 1 1 1 12 9 404 332 40 12 92.602905 SECY 5 1 1 1 12 10 4"
     },
     {
       "tweet_id": "2054231378032558509",
@@ -74176,14 +73979,12 @@
       ],
       "genre_tags": [],
       "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes"
-      ],
-      "has_keyframes": false,
+      "missing_steps": [],
+      "has_keyframes": true,
       "has_audio_analysis": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Raw congressional testimony of Acting Labor Secretary Keith Sonderling reading prepared remarks on the FY2027 DOL budget and 'renewing the American Dream.' Static hearing-room footage with a name placard, no music track. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Raw congressional testimony of Acting Labor Secretary Keith Sonderling reading prepared remarks on the FY2027 DOL budget and 'renewing the American Dream.' Static hearing-room footage with a name placard, no music track. | ool ae Se 4 = eS * - ; a, <a =\" —s 7’ (— — ee A » & rs | 4 =) P | j amis | le i | Sy ls i | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2056750435868799154",
