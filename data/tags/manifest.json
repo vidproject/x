@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T16:16:54Z",
+  "generated_at": "2026-06-03T18:13:01Z",
   "layers": {
     "audio_music": {
       "analyzed": 34,
@@ -46,24 +46,24 @@
       "status_ok": 153
     },
     "keyframes": {
-      "attempted": 36,
-      "cache_hits": 1658,
+      "attempted": 1,
+      "cache_hits": 134,
       "cost_estimate_usd": 0.0,
-      "extracted": 35,
+      "extracted": 1,
       "extractor_version": "ffmpeg-keyframes-v2",
-      "frame_count": 8497,
-      "generated_at": "2026-06-03T16:09:37Z",
-      "row_count": 1694,
-      "rows": 1694,
+      "frame_count": 8505,
+      "generated_at": "2026-06-03T18:12:44Z",
+      "row_count": 1695,
+      "rows": 1695,
+      "skipped_not_in_filter": 1559,
       "status_counts": {
         "fetch-failed": 1,
-        "ok": 1693
+        "ok": 1694
       },
-      "status_fetch-failed": 1,
-      "status_ok": 35
+      "status_ok": 1
     },
     "lexical": {
-      "generated_at": "2026-06-03T16:16:54Z",
+      "generated_at": "2026-06-03T18:13:01Z",
       "parquets_scanned": {
         "AGPamBondi.parquet": 9,
         "ATFHQ.parquet": 1,
@@ -128,10 +128,10 @@
         "agency:ComdtUSCG": 7,
         "agency:DEAHQ": 159,
         "agency:DHSgov": 10029,
-        "agency:DOJgov": 728,
+        "agency:DOJgov": 729,
         "agency:DeptofWar": 494,
         "agency:EPA": 37,
-        "agency:FBI": 1710,
+        "agency:FBI": 1711,
         "agency:FEMA": 1617,
         "agency:FLETC": 149,
         "agency:HHSGov": 83,
@@ -311,8 +311,8 @@
         "crime:assault": 2185,
         "crime:battery": 522,
         "crime:burglary": 301,
-        "crime:child": 607,
-        "crime:child-sexual": 510,
+        "crime:child": 610,
+        "crime:child-sexual": 512,
         "crime:cocaine": 827,
         "crime:disobedience": 18,
         "crime:dui": 355,
@@ -329,7 +329,7 @@
         "crime:perjury": 3,
         "crime:rape": 725,
         "crime:robbery": 359,
-        "crime:sexual": 1787,
+        "crime:sexual": 1789,
         "crime:sodomy": 55,
         "crime:theft": 573,
         "crime:trafficking": 1724,
@@ -665,23 +665,21 @@
       "thumbnails": 5090
     },
     "transcripts": {
-      "attempted": 35,
-      "cache_hits": 1659,
+      "attempted": 1,
+      "cache_hits": 134,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-03T16:13:11Z",
-      "row_count": 1886,
-      "rows": 1886,
+      "generated_at": "2026-06-03T18:12:49Z",
+      "row_count": 1887,
+      "rows": 1887,
+      "skipped_not_in_filter": 1559,
       "status_counts": {
         "empty-transcript": 282,
         "fetch-failed": 1,
         "no-audio-stream": 135,
-        "ok": 1468
+        "ok": 1469
       },
-      "status_empty-transcript": 4,
-      "status_fetch-failed": 1,
-      "status_no-audio-stream": 3,
-      "status_ok": 27,
-      "transcribed": 34,
+      "status_ok": 1,
+      "transcribed": 1,
       "transcriber": "faster-whisper",
       "transcriber_version": "faster-whisper-v1"
     }
@@ -750,10 +748,10 @@
     "agency:ComdtUSCG": 7,
     "agency:DEAHQ": 159,
     "agency:DHSgov": 10029,
-    "agency:DOJgov": 728,
+    "agency:DOJgov": 729,
     "agency:DeptofWar": 494,
     "agency:EPA": 37,
-    "agency:FBI": 1710,
+    "agency:FBI": 1711,
     "agency:FEMA": 1617,
     "agency:FLETC": 149,
     "agency:HHSGov": 83,
@@ -933,8 +931,8 @@
     "crime:assault": 2185,
     "crime:battery": 522,
     "crime:burglary": 301,
-    "crime:child": 607,
-    "crime:child-sexual": 510,
+    "crime:child": 610,
+    "crime:child-sexual": 512,
     "crime:cocaine": 827,
     "crime:disobedience": 18,
     "crime:dui": 355,
@@ -951,7 +949,7 @@
     "crime:perjury": 3,
     "crime:rape": 725,
     "crime:robbery": 359,
-    "crime:sexual": 1787,
+    "crime:sexual": 1789,
     "crime:sodomy": 55,
     "crime:theft": 573,
     "crime:trafficking": 1724,
