@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-gov-trawl-20260526-20260526T090620Z-f52cdcdc-DeptofWar",
+  "account_handle": "DeptofWar",
+  "captured_at": "2026-05-26T09:07:14.545Z",
+  "endpoint": "UserByScreenName,UserMedia",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/RapidResponse47/media",
+  "tweets": [
+    {
+      "tweet_id": "2057799788003737844",
+      "account_handle": "DeptofWar",
+      "account_id": "66369181",
+      "posted_at": "2026-05-22T12:24:36.000Z",
+      "first_captured_at": "2026-05-26T09:06:27.054Z",
+      "last_seen_at": "2026-05-26T09:06:27.054Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DeptofWar/status/2057799788003737844",
+      "tweet_type": "original",
+      "conversation_id": "2057799788003737844",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "https://t.co/Aphnt9phiy",
+      "text_resolved": "http://x.com/i/article/2057792138562207744",
+      "lang": "zxx",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/Aphnt9phiy",
+          "expanded": "http://x.com/i/article/2057792138562207744",
+          "display": "x.com/i/article/2057…"
+        }
+      ],
+      "card": null,
+      "media": [],
+      "like_count": 8967,
+      "retweet_count": 2390,
+      "reply_count": 674,
+      "quote_count": 399,
+      "view_count": 2380592,
+      "bookmark_count": 1630,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T09:06:27.054Z",
+          "likes": 8967,
+          "retweets": 2390,
+          "replies": 674,
+          "quotes": 399,
+          "views": 2380592,
+          "bookmarks": 1630
+        }
+      ],
+      "author": {
+        "display_name": "Department of War 🇺🇸",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1965912244262170624/7NoruMt1_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official U.S. Department of War X account.",
+        "location": "The Pentagon, Washington, D.C.",
+        "url": "https://t.co/awOTVPTL4Q",
+        "followers_count": 7239949,
+        "friends_count": 672,
+        "statuses_count": 43733,
+        "account_created_at": "2009-08-17T14:43:00.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-gov-trawl-20260526-20260526T090620Z-f52cdcdc",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/rapidresponse47-20260526T090620Z-f52cdcdc.summary.json",
+    "jsonl": ".skim/raw/rapidresponse47-20260526T090620Z-f52cdcdc.jsonl",
+    "source_handle": "RapidResponse47"
+  }
+}
