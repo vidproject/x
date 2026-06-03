@@ -247,8 +247,28 @@ tags:
       the OCR layer recovering non-empty text. Orthogonal to media-status:needs-vision:
       an image can need OCR (text) and frame analysis (scene) independently.
     classification: tentative
+  media-status:ocr-done:
+    description: OCR sidecar has attempted and recorded image/keyframe text status for this tweet.
+    classification: deterministic
+  media-status:transcribed:
+    description: Transcript sidecar has attempted and recorded speech-to-text status for this video tweet.
+    classification: deterministic
   media-status:graphic-content:
     description: X/Twitter marked the tweet as possibly sensitive or graphic content.
+    classification: deterministic
+
+  # ===== review:* - curated review-workflow markers =================
+  review:produced-video:
+    description: Human or curation workflow marked this video for the produced-video review set.
+    classification: manual
+  review:meme-image:
+    description: Human or curation workflow marked this image for the designed/meme-image review set.
+    classification: manual
+  review:screened-video:
+    description: Curation workflow has screened this video for produced-video review.
+    classification: deterministic
+  review:screened-photo:
+    description: Curation workflow has screened this photo for designed/meme-image review.
     classification: deterministic
 
   # ===== media:* — attached media labels ============================
@@ -275,9 +295,9 @@ tags:
     description: >-
       Media appears AI-generated or heavily synthetic. The tag is firm
       only when based on C2PA, watermark, or other explicit provenance
-      signals; visual-cue-only detections remain tentative. (forward-looking:
-      emitted by tag_lexical.py on explicit provenance cues; Gemini verifier
-      in tag_media_llm.py provides secondary confirmation)
+      signals; visual-cue-only detections remain tentative. Emitted by
+      tag_lexical.py on explicit provenance cues, and by any separately
+      curated visual-review sidecar that records provenance evidence.
     classification: tentative
 
   # ===== audio:* - audio-track / sound cues ==========================
