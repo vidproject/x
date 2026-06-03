@@ -94,7 +94,12 @@ From this directory:
 
 APK:
 
-`app/build/outputs/apk/debug/app-debug.apk`
+`app/build/outputs/apk/debug/x-login-pinger-debug.apk`
 
 The GitHub Actions workflow `.github/workflows/x-login-pinger.yml` builds the
-same debug APK and uploads it as `x-login-pinger-debug-apk`.
+same debug APK, uploads it as `x-login-pinger-debug-apk`, and publishes a direct
+`.apk` release asset named `x-login-pinger-debug.apk`.
+
+GitHub Actions artifacts download as ZIP files. If Android says "There was a
+problem parsing the package," make sure the file being opened ends in `.apk`;
+either extract the artifact ZIP first or use the release asset directly.
