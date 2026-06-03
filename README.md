@@ -4,7 +4,7 @@ A public, searchable archive of immigration-related posts from US federal X (Twi
 
 [Open the searchable archive](https://vidproject.github.io/x/)
 
-This is a research resource maintained as part of a project at the University of California, Berkeley, School of Law. It gathers publicly posted material from these accounts — text, media (photos and videos), engagement counts over time, replies, quotes, and retweets — and makes it browsable and searchable in one place for study and reference.
+This repository contains the archive and the tooling around it: browser capture, raw JSON, canonical Parquet files, media archival, annotation sidecars, and the static viewer published through GitHub Pages.
 
 **How capture works.** A browser extension reads the public X web timeline as you view it, normalizes what the site serves, and commits raw JSON to this repo. There is no X API and no X Developer Agreement — capture only uses the public web data the browser already received. A Python pipeline (`scripts/*`) then turns that raw JSON into per-account Parquet files, copies attached media into GitHub Releases assets, derives optional tag sidecars (OCR, transcripts, vision descriptions, keyframes), and builds a static viewer.
 
