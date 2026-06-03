@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import Any
 
 import polars as pl
+
 from scripts._logging import configure
 
 LOG = configure()

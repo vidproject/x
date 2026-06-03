@@ -253,8 +253,7 @@ async function cloneProfile(sourceProfile, destProfile) {
 function commandForTask(task, profileDir, options) {
   const query = `from:${task.handle} since:${task.window.from} until:${task.window.to}${
     options.includeNativeRetweets ? ' include:nativeretweets' : ''
-  }${options.querySuffix ? ` ${options.querySuffix}` : ''
-  }`;
+  }${options.querySuffix ? ` ${options.querySuffix}` : ''}`;
   const url = `https://x.com/search?q=${encodeURIComponent(query)}${
     options.latest ? '&src=typed_query&f=live' : ''
   }`;
