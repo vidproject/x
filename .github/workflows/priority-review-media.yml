@@ -123,6 +123,8 @@ jobs:
           if [ -n "$(git status --porcelain data/)" ]; then
             n=$(git diff --cached --name-only data/ | wc -l | tr -d ' ')
             git commit -m "[bot] priority-review: ${n} file(s) for deep video review"
+            git fetch origin master
+            git rebase origin/master
             git push
           else
             echo "no changes"

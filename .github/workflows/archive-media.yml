@@ -257,6 +257,8 @@ jobs:
             git add data/
             archived_handles=$(git diff --cached --name-only data/ | wc -l | tr -d ' ')
             git commit -m "[bot] archive: ${archived_handles} parquet(s) updated with media assets"
+            git fetch origin master
+            git rebase origin/master
             git push
           else
             echo "no media updates"
