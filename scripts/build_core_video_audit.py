@@ -16,6 +16,7 @@ import csv
 import json
 import re
 from collections import Counter, defaultdict
+from collections.abc import Iterable
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -35,9 +36,6 @@ CSV_OUT = TAGS_DIR / "core_video_audit.csv"
 MISSING_TWEET_IDS_OUT = TAGS_DIR / "core_produced_missing_tweet_ids.txt"
 MISSING_MEDIA_IDS_OUT = TAGS_DIR / "core_produced_missing_media_ids.txt"
 VIDEO_TYPES = {"video", "animated_gif"}
-HIGH_VALUE_MIN_LIKES = 50_000
-HIGH_VALUE_MIN_RETWEETS = 5_000
-HIGH_VALUE_MIN_VIEWS = 5_000_000
 PRODUCED_TAGS = {
     "video:produced",
     "genre:music-video",
@@ -531,31 +529,18 @@ def csv_cell(value: Any) -> Any:
     return re.sub(r"\s+", " ", value).strip()
 
 
-def is_high_value_missing_video(item: dict[str, Any]) -> bool:
-    return (
-        int(item.get("like_count") or 0) >= HIGH_VALUE_MIN_LIKES
-        or int(item.get("retweet_count") or 0) >= HIGH_VALUE_MIN_RETWEETS
-        or int(item.get("view_count") or 0) >= HIGH_VALUE_MIN_VIEWS
-    )
-
-
 def archive_recovery_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Items worth sending through the low-bandwidth archive workflow.
 
-    The primary queue is produced/genre candidates. Very high-engagement core
-    videos also belong here even before visual recognition has run, because
-    otherwise viral clips can sit unarchived solely because their genre tags
-    require the missing media to inspect.
+    Queue every core-account video with missing archived media. The audit has
+    already sorted items by review priority, and the workflow caps each run, so
+    the queue can drain the backlog without re-checking only items that already
+    have produced/genre signals.
     """
     return [
         item
         for item in items
         if "archive-media" in (item.get("missing_steps") or [])
-        and (
-            set(item.get("produced_video_tags") or [])
-            or set(item.get("genre_tags") or [])
-            or is_high_value_missing_video(item)
-        )
     ]
 
 
@@ -564,6 +549,17 @@ def write_id_file(path: Path, ids: list[str]) -> None:
     with path.open("w", encoding="utf-8") as f:
         for value in ids:
             f.write(f"{value}\n")
+
+
+def ordered_unique(values: Iterable[str]) -> list[str]:
+    seen: set[str] = set()
+    out: list[str] = []
+    for value in values:
+        if not value or value in seen:
+            continue
+        seen.add(value)
+        out.append(value)
+    return out
 
 
 def _payload_without_timestamp(payload: Any) -> dict[str, Any]:
@@ -602,12 +598,8 @@ def write_json_audit(result: dict[str, Any], path: Path) -> bool:
 
 def write_archive_recovery_queues(items: list[dict[str, Any]]) -> None:
     recovery = archive_recovery_items(items)
-    tweet_ids = sorted(
-        {str(item.get("tweet_id") or "") for item in recovery if item.get("tweet_id")}
-    )
-    media_ids = sorted(
-        {str(item.get("media_id") or "") for item in recovery if item.get("media_id")}
-    )
+    tweet_ids = ordered_unique(str(item.get("tweet_id") or "") for item in recovery)
+    media_ids = ordered_unique(str(item.get("media_id") or "") for item in recovery)
     write_id_file(MISSING_TWEET_IDS_OUT, tweet_ids)
     write_id_file(MISSING_MEDIA_IDS_OUT, media_ids)
 

@@ -14,17 +14,17 @@ on:
       - 'data/tags/priority_review_tweet_ids.txt'
       - '.github/workflows/priority-review-media.yml'
   schedule:
-    - cron: '23 */3 * * *'
+    - cron: '23 */2 * * *'
   workflow_dispatch:
     inputs:
       max_items:
         description: 'Max uncached items per archive/keyframe step'
         required: false
-        default: '120'
+        default: '240'
       transcribe_max:
         description: 'Max uncached videos to transcribe this run (slow)'
         required: false
-        default: '25'
+        default: '40'
 
 permissions:
   contents: write
@@ -36,7 +36,7 @@ concurrency:
 jobs:
   prepare:
     runs-on: ubuntu-latest
-    timeout-minutes: 110
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
         with:
@@ -70,13 +70,13 @@ jobs:
 
       - name: archive queued media
         if: steps.guard.outputs.skip != '1'
-        timeout-minutes: 30
+        timeout-minutes: 45
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
         run: |
-          mx="${{ inputs.max_items }}"; [ -z "$mx" ] && mx="120"
+          mx="${{ inputs.max_items }}"; [ -z "$mx" ] && mx="240"
           uv run python -m scripts.archive_media \
             --tweet-ids-file data/tags/priority_review_tweet_ids.txt \
             --media-ids-file data/tags/priority_review_media_ids.txt \
@@ -84,21 +84,21 @@ jobs:
 
       - name: extract keyframes (queued)
         if: steps.guard.outputs.skip != '1'
-        timeout-minutes: 30
+        timeout-minutes: 45
         run: |
-          mx="${{ inputs.max_items }}"; [ -z "$mx" ] && mx="120"
+          mx="${{ inputs.max_items }}"; [ -z "$mx" ] && mx="240"
           uv run python -m scripts.extract_video_frames \
             --tweet-ids-file data/tags/priority_review_tweet_ids.txt \
             --frames 8 --frame-width 480 --max-items "$mx"
 
       - name: transcribe queued audio
         if: steps.guard.outputs.skip != '1'
-        timeout-minutes: 40
+        timeout-minutes: 50
         continue-on-error: true
         env:
           ASR_MODEL: base
         run: |
-          tm="${{ inputs.transcribe_max }}"; [ -z "$tm" ] && tm="25"
+          tm="${{ inputs.transcribe_max }}"; [ -z "$tm" ] && tm="40"
           uv run --group asr python -m scripts.transcribe_audio \
             --tweet-ids-file data/tags/priority_review_tweet_ids.txt \
             --max-items "$tm"

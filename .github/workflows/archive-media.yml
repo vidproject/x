@@ -8,7 +8,7 @@ on:
   # And on a fallback schedule so manually-dropped raw files still get
   # picked up if the ingest workflow didn't fire (e.g. weekend lull).
   schedule:
-    - cron: '17 */6 * * *'
+    - cron: '17 */2 * * *'
   push:
     branches: [master]
     paths:
@@ -29,7 +29,7 @@ on:
       max_items:
         description: 'Max uncached items to process per analyzer step'
         required: false
-        default: '160'
+        default: '320'
 
 permissions:
   contents: write
@@ -41,7 +41,7 @@ concurrency:
 jobs:
   archive:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     # Skip when the upstream ingest run failed — no fresh data to chase.
     if: >-
       github.event_name != 'workflow_run' ||
@@ -68,7 +68,7 @@ jobs:
         run: uv run python -m scripts.dump_misc_government_tweet_ids
 
       - name: archive media
-        timeout-minutes: 30
+        timeout-minutes: 45
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -77,7 +77,7 @@ jobs:
           args=()
           max_items="${{ inputs.max_items }}"
           if [ -z "$max_items" ]; then
-            max_items="160"
+            max_items="320"
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
@@ -108,7 +108,7 @@ jobs:
           args=()
           max_items="${{ inputs.max_items }}"
           if [ -z "$max_items" ]; then
-            max_items="160"
+            max_items="320"
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
@@ -123,7 +123,7 @@ jobs:
           uv run python -m scripts.describe_media "${args[@]}"
 
       - name: extract video keyframes
-        timeout-minutes: 20
+        timeout-minutes: 30
         # ffmpeg ships preinstalled on ubuntu-latest. Capped at the same
         # max_items as the archive step so the runtime stays bounded; the
         # script caches by media_sha256, so re-runs are free. This also
@@ -132,7 +132,7 @@ jobs:
           args=()
           max_items="${{ inputs.max_items }}"
           if [ -z "$max_items" ]; then
-            max_items="160"
+            max_items="320"
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
@@ -147,14 +147,14 @@ jobs:
           uv run python -m scripts.extract_video_frames "${args[@]}"
 
       - name: extract photo thumbnails
-        timeout-minutes: 20
+        timeout-minutes: 30
         # Downscales archived photos to tiny committed thumbnails (like the
         # video posters) so the photo needs-vision backlog becomes locally
         # inspectable. Capped + cached, so it catches up over runs.
         run: |
           args=()
           max_items="${{ inputs.max_items }}"
-          if [ -z "$max_items" ]; then max_items="160"; fi
+          if [ -z "$max_items" ]; then max_items="320"; fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
           fi
@@ -168,12 +168,12 @@ jobs:
           uv run python -m scripts.extract_photo_thumbnails "${args[@]}"
 
       - name: OCR archived images and keyframes
-        timeout-minutes: 20
+        timeout-minutes: 30
         run: |
           args=()
           max_items="${{ inputs.max_items }}"
           if [ -z "$max_items" ]; then
-            max_items="160"
+            max_items="320"
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
@@ -188,12 +188,12 @@ jobs:
           uv run python -m scripts.tag_image_ocr "${args[@]}"
 
       - name: detect audio music
-        timeout-minutes: 20
+        timeout-minutes: 30
         run: |
           args=()
           max_items="${{ inputs.max_items }}"
           if [ -z "$max_items" ]; then
-            max_items="160"
+            max_items="320"
           fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
@@ -214,7 +214,7 @@ jobs:
           key: whisper-base-${{ runner.os }}-v1
 
       - name: transcribe audio (optional local ASR)
-        timeout-minutes: 30
+        timeout-minutes: 40
         env:
           ASR_MODEL: base
         # Local, free speech-to-text (faster-whisper). Heavier than the other
@@ -227,7 +227,7 @@ jobs:
           args=()
           asr_max="${{ inputs.max_items }}"
           if [ -z "$asr_max" ]; then asr_max="40"; fi
-          if [ "$asr_max" -gt 60 ]; then asr_max="60"; fi
+          if [ "$asr_max" -gt 80 ]; then asr_max="80"; fi
           if [ -n "${{ inputs.handle }}" ]; then
             args+=(--handle "${{ inputs.handle }}")
           fi
