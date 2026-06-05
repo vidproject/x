@@ -537,11 +537,7 @@ def archive_recovery_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     the queue can drain the backlog without re-checking only items that already
     have produced/genre signals.
     """
-    return [
-        item
-        for item in items
-        if "archive-media" in (item.get("missing_steps") or [])
-    ]
+    return [item for item in items if "archive-media" in (item.get("missing_steps") or [])]
 
 
 def write_id_file(path: Path, ids: list[str]) -> None:
