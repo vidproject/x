@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T14:13:00Z",
+  "generated_at": "2026-06-11T14:32:57Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -7,7 +7,7 @@
       "label": "Department of Homeland Security",
       "category": "core",
       "parquet": "data/DHSgov.parquet",
-      "parquet_bytes": 1530763,
+      "parquet_bytes": 1530793,
       "row_count": 5423,
       "post_count": 4600,
       "reply_count": 823,
@@ -175,7 +175,7 @@
       "label": "U.S. Customs and Border Protection",
       "category": "core",
       "parquet": "data/CBP.parquet",
-      "parquet_bytes": 439975,
+      "parquet_bytes": 440017,
       "row_count": 1270,
       "post_count": 1239,
       "reply_count": 31,
@@ -1268,7 +1268,7 @@
       "label": "Department of War",
       "category": "government",
       "parquet": "data/DeptofWar.parquet",
-      "parquet_bytes": 262052,
+      "parquet_bytes": 265796,
       "row_count": 661,
       "post_count": 655,
       "reply_count": 6,
@@ -1354,7 +1354,7 @@
       "label": "DOW Rapid Response",
       "category": "government",
       "parquet": "data/DOWResponse.parquet",
-      "parquet_bytes": 184858,
+      "parquet_bytes": 184936,
       "row_count": 415,
       "post_count": 413,
       "reply_count": 2,
