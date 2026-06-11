@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-06-11T14:32:56Z",
+  "generated_at": "2026-06-11T15:24:33Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -35,11 +35,11 @@
     },
     "top_tags": {
       "topic:immigration": 2676,
-      "media-status:archived": 2632,
-      "media:video": 2604,
+      "media-status:archived": 2634,
+      "media:video": 2606,
       "video:medium": 2176,
       "audio:has-audio": 2061,
-      "media-status:needs-vision": 1891,
+      "media-status:needs-vision": 1893,
       "media-status:described": 742,
       "video:short": 732,
       "agency:POTUS": 654,
@@ -88,7 +88,7 @@
     "missing_step_counts": {
       "archive-media": 701,
       "assign-produced-video-genre": 243,
-      "describe-with-vision": 703,
+      "describe-with-vision": 701,
       "detect-audio": 500,
       "extract-keyframes": 501,
       "transcribe-audio": 586
@@ -40087,21 +40087,23 @@
       "priority": 75,
       "tags": [
         "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
         "topic:immigration",
         "video:medium"
       ],
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
-        "transcribe-audio",
-        "describe-with-vision"
+        "transcribe-audio"
       ],
       "has_keyframes": true,
       "has_audio_analysis": true,
       "has_transcript": false,
-      "has_vision_description": false,
+      "has_vision_description": true,
       "has_ocr": false,
-      "description": ""
+      "description": "video; 1280x720; 55.2s; 6.37 MiB; archived; tweet context: CNBC: Consumer confidence comes in far stronger than expected 📈📈📈 https://t.co/DNjtZzDief; source URL: https://video.twimg.com/amplify_video/2049151584798724096/vid/avc1/1280x720/u3UVN9_su9HpUQJ4.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2049151584798724096.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 55.2s; 6.37 MiB; archived; tweet context: CNBC: Consumer confidence comes in far stronger than expected 📈📈📈 https://t.co/DNjtZzDief; source URL: https://video.twimg.com/amplify_video/2049151584798724096/vid/avc1/1280x720/u3UVN9_su9HpUQJ4.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2049151584798724096.mp4; needs OCR, transcript, or frame-level vision before content claims. CNBC: Consumer confidence comes in far stronger than expected 📈📈📈 https://t.co/DNjtZzDief"
     },
     {
       "tweet_id": "2049153606545297843",
@@ -40163,6 +40165,9 @@
       "tags": [
         "agency:POTUS",
         "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
         "topic:immigration",
         "video:short",
         "video:speech"
@@ -40170,15 +40175,14 @@
       "genre_tags": [],
       "produced_video_tags": [],
       "missing_steps": [
-        "transcribe-audio",
-        "describe-with-vision"
+        "transcribe-audio"
       ],
       "has_keyframes": true,
       "has_audio_analysis": true,
       "has_transcript": false,
-      "has_vision_description": false,
+      "has_vision_description": true,
       "has_ocr": false,
-      "description": ""
+      "description": "video; 1280x720; 12.4s; 1.77 MiB; archived; tweet context: .@POTUS and @FLOTUS show His Majesty King Charles III and Her Majesty Queen Camilla into the Oval Office via the new West Colonnade. https://t.co/Hi6wC7JFmz; source URL: https://video.twimg.com/amplify_video/2049157015541338112/vid/avc1/1280x720/B9ZRCbICZZ1tGZtr.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2049157015541338112.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 12.4s; 1.77 MiB; archived; tweet context: .@POTUS and @FLOTUS show His Majesty King Charles III and Her Majesty Queen Camilla into the Oval Office via the new West Colonnade. https://t.co/Hi6wC7JFmz; source URL: https://video.twimg.com/amplify_video/2049157015541338112/vid/avc1/1280x720/B9ZRCbICZZ1tGZtr.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2049157015541338112.mp4; needs OCR, transcript, or frame-level vision before content claims. .@POTUS and @FLOTUS show His Majesty King Charles III and Her Majesty Queen Camilla into the Oval Office via the new West Colonnade. https://t.co/Hi6wC7JFmz"
     },
     {
       "tweet_id": "2049165803686101221",
@@ -73198,9 +73202,9 @@
       "duration_sec": 66.599,
       "width": 1080,
       "height": 1920,
-      "like_count": 40379,
-      "retweet_count": 5176,
-      "view_count": 13498328,
+      "like_count": 40058,
+      "retweet_count": 5112,
+      "view_count": 13499962,
       "bucket": "missing-media",
       "priority": 60,
       "tags": [
@@ -74669,9 +74673,9 @@
       "duration_sec": 15.0,
       "width": 720,
       "height": 1280,
-      "like_count": 26607,
-      "retweet_count": 4643,
-      "view_count": 402644,
+      "like_count": 26488,
+      "retweet_count": 4612,
+      "view_count": 402695,
       "bucket": "missing-media",
       "priority": 60,
       "tags": [
@@ -75627,9 +75631,9 @@
       "duration_sec": 62.1,
       "width": 1080,
       "height": 1920,
-      "like_count": 35463,
-      "retweet_count": 6632,
-      "view_count": 1565256,
+      "like_count": 35322,
+      "retweet_count": 6581,
+      "view_count": 1566982,
       "bucket": "missing-media",
       "priority": 60,
       "tags": [
@@ -75662,7 +75666,7 @@
       "duration_sec": 62.1,
       "width": 1080,
       "height": 1920,
-      "like_count": 35463,
+      "like_count": 35322,
       "retweet_count": 6649,
       "view_count": 36,
       "bucket": "missing-media",
@@ -79849,9 +79853,9 @@
       "duration_sec": 20.033,
       "width": 1080,
       "height": 1920,
-      "like_count": 4612,
-      "retweet_count": 625,
-      "view_count": 5194668,
+      "like_count": 4589,
+      "retweet_count": 614,
+      "view_count": 5196238,
       "bucket": "missing-media",
       "priority": 60,
       "tags": [
@@ -81089,9 +81093,9 @@
       "duration_sec": 36.366,
       "width": 1080,
       "height": 1920,
-      "like_count": 5380,
-      "retweet_count": 911,
-      "view_count": 75068,
+      "like_count": 5367,
+      "retweet_count": 906,
+      "view_count": 75315,
       "bucket": "missing-media",
       "priority": 60,
       "tags": [
@@ -81125,8 +81129,8 @@
       "duration_sec": 36.366,
       "width": 1080,
       "height": 1920,
-      "like_count": 5380,
-      "retweet_count": 915,
+      "like_count": 5367,
+      "retweet_count": 906,
       "view_count": 11,
       "bucket": "missing-media",
       "priority": 60,
