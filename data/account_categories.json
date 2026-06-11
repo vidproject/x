@@ -361,7 +361,7 @@
     "CBP": {
       "category": "core",
       "label": "U.S. Customs and Border Protection",
-      "observations": 1882,
+      "observations": 1884,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -794,7 +794,7 @@
     "DHSBlueCampaign": {
       "category": "government",
       "label": "DHS Blue Campaign",
-      "observations": 77,
+      "observations": 79,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -836,7 +836,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 9922,
+      "observations": 9941,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -957,6 +957,13 @@
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
+    "DepSec_Edgar": {
+      "category": "officials",
+      "label": "Deputy Secretary Troy Edgar",
+      "observations": 7,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
     "DeptofWar": {
       "category": "government",
       "label": "Department of War",
@@ -1039,7 +1046,7 @@
     "ENERGY": {
       "category": "government",
       "label": "U.S. Department of Energy",
-      "observations": 5,
+      "observations": 6,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1109,14 +1116,14 @@
     "EROMiami": {
       "category": "government",
       "label": "ERO Miami",
-      "observations": 11,
+      "observations": 13,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "ERONewOrleans": {
       "category": "government",
       "label": "ICE ERO New Orleans",
-      "observations": 63,
+      "observations": 64,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1292,7 +1299,7 @@
     "FBI": {
       "category": "government",
       "label": "Federal Bureau of Investigation",
-      "observations": 739,
+      "observations": 742,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1410,7 +1417,7 @@
     "FLOTUS": {
       "category": "officials",
       "label": "First Lady Melania Trump",
-      "observations": 54,
+      "observations": 55,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -1675,7 +1682,7 @@
     "HSITampa": {
       "category": "government",
       "label": "HSI Tampa",
-      "observations": 27,
+      "observations": 31,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1689,14 +1696,14 @@
     "HSI_HQ": {
       "category": "government",
       "label": "Homeland Security Investigations",
-      "observations": 136,
+      "observations": 137,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "HSI_Miami": {
       "category": "government",
       "label": "HSI Miami",
-      "observations": 13,
+      "observations": 18,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1782,7 +1789,7 @@
     "ICEgov": {
       "category": "core",
       "label": "U.S. Immigration and Customs Enforcement",
-      "observations": 3340,
+      "observations": 3353,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2047,7 +2054,7 @@
       ],
       "category": "public",
       "label": "Julio Rosas",
-      "observations": 3,
+      "observations": 6,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -2362,7 +2369,7 @@
     "NDILnews": {
       "category": "officials",
       "label": "U.S. Attorney\u2019s Office (NDIL)",
-      "observations": 3,
+      "observations": 4,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2449,7 +2456,7 @@
     "OSHA_DOL": {
       "category": "government",
       "label": "OSHA_DOL",
-      "observations": 7,
+      "observations": 8,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2484,7 +2491,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 1907,
+      "observations": 1923,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2590,10 +2597,20 @@
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
+    "PolkCoSheriff": {
+      "badges": [
+        "police"
+      ],
+      "category": "public",
+      "label": "Polk County Sheriff \ud83d\ude94 Grady Judd",
+      "observations": 2,
+      "reason": "service-history badge only",
+      "source": "data/users.json"
+    },
     "PressSec": {
       "category": "core",
       "label": "White House Press Secretary",
-      "observations": 558,
+      "observations": 560,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3155,7 +3172,7 @@
     "SecDuffy": {
       "category": "officials",
       "label": "Secretary Sean Duffy",
-      "observations": 18,
+      "observations": 19,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -3169,14 +3186,14 @@
     "SecMayorkas": {
       "category": "officials",
       "label": "ARCHIVED: Secretary Alejandro Mayorkas",
-      "observations": 313,
+      "observations": 314,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "SecMullinDHS": {
       "category": "core",
       "label": "Secretary Markwayne Mullin",
-      "observations": 635,
+      "observations": 636,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3214,7 +3231,7 @@
     "SecScottBessent": {
       "category": "officials",
       "label": "Treasury Secretary Scott Bessent",
-      "observations": 47,
+      "observations": 48,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -3252,14 +3269,14 @@
     "SecretaryBurgum": {
       "category": "officials",
       "label": "Secretary Doug Burgum",
-      "observations": 23,
+      "observations": 26,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
     "SecretaryLCD": {
       "category": "officials",
       "label": "Secretary Lori Chavez-DeRemer",
-      "observations": 215,
+      "observations": 219,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -3460,7 +3477,7 @@
     "Sonderling47": {
       "category": "core",
       "label": "Acting Secretary Keith Sonderling",
-      "observations": 195,
+      "observations": 199,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3488,7 +3505,7 @@
     "StateDept": {
       "category": "government",
       "label": "Department of State",
-      "observations": 727,
+      "observations": 729,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3498,7 +3515,7 @@
       ],
       "category": "government",
       "label": "Diplomatic Security Service",
-      "observations": 20,
+      "observations": 19,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3645,7 +3662,7 @@
     "TheJusticeDept": {
       "category": "government",
       "label": "U.S. Department of Justice",
-      "observations": 774,
+      "observations": 776,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3765,10 +3782,31 @@
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
+    "USAO_DC": {
+      "category": "officials",
+      "label": "U.S. Attorney DC",
+      "observations": 3,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
     "USAO_NDOK": {
       "category": "officials",
       "label": "U.S. Attorney NDOK",
       "observations": 3,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "USAO_NJ": {
+      "category": "officials",
+      "label": "NJ US Attorney",
+      "observations": 4,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "USAO_SDFL": {
+      "category": "officials",
+      "label": "US Attorney Reding Qui\u00f1ones",
+      "observations": 5,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -3918,7 +3956,7 @@
     "USCIS": {
       "category": "core",
       "label": "U.S. Citizenship and Immigration Services",
-      "observations": 1292,
+      "observations": 1383,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3932,7 +3970,7 @@
     "USDOL": {
       "category": "core",
       "label": "U.S. Department of Labor",
-      "observations": 1323,
+      "observations": 1374,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -4025,7 +4063,7 @@
     "VP": {
       "category": "government",
       "label": "Vice President JD Vance",
-      "observations": 157,
+      "observations": 158,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -4138,7 +4176,7 @@
     "WhiteHouse": {
       "category": "core",
       "label": "The White House",
-      "observations": 1945,
+      "observations": 2041,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -4437,7 +4475,7 @@
       ],
       "category": "government",
       "label": "FDLE",
-      "observations": 12,
+      "observations": 14,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -5046,11 +5084,11 @@
   "category_counts": {
     "core": 20,
     "government": 181,
-    "officials": 119,
-    "public": 178,
+    "officials": 123,
+    "public": 179,
     "public_figures": 124
   },
-  "generated_at": "2026-06-03T15:54:57Z",
+  "generated_at": "2026-06-11T14:13:08Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
