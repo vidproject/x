@@ -30,7 +30,9 @@ permissions:
   contents: write
 
 concurrency:
-  group: priority-review-media
+  # All workflows that commit generated data share this group so archive,
+  # ingest, and priority-review jobs do not race on data/tags/manifest.json.
+  group: vidproject-x-data-writers
   cancel-in-progress: false
 
 jobs:
