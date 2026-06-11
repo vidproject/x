@@ -1,0 +1,889 @@
+// In-memory store: holds loaded rows from one or more parquet files, builds a
+// MiniSearch index lazily, exposes a filter+sort+paginate pipeline.
+//
+// Tags from sidecar parquets (joined in by app.js) live on `row.tags` as
+// `Array<{tag, tentative?, source?}>`. The store treats them like any other
+// filterable field.
+//
+// Threading: every row carries an effective `thread_id` (= conversation_id
+// or tweet_id when no conversation_id exists). After filter+sort, the
+// pipeline groups surviving rows into threads. Masters carry aggregated
+// thread metadata (combined media count, latest activity, sibling count).
+
+import MiniSearch from 'https://esm.sh/minisearch@7.1.2';
+
+const NUMERIC_SORT_KEYS = new Set([
+  'bookmark_count',
+  'engagement',
+  'like_count',
+  'media_count',
+  'quote_count',
+  'reply_count',
+  'retweet_count',
+  'video_duration',
+  'view_count',
+]);
+
+/**
+ * Engagement is a derived per-row score, not a stored field. It sums the four
+ * public interaction counts on a tweet:
+ *
+ *   engagement = like_count + retweet_count + reply_count + quote_count
+ *
+ * (view_count and bookmark_count are deliberately excluded — views are an
+ * impression metric, not an interaction, and bookmarks are largely private.)
+ * Derived here at sort/render time so no data regeneration is required.
+ */
+export function rowEngagement(row) {
+  let total = 0;
+  for (const key of ['like_count', 'retweet_count', 'reply_count', 'quote_count']) {
+    const n = Number(row?.[key]);
+    if (Number.isFinite(n)) total += n;
+  }
+  return total;
+}
+
+export const TAG_SUB_SEPARATOR = ' ⊂ ';
+
+export function combineTagMainSub(main, sub) {
+  return sub ? `${main}${TAG_SUB_SEPARATOR}${sub}` : main;
+}
+
+export function splitTagMainSub(value) {
+  const text = String(value ?? '');
+  const idx = text.indexOf(TAG_SUB_SEPARATOR);
+  if (idx === -1) return { main: text, sub: '' };
+  return {
+    main: text.slice(0, idx),
+    sub: text.slice(idx + TAG_SUB_SEPARATOR.length),
+  };
+}
+
+export function tagNamespace(tag) {
+  return String(tag ?? '').split(':', 1)[0];
+}
+
+export function tagSubtype(tag) {
+  const text = String(tag ?? '');
+  const idx = text.indexOf(':');
+  return idx === -1 ? text : text.slice(idx + 1);
+}
+
+export const SEARCH_FIELD_OPTIONS = [
+  { value: 'all', label: 'All fields' },
+  { value: 'text', label: 'Text' },
+  { value: 'account_handle', label: 'Account' },
+  { value: 'tags', label: 'Tags' },
+  { value: 'mentions', label: 'Mentions' },
+  { value: 'media_description', label: 'Media description' },
+  { value: 'ocr_text', label: 'Image OCR' },
+  { value: 'news_coverage', label: 'News coverage' },
+  { value: 'tweet_type', label: 'Type' },
+  { value: 'media_kinds', label: 'Media' },
+  { value: 'posted_at', label: 'Posted date' },
+  { value: 'tweet_url', label: 'Tweet URL' },
+  { value: 'retweeted_by', label: 'Retweeted by' },
+  { value: 'reply_to_account', label: 'Reply-to account' },
+];
+
+export class Store {
+  constructor() {
+    /** @type {Map<string, Array<Record<string, unknown>>>} */
+    this.byHandle = new Map();
+    /** @type {Array<Record<string, unknown>>} */
+    this.allRows = [];
+    /** @type {MiniSearch | null} */
+    this.search = null;
+    /** @type {Map<string, number>} */
+    this.idIndex = new Map(); // tweet_id → allRows index
+    /** @type {Map<string, Array<Record<string, unknown>>>} */
+    this.threadIndex = new Map(); // thread_id → all rows in thread
+    /** @type {Map<string, string>} */
+    this.accountCategoryByHandle = new Map();
+    /** @type {Map<string, Record<string, unknown>>} */
+    this.retweetOriginalById = new Map(); // retweet tweet_id -> original row
+  }
+
+  has(handle) {
+    return this.byHandle.has(handle);
+  }
+  handles() {
+    return [...this.byHandle.keys()];
+  }
+
+  setHandle(handle, rows) {
+    this.byHandle.set(handle, rows);
+    this.rebuild();
+  }
+  setCatalogRows(rows, handle = '__catalog__') {
+    this.byHandle.clear();
+    this.byHandle.set(handle, rows);
+    this.rebuild();
+  }
+  hydrateRow(id, fullRow) {
+    const row = this.getById(id);
+    if (!row || !fullRow) return null;
+    const overlays = {};
+    for (const key of [
+      'tags',
+      'media_insights',
+      'news_mentions',
+      'news_mention_count',
+      'news_mention_status',
+      'news_mention_detector',
+      'ocr_text',
+    ]) {
+      if (row[key] !== undefined && fullRow[key] === undefined) overlays[key] = row[key];
+    }
+    const catalog = row.__catalog || fullRow.__catalog;
+    Object.assign(row, fullRow, overlays, {
+      __catalog: catalog,
+      __hydrated: true,
+    });
+    this.search = null;
+    return row;
+  }
+  removeHandle(handle) {
+    this.byHandle.delete(handle);
+    this.rebuild();
+  }
+
+  /** Inject the per-tweet tag map sourced from sidecar parquets.
+   * Tags are attached directly to each row so downstream code (filter,
+   * sort, column render, CSV export, sidepanel) doesn't need a second
+   * data structure. */
+  applyTags(tagMap) {
+    for (const r of this.allRows) {
+      const id = String(r.tweet_id ?? '');
+      r.tags = derivedRowTags(r, tagMap.get(id) ?? []);
+    }
+    this.search = null; // rebuild so tags enter the search corpus
+  }
+
+  /** Attach optional media-recognition rows from `data/tags/media_*.parquet`.
+   * These are downstream annotations, not canonical tweet data. */
+  applyMediaInsights(insightMap) {
+    for (const r of this.allRows) {
+      const id = String(r.tweet_id ?? '');
+      r.media_insights = insightMap.get(id) ?? [];
+    }
+    this.search = null;
+  }
+
+  /** Attach optional image-OCR text from `data/tags/image_ocr.parquet`.
+   * Multiple media rows for the same tweet are joined with " | ".
+   * When the sidecar is missing, rows simply carry an empty string. */
+  applyOcrText(ocrMap) {
+    for (const r of this.allRows) {
+      const id = String(r.tweet_id ?? '');
+      r.ocr_text = ocrMap.get(id) ?? '';
+    }
+    this.search = null;
+  }
+
+  /** Attach optional external-news article crosslinks. */
+  applyNewsMentions(mentionMap) {
+    for (const r of this.allRows) {
+      const id = String(r.tweet_id ?? '');
+      const sidecar = mentionMap.get(id);
+      r.news_mentions = Array.isArray(sidecar?.articles) ? sidecar.articles : [];
+      r.news_mention_count = Number(sidecar?.mention_count ?? r.news_mentions.length ?? 0);
+      r.news_mention_status = sidecar?.status ?? '';
+      r.news_mention_detector = sidecar?.detector ?? '';
+    }
+    this.search = null;
+  }
+
+  /** Provide the manifest's account categorization so the filter pipeline
+   * can match `row.account_handle` → category without a per-row lookup. */
+  setAccountCategories(map) {
+    this.accountCategoryByHandle = map instanceof Map ? map : new Map();
+  }
+
+  rebuild() {
+    const all = [];
+    for (const rows of this.byHandle.values()) {
+      for (const r of rows) {
+        delete r.__reply_promotions;
+        delete r.__retweet_promotions;
+        delete r.__retweet_original;
+        delete r.retweeted_by;
+        delete r.__thread_privileged_category;
+        all.push(r);
+      }
+    }
+    this.allRows = all;
+    this.idIndex = new Map();
+    this.threadIndex = new Map();
+    this.retweetOriginalById = new Map();
+    for (let i = 0; i < all.length; i++) {
+      const r = all[i];
+      const id = String(r.tweet_id ?? '');
+      if (id) this.idIndex.set(id, i);
+      const tid = String(r.conversation_id ?? r.tweet_id ?? '');
+      if (!tid) continue;
+      let list = this.threadIndex.get(tid);
+      if (!list) {
+        list = [];
+        this.threadIndex.set(tid, list);
+      }
+      list.push(r);
+    }
+    this.annotateRetweetPromotions();
+    this.annotateReplyPromotions();
+    this.search = null; // rebuild lazily
+  }
+
+  getById(id) {
+    const idx = this.idIndex.get(String(id));
+    return idx === undefined ? null : this.allRows[idx];
+  }
+
+  getDisplayRowById(id) {
+    return this.displayRowFor(this.getById(id));
+  }
+
+  displayRowFor(row) {
+    if (!row) return null;
+    return (
+      row.__retweet_original || this.retweetOriginalById.get(String(row.tweet_id ?? '')) || row
+    );
+  }
+
+  /** Build the full-text index on demand. */
+  ensureSearch() {
+    if (this.search) return this.search;
+    const mini = new MiniSearch({
+      idField: 'tweet_id',
+      fields: [
+        'text',
+        'text_resolved',
+        'tags_str',
+        'mentions_str',
+        'account_handle',
+        'tag_names',
+        'media_insight_text',
+        'news_mention_text',
+        'retweeted_by_str',
+        'ocr_text_str',
+      ],
+      storeFields: ['tweet_id'],
+      searchOptions: {
+        prefix: true,
+        fuzzy: false,
+      },
+    });
+    const docs = this.allRows.map((r) => ({
+      tweet_id: r.tweet_id,
+      text: r.text || '',
+      text_resolved: r.text_resolved || '',
+      tags_str: Array.isArray(r.hashtags) ? r.hashtags.join(' ') : '',
+      mentions_str: Array.isArray(r.mentions) ? r.mentions.join(' ') : '',
+      account_handle: r.account_handle || '',
+      tag_names: tagNames(r).join(' '),
+      media_insight_text: mediaInsightText(r),
+      news_mention_text: newsMentionText(r),
+      retweeted_by_str: retweetedByHandles(r).join(' '),
+      ocr_text_str: String(r.ocr_text || ''),
+    }));
+    mini.addAll(docs);
+    this.search = mini;
+    return mini;
+  }
+
+  /**
+   * Apply filters and return the filtered+sorted row list.
+   * @param {{
+   *   accounts: string[], q: string, from: string, to: string,
+   *   type: string, media: string, sort: string, dir: 'asc'|'desc',
+   *   qfield?: string,
+   *   tagCertainty?: string,
+   *   tagMode?: 'or'|'and',
+   *   colFilters?: Record<string, Set<string>>,
+   *   tags?: string[],
+   *   accountCategories?: string[],
+   *   includeDeleted?: boolean
+   * }} filt
+   */
+  apply(filt) {
+    let rows = this.allRows;
+    if (filt.sel && filt.sel.length > 0) {
+      // Shared-subset view: restrict to an explicit hand-picked id list.
+      const set = new Set(filt.sel.map((v) => String(v)));
+      rows = rows.filter((r) => set.has(String(r.tweet_id)));
+    }
+    if (filt.accounts && filt.accounts.length > 0) {
+      const set = new Set(filt.accounts);
+      rows = rows.filter((r) => set.has(r.account_handle));
+    }
+    if (filt.accountCategories && filt.accountCategories.length > 0) {
+      const set = new Set(filt.accountCategories);
+      rows = rows.filter((r) => set.has(this.categoryOf(r)));
+    }
+    if (filt.from) {
+      const fromIso = `${filt.from}T00:00:00Z`;
+      rows = rows.filter((r) => (r.posted_at || '') >= fromIso);
+    }
+    if (filt.to) {
+      const toIso = `${filt.to}T23:59:59Z`;
+      rows = rows.filter((r) => (r.posted_at || '') <= toIso);
+    }
+    if (filt.type) {
+      rows = rows.filter((r) => r.tweet_type === filt.type);
+    }
+    if (filt.media) {
+      rows = rows.filter((r) => matchMediaFilter(r, filt.media));
+    }
+    if (filt.tags && filt.tags.length > 0) {
+      // Tag filter defaults to OR-across-selected (match any), so a tweet
+      // matches when its tag set intersects the selected set. AND mode
+      // (match all) is opt-in via filt.tagMode for narrowing intersections
+      // like country:Mexico + action:deportation.
+      const want = new Set(filt.tags);
+      rows = rows.filter((r) =>
+        tagFilterMatches(r, want, filt.tagCertainty || 'all', filt.tagMode || 'or')
+      );
+    }
+    if (!(filt.tags && filt.tags.length > 0) && filt.tagCertainty && filt.tagCertainty !== 'all') {
+      rows = rows.filter((r) => tagCertaintyMatches(r, filt.tagCertainty));
+    }
+    if (filt.colFilters) {
+      for (const [col, allowed] of Object.entries(filt.colFilters)) {
+        if (!allowed || allowed.size === 0) continue;
+        if (col === 'retweeted_by') {
+          rows = rows.filter((r) => {
+            const handles = retweetedByHandles(r);
+            if (handles.length === 0) return allowed.has('');
+            return handles.some((handle) => allowed.has(handle));
+          });
+        } else {
+          rows = rows.filter((r) => allowed.has(formatForFilter(r, col)));
+        }
+      }
+    }
+    if (filt.q && filt.q.trim()) {
+      // Pull inline `-tag:` exclusions out of the query first. They drop rows
+      // carrying any matching tag/namespace; the remaining free text then runs
+      // through the normal search path (field-scoped, wildcard, or MiniSearch).
+      const { exclusions, rest } = parseTagExclusions(filt.q);
+      if (exclusions.length > 0) {
+        rows = rows.filter((r) => !rowMatchesAnyExclusion(r, exclusions));
+      }
+      const q = rest.trim();
+      const qfield = filt.qfield || 'all';
+      if (q) {
+        if (qfield !== 'all') {
+          rows = rows.filter((r) => fieldSearchMatches(r, qfield, q));
+        } else if (/[*?]/.test(q)) {
+          const re = wildcardToRegex(q);
+          rows = rows.filter((r) => re.test(haystack(r)));
+        } else {
+          const idSet = runMiniSearch(this.ensureSearch(), q);
+          rows = rows.filter((r) => idSet.has(String(r.tweet_id)));
+        }
+      }
+    }
+    // Collapse retweets to their originals BEFORE sorting. A retweet row
+    // carries its own retweet_count (different from the original's) and
+    // like_count=0, so sorting first anchored the row by the wrong number and
+    // then swapped in the original at that wrong slot — producing the
+    // out-of-order "sort by RTS/Likes" the user saw. Collapsing first lets the
+    // sort order the surviving originals by their real engagement counts.
+    const collapsed = this.collapseRetweetsToOriginals(rows);
+    const dir = filt.dir === 'asc' ? 1 : -1;
+    const sortKey = filt.sort || 'posted_at';
+    return collapsed.slice().sort((a, b) => compare(a, b, sortKey) * dir);
+  }
+
+  /**
+   * Group surviving rows into threads. Each thread carries:
+   *
+   *   master       — the conversation root (or the earliest captured
+   *                  sibling when the root itself isn't archived).
+   *   selfSlaves   — replies authored by the same handle as the master.
+   *                  These are the "DHS continues its own thread" case
+   *                  worth inlining; they read as part of the master's
+   *                  message and don't spam.
+   *   privilegedSlaves — direct thread replies from core / government /
+   *                  official accounts to a non-self parent. These are
+   *                  inlined because the tracked account is the story.
+   *   otherSlaves  — every other reply. Not inlined; the viewer surfaces
+   *                  them in the sidepanel on row click.
+   *
+   * A thread is included if at least one of its members survived the
+   * filter; non-surviving siblings still get pulled in so context isn't
+   * lost when the filter is narrow.
+   *
+   * @param {Array<Record<string, unknown>>} filteredRows
+   */
+  groupIntoThreads(filteredRows) {
+    const seenThreads = new Set();
+    /** @type {Array<{master: any, selfSlaves: any[], privilegedSlaves: any[], otherSlaves: any[], matchedCount: number, threadId: string}>} */
+    const threads = [];
+    for (const r of filteredRows) {
+      const tid = String(r.conversation_id ?? r.tweet_id ?? '');
+      if (!tid || seenThreads.has(tid)) continue;
+      seenThreads.add(tid);
+      const full = this.threadIndex.get(tid) ?? [r];
+      const ordered = full.slice().sort((a, b) => {
+        const av = String(a.posted_at ?? '');
+        const bv = String(b.posted_at ?? '');
+        return av.localeCompare(bv);
+      });
+      let master = ordered.find((x) => String(x.tweet_id) === tid);
+      if (!master) master = ordered[0];
+      const masterHandle = master.account_handle;
+      const selfSlaves = [];
+      const privilegedSlaves = [];
+      const otherSlaves = [];
+      for (const x of ordered) {
+        if (x === master) continue;
+        if (x.account_handle === masterHandle) {
+          selfSlaves.push(x);
+          continue;
+        }
+        const category = this.categoryOf(x);
+        if (isPrivilegedReplyCategory(category)) {
+          x.__thread_privileged_category = category === 'core' ? 'core' : 'officials';
+          privilegedSlaves.push(x);
+        } else {
+          otherSlaves.push(x);
+        }
+      }
+      const filteredSet = new Set(filteredRows);
+      const matchedCount = ordered.filter((x) => filteredSet.has(x)).length;
+      threads.push({
+        master,
+        selfSlaves,
+        privilegedSlaves,
+        otherSlaves,
+        promotedReplies: replyPromotionsFor(master),
+        matchedCount,
+        threadId: tid,
+      });
+    }
+    return threads;
+  }
+
+  categoryOf(row) {
+    const handle = row.account_handle;
+    // `_misc.parquet` aggregates non-tracked authors, so they're
+    // implicitly `public` regardless of which non-tracked handle wrote
+    // the tweet.
+    const meta = this.accountCategoryByHandle.get(handle);
+    const own =
+      typeof meta === 'string'
+        ? meta
+        : meta && typeof meta.category === 'string'
+          ? meta.category
+          : 'public';
+    return dominantCategory(own, promotedCategoryOf(row));
+  }
+
+  annotateReplyPromotions() {
+    for (const reply of this.allRows) {
+      if (reply.tweet_type !== 'reply') continue;
+      const parentId = String(reply.reply_to_tweet_id ?? '');
+      if (!parentId) continue;
+      const parent = this.getById(parentId);
+      if (!parent || parent === reply) continue;
+      if (parent.account_handle === reply.account_handle) continue;
+
+      const category = this.categoryOf(reply);
+      if (!isPrivilegedReplyCategory(category)) continue;
+      const promotions = replyPromotionsFor(parent);
+      promotions.push({
+        category: category === 'core' ? 'core' : 'officials',
+        reply,
+      });
+      parent.__reply_promotions = promotions;
+    }
+  }
+
+  annotateRetweetPromotions() {
+    for (const retweet of this.allRows) {
+      if (retweet.tweet_type !== 'retweet') continue;
+      const originalId = String(retweet.retweeted_tweet_id ?? '');
+      if (!originalId) continue;
+      const original = this.getById(originalId);
+      if (!original || original === retweet) continue;
+      this.retweetOriginalById.set(String(retweet.tweet_id ?? ''), original);
+      retweet.__retweet_original = original;
+      const promotions = retweetPromotionsFor(original);
+      promotions.push({ retweet });
+      original.__retweet_promotions = promotions;
+      original.retweeted_by = retweetedByHandles(original);
+    }
+  }
+
+  collapseRetweetsToOriginals(rows) {
+    const out = [];
+    const seen = new Set();
+    for (const row of rows) {
+      const display = this.displayRowFor(row);
+      if (!display) continue;
+      const key = String(display.tweet_id ?? row.tweet_id ?? '');
+      if (key && seen.has(key)) continue;
+      if (key) seen.add(key);
+      out.push(display);
+    }
+    return out;
+  }
+}
+
+function replyPromotionsFor(row) {
+  return Array.isArray(row?.__reply_promotions) ? row.__reply_promotions : [];
+}
+
+function retweetPromotionsFor(row) {
+  return Array.isArray(row?.__retweet_promotions) ? row.__retweet_promotions : [];
+}
+
+function promotedCategoryOf(row) {
+  const promotions = replyPromotionsFor(row);
+  if (promotions.some((p) => p?.category === 'core')) return 'core';
+  if (promotions.some((p) => p?.category === 'officials')) return 'officials';
+  return '';
+}
+
+function dominantCategory(own, promoted) {
+  const priority = {
+    core: 5,
+    officials: 4,
+    government: 3,
+    public_figures: 2,
+    public: 1,
+    '': 0,
+  };
+  return (priority[promoted] ?? 0) > (priority[own] ?? 0) ? promoted : own;
+}
+
+function isPrivilegedReplyCategory(category) {
+  return category === 'core' || category === 'officials' || category === 'government';
+}
+
+function tagFilterMatches(row, selections, certainty = 'all', mode = 'or') {
+  const wanted = [];
+  for (const value of selections) {
+    const text = String(value ?? '');
+    if (!text) continue;
+    const { main, sub } = splitTagMainSub(text);
+    if (sub) wanted.push({ kind: 'exact', value: sub });
+    else if (main.includes(':')) wanted.push({ kind: 'exact', value: main });
+    else wanted.push({ kind: 'namespace', value: main });
+  }
+  if (wanted.length === 0) return true;
+  // Only entries that clear the certainty gate can satisfy a selection.
+  const entries = tagEntries(row).filter(({ tentative }) =>
+    tagEntryCertaintyMatches(tentative, certainty)
+  );
+  const satisfies = (sel) =>
+    entries.some(({ name }) =>
+      sel.kind === 'exact' ? name === sel.value : tagNamespace(name) === sel.value
+    );
+  // OR: any selection present. AND: every selection present (across distinct tags).
+  return mode === 'and' ? wanted.every(satisfies) : wanted.some(satisfies);
+}
+
+/**
+ * Split inline `-tag:<value>` exclusion tokens out of a free-text query.
+ * `<value>` is either a full `namespace:slug` (exclude that exact tag) or a
+ * bare `namespace` (exclude the whole namespace). Everything else is returned
+ * as `rest` to run through the normal search path. A leading `-` on a normal
+ * word is NOT an exclusion — only the `-tag:` prefix triggers one.
+ *
+ * @param {string} query
+ * @returns {{ exclusions: Array<{kind: 'exact'|'namespace', value: string}>, rest: string }}
+ */
+function parseTagExclusions(query) {
+  const exclusions = [];
+  const kept = [];
+  for (const token of String(query ?? '').split(/\s+/)) {
+    if (!token) continue;
+    const m = /^-tag:(.+)$/i.exec(token);
+    if (!m) {
+      kept.push(token);
+      continue;
+    }
+    const value = m[1];
+    if (value.includes(':')) exclusions.push({ kind: 'exact', value });
+    else exclusions.push({ kind: 'namespace', value });
+  }
+  return { exclusions, rest: kept.join(' ') };
+}
+
+/** True when the row carries any tag that matches one of the exclusions. */
+function rowMatchesAnyExclusion(row, exclusions) {
+  const entries = tagEntries(row);
+  if (entries.length === 0) return false;
+  return entries.some(({ name }) =>
+    exclusions.some((ex) =>
+      ex.kind === 'exact' ? name === ex.value : tagNamespace(name) === ex.value
+    )
+  );
+}
+
+function tagCertaintyMatches(row, mode) {
+  return tagEntries(row).some(({ tentative }) => tagEntryCertaintyMatches(tentative, mode));
+}
+
+function tagEntryCertaintyMatches(tentative, mode) {
+  if (mode === 'firm') return !tentative;
+  if (mode === 'tentative') return Boolean(tentative);
+  return true;
+}
+
+function tagEntries(row) {
+  const ts = row.tags;
+  if (!Array.isArray(ts)) return [];
+  const out = [];
+  for (const t of ts) {
+    const name = typeof t === 'string' ? t : t && typeof t.tag === 'string' ? t.tag : '';
+    if (!name) continue;
+    out.push({ name, tentative: typeof t === 'object' && Boolean(t?.tentative) });
+  }
+  return out;
+}
+
+function derivedRowTags(row, sourceTags) {
+  const tags = Array.isArray(sourceTags) ? [...sourceTags] : [];
+  const names = new Set(tags.map((entry) => (typeof entry === 'string' ? entry : entry?.tag)));
+  if (row.unavailable_detected_at && !names.has('status:unavailable')) {
+    tags.push({ tag: 'status:unavailable', source: 'row' });
+    names.add('status:unavailable');
+  }
+  const unavailableText = `${row.unavailable_reason || ''} ${row.unavailable_text || ''}`;
+  if (
+    row.unavailable_detected_at &&
+    /\b(?:copyright|dmca)\b/i.test(unavailableText) &&
+    !names.has('status:copyright-removal')
+  ) {
+    tags.push({ tag: 'status:copyright-removal', source: 'row' });
+  }
+  return tags;
+}
+
+function tagNames(row) {
+  const ts = row.tags;
+  if (!Array.isArray(ts)) return [];
+  const seen = new Set();
+  const out = [];
+  for (const t of ts) {
+    const name = typeof t === 'string' ? t : t && typeof t.tag === 'string' ? t.tag : '';
+    if (!name || seen.has(name)) continue;
+    seen.add(name);
+    out.push(name);
+  }
+  return out;
+}
+
+function runMiniSearch(mini, q) {
+  // Token AND: every space-separated token must match (prefix).
+  const tokens = q.split(/\s+/).filter(Boolean);
+  let result = null;
+  for (const tok of tokens) {
+    const hits = mini.search(tok, { prefix: true });
+    const ids = new Set(hits.map((r) => String(r.id)));
+    if (result === null) {
+      result = ids;
+    } else {
+      for (const id of [...result]) if (!ids.has(id)) result.delete(id);
+    }
+  }
+  return result ?? new Set();
+}
+
+function fieldSearchMatches(row, field, q) {
+  const text = fieldHaystack(row, field);
+  if (/[*?]/.test(q)) return wildcardToRegex(q).test(text);
+  const lower = text.toLocaleLowerCase();
+  return q
+    .toLocaleLowerCase()
+    .split(/\s+/)
+    .filter(Boolean)
+    .every((tok) => lower.includes(tok));
+}
+
+function wildcardToRegex(q) {
+  const body = q
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((tok) =>
+      tok
+        .replace(/[.+^${}()|[\]\\]/g, '\\$&')
+        .replace(/\*/g, '.*')
+        .replace(/\?/g, '.')
+    )
+    .join('.*');
+  return new RegExp(body, 'i');
+}
+
+function haystack(r) {
+  const parts = [
+    r.text || '',
+    r.text_resolved || '',
+    r.account_handle || '',
+    Array.isArray(r.hashtags) ? r.hashtags.join(' ') : '',
+    Array.isArray(r.mentions) ? r.mentions.join(' ') : '',
+    tagNames(r).join(' '),
+    mediaInsightText(r),
+    newsMentionText(r),
+    retweetedByHandles(r).join(' '),
+    String(r.ocr_text || ''),
+  ];
+  return parts.join(' ');
+}
+
+function fieldHaystack(row, field) {
+  if (field === 'all') return haystack(row);
+  if (field === 'text') return [row.text || '', row.text_resolved || ''].join(' ');
+  if (field === 'tags') return tagNames(row).join(' ');
+  if (field === 'mentions') return Array.isArray(row.mentions) ? row.mentions.join(' ') : '';
+  if (field === 'media_description') return mediaInsightText(row);
+  if (field === 'ocr_text') return String(row.ocr_text || '');
+  if (field === 'news_coverage') return newsMentionText(row);
+  if (field === 'media_kinds') return formatForFilter(row, 'media_kinds');
+  if (field === 'posted_at') return formatForFilter(row, 'posted_at');
+  if (field === 'account_handle') return String(row.account_handle || '');
+  if (field === 'tweet_type') return String(row.tweet_type || '');
+  if (field === 'tweet_url') return String(row.tweet_url || '');
+  if (field === 'retweeted_by') return retweetedByHandles(row).join(' ');
+  if (field === 'reply_to_account') return String(row.reply_to_account || '');
+  return formatForFilter(row, field);
+}
+
+function mediaInsightText(row) {
+  const insights = Array.isArray(row.media_insights) ? row.media_insights : [];
+  return insights
+    .map((entry) => [entry?.description, entry?.summary_text].filter(Boolean).join(' '))
+    .filter(Boolean)
+    .join(' ');
+}
+
+function newsMentionText(row) {
+  const mentions = Array.isArray(row.news_mentions) ? row.news_mentions : [];
+  return mentions
+    .map((entry) =>
+      [
+        entry?.source,
+        entry?.title,
+        entry?.url,
+        entry?.published_at,
+        entry?.match_type,
+        Array.isArray(entry?.matched_fields) ? entry.matched_fields.join(' ') : '',
+      ]
+        .filter(Boolean)
+        .join(' ')
+    )
+    .filter(Boolean)
+    .join(' ');
+}
+
+export function retweetedByHandles(row) {
+  const handles = new Set();
+  if (Array.isArray(row?.retweeted_by)) {
+    for (const handle of row.retweeted_by) {
+      const text = String(handle || '')
+        .replace(/^@/, '')
+        .trim();
+      if (text) handles.add(text);
+    }
+  }
+  const promotions = Array.isArray(row?.__retweet_promotions) ? row.__retweet_promotions : [];
+  for (const promo of promotions) {
+    const handle = String(promo?.retweet?.account_handle || '')
+      .replace(/^@/, '')
+      .trim();
+    if (handle) handles.add(handle);
+  }
+  return [...handles].sort((a, b) => a.localeCompare(b));
+}
+
+function matchMediaFilter(r, kind) {
+  const media = Array.isArray(r.media) ? r.media : [];
+  if (kind === 'none') return media.length === 0;
+  if (kind === 'video') {
+    return media.some((m) => m && (m.media_type === 'video' || m.media_type === 'animated_gif'));
+  }
+  if (kind === 'gif') return media.some((m) => m && m.media_type === 'animated_gif');
+  if (kind === 'photo') return media.some((m) => m && m.media_type === 'photo');
+  if (kind === 'audio') return tagNames(r).includes('audio:has-audio');
+  if (kind === 'music') return tagNames(r).includes('audio:music-likely');
+  return true;
+}
+
+function compare(a, b, key) {
+  const va = valueOf(a, key);
+  const vb = valueOf(b, key);
+  if (va == null && vb == null) return 0;
+  if (va == null) return -1;
+  if (vb == null) return 1;
+  if (NUMERIC_SORT_KEYS.has(key)) {
+    const na = numericSortValue(va);
+    const nb = numericSortValue(vb);
+    if (na == null && nb == null) return 0;
+    if (na == null) return -1;
+    if (nb == null) return 1;
+    return na - nb;
+  }
+  if (typeof va === 'number' && typeof vb === 'number') return va - vb;
+  return String(va).localeCompare(String(vb));
+}
+
+function numericSortValue(value) {
+  if (typeof value === 'number') return Number.isFinite(value) ? value : null;
+  if (typeof value === 'bigint') return Number(value);
+  if (typeof value === 'string') {
+    const text = value.trim();
+    if (/^-?\d+(?:\.\d+)?$/.test(text)) {
+      const n = Number(text);
+      return Number.isFinite(n) ? n : null;
+    }
+  }
+  return null;
+}
+
+function valueOf(row, key) {
+  if (key === 'engagement') {
+    return rowEngagement(row);
+  }
+  if (key === 'media_count') {
+    return Array.isArray(row.media) ? row.media.length : 0;
+  }
+  if (key === 'media_description') {
+    return mediaInsightText(row);
+  }
+  if (key === 'video_duration') {
+    // Mirrors viewer/table.js#videoDurationSeconds. Kept here so the
+    // store-side sort doesn't need to import from the rendering module.
+    const media = Array.isArray(row.media) ? row.media : [];
+    let max = 0;
+    for (const m of media) {
+      if (!m) continue;
+      if (m.media_type !== 'video' && m.media_type !== 'animated_gif') continue;
+      const d = Number(m.duration_sec);
+      if (Number.isFinite(d) && d > max) max = d;
+    }
+    return max;
+  }
+  return row[key];
+}
+
+// Stable format used when surfacing column values to the column-filter popup.
+export function formatForFilter(row, col) {
+  const v = valueOf(row, col);
+  if (col === 'posted_at' || col === 'last_seen_at') {
+    return typeof v === 'string' ? v.slice(0, 10) : '';
+  }
+  if (col === 'media_kinds') {
+    const media = Array.isArray(row.media) ? row.media : [];
+    if (media.length === 0) return 'text only';
+    const kinds = new Set(media.map((m) => (m && m.media_type) || ''));
+    return [...kinds].sort().join('+');
+  }
+  if (col === 'retweeted_by') return retweetedByHandles(row).join('|');
+  if (v == null) return '';
+  return String(v);
+}
+
+export { tagNames };

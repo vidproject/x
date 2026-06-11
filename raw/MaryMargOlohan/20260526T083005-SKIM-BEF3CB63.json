@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-whitehouse-20260526-20260526T082951Z-9d213db8-MaryMargOlohan",
+  "account_handle": "MaryMargOlohan",
+  "captured_at": "2026-05-26T08:30:05.085Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APressSec%20since%3A2025-02-01%20until%3A2025-03-01&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1895600444141158902",
+      "account_handle": "MaryMargOlohan",
+      "account_id": "955955001876254720",
+      "posted_at": "2025-02-28T22:22:19.000Z",
+      "first_captured_at": "2026-05-26T08:29:55.252Z",
+      "last_seen_at": "2026-05-26T08:29:55.252Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/MaryMargOlohan/status/1895600444141158902",
+      "tweet_type": "original",
+      "conversation_id": "1895600444141158902",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Excited to share that I’ll be in the travel pool this weekend heading to Palm Beach with POTUS on Air Force One. \n\nGrateful for this access, thanks to @PressSec and her team! https://t.co/cuLpGyVvlf",
+      "text_resolved": "Excited to share that I’ll be in the travel pool this weekend heading to Palm Beach with POTUS on Air Force One. \n\nGrateful for this access, thanks to @PressSec and her team! https://t.co/cuLpGyVvlf",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "PressSec"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1895600433466400768",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Gk6GjQjXYAAvN_n.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1536,
+          "height": 2048,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_1895600433462145024",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Gk6GjQiWcAA4Gqq.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1536,
+          "height": 2048,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 3347,
+      "retweet_count": 190,
+      "reply_count": 106,
+      "quote_count": 0,
+      "view_count": 211553,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T08:29:55.252Z",
+          "likes": 3347,
+          "retweets": 190,
+          "replies": 106,
+          "quotes": 0,
+          "views": 211553,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Mary Margaret Olohan",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1975913520513318912/nyqjbpM-_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "White House Correspondent @realdailywire. Catholic. Author.",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/jAjgmtNyYD",
+        "followers_count": 161901,
+        "friends_count": 2795,
+        "statuses_count": 40259,
+        "account_created_at": "2018-01-24T00:06:48.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-whitehouse-20260526-20260526T082951Z-9d213db8",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/x-com-search-20260526T082951Z-9d213db8.summary.json",
+    "jsonl": ".skim/raw/x-com-search-20260526T082951Z-9d213db8.jsonl",
+    "source_handle": "PressSec"
+  }
+}
