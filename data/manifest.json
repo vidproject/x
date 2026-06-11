@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T13:04:18Z",
+  "generated_at": "2026-06-11T13:48:07Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -7,7 +7,7 @@
       "label": "Department of Homeland Security",
       "category": "core",
       "parquet": "data/DHSgov.parquet",
-      "parquet_bytes": 1530165,
+      "parquet_bytes": 1530152,
       "row_count": 5422,
       "post_count": 4599,
       "reply_count": 823,
@@ -127,7 +127,7 @@
       "label": "U.S. Immigration and Customs Enforcement",
       "category": "core",
       "parquet": "data/ICEgov.parquet",
-      "parquet_bytes": 667345,
+      "parquet_bytes": 667356,
       "row_count": 1918,
       "post_count": 1707,
       "reply_count": 211,
@@ -409,7 +409,7 @@
       "label": "Rapid Response 47",
       "category": "core",
       "parquet": "data/RapidResponse47.parquet",
-      "parquet_bytes": 487907,
+      "parquet_bytes": 502849,
       "row_count": 1393,
       "post_count": 1379,
       "reply_count": 14,
