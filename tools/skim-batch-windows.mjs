@@ -16,6 +16,8 @@ const DEFAULTS = {
   scrolls: 60,
   scrollDelayMs: 700,
   scrollFactor: 1.05,
+  rateLimitFloor: 3,
+  maxBackoffMs: 90_000,
   allowStyles: true,
   headless: false,
   latest: false,
@@ -23,6 +25,8 @@ const DEFAULTS = {
   querySuffix: '',
   stopOnZero: true,
   zeroFailureLimit: 6,
+  offset: 0,
+  limit: Infinity,
 };
 
 function usage(exitCode = 0) {
@@ -42,6 +46,8 @@ Options:
   --scrolls <n>                  Per-window scroll steps. Default: ${DEFAULTS.scrolls}
   --scroll-delay-ms <n>          Per-scroll delay. Default: ${DEFAULTS.scrollDelayMs}
   --scroll-factor <n>            Viewport heights per scroll. Default: ${DEFAULTS.scrollFactor}
+  --rate-limit-floor <n>         Pause when X reports this many calls left. Default: ${DEFAULTS.rateLimitFloor}
+  --max-backoff-ms <n>           Cap one rate-limit pause. Default: ${DEFAULTS.maxBackoffMs}
   --block-styles                 Block stylesheets.
   --headless                     Run child skims without visible browser windows.
   --latest                       Use X's Latest search tab.
@@ -50,6 +56,8 @@ Options:
   --query-suffix <text>          Extra raw search operators to append.
   --allow-zero-responses         Keep going even if a window captures no GraphQL.
   --zero-failure-limit <n>       Stop after this many zero-response windows. Default: ${DEFAULTS.zeroFailureLimit}
+  --offset <n>                   Skip the first n generated windows.
+  --limit <n>                    Run at most n generated windows.
 `.trim()
   );
   process.exit(exitCode);
@@ -95,6 +103,12 @@ function parseArgs(argv) {
       case '--scroll-factor':
         options.scrollFactor = positiveNumber(arg, readValue());
         break;
+      case '--rate-limit-floor':
+        options.rateLimitFloor = nonNegativeInteger(arg, readValue());
+        break;
+      case '--max-backoff-ms':
+        options.maxBackoffMs = positiveInteger(arg, readValue());
+        break;
       case '--block-styles':
         options.allowStyles = false;
         break;
@@ -118,6 +132,12 @@ function parseArgs(argv) {
         break;
       case '--zero-failure-limit':
         options.zeroFailureLimit = positiveInteger(arg, readValue());
+        break;
+      case '--offset':
+        options.offset = nonNegativeInteger(arg, readValue());
+        break;
+      case '--limit':
+        options.limit = positiveInteger(arg, readValue());
         break;
       case '--help':
       case '-h':
@@ -157,6 +177,14 @@ function validateDate(value, label) {
 function positiveInteger(name, value) {
   const parsed = Number.parseInt(value, 10);
   if (!Number.isFinite(parsed) || parsed <= 0) throw new Error(`${name} must be positive.`);
+  return parsed;
+}
+
+function nonNegativeInteger(name, value) {
+  const parsed = Number.parseInt(value, 10);
+  if (!Number.isFinite(parsed) || parsed < 0) {
+    throw new Error(`${name} must be zero or positive.`);
+  }
   return parsed;
 }
 
@@ -273,6 +301,10 @@ function commandForTask(task, profileDir, options) {
     String(options.scrollDelayMs),
     '--scroll-factor',
     String(options.scrollFactor),
+    '--rate-limit-floor',
+    String(options.rateLimitFloor),
+    '--max-backoff-ms',
+    String(options.maxBackoffMs),
   ];
   if (options.stopOnZero) args.push('--fail-on-zero-responses');
   if (options.allowStyles) args.push('--allow-styles');
@@ -364,10 +396,14 @@ async function main() {
   await mkdir(options.logDir, { recursive: true });
 
   const tasks = buildTasks(options);
-  console.log(
-    `Prepared ${tasks.length} one-window skim tasks; concurrency=${options.concurrency}.`
+  const selectedTasks = tasks.slice(
+    options.offset,
+    Number.isFinite(options.limit) ? options.offset + options.limit : undefined
   );
-  const report = await runQueue(tasks, options);
+  console.log(
+    `Prepared ${selectedTasks.length}/${tasks.length} one-window skim tasks; concurrency=${options.concurrency}; offset=${options.offset}.`
+  );
+  const report = await runQueue(selectedTasks, options);
   const reportPath = path.join(options.logDir, `skim-batch-${stamp}.summary.json`);
   await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
   console.log(
