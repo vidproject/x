@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "01KS0RYCFWZXNRSGXP9G",
+  "account_handle": "washingtonpost",
+  "captured_at": "2026-05-19T18:49:33.296Z",
+  "endpoint": "UserTweets",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0",
+  "source_url": "https://x.com/i/api/graphql/D5eKzDa5ZoJuC1TCeAXbWA/UserTweetsAndReplies?variables=%7B%22userId%22%3A%2215647676%22%2C%22count%22%3A20%2C%22cursor%22%3A%22DAAHCgABHItAgaA__8cLAAIAAAATMjA1NDk3MjU0MjU5NTUwNjM1MwgAAwAAAAIAAA%22%2C%22includePromotedContent%22%3Atrue%2C%22withCommunity%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_video_screen_enabled%22%3Afalse%2C%22rweb_cashtags_enabled%22%3Atrue%2C%22profile_label_improvements_pcf_label_in_post_enabled%22%3Atrue%2C%22responsive_web_profile_redirect_enabled%22%3Afalse%2C%22rweb_tipjar_consumption_enabled%22%3Afalse%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22premium_content_api_read_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22responsive_web_grok_analyze_button_fetch_trends_enabled%22%3Afalse%2C%22responsive_web_grok_analyze_post_followups_enabled%22%3Atrue%2C%22rweb_cashtags_composer_attachment_enabled%22%3Atrue%2C%22responsive_web_jetfuel_frame%22%3Atrue%2C%22responsive_web_grok_share_attachment_enabled%22%3Atrue%2C%22responsive_web_grok_annotations_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22rweb_conversational_replies_downvote_enabled%22%3Afalse%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22content_disclosure_indicator_enabled%22%3Atrue%2C%22content_disclosure_ai_generated_indicator_enabled%22%3Atrue%2C%22responsive_web_grok_show_grok_translated_post%22%3Atrue%2C%22responsive_web_grok_analysis_button_from_backend%22%3Atrue%2C%22post_ctas_fetch_enabled%22%3Atrue%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Afalse%2C%22responsive_web_grok_image_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_imagine_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_community_note_auto_translation_is_enabled%22%3Atrue%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticlePlainText%22%3Afalse%7D",
+  "tweets": [
+    {
+      "tweet_id": "2054358689209835873",
+      "account_handle": "washingtonpost",
+      "account_id": "2467791",
+      "posted_at": "2026-05-13T00:30:54.000Z",
+      "first_captured_at": "2026-05-19T18:46:03.859Z",
+      "last_seen_at": "2026-05-19T18:48:42.763Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/washingtonpost/status/2054358689209835873",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "An 85-year-old French widow spent 16 days in federal immigration custody after the death of her husband, an American military veteran. Her stepson, a U.S. federal employee, allegedly intervened to have her taken custody, a judge found. Read more: https://t.co/EtV6mPqMvt https://t.co/kcrWiCK28F",
+      "text_resolved": "An 85-year-old French widow spent 16 days in federal immigration custody after the death of her husband, an American military veteran. Her stepson, a U.S. federal employee, allegedly intervened to have her taken custody, a judge found. Read more: https://wapo.st/4uJT1x1 https://t.co/kcrWiCK28F",
+      "lang": "en",
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/EtV6mPqMvt",
+          "expanded": "https://wapo.st/4uJT1x1",
+          "display": "wapo.st/4uJT1x1"
+        }
+      ],
+      "media": [
+        {
+          "media_id": "13_2054358479284957184",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2054358479284957184/vid/avc1/720x1280/pM0Ybs1OvYebveTr.mp4?tag=14",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 82.782,
+          "width": 1080,
+          "height": 1920,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1244,
+      "retweet_count": 596,
+      "reply_count": 82,
+      "quote_count": 29,
+      "view_count": 159425,
+      "bookmark_count": 176,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T18:46:03.859Z",
+          "likes": 1244,
+          "retweets": 596,
+          "replies": 82,
+          "quotes": 29,
+          "views": 159424,
+          "bookmarks": 176
+        },
+        {
+          "captured_at": "2026-05-19T18:47:25.642Z",
+          "likes": 1244,
+          "retweets": 596,
+          "replies": 82,
+          "quotes": 29,
+          "views": 159424,
+          "bookmarks": 176
+        },
+        {
+          "captured_at": "2026-05-19T18:48:00.626Z",
+          "likes": 1244,
+          "retweets": 596,
+          "replies": 82,
+          "quotes": 29,
+          "views": 159425,
+          "bookmarks": 176
+        },
+        {
+          "captured_at": "2026-05-19T18:48:42.763Z",
+          "likes": 1244,
+          "retweets": 596,
+          "replies": 82,
+          "quotes": 29,
+          "views": 159425,
+          "bookmarks": 176
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0RYCFWZXNRSGXP9G",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2054215154976342506",
+      "account_handle": "washingtonpost",
+      "account_id": "2467791",
+      "posted_at": "2026-05-12T15:00:33.000Z",
+      "first_captured_at": "2026-05-19T18:46:07.878Z",
+      "last_seen_at": "2026-05-19T18:49:04.584Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/washingtonpost/status/2054215154976342506",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "The Trump administration’s deportation effort has led to the removal of an unusually high number of undocumented men who have lived in the U.S. for years, according to a Post analysis, upending the livelihoods and daily routines of scores of families. https://t.co/pHQt54pOOb",
+      "text_resolved": "The Trump administration’s deportation effort has led to the removal of an unusually high number of undocumented men who have lived in the U.S. for years, according to a Post analysis, upending the livelihoods and daily routines of scores of families. https://wapo.st/42uPxCo",
+      "lang": "en",
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/pHQt54pOOb",
+          "expanded": "https://wapo.st/42uPxCo",
+          "display": "wapo.st/42uPxCo"
+        }
+      ],
+      "media": [],
+      "like_count": 611,
+      "retweet_count": 78,
+      "reply_count": 1427,
+      "quote_count": 113,
+      "view_count": 548199,
+      "bookmark_count": 68,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T18:46:07.878Z",
+          "likes": 611,
+          "retweets": 78,
+          "replies": 1427,
+          "quotes": 113,
+          "views": 548196,
+          "bookmarks": 68
+        },
+        {
+          "captured_at": "2026-05-19T18:47:28.389Z",
+          "likes": 611,
+          "retweets": 78,
+          "replies": 1427,
+          "quotes": 113,
+          "views": 548197,
+          "bookmarks": 68
+        },
+        {
+          "captured_at": "2026-05-19T18:49:04.584Z",
+          "likes": 611,
+          "retweets": 78,
+          "replies": 1427,
+          "quotes": 113,
+          "views": 548199,
+          "bookmarks": 68
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0RYCFWZXNRSGXP9G",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2052742854817042736",
+      "account_handle": "washingtonpost",
+      "account_id": "2467791",
+      "posted_at": "2026-05-08T13:30:09.000Z",
+      "first_captured_at": "2026-05-19T18:47:33.574Z",
+      "last_seen_at": "2026-05-19T18:49:33.296Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/washingtonpost/status/2052742854817042736",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Immigrants are giving up their claims for humanitarian protection and opting to depart the U.S. in exponentially higher numbers under the Trump administration, according to court data obtained by the Vera Institute of Justice and shared with The Post. https://t.co/MVt9OwS3wS",
+      "text_resolved": "Immigrants are giving up their claims for humanitarian protection and opting to depart the U.S. in exponentially higher numbers under the Trump administration, according to court data obtained by the Vera Institute of Justice and shared with The Post. https://wapo.st/4wmKDVS",
+      "lang": "en",
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/MVt9OwS3wS",
+          "expanded": "https://wapo.st/4wmKDVS",
+          "display": "wapo.st/4wmKDVS"
+        }
+      ],
+      "media": [],
+      "like_count": 4889,
+      "retweet_count": 629,
+      "reply_count": 1789,
+      "quote_count": 312,
+      "view_count": 728649,
+      "bookmark_count": 316,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T18:47:33.574Z",
+          "likes": 4889,
+          "retweets": 629,
+          "replies": 1789,
+          "quotes": 312,
+          "views": 728648,
+          "bookmarks": 316
+        },
+        {
+          "captured_at": "2026-05-19T18:49:33.296Z",
+          "likes": 4889,
+          "retweets": 629,
+          "replies": 1789,
+          "quotes": 312,
+          "views": 728649,
+          "bookmarks": 316
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0RYCFWZXNRSGXP9G",
+      "schema_version": 1
+    }
+  ]
+}
