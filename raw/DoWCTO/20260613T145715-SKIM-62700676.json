@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145700Z-beac4950-DoWCTO",
+  "account_handle": "DoWCTO",
+  "captured_at": "2026-06-13T14:57:15.547Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APeteHegseth%20since%3A2026-04-01%20until%3A2026-06-13%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2054572571924861184",
+      "account_handle": "DoWCTO",
+      "account_id": "906438260",
+      "posted_at": "2026-05-13T14:40:47.000Z",
+      "first_captured_at": "2026-06-13T14:57:06.047Z",
+      "last_seen_at": "2026-06-13T14:57:06.047Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DoWCTO/status/2054572571924861184",
+      "tweet_type": "original",
+      "conversation_id": "2054572571924861184",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "The @DeptofWar has reached new framework agreements with a slate of disruptive new entrants to aggressively expand the United States military’s lethal cruise missile and hypersonic missile strike capabilities.\n \nLow-Cost Containerized Missiles (LCCM) Program:\n• Anduril\n• CoAspire\n• Leidos\n• Zone 5\nLow-Cost Hypersonic Missiles:\n• Castelion\n\nThis effort positions the Department to procure 10,000+ LCCMs over three years, starting in 2027. Once Castelion achieves testing and validation, the Department will award a multi-year contract for a minimum of 500 Blackbeard missiles annually, while seeking the necessary authorizations and appropriations for over 12,000 total missiles over five years.\n\nThese agreements will rapidly field effective and affordable kinetic mass for the Joint Force at scale, acting directly on the mandate from President Trump and Secretary Hegseth to strengthen America’s Arsenal of Freedom.",
+      "text_resolved": "The @DeptofWar has reached new framework agreements with a slate of disruptive new entrants to aggressively expand the United States military’s lethal cruise missile and hypersonic missile strike capabilities.\n \nLow-Cost Containerized Missiles (LCCM) Program:\n• Anduril\n• CoAspire\n• Leidos\n• Zone 5\nLow-Cost Hypersonic Missiles:\n• Castelion\n\nThis effort positions the Department to procure 10,000+ LCCMs over three years, starting in 2027. Once Castelion achieves testing and validation, the Department will award a multi-year contract for a minimum of 500 Blackbeard missiles annually, while seeking the necessary authorizations and appropriations for over 12,000 total missiles over five years.\n\nThese agreements will rapidly field effective and affordable kinetic mass for the Joint Force at scale, acting directly on the mandate from President Trump and Secretary Hegseth to strengthen America’s Arsenal of Freedom.",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DeptofWar"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2054572565503381504",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HINO3NwXkAAkD1q.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 960,
+          "height": 1200,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 2177,
+      "retweet_count": 512,
+      "reply_count": 149,
+      "quote_count": 41,
+      "view_count": 394541,
+      "bookmark_count": 244,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T14:57:06.047Z",
+          "likes": 2177,
+          "retweets": 512,
+          "replies": 149,
+          "quotes": 41,
+          "views": 394541,
+          "bookmarks": 244
+        }
+      ],
+      "author": {
+        "display_name": "Department of War CTO",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2065488436862005248/m8aK8uNj_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "The official account for the Office of the Under Secretary of War for Research and Engineering ⚙️🇺🇸",
+        "location": "The Pentagon, Washington, D.C.",
+        "url": "https://t.co/b69s3FlsRz",
+        "followers_count": 75210,
+        "friends_count": 806,
+        "statuses_count": 6047,
+        "account_created_at": "2012-10-26T17:34:36.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145700Z-beac4950",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145700Z-beac4950.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145700Z-beac4950.jsonl",
+    "source_handle": "PeteHegseth"
+  }
+}

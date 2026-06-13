@@ -134,6 +134,18 @@ for the `archive-media` workflow queue path, so core-account videos with
 missing media can be fetched by GitHub Actions in audit priority order without
 local video bandwidth.
 
+## Core quote-tweet index (`data/tags/core_quote_tweets.json`)
+
+`scripts.build_core_quote_index` joins every archived quote tweet against the
+set of archived `core` account tweets. It writes a JSON review artifact and a
+spreadsheet-friendly CSV at `data/tags/core_quote_tweets.csv`, with both the
+quote tweet and the quoted core tweet text, URLs, media metadata, engagement,
+and author/core account categories.
+
+The author summary is meant for neutral review of prolific quote-tweeters
+before drilling into any one outside account. `--focus-handle` can pin a handle
+into the summary even when the current capture has zero matching quote tweets.
+
 ## News-mentions sidecar (`data/tags/news_mentions.parquet`)
 
 `scripts.news_mentions` writes one row per scanned core tweet, keyed by

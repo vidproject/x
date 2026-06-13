@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T134627Z-b4cca96b-Southcom",
+  "account_handle": "Southcom",
+  "captured_at": "2026-06-13T13:46:49.362Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCG%20since%3A2021-09-01%20until%3A2021-10-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1441429920790429702",
+      "account_handle": "Southcom",
+      "account_id": "19667766",
+      "posted_at": "2021-09-24T15:50:48.000Z",
+      "first_captured_at": "2026-06-13T13:46:40.322Z",
+      "last_seen_at": "2026-06-13T13:46:40.322Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/Southcom/status/1441429920790429702",
+      "tweet_type": "original",
+      "conversation_id": "1441429920790429702",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Illegal, unreported &amp; unregulated fishing is among the top threats Latin American &amp; Caribbean leaders consistently raise in discussions with #SOUTHCOM. #IUUFishing erodes regional security &amp; stability. #IUU @GlobalFishWatch @USCG @WHAAsstSecty \n\nhttps://t.co/jwzWYjAwSG",
+      "text_resolved": "Illegal, unreported &amp; unregulated fishing is among the top threats Latin American &amp; Caribbean leaders consistently raise in discussions with #SOUTHCOM. #IUUFishing erodes regional security &amp; stability. #IUU @GlobalFishWatch @USCG @WHAAsstSecty \n\nhttps://apnews.com/article/china-oceans-overfishing-squid-294ff1e489589b2510cc806ec898c78f?utm_medium=AP_CorpComm&utm_source=Twitter&utm_campaign=SocialFlow",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "SOUTHCOM",
+        "IUUFishing",
+        "IUU"
+      ],
+      "mentions": [
+        "GlobalFishWatch",
+        "USCG",
+        "WHAAsstSecty"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/jwzWYjAwSG",
+          "expanded": "https://apnews.com/article/china-oceans-overfishing-squid-294ff1e489589b2510cc806ec898c78f?utm_medium=AP_CorpComm&utm_source=Twitter&utm_campaign=SocialFlow",
+          "display": "apnews.com/article/china-…"
+        }
+      ],
+      "card": null,
+      "media": [],
+      "like_count": 82,
+      "retweet_count": 36,
+      "reply_count": 6,
+      "quote_count": 1,
+      "view_count": null,
+      "bookmark_count": 5,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T13:46:40.322Z",
+          "likes": 82,
+          "retweets": 36,
+          "replies": 6,
+          "quotes": 1,
+          "views": null,
+          "bookmarks": 5
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Southern Command",
+        "avatar_url": "https://pbs.twimg.com/profile_images/877151729233661952/hnzLVuzj_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official account of SOUTHCOM. Oversees U.S. military activities in Latin America & Caribbean. RTs, follows & likes ≠ endorsement.",
+        "location": "Miami, Florida",
+        "url": "https://t.co/tmmQAqI2KX",
+        "followers_count": 729940,
+        "friends_count": 471,
+        "statuses_count": 13995,
+        "account_created_at": "2009-01-28T18:46:53.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T134627Z-b4cca96b",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T134627Z-b4cca96b.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T134627Z-b4cca96b.jsonl",
+    "source_handle": "USCG"
+  }
+}

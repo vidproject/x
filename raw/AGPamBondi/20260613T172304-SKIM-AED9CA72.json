@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T172246Z-db33ba92-AGPamBondi",
+  "account_handle": "AGPamBondi",
+  "captured_at": "2026-06-13T17:23:04.177Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ASaraCarterDC%20since%3A2026-01-01%20until%3A2026-04-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2034986548433715364",
+      "account_handle": "AGPamBondi",
+      "account_id": "1886531809284173824",
+      "posted_at": "2026-03-20T13:32:56.000Z",
+      "first_captured_at": "2026-06-13T17:22:54.351Z",
+      "last_seen_at": "2026-06-13T17:22:54.351Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/AGPamBondi/status/2034986548433715364",
+      "tweet_type": "original",
+      "conversation_id": "2034986548433715364",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Yesterday @thejusticedept indicted 5 Mexican nationals who were running a large-scale, secret meth lab in California — 3,000 pounds of meth seized.\n\nThey were here because of the prior administration’s dangerous open-border policies. Under @POTUS’s DOJ, they will go to prison.\n\nhttps://t.co/feHdnNvZKn",
+      "text_resolved": "Yesterday @thejusticedept indicted 5 Mexican nationals who were running a large-scale, secret meth lab in California — 3,000 pounds of meth seized.\n\nThey were here because of the prior administration’s dangerous open-border policies. Under @POTUS’s DOJ, they will go to prison.\n\nhttps://www.foxnews.com/us/five-mexican-nationals-indicted-massive-meth-lab-bust-uncovers-enormous-quantities-drugs.amp",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "thejusticedept",
+        "POTUS"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/feHdnNvZKn",
+          "expanded": "https://www.foxnews.com/us/five-mexican-nationals-indicted-massive-meth-lab-bust-uncovers-enormous-quantities-drugs.amp",
+          "display": "foxnews.com/us/five-mexica…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/feHdnNvZKn",
+        "vendor_url": "foxnews.com",
+        "title": "Five Mexican nationals indicted after massive meth lab bust uncovers enormous quantities of drugs",
+        "description": "Methamphetamine lab bust in Calaveras County leads to nearly 3,000 pounds seized and a federal indictment of five Mexican nationals on drug trafficking charges.",
+        "image_url": "https://pbs.twimg.com/card_img/2065428824158875648/saas2sgb?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 12773,
+      "retweet_count": 3885,
+      "reply_count": 1269,
+      "quote_count": 146,
+      "view_count": 226647,
+      "bookmark_count": 184,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:22:54.351Z",
+          "likes": 12773,
+          "retweets": 3885,
+          "replies": 1269,
+          "quotes": 146,
+          "views": 226647,
+          "bookmarks": 184
+        }
+      ],
+      "author": {
+        "display_name": "Attorney General Pamela Bondi",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1990087621532332032/7JXxdqpu_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "87th Attorney General serving under the leadership of @POTUS Trump 🇺🇸",
+        "location": "Washington, DC",
+        "url": "https://t.co/6BcXENpEaa",
+        "followers_count": 1160470,
+        "friends_count": 9,
+        "statuses_count": 511,
+        "account_created_at": "2025-02-03T21:47:12.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T172246Z-db33ba92",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T172246Z-db33ba92.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T172246Z-db33ba92.jsonl",
+    "source_handle": "SaraCarterDC"
+  }
+}

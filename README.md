@@ -207,6 +207,7 @@ Current sidecars:
 - `data/tags/audio_music.parquet`: ffmpeg-only audio stream/music-likelihood tags from `scripts/detect_audio_music.py`.
 - `data/tags/transcripts.parquet`: local, free speech-to-text of archived videos from `scripts/detect_audio_music.py`'s sibling `scripts/transcribe_audio.py` (optional `faster-whisper`; no API keys).
 - `data/tags/news_mentions.parquet`: exact X/Twitter status-URL mentions of core tweets in a local news article export from `scripts/news_mentions.py`.
+- `data/tags/core_quote_tweets.json` / `.csv`: archived quote tweets that target core-account tweets from `scripts.build_core_quote_index`.
 - `data/account_categories.json`: corpus-wide public figure / government / official categories from `scripts/build_account_categories.py`.
 - `config/tag_overrides.yaml`: editor-confirmed tags for cases the capture layer cannot prove from canonical fields alone.
 
@@ -241,6 +242,8 @@ External LLM review is intentionally kept outside this repository. Curated resul
 `scripts.build_core_video_audit` joins core-account videos against keyframes, OCR, audio, metadata vision, manual-review, and lexical tags. It writes `data/tags/core_video_audit.json` and `data/tags/core_video_audit.csv`, prioritized for produced-video and genre review (`genre:music-video`, `genre:dystopian`, `genre:war-movie`, `genre:utopian`, recruitment, advertisement, and PSA).
 
 The audit also emits queue files for GitHub-side recovery of core-account videos whose media is still missing: `data/tags/core_produced_missing_tweet_ids.txt` and `data/tags/core_produced_missing_media_ids.txt`. The files preserve audit priority order while the workflow caps each run, so the backlog drains through GitHub without using local bandwidth.
+
+`scripts.build_core_quote_index` builds a neutral review index of archived quote tweets that target core-account tweets. It writes `data/tags/core_quote_tweets.json` and `data/tags/core_quote_tweets.csv`, including an author summary and optional focus handles for targeted follow-up.
 
 ## News Mentions
 
@@ -280,6 +283,9 @@ extension
     scripts.build_core_video_audit
       data/tags/core_video_audit.json
       data/tags/core_video_audit.csv
+    scripts.build_core_quote_index
+      data/tags/core_quote_tweets.json
+      data/tags/core_quote_tweets.csv
     scripts.news_mentions
       data/tags/news_mentions.parquet
     scripts.tag_lexical
@@ -302,6 +308,7 @@ uv run python -m scripts.tag_image_ocr
 uv run python -m scripts.detect_audio_music
 uv run --group asr python -m scripts.transcribe_audio
 uv run python -m scripts.build_core_video_audit
+uv run python -m scripts.build_core_quote_index
 uv run python -m scripts.news_mentions --articles data/news/articles.jsonl
 npm run lint
 npm run typecheck
