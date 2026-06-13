@@ -1,0 +1,163 @@
+# Authoritative list of accounts the archive tracks.
+#
+# Each entry must declare a `category`, one of:
+#
+#   core           — Direct federal-agency / WH principal accounts. The
+#                    seed set this archive was built around.
+#   government     — Other federal agencies (StateDept, DOJgov, FBI, …).
+#                    Tracked, captured into per-handle parquets.
+#   officials      — Federal executive branch officials in their personal
+#                    capacity (SecRubio, AGPamBondi, …).
+#   public_figures — Non-federal officials: senators, governors,
+#                    state-level executives, prominent advocates, etc.
+#
+# Untracked authors (people the tracked accounts reply to / quote / RT)
+# are captured into `data/_misc.parquet` and treated as the catch-all
+# category `public`. They are not listed here.
+#
+# The Firefox extension fetches this file from the configured repo at
+# startup and filters captured GraphQL payloads to tweets authored by
+# these handles (plus their reply/quote/retweet targets, which always
+# flow through to `public` regardless of who they are).
+accounts:
+  - handle: DHSgov
+    label: Department of Homeland Security
+    category: core
+  - handle: ICEgov
+    label: U.S. Immigration and Customs Enforcement
+    category: core
+  - handle: CBP
+    label: U.S. Customs and Border Protection
+    category: core
+  - handle: USCIS
+    label: U.S. Citizenship and Immigration Services
+    category: core
+  - handle: WhiteHouse
+    label: The White House
+    category: core
+  - handle: PressSec
+    label: White House Press Secretary
+    category: core
+  - handle: POTUS
+    label: President of the United States
+    category: core
+  - handle: USDOL
+    label: U.S. Department of Labor
+    category: core
+  - handle: RapidResponse47
+    label: Rapid Response 47
+    category: core
+  - handle: StephenM
+    label: Stephen Miller
+    category: core
+  - handle: GregoryKBovino
+    label: Gregory Bovino
+    category: core
+  - handle: RealTomHoman
+    label: Thomas D. Homan
+    category: core
+  - handle: SecMullinDHS
+    label: Secretary Markwayne Mullin
+    category: core
+  - handle: USBPChief
+    label: U.S. Border Patrol Chief
+    category: core
+  - handle: CBPAMO
+    label: CBP Air and Marine Operations
+    category: core
+  - handle: USCG
+    label: U.S. Coast Guard
+    category: core
+  - handle: USCISJoe
+    label: USCIS Director Joseph B. Edlow
+    category: core
+  - handle: Sonderling47
+    label: Acting Secretary Keith Sonderling
+    category: core
+  - handle: OFOEAC
+    label: CBP Office of Field Operations Executive Assistant Commissioner
+    category: core
+  - handle: USBPChiefELC
+    label: El Centro Sector Border Patrol
+    category: core
+  - handle: HSI_HQ
+    label: Homeland Security Investigations
+    category: government
+  - handle: TSA
+    label: Transportation Security Administration
+    category: government
+  - handle: fema
+    label: Federal Emergency Management Agency
+    category: government
+  - handle: Readygov
+    label: Ready.gov
+    category: government
+  - handle: SecretService
+    label: U.S. Secret Service
+    category: government
+  - handle: CISAgov
+    label: Cybersecurity and Infrastructure Security Agency
+    category: government
+  - handle: DHSBlueCampaign
+    label: DHS Blue Campaign
+    category: government
+  - handle: FPSDHS
+    label: Federal Protective Service
+    category: government
+  - handle: CBPCommissioner
+    label: CBP Commissioner Rodney Scott
+    category: officials
+  - handle: CBPJobs
+    label: CBP Jobs
+    category: government
+  - handle: ERO__Phoenix
+    label: ICE ERO Phoenix
+    category: government
+  - handle: EROLosAngeles
+    label: ICE ERO Los Angeles
+    category: government
+  - handle: EROBoston
+    label: ICE ERO Boston
+    category: government
+  - handle: ERONewark
+    label: ICE ERO Newark
+    category: government
+  - handle: ERONewOrleans
+    label: ICE ERO New Orleans
+    category: government
+  - handle: EROSaltLakeCity
+    label: ICE ERO Salt Lake City
+    category: government
+  - handle: DeptofWar
+    label: Department of War
+    category: government
+  - handle: SecWar
+    label: Secretary of War Pete Hegseth
+    category: officials
+  - handle: PeteHegseth
+    label: Pete Hegseth
+    category: officials
+  - handle: DOWResponse
+    label: DOW Rapid Response
+    category: government
+  - handle: StateDept
+    label: Department of State
+    category: government
+  - handle: SecRubio
+    label: Secretary Marco Rubio
+    category: officials
+  - handle: FBI
+    label: Federal Bureau of Investigation
+    category: government
+  - handle: FBIDirectorKash
+    label: FBI Director Kash Patel
+    category: officials
+  - handle: TheJusticeDept
+    label: U.S. Department of Justice
+    category: government
+  - handle: AGPamBondi
+    label: Attorney General Pamela Bondi
+    category: officials
+  - handle: ATFHQ
+    label: ATF Headquarters
+    category: government

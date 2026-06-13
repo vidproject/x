@@ -1,0 +1,410 @@
+# Immigration Social Media Archive
+
+A public, searchable archive of immigration-related posts from US federal X (Twitter) accounts — DHS, ICE, CBP, USCIS, the White House, and other agencies and principals.
+
+[Open the searchable archive](https://vidproject.github.io/x/)
+
+This repository contains the archive and the tooling around it: browser capture, raw JSON, canonical Parquet files, media archival, annotation sidecars, and the static viewer published through GitHub Pages.
+
+**How capture works.** A browser extension reads the public X web timeline as you view it, normalizes what the site serves, and commits raw JSON to this repo. There is no X API and no X Developer Agreement — capture only uses the public web data the browser already received. A Python pipeline (`scripts/*`) then turns that raw JSON into per-account Parquet files, copies attached media into GitHub Releases assets, derives optional tag sidecars (OCR, transcripts, vision descriptions, keyframes), and builds a static viewer.
+
+**The viewer** is a single-page site published to GitHub Pages. It lets anyone full-text search, filter, chart, and export the archive in the browser, with no backend.
+
+The viewer is published by `.github/workflows/pages.yml` on every push to `master` that touches `index.html`, `viewer/**`, `data/**`, `extension.zip`, or `extension-chrome.zip`. Repo settings need **Pages -> Build and deployment -> Source: GitHub Actions** for the workflow to actually deploy.
+
+The extension zips are rebuilt automatically by the `build-extension` workflow whenever the extension changes, committed back to the repo, and published by Pages:
+
+- Firefox: **[vidproject.github.io/x/extension.zip](https://vidproject.github.io/x/extension.zip)**
+- Chrome: **[vidproject.github.io/x/extension-chrome.zip](https://vidproject.github.io/x/extension-chrome.zip)**
+
+## Scope
+
+The tracked accounts below are generated from `config/accounts.yaml` by `scripts/update_readme.py`. Do not edit inside the markers.
+
+<!-- CORE_ACCOUNTS:START -->
+
+**Federal agencies and White House principals:**
+
+- `@DHSgov` — Department of Homeland Security
+- `@ICEgov` — U.S. Immigration and Customs Enforcement
+- `@CBP` — U.S. Customs and Border Protection
+- `@USCIS` — U.S. Citizenship and Immigration Services
+- `@WhiteHouse` — The White House
+- `@PressSec` — White House Press Secretary
+- `@POTUS` — President of the United States
+- `@USDOL` — U.S. Department of Labor
+- `@RapidResponse47` — Rapid Response 47
+- `@StephenM` — Stephen Miller
+- `@GregoryKBovino` — Gregory Bovino
+- `@RealTomHoman` — Thomas D. Homan
+- `@SecMullinDHS` — Secretary Markwayne Mullin
+- `@USBPChief` — U.S. Border Patrol Chief
+- `@CBPAMO` — CBP Air and Marine Operations
+- `@USCG` — U.S. Coast Guard
+- `@USCISJoe` — USCIS Director Joseph B. Edlow
+- `@Sonderling47` — Acting Secretary Keith Sonderling
+- `@OFOEAC` — CBP Office of Field Operations Executive Assistant Commissioner
+- `@USBPChiefELC` — El Centro Sector Border Patrol
+
+**Other government accounts:**
+
+- `@HSI_HQ` — Homeland Security Investigations
+- `@TSA` — Transportation Security Administration
+- `@fema` — Federal Emergency Management Agency
+- `@Readygov` — Ready.gov
+- `@SecretService` — U.S. Secret Service
+- `@CISAgov` — Cybersecurity and Infrastructure Security Agency
+- `@DHSBlueCampaign` — DHS Blue Campaign
+- `@FPSDHS` — Federal Protective Service
+- `@CBPJobs` — CBP Jobs
+- `@ERO__Phoenix` — ICE ERO Phoenix
+- `@EROLosAngeles` — ICE ERO Los Angeles
+- `@EROBoston` — ICE ERO Boston
+- `@ERONewark` — ICE ERO Newark
+- `@ERONewOrleans` — ICE ERO New Orleans
+- `@EROSaltLakeCity` — ICE ERO Salt Lake City
+- `@DeptofWar` — Department of War
+- `@DOWResponse` — DOW Rapid Response
+- `@StateDept` — Department of State
+- `@FBI` — Federal Bureau of Investigation
+- `@TheJusticeDept` — U.S. Department of Justice
+- `@ATFHQ` — ATF Headquarters
+
+**Federal officials (personal accounts):**
+
+- `@CBPCommissioner` — CBP Commissioner Rodney Scott
+- `@SecWar` — Secretary of War Pete Hegseth
+- `@PeteHegseth` — Pete Hegseth
+- `@SecRubio` — Secretary Marco Rubio
+- `@FBIDirectorKash` — FBI Director Kash Patel
+- `@AGPamBondi` — Attorney General Pamela Bondi
+
+The archive also preserves the replies, quotes, retweets, and public accounts that appear in captured threads (consolidated into `data/_misc.parquet`).
+
+<!-- CORE_ACCOUNTS:END -->
+
+## Viewer
+
+The viewer starts with `data/catalog.parquet`, a lightweight full-archive catalog for global search, tags, filters, charts, and the date histogram without downloading every full account Parquet. `data/catalog.json` is only the tiny summary/poster map. Full tweet records hydrate lazily as rows come into view, are opened, or are reached from a shared link. Click the lightning button only to download every account Parquet listed in `data/manifest.json` for fast full-record browsing. Search runs in the browser. Filters support account, account category, date, tweet type, media type, tag, and column values. The URL updates with the current view, so filtered pages can be shared.
+
+Search covers tweet text, resolved links, handles, mentions, tags, and media descriptions. CSV export uses the currently filtered rows.
+
+GitHub Pages publishes the viewer and extension zips through `.github/workflows/pages.yml` when `index.html`, `viewer/**`, `data/**`, `extension.zip`, or `extension-chrome.zip` changes. Repo settings must use:
+
+`Pages -> Build and deployment -> Source: GitHub Actions`
+
+## Browser Extension
+
+The extension captures public X posts and commits structured JSON to this repository.
+
+### Firefox
+
+1. Download the latest auto-built [`extension.zip`](https://vidproject.github.io/x/extension.zip) and unzip it.
+2. In Firefox, open `about:debugging`.
+3. Select `This Firefox`.
+4. Select `Load Temporary Add-on`.
+5. Pick `manifest.json` from the unzipped extension folder.
+
+### Chrome
+
+1. Download the latest auto-built [`extension-chrome.zip`](https://vidproject.github.io/x/extension-chrome.zip) and unzip it.
+2. In Chrome, open `chrome://extensions`.
+3. Enable `Developer mode`.
+4. Select `Load unpacked`.
+5. Pick the unzipped extension folder.
+
+The sidebar includes a **Low-bandwidth X tabs** option. When enabled, the
+extension blocks images, video/audio resources, fonts, and known X/Twitter
+video chunk URLs inside open X/Twitter tabs while leaving GraphQL/API capture
+and background archive downloads alone.
+
+After loading either build:
+
+1. Open the extension sidebar.
+2. Open `Settings`.
+3. Paste a fine-grained GitHub PAT.
+4. Visit a tracked account on `x.com`, for example <https://x.com/DHSgov>.
+
+Temporary Firefox extensions disappear when Firefox closes. Reinstalling takes about ten seconds.
+
+If you reload the extension while X tabs are open, those tabs may keep old content scripts. The extension does reinject its page hook on wake, but the cleanest test path is to close X tabs, reload the extension, and let `Capture now` open a fresh tab.
+
+## Low-Overhead Skim Shell
+
+For account skims where the extension UI is more browser than you need, the repo
+also includes a standalone Chrome/Edge shell that talks directly to the Chrome
+DevTools Protocol. It opens X with a persistent local profile, blocks images,
+video/audio, fonts, stylesheets, and common tracking hosts by default, scrolls
+the target page, clicks visible retry prompts, and writes the served X GraphQL
+responses to local JSONL.
+
+First run it visibly and log in to X if the profile is new:
+
+```bash
+npm run skim:x -- --login-browser
+```
+
+Then run skims against profile pages, media tabs, or reply views:
+
+```bash
+npm run skim:x -- --handle DHSgov --seconds 180 --scrolls 80
+npm run skim:x -- --url https://x.com/DHSgov/with_replies --seconds 240
+npm run skim:x -- --url https://x.com/DHSgov/with_replies --seek-year 2025 --seconds 600
+npm run skim:x -- --url https://x.com/DHSgov/media --metadata-only
+```
+
+If the CDP/manual shell itself is needed for inspection, use
+`--manual --allow-styles`; it captures network traffic but does not scroll or
+click retry prompts.
+
+Output goes under `.skim/raw/` and the browser profile lives under
+`.skim/profile/`; both are ignored by git. The JSONL is intentionally separate
+from canonical `raw/` captures because it preserves raw GraphQL responses and
+candidate tweet/media IDs rather than extension-normalized tweet envelopes. Use
+it for low-bandwidth discovery, gap checks, and deciding what the normal archive
+collector should fetch next.
+
+By default the skim shell is stricter than the extension's low-bandwidth mode.
+If a page needs a blocked class of asset to paginate, selectively relax it:
+
+```bash
+npm run skim:x -- --handle DHSgov --allow-styles
+npm run skim:x -- --handle DHSgov --allow-images --metadata-only
+```
+
+## PAT
+
+Use a fine-grained Personal Access Token. Select only this repository.
+
+| Permission          | Access         |
+| ------------------- | -------------- |
+| Repository Contents | Read and write |
+| Repository Metadata | Read           |
+
+Create it at <https://github.com/settings/personal-access-tokens/new>.
+
+The PAT is stored in `browser.storage.local`. Anyone with filesystem access to the Firefox profile can read it. Do not use a classic `repo` token.
+
+## Capture Notes
+
+The sidebar can auto-scroll open X tabs. This works around profile tabs that stop paginating unless the page keeps moving. The default cadence is 6 seconds.
+
+Long-form tweets often appear in timeline responses as a 280-character head plus a `show more` link. The normalizer marks those rows with `is_truncated=true` and queues detail-page refetch. The sidebar has a refetch button for that queue.
+
+Media crawl follows attached media from the captured tweet data and stores archived assets in GitHub Releases. Large handles are sharded across per-handle releases: `media-<handle>` first, then `media-<handle>-0002`, `media-<handle>-0003`, and so on. The canonical Parquet row records the Release URL only after upload succeeds or after the asset is found in a real release listing.
+
+## Tags
+
+Tags are downstream annotations. They are not written into the canonical tweet Parquets.
+
+Current sidecars:
+
+- `data/tags/lexical.parquet`: regex and structural tags from `scripts/tag_lexical.py`.
+- `data/tags/media_vision.parquet`: media descriptions from `scripts/describe_media.py`.
+- `data/tags/keyframes.parquet`: video keyframe metadata and tiny poster thumbnails from `scripts/extract_video_frames.py`.
+- `data/tags/photo_thumbnails.parquet`: tiny downscaled photo thumbnails (under `data/thumbnails/photo/`) from `scripts/extract_photo_thumbnails.py`, so archived photos are locally inspectable for `media:needs-vision` review.
+- `data/tags/image_ocr.parquet`: Tesseract OCR text from archived photos and extracted video keyframes from `scripts/tag_image_ocr.py`.
+- `data/tags/audio_music.parquet`: ffmpeg-only audio stream/music-likelihood tags from `scripts/detect_audio_music.py`.
+- `data/tags/transcripts.parquet`: local, free speech-to-text of archived videos from `scripts/detect_audio_music.py`'s sibling `scripts/transcribe_audio.py` (optional `faster-whisper`; no API keys).
+- `data/tags/news_mentions.parquet`: exact X/Twitter status-URL mentions of core tweets in a local news article export from `scripts/news_mentions.py`.
+- `data/account_categories.json`: corpus-wide public figure / government / official categories from `scripts/build_account_categories.py`.
+- `config/tag_overrides.yaml`: editor-confirmed tags for cases the capture layer cannot prove from canonical fields alone.
+
+The viewer joins sidecars by `tweet_id`. Missing sidecars are tolerated.
+
+Tag namespaces use the form `namespace:slug`. The namespace is the broad category. The slug is the subtype. The viewer groups tag filters by namespace so a user can filter whole categories or specific subtypes.
+
+The immigration-reporting tag is `action:report-immigrants`. Generic non-immigration reporting can use other `action:report-*` tags later.
+
+## Media Recognition
+
+`scripts.describe_media` is the first recognition layer. It is deliberately cheap. It uses archived media metadata, source alt text, dimensions, duration, byte count, tweet context, and curated manual media-review observations. It does not infer visual content from pixels unless a reviewed observation or later OCR/vision sidecar supplies that evidence.
+
+Each media row carries cache and provenance fields: `input_hash`, `model`, `model_version`, `prompt_hash`, `confidence`, `cost_estimate_usd`, `status`, `source_fields`, and `error`.
+
+This gives later OCR, transcript, keyframe, CLIP, audio, or external analysis jobs a stable place to write results without changing canonical capture data. Items that need deeper inspection get tentative `media:needs-vision`.
+
+`scripts.extract_video_frames` pulls bounded keyframes from archived videos and also writes a tiny 96px JPEG poster under `data/thumbnails/video/` for the viewer. The table uses those posters before falling back to larger frame paths, so video thumbnails are automatic and cheap to load.
+
+`scripts.tag_image_ocr` is the first true pixel-reading image layer. It OCRs archived photos and the keyframes extracted in the same workflow run, then `scripts.tag_lexical` imports that recovered text so image-only slogans, agency names, religious language, and other text-overlay tags are searchable and filterable.
+
+`scripts.detect_audio_music` is the first audio pass. It uses ffprobe/ffmpeg only: detect whether an archived video has audio, decode a short mono sample, compute simple energy/zero-crossing features, and emit conservative `audio:has-audio`, `audio:no-audio`, `audio:silent`, and tentative `audio:music-likely` tags. The lexical layer still uses video text and direct replies as additional cheap context when people explicitly reference the song, soundtrack, or background music.
+
+`scripts.transcribe_audio` is the first true speech layer (Layer 3c). It fetches each archived video, decodes a bounded mono sample with ffmpeg, and transcribes it with a local, free recognizer (`faster-whisper`) — no paid API and no credentials. The recognizer is optional: it is imported lazily and the run records `skipped-no-asr` when it is not installed (`uv sync --group asr` installs it; CI runs it in `archive-media`). `scripts.tag_lexical` folds the recovered transcript text into its regex pass exactly like OCR, so spoken slogans, agency names, and other speech become searchable and taggable.
+
+`media:ai-generated` is emitted by `scripts.tag_lexical` from explicit, high-precision textual signals (e.g. "AI-generated", "deepfake", "made with AI", "Midjourney", "synthetic media") in the tweet body, OCR, or transcript. It is tentative by default — per `docs/TAGGING.md` the tag is only firm with C2PA/watermark provenance, which this layer does not have — and bare "AI" mentions deliberately do not fire it.
+
+`data/tags/produced_likely_unprocessed_{tweet,media}_ids.txt` lists archived videos that carry a produced/genre text signal but have no keyframes yet, so keyframe coverage can be widened for the likely-produced set without processing the whole archive. Run `uv run python -m scripts.extract_video_frames --tweet-ids-file data/tags/produced_likely_unprocessed_tweet_ids.txt` (or dispatch `archive-media` with it) to extract just those.
+
+External LLM review is intentionally kept outside this repository. Curated results can be folded back through `data/tags/manual_media_review_queue.json` or another reviewed sidecar without storing provider credentials or running paid model calls from CI.
+
+`scripts.build_core_video_audit` joins core-account videos against keyframes, OCR, audio, metadata vision, manual-review, and lexical tags. It writes `data/tags/core_video_audit.json` and `data/tags/core_video_audit.csv`, prioritized for produced-video and genre review (`genre:music-video`, `genre:dystopian`, `genre:war-movie`, `genre:utopian`, recruitment, advertisement, and PSA).
+
+The audit also emits queue files for GitHub-side recovery of core-account videos whose media is still missing: `data/tags/core_produced_missing_tweet_ids.txt` and `data/tags/core_produced_missing_media_ids.txt`. The files preserve audit priority order while the workflow caps each run, so the backlog drains through GitHub without using local bandwidth.
+
+## News Mentions
+
+`scripts.news_mentions` checks whether archived core tweets are cited by news coverage using a deterministic local article export when one exists. It accepts JSON, JSONL, or CSV records with fields such as `url`, `title`, `description`, `body`, `content`, or `text`, then matches exact `x.com/<handle>/status/<tweet_id>`, `twitter.com/<handle>/status/<tweet_id>`, and `x.com/i/web/status/<tweet_id>` URLs. Tests and normal offline runs can still use `--discover-web none` to avoid network. For cheap discovery, run `uv run python -m scripts.news_mentions --discover-web google-news-rss --max-web-tweets 100 --matched-only`; this checks Google News RSS only for core tweets missing from the local article export. Use `--discover-web gdelt` to query GDELT instead.
+
+The ingest workflow now defaults to `google-news-rss`, capped by `news_max_web_tweets`, and uses `data/news/articles.jsonl` as an optional first-pass corpus. Mentioned tweets receive `news:mentioned` and `news:covered` tags that the viewer loads like other optional sidecars.
+
+## Pipeline
+
+```text
+extension
+  raw/*.json
+    scripts.ingest
+      data/*.parquet
+      data/manifest.json
+    scripts.tag_lexical
+      data/tags/lexical.parquet
+    scripts.build_account_categories
+      data/account_categories.json
+    scripts.archive_media
+      GitHub Release asset shards
+      data/*.parquet media URLs
+    scripts.describe_media
+      data/tags/media_vision.parquet
+    scripts.extract_video_frames
+      data/tags/keyframes.parquet
+      data/thumbnails/video/*.jpg
+    scripts.extract_photo_thumbnails
+      data/tags/photo_thumbnails.parquet
+      data/thumbnails/photo/*.jpg
+    scripts.tag_image_ocr
+      data/tags/image_ocr.parquet
+    scripts.detect_audio_music
+      data/tags/audio_music.parquet
+    scripts.transcribe_audio
+      data/tags/transcripts.parquet
+    scripts.build_core_video_audit
+      data/tags/core_video_audit.json
+      data/tags/core_video_audit.csv
+    scripts.news_mentions
+      data/tags/news_mentions.parquet
+    scripts.tag_lexical
+      data/tags/lexical.parquet with media/audio-description tags
+    GitHub Pages
+      viewer
+```
+
+Main commands:
+
+```bash
+uv run python -m scripts.ingest
+uv run python -m scripts.tag_lexical
+uv run python -m scripts.build_account_categories
+uv run python -m scripts.archive_media
+uv run python -m scripts.describe_media
+uv run python -m scripts.extract_video_frames
+uv run python -m scripts.extract_photo_thumbnails
+uv run python -m scripts.tag_image_ocr
+uv run python -m scripts.detect_audio_music
+uv run --group asr python -m scripts.transcribe_audio
+uv run python -m scripts.build_core_video_audit
+uv run python -m scripts.news_mentions --articles data/news/articles.jsonl
+npm run lint
+npm run typecheck
+```
+
+## Coverage
+
+This block is regenerated by `scripts/update_readme.py` after ingest. Do not edit inside the markers.
+
+<!-- COVERAGE:START -->
+
+| Handle | Label | Tweets | First post | Latest post | Latest capture | Media | Videos |
+| ------ | ----- | -----: | ---------- | ----------- | -------------- | ----: | -----: |
+| `@DHSgov` | Department of Homeland Security | 5,423 | 2016-01-11 | 2026-05-30 | 2026-06-11 | 3,387 | 778 |
+| `@ICEgov` | U.S. Immigration and Customs Enforcement | 1,919 | 2016-03-28 | 2026-05-30 | 2026-06-11 | 1,646 | 309 |
+| `@CBP` | U.S. Customs and Border Protection | 1,270 | 2016-03-21 | 2026-05-29 | 2026-06-11 | 1,192 | 167 |
+| `@USCIS` | U.S. Citizenship and Immigration Services | 1,214 | 2021-04-12 | 2026-06-02 | 2026-06-11 | 1,105 | 95 |
+| `@WhiteHouse` | The White House | 1,443 | 2025-01-30 | 2026-06-10 | 2026-06-11 | 1,340 | 335 |
+| `@PressSec` | White House Press Secretary | 462 | 2025-01-24 | 2026-05-29 | 2026-06-11 | 105 | 34 |
+| `@POTUS` | President of the United States | 164 | 2025-01-20 | 2026-05-29 | 2026-05-30 | 114 | 36 |
+| `@USDOL` | U.S. Department of Labor | 1,016 | 2025-01-14 | 2026-05-30 | 2026-06-11 | 715 | 94 |
+| `@RapidResponse47` | Rapid Response 47 | 1,393 | 2025-01-31 | 2026-05-30 | 2026-06-11 | 1,274 | 1,027 |
+| `@StephenM` | Stephen Miller | 1,221 | 2021-01-20 | 2026-05-30 | 2026-05-30 | 100 | 26 |
+| `@GregoryKBovino` | Gregory Bovino | 1,349 | 2026-04-20 | 2026-05-30 | 2026-05-30 | 26 | 6 |
+| `@RealTomHoman` | Thomas D. Homan | 551 | 2023-01-21 | 2026-05-12 | 2026-05-30 | 178 | 97 |
+| `@SecMullinDHS` | Secretary Markwayne Mullin | 72 | 2026-03-24 | 2026-05-30 | 2026-05-30 | 70 | 23 |
+| `@USBPChief` | U.S. Border Patrol Chief | 61 | 2018-11-26 | 2026-05-14 | 2026-05-26 | 75 | 21 |
+| `@CBPAMO` | CBP Air and Marine Operations | 28 | 2025-01-29 | 2026-05-29 | 2026-05-30 | 40 | 14 |
+| `@USCG` | U.S. Coast Guard | 528 | 2016-03-21 | 2026-05-22 | 2026-05-26 | 916 | 179 |
+| `@USCISJoe` | USCIS Director Joseph B. Edlow | 28 | 2025-07-23 | 2026-05-22 | 2026-06-11 | 21 | 13 |
+| `@Sonderling47` | Acting Secretary Keith Sonderling | 74 | 2025-03-14 | 2026-05-30 | 2026-06-11 | 64 | 25 |
+| `@OFOEAC` | CBP Office of Field Operations Executive Assistant Commissioner | 44 | 2025-10-14 | 2026-05-25 | 2026-05-26 | 62 | 18 |
+| `@USBPChiefELC` | El Centro Sector Border Patrol | 30 | 2025-06-25 | 2026-05-26 | 2026-05-30 | 32 | 6 |
+| `@HSI_HQ` | Homeland Security Investigations | 24 | 2022-08-15 | 2026-05-25 | 2026-05-26 | 15 | 1 |
+| `@TSA` | Transportation Security Administration | 113 | 2016-03-28 | 2026-05-26 | 2026-05-26 | 107 | 21 |
+| `@fema` | Federal Emergency Management Agency | 689 | 2018-08-21 | 2026-05-25 | 2026-05-26 | 869 | 43 |
+| `@Readygov` | Ready.gov | 1 | 2022-03-21 | 2022-03-21 | 2026-05-21 | 1 | 0 |
+| `@SecretService` | U.S. Secret Service | 35 | 2016-07-25 | 2026-05-25 | 2026-05-26 | 44 | 11 |
+| `@CISAgov` | Cybersecurity and Infrastructure Security Agency | 38 | 2018-10-17 | 2026-05-23 | 2026-05-26 | 33 | 1 |
+| `@DHSBlueCampaign` | DHS Blue Campaign | 26 | 2018-08-30 | 2026-02-17 | 2026-05-26 | 33 | 1 |
+| `@FPSDHS` | Federal Protective Service | 1 | 2026-05-11 | 2026-05-11 | 2026-05-21 | 1 | 0 |
+| `@CBPCommissioner` | CBP Commissioner Rodney Scott | 28 | 2025-10-01 | 2026-05-28 | 2026-05-30 | 23 | 9 |
+| `@CBPJobs` | CBP Jobs | 39 | 2022-01-07 | 2026-05-28 | 2026-05-30 | 39 | 6 |
+| `@ERO__Phoenix` | ICE ERO Phoenix | 3 | 2025-03-08 | 2025-04-15 | 2026-05-22 | 3 | 0 |
+| `@EROLosAngeles` | ICE ERO Los Angeles | 21 | 2025-01-29 | 2026-04-29 | 2026-05-22 | 21 | 0 |
+| `@EROBoston` | ICE ERO Boston | 39 | 2025-01-08 | 2026-05-13 | 2026-05-22 | 39 | 0 |
+| `@ERONewark` | ICE ERO Newark | 13 | 2025-02-21 | 2026-05-11 | 2026-05-22 | 12 | 0 |
+| `@ERONewOrleans` | ICE ERO New Orleans | 41 | 2025-04-22 | 2026-05-13 | 2026-05-22 | 39 | 0 |
+| `@EROSaltLakeCity` | ICE ERO Salt Lake City | 29 | 2025-01-14 | 2026-04-07 | 2026-05-22 | 31 | 0 |
+| `@DeptofWar` | Department of War | 661 | 2016-07-25 | 2026-05-25 | 2026-05-26 | 1,127 | 300 |
+| `@SecWar` | Secretary of War Pete Hegseth | 49 | 2025-02-25 | 2026-05-30 | 2026-05-30 | 86 | 31 |
+| `@PeteHegseth` | Pete Hegseth | 8 | 2026-02-17 | 2026-05-16 | 2026-05-20 | 2 | 0 |
+| `@DOWResponse` | DOW Rapid Response | 415 | 2025-04-28 | 2026-05-25 | 2026-05-26 | 426 | 363 |
+| `@StateDept` | Department of State | 659 | 2025-02-23 | 2026-05-26 | 2026-05-26 | 670 | 557 |
+| `@SecRubio` | Secretary Marco Rubio | 363 | 2025-01-22 | 2026-05-26 | 2026-05-26 | 462 | 56 |
+| `@FBI` | Federal Bureau of Investigation | 657 | 2018-10-25 | 2026-05-26 | 2026-05-26 | 834 | 40 |
+| `@FBIDirectorKash` | FBI Director Kash Patel | 13 | 2026-05-08 | 2026-05-26 | 2026-05-26 | 8 | 3 |
+| `@TheJusticeDept` | U.S. Department of Justice | 659 | 2024-08-06 | 2026-05-25 | 2026-05-26 | 780 | 143 |
+| `@AGPamBondi` | Attorney General Pamela Bondi | 9 | 2025-12-29 | 2026-03-26 | 2026-06-11 | 0 | 0 |
+| `@ATFHQ` | ATF Headquarters | 1 | 2026-05-12 | 2026-05-12 | 2026-05-21 | 1 | 0 |
+| `@_misc` | Miscellaneous (replies / quotes / retweets of non-tracked accounts) | 6,300 | 2016-01-13 | 2026-06-09 | 2026-06-11 | 2,970 | 752 |
+
+_Generated 2026-06-11T14:47:00Z._
+
+<!-- COVERAGE:END -->
+
+### Coverage gaps
+
+The block below is regenerated from the data by `scripts/update_readme.py`. Do not edit inside the markers.
+
+<!-- GAPS:START -->
+
+<details>
+<summary>Known coverage gaps and caveats</summary>
+
+- **Media not yet archived to GitHub Releases:** 9,752 of 21,138 media items are still `pending` (11,385 archived, 54%). Until a media item is uploaded its row keeps only the original (expiring) X CDN URL.
+- **Failed media archives:** 1 media items have `archive_status = failed` after retries and may be unrecoverable.
+- **Long-form tweets awaiting full text:** 114 rows are `is_truncated` (captured as a 280-character head) and queued for detail-page refetch.
+- **Tweets X no longer serves:** 2 archived rows are now flagged unavailable (suspended, deleted, or otherwise removed upstream); the captured copy is retained.
+- **Deletions detected after capture:** 2,514 tweets were seen live and later detected as deleted; the archived copy is kept.
+- **Accounts with no recent posts (>30d):** `@Readygov` (1542d), `@ERO__Phoenix` (421d), `@DHSBlueCampaign` (113d), `@AGPamBondi` (77d), `@EROSaltLakeCity` (64d), and 4 more. These may be quiet accounts or stalled captures.
+- **Accounts with archived tweets but no media yet:** `@AGPamBondi`.
+
+_Generated 2026-06-11T14:47:00Z._
+
+</details>
+
+<!-- GAPS:END -->
+
+## Data Rules
+
+- Canonical Parquet rows mirror what X served at capture time.
+- Parse failures go to `raw/_quarantine/`.
+- Parquet rewrites are atomic.
+- Release uploads must succeed, or the asset must be found in a release listing, before a row records the asset URL.
+- Credentials stay out of the repo.
+- Annotation is reversible and separate from capture.
+
+## Documentation
+
+- [Data schema](docs/SCHEMA.md)
+- [Tagging system](docs/TAGGING.md)
+
+## License
+
+Property of the University of California.

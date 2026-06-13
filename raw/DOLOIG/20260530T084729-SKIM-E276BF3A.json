@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "profile-skim-20260530T084713Z-cf44a712-DOLOIG",
+  "account_handle": "DOLOIG",
+  "captured_at": "2026-05-30T08:47:29.418Z",
+  "endpoint": "UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/USDOL",
+  "tweets": [
+    {
+      "tweet_id": "2060444536405373281",
+      "account_handle": "DOLOIG",
+      "account_id": "2915836895",
+      "posted_at": "2026-05-29T19:33:53.000Z",
+      "first_captured_at": "2026-05-30T08:47:21.091Z",
+      "last_seen_at": "2026-05-30T08:47:21.091Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DOLOIG/status/2060444536405373281",
+      "tweet_type": "original",
+      "conversation_id": "2060444536405373281",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "🚨 WATCH: @USLaborIG recaps the fraudsters caught and the major cases closed this week — breaking it all down for Fraud Friday. 🇺🇸\n\n@WHFraudTF @VP @POTUS https://t.co/FDIaROpdSu",
+      "text_resolved": "🚨 WATCH: @USLaborIG recaps the fraudsters caught and the major cases closed this week — breaking it all down for Fraud Friday. 🇺🇸\n\n@WHFraudTF @VP @POTUS https://t.co/FDIaROpdSu",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": "Washington, DC",
+      "hashtags": [],
+      "mentions": [
+        "USLaborIG",
+        "WHFraudTF",
+        "VP",
+        "POTUS"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_2060437720271364102",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2060437720271364102/vid/avc1/1280x720/iBULOS0CUrGrW8_z.mp4?tag=14",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 158.725,
+          "width": 1920,
+          "height": 1080,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1027,
+      "retweet_count": 267,
+      "reply_count": 37,
+      "quote_count": 7,
+      "view_count": 34696,
+      "bookmark_count": 60,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-30T08:47:21.091Z",
+          "likes": 1027,
+          "retweets": 267,
+          "replies": 37,
+          "quotes": 7,
+          "views": 34696,
+          "bookmarks": 60
+        }
+      ],
+      "author": {
+        "display_name": "DOL OIG",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1159103636431151105/hIpvJjea_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Official X account for the U.S. Department of Labor Office of Inspector General. Please contact us via LaborOIGinfo@oig.dol.gov or 800-347-3756.",
+        "location": "Washington, DC",
+        "url": "https://t.co/3RGbZB21iq",
+        "followers_count": 13000,
+        "friends_count": 209,
+        "statuses_count": 3201,
+        "account_created_at": "2014-12-11T17:02:47.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "profile-skim-20260530T084713Z-cf44a712",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/usdol-20260530T084713Z-cf44a712.summary.json",
+    "jsonl": ".skim/raw/usdol-20260530T084713Z-cf44a712.jsonl",
+    "source_handle": "USDOL"
+  }
+}
