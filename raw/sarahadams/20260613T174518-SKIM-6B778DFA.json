@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T174501Z-d8243699-sarahadams",
+  "account_handle": "sarahadams",
+  "captured_at": "2026-06-13T17:45:18.540Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AIntelStream%20since%3A2025-10-01%20until%3A2026-01-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2001415361871151415",
+      "account_handle": "sarahadams",
+      "account_id": "16917630",
+      "posted_at": "2025-12-17T22:13:01.000Z",
+      "first_captured_at": "2026-06-13T17:45:08.234Z",
+      "last_seen_at": "2026-06-13T17:45:08.234Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/sarahadams/status/2001415361871151415",
+      "tweet_type": "quote",
+      "conversation_id": "2001415361871151415",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": "1999136087558566088",
+      "retweeted_tweet_id": null,
+      "text": "Why was $85 million delivered to the Taliban today when @RepLuna told us just last week that @SecRubio cut off the funding? I told you they would move the money through counterterrorism channels instead, this ended nothing, it was a lie to shut the public up. Don’t let them fund terrorism, not with your money!",
+      "text_resolved": "Why was $85 million delivered to the Taliban today when @RepLuna told us just last week that @SecRubio cut off the funding? I told you they would move the money through counterterrorism channels instead, this ended nothing, it was a lie to shut the public up. Don’t let them fund terrorism, not with your money!",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "RepLuna",
+        "SecRubio"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [],
+      "like_count": 10357,
+      "retweet_count": 5100,
+      "reply_count": 403,
+      "quote_count": 253,
+      "view_count": 142589,
+      "bookmark_count": 300,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:45:08.234Z",
+          "likes": 10357,
+          "retweets": 5100,
+          "replies": 403,
+          "quotes": 253,
+          "views": 142589,
+          "bookmarks": 300
+        }
+      ],
+      "author": {
+        "display_name": "Sarah Adams",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1612647351100792833/XBLo7YJY_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "CIA Alum 🥷 Facts over Narratives 10% Humanitarian | 90% Warlord — Host, @The_Watch_Floor Author, Benghazi: Know Thy Enemy",
+        "location": "Florida, USA",
+        "url": "https://t.co/tqDu7Fx5sO",
+        "followers_count": 404138,
+        "friends_count": 8518,
+        "statuses_count": 40074,
+        "account_created_at": "2008-10-23T02:00:07.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T174501Z-d8243699",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T174501Z-d8243699.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T174501Z-d8243699.jsonl",
+    "source_handle": "IntelStream"
+  }
+}

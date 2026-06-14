@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T172229Z-a9155a7e-RapidResponse47",
+  "account_handle": "RapidResponse47",
+  "captured_at": "2026-06-13T17:22:44.611Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AGenFlynn%20since%3A2025-07-01%20until%3A2025-10-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1971762700410876398",
+      "account_handle": "RapidResponse47",
+      "account_id": "1881451105454002176",
+      "posted_at": "2025-09-27T02:23:56.000Z",
+      "first_captured_at": "2026-06-13T17:22:35.514Z",
+      "last_seen_at": "2026-06-13T17:22:35.514Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/RapidResponse47/status/1971762700410876398",
+      "tweet_type": "original",
+      "conversation_id": "1971762700410876398",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": ".@StephenM: Comey, Clapper, Brennan, Obama, Monaco, all conspired together to try to sabotage the democratic institutions of this country. I cannot find words harsh enough to condemn the conduct of these conspirators — these insurrectionists. https://t.co/wb1Ck9qXeI",
+      "text_resolved": ".@StephenM: Comey, Clapper, Brennan, Obama, Monaco, all conspired together to try to sabotage the democratic institutions of this country. I cannot find words harsh enough to condemn the conduct of these conspirators — these insurrectionists. https://t.co/wb1Ck9qXeI",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "StephenM"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1971761765152133120",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1971761765152133120/vid/avc1/1280x720/YC5EHVZsB8shv3Gd.mp4?tag=21",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 55.121,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 52935,
+      "retweet_count": 14531,
+      "reply_count": 2698,
+      "quote_count": 875,
+      "view_count": 4045309,
+      "bookmark_count": 2627,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:22:35.514Z",
+          "likes": 52935,
+          "retweets": 14531,
+          "replies": 2698,
+          "quotes": 875,
+          "views": 4045309,
+          "bookmarks": 2627
+        }
+      ],
+      "author": {
+        "display_name": "Rapid Response 47",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2062578057836142592/IYAK6I1p_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official White House Rapid Response account. Supporting @POTUS's America First agenda and holding the Fake News accountable. MAGA!",
+        "location": "🇺🇸🇺🇸🇺🇸",
+        "url": "https://t.co/8qhSUMpp7C",
+        "followers_count": 1946471,
+        "friends_count": 74,
+        "statuses_count": 27766,
+        "account_created_at": "2025-01-20T21:18:05.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T172229Z-a9155a7e",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T172229Z-a9155a7e.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T172229Z-a9155a7e.jsonl",
+    "source_handle": "GenFlynn"
+  }
+}

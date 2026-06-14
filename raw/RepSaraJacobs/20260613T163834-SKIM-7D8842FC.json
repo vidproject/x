@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T163818Z-d35b02b1-RepSaraJacobs",
+  "account_handle": "RepSaraJacobs",
+  "captured_at": "2026-06-13T16:38:34.262Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADOWResponse%20since%3A2025-07-01%20until%3A2025-10-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1961106217033671114",
+      "account_handle": "RepSaraJacobs",
+      "account_id": "1345103905869455361",
+      "posted_at": "2025-08-28T16:38:52.000Z",
+      "first_captured_at": "2026-06-13T16:38:25.941Z",
+      "last_seen_at": "2026-06-13T16:38:25.941Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/RepSaraJacobs/status/1961106217033671114",
+      "tweet_type": "original",
+      "conversation_id": "1961106217033671114",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Our troops shouldn’t be patrolling American cities. This is exactly what dictators do when they’re trying to control their citizens and suppress opposition.\nhttps://t.co/a18NdUWHRK",
+      "text_resolved": "Our troops shouldn’t be patrolling American cities. This is exactly what dictators do when they’re trying to control their citizens and suppress opposition.\nhttps://www.nytimes.com/2025/08/25/us/politics/trump-national-guard.html",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/a18NdUWHRK",
+          "expanded": "https://www.nytimes.com/2025/08/25/us/politics/trump-national-guard.html",
+          "display": "nytimes.com/2025/08/25/us/…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/a18NdUWHRK",
+        "vendor_url": "nytimes.com",
+        "title": "Trump Orders Major Expansion of National Guard’s Role in Law Enforcement",
+        "description": "An executive order released on Monday directs the creation of specialized Guard units to quell civil disturbances in each state and seeks civilian volunteers to assist federal agents in Washington.",
+        "image_url": "https://pbs.twimg.com/card_img/2065047808302780416/PNkVJ3N_?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 30,
+      "retweet_count": 7,
+      "reply_count": 207,
+      "quote_count": 14,
+      "view_count": 70166,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T16:38:25.941Z",
+          "likes": 30,
+          "retweets": 7,
+          "replies": 207,
+          "quotes": 14,
+          "views": 70166,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "Congresswoman Sara Jacobs",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1405318967628021761/cmMWWgRY_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Proud to represent San Diego and a new generation of leaders in Congress.",
+        "location": null,
+        "url": "https://t.co/t9pGLmVcMY",
+        "followers_count": 68591,
+        "friends_count": 101,
+        "statuses_count": 5494,
+        "account_created_at": "2021-01-01T20:26:39.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T163818Z-d35b02b1",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T163818Z-d35b02b1.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T163818Z-d35b02b1.jsonl",
+    "source_handle": "DOWResponse"
+  }
+}

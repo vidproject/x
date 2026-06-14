@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T163642Z-3bb863de-PressSec",
+  "account_handle": "PressSec",
+  "captured_at": "2026-06-13T16:36:58.591Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADonaldJTrumpJr%20since%3A2026-01-01%20until%3A2026-04-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2033543407788822696",
+      "account_handle": "PressSec",
+      "account_id": "1879670389057474560",
+      "posted_at": "2026-03-16T13:58:24.000Z",
+      "first_captured_at": "2026-06-13T16:36:49.454Z",
+      "last_seen_at": "2026-06-13T16:36:49.454Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/PressSec/status/2033543407788822696",
+      "tweet_type": "original",
+      "conversation_id": "2033543407788822696",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "President Trump to formally name Vice President @JDVance chair of fraud task force — with California, New York among states in crosshairs\n\nhttps://t.co/BvWfICGeZ7",
+      "text_resolved": "President Trump to formally name Vice President @JDVance chair of fraud task force — with California, New York among states in crosshairs\n\nhttps://nypost.com/2026/03/16/us-news/trump-to-formally-name-vance-chair-of-fraud-task-force-with-these-states-in-crosshairs/",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "JDVance"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/BvWfICGeZ7",
+          "expanded": "https://nypost.com/2026/03/16/us-news/trump-to-formally-name-vance-chair-of-fraud-task-force-with-these-states-in-crosshairs/",
+          "display": "nypost.com/2026/03/16/us-…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/BvWfICGeZ7",
+        "vendor_url": "nypost.com",
+        "title": "Exclusive | Trump formally names Vance chair of fraud task force — with California, New York among...",
+        "description": "President Trump signed an executive order Monday afternoon formally creating a benefits-fraud task force chaired by Vice President JD Vance as part of his state-focused “war on fraud.”",
+        "image_url": "https://pbs.twimg.com/card_img/2063944970751332352/6Hm48ZDN?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 13615,
+      "retweet_count": 2332,
+      "reply_count": 1643,
+      "quote_count": 191,
+      "view_count": 1329537,
+      "bookmark_count": 145,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T16:36:49.454Z",
+          "likes": 13615,
+          "retweets": 2332,
+          "replies": 1643,
+          "quotes": 191,
+          "views": 1329537,
+          "bookmarks": 145
+        }
+      ],
+      "author": {
+        "display_name": "Karoline Leavitt",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1947447846317236225/rChs3LqV_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Assistant to the President and the 36th White House Press Secretary",
+        "location": null,
+        "url": "https://t.co/JCWgfmpm3T",
+        "followers_count": 1944570,
+        "friends_count": 195,
+        "statuses_count": 7925,
+        "account_created_at": "2025-01-15T23:22:04.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T163642Z-3bb863de",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T163642Z-3bb863de.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T163642Z-3bb863de.jsonl",
+    "source_handle": "DonaldJTrumpJr"
+  }
+}

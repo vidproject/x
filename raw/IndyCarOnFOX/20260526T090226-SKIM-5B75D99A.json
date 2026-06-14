@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-gov-trawl-20260526-20260526T090213Z-1470dbc1-IndyCarOnFOX",
+  "account_handle": "IndyCarOnFOX",
+  "captured_at": "2026-05-26T09:02:26.692Z",
+  "endpoint": "UserByScreenName,UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/DeptofWar",
+  "tweets": [
+    {
+      "tweet_id": "2058590578133061958",
+      "account_handle": "IndyCarOnFOX",
+      "account_id": "54060157",
+      "posted_at": "2026-05-24T16:46:55.000Z",
+      "first_captured_at": "2026-05-26T09:02:16.067Z",
+      "last_seen_at": "2026-05-26T09:02:16.067Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/IndyCarOnFOX/status/2058590578133061958",
+      "tweet_type": "original",
+      "conversation_id": "2058590578133061958",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "The Pace Lap for America. #Indy500 https://t.co/QAIx1oVD2P",
+      "text_resolved": "The Pace Lap for America. #Indy500 https://t.co/QAIx1oVD2P",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://app.ayrshare.com\" rel=\"nofollow\">EVS_FSDIGITAL_AYRSHARE</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "Indy500"
+      ],
+      "mentions": [],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_2058590528107597824",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/2058590528107597824/pu/vid/avc1/1280x720/Co38x-2oQheRyMwc.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 36.169,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 6828,
+      "retweet_count": 1080,
+      "reply_count": 104,
+      "quote_count": 102,
+      "view_count": 410701,
+      "bookmark_count": 435,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T09:02:16.067Z",
+          "likes": 6828,
+          "retweets": 1080,
+          "replies": 104,
+          "quotes": 102,
+          "views": 410701,
+          "bookmarks": 435
+        }
+      ],
+      "author": {
+        "display_name": "INDYCAR on FOX",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1877778409192841216/aoIg6CaR_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": "All your FOX favorites. All in one app. INDYCAR on FOX is now streaming on FOX One. Sign up now at the link in bio 🔗",
+        "location": null,
+        "url": "https://t.co/KdJ1vp03rT",
+        "followers_count": 289099,
+        "friends_count": 142,
+        "statuses_count": 66613,
+        "account_created_at": "2009-07-06T00:53:11.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-gov-trawl-20260526-20260526T090213Z-1470dbc1",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/deptofwar-20260526T090213Z-1470dbc1.summary.json",
+    "jsonl": ".skim/raw/deptofwar-20260526T090213Z-1470dbc1.jsonl",
+    "source_handle": "DeptofWar"
+  }
+}

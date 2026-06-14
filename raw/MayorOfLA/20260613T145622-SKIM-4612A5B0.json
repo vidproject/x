@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145607Z-bc208d1d-MayorOfLA",
+  "account_handle": "MayorOfLA",
+  "captured_at": "2026-06-13T14:56:22.404Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APeteHegseth%20since%3A2025-07-01%20until%3A2025-10-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1950784025511292967",
+      "account_handle": "MayorOfLA",
+      "account_id": "17070113",
+      "posted_at": "2025-07-31T05:02:10.000Z",
+      "first_captured_at": "2026-06-13T14:56:12.200Z",
+      "last_seen_at": "2026-06-13T14:56:12.200Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/MayorOfLA/status/1950784025511292967",
+      "tweet_type": "original",
+      "conversation_id": "1950784025511292967",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Another win for Los Angeles tonight: 1,000 more troops are retreating. \n\nWe will continue this pressure until ALL troops are out of L.A.\nhttps://t.co/spbTtO09TS",
+      "text_resolved": "Another win for Los Angeles tonight: 1,000 more troops are retreating. \n\nWe will continue this pressure until ALL troops are out of L.A.\nhttps://www.nytimes.com/2025/07/31/us/troop-withdrawal-los-angeles.html",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/spbTtO09TS",
+          "expanded": "https://www.nytimes.com/2025/07/31/us/troop-withdrawal-los-angeles.html",
+          "display": "nytimes.com/2025/07/31/us/…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/spbTtO09TS",
+        "vendor_url": "nytimes.com",
+        "title": "More Than 1,000 Troops Are Withdrawn From L.A.",
+        "description": "The move continues a scaling back of President Trump’s military deployment in Southern California that began on June 7.",
+        "image_url": "https://pbs.twimg.com/card_img/2064429336661286913/vjTIatnC?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 3180,
+      "retweet_count": 601,
+      "reply_count": 4666,
+      "quote_count": 311,
+      "view_count": 1802958,
+      "bookmark_count": 69,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T14:56:12.200Z",
+          "likes": 3180,
+          "retweets": 601,
+          "replies": 4666,
+          "quotes": 311,
+          "views": 1802958,
+          "bookmarks": 69
+        }
+      ],
+      "author": {
+        "display_name": "Mayor Karen Bass",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1602321119213547520/9nVpm37V_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Official account for the 43rd Mayor of Los Angeles, Karen Bass.",
+        "location": "Los Angeles, CA",
+        "url": "https://t.co/k01qE2hzFf",
+        "followers_count": 588219,
+        "friends_count": 594,
+        "statuses_count": 27825,
+        "account_created_at": "2008-10-30T17:52:09.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145607Z-bc208d1d",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145607Z-bc208d1d.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145607Z-bc208d1d.jsonl",
+    "source_handle": "PeteHegseth"
+  }
+}

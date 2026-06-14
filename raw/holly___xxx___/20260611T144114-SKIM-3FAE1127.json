@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-detail-20260611-20260611T144058Z-f6847eab-holly___xxx___",
+  "account_handle": "holly___xxx___",
+  "captured_at": "2026-06-11T14:41:14.844Z",
+  "endpoint": "TweetDetail,TweetResultByRestId",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/DHSgov/status/2001782013754589489",
+  "tweets": [
+    {
+      "tweet_id": "2001830383328071863",
+      "account_handle": "holly___xxx___",
+      "account_id": "16352621",
+      "posted_at": "2025-12-19T01:42:10.000Z",
+      "first_captured_at": "2026-06-11T14:41:04.805Z",
+      "last_seen_at": "2026-06-11T14:41:04.805Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/holly___xxx___/status/2001830383328071863",
+      "tweet_type": "reply",
+      "conversation_id": "2001782013754589489",
+      "reply_to_tweet_id": "2001782013754589489",
+      "reply_to_account": "DHSgov",
+      "reply_to_account_id": "15647676",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@DHSgov I can’t wait. https://t.co/bMEEwn9EEI",
+      "text_resolved": "@DHSgov I can’t wait. https://t.co/bMEEwn9EEI",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DHSgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2001830380006162432",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G8fuH9zaQAA-u-8.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1091,
+          "height": 1008,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 23,
+      "retweet_count": 5,
+      "reply_count": 4,
+      "quote_count": 0,
+      "view_count": 570,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T14:41:04.805Z",
+          "likes": 23,
+          "retweets": 5,
+          "replies": 4,
+          "quotes": 0,
+          "views": 570,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "𝕳𝖔𝖑𝖑𝖞 🏴",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2064126271957938177/LWsoA9o6_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "✨ 𝖂𝖔𝖒𝖆𝖓 𝖔𝖋 𝖚𝖓𝖘𝖙𝖔𝖕𝖕𝖆𝖇𝖑𝖊 𝖕𝖔𝖜𝖊𝖗 ✨ 𝑇𝘩𝑜𝑠𝑒 𝑤𝘩𝑜 𝑑𝑜𝑛'𝑡 𝑏𝑒𝑙𝑖𝑒𝑣𝑒 𝑖𝑛 𝑚𝑎𝑔𝑖𝑐𝑘 𝑤𝑖𝑙𝑙 𝑛𝑒𝑣𝑒𝑟 𝑓𝑖𝑛𝑑 𝑖𝑡. ∞☽☥☾∞",
+        "location": "𝖃𝖆𝖓𝖆𝖉𝖚 ",
+        "url": null,
+        "followers_count": 13681,
+        "friends_count": 7497,
+        "statuses_count": 83389,
+        "account_created_at": "2008-09-18T20:23:51.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-detail-20260611-20260611T144058Z-f6847eab",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-2001782013754589489-20260611T144058Z-f6847eab.summary.json",
+    "jsonl": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-2001782013754589489-20260611T144058Z-f6847eab.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

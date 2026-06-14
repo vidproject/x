@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass1-20260612T142346Z-2f6b5f08-foxnewsradio",
+  "account_handle": "foxnewsradio",
+  "captured_at": "2026-06-12T14:24:13.616Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ABillMelugin_%20since%3A2026-01-01%20until%3A2026-06-13%20filter%3Aquote&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2060020869070532779",
+      "account_handle": "foxnewsradio",
+      "account_id": "11611052",
+      "posted_at": "2026-05-28T15:30:23.000Z",
+      "first_captured_at": "2026-06-12T14:24:13.597Z",
+      "last_seen_at": "2026-06-12T14:24:13.597Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/foxnewsradio/status/2060020869070532779",
+      "tweet_type": "original",
+      "conversation_id": "2060020869070532779",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "No more international flights at JFK and LAX? \n\nThe sanctuary city debate could be heading to major US airports. @FoxNews' @BillMelugin_ speaks with @SenatorBanks to break down a explosive proposal from @SecMullinDHS to pull CBP agents from international hubs that refuse to cooperate with federal immigration laws.",
+      "text_resolved": "No more international flights at JFK and LAX? \n\nThe sanctuary city debate could be heading to major US airports. @FoxNews' @BillMelugin_ speaks with @SenatorBanks to break down a explosive proposal from @SecMullinDHS to pull CBP agents from international hubs that refuse to cooperate with federal immigration laws.",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://buffer.com\" rel=\"nofollow\">Buffer</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "FoxNews",
+        "BillMelugin_",
+        "SenatorBanks",
+        "SecMullinDHS"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_2060020830080307201",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/2060020830080307201/pu/vid/avc1/720x1280/H93q-JqGlVLm9OMw.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 47.55,
+          "width": 1080,
+          "height": 1920,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 292,
+      "retweet_count": 54,
+      "reply_count": 27,
+      "quote_count": 1,
+      "view_count": 47567,
+      "bookmark_count": 6,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-12T14:24:13.597Z",
+          "likes": 292,
+          "retweets": 54,
+          "replies": 27,
+          "quotes": 1,
+          "views": 47567,
+          "bookmarks": 6
+        }
+      ],
+      "author": {
+        "display_name": "FOX News Radio",
+        "avatar_url": "https://pbs.twimg.com/profile_images/925468541666525185/GMZaXFic_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Business",
+        "description": "The FOX Audio Network | News | Politics | Podcasts | @foxnews",
+        "location": "FOX News Channel",
+        "url": "https://t.co/UZOotPUAmx",
+        "followers_count": 182146,
+        "friends_count": 311,
+        "statuses_count": 132013,
+        "account_created_at": "2007-12-28T21:33:23.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass1-20260612T142346Z-2f6b5f08",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass1/x-com-search-20260612T142346Z-2f6b5f08.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass1/x-com-search-20260612T142346Z-2f6b5f08.jsonl",
+    "source_handle": "BillMelugin_"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-dhs-gap-20260526-20260526T092030Z-f573b449-DFONewYork",
+  "account_handle": "DFONewYork",
+  "captured_at": "2026-05-26T09:20:44.347Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBP%20since%3A2025-05-01%20until%3A2025-06-01&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1928164714938277931",
+      "account_handle": "DFONewYork",
+      "account_id": "1212043883627966465",
+      "posted_at": "2025-05-29T19:01:06.000Z",
+      "first_captured_at": "2026-05-26T09:20:33.244Z",
+      "last_seen_at": "2026-05-26T09:20:33.244Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DFONewYork/status/1928164714938277931",
+      "tweet_type": "original",
+      "conversation_id": "1928164714938277931",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "While conducting a sweep at the JFK International Mail Facility, K9 Stony alerted to a parcel manifested as home décor. After inspection, the parcel was found to actually contain deer skulls, which are regulated by @USFWS. The skulls were turned over for further investigation. https://t.co/NmP6gghbNi",
+      "text_resolved": "While conducting a sweep at the JFK International Mail Facility, K9 Stony alerted to a parcel manifested as home décor. After inspection, the parcel was found to actually contain deer skulls, which are regulated by @USFWS. The skulls were turned over for further investigation. https://t.co/NmP6gghbNi",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "USFWS"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1928164711947808768",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GsI3lvQXsAAyDJJ.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 675,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 0,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 8289,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T09:20:33.244Z",
+          "likes": 0,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 0,
+          "views": 8289,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Director of Field Operations, Francis J. Russo",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1618387374567727105/QPfzSFst_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "@CBP Director Field Operations New York Field Office. (@CBPNewYorkCity, @JFKairport, @EWRairport, @PortNYNJ, and the Pharmaceutical, Health, & Chemicals Center)",
+        "location": null,
+        "url": "https://t.co/U3p4fRAUrU",
+        "followers_count": 5178,
+        "friends_count": 942,
+        "statuses_count": 2847,
+        "account_created_at": "2019-12-31T16:12:46.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-dhs-gap-20260526-20260526T092030Z-f573b449",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/x-com-search-20260526T092030Z-f573b449.summary.json",
+    "jsonl": ".skim/raw/x-com-search-20260526T092030Z-f573b449.jsonl",
+    "source_handle": "CBP"
+  }
+}

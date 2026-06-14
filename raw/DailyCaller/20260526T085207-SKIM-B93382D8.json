@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-gov-trawl-20260526-20260526T085153Z-f8d9986a-DailyCaller",
+  "account_handle": "DailyCaller",
+  "captured_at": "2026-05-26T08:52:07.810Z",
+  "endpoint": "UserByScreenName,UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/ICEgov",
+  "tweets": [
+    {
+      "tweet_id": "2057787381219234186",
+      "account_handle": "DailyCaller",
+      "account_id": "39308549",
+      "posted_at": "2026-05-22T11:35:18.000Z",
+      "first_captured_at": "2026-05-26T08:51:55.901Z",
+      "last_seen_at": "2026-05-26T08:51:55.901Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DailyCaller/status/2057787381219234186",
+      "tweet_type": "original",
+      "conversation_id": "2057787381219234186",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "EXCLUSIVE: Trump Admin Closes Loophole Letting Migrants Stay In US While Awaiting Green Cards: 'We're returning to the original intent of the law' https://t.co/zZyyMaZBZo",
+      "text_resolved": "EXCLUSIVE: Trump Admin Closes Loophole Letting Migrants Stay In US While Awaiting Green Cards: 'We're returning to the original intent of the law' http://dlvr.it/TSgK6R",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://dlvrit.com/\" rel=\"nofollow\">dlvr.it</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/zZyyMaZBZo",
+          "expanded": "http://dlvr.it/TSgK6R",
+          "display": "dlvr.it/TSgK6R"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/zZyyMaZBZo",
+        "vendor_url": "dailycaller.com",
+        "title": "EXCLUSIVE: Trump Admin Closes Loophole Letting Migrants Stay In US While Awaiting Green Cards",
+        "description": "The Trump administration is moving to close what it describes as a loophole that allows migrants to remain in the US while awaiting permanent residency.",
+        "image_url": "https://pbs.twimg.com/card_img/2057824805391314944/3wWOh6Aj?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 4858,
+      "retweet_count": 752,
+      "reply_count": 252,
+      "quote_count": 147,
+      "view_count": 7218251,
+      "bookmark_count": 668,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T08:51:55.901Z",
+          "likes": 4858,
+          "retweets": 752,
+          "replies": 252,
+          "quotes": 147,
+          "views": 7218251,
+          "bookmarks": 668
+        }
+      ],
+      "author": {
+        "display_name": "Daily Caller",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1141459766637662209/FOCXtzk4_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": "Your Rebels in the Swamp.",
+        "location": "Washington, DC",
+        "url": "https://t.co/6zAEtfyinR",
+        "followers_count": 1233847,
+        "friends_count": 8826,
+        "statuses_count": 455732,
+        "account_created_at": "2009-05-11T18:31:37.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-gov-trawl-20260526-20260526T085153Z-f8d9986a",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/icegov-20260526T085153Z-f8d9986a.summary.json",
+    "jsonl": ".skim/raw/icegov-20260526T085153Z-f8d9986a.jsonl",
+    "source_handle": "ICEgov"
+  }
+}
