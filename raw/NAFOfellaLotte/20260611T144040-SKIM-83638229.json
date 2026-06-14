@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-detail-20260611-20260611T144024Z-c8623cfe-NAFOfellaLotte",
+  "account_handle": "NAFOfellaLotte",
+  "captured_at": "2026-06-11T14:40:40.777Z",
+  "endpoint": "TweetDetail,TweetResultByRestId",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/DHSgov/status/2042613811547394058",
+  "tweets": [
+    {
+      "tweet_id": "2042638789126873300",
+      "account_handle": "NAFOfellaLotte",
+      "account_id": "2339206276",
+      "posted_at": "2026-04-10T16:20:12.000Z",
+      "first_captured_at": "2026-06-11T14:40:31.226Z",
+      "last_seen_at": "2026-06-11T14:40:31.226Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/NAFOfellaLotte/status/2042638789126873300",
+      "tweet_type": "reply",
+      "conversation_id": "2042613811547394058",
+      "reply_to_tweet_id": "2042613811547394058",
+      "reply_to_account": "DHSgov",
+      "reply_to_account_id": "15647676",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@DHSgov Hot Not! https://t.co/QBYN1QhSXV",
+      "text_resolved": "@DHSgov Hot Not! https://t.co/QBYN1QhSXV",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DHSgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2042638786945818626",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HFjpJ4RXIAI3PvD.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1079,
+          "height": 1392,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 2818,
+      "retweet_count": 31,
+      "reply_count": 15,
+      "quote_count": 0,
+      "view_count": 100426,
+      "bookmark_count": 6,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T14:40:31.226Z",
+          "likes": 2818,
+          "retweets": 31,
+          "replies": 15,
+          "quotes": 0,
+          "views": 100426,
+          "bookmarks": 6
+        }
+      ],
+      "author": {
+        "display_name": "NAFOfellalotte🇩🇰🇺🇦🇬🇪🇬🇱",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2004490990980128768/CPBg8A5o_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Danïsh Granny  #StandwithUkraine 🇺🇦 #FreeUkrainianPOWs \n#PollWreckingTeam #Article5\n#TubaDivision\n#smokefleet",
+        "location": "Langley, VA",
+        "url": null,
+        "followers_count": 11685,
+        "friends_count": 12838,
+        "statuses_count": 189750,
+        "account_created_at": "2014-02-12T12:18:26.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-detail-20260611-20260611T144024Z-c8623cfe",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-2042613811547394058-20260611T144024Z-c8623cfe.summary.json",
+    "jsonl": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-2042613811547394058-20260611T144024Z-c8623cfe.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

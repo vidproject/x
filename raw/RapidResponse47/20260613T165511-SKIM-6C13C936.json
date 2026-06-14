@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T165453Z-5a8d9489-RapidResponse47",
+  "account_handle": "RapidResponse47",
+  "captured_at": "2026-06-13T16:55:11.373Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ARepEricBurlison%20since%3A2025-04-01%20until%3A2025-07-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1935027181819711947",
+      "account_handle": "RapidResponse47",
+      "account_id": "1881451105454002176",
+      "posted_at": "2025-06-17T17:30:05.000Z",
+      "first_captured_at": "2026-06-13T16:55:02.366Z",
+      "last_seen_at": "2026-06-13T16:55:02.366Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/RapidResponse47/status/1935027181819711947",
+      "tweet_type": "original",
+      "conversation_id": "1935027181819711947",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "🚨 Border agents didn’t release a single illegal migrant into the US last month — down from 64K under Biden https://t.co/SYDeWQLN2H",
+      "text_resolved": "🚨 Border agents didn’t release a single illegal migrant into the US last month — down from 64K under Biden https://nypost.com/2025/06/17/us-news/border-agents-didnt-release-a-single-illegal-migrant-into-the-us-last-month-border-patrol/",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/SYDeWQLN2H",
+          "expanded": "https://nypost.com/2025/06/17/us-news/border-agents-didnt-release-a-single-illegal-migrant-into-the-us-last-month-border-patrol/",
+          "display": "nypost.com/2025/06/17/us-…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/SYDeWQLN2H",
+        "vendor_url": "nypost.com",
+        "title": "Exclusive | Border agents didn't release a single illegal migrant into the US last month — down...",
+        "description": "Agents caught 8,725 migrants crossing illegally at the southern border last month. That's a 93% decrease from May 2024.",
+        "image_url": "https://pbs.twimg.com/card_img/2065314439570567169/iqRJ8UXH?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 3646,
+      "retweet_count": 593,
+      "reply_count": 63,
+      "quote_count": 18,
+      "view_count": 102029,
+      "bookmark_count": 39,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T16:55:02.366Z",
+          "likes": 3646,
+          "retweets": 593,
+          "replies": 63,
+          "quotes": 18,
+          "views": 102029,
+          "bookmarks": 39
+        }
+      ],
+      "author": {
+        "display_name": "Rapid Response 47",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2062578057836142592/IYAK6I1p_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official White House Rapid Response account. Supporting @POTUS's America First agenda and holding the Fake News accountable. MAGA!",
+        "location": "🇺🇸🇺🇸🇺🇸",
+        "url": "https://t.co/8qhSUMpp7C",
+        "followers_count": 1946371,
+        "friends_count": 74,
+        "statuses_count": 27766,
+        "account_created_at": "2025-01-20T21:18:05.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T165453Z-5a8d9489",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T165453Z-5a8d9489.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T165453Z-5a8d9489.jsonl",
+    "source_handle": "RepEricBurlison"
+  }
+}

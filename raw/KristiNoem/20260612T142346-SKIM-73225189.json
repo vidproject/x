@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass1-20260612T142319Z-3a4dd0bc-KristiNoem",
+  "account_handle": "KristiNoem",
+  "captured_at": "2026-06-12T14:23:46.385Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ABillMelugin_%20since%3A2025-01-01%20until%3A2026-01-01%20filter%3Aquote&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2005687345895645204",
+      "account_handle": "KristiNoem",
+      "account_id": "114388293",
+      "posted_at": "2025-12-29T17:08:21.000Z",
+      "first_captured_at": "2026-06-12T14:23:34.685Z",
+      "last_seen_at": "2026-06-12T14:23:34.685Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/KristiNoem/status/2005687345895645204",
+      "tweet_type": "original",
+      "conversation_id": "2005687345895645204",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Homeland Security Investigations @ICEGov are on the ground in Minneapolis right now conducting a massive investigation on childcare and other rampant fraud. \n\nMore coming. https://t.co/wmQ1x0t4Sc",
+      "text_resolved": "Homeland Security Investigations @ICEGov are on the ground in Minneapolis right now conducting a massive investigation on childcare and other rampant fraud. \n\nMore coming. https://t.co/wmQ1x0t4Sc",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "ICEgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_2005687274931908609",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2005687274931908609/vid/avc1/1280x720/4f3OklQuKoOxuxGp.mp4?tag=21",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 30.811,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 20269,
+      "retweet_count": 3098,
+      "reply_count": 1815,
+      "quote_count": 198,
+      "view_count": 720540,
+      "bookmark_count": 259,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-12T14:23:34.685Z",
+          "likes": 20269,
+          "retweets": 3098,
+          "replies": 1815,
+          "quotes": 198,
+          "views": 720540,
+          "bookmarks": 259
+        }
+      ],
+      "author": {
+        "display_name": "Kristi Noem",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1886547255236169728/2cxjTr4D_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Wife, mother, grandma, farmer, rancher, and small business owner. Special Envoy for The Shield of the Americas. Former DHS Secretary and SD Governor.",
+        "location": "South Dakota, USA",
+        "url": "https://t.co/ldW270qQFW",
+        "followers_count": 759947,
+        "friends_count": 2941,
+        "statuses_count": 7035,
+        "account_created_at": "2010-02-15T07:08:18.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass1-20260612T142319Z-3a4dd0bc",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass1/x-com-search-20260612T142319Z-3a4dd0bc.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass1/x-com-search-20260612T142319Z-3a4dd0bc.jsonl",
+    "source_handle": "BillMelugin_"
+  }
+}

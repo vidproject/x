@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T140240Z-4b514d70-Southcom",
+  "account_handle": "Southcom",
+  "captured_at": "2026-06-13T14:03:07.994Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCG%20since%3A2023-03-01%20until%3A2023-04-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1640410221980925952",
+      "account_handle": "Southcom",
+      "account_id": "19667766",
+      "posted_at": "2023-03-27T17:47:28.000Z",
+      "first_captured_at": "2026-06-13T14:02:58.919Z",
+      "last_seen_at": "2026-06-13T14:02:58.919Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/Southcom/status/1640410221980925952",
+      "tweet_type": "original",
+      "conversation_id": "1640410221980925952",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Last week, crew from @USCG Cutter Polar Star - the only U.S. heavy icebreaker - spent 5 days  in #Chile after Operation Deep Freeze. The ship broke through miles of ice to clear a navigable channel for other ships to support McMurdo Station in Antarctica. @EmbajadaEEUUcl https://t.co/TDy72xIJ98",
+      "text_resolved": "Last week, crew from @USCG Cutter Polar Star - the only U.S. heavy icebreaker - spent 5 days  in #Chile after Operation Deep Freeze. The ship broke through miles of ice to clear a navigable channel for other ships to support McMurdo Station in Antarctica. @EmbajadaEEUUcl https://t.co/TDy72xIJ98",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "Chile"
+      ],
+      "mentions": [
+        "USCG",
+        "EmbajadaEEUUcl"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1640410029957214208",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/FsPoOyGWcAAabhz.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1947,
+          "height": 1298,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_1640409660791373824",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/FsPn5S2WwAATVnC.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 3024,
+          "height": 2016,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_1640409860633161729",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/FsPoE7UWcAEgjj9.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 2944,
+          "height": 1963,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 83,
+      "retweet_count": 15,
+      "reply_count": 1,
+      "quote_count": 1,
+      "view_count": 9056,
+      "bookmark_count": 3,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T14:02:58.919Z",
+          "likes": 83,
+          "retweets": 15,
+          "replies": 1,
+          "quotes": 1,
+          "views": 9056,
+          "bookmarks": 3
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Southern Command",
+        "avatar_url": "https://pbs.twimg.com/profile_images/877151729233661952/hnzLVuzj_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official account of SOUTHCOM. Oversees U.S. military activities in Latin America & Caribbean. RTs, follows & likes ≠ endorsement.",
+        "location": "Miami, Florida",
+        "url": "https://t.co/tmmQAqI2KX",
+        "followers_count": 729979,
+        "friends_count": 471,
+        "statuses_count": 13995,
+        "account_created_at": "2009-01-28T18:46:53.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T140240Z-4b514d70",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T140240Z-4b514d70.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T140240Z-4b514d70.jsonl",
+    "source_handle": "USCG"
+  }
+}

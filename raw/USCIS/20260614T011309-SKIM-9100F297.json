@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T011249Z-46b23c1d-USCIS",
+  "account_handle": "USCIS",
+  "captured_at": "2026-06-14T01:13:09.109Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEROHouston%20since%3A2024-01-01%20until%3A2025-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1849058191364997209",
+      "account_handle": "USCIS",
+      "account_id": "14625398",
+      "posted_at": "2024-10-23T12:00:01.000Z",
+      "first_captured_at": "2026-06-14T01:12:57.479Z",
+      "last_seen_at": "2026-06-14T01:12:57.479Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USCIS/status/1849058191364997209",
+      "tweet_type": "original",
+      "conversation_id": "1849058191364997209",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "REMINDER: There are new form editions for Form I-485, Form I-765, and Form I-539. Starting Oct. 28, 2024, we'll only accept the 08/28/24 editions of these forms. Be sure to check form edition dates before submitting. For the most up to date forms, visit: https://t.co/y8XyD9kJAk",
+      "text_resolved": "REMINDER: There are new form editions for Form I-485, Form I-765, and Form I-539. Starting Oct. 28, 2024, we'll only accept the 08/28/24 editions of these forms. Be sure to check form edition dates before submitting. For the most up to date forms, visit: https://www.uscis.gov/forms/forms",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.sprinklr.com\" rel=\"nofollow\">Sprinklr Prod6/11/15</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/y8XyD9kJAk",
+          "expanded": "https://www.uscis.gov/forms/forms",
+          "display": "uscis.gov/forms/forms"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/y8XyD9kJAk",
+        "vendor_url": "uscis.gov",
+        "title": "Forms",
+        "description": "Form fees, eligibility requirements, fee waiver eligibility, required documents and mailing addresses vary depending on the form you are filing and why you are filing. Use this section to find and...",
+        "image_url": null
+      },
+      "media": [],
+      "like_count": 37,
+      "retweet_count": 7,
+      "reply_count": 3,
+      "quote_count": 1,
+      "view_count": 7401,
+      "bookmark_count": 9,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:12:57.479Z",
+          "likes": 37,
+          "retweets": 7,
+          "replies": 3,
+          "quotes": 1,
+          "views": 7401,
+          "bookmarks": 9
+        }
+      ],
+      "author": {
+        "display_name": "USCIS",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1882164862987489280/kDwtH0hc_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official X account of U.S. Citizenship and Immigration Services. \nApply to be a Homeland Defender NOW: https://t.co/ataEwyi3UT",
+        "location": "Washington, DC",
+        "url": "https://t.co/GrphfGhLRD",
+        "followers_count": 566309,
+        "friends_count": 336,
+        "statuses_count": 22136,
+        "account_created_at": "2008-05-02T13:03:21.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T011249Z-46b23c1d",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T011249Z-46b23c1d.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T011249Z-46b23c1d.jsonl",
+    "source_handle": "EROHouston"
+  }
+}

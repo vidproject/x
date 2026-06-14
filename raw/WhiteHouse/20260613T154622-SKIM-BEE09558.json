@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T154606Z-d0467dc7-WhiteHouse",
+  "account_handle": "WhiteHouse",
+  "captured_at": "2026-06-13T15:46:22.353Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AAnnaKelly47%20since%3A2025-10-01%20until%3A2026-01-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1998122264005394785",
+      "account_handle": "WhiteHouse",
+      "account_id": "1879644163769335808",
+      "posted_at": "2025-12-08T20:07:25.000Z",
+      "first_captured_at": "2026-06-13T15:46:12.498Z",
+      "last_seen_at": "2026-06-13T15:46:12.498Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/WhiteHouse/status/1998122264005394785",
+      "tweet_type": "original",
+      "conversation_id": "1998122264005394785",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "WE ❤️OUR FARMERS 🚜\n\n\"I'm delighted to announce this afternoon that the United States will be taking a small portion of the hundreds of billions of dollars we receive in tariffs... We're going to use that money to provide $12B in economic assistance to American farmers.\" @POTUS https://t.co/yLDQ8DNot4",
+      "text_resolved": "WE ❤️OUR FARMERS 🚜\n\n\"I'm delighted to announce this afternoon that the United States will be taking a small portion of the hundreds of billions of dollars we receive in tariffs... We're going to use that money to provide $12B in economic assistance to American farmers.\" @POTUS https://t.co/yLDQ8DNot4",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "POTUS"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1998121207992885249",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1998121207992885249/vid/avc1/1080x1080/dNuuXBkeMumUxPCF.mp4?tag=21",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 74.841,
+          "width": 2000,
+          "height": 2000,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 13420,
+      "retweet_count": 3006,
+      "reply_count": 2402,
+      "quote_count": 285,
+      "view_count": 592951,
+      "bookmark_count": 292,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T15:46:12.498Z",
+          "likes": 13420,
+          "retweets": 3006,
+          "replies": 2402,
+          "quotes": 285,
+          "views": 592951,
+          "bookmarks": 292
+        }
+      ],
+      "author": {
+        "display_name": "The White House",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2062605835256127489/atNMwHxg_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Welcome to The Golden Age of America. \n📱 Text USA to 45470 to receive alerts.",
+        "location": "Washington, DC",
+        "url": "https://t.co/0BqS4u2dGX",
+        "followers_count": 4804067,
+        "friends_count": 6,
+        "statuses_count": 15756,
+        "account_created_at": "2025-01-15T21:37:54.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T154606Z-d0467dc7",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T154606Z-d0467dc7.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T154606Z-d0467dc7.jsonl",
+    "source_handle": "AnnaKelly47"
+  }
+}
