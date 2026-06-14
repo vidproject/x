@@ -409,7 +409,7 @@
     "CBP": {
       "category": "core",
       "label": "U.S. Customs and Border Protection",
-      "observations": 2569,
+      "observations": 2570,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1323,7 +1323,7 @@
     "EROBaltimore": {
       "category": "core",
       "label": "ICE Baltimore",
-      "observations": 13,
+      "observations": 15,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1351,7 +1351,7 @@
     "ERODenver": {
       "category": "core",
       "label": "ICE Denver",
-      "observations": 183,
+      "observations": 186,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1372,7 +1372,7 @@
     "EROHouston": {
       "category": "core",
       "label": "ICE Houston",
-      "observations": 163,
+      "observations": 169,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1393,14 +1393,14 @@
     "ERONewOrleans": {
       "category": "core",
       "label": "ICE ERO New Orleans",
-      "observations": 176,
+      "observations": 177,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "ERONewYork": {
       "category": "core",
       "label": "ERO New York City",
-      "observations": 8,
+      "observations": 13,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1414,7 +1414,7 @@
     "EROPhiladelphia": {
       "category": "core",
       "label": "ERO Philadelphia",
-      "observations": 20,
+      "observations": 30,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1435,35 +1435,35 @@
     "EROSanAntonio": {
       "category": "core",
       "label": "ICE San Antonio",
-      "observations": 93,
+      "observations": 95,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROSanDiego": {
       "category": "core",
       "label": "ICE San Diego",
-      "observations": 117,
+      "observations": 124,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROSanFrancisco": {
       "category": "core",
       "label": "ERO San Francisco",
-      "observations": 33,
+      "observations": 36,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROSeattle": {
       "category": "core",
       "label": "ICE Seattle",
-      "observations": 19,
+      "observations": 31,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROWashington": {
       "category": "core",
       "label": "ICE Washington D.C.",
-      "observations": 144,
+      "observations": 156,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -4241,7 +4241,7 @@
     "TSA": {
       "category": "government",
       "label": "Transportation Security Administration",
-      "observations": 464,
+      "observations": 465,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -6047,7 +6047,7 @@
     "public": 192,
     "public_figures": 139
   },
-  "generated_at": "2026-06-14T02:21:03Z",
+  "generated_at": "2026-06-14T02:27:40Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
