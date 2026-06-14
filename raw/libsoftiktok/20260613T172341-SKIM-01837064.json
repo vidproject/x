@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T172323Z-64cffa45-libsoftiktok",
+  "account_handle": "libsoftiktok",
+  "captured_at": "2026-06-13T17:23:41.089Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ASaraTftb1%20since%3A2025-01-01%20until%3A2025-04-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1906828504492040610",
+      "account_handle": "libsoftiktok",
+      "account_id": "1326229737551912960",
+      "posted_at": "2025-03-31T21:58:37.000Z",
+      "first_captured_at": "2026-06-13T17:23:32.101Z",
+      "last_seen_at": "2026-06-13T17:23:32.101Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/libsoftiktok/status/1906828504492040610",
+      "tweet_type": "original",
+      "conversation_id": "1906828504492040610",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "TikToker threatens to kiII President Trump if TikTok gets banned @fbi @secretservice https://t.co/WuoxjSfjwR",
+      "text_resolved": "TikToker threatens to kiII President Trump if TikTok gets banned @fbi @secretservice https://t.co/WuoxjSfjwR",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "FBI",
+        "SecretService"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_1906828445864108032",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/1906828445864108032/pu/vid/avc1/576x1024/FXiWtwppbVOZ5wSa.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 31.924,
+          "width": 576,
+          "height": 1024,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 8569,
+      "retweet_count": 3656,
+      "reply_count": 1796,
+      "quote_count": 308,
+      "view_count": 358168,
+      "bookmark_count": 238,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:23:32.101Z",
+          "likes": 8569,
+          "retweets": 3656,
+          "replies": 1796,
+          "quotes": 308,
+          "views": 358168,
+          "bookmarks": 238
+        }
+      ],
+      "author": {
+        "display_name": "Libs of TikTok",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1489097242321428482/sQSUN_M6_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "News you can’t see anywhere else. 📧 submissions@libsoftiktok.com. DM submissions. Bookings: Partnerships@libsoftiktok.com. ⬇️Subscribe to our newsletter",
+        "location": "Depths of Hell",
+        "url": "https://t.co/m2lnP95b8I",
+        "followers_count": 4747433,
+        "friends_count": 1071,
+        "statuses_count": 63255,
+        "account_created_at": "2020-11-10T18:26:33.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T172323Z-64cffa45",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T172323Z-64cffa45.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T172323Z-64cffa45.jsonl",
+    "source_handle": "SaraTftb1"
+  }
+}

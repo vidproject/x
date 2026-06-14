@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145700Z-beac4950-LMNews",
+  "account_handle": "LMNews",
+  "captured_at": "2026-06-13T14:57:15.547Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APeteHegseth%20since%3A2026-04-01%20until%3A2026-06-13%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2057485663130288136",
+      "account_handle": "LMNews",
+      "account_id": "1249698672436281344",
+      "posted_at": "2026-05-21T15:36:22.000Z",
+      "first_captured_at": "2026-06-13T14:57:06.047Z",
+      "last_seen_at": "2026-06-13T14:57:06.047Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/LMNews/status/2057485663130288136",
+      "tweet_type": "original",
+      "conversation_id": "2057485663130288136",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "AI is reshaping the future battlespace. Production at scale matters more than ever.\n\n@LockheedMartin CEO Jim Taiclet joined @MorningsMaria on @FoxBusiness to discuss AI-driven warfare, advanced capability and our new 87,000-square-foot munitions facility in Alabama.\n\nWatch: https://t.co/5xT1e3j9le",
+      "text_resolved": "AI is reshaping the future battlespace. Production at scale matters more than ever.\n\n@LockheedMartin CEO Jim Taiclet joined @MorningsMaria on @FoxBusiness to discuss AI-driven warfare, advanced capability and our new 87,000-square-foot munitions facility in Alabama.\n\nWatch: https://fxn.ws/3RovkvN",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "LockheedMartin",
+        "MorningsMaria",
+        "FoxBusiness"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/5xT1e3j9le",
+          "expanded": "https://fxn.ws/3RovkvN",
+          "display": "fxn.ws/3RovkvN"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/5xT1e3j9le",
+        "vendor_url": "foxbusiness.com",
+        "title": "Lockheed Martin's Jim Taiclet reveals how AI is changing modern warfare | Fox Business Video",
+        "description": "Lockheed Martin CEO Jim Taiclet joins ‘Mornings with Maria’ to discuss the future of AI-driven warfare and the company’s new 87,000-square-foot Alabama munitions plant.",
+        "image_url": "https://pbs.twimg.com/card_img/2065098335724175360/5pNlfaI5?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 284,
+      "retweet_count": 44,
+      "reply_count": 8,
+      "quote_count": 6,
+      "view_count": 258167,
+      "bookmark_count": 34,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T14:57:06.047Z",
+          "likes": 284,
+          "retweets": 44,
+          "replies": 8,
+          "quotes": 6,
+          "views": 258167,
+          "bookmarks": 34
+        }
+      ],
+      "author": {
+        "display_name": "Lockheed Martin News",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1682082205269368838/3FmjwQ_z_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": "Your source for the latest news at Lockheed Martin.",
+        "location": "Bethesda, MD",
+        "url": "https://t.co/mIyeQXHoYo",
+        "followers_count": 23141,
+        "friends_count": 24,
+        "statuses_count": 1460,
+        "account_created_at": "2020-04-13T13:59:25.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145700Z-beac4950",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145700Z-beac4950.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145700Z-beac4950.jsonl",
+    "source_handle": "PeteHegseth"
+  }
+}

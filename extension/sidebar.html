@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Immigration Archive</title>
+    <link rel="stylesheet" href="styles/sidebar.css" />
+  </head>
+  <body>
+    <header class="hdr">
+      <div class="master-row">
+        <label class="master-switch" title="Master on/off for capture, auto-scroll, refetch">
+          <input type="checkbox" id="master-switch" checked />
+          <span class="master-label" id="master-label">ON</span>
+        </label>
+      </div>
+      <div class="hdr-conn" id="conn-status">
+        <span class="dot" id="conn-dot"></span>
+        <span class="conn-text" id="conn-text">Checking…</span>
+      </div>
+      <div class="hdr-row">
+        <a class="link" id="open-options" href="#">Settings</a>
+        <span class="sep">·</span>
+        <a class="link" id="open-viewer" target="_blank" rel="noopener" href="#">Open viewer</a>
+        <span class="sep">·</span>
+        <a
+          class="link"
+          id="purge-unrelated"
+          href="#"
+          title="Drop counters, buffers, and queue entries for accounts not in the tracked list"
+          >Purge unrelated</a
+        >
+      </div>
+    </header>
+
+    <section class="controls">
+      <div class="row">
+        <button class="btn primary" id="capture-all">Capture all</button>
+        <button
+          class="btn"
+          id="capture-this"
+          title="Re-inject the page-hook on the current X tab and scroll to fetch more"
+        >
+          Capture this page
+        </button>
+        <button class="btn" id="flush-all" title="Upload buffered captures now">
+          Upload buffer
+        </button>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="auto-capture" />
+        <span>Auto-capture while browsing tracked accounts</span>
+      </label>
+      <label
+        class="toggle"
+        title="When off, tweets already in the archive are skipped using the local index plus the repo manifest high-water mark. Saves extension work and GitHub API calls, but stops engagement-history snapshots from growing."
+      >
+        <input type="checkbox" id="update-existing" />
+        <span>Update old tweets already in the archive</span>
+      </label>
+      <label
+        class="toggle"
+        title="Blocks images, videos, audio, and fonts in X/Twitter tabs while leaving GraphQL/API capture and archive downloads alone."
+      >
+        <input type="checkbox" id="low-bandwidth" />
+        <span>Low-bandwidth X tabs</span>
+      </label>
+      <div class="row scroll-rate" id="scroll-rate-row">
+        <label class="rate-lbl" for="auto-scroll-interval">Tick every</label>
+        <input
+          class="rate-slider"
+          id="auto-scroll-interval"
+          type="range"
+          min="3"
+          max="60"
+          step="1"
+        />
+        <span class="rate-val"><span id="auto-scroll-secs">6</span>s</span>
+      </div>
+    </section>
+
+    <section class="loop" id="auto-scroll-section">
+      <div class="section-head">
+        <h2 class="section-title">Auto-scroll</h2>
+        <span class="muted" id="auto-scroll-status">idle</span>
+      </div>
+      <p class="muted loop-blurb">
+        Scrolls open X tabs to the bottom. Long visible tweets unfold while you browse, with or
+        without auto-scroll running.
+      </p>
+      <div class="row">
+        <button class="btn" id="auto-scroll-start">Start auto-scroll</button>
+        <button class="btn" id="auto-scroll-cancel" hidden>Cancel</button>
+        <span class="progress" id="auto-scroll-progress" hidden></span>
+      </div>
+    </section>
+
+    <section class="loop" id="media-crawl-section" hidden>
+      <div class="section-head">
+        <h2 class="section-title">Media-tab partial captures</h2>
+        <span class="muted" id="media-crawl-count">0 queued</span>
+      </div>
+      <p class="muted loop-blurb">
+        Tweets the Media tab surfaced without enough data to fully capture. The crawl walks a single
+        tab through each detail page, waits for the page-hook to ingest a response, then moves on.
+        Already-archived IDs and timeouts are skipped.
+      </p>
+      <div class="row">
+        <button class="btn" id="media-crawl-start">Start crawl</button>
+        <button class="btn" id="media-crawl-cancel" hidden>Cancel</button>
+        <span class="progress" id="media-crawl-progress" hidden></span>
+      </div>
+    </section>
+
+    <section class="loop" id="refetch-section" hidden>
+      <div class="section-head">
+        <h2 class="section-title">Truncated tweets</h2>
+        <span class="muted" id="refetch-count">0 queued</span>
+      </div>
+      <p class="muted loop-blurb">
+        Long tweets show as a 280-char head with a “show more” link in timeline payloads. The
+        refetch walks one tab through each queued tweet, waits for the response, then advances.
+      </p>
+      <div class="row">
+        <button class="btn" id="refetch-start">Start refetch</button>
+        <button class="btn" id="refetch-cancel" hidden>Cancel</button>
+        <span class="progress" id="refetch-progress" hidden></span>
+      </div>
+    </section>
+
+    <section class="loop" id="thread-open-section" hidden>
+      <div class="section-head">
+        <h2 class="section-title">Thread openings</h2>
+        <span class="muted" id="thread-open-count">0 queued</span>
+      </div>
+      <p class="muted loop-blurb">
+        Core-account thread roots that may hide later self-replies in timeline views. The opener
+        walks one tab through each detail page and nudges it so the conversation loads.
+      </p>
+      <div class="row">
+        <button class="btn" id="thread-open-start">Start opening</button>
+        <button class="btn" id="thread-open-cancel" hidden>Cancel</button>
+        <span class="progress" id="thread-open-progress" hidden></span>
+      </div>
+    </section>
+
+    <section class="loop" id="coverage-gaps-section">
+      <div class="section-head">
+        <h2 class="section-title">Coverage gaps</h2>
+        <span class="muted" id="coverage-gaps-count"></span>
+      </div>
+      <p class="muted loop-blurb">
+        Empty or unusually sparse months in the archive, plus tweets posted since the last capture.
+        Open a gap to load that exact date range in X; auto-scroll then fills it.
+      </p>
+      <div class="row">
+        <button class="btn" id="coverage-gaps-find">Find gaps</button>
+      </div>
+      <ul class="gap-list" id="coverage-gaps-list" aria-live="polite"></ul>
+    </section>
+
+    <section class="accounts">
+      <h2 class="section-title">Accounts</h2>
+      <ul class="account-list" id="account-list" aria-live="polite"></ul>
+    </section>
+
+    <section class="recent-tweets">
+      <h2 class="section-title">Recent tweets</h2>
+      <ul class="recent-tweet-list" id="recent-tweet-list" aria-live="polite"></ul>
+    </section>
+
+    <section class="activity">
+      <div class="section-head">
+        <h2 class="section-title">Recent activity</h2>
+        <button class="btn-link" id="clear-activity" title="Clear local activity tail">
+          Clear
+        </button>
+      </div>
+      <ul class="activity-list" id="activity-list" aria-live="polite"></ul>
+    </section>
+
+    <footer class="ftr">
+      <span class="muted">Immigration Archive · v<span id="ext-version">0.0.0</span></span>
+    </footer>
+
+    <script type="module" src="sidebar.js"></script>
+  </body>
+</html>

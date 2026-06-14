@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T005944Z-748de0a5-ICEgovCareers",
+  "account_handle": "ICEgovCareers",
+  "captured_at": "2026-06-14T01:00:01.061Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AERODenver%20since%3A2020-01-01%20until%3A2021-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1339247166666256388",
+      "account_handle": "ICEgovCareers",
+      "account_id": "862328796548145152",
+      "posted_at": "2020-12-16T16:33:01.000Z",
+      "first_captured_at": "2026-06-14T01:00:00.756Z",
+      "last_seen_at": "2026-06-14T01:00:00.756Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/ICEgovCareers/status/1339247166666256388",
+      "tweet_type": "original",
+      "conversation_id": "1339247166666256388",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "CLOSING TODAY: ICE’s Enforcement and Removal Operations (ERO) is seeking Deportation Officers in several locations throughout the U.S. Learn more and apply: https://t.co/SICTI1SNGV https://t.co/aatROPfoBN",
+      "text_resolved": "CLOSING TODAY: ICE’s Enforcement and Removal Operations (ERO) is seeking Deportation Officers in several locations throughout the U.S. Learn more and apply: https://xsm.link/z9tvr2 https://t.co/aatROPfoBN",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://nuvi.com/\" rel=\"nofollow\">Nuvi Publish</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/SICTI1SNGV",
+          "expanded": "https://xsm.link/z9tvr2",
+          "display": "xsm.link/z9tvr2"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1339247163675734019",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/EpX2MyFXcAMb1AT.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1280,
+          "height": 854,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 6,
+      "retweet_count": 3,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:00:00.756Z",
+          "likes": 6,
+          "retweets": 3,
+          "replies": 0,
+          "quotes": 0,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Careers at ICE",
+        "avatar_url": "https://pbs.twimg.com/profile_images/862329499131817984/_vnokBaL_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "ICE's official Twitter page for information on job postings, recruiting events & more. Visit our website at https://t.co/Sgfu4KbGx7",
+        "location": null,
+        "url": "https://t.co/SUShKEZwi7",
+        "followers_count": 2069,
+        "friends_count": 19,
+        "statuses_count": 711,
+        "account_created_at": "2017-05-10T15:29:41.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T005944Z-748de0a5",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T005944Z-748de0a5.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T005944Z-748de0a5.jsonl",
+    "source_handle": "ERODenver"
+  }
+}

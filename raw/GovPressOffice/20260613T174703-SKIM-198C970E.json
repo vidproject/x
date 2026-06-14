@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T174647Z-f6e8bb60-GovPressOffice",
+  "account_handle": "GovPressOffice",
+  "captured_at": "2026-06-13T17:47:03.865Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ASecRollins%20since%3A2025-10-01%20until%3A2026-01-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1999503546098811012",
+      "account_handle": "GovPressOffice",
+      "account_id": "1285266390",
+      "posted_at": "2025-12-12T15:36:09.000Z",
+      "first_captured_at": "2026-06-13T17:46:53.610Z",
+      "last_seen_at": "2026-06-13T17:46:53.610Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/GovPressOffice/status/1999503546098811012",
+      "tweet_type": "reply",
+      "conversation_id": "1999490276302422215",
+      "reply_to_tweet_id": "1999490276302422215",
+      "reply_to_account": "SecRollins",
+      "reply_to_account_id": "1886776365673803776",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@SecRollins @USDA @SecKennedy @DrOzCMS @HHSGov @WhiteHouse you’re starving children https://t.co/amLjTV5GmX",
+      "text_resolved": "@SecRollins @USDA @SecKennedy @DrOzCMS @HHSGov @WhiteHouse you’re starving children https://t.co/amLjTV5GmX",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "SecRollins",
+        "USDA",
+        "SecKennedy",
+        "DrOzCMS",
+        "HHSGov",
+        "WhiteHouse"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1999503541296332800",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G7-p4IIagAATQza.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1320,
+          "height": 1334,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 10258,
+      "retweet_count": 1119,
+      "reply_count": 127,
+      "quote_count": 11,
+      "view_count": 108189,
+      "bookmark_count": 51,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:46:53.610Z",
+          "likes": 10258,
+          "retweets": 1119,
+          "replies": 127,
+          "quotes": 11,
+          "views": 108189,
+          "bookmarks": 51
+        }
+      ],
+      "author": {
+        "display_name": "Governor Newsom Press Office",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2006591930352996352/J3HFK7Ye_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official account for the press office of @CAGovernor Gavin Newsom #CaliforniaForAll",
+        "location": "California State Capitol",
+        "url": "https://t.co/Id164PrGQM",
+        "followers_count": 704306,
+        "friends_count": 1070,
+        "statuses_count": 15280,
+        "account_created_at": "2013-03-21T06:57:26.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T174647Z-f6e8bb60",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T174647Z-f6e8bb60.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T174647Z-f6e8bb60.jsonl",
+    "source_handle": "SecRollins"
+  }
+}

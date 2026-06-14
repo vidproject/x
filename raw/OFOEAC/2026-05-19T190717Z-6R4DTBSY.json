@@ -1,0 +1,609 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "01KS0T5833AN6R4DTBSY",
+  "account_handle": "OFOEAC",
+  "captured_at": "2026-05-19T19:07:47.857Z",
+  "endpoint": "UserTweets",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0",
+  "source_url": "https://x.com/i/api/graphql/D5eKzDa5ZoJuC1TCeAXbWA/UserTweetsAndReplies?variables=%7B%22userId%22%3A%2216613128%22%2C%22count%22%3A20%2C%22cursor%22%3A%22DAAHCgABHItFYxY__-sLAAIAAAATMjA1NDk0MDYzMjMzNDkyOTk3MAgAAwAAAAIAAA%22%2C%22includePromotedContent%22%3Atrue%2C%22withCommunity%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_video_screen_enabled%22%3Afalse%2C%22rweb_cashtags_enabled%22%3Atrue%2C%22profile_label_improvements_pcf_label_in_post_enabled%22%3Atrue%2C%22responsive_web_profile_redirect_enabled%22%3Afalse%2C%22rweb_tipjar_consumption_enabled%22%3Afalse%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22premium_content_api_read_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22responsive_web_grok_analyze_button_fetch_trends_enabled%22%3Afalse%2C%22responsive_web_grok_analyze_post_followups_enabled%22%3Atrue%2C%22rweb_cashtags_composer_attachment_enabled%22%3Atrue%2C%22responsive_web_jetfuel_frame%22%3Atrue%2C%22responsive_web_grok_share_attachment_enabled%22%3Atrue%2C%22responsive_web_grok_annotations_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22rweb_conversational_replies_downvote_enabled%22%3Afalse%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22content_disclosure_indicator_enabled%22%3Atrue%2C%22content_disclosure_ai_generated_indicator_enabled%22%3Atrue%2C%22responsive_web_grok_show_grok_translated_post%22%3Atrue%2C%22responsive_web_grok_analysis_button_from_backend%22%3Atrue%2C%22post_ctas_fetch_enabled%22%3Atrue%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Afalse%2C%22responsive_web_grok_image_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_imagine_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_community_note_auto_translation_is_enabled%22%3Atrue%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticlePlainText%22%3Afalse%7D",
+  "tweets": [
+    {
+      "tweet_id": "2053837775871332367",
+      "account_handle": "OFOEAC",
+      "account_id": "1232352428575592454",
+      "posted_at": "2026-05-11T14:00:58.000Z",
+      "first_captured_at": "2026-05-19T19:07:17.415Z",
+      "last_seen_at": "2026-05-19T19:07:17.415Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/OFOEAC/status/2053837775871332367",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "We heard a pin drop as @DFOAtlanta K9 Ears at @CLTAirport found undeclared pork, nance, cacti, and wood in luggage from Mexico City. A $300 penalty was paid by the passenger for failure to declare all items. https://t.co/BIXLcJRti5",
+      "text_resolved": "We heard a pin drop as @DFOAtlanta K9 Ears at @CLTAirport found undeclared pork, nance, cacti, and wood in luggage from Mexico City. A $300 penalty was paid by the passenger for failure to declare all items. https://t.co/BIXLcJRti5",
+      "lang": "en",
+      "hashtags": [],
+      "mentions": [
+        "DFOAtlanta",
+        "CLTAirport"
+      ],
+      "urls": [],
+      "media": [
+        {
+          "media_id": "3_2053837771576385536",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HICyklEXIAAbuQg.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1857,
+          "height": 2476,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_2053837771039531009",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HICykjEXYAEPReR.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1500,
+          "height": 2000,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_2053837771182059520",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HICykjmWMAAP-az.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 2000,
+          "height": 1500,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 16,
+      "retweet_count": 3,
+      "reply_count": 0,
+      "quote_count": 2,
+      "view_count": 8468,
+      "bookmark_count": 3,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T19:07:17.415Z",
+          "likes": 16,
+          "retweets": 3,
+          "replies": 0,
+          "quotes": 2,
+          "views": 8468,
+          "bookmarks": 3
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0T5833AN6R4DTBSY",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2054277992122023945",
+      "account_handle": "OFOEAC",
+      "account_id": "1232352428575592454",
+      "posted_at": "2026-05-12T19:10:14.000Z",
+      "first_captured_at": "2026-05-19T19:07:17.415Z",
+      "last_seen_at": "2026-05-19T19:07:17.415Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/OFOEAC/status/2054277992122023945",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "VALOR: great courage in the face of danger. No other word describes the quality of fallen law enforcement. Each year during the @CBP Valor Memorial, we reflect on that courage and sacrifice as we read the names of every fallen brother and sister forever part of the CBP family. https://t.co/zAnoUDKm4f",
+      "text_resolved": "VALOR: great courage in the face of danger. No other word describes the quality of fallen law enforcement. Each year during the @CBP Valor Memorial, we reflect on that courage and sacrifice as we read the names of every fallen brother and sister forever part of the CBP family. https://t.co/zAnoUDKm4f",
+      "lang": "en",
+      "hashtags": [],
+      "mentions": [
+        "CBP"
+      ],
+      "urls": [],
+      "media": [
+        {
+          "media_id": "3_2054277988531712000",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HIJC8lBWMAAb_8P.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 3072,
+          "height": 2048,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_2054277988326223872",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HIJC8kQWsAACJL2.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 3072,
+          "height": 2048,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 43,
+      "retweet_count": 10,
+      "reply_count": 1,
+      "quote_count": 0,
+      "view_count": 3189,
+      "bookmark_count": 3,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T19:07:17.415Z",
+          "likes": 43,
+          "retweets": 10,
+          "replies": 1,
+          "quotes": 0,
+          "views": 3189,
+          "bookmarks": 3
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0T5833AN6R4DTBSY",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2051324799352275287",
+      "account_handle": "OFOEAC",
+      "account_id": "1232352428575592454",
+      "posted_at": "2026-05-04T15:35:18.000Z",
+      "first_captured_at": "2026-05-19T19:07:32.099Z",
+      "last_seen_at": "2026-05-19T19:07:32.099Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/OFOEAC/status/2051324799352275287",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "A multi-layered inspection, including a @cbp K9 alert, revealed: 26 packages of meth, stashed behind the wheels. Over 161 lbs. of meth was seized from both sides of the vehicle. CBP: Keeping your ride and our road safe, one suspicious rattle at a time!\n #RoadSafe #OFOproud🇺🇸 https://t.co/FlOCe5vzNy",
+      "text_resolved": "A multi-layered inspection, including a @cbp K9 alert, revealed: 26 packages of meth, stashed behind the wheels. Over 161 lbs. of meth was seized from both sides of the vehicle. CBP: Keeping your ride and our road safe, one suspicious rattle at a time!\n #RoadSafe #OFOproud🇺🇸 https://t.co/FlOCe5vzNy",
+      "lang": "en",
+      "hashtags": [
+        "RoadSafe",
+        "OFOproud"
+      ],
+      "mentions": [
+        "CBP"
+      ],
+      "urls": [],
+      "media": [
+        {
+          "media_id": "3_2051324793840914432",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HHfFCBfW0AA0Q8w.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 3024,
+          "height": 2353,
+          "alt_text": "Several rectangular packages wrapped tightly in reflective silver foil with green and white wires attached, placed on a concrete floor in an industrial setting.",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_2051324794440740864",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HHfFCDuXcAA-gbs.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 3072,
+          "height": 2304,
+          "alt_text": "Person holding a flashlight inside a narrow, rectangular metal duct or vent with reflective insulation lining the interior walls.",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_2051324794050588672",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HHfFCCRWMAAlKkU.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 3072,
+          "height": 2304,
+          "alt_text": "Close-up of a gloved hand working on a damaged and rusted metal car frame section under bright light.",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 70,
+      "retweet_count": 14,
+      "reply_count": 4,
+      "quote_count": 1,
+      "view_count": 8809,
+      "bookmark_count": 5,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T19:07:32.099Z",
+          "likes": 70,
+          "retweets": 14,
+          "replies": 4,
+          "quotes": 1,
+          "views": 8809,
+          "bookmarks": 5
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0T5833AN6R4DTBSY",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2049549405485744172",
+      "account_handle": "OFOEAC",
+      "account_id": "1232352428575592454",
+      "posted_at": "2026-04-29T18:00:31.000Z",
+      "first_captured_at": "2026-05-19T19:07:33.880Z",
+      "last_seen_at": "2026-05-19T19:07:33.880Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/OFOEAC/status/2049549405485744172",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "We're taking a whole-of-CBP approach in the fight against dangerous drugs like fentanyl to stop their destructive impacts on Americans. So far in FY26, the @CBP Office of Field Operations has seized 5,258 lbs of fentanyl. #OFOProud🇺🇸 #OnePillKills\n➡️ https://t.co/gvCcKPQRJo https://t.co/MA4fM6ocHf",
+      "text_resolved": "We're taking a whole-of-CBP approach in the fight against dangerous drugs like fentanyl to stop their destructive impacts on Americans. So far in FY26, the @CBP Office of Field Operations has seized 5,258 lbs of fentanyl. #OFOProud🇺🇸 #OnePillKills\n➡️ http://go.dhs.gov/ouc https://t.co/MA4fM6ocHf",
+      "lang": "en",
+      "hashtags": [
+        "OFOProud",
+        "OnePillKills"
+      ],
+      "mentions": [
+        "CBP"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/gvCcKPQRJo",
+          "expanded": "http://go.dhs.gov/ouc",
+          "display": "go.dhs.gov/ouc"
+        }
+      ],
+      "media": [
+        {
+          "media_id": "7_2049548110141980672",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/2049548110141980672/pu/vid/avc1/720x1112/NJZR2QbQGgvHaquS.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 21.056,
+          "width": 776,
+          "height": 1200,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 44,
+      "retweet_count": 13,
+      "reply_count": 6,
+      "quote_count": 3,
+      "view_count": 9793,
+      "bookmark_count": 4,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T19:07:33.880Z",
+          "likes": 44,
+          "retweets": 13,
+          "replies": 6,
+          "quotes": 3,
+          "views": 9793,
+          "bookmarks": 4
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0T5833AN6R4DTBSY",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2042237352462958662",
+      "account_handle": "OFOEAC",
+      "account_id": "1232352428575592454",
+      "posted_at": "2026-04-09T13:45:02.000Z",
+      "first_captured_at": "2026-05-19T19:07:40.474Z",
+      "last_seen_at": "2026-05-19T19:07:40.474Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/OFOEAC/status/2042237352462958662",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "STOPPED AT THE PORT \nCBP officers seized 14.90 lbs of cocaine after a K9 alert and scan revealed anomalies. A search uncovered 8 bundles concealed in a vehicle’s rocker panels.\n#OFOproud🇺🇸 @DFOTucson https://t.co/wfmb3iQHz8",
+      "text_resolved": "STOPPED AT THE PORT \nCBP officers seized 14.90 lbs of cocaine after a K9 alert and scan revealed anomalies. A search uncovered 8 bundles concealed in a vehicle’s rocker panels.\n#OFOproud🇺🇸 @DFOTucson https://t.co/wfmb3iQHz8",
+      "lang": "en",
+      "hashtags": [
+        "OFOproud"
+      ],
+      "mentions": [
+        "DFOTucson"
+      ],
+      "urls": [],
+      "media": [
+        {
+          "media_id": "7_2042236132096622592",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/2042236132096622592/pu/vid/avc1/720x1280/-K3FKSW0krmSCohG.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 18.4,
+          "width": 720,
+          "height": 1280,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 86,
+      "retweet_count": 14,
+      "reply_count": 2,
+      "quote_count": 2,
+      "view_count": 8340,
+      "bookmark_count": 5,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T19:07:40.474Z",
+          "likes": 86,
+          "retweets": 14,
+          "replies": 2,
+          "quotes": 2,
+          "views": 8340,
+          "bookmarks": 5
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0T5833AN6R4DTBSY",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2039372407417233503",
+      "account_handle": "OFOEAC",
+      "account_id": "1232352428575592454",
+      "posted_at": "2026-04-01T16:00:46.000Z",
+      "first_captured_at": "2026-05-19T19:07:44.814Z",
+      "last_seen_at": "2026-05-19T19:07:44.814Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/OFOEAC/status/2039372407417233503",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Think you can smuggle animals into the US? Think again. \nLast year, @DFOSanDiegoCA officers discovered parrots &amp; parakeets in bags in the car of Ricardo Alonzo. Last week, he was sentenced to 3 months in prison &amp; ordered to pay $3,262. \n➡️ https://t.co/nguUo7Gict\n#OFOProud🇺🇸 https://t.co/3ie0q5Hxcq",
+      "text_resolved": "Think you can smuggle animals into the US? Think again. \nLast year, @DFOSanDiegoCA officers discovered parrots &amp; parakeets in bags in the car of Ricardo Alonzo. Last week, he was sentenced to 3 months in prison &amp; ordered to pay $3,262. \n➡️ https://go.dhs.gov/iCf\n#OFOProud🇺🇸 https://t.co/3ie0q5Hxcq",
+      "lang": "en",
+      "hashtags": [
+        "OFOProud"
+      ],
+      "mentions": [
+        "DFOSanDiegoCA"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/nguUo7Gict",
+          "expanded": "https://go.dhs.gov/iCf",
+          "display": "go.dhs.gov/iCf"
+        }
+      ],
+      "media": [
+        {
+          "media_id": "3_2039372405416529921",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HE1OZc2WEAEaEn1.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 442,
+          "height": 575,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 15,
+      "retweet_count": 3,
+      "reply_count": 3,
+      "quote_count": 1,
+      "view_count": 5406,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T19:07:44.814Z",
+          "likes": 15,
+          "retweets": 3,
+          "replies": 3,
+          "quotes": 1,
+          "views": 5406,
+          "bookmarks": 0
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0T5833AN6R4DTBSY",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2039402443130151081",
+      "account_handle": "OFOEAC",
+      "account_id": "1232352428575592454",
+      "posted_at": "2026-04-01T18:00:07.000Z",
+      "first_captured_at": "2026-05-19T19:07:44.814Z",
+      "last_seen_at": "2026-05-19T19:07:44.814Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/OFOEAC/status/2039402443130151081",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Happy 56th Birthday to the OFO K9 Training Program!\nFor over five decades, our dedicated @cbp K9 teams have played a vital role in keeping our nation safe. Today, we celebrate their history, achievements, and unwavering service.\n#OFOproudus#56YearsStrong #HappyBirthday https://t.co/xzc8GtcvvZ",
+      "text_resolved": "Happy 56th Birthday to the OFO K9 Training Program!\nFor over five decades, our dedicated @cbp K9 teams have played a vital role in keeping our nation safe. Today, we celebrate their history, achievements, and unwavering service.\n#OFOproudus#56YearsStrong #HappyBirthday https://t.co/xzc8GtcvvZ",
+      "lang": "en",
+      "hashtags": [
+        "HappyBirthday"
+      ],
+      "mentions": [
+        "cbp"
+      ],
+      "urls": [],
+      "media": [
+        {
+          "media_id": "7_2039401332264599552",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/2039401332264599552/pu/vid/avc1/1280x720/nm29ugNZhmXhy3Y6.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 42.3,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 17,
+      "retweet_count": 2,
+      "reply_count": 0,
+      "quote_count": 1,
+      "view_count": 5904,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T19:07:44.814Z",
+          "likes": 17,
+          "retweets": 2,
+          "replies": 0,
+          "quotes": 1,
+          "views": 5904,
+          "bookmarks": 0
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0T5833AN6R4DTBSY",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2034072322244558874",
+      "account_handle": "OFOEAC",
+      "account_id": "1232352428575592454",
+      "posted_at": "2026-03-18T01:00:07.000Z",
+      "first_captured_at": "2026-05-19T19:07:47.857Z",
+      "last_seen_at": "2026-05-19T19:07:47.857Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/OFOEAC/status/2034072322244558874",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "A SENTRI member learned the cost of failing to declare. Member declared bread, juice &amp; cookies while passing through San Luis POE, but @DFOTucson CBP K9 Maveric found mangos, oranges, kiwi, &amp; guava in the vehicle. SENTRI membership revoked &amp; $500 penalty issued. #OFOProud🇺🇸 https://t.co/6X7xnwUOHj",
+      "text_resolved": "A SENTRI member learned the cost of failing to declare. Member declared bread, juice &amp; cookies while passing through San Luis POE, but @DFOTucson CBP K9 Maveric found mangos, oranges, kiwi, &amp; guava in the vehicle. SENTRI membership revoked &amp; $500 penalty issued. #OFOProud🇺🇸 https://t.co/6X7xnwUOHj",
+      "lang": "en",
+      "hashtags": [
+        "OFOProud"
+      ],
+      "mentions": [
+        "DFOTucson"
+      ],
+      "urls": [],
+      "media": [
+        {
+          "media_id": "7_2034071089366593536",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/2034071089366593536/pu/vid/avc1/720x720/SaA5I9nHnSmzraRC.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 6.55,
+          "width": 1280,
+          "height": 1280,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 15,
+      "retweet_count": 2,
+      "reply_count": 2,
+      "quote_count": 2,
+      "view_count": 4769,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T19:07:47.857Z",
+          "likes": 15,
+          "retweets": 2,
+          "replies": 2,
+          "quotes": 2,
+          "views": 4769,
+          "bookmarks": 0
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0T5833AN6R4DTBSY",
+      "schema_version": 1
+    }
+  ]
+}

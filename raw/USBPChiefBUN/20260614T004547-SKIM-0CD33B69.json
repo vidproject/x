@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T004528Z-6c5427ac-USBPChiefBUN",
+  "account_handle": "USBPChiefBUN",
+  "captured_at": "2026-06-14T00:45:47.705Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBPJobs%20since%3A2022-01-01%20until%3A2023-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1608506933379747840",
+      "account_handle": "USBPChiefBUN",
+      "account_id": "1207052250209832960",
+      "posted_at": "2022-12-29T16:55:12.000Z",
+      "first_captured_at": "2026-06-14T00:45:38.061Z",
+      "last_seen_at": "2026-06-14T00:45:38.061Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USBPChiefBUN/status/1608506933379747840",
+      "tweet_type": "original",
+      "conversation_id": "1608506933379747840",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "This holiday season #borderpatrol agents from Wellesley Island Station partnered with the Urban Mission for a boot drive donation. The Urban Mission provides supportive services to those struggling with financial setbacks, substance abuse and domestic violence. https://t.co/mR8WeVbahd",
+      "text_resolved": "This holiday season #borderpatrol agents from Wellesley Island Station partnered with the Urban Mission for a boot drive donation. The Urban Mission provides supportive services to those struggling with financial setbacks, substance abuse and domestic violence. https://t.co/mR8WeVbahd",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "borderpatrol"
+      ],
+      "mentions": [],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1608506927499120641",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/FlKQh0BXEAEr3Ke.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 640,
+          "height": 360,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 7,
+      "retweet_count": 2,
+      "reply_count": 1,
+      "quote_count": 0,
+      "view_count": 925,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T00:45:38.061Z",
+          "likes": 7,
+          "retweets": 2,
+          "replies": 1,
+          "quotes": 0,
+          "views": 925,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Chief Patrol Agent - Buffalo Sector",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2052098000147636231/9NT1d4Hl_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Official account of the U.S. Border Patrol, Buffalo Sector.\nDMs are not monitored 24/7.\nReport suspicious activity 1-800-331-0353",
+        "location": "Grand Island, NY",
+        "url": "https://t.co/mfhLF6cofP",
+        "followers_count": 2262,
+        "friends_count": 673,
+        "statuses_count": 640,
+        "account_created_at": "2019-12-17T21:37:48.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T004528Z-6c5427ac",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004528Z-6c5427ac.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004528Z-6c5427ac.jsonl",
+    "source_handle": "CBPJobs"
+  }
+}

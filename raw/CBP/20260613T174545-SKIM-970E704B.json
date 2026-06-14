@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T174521Z-62a2f5e0-CBP",
+  "account_handle": "CBP",
+  "captured_at": "2026-06-13T17:45:45.201Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AOFOEAC%20since%3A2023-11-01%20until%3A2023-12-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1727450899121897796",
+      "account_handle": "CBP",
+      "account_id": "16613128",
+      "posted_at": "2023-11-22T22:16:03.000Z",
+      "first_captured_at": "2026-06-13T17:45:36.633Z",
+      "last_seen_at": "2026-06-13T17:45:36.633Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBP/status/1727450899121897796",
+      "tweet_type": "original",
+      "conversation_id": "1727450899121897796",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "CBP is working closely with @FBI, federal, state &amp; local partners in response to a vehicle explosion at Rainbow Bridge which remains closed. Out of abundance of caution, CBP temporarily suspended inbound/outbound traffic at 3 other Buffalo crossings that have since reopened. https://t.co/pTXyUsavRB",
+      "text_resolved": "CBP is working closely with @FBI, federal, state &amp; local partners in response to a vehicle explosion at Rainbow Bridge which remains closed. Out of abundance of caution, CBP temporarily suspended inbound/outbound traffic at 3 other Buffalo crossings that have since reopened. https://t.co/pTXyUsavRB",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "FBI"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_1727450824282882048",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/1727450824282882048/pu/vid/avc1/1280x720/-KiZ5rqc2IDdqt6i.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 5,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 2693,
+      "retweet_count": 1011,
+      "reply_count": 393,
+      "quote_count": 515,
+      "view_count": 2321186,
+      "bookmark_count": 369,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:45:36.633Z",
+          "likes": 2693,
+          "retweets": 1011,
+          "replies": 393,
+          "quotes": 515,
+          "views": 2321186,
+          "bookmarks": 369
+        }
+      ],
+      "author": {
+        "display_name": "CBP",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1355124069092515842/hC7JdgT-_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "The official page of United States Customs & Border Protection. https://t.co/dOTgpZSOKF",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/xTvN5KaiC5",
+        "followers_count": 593598,
+        "friends_count": 434,
+        "statuses_count": 24958,
+        "account_created_at": "2008-10-06T12:45:44.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T174521Z-62a2f5e0",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T174521Z-62a2f5e0.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T174521Z-62a2f5e0.jsonl",
+    "source_handle": "OFOEAC"
+  }
+}

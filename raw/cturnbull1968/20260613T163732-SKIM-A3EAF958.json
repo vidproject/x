@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T163715Z-57488be4-cturnbull1968",
+  "account_handle": "cturnbull1968",
+  "captured_at": "2026-06-13T16:37:32.494Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADOWResponse%20since%3A2025-01-01%20until%3A2025-04-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1902716740213080167",
+      "account_handle": "cturnbull1968",
+      "account_id": "721795817359560704",
+      "posted_at": "2025-03-20T13:39:56.000Z",
+      "first_captured_at": "2026-06-13T16:37:23.842Z",
+      "last_seen_at": "2026-06-13T16:37:23.842Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/cturnbull1968/status/1902716740213080167",
+      "tweet_type": "original",
+      "conversation_id": "1902716740213080167",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Pete Hegseth removed Colin Powell’s name from a list of notable Americans, buried at Arlington National Cemetery. Hegseth also removed the names of every person of color and every woman on the same list. Only white men were left in place. https://t.co/FZlv8gdUS9",
+      "text_resolved": "Pete Hegseth removed Colin Powell’s name from a list of notable Americans, buried at Arlington National Cemetery. Hegseth also removed the names of every person of color and every woman on the same list. Only white men were left in place. https://t.co/FZlv8gdUS9",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1902716735196897280",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GmfOyiWaIAA6SAi.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 976,
+          "height": 1049,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 44188,
+      "retweet_count": 14010,
+      "reply_count": 16349,
+      "quote_count": 3514,
+      "view_count": 8912950,
+      "bookmark_count": 5220,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T16:37:23.842Z",
+          "likes": 44188,
+          "retweets": 14010,
+          "replies": 16349,
+          "quotes": 3514,
+          "views": 8912950,
+          "bookmarks": 5220
+        }
+      ],
+      "author": {
+        "display_name": "Turnbull",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1929349976619892736/9HQwTndL_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Books, Formula 1, BBQ and Taco enthusiast, Salt Water Fly Fishing, Democrat & the Texas Longhorns. #HookEm",
+        "location": "Home",
+        "url": null,
+        "followers_count": 39884,
+        "friends_count": 2885,
+        "statuses_count": 48690,
+        "account_created_at": "2016-04-17T20:21:47.000Z",
+        "protected": null
+      },
+      "community_note": {
+        "note_id": "1902835416329490819",
+        "title": "Readers added context they thought people might want to know",
+        "short_title": null,
+        "summary": "No service members were permanently removed from the Notable Graves section from the Arlington Cemetery website.\n\nGeneral Colin L. Powell is among those listed.\n\narlingtoncemetery.mil/Media/News/Pos…",
+        "destination_url": "https://twitter.com/i/birdwatch/n/1902835416329490819",
+        "observed_at": "2026-06-13T16:37:23.842Z"
+      },
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T163715Z-57488be4",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T163715Z-57488be4.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T163715Z-57488be4.jsonl",
+    "source_handle": "DOWResponse"
+  }
+}
