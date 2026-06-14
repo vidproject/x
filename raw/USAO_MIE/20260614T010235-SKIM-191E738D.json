@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T010123Z-051140ee-USAO_MIE",
+  "account_handle": "USAO_MIE",
+  "captured_at": "2026-06-14T01:02:35.495Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AERODetroit%20since%3A2022-01-01%20until%3A2023-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1590082004837871616",
+      "account_handle": "USAO_MIE",
+      "account_id": "308559103",
+      "posted_at": "2022-11-08T20:41:06.000Z",
+      "first_captured_at": "2026-06-14T01:01:32.055Z",
+      "last_seen_at": "2026-06-14T01:01:32.055Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USAO_MIE/status/1590082004837871616",
+      "tweet_type": "original",
+      "conversation_id": "1590082004837871616",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Pontiac Man Arrested in ICE Enforcement Action Convicted of Armed Cocaine Trafficking https://t.co/XAQS0oRPJX",
+      "text_resolved": "Pontiac Man Arrested in ICE Enforcement Action Convicted of Armed Cocaine Trafficking https://www.justice.gov/usao-edmi/pr/pontiac-man-arrested-ice-enforcement-action-convicted-armed-cocaine-trafficking",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/XAQS0oRPJX",
+          "expanded": "https://www.justice.gov/usao-edmi/pr/pontiac-man-arrested-ice-enforcement-action-convicted-armed-cocaine-trafficking",
+          "display": "justice.gov/usao-edmi/pr/p…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/XAQS0oRPJX",
+        "vendor_url": "justice.gov",
+        "title": "Pontiac Man Arrested in ICE Enforcement Action Convicted of Armed",
+        "description": null,
+        "image_url": "https://pbs.twimg.com/card_img/2063271416284549122/YJ74qQun?format=png&name=orig"
+      },
+      "media": [],
+      "like_count": 1,
+      "retweet_count": 1,
+      "reply_count": 0,
+      "quote_count": 2,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:01:32.055Z",
+          "likes": 1,
+          "retweets": 1,
+          "replies": 0,
+          "quotes": 2,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Attorney EDMI",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1148694416997179393/lQ1KhLU3_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official account of the U.S. Attorney's Office for the Eastern District of Michigan Privacy: https://t.co/y2MmI0ekfV…",
+        "location": "Detroit, MI",
+        "url": "https://t.co/vHv3iw7EcB",
+        "followers_count": 5692,
+        "friends_count": 256,
+        "statuses_count": 1865,
+        "account_created_at": "2011-05-31T16:25:09.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T010123Z-051140ee",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T010123Z-051140ee.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T010123Z-051140ee.jsonl",
+    "source_handle": "ERODetroit"
+  }
+}

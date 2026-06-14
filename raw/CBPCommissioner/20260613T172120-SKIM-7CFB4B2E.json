@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170900Z-6e174e39-CBPCommissioner",
+  "account_handle": "CBPCommissioner",
+  "captured_at": "2026-06-13T17:21:20.784Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AOFOEAC%20since%3A2021-07-01%20until%3A2021-08-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1417588381706604545",
+      "account_handle": "CBPCommissioner",
+      "account_id": "1349374891003437058",
+      "posted_at": "2021-07-20T20:53:02.000Z",
+      "first_captured_at": "2026-06-13T17:09:08.569Z",
+      "last_seen_at": "2026-06-13T17:09:08.569Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBPCommissioner/status/1417588381706604545",
+      "tweet_type": "original",
+      "conversation_id": "1417588381706604545",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "With profound sadness, @CBP mourns the passing of CBP Officer Ruben Facio. With 17 years of service, CBPO Facio was vital to the passenger operations team at the Port of New Orleans. We will never forget him and his embodiment of vigilance, service, and integrity. https://t.co/GugAUUfPI4",
+      "text_resolved": "With profound sadness, @CBP mourns the passing of CBP Officer Ruben Facio. With 17 years of service, CBPO Facio was vital to the passenger operations team at the Port of New Orleans. We will never forget him and his embodiment of vigilance, service, and integrity. https://t.co/GugAUUfPI4",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://sproutsocial.com\" rel=\"nofollow\">Sprout Social</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "CBP"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1417588377638121473",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/E6xJHmbXsAEVZ4U.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1600,
+          "height": 900,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 71,
+      "retweet_count": 12,
+      "reply_count": 4,
+      "quote_count": 3,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:09:08.569Z",
+          "likes": 71,
+          "retweets": 12,
+          "replies": 4,
+          "quotes": 3,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "CBP Commissioner Rodney Scott",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1937151470614331392/9C2jcRQU_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official page of the U.S. Customs and Border Protection (@CBP) Commissioner.",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/LWIJss3gTe",
+        "followers_count": 25753,
+        "friends_count": 144,
+        "statuses_count": 3154,
+        "account_created_at": "2021-01-13T15:19:56.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170900Z-6e174e39",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T170900Z-6e174e39.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T170900Z-6e174e39.jsonl",
+    "source_handle": "OFOEAC"
+  }
+}

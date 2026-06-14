@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T154640Z-63b8d1a2-DeptofWar",
+  "account_handle": "DeptofWar",
+  "captured_at": "2026-06-13T15:46:59.801Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AAnnaKelly47%20since%3A2026-04-01%20until%3A2026-06-13%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2065405578868879364",
+      "account_handle": "DeptofWar",
+      "account_id": "66369181",
+      "posted_at": "2026-06-12T12:07:18.000Z",
+      "first_captured_at": "2026-06-13T15:46:50.115Z",
+      "last_seen_at": "2026-06-13T15:46:50.115Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DeptofWar/status/2065405578868879364",
+      "tweet_type": "original",
+      "conversation_id": "2065405578868879364",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "https://t.co/OLSfVeLDUA",
+      "text_resolved": "http://x.com/i/article/2065405322043305984",
+      "lang": "zxx",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/OLSfVeLDUA",
+          "expanded": "http://x.com/i/article/2065405322043305984",
+          "display": "x.com/i/article/2065…"
+        }
+      ],
+      "card": null,
+      "media": [],
+      "like_count": 6019,
+      "retweet_count": 1652,
+      "reply_count": 528,
+      "quote_count": 270,
+      "view_count": 1356691,
+      "bookmark_count": 1149,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T15:46:50.115Z",
+          "likes": 6019,
+          "retweets": 1652,
+          "replies": 528,
+          "quotes": 270,
+          "views": 1356691,
+          "bookmarks": 1149
+        }
+      ],
+      "author": {
+        "display_name": "Department of War 🇺🇸",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1965912244262170624/7NoruMt1_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official U.S. Department of War X account.",
+        "location": "The Pentagon, Washington, D.C.",
+        "url": "https://t.co/awOTVPTL4Q",
+        "followers_count": 7293501,
+        "friends_count": 672,
+        "statuses_count": 43838,
+        "account_created_at": "2009-08-17T14:43:00.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T154640Z-63b8d1a2",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T154640Z-63b8d1a2.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T154640Z-63b8d1a2.jsonl",
+    "source_handle": "AnnaKelly47"
+  }
+}

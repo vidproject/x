@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-20260611-20260611T133842Z-4a4f9cd3-foxnewspolitics",
+  "account_handle": "foxnewspolitics",
+  "captured_at": "2026-06-11T13:38:58.478Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSDOL%20since%3A2025-03-26%20until%3A2025-04-02",
+  "tweets": [
+    {
+      "tweet_id": "1907127878505947578",
+      "account_handle": "foxnewspolitics",
+      "account_id": "16032925",
+      "posted_at": "2025-04-01T17:48:13.000Z",
+      "first_captured_at": "2026-06-11T13:38:47.758Z",
+      "last_seen_at": "2026-06-11T13:38:47.758Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/foxnewspolitics/status/1907127878505947578",
+      "tweet_type": "original",
+      "conversation_id": "1907127878505947578",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Trump Labor Department secures eye-popping sum to return to taxpayers amid DOGE push https://t.co/SbvtviMg2X",
+      "text_resolved": "Trump Labor Department secures eye-popping sum to return to taxpayers amid DOGE push https://trib.al/baMNWFU",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/SbvtviMg2X",
+          "expanded": "https://trib.al/baMNWFU",
+          "display": "trib.al/baMNWFU"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/SbvtviMg2X",
+        "vendor_url": "foxnews.com",
+        "title": "Trump Labor Department secures eye-popping sum to return to taxpayers amid DOGE push",
+        "description": "The Labor Department announced this week that it is returning more than $1 billion of coronavirus funding back to the taxpayers with more savings potentially on the way.",
+        "image_url": "https://pbs.twimg.com/card_img/2062475177280110593/3lVEyTsU?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 227,
+      "retweet_count": 54,
+      "reply_count": 22,
+      "quote_count": 10,
+      "view_count": 250108,
+      "bookmark_count": 14,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T13:38:47.758Z",
+          "likes": 227,
+          "retweets": 54,
+          "replies": 22,
+          "quotes": 10,
+          "views": 250108,
+          "bookmarks": 14
+        }
+      ],
+      "author": {
+        "display_name": "Fox News Politics",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1028984467447341059/yha4NYkt_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Follow us for the latest political news and updates!",
+        "location": "Washington, D.C.",
+        "url": "http://t.co/hp4EoFaNoR",
+        "followers_count": 1848069,
+        "friends_count": 249,
+        "statuses_count": 90769,
+        "account_created_at": "2008-08-28T21:16:38.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-20260611-20260611T133842Z-4a4f9cd3",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-import-20260611/x-com-search-20260611T133842Z-4a4f9cd3.summary.json",
+    "jsonl": ".skim/raw-import-20260611/x-com-search-20260611T133842Z-4a4f9cd3.jsonl",
+    "source_handle": "USDOL"
+  }
+}

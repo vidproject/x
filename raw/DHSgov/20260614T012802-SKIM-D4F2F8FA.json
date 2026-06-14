@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T012744Z-1798f843-DHSgov",
+  "account_handle": "DHSgov",
+  "captured_at": "2026-06-14T01:28:02.174Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEROSaintPaul%20since%3A2023-01-01%20until%3A2024-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1696560896699503057",
+      "account_handle": "DHSgov",
+      "account_id": "15647676",
+      "posted_at": "2023-08-29T16:30:13.000Z",
+      "first_captured_at": "2026-06-14T01:27:51.452Z",
+      "last_seen_at": "2026-06-14T01:27:51.452Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DHSgov/status/1696560896699503057",
+      "tweet_type": "original",
+      "conversation_id": "1696560896699503057",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Whatever you have on the schedule this Labor Day weekend, stay watchful for suspicious behavior. If you see something, say something. It's how we keep ourselves, our families, and our communities safe. #SeeSay\nLearn more. ⬇️\nhttps://t.co/u2D8TVPTpl https://t.co/Knw8Vtxtk5",
+      "text_resolved": "Whatever you have on the schedule this Labor Day weekend, stay watchful for suspicious behavior. If you see something, say something. It's how we keep ourselves, our families, and our communities safe. #SeeSay\nLearn more. ⬇️\nhttps://www.dhs.gov/see-something-say-something https://t.co/Knw8Vtxtk5",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://sproutsocial.com\" rel=\"nofollow\">Sprout Social</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "SeeSay"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/u2D8TVPTpl",
+          "expanded": "https://www.dhs.gov/see-something-say-something",
+          "display": "dhs.gov/see-something-…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1696560875539255305",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/F4tlIKZX0Aklck_.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 628,
+          "alt_text": "If you see something, say something\nReport suspicious activity to local authorities\nLearn more dhs.gov/SeeSay",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 52,
+      "retweet_count": 25,
+      "reply_count": 10,
+      "quote_count": 3,
+      "view_count": 13520,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:27:51.452Z",
+          "likes": 52,
+          "retweets": 25,
+          "replies": 10,
+          "quotes": 3,
+          "views": 13520,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "Homeland Security",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1882507181481656320/gzdbVHMv_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "With honor and integrity, we will safeguard the American people, our homeland, and our values. #WeAreDHS",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/AwsNW68gRr",
+        "followers_count": 2988304,
+        "friends_count": 213,
+        "statuses_count": 35063,
+        "account_created_at": "2008-07-29T16:32:34.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T012744Z-1798f843",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T012744Z-1798f843.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T012744Z-1798f843.jsonl",
+    "source_handle": "EROSaintPaul"
+  }
+}

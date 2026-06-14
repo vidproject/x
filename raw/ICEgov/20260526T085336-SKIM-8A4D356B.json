@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-dhs-profile-20260526-20260526T085322Z-7ca7c6a6-ICEgov",
+  "account_handle": "ICEgov",
+  "captured_at": "2026-05-26T08:53:36.794Z",
+  "endpoint": "UserByScreenName,UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/SecMullinDHS",
+  "tweets": [
+    {
+      "tweet_id": "2056750435868799154",
+      "account_handle": "ICEgov",
+      "account_id": "39384517",
+      "posted_at": "2026-05-19T14:54:51.000Z",
+      "first_captured_at": "2026-05-26T08:53:24.860Z",
+      "last_seen_at": "2026-05-26T08:53:24.860Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/ICEgov/status/2056750435868799154",
+      "tweet_type": "original",
+      "conversation_id": "2056750435868799154",
+      "reply_to_tweet_id": null,
+      "reply_to_account": "ICEgov",
+      "reply_to_account_id": "39384517",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@ICEgov &amp; ICE @HSI_HQ will be working with local and federal partners to secure the @FIFAWorldCup.\n\nThey will play a pivotal role in combatting human trafficking as well as stopping counterfeit merchandise and counterfeit ticket sales. https://t.co/KNcxnZdaSx",
+      "text_resolved": "@ICEgov &amp; ICE @HSI_HQ will be working with local and federal partners to secure the @FIFAWorldCup.\n\nThey will play a pivotal role in combatting human trafficking as well as stopping counterfeit merchandise and counterfeit ticket sales. https://t.co/KNcxnZdaSx",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "ICEgov",
+        "HSI_HQ",
+        "FIFAWorldCup"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_2056747809756311552",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/2056747809756311552/pu/vid/avc1/720x1280/MC1ti-SOcwxRF6Xm.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 34.9,
+          "width": 720,
+          "height": 1280,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 545,
+      "retweet_count": 128,
+      "reply_count": 157,
+      "quote_count": 28,
+      "view_count": 162452,
+      "bookmark_count": 34,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T08:53:24.860Z",
+          "likes": 545,
+          "retweets": 128,
+          "replies": 157,
+          "quotes": 28,
+          "views": 162452,
+          "bookmarks": 34
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Immigration and Customs Enforcement",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1924467797544808448/20-3dZrS_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Protects America through criminal investigations and by enforcing immigration law to preserve national security and public safety.  https://t.co/rDI2IeFofc",
+        "location": "Washington, DC",
+        "url": "https://t.co/tgKUL8Kwur",
+        "followers_count": 1140028,
+        "friends_count": 324,
+        "statuses_count": 27431,
+        "account_created_at": "2009-05-12T00:20:23.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-dhs-profile-20260526-20260526T085322Z-7ca7c6a6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/secmullindhs-20260526T085322Z-7ca7c6a6.summary.json",
+    "jsonl": ".skim/raw/secmullindhs-20260526T085322Z-7ca7c6a6.jsonl",
+    "source_handle": "SecMullinDHS"
+  }
+}

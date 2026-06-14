@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass1-20260612T142200Z-e05c1c44-TheJusticeDept",
+  "account_handle": "TheJusticeDept",
+  "captured_at": "2026-06-12T14:22:24.828Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AReichlinMelnick%20since%3A2026-01-01%20until%3A2026-06-13%20filter%3Aquote&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2065208707856712125",
+      "account_handle": "TheJusticeDept",
+      "account_id": "73181712",
+      "posted_at": "2026-06-11T23:05:00.000Z",
+      "first_captured_at": "2026-06-12T14:22:15.737Z",
+      "last_seen_at": "2026-06-12T14:22:15.737Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/TheJusticeDept/status/2065208707856712125",
+      "tweet_type": "original",
+      "conversation_id": "2065208707856712125",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "🚨Justice Department Files Complaint Challenging Virginia Mask Ban and Identification Requirements for Federal Officers\n\n\"Law enforcement officers risk their lives every day to keep Americans safe, and they do not deserve to be doxed or harassed simply for carrying out their duties,\" said Acting Attorney General @DAGToddBlanche. \"Virginia’s anti-law enforcement policies regulate the federal government and are designed to create risk for our agents. These laws cannot stand.\"\n\n🔗: https://t.co/kbnBNFLfBF",
+      "text_resolved": "🚨Justice Department Files Complaint Challenging Virginia Mask Ban and Identification Requirements for Federal Officers\n\n\"Law enforcement officers risk their lives every day to keep Americans safe, and they do not deserve to be doxed or harassed simply for carrying out their duties,\" said Acting Attorney General @DAGToddBlanche. \"Virginia’s anti-law enforcement policies regulate the federal government and are designed to create risk for our agents. These laws cannot stand.\"\n\n🔗: https://www.justice.gov/opa/pr/justice-department-files-complaint-challenging-virginia-mask-ban-and-identification",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DAGToddBlanche"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/kbnBNFLfBF",
+          "expanded": "https://www.justice.gov/opa/pr/justice-department-files-complaint-challenging-virginia-mask-ban-and-identification",
+          "display": "justice.gov/opa/pr/justice…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/kbnBNFLfBF",
+        "vendor_url": "justice.gov",
+        "title": "Justice Department Files Complaint Challenging Virginia Mask Ban and",
+        "description": "WASHINGTON – Today, the Department of Justice filed a lawsuit against the Commonwealth of Virginia, Virginia Attorney General Jay Jones, and Commonwealth Attorney for Fairfax, Virginia Steve Descano...",
+        "image_url": "https://pbs.twimg.com/card_img/2063154527763603456/LKVlCoPt?format=png&name=orig"
+      },
+      "media": [],
+      "like_count": 611,
+      "retweet_count": 131,
+      "reply_count": 46,
+      "quote_count": 10,
+      "view_count": 22353,
+      "bookmark_count": 11,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-12T14:22:15.737Z",
+          "likes": 611,
+          "retweets": 131,
+          "replies": 46,
+          "quotes": 10,
+          "views": 22353,
+          "bookmarks": 11
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Department of Justice",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2052787304071102465/bOrp4Fv4_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official account of the Justice Department 🇺🇸 \nDOJ Privacy Policy: https://t.co/2J3w9HbAuR",
+        "location": "United States of America",
+        "url": "https://t.co/E2VRXOrrfr",
+        "followers_count": 2392546,
+        "friends_count": 196,
+        "statuses_count": 23133,
+        "account_created_at": "2009-09-10T18:16:25.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass1-20260612T142200Z-e05c1c44",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass1/x-com-search-20260612T142200Z-e05c1c44.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass1/x-com-search-20260612T142200Z-e05c1c44.jsonl",
+    "source_handle": "ReichlinMelnick"
+  }
+}
