@@ -2,7 +2,7 @@
 
 import { createHash } from 'node:crypto';
 import { createReadStream } from 'node:fs';
-import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
+import { access, mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import readline from 'node:readline';
 import { pathToFileURL } from 'node:url';
@@ -132,7 +132,7 @@ async function discoverSummaries(skimDir) {
     const fullPath = path.join(skimDir, entry.name);
     try {
       const summary = JSON.parse(await readFile(fullPath, 'utf8'));
-      const jsonl = summary.output_jsonl;
+      const jsonl = await resolveJsonlPath(skimDir, summary.output_jsonl);
       if (!jsonl || summary.captured_response_count <= 0) continue;
       summaries.push({ summaryPath: fullPath, jsonlPath: jsonl, summary });
     } catch {
@@ -140,6 +140,23 @@ async function discoverSummaries(skimDir) {
     }
   }
   return summaries.sort((a, b) => String(a.summary.run_id).localeCompare(String(b.summary.run_id)));
+}
+
+async function pathExists(pathName) {
+  try {
+    await access(pathName);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function resolveJsonlPath(skimDir, rawPath) {
+  if (!rawPath) return null;
+  if (await pathExists(rawPath)) return rawPath;
+  const localPath = path.join(skimDir, path.basename(rawPath));
+  if (await pathExists(localPath)) return localPath;
+  return rawPath;
 }
 
 function handleFromTargetUrl(rawUrl) {

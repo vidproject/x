@@ -2,8 +2,8 @@
 #
 # Each entry must declare a `category`, one of:
 #
-#   core           — Direct federal-agency / WH principal accounts. The
-#                    seed set this archive was built around.
+#   core           — Primary federal immigration / WH / enforcement accounts
+#                    whose timelines are treated as completeness targets.
 #   government     — Other federal agencies (StateDept, DOJgov, FBI, …).
 #                    Tracked, captured into per-handle parquets.
 #   officials      — Federal executive branch officials in their personal
@@ -82,7 +82,7 @@ accounts:
     category: core
   - handle: HSI_HQ
     label: Homeland Security Investigations
-    category: government
+    category: core
   - handle: TSA
     label: Transportation Security Administration
     category: government
@@ -103,31 +103,82 @@ accounts:
     category: government
   - handle: FPSDHS
     label: Federal Protective Service
-    category: government
+    category: core
   - handle: CBPCommissioner
     label: CBP Commissioner Rodney Scott
-    category: officials
+    category: core
   - handle: CBPJobs
     label: CBP Jobs
-    category: government
+    category: core
+  - handle: EROAtlanta
+    label: ICE Atlanta
+    category: core
+  - handle: EROBaltimore
+    label: ICE Baltimore
+    category: core
   - handle: ERO__Phoenix
     label: ICE ERO Phoenix
-    category: government
+    category: core
   - handle: EROLosAngeles
     label: ICE ERO Los Angeles
-    category: government
+    category: core
   - handle: EROBoston
     label: ICE ERO Boston
-    category: government
+    category: core
+  - handle: EROBuffalo
+    label: ERO Buffalo
+    category: core
+  - handle: ERODenver
+    label: ICE Denver
+    category: core
+  - handle: ERODetroit
+    label: ICE Detroit
+    category: core
+  - handle: EROElPaso
+    label: ERO El Paso
+    category: core
+  - handle: EroHarlingen
+    label: ICE Harlingen
+    category: core
+  - handle: EROHouston
+    label: ICE Houston
+    category: core
+  - handle: EROMiami
+    label: ERO Miami
+    category: core
   - handle: ERONewark
     label: ICE ERO Newark
-    category: government
+    category: core
   - handle: ERONewOrleans
     label: ICE ERO New Orleans
-    category: government
+    category: core
+  - handle: ERONewYork
+    label: ERO New York City
+    category: core
+  - handle: EROPhiladelphia
+    label: ERO Philadelphia
+    category: core
+  - handle: EROSaintPaul
+    label: ICE Saint Paul
+    category: core
   - handle: EROSaltLakeCity
     label: ICE ERO Salt Lake City
-    category: government
+    category: core
+  - handle: EROSanAntonio
+    label: ICE San Antonio
+    category: core
+  - handle: EROSanDiego
+    label: ICE San Diego
+    category: core
+  - handle: EROSanFrancisco
+    label: ERO San Francisco
+    category: core
+  - handle: EROSeattle
+    label: ICE Seattle
+    category: core
+  - handle: EROWashington
+    label: ICE Washington D.C.
+    category: core
   - handle: DeptofWar
     label: Department of War
     category: government

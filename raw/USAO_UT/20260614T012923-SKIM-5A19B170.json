@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T012907Z-70db18a8-USAO_UT",
+  "account_handle": "USAO_UT",
+  "captured_at": "2026-06-14T01:29:23.718Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEROSaltLakeCity%20since%3A2024-01-01%20until%3A2025-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1831029644205719707",
+      "account_handle": "USAO_UT",
+      "account_id": "530883158",
+      "posted_at": "2024-09-03T18:01:00.000Z",
+      "first_captured_at": "2026-06-14T01:29:14.270Z",
+      "last_seen_at": "2026-06-14T01:29:14.270Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USAO_UT/status/1831029644205719707",
+      "tweet_type": "original",
+      "conversation_id": "1831029644205719707",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "📰PRESS RELEASE: Previously Removed Foreign National and Felon Indicted on Drug &amp; Gun Crimes\n\n🔗https://t.co/ICfiiPfWTM https://t.co/q9klVJMXED",
+      "text_resolved": "📰PRESS RELEASE: Previously Removed Foreign National and Felon Indicted on Drug &amp; Gun Crimes\n\n🔗https://www.justice.gov/usao-ut/pr/previously-removed-foreign-national-and-felon-indicted-drug-gun-crimes https://t.co/q9klVJMXED",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/ICfiiPfWTM",
+          "expanded": "https://www.justice.gov/usao-ut/pr/previously-removed-foreign-national-and-felon-indicted-drug-gun-crimes",
+          "display": "justice.gov/usao-ut/pr/pre…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1831029637310291968",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GWkfwQEXoAALnrI.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 4032,
+          "height": 3024,
+          "alt_text": "Picture of gun, knives, cash and other dangerous weapons on a table. \n\nPhoto Credit: Salt Lake City Police Dept. ",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_1831029638102941696",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GWkfwTBWgAA2zUI.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 4032,
+          "height": 3024,
+          "alt_text": "Photo of cash, blue pills, coins, firearm, and other dangerous weapons displayed on a evidence table. \n\nPhoto Credit: Salt Lake City Police Dept. ",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 15,
+      "retweet_count": 7,
+      "reply_count": 2,
+      "quote_count": 3,
+      "view_count": 2790,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:29:14.270Z",
+          "likes": 15,
+          "retweets": 7,
+          "replies": 2,
+          "quotes": 3,
+          "views": 2790,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "US Attorney Utah",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2439178354/cf1xqoi4h5nzy8hzvvdj_normal.gif",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "DOJ does not collect comments or messages through this account. Learn more at https://t.co/xJyySlbZdv",
+        "location": "Utah",
+        "url": "https://t.co/dyhRCUn5ht",
+        "followers_count": 6053,
+        "friends_count": 460,
+        "statuses_count": 3968,
+        "account_created_at": "2012-03-20T03:41:30.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T012907Z-70db18a8",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T012907Z-70db18a8.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T012907Z-70db18a8.jsonl",
+    "source_handle": "EROSaltLakeCity"
+  }
+}

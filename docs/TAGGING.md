@@ -371,7 +371,8 @@ OCR parquet. No change to the tagger is needed at that point.
 
 `config/accounts.yaml` partitions tracked authors into:
 
-- `core` — the seed federal-agency / WH-principal handles.
+- `core` — primary federal immigration, enforcement, field-office, and
+  White House handles whose timelines are treated as completeness targets.
 - `government` — other federal agencies.
 - `officials` — federal executive officials in their personal capacity.
 - `public_figures` — non-federal officials (senators, governors, …).

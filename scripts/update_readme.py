@@ -58,7 +58,7 @@ GAPS_END_MARKER = "<!-- GAPS:END -->"
 # Human-readable headings for the account categories declared in
 # config/accounts.yaml, in the order they should appear.
 CATEGORY_LABELS: list[tuple[str, str]] = [
-    ("core", "Federal agencies and White House principals"),
+    ("core", "Core federal immigration, enforcement, and White House accounts"),
     ("government", "Other government accounts"),
     ("officials", "Federal officials (personal accounts)"),
     ("public_figures", "Other public figures"),
