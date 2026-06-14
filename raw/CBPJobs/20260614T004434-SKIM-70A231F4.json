@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T004417Z-57b36e7d-CBPJobs",
+  "account_handle": "CBPJobs",
+  "captured_at": "2026-06-14T00:44:34.130Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBPCommissioner%20since%3A2023-01-01%20until%3A2024-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1736699137016414622",
+      "account_handle": "CBPJobs",
+      "account_id": "878311662226468869",
+      "posted_at": "2023-12-18T10:45:15.000Z",
+      "first_captured_at": "2026-06-14T00:44:25.533Z",
+      "last_seen_at": "2026-06-14T00:44:25.533Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBPJobs/status/1736699137016414622",
+      "tweet_type": "original",
+      "conversation_id": "1736699137016414622",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "#Veterans, become a @CBP Officer and continue your impactful career.  \n\nThese announcements are open to Veterans and close Dec. 31. \n\nGS 5-7 https://t.co/DNG6qH1WXe\nGS-9 https://t.co/MUAu2RJbhL\n\n#CBPCareers #HiringVeterans https://t.co/ldSEOllfG5",
+      "text_resolved": "#Veterans, become a @CBP Officer and continue your impactful career.  \n\nThese announcements are open to Veterans and close Dec. 31. \n\nGS 5-7 https://go.dhs.gov/oVC\nGS-9 https://go.dhs.gov/oVV\n\n#CBPCareers #HiringVeterans https://t.co/ldSEOllfG5",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "Veterans",
+        "CBPCareers",
+        "HiringVeterans"
+      ],
+      "mentions": [
+        "CBP"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/DNG6qH1WXe",
+          "expanded": "https://go.dhs.gov/oVC",
+          "display": "go.dhs.gov/oVC"
+        },
+        {
+          "short": "https://t.co/MUAu2RJbhL",
+          "expanded": "https://go.dhs.gov/oVV",
+          "display": "go.dhs.gov/oVV"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1736699134638174208",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GBn-qVnWMAAFs-1.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 1200,
+          "alt_text": "Male CBP Officer Inspects with flashlight. OFO Seal. \n\nText: We hire heroes. Go Beyond.",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 4,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 1,
+      "view_count": 823,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T00:44:25.533Z",
+          "likes": 4,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 1,
+          "views": 823,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "CBP Jobs",
+        "avatar_url": "https://pbs.twimg.com/profile_images/900399198876700672/n6nYVIJ7_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Join U.S. Customs and Border Protection—protecting America’s borders and enabling secure, lawful travel and trade. #JoinAmericasFrontline",
+        "location": null,
+        "url": "https://t.co/Ji0dTKswTP",
+        "followers_count": 6203,
+        "friends_count": 142,
+        "statuses_count": 7867,
+        "account_created_at": "2017-06-23T17:59:53.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T004417Z-57b36e7d",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004417Z-57b36e7d.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004417Z-57b36e7d.jsonl",
+    "source_handle": "CBPCommissioner"
+  }
+}

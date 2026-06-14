@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T005944Z-748de0a5-DHS_Wolf",
+  "account_handle": "DHS_Wolf",
+  "captured_at": "2026-06-14T01:00:01.061Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AERODenver%20since%3A2020-01-01%20until%3A2021-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1336467359821934612",
+      "account_handle": "DHS_Wolf",
+      "account_id": "1191733036133552128",
+      "posted_at": "2020-12-09T00:27:03.000Z",
+      "first_captured_at": "2026-06-14T01:00:00.756Z",
+      "last_seen_at": "2026-06-14T01:00:00.756Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DHS_Wolf/status/1336467359821934612",
+      "tweet_type": "original",
+      "conversation_id": "1336467359821934612",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Our @ICEgov officers always rise above the challenge and put public safety first. \n \nToday, Juan Carlos Tabio received the Secretary’s Outstanding Service Award &amp; Medal of Valor for his heroic act of saving a person trapped in a submerged vehicle. https://t.co/PDm3ferwd2",
+      "text_resolved": "Our @ICEgov officers always rise above the challenge and put public safety first. \n \nToday, Juan Carlos Tabio received the Secretary’s Outstanding Service Award &amp; Medal of Valor for his heroic act of saving a person trapped in a submerged vehicle. https://t.co/PDm3ferwd2",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "ICEgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1336467354922999809",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/EowV-ngXYAEK678.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 2048,
+          "height": 1638,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 201,
+      "retweet_count": 23,
+      "reply_count": 26,
+      "quote_count": 2,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:00:00.756Z",
+          "likes": 201,
+          "retweets": 23,
+          "replies": 26,
+          "quotes": 2,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Acting Secretary Chad Wolf",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1363950855179948033/RpOXhyIf_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "**Archived** Acting Secretary of the Department of Homeland Security.\n\nFollow DHS at @DHSgov",
+        "location": "USA",
+        "url": "https://t.co/uLkfWBJbQy",
+        "followers_count": 62298,
+        "friends_count": 366,
+        "statuses_count": 956,
+        "account_created_at": "2019-11-05T15:06:29.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T005944Z-748de0a5",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T005944Z-748de0a5.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T005944Z-748de0a5.jsonl",
+    "source_handle": "ERODenver"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T174720Z-9fa1d603-GovGianforte",
+  "account_handle": "GovGianforte",
+  "captured_at": "2026-06-13T17:47:36.949Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ASecRollins%20since%3A2026-04-01%20until%3A2026-06-13%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2056829390017995232",
+      "account_handle": "GovGianforte",
+      "account_id": "1343969773726494721",
+      "posted_at": "2026-05-19T20:08:35.000Z",
+      "first_captured_at": "2026-06-13T17:47:26.132Z",
+      "last_seen_at": "2026-06-13T17:47:26.132Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/GovGianforte/status/2056829390017995232",
+      "tweet_type": "original",
+      "conversation_id": "2056829390017995232",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "GREAT NEWS: Montana’s SNAP waiver was just approved.\n\nThanks to the strong leadership of @POTUS, @SecKennedy, and @SecRollins, we're Making America Healthy Again.\n\nSoda, junk food, and candy are now excluded from SNAP to encourage Montanans to purchase healthy, nutritious foods. https://t.co/Ds6PetFsOx",
+      "text_resolved": "GREAT NEWS: Montana’s SNAP waiver was just approved.\n\nThanks to the strong leadership of @POTUS, @SecKennedy, and @SecRollins, we're Making America Healthy Again.\n\nSoda, junk food, and candy are now excluded from SNAP to encourage Montanans to purchase healthy, nutritious foods. https://t.co/Ds6PetFsOx",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "POTUS",
+        "SecKennedy",
+        "SecRollins"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2056829385039282176",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HItTbZraAAAQLJ2.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 2048,
+          "height": 2048,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 413,
+      "retweet_count": 55,
+      "reply_count": 32,
+      "quote_count": 9,
+      "view_count": 126809,
+      "bookmark_count": 5,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:47:26.132Z",
+          "likes": 413,
+          "retweets": 55,
+          "replies": 32,
+          "quotes": 9,
+          "views": 126809,
+          "bookmarks": 5
+        }
+      ],
+      "author": {
+        "display_name": "Governor Greg Gianforte",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1345865078755627010/Msxww2jO_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "25th Governor of the great State of Montana. Husband. Father and Grandfather. Sportsman. Businessman.",
+        "location": "Montana",
+        "url": "https://t.co/HTkMTPr6VO",
+        "followers_count": 30859,
+        "friends_count": 220,
+        "statuses_count": 5591,
+        "account_created_at": "2020-12-29T17:19:13.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T174720Z-9fa1d603",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T174720Z-9fa1d603.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T174720Z-9fa1d603.jsonl",
+    "source_handle": "SecRollins"
+  }
+}

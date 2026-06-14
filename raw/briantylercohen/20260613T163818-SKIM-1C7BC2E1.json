@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T163802Z-3043247e-briantylercohen",
+  "account_handle": "briantylercohen",
+  "captured_at": "2026-06-13T16:38:18.407Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADOWResponse%20since%3A2025-04-01%20until%3A2025-07-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1931960298585706800",
+      "account_handle": "briantylercohen",
+      "account_id": "455684839",
+      "posted_at": "2025-06-09T06:23:23.000Z",
+      "first_captured_at": "2026-06-13T16:38:09.392Z",
+      "last_seen_at": "2026-06-13T16:38:09.392Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/briantylercohen/status/1931960298585706800",
+      "tweet_type": "original",
+      "conversation_id": "1931960298585706800",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": ".@GavinNewsom: \"Pete Hegseth's a joke. He's a joke. Everybody knows he's so in over his head. What an embarrassment. That guy's weakness masquerading as strength.\" https://t.co/elTjSFY0Js",
+      "text_resolved": ".@GavinNewsom: \"Pete Hegseth's a joke. He's a joke. Everybody knows he's so in over his head. What an embarrassment. That guy's weakness masquerading as strength.\" https://t.co/elTjSFY0Js",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "GavinNewsom"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1931959444738654208",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1931959444738654208/vid/avc1/1280x720/Q8K5ush63x1p6gE1.mp4?tag=21",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 48.133,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 35507,
+      "retweet_count": 6599,
+      "reply_count": 1702,
+      "quote_count": 232,
+      "view_count": 1045803,
+      "bookmark_count": 857,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T16:38:09.392Z",
+          "likes": 35507,
+          "retweets": 6599,
+          "replies": 1702,
+          "quotes": 232,
+          "views": 1045803,
+          "bookmarks": 857
+        }
+      ],
+      "author": {
+        "display_name": "Brian Tyler Cohen",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1240727809552572416/nRk4bHp0_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "\"a known liar\" -Donald Trump. Political commentary. 5 billion views on YouTube. #1 NYT bestselling author. Host of @NoLieWithBTC. Clips at @btc_clips",
+        "location": "Los Angeles",
+        "url": "https://t.co/2A2CrmPdRF",
+        "followers_count": 618276,
+        "friends_count": 1195,
+        "statuses_count": 27199,
+        "account_created_at": "2012-01-05T11:43:39.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T163802Z-3043247e",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T163802Z-3043247e.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T163802Z-3043247e.jsonl",
+    "source_handle": "DOWResponse"
+  }
+}

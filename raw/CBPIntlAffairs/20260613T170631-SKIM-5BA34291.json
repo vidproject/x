@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170603Z-4dc41ae2-CBPIntlAffairs",
+  "account_handle": "CBPIntlAffairs",
+  "captured_at": "2026-06-13T17:06:31.772Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AOFOEAC%20since%3A2020-09-01%20until%3A2020-10-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1309145066313846787",
+      "account_handle": "CBPIntlAffairs",
+      "account_id": "1307049086533672960",
+      "posted_at": "2020-09-24T14:58:01.000Z",
+      "first_captured_at": "2026-06-13T17:06:22.179Z",
+      "last_seen_at": "2026-06-13T17:06:22.179Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBPIntlAffairs/status/1309145066313846787",
+      "tweet_type": "original",
+      "conversation_id": "1309145066313846787",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Hello, Hola, Bonjour, Guten Tag, Nǐn hǎo, Ciao, Konnichiwa from all of us in @CBP’s Office of International Affairs",
+      "text_resolved": "Hello, Hola, Bonjour, Guten Tag, Nǐn hǎo, Ciao, Konnichiwa from all of us in @CBP’s Office of International Affairs",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "CBP"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [],
+      "like_count": 53,
+      "retweet_count": 7,
+      "reply_count": 4,
+      "quote_count": 9,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:06:22.179Z",
+          "likes": 53,
+          "retweets": 7,
+          "replies": 4,
+          "quotes": 9,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "CBP International Affairs",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1762834238582165504/9KmkEBNM_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "NOTICE: This account will not be actively managed during the lapse in federal funding. Read more: https://t.co/cjynzS1zAU",
+        "location": null,
+        "url": "https://t.co/Gnboug7kV8",
+        "followers_count": 3161,
+        "friends_count": 759,
+        "statuses_count": 2576,
+        "account_created_at": "2020-09-18T20:09:34.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170603Z-4dc41ae2",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T170603Z-4dc41ae2.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T170603Z-4dc41ae2.jsonl",
+    "source_handle": "OFOEAC"
+  }
+}

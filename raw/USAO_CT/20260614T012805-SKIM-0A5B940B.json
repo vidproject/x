@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T012747Z-930589c6-USAO_CT",
+  "account_handle": "USAO_CT",
+  "captured_at": "2026-06-14T01:28:05.168Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEROSaintPaul%20since%3A2024-01-01%20until%3A2025-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1803190509374157043",
+      "account_handle": "USAO_CT",
+      "account_id": "718107205",
+      "posted_at": "2024-06-18T22:18:13.000Z",
+      "first_captured_at": "2026-06-14T01:27:55.091Z",
+      "last_seen_at": "2026-06-14T01:27:55.091Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USAO_CT/status/1803190509374157043",
+      "tweet_type": "original",
+      "conversation_id": "1803190509374157043",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Mexican National Who Illegally Reentered U.S. is Sentenced @ICEgov https://t.co/MBa9Jc0EEi",
+      "text_resolved": "Mexican National Who Illegally Reentered U.S. is Sentenced @ICEgov https://www.justice.gov/usao-ct/pr/mexican-national-who-illegally-reentered-us-sentenced",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "ICEgov"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/MBa9Jc0EEi",
+          "expanded": "https://www.justice.gov/usao-ct/pr/mexican-national-who-illegally-reentered-us-sentenced",
+          "display": "justice.gov/usao-ct/pr/mex…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/MBa9Jc0EEi",
+        "vendor_url": "justice.gov",
+        "title": "Mexican National Who Illegally Reentered U.S. is Sentenced",
+        "description": "CARLOS FERNANDEZ-BARRITOS, also known as “Ricardo Fernandez,” 30, a citizen of Mexico formerly residing in East Hartford, was sentenced today by U.S. District Judge Vernon D. Oliver in Hartford to 16...",
+        "image_url": "https://pbs.twimg.com/card_img/2063271416284549122/YJ74qQun?format=png&name=orig"
+      },
+      "media": [],
+      "like_count": 1,
+      "retweet_count": 0,
+      "reply_count": 1,
+      "quote_count": 2,
+      "view_count": 3112,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:27:55.091Z",
+          "likes": 1,
+          "retweets": 0,
+          "replies": 1,
+          "quotes": 2,
+          "views": 3112,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Attorney CT",
+        "avatar_url": "https://pbs.twimg.com/profile_images/468835057621139456/NYO_RcAv_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "News from Connecticut's U.S. Attorney's Office. DOJ does not collect comments or messages through this account. Learn more at https://t.co/RgXoga3Xet…",
+        "location": "New Haven, Conn.",
+        "url": "https://t.co/5OsynGHJg0",
+        "followers_count": 6693,
+        "friends_count": 404,
+        "statuses_count": 6962,
+        "account_created_at": "2012-07-26T13:24:29.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T012747Z-930589c6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T012747Z-930589c6.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T012747Z-930589c6.jsonl",
+    "source_handle": "EROSaintPaul"
+  }
+}

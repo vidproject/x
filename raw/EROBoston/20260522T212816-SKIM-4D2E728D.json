@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-icegov-remainder-20260522-20260522T212701Z-0d09fbc6-EROBoston",
+  "account_handle": "EROBoston",
+  "captured_at": "2026-05-22T21:28:16.816Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AICEgov%20since%3A2025-09-01%20until%3A2025-10-01",
+  "tweets": [
+    {
+      "tweet_id": "1969757692613783885",
+      "account_handle": "EROBoston",
+      "account_id": "1300491357182623744",
+      "posted_at": "2025-09-21T13:36:44.000Z",
+      "first_captured_at": "2026-05-22T21:28:04.231Z",
+      "last_seen_at": "2026-05-22T21:28:04.231Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/EROBoston/status/1969757692613783885",
+      "tweet_type": "original",
+      "conversation_id": "1969757692613783885",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "ICE @EROBoston arrested Dairo Mejia, an illegal alien from Colombia. Mejia's criminal history includes convictions for conspiracy to distribute heroin and RMV forgery in Boston, MA. Mejia has been previously removed from the U.S. and remains in ICE custody pending removal. https://t.co/zkJ0wemp5c",
+      "text_resolved": "ICE @EROBoston arrested Dairo Mejia, an illegal alien from Colombia. Mejia's criminal history includes convictions for conspiracy to distribute heroin and RMV forgery in Boston, MA. Mejia has been previously removed from the U.S. and remains in ICE custody pending removal. https://t.co/zkJ0wemp5c",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "EROBoston"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1969756546511917056",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G1X7JJDX0AANQgW.png",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 675,
+          "height": 687,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 0,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 68061,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-22T21:28:04.231Z",
+          "likes": 0,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 0,
+          "views": 68061,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "ICE Boston",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1912179876343222279/SWyIoxbd_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official account for ICE Boston and New England field offices to protect the U.S. by enforcing immigration laws to preserve national security and public safety.",
+        "location": "Boston, MA",
+        "url": "https://t.co/RkXcL6HuXd",
+        "followers_count": 15287,
+        "friends_count": 162,
+        "statuses_count": 988,
+        "account_created_at": "2020-08-31T17:51:22.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-icegov-remainder-20260522-20260522T212701Z-0d09fbc6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-ice-remainder-20260522/x-com-search-20260522T212701Z-0d09fbc6.summary.json",
+    "jsonl": ".skim/raw-ice-remainder-20260522/x-com-search-20260522T212701Z-0d09fbc6.jsonl",
+    "source_handle": "ICEgov"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T011617Z-713b89c5-DHSBlueCampaign",
+  "account_handle": "DHSBlueCampaign",
+  "captured_at": "2026-06-14T01:16:39.614Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AERONewOrleans%20since%3A2021-01-01%20until%3A2022-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1351606602420408328",
+      "account_handle": "DHSBlueCampaign",
+      "account_id": "931239693534093312",
+      "posted_at": "2021-01-19T19:05:00.000Z",
+      "first_captured_at": "2026-06-14T01:16:26.406Z",
+      "last_seen_at": "2026-06-14T01:16:26.406Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DHSBlueCampaign/status/1351606602420408328",
+      "tweet_type": "original",
+      "conversation_id": "1351606602420408328",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "DYK: For 20 years, @statedept has published the Trafficking in Persons Report, documenting global efforts to prosecute traffickers, protect victims, and prevent #humantrafficking. Check out the latest report here: https://t.co/gdgRaGfDgQ #TacklingTrafficking https://t.co/bzrlwsyEoN",
+      "text_resolved": "DYK: For 20 years, @statedept has published the Trafficking in Persons Report, documenting global efforts to prosecute traffickers, protect victims, and prevent #humantrafficking. Check out the latest report here: http://bit.ly/2LPJ2WW #TacklingTrafficking https://t.co/bzrlwsyEoN",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://about.twitter.com/products/tweetdeck\" rel=\"nofollow\">TweetDeck</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "humantrafficking",
+        "TacklingTrafficking"
+      ],
+      "mentions": [
+        "statedept"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/gdgRaGfDgQ",
+          "expanded": "http://bit.ly/2LPJ2WW",
+          "display": "bit.ly/2LPJ2WW"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1351569362692534281",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/EsG9LKiW8AkKLON.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 2500,
+          "height": 1308,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 71,
+      "retweet_count": 51,
+      "reply_count": 4,
+      "quote_count": 3,
+      "view_count": null,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:16:26.406Z",
+          "likes": 71,
+          "retweets": 51,
+          "replies": 4,
+          "quotes": 3,
+          "views": null,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "DHS Blue Campaign",
+        "avatar_url": "https://pbs.twimg.com/profile_images/931270646344179712/yMjVt2dg_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Blue Campaign is the unified voice for @DHSgov efforts to combat #HumanTrafficking through public awareness and education. Together, we can #EndTrafficking.",
+        "location": null,
+        "url": "https://t.co/z6ak56qd6b",
+        "followers_count": 44549,
+        "friends_count": 321,
+        "statuses_count": 3667,
+        "account_created_at": "2017-11-16T19:16:59.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T011617Z-713b89c5",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T011617Z-713b89c5.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T011617Z-713b89c5.jsonl",
+    "source_handle": "ERONewOrleans"
+  }
+}

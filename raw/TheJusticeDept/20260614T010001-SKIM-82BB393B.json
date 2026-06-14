@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T005944Z-748de0a5-TheJusticeDept",
+  "account_handle": "TheJusticeDept",
+  "captured_at": "2026-06-14T01:00:01.061Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AERODenver%20since%3A2020-01-01%20until%3A2021-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1337060589785522176",
+      "account_handle": "TheJusticeDept",
+      "account_id": "73181712",
+      "posted_at": "2020-12-10T15:44:20.000Z",
+      "first_captured_at": "2026-06-14T01:00:00.756Z",
+      "last_seen_at": "2026-06-14T01:00:00.756Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/TheJusticeDept/status/1337060589785522176",
+      "tweet_type": "original",
+      "conversation_id": "1337060589785522176",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "The Departments of Justice and Homeland Security Publish Final Rule on Procedures for Asylum and Withholding of Removal\n\nhttps://t.co/wlAyrzIVWk",
+      "text_resolved": "The Departments of Justice and Homeland Security Publish Final Rule on Procedures for Asylum and Withholding of Removal\n\nhttps://www.justice.gov/opa/pr/departments-justice-and-homeland-security-publish-final-rule-procedures-asylum-and",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/wlAyrzIVWk",
+          "expanded": "https://www.justice.gov/opa/pr/departments-justice-and-homeland-security-publish-final-rule-procedures-asylum-and",
+          "display": "justice.gov/opa/pr/departm…"
+        }
+      ],
+      "card": null,
+      "media": [],
+      "like_count": 88,
+      "retweet_count": 43,
+      "reply_count": 12,
+      "quote_count": 12,
+      "view_count": null,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:00:00.756Z",
+          "likes": 88,
+          "retweets": 43,
+          "replies": 12,
+          "quotes": 12,
+          "views": null,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Department of Justice",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2052787304071102465/bOrp4Fv4_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official account of the Justice Department 🇺🇸 \nDOJ Privacy Policy: https://t.co/2J3w9HbAuR",
+        "location": "United States of America",
+        "url": "https://t.co/E2VRXOrrfr",
+        "followers_count": 2392264,
+        "friends_count": 196,
+        "statuses_count": 23144,
+        "account_created_at": "2009-09-10T18:16:25.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T005944Z-748de0a5",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T005944Z-748de0a5.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T005944Z-748de0a5.jsonl",
+    "source_handle": "ERODenver"
+  }
+}
