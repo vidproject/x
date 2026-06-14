@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-whitehouse-20260526-20260526T083007Z-4f9a7eb3-Osint613",
+  "account_handle": "Osint613",
+  "captured_at": "2026-05-26T08:30:21.772Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APressSec%20since%3A2025-06-01%20until%3A2025-07-01&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1939056536371810555",
+      "account_handle": "Osint613",
+      "account_id": "1212783083272855552",
+      "posted_at": "2025-06-28T20:21:18.000Z",
+      "first_captured_at": "2026-05-26T08:30:12.477Z",
+      "last_seen_at": "2026-05-26T08:30:12.477Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/Osint613/status/1939056536371810555",
+      "tweet_type": "original",
+      "conversation_id": "1939056536371810555",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Palestinians in Gaza express gratitude to Trump as US and Israeli-backed GHF aid is distributed.\n\n“I love you Trump”\n“I love you Donald”\n\nVia @COLRICHARDKEMP https://t.co/QZqBDtVZzp",
+      "text_resolved": "Palestinians in Gaza express gratitude to Trump as US and Israeli-backed GHF aid is distributed.\n\n“I love you Trump”\n“I love you Donald”\n\nVia @COLRICHARDKEMP https://t.co/QZqBDtVZzp",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "COLRICHARDKEMP"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1939056392666517505",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1939056392666517505/vid/avc1/1920x1080/7OSPi0Ez4fiNxrq8.mp4?tag=21",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 17.297,
+          "width": 1920,
+          "height": 1080,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 2467,
+      "retweet_count": 524,
+      "reply_count": 118,
+      "quote_count": 0,
+      "view_count": 783539,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T08:30:12.477Z",
+          "likes": 2467,
+          "retweets": 524,
+          "replies": 118,
+          "quotes": 0,
+          "views": 783539,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Open Source Intel",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1819303939084349440/r2ukH00s_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Monitoring Real-Time News & Open Source Intelligence • Middle East • US • Global • Geopolitics  Anything on my mind • Newsletter • Signal Tips: Osint.613",
+        "location": "N.Y - Northern Israel",
+        "url": "https://t.co/3VDcgpQIWq",
+        "followers_count": 1428273,
+        "friends_count": 1080,
+        "statuses_count": 101470,
+        "account_created_at": "2020-01-02T17:10:07.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-whitehouse-20260526-20260526T083007Z-4f9a7eb3",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/x-com-search-20260526T083007Z-4f9a7eb3.summary.json",
+    "jsonl": ".skim/raw/x-com-search-20260526T083007Z-4f9a7eb3.jsonl",
+    "source_handle": "PressSec"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T172419Z-e257e412-YLindaQiu",
+  "account_handle": "YLindaQiu",
+  "captured_at": "2026-06-13T17:24:36.573Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AOFOEAC%20since%3A2022-07-01%20until%3A2022-08-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1550902582155042819",
+      "account_handle": "YLindaQiu",
+      "account_id": "1563531902",
+      "posted_at": "2022-07-23T17:56:04.000Z",
+      "first_captured_at": "2026-06-13T17:24:26.889Z",
+      "last_seen_at": "2026-06-13T17:24:26.889Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/YLindaQiu/status/1550902582155042819",
+      "tweet_type": "original",
+      "conversation_id": "1550902582155042819",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": ".@shuranphoto and i spent an afternoon with the floofiest and cutest government agents around https://t.co/RBnOgSxfP0",
+      "text_resolved": ".@shuranphoto and i spent an afternoon with the floofiest and cutest government agents around https://www.nytimes.com/2022/07/23/us/politics/beagles-airport-security.html",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "shuranphoto"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/RBnOgSxfP0",
+          "expanded": "https://www.nytimes.com/2022/07/23/us/politics/beagles-airport-security.html",
+          "display": "nytimes.com/2022/07/23/us/…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/RBnOgSxfP0",
+        "vendor_url": "nytimes.com",
+        "title": "Meet the Canine Officers Guarding American Agriculture (Published 2022)",
+        "description": "With international travel returning to prepandemic levels, these floppy-eared hounds are sniffing out deadly diseases and pests at border crossings one mango or sausage at a time.",
+        "image_url": null
+      },
+      "media": [],
+      "like_count": 66,
+      "retweet_count": 9,
+      "reply_count": 7,
+      "quote_count": 4,
+      "view_count": null,
+      "bookmark_count": 3,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:24:26.889Z",
+          "likes": 66,
+          "retweets": 9,
+          "replies": 7,
+          "quotes": 4,
+          "views": null,
+          "bookmarks": 3
+        }
+      ],
+      "author": {
+        "display_name": "Linda Qiu",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1209186338228121601/XFXsA1Pr_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "@nytimes reporter, formerly @PolitiFact Qiups are my own. What should I check? factcheck@nytimes.com",
+        "location": "Washington, DC",
+        "url": null,
+        "followers_count": 4971,
+        "friends_count": 1056,
+        "statuses_count": 2825,
+        "account_created_at": "2013-07-02T16:07:15.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T172419Z-e257e412",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T172419Z-e257e412.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T172419Z-e257e412.jsonl",
+    "source_handle": "OFOEAC"
+  }
+}

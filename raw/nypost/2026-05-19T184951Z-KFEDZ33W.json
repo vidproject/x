@@ -1,0 +1,341 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "01KS0S5AXQD8KFEDZ33W",
+  "account_handle": "nypost",
+  "captured_at": "2026-05-19T18:52:15.871Z",
+  "endpoint": "UserTweets",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0",
+  "source_url": "https://x.com/i/api/graphql/36rb3Xj3iJ64Q-9wKDjCcQ/UserTweets?variables=%7B%22userId%22%3A%2215647676%22%2C%22count%22%3A20%2C%22cursor%22%3A%22DAAHCgABHItBE2c__zMLAAIAAAATMjA1MTAyMTExMjc2MzQwODcyOAgAAwAAAAIAAA%22%2C%22includePromotedContent%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_video_screen_enabled%22%3Afalse%2C%22rweb_cashtags_enabled%22%3Atrue%2C%22profile_label_improvements_pcf_label_in_post_enabled%22%3Atrue%2C%22responsive_web_profile_redirect_enabled%22%3Afalse%2C%22rweb_tipjar_consumption_enabled%22%3Afalse%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22premium_content_api_read_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22responsive_web_grok_analyze_button_fetch_trends_enabled%22%3Afalse%2C%22responsive_web_grok_analyze_post_followups_enabled%22%3Atrue%2C%22rweb_cashtags_composer_attachment_enabled%22%3Atrue%2C%22responsive_web_jetfuel_frame%22%3Atrue%2C%22responsive_web_grok_share_attachment_enabled%22%3Atrue%2C%22responsive_web_grok_annotations_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22rweb_conversational_replies_downvote_enabled%22%3Afalse%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22content_disclosure_indicator_enabled%22%3Atrue%2C%22content_disclosure_ai_generated_indicator_enabled%22%3Atrue%2C%22responsive_web_grok_show_grok_translated_post%22%3Atrue%2C%22responsive_web_grok_analysis_button_from_backend%22%3Atrue%2C%22post_ctas_fetch_enabled%22%3Atrue%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Afalse%2C%22responsive_web_grok_image_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_imagine_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_community_note_auto_translation_is_enabled%22%3Atrue%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticlePlainText%22%3Afalse%7D",
+  "tweets": [
+    {
+      "tweet_id": "2050243129534484922",
+      "account_handle": "nypost",
+      "account_id": "17469289",
+      "posted_at": "2026-05-01T15:57:08.000Z",
+      "first_captured_at": "2026-05-19T18:49:51.626Z",
+      "last_seen_at": "2026-05-19T18:49:51.626Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/nypost/status/2050243129534484922",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "DHS bars ex-Dem Rep. Sheila Cherfilus-McCormick, her family and friends from federal funds over alleged $5M FEMA theft https://t.co/0djR9IUF4q https://t.co/pPmjLrjGM9",
+      "text_resolved": "DHS bars ex-Dem Rep. Sheila Cherfilus-McCormick, her family and friends from federal funds over alleged $5M FEMA theft https://trib.al/HAlXqUs https://t.co/pPmjLrjGM9",
+      "lang": "en",
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/0djR9IUF4q",
+          "expanded": "https://trib.al/HAlXqUs",
+          "display": "trib.al/HAlXqUs"
+        }
+      ],
+      "media": [
+        {
+          "media_id": "3_2050243117299752961",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HHPtQKXXYAEysiH.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 799,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1896,
+      "retweet_count": 519,
+      "reply_count": 101,
+      "quote_count": 26,
+      "view_count": 311895,
+      "bookmark_count": 34,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T18:49:51.626Z",
+          "likes": 1896,
+          "retweets": 519,
+          "replies": 101,
+          "quotes": 26,
+          "views": 311895,
+          "bookmarks": 34
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0S5AXQD8KFEDZ33W",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2048017580992901168",
+      "account_handle": "nypost",
+      "account_id": "17469289",
+      "posted_at": "2026-04-25T12:33:36.000Z",
+      "first_captured_at": "2026-05-19T18:50:39.935Z",
+      "last_seen_at": "2026-05-19T18:50:39.935Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/nypost/status/2048017580992901168",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Illegal migrant 'cannibal' attacks mom and daughter : 'Completely preventable' https://t.co/zq3Xqccpen https://t.co/HugaH2nZJJ",
+      "text_resolved": "Illegal migrant 'cannibal' attacks mom and daughter : 'Completely preventable' https://trib.al/WFbWG66 https://t.co/HugaH2nZJJ",
+      "lang": "en",
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/zq3Xqccpen",
+          "expanded": "https://trib.al/WFbWG66",
+          "display": "trib.al/WFbWG66"
+        }
+      ],
+      "media": [
+        {
+          "media_id": "3_2048017573690658816",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HGwFIeWW0AAB9UJ.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 799,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 238,
+      "retweet_count": 101,
+      "reply_count": 41,
+      "quote_count": 17,
+      "view_count": 67493,
+      "bookmark_count": 20,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T18:50:39.935Z",
+          "likes": 238,
+          "retweets": 101,
+          "replies": 41,
+          "quotes": 17,
+          "views": 67493,
+          "bookmarks": 20
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0S5AXQD8KFEDZ33W",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2046635358159282368",
+      "account_handle": "nypost",
+      "account_id": "17469289",
+      "posted_at": "2026-04-21T17:01:08.000Z",
+      "first_captured_at": "2026-05-19T18:50:49.423Z",
+      "last_seen_at": "2026-05-19T18:50:49.423Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/nypost/status/2046635358159282368",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Feds bust convicted murderer who said 'Nazi maggot' ICE agents should be 'executed' https://t.co/F260aD3mUZ https://t.co/hH4oQbxZtB",
+      "text_resolved": "Feds bust convicted murderer who said 'Nazi maggot' ICE agents should be 'executed' https://trib.al/XZpd2se https://t.co/hH4oQbxZtB",
+      "lang": "en",
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/F260aD3mUZ",
+          "expanded": "https://trib.al/XZpd2se",
+          "display": "trib.al/XZpd2se"
+        }
+      ],
+      "media": [
+        {
+          "media_id": "3_2046635350273978368",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HGccAe3WcAAgyZh.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 799,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1863,
+      "retweet_count": 397,
+      "reply_count": 215,
+      "quote_count": 43,
+      "view_count": 830370,
+      "bookmark_count": 56,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T18:50:49.423Z",
+          "likes": 1863,
+          "retweets": 397,
+          "replies": 215,
+          "quotes": 43,
+          "views": 830370,
+          "bookmarks": 56
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0S5AXQD8KFEDZ33W",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2045044010440355905",
+      "account_handle": "nypost",
+      "account_id": "17469289",
+      "posted_at": "2026-04-17T07:37:41.000Z",
+      "first_captured_at": "2026-05-19T18:51:30.342Z",
+      "last_seen_at": "2026-05-19T18:51:30.342Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/nypost/status/2045044010440355905",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "NYC officials refuse ICE hold for illegal immigrant accused in arson that killed 4 and injured 7: DHS https://t.co/VBEIZfVMoP https://t.co/a8ThWb5OBO",
+      "text_resolved": "NYC officials refuse ICE hold for illegal immigrant accused in arson that killed 4 and injured 7: DHS https://trib.al/dSBQ2CU https://t.co/a8ThWb5OBO",
+      "lang": "en",
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/VBEIZfVMoP",
+          "expanded": "https://trib.al/dSBQ2CU",
+          "display": "trib.al/dSBQ2CU"
+        }
+      ],
+      "media": [
+        {
+          "media_id": "3_2045044003196841984",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HGF0r5CXMAA7W2V.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 799,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 5141,
+      "retweet_count": 2636,
+      "reply_count": 586,
+      "quote_count": 317,
+      "view_count": 1143878,
+      "bookmark_count": 416,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T18:51:30.342Z",
+          "likes": 5141,
+          "retweets": 2636,
+          "replies": 586,
+          "quotes": 317,
+          "views": 1143878,
+          "bookmarks": 416
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0S5AXQD8KFEDZ33W",
+      "schema_version": 1
+    },
+    {
+      "tweet_id": "2038946340625870982",
+      "account_handle": "nypost",
+      "account_id": "17469289",
+      "posted_at": "2026-03-31T11:47:44.000Z",
+      "first_captured_at": "2026-05-19T18:52:15.871Z",
+      "last_seen_at": "2026-05-19T18:52:15.871Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/nypost/status/2038946340625870982",
+      "tweet_type": "original",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "DHS slams California 'sanctuary' county after mom allegedly murdered by 2 Honduran nationals https://t.co/IpRWfbruMg https://t.co/1HhPgVnXlT",
+      "text_resolved": "DHS slams California 'sanctuary' county after mom allegedly murdered by 2 Honduran nationals https://trib.al/0vNbNbf https://t.co/1HhPgVnXlT",
+      "lang": "en",
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/IpRWfbruMg",
+          "expanded": "https://trib.al/0vNbNbf",
+          "display": "trib.al/0vNbNbf"
+        }
+      ],
+      "media": [
+        {
+          "media_id": "3_2038946334879694848",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HEvK44aWwAA90S9.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 799,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1636,
+      "retweet_count": 661,
+      "reply_count": 91,
+      "quote_count": 55,
+      "view_count": 145786,
+      "bookmark_count": 65,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T18:52:15.871Z",
+          "likes": 1636,
+          "retweets": 661,
+          "replies": 91,
+          "quotes": 55,
+          "views": 145786,
+          "bookmarks": 65
+        }
+      ],
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS0S5AXQD8KFEDZ33W",
+      "schema_version": 1
+    }
+  ]
+}

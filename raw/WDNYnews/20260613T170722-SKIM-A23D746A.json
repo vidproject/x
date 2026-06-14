@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170705Z-ea543412-WDNYnews",
+  "account_handle": "WDNYnews",
+  "captured_at": "2026-06-13T17:07:22.741Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AOFOEAC%20since%3A2020-12-01%20until%3A2021-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1341157094725210112",
+      "account_handle": "WDNYnews",
+      "account_id": "716811480",
+      "posted_at": "2020-12-21T23:02:23.000Z",
+      "first_captured_at": "2026-06-13T17:07:14.151Z",
+      "last_seen_at": "2026-06-13T17:07:14.151Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/WDNYnews/status/1341157094725210112",
+      "tweet_type": "original",
+      "conversation_id": "1341157094725210112",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Queens man going to prison for assaulting a federal officer... @CBPBuffalo \nhttps://t.co/vqnwREJpyQ https://t.co/c30wKiOaJS",
+      "text_resolved": "Queens man going to prison for assaulting a federal officer... @CBPBuffalo \nhttps://www.justice.gov/usao-wdny/pr/queens-man-going-prison-assaulting-federal-officer https://t.co/c30wKiOaJS",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "CBPBuffalo"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/vqnwREJpyQ",
+          "expanded": "https://www.justice.gov/usao-wdny/pr/queens-man-going-prison-assaulting-federal-officer",
+          "display": "justice.gov/usao-wdny/pr/q…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1341157078023417862",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Epy_QbeWMAYGAaN.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 750,
+          "height": 414,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 4,
+      "retweet_count": 1,
+      "reply_count": 0,
+      "quote_count": 2,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:07:14.151Z",
+          "likes": 4,
+          "retweets": 1,
+          "replies": 0,
+          "quotes": 2,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "WDNYnews",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2435270691/09g5w7qrr4fn1sotclb5_normal.gif",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "DOJ does not collect comments or messages through this account. Learn more at https://t.co/8pfsOzM6En…",
+        "location": "New York",
+        "url": "https://t.co/6WX28eTzLl",
+        "followers_count": 2902,
+        "friends_count": 261,
+        "statuses_count": 3054,
+        "account_created_at": "2012-07-25T21:36:48.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170705Z-ea543412",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T170705Z-ea543412.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T170705Z-ea543412.jsonl",
+    "source_handle": "OFOEAC"
+  }
+}

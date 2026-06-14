@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-detail-20260611-20260611T144115Z-93287ef6-Politics_are",
+  "account_handle": "Politics_are",
+  "captured_at": "2026-06-11T14:41:32.111Z",
+  "endpoint": "TweetDetail,TweetResultByRestId",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/DHSgov/status/1981375156632133692",
+  "tweets": [
+    {
+      "tweet_id": "1981818312758898901",
+      "account_handle": "Politics_are",
+      "account_id": "1024044800910286849",
+      "posted_at": "2025-10-24T20:21:20.000Z",
+      "first_captured_at": "2026-06-11T14:41:22.893Z",
+      "last_seen_at": "2026-06-11T14:41:22.893Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/Politics_are/status/1981818312758898901",
+      "tweet_type": "reply",
+      "conversation_id": "1981375156632133692",
+      "reply_to_tweet_id": "1981375156632133692",
+      "reply_to_account": "DHSgov",
+      "reply_to_account_id": "15647676",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@DHSgov Here's the video I downloaded from them, the stupid fair use shit. https://t.co/0Wr1UkfWXB",
+      "text_resolved": "@DHSgov Here's the video I downloaded from them, the stupid fair use shit. https://t.co/0Wr1UkfWXB",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DHSgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_1981818191643922432",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/1981818191643922432/pu/vid/avc1/720x1280/m-7l7ZmcRw9ebcPj.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 66.688,
+          "width": 720,
+          "height": 1280,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 467,
+      "retweet_count": 37,
+      "reply_count": 6,
+      "quote_count": 3,
+      "view_count": 11168,
+      "bookmark_count": 135,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T14:41:22.893Z",
+          "likes": 467,
+          "retweets": 37,
+          "replies": 6,
+          "quotes": 3,
+          "views": 11168,
+          "bookmarks": 135
+        }
+      ],
+      "author": {
+        "display_name": "King George Washington",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1644211370572021762/Izq4RI2T_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "We are (literally) going to Make America Great Again.",
+        "location": "United States",
+        "url": null,
+        "followers_count": 260,
+        "friends_count": 361,
+        "statuses_count": 7274,
+        "account_created_at": "2018-07-30T21:31:21.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-detail-20260611-20260611T144115Z-93287ef6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-1981375156632133692-20260611T144115Z-93287ef6.summary.json",
+    "jsonl": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-1981375156632133692-20260611T144115Z-93287ef6.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "01KS10VWTEREHXP4CRHW",
+  "account_handle": "ICEgov",
+  "captured_at": "2026-05-19T21:04:30.760Z",
+  "endpoint": "UserTweets",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0",
+  "source_url": "https://x.com/i/api/graphql/36rb3Xj3iJ64Q-9wKDjCcQ/UserTweets?variables=%7B%22userId%22%3A%2215647676%22%2C%22count%22%3A20%2C%22includePromotedContent%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_video_screen_enabled%22%3Afalse%2C%22rweb_cashtags_enabled%22%3Atrue%2C%22profile_label_improvements_pcf_label_in_post_enabled%22%3Atrue%2C%22responsive_web_profile_redirect_enabled%22%3Afalse%2C%22rweb_tipjar_consumption_enabled%22%3Afalse%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22premium_content_api_read_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22responsive_web_grok_analyze_button_fetch_trends_enabled%22%3Afalse%2C%22responsive_web_grok_analyze_post_followups_enabled%22%3Atrue%2C%22rweb_cashtags_composer_attachment_enabled%22%3Atrue%2C%22responsive_web_jetfuel_frame%22%3Atrue%2C%22responsive_web_grok_share_attachment_enabled%22%3Atrue%2C%22responsive_web_grok_annotations_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22rweb_conversational_replies_downvote_enabled%22%3Afalse%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22content_disclosure_indicator_enabled%22%3Atrue%2C%22content_disclosure_ai_generated_indicator_enabled%22%3Atrue%2C%22responsive_web_grok_show_grok_translated_post%22%3Atrue%2C%22responsive_web_grok_analysis_button_from_backend%22%3Atrue%2C%22post_ctas_fetch_enabled%22%3Atrue%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Afalse%2C%22responsive_web_grok_image_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_imagine_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_community_note_auto_translation_is_enabled%22%3Atrue%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticlePlainText%22%3Afalse%7D",
+  "tweets": [
+    {
+      "tweet_id": "2056750435868799154",
+      "account_handle": "ICEgov",
+      "account_id": "39384517",
+      "posted_at": "2026-05-19T14:54:51.000Z",
+      "first_captured_at": "2026-05-19T21:04:30.760Z",
+      "last_seen_at": "2026-05-19T21:04:30.760Z",
+      "deletion_detected_at": null,
+      "tweet_url": "https://x.com/ICEgov/status/2056750435868799154",
+      "tweet_type": "original",
+      "conversation_id": "2056750435868799154",
+      "reply_to_tweet_id": null,
+      "reply_to_account": "ICEgov",
+      "reply_to_account_id": "39384517",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@ICEgov &amp; ICE @HSI_HQ will be working with local and federal partners to secure the @FIFAWorldCup.\n\nThey will play a pivotal role in combatting human trafficking as well as stopping counterfeit merchandise and counterfeit ticket sales. https://t.co/KNcxnZdaSx",
+      "text_resolved": "@ICEgov &amp; ICE @HSI_HQ will be working with local and federal partners to secure the @FIFAWorldCup.\n\nThey will play a pivotal role in combatting human trafficking as well as stopping counterfeit merchandise and counterfeit ticket sales. https://t.co/KNcxnZdaSx",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "ICEgov",
+        "HSI_HQ",
+        "FIFAWorldCup"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_2056747809756311552",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/2056747809756311552/pu/vid/avc1/720x1280/MC1ti-SOcwxRF6Xm.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 34.9,
+          "width": 720,
+          "height": 1280,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 368,
+      "retweet_count": 84,
+      "reply_count": 30,
+      "quote_count": 2,
+      "view_count": 26336,
+      "bookmark_count": 10,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-19T21:04:30.760Z",
+          "likes": 368,
+          "retweets": 84,
+          "replies": 30,
+          "quotes": 2,
+          "views": 26336,
+          "bookmarks": 10
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Immigration and Customs Enforcement",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1924467797544808448/20-3dZrS_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Protects America through criminal investigations and by enforcing immigration law to preserve national security and public safety.  https://t.co/rDI2IeFofc",
+        "location": "Washington, DC",
+        "url": "https://t.co/tgKUL8Kwur",
+        "followers_count": 1140361,
+        "friends_count": 324,
+        "statuses_count": 27387,
+        "account_created_at": "2009-05-12T00:20:23.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": true,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "01KS10VWTEREHXP4CRHW",
+      "schema_version": 1
+    }
+  ]
+}

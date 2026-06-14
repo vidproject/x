@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145747Z-708a0001-Lavorgnanomics",
+  "account_handle": "Lavorgnanomics",
+  "captured_at": "2026-06-13T14:58:02.531Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ASecScottBessent%20since%3A2025-07-01%20until%3A2025-10-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1961064722414924159",
+      "account_handle": "Lavorgnanomics",
+      "account_id": "617381538",
+      "posted_at": "2025-08-28T13:53:59.000Z",
+      "first_captured_at": "2026-06-13T14:57:51.625Z",
+      "last_seen_at": "2026-06-13T14:57:51.625Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/Lavorgnanomics/status/1961064722414924159",
+      "tweet_type": "original",
+      "conversation_id": "1961064722414924159",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Strong growth and no inflation! Q2 real #GDP revised up to 3.3% on the back of stronger than previously reported business investment. The CapEx comeback, the direct result of @POTUS’ OBBB, continues. It has soared over 15% annualized in the first half of 2025.  The 2026 economic outlook continues to brighten.",
+      "text_resolved": "Strong growth and no inflation! Q2 real #GDP revised up to 3.3% on the back of stronger than previously reported business investment. The CapEx comeback, the direct result of @POTUS’ OBBB, continues. It has soared over 15% annualized in the first half of 2025.  The 2026 economic outlook continues to brighten.",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "GDP"
+      ],
+      "mentions": [
+        "POTUS"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [],
+      "like_count": 555,
+      "retweet_count": 142,
+      "reply_count": 113,
+      "quote_count": 15,
+      "view_count": 505643,
+      "bookmark_count": 28,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T14:57:51.625Z",
+          "likes": 555,
+          "retweets": 142,
+          "replies": 113,
+          "quotes": 15,
+          "views": 505643,
+          "bookmarks": 28
+        }
+      ],
+      "author": {
+        "display_name": "Joseph Lavorgna",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1955277275978502144/6c8CYXUx_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "NEC and Treasury 45 | 47",
+        "location": "1500 Pennsylvania Avenue",
+        "url": null,
+        "followers_count": 36640,
+        "friends_count": 48,
+        "statuses_count": 1183,
+        "account_created_at": "2012-06-24T17:18:39.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145747Z-708a0001",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145747Z-708a0001.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145747Z-708a0001.jsonl",
+    "source_handle": "SecScottBessent"
+  }
+}

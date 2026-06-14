@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-whitehouse-20260526-20260526T083004Z-e04fc4fd-SecScottBessent",
+  "account_handle": "SecScottBessent",
+  "captured_at": "2026-05-26T08:30:18.720Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APressSec%20since%3A2025-04-01%20until%3A2025-05-01&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1917697018551754802",
+      "account_handle": "SecScottBessent",
+      "account_id": "1889019333960998912",
+      "posted_at": "2025-04-30T21:46:12.000Z",
+      "first_captured_at": "2026-05-26T08:30:08.536Z",
+      "last_seen_at": "2026-05-26T08:30:08.536Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/SecScottBessent/status/1917697018551754802",
+      "tweet_type": "original",
+      "conversation_id": "1917697018551754802",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Thanks to @POTUS @realDonaldTrump’s tireless efforts to secure a lasting peace, I am glad to announce the signing of today’s historic economic partnership agreement between the United States and Ukraine establishing the United States-Ukraine Reconstruction Investment Fund to help accelerate Ukraine’s economic recovery. Economic security is national security.\n\n@DFCgov will work closely with the Government of Ukraine to establish this fund, and we look forward to quickly operationalizing this historic economic partnership for both the Ukrainian and American people.",
+      "text_resolved": "Thanks to @POTUS @realDonaldTrump’s tireless efforts to secure a lasting peace, I am glad to announce the signing of today’s historic economic partnership agreement between the United States and Ukraine establishing the United States-Ukraine Reconstruction Investment Fund to help accelerate Ukraine’s economic recovery. Economic security is national security.\n\n@DFCgov will work closely with the Government of Ukraine to establish this fund, and we look forward to quickly operationalizing this historic economic partnership for both the Ukrainian and American people.",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "POTUS",
+        "realDonaldTrump",
+        "DFCgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1917693214464585728",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1917693214464585728/vid/avc1/1920x1080/ptS0VZzqv8BnMpMQ.mp4?tag=16",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 76.951,
+          "width": 3840,
+          "height": 2160,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 32967,
+      "retweet_count": 7337,
+      "reply_count": 2032,
+      "quote_count": 906,
+      "view_count": 2435170,
+      "bookmark_count": 1805,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T08:30:08.536Z",
+          "likes": 32967,
+          "retweets": 7337,
+          "replies": 2032,
+          "quotes": 906,
+          "views": 2435170,
+          "bookmarks": 1805
+        }
+      ],
+      "author": {
+        "display_name": "Treasury Secretary Scott Bessent",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1889401757060444160/MDUd0e0g_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "79th United States Secretary of the Treasury",
+        "location": null,
+        "url": null,
+        "followers_count": 886339,
+        "friends_count": 25,
+        "statuses_count": 1248,
+        "account_created_at": "2025-02-10T18:32:21.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-whitehouse-20260526-20260526T083004Z-e04fc4fd",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/x-com-search-20260526T083004Z-e04fc4fd.summary.json",
+    "jsonl": ".skim/raw/x-com-search-20260526T083004Z-e04fc4fd.jsonl",
+    "source_handle": "PressSec"
+  }
+}
