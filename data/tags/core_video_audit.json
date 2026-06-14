@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-06-14T10:58:34Z",
+  "generated_at": "2026-06-14T17:21:20Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -56,8 +56,8 @@
     "bucket_counts": {
       "genre-experiment": 75,
       "missing-media": 661,
-      "needs-recognition": 1264,
-      "ordinary-video": 1104,
+      "needs-recognition": 1263,
+      "ordinary-video": 1105,
       "produced-video": 555
     },
     "top_tags": {
@@ -118,7 +118,7 @@
       "describe-with-vision": 661,
       "detect-audio": 508,
       "extract-keyframes": 509,
-      "transcribe-audio": 880
+      "transcribe-audio": 879
     }
   },
   "items": [
@@ -15252,7 +15252,7 @@
       ],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 2494x3324; 5.0s; 0.25 MiB; archived; tweet context: 🚨Francisco Tahay Marroquin, a 60-year-old criminal illegal alien and convicted rapist from Guatemala, who was convicted of sexual assault in Dallas County in 2018. ICE arrested Marroquin March 20 and he remains in ICE custody pending his removal to Guatemala....; source URL: https://video.twimg.com/amplify_video/2038969768062152705/vid/avc1/720x958/k8-OYAjVB_3lfbCM.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-EROHouston/13_2038969768062152705.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 2494x3324; 5.0s; 0.25 MiB; archived; tweet context: 🚨Francisco Tahay Marroquin, a 60-year-old criminal illegal alien and convicted rapist from Guatemala, who was convicted of sexual assault in Dallas County in 2018. ICE arrested Marroquin March 20 and he remains in ICE custody pending his removal to Guatemala....; source URL: https://video.twimg.com/amplify_video/2038969768062152705/vid/avc1/720x958/k8-OYAjVB_3lfbCM.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-EROHouston/13_2038969768062152705.mp4; needs OCR, transcript, or frame-leve"
@@ -70879,52 +70879,6 @@
       "description": "video; 850x720; 119.1s; 8.58 MiB; archived; tweet context: RT @Border911Live: Unacceptable! 😡 🎶I hope one day they finally see the truth…. #BidensAmerica https://t.co/G9AIyA8e4Y; source URL: https://video.twimg.com/amplify_video/1723468776572649472/vid/avc1/850x720/-o6bNXq4x0_bvgBO.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-RealTomHoman/13_1723468776572649472.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 850x720; 119.1s; 8.58 MiB; archived; tweet context: RT @Border911Live: Unacceptable! 😡 🎶I hope one day they finally see the truth…. #BidensAmerica https://t.co/G9AIyA8e4Y; source URL: https://video.twimg.com/amplify_video/1723468776572649472/vid/avc1/850x720/-o6bNXq4x0_bvgBO.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-RealTomHoman/13_1723468776572649472.mp4; needs OCR, transcript, or frame-level vision before content claims. RT @Border911Live: Unacceptable! 😡 🎶I hope one day they finally see the truth…. #BidensAmerica https://t.co/G9AIyA8e4Y"
     },
     {
-      "tweet_id": "1724508245509967883",
-      "account_handle": "EROSaltLakeCity",
-      "posted_at": "2023-11-14T19:23:00.000Z",
-      "tweet_url": "https://x.com/EROSaltLakeCity/status/1724508245509967883",
-      "tweet_text": "Guatemalan national convicted of attempted human smuggling arrested by #ICEERO Oct. 30 in St. George, #Utah. St. George is a smuggling corridor from the U.S./Mexico border due to the I-15. https://t.co/LhwfHz8iSk",
-      "media_id": "7_1722696467402633216",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-EROSaltLakeCity/7_1722696467402633216.mp4",
-      "duration_sec": 5.056,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 0,
-      "retweet_count": 0,
-      "view_count": 743,
-      "bucket": "needs-recognition",
-      "priority": 70,
-      "tags": [
-        "action:detention",
-        "audio:has-audio",
-        "audio:silent",
-        "country:Guatemala",
-        "legal:criminal-prosecution",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "origin:Guatemala",
-        "policy:border",
-        "subject:enforcement-op",
-        "theme:criminal",
-        "topic:immigration",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": true,
-      "description": "video; 1920x1080; 5.1s; 0.28 MiB; archived; tweet context: Guatemalan national convicted of attempted human smuggling arrested by #ICEERO Oct. 30 in St. George, #Utah. St. George is a smuggling corridor from the U.S./Mexico border due to the I-15. https://t.co/LhwfHz8iSk; source URL: https://video.twimg.com/ext_tw_video/1722696467402633216/pu/vid/avc1/1280x720/ZwLdr8s7QRW0W_Sk.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-EROSaltLakeCity/7_1722696467402633216.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 5.1s; 0.28 MiB; archived; tweet context: Guatemalan national convicted of attempted human smuggling arrested by #ICEERO Oct. 30 in St. George, #Utah. St. George is a smuggling corridor from the U.S./Mexico border due to the I-15. https://t.co/LhwfHz8iSk; source URL: https://video.twimg.com/ext_tw_video/1722696467402633216/pu/vid/avc1/1280x720/ZwLdr8s7QRW0W_Sk.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-EROSaltLakeCity/7_1722696467402633216.mp4; needs OCR, transcript, or frame-level vision before content claims. Guatemalan national convicted of attempted human smugg"
-    },
-    {
       "tweet_id": "1724568008079687725",
       "account_handle": "RealTomHoman",
       "posted_at": "2023-11-14T23:20:28.000Z",
@@ -107481,7 +107435,7 @@
       "media_id": "13_1913674099525869568",
       "media_type": "video",
       "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-_misc-0002/13_1913674099525869568.mp4",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-EROSeattle/13_1913674099525869568.mp4",
       "duration_sec": 7.266,
       "width": 1280,
       "height": 720,
@@ -107509,8 +107463,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 1280x720; 7.3s; 0.93 MiB; archived; tweet context: Francisco Bautista-Salmeron, 42, is a citizen of Mexico arrested by @EROSeattle in Kent, WA. Bautista has previously been removed from the U.S. and has a criminal history to include trespassing, DUI, and driving without a license. https://t.co/M4pIMdo5F0; source URL: https://video.twimg.com/amplify_video/1913674099525869568/vid/avc1/1280x720/wcTDo-hVWnE_GMGZ.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-_misc-0002/13_1913674099525869568.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 7.3s; 0.93 MiB; archived; tweet context: Francisco Bautista-Salmeron, 42, is a citizen of Mexico arrested by @EROSeattle in Kent, WA. Bautista has previously been removed from the U.S. and has a criminal history to include trespassing, DUI, and driving without a license. https://t.co/M4pIMdo5F0; source URL: https://video.twimg.com/amplify_video/1913674099525869568/vid/avc1/1280x720/wcTDo-hVWnE_GMGZ.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-_misc-0002/13_1913674099525869568.mp4; needs OCR, transcript, or frame-level vision before "
+      "has_ocr": true,
+      "description": "video; 1280x720; 7.3s; 0.93 MiB; archived; tweet context: Francisco Bautista-Salmeron, 42, is a citizen of Mexico arrested by @EROSeattle in Kent, WA. Bautista has previously been removed from the U.S. and has a criminal history to include trespassing, DUI, and driving without a license. https://t.co/M4pIMdo5F0; source URL: https://video.twimg.com/amplify_video/1913674099525869568/vid/avc1/1280x720/wcTDo-hVWnE_GMGZ.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-EROSeattle/13_1913674099525869568.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 7.3s; 0.93 MiB; archived; tweet context: Francisco Bautista-Salmeron, 42, is a citizen of Mexico arrested by @EROSeattle in Kent, WA. Bautista has previously been removed from the U.S. and has a criminal history to include trespassing, DUI, and driving without a license. https://t.co/M4pIMdo5F0; source URL: https://video.twimg.com/amplify_video/1913674099525869568/vid/avc1/1280x720/wcTDo-hVWnE_GMGZ.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-EROSeattle/13_1913674099525869568.mp4; needs OCR, transcript, or frame-level vision before "
     },
     {
       "tweet_id": "1915900298020761601",
@@ -137642,6 +137596,50 @@
       "description": "video; 1920x1080; 46.6s; 2.92 MiB; archived; tweet context: RT @RSBNetwork: President Trump touts border security record, BLASTS “Sloppy Chris Christie” in Cedar Rapids, Iowa https://t.co/cNVuDGligm; source URL: https://video.twimg.com/amplify_video/1710779927468093440/vid/avc1/1280x720/UxFRgtKwMRK_EwID.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-RealTomHoman/13_1710779927468093440.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 46.6s; 2.92 MiB; archived; tweet context: RT @RSBNetwork: President Trump touts border security record, BLASTS “Sloppy Chris Christie” in Cedar Rapids, Iowa https://t.co/cNVuDGligm; source URL: https://video.twimg.com/amplify_video/1710779927468093440/vid/avc1/1280x720/UxFRgtKwMRK_EwID.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-RealTomHoman/13_1710779927468093440.mp4; needs OCR, transcript, or frame-level vision before content claims. RT @RSBNetwork: President Trump touts border security record, BLASTS “Sloppy Chris Christie” in Cedar Rapids, Iowa https://t.co/cNVuDGligm | So together we created the most secure border in U.S. history and b"
     },
     {
+      "tweet_id": "1724508245509967883",
+      "account_handle": "EROSaltLakeCity",
+      "posted_at": "2023-11-14T19:23:00.000Z",
+      "tweet_url": "https://x.com/EROSaltLakeCity/status/1724508245509967883",
+      "tweet_text": "Guatemalan national convicted of attempted human smuggling arrested by #ICEERO Oct. 30 in St. George, #Utah. St. George is a smuggling corridor from the U.S./Mexico border due to the I-15. https://t.co/LhwfHz8iSk",
+      "media_id": "7_1722696467402633216",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-EROSaltLakeCity/7_1722696467402633216.mp4",
+      "duration_sec": 5.056,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 0,
+      "retweet_count": 0,
+      "view_count": 743,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "action:detention",
+        "audio:has-audio",
+        "audio:silent",
+        "country:Guatemala",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "origin:Guatemala",
+        "policy:border",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:immigration",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "video; 1920x1080; 5.1s; 0.28 MiB; archived; tweet context: Guatemalan national convicted of attempted human smuggling arrested by #ICEERO Oct. 30 in St. George, #Utah. St. George is a smuggling corridor from the U.S./Mexico border due to the I-15. https://t.co/LhwfHz8iSk; source URL: https://video.twimg.com/ext_tw_video/1722696467402633216/pu/vid/avc1/1280x720/ZwLdr8s7QRW0W_Sk.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-EROSaltLakeCity/7_1722696467402633216.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 5.1s; 0.28 MiB; archived; tweet context: Guatemalan national convicted of attempted human smuggling arrested by #ICEERO Oct. 30 in St. George, #Utah. St. George is a smuggling corridor from the U.S./Mexico border due to the I-15. https://t.co/LhwfHz8iSk; source URL: https://video.twimg.com/ext_tw_video/1722696467402633216/pu/vid/avc1/1280x720/ZwLdr8s7QRW0W_Sk.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-EROSaltLakeCity/7_1722696467402633216.mp4; needs OCR, transcript, or frame-level vision before content claims. Guatemalan national convicted of attempted human smugg"
+    },
+    {
       "tweet_id": "1724761737012936970",
       "account_handle": "CBP",
       "posted_at": "2023-11-15T12:10:17.000Z",
@@ -138009,7 +138007,7 @@
       "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1080x1920; 14.1s; 1.72 MiB; archived; tweet context: https://t.co/PJQWK5pZte; source URL: https://video.twimg.com/ext_tw_video/1740792073832570880/pu/vid/avc1/720x1280/Ydtdo_-licXxlX0h.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-EROLosAngeles/7_1740792073832570880.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1920; 14.1s; 1.72 MiB; archived; tweet context: https://t.co/PJQWK5pZte; source URL: https://video.twimg.com/ext_tw_video/1740792073832570880/pu/vid/avc1/720x1280/Ydtdo_-licXxlX0h.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-EROLosAngeles/7_1740792073832570880.mp4; needs OCR, transcript, or frame-level vision before content claims. https://t.co/PJQWK5pZte | \\ | Aad fea ERO Los Angeles SS | From the ERO Los Angeles Family to Yours, A Happy and Safe New Year!! 8 ERO Los Angeles | x F ir yf -F . oo 3 . F a 7 7\" - From the ERO Los Angeles Family to Yours, A s Happy and Safe New Year! ; . . - Bem ERO Los Angeles ce oa . z ; oo: j ."
@@ -139933,7 +139931,7 @@
       "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1600x900; 5.0s; 0.29 MiB; archived; tweet context: On Nov. 19, ERO Buffalo, Syracuse Sub-Office arrested a 40-year-old unlawfully present citizen of the Dominican Republic with an active warrant in his home country for the crime of homicide. He is detained in ICE custody pending removal proceedings. #PublicSa...; source URL: https://video.twimg.com/ext_tw_video/1859313879051857920/pu/vid/avc1/1280x720/piR0La3U7-Qi-M1h.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-EROBuffalo/7_1859313879051857920.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1600x900; 5.0s; 0.29 MiB; archived; tweet context: On Nov. 19, ERO Buffalo, Syracuse Sub-Office arrested a 40-year-old unlawfully present citizen of the Dominican Republic with an active warrant in his home country for the crime of homicide. He is detained in ICE custody pending removal proceedings. #PublicSa...; source URL: https://video.twimg.com/ext_tw_video/1859313879051857920/pu/vid/avc1/1280x720/piR0La3U7-Qi-M1h.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-EROBuffalo/7_1859313879051857920.mp4; needs OCR, transcript, or frame-le"
@@ -148171,7 +148169,7 @@
       "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1728x2304; 5.0s; 0.25 MiB; archived; tweet context: 🚨ICE @EROSanAntonio, with assistance from @CBP Air Support, the Gonzales County Sheriff’s Office and @NixonPolice, apprehended Jose Angel Reyes-Maldonado, a previously deported criminal illegal alien from Mexico, March 27 in Gonzales, Texas. (1 of 2)👇 https:/...; source URL: https://video.twimg.com/amplify_video/2039391777250246656/vid/avc1/720x960/JV6dsmrDWhURlAId.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-EROSanAntonio/13_2039391777250246656.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1728x2304; 5.0s; 0.25 MiB; archived; tweet context: 🚨ICE @EROSanAntonio, with assistance from @CBP Air Support, the Gonzales County Sheriff’s Office and @NixonPolice, apprehended Jose Angel Reyes-Maldonado, a previously deported criminal illegal alien from Mexico, March 27 in Gonzales, Texas. (1 of 2)👇 https:/...; source URL: https://video.twimg.com/amplify_video/2039391777250246656/vid/avc1/720x960/JV6dsmrDWhURlAId.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-EROSanAntonio/13_2039391777250246656.mp4; needs OCR, transcript, or fram"
