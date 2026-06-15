@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-detail-20260611-20260611T144024Z-c8623cfe-jlarkytweets",
+  "account_handle": "jlarkytweets",
+  "captured_at": "2026-06-11T14:40:40.777Z",
+  "endpoint": "TweetDetail,TweetResultByRestId",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/DHSgov/status/2042613811547394058",
+  "tweets": [
+    {
+      "tweet_id": "2042677545980620867",
+      "account_handle": "jlarkytweets",
+      "account_id": "891363089655967746",
+      "posted_at": "2026-04-10T18:54:12.000Z",
+      "first_captured_at": "2026-06-11T14:40:31.226Z",
+      "last_seen_at": "2026-06-11T14:40:31.226Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/jlarkytweets/status/2042677545980620867",
+      "tweet_type": "reply",
+      "conversation_id": "2042613811547394058",
+      "reply_to_tweet_id": "2042613811547394058",
+      "reply_to_account": "DHSgov",
+      "reply_to_account_id": "15647676",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@DHSgov Illegally using music from Addison Rae, who is vocally opposed to ICE, is certainly a bold choice from a federal government account\n\nWho is the intended audience here?!",
+      "text_resolved": "@DHSgov Illegally using music from Addison Rae, who is vocally opposed to ICE, is certainly a bold choice from a federal government account\n\nWho is the intended audience here?!",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DHSgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [],
+      "like_count": 43,
+      "retweet_count": 1,
+      "reply_count": 2,
+      "quote_count": 0,
+      "view_count": 8047,
+      "bookmark_count": 3,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T14:40:31.226Z",
+          "likes": 43,
+          "retweets": 1,
+          "replies": 2,
+          "quotes": 0,
+          "views": 8047,
+          "bookmarks": 3
+        }
+      ],
+      "author": {
+        "display_name": "Josh Larky",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1642977721646022656/lVxWgGT5_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Co-founder @PoliticianPages 🇺🇸 (check it out) || The best FREE fantasy football cheat sheets and matchups || +80 units on my public @BN_Fantasy_ plays",
+        "location": "Dallas, TX",
+        "url": "https://t.co/QtaUHM7AYA",
+        "followers_count": 60289,
+        "friends_count": 1223,
+        "statuses_count": 71602,
+        "account_created_at": "2017-07-29T18:21:36.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-detail-20260611-20260611T144024Z-c8623cfe",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-2042613811547394058-20260611T144024Z-c8623cfe.summary.json",
+    "jsonl": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-2042613811547394058-20260611T144024Z-c8623cfe.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T135639Z-32dfc0ce-USCG_Tri_State",
+  "account_handle": "USCG_Tri_State",
+  "captured_at": "2026-06-13T13:57:00.244Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCG%20since%3A2022-10-01%20until%3A2022-11-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1580236984693293067",
+      "account_handle": "USCG_Tri_State",
+      "account_id": "281093646",
+      "posted_at": "2022-10-12T16:40:31.000Z",
+      "first_captured_at": "2026-06-13T13:56:51.920Z",
+      "last_seen_at": "2026-06-13T13:56:51.920Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USCG_Tri_State/status/1580236984693293067",
+      "tweet_type": "original",
+      "conversation_id": "1580236984693293067",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "#USCG Sector Long Island Sound and Air Station Cape Cod members successfully medevac'd a sick passenger from a charter boat yesterday.\n\nWatch the video here: https://t.co/BcYkiqjdZl https://t.co/9qMRxy4DVh",
+      "text_resolved": "#USCG Sector Long Island Sound and Air Station Cape Cod members successfully medevac'd a sick passenger from a charter boat yesterday.\n\nWatch the video here: https://bit.ly/3g2G7ca https://t.co/9qMRxy4DVh",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "USCG"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/BcYkiqjdZl",
+          "expanded": "https://bit.ly/3g2G7ca",
+          "display": "bit.ly/3g2G7ca"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1580236871912882179",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Fe4hEANXgAMzDg_.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 2880,
+          "height": 1618,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 55,
+      "retweet_count": 10,
+      "reply_count": 4,
+      "quote_count": 1,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T13:56:51.920Z",
+          "likes": 55,
+          "retweets": 10,
+          "replies": 4,
+          "quotes": 1,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "USCG_Tri_State",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1129025032045375488/B_tNpa3O_normal.png",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "NOTICE: This account will not be actively managed during the lapse in federal funding. Read more: https://t.co/iWatW37YCp",
+        "location": "New York, NY",
+        "url": "https://t.co/27V3xw34tE",
+        "followers_count": 8524,
+        "friends_count": 490,
+        "statuses_count": 2566,
+        "account_created_at": "2011-04-12T16:31:23.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T135639Z-32dfc0ce",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T135639Z-32dfc0ce.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T135639Z-32dfc0ce.jsonl",
+    "source_handle": "USCG"
+  }
+}

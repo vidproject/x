@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T154750Z-4278224e-SecScottBessent",
+  "account_handle": "SecScottBessent",
+  "captured_at": "2026-06-13T15:48:18.169Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AKushDesai47%20since%3A2025-07-01%20until%3A2025-10-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1947627779354193949",
+      "account_handle": "SecScottBessent",
+      "account_id": "1889019333960998912",
+      "posted_at": "2025-07-22T12:00:22.000Z",
+      "first_captured_at": "2026-06-13T15:48:08.714Z",
+      "last_seen_at": "2026-06-13T15:48:08.714Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/SecScottBessent/status/1947627779354193949",
+      "tweet_type": "original",
+      "conversation_id": "1947627779354193949",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Thanks to @POTUS’s pro-growth, America First agenda, we’re seeing a CapEx Comeback. Business equipment production jumped 11% annualized in Q2 after a huge 23% gain in Q1 — the strongest back-to-back growth since 1997.\n\nCapEx is up 16.6% in the first half of 2025, signaling a major investment wave underway.\n\nThe One Big Beautiful Bill jumpstarted investment that’s lifting productivity, wages, and living standards. Blue collar paychecks are rising fast — second only to @realDonaldTrump’s first term — and the best is yet to come.",
+      "text_resolved": "Thanks to @POTUS’s pro-growth, America First agenda, we’re seeing a CapEx Comeback. Business equipment production jumped 11% annualized in Q2 after a huge 23% gain in Q1 — the strongest back-to-back growth since 1997.\n\nCapEx is up 16.6% in the first half of 2025, signaling a major investment wave underway.\n\nThe One Big Beautiful Bill jumpstarted investment that’s lifting productivity, wages, and living standards. Blue collar paychecks are rising fast — second only to @realDonaldTrump’s first term — and the best is yet to come.",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "POTUS",
+        "realDonaldTrump"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1947627123235078144",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GwdcjLNXwAAXJ--.png",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1133,
+          "height": 725,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 4601,
+      "retweet_count": 1026,
+      "reply_count": 318,
+      "quote_count": 87,
+      "view_count": 579509,
+      "bookmark_count": 171,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T15:48:08.714Z",
+          "likes": 4601,
+          "retweets": 1026,
+          "replies": 318,
+          "quotes": 87,
+          "views": 579509,
+          "bookmarks": 171
+        }
+      ],
+      "author": {
+        "display_name": "Treasury Secretary Scott Bessent",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1889401757060444160/MDUd0e0g_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "79th United States Secretary of the Treasury",
+        "location": null,
+        "url": null,
+        "followers_count": 896855,
+        "friends_count": 25,
+        "statuses_count": 1272,
+        "account_created_at": "2025-02-10T18:32:21.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T154750Z-4278224e",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T154750Z-4278224e.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T154750Z-4278224e.jsonl",
+    "source_handle": "KushDesai47"
+  }
+}

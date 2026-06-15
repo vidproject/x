@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T174617Z-9fd82ed7-CBPJobs",
+  "account_handle": "CBPJobs",
+  "captured_at": "2026-06-13T17:46:33.080Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AOFOEAC%20since%3A2024-02-01%20until%3A2024-03-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1762151844636148086",
+      "account_handle": "CBPJobs",
+      "account_id": "878311662226468869",
+      "posted_at": "2024-02-26T16:25:13.000Z",
+      "first_captured_at": "2026-06-13T17:46:23.259Z",
+      "last_seen_at": "2026-06-13T17:46:23.259Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBPJobs/status/1762151844636148086",
+      "tweet_type": "original",
+      "conversation_id": "1762151844636148086",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Your future career awaits as an Agriculture Specialist with the Office of Field Operations.\n \nAs an Agriculture Specialist, you assume a pivotal responsibility in preserving our nation's security.\n \nFind your calling today: https://t.co/0XfxIbkmA5\n\n#CBPCareers #NowHiring https://t.co/SO6X8UvpiT",
+      "text_resolved": "Your future career awaits as an Agriculture Specialist with the Office of Field Operations.\n \nAs an Agriculture Specialist, you assume a pivotal responsibility in preserving our nation's security.\n \nFind your calling today: https://go.dhs.gov/JWJ\n\n#CBPCareers #NowHiring https://t.co/SO6X8UvpiT",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "CBPCareers",
+        "NowHiring"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/0XfxIbkmA5",
+          "expanded": "https://go.dhs.gov/JWJ",
+          "display": "go.dhs.gov/JWJ"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1762151842765492224",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GHRrw8RWUAAJgTR.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 602,
+          "height": 607,
+          "alt_text": "Female Agriculture Specialist inspects flowers. Text reads Find your calling, Go Beyond",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 18,
+      "retweet_count": 6,
+      "reply_count": 1,
+      "quote_count": 1,
+      "view_count": 7186,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:46:23.259Z",
+          "likes": 18,
+          "retweets": 6,
+          "replies": 1,
+          "quotes": 1,
+          "views": 7186,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "CBP Jobs",
+        "avatar_url": "https://pbs.twimg.com/profile_images/900399198876700672/n6nYVIJ7_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Join U.S. Customs and Border Protection—protecting America’s borders and enabling secure, lawful travel and trade. #JoinAmericasFrontline",
+        "location": null,
+        "url": "https://t.co/Ji0dTKswTP",
+        "followers_count": 6204,
+        "friends_count": 142,
+        "statuses_count": 7867,
+        "account_created_at": "2017-06-23T17:59:53.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T174617Z-9fd82ed7",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T174617Z-9fd82ed7.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T174617Z-9fd82ed7.jsonl",
+    "source_handle": "OFOEAC"
+  }
+}

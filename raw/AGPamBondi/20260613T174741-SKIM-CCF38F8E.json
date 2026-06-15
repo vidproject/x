@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T174724Z-ce0a7252-AGPamBondi",
+  "account_handle": "AGPamBondi",
+  "captured_at": "2026-06-13T17:47:41.391Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3Ainterstatejuche%20since%3A2025-10-01%20until%3A2026-01-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2005764926045053023",
+      "account_handle": "AGPamBondi",
+      "account_id": "1886531809284173824",
+      "posted_at": "2025-12-29T22:16:38.000Z",
+      "first_captured_at": "2026-06-13T17:47:31.489Z",
+      "last_seen_at": "2026-06-13T17:47:31.489Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/AGPamBondi/status/2005764926045053023",
+      "tweet_type": "reply",
+      "conversation_id": "2005764911427731459",
+      "reply_to_tweet_id": "2005764921896956193",
+      "reply_to_account": "AGPamBondi",
+      "reply_to_account_id": "1886531809284173824",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "And just last month, we sentenced Abdimijad Mohamed Nur -- another key player in the Feeding Our Future scheme -- to 10 years in federal prison and ordered him to pay millions in restitution\n\n- And the crimes in this case don’t end here . . . ⬇️\n\nhttps://t.co/xJgkM0MZWK",
+      "text_resolved": "And just last month, we sentenced Abdimijad Mohamed Nur -- another key player in the Feeding Our Future scheme -- to 10 years in federal prison and ordered him to pay millions in restitution\n\n- And the crimes in this case don’t end here . . . ⬇️\n\nhttps://www.justice.gov/usao-mn/pr/feeding-our-future-defendant-sentenced-10-years-prison",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/xJgkM0MZWK",
+          "expanded": "https://www.justice.gov/usao-mn/pr/feeding-our-future-defendant-sentenced-10-years-prison",
+          "display": "justice.gov/usao-mn/pr/fee…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/xJgkM0MZWK",
+        "vendor_url": "justice.gov",
+        "title": "Feeding Our Future Defendant Sentenced to 10 Years in Prison",
+        "description": null,
+        "image_url": "https://pbs.twimg.com/card_img/2063154527763603456/bEqSQh9B?format=png&name=orig"
+      },
+      "media": [],
+      "like_count": 3248,
+      "retweet_count": 536,
+      "reply_count": 125,
+      "quote_count": 17,
+      "view_count": 161099,
+      "bookmark_count": 56,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:47:31.489Z",
+          "likes": 3248,
+          "retweets": 536,
+          "replies": 125,
+          "quotes": 17,
+          "views": 161099,
+          "bookmarks": 56
+        }
+      ],
+      "author": {
+        "display_name": "Attorney General Pamela Bondi",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1990087621532332032/7JXxdqpu_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "87th Attorney General serving under the leadership of @POTUS Trump 🇺🇸",
+        "location": "Washington, DC",
+        "url": "https://t.co/6BcXENpEaa",
+        "followers_count": 1160474,
+        "friends_count": 9,
+        "statuses_count": 511,
+        "account_created_at": "2025-02-03T21:47:12.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T174724Z-ce0a7252",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T174724Z-ce0a7252.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T174724Z-ce0a7252.jsonl",
+    "source_handle": "interstatejuche"
+  }
+}

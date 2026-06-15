@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T163713Z-5e84ce76-PressSec",
+  "account_handle": "PressSec",
+  "captured_at": "2026-06-13T16:37:29.567Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ARepDanBishop%20since%3A2025-01-01%20until%3A2025-04-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1899091814549762057",
+      "account_handle": "PressSec",
+      "account_id": "1879670389057474560",
+      "posted_at": "2025-03-10T13:35:46.000Z",
+      "first_captured_at": "2026-06-13T16:37:19.701Z",
+      "last_seen_at": "2026-06-13T16:37:19.701Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/PressSec/status/1899091814549762057",
+      "tweet_type": "original",
+      "conversation_id": "1899091814549762057",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "🚨Trump Admin repurposes controversial CBP One app to encourage self-deportations https://t.co/frjm06qwYu",
+      "text_resolved": "🚨Trump Admin repurposes controversial CBP One app to encourage self-deportations https://www.foxnews.com/politics/leave-now-trump-admin-repurposes-controversial-cbp-one-app-encourage-self-deportations",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/frjm06qwYu",
+          "expanded": "https://www.foxnews.com/politics/leave-now-trump-admin-repurposes-controversial-cbp-one-app-encourage-self-deportations",
+          "display": "foxnews.com/politics/leave…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/frjm06qwYu",
+        "vendor_url": "foxnews.com",
+        "title": "'Leave now': Trump admin repurposes controversial CBP One app to encourage self-deportations",
+        "description": "The Department of Homeland Security is announcing a new app to replace the controversial CBP One app, allowing illegal immigrants to facilitate their self deportation.",
+        "image_url": "https://pbs.twimg.com/card_img/2064923974547476480/yWPoVP1F?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 14666,
+      "retweet_count": 2297,
+      "reply_count": 828,
+      "quote_count": 146,
+      "view_count": 1528803,
+      "bookmark_count": 238,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T16:37:19.701Z",
+          "likes": 14666,
+          "retweets": 2297,
+          "replies": 828,
+          "quotes": 146,
+          "views": 1528803,
+          "bookmarks": 238
+        }
+      ],
+      "author": {
+        "display_name": "Karoline Leavitt",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1947447846317236225/rChs3LqV_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Assistant to the President and the 36th White House Press Secretary",
+        "location": null,
+        "url": "https://t.co/JCWgfmpm3T",
+        "followers_count": 1944570,
+        "friends_count": 195,
+        "statuses_count": 7925,
+        "account_created_at": "2025-01-15T23:22:04.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T163713Z-5e84ce76",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T163713Z-5e84ce76.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T163713Z-5e84ce76.jsonl",
+    "source_handle": "RepDanBishop"
+  }
+}

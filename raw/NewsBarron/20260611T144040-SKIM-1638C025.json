@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-detail-20260611-20260611T144024Z-c8623cfe-NewsBarron",
+  "account_handle": "NewsBarron",
+  "captured_at": "2026-06-11T14:40:40.777Z",
+  "endpoint": "TweetDetail,TweetResultByRestId",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/DHSgov/status/2042613811547394058",
+  "tweets": [
+    {
+      "tweet_id": "2042635754153656537",
+      "account_handle": "NewsBarron",
+      "account_id": "1850257798363262976",
+      "posted_at": "2026-04-10T16:08:08.000Z",
+      "first_captured_at": "2026-06-11T14:40:31.226Z",
+      "last_seen_at": "2026-06-11T14:40:31.226Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/NewsBarron/status/2042635754153656537",
+      "tweet_type": "reply",
+      "conversation_id": "2042613811547394058",
+      "reply_to_tweet_id": "2042613811547394058",
+      "reply_to_account": "DHSgov",
+      "reply_to_account_id": "15647676",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@DHSgov https://t.co/S66KhPkhO9",
+      "text_resolved": "@DHSgov https://t.co/S66KhPkhO9",
+      "lang": "qme",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DHSgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "16_2042635747228819456",
+          "media_type": "animated_gif",
+          "original_url": "https://video.twimg.com/tweet_video/HFjmY8cWoAASAmD.mp4",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 498,
+          "height": 498,
+          "alt_text": "Tchofmyhand Addison Rae GIF",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 29,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 706,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T14:40:31.226Z",
+          "likes": 29,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 0,
+          "views": 706,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "News Barron",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1997004533348601856/0vqFiMyB_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "FIGHT EVIL - GET IN THE ARENA!",
+        "location": "New Oaks City",
+        "url": null,
+        "followers_count": 9044,
+        "friends_count": 1325,
+        "statuses_count": 13368,
+        "account_created_at": "2024-10-26T19:26:56.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-detail-20260611-20260611T144024Z-c8623cfe",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-2042613811547394058-20260611T144024Z-c8623cfe.summary.json",
+    "jsonl": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-2042613811547394058-20260611T144024Z-c8623cfe.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

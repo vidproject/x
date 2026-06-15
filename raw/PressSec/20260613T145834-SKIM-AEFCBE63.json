@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145818Z-1f35c0de-PressSec",
+  "account_handle": "PressSec",
+  "captured_at": "2026-06-13T14:58:34.709Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ASecScottBessent%20since%3A2026-01-01%20until%3A2026-04-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2027067828692484526",
+      "account_handle": "PressSec",
+      "account_id": "1879670389057474560",
+      "posted_at": "2026-02-26T17:06:46.000Z",
+      "first_captured_at": "2026-06-13T14:58:23.376Z",
+      "last_seen_at": "2026-06-13T14:58:23.376Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/PressSec/status/2027067828692484526",
+      "tweet_type": "original",
+      "conversation_id": "2027067828692484526",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Mortgage Rates Fall Below 6% for the First Time Since 2022\n\n\"Mortgage rates fell below 6% this week for the first time in more than three years, welcome news for waves of house hunters heading into the busy spring home-buying season.\"\n\nhttps://t.co/nVBfWEUcLM",
+      "text_resolved": "Mortgage Rates Fall Below 6% for the First Time Since 2022\n\n\"Mortgage rates fell below 6% this week for the first time in more than three years, welcome news for waves of house hunters heading into the busy spring home-buying season.\"\n\nhttps://www.wsj.com/economy/housing/mortgage-rates-fall-below-6-for-the-first-time-since-2022-f572ed7e",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/nVBfWEUcLM",
+          "expanded": "https://www.wsj.com/economy/housing/mortgage-rates-fall-below-6-for-the-first-time-since-2022-f572ed7e",
+          "display": "wsj.com/economy/housin…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/nVBfWEUcLM",
+        "vendor_url": "wsj.com",
+        "title": "Mortgage Rates Fall Below 6% for the First Time Since 2022",
+        "description": "The 30-year rate dipped below an important psychological threshold and is expected to boost home sales going into the crucial spring season.",
+        "image_url": "https://pbs.twimg.com/card_img/2065301732062900224/dFxOFcum?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 1970,
+      "retweet_count": 379,
+      "reply_count": 210,
+      "quote_count": 21,
+      "view_count": 348167,
+      "bookmark_count": 41,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T14:58:23.376Z",
+          "likes": 1970,
+          "retweets": 379,
+          "replies": 210,
+          "quotes": 21,
+          "views": 348167,
+          "bookmarks": 41
+        }
+      ],
+      "author": {
+        "display_name": "Karoline Leavitt",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1947447846317236225/rChs3LqV_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Assistant to the President and the 36th White House Press Secretary",
+        "location": null,
+        "url": "https://t.co/JCWgfmpm3T",
+        "followers_count": 1944583,
+        "friends_count": 195,
+        "statuses_count": 7925,
+        "account_created_at": "2025-01-15T23:22:04.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145818Z-1f35c0de",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145818Z-1f35c0de.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145818Z-1f35c0de.jsonl",
+    "source_handle": "SecScottBessent"
+  }
+}

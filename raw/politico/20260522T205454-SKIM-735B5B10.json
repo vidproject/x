@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-20250101-partial-20260522-20260522T205338Z-6229f18a-politico",
+  "account_handle": "politico",
+  "captured_at": "2026-05-22T20:54:54.383Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2025-06-01%20until%3A2025-07-01",
+  "tweets": [
+    {
+      "tweet_id": "1937558238666310026",
+      "account_handle": "politico",
+      "account_id": "9300262",
+      "posted_at": "2025-06-24T17:07:36.000Z",
+      "first_captured_at": "2026-05-22T20:54:25.321Z",
+      "last_seen_at": "2026-05-22T20:54:25.321Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/politico/status/1937558238666310026",
+      "tweet_type": "original",
+      "conversation_id": "1937558238666310026",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Another man who was deported in violation of court order must be returned to US, court rules https://t.co/6tQ3aMRSnE",
+      "text_resolved": "Another man who was deported in violation of court order must be returned to US, court rules http://ow.ly/KCth106cMlM",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/6tQ3aMRSnE",
+          "expanded": "http://ow.ly/KCth106cMlM",
+          "display": "ow.ly/KCth106cMlM"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/6tQ3aMRSnE",
+        "vendor_url": "politico.com",
+        "title": "Another man who was deported in violation of court order must be returned to US, court rules",
+        "description": "It’s the fourth time the Trump administration has been ordered to return people to the U.S. after deporting them.",
+        "image_url": "https://pbs.twimg.com/card_img/2056505770489892865/PCTVCbLq?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 0,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 139438,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-22T20:54:25.321Z",
+          "likes": 0,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 0,
+          "views": 139438,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "POLITICO",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1821642506800353280/xIpx4wIO_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Politics. Policy. Power.\nCongress nerds 👉 https://t.co/vg62iVhofj\nLongreads and opinions 👉 @politicomag\nGot a news tip? 👉 https://t.co/JBzpu588Hy",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/scdhnZnzfN",
+        "followers_count": 4836188,
+        "friends_count": 1262,
+        "statuses_count": 411356,
+        "account_created_at": "2007-10-08T00:29:38.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-20250101-partial-20260522-20260522T205338Z-6229f18a",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-20250101-20260523-20260522/x-com-search-20260522T205338Z-6229f18a.summary.json",
+    "jsonl": ".skim/raw-core-20250101-20260523-20260522/x-com-search-20260522T205338Z-6229f18a.jsonl",
+    "source_handle": "DHSgov"
+  }
+}
