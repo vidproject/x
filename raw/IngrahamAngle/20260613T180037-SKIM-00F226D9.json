@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T180022Z-b78f6db9-IngrahamAngle",
+  "account_handle": "IngrahamAngle",
+  "captured_at": "2026-06-13T18:00:37.342Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AJDVance%20since%3A2025-07-01%20until%3A2025-10-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1970493529009856655",
+      "account_handle": "IngrahamAngle",
+      "account_id": "50769180",
+      "posted_at": "2025-09-23T14:20:41.000Z",
+      "first_captured_at": "2026-06-13T18:00:28.792Z",
+      "last_seen_at": "2026-06-13T18:00:28.792Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/IngrahamAngle/status/1970493529009856655",
+      "tweet_type": "original",
+      "conversation_id": "1970493529009856655",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "At the UN, Trump’s teleprompter failed—and he didn’t miss a beat. Imagine Biden in that spot. \n\n@POTUS: \"I don't mind making this speech without a teleprompter — because the teleprompter is not working... I can only say that whoever is operating this teleprompter is in big trouble.\"",
+      "text_resolved": "At the UN, Trump’s teleprompter failed—and he didn’t miss a beat. Imagine Biden in that spot. \n\n@POTUS: \"I don't mind making this speech without a teleprompter — because the teleprompter is not working... I can only say that whoever is operating this teleprompter is in big trouble.\"",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "POTUS"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1970493109285888000",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1970493109285888000/vid/avc1/1280x720/L-gZbpW6ki_37n1o.mp4?tag=21",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 28.258,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 48642,
+      "retweet_count": 7440,
+      "reply_count": 3282,
+      "quote_count": 414,
+      "view_count": 3506510,
+      "bookmark_count": 1430,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T18:00:28.792Z",
+          "likes": 48642,
+          "retweets": 7440,
+          "replies": 3282,
+          "quotes": 414,
+          "views": 3506510,
+          "bookmarks": 1430
+        }
+      ],
+      "author": {
+        "display_name": "Laura Ingraham",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1683422498111516672/ySprtoxx_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Mom, author, host, The Ingraham Angle, 7p ET @FoxNews. Retweets do not = Endorsements",
+        "location": "DC",
+        "url": "https://t.co/TTlV8AcUb2",
+        "followers_count": 5301572,
+        "friends_count": 786,
+        "statuses_count": 64127,
+        "account_created_at": "2009-06-25T21:03:25.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T180022Z-b78f6db9",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T180022Z-b78f6db9.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T180022Z-b78f6db9.jsonl",
+    "source_handle": "JDVance"
+  }
+}

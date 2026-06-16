@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T135700Z-870c4903-USSpaceForce",
+  "account_handle": "USSpaceForce",
+  "captured_at": "2026-06-13T13:57:17.502Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCG%20since%3A2022-11-01%20until%3A2022-12-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1595811257486962688",
+      "account_handle": "USSpaceForce",
+      "account_id": "26572460",
+      "posted_at": "2022-11-24T16:07:07.000Z",
+      "first_captured_at": "2026-06-13T13:57:08.503Z",
+      "last_seen_at": "2026-06-13T13:57:08.503Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USSpaceForce/status/1595811257486962688",
+      "tweet_type": "original",
+      "conversation_id": "1595811257486962688",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "We are grateful for all of our #Guardians and family members serving across the globe. We hope you can enjoy time with friends and family, and here's some fun to get you started.\n\nHappy Thanksgiving! #SemperSupra #Thanksgiving #HubbleHubble https://t.co/SvG3Z5hHkL",
+      "text_resolved": "We are grateful for all of our #Guardians and family members serving across the globe. We hope you can enjoy time with friends and family, and here's some fun to get you started.\n\nHappy Thanksgiving! #SemperSupra #Thanksgiving #HubbleHubble https://t.co/SvG3Z5hHkL",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://sproutsocial.com\" rel=\"nofollow\">Sprout Social</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "Guardians",
+        "SemperSupra",
+        "Thanksgiving",
+        "HubbleHubble"
+      ],
+      "mentions": [],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1595811236565975041",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/FiV13VwXgAEqgAz.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 2814,
+          "height": 1478,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 587,
+      "retweet_count": 119,
+      "reply_count": 45,
+      "quote_count": 20,
+      "view_count": null,
+      "bookmark_count": 4,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T13:57:08.503Z",
+          "likes": 587,
+          "retweets": 119,
+          "replies": 45,
+          "quotes": 20,
+          "views": null,
+          "bookmarks": 4
+        }
+      ],
+      "author": {
+        "display_name": "United States Space Force",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1839021693961990144/Lgi_WnUj_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official U.S. Space Force X: The appearance of hyperlinks does not = endorsement. Comment moderation & endorsement policy: https://t.co/IRRy2MYRdE",
+        "location": "Washington D.C.",
+        "url": "https://t.co/BGCFe6EHdm",
+        "followers_count": 707601,
+        "friends_count": 711,
+        "statuses_count": 13001,
+        "account_created_at": "2009-03-25T19:41:08.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T135700Z-870c4903",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T135700Z-870c4903.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T135700Z-870c4903.jsonl",
+    "source_handle": "USCG"
+  }
+}

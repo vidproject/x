@@ -1,0 +1,142 @@
+{
+  "metadata": {
+    "queue": "historical_2016_2020",
+    "generated_at": "2026-06-16T19:36:40Z",
+    "source_commit": "fb1c4939",
+    "item_count": 1,
+    "source_candidate_count": 992,
+    "not_ready_count": 475,
+    "all_items_ready": true,
+    "basis_counts": {
+      "wholly_creative_media": 1
+    },
+    "top_accounts": {
+      "CISAgov": 1
+    },
+    "review_actions": [
+      "yes",
+      "no",
+      "superlike",
+      "back"
+    ],
+    "inclusion_rules": [
+      "wholly creative media object",
+      "or real enforcement/detainee/deportation footage used with creative treatment",
+      "exclude routine news clips, speeches, raw arrests, and plain statistics cards"
+    ],
+    "readiness_rules": [
+      "archived GitHub release media required",
+      "photos require thumbnail, OCR, and genuine visual description",
+      "videos require keyframes, keyframe OCR, audio analysis, thumbnail, and genuine visual description",
+      "videos with audio require a completed transcript or completed empty-transcript result"
+    ]
+  },
+  "items": [
+    {
+      "id": "1059135687545413632:3_1058466187892477953",
+      "tweet_id": "1059135687545413632",
+      "posted_at": "2018-11-04T17:30:00.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "CISAgov",
+        "category": "government",
+        "label": "Cybersecurity and Infrastructure Security Agency"
+      },
+      "tweet_url": "https://x.com/CISAgov/status/1059135687545413632",
+      "tweet_text": "Check out a few tips so you can be confident about your vote. https://t.co/zMgZrfrWpi",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "poster-or-meme"
+      ],
+      "subjects": [],
+      "tags": [
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media:photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1058466187892477953",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CISAgov/3_1058466187892477953.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/f33f719c97152822381cc6e4d5b520d5454363c6b79850aadc629fbf7f6aff4b.jpg",
+          "sha256": "f33f719c97152822381cc6e4d5b520d5454363c6b79850aadc629fbf7f6aff4b",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "captured-alt-text",
+              "text": "photo; 2040x2640; 0.10 MiB; archived; alt text: Vote confident poster; tweet context: Check out a few tips so you can be confident about your vote. https://t.co/zMgZrfrWpi; source URL: https://pbs.twimg.com/media/DrBtY9AX0AEijnA.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-CISAgov/3_1058466187892477953.jpg. Vote confident poster Check out a few tips so you can be confident about your vote. https://t.co/zMgZrfrWpi",
+              "sidecar_statuses": {
+                "metadata-alt": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 2
+              },
+              "complete_row_count": 2,
+              "text": ". with Coniidence! » WE UX UG e © ©) : Request a Provisional Ask for Confirm Your Ballot, if Necessary Help Selections For reliable election information, use trusted sources: www.eac.gov/ electionoffice @) scx yas narrow snocucin « , @ Homeland (We) ses” week Stare vicrion ninscrons (QP Security\n\n. with Coniidence! » WE UX UG e © ©) : Request a Provisional Ask for Confirm Your Ballot, if Necessary Help Selections For reliable election information, use trusted sources: www.eac.gov/ electionoffice @) scx yas narrow snocucin « , @ Homeland (We) ses” week Stare vicrion ninscrons (QP Security"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "photo; 2040x2640; 0.10 MiB; archived; alt text: Vote confident poster; tweet context: Check out a few tips so you can be confident about your vote. https://t.co/zMgZrfrWpi; source URL: https://pbs.twimg.com/media/DrBtY9AX0AEijnA.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-CISAgov/3_1058466187892477953.jpg. Vote confident poster Check out a few tips so you can be confident about your vote. https://t.co/zMgZrfrWpi",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 0
+      }
+    }
+  ]
+}

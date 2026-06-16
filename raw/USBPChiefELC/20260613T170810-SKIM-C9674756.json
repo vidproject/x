@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170753Z-c8d0e2b8-USBPChiefELC",
+  "account_handle": "USBPChiefELC",
+  "captured_at": "2026-06-13T17:08:10.190Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AOFOEAC%20since%3A2021-03-01%20until%3A2021-04-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1371910419112099841",
+      "account_handle": "USBPChiefELC",
+      "account_id": "1207054845141762048",
+      "posted_at": "2021-03-16T19:45:07.000Z",
+      "first_captured_at": "2026-06-13T17:08:01.545Z",
+      "last_seen_at": "2026-06-13T17:08:01.545Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USBPChiefELC/status/1371910419112099841",
+      "tweet_type": "original",
+      "conversation_id": "1371910419112099841",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "It is with a heavy heart that we mourn the passing of one of our own, Border Patrol Agent Alejandro Flores-Bañuelos, a former Marine &amp; 12 year veteran of the U.S. Border Patrol.\n\nHe served his country &amp; community with honor, and his sacrifice will never be forgotten.🇺🇸#HonorFirst https://t.co/CixmCTR2la",
+      "text_resolved": "It is with a heavy heart that we mourn the passing of one of our own, Border Patrol Agent Alejandro Flores-Bañuelos, a former Marine &amp; 12 year veteran of the U.S. Border Patrol.\n\nHe served his country &amp; community with honor, and his sacrifice will never be forgotten.🇺🇸#HonorFirst https://t.co/CixmCTR2la",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/#!/download/ipad\" rel=\"nofollow\">Twitter for iPad</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "HonorFirst"
+      ],
+      "mentions": [],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1371910413240074243",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/EwoBQIzVgAMYwa5.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1536,
+          "height": 2048,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_1371910413248385026",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/EwoBQI1UUAIfFc3.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1920,
+          "height": 1080,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 362,
+      "retweet_count": 100,
+      "reply_count": 46,
+      "quote_count": 27,
+      "view_count": null,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:08:01.545Z",
+          "likes": 362,
+          "retweets": 100,
+          "replies": 46,
+          "quotes": 27,
+          "views": null,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "El Centro Sector Border Patrol",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2036511860485398530/crzLZD9d_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": null,
+        "location": "El Centro, California ",
+        "url": "https://t.co/gmstwt1CVi",
+        "followers_count": 125504,
+        "friends_count": 5529,
+        "statuses_count": 9857,
+        "account_created_at": "2019-12-17T21:48:03.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170753Z-c8d0e2b8",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T170753Z-c8d0e2b8.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T170753Z-c8d0e2b8.jsonl",
+    "source_handle": "OFOEAC"
+  }
+}

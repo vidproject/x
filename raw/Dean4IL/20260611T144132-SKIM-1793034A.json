@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-detail-20260611-20260611T144115Z-93287ef6-Dean4IL",
+  "account_handle": "Dean4IL",
+  "captured_at": "2026-06-11T14:41:32.111Z",
+  "endpoint": "TweetDetail,TweetResultByRestId",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/DHSgov/status/1981375156632133692",
+  "tweets": [
+    {
+      "tweet_id": "1981378386996953517",
+      "account_handle": "Dean4IL",
+      "account_id": "1948845283187572737",
+      "posted_at": "2025-10-23T15:13:14.000Z",
+      "first_captured_at": "2026-06-11T14:41:22.893Z",
+      "last_seen_at": "2026-06-11T14:41:22.893Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/Dean4IL/status/1981378386996953517",
+      "tweet_type": "reply",
+      "conversation_id": "1981375156632133692",
+      "reply_to_tweet_id": "1981375156632133692",
+      "reply_to_account": "DHSgov",
+      "reply_to_account_id": "15647676",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@DHSgov This is some pretty dark, fascist shit.  This looks like the beginning of the dark age.",
+      "text_resolved": "@DHSgov This is some pretty dark, fascist shit.  This looks like the beginning of the dark age.",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DHSgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [],
+      "like_count": 1174,
+      "retweet_count": 11,
+      "reply_count": 8,
+      "quote_count": 0,
+      "view_count": 25751,
+      "bookmark_count": 8,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T14:41:22.893Z",
+          "likes": 1174,
+          "retweets": 11,
+          "replies": 8,
+          "quotes": 0,
+          "views": 25751,
+          "bookmarks": 8
+        }
+      ],
+      "author": {
+        "display_name": "Jonathan Dean",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2003564402650353664/IaL0Q7Ht_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Survivor, entrepreneur, adventurer, lawyer, and concerned father. Former US Senate candidate in Democratic primary (IL). Democratic leaders need to be effective",
+        "location": "Chicago",
+        "url": "https://t.co/ce2Sxooc8i",
+        "followers_count": 736,
+        "friends_count": 463,
+        "statuses_count": 3872,
+        "account_created_at": "2025-07-25T20:38:29.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-detail-20260611-20260611T144115Z-93287ef6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-1981375156632133692-20260611T144115Z-93287ef6.summary.json",
+    "jsonl": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-1981375156632133692-20260611T144115Z-93287ef6.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

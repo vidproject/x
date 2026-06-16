@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145552Z-be2ad977-CNN",
+  "account_handle": "CNN",
+  "captured_at": "2026-06-13T14:56:06.897Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APeteHegseth%20since%3A2025-04-01%20until%3A2025-07-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1919486994645762166",
+      "account_handle": "CNN",
+      "account_id": "759251",
+      "posted_at": "2025-05-05T20:18:56.000Z",
+      "first_captured_at": "2026-06-13T14:55:57.653Z",
+      "last_seen_at": "2026-06-13T14:55:57.653Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CNN/status/1919486994645762166",
+      "tweet_type": "original",
+      "conversation_id": "1919486994645762166",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Secretary of Defense Pete Hegseth has ordered the Pentagon to cut the number of four-star generals and admirals by at least 20%\nhttps://t.co/vvmhQm9NSO",
+      "text_resolved": "Secretary of Defense Pete Hegseth has ordered the Pentagon to cut the number of four-star generals and admirals by at least 20%\nhttps://cnn.it/4iSSfHI",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://sproutsocial.com\" rel=\"nofollow\">Sprout Social</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/vvmhQm9NSO",
+          "expanded": "https://cnn.it/4iSSfHI",
+          "display": "cnn.it/4iSSfHI"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/vvmhQm9NSO",
+        "vendor_url": "cnn.com",
+        "title": "Hegseth orders Pentagon to cut number of senior generals by 20% | CNN Politics",
+        "description": "Secretary of Defense Pete Hegseth has ordered senior Pentagon leadership to cut the number of four-star generals and admirals by at least 20% across the military, according to a memo signed by...",
+        "image_url": "https://pbs.twimg.com/card_img/2064198353424916480/YZQFjFqe?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 1860,
+      "retweet_count": 304,
+      "reply_count": 426,
+      "quote_count": 68,
+      "view_count": 1229508,
+      "bookmark_count": 52,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T14:55:57.653Z",
+          "likes": 1860,
+          "retweets": 304,
+          "replies": 426,
+          "quotes": 68,
+          "views": 1229508,
+          "bookmarks": 52
+        }
+      ],
+      "author": {
+        "display_name": "CNN",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1669780523911110656/K9gaaM1g_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": "It’s our job to #GoThere and tell the most difficult stories. For breaking news, follow @CNNBRK and download the CNN app ➡️ https://t.co/7PQD7o6fLw",
+        "location": null,
+        "url": "https://t.co/imGp4Ieixi",
+        "followers_count": 61870908,
+        "friends_count": 1046,
+        "statuses_count": 427727,
+        "account_created_at": "2007-02-09T00:35:02.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145552Z-be2ad977",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145552Z-be2ad977.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145552Z-be2ad977.jsonl",
+    "source_handle": "PeteHegseth"
+  }
+}

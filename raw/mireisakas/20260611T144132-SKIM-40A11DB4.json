@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-detail-20260611-20260611T144115Z-93287ef6-mireisakas",
+  "account_handle": "mireisakas",
+  "captured_at": "2026-06-11T14:41:32.111Z",
+  "endpoint": "TweetDetail,TweetResultByRestId",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/DHSgov/status/1981375156632133692",
+  "tweets": [
+    {
+      "tweet_id": "1981574580440637766",
+      "account_handle": "mireisakas",
+      "account_id": "1612723814152167428",
+      "posted_at": "2025-10-24T04:12:50.000Z",
+      "first_captured_at": "2026-06-11T14:41:22.893Z",
+      "last_seen_at": "2026-06-11T14:41:22.893Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/mireisakas/status/1981574580440637766",
+      "tweet_type": "reply",
+      "conversation_id": "1981375156632133692",
+      "reply_to_tweet_id": "1981375156632133692",
+      "reply_to_account": "DHSgov",
+      "reply_to_account_id": "15647676",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@DHSgov https://t.co/bZ6R7Z36Yk",
+      "text_resolved": "@DHSgov https://t.co/bZ6R7Z36Yk",
+      "lang": "qme",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DHSgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1981574575428104192",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G3_3k9hWcAAcwPQ.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1170,
+          "height": 808,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1174,
+      "retweet_count": 1,
+      "reply_count": 2,
+      "quote_count": 0,
+      "view_count": 32148,
+      "bookmark_count": 64,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T14:41:22.893Z",
+          "likes": 1174,
+          "retweets": 1,
+          "replies": 2,
+          "quotes": 0,
+          "views": 32148,
+          "bookmarks": 64
+        }
+      ],
+      "author": {
+        "display_name": "(*^ω^*)ichi",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1943034796994641920/3L1P2OIq_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "im 23 and never made it to highschool",
+        "location": null,
+        "url": null,
+        "followers_count": 201,
+        "friends_count": 971,
+        "statuses_count": 5859,
+        "account_created_at": "2023-01-10T08:11:46.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-detail-20260611-20260611T144115Z-93287ef6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-1981375156632133692-20260611T144115Z-93287ef6.summary.json",
+    "jsonl": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-1981375156632133692-20260611T144115Z-93287ef6.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

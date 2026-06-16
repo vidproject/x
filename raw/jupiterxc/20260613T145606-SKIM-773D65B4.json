@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145552Z-be2ad977-jupiterxc",
+  "account_handle": "jupiterxc",
+  "captured_at": "2026-06-13T14:56:06.897Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APeteHegseth%20since%3A2025-04-01%20until%3A2025-07-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1920508876568367471",
+      "account_handle": "jupiterxc",
+      "account_id": "2779355786",
+      "posted_at": "2025-05-08T15:59:32.000Z",
+      "first_captured_at": "2026-06-13T14:55:57.653Z",
+      "last_seen_at": "2026-06-13T14:55:57.653Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/jupiterxc/status/1920508876568367471",
+      "tweet_type": "original",
+      "conversation_id": "1920508876568367471",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "“I will be resigning after this semester from my tenured position at West Point after 13 years on the faculty,” writes Graham Parsons, a professor of philosophy at the https://t.co/Gz1egMsupV",
+      "text_resolved": "“I will be resigning after this semester from my tenured position at West Point after 13 years on the faculty,” writes Graham Parsons, a professor of philosophy at the https://nyti.ms/4m7OUY1",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/Gz1egMsupV",
+          "expanded": "https://nyti.ms/4m7OUY1",
+          "display": "nyti.ms/4m7OUY1"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/Gz1egMsupV",
+        "vendor_url": "nytimes.com",
+        "title": "Opinion | West Point Is Supposed to Educate, Not Indoctrinate (Published 2025)",
+        "description": "The academy has changed.",
+        "image_url": "https://pbs.twimg.com/card_img/2065559648418058240/Mg0O_SOA?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 58,
+      "retweet_count": 7,
+      "reply_count": 216,
+      "quote_count": 7,
+      "view_count": 161773,
+      "bookmark_count": 9,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T14:55:57.653Z",
+          "likes": 58,
+          "retweets": 7,
+          "replies": 216,
+          "quotes": 7,
+          "views": 161773,
+          "bookmarks": 9
+        }
+      ],
+      "author": {
+        "display_name": "Nelson Maica C",
+        "avatar_url": "https://pbs.twimg.com/profile_images/666718428129075200/oHxsurXV_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Lic en Ciencias Politicas y Administrativas, Politologia, UCV.-I.A.E.D.E.N. Curso Nº 15.-Naturaleza, Tradicion, Cultura.-",
+        "location": "Venezuela",
+        "url": null,
+        "followers_count": 3815,
+        "friends_count": 5581,
+        "statuses_count": 741309,
+        "account_created_at": "2014-08-29T22:47:44.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145552Z-be2ad977",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145552Z-be2ad977.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145552Z-be2ad977.jsonl",
+    "source_handle": "PeteHegseth"
+  }
+}

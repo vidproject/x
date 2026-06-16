@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-detail-20260611-20260611T144115Z-93287ef6-burnshorts123",
+  "account_handle": "burnshorts123",
+  "captured_at": "2026-06-11T14:41:32.111Z",
+  "endpoint": "TweetDetail,TweetResultByRestId",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/DHSgov/status/1981375156632133692",
+  "tweets": [
+    {
+      "tweet_id": "1981411948819325369",
+      "account_handle": "burnshorts123",
+      "account_id": "1529120868831481857",
+      "posted_at": "2025-10-23T17:26:36.000Z",
+      "first_captured_at": "2026-06-11T14:41:22.893Z",
+      "last_seen_at": "2026-06-11T14:41:22.893Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/burnshorts123/status/1981411948819325369",
+      "tweet_type": "reply",
+      "conversation_id": "1981375156632133692",
+      "reply_to_tweet_id": "1981375156632133692",
+      "reply_to_account": "DHSgov",
+      "reply_to_account_id": "15647676",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@DHSgov https://t.co/XgKz9bBLzO",
+      "text_resolved": "@DHSgov https://t.co/XgKz9bBLzO",
+      "lang": "qme",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DHSgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1981411945417670656",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G39jqphWAAA-g32.png",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 496,
+          "height": 495,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1167,
+      "retweet_count": 27,
+      "reply_count": 1,
+      "quote_count": 0,
+      "view_count": 12386,
+      "bookmark_count": 16,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T14:41:22.893Z",
+          "likes": 1167,
+          "retweets": 27,
+          "replies": 1,
+          "quotes": 0,
+          "views": 12386,
+          "bookmarks": 16
+        }
+      ],
+      "author": {
+        "display_name": "Thefreemarketisalie",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1703850903147560960/3KZ1Gvn1_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": null,
+        "location": null,
+        "url": null,
+        "followers_count": 616,
+        "friends_count": 2038,
+        "statuses_count": 83760,
+        "account_created_at": "2022-05-24T15:24:18.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-detail-20260611-20260611T144115Z-93287ef6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-1981375156632133692-20260611T144115Z-93287ef6.summary.json",
+    "jsonl": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-1981375156632133692-20260611T144115Z-93287ef6.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

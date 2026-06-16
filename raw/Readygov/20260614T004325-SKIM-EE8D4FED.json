@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T004306Z-230484da-Readygov",
+  "account_handle": "Readygov",
+  "captured_at": "2026-06-14T00:43:25.679Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AFPSDHS%20since%3A2024-01-01%20until%3A2025-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1872719162801340856",
+      "account_handle": "Readygov",
+      "account_id": "16028241",
+      "posted_at": "2024-12-27T19:00:16.000Z",
+      "first_captured_at": "2026-06-14T00:43:17.850Z",
+      "last_seen_at": "2026-06-14T00:43:17.850Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/Readygov/status/1872719162801340856",
+      "tweet_type": "original",
+      "conversation_id": "1872719162801340856",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Preparing your home for colder weather only takes a few simple steps such as insulation, caulking, &amp; weather stripping.\n\nWe have many more safety tips to help you &amp; your loved ones get #WinterReady: https://t.co/41dVHgAAOJ https://t.co/Yh3Z7yVp4x",
+      "text_resolved": "Preparing your home for colder weather only takes a few simple steps such as insulation, caulking, &amp; weather stripping.\n\nWe have many more safety tips to help you &amp; your loved ones get #WinterReady: http://ready.gov/winter-ready https://t.co/Yh3Z7yVp4x",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "WinterReady"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/41dVHgAAOJ",
+          "expanded": "http://ready.gov/winter-ready",
+          "display": "ready.gov/winter-ready"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1872719161425600512",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Gf08J7zXIAAoAEx.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 680,
+          "height": 342,
+          "alt_text": "Image of a person shoveling snow with text \"why you should be #WinterReady\"",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 19,
+      "retweet_count": 17,
+      "reply_count": 1,
+      "quote_count": 0,
+      "view_count": 12984,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T00:43:17.850Z",
+          "likes": 19,
+          "retweets": 17,
+          "replies": 1,
+          "quotes": 0,
+          "views": 12984,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "Readygov",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1053392556229386241/IjWGKcYa_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Disasters don't plan ahead, you can. #BeReady",
+        "location": "United States",
+        "url": "https://t.co/J9gGQ7kyPn",
+        "followers_count": 235614,
+        "friends_count": 780,
+        "statuses_count": 15305,
+        "account_created_at": "2008-08-28T15:33:16.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T004306Z-230484da",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004306Z-230484da.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004306Z-230484da.jsonl",
+    "source_handle": "FPSDHS"
+  }
+}

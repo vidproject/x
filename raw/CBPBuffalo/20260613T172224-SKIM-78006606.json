@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T172208Z-14ab4148-CBPBuffalo",
+  "account_handle": "CBPBuffalo",
+  "captured_at": "2026-06-13T17:22:24.229Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AOFOEAC%20since%3A2021-11-01%20until%3A2021-12-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1456595953268543489",
+      "account_handle": "CBPBuffalo",
+      "account_id": "510629470",
+      "posted_at": "2021-11-05T12:15:12.000Z",
+      "first_captured_at": "2026-06-13T17:22:14.912Z",
+      "last_seen_at": "2026-06-13T17:22:14.912Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBPBuffalo/status/1456595953268543489",
+      "tweet_type": "original",
+      "conversation_id": "1456595953268543489",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "🚨Starting November 8🚨fully vaccinated, non-citizen travelers arriving at a U.S. land port of entry or ferry terminal for non-essential travel should be prepared with appropriate documentation. Check out our PodCast here: https://t.co/mfoWV3ZQKA https://t.co/JzsdQ8i6XR",
+      "text_resolved": "🚨Starting November 8🚨fully vaccinated, non-citizen travelers arriving at a U.S. land port of entry or ferry terminal for non-essential travel should be prepared with appropriate documentation. Check out our PodCast here: https://apple.co/3wgSllE https://t.co/JzsdQ8i6XR",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/mfoWV3ZQKA",
+          "expanded": "https://apple.co/3wgSllE",
+          "display": "apple.co/3wgSllE"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1456595950290575368",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/FDbeTKZXoAgt1E9.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 686,
+          "height": 686,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 21,
+      "retweet_count": 9,
+      "reply_count": 1,
+      "quote_count": 3,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:22:14.912Z",
+          "likes": 21,
+          "retweets": 9,
+          "replies": 1,
+          "quotes": 3,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "CBP Buffalo",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1355207647721648128/d6w8jyWx_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official account of the U.S. Customs and Border Protection: Office of Field Operations, Border Patrol, and Air and Marine Operations - covering New York State.",
+        "location": "Buffalo, NY",
+        "url": "https://t.co/64vM40MtAV",
+        "followers_count": 6505,
+        "friends_count": 286,
+        "statuses_count": 4960,
+        "account_created_at": "2012-03-01T18:16:39.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T172208Z-14ab4148",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T172208Z-14ab4148.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T172208Z-14ab4148.jsonl",
+    "source_handle": "OFOEAC"
+  }
+}

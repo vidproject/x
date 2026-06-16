@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-dhsgov-smoke-20260522-20260522T210651Z-b30ac39e-news6wkmg",
+  "account_handle": "news6wkmg",
+  "captured_at": "2026-05-22T21:07:15.027Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-05-01%20until%3A2026-05-23",
+  "tweets": [
+    {
+      "tweet_id": "2054350939566325815",
+      "account_handle": "news6wkmg",
+      "account_id": "18082466",
+      "posted_at": "2026-05-13T00:00:06.000Z",
+      "first_captured_at": "2026-05-22T21:07:00.114Z",
+      "last_seen_at": "2026-05-22T21:07:00.114Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/news6wkmg/status/2054350939566325815",
+      "tweet_type": "original",
+      "conversation_id": "2054350939566325815",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Now facing a misdemeanor charge related to an ABT operation, Cleon Williams, better known as \"Uncle Lou,\" remains inside the Orange County Jail on an immigration detainer.  https://t.co/ymaWvNmP8z",
+      "text_resolved": "Now facing a misdemeanor charge related to an ABT operation, Cleon Williams, better known as \"Uncle Lou,\" remains inside the Orange County Jail on an immigration detainer.  https://www.clickorlando.com/news/local/2026/05/12/popular-music-venue-owner-on-immigration-detainer-facing-charge-of-2nd-degree-misdemeanor/?utm_source=facebook&utm_medium=social&utm_campaign=snd&utm_content=wkmg6",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialnewsdesk.com\" rel=\"nofollow\">SocialNewsDesk</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/ymaWvNmP8z",
+          "expanded": "https://www.clickorlando.com/news/local/2026/05/12/popular-music-venue-owner-on-immigration-detainer-facing-charge-of-2nd-degree-misdemeanor/?utm_source=facebook&utm_medium=social&utm_campaign=snd&utm_content=wkmg6",
+          "display": "clickorlando.com/news/local/202…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/ymaWvNmP8z",
+        "vendor_url": "clickorlando.com",
+        "title": "Popular music venue owner on immigration detainer facing charge of 2nd degree misdemeanor",
+        "description": "Now facing a misdemeanor charge related to an ABT operation, Cleon Williams, better known as \"Uncle Lou,\" remains inside the Orange County Jail on an immigration detainer.",
+        "image_url": "https://pbs.twimg.com/card_img/2056889840331788288/xX-1dYGx?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 6,
+      "retweet_count": 0,
+      "reply_count": 17,
+      "quote_count": 1,
+      "view_count": 24719,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-22T21:07:00.114Z",
+          "likes": 6,
+          "retweets": 0,
+          "replies": 17,
+          "quotes": 1,
+          "views": 24719,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "News 6 WKMG",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1965102380891979776/5WQtgIPK_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Central Florida @CBSnews affiliate. Tweeting updates from News 6 and https://t.co/Qe9PSfI8BQ.",
+        "location": "Orlando, FL",
+        "url": "https://t.co/7hdhXucbSp",
+        "followers_count": 151915,
+        "friends_count": 1438,
+        "statuses_count": 242328,
+        "account_created_at": "2008-12-12T18:44:55.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-dhsgov-smoke-20260522-20260522T210651Z-b30ac39e",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-fresh-smoke-20260522b/x-com-search-20260522T210651Z-b30ac39e.summary.json",
+    "jsonl": ".skim/raw-fresh-smoke-20260522b/x-com-search-20260522T210651Z-b30ac39e.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

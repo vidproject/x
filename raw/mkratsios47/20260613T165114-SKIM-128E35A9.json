@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T165055Z-3c6e8b05-mkratsios47",
+  "account_handle": "mkratsios47",
+  "captured_at": "2026-06-13T16:51:14.048Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEdWorkforceCmte%20since%3A2026-01-01%20until%3A2026-04-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2034969214537138370",
+      "account_handle": "mkratsios47",
+      "account_id": "1904142400554995714",
+      "posted_at": "2026-03-20T12:24:03.000Z",
+      "first_captured_at": "2026-06-13T16:51:04.573Z",
+      "last_seen_at": "2026-06-13T16:51:04.573Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/mkratsios47/status/2034969214537138370",
+      "tweet_type": "original",
+      "conversation_id": "2034969214537138370",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Today, the @WhiteHouse released a commonsense National AI Policy Framework that ensures every American benefits from AI.\n\nAs @POTUS has said — we need one federal AI policy, not a 50 state patchwork. This gets us there.\n\nEager to work with Congress on this important legislation. https://t.co/flnv8cD0lP",
+      "text_resolved": "Today, the @WhiteHouse released a commonsense National AI Policy Framework that ensures every American benefits from AI.\n\nAs @POTUS has said — we need one federal AI policy, not a 50 state patchwork. This gets us there.\n\nEager to work with Congress on this important legislation. https://t.co/flnv8cD0lP",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "WhiteHouse",
+        "POTUS"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2034961710629474305",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HD2i5OWXUAE4NYD.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1396,
+          "height": 1809,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 2540,
+      "retweet_count": 782,
+      "reply_count": 342,
+      "quote_count": 137,
+      "view_count": 335835,
+      "bookmark_count": 781,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T16:51:04.573Z",
+          "likes": 2540,
+          "retweets": 782,
+          "replies": 342,
+          "quotes": 137,
+          "views": 335835,
+          "bookmarks": 781
+        }
+      ],
+      "author": {
+        "display_name": "Director Michael Kratsios",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2036415476335833088/WPlUcJxT_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Assistant to the President & 13th Director of @WHOSTP47 | Previously 4th CTO of the United States and Under Secretary of War | South Carolinian 🇺🇸",
+        "location": "Washington, DC",
+        "url": "https://t.co/EsBwLu2JHH",
+        "followers_count": 32411,
+        "friends_count": 50,
+        "statuses_count": 646,
+        "account_created_at": "2025-03-24T12:15:30.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T165055Z-3c6e8b05",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T165055Z-3c6e8b05.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T165055Z-3c6e8b05.jsonl",
+    "source_handle": "EdWorkforceCmte"
+  }
+}
