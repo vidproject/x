@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-detail-20260611-20260611T144115Z-93287ef6-forestpilled",
+  "account_handle": "forestpilled",
+  "captured_at": "2026-06-11T14:41:32.111Z",
+  "endpoint": "TweetDetail,TweetResultByRestId",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/DHSgov/status/1981375156632133692",
+  "tweets": [
+    {
+      "tweet_id": "1981376019345944756",
+      "account_handle": "forestpilled",
+      "account_id": "1854492277562851338",
+      "posted_at": "2025-10-23T15:03:49.000Z",
+      "first_captured_at": "2026-06-11T14:41:22.893Z",
+      "last_seen_at": "2026-06-11T14:41:22.893Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/forestpilled/status/1981376019345944756",
+      "tweet_type": "reply",
+      "conversation_id": "1981375156632133692",
+      "reply_to_tweet_id": "1981375156632133692",
+      "reply_to_account": "DHSgov",
+      "reply_to_account_id": "15647676",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@DHSgov We’re getting Dark Age edits from federal agencies and you’re blackpilling? https://t.co/EFlg8TE79t",
+      "text_resolved": "@DHSgov We’re getting Dark Age edits from federal agencies and you’re blackpilling? https://t.co/EFlg8TE79t",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DHSgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1981375967130984448",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1981375967130984448/vid/avc1/672x848/1RWUC5HTcABggsCS.mp4?tag=21",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 27.833,
+          "width": 672,
+          "height": 848,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 3224,
+      "retweet_count": 90,
+      "reply_count": 46,
+      "quote_count": 32,
+      "view_count": 103705,
+      "bookmark_count": 345,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T14:41:22.893Z",
+          "likes": 3224,
+          "retweets": 90,
+          "replies": 46,
+          "quotes": 32,
+          "views": 103705,
+          "bookmarks": 345
+        }
+      ],
+      "author": {
+        "display_name": "Forester🌲",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2015443936135811072/GmAz9uPh_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "the natural home of political ecology lies with the True Right",
+        "location": null,
+        "url": null,
+        "followers_count": 2692,
+        "friends_count": 726,
+        "statuses_count": 12658,
+        "account_created_at": "2024-11-07T11:53:21.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-detail-20260611-20260611T144115Z-93287ef6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-1981375156632133692-20260611T144115Z-93287ef6.summary.json",
+    "jsonl": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-1981375156632133692-20260611T144115Z-93287ef6.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

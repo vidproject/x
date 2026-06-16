@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145552Z-be2ad977-SecVetAffairs",
+  "account_handle": "SecVetAffairs",
+  "captured_at": "2026-06-13T14:56:06.897Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APeteHegseth%20since%3A2025-04-01%20until%3A2025-07-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1927757830624333843",
+      "account_handle": "SecVetAffairs",
+      "account_id": "1011640329647394816",
+      "posted_at": "2025-05-28T16:04:17.000Z",
+      "first_captured_at": "2026-06-13T14:55:57.653Z",
+      "last_seen_at": "2026-06-13T14:55:57.653Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/SecVetAffairs/status/1927757830624333843",
+      "tweet_type": "original",
+      "conversation_id": "1927757830624333843",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Veterans deserve a seamless transition from @DeptofDefense to @DeptVetAffairs. I met with @SecDef last week to sign a new agreement to improve the transition process for separating servicemembers and increase collaboration between our departments. https://t.co/NdSpfoc3gR",
+      "text_resolved": "Veterans deserve a seamless transition from @DeptofDefense to @DeptVetAffairs. I met with @SecDef last week to sign a new agreement to improve the transition process for separating servicemembers and increase collaboration between our departments. https://t.co/NdSpfoc3gR",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DeptVetAffairs"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1927756646547120128",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1927756646547120128/vid/avc1/1920x1080/PGNyB6TWG-rGS6Tv.mp4?tag=21",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 244.077,
+          "width": 1920,
+          "height": 1080,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 7290,
+      "retweet_count": 1419,
+      "reply_count": 499,
+      "quote_count": 90,
+      "view_count": 574593,
+      "bookmark_count": 163,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T14:55:57.653Z",
+          "likes": 7290,
+          "retweets": 1419,
+          "replies": 499,
+          "quotes": 90,
+          "views": 574593,
+          "bookmarks": 163
+        }
+      ],
+      "author": {
+        "display_name": "VA Secretary Doug Collins",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1887222231262015488/61WnCrrG_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official Account of the 12th United States Secretary of Veterans Affairs",
+        "location": "Washington, DC",
+        "url": "https://t.co/kTxGDuGWAD",
+        "followers_count": 146943,
+        "friends_count": 151,
+        "statuses_count": 925,
+        "account_created_at": "2018-06-26T16:00:24.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145552Z-be2ad977",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145552Z-be2ad977.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145552Z-be2ad977.jsonl",
+    "source_handle": "PeteHegseth"
+  }
+}

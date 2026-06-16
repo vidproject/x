@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T013233Z-17ec23a0-ICEgov",
+  "account_handle": "ICEgov",
+  "captured_at": "2026-06-14T01:33:43.398Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEROSanFrancisco%20since%3A2021-01-01%20until%3A2022-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1356389003067580421",
+      "account_handle": "ICEgov",
+      "account_id": "39384517",
+      "posted_at": "2021-02-01T23:48:33.000Z",
+      "first_captured_at": "2026-06-14T01:32:39.834Z",
+      "last_seen_at": "2026-06-14T01:32:39.834Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/ICEgov/status/1356389003067580421",
+      "tweet_type": "quote",
+      "conversation_id": "1356389003067580421",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": "1356361494544470020",
+      "retweeted_tweet_id": null,
+      "text": "We want everyone, regardless of immigration status, to feel safe &amp; unafraid to get the COVID vaccine—to protect themselves, their families, and their communities. ICE will NOT conduct immigration enforcement at #covid19vaccine sites. Read our policy here: https://t.co/kWnB3xjH9R",
+      "text_resolved": "We want everyone, regardless of immigration status, to feel safe &amp; unafraid to get the COVID vaccine—to protect themselves, their families, and their communities. ICE will NOT conduct immigration enforcement at #covid19vaccine sites. Read our policy here: https://www.ice.gov/doclib/ero-outreach/pdf/10029.2-policy.pdf",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "covid19vaccine"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/kWnB3xjH9R",
+          "expanded": "https://www.ice.gov/doclib/ero-outreach/pdf/10029.2-policy.pdf",
+          "display": "ice.gov/doclib/ero-out…"
+        }
+      ],
+      "card": null,
+      "media": [],
+      "like_count": 514,
+      "retweet_count": 162,
+      "reply_count": 171,
+      "quote_count": 176,
+      "view_count": null,
+      "bookmark_count": 11,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:32:39.834Z",
+          "likes": 514,
+          "retweets": 162,
+          "replies": 171,
+          "quotes": 176,
+          "views": null,
+          "bookmarks": 11
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Immigration and Customs Enforcement",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1924467797544808448/20-3dZrS_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Protects America through criminal investigations and by enforcing immigration law to preserve national security and public safety.  https://t.co/rDI2IeFofc",
+        "location": "Washington, DC",
+        "url": "https://t.co/tgKUL8Kwur",
+        "followers_count": 1140215,
+        "friends_count": 324,
+        "statuses_count": 27763,
+        "account_created_at": "2009-05-12T00:20:23.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T013233Z-17ec23a0",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T013233Z-17ec23a0.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T013233Z-17ec23a0.jsonl",
+    "source_handle": "EROSanFrancisco"
+  }
+}

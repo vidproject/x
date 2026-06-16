@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T154534Z-c2ce8617-PhilipWegmann",
+  "account_handle": "PhilipWegmann",
+  "captured_at": "2026-06-13T15:45:49.832Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AAnnaKelly47%20since%3A2025-04-01%20until%3A2025-07-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1932088706673823800",
+      "account_handle": "PhilipWegmann",
+      "account_id": "591973307",
+      "posted_at": "2025-06-09T14:53:38.000Z",
+      "first_captured_at": "2026-06-13T15:45:41.319Z",
+      "last_seen_at": "2026-06-13T15:45:41.319Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/PhilipWegmann/status/1932088706673823800",
+      "tweet_type": "original",
+      "conversation_id": "1932088706673823800",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Big list of CEOs gathering for White House roundtable with POTUS on proposed \"Trump Accounts.\"\n\nProgram would deposit $1K into an index fund for US citizens born after 01/24. Goal, per @PressSec, is putting \"lives of young Americans on the right financial path\" out of the gate.",
+      "text_resolved": "Big list of CEOs gathering for White House roundtable with POTUS on proposed \"Trump Accounts.\"\n\nProgram would deposit $1K into an index fund for US citizens born after 01/24. Goal, per @PressSec, is putting \"lives of young Americans on the right financial path\" out of the gate.",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "PressSec"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [],
+      "like_count": 20,
+      "retweet_count": 10,
+      "reply_count": 10,
+      "quote_count": 5,
+      "view_count": 16277,
+      "bookmark_count": 4,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T15:45:41.319Z",
+          "likes": 20,
+          "retweets": 10,
+          "replies": 10,
+          "quotes": 5,
+          "views": 16277,
+          "bookmarks": 4
+        }
+      ],
+      "author": {
+        "display_name": "Philip Melanchthon Wegmann",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1323060723925344258/o20IVpNL_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Wall Street Journal White House Reporter | Email: philip.wegmann@wsj.com | DM for Signal/Fax #",
+        "location": "Washington, DC",
+        "url": "https://t.co/y21zgHtZQj",
+        "followers_count": 56944,
+        "friends_count": 5007,
+        "statuses_count": 40565,
+        "account_created_at": "2012-05-27T17:00:39.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T154534Z-c2ce8617",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T154534Z-c2ce8617.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T154534Z-c2ce8617.jsonl",
+    "source_handle": "AnnaKelly47"
+  }
+}
