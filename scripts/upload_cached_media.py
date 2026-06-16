@@ -108,7 +108,7 @@ def local_object_path(index_path: Path, row: dict[str, Any]) -> Path | None:
 
 def load_cache(cache_root: Path) -> dict[str, CachedMedia]:
     cache: dict[str, CachedMedia] = {}
-    stats = defaultdict(int)
+    stats: defaultdict[str, int] = defaultdict(int)
     for index_path, row in iter_manifest_rows(cache_root):
         if row.get("status") != "ok":
             stats["non_ok"] += 1
@@ -259,9 +259,10 @@ def load_release_shards(
         if shard_index == 1:
             release = gh.get_or_create_release(tag, media_release_name(handle, shard_index))
         else:
-            release = gh.get_release(tag)
-            if release is None:
+            existing_release = gh.get_release(tag)
+            if existing_release is None:
                 break
+            release = existing_release
         shards.append(ReleaseShard(shard_index, release, {}))
         shard_index += 1
     return ReleaseShardSet(handle, gh, shards)
@@ -374,7 +375,7 @@ def patch_parquets(
             per_tweet[media_id] = {
                 "release_asset_url": url or media.get("release_asset_url"),
                 "sha256": cached.sha256,
-                "bytes": int(uploaded.get("size") or cached.bytes),
+                "bytes": int(cast(Any, uploaded.get("size")) or cached.bytes),
                 "archive_status": "archived",
                 "archive_attempts": attempts if existing else attempts + 1,
                 "last_attempt_at": now_iso,

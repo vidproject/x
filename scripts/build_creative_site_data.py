@@ -758,7 +758,7 @@ def queue_payload(
 
 
 def not_ready_payload(items: list[dict[str, Any]], *, commit: str) -> dict[str, Any]:
-    blockers = Counter()
+    blockers: Counter[str] = Counter()
     for item in items:
         blockers.update(item["readiness"]["blockers"])
     return {
@@ -775,21 +775,26 @@ def not_ready_payload(items: list[dict[str, Any]], *, commit: str) -> dict[str, 
 
 def write_json_stable(path: Path, payload: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    prior = None
+    prior: dict[str, Any] | None = None
     if path.exists():
         try:
-            prior = json.loads(path.read_text(encoding="utf-8"))
+            loaded = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
-            prior = None
-    if isinstance(prior, dict):
-        old_meta = prior.get("metadata") if isinstance(prior.get("metadata"), dict) else {}
-        comparable_prior = {**prior, "metadata": {**old_meta, "generated_at": None}}
-        meta = payload.get("metadata") if isinstance(payload.get("metadata"), dict) else {}
-        comparable_new = {**payload, "metadata": {**meta, "generated_at": None}}
+            loaded = None
+        if isinstance(loaded, dict):
+            prior = loaded
+    if prior is not None:
+        old_meta_raw = prior.get("metadata")
+        old_meta: dict[str, Any] = old_meta_raw if isinstance(old_meta_raw, dict) else {}
+        new_meta_raw = payload.get("metadata")
+        new_meta: dict[str, Any] = new_meta_raw if isinstance(new_meta_raw, dict) else {}
+        comparable_prior = dict(prior)
+        comparable_prior["metadata"] = {**old_meta, "generated_at": None}
+        comparable_new = dict(payload)
+        comparable_new["metadata"] = {**new_meta, "generated_at": None}
         if comparable_prior == comparable_new:
-            payload["metadata"]["generated_at"] = (
-                old_meta.get("generated_at") or payload["metadata"]["generated_at"]
-            )
+            new_meta["generated_at"] = old_meta.get("generated_at") or new_meta.get("generated_at")
+            payload["metadata"] = new_meta
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 

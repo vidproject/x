@@ -413,7 +413,7 @@ def score_patterns(
 
 
 def engagement_score(row: dict[str, Any]) -> float:
-    total = 0
+    total = 0.0
     for key, weight in (("like_count", 1.0), ("retweet_count", 2.0), ("quote_count", 2.0)):
         value = row.get(key)
         if value is not None:
