@@ -625,6 +625,22 @@ tags:
       Embedded cable-news / press clip. Matches major outlet names and
       "reporting on / from" framings.
     classification: deterministic
+  video:agency-roundup:
+    description: >-
+      Recurring agency-news digest or weekly roundup format, usually a
+      sequence of departmental highlights rather than a creative genre piece.
+    classification: tentative
+  video:ceremony:
+    description: >-
+      Single-event ceremonial or protocol footage, including arrivals,
+      anthem ceremonies, swearing-in events, signings, and similar official
+      proceedings.
+    classification: tentative
+  video:raw-enforcement-footage:
+    description: >-
+      Plain handheld or documentary arrest, raid, or enforcement footage with
+      no meaningful creative treatment beyond an end card or captions.
+    classification: tentative
   video:speech:
     description: >-
       Speech, address, press conference, or remarks (Oval Office, Rose

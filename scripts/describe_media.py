@@ -368,6 +368,18 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
     ):
         add("video:news-clip")
     if is_video and re_search(
+        r"\b(?:rebroadcast|recorded)\s+(?:tv|television|cable-news|news)\s+"
+        r"(?:segment|clip|package)\b"
+        r"|\b(?:station\s+bug|straight\s+arrow\s+news|the\s+national\s+news\s+desk|"
+        r"wcvb|wtoc|denver7|eyewitness\s+news|channel\s+\d|nightly\s+news)\b",
+        haystack,
+    ):
+        add("video:news-clip")
+    if is_video and re_search(
+        r"\blast\s+week\s+at\s+dhs\b|\bagency\s+(?:roundup|digest)\b", haystack
+    ):
+        add("video:agency-roundup")
+    if is_video and re_search(
         r"\b(psa|public service announcement|did you know|learn more|hotline)\b", haystack
     ):
         add("genre:psa")
@@ -376,10 +388,47 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
     ):
         add("video:speech")
     if is_video and re_search(
+        r"\b(?:interview|sit[- ]down|one[- ]on[- ]one|remote\s+guest|"
+        r"split-screen interview|talking-head)\b",
+        haystack,
+    ):
+        add("video:interview")
+    if is_video and re_search(
+        r"\b(?:arrival\s+ceremony|swearing[- ]in|anthem\s+plays|"
+        r"national\s+anthem\s+plays|greeted\s+by|departs?|boarding\s+air\s+force\s+one|"
+        r"single\s+continuous\s+shot)\b",
+        haystack,
+    ):
+        add("video:ceremony")
+    if (
+        is_video
+        and re_search(
+            r"\b(?:raw|unedited|plain|shaky|handheld|cellphone|phone)\b.{0,80}"
+            r"\b(?:arrest|raid|enforcement|footage|operation)\b"
+            r"|\b(?:arrest|raid|enforcement|operation)\b.{0,80}"
+            r"\b(?:raw|unedited|plain|shaky|handheld|cellphone|phone)\b",
+            haystack,
+        )
+        and not re_search(
+            r"\b(?:music|soundtrack|color[- ]graded|cinematic|reticle|title[- ]card|"
+            r"animated|stylized|montage|rapid[- ]cut)\b",
+            haystack,
+        )
+    ):
+        add("video:raw-enforcement-footage")
+    if is_video and re_search(
         r"\b(recruitment|commercial|campaign ad|ad spot|apply now|apply today)\b", haystack
     ):
         if re_search(r"\b(recruitment|apply now|apply today)\b", haystack):
             add("genre:recruitment")
+        add("genre:advertisement")
+    if is_video and re_search(
+        r"\b(?:homesick\?|self-deport or be deported|self-deportation ad|"
+        r"free flight home|limited time only|stipend|dhs\.gov/cbphome|"
+        r"cbp home app|mugshot card|wanted|busted|booted)\b",
+        haystack,
+    ):
+        add("video:produced")
         add("genre:advertisement")
     if is_video and re_search(
         r"\bwar[- ]movie\b|\bwar[- ]film\b|\baction[- ]movie\b|"
@@ -387,6 +436,17 @@ def derive_description_tags(text: str, *, media_type: str) -> list[str]:
         r"\b(?:battle|combat|military|raid|operation)\b.{0,80}\b(?:cinematic|trailer[- ]style|dramatic)\b",
         haystack,
     ):
+        add("genre:war-movie")
+    if (
+        is_video
+        and re_search(
+            r"\b(?:night[- ]vision|rifle|suppressed rifle|red[- ]lit|operators|"
+            r"tactical|bortac|special operations group)\b",
+            haystack,
+        )
+        and re_search(r"\b(?:cinematic|color[- ]graded|trailer|dark|verse)\b", haystack)
+    ):
+        add("video:produced")
         add("genre:war-movie")
     if is_video and re_search(
         r"\bdystopian\b|\bsci[- ]?fi\b|\bscience[- ]fiction\b|\bcyberpunk\b|"

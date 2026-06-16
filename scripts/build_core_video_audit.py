@@ -43,6 +43,15 @@ PRODUCED_TAGS = {
     "video:text-overlay",
     "video:voiceover",
 }
+NON_GENRE_PRODUCED_FORM_TAGS = {
+    "video:agency-roundup",
+    "video:bodycam",
+    "video:ceremony",
+    "video:interview",
+    "video:news-clip",
+    "video:raw-enforcement-footage",
+    "video:speech",
+}
 GENRE_TAGS = {
     "genre:music-video",
     "genre:psa",
@@ -166,6 +175,51 @@ def _has_speech_indicator(haystack: str) -> bool:
 def classify_from_text(text: str) -> set[str]:
     haystack = text.lower()
     tags: set[str] = set()
+    if re.search(
+        r"\b(?:fox\s+(?:news|business)|cnn|msnbc|cbs|abc|nbc|newsmax|oan|"
+        r"cspan|c-span|newsnation|straight\s+arrow\s+news|"
+        r"the\s+national\s+news\s+desk|wcvb|wtoc|denver7|eyewitness\s+news|"
+        r"channel\s+\d|nightly\s+news)\b"
+        r"|\b(?:rebroadcast|recorded)\s+(?:tv|television|cable-news|news)\s+"
+        r"(?:segment|clip|package)\b"
+        r"|\b(?:lower-third|chyron|station\s+bug|news\s+segment|broadcast\s+news)\b",
+        haystack,
+    ):
+        tags.add("video:news-clip")
+    if re.search(
+        r"\b(?:interview|sit[- ]down|one[- ]on[- ]one|remote\s+guest|"
+        r"split-screen interview|talking-head)\b",
+        haystack,
+    ):
+        tags.add("video:interview")
+    if re.search(
+        r"\b(?:podium|remarks|speech|address|press\s+conference|press\s+briefing|"
+        r"press\s+gaggle|oval\s+office|rose\s+garden|delivers?\s+remarks|"
+        r"delivered\s+remarks|spoke\s+to\s+reporters|signing\s+clip)\b",
+        haystack,
+    ):
+        tags.add("video:speech")
+    if re.search(r"\blast\s+week\s+at\s+dhs\b|\bagency\s+(?:roundup|digest)\b", haystack):
+        tags.add("video:agency-roundup")
+    if re.search(
+        r"\b(?:arrival\s+ceremony|swearing[- ]in|anthem\s+plays|"
+        r"national\s+anthem\s+plays|greeted\s+by|departs?|boarding\s+air\s+force\s+one|"
+        r"single\s+continuous\s+shot)\b",
+        haystack,
+    ):
+        tags.add("video:ceremony")
+    if re.search(
+        r"\b(?:raw|unedited|plain|shaky|handheld|cellphone|phone)\b.{0,80}"
+        r"\b(?:arrest|raid|enforcement|footage|operation)\b"
+        r"|\b(?:arrest|raid|enforcement|operation)\b.{0,80}"
+        r"\b(?:raw|unedited|plain|shaky|handheld|cellphone|phone)\b",
+        haystack,
+    ) and not re.search(
+        r"\b(?:music|soundtrack|color[- ]graded|cinematic|reticle|title[- ]card|"
+        r"animated|stylized|montage|rapid[- ]cut)\b",
+        haystack,
+    ):
+        tags.add("video:raw-enforcement-footage")
     produced_words = (
         "polished",
         "produced",
@@ -229,6 +283,24 @@ def classify_from_text(text: str) -> set[str]:
         word in haystack for word in ("campaign ad", "ad spot", "commercial", "promotional video")
     ):
         tags.update({"video:produced", "genre:advertisement"})
+    if any(
+        word in haystack
+        for word in (
+            "homesick?",
+            "self-deport or be deported",
+            "self-deportation ad",
+            "free flight home",
+            "limited time only",
+            "stipend",
+            "dhs.gov/cbphome",
+            "cbp home app",
+            "mugshot card",
+            "wanted",
+            "busted",
+            "booted",
+        )
+    ):
+        tags.update({"video:produced", "genre:advertisement"})
     if (
         any(
             word in haystack
@@ -242,6 +314,24 @@ def classify_from_text(text: str) -> set[str]:
             )
         )
         and "cinematic" in haystack
+    ):
+        tags.update({"video:produced", "genre:war-movie"})
+    if any(
+        word in haystack
+        for word in (
+            "night-vision",
+            "night vision",
+            "rifle",
+            "suppressed rifle",
+            "red-lit",
+            "red lit",
+            "operators",
+            "tactical",
+            "bortac",
+            "special operations group",
+        )
+    ) and any(
+        word in haystack for word in ("cinematic", "color-graded", "trailer", "dark", "verse")
     ):
         tags.update({"video:produced", "genre:war-movie"})
     if any(
@@ -320,7 +410,7 @@ def missing_steps(
         steps.append("transcribe-audio")
     if not vision_rows:
         steps.append("describe-with-vision")
-    if (tags & PRODUCED_TAGS) and not (tags & GENRE_TAGS):
+    if (tags & PRODUCED_TAGS) and not (tags & (GENRE_TAGS | NON_GENRE_PRODUCED_FORM_TAGS)):
         steps.append("assign-produced-video-genre")
     return steps
 
