@@ -96,7 +96,9 @@ class TranscriptResult:
     error: str | None = None
 
 
-def discover_candidates(parquets: list[Path]) -> Iterator[TranscribeCandidate]:
+def discover_candidates(
+    parquets: list[Path], *, only_tweet_ids: set[str] | None = None
+) -> Iterator[TranscribeCandidate]:
     for path in parquets:
         account_categories = load_account_categories() if path.stem == MISC_HANDLE else None
         try:
@@ -105,7 +107,12 @@ def discover_candidates(parquets: list[Path]) -> Iterator[TranscribeCandidate]:
             LOG.exception("transcribe: could not read parquet", path=str(path))
             continue
         for tweet in df.iter_rows(named=True):
-            if not row_is_in_media_scope(tweet, handle=path.stem, categories=account_categories):
+            tweet_id = str(tweet.get("tweet_id") or "")
+            if only_tweet_ids is not None and tweet_id not in only_tweet_ids:
+                continue
+            if only_tweet_ids is None and not row_is_in_media_scope(
+                tweet, handle=path.stem, categories=account_categories
+            ):
                 continue
             media = tweet.get("media") or []
             if not isinstance(media, list):
@@ -121,7 +128,7 @@ def discover_candidates(parquets: list[Path]) -> Iterator[TranscribeCandidate]:
                 if not asset_url or not sha or not media_id:
                     continue
                 yield TranscribeCandidate(
-                    tweet_id=str(tweet.get("tweet_id") or ""),
+                    tweet_id=tweet_id,
                     account_handle=str(tweet.get("account_handle") or ""),
                     media_id=media_id,
                     media_type=str(item.get("media_type") or ""),
@@ -522,7 +529,7 @@ def run(
 
     try:
         seen_sha: set[str] = set()
-        for cand in discover_candidates(parquets):
+        for cand in discover_candidates(parquets, only_tweet_ids=only_tweet_ids):
             if only_tweet_ids is not None and cand.tweet_id not in only_tweet_ids:
                 stats["skipped_not_in_filter"] += 1
                 continue

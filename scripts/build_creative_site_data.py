@@ -43,6 +43,26 @@ ACCOUNT_CATEGORIES_PATH = DATA_DIR / "account_categories.json"
 PRODUCED_CSV = TAGS_DIR / "produced_videos.csv"
 MEME_CSV = TAGS_DIR / "meme_images.csv"
 MANUAL_REVIEW_QUEUE = TAGS_DIR / "manual_media_review_queue.json"
+CREATIVE_NOT_READY_TWEET_IDS = TAGS_DIR / "creative_not_ready_tweet_ids.txt"
+CREATIVE_NOT_READY_MEDIA_IDS = TAGS_DIR / "creative_not_ready_media_ids.txt"
+CREATIVE_MISSING_DESCRIPTION_TWEET_IDS = TAGS_DIR / "creative_missing_description_tweet_ids.txt"
+CREATIVE_MISSING_DESCRIPTION_MEDIA_IDS = TAGS_DIR / "creative_missing_description_media_ids.txt"
+CREATIVE_MISSING_ARCHIVE_TWEET_IDS = TAGS_DIR / "creative_missing_archive_tweet_ids.txt"
+CREATIVE_MISSING_ARCHIVE_MEDIA_IDS = TAGS_DIR / "creative_missing_archive_media_ids.txt"
+CREATIVE_MISSING_VIDEO_FRAMES_TWEET_IDS = TAGS_DIR / "creative_missing_video_frames_tweet_ids.txt"
+CREATIVE_MISSING_VIDEO_FRAMES_MEDIA_IDS = TAGS_DIR / "creative_missing_video_frames_media_ids.txt"
+CREATIVE_MISSING_OCR_TWEET_IDS = TAGS_DIR / "creative_missing_ocr_tweet_ids.txt"
+CREATIVE_MISSING_OCR_MEDIA_IDS = TAGS_DIR / "creative_missing_ocr_media_ids.txt"
+CREATIVE_MISSING_PHOTO_THUMBNAIL_TWEET_IDS = (
+    TAGS_DIR / "creative_missing_photo_thumbnail_tweet_ids.txt"
+)
+CREATIVE_MISSING_PHOTO_THUMBNAIL_MEDIA_IDS = (
+    TAGS_DIR / "creative_missing_photo_thumbnail_media_ids.txt"
+)
+CREATIVE_MISSING_AUDIO_TWEET_IDS = TAGS_DIR / "creative_missing_audio_tweet_ids.txt"
+CREATIVE_MISSING_AUDIO_MEDIA_IDS = TAGS_DIR / "creative_missing_audio_media_ids.txt"
+CREATIVE_MISSING_TRANSCRIPT_TWEET_IDS = TAGS_DIR / "creative_missing_transcript_tweet_ids.txt"
+CREATIVE_MISSING_TRANSCRIPT_MEDIA_IDS = TAGS_DIR / "creative_missing_transcript_media_ids.txt"
 
 VIDEO_TYPES = {"video", "animated_gif"}
 VISUAL_TYPES = {"photo", "video", "animated_gif"}
@@ -232,6 +252,25 @@ def joined_text(rows: list[dict[str, Any]]) -> str:
     return "\n\n".join(parts)
 
 
+PLACEHOLDER_DESCRIPTION_PHRASES = (
+    "lacks a usable local frame",
+    "lacks a usable visual",
+    "no usable local frame",
+    "no usable visual",
+    "missing-visual placeholder",
+    "only the tweet text",
+    "not enough visual information",
+    "unusable visual",
+)
+
+
+def description_is_genuine(text: str) -> bool:
+    clean = " ".join(str(text or "").lower().split())
+    if not clean:
+        return False
+    return not any(phrase in clean for phrase in PLACEHOLDER_DESCRIPTION_PHRASES)
+
+
 def choose_description(
     key: tuple[str, str],
     *,
@@ -240,28 +279,33 @@ def choose_description(
     curated_description: str,
 ) -> tuple[bool, str, str]:
     """Return (has_genuine_description, source, full_text)."""
+    first_placeholder = ""
     for row in vision_rows:
         if str(row.get("model") or "") == VISION_REVIEW_MODEL:
-            return (
-                True,
-                "opus-vision-review",
-                str(row.get("summary_text") or row.get("description") or ""),
-            )
-    if curated_description.strip():
-        return True, "curated-review", curated_description.strip()
+            desc = str(row.get("summary_text") or row.get("description") or "")
+            if description_is_genuine(desc):
+                return True, "opus-vision-review", desc
+            first_placeholder = first_placeholder or desc
+    curated = curated_description.strip()
+    if description_is_genuine(curated):
+        return True, "curated-review", curated
+    if curated:
+        first_placeholder = first_placeholder or curated
     if key in manual_observations:
-        return True, "manual-visual-observation", manual_observations[key]
+        manual = manual_observations[key]
+        if description_is_genuine(manual):
+            return True, "manual-visual-observation", manual
+        first_placeholder = first_placeholder or manual
     for row in vision_rows:
         if HAS_ALT_TAG in tag_name_set(row.get("tags")):
-            return (
-                True,
-                "captured-alt-text",
-                str(row.get("summary_text") or row.get("description") or ""),
-            )
+            desc = str(row.get("summary_text") or row.get("description") or "")
+            first_placeholder = first_placeholder or desc
     for row in vision_rows:
         desc = str(row.get("summary_text") or row.get("description") or "")
         if desc.strip():
-            return False, "metadata-placeholder", desc
+            first_placeholder = first_placeholder or desc
+    if first_placeholder.strip():
+        return False, "metadata-placeholder", first_placeholder
     return False, "missing", ""
 
 
@@ -751,6 +795,7 @@ def queue_payload(
                 "photos require thumbnail, OCR, and genuine visual description",
                 "videos require keyframes, keyframe OCR, audio analysis, thumbnail, and genuine visual description",
                 "videos with audio require a completed transcript or completed empty-transcript result",
+                "captured alt text alone does not satisfy the visual-description requirement",
             ],
         },
         "items": items,
@@ -796,6 +841,117 @@ def write_json_stable(path: Path, payload: dict[str, Any]) -> None:
             new_meta["generated_at"] = old_meta.get("generated_at") or new_meta.get("generated_at")
             payload["metadata"] = new_meta
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def write_text_stable(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists() and path.read_text(encoding="utf-8") == text:
+        return
+    path.write_text(text, encoding="utf-8")
+
+
+def item_media_ids(item: dict[str, Any], *, blocker: str | None = None) -> list[str]:
+    out: list[str] = []
+    for media in item.get("media") or []:
+        if not isinstance(media, dict):
+            continue
+        if blocker and blocker not in (media.get("readiness") or {}).get("blockers", []):
+            continue
+        media_id = str(media.get("media_id") or "").strip()
+        if media_id:
+            out.append(media_id)
+    return out
+
+
+def id_file_text(ids: set[str]) -> str:
+    return "".join(f"{value}\n" for value in sorted(ids))
+
+
+def blocker_media_ids(item: dict[str, Any], blockers: set[str]) -> list[str]:
+    out: list[str] = []
+    for media in item.get("media") or []:
+        if not isinstance(media, dict):
+            continue
+        media_blockers = set((media.get("readiness") or {}).get("blockers", []))
+        if not blockers.intersection(media_blockers):
+            continue
+        media_id = str(media.get("media_id") or "").strip()
+        if media_id:
+            out.append(media_id)
+    return out
+
+
+def write_blocker_queue(
+    items: list[dict[str, Any]],
+    *,
+    blockers: set[str],
+    tweet_path: Path,
+    media_path: Path,
+) -> None:
+    matched = [item for item in items if blockers.intersection(item["readiness"]["blockers"])]
+    tweet_ids = {str(item.get("tweet_id") or "").strip() for item in matched}
+    tweet_ids.discard("")
+    media_ids = {media_id for item in matched for media_id in blocker_media_ids(item, blockers)}
+    write_text_stable(tweet_path, id_file_text(tweet_ids))
+    write_text_stable(media_path, id_file_text(media_ids))
+
+
+def write_not_ready_queues(items: list[dict[str, Any]]) -> None:
+    tweet_ids = {str(item.get("tweet_id") or "").strip() for item in items}
+    tweet_ids.discard("")
+    media_ids = {media_id for item in items for media_id in item_media_ids(item)}
+
+    write_text_stable(CREATIVE_NOT_READY_TWEET_IDS, id_file_text(tweet_ids))
+    write_text_stable(CREATIVE_NOT_READY_MEDIA_IDS, id_file_text(media_ids))
+
+    queue_defs = [
+        (
+            {"missing archived media asset"},
+            CREATIVE_MISSING_ARCHIVE_TWEET_IDS,
+            CREATIVE_MISSING_ARCHIVE_MEDIA_IDS,
+        ),
+        (
+            {
+                "missing extracted video keyframes",
+                "missing video thumbnail",
+                "missing complete OCR for extracted keyframes",
+            },
+            CREATIVE_MISSING_VIDEO_FRAMES_TWEET_IDS,
+            CREATIVE_MISSING_VIDEO_FRAMES_MEDIA_IDS,
+        ),
+        (
+            {"missing complete OCR for extracted keyframes", "missing photo OCR"},
+            CREATIVE_MISSING_OCR_TWEET_IDS,
+            CREATIVE_MISSING_OCR_MEDIA_IDS,
+        ),
+        (
+            {"missing photo thumbnail"},
+            CREATIVE_MISSING_PHOTO_THUMBNAIL_TWEET_IDS,
+            CREATIVE_MISSING_PHOTO_THUMBNAIL_MEDIA_IDS,
+        ),
+        (
+            {"missing audio analysis"},
+            CREATIVE_MISSING_AUDIO_TWEET_IDS,
+            CREATIVE_MISSING_AUDIO_MEDIA_IDS,
+        ),
+        (
+            {"missing transcript for video with audio"},
+            CREATIVE_MISSING_TRANSCRIPT_TWEET_IDS,
+            CREATIVE_MISSING_TRANSCRIPT_MEDIA_IDS,
+        ),
+        (
+            {"missing genuine visual description"},
+            CREATIVE_MISSING_DESCRIPTION_TWEET_IDS,
+            CREATIVE_MISSING_DESCRIPTION_MEDIA_IDS,
+        ),
+    ]
+    for blockers, tweet_path, media_path in queue_defs:
+        write_blocker_queue(
+            items,
+            blockers=blockers,
+            tweet_path=tweet_path,
+            media_path=media_path,
+        )
 
 
 def load_indexes() -> dict[str, dict[tuple[str, str], list[dict[str, Any]]]]:
@@ -880,6 +1036,7 @@ def main() -> int:
             }
         },
     )
+    write_not_ready_queues(not_ready)
     LOG.info(
         "creative site data built",
         high_confidence=len(high_confidence),

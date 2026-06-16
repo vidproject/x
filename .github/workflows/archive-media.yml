@@ -15,6 +15,7 @@ on:
       - '.github/workflows/archive-media.yml'
       - 'data/tags/core_produced_missing_tweet_ids.txt'
       - 'data/tags/core_produced_missing_media_ids.txt'
+      - 'data/tags/creative_*_ids.txt'
   workflow_dispatch:
     inputs:
       handle:
@@ -86,10 +87,14 @@ jobs:
             args+=(--handle "${{ inputs.handle }}")
           fi
           if [ "${{ github.event_name }}" = "push" ]; then
-            if [ -f data/tags/core_produced_missing_tweet_ids.txt ]; then
+            if [ -f data/tags/creative_not_ready_tweet_ids.txt ]; then
+              args+=(--tweet-ids-file data/tags/creative_not_ready_tweet_ids.txt)
+            elif [ -f data/tags/core_produced_missing_tweet_ids.txt ]; then
               args+=(--tweet-ids-file data/tags/core_produced_missing_tweet_ids.txt)
             fi
-            if [ -f data/tags/core_produced_missing_media_ids.txt ]; then
+            if [ -f data/tags/creative_not_ready_media_ids.txt ]; then
+              args+=(--media-ids-file data/tags/creative_not_ready_media_ids.txt)
+            elif [ -f data/tags/core_produced_missing_media_ids.txt ]; then
               args+=(--media-ids-file data/tags/core_produced_missing_media_ids.txt)
             fi
           fi
@@ -105,6 +110,29 @@ jobs:
           args+=(--max-items "$max_items")
           uv run python -m scripts.archive_media "${args[@]}"
 
+      - name: backfill media hashes
+        timeout-minutes: 30
+        run: |
+          args=()
+          max_items="${{ inputs.max_items }}"
+          if [ -z "$max_items" ]; then
+            max_items="320"
+          fi
+          if [ -n "${{ inputs.handle }}" ]; then
+            args+=(--handle "${{ inputs.handle }}")
+          fi
+          if [ -n "${{ inputs.tweet_ids_file }}" ]; then
+            args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
+          fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ github.event_name }}" = "push" ] && [ -f data/tags/creative_not_ready_tweet_ids.txt ]; then
+            args+=(--tweet-ids-file data/tags/creative_not_ready_tweet_ids.txt)
+          fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ inputs.handle }}" = "_misc" ]; then
+            args+=(--tweet-ids-file data/tags/_misc_government_tweet_ids.txt)
+          fi
+          args+=(--photos --max-items "$max_items")
+          uv run python -m scripts.backfill_media_sha "${args[@]}"
+
       - name: describe archived media
         timeout-minutes: 10
         run: |
@@ -118,6 +146,9 @@ jobs:
           fi
           if [ -n "${{ inputs.tweet_ids_file }}" ]; then
             args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
+          fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ github.event_name }}" = "push" ] && [ -f data/tags/creative_missing_description_tweet_ids.txt ]; then
+            args+=(--tweet-ids-file data/tags/creative_missing_description_tweet_ids.txt)
           fi
           if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ inputs.handle }}" = "_misc" ]; then
             args+=(--tweet-ids-file data/tags/_misc_government_tweet_ids.txt)
@@ -143,6 +174,10 @@ jobs:
           if [ -n "${{ inputs.tweet_ids_file }}" ]; then
             args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
           fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ github.event_name }}" = "push" ] && [ -f data/tags/creative_missing_video_frames_tweet_ids.txt ]; then
+            args+=(--tweet-ids-file data/tags/creative_missing_video_frames_tweet_ids.txt)
+            args+=(--require-frame-files)
+          fi
           if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ inputs.handle }}" = "_misc" ]; then
             args+=(--tweet-ids-file data/tags/_misc_government_tweet_ids.txt)
           fi
@@ -164,6 +199,9 @@ jobs:
           if [ -n "${{ inputs.tweet_ids_file }}" ]; then
             args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
           fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ github.event_name }}" = "push" ] && [ -f data/tags/creative_missing_photo_thumbnail_tweet_ids.txt ]; then
+            args+=(--tweet-ids-file data/tags/creative_missing_photo_thumbnail_tweet_ids.txt)
+          fi
           if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ inputs.handle }}" = "_misc" ]; then
             args+=(--tweet-ids-file data/tags/_misc_government_tweet_ids.txt)
           fi
@@ -184,6 +222,9 @@ jobs:
           if [ -n "${{ inputs.tweet_ids_file }}" ]; then
             args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
           fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ github.event_name }}" = "push" ] && [ -f data/tags/creative_missing_ocr_tweet_ids.txt ]; then
+            args+=(--tweet-ids-file data/tags/creative_missing_ocr_tweet_ids.txt)
+          fi
           if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ inputs.handle }}" = "_misc" ]; then
             args+=(--tweet-ids-file data/tags/_misc_government_tweet_ids.txt)
           fi
@@ -203,6 +244,9 @@ jobs:
           fi
           if [ -n "${{ inputs.tweet_ids_file }}" ]; then
             args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
+          fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ github.event_name }}" = "push" ] && [ -f data/tags/creative_missing_audio_tweet_ids.txt ]; then
+            args+=(--tweet-ids-file data/tags/creative_missing_audio_tweet_ids.txt)
           fi
           if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ inputs.handle }}" = "_misc" ]; then
             args+=(--tweet-ids-file data/tags/_misc_government_tweet_ids.txt)
@@ -237,6 +281,9 @@ jobs:
           if [ -n "${{ inputs.tweet_ids_file }}" ]; then
             args+=(--tweet-ids-file "${{ inputs.tweet_ids_file }}")
           fi
+          if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ github.event_name }}" = "push" ] && [ -f data/tags/creative_missing_transcript_tweet_ids.txt ]; then
+            args+=(--tweet-ids-file data/tags/creative_missing_transcript_tweet_ids.txt)
+          fi
           if [ -z "${{ inputs.tweet_ids_file }}" ] && [ "${{ inputs.handle }}" = "_misc" ]; then
             args+=(--tweet-ids-file data/tags/_misc_government_tweet_ids.txt)
           fi
@@ -244,7 +291,10 @@ jobs:
           uv run --group asr python -m scripts.transcribe_audio "${args[@]}"
 
       - name: refresh lexical tags
-        run: uv run python -m scripts.tag_lexical
+        run: |
+          uv run python -m scripts.apply_review_descriptions
+          uv run python -m scripts.tag_review_curation
+          uv run python -m scripts.tag_lexical
 
       - name: refresh core video audit
         run: uv run python -m scripts.build_core_video_audit

@@ -88,7 +88,9 @@ class OcrResult:
     error: str | None = None
 
 
-def discover_photo_candidates(parquets: list[Path]) -> Iterator[OcrCandidate]:
+def discover_photo_candidates(
+    parquets: list[Path], *, only_tweet_ids: set[str] | None = None
+) -> Iterator[OcrCandidate]:
     for path in parquets:
         account_categories = load_account_categories() if path.stem == MISC_HANDLE else None
         try:
@@ -97,7 +99,12 @@ def discover_photo_candidates(parquets: list[Path]) -> Iterator[OcrCandidate]:
             LOG.exception("image OCR: could not read parquet", path=str(path))
             continue
         for tweet in df.iter_rows(named=True):
-            if not row_is_in_media_scope(tweet, handle=path.stem, categories=account_categories):
+            tweet_id = str(tweet.get("tweet_id") or "")
+            if only_tweet_ids is not None and tweet_id not in only_tweet_ids:
+                continue
+            if only_tweet_ids is None and not row_is_in_media_scope(
+                tweet, handle=path.stem, categories=account_categories
+            ):
                 continue
             media = tweet.get("media") or []
             if not isinstance(media, list):
@@ -113,7 +120,7 @@ def discover_photo_candidates(parquets: list[Path]) -> Iterator[OcrCandidate]:
                 if not asset_url or not sha or not media_id:
                     continue
                 yield OcrCandidate(
-                    tweet_id=str(tweet.get("tweet_id") or ""),
+                    tweet_id=tweet_id,
                     account_handle=str(tweet.get("account_handle") or ""),
                     media_id=media_id,
                     media_type="photo",
@@ -125,7 +132,9 @@ def discover_photo_candidates(parquets: list[Path]) -> Iterator[OcrCandidate]:
                 )
 
 
-def discover_keyframe_candidates(keyframes_path: Path | None = None) -> Iterator[OcrCandidate]:
+def discover_keyframe_candidates(
+    keyframes_path: Path | None = None, *, only_tweet_ids: set[str] | None = None
+) -> Iterator[OcrCandidate]:
     if keyframes_path is None:
         keyframes_path = KEYFRAMES_PATH
     if not keyframes_path.exists():
@@ -139,7 +148,10 @@ def discover_keyframe_candidates(keyframes_path: Path | None = None) -> Iterator
     for row in df.iter_rows(named=True):
         if str(row.get("status") or "") != "ok":
             continue
-        if not account_handle_is_government_or_official(
+        tweet_id = str(row.get("tweet_id") or "")
+        if only_tweet_ids is not None and tweet_id not in only_tweet_ids:
+            continue
+        if only_tweet_ids is None and not account_handle_is_government_or_official(
             str(row.get("account_handle") or ""), account_categories
         ):
             continue
@@ -157,7 +169,7 @@ def discover_keyframe_candidates(keyframes_path: Path | None = None) -> Iterator
             if not local_path.exists():
                 continue
             yield OcrCandidate(
-                tweet_id=str(row.get("tweet_id") or ""),
+                tweet_id=tweet_id,
                 account_handle=str(row.get("account_handle") or ""),
                 media_id=str(row.get("media_id") or ""),
                 media_type="video_keyframe",
@@ -169,9 +181,11 @@ def discover_keyframe_candidates(keyframes_path: Path | None = None) -> Iterator
             )
 
 
-def discover_candidates(parquets: list[Path]) -> Iterator[OcrCandidate]:
-    yield from discover_photo_candidates(parquets)
-    yield from discover_keyframe_candidates()
+def discover_candidates(
+    parquets: list[Path], *, only_tweet_ids: set[str] | None = None
+) -> Iterator[OcrCandidate]:
+    yield from discover_photo_candidates(parquets, only_tweet_ids=only_tweet_ids)
+    yield from discover_keyframe_candidates(only_tweet_ids=only_tweet_ids)
 
 
 def input_hash_for(cand: OcrCandidate) -> str:
@@ -465,7 +479,7 @@ def run(
         runner = ocr_runner
 
     try:
-        for cand in discover_candidates(parquets):
+        for cand in discover_candidates(parquets, only_tweet_ids=only_tweet_ids):
             if only_tweet_ids is not None and cand.tweet_id not in only_tweet_ids:
                 stats["skipped_not_in_filter"] += 1
                 continue

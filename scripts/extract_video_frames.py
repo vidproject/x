@@ -39,6 +39,7 @@ import hashlib
 import json
 import os
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
@@ -93,7 +94,9 @@ class VideoCandidate:
     declared_height: int
 
 
-def discover_candidates(parquets: list[Path]) -> Iterator[VideoCandidate]:
+def discover_candidates(
+    parquets: list[Path], *, only_tweet_ids: set[str] | None = None
+) -> Iterator[VideoCandidate]:
     """Walk every canonical parquet and yield one ``VideoCandidate`` per
     archived video / animated-gif media item.
 
@@ -109,7 +112,12 @@ def discover_candidates(parquets: list[Path]) -> Iterator[VideoCandidate]:
             LOG.exception("keyframes: could not read parquet", path=str(path))
             continue
         for tweet in df.iter_rows(named=True):
-            if not row_is_in_media_scope(tweet, handle=path.stem, categories=account_categories):
+            tweet_id = str(tweet.get("tweet_id") or "")
+            if only_tweet_ids is not None and tweet_id not in only_tweet_ids:
+                continue
+            if only_tweet_ids is None and not row_is_in_media_scope(
+                tweet, handle=path.stem, categories=account_categories
+            ):
                 continue
             media = tweet.get("media") or []
             if not isinstance(media, list):
@@ -126,7 +134,7 @@ def discover_candidates(parquets: list[Path]) -> Iterator[VideoCandidate]:
                 if not asset_url or not sha or not media_id:
                     continue
                 yield VideoCandidate(
-                    tweet_id=str(tweet.get("tweet_id") or ""),
+                    tweet_id=tweet_id,
                     account_handle=str(tweet.get("account_handle") or ""),
                     media_id=media_id,
                     media_sha256=sha,
@@ -198,7 +206,28 @@ def merge_existing_rows(
     return list(merged.values())
 
 
-def is_cache_hit(cached: dict[str, Any], extractor_version: str) -> bool:
+def cached_frame_files_exist(cached: dict[str, Any], *, repo_root: Path = REPO_ROOT) -> bool:
+    frames = cached.get("frames") or []
+    if not isinstance(frames, list) or not frames:
+        return False
+    for frame in frames:
+        if not isinstance(frame, dict):
+            return False
+        path = str(frame.get("path") or "")
+        if not path:
+            return False
+        local_path = repo_root / path
+        if not local_path.exists() or local_path.stat().st_size <= 0:
+            return False
+    return True
+
+
+def is_cache_hit(
+    cached: dict[str, Any],
+    extractor_version: str,
+    *,
+    require_frame_files: bool = False,
+) -> bool:
     """A cached row is reusable when it was produced by the current
     extractor version AND the extraction reportedly succeeded. Failures
     are not cached — re-run gets a fresh attempt."""
@@ -206,7 +235,9 @@ def is_cache_hit(cached: dict[str, Any], extractor_version: str) -> bool:
         return False
     if str(cached.get("extractor_version") or "") != extractor_version:
         return False
-    return str(cached.get("status") or "") == "ok"
+    if str(cached.get("status") or "") != "ok":
+        return False
+    return (not require_frame_files) or cached_frame_files_exist(cached)
 
 
 # --------------------------------------------------------------------------
@@ -355,6 +386,36 @@ def repo_relative(path: Path) -> str:
     return path.relative_to(REPO_ROOT).as_posix()
 
 
+def _make_writable_and_retry(func: Callable[[str], object], path: str, _exc_info: object) -> None:
+    os.chmod(path, stat.S_IWRITE | stat.S_IREAD)
+    func(path)
+
+
+def clear_output_dir(path: Path) -> None:
+    if not path.exists():
+        return
+    try:
+        shutil.rmtree(path, onerror=_make_writable_and_retry)
+    except PermissionError as e:
+        LOG.warning(
+            "keyframes: could not fully remove stale output dir; overwriting frame files",
+            path=str(path),
+            error=str(e),
+        )
+        for child in path.glob("*"):
+            if not child.is_file() and not child.is_symlink():
+                continue
+            try:
+                os.chmod(child, stat.S_IWRITE | stat.S_IREAD)
+                child.unlink(missing_ok=True)
+            except OSError as child_error:
+                LOG.warning(
+                    "keyframes: could not remove stale output file",
+                    path=str(child),
+                    error=str(child_error),
+                )
+
+
 def jpeg_dimensions(path: Path) -> tuple[int, int]:
     """Cheapest possible JPEG dimension probe: ffprobe one frame.
     Returns ``(0, 0)`` when probing fails — the dimensions are nice-to-have,
@@ -449,8 +510,7 @@ def extract_candidate(
             )
         out_dir = derived_root / cand.media_sha256
         # Wipe the dir so partial prior runs don't bleed into this row.
-        if out_dir.exists():
-            shutil.rmtree(out_dir)
+        clear_output_dir(out_dir)
         out_dir.mkdir(parents=True, exist_ok=True)
         thumb_ts = timestamps[len(timestamps) // 2]
         thumb_path = thumbnail_root / f"{cand.media_sha256}.jpg"
@@ -630,6 +690,7 @@ def run(
     derived_root: Path | None = None,
     thumbnail_root: Path | None = None,
     only_tweet_ids: set[str] | None = None,
+    require_frame_files: bool = False,
     extractor: Callable[[VideoCandidate], ExtractResult] | None = None,
 ) -> dict[str, int]:
     """Core run loop, factored out of ``main`` so tests can substitute a
@@ -690,7 +751,7 @@ def run(
 
     try:
         seen_sha: set[str] = set()
-        for cand in discover_candidates(parquets):
+        for cand in discover_candidates(parquets, only_tweet_ids=only_tweet_ids):
             if only_tweet_ids is not None and cand.tweet_id not in only_tweet_ids:
                 stats["skipped_not_in_filter"] += 1
                 continue
@@ -699,7 +760,11 @@ def run(
             # references it still gets a row so the viewer's tweet_id join
             # works without an extra step.
             cached = existing.get(cand.media_sha256)
-            if not force and is_cache_hit(cached or {}, EXTRACTOR_VERSION):
+            if not force and is_cache_hit(
+                cached or {},
+                EXTRACTOR_VERSION,
+                require_frame_files=require_frame_files,
+            ):
                 row = {**(cached or {})}
                 row["tweet_id"] = cand.tweet_id
                 row["account_handle"] = cand.account_handle
@@ -806,6 +871,14 @@ def main(argv: list[str] | None = None) -> int:
         "Use with data/tags/produced_likely_unprocessed_tweet_ids.txt to widen keyframe "
         "coverage for likely-produced videos without processing the whole archive.",
     )
+    parser.add_argument(
+        "--require-frame-files",
+        action="store_true",
+        help=(
+            "Treat cached ok rows as stale unless their frame JPEGs exist locally. "
+            "Use before OCR because data/derived/keyframes is usually gitignored."
+        ),
+    )
     args = parser.parse_args(argv)
 
     parquets = discover_canonical_parquets()
@@ -828,6 +901,7 @@ def main(argv: list[str] | None = None) -> int:
         force=args.force,
         dry_run=args.dry_run,
         only_tweet_ids=only_tweet_ids,
+        require_frame_files=args.require_frame_files,
     )
     LOG.info("keyframe extraction complete", **stats)
     return 0
