@@ -1,8 +1,8 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-06-16T19:28:22Z",
-    "source_commit": "a1acc2f3",
+    "generated_at": "2026-06-16T19:36:40Z",
+    "source_commit": "fb1c4939",
     "item_count": 475,
     "blocker_counts": {
       "missing complete OCR for extracted keyframes": 232,
@@ -13,7 +13,7 @@
       "missing video thumbnail": 93,
       "missing archived media asset": 38,
       "missing audio analysis": 30,
-      "missing transcript for video with audio": 7
+      "missing transcript for video with audio": 6
     }
   },
   "items": [
@@ -42466,8 +42466,7 @@
             "ready": false,
             "blockers": [
               "missing complete OCR for extracted keyframes",
-              "missing genuine visual description",
-              "missing transcript for video with audio"
+              "missing genuine visual description"
             ],
             "checks": {
               "archived": true,
@@ -42478,7 +42477,7 @@
               "ocr": false,
               "audio_analysis": true,
               "has_audio": true,
-              "transcript": false
+              "transcript": true
             }
           },
           "analysis": {
@@ -42507,7 +42506,7 @@
               ]
             },
             "transcript": {
-              "status": null,
+              "status": "empty-transcript",
               "segment_count": 0,
               "text": ""
             }
@@ -42518,8 +42517,7 @@
         "ready": false,
         "blockers": [
           "missing complete OCR for extracted keyframes",
-          "missing genuine visual description",
-          "missing transcript for video with audio"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
