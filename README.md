@@ -262,6 +262,16 @@ The audit also emits queue files for GitHub-side recovery of core-account videos
 
 `scripts.build_core_quote_index` builds a neutral review index of archived quote tweets that target core-account tweets. It writes `data/tags/core_quote_tweets.json` and `data/tags/core_quote_tweets.csv`, including an author summary and optional focus handles for targeted follow-up.
 
+`scripts.build_creative_site_data` builds the ready-only review queues for the
+standalone creative-content swipe site under `creative/`. It writes
+`data/creative/creative-high-confidence.json`,
+`data/creative/creative-candidates.json`,
+`data/creative/creative-2016-2020.json`, and
+`data/creative/creative-not-ready.json`. Rows enter the review queues only when
+their media, OCR, transcripts where applicable, thumbnails, and visual
+descriptions are complete; blocked matches stay in the not-ready file with
+explicit blocker counts.
+
 ## News Mentions
 
 `scripts.news_mentions` checks whether archived core tweets are cited by news coverage using a deterministic local article export when one exists. It accepts JSON, JSONL, or CSV records with fields such as `url`, `title`, `description`, `body`, `content`, or `text`, then matches exact `x.com/<handle>/status/<tweet_id>`, `twitter.com/<handle>/status/<tweet_id>`, and `x.com/i/web/status/<tweet_id>` URLs. Tests and normal offline runs can still use `--discover-web none` to avoid network. For cheap discovery, run `uv run python -m scripts.news_mentions --discover-web google-news-rss --max-web-tweets 100 --matched-only`; this checks Google News RSS only for core tweets missing from the local article export. Use `--discover-web gdelt` to query GDELT instead.
@@ -303,12 +313,15 @@ extension
     scripts.build_core_quote_index
       data/tags/core_quote_tweets.json
       data/tags/core_quote_tweets.csv
+    scripts.build_creative_site_data
+      data/creative/*.json
     scripts.news_mentions
       data/tags/news_mentions.parquet
     scripts.tag_lexical
       data/tags/lexical.parquet with media/audio-description tags
     GitHub Pages
       viewer
+      creative
 ```
 
 Main commands:
@@ -326,6 +339,7 @@ uv run python -m scripts.detect_audio_music
 uv run --group asr python -m scripts.transcribe_audio
 uv run python -m scripts.build_core_video_audit
 uv run python -m scripts.build_core_quote_index
+uv run python -m scripts.build_creative_site_data
 uv run python -m scripts.news_mentions --articles data/news/articles.jsonl
 npm run lint
 npm run typecheck

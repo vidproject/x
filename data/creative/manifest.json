@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "generated_at": "2026-06-16T19:14:24Z",
+    "source_commit": "beb4e930",
+    "source_candidate_count": 992,
+    "ready_count": 517,
+    "not_ready_count": 475,
+    "datasets": {
+      "high_confidence": "creative-high-confidence.json",
+      "candidates": "creative-candidates.json",
+      "historical_2016_2020": "creative-2016-2020.json"
+    },
+    "additional_datasets": {
+      "2025_plus": "creative-2025-plus.json"
+    },
+    "not_ready": "creative-not-ready.json",
+    "default_queue": "high_confidence",
+    "review_actions": [
+      "yes",
+      "no",
+      "superlike",
+      "back"
+    ]
+  }
+}
