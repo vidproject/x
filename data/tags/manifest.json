@@ -1,14 +1,11 @@
 {
-  "generated_at": "2026-06-16T23:02:06Z",
+  "generated_at": "2026-06-16T23:09:10Z",
   "layers": {
     "audio_music": {
-      "analyzed": 12,
-      "attempted": 12,
-      "cache_hits": 199,
       "cost_estimate_usd": 0.0,
       "detector": "ffmpeg-audio-heuristic",
       "detector_version": "ffmpeg-audio-heuristic-v1",
-      "generated_at": "2026-06-16T22:59:37Z",
+      "generated_at": "2026-06-16T23:08:59Z",
       "row_count": 4130,
       "rows": 4130,
       "status_counts": {
@@ -18,7 +15,6 @@
         "silent-audio": 91,
         "video-too-large": 3
       },
-      "status_ok": 12,
       "tag_frequency": {
         "audio:has-audio": 3945,
         "audio:music-likely": 2,
@@ -27,46 +23,42 @@
       }
     },
     "image_ocr": {
-      "analyzed": 240,
-      "attempted": 240,
-      "cache_hits": 137,
+      "analyzed": 114,
+      "attempted": 114,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-16T22:58:56Z",
+      "generated_at": "2026-06-16T23:08:33Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.3.4",
-      "preserved_after_max_items": 38,
-      "row_count": 18378,
-      "rows": 18378,
-      "skipped_max_items": 1246,
+      "row_count": 18492,
+      "rows": 18492,
       "status_counts": {
         "fetch-failed": 1,
-        "no-text": 5463,
-        "ok": 12914
+        "no-text": 5465,
+        "ok": 13026
       },
-      "status_no-text": 4,
-      "status_ok": 236
+      "status_no-text": 2,
+      "status_ok": 112
     },
     "keyframes": {
-      "attempted": 174,
-      "cache_hits": 36,
+      "attempted": 6,
+      "cache_hits": 11,
       "cost_estimate_usd": 0.0,
-      "extracted": 174,
+      "extracted": 6,
       "extractor_version": "ffmpeg-keyframes-v2",
-      "frame_count": 21037,
-      "generated_at": "2026-06-16T22:49:28Z",
+      "frame_count": 21063,
+      "generated_at": "2026-06-16T23:08:25Z",
       "intra_run_dedup": 1,
       "row_count": 4059,
       "rows": 4059,
       "status_counts": {
         "fetch-failed": 1,
-        "ffmpeg-failed": 7,
-        "ok": 4048,
+        "ok": 4055,
         "video-too-large": 3
       },
-      "status_ok": 174
+      "status_ok": 6
     },
     "lexical": {
-      "generated_at": "2026-06-16T23:02:06Z",
+      "generated_at": "2026-06-16T23:09:10Z",
       "parquets_scanned": {
         "AGPamBondi.parquet": 15,
         "ATFHQ.parquet": 2,
@@ -147,7 +139,7 @@
         "agency:CISAgov": 468,
         "agency:ComdtUSCG": 15,
         "agency:DEAHQ": 229,
-        "agency:DHSgov": 13028,
+        "agency:DHSgov": 13029,
         "agency:DOJgov": 1345,
         "agency:DeptofWar": 648,
         "agency:EPA": 42,
@@ -371,7 +363,7 @@
         "format:reply": 7009,
         "format:retweet": 2833,
         "format:statistics": 596,
-        "genre:advertisement": 776,
+        "genre:advertisement": 777,
         "genre:dystopian": 22,
         "genre:lineup": 515,
         "genre:music-video": 126,
@@ -579,7 +571,7 @@
         "subject:official": 3,
         "theme:civil-disturbance": 161,
         "theme:criminal": 3294,
-        "theme:directive": 1373,
+        "theme:directive": 1374,
         "theme:homeland": 104,
         "theme:martyrdom": 559,
         "theme:nativism": 150,
@@ -605,18 +597,20 @@
       "tagger_version": "lexical-v2"
     },
     "media_vision": {
-      "cache_hits": 16185,
+      "cache_hits": 101,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-16T19:29:30Z",
+      "generated": 13,
+      "generated_at": "2026-06-16T23:08:23Z",
       "model": "metadata",
       "model_version": "media-metadata-v4",
       "prompt_hash": "b18b19292ec51484",
-      "row_count": 16983,
-      "rows": 16983,
+      "row_count": 17024,
+      "rows": 17024,
+      "skipped_not_in_filter": 33523,
       "status_counts": {
-        "manual-review": 2639,
-        "metadata-alt": 2757,
-        "metadata-context": 11587
+        "manual-review": 3350,
+        "metadata-alt": 2770,
+        "metadata-context": 10904
       },
       "tag_frequency": {
         "action:deportation": 1,
@@ -625,17 +619,17 @@
         "agency:ICEgov": 1,
         "country:Venezuela": 1,
         "crime:fraud": 1,
-        "genre:advertisement": 35,
+        "genre:advertisement": 41,
         "genre:psa": 160,
         "genre:recruitment": 13,
         "genre:utopian": 21,
-        "media-status:archived": 16983,
-        "media-status:described": 5396,
-        "media-status:has-alt-text": 2847,
-        "media-status:needs-vision": 11587,
+        "media-status:archived": 17024,
+        "media-status:described": 5409,
+        "media-status:has-alt-text": 2860,
+        "media-status:needs-vision": 11615,
         "media:animated-gif": 96,
-        "media:photo": 12184,
-        "media:video": 4703,
+        "media:photo": 12217,
+        "media:video": 4711,
         "military:coast-guard": 1,
         "speaker:First Lady Melania Trump": 1,
         "speaker:Vice President Vance": 1,
@@ -650,8 +644,8 @@
         "video:interview": 117,
         "video:montage": 4,
         "video:news-clip": 54,
-        "video:produced": 41,
-        "video:short": 1112,
+        "video:produced": 47,
+        "video:short": 1117,
         "video:speech": 162,
         "video:text-overlay": 39
       }
@@ -684,24 +678,19 @@
       "web_tweets_scanned": 100
     },
     "photo_thumbnails": {
-      "attempted": 1,
       "cost_estimate_usd": 0.0,
-      "extracted": 1,
       "extractor_version": "photo-thumbnail-v1",
-      "generated_at": "2026-06-16T22:58:54Z",
+      "generated_at": "2026-06-16T23:08:32Z",
       "row_count": 9777,
       "rows": 9777,
       "status_counts": {
         "ok": 9777
       },
-      "status_ok": 1,
       "thumbnails": 9777
     },
     "transcripts": {
-      "attempted": 12,
-      "cache_hits": 199,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-16T22:59:52Z",
+      "generated_at": "2026-06-16T23:09:05Z",
       "row_count": 2878,
       "rows": 2878,
       "status_counts": {
@@ -711,9 +700,7 @@
         "ok": 2235,
         "video-too-large": 2
       },
-      "status_empty-transcript": 1,
-      "status_ok": 11,
-      "transcribed": 12,
+      "transcribed": 2235,
       "transcriber": "faster-whisper",
       "transcriber_version": "faster-whisper-v1"
     }
@@ -798,7 +785,7 @@
     "agency:CISAgov": 468,
     "agency:ComdtUSCG": 15,
     "agency:DEAHQ": 229,
-    "agency:DHSgov": 13028,
+    "agency:DHSgov": 13029,
     "agency:DOJgov": 1345,
     "agency:DeptofWar": 648,
     "agency:EPA": 42,
@@ -1022,7 +1009,7 @@
     "format:reply": 7009,
     "format:retweet": 2833,
     "format:statistics": 596,
-    "genre:advertisement": 776,
+    "genre:advertisement": 777,
     "genre:dystopian": 22,
     "genre:lineup": 515,
     "genre:music-video": 126,
@@ -1230,7 +1217,7 @@
     "subject:official": 3,
     "theme:civil-disturbance": 161,
     "theme:criminal": 3294,
-    "theme:directive": 1373,
+    "theme:directive": 1374,
     "theme:homeland": 104,
     "theme:martyrdom": 559,
     "theme:nativism": 150,

@@ -1,25 +1,25 @@
 {
   "metadata": {
     "queue": "high_confidence",
-    "generated_at": "2026-06-16T23:06:18Z",
-    "source_commit": "7cc8b516",
-    "item_count": 789,
+    "generated_at": "2026-06-16T23:14:31Z",
+    "source_commit": "22023d93",
+    "item_count": 798,
     "source_candidate_count": 1046,
-    "not_ready_count": 155,
+    "not_ready_count": 141,
     "all_items_ready": true,
     "basis_counts": {
       "real_footage_creative_use": 18,
-      "wholly_creative_media": 771
+      "wholly_creative_media": 780
     },
     "top_accounts": {
       "ICEgov": 248,
-      "USDOL": 128,
+      "USDOL": 130,
       "DHSgov": 108,
       "USCIS": 86,
-      "WhiteHouse": 48,
+      "WhiteHouse": 50,
       "CBP": 28,
       "RapidResponse47": 28,
-      "POTUS": 11,
+      "POTUS": 12,
       "DeptofWar": 6,
       "FBI": 6,
       "TheJusticeDept": 6,
@@ -33972,6 +33972,131 @@
       }
     },
     {
+      "id": "2007252191564779739:13_2007252001109729280",
+      "tweet_id": "2007252191564779739",
+      "posted_at": "2026-01-03T00:46:30.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "USDOL",
+        "category": "core",
+        "label": "U.S. Department of Labor"
+      },
+      "tweet_url": "https://x.com/USDOL/status/2007252191564779739",
+      "tweet_text": "Remember who you are, American.\n\nThrough rugged individualism and unparalleled grit, our Forefathers built the greatest nation the world has ever seen. \n\nAs we celebrate 250 years since our nation’s founding, it’s more important than ever that we honor their achievements and seek to build a stronger nation 🇺🇸",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "montage",
+        "music-led",
+        "music-video"
+      ],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "audio:music-likely",
+        "genre:music-video",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:video",
+        "review:screened-video",
+        "theme:nativism",
+        "topic:economy",
+        "topic:immigration",
+        "video:produced",
+        "video:short"
+      ],
+      "media": [
+        {
+          "media_id": "13_2007252001109729280",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USDOL/13_2007252001109729280.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/01c1e84a441da5643c706f1dab899e73eb318baedb1c3d06fc73b2a09efc3319.jpg",
+          "sha256": "01c1e84a441da5643c706f1dab899e73eb318baedb1c3d06fc73b2a09efc3319",
+          "duration_sec": 16.0,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Black and white montage set to music, with no speech, of American monuments: the Statue of Liberty's crown and torch, a worker climbing the statue, and Mount Rushmore. A condensed-font overlay 'REMEMBER WHO YOU ARE' is held throughout. It closes on an animated white Department of Labor seal.  [0:01] Tight low-angle black and white shot of the Statue of Liberty's spiked crown and face against a pale sky; overlay 'REMEMBER WHO YOU ARE.'  [0:04] Underside view of the Statue of Liberty's torch-holding hand and arm; same 'REMEMBER WHO YOU ARE' text.  [0:08] A single worker harnessed and climbing the curved surface of the statue high against a cloudy sky.  [0:11] Hazy black and white view of a Mount Rushmore presidential face through mist; the overlay text remains.  [0:14] Cut to black with an animated white U.S. Department of Labor seal ('DEPARTMENT OF LABOR / UNITED STATES OF AMERICA').",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "o Oo™® REMEMBER WHO YOU ARE =» / f 4] ¥\n\nHEMEMBER WHO YOU ARE ss iy,\n\nA i( 7 t * nnd SO Cj\n\nPx WN\\4\n\nHEMEMBDER WHO YOU ARE —\n\nWS : & Sl wes HEMEMBEA WHO YOU ARE = j ' n\\ , af La 4 vy\n\nie ee. ee 7B 5 1 1 1 2 2 398 298 2 2 0.000000 ¢ 4 1 1 1 3 0 296 341 112 60 -1 5 1 1 1 3 1 296 384 1 8 17.911530 = 5 1 1 1 3 2 398 341 10 60 35.257812 I 4 1 1 1 4 0 97 424 281 38 -1 5 1 1 1 4 1 97 424 121 38 38.716293 AEMEMBEA 5 1 1 1 4 2 230 427 45 35 96.084488 WHO 5 1 1 1 4 3 289 427 38 35 93.782402 YOU 5 1 1 1 4 4 339 424 39 38 96.038826 ARE 4 1 1 1 5 0 0 497 460 77 -1 5 1 1 1 5 1 0 504 17 52 52.746048 / 5 1 1 1 5 2 100 508 7 9 54.387173 ‘ 5 1 1 1 5 3 162 518 36 48 38.414288 > 5 1 1 1 5 4 232 524 55 45 17.407372 ©. 5 1 1 1 5 5 340 497 120 77 31.668701 AP 4 1 1 1 6 0 95 570 369 59 -1 5 1 1 1 6 1 95 592 2 3 0.000000 » 5 1 1 1 6 2 179 570 118 56 4.870445 rhe 5 1 1 1 6 3 360 574 104 55 49.957825 bee 4 1 1 1 7 0 0 560 480 153 -1 5 1 1 1 7 1 0 560 54 153 13.180649 i 5 1 1 1 7 2 228 560 252 150 4.118835 oe\n\nSENT OP S : Y <2 x <2) fs a eI A /S A SESE oy > Lares OF"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 16.068209,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "empty-transcript",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Black and white montage set to music, with no speech, of American monuments: the Statue of Liberty's crown and torch, a worker climbing the statue, and Mount Rushmore. A condensed-font overlay 'REMEMBER WHO YOU ARE' is held throughout. It closes on an animated white Department of Labor seal.  [0:01] Tight low-angle black and white shot of the Statue of Liberty's spiked crown and face against a pale sky; overlay 'REMEMBER WHO YOU ARE.'  [0:04] Underside view of the Statue of Liberty's torch-holding hand and arm; same 'REMEMBER WHO YOU ARE' text.  [0:08] A single worker harnessed and climbing the curved surface of the statue high against a cloudy sky.  [0:11] Hazy black and white view of a Mount Rushmore presidential face through mist; the overlay text remains.  [0:14] Cut to black with an animated white U.S. Department of Labor seal ('DEPARTMENT OF LABOR / UNITED STATES OF AMERICA').",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 52585,
+        "retweets": 10280,
+        "quotes": 0,
+        "views": 694215
+      }
+    },
+    {
       "id": "2049581451809620135:3_2049578475326185472",
       "tweet_id": "2049581451809620135",
       "posted_at": "2026-04-29T20:07:52.000Z",
@@ -35604,6 +35729,130 @@
         "retweets": 5565,
         "quotes": 570,
         "views": 1457896
+      }
+    },
+    {
+      "id": "2056135528752234892:13_2056133803806998528",
+      "tweet_id": "2056135528752234892",
+      "posted_at": "2026-05-17T22:11:25.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "VP",
+        "category": "government",
+        "label": "Vice President JD Vance"
+      },
+      "tweet_url": "https://x.com/VP/status/2056135528752234892",
+      "tweet_text": "WATCH: Vice President JD Vance's Rededicate 250 message: \n\n“I always ask people to pray for wisdom and for courage for their leadership. Pray for wisdom that we know the path God wants us to walk. Pray for courage that we have the ability to walk that path.” https://t.co/5hKNESi7hV",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "parody",
+        "poster-or-meme"
+      ],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "genre:parody",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "parody:star-wars",
+        "religion:christianity",
+        "theme:martyrdom",
+        "theme:pop-culture-reference",
+        "theme:religion",
+        "topic:immigration",
+        "video:long",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2056133803806998528",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2056133803806998528.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/1a57457b5d6f7ff1ffd5c50af08494190990fc196be9bbdf63b6f8bf72067665.jpg",
+          "sha256": "1a57457b5d6f7ff1ffd5c50af08494190990fc196be9bbdf63b6f8bf72067665",
+          "duration_sec": 244.661,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "manual-visual-observation",
+              "text": "Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "Ae ah\n\nVeh I +\n\nVo iD ‘\n\nAS\n\nA\n\nAS\n\nWe ait\n\nAe"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 244.715102,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 27,
+              "text": "George Washington declared in 1789 that it is the duty of all nations to acknowledge the providence of Almighty God, to obey his will, to be grateful for his benefits, and humbly to implore his protection and favor. These were the opening lines of America's first ever Thanksgiving Proclamation. But whatever milestone it represented in the brief life of our young republic, the duty Washington described, to honor, obey, and give thanks to our creator, was woven into America's character long before the founding. A keen awareness of that duty has stretched all the way back from William Bradford's own Pilgrim Proclamation in 1623 to the opening prayer of our First Continental Congress to Lincoln's call for National Thanksgiving in the midst of the Civil War to this very gathering today. We have always been and still are a nation of prayer and thank God for that. In times of suffering and in times of triumph, millions of Americans continue to turn to prayer and their faith in God. John Adams famously said that our constitution was made only for a moral and religious people. It is wholly inadequate to the government of any other. It was obvious to the founders that our faith was the ground upon which America stands. It was our very foundation as a people. And if this foundation were to crumble, so too would the very values that make us Americans. From our religious inheritance comes many of the virtues and institutions we most cherish as a people. Our system of justice, our generosity to neighbors, our respect for conscience and the moral discipline necessary for liberty itself. As my dear friend, the late great Charlie Kirk put it, all law reflects a morality. Neither law nor morality appears in a vacuum, but ultimately come from religion. And the morality and religion that formed the American consciousness were decidedly Christian, founded upon the principles and the divinity of Jesus Christ. In 1783, Washington also proclaimed that imitation of divine charity is necessary for the mutual affection of our citizenry and the happiness of our nation. If we do not see that God loves us, we have little reason and little inspiration to love one another. This love which forms our morality is the foundation of a peaceful and healthful society. That's why it's so encouraging to see a renewed sense of faith emerging among America's young people. Defying predictions, the experts said that religion and faith were dying, today a wave of young Americans is returning"
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "video; 3840x2026; 244.7s; 74.77 MiB; archived; tweet context: WATCH: Vice President JD Vance's Rededicate 250 message: “I always ask people to pray for wisdom and for courage for their leadership. Pray for wisdom that we know the path God wants us to walk. Pray for courage that we have the ability to walk that path.” ht...; source URL: https://video.twimg.com/amplify_video/2056133803806998528/vid/avc1/3840x2026/R8D_exaeQSs3l3YK.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-_misc/13_2056133803806998528.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. WATCH: Vice President JD Vance's Rededicate 250 message: “I always ask people to pray for wisdom and for courage for their leadership. Pray for wisdom that we know the path God wants us to walk. Pray for courage that we have the ability to walk that path.” https://t.co/5hKNESi7hV",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 33774,
+        "retweets": 7146,
+        "quotes": 234,
+        "views": 549660
       }
     },
     {
@@ -38032,6 +38281,139 @@
       }
     },
     {
+      "id": "2051478685484490758:13_2051473238694170633",
+      "tweet_id": "2051478685484490758",
+      "posted_at": "2026-05-05T01:46:47.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "POTUS",
+        "category": "core",
+        "label": "President of the United States"
+      },
+      "tweet_url": "https://x.com/POTUS/status/2051478685484490758",
+      "tweet_text": "RT @WhiteHouse: BEST I CAN DO IS THE GOLDEN AGE FOR SMALL BUSINESSES 🔥\n\nPawn Stars' Rick Harrison x White House 🇺🇸 https://t.co/lIaSBg3duK",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "parody",
+        "poster-or-meme",
+        "text-overlay",
+        "utopian"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:WhiteHouse",
+        "audio:has-audio",
+        "format:retweet",
+        "genre:parody",
+        "genre:utopian",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "parody:pawn-stars",
+        "review:screened-video",
+        "slogan:golden-age",
+        "theme:pop-culture-reference",
+        "topic:economy",
+        "topic:general",
+        "topic:immigration",
+        "video:produced",
+        "video:short",
+        "video:text-overlay"
+      ],
+      "media": [
+        {
+          "media_id": "13_2051473238694170633",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-POTUS/13_2051473238694170633.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/ea365cfa9e36097a08c840f56734024324135d1af8b684effccefa983e10c74e.jpg",
+          "sha256": "ea365cfa9e36097a08c840f56734024324135d1af8b684effccefa983e10c74e",
+          "duration_sec": 8.916,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Pawn Stars' Rick Harrison stands in the White House Blue Room and says to camera: 'the best I can do is the golden age for small businesses.' The clip ends on an animated 'THE WHITE HOUSE' wordmark over a line-art White House.  [0:00] Rick Harrison stands with arms spread in the White House Blue Room, addressing the camera.  [0:02] Harrison in the Blue Room saying the line 'the best I can do is the golden age for small businesses.'  [0:04] Cut to black; animated letters move onto the screen.  [0:06] Letters resolve into a 'THE WHITE HOUSE' wordmark over a line-art White House.  [0:08] Final 'THE WHITE HOUSE' title card with the flag detail.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 5
+              },
+              "complete_row_count": 10,
+              "text": "! Bhs : 7 y’ , . ae\n\noe\n\nis —_—- NTE De iat} -\n\n} 2 - . . —— 1a ) —— <— > i, a\n\nTHE WHIT HO, SE"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 8.96,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 1,
+              "text": "Okay, the best I can do is the golden age for small businesses."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Pawn Stars' Rick Harrison stands in the White House Blue Room and says to camera: 'the best I can do is the golden age for small businesses.' The clip ends on an animated 'THE WHITE HOUSE' wordmark over a line-art White House.  [0:00] Rick Harrison stands with arms spread in the White House Blue Room, addressing the camera.  [0:02] Harrison in the Blue Room saying the line 'the best I can do is the golden age for small businesses.'  [0:04] Cut to black; animated letters move onto the screen.  [0:06] Letters resolve into a 'THE WHITE HOUSE' wordmark over a line-art White House.  [0:08] Final 'THE WHITE HOUSE' title card with the flag detail.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 19119,
+        "retweets": 2434,
+        "quotes": 263,
+        "views": 189
+      }
+    },
+    {
       "id": "2051473750873321574:13_2051473238694170633",
       "tweet_id": "2051473750873321574",
       "posted_at": "2026-05-05T01:27:11.000Z",
@@ -38292,6 +38674,7 @@
       ],
       "subjects": [],
       "tags": [
+        "agency:USCIS",
         "audio:has-audio",
         "media-status:archived",
         "media-status:needs-vision",
@@ -38729,6 +39112,127 @@
         "retweets": 3737,
         "quotes": 520,
         "views": 1070042
+      }
+    },
+    {
+      "id": "2056797197056795014:13_2056793185829998593",
+      "tweet_id": "2056797197056795014",
+      "posted_at": "2026-05-19T18:00:39.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "WhiteHouse",
+        "category": "core",
+        "label": "The White House"
+      },
+      "tweet_url": "https://x.com/WhiteHouse/status/2056797197056795014",
+      "tweet_text": "Loud and clear since day 1: Iran can NEVER have a nuclear weapon. https://t.co/UsD9NcE7lD",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "crime:weapon",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "speaker:Vice President Vance",
+        "theme:nativism",
+        "topic:economy",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2056793185829998593",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2056793185829998593.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/dea533f93b2afd6663ca8359e512bd068e0d2ac194565f971c2eca5ffaef5ca3.jpg",
+          "sha256": "dea533f93b2afd6663ca8359e512bd068e0d2ac194565f971c2eca5ffaef5ca3",
+          "duration_sec": 81.866,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Same source video as the RapidResponse47 post: a static podium shot of VP JD Vance at the White House lectern arguing Iran can never have a nuclear weapon. Continuous spoken remarks with no music or stylized editing. Raw press-briefing clip, not produced content.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "hes A yi in a “teen i} eK - 1G ‘ BGC a y, OK iM ya . KK tf ray ul ee A AS ) y \\\n\nby ame AK i” AG i wy ‘ “4 '\n\nDe LW aa : V8 re i ic, hGed ea AGC j 44% i ve Fr ‘ icy ‘A ; he\n\niy = i a - Ee 4K 5 \\\\ KA a is QC Tp i 4H i RAG h \\ KK { i) ] Ee Ay al iD i\n\n‘ib kk i ARS \\ a OK & ii IQA i CQAC iR 4K \\ $4\" . Kx UR Ks ES MK) ye}\n\naus i Tess y ap Ws Fe AK im HOGG By GK iq BAH, yx ‘ my a ‘ A K FF}\n\na ss ays XO) ey geo ees 4K \\\\ a ‘g GK i H, ees \\ 44K . \\ KK \\ Pay ‘a 4 a ¥ A At ») 1% §\n\ncy, Lek —, xe HK 1 Hy KH ny 6 gx O iy ee +¥ : KY \\ « g 1 a pa FF"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 81.92,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 34,
+              "text": "It's actually a very simple proposition here. There are two options, two pathways we can go down when it comes to the Iran situation. So step back for a little bit. What the President of the United States has said is, number one, Iran can never have a nuclear weapon. And I think it's important for the American people and all of you to appreciate that when we say that it's not just that Iran cannot have a nuclear weapon, it's what would happen if the Iranians did get a nuclear weapon. We know that a lot of nations all across the Gulf would then want their own nuclear weapon. And then a lot of nations all across the world. And what has been a very effective bright spot of American foreign policy really for the last 20 or so years would disappear overnight. If you have every country in the world scrambling to try to get a nuclear weapon, it would make us all much less safe. And Iran would really be the first domino and what would set off a nuclear arms race all over the world. That's very, very bad for the safety of our country as the father of three young kids. I don't want them to inherit a world where 20 additional regimes, half of them very dangerous and very sympathetic to terrorists have nuclear weapons. We want to keep the number of countries that have nuclear weapons small. And that's why Iran cannot have a nuclear weapon. On top of all the other things that we might be worried about, that they themselves could use it, that they could use it in leverage and economic control or economic negotiations, we just don't want them to have a nuclear weapon."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Same source video as the RapidResponse47 post: a static podium shot of VP JD Vance at the White House lectern arguing Iran can never have a nuclear weapon. Continuous spoken remarks with no music or stylized editing. Raw press-briefing clip, not produced content.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 17772,
+        "retweets": 2345,
+        "quotes": 126,
+        "views": 445494
       }
     },
     {
@@ -39834,6 +40338,125 @@
       }
     },
     {
+      "id": "2004702318890287425:13_2004702004862459904",
+      "tweet_id": "2004702318890287425",
+      "posted_at": "2025-12-26T23:54:13.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "USDOL",
+        "category": "core",
+        "label": "U.S. Department of Labor"
+      },
+      "tweet_url": "https://x.com/USDOL/status/2004702318890287425",
+      "tweet_text": "Patriotism, not globalism, is the future 🇺🇸 https://t.co/0Edf9gi1bk",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "montage"
+      ],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "topic:military",
+        "video:produced",
+        "video:short"
+      ],
+      "media": [
+        {
+          "media_id": "13_2004702004862459904",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USDOL/13_2004702004862459904.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/a58c0c5daaec26f7e9c1e69923b9699da1acb23831751a1c4cde36d4ffd3f655.jpg",
+          "sha256": "a58c0c5daaec26f7e9c1e69923b9699da1acb23831751a1c4cde36d4ffd3f655",
+          "duration_sec": 16.48,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A short produced montage with the burned-in overlay text 'PATRIOTISM, NOT GLOBALISM'. Sampled frames include a painting of a mustached man in military uniform on a charging horse with cavalry behind him, and grainy vintage color footage of a city street with mid-century cars and a streetcar.  [0:05] A painting of a uniformed man on a charging horse leading cavalry; overlay text 'PATRIOTISM, NOT GLOBALISM'.  [0:12] Grainy vintage color footage of a city street with old cars and a streetcar; same overlay text.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "4 a> fa Bes a) aa! Me ¢ SY ‘— a r = parwiorism, ner cuaBAucm y\n\niS . i Ti. if B , rea, mr co y aS in\n\nC. 2 z 4. Bs ec? BX ci , % Oe tS OP,\n\nye a r S\n\n- e . . el Fi PATRIOTISM, NOT GLO , < - ~—s\n\ne sf AEB oyT. >. ==! Ja\n\n€* aes 5 NS — = ;\n\nU / Sve iy I L — . ae"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 16.532608,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 2,
+              "text": "Wise leaders always put the good of their own people and their own country first The future does not belong to the loveless the future belongs to patriots"
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A short produced montage with the burned-in overlay text 'PATRIOTISM, NOT GLOBALISM'. Sampled frames include a painting of a mustached man in military uniform on a charging horse with cavalry behind him, and grainy vintage color footage of a city street with mid-century cars and a streetcar.  [0:05] A painting of a uniformed man on a charging horse leading cavalry; overlay text 'PATRIOTISM, NOT GLOBALISM'.  [0:12] Grainy vintage color footage of a city street with old cars and a streetcar; same overlay text.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 14967,
+        "retweets": 3131,
+        "quotes": 209,
+        "views": 214459
+      }
+    },
+    {
       "id": "1994100257307721845:13_1994081276853211136",
       "tweet_id": "1994100257307721845",
       "posted_at": "2025-11-27T17:45:24.000Z",
@@ -40715,6 +41338,134 @@
         "retweets": 3040,
         "quotes": 272,
         "views": 817934
+      }
+    },
+    {
+      "id": "2055743427963142194:13_2055677418078109697",
+      "tweet_id": "2055743427963142194",
+      "posted_at": "2026-05-16T20:13:21.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "WhiteHouse",
+        "category": "core",
+        "label": "The White House"
+      },
+      "tweet_url": "https://x.com/WhiteHouse/status/2055743427963142194",
+      "tweet_text": "\"This bond of commerce and respect that stretches back 250 years is the foundation for a future that benefits both of our nations.\" - President Donald J. Trump 🇺🇸🤝🇨🇳 https://t.co/Ka02V1ym7u",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "cinematic",
+        "montage",
+        "music-led",
+        "music-video",
+        "text-overlay"
+      ],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "audio:music-likely",
+        "country:China",
+        "genre:music-video",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "topic:immigration",
+        "video:medium",
+        "video:produced",
+        "video:speech"
+      ],
+      "media": [
+        {
+          "media_id": "13_2055677418078109697",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2055677418078109697.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/e4c6d4d72701c5e075b227c419e0159e2210f9241f8766b575255e1a43cd920a.jpg",
+          "sha256": "e4c6d4d72701c5e075b227c419e0159e2210f9241f8766b575255e1a43cd920a",
+          "duration_sec": 38.1,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Color graded montage of Trump's visit to China, set to music under a Trump voiceover about a 250 year 'bond of commerce and respect' between the American and Chinese people. It includes title cards ('WELCOMING BANQUET / MAY 14, 2026'), a nighttime wide shot with moving text 'PRESIDENT DONALD J. TRUMP' and an animated white line graphic of architecture over the Great Hall, slow shots of gold chandeliers, and a handshake between Trump and Xi.  [0:03] Slow upward-tracking shot of the Great Hall ceiling with large gold chandeliers and painted coffers; deep color. VO: 'The relationship between the American and Chinese people goes all the way back to America's founding.'  [0:11] Trump at a podium on a red-lit stage, title card overlay 'WELCOMING BANQUET / 2026 / MAY 14, 2026'; audience in silhouette in the foreground. VO: 'From the beginning, our citizens have shared a deep sense of mutual respect.'  [0:19] Wide shot of the banquet hall, Trump greeting Xi amid red drapery and floral tables, press cameras blurred; red and blue grade. VO: 'The bond of commerce and respect that stretches back 250 years is the foundation for a future that benefits both of our nations.'  [0:26] Trump and Xi shake hands in a receiving line flanked by delegations; warm lighting. VO: 'The American and Chinese people share much in common. We value hard work.'  [0:34] Nighttime wide shot of the floodlit Great Hall, Trump's motorcade and a walking delegation on a red carpet, an animated white line graphic of architecture and moving text 'PRESIDENT DONALD J. TRUMP.' VO: 'We value courage and achievement. We love our families and we love our countries.'",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "Lipid\n\nK oa 2 e: me se- aa a Prem -_\n\nigs. Se ¥\n\nSeat\n\nq;..\n\nee . Ag” } \\ > iz ,\n\nF i i i ys, i i i 7 Sa —-'a~\n\n+t. ae i"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 38.144,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 6,
+              "text": "The relationship between the American and Chinese people goes all the way back to America's founding. From the beginning, our citizens have shared a deep sense of mutual respect. The spawn of commerce and respect that stretches back 250 years is the foundation for a future that benefits both of our nations. The American and Chinese people share much in common. We value hard work. We value courage and achievement. We love our families and we love our countries."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Color graded montage of Trump's visit to China, set to music under a Trump voiceover about a 250 year 'bond of commerce and respect' between the American and Chinese people. It includes title cards ('WELCOMING BANQUET / MAY 14, 2026'), a nighttime wide shot with moving text 'PRESIDENT DONALD J. TRUMP' and an animated white line graphic of architecture over the Great Hall, slow shots of gold chandeliers, and a handshake between Trump and Xi.  [0:03] Slow upward-tracking shot of the Great Hall ceiling with large gold chandeliers and painted coffers; deep color. VO: 'The relationship between the American and Chinese people goes all the way back to America's founding.'  [0:11] Trump at a podium on a red-lit stage, title card overlay 'WELCOMING BANQUET / 2026 / MAY 14, 2026'; audience in silhouette in the foreground. VO: 'From the beginning, our citizens have shared a deep sense of mutual respect.'  [0:19] Wide shot of the banquet hall, Trump greeting Xi amid red drapery and floral tables, press cameras blurred; red and blue grade. VO: 'The bond of commerce and respect that stretches back 250 years is the foundation for a future that benefits both of our nations.'  [0:26] Trump and Xi shake hands in a receiving line flanked by delegations; warm lighting. VO: 'The American and Chinese people share much in common. We value hard work.'  [0:34] Nighttime wide shot of the floodlit Great Hall, Trump's motorcade and a walking delegation on a red carpet, an animated white line graphic of architecture and moving text 'PRESIDENT DONALD J. TRUMP.' VO: 'We value courage and achievement. We love our families and we love our countries.'",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 14083,
+        "retweets": 2596,
+        "quotes": 136,
+        "views": 802025
       }
     },
     {
@@ -91017,6 +91768,125 @@
       }
     },
     {
+      "id": "2045256904163643621:16_2045256896576151552",
+      "tweet_id": "2045256904163643621",
+      "posted_at": "2026-04-17T21:43:39.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "TStafford87",
+        "category": null,
+        "label": "TStafford87"
+      },
+      "tweet_url": "https://x.com/TStafford87/status/2045256904163643621",
+      "tweet_text": "@DHSgov Here's my butt butt butt I dont give a damn https://t.co/Rbfrp4gK6w",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "text-overlay"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:DHSgov",
+        "audio:no-audio",
+        "format:reply",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "16_2045256896576151552",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2045256896576151552.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/53c7ceaca7660ff6605e37586868618b22d285877e19914ccc6fd0cf3b79b063.jpg",
+          "sha256": "53c7ceaca7660ff6605e37586868618b22d285877e19914ccc6fd0cf3b79b063",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A very short looping reaction clip showing a heavyset man wearing a light blue short-sleeved shirt and tan trousers with a microphone headset, viewed from behind on a stage in front of a projection screen, turned away from the camera. The clip carries no overlaid caption.  [0:00] A man in a blue shirt and tan trousers seen from behind on a stage in front of a screen.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 5
+              },
+              "complete_row_count": 10,
+              "text": "'p\n\nwe\n\nPp\n\nre\n\n'p"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 0.7,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A very short looping reaction clip showing a heavyset man wearing a light blue short-sleeved shirt and tan trousers with a microphone headset, viewed from behind on a stage in front of a projection screen, turned away from the camera. The clip carries no overlaid caption.  [0:00] A man in a blue shirt and tan trousers seen from behind on a stage in front of a screen.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 5
+      }
+    },
+    {
       "id": "2045308353300074609:16_2045308346664984576",
       "tweet_id": "2045308353300074609",
       "posted_at": "2026-04-18T01:08:06.000Z",
@@ -91132,6 +92002,244 @@
         "retweets": 0,
         "quotes": 0,
         "views": 7
+      }
+    },
+    {
+      "id": "2045308386233745419:16_2045308378679816192",
+      "tweet_id": "2045308386233745419",
+      "posted_at": "2026-04-18T01:08:13.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "Rachaelmar1e",
+        "category": null,
+        "label": "Rachaelmar1e"
+      },
+      "tweet_url": "https://x.com/Rachaelmar1e/status/2045308386233745419",
+      "tweet_text": "@DHSgov https://t.co/ZAQY7YRobO",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "poster-or-meme"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:DHSgov",
+        "audio:no-audio",
+        "format:reply",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "theme:religion",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "16_2045308378679816192",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2045308378679816192.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/558b7ea4e541aea398cf0bc947970e2b4318247e71fb78372f43ed9e4d2cfe29.jpg",
+          "sha256": "558b7ea4e541aea398cf0bc947970e2b4318247e71fb78372f43ed9e4d2cfe29",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 4,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A short clip that briefly opens on a film still of two men in a hallway captioned GET EM! before settling on a hand-lettered illustration on a white background. The illustration shows the text You, Lord, are a SHIELD around me. with the reference Psalm 3:3a, drawn above two outstretched arms and scattered small red hearts. A small credit line appears at the bottom.  [0:00] Brief film still of two men in a hallway captioned GET EM!  [0:01] Hand-lettered graphic reading You, Lord, are a SHIELD around me, Psalm 3:3a, with outstretched arms and red hearts.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 4
+              },
+              "complete_row_count": 4,
+              "text": "You, Fe) are a OHiE|D aRewnD ME.\n\nv You, feu). are a * SHED aRownD me.» wv Psaa 3°39 Vv Vv\n\n¥ You, Le), are a ° OHiE|D aRewnD Me.“ we Psalm 33a ow NEE\n\ni You, Fe) are a™ ° OHiE|D aRewnD Me.“ oe alm33a & yw"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 4
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 1.84,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A short clip that briefly opens on a film still of two men in a hallway captioned GET EM! before settling on a hand-lettered illustration on a white background. The illustration shows the text You, Lord, are a SHIELD around me. with the reference Psalm 3:3a, drawn above two outstretched arms and scattered small red hearts. A small credit line appears at the bottom.  [0:00] Brief film still of two men in a hallway captioned GET EM!  [0:01] Hand-lettered graphic reading You, Lord, are a SHIELD around me, Psalm 3:3a, with outstretched arms and red hearts.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 0
+      }
+    },
+    {
+      "id": "2046939215280173538:16_2046939207466102784",
+      "tweet_id": "2046939215280173538",
+      "posted_at": "2026-04-22T13:08:33.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "GatorGharCroc",
+        "category": null,
+        "label": "GatorGharCroc"
+      },
+      "tweet_url": "https://x.com/GatorGharCroc/status/2046939215280173538",
+      "tweet_text": "@ICEgov https://t.co/2nBviiGKqo",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "text-overlay"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:ICEgov",
+        "audio:no-audio",
+        "format:reply",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "16_2046939207466102784",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2046939207466102784.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/dd4b53414c4632b3c482cb48d3eb8a96618b857e53a67871de0326c243b565f2.jpg",
+          "sha256": "dd4b53414c4632b3c482cb48d3eb8a96618b857e53a67871de0326c243b565f2",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A very short reaction clip from a televised wrestling broadcast showing a shirtless muscular man with a beard and reddish hair, mouth open and arms raised, with the burned-in caption EVERYBODY DIES. across the bottom. A LIVE marker sits in the upper left and a small watermark in the upper right.  [0:00] A shirtless bearded wrestler raises his arms and shouts, captioned EVERYBODY DIES.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 5
+              },
+              "complete_row_count": 10,
+              "text": "= AN 5 Ae ih at uh 5 GET EM!\n\nRad 4 - 9 #>. , *— ' {¥ rant. x Ay GET EM!\n\nae a A. a Laas GET EM!\n\nRell fra GET EM! ©\n\nso, a a GET EMS"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 0.84,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A very short reaction clip from a televised wrestling broadcast showing a shirtless muscular man with a beard and reddish hair, mouth open and arms raised, with the burned-in caption EVERYBODY DIES. across the bottom. A LIVE marker sits in the upper left and a small watermark in the upper right.  [0:00] A shirtless bearded wrestler raises his arms and shouts, captioned EVERYBODY DIES.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 171
       }
     },
     {

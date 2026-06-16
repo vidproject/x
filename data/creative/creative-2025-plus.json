@@ -1,26 +1,26 @@
 {
   "metadata": {
     "queue": "2025_plus",
-    "generated_at": "2026-06-16T23:06:18Z",
-    "source_commit": "7cc8b516",
-    "item_count": 865,
+    "generated_at": "2026-06-16T23:14:31Z",
+    "source_commit": "22023d93",
+    "item_count": 879,
     "source_candidate_count": 1046,
-    "not_ready_count": 155,
+    "not_ready_count": 141,
     "all_items_ready": true,
     "basis_counts": {
-      "real_footage_creative_use": 75,
-      "wholly_creative_media": 790
+      "real_footage_creative_use": 80,
+      "wholly_creative_media": 799
     },
     "top_accounts": {
       "ICEgov": 261,
-      "USDOL": 134,
+      "USDOL": 136,
       "DHSgov": 123,
       "USCIS": 96,
-      "WhiteHouse": 53,
-      "RapidResponse47": 36,
+      "WhiteHouse": 55,
+      "RapidResponse47": 37,
       "CBP": 31,
-      "POTUS": 13,
-      "USBPChief": 7,
+      "POTUS": 14,
+      "USBPChief": 8,
       "OFOEAC": 7,
       "DeptofWar": 6,
       "FBI": 6
@@ -33972,6 +33972,131 @@
       }
     },
     {
+      "id": "2007252191564779739:13_2007252001109729280",
+      "tweet_id": "2007252191564779739",
+      "posted_at": "2026-01-03T00:46:30.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "USDOL",
+        "category": "core",
+        "label": "U.S. Department of Labor"
+      },
+      "tweet_url": "https://x.com/USDOL/status/2007252191564779739",
+      "tweet_text": "Remember who you are, American.\n\nThrough rugged individualism and unparalleled grit, our Forefathers built the greatest nation the world has ever seen. \n\nAs we celebrate 250 years since our nation’s founding, it’s more important than ever that we honor their achievements and seek to build a stronger nation 🇺🇸",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "montage",
+        "music-led",
+        "music-video"
+      ],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "audio:music-likely",
+        "genre:music-video",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:video",
+        "review:screened-video",
+        "theme:nativism",
+        "topic:economy",
+        "topic:immigration",
+        "video:produced",
+        "video:short"
+      ],
+      "media": [
+        {
+          "media_id": "13_2007252001109729280",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USDOL/13_2007252001109729280.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/01c1e84a441da5643c706f1dab899e73eb318baedb1c3d06fc73b2a09efc3319.jpg",
+          "sha256": "01c1e84a441da5643c706f1dab899e73eb318baedb1c3d06fc73b2a09efc3319",
+          "duration_sec": 16.0,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Black and white montage set to music, with no speech, of American monuments: the Statue of Liberty's crown and torch, a worker climbing the statue, and Mount Rushmore. A condensed-font overlay 'REMEMBER WHO YOU ARE' is held throughout. It closes on an animated white Department of Labor seal.  [0:01] Tight low-angle black and white shot of the Statue of Liberty's spiked crown and face against a pale sky; overlay 'REMEMBER WHO YOU ARE.'  [0:04] Underside view of the Statue of Liberty's torch-holding hand and arm; same 'REMEMBER WHO YOU ARE' text.  [0:08] A single worker harnessed and climbing the curved surface of the statue high against a cloudy sky.  [0:11] Hazy black and white view of a Mount Rushmore presidential face through mist; the overlay text remains.  [0:14] Cut to black with an animated white U.S. Department of Labor seal ('DEPARTMENT OF LABOR / UNITED STATES OF AMERICA').",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "o Oo™® REMEMBER WHO YOU ARE =» / f 4] ¥\n\nHEMEMBER WHO YOU ARE ss iy,\n\nA i( 7 t * nnd SO Cj\n\nPx WN\\4\n\nHEMEMBDER WHO YOU ARE —\n\nWS : & Sl wes HEMEMBEA WHO YOU ARE = j ' n\\ , af La 4 vy\n\nie ee. ee 7B 5 1 1 1 2 2 398 298 2 2 0.000000 ¢ 4 1 1 1 3 0 296 341 112 60 -1 5 1 1 1 3 1 296 384 1 8 17.911530 = 5 1 1 1 3 2 398 341 10 60 35.257812 I 4 1 1 1 4 0 97 424 281 38 -1 5 1 1 1 4 1 97 424 121 38 38.716293 AEMEMBEA 5 1 1 1 4 2 230 427 45 35 96.084488 WHO 5 1 1 1 4 3 289 427 38 35 93.782402 YOU 5 1 1 1 4 4 339 424 39 38 96.038826 ARE 4 1 1 1 5 0 0 497 460 77 -1 5 1 1 1 5 1 0 504 17 52 52.746048 / 5 1 1 1 5 2 100 508 7 9 54.387173 ‘ 5 1 1 1 5 3 162 518 36 48 38.414288 > 5 1 1 1 5 4 232 524 55 45 17.407372 ©. 5 1 1 1 5 5 340 497 120 77 31.668701 AP 4 1 1 1 6 0 95 570 369 59 -1 5 1 1 1 6 1 95 592 2 3 0.000000 » 5 1 1 1 6 2 179 570 118 56 4.870445 rhe 5 1 1 1 6 3 360 574 104 55 49.957825 bee 4 1 1 1 7 0 0 560 480 153 -1 5 1 1 1 7 1 0 560 54 153 13.180649 i 5 1 1 1 7 2 228 560 252 150 4.118835 oe\n\nSENT OP S : Y <2 x <2) fs a eI A /S A SESE oy > Lares OF"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 16.068209,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "empty-transcript",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Black and white montage set to music, with no speech, of American monuments: the Statue of Liberty's crown and torch, a worker climbing the statue, and Mount Rushmore. A condensed-font overlay 'REMEMBER WHO YOU ARE' is held throughout. It closes on an animated white Department of Labor seal.  [0:01] Tight low-angle black and white shot of the Statue of Liberty's spiked crown and face against a pale sky; overlay 'REMEMBER WHO YOU ARE.'  [0:04] Underside view of the Statue of Liberty's torch-holding hand and arm; same 'REMEMBER WHO YOU ARE' text.  [0:08] A single worker harnessed and climbing the curved surface of the statue high against a cloudy sky.  [0:11] Hazy black and white view of a Mount Rushmore presidential face through mist; the overlay text remains.  [0:14] Cut to black with an animated white U.S. Department of Labor seal ('DEPARTMENT OF LABOR / UNITED STATES OF AMERICA').",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 52585,
+        "retweets": 10280,
+        "quotes": 0,
+        "views": 694215
+      }
+    },
+    {
       "id": "2049581451809620135:3_2049578475326185472",
       "tweet_id": "2049581451809620135",
       "posted_at": "2026-04-29T20:07:52.000Z",
@@ -35604,6 +35729,130 @@
         "retweets": 5565,
         "quotes": 570,
         "views": 1457896
+      }
+    },
+    {
+      "id": "2056135528752234892:13_2056133803806998528",
+      "tweet_id": "2056135528752234892",
+      "posted_at": "2026-05-17T22:11:25.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "VP",
+        "category": "government",
+        "label": "Vice President JD Vance"
+      },
+      "tweet_url": "https://x.com/VP/status/2056135528752234892",
+      "tweet_text": "WATCH: Vice President JD Vance's Rededicate 250 message: \n\n“I always ask people to pray for wisdom and for courage for their leadership. Pray for wisdom that we know the path God wants us to walk. Pray for courage that we have the ability to walk that path.” https://t.co/5hKNESi7hV",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "parody",
+        "poster-or-meme"
+      ],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "genre:parody",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "parody:star-wars",
+        "religion:christianity",
+        "theme:martyrdom",
+        "theme:pop-culture-reference",
+        "theme:religion",
+        "topic:immigration",
+        "video:long",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2056133803806998528",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2056133803806998528.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/1a57457b5d6f7ff1ffd5c50af08494190990fc196be9bbdf63b6f8bf72067665.jpg",
+          "sha256": "1a57457b5d6f7ff1ffd5c50af08494190990fc196be9bbdf63b6f8bf72067665",
+          "duration_sec": 244.661,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "manual-visual-observation",
+              "text": "Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "Ae ah\n\nVeh I +\n\nVo iD ‘\n\nAS\n\nA\n\nAS\n\nWe ait\n\nAe"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 244.715102,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 27,
+              "text": "George Washington declared in 1789 that it is the duty of all nations to acknowledge the providence of Almighty God, to obey his will, to be grateful for his benefits, and humbly to implore his protection and favor. These were the opening lines of America's first ever Thanksgiving Proclamation. But whatever milestone it represented in the brief life of our young republic, the duty Washington described, to honor, obey, and give thanks to our creator, was woven into America's character long before the founding. A keen awareness of that duty has stretched all the way back from William Bradford's own Pilgrim Proclamation in 1623 to the opening prayer of our First Continental Congress to Lincoln's call for National Thanksgiving in the midst of the Civil War to this very gathering today. We have always been and still are a nation of prayer and thank God for that. In times of suffering and in times of triumph, millions of Americans continue to turn to prayer and their faith in God. John Adams famously said that our constitution was made only for a moral and religious people. It is wholly inadequate to the government of any other. It was obvious to the founders that our faith was the ground upon which America stands. It was our very foundation as a people. And if this foundation were to crumble, so too would the very values that make us Americans. From our religious inheritance comes many of the virtues and institutions we most cherish as a people. Our system of justice, our generosity to neighbors, our respect for conscience and the moral discipline necessary for liberty itself. As my dear friend, the late great Charlie Kirk put it, all law reflects a morality. Neither law nor morality appears in a vacuum, but ultimately come from religion. And the morality and religion that formed the American consciousness were decidedly Christian, founded upon the principles and the divinity of Jesus Christ. In 1783, Washington also proclaimed that imitation of divine charity is necessary for the mutual affection of our citizenry and the happiness of our nation. If we do not see that God loves us, we have little reason and little inspiration to love one another. This love which forms our morality is the foundation of a peaceful and healthful society. That's why it's so encouraging to see a renewed sense of faith emerging among America's young people. Defying predictions, the experts said that religion and faith were dying, today a wave of young Americans is returning"
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "video; 3840x2026; 244.7s; 74.77 MiB; archived; tweet context: WATCH: Vice President JD Vance's Rededicate 250 message: “I always ask people to pray for wisdom and for courage for their leadership. Pray for wisdom that we know the path God wants us to walk. Pray for courage that we have the ability to walk that path.” ht...; source URL: https://video.twimg.com/amplify_video/2056133803806998528/vid/avc1/3840x2026/R8D_exaeQSs3l3YK.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-_misc/13_2056133803806998528.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. WATCH: Vice President JD Vance's Rededicate 250 message: “I always ask people to pray for wisdom and for courage for their leadership. Pray for wisdom that we know the path God wants us to walk. Pray for courage that we have the ability to walk that path.” https://t.co/5hKNESi7hV",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 33774,
+        "retweets": 7146,
+        "quotes": 234,
+        "views": 549660
       }
     },
     {
@@ -38032,6 +38281,139 @@
       }
     },
     {
+      "id": "2051478685484490758:13_2051473238694170633",
+      "tweet_id": "2051478685484490758",
+      "posted_at": "2026-05-05T01:46:47.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "POTUS",
+        "category": "core",
+        "label": "President of the United States"
+      },
+      "tweet_url": "https://x.com/POTUS/status/2051478685484490758",
+      "tweet_text": "RT @WhiteHouse: BEST I CAN DO IS THE GOLDEN AGE FOR SMALL BUSINESSES 🔥\n\nPawn Stars' Rick Harrison x White House 🇺🇸 https://t.co/lIaSBg3duK",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "parody",
+        "poster-or-meme",
+        "text-overlay",
+        "utopian"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:WhiteHouse",
+        "audio:has-audio",
+        "format:retweet",
+        "genre:parody",
+        "genre:utopian",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "parody:pawn-stars",
+        "review:screened-video",
+        "slogan:golden-age",
+        "theme:pop-culture-reference",
+        "topic:economy",
+        "topic:general",
+        "topic:immigration",
+        "video:produced",
+        "video:short",
+        "video:text-overlay"
+      ],
+      "media": [
+        {
+          "media_id": "13_2051473238694170633",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-POTUS/13_2051473238694170633.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/ea365cfa9e36097a08c840f56734024324135d1af8b684effccefa983e10c74e.jpg",
+          "sha256": "ea365cfa9e36097a08c840f56734024324135d1af8b684effccefa983e10c74e",
+          "duration_sec": 8.916,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Pawn Stars' Rick Harrison stands in the White House Blue Room and says to camera: 'the best I can do is the golden age for small businesses.' The clip ends on an animated 'THE WHITE HOUSE' wordmark over a line-art White House.  [0:00] Rick Harrison stands with arms spread in the White House Blue Room, addressing the camera.  [0:02] Harrison in the Blue Room saying the line 'the best I can do is the golden age for small businesses.'  [0:04] Cut to black; animated letters move onto the screen.  [0:06] Letters resolve into a 'THE WHITE HOUSE' wordmark over a line-art White House.  [0:08] Final 'THE WHITE HOUSE' title card with the flag detail.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 5
+              },
+              "complete_row_count": 10,
+              "text": "! Bhs : 7 y’ , . ae\n\noe\n\nis —_—- NTE De iat} -\n\n} 2 - . . —— 1a ) —— <— > i, a\n\nTHE WHIT HO, SE"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 8.96,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 1,
+              "text": "Okay, the best I can do is the golden age for small businesses."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Pawn Stars' Rick Harrison stands in the White House Blue Room and says to camera: 'the best I can do is the golden age for small businesses.' The clip ends on an animated 'THE WHITE HOUSE' wordmark over a line-art White House.  [0:00] Rick Harrison stands with arms spread in the White House Blue Room, addressing the camera.  [0:02] Harrison in the Blue Room saying the line 'the best I can do is the golden age for small businesses.'  [0:04] Cut to black; animated letters move onto the screen.  [0:06] Letters resolve into a 'THE WHITE HOUSE' wordmark over a line-art White House.  [0:08] Final 'THE WHITE HOUSE' title card with the flag detail.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 19119,
+        "retweets": 2434,
+        "quotes": 263,
+        "views": 189
+      }
+    },
+    {
       "id": "2051473750873321574:13_2051473238694170633",
       "tweet_id": "2051473750873321574",
       "posted_at": "2026-05-05T01:27:11.000Z",
@@ -38292,6 +38674,7 @@
       ],
       "subjects": [],
       "tags": [
+        "agency:USCIS",
         "audio:has-audio",
         "media-status:archived",
         "media-status:needs-vision",
@@ -38729,6 +39112,127 @@
         "retweets": 3737,
         "quotes": 520,
         "views": 1070042
+      }
+    },
+    {
+      "id": "2056797197056795014:13_2056793185829998593",
+      "tweet_id": "2056797197056795014",
+      "posted_at": "2026-05-19T18:00:39.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "WhiteHouse",
+        "category": "core",
+        "label": "The White House"
+      },
+      "tweet_url": "https://x.com/WhiteHouse/status/2056797197056795014",
+      "tweet_text": "Loud and clear since day 1: Iran can NEVER have a nuclear weapon. https://t.co/UsD9NcE7lD",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "crime:weapon",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "speaker:Vice President Vance",
+        "theme:nativism",
+        "topic:economy",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2056793185829998593",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2056793185829998593.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/dea533f93b2afd6663ca8359e512bd068e0d2ac194565f971c2eca5ffaef5ca3.jpg",
+          "sha256": "dea533f93b2afd6663ca8359e512bd068e0d2ac194565f971c2eca5ffaef5ca3",
+          "duration_sec": 81.866,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Same source video as the RapidResponse47 post: a static podium shot of VP JD Vance at the White House lectern arguing Iran can never have a nuclear weapon. Continuous spoken remarks with no music or stylized editing. Raw press-briefing clip, not produced content.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "hes A yi in a “teen i} eK - 1G ‘ BGC a y, OK iM ya . KK tf ray ul ee A AS ) y \\\n\nby ame AK i” AG i wy ‘ “4 '\n\nDe LW aa : V8 re i ic, hGed ea AGC j 44% i ve Fr ‘ icy ‘A ; he\n\niy = i a - Ee 4K 5 \\\\ KA a is QC Tp i 4H i RAG h \\ KK { i) ] Ee Ay al iD i\n\n‘ib kk i ARS \\ a OK & ii IQA i CQAC iR 4K \\ $4\" . Kx UR Ks ES MK) ye}\n\naus i Tess y ap Ws Fe AK im HOGG By GK iq BAH, yx ‘ my a ‘ A K FF}\n\na ss ays XO) ey geo ees 4K \\\\ a ‘g GK i H, ees \\ 44K . \\ KK \\ Pay ‘a 4 a ¥ A At ») 1% §\n\ncy, Lek —, xe HK 1 Hy KH ny 6 gx O iy ee +¥ : KY \\ « g 1 a pa FF"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 81.92,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 34,
+              "text": "It's actually a very simple proposition here. There are two options, two pathways we can go down when it comes to the Iran situation. So step back for a little bit. What the President of the United States has said is, number one, Iran can never have a nuclear weapon. And I think it's important for the American people and all of you to appreciate that when we say that it's not just that Iran cannot have a nuclear weapon, it's what would happen if the Iranians did get a nuclear weapon. We know that a lot of nations all across the Gulf would then want their own nuclear weapon. And then a lot of nations all across the world. And what has been a very effective bright spot of American foreign policy really for the last 20 or so years would disappear overnight. If you have every country in the world scrambling to try to get a nuclear weapon, it would make us all much less safe. And Iran would really be the first domino and what would set off a nuclear arms race all over the world. That's very, very bad for the safety of our country as the father of three young kids. I don't want them to inherit a world where 20 additional regimes, half of them very dangerous and very sympathetic to terrorists have nuclear weapons. We want to keep the number of countries that have nuclear weapons small. And that's why Iran cannot have a nuclear weapon. On top of all the other things that we might be worried about, that they themselves could use it, that they could use it in leverage and economic control or economic negotiations, we just don't want them to have a nuclear weapon."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Same source video as the RapidResponse47 post: a static podium shot of VP JD Vance at the White House lectern arguing Iran can never have a nuclear weapon. Continuous spoken remarks with no music or stylized editing. Raw press-briefing clip, not produced content.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 17772,
+        "retweets": 2345,
+        "quotes": 126,
+        "views": 445494
       }
     },
     {
@@ -39834,6 +40338,125 @@
       }
     },
     {
+      "id": "2004702318890287425:13_2004702004862459904",
+      "tweet_id": "2004702318890287425",
+      "posted_at": "2025-12-26T23:54:13.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "USDOL",
+        "category": "core",
+        "label": "U.S. Department of Labor"
+      },
+      "tweet_url": "https://x.com/USDOL/status/2004702318890287425",
+      "tweet_text": "Patriotism, not globalism, is the future 🇺🇸 https://t.co/0Edf9gi1bk",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "montage"
+      ],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "topic:military",
+        "video:produced",
+        "video:short"
+      ],
+      "media": [
+        {
+          "media_id": "13_2004702004862459904",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USDOL/13_2004702004862459904.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/a58c0c5daaec26f7e9c1e69923b9699da1acb23831751a1c4cde36d4ffd3f655.jpg",
+          "sha256": "a58c0c5daaec26f7e9c1e69923b9699da1acb23831751a1c4cde36d4ffd3f655",
+          "duration_sec": 16.48,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A short produced montage with the burned-in overlay text 'PATRIOTISM, NOT GLOBALISM'. Sampled frames include a painting of a mustached man in military uniform on a charging horse with cavalry behind him, and grainy vintage color footage of a city street with mid-century cars and a streetcar.  [0:05] A painting of a uniformed man on a charging horse leading cavalry; overlay text 'PATRIOTISM, NOT GLOBALISM'.  [0:12] Grainy vintage color footage of a city street with old cars and a streetcar; same overlay text.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "4 a> fa Bes a) aa! Me ¢ SY ‘— a r = parwiorism, ner cuaBAucm y\n\niS . i Ti. if B , rea, mr co y aS in\n\nC. 2 z 4. Bs ec? BX ci , % Oe tS OP,\n\nye a r S\n\n- e . . el Fi PATRIOTISM, NOT GLO , < - ~—s\n\ne sf AEB oyT. >. ==! Ja\n\n€* aes 5 NS — = ;\n\nU / Sve iy I L — . ae"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 16.532608,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 2,
+              "text": "Wise leaders always put the good of their own people and their own country first The future does not belong to the loveless the future belongs to patriots"
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A short produced montage with the burned-in overlay text 'PATRIOTISM, NOT GLOBALISM'. Sampled frames include a painting of a mustached man in military uniform on a charging horse with cavalry behind him, and grainy vintage color footage of a city street with mid-century cars and a streetcar.  [0:05] A painting of a uniformed man on a charging horse leading cavalry; overlay text 'PATRIOTISM, NOT GLOBALISM'.  [0:12] Grainy vintage color footage of a city street with old cars and a streetcar; same overlay text.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 14967,
+        "retweets": 3131,
+        "quotes": 209,
+        "views": 214459
+      }
+    },
+    {
       "id": "1994100257307721845:13_1994081276853211136",
       "tweet_id": "1994100257307721845",
       "posted_at": "2025-11-27T17:45:24.000Z",
@@ -40715,6 +41338,134 @@
         "retweets": 3040,
         "quotes": 272,
         "views": 817934
+      }
+    },
+    {
+      "id": "2055743427963142194:13_2055677418078109697",
+      "tweet_id": "2055743427963142194",
+      "posted_at": "2026-05-16T20:13:21.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "WhiteHouse",
+        "category": "core",
+        "label": "The White House"
+      },
+      "tweet_url": "https://x.com/WhiteHouse/status/2055743427963142194",
+      "tweet_text": "\"This bond of commerce and respect that stretches back 250 years is the foundation for a future that benefits both of our nations.\" - President Donald J. Trump 🇺🇸🤝🇨🇳 https://t.co/Ka02V1ym7u",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "cinematic",
+        "montage",
+        "music-led",
+        "music-video",
+        "text-overlay"
+      ],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "audio:music-likely",
+        "country:China",
+        "genre:music-video",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "topic:immigration",
+        "video:medium",
+        "video:produced",
+        "video:speech"
+      ],
+      "media": [
+        {
+          "media_id": "13_2055677418078109697",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2055677418078109697.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/e4c6d4d72701c5e075b227c419e0159e2210f9241f8766b575255e1a43cd920a.jpg",
+          "sha256": "e4c6d4d72701c5e075b227c419e0159e2210f9241f8766b575255e1a43cd920a",
+          "duration_sec": 38.1,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Color graded montage of Trump's visit to China, set to music under a Trump voiceover about a 250 year 'bond of commerce and respect' between the American and Chinese people. It includes title cards ('WELCOMING BANQUET / MAY 14, 2026'), a nighttime wide shot with moving text 'PRESIDENT DONALD J. TRUMP' and an animated white line graphic of architecture over the Great Hall, slow shots of gold chandeliers, and a handshake between Trump and Xi.  [0:03] Slow upward-tracking shot of the Great Hall ceiling with large gold chandeliers and painted coffers; deep color. VO: 'The relationship between the American and Chinese people goes all the way back to America's founding.'  [0:11] Trump at a podium on a red-lit stage, title card overlay 'WELCOMING BANQUET / 2026 / MAY 14, 2026'; audience in silhouette in the foreground. VO: 'From the beginning, our citizens have shared a deep sense of mutual respect.'  [0:19] Wide shot of the banquet hall, Trump greeting Xi amid red drapery and floral tables, press cameras blurred; red and blue grade. VO: 'The bond of commerce and respect that stretches back 250 years is the foundation for a future that benefits both of our nations.'  [0:26] Trump and Xi shake hands in a receiving line flanked by delegations; warm lighting. VO: 'The American and Chinese people share much in common. We value hard work.'  [0:34] Nighttime wide shot of the floodlit Great Hall, Trump's motorcade and a walking delegation on a red carpet, an animated white line graphic of architecture and moving text 'PRESIDENT DONALD J. TRUMP.' VO: 'We value courage and achievement. We love our families and we love our countries.'",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "Lipid\n\nK oa 2 e: me se- aa a Prem -_\n\nigs. Se ¥\n\nSeat\n\nq;..\n\nee . Ag” } \\ > iz ,\n\nF i i i ys, i i i 7 Sa —-'a~\n\n+t. ae i"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 38.144,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 6,
+              "text": "The relationship between the American and Chinese people goes all the way back to America's founding. From the beginning, our citizens have shared a deep sense of mutual respect. The spawn of commerce and respect that stretches back 250 years is the foundation for a future that benefits both of our nations. The American and Chinese people share much in common. We value hard work. We value courage and achievement. We love our families and we love our countries."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Color graded montage of Trump's visit to China, set to music under a Trump voiceover about a 250 year 'bond of commerce and respect' between the American and Chinese people. It includes title cards ('WELCOMING BANQUET / MAY 14, 2026'), a nighttime wide shot with moving text 'PRESIDENT DONALD J. TRUMP' and an animated white line graphic of architecture over the Great Hall, slow shots of gold chandeliers, and a handshake between Trump and Xi.  [0:03] Slow upward-tracking shot of the Great Hall ceiling with large gold chandeliers and painted coffers; deep color. VO: 'The relationship between the American and Chinese people goes all the way back to America's founding.'  [0:11] Trump at a podium on a red-lit stage, title card overlay 'WELCOMING BANQUET / 2026 / MAY 14, 2026'; audience in silhouette in the foreground. VO: 'From the beginning, our citizens have shared a deep sense of mutual respect.'  [0:19] Wide shot of the banquet hall, Trump greeting Xi amid red drapery and floral tables, press cameras blurred; red and blue grade. VO: 'The bond of commerce and respect that stretches back 250 years is the foundation for a future that benefits both of our nations.'  [0:26] Trump and Xi shake hands in a receiving line flanked by delegations; warm lighting. VO: 'The American and Chinese people share much in common. We value hard work.'  [0:34] Nighttime wide shot of the floodlit Great Hall, Trump's motorcade and a walking delegation on a red carpet, an animated white line graphic of architecture and moving text 'PRESIDENT DONALD J. TRUMP.' VO: 'We value courage and achievement. We love our families and we love our countries.'",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 14083,
+        "retweets": 2596,
+        "quotes": 136,
+        "views": 802025
       }
     },
     {
@@ -91017,6 +91768,125 @@
       }
     },
     {
+      "id": "2045256904163643621:16_2045256896576151552",
+      "tweet_id": "2045256904163643621",
+      "posted_at": "2026-04-17T21:43:39.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "TStafford87",
+        "category": null,
+        "label": "TStafford87"
+      },
+      "tweet_url": "https://x.com/TStafford87/status/2045256904163643621",
+      "tweet_text": "@DHSgov Here's my butt butt butt I dont give a damn https://t.co/Rbfrp4gK6w",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "text-overlay"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:DHSgov",
+        "audio:no-audio",
+        "format:reply",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "16_2045256896576151552",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2045256896576151552.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/53c7ceaca7660ff6605e37586868618b22d285877e19914ccc6fd0cf3b79b063.jpg",
+          "sha256": "53c7ceaca7660ff6605e37586868618b22d285877e19914ccc6fd0cf3b79b063",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A very short looping reaction clip showing a heavyset man wearing a light blue short-sleeved shirt and tan trousers with a microphone headset, viewed from behind on a stage in front of a projection screen, turned away from the camera. The clip carries no overlaid caption.  [0:00] A man in a blue shirt and tan trousers seen from behind on a stage in front of a screen.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 5
+              },
+              "complete_row_count": 10,
+              "text": "'p\n\nwe\n\nPp\n\nre\n\n'p"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 0.7,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A very short looping reaction clip showing a heavyset man wearing a light blue short-sleeved shirt and tan trousers with a microphone headset, viewed from behind on a stage in front of a projection screen, turned away from the camera. The clip carries no overlaid caption.  [0:00] A man in a blue shirt and tan trousers seen from behind on a stage in front of a screen.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 5
+      }
+    },
+    {
       "id": "2045308353300074609:16_2045308346664984576",
       "tweet_id": "2045308353300074609",
       "posted_at": "2026-04-18T01:08:06.000Z",
@@ -91132,6 +92002,244 @@
         "retweets": 0,
         "quotes": 0,
         "views": 7
+      }
+    },
+    {
+      "id": "2045308386233745419:16_2045308378679816192",
+      "tweet_id": "2045308386233745419",
+      "posted_at": "2026-04-18T01:08:13.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "Rachaelmar1e",
+        "category": null,
+        "label": "Rachaelmar1e"
+      },
+      "tweet_url": "https://x.com/Rachaelmar1e/status/2045308386233745419",
+      "tweet_text": "@DHSgov https://t.co/ZAQY7YRobO",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "poster-or-meme"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:DHSgov",
+        "audio:no-audio",
+        "format:reply",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "theme:religion",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "16_2045308378679816192",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2045308378679816192.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/558b7ea4e541aea398cf0bc947970e2b4318247e71fb78372f43ed9e4d2cfe29.jpg",
+          "sha256": "558b7ea4e541aea398cf0bc947970e2b4318247e71fb78372f43ed9e4d2cfe29",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 4,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A short clip that briefly opens on a film still of two men in a hallway captioned GET EM! before settling on a hand-lettered illustration on a white background. The illustration shows the text You, Lord, are a SHIELD around me. with the reference Psalm 3:3a, drawn above two outstretched arms and scattered small red hearts. A small credit line appears at the bottom.  [0:00] Brief film still of two men in a hallway captioned GET EM!  [0:01] Hand-lettered graphic reading You, Lord, are a SHIELD around me, Psalm 3:3a, with outstretched arms and red hearts.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 4
+              },
+              "complete_row_count": 4,
+              "text": "You, Fe) are a OHiE|D aRewnD ME.\n\nv You, feu). are a * SHED aRownD me.» wv Psaa 3°39 Vv Vv\n\n¥ You, Le), are a ° OHiE|D aRewnD Me.“ we Psalm 33a ow NEE\n\ni You, Fe) are a™ ° OHiE|D aRewnD Me.“ oe alm33a & yw"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 4
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 1.84,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A short clip that briefly opens on a film still of two men in a hallway captioned GET EM! before settling on a hand-lettered illustration on a white background. The illustration shows the text You, Lord, are a SHIELD around me. with the reference Psalm 3:3a, drawn above two outstretched arms and scattered small red hearts. A small credit line appears at the bottom.  [0:00] Brief film still of two men in a hallway captioned GET EM!  [0:01] Hand-lettered graphic reading You, Lord, are a SHIELD around me, Psalm 3:3a, with outstretched arms and red hearts.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 0
+      }
+    },
+    {
+      "id": "2046939215280173538:16_2046939207466102784",
+      "tweet_id": "2046939215280173538",
+      "posted_at": "2026-04-22T13:08:33.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "GatorGharCroc",
+        "category": null,
+        "label": "GatorGharCroc"
+      },
+      "tweet_url": "https://x.com/GatorGharCroc/status/2046939215280173538",
+      "tweet_text": "@ICEgov https://t.co/2nBviiGKqo",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "text-overlay"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:ICEgov",
+        "audio:no-audio",
+        "format:reply",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "16_2046939207466102784",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2046939207466102784.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/dd4b53414c4632b3c482cb48d3eb8a96618b857e53a67871de0326c243b565f2.jpg",
+          "sha256": "dd4b53414c4632b3c482cb48d3eb8a96618b857e53a67871de0326c243b565f2",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A very short reaction clip from a televised wrestling broadcast showing a shirtless muscular man with a beard and reddish hair, mouth open and arms raised, with the burned-in caption EVERYBODY DIES. across the bottom. A LIVE marker sits in the upper left and a small watermark in the upper right.  [0:00] A shirtless bearded wrestler raises his arms and shouts, captioned EVERYBODY DIES.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 5
+              },
+              "complete_row_count": 10,
+              "text": "= AN 5 Ae ih at uh 5 GET EM!\n\nRad 4 - 9 #>. , *— ' {¥ rant. x Ay GET EM!\n\nae a A. a Laas GET EM!\n\nRell fra GET EM! ©\n\nso, a a GET EMS"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 0.84,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A very short reaction clip from a televised wrestling broadcast showing a shirtless muscular man with a beard and reddish hair, mouth open and arms raised, with the burned-in caption EVERYBODY DIES. across the bottom. A LIVE marker sits in the upper left and a small watermark in the upper right.  [0:00] A shirtless bearded wrestler raises his arms and shouts, captioned EVERYBODY DIES.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 171
       }
     },
     {
@@ -95043,6 +96151,150 @@
       }
     },
     {
+      "id": "2044217468630049264:13_2044217154476879875",
+      "tweet_id": "2044217468630049264",
+      "posted_at": "2026-04-15T00:53:18.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "SecMullinDHS",
+        "category": "core",
+        "label": "Secretary Markwayne Mullin"
+      },
+      "tweet_url": "https://x.com/SecMullinDHS/status/2044217468630049264",
+      "tweet_text": "Yesterday, @ICEgov arrested some truly sick individuals. \n\nWe will not allow criminal illegal aliens to roam free and terrorize innocent Americans. https://t.co/ZL1acXAhFJ",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "medium",
+      "score": 84,
+      "creative_forms": [
+        "music-led",
+        "text-overlay"
+      ],
+      "subjects": [
+        "detainees"
+      ],
+      "tags": [
+        "action:detention",
+        "agency:DHSgov",
+        "agency:ICEgov",
+        "audio:has-audio",
+        "country:Mexico",
+        "crime:assault",
+        "crime:burglary",
+        "crime:robbery",
+        "crime:weapon",
+        "format:statistics",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "origin:Mexico",
+        "review:screened-video",
+        "slogan:criminal-illegal-alien",
+        "slogan:illegal-alien",
+        "state:California",
+        "state:Maine",
+        "state:New-York",
+        "state:Texas",
+        "state:Washington",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "theme:religion",
+        "topic:economy",
+        "topic:general",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2044217154476879875",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-SecMullinDHS/13_2044217154476879875.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/da26b428c6f83a340f83a2cdd99271cd7a8bd6293c38def29347fa3286bd1a5b.jpg",
+          "sha256": "da26b428c6f83a340f83a2cdd99271cd7a8bd6293c38def29347fa3286bd1a5b",
+          "duration_sec": 104.291,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Vertical selfie-style video of the DHS Secretary in a wood-trimmed office with blue-grey walls, a mounted steer head and cowboy boots displayed on wall shelves behind him. He wears a white dress shirt with a clip-on microphone and speaks directly to camera, gesturing. Burned-in caption subtitles appear at the bottom (for example 'OUR ADVERSARIES ARE NOT BUT'). The audio is him describing his role overseeing the agencies under DHS and recent ICE arrests. No music bed.  [0:40] Bearded man in white shirt with lapel mic speaks to camera; mounted steer head and cowboy boots on shelves behind him; caption 'OUR ADVERSARIES ARE NOT BUT.'",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "—— a . HhT FALL UNDERNEAT a y\n\nPe a 4 at 7 US um\n\nF _—\n\n‘ {i ; t po\n\ni) eS ~y : ae, ae\n\n—/— ; } vai! F: ae = i , a”\n\n> pt a ni ; AREOUT, e — > a ih - i\n\n\\ 7 ag vt : eg RS . AL HOMELAND v p> i =~ ' Ba t A f"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 104.350476,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 41,
+              "text": "All right, guys, as Secretary of DHS, I get to highlight the great work that all the 22 agencies that fall underneath my jurisdiction. Every single day we get up and we think how to keep my backyard safe and your backyard safe. How to keep Oklahoma safe, Washington, DC state, California safe, Florida, Maine, Massachusetts, New York, even though we're having a fight of crazy mayor there. We fight every single day to make sure that we keep present Trump's promise and that's to make America safe. And one of the agencies that seem like they constantly get a black eye because the media likes picking on is ICE. ICE is there, enforcing the policies that Congress passed. But I'll tell you, my job is to highlight the good work they're doing. I'm going to it's going to name four, four individuals and this is just a snapshot of the ones that were arrested just yesterday. This gentleman from Houston, Texas, enter the country illegally from Mexico, volunteer manslaughter, and burglary of a building, Cuba, pedophile, children from the ages of 12 to 16, arrested him yesterday and Florida, another one, Texas. A gentleman once again, illegal from Mexico, aggravated assault with a daily weapon, Grenada, robbery from Staten Island, New York. But that's just a few. There is a lot of individuals that ICE interact with every single day that have records that's worse than this. Present Trump's whole agenda is to make America's streets safe again. And we are out there every single day enforcing that. We want people to feel safe in your neighborhood again. Working with present Trump, working with local law enforcement, and having the ability to work with a great individuals here at Department of Homeland Security, we want to deliver on that promise. So God bless you, make God bless United States of America."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Vertical selfie-style video of the DHS Secretary in a wood-trimmed office with blue-grey walls, a mounted steer head and cowboy boots displayed on wall shelves behind him. He wears a white dress shirt with a clip-on microphone and speaks directly to camera, gesturing. Burned-in caption subtitles appear at the bottom (for example 'OUR ADVERSARIES ARE NOT BUT'). The audio is him describing his role overseeing the agencies under DHS and recent ICE arrests. No music bed.  [0:40] Bearded man in white shirt with lapel mic speaks to camera; mounted steer head and cowboy boots on shelves behind him; caption 'OUR ADVERSARIES ARE NOT BUT.'",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 24379,
+        "retweets": 3893,
+        "quotes": 0,
+        "views": 275593
+      }
+    },
+    {
       "id": "2016198016290439540:13_2016197384334680064",
       "tweet_id": "2016198016290439540",
       "posted_at": "2026-01-27T17:14:00.000Z",
@@ -95166,6 +96418,133 @@
         "retweets": 4874,
         "quotes": 0,
         "views": 549288
+      }
+    },
+    {
+      "id": "2047801337081889240:13_2047800141760086016",
+      "tweet_id": "2047801337081889240",
+      "posted_at": "2026-04-24T22:14:19.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "SecMullinDHS",
+        "category": "core",
+        "label": "Secretary Markwayne Mullin"
+      },
+      "tweet_url": "https://x.com/SecMullinDHS/status/2047801337081889240",
+      "tweet_text": "On Wednesday, Chuck Schumer told us why Democrats have kept @dhsgov shutdown: They have no respect for the law enforcement keeping our homeland safe. \n\nI will not tolerate the disrespect  of these heroes. Democrats must END this reckless DHS shutdown NOW. https://t.co/8l5aTXwSU1",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "medium",
+      "score": 84,
+      "creative_forms": [
+        "music-led",
+        "text-overlay"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "agency:DHSgov",
+        "agency:ICEgov",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "policy:border",
+        "review:screened-video",
+        "theme:religion",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2047800141760086016",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-SecMullinDHS/13_2047800141760086016.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/ecc24cc22019184b71478cbde6d1452baca78d4e7b872d9f71cc83cf3e9f68e0.jpg",
+          "sha256": "ecc24cc22019184b71478cbde6d1452baca78d4e7b872d9f71cc83cf3e9f68e0",
+          "duration_sec": 65.4,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Vertical selfie-style video of the DHS Secretary, a bearded man in a white dress shirt, speaking directly to camera in a wood-trimmed office with blue-grey walls, a mounted steer head and cowboy boots on wall shelves. Burned-in caption subtitles run along the bottom of the frame. The audio is him discussing the ongoing government shutdown, then past 70 days, and remarks attributed to Senator Schumer about Border Patrol and ICE. No music bed.  [0:30] Bearded man in white shirt speaks to camera; mounted steer head and cowboy boots on shelves behind; burned-in caption subtitles at bottom.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "= : ; —2 . a s ) nal Rey —- a +. AND WE HAVE SURPASSED\n\n>| a ; ral =I L 1 aoe c “9 ee - 2. = a, = = ae Teor em eh, Af ae = ° Patt P a = =e Ts meme = LF . Sa THAT NOBODY TO TWO\n\n7 - ee y ’ , MEAN LITERALLY\n\n— ——_* : EP EG a = ; os : OFF OUR STREETS,\n\nry a “ 5) L / F “ y di d 7 ‘ THIS'POLITIGCAL GAME WW —_, ?\n\n} e 9 4 5 15 5 * E IN FOUR YEARS, *\n\nA y WA aN ee t SIN\\ oF p ye ex! Ry ee vA 'y Ga, ind) = = eal Soo Mp ae Tae eT A Nate ll ae 7 a WE GOT TO|SHOW THEM AROUND DHS\n\naS WY ‘\\ GETTING TOFIGHT TO."
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 65.457052,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 17,
+              "text": "All right guys, we're still in a shutdown and we have surpassed 70 days at this point. Why? Can somebody please explain to me? Well, Chuck Schumer did. To an agency that nobody to two, two groups, border patrol and ICE, that nobody respects in this country. In that ridiculous, I mean, literally who could say that you have no respect for law enforcement, especially those protecting our borders and getting these criminals off our streets? Why we are shut down, the Department of Homeland, our adversaries are not. But just Chuck Schumer care and no. He wants to play this political game. Why? Because he's afraid of his radical left base. Can't make sense of that. Now, I'll let her know. My parents came up and saw me for the first time in four years. Now, that's not that I haven't seen them in four years. I'm saying came up to Washington, D.C., and for the first time in four years. My parents got to meet President Trump. We got to show him around DHS headquarters. As the young is a seven, I think it's pretty cool to be able to share this experience with my parents. I'm still enjoying every single day getting to fight to protect our homeland. So, God bless you and God bless the United States of America."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Vertical selfie-style video of the DHS Secretary, a bearded man in a white dress shirt, speaking directly to camera in a wood-trimmed office with blue-grey walls, a mounted steer head and cowboy boots on wall shelves. Burned-in caption subtitles run along the bottom of the frame. The audio is him discussing the ongoing government shutdown, then past 70 days, and remarks attributed to Senator Schumer about Border Patrol and ICE. No music bed.  [0:30] Bearded man in white shirt speaks to camera; mounted steer head and cowboy boots on shelves behind; burned-in caption subtitles at bottom.",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 19740,
+        "retweets": 4487,
+        "quotes": 116,
+        "views": 215379
       }
     },
     {
@@ -95293,6 +96672,264 @@
       }
     },
     {
+      "id": "2050243966151336296:7_2050242833219485696",
+      "tweet_id": "2050243966151336296",
+      "posted_at": "2026-05-01T16:00:27.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "USBPChief",
+        "category": "core",
+        "label": "U.S. Border Patrol Chief"
+      },
+      "tweet_url": "https://x.com/USBPChief/status/2050243966151336296",
+      "tweet_text": "Agents from the Nogales Border Patrol Station apprehended 13 illegal aliens attempting to cross illegally in the remote Sonoran Desert. Among them, one Mexican national was identified as having ties to the Sinaloa Cartel.\n \nOur message is clear: If you cross illegally, you will be arrested, prosecuted, and deported. We remain committed to using every available resource to protect our nation’s borders.\n\n@USBPChiefTCA @WhiteHouse @DHSgov @CBP @CBPAMO",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "medium",
+      "score": 84,
+      "creative_forms": [
+        "cinematic",
+        "music-led"
+      ],
+      "subjects": [
+        "detainees",
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "action:deportation",
+        "action:detention",
+        "agency:CBP",
+        "agency:DHSgov",
+        "agency:WhiteHouse",
+        "audio:has-audio",
+        "country:Mexico",
+        "format:statistics",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:video",
+        "origin:Mexico",
+        "policy:border",
+        "review:produced-video",
+        "review:screened-video",
+        "slogan:illegal-alien",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "7_2050242833219485696",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/7_2050242833219485696.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/065a1902032dceea0ab192c1a0aca0b7e7c3ce09a3e07e8cddade00e43ee7f32.jpg",
+          "sha256": "065a1902032dceea0ab192c1a0aca0b7e7c3ce09a3e07e8cddade00e43ee7f32",
+          "duration_sec": 31.28,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Color-graded, desaturated video with no speech, posted by a Border Patrol chief. Footage includes a point-of-view shot from horseback as a mounted Border Patrol agent rides through open desert scrub at low light, another agent leaning on a fence rail in the brush, and an overhead aerial shot of agents on foot and on horseback gathered with a group of people on a grassy hillside. The aerial frame carries a compass heading and coordinate overlay and large red block text reading '13 ILLEGAL ALIENS ARRESTED.' The audio is a music bed. The tweet text describes the apprehension of 13 people in the Sonoran Desert near Nogales, one identified with cartel ties.  [0:05] Point-of-view shot from horseback riding through desert scrub toward a second mounted agent at low light, sepia color grade.  [0:20] Overhead aerial shot of agents on foot and horseback with a group of people on a grassy hillside; compass and coordinate overlay; red block text '13 ILLEGAL ALIENS ARRESTED.'",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "= a) - i ae Mp STS pel AES ts lta ri ‘% ae ge aes rye> ed Ww a ee TZ. + hte ge ed ray i.) r- . FOE eae at - = Pe ‘ gf i - ee oO . ._ a , Beh. a Sel \\ , . a as oe \\ te in “sc = ae ae. dines ee a Pr ‘Sy Ses as ee Ra. Aah os a a ES ae SD fy Ot ee ee = <i al . See eee ae ar ts. et es Lee. te te ae cose ee ee i =\" eee a Se ee Be oS eae ae aS Sy ee part ng eee ¢ 5 Tag 1 eee oe ar DS BEE emacs” 0 oat Se ee ee alge © Fah. Ae Be age ; a 5 a “Sena os SS a ee a a ee aa lan ee ae = SP ee ee ee IPS Eo Ae pee Strats Ce ee a ee er ee Se ee eae! ee\n\nFee eS ee. ener? 23° 1) = > Say Sein = oy ae an So ae OSE = tae ea Ba ee a a eS Sk, ee aa = ee aa eee ss mes RES: ax .* “7 = at : a 7 eee ie Ss Sa Sa Se - eS eS 2 Wei. ? : ; Bs RG. oa = teh, Ses Ae pe > a Seg eet = ES Pw. ae “Sy\n\nSo eS - Say, . : 7 RP ore Se a 5 een S} ete a =< s = ea a way aS a 4 => = = SS Po ae nS SS ee . ee Se a ee ay =: . FA <i = = =e ee: ee Sas * Son a pS ; i is . 3 °y a . a —~ ee ts <— 4 ~< ae? > BR pee eas ota: “SER Ber ee = oe = NE . 2, =a: 3 ara eS = > <g> eS. SS Soe > SS oe 5 eae a Se SSS See ee Ut ee ee =e Seco tenes) Se aS SS SS Sai. agg ae =~ =e eee ip awe oS 1312 ee 15° ee ao See ee > Se ne °) 22], a Se =\n\nee Ee g Babe aE = a ‘ s oS y NO . ad , ae . ¥ =~ Pa: + x] ‘ r ay us Tau 5 c , i f a ptr a — 4 r ea Fes¥ ‘. oe a # , e J A 4 Sf j 2 5 1 1 8 8 2 121 686 10 15 14.901077 J 5 1 1 8 8 3 397 684 83 23 21.912781 22a 4 1 1 8 9 0 11 706 469 27 -1 5 1 1 8 9 1 11 706 6 12 43.140827 ‘ 5 1 1 8 9 2 341 724 4 3 67.382126 ‘ 5 1 1 8 9 3 418 709 62 24 19.577942 Sy 4 1 1 8 10 0 0 731 472 33 -1 5 1 1 8 10 1 0 761 8 3 35.666641 a 5 1 1 8 10 2 122 731 13 25 32.512634 3 5 1 1 8 10 3 211 748 3 10 50.861835 i 5 1 1 8 10 4 450 735 22 15 35.053123 4 1 1 8 11 0 4 778 351 20 -1 5 1 1 8 11 1 4 778 26 20 23.881233 nd 5 1 1 8 11 2 352 779 3 2 0.000000 - 3 1 1 9 0 0 12 798 434 49 -1 4 1 1 9 1 0 12 798 434 49 -1 5 1 1 9 1 1 12 810 48 37 41.610542 a 5 1 1 9 1 2 184 807 18 26 39.083740 a 5 1 1 9 1 3 348 813 50 21 41.294922 Re: 5 1 1 9 1 4 414 798 32 27 13.295166 1s\n\n> ~<a ae has = rid \\ aA = ities ia in oO rie eS si 4 1 1 1 9 0 0 368 320 16 -1 5 1 1 1 9 1 0 371 10 6 0.000000 $ 5 1 1 1 9 2 61 369 43 12 13.479454 he. 5 1 1 1 9 3 158 373 14 10 74.163269 5 1 1 1 9 4 204 368 4 15 25.211472 Oe 5 1 1 1 9 5 262 379 17 5 23.743759 ae 5 1 1 1 9 6 317 380 3 2 47.159542 “ 4 1 1 1 10 0 0 357 381 75 -1 5 1 1 1 10 1 0 385 30 14 7.646973 —— 5 1 1 1 10 2 48 379 27 28 30.792404 ™ 5 1 1 1 10 3 102 372 68 41 8.449181 a, 5 1 1 1 10 4 167 379 31 40 45.908855 rt 5 1 1 1 10 5 220 357 82 61 5.156242 7c 5 1 1 1 10 6 310 408 4 3 0.000000 : 5 1 1 1 10 7 320 358 61 74 4.713409 ee 4 1 1 1 11 0 0 420 352 23 -1 5 1 1 1 11 1 0 436 21 2 92.368996 = 5 1 1 1 11 2 249 428 43 15 30.260277 we 5 1 1 1 11 3 343 420 9 5 17.172562 > 4 1 1 1 12 0 36 445 325 13 -1 5 1 1 1 12 1 36 450 29 8 62.045929 = 5 1 1 1 12 2 216 449 28 9 17.230423 a 5 1 1 1 12 3 338 445 23 12 44.973606 = 4 1 1 1 13 0 74 457 297 15 -1 5 1 1 1 13 1 74 460 30 7 23.661446 = 5 1 1 1 13 2 208 465 5 6 0.000000 : 5 1 1 1 13 3 274 460 2 2 30.068115 . 5 1 1 1 13 4 332 457 39 15 66.194626 wr 4 1 1 1 14 0 67 472 229 18 -1 5 1 1 1 14 1 67 474 40 16 18.745972 x 5 1 1 1 14 2 207 472 12 6 32.123596 sei 5 1 1 1 14 3 284 474 12 13 30.612625 ta 4 1 1 1 15 0 176 501 173 25 -1 5 1 1 1 15 1 176 517 60 9 20.326462 st 5 1 1 1 15 2 346 501 3 2 25.587395 2 4 1 1 1 16 0 67 533 141 15 -1 5 1 1 1 16 1 67 535 12 9 74.645828 a 5 1 1 1 16 2 189 533 19 15 88.178307 4 4 1 1 1 17 0 160 561 271 31 -1 5 1 1 1 17 1 160 568 5 4 91.638107 4 5 1 1 1 17 2 232 564 78 28 16.700836 ite 5 1 1 1 17 3 424 561 7 2 5.051804 ? 4 1 1 1 18 0 179 648 13 11 -1 5 1 1 1 18 1 179 648 13 11 38.274376 t 4 1 1 1 19 0 106 702 158 15 -1 5 1 1 1 19 1 106 711 3 4 6.906860 j 5 1 1 1 19 2 252 702 12 15 18.185341 %\n\nOy pie 3 eZ ene ey a EUS pe a iscsi am - (oo Nie = [a see “ee Fone, : Se eyes. Se ae i : Meteo oe eS ae - eo Se aR oor ge oe = ge ahs Pe ? FS ee Oe ee O° oyna Esp RS eae ar ea. a LP. Ags oS fo RS hte . > nh, <n 4 } Re that oh) Ee a7 i / = ik) ake ta aes i NO VRE SS ay eee SF Dp), er se eae jut ee pan sl eS hee =e 5 = —— 5 ne a RE ee ee ae ae eae Te Re ee Fae a = te Bahr 2 ee Siete a= Ga Pree 8S 8 ee . aaa Se ae ie\n\nMade eee SS POMRCRRE ET ios Vici) eee ake a, AR Sie Sieh ae 5 Sy Stes Son ty pitied foe a >) = > 2 e Bae vee ANan aL Ei. Sh ieee A aaa ee ange” (Vas i eo he NR es Se ee es es. Sh ia ee iN. caer aie ) f RK SA th Bae ee er aia re, = MES aes ee gee Sa aS SbF Bae en fy Bee we eis we, if De oe, A ee? ie) Se See aii ||) fae St ae Se eS oad yy 4 Sen PROS eo * <4 Pets i au erage Gig oer sre ree Se pont resi. big WS) ou ime aS = Ay ere a ~The ae eh: res 5 a - 3 Re es ae ee el ’ DEAN. Tata ak tae9 0°\" 5 RR Rr Ce SEP Py nth:\n\neee ete SNAG Pal os eae, Bera ise - , SE S- wy / =: i ‘ al Des a y ed os ‘ ft. 657% Re To 3 sig Ke ee 38 int a Rie See Sat acca a RDN aE ‘ag f a d 2 7 ‘ed si ee te Be Fiv oy SpE os TEINS 4 oe ES es . ‘ ME it ee ek Pais? dees ee ‘hws Spe Ta pe Ne. r no SIAN Ca RN ayy ae) ee ; a ae in: <p hie y a. i lee Ty 7S Te Pai"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 31.346939,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "empty-transcript",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Color-graded, desaturated video with no speech, posted by a Border Patrol chief. Footage includes a point-of-view shot from horseback as a mounted Border Patrol agent rides through open desert scrub at low light, another agent leaning on a fence rail in the brush, and an overhead aerial shot of agents on foot and on horseback gathered with a group of people on a grassy hillside. The aerial frame carries a compass heading and coordinate overlay and large red block text reading '13 ILLEGAL ALIENS ARRESTED.' The audio is a music bed. The tweet text describes the apprehension of 13 people in the Sonoran Desert near Nogales, one identified with cartel ties.  [0:05] Point-of-view shot from horseback riding through desert scrub toward a second mounted agent at low light, sepia color grade.  [0:20] Overhead aerial shot of agents on foot and horseback with a group of people on a grassy hillside; compass and coordinate overlay; red block text '13 ILLEGAL ALIENS ARRESTED.'",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 15406,
+        "retweets": 4188,
+        "quotes": 195,
+        "views": 243332
+      }
+    },
+    {
+      "id": "2020675877428736243:13_2020675699586019328",
+      "tweet_id": "2020675877428736243",
+      "posted_at": "2026-02-09T01:47:26.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "RapidResponse47",
+        "category": "core",
+        "label": "Rapid Response 47"
+      },
+      "tweet_url": "https://x.com/RapidResponse47/status/2020675877428736243",
+      "tweet_text": "They're people who love this country.\n\nThese are Immigration and Customs Enforcement Officers. https://t.co/9PyEua3ojV",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "medium",
+      "score": 84,
+      "creative_forms": [
+        "cinematic",
+        "montage"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:ICEgov",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "topic:immigration",
+        "topic:military",
+        "video:produced",
+        "video:short"
+      ],
+      "media": [
+        {
+          "media_id": "13_2020675699586019328",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2020675699586019328.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/f331480916d220de5fdba4115aef8c09650c90aed91b6c92c1f355cac2c28cd0.jpg",
+          "sha256": "f331480916d220de5fdba4115aef8c09650c90aed91b6c92c1f355cac2c28cd0",
+          "duration_sec": 29.733,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A produced montage with a warm cinematic color grade. Sampled frames include a silhouette of a child on an adult's shoulders waving an American flag in backlit evening light, and footage of an officer in a tactical vest marked 'POLICE ICE' walking a handcuffed person toward a vehicle in a residential setting, with the face blurred.  [0:04] A backlit silhouette of a child on an adult's shoulders waving an American flag beside a house.  [0:18] An officer in a 'POLICE ICE' vest escorts a handcuffed person toward a vehicle; the person's face is blurred.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 7,
+                "ok": 3
+              },
+              "complete_row_count": 10,
+              "text": "ae Ms rave aie oe ee ee rere = a ee OP i Wie Re it 4 4 re ha Se ra keer\n\n¥ 1 goek SS) yi ‘ i ”\n\n: ' = pe Se"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 29.781333,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 7,
+              "text": "Their friends and neighbors, sons, fathers, their little league coaches and veterans. They're people who love this country. These are immigration and customs enforcement officers. They are removing violent criminals from our streets and neighborhoods. It's dangerous and difficult work. But ICE has one mission to make America a safer place to live, and that's what they're doing. This is law enforcement. This is ICE."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A produced montage with a warm cinematic color grade. Sampled frames include a silhouette of a child on an adult's shoulders waving an American flag in backlit evening light, and footage of an officer in a tactical vest marked 'POLICE ICE' walking a handcuffed person toward a vehicle in a residential setting, with the face blurred.  [0:04] A backlit silhouette of a child on an adult's shoulders waving an American flag beside a house.  [0:18] An officer in a 'POLICE ICE' vest escorts a handcuffed person toward a vehicle; the person's face is blurred.",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 15651,
+        "retweets": 2964,
+        "quotes": 92,
+        "views": 569516
+      }
+    },
+    {
       "id": "2020896169958760824:13_2020675699586019328",
       "tweet_id": "2020896169958760824",
       "posted_at": "2026-02-09T16:22:48.000Z",
@@ -95413,6 +97050,134 @@
         "retweets": 2964,
         "quotes": 92,
         "views": 0
+      }
+    },
+    {
+      "id": "2040210633841320397:13_2040210565772308480",
+      "tweet_id": "2040210633841320397",
+      "posted_at": "2026-04-03T23:31:35.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "SecMullinDHS",
+        "category": "core",
+        "label": "Secretary Markwayne Mullin"
+      },
+      "tweet_url": "https://x.com/SecMullinDHS/status/2040210633841320397",
+      "tweet_text": "For 49 days, the Democrats have held our DHS employees hostage with their political theatre. It has to stop.\n\nGrateful for the leadership of @POTUS and the great men and women of @DHSgov working every day to keep Americans safe.\n\nWe’re continuing to fight for you. https://t.co/MhXG9GZ8iU",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "medium",
+      "score": 84,
+      "creative_forms": [
+        "music-led",
+        "text-overlay"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "agency:DHSgov",
+        "agency:ICEgov",
+        "agency:POTUS",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "policy:border",
+        "review:screened-video",
+        "theme:religion",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2040210565772308480",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-SecMullinDHS/13_2040210565772308480.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/7c317821ef464e31b300004bba75ff716ec3349d173b4f0a0f3efdda47224f11.jpg",
+          "sha256": "7c317821ef464e31b300004bba75ff716ec3349d173b4f0a0f3efdda47224f11",
+          "duration_sec": 52.466,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Vertical selfie-style video of the DHS Secretary, a bearded man in a white dress shirt with a clip-on microphone, speaking directly to camera in a wood-trimmed office with blue-grey walls, a window, a desk with a mug, and an upholstered chair. Burned-in caption subtitles run along the bottom of the frame (for example 'THEY'VE HELD EVERY' and 'SO MAY GOD'). The audio is him discussing the government shutdown, employees working without pay, and the President working to get DHS staff paid. No music bed.  [0:10] Bearded man in white shirt with lapel mic speaks to camera in a blue-walled wood-trimmed office; caption 'THEY'VE HELD EVERY.'  [0:40] Same speaker, caption 'SO MAY GOD,' near the end of the clip.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "f ~~) Bi q y A bea yp ¥ WK \\ [? P ; , mS i+) c i _- ty 5 1 1 1 8 2 214 690 118 16 0.000000 -\n\nys a \\ FULLY/ENGAGED f a a Lh A\n\nf ‘ — —— : . / : VGTO BE > —\n\n«q p 7 yume ts ‘SS , sae rd 4 S BUT FOR\n\nEAy = 4 Y ya <j We ss ) = J SFORHIS|POLITICAL —s/ e ._ “—— )\n\n\\ L Ot (\\ Ler ‘ 4 YOU/ARE}! y a ‘ —_ =? F > \\oa\n\n) \\j - . —i f w Af A= y FOURTOVED, = —— = & _—\n\ny h ‘ z : » ie A ine Sr e . e \\ J"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 52.523537,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 9,
+              "text": "Alright guys I'm finishing up week two but I'm spending the majority of my time working with members in the house and the senate and the White House and by the way the president is fully engaged trying to get our great employees at DHS paid. For some reason the Democrats and I'm not trying to be ugly I'm just being factual. They will not fund our Custom and Border Patrol agents or our ICE agents but for 45 days now they've held every employee here at DHS hostage for this political theater. It's got to stop. Please when I say this to this radical movement of the Democrat party you're literally putting the homeland at risk. You're putting my yard, your yard, your loved ones yard at risk but yet we're still playing this game. We're in the fight May God bless you, may God bless the employees here at DHS and may God bless the United States"
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Vertical selfie-style video of the DHS Secretary, a bearded man in a white dress shirt with a clip-on microphone, speaking directly to camera in a wood-trimmed office with blue-grey walls, a window, a desk with a mug, and an upholstered chair. Burned-in caption subtitles run along the bottom of the frame (for example 'THEY'VE HELD EVERY' and 'SO MAY GOD'). The audio is him discussing the government shutdown, employees working without pay, and the President working to get DHS staff paid. No music bed.  [0:10] Bearded man in white shirt with lapel mic speaks to camera in a blue-walled wood-trimmed office; caption 'THEY'VE HELD EVERY.'  [0:40] Same speaker, caption 'SO MAY GOD,' near the end of the clip.",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 15806,
+        "retweets": 2609,
+        "quotes": 0,
+        "views": 283353
       }
     },
     {
