@@ -1,29 +1,29 @@
 {
   "metadata": {
     "queue": "candidates",
-    "generated_at": "2026-06-16T22:42:57Z",
-    "source_commit": "7c031c6e",
-    "item_count": 96,
+    "generated_at": "2026-06-16T23:06:18Z",
+    "source_commit": "7cc8b516",
+    "item_count": 91,
     "source_candidate_count": 1046,
-    "not_ready_count": 144,
+    "not_ready_count": 155,
     "all_items_ready": true,
     "basis_counts": {
-      "real_footage_creative_use": 62,
+      "real_footage_creative_use": 57,
       "wholly_creative_media": 34
     },
     "top_accounts": {
       "DHSgov": 27,
       "ICEgov": 13,
       "USCIS": 12,
-      "RapidResponse47": 9,
+      "RapidResponse47": 8,
       "USDOL": 6,
       "WhiteHouse": 5,
-      "SecMullinDHS": 4,
-      "USBPChief": 4,
       "CBP": 4,
+      "USBPChief": 3,
       "USBPChiefEPT": 2,
       "OFOEAC": 2,
-      "POTUS": 2
+      "POTUS": 2,
+      "unlimited_ls": 1
     },
     "review_actions": [
       "yes",
@@ -173,149 +173,6 @@
       }
     },
     {
-      "id": "2044217468630049264:13_2044217154476879875",
-      "tweet_id": "2044217468630049264",
-      "posted_at": "2026-04-15T00:53:18.000Z",
-      "era": "2025_plus",
-      "queue": "candidates",
-      "account": {
-        "handle": "SecMullinDHS",
-        "category": "core",
-        "label": "Secretary Markwayne Mullin"
-      },
-      "tweet_url": "https://x.com/SecMullinDHS/status/2044217468630049264",
-      "tweet_text": "Yesterday, @ICEgov arrested some truly sick individuals. \n\nWe will not allow criminal illegal aliens to roam free and terrorize innocent Americans. https://t.co/ZL1acXAhFJ",
-      "review_state": "candidate",
-      "inclusion_basis": "real_footage_creative_use",
-      "confidence": "medium",
-      "score": 84,
-      "creative_forms": [
-        "music-led",
-        "text-overlay"
-      ],
-      "subjects": [
-        "detainees"
-      ],
-      "tags": [
-        "action:detention",
-        "agency:DHSgov",
-        "agency:ICEgov",
-        "audio:has-audio",
-        "country:Mexico",
-        "crime:assault",
-        "crime:burglary",
-        "crime:robbery",
-        "crime:weapon",
-        "format:statistics",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media-status:ocr-done",
-        "media-status:transcribed",
-        "media:video",
-        "origin:Mexico",
-        "review:screened-video",
-        "slogan:criminal-illegal-alien",
-        "slogan:illegal-alien",
-        "state:California",
-        "state:Maine",
-        "state:New-York",
-        "state:Texas",
-        "state:Washington",
-        "subject:enforcement-op",
-        "theme:criminal",
-        "theme:religion",
-        "topic:economy",
-        "topic:general",
-        "topic:immigration",
-        "video:medium",
-        "video:produced"
-      ],
-      "media": [
-        {
-          "media_id": "13_2044217154476879875",
-          "type": "video",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-SecMullinDHS/13_2044217154476879875.mp4",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/video/da26b428c6f83a340f83a2cdd99271cd7a8bd6293c38def29347fa3286bd1a5b.jpg",
-          "sha256": "da26b428c6f83a340f83a2cdd99271cd7a8bd6293c38def29347fa3286bd1a5b",
-          "duration_sec": 104.291,
-          "playable": true,
-          "readiness": {
-            "ready": true,
-            "blockers": [],
-            "checks": {
-              "archived": true,
-              "description": true,
-              "keyframes": true,
-              "keyframe_count": 5,
-              "thumbnail": true,
-              "ocr": true,
-              "audio_analysis": true,
-              "has_audio": true,
-              "transcript": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "opus-vision-review",
-              "text": "Vertical selfie-style video of the DHS Secretary in a wood-trimmed office with blue-grey walls, a mounted steer head and cowboy boots displayed on wall shelves behind him. He wears a white dress shirt with a clip-on microphone and speaks directly to camera, gesturing. Burned-in caption subtitles appear at the bottom (for example 'OUR ADVERSARIES ARE NOT BUT'). The audio is him describing his role overseeing the agencies under DHS and recent ICE arrests. No music bed.  [0:40] Bearded man in white shirt with lapel mic speaks to camera; mounted steer head and cowboy boots on shelves behind him; caption 'OUR ADVERSARIES ARE NOT BUT.'",
-              "sidecar_statuses": {
-                "manual-review": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {
-                "no-text": 5
-              },
-              "complete_row_count": 5,
-              "text": ""
-            },
-            "keyframes": {
-              "status": "ok",
-              "frame_count": 5
-            },
-            "audio": {
-              "status": "ok",
-              "audio_stream_count": 1,
-              "duration_sec": 104.350476,
-              "tags": [
-                "audio:has-audio"
-              ]
-            },
-            "transcript": {
-              "status": "ok",
-              "segment_count": 41,
-              "text": "All right, guys, as Secretary of DHS, I get to highlight the great work that all the 22 agencies that fall underneath my jurisdiction. Every single day we get up and we think how to keep my backyard safe and your backyard safe. How to keep Oklahoma safe, Washington, DC state, California safe, Florida, Maine, Massachusetts, New York, even though we're having a fight of crazy mayor there. We fight every single day to make sure that we keep present Trump's promise and that's to make America safe. And one of the agencies that seem like they constantly get a black eye because the media likes picking on is ICE. ICE is there, enforcing the policies that Congress passed. But I'll tell you, my job is to highlight the good work they're doing. I'm going to it's going to name four, four individuals and this is just a snapshot of the ones that were arrested just yesterday. This gentleman from Houston, Texas, enter the country illegally from Mexico, volunteer manslaughter, and burglary of a building, Cuba, pedophile, children from the ages of 12 to 16, arrested him yesterday and Florida, another one, Texas. A gentleman once again, illegal from Mexico, aggravated assault with a daily weapon, Grenada, robbery from Staten Island, New York. But that's just a few. There is a lot of individuals that ICE interact with every single day that have records that's worse than this. Present Trump's whole agenda is to make America's streets safe again. And we are out there every single day enforcing that. We want people to feel safe in your neighborhood again. Working with present Trump, working with local law enforcement, and having the ability to work with a great individuals here at Department of Homeland Security, we want to deliver on that promise. So God bless you, make God bless United States of America."
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": true,
-        "blockers": [],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "Vertical selfie-style video of the DHS Secretary in a wood-trimmed office with blue-grey walls, a mounted steer head and cowboy boots displayed on wall shelves behind him. He wears a white dress shirt with a clip-on microphone and speaks directly to camera, gesturing. Burned-in caption subtitles appear at the bottom (for example 'OUR ADVERSARIES ARE NOT BUT'). The audio is him describing his role overseeing the agencies under DHS and recent ICE arrests. No music bed.  [0:40] Bearded man in white shirt with lapel mic speaks to camera; mounted steer head and cowboy boots on shelves behind him; caption 'OUR ADVERSARIES ARE NOT BUT.'",
-        "notable_text": "",
-        "reasons": [
-          "real enforcement/detainee subject signal",
-          "creative treatment signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ]
-      },
-      "engagement": {
-        "likes": 24379,
-        "retweets": 3893,
-        "quotes": 0,
-        "views": 275593
-      }
-    },
-    {
       "id": "2016198016290439540:13_2016197384334680064",
       "tweet_id": "2016198016290439540",
       "posted_at": "2026-01-27T17:14:00.000Z",
@@ -439,132 +296,6 @@
         "retweets": 4874,
         "quotes": 0,
         "views": 549288
-      }
-    },
-    {
-      "id": "2047801337081889240:13_2047800141760086016",
-      "tweet_id": "2047801337081889240",
-      "posted_at": "2026-04-24T22:14:19.000Z",
-      "era": "2025_plus",
-      "queue": "candidates",
-      "account": {
-        "handle": "SecMullinDHS",
-        "category": "core",
-        "label": "Secretary Markwayne Mullin"
-      },
-      "tweet_url": "https://x.com/SecMullinDHS/status/2047801337081889240",
-      "tweet_text": "On Wednesday, Chuck Schumer told us why Democrats have kept @dhsgov shutdown: They have no respect for the law enforcement keeping our homeland safe. \n\nI will not tolerate the disrespect  of these heroes. Democrats must END this reckless DHS shutdown NOW. https://t.co/8l5aTXwSU1",
-      "review_state": "candidate",
-      "inclusion_basis": "real_footage_creative_use",
-      "confidence": "medium",
-      "score": 84,
-      "creative_forms": [
-        "music-led",
-        "text-overlay"
-      ],
-      "subjects": [
-        "arrest-or-raid"
-      ],
-      "tags": [
-        "agency:CBP",
-        "agency:DHSgov",
-        "agency:ICEgov",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media-status:ocr-done",
-        "media-status:transcribed",
-        "media:video",
-        "policy:border",
-        "review:screened-video",
-        "theme:religion",
-        "topic:immigration",
-        "video:medium",
-        "video:produced"
-      ],
-      "media": [
-        {
-          "media_id": "13_2047800141760086016",
-          "type": "video",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-SecMullinDHS/13_2047800141760086016.mp4",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/video/ecc24cc22019184b71478cbde6d1452baca78d4e7b872d9f71cc83cf3e9f68e0.jpg",
-          "sha256": "ecc24cc22019184b71478cbde6d1452baca78d4e7b872d9f71cc83cf3e9f68e0",
-          "duration_sec": 65.4,
-          "playable": true,
-          "readiness": {
-            "ready": true,
-            "blockers": [],
-            "checks": {
-              "archived": true,
-              "description": true,
-              "keyframes": true,
-              "keyframe_count": 5,
-              "thumbnail": true,
-              "ocr": true,
-              "audio_analysis": true,
-              "has_audio": true,
-              "transcript": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "opus-vision-review",
-              "text": "Vertical selfie-style video of the DHS Secretary, a bearded man in a white dress shirt, speaking directly to camera in a wood-trimmed office with blue-grey walls, a mounted steer head and cowboy boots on wall shelves. Burned-in caption subtitles run along the bottom of the frame. The audio is him discussing the ongoing government shutdown, then past 70 days, and remarks attributed to Senator Schumer about Border Patrol and ICE. No music bed.  [0:30] Bearded man in white shirt speaks to camera; mounted steer head and cowboy boots on shelves behind; burned-in caption subtitles at bottom.",
-              "sidecar_statuses": {
-                "manual-review": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {
-                "no-text": 5
-              },
-              "complete_row_count": 5,
-              "text": ""
-            },
-            "keyframes": {
-              "status": "ok",
-              "frame_count": 5
-            },
-            "audio": {
-              "status": "ok",
-              "audio_stream_count": 1,
-              "duration_sec": 65.457052,
-              "tags": [
-                "audio:has-audio"
-              ]
-            },
-            "transcript": {
-              "status": "ok",
-              "segment_count": 17,
-              "text": "All right guys, we're still in a shutdown and we have surpassed 70 days at this point. Why? Can somebody please explain to me? Well, Chuck Schumer did. To an agency that nobody to two, two groups, border patrol and ICE, that nobody respects in this country. In that ridiculous, I mean, literally who could say that you have no respect for law enforcement, especially those protecting our borders and getting these criminals off our streets? Why we are shut down, the Department of Homeland, our adversaries are not. But just Chuck Schumer care and no. He wants to play this political game. Why? Because he's afraid of his radical left base. Can't make sense of that. Now, I'll let her know. My parents came up and saw me for the first time in four years. Now, that's not that I haven't seen them in four years. I'm saying came up to Washington, D.C., and for the first time in four years. My parents got to meet President Trump. We got to show him around DHS headquarters. As the young is a seven, I think it's pretty cool to be able to share this experience with my parents. I'm still enjoying every single day getting to fight to protect our homeland. So, God bless you and God bless the United States of America."
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": true,
-        "blockers": [],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "Vertical selfie-style video of the DHS Secretary, a bearded man in a white dress shirt, speaking directly to camera in a wood-trimmed office with blue-grey walls, a mounted steer head and cowboy boots on wall shelves. Burned-in caption subtitles run along the bottom of the frame. The audio is him discussing the ongoing government shutdown, then past 70 days, and remarks attributed to Senator Schumer about Border Patrol and ICE. No music bed.  [0:30] Bearded man in white shirt speaks to camera; mounted steer head and cowboy boots on shelves behind; burned-in caption subtitles at bottom.",
-        "notable_text": "",
-        "reasons": [
-          "real enforcement/detainee subject signal",
-          "creative treatment signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ]
-      },
-      "engagement": {
-        "likes": 19740,
-        "retweets": 4487,
-        "quotes": 116,
-        "views": 215379
       }
     },
     {
@@ -692,262 +423,6 @@
       }
     },
     {
-      "id": "2050243966151336296:7_2050242833219485696",
-      "tweet_id": "2050243966151336296",
-      "posted_at": "2026-05-01T16:00:27.000Z",
-      "era": "2025_plus",
-      "queue": "candidates",
-      "account": {
-        "handle": "USBPChief",
-        "category": "core",
-        "label": "U.S. Border Patrol Chief"
-      },
-      "tweet_url": "https://x.com/USBPChief/status/2050243966151336296",
-      "tweet_text": "Agents from the Nogales Border Patrol Station apprehended 13 illegal aliens attempting to cross illegally in the remote Sonoran Desert. Among them, one Mexican national was identified as having ties to the Sinaloa Cartel.\n \nOur message is clear: If you cross illegally, you will be arrested, prosecuted, and deported. We remain committed to using every available resource to protect our nation’s borders.\n\n@USBPChiefTCA @WhiteHouse @DHSgov @CBP @CBPAMO",
-      "review_state": "candidate",
-      "inclusion_basis": "real_footage_creative_use",
-      "confidence": "medium",
-      "score": 84,
-      "creative_forms": [
-        "cinematic",
-        "music-led"
-      ],
-      "subjects": [
-        "detainees",
-        "arrest-or-raid"
-      ],
-      "tags": [
-        "action:deportation",
-        "action:detention",
-        "agency:CBP",
-        "agency:DHSgov",
-        "agency:WhiteHouse",
-        "audio:has-audio",
-        "country:Mexico",
-        "format:statistics",
-        "legal:criminal-prosecution",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media-status:ocr-done",
-        "media:video",
-        "origin:Mexico",
-        "policy:border",
-        "review:produced-video",
-        "review:screened-video",
-        "slogan:illegal-alien",
-        "subject:enforcement-op",
-        "theme:criminal",
-        "topic:immigration",
-        "video:medium",
-        "video:produced"
-      ],
-      "media": [
-        {
-          "media_id": "7_2050242833219485696",
-          "type": "video",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/7_2050242833219485696.mp4",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/video/065a1902032dceea0ab192c1a0aca0b7e7c3ce09a3e07e8cddade00e43ee7f32.jpg",
-          "sha256": "065a1902032dceea0ab192c1a0aca0b7e7c3ce09a3e07e8cddade00e43ee7f32",
-          "duration_sec": 31.28,
-          "playable": true,
-          "readiness": {
-            "ready": true,
-            "blockers": [],
-            "checks": {
-              "archived": true,
-              "description": true,
-              "keyframes": true,
-              "keyframe_count": 5,
-              "thumbnail": true,
-              "ocr": true,
-              "audio_analysis": true,
-              "has_audio": true,
-              "transcript": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "opus-vision-review",
-              "text": "Color-graded, desaturated video with no speech, posted by a Border Patrol chief. Footage includes a point-of-view shot from horseback as a mounted Border Patrol agent rides through open desert scrub at low light, another agent leaning on a fence rail in the brush, and an overhead aerial shot of agents on foot and on horseback gathered with a group of people on a grassy hillside. The aerial frame carries a compass heading and coordinate overlay and large red block text reading '13 ILLEGAL ALIENS ARRESTED.' The audio is a music bed. The tweet text describes the apprehension of 13 people in the Sonoran Desert near Nogales, one identified with cartel ties.  [0:05] Point-of-view shot from horseback riding through desert scrub toward a second mounted agent at low light, sepia color grade.  [0:20] Overhead aerial shot of agents on foot and horseback with a group of people on a grassy hillside; compass and coordinate overlay; red block text '13 ILLEGAL ALIENS ARRESTED.'",
-              "sidecar_statuses": {
-                "manual-review": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {
-                "no-text": 5
-              },
-              "complete_row_count": 5,
-              "text": ""
-            },
-            "keyframes": {
-              "status": "ok",
-              "frame_count": 5
-            },
-            "audio": {
-              "status": "ok",
-              "audio_stream_count": 1,
-              "duration_sec": 31.346939,
-              "tags": [
-                "audio:has-audio"
-              ]
-            },
-            "transcript": {
-              "status": "empty-transcript",
-              "segment_count": 0,
-              "text": ""
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": true,
-        "blockers": [],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "Color-graded, desaturated video with no speech, posted by a Border Patrol chief. Footage includes a point-of-view shot from horseback as a mounted Border Patrol agent rides through open desert scrub at low light, another agent leaning on a fence rail in the brush, and an overhead aerial shot of agents on foot and on horseback gathered with a group of people on a grassy hillside. The aerial frame carries a compass heading and coordinate overlay and large red block text reading '13 ILLEGAL ALIENS ARRESTED.' The audio is a music bed. The tweet text describes the apprehension of 13 people in the Sonoran Desert near Nogales, one identified with cartel ties.  [0:05] Point-of-view shot from horseback riding through desert scrub toward a second mounted agent at low light, sepia color grade.  [0:20] Overhead aerial shot of agents on foot and horseback with a group of people on a grassy hillside; compass and coordinate overlay; red block text '13 ILLEGAL ALIENS ARRESTED.'",
-        "notable_text": "",
-        "reasons": [
-          "real enforcement/detainee subject signal",
-          "creative treatment signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ]
-      },
-      "engagement": {
-        "likes": 15406,
-        "retweets": 4188,
-        "quotes": 195,
-        "views": 243332
-      }
-    },
-    {
-      "id": "2020675877428736243:13_2020675699586019328",
-      "tweet_id": "2020675877428736243",
-      "posted_at": "2026-02-09T01:47:26.000Z",
-      "era": "2025_plus",
-      "queue": "candidates",
-      "account": {
-        "handle": "RapidResponse47",
-        "category": "core",
-        "label": "Rapid Response 47"
-      },
-      "tweet_url": "https://x.com/RapidResponse47/status/2020675877428736243",
-      "tweet_text": "They're people who love this country.\n\nThese are Immigration and Customs Enforcement Officers. https://t.co/9PyEua3ojV",
-      "review_state": "candidate",
-      "inclusion_basis": "real_footage_creative_use",
-      "confidence": "medium",
-      "score": 84,
-      "creative_forms": [
-        "cinematic",
-        "montage"
-      ],
-      "subjects": [],
-      "tags": [
-        "agency:ICEgov",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media-status:ocr-done",
-        "media-status:transcribed",
-        "media:video",
-        "review:screened-video",
-        "topic:immigration",
-        "topic:military",
-        "video:produced",
-        "video:short"
-      ],
-      "media": [
-        {
-          "media_id": "13_2020675699586019328",
-          "type": "video",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2020675699586019328.mp4",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/video/f331480916d220de5fdba4115aef8c09650c90aed91b6c92c1f355cac2c28cd0.jpg",
-          "sha256": "f331480916d220de5fdba4115aef8c09650c90aed91b6c92c1f355cac2c28cd0",
-          "duration_sec": 29.733,
-          "playable": true,
-          "readiness": {
-            "ready": true,
-            "blockers": [],
-            "checks": {
-              "archived": true,
-              "description": true,
-              "keyframes": true,
-              "keyframe_count": 5,
-              "thumbnail": true,
-              "ocr": true,
-              "audio_analysis": true,
-              "has_audio": true,
-              "transcript": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "opus-vision-review",
-              "text": "A produced montage with a warm cinematic color grade. Sampled frames include a silhouette of a child on an adult's shoulders waving an American flag in backlit evening light, and footage of an officer in a tactical vest marked 'POLICE ICE' walking a handcuffed person toward a vehicle in a residential setting, with the face blurred.  [0:04] A backlit silhouette of a child on an adult's shoulders waving an American flag beside a house.  [0:18] An officer in a 'POLICE ICE' vest escorts a handcuffed person toward a vehicle; the person's face is blurred.",
-              "sidecar_statuses": {
-                "manual-review": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {
-                "no-text": 5
-              },
-              "complete_row_count": 5,
-              "text": ""
-            },
-            "keyframes": {
-              "status": "ok",
-              "frame_count": 5
-            },
-            "audio": {
-              "status": "ok",
-              "audio_stream_count": 1,
-              "duration_sec": 29.781333,
-              "tags": [
-                "audio:has-audio"
-              ]
-            },
-            "transcript": {
-              "status": "ok",
-              "segment_count": 7,
-              "text": "Their friends and neighbors, sons, fathers, their little league coaches and veterans. They're people who love this country. These are immigration and customs enforcement officers. They are removing violent criminals from our streets and neighborhoods. It's dangerous and difficult work. But ICE has one mission to make America a safer place to live, and that's what they're doing. This is law enforcement. This is ICE."
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": true,
-        "blockers": [],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "A produced montage with a warm cinematic color grade. Sampled frames include a silhouette of a child on an adult's shoulders waving an American flag in backlit evening light, and footage of an officer in a tactical vest marked 'POLICE ICE' walking a handcuffed person toward a vehicle in a residential setting, with the face blurred.  [0:04] A backlit silhouette of a child on an adult's shoulders waving an American flag beside a house.  [0:18] An officer in a 'POLICE ICE' vest escorts a handcuffed person toward a vehicle; the person's face is blurred.",
-        "notable_text": "",
-        "reasons": [
-          "real enforcement/detainee subject signal",
-          "creative treatment signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ]
-      },
-      "engagement": {
-        "likes": 15651,
-        "retweets": 2964,
-        "quotes": 92,
-        "views": 569516
-      }
-    },
-    {
       "id": "2020896169958760824:13_2020675699586019328",
       "tweet_id": "2020896169958760824",
       "posted_at": "2026-02-09T16:22:48.000Z",
@@ -1068,133 +543,6 @@
         "retweets": 2964,
         "quotes": 92,
         "views": 0
-      }
-    },
-    {
-      "id": "2040210633841320397:13_2040210565772308480",
-      "tweet_id": "2040210633841320397",
-      "posted_at": "2026-04-03T23:31:35.000Z",
-      "era": "2025_plus",
-      "queue": "candidates",
-      "account": {
-        "handle": "SecMullinDHS",
-        "category": "core",
-        "label": "Secretary Markwayne Mullin"
-      },
-      "tweet_url": "https://x.com/SecMullinDHS/status/2040210633841320397",
-      "tweet_text": "For 49 days, the Democrats have held our DHS employees hostage with their political theatre. It has to stop.\n\nGrateful for the leadership of @POTUS and the great men and women of @DHSgov working every day to keep Americans safe.\n\nWe’re continuing to fight for you. https://t.co/MhXG9GZ8iU",
-      "review_state": "candidate",
-      "inclusion_basis": "real_footage_creative_use",
-      "confidence": "medium",
-      "score": 84,
-      "creative_forms": [
-        "music-led",
-        "text-overlay"
-      ],
-      "subjects": [
-        "arrest-or-raid"
-      ],
-      "tags": [
-        "agency:CBP",
-        "agency:DHSgov",
-        "agency:ICEgov",
-        "agency:POTUS",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media-status:ocr-done",
-        "media-status:transcribed",
-        "media:video",
-        "policy:border",
-        "review:screened-video",
-        "theme:religion",
-        "topic:immigration",
-        "video:medium",
-        "video:produced"
-      ],
-      "media": [
-        {
-          "media_id": "13_2040210565772308480",
-          "type": "video",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-SecMullinDHS/13_2040210565772308480.mp4",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/video/7c317821ef464e31b300004bba75ff716ec3349d173b4f0a0f3efdda47224f11.jpg",
-          "sha256": "7c317821ef464e31b300004bba75ff716ec3349d173b4f0a0f3efdda47224f11",
-          "duration_sec": 52.466,
-          "playable": true,
-          "readiness": {
-            "ready": true,
-            "blockers": [],
-            "checks": {
-              "archived": true,
-              "description": true,
-              "keyframes": true,
-              "keyframe_count": 5,
-              "thumbnail": true,
-              "ocr": true,
-              "audio_analysis": true,
-              "has_audio": true,
-              "transcript": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "opus-vision-review",
-              "text": "Vertical selfie-style video of the DHS Secretary, a bearded man in a white dress shirt with a clip-on microphone, speaking directly to camera in a wood-trimmed office with blue-grey walls, a window, a desk with a mug, and an upholstered chair. Burned-in caption subtitles run along the bottom of the frame (for example 'THEY'VE HELD EVERY' and 'SO MAY GOD'). The audio is him discussing the government shutdown, employees working without pay, and the President working to get DHS staff paid. No music bed.  [0:10] Bearded man in white shirt with lapel mic speaks to camera in a blue-walled wood-trimmed office; caption 'THEY'VE HELD EVERY.'  [0:40] Same speaker, caption 'SO MAY GOD,' near the end of the clip.",
-              "sidecar_statuses": {
-                "manual-review": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {
-                "no-text": 5
-              },
-              "complete_row_count": 5,
-              "text": ""
-            },
-            "keyframes": {
-              "status": "ok",
-              "frame_count": 5
-            },
-            "audio": {
-              "status": "ok",
-              "audio_stream_count": 1,
-              "duration_sec": 52.523537,
-              "tags": [
-                "audio:has-audio"
-              ]
-            },
-            "transcript": {
-              "status": "ok",
-              "segment_count": 9,
-              "text": "Alright guys I'm finishing up week two but I'm spending the majority of my time working with members in the house and the senate and the White House and by the way the president is fully engaged trying to get our great employees at DHS paid. For some reason the Democrats and I'm not trying to be ugly I'm just being factual. They will not fund our Custom and Border Patrol agents or our ICE agents but for 45 days now they've held every employee here at DHS hostage for this political theater. It's got to stop. Please when I say this to this radical movement of the Democrat party you're literally putting the homeland at risk. You're putting my yard, your yard, your loved ones yard at risk but yet we're still playing this game. We're in the fight May God bless you, may God bless the employees here at DHS and may God bless the United States"
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": true,
-        "blockers": [],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "Vertical selfie-style video of the DHS Secretary, a bearded man in a white dress shirt with a clip-on microphone, speaking directly to camera in a wood-trimmed office with blue-grey walls, a window, a desk with a mug, and an upholstered chair. Burned-in caption subtitles run along the bottom of the frame (for example 'THEY'VE HELD EVERY' and 'SO MAY GOD'). The audio is him discussing the government shutdown, employees working without pay, and the President working to get DHS staff paid. No music bed.  [0:10] Bearded man in white shirt with lapel mic speaks to camera in a blue-walled wood-trimmed office; caption 'THEY'VE HELD EVERY.'  [0:40] Same speaker, caption 'SO MAY GOD,' near the end of the clip.",
-        "notable_text": "",
-        "reasons": [
-          "real enforcement/detainee subject signal",
-          "creative treatment signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ]
-      },
-      "engagement": {
-        "likes": 15806,
-        "retweets": 2609,
-        "quotes": 0,
-        "views": 283353
       }
     },
     {
@@ -8283,7 +7631,7 @@
               "archived": true,
               "description": true,
               "keyframes": true,
-              "keyframe_count": 5,
+              "keyframe_count": 8,
               "thumbnail": true,
               "ocr": true,
               "audio_analysis": true,
@@ -8301,14 +7649,15 @@
             },
             "ocr": {
               "status_counts": {
-                "no-text": 5
+                "no-text": 5,
+                "ok": 8
               },
-              "complete_row_count": 5,
-              "text": ""
+              "complete_row_count": 13,
+              "text": "rT aS . =, ‘ 4 ' Vr\n\nee aS Y ae ry oF = SOT ee Be pat P| @\n\nai j ; q \\ A r ¢ yt Ps)\n\nyy UH me re s8.) oe\n\n’ { Ls @ ‘ ’ &»\n\n: it , oe . . er Ta i pp nm 4\n\n— inet it seared Pia Ss - Sasol Noe ed ee ieee @ukR tee eng Tees, ghana ae & Maeetyeng of a ail cen Seki OS ee Bie eR ge lie ag On ain eg Ey cage Cee ea mee ate Agee = Nas Fa 20 poe nee or Bae, Se ie abe 3 a ee A ete ea te eee es\n\nne oe"
             },
             "keyframes": {
               "status": "ok",
-              "frame_count": 5
+              "frame_count": 8
             },
             "audio": {
               "status": "ok",

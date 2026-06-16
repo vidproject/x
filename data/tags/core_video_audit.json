@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-06-16T22:37:55Z",
+  "generated_at": "2026-06-16T23:06:09Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -56,57 +56,57 @@
     "bucket_counts": {
       "genre-experiment": 105,
       "missing-media": 9,
-      "needs-recognition": 1560,
-      "ordinary-video": 1071,
-      "produced-video": 914
+      "needs-recognition": 1550,
+      "ordinary-video": 1076,
+      "produced-video": 919
     },
     "top_tags": {
       "media-status:archived": 3650,
       "media:video": 3616,
-      "audio:has-audio": 3007,
-      "topic:immigration": 2910,
+      "audio:has-audio": 3018,
+      "topic:immigration": 2914,
       "media-status:needs-vision": 2903,
       "video:medium": 2322,
       "video:short": 882,
-      "video:produced": 838,
+      "video:produced": 842,
       "media-status:described": 748,
       "topic:economy": 714,
       "agency:DHSgov": 709,
       "agency:POTUS": 688,
       "topic:military": 628,
-      "agency:ICEgov": 542,
-      "topic:general": 477,
-      "theme:criminal": 477,
-      "agency:CBP": 474,
-      "video:news-clip": 433,
-      "policy:border": 424,
+      "agency:ICEgov": 545,
+      "topic:general": 480,
+      "theme:criminal": 479,
+      "agency:CBP": 475,
+      "video:news-clip": 436,
+      "policy:border": 425,
       "video:long": 423,
       "slogan:illegal-alien": 419,
-      "video:text-overlay": 415,
-      "video:speech": 383,
-      "action:detention": 355,
-      "genre:advertisement": 342,
+      "video:text-overlay": 416,
+      "video:speech": 384,
+      "action:detention": 356,
+      "genre:advertisement": 347,
       "video:interview": 324,
-      "speaker:President Trump": 306,
+      "speaker:President Trump": 307,
       "military:coast-guard": 300,
-      "action:deportation": 283,
+      "action:deportation": 286,
       "agency:USCG": 265,
-      "legal:criminal-prosecution": 236,
-      "subject:enforcement-op": 230,
+      "legal:criminal-prosecution": 237,
+      "subject:enforcement-op": 231,
       "genre:psa": 214,
-      "crime:homicide": 189,
+      "crime:homicide": 190,
       "slogan:criminal-illegal-alien": 180,
       "format:quote": 178,
-      "crime:murder": 176,
-      "theme:religion": 172,
-      "genre:recruitment": 156,
+      "crime:murder": 177,
+      "theme:religion": 175,
+      "genre:recruitment": 158,
       "theme:martyrdom": 150,
       "video:montage": 147,
       "crime:fraud": 141,
       "theme:directive": 127,
-      "agency:USCIS": 124,
+      "agency:USCIS": 125,
       "phrase:immigrant": 119,
-      "crime:weapon": 116,
+      "crime:weapon": 117,
       "crime:narcotics": 114,
       "crime:assault": 112,
       "video:voiceover": 111,
@@ -116,8 +116,8 @@
       "archive-media": 9,
       "assign-produced-video-genre": 96,
       "describe-with-vision": 9,
-      "detect-audio": 537,
-      "extract-keyframes": 539,
+      "detect-audio": 526,
+      "extract-keyframes": 528,
       "transcribe-audio": 1209
     }
   },
@@ -4210,6 +4210,7 @@
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
+        "slogan:mass-deportation",
         "speaker:Secretary Mullin",
         "topic:economy",
         "topic:immigration",
@@ -4232,8 +4233,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A clip from a cable-news program shown as a split screen. On the left an anchor in a dark suit sits at a city-skyline desk; on the right a bearded man in a dark suit speaks via remote, seated in front of an American flag and a Department of Homeland Security backdrop. A lower-third chyron reads 'DHS SECRETARY MULLIN JOINS ROB SCHMITT TONIGHT', and a later frame names him 'SEC. MARKWAYNE MULLIN, SECRETARY OF HOMELAND SECURITY'. | A clip from a cable-news program shown as a split screen. On the left an anchor in a dark suit sits at a city-skyline desk; on the right a bearded man in a dark suit speaks via remote, seated in front of an American flag and a Department of Homeland Security backdrop. A lower-third chyron reads 'DHS SECRETARY MULLIN JOINS ROB SCHMITT TONIGHT', and a later frame names him 'SEC. MARKWAYNE MULLIN, SECRETARY OF HOMELAND SECURITY'.  [0:09] Split screen: an anchor at left, a remote guest at right before a flag and DHS backdrop; chyron 'DHS SECRETARY MULLIN JOINS ROB SCHMITT TONIGHT'.  [0:47] Full frame on the remote guest speaking; lower-third 'SEC. MARKWAYNE MULLIN, SECRETARY OF HOMELAND SECURITY'. | I've made this very clear when we were moving forward with my "
+      "has_ocr": true,
+      "description": "A clip from a cable-news program shown as a split screen. On the left an anchor in a dark suit sits at a city-skyline desk; on the right a bearded man in a dark suit speaks via remote, seated in front of an American flag and a Department of Homeland Security backdrop. A lower-third chyron reads 'DHS SECRETARY MULLIN JOINS ROB SCHMITT TONIGHT', and a later frame names him 'SEC. MARKWAYNE MULLIN, SECRETARY OF HOMELAND SECURITY'. | A clip from a cable-news program shown as a split screen. On the left an anchor in a dark suit sits at a city-skyline desk; on the right a bearded man in a dark suit speaks via remote, seated in front of an American flag and a Department of Homeland Security backdrop. A lower-third chyron reads 'DHS SECRETARY MULLIN JOINS ROB SCHMITT TONIGHT', and a later frame names him 'SEC. MARKWAYNE MULLIN, SECRETARY OF HOMELAND SECURITY'.  [0:09] Split screen: an anchor at left, a remote guest at right before a flag and DHS backdrop; chyron 'DHS SECRETARY MULLIN JOINS ROB SCHMITT TONIGHT'.  [0:47] Full frame on the remote guest speaking; lower-third 'SEC. MARKWAYNE MULLIN, SECRETARY OF HOMELAND SECURITY'. | KK a4 x @: ** «4 A OG KK 4 4 * iy Kx @ </ Ms X ia SEC. MARKWAY"
     },
     {
       "tweet_id": "2052065008889073999",
@@ -4529,7 +4530,7 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
+      "has_ocr": true,
       "description": "POTUS retweet of the WhiteHouse video: a color graded, letterboxed montage set to music with teal and amber tones and lens flares. A motorcade moves past the Washington Monument at golden hour, then the video cuts to construction workers in hard hats and work shirts lined up by a 'MID-AMERICA' trailer (Atoka, OK). Trump walks the line in a long coat and stands with the workers, who give thumbs-up and are smiling. It ends on a black title card. | POTUS retweet of the WhiteHouse video: a color graded, letterboxed montage set to music with teal and amber tones and lens flares. A motorcade moves past the Washington Monument at golden hour, then the video cuts to construction workers in hard hats and work shirts lined up by a 'MID-AMERICA' trailer (Atoka, OK). Trump walks the line in a long coat and stands with the workers, who give thumbs-up and are smiling. It ends on a black title card.  [0:04] Wide shot with a teal and amber grade and a lens flare: a black SUV motorcade rolls across an open plaza with the Washington Monument behind it at golden hour. Music, no speech.  [0:13] Cut to a dimly lit line of bearded construction workers in hard hats and work shirts, standing shoulder to s"
     },
     {
@@ -4622,7 +4623,7 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
+      "has_ocr": true,
       "description": "POTUS retweet of a WhiteHouse clip: a short trailer-style edit set to music for a UFC 'FIGHT NIGHT' on the White House South Lawn for America's 250th. It intercuts black title cards in thin serif type ('PRESIDENT DONALD T...', 'THE WHITE HOUSE') with two muscular UFC fighters in suits facing off on the South Lawn before the White House, plus close-up shots of a UFC 'FREEDOM 250' belt and program with stars and stripes. There is no dialogue; the audio is a music bed. | POTUS retweet of a WhiteHouse clip: a short trailer-style edit set to music for a UFC 'FIGHT NIGHT' on the White House South Lawn for America's 250th. It intercuts black title cards in thin serif type ('PRESIDENT DONALD T...', 'THE WHITE HOUSE') with two muscular UFC fighters in suits facing off on the South Lawn before the White House, plus close-up shots of a UFC 'FREEDOM 250' belt and program with stars and stripes. There is no dialogue; the audio is a music bed.  [0:01] Black screen with thin-serif title text resolving (reads 'President Donald T...'), cold open over music.  [0:04] Two muscular UFC fighters in fitted suits (navy and tan) stand side by side on the South Lawn, White House behind them, looking off-cam"
     },
     {
@@ -4865,7 +4866,7 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
+      "has_ocr": true,
       "description": "POTUS retweet of the same media as the White House post: a video of Trump's Beijing arrival set to music with no speech. It shows a wide floodlit Great Hall of the People, a slow shot of the Chinese flag at night, shallow-focus crowds waving US and Chinese flags, the Air Force One fuselage, and a White House line drawing title card reading 'PRESIDENT DONALD J. TRUMP'. | POTUS retweet of the same media as the White House post: a video of Trump's Beijing arrival set to music with no speech. It shows a wide floodlit Great Hall of the People, a slow shot of the Chinese flag at night, shallow-focus crowds waving US and Chinese flags, the Air Force One fuselage, and a White House line drawing title card reading 'PRESIDENT DONALD J. TRUMP'.  [0:03] Wide establishing shot of the Great Hall of the People at night, floodlit white facade with red Chinese flags and the national emblem lit above the entrance; press, onlookers, and a dark motorcade in silhouette in the foreground. Music, no speech.  [0:09] Slow low-angle shot of a single red Chinese flag with gold stars rippling on a pole against a deep black night sky.  [0:15] Shallow-focus shot from behind rows of greeters in light blue and wh"
     },
     {
@@ -5087,6 +5088,7 @@
         "audio:music-likely",
         "country:China",
         "format:retweet",
+        "genre:advertisement",
         "genre:music-video",
         "media-status:archived",
         "media-status:described",
@@ -5102,6 +5104,7 @@
         "video:text-overlay"
       ],
       "genre_tags": [
+        "genre:advertisement",
         "genre:music-video"
       ],
       "produced_video_tags": [
@@ -5115,7 +5118,7 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
+      "has_ocr": true,
       "description": "POTUS retweet of the WhiteHouse video: a montage of Trump's visit to China's Temple of Heaven, set to music with no speech (transcript: 'Music'). It shows low-angle shots of the architecture, a backlit shot through a doorway of Trump, Xi and Melania, a slow-motion close-up of feet crossing the courtyard, painted ceilings, and a slow-motion wide shot with white lower-third name text. | POTUS retweet of the WhiteHouse video: a montage of Trump's visit to China's Temple of Heaven, set to music with no speech (transcript: 'Music'). It shows low-angle shots of the architecture, a backlit shot through a doorway of Trump, Xi and Melania, a slow-motion close-up of feet crossing the courtyard, painted ceilings, and a slow-motion wide shot with white lower-third name text.  [0:04] Low-angle shot of the blue and gold tiered roof of the Temple of Heaven against an overcast sky, color graded cool. Music only.  [0:13] Backlit shot framed through a dark temple doorway: Trump, Xi Jinping and Melania (with aides) walk toward the camera out of the bright courtyard beyond.  [0:21] Slow-motion ground-level close-up of the delegation's feet and legs walking across the worn stone courtyard, sunlight on "
     },
     {
@@ -5907,6 +5910,7 @@
       "bucket": "produced-video",
       "priority": 98,
       "tags": [
+        "agency:USCIS",
         "audio:has-audio",
         "media-status:archived",
         "media-status:needs-vision",
@@ -5933,7 +5937,7 @@
       "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "A produced montage of patriotic American imagery. Sampled frames include a reproduction of the painting of George Washington crossing the Delaware River with a flag, and vintage color footage of a large industrial assembly line with rows of early automobiles and workers. The clip is composed of historical art and archival film. | A produced montage of patriotic American imagery. Sampled frames include a reproduction of the painting of George Washington crossing the Delaware River with a flag, and vintage color footage of a large industrial assembly line with rows of early automobiles and workers. The clip is composed of historical art and archival film.  [0:08] A reproduction of the painting of George Washington crossing the icy Delaware River in a boat with a flag.  [0:24] Vintage color footage of a long factory assembly line with rows of early automobiles and workers. | The United States of America is your country, a nation exists to serve its citizens. From this day forward, a new vision will govern our land. It's going to be only America first. At the bedrock of our politics will be a total allegiance to the United States of America. And through our loyalty to our country, we w"
+      "description": "A produced montage of patriotic American imagery. Sampled frames include a reproduction of the painting of George Washington crossing the Delaware River with a flag, and vintage color footage of a large industrial assembly line with rows of early automobiles and workers. The clip is composed of historical art and archival film. | A produced montage of patriotic American imagery. Sampled frames include a reproduction of the painting of George Washington crossing the Delaware River with a flag, and vintage color footage of a large industrial assembly line with rows of early automobiles and workers. The clip is composed of historical art and archival film.  [0:08] A reproduction of the painting of George Washington crossing the icy Delaware River in a boat with a flag.  [0:24] Vintage color footage of a long factory assembly line with rows of early automobiles and workers. | pa | ; Mette | . : 4 bi ¥ oma ge o . ee OR 2 « ‘ ea, iB : Y as ; uf sede - | —-, B07 WE ee a ce . | ha! | eS BRT fee —_— 4 Ame. at. ’ a 5 1 1 1 3 6 458 169 9 12 10.810699 : 4 1 1 1 4 0 0 190 423 80 -1 5 1 1 1 4 1 0 232 78 38 25.934128 5 1 1 1 4 2 174 190 55 80 53.057293 ‘rt 5 1 1 1 4 3 283 202 140 61 47.377380 ae "
     },
     {
       "tweet_id": "1974104829917270499",
@@ -6208,7 +6212,7 @@
       "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "A vertical stylized clip, posted by the account, with a desaturated, high-contrast treatment and the burned-in caption 'WE WILL NOT BE STOPPED'. The sampled frames show a man in a green tactical uniform and body armor with his arm raised amid a crowd, a close shot of his face, and another close shot of a man in a tactical helmet and a vest with a 'BORDER PATROL FEDERAL AGENT' marking and a badge. The clip cuts between close action shots. | A vertical stylized clip, posted by the account, with a desaturated, high-contrast treatment and the burned-in caption 'WE WILL NOT BE STOPPED'. The sampled frames show a man in a green tactical uniform and body armor with his arm raised amid a crowd, a close shot of his face, and another close shot of a man in a tactical helmet and a vest with a 'BORDER PATROL FEDERAL AGENT' marking and a badge. The clip cuts between close action shots.  [0:02] A man in a green tactical uniform and body armor raises his arm amid a crowd; caption 'WE WILL NOT BE STOPPED'.  [0:14] A close shot of the man's face under the same caption.  [0:25] A close shot of a man in a tactical helmet and a vest marked 'BORDER PATROL FEDERAL AGENT' with a badge."
+      "description": "A vertical stylized clip, posted by the account, with a desaturated, high-contrast treatment and the burned-in caption 'WE WILL NOT BE STOPPED'. The sampled frames show a man in a green tactical uniform and body armor with his arm raised amid a crowd, a close shot of his face, and another close shot of a man in a tactical helmet and a vest with a 'BORDER PATROL FEDERAL AGENT' marking and a badge. The clip cuts between close action shots. | A vertical stylized clip, posted by the account, with a desaturated, high-contrast treatment and the burned-in caption 'WE WILL NOT BE STOPPED'. The sampled frames show a man in a green tactical uniform and body armor with his arm raised amid a crowd, a close shot of his face, and another close shot of a man in a tactical helmet and a vest with a 'BORDER PATROL FEDERAL AGENT' marking and a badge. The clip cuts between close action shots.  [0:02] A man in a green tactical uniform and body armor raises his arm amid a crowd; caption 'WE WILL NOT BE STOPPED'.  [0:14] A close shot of the man's face under the same caption.  [0:25] A close shot of a man in a tactical helmet and a vest marked 'BORDER PATROL FEDERAL AGENT' with a badge. | — e Fi . A iE i "
     },
     {
       "tweet_id": "1984297138457641215",
@@ -6442,7 +6446,7 @@
       "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "A Thanksgiving-themed produced montage. Sampled frames include vintage color footage of a family seated at a holiday dinner table with a roast turkey, and a recent clip of people gathered at a formal indoor dinner event with a man seated at center amid floral centerpieces. The clip mixes archival and recent footage. | A Thanksgiving-themed produced montage. Sampled frames include vintage color footage of a family seated at a holiday dinner table with a roast turkey, and a recent clip of people gathered at a formal indoor dinner event with a man seated at center amid floral centerpieces. The clip mixes archival and recent footage.  [0:16] Vintage color footage of a man and woman at a set holiday dinner table with a roast turkey and dishware.  [0:44] A recent clip of a formal indoor dinner with a man seated among guests and floral centerpieces. | to offer a prayer of thanksgiving for blessings we've known through the year to join hands and thank the Creator and now and thanksgiving is due and this year when I count my blessings I'm thanking the Lord who made you"
+      "description": "A Thanksgiving-themed produced montage. Sampled frames include vintage color footage of a family seated at a holiday dinner table with a roast turkey, and a recent clip of people gathered at a formal indoor dinner event with a man seated at center amid floral centerpieces. The clip mixes archival and recent footage. | A Thanksgiving-themed produced montage. Sampled frames include vintage color footage of a family seated at a holiday dinner table with a roast turkey, and a recent clip of people gathered at a formal indoor dinner event with a man seated at center amid floral centerpieces. The clip mixes archival and recent footage.  [0:16] Vintage color footage of a man and woman at a set holiday dinner table with a roast turkey and dishware.  [0:44] A recent clip of a formal indoor dinner with a man seated among guests and floral centerpieces. | i ws 4 ~« | = le | * : ¥ it SS ‘ Nis F \\\" : “* = i) a AL? = |.‘ | ma ih | 4 | (in. i: ie = Ay ie iy \\} 7° r <a] <1 . i @ =i Pare, 4 a é |’ oo we om | . 8 *» > | 2 | to offer a prayer of thanksgiving for blessings we've known through the year to join hands and thank the Creator and now and thanksgiving is due and this year when I count my ble"
     },
     {
       "tweet_id": "1994100257307721845",
@@ -7343,8 +7347,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A vertical produced clip with burned-in word captions showing officers in tactical vests interacting with members of the public. One sampled frame shows an officer holding the lid of a red-and-black storage bin on a cart while a person pushes it; the caption reads 'DIFFERENT STORY'. Another frame shows an officer shaking hands with a woman in front of a refrigerated store display, with the caption 'OF WHAT'. | A vertical produced clip with burned-in word captions showing officers in tactical vests interacting with members of the public. One sampled frame shows an officer holding the lid of a red-and-black storage bin on a cart while a person pushes it; the caption reads 'DIFFERENT STORY'. Another frame shows an officer shaking hands with a woman in front of a refrigerated store display, with the caption 'OF WHAT'.  [0:03] An officer in a tactical vest holds the lid of a red storage bin on a wheeled cart that a person is pushing; caption 'DIFFERENT STORY'.  [0:18] An officer shakes hands with a woman in front of a refrigerated display in a store; caption 'OF WHAT'. | With ice at the airports now helping TSA, we're seeing a very different story than what the media is telling you, whi"
+      "has_ocr": true,
+      "description": "A vertical produced clip with burned-in word captions showing officers in tactical vests interacting with members of the public. One sampled frame shows an officer holding the lid of a red-and-black storage bin on a cart while a person pushes it; the caption reads 'DIFFERENT STORY'. Another frame shows an officer shaking hands with a woman in front of a refrigerated store display, with the caption 'OF WHAT'. | A vertical produced clip with burned-in word captions showing officers in tactical vests interacting with members of the public. One sampled frame shows an officer holding the lid of a red-and-black storage bin on a cart while a person pushes it; the caption reads 'DIFFERENT STORY'. Another frame shows an officer shaking hands with a woman in front of a refrigerated store display, with the caption 'OF WHAT'.  [0:03] An officer in a tactical vest holds the lid of a red storage bin on a wheeled cart that a person is pushing; caption 'DIFFERENT STORY'.  [0:18] An officer shakes hands with a woman in front of a refrigerated display in a store; caption 'OF WHAT'. | @,| Baggage Claim D Reclamo de Equipaje Zz =@) Ground Transportation Us Transporte Terrestre Use - cn al 7 ty . HO | "
     },
     {
       "tweet_id": "2037645409309307131",
@@ -7803,8 +7807,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A vertical produced clip showing immigration-enforcement activity with a semi-transparent circular badge graphic overlaid reading 'FUGITIVE' and a Latin motto 'NEMO EFFUGIAT'. Frames show an officer in tactical gear holding a phone, with a person's face blurred behind the badge graphic, and officers in tactical vests beside a vehicle with a man seated inside. One sampled frame is heavily motion-blurred. | A vertical produced clip showing immigration-enforcement activity with a semi-transparent circular badge graphic overlaid reading 'FUGITIVE' and a Latin motto 'NEMO EFFUGIAT'. Frames show an officer in tactical gear holding a phone, with a person's face blurred behind the badge graphic, and officers in tactical vests beside a vehicle with a man seated inside. One sampled frame is heavily motion-blurred.  [0:05] An officer in tactical gear holds a phone; a semi-transparent 'FUGITIVE' badge with the motto 'NEMO EFFUGIAT' is overlaid, with a blurred face behind it.  [0:28] A motion-blurred frame during camera movement.  [0:50] Officers in tactical vests stand beside an open vehicle door with a man seated inside. | Please wait while we connect you to the next available agent."
+      "has_ocr": true,
+      "description": "A vertical produced clip showing immigration-enforcement activity with a semi-transparent circular badge graphic overlaid reading 'FUGITIVE' and a Latin motto 'NEMO EFFUGIAT'. Frames show an officer in tactical gear holding a phone, with a person's face blurred behind the badge graphic, and officers in tactical vests beside a vehicle with a man seated inside. One sampled frame is heavily motion-blurred. | A vertical produced clip showing immigration-enforcement activity with a semi-transparent circular badge graphic overlaid reading 'FUGITIVE' and a Latin motto 'NEMO EFFUGIAT'. Frames show an officer in tactical gear holding a phone, with a person's face blurred behind the badge graphic, and officers in tactical vests beside a vehicle with a man seated inside. One sampled frame is heavily motion-blurred.  [0:05] An officer in tactical gear holds a phone; a semi-transparent 'FUGITIVE' badge with the motto 'NEMO EFFUGIAT' is overlaid, with a blurred face behind it.  [0:28] A motion-blurred frame during camera movement.  [0:50] Officers in tactical vests stand beside an open vehicle door with a man seated inside. | s fe —* ; = ] - ™ a) “1 Oo. —— a a \\\\ = \\.. y Ay 4 aN SS ALS —— — “Ama"
     },
     {
       "tweet_id": "2050314479678734679",
@@ -7897,8 +7901,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A repost of a vertical produced clip showing immigration-enforcement activity with a semi-transparent circular badge graphic overlaid reading 'FUGITIVE' and a Latin motto 'NEMO EFFUGIAT'. Frames show an officer in tactical gear holding a phone, with a person's face blurred behind the badge graphic, and officers in tactical vests beside a vehicle with a man seated inside. One sampled frame is heavily motion-blurred. | A repost of a vertical produced clip showing immigration-enforcement activity with a semi-transparent circular badge graphic overlaid reading 'FUGITIVE' and a Latin motto 'NEMO EFFUGIAT'. Frames show an officer in tactical gear holding a phone, with a person's face blurred behind the badge graphic, and officers in tactical vests beside a vehicle with a man seated inside. One sampled frame is heavily motion-blurred.  [0:05] An officer in tactical gear holds a phone; a semi-transparent 'FUGITIVE' badge with the motto 'NEMO EFFUGIAT' is overlaid, with a blurred face behind it.  [0:28] A motion-blurred frame during camera movement.  [0:50] Officers in tactical vests stand beside an open vehicle door with a man seated inside. | Please wait while we connect you to the next a"
+      "has_ocr": true,
+      "description": "A repost of a vertical produced clip showing immigration-enforcement activity with a semi-transparent circular badge graphic overlaid reading 'FUGITIVE' and a Latin motto 'NEMO EFFUGIAT'. Frames show an officer in tactical gear holding a phone, with a person's face blurred behind the badge graphic, and officers in tactical vests beside a vehicle with a man seated inside. One sampled frame is heavily motion-blurred. | A repost of a vertical produced clip showing immigration-enforcement activity with a semi-transparent circular badge graphic overlaid reading 'FUGITIVE' and a Latin motto 'NEMO EFFUGIAT'. Frames show an officer in tactical gear holding a phone, with a person's face blurred behind the badge graphic, and officers in tactical vests beside a vehicle with a man seated inside. One sampled frame is heavily motion-blurred.  [0:05] An officer in tactical gear holds a phone; a semi-transparent 'FUGITIVE' badge with the motto 'NEMO EFFUGIAT' is overlaid, with a blurred face behind it.  [0:28] A motion-blurred frame during camera movement.  [0:50] Officers in tactical vests stand beside an open vehicle door with a man seated inside. | s fe —* ; = ] - ™ a) “1 Oo. —— a a \\\\ = \\.. y "
     },
     {
       "tweet_id": "2050815937461285177",
@@ -8319,8 +8323,9 @@
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
+        "slogan:promises-kept",
         "theme:martyrdom",
-        "topic:immigration",
+        "topic:general",
         "video:medium",
         "video:produced",
         "video:text-overlay"
@@ -8337,8 +8342,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A produced black-and-white clip with burned-in captions. A woman with long hair speaks to the camera while holding up a photograph of several people; a caption reads 'to live the nightmare'. In another frame she is shown against a dark backdrop wearing a dark blazer with a 'TRUMP' pin and a small photo of a young person pinned to her clothing. | A produced black-and-white clip with burned-in captions. A woman with long hair speaks to the camera while holding up a photograph of several people; a caption reads 'to live the nightmare'. In another frame she is shown against a dark backdrop wearing a dark blazer with a 'TRUMP' pin and a small photo of a young person pinned to her clothing.  [0:20] A woman holds up a photograph of several people and speaks; caption 'to live the nightmare'.  [0:62] The woman speaks against a dark backdrop wearing a 'TRUMP' pin and a small pinned photo of a young person. | A birthdays, holidays, mother's days have never been the same. Not a celebration for me anymore. You see, I buried my son a week before Mother's Day. I will never heal from this loss. My baby should be here. She has no reason not to be. She left behind a mother who loved her. We've lost "
+      "has_ocr": true,
+      "description": "A produced black-and-white clip with burned-in captions. A woman with long hair speaks to the camera while holding up a photograph of several people; a caption reads 'to live the nightmare'. In another frame she is shown against a dark backdrop wearing a dark blazer with a 'TRUMP' pin and a small photo of a young person pinned to her clothing. | A produced black-and-white clip with burned-in captions. A woman with long hair speaks to the camera while holding up a photograph of several people; a caption reads 'to live the nightmare'. In another frame she is shown against a dark backdrop wearing a dark blazer with a 'TRUMP' pin and a small photo of a young person pinned to her clothing.  [0:20] A woman holds up a photograph of several people and speaks; caption 'to live the nightmare'.  [0:62] The woman speaks against a dark backdrop wearing a 'TRUMP' pin and a small pinned photo of a young person. | ¢. 7 — « \\e er nA mo I: % ea t\\ | ‘ “> Pn ot to be. > — < | ees eo ee a Ae 3 A ie q y s 2 2 7 \\ Bee = 1 } tha a oe a iB m4 Ft ( wy J 44 , ( | ay “yo oR) — aNd ae See i 4 m \\ * at 4 nee ge Fe he Se: ba. } me. Ey a Sm come =. personally, _— < ————— —_—— | 1S - ZS J Vw, PROF A FADE y wane s"
     },
     {
       "tweet_id": "2054271132388200691",
@@ -8457,6 +8462,7 @@
         "audio:music-likely",
         "country:China",
         "format:retweet",
+        "genre:advertisement",
         "media-status:archived",
         "media-status:described",
         "media:video",
@@ -8468,7 +8474,9 @@
         "video:produced",
         "video:short"
       ],
-      "genre_tags": [],
+      "genre_tags": [
+        "genre:advertisement"
+      ],
       "produced_video_tags": [
         "video:produced"
       ],
@@ -8477,8 +8485,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video, 8 seconds. POTUS retweet of the clip of President Trump boarding Air Force One, pausing to wave, and entering the plane, with a 'President Trump Departs For China' text card. It has no dialogue and a background music bed. It is a single continuous shot with no rapid cutting and no added editing effects. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Vertical video, 8 seconds. POTUS retweet of the clip of President Trump boarding Air Force One, pausing to wave, and entering the plane, with a 'President Trump Departs For China' text card. It has no dialogue and a background music bed. It is a single continuous shot with no rapid cutting and no added editing effects. | President Trump Departs 7 pis China a iy f i | a ypu - Rie. wa LO ve ; Vf 4 l f a : } | in 7 1. = { f i a / | President Trump Departs y ° e 5 é tre, - (| ‘N . | V/A ee \\ oe A é ia % Z* <li sl V ys a A : | Lh oe ZL 4 res 4 \\ me . i LA ‘ - Le : é | President Trump Departs 7 ra a =f: y go “ a WV ad ' | LA Ay: C&D ad | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2054317888165511551",
@@ -8518,8 +8526,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A vertical produced clip shown in tight close-up with large white serif overlay text. One frame shows a pair of hands applying or removing handcuffs at a vehicle door with the word 'TENNESSEE' overlaid. A second, motion-blurred frame shows a seated person in a light shirt being handled, with the words 'ROCKY TOP' overlaid. The footage is close and partly blurred. | A vertical produced clip shown in tight close-up with large white serif overlay text. One frame shows a pair of hands applying or removing handcuffs at a vehicle door with the word 'TENNESSEE' overlaid. A second, motion-blurred frame shows a seated person in a light shirt being handled, with the words 'ROCKY TOP' overlaid. The footage is close and partly blurred.  [0:04] Close-up of hands working handcuffs at a vehicle door; overlay text 'TENNESSEE'.  [0:32] A motion-blurred close-up of a seated person in a light shirt being handled; overlay text 'ROCKY TOP'. | I tend to see him Lucky smoke on Rocky Top Ain't no telephone bills Once I have There are the other half-cat I still dream about that Rocky Top Rocky Top Tennessee It's a Tennessee thing!"
+      "has_ocr": true,
+      "description": "A vertical produced clip shown in tight close-up with large white serif overlay text. One frame shows a pair of hands applying or removing handcuffs at a vehicle door with the word 'TENNESSEE' overlaid. A second, motion-blurred frame shows a seated person in a light shirt being handled, with the words 'ROCKY TOP' overlaid. The footage is close and partly blurred. | A vertical produced clip shown in tight close-up with large white serif overlay text. One frame shows a pair of hands applying or removing handcuffs at a vehicle door with the word 'TENNESSEE' overlaid. A second, motion-blurred frame shows a seated person in a light shirt being handled, with the words 'ROCKY TOP' overlaid. The footage is close and partly blurred.  [0:04] Close-up of hands working handcuffs at a vehicle door; overlay text 'TENNESSEE'.  [0:32] A motion-blurred close-up of a seated person in a light shirt being handled; overlay text 'ROCKY TOP'. | = \\ i = | ; = =_- | EYES Shea oes SS Mee (PFs ™ LE SMES igi S a) ae Pe evo ‘ - eee “ay — - - oe, Fmd) a —- —_— | Pi ka See d ae’ Vi a a TT) i] iil ; 7 Ce F , Fr 4 —— oar eee S < - KS 2) ns) / Hy 209 ps Tom |) NS — 4 Le = | 2 =. | I tend to see him Lucky smoke on R"
     },
     {
       "tweet_id": "2054531743735017724",
@@ -8747,8 +8755,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A repost of a vertical produced clip shown in tight close-up with large white serif overlay text. One frame shows a pair of hands applying or removing handcuffs at a vehicle door with the word 'TENNESSEE' overlaid. A second, motion-blurred frame shows a seated person in a light shirt being handled, with the words 'ROCKY TOP' overlaid. The footage is close and partly blurred. | A repost of a vertical produced clip shown in tight close-up with large white serif overlay text. One frame shows a pair of hands applying or removing handcuffs at a vehicle door with the word 'TENNESSEE' overlaid. A second, motion-blurred frame shows a seated person in a light shirt being handled, with the words 'ROCKY TOP' overlaid. The footage is close and partly blurred.  [0:04] Close-up of hands working handcuffs at a vehicle door; overlay text 'TENNESSEE'.  [0:32] A motion-blurred close-up of a seated person in a light shirt being handled; overlay text 'ROCKY TOP'. | I tend to see him Lucky smoke on Rocky Top Ain't no telephone bills Once I have There are the other half-cat I still dream about that Rocky Top Rocky Top Tennessee It's a Tennessee thing!"
+      "has_ocr": true,
+      "description": "A repost of a vertical produced clip shown in tight close-up with large white serif overlay text. One frame shows a pair of hands applying or removing handcuffs at a vehicle door with the word 'TENNESSEE' overlaid. A second, motion-blurred frame shows a seated person in a light shirt being handled, with the words 'ROCKY TOP' overlaid. The footage is close and partly blurred. | A repost of a vertical produced clip shown in tight close-up with large white serif overlay text. One frame shows a pair of hands applying or removing handcuffs at a vehicle door with the word 'TENNESSEE' overlaid. A second, motion-blurred frame shows a seated person in a light shirt being handled, with the words 'ROCKY TOP' overlaid. The footage is close and partly blurred.  [0:04] Close-up of hands working handcuffs at a vehicle door; overlay text 'TENNESSEE'.  [0:32] A motion-blurred close-up of a seated person in a light shirt being handled; overlay text 'ROCKY TOP'. | = \\ i = | ; = =_- | EYES Shea oes SS Mee (PFs ™ LE SMES igi S a) ae Pe evo ‘ - eee “ay — - - oe, Fmd) a —- —_— | Pi ka See d ae’ Vi a a TT) i] iil ; 7 Ce F , Fr 4 —— oar eee S < - KS 2) ns) / Hy 209 ps Tom |) NS — 4 Le = | 2 =. | ROC - | ff"
     },
     {
       "tweet_id": "2054728420362277243",
@@ -13410,6 +13418,57 @@
       "description": "A Fox News LIVE segment in which Deputy ICE Director Madison Sheahan appears in a remote interview box. She speaks about ICE targeting 'the worst of the worst' in Chicago and criticizes Gov. Pritzker, with Fox chyrons about Pritzker and 'authoritarian regime.' The segment is a cable-news interview clip with no music. | Our officers are able to use our intelligence and targeting packages to go after the worst or the worst. Anybody that's been convicted of any crimes, we're able to target them, locate them and ultimately remove them from the community. This is something that Governor Pritz here doesn't want us doing. He wants these gang members, murderers, rapists, left out on the street. Like I said, we've arrested TDA gang members. We've arrested 18 street gang members. We've arrested people that have been convicted of sex crimes, of child trafficking crimes. The list goes on and we can read those rap sheets and we post them on our social media pages to tell the story of what we're doing at ICE which is removing the worst to the worst."
     },
     {
+      "tweet_id": "1979300594020929600",
+      "account_handle": "DHSgov",
+      "posted_at": "2025-10-17T21:36:49.000Z",
+      "tweet_url": "https://x.com/DHSgov/status/1979300594020929600",
+      "tweet_text": "We hear we’re VERY POPULAR on Bluesky! (many people are saying)\n\nGive us a follow at http://homelandgov.bsky.social\n\nPATRIOTS! We must work together and appeal to their patriotic spirit and ask for a hand in stopping the Democrats’ government shutdown. https://t.co/lQvlqC0G5M",
+      "media_id": "13_1979300528786993153",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_1979300528786993153.mp4",
+      "duration_sec": 21.229,
+      "width": 720,
+      "height": 1280,
+      "like_count": 32512,
+      "retweet_count": 3899,
+      "view_count": 2784564,
+      "bucket": "produced-video",
+      "priority": 90,
+      "tags": [
+        "action:deportation",
+        "action:detention",
+        "agency:DHSgov",
+        "agency:ICEgov",
+        "audio:has-audio",
+        "crime:homicide",
+        "crime:murder",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "speaker:President Trump",
+        "state:New-York",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:general",
+        "topic:immigration",
+        "video:interview",
+        "video:short",
+        "video:text-overlay"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [
+        "video:text-overlay"
+      ],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "A vertical screen recording of someone setting up a social-media account profile on a phone-style interface. Early frames show a video interview clip of a woman in glasses and a blazer seated by a window. Later frames show an app onboarding screen reading 'Give your profile a face' with the U.S. Department of Homeland Security seal set as the profile avatar, and a final frame of a cursor clicking a blue 'Post' button. | A vertical screen recording of someone setting up a social-media account profile on a phone-style interface. Early frames show a video interview clip of a woman in glasses and a blazer seated by a window. Later frames show an app onboarding screen reading 'Give your profile a face' with the U.S. Department of Homeland Security seal set as the profile avatar, and a final frame of a cursor clicking a blue 'Post' button.  [0:02] A woman in glasses and a dark blazer sits by a window in an interview-style clip.  [0:10] An app onboarding screen reads 'Give your profile a face' with the DHS seal placed as the profile picture.  [0:19] A cursor hovers over and clicks a blue 'Post' button. | \\ | I = La r a © i= 4s -/ La . 7 Pp ) a | © (died search coogie 5 Anof ¥ eee Q blue j"
+    },
+    {
       "tweet_id": "1979310850403160244",
       "account_handle": "USDOL",
       "posted_at": "2025-10-17T22:17:35.000Z",
@@ -13563,6 +13622,52 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "A clip from a Fox News interview. A man in a dark suit speaks via remote link on the left, labeled TODD LYONS | ACTING I.C.E. DIRECTOR. The right side shows surveillance footage, marked WARNING: GRAPHIC CONTENT and ONTARIO, CA TUESDAY, of a roadway where a truck approaches stopped vehicles. The banner reads ILLEGAL IMMIGRANT TRUCKER IN JAIL FOR FATAL CRASH and later 21-YEAR-OLD ILLEGAL IMMIGRANT FROM INDIA ARRESTED. | A clip from a Fox News interview. A man in a dark suit speaks via remote link on the left, labeled TODD LYONS | ACTING I.C.E. DIRECTOR. The right side shows surveillance footage, marked WARNING: GRAPHIC CONTENT and ONTARIO, CA TUESDAY, of a roadway where a truck approaches stopped vehicles. The banner reads ILLEGAL IMMIGRANT TRUCKER IN JAIL FOR FATAL CRASH and later 21-YEAR-OLD ILLEGAL IMMIGRANT FROM INDIA ARRESTED.  [0:04] A man speaks via remote link, labeled TODD LYONS | ACTING I.C.E. DIRECTOR; surveillance footage of a roadway is shown at right.  [0:22] The roadway footage continues, marked WARNING: GRAPHIC CONTENT, ONTARIO, CA TUESDAY.  [0:39] Banner changes to 21-YEAR-OLD ILLEGAL IMMIGRANT FROM INDIA ARRESTED. | That's just California. When you think about all t"
+    },
+    {
+      "tweet_id": "1983946546052780540",
+      "account_handle": "USDOL",
+      "posted_at": "2025-10-30T17:18:11.000Z",
+      "tweet_url": "https://x.com/USDOL/status/1983946546052780540",
+      "tweet_text": "Young Americans have had the American Dream stolen from them, as jobs have been replaced by foreign workers due to rampant abuse of the H-1B visa. \n\nUnder @POTUS and @SecretaryLCD’s leadership, we’re holding companies accountable for their abuse—and recapturing the American Dream for the AMERICAN PEOPLE.",
+      "media_id": "13_1983946289529114624",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USDOL/13_1983946289529114624.mp4",
+      "duration_sec": 51.551,
+      "width": 3840,
+      "height": 2160,
+      "like_count": 13482,
+      "retweet_count": 2704,
+      "view_count": 1042673,
+      "bucket": "produced-video",
+      "priority": 90,
+      "tags": [
+        "agency:POTUS",
+        "audio:has-audio",
+        "genre:advertisement",
+        "genre:recruitment",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "speaker:President Trump",
+        "topic:economy",
+        "video:medium",
+        "video:produced"
+      ],
+      "genre_tags": [
+        "genre:advertisement",
+        "genre:recruitment"
+      ],
+      "produced_video_tags": [
+        "video:produced"
+      ],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 3840x2160; 51.6s; 31.59 MiB; archived; tweet context: Young Americans have had the American Dream stolen from them, as jobs have been replaced by foreign workers due to rampant abuse of the H-1B visa. Under @POTUS and @SecretaryLCD’s leadership, we’re holding companies accountable for their abuse—and recapturing...; source URL: https://video.twimg.com/amplify_video/1983946289529114624/vid/avc1/3840x2160/wj6r3gKxexwFSLvj.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_1983946289529114624.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 3840x2160; 51.6s; 31.59 MiB; archived; tweet context: Young Americans have had the American Dream stolen from them, as jobs have been replaced by foreign workers due to rampant abuse of the H-1B visa. Under @POTUS and @SecretaryLCD’s leadership, we’re holding companies accountable for their abuse—and recapturing...; source URL: https://video.twimg.com/amplify_video/1983946289529114624/vid/avc1/3840x2160/wj6r3gKxexwFSLvj.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_1983946289529114624.mp4; needs OCR, transcript, or frame-level "
     },
     {
       "tweet_id": "1985853156753096716",
@@ -13982,6 +14087,54 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 720x1280; 22.6s; 2.90 MiB; archived; tweet context: Turkeys aren't the only thing getting caught this week, use the CBP Home app to self deport. Learn more about CBP Home: https://go.dhs.gov/wBV https://t.co/0WoPt5FEtk; source URL: https://video.twimg.com/ext_tw_video/1992245587303903232/pu/vid/avc1/720x1280/gUEmyjBOKIMOw1zx.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/7_1992245587303903232.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 720x1280; 22.6s; 2.90 MiB; archived; tweet context: Turkeys aren't the only thing getting caught this week, use the CBP Home app to self deport. Learn more about CBP Home: https://go.dhs.gov/wBV https://t.co/0WoPt5FEtk; source URL: https://video.twimg.com/ext_tw_video/1992245587303903232/pu/vid/avc1/720x1280/gUEmyjBOKIMOw1zx.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/7_1992245587303903232.mp4; needs OCR, transcript, or frame-level vision before content claims. Turkeys aren't the only thing getting caught this week, use the CBP Home app to self deport. Learn more about CBP Home: https://go.dhs.gov/wBV https://t.co/0WoPt5FEtk"
+    },
+    {
+      "tweet_id": "1994428579178774895",
+      "account_handle": "ICEgov",
+      "posted_at": "2025-11-28T15:30:02.000Z",
+      "tweet_url": "https://x.com/ICEgov/status/1994428579178774895",
+      "tweet_text": "When someone’s temporary protected status is lifted, they become illegal aliens who aren’t allowed to live or work in the U.S. https://t.co/gQvWleVdfO",
+      "media_id": "7_1994427402093576193",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-ICEgov/7_1994427402093576193.mp4",
+      "duration_sec": 38.366,
+      "width": 1280,
+      "height": 720,
+      "like_count": 28064,
+      "retweet_count": 6446,
+      "view_count": 627525,
+      "bucket": "produced-video",
+      "priority": 90,
+      "tags": [
+        "agency:ICEgov",
+        "audio:has-audio",
+        "crime:fraud",
+        "genre:advertisement",
+        "media-status:archived",
+        "media-status:described",
+        "media:video",
+        "slogan:illegal-alien",
+        "theme:criminal",
+        "topic:economy",
+        "topic:immigration",
+        "video:medium",
+        "video:news-clip",
+        "video:produced"
+      ],
+      "genre_tags": [
+        "genre:advertisement"
+      ],
+      "produced_video_tags": [
+        "video:produced"
+      ],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "video; 1280x720; 38.4s; 3.41 MiB; archived; tweet context: When someone’s temporary protected status is lifted, they become illegal aliens who aren’t allowed to live or work in the U.S. https://t.co/gQvWleVdfO; source URL: https://video.twimg.com/ext_tw_video/1994427402093576193/pu/vid/avc1/1280x720/-NEMjrREYCvidDAb.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_1994427402093576193.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1280x720; 38.4s; 3.41 MiB; archived; tweet context: When someone’s temporary protected status is lifted, they become illegal aliens who aren’t allowed to live or work in the U.S. https://t.co/gQvWleVdfO; source URL: https://video.twimg.com/ext_tw_video/1994427402093576193/pu/vid/avc1/1280x720/-NEMjrREYCvidDAb.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_1994427402093576193.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. When someone’s temporary protected status is lifted, they become illegal aliens who aren’t a"
     },
     {
       "tweet_id": "1994549240237101407",
@@ -16192,6 +16345,52 @@
       "description": "A clip of a press conference showing a man with glasses in a dark suit speaking from behind a lectern, with an American flag at left and a dark backdrop bearing partial department text behind him. The framing holds on the speaker across the sampled frames. | A clip of a press conference showing a man with glasses in a dark suit speaking from behind a lectern, with an American flag at left and a dark backdrop bearing partial department text behind him. The framing holds on the speaker across the sampled frames.  [0:05] A man in a dark suit and glasses speaks at a lectern with a flag at left and a dark department backdrop.  [0:15] The same podium framing continues. | As far as the agitators, that said, I want to reiterate and make very clear, I want to make it clear, all eastern CBP officers are performing their duties in a challenging environment under tremendous circumstances, but they're trying to do with professionalism. If they don't, they'll be dealt with. Like any other federal agency, we have standards of conduct. They are sworn law enforcement officers working tirelessly to enforce a country's border security immigration laws protecting the interests of our country and preve"
     },
     {
+      "tweet_id": "2016872709121049056",
+      "account_handle": "RapidResponse47",
+      "posted_at": "2026-01-29T13:55:00.000Z",
+      "tweet_url": "https://x.com/RapidResponse47/status/2016872709121049056",
+      "tweet_text": ".@RealTomHoman in Minneapolis: \"The reason for the massive deployment is because of the threats, because of the violence... we brought extra resources in to provide that security, and I said... when the violence decreases, we can drive down those resources.\" https://t.co/QurFhjOJq0",
+      "media_id": "13_2016872354022887424",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2016872354022887424.mp4",
+      "duration_sec": 127.794,
+      "width": 1280,
+      "height": 720,
+      "like_count": 1817,
+      "retweet_count": 315,
+      "view_count": 39013,
+      "bucket": "produced-video",
+      "priority": 90,
+      "tags": [
+        "action:deportation",
+        "agency:ICEgov",
+        "audio:has-audio",
+        "format:statistics",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "theme:religion",
+        "topic:general",
+        "topic:immigration",
+        "topic:military",
+        "video:long",
+        "video:news-clip",
+        "video:produced"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [
+        "video:produced"
+      ],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 127.8s; 9.16 MiB; archived; tweet context: .@RealTomHoman in Minneapolis: \"The reason for the massive deployment is because of the threats, because of the violence... we brought extra resources in to provide that security, and I said... when the violence decreases, we can drive down those resources.\"...; source URL: https://video.twimg.com/amplify_video/2016872354022887424/vid/avc1/1280x720/OugD790nmOF8JHEW.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2016872354022887424.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 127.8s; 9.16 MiB; archived; tweet context: .@RealTomHoman in Minneapolis: \"The reason for the massive deployment is because of the threats, because of the violence... we brought extra resources in to provide that security, and I said... when the violence decreases, we can drive down those resources.\"...; source URL: https://video.twimg.com/amplify_video/2016872354022887424/vid/avc1/1280x720/OugD790nmOF8JHEW.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2016872354022887424.mp4; needs OCR, transcript, o"
+    },
+    {
       "tweet_id": "2016895448644976835",
       "account_handle": "DHSgov",
       "posted_at": "2026-01-29T15:25:21.000Z",
@@ -17055,7 +17254,6 @@
         "format:retweet",
         "media-status:archived",
         "media-status:described",
-        "media-status:needs-ocr",
         "media-status:needs-vision",
         "media:photo",
         "media:video",
@@ -18300,8 +18498,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Local TV news segment (WBNS Channel 10) about a single-mother TSA officer named Tatiana working without pay during the DHS shutdown. The footage is a reporter-narrated news package with interview footage. | To decide between eating meat some days and not eating meat, we've had to decide which car gets gas. A single mom of three who helps take care of her own mother, she faces tough choices without a paycheck. And you need the money for bills now. Right. Because by that time that we get that lump sum, the bills start to build up. Then you got pass-do amounts and they start adding on late fees. At work, she's a lead officer. The uncertainty is just, it's insane. It's sad. They legit ask me, Tatiana, what are we going to do and I'm like, I don't know. Some co-workers have already left. It takes a toll, especially not getting paid and you're wondering in the back of our minds while we're working, how are we going to feed our kids, how are we going to pay our bills. But in the moment we're like, we've got to do our job. But for Tatiana, walking away isn't simple. Our mom was a TSA agent for 20 years. I was proud of my mom for that. I wanted to make her proud too. Having a government job"
+      "has_ocr": true,
+      "description": "Local TV news segment (WBNS Channel 10) about a single-mother TSA officer named Tatiana working without pay during the DHS shutdown. The footage is a reporter-narrated news package with interview footage. | pt f / c~ = | mle A es N in | ea | “t Est Salt i , Ric! Ne. - | : a 2 i i, a Av a ) 4; —— i a | MS = aa S/ 28 ra —_ - a — | i > ie ' TKN * an Ae i ge- | To decide between eating meat some days and not eating meat, we've had to decide which car gets gas. A single mom of three who helps take care of her own mother, she faces tough choices without a paycheck. And you need the money for bills now. Right. Because by that time that we get that lump sum, the bills start to build up. Then you got pass-do amounts and they start adding on late fees. At work, she's a lead officer. The uncertainty is just, it's insane. It's sad. They legit ask me, Tatiana, what are we going to do and I'm like, I don't know. Some co-workers have already left. It takes a toll, especially not getting paid and you're wondering in the back of our minds while we're working, how are we going to feed our kids, how are we going to pay our bills. But in the moment we're like, we've got to do our job. But for Tatiana,"
     },
     {
       "tweet_id": "2036471884691169357",
@@ -19273,8 +19471,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Vertical video. A handheld selfie-style vlog of DHS Secretary Mark Mullin giving a tour of his office, showing bouncy balls with agency seals and a cafeteria burger, and speaking about DHS employees working unpaid during the shutdown, with TikTok-style auto-captions. It is a talking-head vlog with no music track. | Alright guys first week at DHS they cut the whole theme though of the whole of the bouncy ball I've got six gifted to me anyways just want to tell you what's going on. It's been interesting This is my new office my wife's gonna come up and put a personal touch and you'll see Christy's Declaration that takes place. I'm still fighting through this whole shutdown. I have roughly 80,000 employees that's working for free and they've been working for free now for over 30 days and it's ridiculous but that just shows the commitment that we have for these DHS employees. They're still focused showing up every day and working on mission to keep the homeland safe. I think I have the greatest employees working at DHS ever. I mean that's sincerely the fact that they're working for free every day and still keeping the homeland safe is that's all you need to know about them. But we're g"
+      "has_ocr": true,
+      "description": "Vertical video. A handheld selfie-style vlog of DHS Secretary Mark Mullin giving a tour of his office, showing bouncy balls with agency seals and a cafeteria burger, and speaking about DHS employees working unpaid during the shutdown, with TikTok-style auto-captions. It is a talking-head vlog with no music track. | 42a baled ; < 4 a a. / 7 , [BOF THE WHOLE = ' \\: | oe ra — TOUCH => » —. | — oe i i ) : ; , : 4 = j ; a AND THEY@/E/BEEN Jl } - | —_— —~ & * “ : q be * s : ed = U A THEY'RE STILL FOCUSED - —_ ae : 7] a AL ] | 4 i) : P — MEAN THATSINCEREL Y, a P. OS ——— ‘4 ee | F — ae 4 i 4 1 1 1 3 0 107 516 371 27 -1 5 1 1 1 3 1 107 534 3 2 74.228027 f 5 1 1 1 3 2 194 530 5 13 80.185898 5 1 1 1 3 3 462 516 16 21 52.761555 } 4 1 1 1 4 0 32 539 431 72 -1 5 1 1 1 4 1 32 553 24 58 0.000000 ; 5 1 1 1 4 2 136 552 26 40 56.682457 TO 5 1 1 1 4 3 170 566 45 18 93.161652 SAY 5 1 1 1 4 4 222 566 75 18 96.795036 THANK 5 1 1 1 4 5 305 555 141 49 27.494743 YOURS 5 1 1 1 4 6 453 539 10 15 0.000000 ; 4 1 1 1 5 0 88 673 64 63 -1 5 1 1 1 5 1 88 673 13 62 50.194935 f 5 1 1 1 5 2 150 724 2 12 42.352165 4 1 1 1 6 0 72 739 166 63 -1 5 1 1 1 6 1 72 739 48 63 49.112083 1 5 1 1 1 6 2 235 742 3 28 27.301292 = 4 1"
     },
     {
       "tweet_id": "2038084990626353333",
@@ -20214,8 +20412,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A local television news report carrying a 'GC' station bug and an on-screen clock. Sampled frames include an interview with a man standing outside a building, captioned with a speaker name and remarks about a community being saddened, and an interview with a bald man in a polo shirt identified by a lower-third as a police chief. The report includes burned-in captions. | A local television news report carrying a 'GC' station bug and an on-screen clock. Sampled frames include an interview with a man standing outside a building, captioned with a speaker name and remarks about a community being saddened, and an interview with a bald man in a polo shirt identified by a lower-third as a police chief. The report includes burned-in captions.  [0:16] A man stands outside a building speaking to a reporter; caption attributes remarks about a saddened community to a named speaker.  [0:32] A bald man in a polo shirt speaks outdoors; a lower-third identifies him as a police chief. | We've spent the last two days speaking with co-workers and family of the woman brutally killed in front of this gas station on Martin Luther King Jr. Boulevard and Highlands Avenue. They tell us her name was Yasmeen,"
+      "has_ocr": true,
+      "description": "A local television news report carrying a 'GC' station bug and an on-screen clock. Sampled frames include an interview with a man standing outside a building, captioned with a speaker name and remarks about a community being saddened, and an interview with a bald man in a polo shirt identified by a lower-third as a police chief. The report includes burned-in captions. | A local television news report carrying a 'GC' station bug and an on-screen clock. Sampled frames include an interview with a man standing outside a building, captioned with a speaker name and remarks about a community being saddened, and an interview with a bald man in a polo shirt identified by a lower-third as a police chief. The report includes burned-in captions.  [0:16] A man stands outside a building speaking to a reporter; caption attributes remarks about a saddened community to a named speaker.  [0:32] A bald man in a polo shirt speaks outdoors; a lower-third identifies him as a police chief. | Se \\ =) nit as) Se 4 ; =|) {eg he a ilies B! v é i> i 2 | 5 1 1 1 1 2 98 5 51 48 0.000000 =i 5 1 1 1 1 3 273 0 23 26 79.085968 q 4 1 1 1 2 0 90 52 314 28 -1 5 1 1 1 2 1 90 59 20 13 0.000000 & 5 1 1 1 2 2 144 62 20 18"
     },
     {
       "tweet_id": "2041894622427803958",
@@ -25057,8 +25255,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "POTUS retweet of the WhiteHouse Mother's Day clip: lightly captioned static podium footage of Trump thanking America's moms and Angel/Gold Star moms in the Rose Garden. A raw speech with a headline caption banner and subtitles; no music or cinematic styling. | But I want to thank every single mother here this afternoon and all across our nation for your work every single day America's moms are raising Really raising the future of our country the most important you have the most we don't call it a job because when you love it It's not a job, but let's for this purpose You have the most important job there is in America or any place else and you're doing an incredible job I just want to wish you all a very happy Mother's Day We're going to have a great Mother's Day and for those mothers that lost their child Many of whom are with us today the angel moms and others goal star moms We love you especially. We love you. Maybe even the most | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "POTUS retweet of the WhiteHouse Mother's Day clip: lightly captioned static podium footage of Trump thanking America's moms and Angel/Gold Star moms in the Rose Garden. A raw speech with a headline caption banner and subtitles; no music or cinematic styling. | resident Trump to America’s Moms: “You Have The Most important Job There Is” y > ica “ aes r (eee 1 ‘urita % WHITE HOUSE | resident Trump ‘o America’s Moms: “You Have The Most impo! tant Job There Is” §! ALY ‘' ¥ . . . Ca i. ‘UVTI WHITE HOUSE | President Trump to America’s Moms: “You Have The Most Important Job There Is” \\ b 4 .% soa St ' a ‘ ef . ae rane A proton nim oo | But I want to thank every single mother here this afternoon and all across our nation for your work every single day America's moms are raising Really raising the future of our country the most important you have the most we don't call it a job because when you love it It's not a job, but let's for this purpose You have the most important job there is in America or any place else and you're doing an incredible job I just want to wish you all a very happy Mother's Day We're going to have a great Mother's Day and for those mothers that lost their child Many o"
     },
     {
       "tweet_id": "2052876078419734782",
@@ -29600,6 +29798,58 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "A repost of a vertical selfie-style clip of a man wearing a red 'MAKE AMERICA GREAT AGAIN' cap and a blue polo shirt, speaking directly to the camera against a plain light wall. The framing stays close on his face across the sampled frames. | A repost of a vertical selfie-style clip of a man wearing a red 'MAKE AMERICA GREAT AGAIN' cap and a blue polo shirt, speaking directly to the camera against a plain light wall. The framing stays close on his face across the sampled frames.  [0:05] A man in a red 'MAKE AMERICA GREAT AGAIN' cap and blue polo speaks to the camera against a plain wall.  [0:15] The same man continues speaking, same close framing. | Steven Miller here to talk with you about a very important subject, which is how Tom Massey betrayed America, betrayed you, and betrayed your children. The single most important issue affecting the future of our country is ending the mass third world invasion of America and reversing that invasion. And on the most important issue, on the most important vote, on the most important bill, on the most important day, Tom Massey cited with every House Democrat, every Senate Democrat, Hakeem Jeffries, Nancy Pelosi, and Chuck Schumer against Pr"
+    },
+    {
+      "tweet_id": "2056881373500064151",
+      "account_handle": "StephenM",
+      "posted_at": "2026-05-19T23:35:09.000Z",
+      "tweet_url": "https://x.com/StephenM/status/2056881373500064151",
+      "tweet_text": "America First, always. https://t.co/MJKmxuC3IO",
+      "media_id": "13_2056566765950210048",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-StephenM/13_2056566765950210048.mp4",
+      "duration_sec": 119.861,
+      "width": 496,
+      "height": 640,
+      "like_count": 19472,
+      "retweet_count": 2505,
+      "view_count": 642859,
+      "bucket": "produced-video",
+      "priority": 90,
+      "tags": [
+        "action:deportation",
+        "agency:CBP",
+        "agency:ICEgov",
+        "audio:has-audio",
+        "genre:advertisement",
+        "genre:recruitment",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "policy:border",
+        "slogan:america-first",
+        "slogan:mass-deportation",
+        "theme:criminal",
+        "topic:general",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "genre_tags": [
+        "genre:advertisement",
+        "genre:recruitment"
+      ],
+      "produced_video_tags": [
+        "video:produced"
+      ],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 496x640; 119.9s; 4.47 MiB; archived; tweet context: America First, always. https://t.co/MJKmxuC3IO; source URL: https://video.twimg.com/amplify_video/2056566765950210048/vid/avc1/496x640/cGKaPFtUfuF3xnzn.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-StephenM/13_2056566765950210048.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 496x640; 119.9s; 4.47 MiB; archived; tweet context: America First, always. https://t.co/MJKmxuC3IO; source URL: https://video.twimg.com/amplify_video/2056566765950210048/vid/avc1/496x640/cGKaPFtUfuF3xnzn.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-StephenM/13_2056566765950210048.mp4; needs OCR, transcript, or frame-level vision before content claims. America First, always. https://t.co/MJKmxuC3IO | Steven Miller here to talk with you about a very important subject, which is how Tom Massey betrayed America, betrayed you, and betrayed your children. The single most important issue affecting the future of our country is ending the mass third world invasion of America and reversing that invasion. And on the most important issue, on the most important "
     },
     {
       "tweet_id": "2056888734826528825",
@@ -46035,6 +46285,7 @@
       "bucket": "produced-video",
       "priority": 85,
       "tags": [
+        "audio:has-audio",
         "genre:advertisement",
         "genre:recruitment",
         "media-status:archived",
@@ -46051,13 +46302,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1180x638; 133.3s; 12.26 MiB; archived; tweet context: THE TOOLBELT GENERATION 🛠️ From welding to coding, Gen Z is taking advantage of the variety of pathways to high-paying Skilled Trade jobs. @CBSNewsColorado: “More and more young people…are choosing a career in skilled trades.” 🔥 https://t.co/iGsKhKnI2S; source URL: https://video.twimg.com/amplify_video/1990546540260175872/vid/avc1/1180x638/7RibE2KaaGWHrz2U.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_1990546540260175872.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1180x638; 133.3s; 12.26 MiB; archived; tweet context: THE TOOLBELT GENERATION 🛠️ From welding to coding, Gen Z is taking advantage of the variety of pathways to high-paying Skilled Trade jobs. @CBSNewsColorado: “More and more young people…are choosing a career in skilled trades.” 🔥 https://t.co/iGsKhKnI2S; source URL: https://video.twimg.com/amplify_video/1990546540260175872/vid/avc1/1180x638/7RibE2KaaGWHrz2U.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_1990546540260175872.mp4; needs OCR, transcript, or frame-level vision before content "
@@ -56447,44 +56695,6 @@
       "description": "video; 1440x2560; 15.5s; 7.22 MiB; archived; tweet context: USBP has been deployed to Washington, D.C., to assist local police with crime deterrence efforts. Our mission remains the same: Protect, Deter, and Enforce. https://t.co/I6NJBc1L2a; source URL: https://video.twimg.com/amplify_video/1963024590164082688/vid/avc1/1440x2560/ke4ZCkBDqKthj2hn.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/13_1963024590164082688.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1440x2560; 15.5s; 7.22 MiB; archived; tweet context: USBP has been deployed to Washington, D.C., to assist local police with crime deterrence efforts. Our mission remains the same: Protect, Deter, and Enforce. https://t.co/I6NJBc1L2a; source URL: https://video.twimg.com/amplify_video/1963024590164082688/vid/avc1/1440x2560/ke4ZCkBDqKthj2hn.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/13_1963024590164082688.mp4; needs OCR, transcript, or frame-level vision before content claims. USBP has been deployed to Washington, D.C., to assist local police with crime deterrence efforts. Our mission remains the same: "
     },
     {
-      "tweet_id": "1969161021232148795",
-      "account_handle": "USDOL",
-      "posted_at": "2025-09-19T22:05:47.000Z",
-      "tweet_url": "https://x.com/USDOL/status/1969161021232148795",
-      "tweet_text": "The days of employers abusing H-1B Visas are over. \n\nIntroducing PROJECT FIREWALL—our plan to ensure high-skilled jobs go to AMERICANS FIRST 🇺🇸 https://t.co/XPwBJSZfto",
-      "media_id": "13_1969160801203470336",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USDOL/13_1969160801203470336.mp4",
-      "duration_sec": 42.308,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 79845,
-      "retweet_count": 12361,
-      "view_count": 5263608,
-      "bucket": "needs-recognition",
-      "priority": 75,
-      "tags": [
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "topic:economy",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 1920x1080; 42.3s; 8.03 MiB; archived; tweet context: The days of employers abusing H-1B Visas are over. Introducing PROJECT FIREWALL—our plan to ensure high-skilled jobs go to AMERICANS FIRST 🇺🇸 https://t.co/XPwBJSZfto; source URL: https://video.twimg.com/amplify_video/1969160801203470336/vid/avc1/1920x1080/VEJESPb_wso-0VFt.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_1969160801203470336.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 42.3s; 8.03 MiB; archived; tweet context: The days of employers abusing H-1B Visas are over. Introducing PROJECT FIREWALL—our plan to ensure high-skilled jobs go to AMERICANS FIRST 🇺🇸 https://t.co/XPwBJSZfto; source URL: https://video.twimg.com/amplify_video/1969160801203470336/vid/avc1/1920x1080/VEJESPb_wso-0VFt.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_1969160801203470336.mp4; needs OCR, transcript, or frame-level vision before content claims. The days of employers abusing H-1B Visas are over. Introducing PROJECT FIREWALL—our plan to ensure high-skilled jobs go to AMERICANS FIRST 🇺🇸 https://t.co/XPwBJSZfto"
-    },
-    {
       "tweet_id": "1969193407667929312",
       "account_handle": "WhiteHouse",
       "posted_at": "2025-09-20T00:14:28.000Z",
@@ -57738,45 +57948,6 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1080x1920; 12.5s; 1.64 MiB; archived; tweet context: Air Force One flies over Mount Fuji! Wow! https://t.co/o73TRGnYBn; source URL: https://video.twimg.com/amplify_video/1983343337017851905/vid/avc1/1080x1920/lJh2QFJfguHzzNmW.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-PressSec/13_1983343337017851905.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1920; 12.5s; 1.64 MiB; archived; tweet context: Air Force One flies over Mount Fuji! Wow! https://t.co/o73TRGnYBn; source URL: https://video.twimg.com/amplify_video/1983343337017851905/vid/avc1/1080x1920/lJh2QFJfguHzzNmW.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-PressSec/13_1983343337017851905.mp4; needs OCR, transcript, or frame-level vision before content claims. Air Force One flies over Mount Fuji! Wow! https://t.co/o73TRGnYBn"
-    },
-    {
-      "tweet_id": "1983946546052780540",
-      "account_handle": "USDOL",
-      "posted_at": "2025-10-30T17:18:11.000Z",
-      "tweet_url": "https://x.com/USDOL/status/1983946546052780540",
-      "tweet_text": "Young Americans have had the American Dream stolen from them, as jobs have been replaced by foreign workers due to rampant abuse of the H-1B visa. \n\nUnder @POTUS and @SecretaryLCD’s leadership, we’re holding companies accountable for their abuse—and recapturing the American Dream for the AMERICAN PEOPLE.",
-      "media_id": "13_1983946289529114624",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USDOL/13_1983946289529114624.mp4",
-      "duration_sec": 51.551,
-      "width": 3840,
-      "height": 2160,
-      "like_count": 13482,
-      "retweet_count": 2704,
-      "view_count": 1042673,
-      "bucket": "needs-recognition",
-      "priority": 75,
-      "tags": [
-        "agency:POTUS",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "topic:economy",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 3840x2160; 51.6s; 31.59 MiB; archived; tweet context: Young Americans have had the American Dream stolen from them, as jobs have been replaced by foreign workers due to rampant abuse of the H-1B visa. Under @POTUS and @SecretaryLCD’s leadership, we’re holding companies accountable for their abuse—and recapturing...; source URL: https://video.twimg.com/amplify_video/1983946289529114624/vid/avc1/3840x2160/wj6r3gKxexwFSLvj.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_1983946289529114624.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 3840x2160; 51.6s; 31.59 MiB; archived; tweet context: Young Americans have had the American Dream stolen from them, as jobs have been replaced by foreign workers due to rampant abuse of the H-1B visa. Under @POTUS and @SecretaryLCD’s leadership, we’re holding companies accountable for their abuse—and recapturing...; source URL: https://video.twimg.com/amplify_video/1983946289529114624/vid/avc1/3840x2160/wj6r3gKxexwFSLvj.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_1983946289529114624.mp4; needs OCR, transcript, or frame-level "
     },
     {
       "tweet_id": "1983971016159457417",
@@ -60894,45 +61065,6 @@
       "description": "video; 1280x720; 67.7s; 5.17 MiB; archived; tweet context: .@RealTomHoman: \"Under the President's leadership, we have the most secure border int he history of this nation — which means less woman are being raped, less children are dying crossing that border, less fentanyl is getting into this country to kill American...; source URL: https://video.twimg.com/amplify_video/2016871815251894272/vid/avc1/1280x720/dLDb3Xb3pgI8J8a_.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2016871815251894272.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 67.7s; 5.17 MiB; archived; tweet context: .@RealTomHoman: \"Under the President's leadership, we have the most secure border int he history of this nation — which means less woman are being raped, less children are dying crossing that border, less fentanyl is getting into this country to kill American...; source URL: https://video.twimg.com/amplify_video/2016871815251894272/vid/avc1/1280x720/dLDb3Xb3pgI8J8a_.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2016871815251894272.mp4; needs OCR, transcript, o"
     },
     {
-      "tweet_id": "2016872709121049056",
-      "account_handle": "RapidResponse47",
-      "posted_at": "2026-01-29T13:55:00.000Z",
-      "tweet_url": "https://x.com/RapidResponse47/status/2016872709121049056",
-      "tweet_text": ".@RealTomHoman in Minneapolis: \"The reason for the massive deployment is because of the threats, because of the violence... we brought extra resources in to provide that security, and I said... when the violence decreases, we can drive down those resources.\" https://t.co/QurFhjOJq0",
-      "media_id": "13_2016872354022887424",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2016872354022887424.mp4",
-      "duration_sec": 127.794,
-      "width": 1280,
-      "height": 720,
-      "like_count": 1817,
-      "retweet_count": 315,
-      "view_count": 39013,
-      "bucket": "needs-recognition",
-      "priority": 75,
-      "tags": [
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "topic:general",
-        "topic:military",
-        "video:long"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 1280x720; 127.8s; 9.16 MiB; archived; tweet context: .@RealTomHoman in Minneapolis: \"The reason for the massive deployment is because of the threats, because of the violence... we brought extra resources in to provide that security, and I said... when the violence decreases, we can drive down those resources.\"...; source URL: https://video.twimg.com/amplify_video/2016872354022887424/vid/avc1/1280x720/OugD790nmOF8JHEW.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2016872354022887424.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 127.8s; 9.16 MiB; archived; tweet context: .@RealTomHoman in Minneapolis: \"The reason for the massive deployment is because of the threats, because of the violence... we brought extra resources in to provide that security, and I said... when the violence decreases, we can drive down those resources.\"...; source URL: https://video.twimg.com/amplify_video/2016872354022887424/vid/avc1/1280x720/OugD790nmOF8JHEW.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2016872354022887424.mp4; needs OCR, transcript, o"
-    },
-    {
       "tweet_id": "2017283523040718924",
       "account_handle": "RapidResponse47",
       "posted_at": "2026-01-30T17:07:25.000Z",
@@ -63697,44 +63829,6 @@
       "description": "video; 1080x1920; 75.5s; 12.09 MiB; archived; tweet context: President Trump, the First Lady, @VP Vance, and the Second Lady attend the dignified transfer of six fallen American heroes who gave their lives for our nation. America mourns their loss & honors their sacrifice. May God bless them & their families. 🇺🇸 In Hon...; source URL: https://video.twimg.com/amplify_video/2030393888905535488/vid/avc1/1080x1920/xE2QtLxqvrLR_8QW.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2030393888905535488.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1920; 75.5s; 12.09 MiB; archived; tweet context: President Trump, the First Lady, @VP Vance, and the Second Lady attend the dignified transfer of six fallen American heroes who gave their lives for our nation. America mourns their loss & honors their sacrifice. May God bless them & their families. 🇺🇸 In Hon...; source URL: https://video.twimg.com/amplify_video/2030393888905535488/vid/avc1/1080x1920/xE2QtLxqvrLR_8QW.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2030393888905535488.mp4; needs OCR, transcript, or fr"
     },
     {
-      "tweet_id": "2030675752413262318",
-      "account_handle": "WhiteHouse",
-      "posted_at": "2026-03-08T16:03:22.000Z",
-      "tweet_url": "https://x.com/WhiteHouse/status/2030675752413262318",
-      "tweet_text": "“We come together to announce a brand new military coalition to ERADICATE the criminal cartels plaguing our region.” - President Donald J. Trump 🇺🇸 https://t.co/0vhOQRWepD",
-      "media_id": "13_2030675481587007489",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2030675481587007489.mp4",
-      "duration_sec": 55.055,
-      "width": 3840,
-      "height": 2026,
-      "like_count": 28121,
-      "retweet_count": 5958,
-      "view_count": 687189,
-      "bucket": "needs-recognition",
-      "priority": 75,
-      "tags": [
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "topic:military",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 3840x2026; 55.1s; 22.78 MiB; archived; tweet context: “We come together to announce a brand new military coalition to ERADICATE the criminal cartels plaguing our region.” - President Donald J. Trump 🇺🇸 https://t.co/0vhOQRWepD; source URL: https://video.twimg.com/amplify_video/2030675481587007489/vid/avc1/3840x2026/DYfDlqTboGh4iVoP.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2030675481587007489.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 3840x2026; 55.1s; 22.78 MiB; archived; tweet context: “We come together to announce a brand new military coalition to ERADICATE the criminal cartels plaguing our region.” - President Donald J. Trump 🇺🇸 https://t.co/0vhOQRWepD; source URL: https://video.twimg.com/amplify_video/2030675481587007489/vid/avc1/3840x2026/DYfDlqTboGh4iVoP.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2030675481587007489.mp4; needs OCR, transcript, or frame-level vision before content claims. “We come together to announce a brand new military coalition to ERADICATE the criminal cartels plaguing our region.” - President Donald J. Tru"
-    },
-    {
       "tweet_id": "2030726477990461933",
       "account_handle": "DHSgov",
       "posted_at": "2026-03-08T19:24:56.000Z",
@@ -63892,44 +63986,6 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 640x360; 113.0s; 4.78 MiB; archived; tweet context: Thanks to the Democrats' reckless DHS shutdown, some security lines at New Orleans’ Louis Armstrong airport are starting in the PARKING GARAGE. The Democrats political games are forcing our hardworking TSA officers to work without pay for the third time in ne...; source URL: https://video.twimg.com/amplify_video/2031031553514422273/vid/avc1/640x360/dqC9i4vPv-O3Wxb8.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2031031553514422273.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 640x360; 113.0s; 4.78 MiB; archived; tweet context: Thanks to the Democrats' reckless DHS shutdown, some security lines at New Orleans’ Louis Armstrong airport are starting in the PARKING GARAGE. The Democrats political games are forcing our hardworking TSA officers to work without pay for the third time in ne...; source URL: https://video.twimg.com/amplify_video/2031031553514422273/vid/avc1/640x360/dqC9i4vPv-O3Wxb8.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2031031553514422273.mp4; needs OCR, transcript, or frame-le"
-    },
-    {
-      "tweet_id": "2031031695659462864",
-      "account_handle": "WhiteHouse",
-      "posted_at": "2026-03-09T15:37:45.000Z",
-      "tweet_url": "https://x.com/WhiteHouse/status/2031031695659462864",
-      "tweet_text": "This regime will soon learn that no one should challenge the STRENGTH and MIGHT of the United States Armed Forces. https://t.co/HRbR4NH6CW",
-      "media_id": "13_2031023315486216192",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2031023315486216192.mp4",
-      "duration_sec": 108.191,
-      "width": 4096,
-      "height": 1800,
-      "like_count": 59910,
-      "retweet_count": 13094,
-      "view_count": 2969583,
-      "bucket": "needs-recognition",
-      "priority": 75,
-      "tags": [
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "topic:military",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 4096x1800; 108.2s; 83.41 MiB; archived; tweet context: This regime will soon learn that no one should challenge the STRENGTH and MIGHT of the United States Armed Forces. https://t.co/HRbR4NH6CW; source URL: https://video.twimg.com/amplify_video/2031023315486216192/vid/avc1/4096x1800/fJjcVCHP0m8CrdP9.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2031023315486216192.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 4096x1800; 108.2s; 83.41 MiB; archived; tweet context: This regime will soon learn that no one should challenge the STRENGTH and MIGHT of the United States Armed Forces. https://t.co/HRbR4NH6CW; source URL: https://video.twimg.com/amplify_video/2031023315486216192/vid/avc1/4096x1800/fJjcVCHP0m8CrdP9.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2031023315486216192.mp4; needs OCR, transcript, or frame-level vision before content claims. This regime will soon learn that no one should challenge the STRENGTH and MIGHT of the United States Armed Forces. https://t.co/HRbR4NH6CW"
     },
     {
       "tweet_id": "2031048839138803789",
@@ -64823,46 +64879,6 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 28.3s; 2.28 MiB; archived; tweet context: In airports across the country, Democrats are making the heroic men and women of TSA work without pay for the THIRD time in six months — forcing 366 agents to leave the force. This loss of TSA officers significantly decreases TSA’s long-term ability to meet p...; source URL: https://video.twimg.com/amplify_video/2034289410120744960/vid/avc1/1280x720/LZZ2vyQ1kEwQ5H0s.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2034289410120744960.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 28.3s; 2.28 MiB; archived; tweet context: In airports across the country, Democrats are making the heroic men and women of TSA work without pay for the THIRD time in six months — forcing 366 agents to leave the force. This loss of TSA officers significantly decreases TSA’s long-term ability to meet p...; source URL: https://video.twimg.com/amplify_video/2034289410120744960/vid/avc1/1280x720/LZZ2vyQ1kEwQ5H0s.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2034289410120744960.mp4; needs OCR, transcript, or frame-"
-    },
-    {
-      "tweet_id": "2034302387523883128",
-      "account_handle": "PressSec",
-      "posted_at": "2026-03-18T16:14:19.000Z",
-      "tweet_url": "https://x.com/PressSec/status/2034302387523883128",
-      "tweet_text": "CNN:\n\n“MAGA GOP view of Trump, approve is 100%. If you are a member of MAGA in the GOP, you approve of Donald John Trump. 0% say that they disapprove… he’s the 1972 Miami Dolphins.” https://t.co/ELYv9d5OPM",
-      "media_id": "13_2034302328698789888",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-PressSec/13_2034302328698789888.mp4",
-      "duration_sec": 30.871,
-      "width": 1280,
-      "height": 720,
-      "like_count": 44969,
-      "retweet_count": 9406,
-      "view_count": 3216259,
-      "bucket": "needs-recognition",
-      "priority": 75,
-      "tags": [
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "slogan:maga",
-        "topic:general",
-        "video:medium",
-        "video:news-clip"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 1280x720; 30.9s; 3.69 MiB; archived; tweet context: CNN: “MAGA GOP view of Trump, approve is 100%. If you are a member of MAGA in the GOP, you approve of Donald John Trump. 0% say that they disapprove… he’s the 1972 Miami Dolphins.” https://t.co/ELYv9d5OPM; source URL: https://video.twimg.com/amplify_video/2034302328698789888/vid/avc1/1280x720/aVm5qeUT-TwiUsd2.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-PressSec/13_2034302328698789888.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 30.9s; 3.69 MiB; archived; tweet context: CNN: “MAGA GOP view of Trump, approve is 100%. If you are a member of MAGA in the GOP, you approve of Donald John Trump. 0% say that they disapprove… he’s the 1972 Miami Dolphins.” https://t.co/ELYv9d5OPM; source URL: https://video.twimg.com/amplify_video/2034302328698789888/vid/avc1/1280x720/aVm5qeUT-TwiUsd2.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-PressSec/13_2034302328698789888.mp4; needs OCR, transcript, or frame-level vision before content claims. CNN: “MAGA GOP view of Trump, approve is 100%. If you are a member of MAGA in the GOP,"
     },
     {
       "tweet_id": "2034309506633474248",
@@ -71193,47 +71209,6 @@
       "description": "video; 1080x1080; 83.7s; 6.04 MiB; archived; tweet context: LIVE FROM THE OVAL: President Trump Announces Historic Reforms to Accelerate Access to Medical Research &amp; Treatments Based on Psychedelic Drugs \"Since 9/11, we've lost over 21 times more veteran lives to suicide than on the battlefield... today, we're bri...; source URL: https://video.twimg.com/amplify_video/2045497472437387264/vid/avc1/1080x1080/EsGhjvV-nTVZoXiq.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2045497472437387264.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1080; 83.7s; 6.04 MiB; archived; tweet context: LIVE FROM THE OVAL: President Trump Announces Historic Reforms to Accelerate Access to Medical Research &amp; Treatments Based on Psychedelic Drugs \"Since 9/11, we've lost over 21 times more veteran lives to suicide than on the battlefield... today, we're bri...; source URL: https://video.twimg.com/amplify_video/2045497472437387264/vid/avc1/1080x1080/EsGhjvV-nTVZoXiq.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2045497472437387264.mp4; needs OCR, transcript, or fram"
     },
     {
-      "tweet_id": "2045498992293802354",
-      "account_handle": "RapidResponse47",
-      "posted_at": "2026-04-18T13:45:37.000Z",
-      "tweet_url": "https://x.com/RapidResponse47/status/2045498992293802354",
-      "tweet_text": ".@joerogan says he sent @POTUS information on the extraordinary effects of ibogaine on veterans with TBI and PTSD: \"The text message came back, 'Sounds great! Do you want FDA approval? Let's do it!' It was literally that quick.\" https://t.co/Km3FITfE4p",
-      "media_id": "13_2045497719360471040",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2045497719360471040.mp4",
-      "duration_sec": 277.043,
-      "width": 1280,
-      "height": 720,
-      "like_count": 16449,
-      "retweet_count": 1697,
-      "view_count": 1217856,
-      "bucket": "needs-recognition",
-      "priority": 75,
-      "tags": [
-        "agency:POTUS",
-        "format:quote",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "speaker:President Trump",
-        "topic:military",
-        "video:long"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 1280x720; 277.0s; 21.68 MiB; archived; tweet context: .@joerogan says he sent @POTUS information on the extraordinary effects of ibogaine on veterans with TBI and PTSD: \"The text message came back, 'Sounds great! Do you want FDA approval? Let's do it!' It was literally that quick.\" https://t.co/Km3FITfE4p; source URL: https://video.twimg.com/amplify_video/2045497719360471040/vid/avc1/1280x720/LaHK7Ed_bNmFxwPM.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2045497719360471040.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 277.0s; 21.68 MiB; archived; tweet context: .@joerogan says he sent @POTUS information on the extraordinary effects of ibogaine on veterans with TBI and PTSD: \"The text message came back, 'Sounds great! Do you want FDA approval? Let's do it!' It was literally that quick.\" https://t.co/Km3FITfE4p; source URL: https://video.twimg.com/amplify_video/2045497719360471040/vid/avc1/1280x720/LaHK7Ed_bNmFxwPM.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2045497719360471040.mp4; needs OCR, transcript, or frame-level vi"
-    },
-    {
       "tweet_id": "2045499757552890335",
       "account_handle": "WhiteHouse",
       "posted_at": "2026-04-18T13:48:40.000Z",
@@ -71740,45 +71715,6 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1080x1080; 40.9s; 3.11 MiB; archived; tweet context: Iran must never be allowed to obtain a nuclear weapon, and they must hand over their enriched uranium. @PressSec joins Fox News, delivering an update on Operation Epic Fury. https://t.co/in7S8zwtWG; source URL: https://video.twimg.com/amplify_video/2047041089132007424/vid/avc1/1080x1080/mNdULxlNDCxDHS48.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2047041089132007424.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1080; 40.9s; 3.11 MiB; archived; tweet context: Iran must never be allowed to obtain a nuclear weapon, and they must hand over their enriched uranium. @PressSec joins Fox News, delivering an update on Operation Epic Fury. https://t.co/in7S8zwtWG; source URL: https://video.twimg.com/amplify_video/2047041089132007424/vid/avc1/1080x1080/mNdULxlNDCxDHS48.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2047041089132007424.mp4; needs OCR, transcript, or frame-level vision before content claims. Iran must never be allowed to obtain a nuclear weapon, and they must hand over their enriche"
-    },
-    {
-      "tweet_id": "2047339352640917698",
-      "account_handle": "RapidResponse47",
-      "posted_at": "2026-04-23T15:38:34.000Z",
-      "tweet_url": "https://x.com/RapidResponse47/status/2047339352640917698",
-      "tweet_text": "CNN: \"This stock market has been up like a rocket!\"\n\nThe S&amp;P 500 has seen a staggering 19% gain so far in President Trump's second term — far higher than the average presidency since 2001 (+15%) and 1961 (+6%).\n\n📈📈📈 https://t.co/Ty2Bm0zTiB",
-      "media_id": "13_2047338690213507072",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2047338690213507072.mp4",
-      "duration_sec": 66.466,
-      "width": 1280,
-      "height": 720,
-      "like_count": 6135,
-      "retweet_count": 1299,
-      "view_count": 191825,
-      "bucket": "needs-recognition",
-      "priority": 75,
-      "tags": [
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "topic:economy",
-        "video:medium",
-        "video:news-clip"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 1280x720; 66.5s; 7.78 MiB; archived; tweet context: CNN: \"This stock market has been up like a rocket!\" The S&amp;P 500 has seen a staggering 19% gain so far in President Trump's second term — far higher than the average presidency since 2001 (+15%) and 1961 (+6%). 📈📈📈 https://t.co/Ty2Bm0zTiB; source URL: https://video.twimg.com/amplify_video/2047338690213507072/vid/avc1/1280x720/ZQz7CjimB9Q0Zvc1.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2047338690213507072.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 66.5s; 7.78 MiB; archived; tweet context: CNN: \"This stock market has been up like a rocket!\" The S&amp;P 500 has seen a staggering 19% gain so far in President Trump's second term — far higher than the average presidency since 2001 (+15%) and 1961 (+6%). 📈📈📈 https://t.co/Ty2Bm0zTiB; source URL: https://video.twimg.com/amplify_video/2047338690213507072/vid/avc1/1280x720/ZQz7CjimB9Q0Zvc1.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2047338690213507072.mp4; needs OCR, transcript, or frame-level vision before content claims"
     },
     {
       "tweet_id": "2047358918578364581",
@@ -72728,47 +72664,6 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 112.7s; 9.53 MiB; archived; tweet context: \"Saturday night served as yet another reminder of how important it is to fund the @DHSgov. It is shameful that the United States Congress has kept this vital agency defunded for 73 days. The longest shutdown of a federal agency in U.S. history. The @SecretSer...; source URL: https://video.twimg.com/amplify_video/2048816510492344320/vid/avc1/1280x720/sFwinhgc4wXxZBkS.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2048816510492344320.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 112.7s; 9.53 MiB; archived; tweet context: \"Saturday night served as yet another reminder of how important it is to fund the @DHSgov. It is shameful that the United States Congress has kept this vital agency defunded for 73 days. The longest shutdown of a federal agency in U.S. history. The @SecretSer...; source URL: https://video.twimg.com/amplify_video/2048816510492344320/vid/avc1/1280x720/sFwinhgc4wXxZBkS.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2048816510492344320.mp4; needs OCR, transcript, or frame-level vi"
-    },
-    {
-      "tweet_id": "2048817124504654013",
-      "account_handle": "RapidResponse47",
-      "posted_at": "2026-04-27T17:30:42.000Z",
-      "tweet_url": "https://x.com/RapidResponse47/status/2048817124504654013",
-      "tweet_text": ".@PressSec: \"I view this job as the president’s spokesperson and the White House spokeswoman as public service. It’s not just any job... I can speak on behalf of all of the staff here at the White House — @POTUS inspires all of us to just keep going and keep fighting every day.\" https://t.co/4QOlu9YOBU",
-      "media_id": "13_2048816707117240321",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2048816707117240321.mp4",
-      "duration_sec": 44.61,
-      "width": 1280,
-      "height": 720,
-      "like_count": 19219,
-      "retweet_count": 2277,
-      "view_count": 253162,
-      "bucket": "needs-recognition",
-      "priority": 75,
-      "tags": [
-        "agency:POTUS",
-        "agency:PressSec",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "speaker:President Trump",
-        "topic:economy",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 1280x720; 44.6s; 2.73 MiB; archived; tweet context: .@PressSec: \"I view this job as the president’s spokesperson and the White House spokeswoman as public service. It’s not just any job... I can speak on behalf of all of the staff here at the White House — @POTUS inspires all of us to just keep going and keep...; source URL: https://video.twimg.com/amplify_video/2048816707117240321/vid/avc1/1280x720/t2fB8MFRcEkgzZiA.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2048816707117240321.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 44.6s; 2.73 MiB; archived; tweet context: .@PressSec: \"I view this job as the president’s spokesperson and the White House spokeswoman as public service. It’s not just any job... I can speak on behalf of all of the staff here at the White House — @POTUS inspires all of us to just keep going and keep...; source URL: https://video.twimg.com/amplify_video/2048816707117240321/vid/avc1/1280x720/t2fB8MFRcEkgzZiA.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2048816707117240321.mp4; needs OCR, transcript, or "
     },
     {
       "tweet_id": "2048827357125808271",
@@ -87056,45 +86951,6 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1080x1920; 33.4s; 2.88 MiB; archived; tweet context: “Right now…in the Trump Administration, we’re really attacking this fraud problem — @POTUS is engaged, @VP is engaged.” DHS General Counsel James Percival https://t.co/ywM66lWwFv; source URL: https://video.twimg.com/amplify_video/2055430546507894784/vid/avc1/1080x1920/iMZ5AwcLyhzaO5JD.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2055430546507894784.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1920; 33.4s; 2.88 MiB; archived; tweet context: “Right now…in the Trump Administration, we’re really attacking this fraud problem — @POTUS is engaged, @VP is engaged.” DHS General Counsel James Percival https://t.co/ywM66lWwFv; source URL: https://video.twimg.com/amplify_video/2055430546507894784/vid/avc1/1080x1920/iMZ5AwcLyhzaO5JD.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/13_2055430546507894784.mp4; needs OCR, transcript, or frame-level vision before content claims. “Right now…in the Trump Administration, we’re really attacking this fraud problem — @POTUS is engaged, @VP is engaged.” DHS General Counse"
-    },
-    {
-      "tweet_id": "2056881373500064151",
-      "account_handle": "StephenM",
-      "posted_at": "2026-05-19T23:35:09.000Z",
-      "tweet_url": "https://x.com/StephenM/status/2056881373500064151",
-      "tweet_text": "America First, always. https://t.co/MJKmxuC3IO",
-      "media_id": "13_2056566765950210048",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-StephenM/13_2056566765950210048.mp4",
-      "duration_sec": 119.861,
-      "width": 496,
-      "height": 640,
-      "like_count": 19472,
-      "retweet_count": 2505,
-      "view_count": 642859,
-      "bucket": "needs-recognition",
-      "priority": 75,
-      "tags": [
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "slogan:america-first",
-        "topic:general",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "extract-keyframes",
-        "detect-audio"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 496x640; 119.9s; 4.47 MiB; archived; tweet context: America First, always. https://t.co/MJKmxuC3IO; source URL: https://video.twimg.com/amplify_video/2056566765950210048/vid/avc1/496x640/cGKaPFtUfuF3xnzn.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-StephenM/13_2056566765950210048.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 496x640; 119.9s; 4.47 MiB; archived; tweet context: America First, always. https://t.co/MJKmxuC3IO; source URL: https://video.twimg.com/amplify_video/2056566765950210048/vid/avc1/496x640/cGKaPFtUfuF3xnzn.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-StephenM/13_2056566765950210048.mp4; needs OCR, transcript, or frame-level vision before content claims. America First, always. https://t.co/MJKmxuC3IO"
     },
     {
       "tweet_id": "2057093883306078533",
@@ -116668,6 +116524,45 @@
       "description": "video; 1280x720; 53.3s; 8.43 MiB; archived; tweet context: Let's throw it back to the 1990s. Over 100 years of Border Patrol doing what they do best. https://t.co/6qKLK53fRz; source URL: https://video.twimg.com/ext_tw_video/1968750698486530049/pu/vid/avc1/1280x720/YWRNNxmJYRaIBdV5.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/7_1968750698486530049.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 53.3s; 8.43 MiB; archived; tweet context: Let's throw it back to the 1990s. Over 100 years of Border Patrol doing what they do best. https://t.co/6qKLK53fRz; source URL: https://video.twimg.com/ext_tw_video/1968750698486530049/pu/vid/avc1/1280x720/YWRNNxmJYRaIBdV5.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/7_1968750698486530049.mp4; needs OCR, transcript, or frame-level vision before content claims. Let's throw it back to the 1990s. Over 100 years of Border Patrol doing what they do best. https://t.co/6qKLK53fRz"
     },
     {
+      "tweet_id": "1969161021232148795",
+      "account_handle": "USDOL",
+      "posted_at": "2025-09-19T22:05:47.000Z",
+      "tweet_url": "https://x.com/USDOL/status/1969161021232148795",
+      "tweet_text": "The days of employers abusing H-1B Visas are over. \n\nIntroducing PROJECT FIREWALL—our plan to ensure high-skilled jobs go to AMERICANS FIRST 🇺🇸 https://t.co/XPwBJSZfto",
+      "media_id": "13_1969160801203470336",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USDOL/13_1969160801203470336.mp4",
+      "duration_sec": 42.308,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 79845,
+      "retweet_count": 12361,
+      "view_count": 5263608,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "state:Washington",
+        "theme:nativism",
+        "topic:economy",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1920x1080; 42.3s; 8.03 MiB; archived; tweet context: The days of employers abusing H-1B Visas are over. Introducing PROJECT FIREWALL—our plan to ensure high-skilled jobs go to AMERICANS FIRST 🇺🇸 https://t.co/XPwBJSZfto; source URL: https://video.twimg.com/amplify_video/1969160801203470336/vid/avc1/1920x1080/VEJESPb_wso-0VFt.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_1969160801203470336.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 42.3s; 8.03 MiB; archived; tweet context: The days of employers abusing H-1B Visas are over. Introducing PROJECT FIREWALL—our plan to ensure high-skilled jobs go to AMERICANS FIRST 🇺🇸 https://t.co/XPwBJSZfto; source URL: https://video.twimg.com/amplify_video/1969160801203470336/vid/avc1/1920x1080/VEJESPb_wso-0VFt.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USDOL/13_1969160801203470336.mp4; needs OCR, transcript, or frame-level vision before content claims. The days of employers abusing H-1B Visas are over. Introducing PROJECT FIREWALL—our plan to ensure high-skilled jobs go to AMERICANS FIRST 🇺🇸 https://t.co/XPwBJSZfto "
+    },
+    {
       "tweet_id": "1970280164442714348",
       "account_handle": "CBP",
       "posted_at": "2025-09-23T00:12:51.000Z",
@@ -117115,45 +117010,6 @@
       "has_vision_description": true,
       "has_ocr": true,
       "description": "Handheld footage of an ICE/ATF arrest in suburban Chicago in which a Laotian man is pulled from a vehicle. It opens on a close-up of a POLICE vest, and an officer narrates the subject's removal order and convictions. The footage is raw arrest footage with no music or stylized editing. | Okay, so we are here outside of Chicago, north with suburbs. We cannot try to apprehend Mayo from Leos. He has the final order of removal with extended criminal history. His convictions include statutory burglary, robbery, abduction, and also use of firearms. We've got a further investigation."
-    },
-    {
-      "tweet_id": "1979300594020929600",
-      "account_handle": "DHSgov",
-      "posted_at": "2025-10-17T21:36:49.000Z",
-      "tweet_url": "https://x.com/DHSgov/status/1979300594020929600",
-      "tweet_text": "We hear we’re VERY POPULAR on Bluesky! (many people are saying)\n\nGive us a follow at http://homelandgov.bsky.social\n\nPATRIOTS! We must work together and appeal to their patriotic spirit and ask for a hand in stopping the Democrats’ government shutdown. https://t.co/lQvlqC0G5M",
-      "media_id": "13_1979300528786993153",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_1979300528786993153.mp4",
-      "duration_sec": 21.229,
-      "width": 720,
-      "height": 1280,
-      "like_count": 32512,
-      "retweet_count": 3899,
-      "view_count": 2784564,
-      "bucket": "ordinary-video",
-      "priority": 35,
-      "tags": [
-        "agency:DHSgov",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "speaker:President Trump",
-        "topic:immigration",
-        "video:interview",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A vertical screen recording of someone setting up a social-media account profile on a phone-style interface. Early frames show a video interview clip of a woman in glasses and a blazer seated by a window. Later frames show an app onboarding screen reading 'Give your profile a face' with the U.S. Department of Homeland Security seal set as the profile avatar, and a final frame of a cursor clicking a blue 'Post' button. | A vertical screen recording of someone setting up a social-media account profile on a phone-style interface. Early frames show a video interview clip of a woman in glasses and a blazer seated by a window. Later frames show an app onboarding screen reading 'Give your profile a face' with the U.S. Department of Homeland Security seal set as the profile avatar, and a final frame of a cursor clicking a blue 'Post' button.  [0:02] A woman in glasses and a dark blazer sits by a window in an interview-style clip.  [0:10] An app onboarding screen reads 'Give your profile a face' with the DHS seal placed as the profile picture.  [0:19] A cursor hovers over and clicks a blue 'Post' button. | Would you welcome President Trump if he was debating joining Blue Sky? Yeah, Blue Sky"
     },
     {
       "tweet_id": "1980299154883858689",
@@ -117958,47 +117814,6 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1080x1920; 216.1s; 49.56 MiB; archived; tweet context: This Thanksgiving, we give profound thanks for the tireless work of the Department of Homeland Security under @POTUS Trump and @Sec_Noem. May every family around every table today feel the fierce, quiet gratitude of living in a nation that is becoming once ag...; source URL: https://video.twimg.com/amplify_video/1994178019779350528/vid/avc1/1080x1920/TTM_XxNe5kploNT2.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/13_1994178019779350528.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1920; 216.1s; 49.56 MiB; archived; tweet context: This Thanksgiving, we give profound thanks for the tireless work of the Department of Homeland Security under @POTUS Trump and @Sec_Noem. May every family around every table today feel the fierce, quiet gratitude of living in a nation that is becoming once ag...; source URL: https://video.twimg.com/amplify_video/1994178019779350528/vid/avc1/1080x1920/TTM_XxNe5kploNT2.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/13_1994178019779350528.mp4; needs OCR, transcript, o"
-    },
-    {
-      "tweet_id": "1994428579178774895",
-      "account_handle": "ICEgov",
-      "posted_at": "2025-11-28T15:30:02.000Z",
-      "tweet_url": "https://x.com/ICEgov/status/1994428579178774895",
-      "tweet_text": "When someone’s temporary protected status is lifted, they become illegal aliens who aren’t allowed to live or work in the U.S. https://t.co/gQvWleVdfO",
-      "media_id": "7_1994427402093576193",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-ICEgov/7_1994427402093576193.mp4",
-      "duration_sec": 38.366,
-      "width": 1280,
-      "height": 720,
-      "like_count": 28064,
-      "retweet_count": 6446,
-      "view_count": 627525,
-      "bucket": "ordinary-video",
-      "priority": 35,
-      "tags": [
-        "agency:ICEgov",
-        "audio:has-audio",
-        "crime:fraud",
-        "media-status:archived",
-        "media-status:described",
-        "media:video",
-        "slogan:illegal-alien",
-        "theme:criminal",
-        "topic:economy",
-        "topic:immigration",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": true,
-      "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 1280x720; 38.4s; 3.41 MiB; archived; tweet context: When someone’s temporary protected status is lifted, they become illegal aliens who aren’t allowed to live or work in the U.S. https://t.co/gQvWleVdfO; source URL: https://video.twimg.com/ext_tw_video/1994427402093576193/pu/vid/avc1/1280x720/-NEMjrREYCvidDAb.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_1994427402093576193.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1280x720; 38.4s; 3.41 MiB; archived; tweet context: When someone’s temporary protected status is lifted, they become illegal aliens who aren’t allowed to live or work in the U.S. https://t.co/gQvWleVdfO; source URL: https://video.twimg.com/ext_tw_video/1994427402093576193/pu/vid/avc1/1280x720/-NEMjrREYCvidDAb.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_1994427402093576193.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. When someone’s temporary protected status is lifted, they become illegal aliens who aren’t a"
     },
     {
       "tweet_id": "1994889808611872965",
@@ -122649,6 +122464,45 @@
       "description": "video; 720x1280; 54.0s; 6.71 MiB; archived; tweet context: DRUG RING SHUT DOWN HARD — $4M IN METH SEIZED & SECRET CALIFORNIA DRUG LABS SHUTTERED Illegally dumped byproducts led the Sacramento Sheriff’s Office, ICE HSI and numerous other partners to one of the largest domestic methamphetamine seizures in U.S. history...; source URL: https://video.twimg.com/ext_tw_video/2030055888845746176/pu/vid/avc1/720x1280/5UcYWkP_DUC0E8kv.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/7_2030055888845746176.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 720x1280; 54.0s; 6.71 MiB; archived; tweet context: DRUG RING SHUT DOWN HARD — $4M IN METH SEIZED & SECRET CALIFORNIA DRUG LABS SHUTTERED Illegally dumped byproducts led the Sacramento Sheriff’s Office, ICE HSI and numerous other partners to one of the largest domestic methamphetamine seizures in U.S. history...; source URL: https://video.twimg.com/ext_tw_video/2030055888845746176/pu/vid/avc1/720x1280/5UcYWkP_DUC0E8kv.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/7_2030055888845746176.mp4; needs OCR, transcript, or frame-"
     },
     {
+      "tweet_id": "2030675752413262318",
+      "account_handle": "WhiteHouse",
+      "posted_at": "2026-03-08T16:03:22.000Z",
+      "tweet_url": "https://x.com/WhiteHouse/status/2030675752413262318",
+      "tweet_text": "“We come together to announce a brand new military coalition to ERADICATE the criminal cartels plaguing our region.” - President Donald J. Trump 🇺🇸 https://t.co/0vhOQRWepD",
+      "media_id": "13_2030675481587007489",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2030675481587007489.mp4",
+      "duration_sec": 55.055,
+      "width": 3840,
+      "height": 2026,
+      "like_count": 28121,
+      "retweet_count": 5958,
+      "view_count": 687189,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "audio:has-audio",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "slogan:peace-through-strength",
+        "topic:general",
+        "topic:military",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 3840x2026; 55.1s; 22.78 MiB; archived; tweet context: “We come together to announce a brand new military coalition to ERADICATE the criminal cartels plaguing our region.” - President Donald J. Trump 🇺🇸 https://t.co/0vhOQRWepD; source URL: https://video.twimg.com/amplify_video/2030675481587007489/vid/avc1/3840x2026/DYfDlqTboGh4iVoP.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2030675481587007489.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 3840x2026; 55.1s; 22.78 MiB; archived; tweet context: “We come together to announce a brand new military coalition to ERADICATE the criminal cartels plaguing our region.” - President Donald J. Trump 🇺🇸 https://t.co/0vhOQRWepD; source URL: https://video.twimg.com/amplify_video/2030675481587007489/vid/avc1/3840x2026/DYfDlqTboGh4iVoP.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2030675481587007489.mp4; needs OCR, transcript, or frame-level vision before content claims. “We come together to announce a brand new military coalition to ERADICATE the criminal cartels plaguing our region.” - President Donald J. Tru"
+    },
+    {
       "tweet_id": "2031007636578246836",
       "account_handle": "ICEgov",
       "posted_at": "2026-03-09T14:02:09.000Z",
@@ -122692,6 +122546,48 @@
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1180x654; 25.9s; 1.90 MiB; archived; tweet context: A 14-year-old Maryland boy, Jefferson Amaya-Ayala, was lured to a park and brutally murdered by four illegal alien MS-13 gang members last fall in College Park, MD. Last week, all four were indicted on first-degree murder charges. Three of them had prior arre...; source URL: https://video.twimg.com/amplify_video/2031006969235120128/vid/avc1/1180x654/yhuswMUkUuC4StCh.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/13_2031006969235120128.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1180x654; 25.9s; 1.90 MiB; archived; tweet context: A 14-year-old Maryland boy, Jefferson Amaya-Ayala, was lured to a park and brutally murdered by four illegal alien MS-13 gang members last fall in College Park, MD. Last week, all four were indicted on first-degree murder charges. Three of them had prior arre...; source URL: https://video.twimg.com/amplify_video/2031006969235120128/vid/avc1/1180x654/yhuswMUkUuC4StCh.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/13_2031006969235120128.mp4; needs OCR, transcript, or frame-"
+    },
+    {
+      "tweet_id": "2031031695659462864",
+      "account_handle": "WhiteHouse",
+      "posted_at": "2026-03-09T15:37:45.000Z",
+      "tweet_url": "https://x.com/WhiteHouse/status/2031031695659462864",
+      "tweet_text": "This regime will soon learn that no one should challenge the STRENGTH and MIGHT of the United States Armed Forces. https://t.co/HRbR4NH6CW",
+      "media_id": "13_2031023315486216192",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2031023315486216192.mp4",
+      "duration_sec": 108.191,
+      "width": 4096,
+      "height": 1800,
+      "like_count": 59910,
+      "retweet_count": 13094,
+      "view_count": 2969583,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "agency:CENTCOM",
+        "audio:has-audio",
+        "country:Iran",
+        "crime:weapon",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "military:navy",
+        "theme:religion",
+        "topic:immigration",
+        "topic:military",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 4096x1800; 108.2s; 83.41 MiB; archived; tweet context: This regime will soon learn that no one should challenge the STRENGTH and MIGHT of the United States Armed Forces. https://t.co/HRbR4NH6CW; source URL: https://video.twimg.com/amplify_video/2031023315486216192/vid/avc1/4096x1800/fJjcVCHP0m8CrdP9.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2031023315486216192.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 4096x1800; 108.2s; 83.41 MiB; archived; tweet context: This regime will soon learn that no one should challenge the STRENGTH and MIGHT of the United States Armed Forces. https://t.co/HRbR4NH6CW; source URL: https://video.twimg.com/amplify_video/2031023315486216192/vid/avc1/4096x1800/fJjcVCHP0m8CrdP9.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2031023315486216192.mp4; needs OCR, transcript, or frame-level vision before content claims. This regime will soon learn that no one should challenge the STRENGTH and MIGHT of the United States Armed Forces. https://t.co/HRbR4NH6CW | On the orders of the President of the United States, U.S. Central"
     },
     {
       "tweet_id": "2031716907699581432",
@@ -122863,6 +122759,44 @@
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1280x720; 44.7s; 3.73 MiB; archived; tweet context: Sanctuary politicians like Governor Spanberger, Fairfax Co. District Attorney Steve Descano and Fairfax Co. Sheriff Kincaid continue to prioritize the interests of criminal alien predators over the safety of Americans. Israel Christopher Flores-Ortiz of El Sa...; source URL: https://video.twimg.com/amplify_video/2033957088792391680/vid/avc1/1280x720/HQUXl9DJ1lODJx8M.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/13_2033957088792391680.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 44.7s; 3.73 MiB; archived; tweet context: Sanctuary politicians like Governor Spanberger, Fairfax Co. District Attorney Steve Descano and Fairfax Co. Sheriff Kincaid continue to prioritize the interests of criminal alien predators over the safety of Americans. Israel Christopher Flores-Ortiz of El Sa...; source URL: https://video.twimg.com/amplify_video/2033957088792391680/vid/avc1/1280x720/HQUXl9DJ1lODJx8M.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0002/13_2033957088792391680.mp4; needs OCR, transcript, or frame-"
+    },
+    {
+      "tweet_id": "2034302387523883128",
+      "account_handle": "PressSec",
+      "posted_at": "2026-03-18T16:14:19.000Z",
+      "tweet_url": "https://x.com/PressSec/status/2034302387523883128",
+      "tweet_text": "CNN:\n\n“MAGA GOP view of Trump, approve is 100%. If you are a member of MAGA in the GOP, you approve of Donald John Trump. 0% say that they disapprove… he’s the 1972 Miami Dolphins.” https://t.co/ELYv9d5OPM",
+      "media_id": "13_2034302328698789888",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-PressSec/13_2034302328698789888.mp4",
+      "duration_sec": 30.871,
+      "width": 1280,
+      "height": 720,
+      "like_count": 44969,
+      "retweet_count": 9406,
+      "view_count": 3216259,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "slogan:maga",
+        "topic:general",
+        "video:medium",
+        "video:news-clip"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 30.9s; 3.69 MiB; archived; tweet context: CNN: “MAGA GOP view of Trump, approve is 100%. If you are a member of MAGA in the GOP, you approve of Donald John Trump. 0% say that they disapprove… he’s the 1972 Miami Dolphins.” https://t.co/ELYv9d5OPM; source URL: https://video.twimg.com/amplify_video/2034302328698789888/vid/avc1/1280x720/aVm5qeUT-TwiUsd2.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-PressSec/13_2034302328698789888.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 30.9s; 3.69 MiB; archived; tweet context: CNN: “MAGA GOP view of Trump, approve is 100%. If you are a member of MAGA in the GOP, you approve of Donald John Trump. 0% say that they disapprove… he’s the 1972 Miami Dolphins.” https://t.co/ELYv9d5OPM; source URL: https://video.twimg.com/amplify_video/2034302328698789888/vid/avc1/1280x720/aVm5qeUT-TwiUsd2.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-PressSec/13_2034302328698789888.mp4; needs OCR, transcript, or frame-level vision before content claims. CNN: “MAGA GOP view of Trump, approve is 100%. If you are a member of MAGA in the GOP,"
     },
     {
       "tweet_id": "2034387982724333937",
@@ -123575,8 +123509,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "Horizontal video. Grainy security/CCTV-style footage of a crowded JFK airport checkpoint where an ICE/TSA officer performs a Heimlich maneuver on an unresponsive infant. It is a single fixed-camera surveillance angle of the scene, showing TSA-vested staff, travelers, and baggage carts, with no graphics, titles, color grading, or music. There is no music track. | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
+      "has_ocr": true,
+      "description": "Horizontal video. Grainy security/CCTV-style footage of a crowded JFK airport checkpoint where an ICE/TSA officer performs a Heimlich maneuver on an unresponsive infant. It is a single fixed-camera surveillance angle of the scene, showing TSA-vested staff, travelers, and baggage carts, with no graphics, titles, color grading, or music. There is no music track. | rr ih if a AI ee 7 r ? | I J a a | i | i eee ™ | ; ~e c 4‘ a : | on wy F ) Dax 2 ; ‘ < hw ah ie ~< = | 7 ie — a ir : » ; 4 “ : = | 5 . a ‘a. ae | Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above."
     },
     {
       "tweet_id": "2037257818328248827",
@@ -124638,7 +124572,7 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
+      "has_ocr": true,
       "description": "A recorded clip, posted by the account, consisting of fixed security-camera footage of a storefront walkway labeled 'Front Entrance', with a 'VAPE CBD' sign, parked cars and traffic cones, and a date-and-time stamp reading 04-02-2026. The sampled frames show an altercation: a person in motion on the walkway, then a person lying on the ground while another person stands nearby beside a bicycle. The tweet text labels the footage with a graphic-content warning. | A recorded clip, posted by the account, consisting of fixed security-camera footage of a storefront walkway labeled 'Front Entrance', with a 'VAPE CBD' sign, parked cars and traffic cones, and a date-and-time stamp reading 04-02-2026. The sampled frames show an altercation: a person in motion on the walkway, then a person lying on the ground while another person stands nearby beside a bicycle. The tweet text labels the footage with a graphic-content warning.  [0:06] A fixed security-camera view of a storefront walkway with a 'VAPE CBD' sign, parked cars and cones; timestamp 04-02-2026.  [0:33] A person is captured mid-motion on the walkway near the storefront.  [1:00] A person lies on the walkway while another person stands n"
     },
     {
@@ -124925,7 +124859,7 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
+      "has_ocr": true,
       "description": "A reposted clip consisting of fixed security-camera footage of a storefront walkway outside a shop with a 'VAPE CBD' sign, parked cars, traffic cones and a 'Front Entrance' label, with a date-and-time stamp reading 04-02-2026. The sampled frames show an altercation: a person in motion on the walkway, then a person lying on the ground while another person stands nearby beside a bicycle. The tweet text carries a graphic-content warning. | A reposted clip consisting of fixed security-camera footage of a storefront walkway outside a shop with a 'VAPE CBD' sign, parked cars, traffic cones and a 'Front Entrance' label, with a date-and-time stamp reading 04-02-2026. The sampled frames show an altercation: a person in motion on the walkway, then a person lying on the ground while another person stands nearby beside a bicycle. The tweet text carries a graphic-content warning.  [0:06] A fixed security-camera view of a storefront walkway with a 'VAPE CBD' sign, parked cars and cones; on-screen stamp reads 04-02-2026.  [0:33] A person is captured mid-motion on the walkway near the storefront.  [1:00] A person lies on the walkway while another person stands nearby beside a bicycle, with a red h"
     },
     {
@@ -125576,6 +125510,48 @@
       "description": "video; 1280x720; 68.6s; 5.98 MiB; archived; tweet context: How many U.S. citizens have died because of improperly vetted immigration applications under the previous administration? Now, ICE HSI has implemented safeguards to prevent criminals from naturalizing into our country. https://t.co/GOZpVf8QQZ; source URL: https://video.twimg.com/ext_tw_video/2045335345550495745/pu/vid/avc1/1280x720/1MWr9tspBEWn8eHk.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2045335345550495745.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1280x720; 68.6s; 5.98 MiB; archived; tweet context: How many U.S. citizens have died because of improperly vetted immigration applications under the previous administration? Now, ICE HSI has implemented safeguards to prevent criminals from naturalizing into our country. https://t.co/GOZpVf8QQZ; source URL: https://video.twimg.com/ext_tw_video/2045335345550495745/pu/vid/avc1/1280x720/1MWr9tspBEWn8eHk.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/7_2045335345550495745.mp4; visual observation: Reviewed"
     },
     {
+      "tweet_id": "2045498992293802354",
+      "account_handle": "RapidResponse47",
+      "posted_at": "2026-04-18T13:45:37.000Z",
+      "tweet_url": "https://x.com/RapidResponse47/status/2045498992293802354",
+      "tweet_text": ".@joerogan says he sent @POTUS information on the extraordinary effects of ibogaine on veterans with TBI and PTSD: \"The text message came back, 'Sounds great! Do you want FDA approval? Let's do it!' It was literally that quick.\" https://t.co/Km3FITfE4p",
+      "media_id": "13_2045497719360471040",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2045497719360471040.mp4",
+      "duration_sec": 277.043,
+      "width": 1280,
+      "height": 720,
+      "like_count": 16449,
+      "retweet_count": 1697,
+      "view_count": 1217856,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "agency:POTUS",
+        "audio:has-audio",
+        "country:Gabon",
+        "format:quote",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "speaker:President Trump",
+        "theme:religion",
+        "topic:immigration",
+        "topic:military",
+        "video:long"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 277.0s; 21.68 MiB; archived; tweet context: .@joerogan says he sent @POTUS information on the extraordinary effects of ibogaine on veterans with TBI and PTSD: \"The text message came back, 'Sounds great! Do you want FDA approval? Let's do it!' It was literally that quick.\" https://t.co/Km3FITfE4p; source URL: https://video.twimg.com/amplify_video/2045497719360471040/vid/avc1/1280x720/LaHK7Ed_bNmFxwPM.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2045497719360471040.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 277.0s; 21.68 MiB; archived; tweet context: .@joerogan says he sent @POTUS information on the extraordinary effects of ibogaine on veterans with TBI and PTSD: \"The text message came back, 'Sounds great! Do you want FDA approval? Let's do it!' It was literally that quick.\" https://t.co/Km3FITfE4p; source URL: https://video.twimg.com/amplify_video/2045497719360471040/vid/avc1/1280x720/LaHK7Ed_bNmFxwPM.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2045497719360471040.mp4; needs OCR, transcript, or frame-level vi"
+    },
+    {
       "tweet_id": "2045548530077487278",
       "account_handle": "ICEgov",
       "posted_at": "2026-04-18T17:02:28.000Z",
@@ -125948,6 +125924,43 @@
       "description": "A clip from a Fox Carolina news segment. A graphic displays a booking-style photo of a man with dark hair labeled with a name, under a header reading CHARGED, OCONEE COUNTY. A FOX CAROLINA logo and a time-and-temperature readout appear in the lower-right. | A clip from a Fox Carolina news segment. A graphic displays a booking-style photo of a man with dark hair labeled with a name, under a header reading CHARGED, OCONEE COUNTY. A FOX CAROLINA logo and a time-and-temperature readout appear in the lower-right.  [0:09] A graphic shows a booking photo labeled with a name under the header CHARGED, OCONEE COUNTY.  [0:22] The same graphic remains displayed with the FOX CAROLINA logo. | A Senate command is now accused of child sex crimes and incest. Luis Mateo was arrested after a young girl gave birth in the hospital parking lot. During the investigation of Coney County deputies, say they discovered Mateo had sexual intercourse with the victim over a three-year period. Mateo is now charged with three counts of criminal sexual conduct with a minor and one count of incest. We're told the minor and child are now in protective custody and they are safe, a share of office. An ICE detainer has "
     },
     {
+      "tweet_id": "2047339352640917698",
+      "account_handle": "RapidResponse47",
+      "posted_at": "2026-04-23T15:38:34.000Z",
+      "tweet_url": "https://x.com/RapidResponse47/status/2047339352640917698",
+      "tweet_text": "CNN: \"This stock market has been up like a rocket!\"\n\nThe S&amp;P 500 has seen a staggering 19% gain so far in President Trump's second term — far higher than the average presidency since 2001 (+15%) and 1961 (+6%).\n\n📈📈📈 https://t.co/Ty2Bm0zTiB",
+      "media_id": "13_2047338690213507072",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2047338690213507072.mp4",
+      "duration_sec": 66.466,
+      "width": 1280,
+      "height": 720,
+      "like_count": 6135,
+      "retweet_count": 1299,
+      "view_count": 191825,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:economy",
+        "video:medium",
+        "video:news-clip"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 66.5s; 7.78 MiB; archived; tweet context: CNN: \"This stock market has been up like a rocket!\" The S&amp;P 500 has seen a staggering 19% gain so far in President Trump's second term — far higher than the average presidency since 2001 (+15%) and 1961 (+6%). 📈📈📈 https://t.co/Ty2Bm0zTiB; source URL: https://video.twimg.com/amplify_video/2047338690213507072/vid/avc1/1280x720/ZQz7CjimB9Q0Zvc1.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2047338690213507072.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 66.5s; 7.78 MiB; archived; tweet context: CNN: \"This stock market has been up like a rocket!\" The S&amp;P 500 has seen a staggering 19% gain so far in President Trump's second term — far higher than the average presidency since 2001 (+15%) and 1961 (+6%). 📈📈📈 https://t.co/Ty2Bm0zTiB; source URL: https://video.twimg.com/amplify_video/2047338690213507072/vid/avc1/1280x720/ZQz7CjimB9Q0Zvc1.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2047338690213507072.mp4; needs OCR, transcript, or frame-level vision before content claims"
+    },
+    {
       "tweet_id": "2047355979939913950",
       "account_handle": "RapidResponse47",
       "posted_at": "2026-04-23T16:44:38.000Z",
@@ -126068,6 +126081,46 @@
       "description": "video; 720x1280; 62.1s; 6.63 MiB; archived; tweet context: Flashback Friday: This is what mass deportations and winning look like. When we had the will, the Green Team was deployed in our interior-and they delivered. So why isn’t the Green Team being used like this anymore? We will not back down. 🇺🇸 #MeanGreenTeam #M...; source URL: https://video.twimg.com/amplify_video/2047675260896780288/vid/avc1/720x1280/BNrBTofMlQxI9365.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-GregoryKBovino/13_2047675260896780288.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 720x1280; 62.1s; 6.63 MiB; archived; tweet context: Flashback Friday: This is what mass deportations and winning look like. When we had the will, the Green Team was deployed in our interior-and they delivered. So why isn’t the Green Team being used like this anymore? We will not back down. 🇺🇸 #MeanGreenTeam #M...; source URL: https://video.twimg.com/amplify_video/2047675260896780288/vid/avc1/720x1280/BNrBTofMlQxI9365.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-GregoryKBovino/13_2047675260896780288.mp4; needs OCR, transcript, or "
     },
     {
+      "tweet_id": "2048817124504654013",
+      "account_handle": "RapidResponse47",
+      "posted_at": "2026-04-27T17:30:42.000Z",
+      "tweet_url": "https://x.com/RapidResponse47/status/2048817124504654013",
+      "tweet_text": ".@PressSec: \"I view this job as the president’s spokesperson and the White House spokeswoman as public service. It’s not just any job... I can speak on behalf of all of the staff here at the White House — @POTUS inspires all of us to just keep going and keep fighting every day.\" https://t.co/4QOlu9YOBU",
+      "media_id": "13_2048816707117240321",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2048816707117240321.mp4",
+      "duration_sec": 44.61,
+      "width": 1280,
+      "height": 720,
+      "like_count": 19219,
+      "retweet_count": 2277,
+      "view_count": 253162,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "agency:POTUS",
+        "agency:PressSec",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "speaker:President Trump",
+        "topic:economy",
+        "video:medium",
+        "video:speech"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1280x720; 44.6s; 2.73 MiB; archived; tweet context: .@PressSec: \"I view this job as the president’s spokesperson and the White House spokeswoman as public service. It’s not just any job... I can speak on behalf of all of the staff here at the White House — @POTUS inspires all of us to just keep going and keep...; source URL: https://video.twimg.com/amplify_video/2048816707117240321/vid/avc1/1280x720/t2fB8MFRcEkgzZiA.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2048816707117240321.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 44.6s; 2.73 MiB; archived; tweet context: .@PressSec: \"I view this job as the president’s spokesperson and the White House spokeswoman as public service. It’s not just any job... I can speak on behalf of all of the staff here at the White House — @POTUS inspires all of us to just keep going and keep...; source URL: https://video.twimg.com/amplify_video/2048816707117240321/vid/avc1/1280x720/t2fB8MFRcEkgzZiA.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47/13_2048816707117240321.mp4; needs OCR, transcript, or "
+    },
+    {
       "tweet_id": "2048854553408262411",
       "account_handle": "PressSec",
       "posted_at": "2026-04-27T19:59:26.000Z",
@@ -126145,7 +126198,7 @@
       "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "A vertical stylized clip, posted by the account, with a dark, high-contrast treatment. The sampled frames show a close, pixelated shot of a man's face with the large white word 'NICE' overlaid, then a circular fisheye or peephole view of a masked figure wearing reflective sunglasses with blurred people behind. The clip uses heavy editing and on-screen text. | A vertical stylized clip, posted by the account, with a dark, high-contrast treatment. The sampled frames show a close, pixelated shot of a man's face with the large white word 'NICE' overlaid, then a circular fisheye or peephole view of a masked figure wearing reflective sunglasses with blurred people behind. The clip uses heavy editing and on-screen text.  [0:03] A close, pixelated shot of a man's face on a black background with the white word 'NICE' overlaid.  [0:29] A circular fisheye or peephole view of a masked figure in reflective sunglasses, with blurred people in the background. | People are starting to say, Ice, you're nice guys, we're really appreciated."
+      "description": "A vertical stylized clip, posted by the account, with a dark, high-contrast treatment. The sampled frames show a close, pixelated shot of a man's face with the large white word 'NICE' overlaid, then a circular fisheye or peephole view of a masked figure wearing reflective sunglasses with blurred people behind. The clip uses heavy editing and on-screen text. | A vertical stylized clip, posted by the account, with a dark, high-contrast treatment. The sampled frames show a close, pixelated shot of a man's face with the large white word 'NICE' overlaid, then a circular fisheye or peephole view of a masked figure wearing reflective sunglasses with blurred people behind. The clip uses heavy editing and on-screen text.  [0:03] A close, pixelated shot of a man's face on a black background with the white word 'NICE' overlaid.  [0:29] A circular fisheye or peephole view of a masked figure in reflective sunglasses, with blurred people in the background. | — é | _§ i 2 , Ba “3 'f Py Ais | ~sgs \\ : SS > ¥ . j Ss aks ~% ’ * | <— 4 Fl ol A . mat 5) aK FA =e Ss shat : malig oer » a : (eae ; ; * ag os Pa <—y oy Ree - _— . £ S —a , 23 =o 1 == ze. ae ‘= | — = af ‘ te is 4 y | People are starting to s"
     },
     {
       "tweet_id": "2049105539603300835",
@@ -126185,7 +126238,7 @@
       "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "A vertical stylized clip, posted as a repost, with a dark, high-contrast treatment. The sampled frames show a close, pixelated shot of a man's face with the large white word 'NICE' overlaid, then a circular fisheye or peephole view of a masked figure wearing reflective sunglasses with blurred people behind. The clip uses heavy editing and on-screen text. | A vertical stylized clip, posted as a repost, with a dark, high-contrast treatment. The sampled frames show a close, pixelated shot of a man's face with the large white word 'NICE' overlaid, then a circular fisheye or peephole view of a masked figure wearing reflective sunglasses with blurred people behind. The clip uses heavy editing and on-screen text.  [0:03] A close, pixelated shot of a man's face on a black background with the white word 'NICE' overlaid.  [0:29] A circular fisheye or peephole view of a masked figure in reflective sunglasses, with blurred people in the background. | People are starting to say, Ice, you're nice guys, we're really appreciated."
+      "description": "A vertical stylized clip, posted as a repost, with a dark, high-contrast treatment. The sampled frames show a close, pixelated shot of a man's face with the large white word 'NICE' overlaid, then a circular fisheye or peephole view of a masked figure wearing reflective sunglasses with blurred people behind. The clip uses heavy editing and on-screen text. | A vertical stylized clip, posted as a repost, with a dark, high-contrast treatment. The sampled frames show a close, pixelated shot of a man's face with the large white word 'NICE' overlaid, then a circular fisheye or peephole view of a masked figure wearing reflective sunglasses with blurred people behind. The clip uses heavy editing and on-screen text.  [0:03] A close, pixelated shot of a man's face on a black background with the white word 'NICE' overlaid.  [0:29] A circular fisheye or peephole view of a masked figure in reflective sunglasses, with blurred people in the background. | — é | _§ i 2 , Ba “3 'f Py Ais | ~sgs \\ : SS > ¥ . j Ss aks ~% ’ * | <— 4 Fl ol A . mat 5) aK FA =e Ss shat : malig oer » a : (eae ; ; * ag os Pa <—y oy Ree - _— . £ S —a , 23 =o 1 == ze. ae ‘= | — = af ‘ te is 4 y | a 0) \\ Cid - Y\\ - “Nh 4 1 1 1 "
     },
     {
       "tweet_id": "2049117114464600545",
@@ -126926,8 +126979,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "A clip from a television interview, presented as a CBS News Exclusive. A bald man in a dark suit, white shirt and dark tie sits speaking, with an American flag and a dimly lit interior behind him. A 'CBS NEWS EXCLUSIVE' graphic appears in the upper left. The framing stays on the seated man across the sampled frames. | A clip from a television interview, presented as a CBS News Exclusive. A bald man in a dark suit, white shirt and dark tie sits speaking, with an American flag and a dimly lit interior behind him. A 'CBS NEWS EXCLUSIVE' graphic appears in the upper left. The framing stays on the seated man across the sampled frames.  [0:03] A bald man in a dark suit speaks in a seated interview; 'CBS NEWS EXCLUSIVE' graphic at upper left, flag behind him.  [0:25] The same man continues speaking, same framing. | So let's remember why we're here. Four years of an open border. Over 10 million illegal immigrants that we know of came to the border. Man's were released in this country. It'll legally, in my opinion, against established, you know, immigration law. Four years of historic, never seen before numbers. We had historic illegal immigration crisis for four years. So what's required n"
+      "has_ocr": true,
+      "description": "A clip from a television interview, presented as a CBS News Exclusive. A bald man in a dark suit, white shirt and dark tie sits speaking, with an American flag and a dimly lit interior behind him. A 'CBS NEWS EXCLUSIVE' graphic appears in the upper left. The framing stays on the seated man across the sampled frames. | A clip from a television interview, presented as a CBS News Exclusive. A bald man in a dark suit, white shirt and dark tie sits speaking, with an American flag and a dimly lit interior behind him. A 'CBS NEWS EXCLUSIVE' graphic appears in the upper left. The framing stays on the seated man across the sampled frames.  [0:03] A bald man in a dark suit speaks in a seated interview; 'CBS NEWS EXCLUSIVE' graphic at upper left, flag behind him.  [0:25] The same man continues speaking, same framing. | i f | Vv Fy | [a Log oh og ———— ta y” ena mF | [a dd te om one > . oh em 6 ro ee a - oF 8 om 7 ‘ oo ef ef + ¥ >t 5 1 1 2 2 3 160 157 8 9 11.136101 4 5 1 1 2 2 4 240 157 9 9 53.761826 . 5 1 1 2 2 5 321 154 32 16 66.923317 or. 4 1 1 2 3 0 24 152 455 57 -1 5 1 1 2 3 1 24 152 328 57 30.072517 Re 5 1 1 2 3 2 442 185 37 15 47.006512 Ae 4 1 1 2 4 0 0 231 480 39 -1 5 1 1 2 4 1 0 231 12"
     },
     {
       "tweet_id": "2052073421966651791",
@@ -144532,6 +144585,7 @@
         "media-status:described",
         "media:video",
         "topic:immigration",
+        "video:news-clip",
         "video:short"
       ],
       "genre_tags": [],
@@ -144541,8 +144595,8 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
-      "description": "video; 1600x900; 27.7s; 2.25 MiB; archived; tweet context: .@SecMayorkas joined @CNNSitRoom to discuss the reported drone sightings in New Jersey. ⤵️ https://t.co/Z3ocNjTzz1; source URL: https://video.twimg.com/ext_tw_video/1867727140579401728/pu/vid/avc1/1280x720/G5zsSJ-YBXWiCzl7.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/7_1867727140579401728.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1600x900; 27.7s; 2.25 MiB; archived; tweet context: .@SecMayorkas joined @CNNSitRoom to discuss the reported drone sightings in New Jersey. ⤵️ https://t.co/Z3ocNjTzz1; source URL: https://video.twimg.com/ext_tw_video/1867727140579401728/pu/vid/avc1/1280x720/G5zsSJ-YBXWiCzl7.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/7_1867727140579401728.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. .@SecMayorkas joined @CNNSitRoom to discuss the reported drone sightings in New Jersey. ⤵️ https://t.co/Z3ocNjTzz1 | The statements I've made already are the princi"
+      "has_ocr": true,
+      "description": "video; 1600x900; 27.7s; 2.25 MiB; archived; tweet context: .@SecMayorkas joined @CNNSitRoom to discuss the reported drone sightings in New Jersey. ⤵️ https://t.co/Z3ocNjTzz1; source URL: https://video.twimg.com/ext_tw_video/1867727140579401728/pu/vid/avc1/1280x720/G5zsSJ-YBXWiCzl7.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/7_1867727140579401728.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. | video; 1600x900; 27.7s; 2.25 MiB; archived; tweet context: .@SecMayorkas joined @CNNSitRoom to discuss the reported drone sightings in New Jersey. ⤵️ https://t.co/Z3ocNjTzz1; source URL: https://video.twimg.com/ext_tw_video/1867727140579401728/pu/vid/avc1/1280x720/G5zsSJ-YBXWiCzl7.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/7_1867727140579401728.mp4; visual observation: Reviewed video keyframe (direct frame analysis); media form recorded via the candidate tags above.. .@SecMayorkas joined @CNNSitRoom to discuss the reported drone sightings in New Jersey. ⤵️ https://t.co/Z3ocNjTzz1 | mu ' Ni a we ‘The statements P've made already "
     },
     {
       "tweet_id": "1869458426494963712",
