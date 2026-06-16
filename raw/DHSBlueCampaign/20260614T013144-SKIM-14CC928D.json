@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T013127Z-e96e2d24-DHSBlueCampaign",
+  "account_handle": "DHSBlueCampaign",
+  "captured_at": "2026-06-14T01:31:44.670Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEROSanDiego%20since%3A2022-01-01%20until%3A2023-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1595447859620581378",
+      "account_handle": "DHSBlueCampaign",
+      "account_id": "931239693534093312",
+      "posted_at": "2022-11-23T16:03:06.000Z",
+      "first_captured_at": "2026-06-14T01:31:35.598Z",
+      "last_seen_at": "2026-06-14T01:31:35.598Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DHSBlueCampaign/status/1595447859620581378",
+      "tweet_type": "original",
+      "conversation_id": "1595447859620581378",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Looking to get involved? Learn how you can make a difference in the fight against #HumanTrafficking ➡️➡️ https://t.co/bwR5Pdm6aR https://t.co/4mDqZzPc7u",
+      "text_resolved": "Looking to get involved? Learn how you can make a difference in the fight against #HumanTrafficking ➡️➡️ https://bit.ly/3tkpiOG https://t.co/4mDqZzPc7u",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://sproutsocial.com\" rel=\"nofollow\">Sprout Social</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "HumanTrafficking"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/bwR5Pdm6aR",
+          "expanded": "https://bit.ly/3tkpiOG",
+          "display": "bit.ly/3tkpiOG"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1595447838774812675",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/FiQrWzfWYAMSm3C.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 2048,
+          "height": 1071,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 8,
+      "retweet_count": 4,
+      "reply_count": 1,
+      "quote_count": 1,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:31:35.598Z",
+          "likes": 8,
+          "retweets": 4,
+          "replies": 1,
+          "quotes": 1,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "DHS Blue Campaign",
+        "avatar_url": "https://pbs.twimg.com/profile_images/931270646344179712/yMjVt2dg_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Blue Campaign is the unified voice for @DHSgov efforts to combat #HumanTrafficking through public awareness and education. Together, we can #EndTrafficking.",
+        "location": null,
+        "url": "https://t.co/z6ak56qd6b",
+        "followers_count": 44549,
+        "friends_count": 321,
+        "statuses_count": 3667,
+        "account_created_at": "2017-11-16T19:16:59.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T013127Z-e96e2d24",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T013127Z-e96e2d24.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T013127Z-e96e2d24.jsonl",
+    "source_handle": "EROSanDiego"
+  }
+}

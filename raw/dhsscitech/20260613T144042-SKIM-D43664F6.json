@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T144026Z-900736d1-dhsscitech",
+  "account_handle": "dhsscitech",
+  "captured_at": "2026-06-13T14:40:42.034Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ATSA%20since%3A2025-01-01%20until%3A2025-04-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1876808584559734874",
+      "account_handle": "dhsscitech",
+      "account_id": "39824409",
+      "posted_at": "2025-01-08T01:50:10.000Z",
+      "first_captured_at": "2026-06-13T14:40:32.580Z",
+      "last_seen_at": "2026-06-13T14:40:32.580Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/dhsscitech/status/1876808584559734874",
+      "tweet_type": "original",
+      "conversation_id": "1876808584559734874",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Want to keep your shoes on at the airport? S&amp;T wants that too! Come check out our shoe scanner demo at the #CES2025 @TSA booth 8962. \n\n👟 👠 Our latest article has all the details: https://t.co/b03Z79sb2d https://t.co/jw7sTsZxry",
+      "text_resolved": "Want to keep your shoes on at the airport? S&amp;T wants that too! Come check out our shoe scanner demo at the #CES2025 @TSA booth 8962. \n\n👟 👠 Our latest article has all the details: https://bit.ly/4a703md https://t.co/jw7sTsZxry",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://sproutsocial.com\" rel=\"nofollow\">Sprout Social</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "CES2025"
+      ],
+      "mentions": [
+        "TSA"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/b03Z79sb2d",
+          "expanded": "https://bit.ly/4a703md",
+          "display": "bit.ly/4a703md"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1876808542683910144",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GgvDbQIX0AArRQC.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1080,
+          "height": 1350,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_1876808563483443203",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GgvDcdnXgAMnOSo.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1080,
+          "height": 1350,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 7,
+      "retweet_count": 2,
+      "reply_count": 2,
+      "quote_count": 1,
+      "view_count": 5367,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T14:40:32.580Z",
+          "likes": 7,
+          "retweets": 2,
+          "replies": 2,
+          "quotes": 1,
+          "views": 5367,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "DHS Science and Technology Directorate",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1762840629388705792/J2zGxQZv_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Research and development arm of the Department of Homeland Security. Likes, retweets, etc. ≠ endorsement. Comment Policy: https://t.co/HQr5xUZMhy",
+        "location": "USA",
+        "url": "https://t.co/pI2tQnYuxD",
+        "followers_count": 32700,
+        "friends_count": 386,
+        "statuses_count": 17857,
+        "account_created_at": "2009-05-13T20:20:02.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T144026Z-900736d1",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T144026Z-900736d1.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T144026Z-900736d1.jsonl",
+    "source_handle": "TSA"
+  }
+}

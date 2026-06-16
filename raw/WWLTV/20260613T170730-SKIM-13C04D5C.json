@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T170714Z-a9da3cd1-WWLTV",
+  "account_handle": "WWLTV",
+  "captured_at": "2026-06-13T17:07:30.240Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AERONewOrleans%20since%3A2025-04-01%20until%3A2025-07-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1935499025928618023",
+      "account_handle": "WWLTV",
+      "account_id": "14269771",
+      "posted_at": "2025-06-19T00:45:02.000Z",
+      "first_captured_at": "2026-06-13T17:07:20.982Z",
+      "last_seen_at": "2026-06-13T17:07:20.982Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/WWLTV/status/1935499025928618023",
+      "tweet_type": "original",
+      "conversation_id": "1935499025928618023",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "The Kenner Hispanic Heritage Festival will not move forward this year, city officials said Wednesday. \n\nKenner’s mayor told WWL Louisiana many vendors declined to participate this year.\n\nFull Story: https://t.co/SI4dBYxGwj https://t.co/JNDLuijpDT",
+      "text_resolved": "The Kenner Hispanic Heritage Festival will not move forward this year, city officials said Wednesday. \n\nKenner’s mayor told WWL Louisiana many vendors declined to participate this year.\n\nFull Story: https://www.wwltv.com/article/news/local/jefferson/kenner-hispanic-heritage-2025-fest-cancelled/289-cee56316-a77c-460d-8c73-fe9fe96f5f15 https://t.co/JNDLuijpDT",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.socialnewsdesk.com\" rel=\"nofollow\">Social News Desk (J)</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/SI4dBYxGwj",
+          "expanded": "https://www.wwltv.com/article/news/local/jefferson/kenner-hispanic-heritage-2025-fest-cancelled/289-cee56316-a77c-460d-8c73-fe9fe96f5f15",
+          "display": "wwltv.com/article/news/l…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1935499020434128896",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GtxGGrgXwAANUOu.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1350,
+          "height": 1688,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 94,
+      "retweet_count": 21,
+      "reply_count": 44,
+      "quote_count": 17,
+      "view_count": 19531,
+      "bookmark_count": 7,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:07:20.982Z",
+          "likes": 94,
+          "retweets": 21,
+          "replies": 44,
+          "quotes": 17,
+          "views": 19531,
+          "bookmarks": 7
+        }
+      ],
+      "author": {
+        "display_name": "WWL-TV",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1724020444687163393/JDC7g73A_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Breaking Stories and information from WWL-TV Channel 4, Eyewitness News, CBS affiliate in New Orleans",
+        "location": null,
+        "url": "https://t.co/aiTFG4isMd",
+        "followers_count": 221994,
+        "friends_count": 764,
+        "statuses_count": 297305,
+        "account_created_at": "2008-03-31T21:36:09.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T170714Z-a9da3cd1",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T170714Z-a9da3cd1.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T170714Z-a9da3cd1.jsonl",
+    "source_handle": "ERONewOrleans"
+  }
+}

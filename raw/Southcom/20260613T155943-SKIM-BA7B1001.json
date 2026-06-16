@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T155927Z-7aaaebb0-Southcom",
+  "account_handle": "Southcom",
+  "captured_at": "2026-06-13T15:59:43.703Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ABehizyTweets%20since%3A2025-10-01%20until%3A2026-01-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2000756230252314901",
+      "account_handle": "Southcom",
+      "account_id": "19667766",
+      "posted_at": "2025-12-16T02:33:52.000Z",
+      "first_captured_at": "2026-06-13T15:59:34.093Z",
+      "last_seen_at": "2026-06-13T15:59:34.093Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/Southcom/status/2000756230252314901",
+      "tweet_type": "original",
+      "conversation_id": "2000756230252314901",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "On Dec. 15, at the direction of @SecWar Pete Hegseth, Joint Task Force Southern Spear conducted lethal kinetic strikes on three vessels operated by Designated Terrorist Organizations in international waters. Intelligence confirmed that the vessels were transiting along known narco-trafficking routes in the Eastern Pacific and were engaged in narco-trafficking. A total of eight male narco-terrorists were killed during these actions—three in the first vessel, two in the second and three in the third. #OpSouthernSpear",
+      "text_resolved": "On Dec. 15, at the direction of @SecWar Pete Hegseth, Joint Task Force Southern Spear conducted lethal kinetic strikes on three vessels operated by Designated Terrorist Organizations in international waters. Intelligence confirmed that the vessels were transiting along known narco-trafficking routes in the Eastern Pacific and were engaged in narco-trafficking. A total of eight male narco-terrorists were killed during these actions—three in the first vessel, two in the second and three in the third. #OpSouthernSpear",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "OpSouthernSpear"
+      ],
+      "mentions": [
+        "SecWar"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_2000755717448290309",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2000755717448290309/vid/avc1/1118x630/cs8H3CNLFrJiXMzj.mp4?tag=21",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 47.266,
+          "width": 1118,
+          "height": 630,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 27753,
+      "retweet_count": 5437,
+      "reply_count": 2929,
+      "quote_count": 902,
+      "view_count": 1648645,
+      "bookmark_count": 800,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T15:59:34.093Z",
+          "likes": 27753,
+          "retweets": 5437,
+          "replies": 2929,
+          "quotes": 902,
+          "views": 1648645,
+          "bookmarks": 800
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Southern Command",
+        "avatar_url": "https://pbs.twimg.com/profile_images/877151729233661952/hnzLVuzj_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official account of SOUTHCOM. Oversees U.S. military activities in Latin America & Caribbean. RTs, follows & likes ≠ endorsement.",
+        "location": "Miami, Florida",
+        "url": "https://t.co/tmmQAqI2KX",
+        "followers_count": 730245,
+        "friends_count": 471,
+        "statuses_count": 13996,
+        "account_created_at": "2009-01-28T18:46:53.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T155927Z-7aaaebb0",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T155927Z-7aaaebb0.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T155927Z-7aaaebb0.jsonl",
+    "source_handle": "BehizyTweets"
+  }
+}

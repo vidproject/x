@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T164020Z-6561163f-usedgov",
+  "account_handle": "usedgov",
+  "captured_at": "2026-06-13T16:50:54.959Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEdWorkforceCmte%20since%3A2025-10-01%20until%3A2026-01-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1996989689027289389",
+      "account_handle": "usedgov",
+      "account_id": "20437286",
+      "posted_at": "2025-12-05T17:06:58.000Z",
+      "first_captured_at": "2026-06-13T16:40:27.242Z",
+      "last_seen_at": "2026-06-13T16:40:27.242Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/usedgov/status/1996989689027289389",
+      "tweet_type": "original",
+      "conversation_id": "1996989689027289389",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "We’ve successfully partnered with @USDOL and streamlined workforce development programs to better meet Americans’ needs!\n\nEducation 🤝 Labor https://t.co/TdvOHAovC6",
+      "text_resolved": "We’ve successfully partnered with @USDOL and streamlined workforce development programs to better meet Americans’ needs!\n\nEducation 🤝 Labor https://t.co/TdvOHAovC6",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "USDOL"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1996988290361135104",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1996988290361135104/vid/avc1/1080x1350/eJxwZcxJx2JsvbLP.mp4?tag=21",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 16.566,
+          "width": 1080,
+          "height": 1350,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 55,
+      "retweet_count": 15,
+      "reply_count": 11,
+      "quote_count": 2,
+      "view_count": 4439,
+      "bookmark_count": 7,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T16:40:27.242Z",
+          "likes": 55,
+          "retweets": 15,
+          "replies": 11,
+          "quotes": 2,
+          "views": 4439,
+          "bookmarks": 7
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Department of Education",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1807774790846959616/7noJNRiY_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "The official United States Department of Education Twitter/X account. Follows, Retweets and shared links ≠ endorsement.",
+        "location": "Washington, DC",
+        "url": "https://t.co/yyBZXRnkf2",
+        "followers_count": 1364487,
+        "friends_count": 187,
+        "statuses_count": 33100,
+        "account_created_at": "2009-02-09T14:15:05.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T164020Z-6561163f",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T164020Z-6561163f.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T164020Z-6561163f.jsonl",
+    "source_handle": "EdWorkforceCmte"
+  }
+}

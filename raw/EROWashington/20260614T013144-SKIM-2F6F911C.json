@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T013127Z-e96e2d24-EROWashington",
+  "account_handle": "EROWashington",
+  "captured_at": "2026-06-14T01:31:44.670Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEROSanDiego%20since%3A2022-01-01%20until%3A2023-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1599929703900450817",
+      "account_handle": "EROWashington",
+      "account_id": "1303386508326559747",
+      "posted_at": "2022-12-06T00:52:21.000Z",
+      "first_captured_at": "2026-06-14T01:31:35.598Z",
+      "last_seen_at": "2026-06-14T01:31:35.598Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/EROWashington/status/1599929703900450817",
+      "tweet_type": "original",
+      "conversation_id": "1599929703900450817",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "It is with great sadness that we announce the passing of an esteemed colleague and beloved friend, Deportation Officer Jesse W. Dove, of EROWashington Jesse was a highly respected member of the ERO team. His death is a profound loss for @EROWashington  He will be greatly missed. https://t.co/5Id69V3zvp",
+      "text_resolved": "It is with great sadness that we announce the passing of an esteemed colleague and beloved friend, Deportation Officer Jesse W. Dove, of EROWashington Jesse was a highly respected member of the ERO team. His death is a profound loss for @EROWashington  He will be greatly missed. https://t.co/5Id69V3zvp",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://app.nuvi.com/publishing\" rel=\"nofollow\">Nuvi Publish App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "EROWashington"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1599929700771680257",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/FjQXlggX0AE5zuG.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1353,
+          "height": 700,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 15,
+      "retweet_count": 5,
+      "reply_count": 1,
+      "quote_count": 4,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:31:35.598Z",
+          "likes": 15,
+          "retweets": 5,
+          "replies": 1,
+          "quotes": 4,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "ICE Washington D.C.",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1912177216655413248/ZZEWAK21_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official account for ICE Washington DC & Virginia field offices to protect the U.S. by enforcing immigration laws to preserve national security & public safety.",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/XRyvEk5bDD",
+        "followers_count": 6450,
+        "friends_count": 58,
+        "statuses_count": 384,
+        "account_created_at": "2020-09-08T17:35:40.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T013127Z-e96e2d24",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T013127Z-e96e2d24.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T013127Z-e96e2d24.jsonl",
+    "source_handle": "EROSanDiego"
+  }
+}

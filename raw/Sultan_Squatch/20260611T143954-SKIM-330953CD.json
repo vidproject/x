@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-detail-20260611-20260611T143938Z-0dc9e4ef-Sultan_Squatch",
+  "account_handle": "Sultan_Squatch",
+  "captured_at": "2026-06-11T14:39:54.543Z",
+  "endpoint": "TweetDetail,TweetResultByRestId",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/DHSgov/status/2047108312831762934",
+  "tweets": [
+    {
+      "tweet_id": "2047111338481135855",
+      "account_handle": "Sultan_Squatch",
+      "account_id": "58490465",
+      "posted_at": "2026-04-23T00:32:31.000Z",
+      "first_captured_at": "2026-06-11T14:39:44.914Z",
+      "last_seen_at": "2026-06-11T14:39:44.914Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/Sultan_Squatch/status/2047111338481135855",
+      "tweet_type": "reply",
+      "conversation_id": "2047108312831762934",
+      "reply_to_tweet_id": "2047108312831762934",
+      "reply_to_account": "DHSgov",
+      "reply_to_account_id": "15647676",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@DHSgov https://t.co/6ErKggyVC0",
+      "text_resolved": "@DHSgov https://t.co/6ErKggyVC0",
+      "lang": "qme",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DHSgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2047111333926043648",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HGjM6YJWgAA3bL5.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 588,
+          "height": 330,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 5,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 98,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T14:39:44.914Z",
+          "likes": 5,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 0,
+          "views": 98,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Sam Squanch ♞",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1874939563388342272/F886vxtv_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Appalachian | Nationalist | America Only",
+        "location": "Appalachia, USA",
+        "url": null,
+        "followers_count": 895,
+        "friends_count": 680,
+        "statuses_count": 14660,
+        "account_created_at": "2009-07-20T14:45:22.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-detail-20260611-20260611T143938Z-0dc9e4ef",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-2047108312831762934-20260611T143938Z-0dc9e4ef.summary.json",
+    "jsonl": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-2047108312831762934-20260611T143938Z-0dc9e4ef.jsonl",
+    "source_handle": "DHSgov"
+  }
+}
