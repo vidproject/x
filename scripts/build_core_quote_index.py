@@ -191,7 +191,9 @@ def build_index(data_dir: Path, focus_handles: set[str]) -> dict[str, Any]:
         by_author.setdefault(str(row["quote_author_handle"]).lower(), []).append(row)
 
     for author_key, author_rows in by_author.items():
-        handles_quoted = sorted({str(r["core_handle"]) for r in author_rows if r.get("core_handle")})
+        handles_quoted = sorted(
+            {str(r["core_handle"]) for r in author_rows if r.get("core_handle")}
+        )
         dates = sorted(str(r["quote_posted_at"]) for r in author_rows if r.get("quote_posted_at"))
         sample = author_rows[:5]
         author_summary.append(
@@ -325,7 +327,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
-    focus_handles = {str(h).strip().lstrip("@").lower() for h in args.focus_handle if str(h).strip()}
+    focus_handles = {
+        str(h).strip().lstrip("@").lower() for h in args.focus_handle if str(h).strip()
+    }
     payload = build_index(args.data_dir, focus_handles)
     write_json(payload, args.out_json)
     write_csv(payload, args.out_csv)
