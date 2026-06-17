@@ -299,11 +299,11 @@ jobs:
       - name: refresh core video audit
         run: uv run python -m scripts.build_core_video_audit
 
-      - name: refresh creative review data
-        run: uv run python -m scripts.build_creative_site_data
-
       - name: refresh viewer metadata
         run: uv run python -m scripts.refresh_viewer_metadata
+
+      - name: refresh creative review data
+        run: uv run python -m scripts.build_creative_site_data
 
       - name: commit parquet updates
         run: |

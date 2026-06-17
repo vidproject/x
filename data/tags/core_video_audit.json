@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-06-17T00:00:09Z",
+  "generated_at": "2026-06-17T00:21:32Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -54,39 +54,39 @@
   "summary": {
     "videos": 3659,
     "bucket_counts": {
-      "genre-experiment": 105,
+      "genre-experiment": 106,
       "missing-media": 9,
       "needs-recognition": 1550,
-      "ordinary-video": 1075,
-      "produced-video": 920
+      "ordinary-video": 1070,
+      "produced-video": 924
     },
     "top_tags": {
       "media-status:archived": 3650,
       "media:video": 3616,
       "audio:has-audio": 3018,
-      "topic:immigration": 2914,
+      "topic:immigration": 2913,
       "media-status:needs-vision": 2903,
       "video:medium": 2322,
       "video:short": 882,
-      "video:produced": 843,
+      "video:produced": 846,
       "media-status:described": 748,
       "topic:economy": 714,
       "agency:DHSgov": 709,
       "agency:POTUS": 688,
-      "topic:military": 628,
+      "topic:military": 629,
       "agency:ICEgov": 545,
       "topic:general": 480,
       "theme:criminal": 479,
-      "agency:CBP": 475,
+      "agency:CBP": 466,
       "video:news-clip": 437,
-      "policy:border": 425,
+      "policy:border": 426,
       "video:long": 423,
       "slogan:illegal-alien": 419,
-      "video:text-overlay": 416,
+      "video:text-overlay": 418,
       "video:speech": 384,
       "action:detention": 356,
-      "genre:advertisement": 349,
-      "video:interview": 324,
+      "genre:advertisement": 350,
+      "video:interview": 325,
       "speaker:President Trump": 307,
       "military:coast-guard": 300,
       "action:deportation": 286,
@@ -101,7 +101,7 @@
       "theme:religion": 175,
       "genre:recruitment": 158,
       "theme:martyrdom": 150,
-      "video:montage": 147,
+      "video:montage": 148,
       "crime:fraud": 141,
       "theme:directive": 128,
       "agency:USCIS": 125,
@@ -114,7 +114,7 @@
     },
     "missing_step_counts": {
       "archive-media": 9,
-      "assign-produced-video-genre": 96,
+      "assign-produced-video-genre": 99,
       "describe-with-vision": 9,
       "detect-audio": 526,
       "extract-keyframes": 528,
@@ -1326,6 +1326,50 @@
       "has_vision_description": true,
       "has_ocr": true,
       "description": "Raw vertical phone footage of HSI and ATF officers in tactical vests arresting and tackling a resisting man (Roberto Herrera) to the ground next to a work truck in a San Diego parking lot. The captured audio is live shouting/struggle in Spanish, not music. It is unedited body-of-arrest footage with no cinematic production, music, or genre styling. | Estaba muy bien! No más! Easy, pero yo 아무ain. ¡Hola, vamos a entrar! ¡Hola, me gustó entrar! Bueno, si estás! ¡Sacá, me da queмерse! ¡Voy a hacer una buena pieca!"
+    },
+    {
+      "tweet_id": "1956439046072434920",
+      "account_handle": "CBP",
+      "posted_at": "2025-08-15T19:33:12.000Z",
+      "tweet_url": "https://x.com/CBP/status/1956439046072434920",
+      "tweet_text": "@DHSgov https://t.co/LjyQlKr5CG",
+      "media_id": "16_1956439037989847040",
+      "media_type": "animated_gif",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-CBP/16_1956439037989847040.mp4",
+      "duration_sec": null,
+      "width": 532,
+      "height": 266,
+      "like_count": 128,
+      "retweet_count": 11,
+      "view_count": 6554,
+      "bucket": "genre-experiment",
+      "priority": 100,
+      "tags": [
+        "agency:DHSgov",
+        "audio:no-audio",
+        "format:reply",
+        "genre:dystopian",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media:animated-gif",
+        "topic:immigration",
+        "video:produced"
+      ],
+      "genre_tags": [
+        "genre:dystopian"
+      ],
+      "produced_video_tags": [
+        "video:produced"
+      ],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "A stylized video game or sci-fi animation shows a hand pressing or striking a glowing purple rectangular sign. The keyframes add blur and light streaks as the words on the sign pulse in a neon green and purple environment."
     },
     {
       "tweet_id": "1960022944081408224",
@@ -9122,6 +9166,47 @@
       "description": "Screen recording of a @realDonaldTrump tweet with an embedded video. The embedded video shows a gray U.S. Navy destroyer flying a U.S. flag underway on open water, then firing an orange tracer beam that strikes an incoming drone in a burst of flame. A small picture-in-picture in the bottom-right shows Trump at a desk gesturing. A voiceover says 'Bop, bop, bop, bop, ok we have it in our sight. Fire boom!' | Screen recording of a @realDonaldTrump tweet with an embedded video. The embedded video shows a gray U.S. Navy destroyer flying a U.S. flag underway on open water, then firing an orange tracer beam that strikes an incoming drone in a burst of flame. A small picture-in-picture in the bottom-right shows Trump at a desk gesturing. A voiceover says 'Bop, bop, bop, bop, ok we have it in our sight. Fire boom!'  [0:00] Screen-recorded Trump tweet (avatar and 'Donald J. Trump @realDonaldTrump'); embedded video shows a gray Navy destroyer flying a U.S. flag underway on open water under a bright sun, a small drone in the sky. Inset PIP of Trump at a desk gesturing.  [0:02] The drone moves toward the warship; sunny seascape, Trump PIP still bottom-right. VO: 'Bop, bop, bop, bop, ok we have "
     },
     {
+      "tweet_id": "736616817192538114",
+      "account_handle": "DHSgov",
+      "posted_at": "2016-05-28T17:55:09.000Z",
+      "tweet_url": "https://x.com/DHSgov/status/736616817192538114",
+      "tweet_text": "Shorten your wait this summer with #TSAPreCheck, with these simple steps from @TSA. https://t.co/wJxGbj0ifv",
+      "media_id": "16_736616567899885569",
+      "media_type": "animated_gif",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/16_736616567899885569.mp4",
+      "duration_sec": null,
+      "width": 1280,
+      "height": 1080,
+      "like_count": 0,
+      "retweet_count": 0,
+      "view_count": 0,
+      "bucket": "produced-video",
+      "priority": 93,
+      "tags": [
+        "agency:TSA",
+        "audio:no-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:animated-gif",
+        "topic:immigration",
+        "video:text-overlay"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [
+        "video:text-overlay"
+      ],
+      "missing_steps": [
+        "assign-produced-video-genre"
+      ],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "A blue TSA PreCheck explainer animation moves through four illustrated panels: a laptop form, a boarding pass with circled PreCheck indicators, an airport sign directing travelers, and a traveler walking with luggage. The style is flat vector animation with white instructional captions at the bottom of each panel."
+    },
+    {
       "tweet_id": "1319395319126306816",
       "account_handle": "DHSgov",
       "posted_at": "2020-10-22T21:48:51.000Z",
@@ -9533,6 +9618,49 @@
       "description": "Vertical video. A narrated USCIS recap explaining the Alien Registration Requirement and the new G-325R registration form created after Trump's 'Protecting the American People Against Invasion' executive order. It mixes faded B-roll of Trump signing an order, ARR-branded stock footage (typing, a naturalization-style oath), and infographic text slides citing about 47,000 registrations, ending on a USCIS.gov card. The voiceover delivers an informational policy recap with no music track. On-screen and spoken text includes 'Alien Registration Requirement', 'With almost 47,000 submissions as of April 29, USCIS is extensively promoting public awareness of this requirement and the penalties for non-compliance', and 'USCIS.GOV'. | MN i pee ) | IA = — ee | With almost 47,000 submissions as of April 29, USCIS is extensively promoting public awareness of this requirement and the penalties for non-compliance. | : | & US. Citizenship q ) and Immigration “SZ Services USCIS.GOV | Alien Registration Requirement The executive order protecting the American people against invasion directed the Department of Homeland Security in coordination with the Department of State and the Department of Justice t"
     },
     {
+      "tweet_id": "1958233365888512238",
+      "account_handle": "CBP",
+      "posted_at": "2025-08-20T18:23:11.000Z",
+      "tweet_url": "https://x.com/CBP/status/1958233365888512238",
+      "tweet_text": "@DHSgov https://t.co/CvKHipuoNx",
+      "media_id": "16_1958233358279843840",
+      "media_type": "animated_gif",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-CBP/16_1958233358279843840.mp4",
+      "duration_sec": null,
+      "width": 498,
+      "height": 370,
+      "like_count": 811,
+      "retweet_count": 47,
+      "view_count": 20417,
+      "bucket": "produced-video",
+      "priority": 93,
+      "tags": [
+        "agency:DHSgov",
+        "audio:no-audio",
+        "format:reply",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media:animated-gif",
+        "topic:immigration",
+        "video:text-overlay"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [
+        "video:text-overlay"
+      ],
+      "missing_steps": [
+        "assign-produced-video-genre"
+      ],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "The video strip is a looping reaction GIF showing a close-up of an older man raising one finger beside his face. The sampled frames are nearly identical, with meme-style caption text along the bottom."
+    },
+    {
       "tweet_id": "1960077253192110481",
       "account_handle": "ICEgov",
       "posted_at": "2025-08-25T20:30:08.000Z",
@@ -9674,6 +9802,49 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 3840x2160; 51.0s; 48.84 MiB; archived; tweet context: “Everything was fine … until violent protestors showed up.” The TRUE story about nine targeted criminal aliens with long rap sheets arrested in NYC Oct. 21. https://t.co/Z6WeGF8OyT; source URL: https://video.twimg.com/amplify_video/1981385242846863360/vid/avc1/3840x2160/rTQKMncbEV8yzEmO.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/13_1981385242846863360.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 3840x2160; 51.0s; 48.84 MiB; archived; tweet context: “Everything was fine … until violent protestors showed up.” The TRUE story about nine targeted criminal aliens with long rap sheets arrested in NYC Oct. 21. https://t.co/Z6WeGF8OyT; source URL: https://video.twimg.com/amplify_video/1981385242846863360/vid/avc1/3840x2160/rTQKMncbEV8yzEmO.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov/13_1981385242846863360.mp4; needs OCR, transcript, or frame-level vision before content claims. “Everything was fine … until violent protestors showed up.” The TRUE story about nine targeted criminal aliens with long rap sheets "
+    },
+    {
+      "tweet_id": "1982908219619192898",
+      "account_handle": "CBP",
+      "posted_at": "2025-10-27T20:32:14.000Z",
+      "tweet_url": "https://x.com/CBP/status/1982908219619192898",
+      "tweet_text": "@DHSgov https://t.co/hHrVQeXwuO",
+      "media_id": "16_1982908212299825152",
+      "media_type": "animated_gif",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-CBP/16_1982908212299825152.mp4",
+      "duration_sec": null,
+      "width": 480,
+      "height": 200,
+      "like_count": 484,
+      "retweet_count": 47,
+      "view_count": 12333,
+      "bucket": "produced-video",
+      "priority": 93,
+      "tags": [
+        "agency:DHSgov",
+        "audio:no-audio",
+        "format:reply",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media:animated-gif",
+        "topic:immigration",
+        "video:produced"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [
+        "video:produced"
+      ],
+      "missing_steps": [
+        "assign-produced-video-genre"
+      ],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "The short clip shows a man riding a horse while carrying a large American flag. The keyframes are warm and cinematic, cutting through orange light and close views of the flag as it waves across the frame."
     },
     {
       "tweet_id": "1990782093832397103",
@@ -31328,6 +31499,50 @@
       "description": "video; 1280x720; 40.3s; 2.89 MiB; archived; tweet context: .@DHS_Wolf: “Our law enforcement officers are really the thin blue line that keeps our communities safe. It’s the difference between order and chaos.” https://t.co/kuKF7dYShk; source URL: https://video.twimg.com/amplify_video/1294010129424105489/vid/1280x720/7V_pCCLg5mBSAdB6.mp4?tag=13; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0003/13_1294010129424105489.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 40.3s; 2.89 MiB; archived; tweet context: .@DHS_Wolf: “Our law enforcement officers are really the thin blue line that keeps our communities safe. It’s the difference between order and chaos.” https://t.co/kuKF7dYShk; source URL: https://video.twimg.com/amplify_video/1294010129424105489/vid/1280x720/7V_pCCLg5mBSAdB6.mp4?tag=13; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0003/13_1294010129424105489.mp4; needs OCR, transcript, or frame-level vision before content claims. .@DHS_Wolf: “Our law enforcement officers are really the thin blue line that keeps our communities safe. It’s the difference between order and chaos.”"
     },
     {
+      "tweet_id": "1309477947913506822",
+      "account_handle": "DHSgov",
+      "posted_at": "2020-09-25T13:00:46.000Z",
+      "tweet_url": "https://x.com/DHSgov/status/1309477947913506822",
+      "tweet_text": "The #SeeSay team joined together on “If You See Something, Say Something®” national Awareness Day to remind Americans that if you see suspicious activity report it to authorities. #WhyISeeSay #SeeSayDay https://t.co/9chPNpNnWt",
+      "media_id": "16_1309477939025764355",
+      "media_type": "animated_gif",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0003/16_1309477939025764355.mp4",
+      "duration_sec": null,
+      "width": 1200,
+      "height": 630,
+      "like_count": 156,
+      "retweet_count": 67,
+      "view_count": 0,
+      "bucket": "produced-video",
+      "priority": 85,
+      "tags": [
+        "audio:no-audio",
+        "genre:advertisement",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:animated-gif",
+        "topic:immigration",
+        "video:interview",
+        "video:montage",
+        "video:produced"
+      ],
+      "genre_tags": [
+        "genre:advertisement"
+      ],
+      "produced_video_tags": [
+        "video:montage",
+        "video:produced"
+      ],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "A social campaign video shows several people in separate indoor locations holding large hashtag signs toward the camera. The layout is a montage of talking-head style clips with a blue lower banner and consistent campaign branding across frames."
+    },
+    {
       "tweet_id": "1331345277320654848",
       "account_handle": "USCG",
       "posted_at": "2020-11-24T21:13:43.000Z",
@@ -44307,7 +44522,6 @@
       "bucket": "produced-video",
       "priority": 85,
       "tags": [
-        "agency:CBP",
         "audio:no-audio",
         "format:quote",
         "genre:psa",
@@ -44330,7 +44544,7 @@
       "has_transcript": false,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "animated GIF; 498x280; 0.05 MiB; archived; alt text: Drake Hotlinebling GIF; tweet context: We'll take those. https://x.com/DFOFlorida/status/1951266964690571302 https://t.co/QaIvnIiAdN; source URL: https://video.twimg.com/tweet_video/GxRadWwXMAAOLa5.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_1951283998929399808.mp4. | animated GIF; 498x280; 0.05 MiB; archived; alt text: Drake Hotlinebling GIF; tweet context: We'll take those. https://x.com/DFOFlorida/status/1951266964690571302 https://t.co/QaIvnIiAdN; source URL: https://video.twimg.com/tweet_video/GxRadWwXMAAOLa5.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_1951283998929399808.mp4. Drake Hotlinebling GIF We'll take those. https://x.com/DFOFlorida/status/1951266964690571302 https://t.co/QaIvnIiAdN"
+      "description": "A man in a gray turtleneck dances in a purple-lit room, shifting his arms and upper body across the keyframes. The clip is framed like a reaction GIF, with repeated mid-shot poses rather than a full scene change."
     },
     {
       "tweet_id": "1952761521349517652",
@@ -116652,7 +116866,7 @@
       "has_transcript": false,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "animated GIF; 480x270; 0.10 MiB; archived; alt text: Detective Pikachu Reaction GIF; tweet context: @DHSgov Border Patrol’s newest recruit. https://t.co/KjGhBdsq7X; source URL: https://video.twimg.com/tweet_video/G1fXXTTW0AAXdj1.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_1970280157316304896.mp4. | animated GIF; 480x270; 0.10 MiB; archived; alt text: Detective Pikachu Reaction GIF; tweet context: @DHSgov Border Patrol’s newest recruit. https://t.co/KjGhBdsq7X; source URL: https://video.twimg.com/tweet_video/G1fXXTTW0AAXdj1.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_1970280157316304896.mp4. Detective Pikachu Reaction GIF @DHSgov Border Patrol’s newest recruit. https://t.co/KjGhBdsq7X"
+      "description": "A small yellow animated character dances or bounces in the center of a brightly colored interior with diagonal lights behind it. The sequence uses repeated reaction-GIF frames with the character moving its arms and body."
     },
     {
       "tweet_id": "1970578920719241615",
@@ -117201,7 +117415,6 @@
       "bucket": "ordinary-video",
       "priority": 35,
       "tags": [
-        "agency:CBP",
         "agency:DHSgov",
         "audio:no-audio",
         "format:reply",
@@ -117219,7 +117432,7 @@
       "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "animated GIF; 244x130; 0.02 MiB; archived; alt text: Theoden Muster The Rohirrim GIF; tweet context: @DHSgov https://t.co/ydPMeIFLCB; source URL: https://video.twimg.com/tweet_video/G4cyFJmXUAADmAe.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_1983609224937558016.mp4. | animated GIF; 244x130; 0.02 MiB; archived; alt text: Theoden Muster The Rohirrim GIF; tweet context: @DHSgov https://t.co/ydPMeIFLCB; source URL: https://video.twimg.com/tweet_video/G4cyFJmXUAADmAe.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_1983609224937558016.mp4. Theoden Muster The Rohirrim GIF @DHSgov https://t.co/ydPMeIFLCB"
+      "description": "A film reaction GIF shows an older armored man in a golden-lit hall, with another character standing behind him. The repeated frames show a close-up as the man appears to speak, with subtitle text at the bottom."
     },
     {
       "tweet_id": "1983997618003841223",
@@ -117902,7 +118115,7 @@
       "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "animated GIF; 318x240; 0.01 MiB; archived; alt text: Dinosaurs Drop GIF; tweet context: https://t.co/moA5zbJXjo; source URL: https://video.twimg.com/tweet_video/G69FtNuWkAEml7H.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/16_1994889803028926465.mp4. | animated GIF; 318x240; 0.01 MiB; archived; alt text: Dinosaurs Drop GIF; tweet context: https://t.co/moA5zbJXjo; source URL: https://video.twimg.com/tweet_video/G69FtNuWkAEml7H.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/16_1994889803028926465.mp4. Dinosaurs Drop GIF https://t.co/moA5zbJXjo"
+      "description": "A short animated clip shows a dinosaur or reptile character in a red plaid jacket standing in a warm, cluttered room. The repeated keyframes suggest a small reaction movement rather than a scene change."
     },
     {
       "tweet_id": "1996268042804977972",
@@ -118180,7 +118393,6 @@
       "bucket": "ordinary-video",
       "priority": 35,
       "tags": [
-        "agency:CBP",
         "audio:no-audio",
         "format:quote",
         "media-status:archived",
@@ -118197,7 +118409,7 @@
       "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "animated GIF; 318x240; 0.01 MiB; archived; alt text: Drop Monster GIF; tweet context: https://t.co/W5TITnrB4L; source URL: https://video.twimg.com/tweet_video/G8jAENMWMAEl6h1.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_2002061212859641857.mp4. | animated GIF; 318x240; 0.01 MiB; archived; alt text: Drop Monster GIF; tweet context: https://t.co/W5TITnrB4L; source URL: https://video.twimg.com/tweet_video/G8jAENMWMAEl6h1.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_2002061212859641857.mp4. Drop Monster GIF https://t.co/W5TITnrB4L"
+      "description": "A short animated clip shows a dinosaur or monster character in a red plaid jacket standing in a warmly lit room. The frames repeat with only slight movement, functioning as a reaction GIF."
     },
     {
       "tweet_id": "2002211050922422480",
@@ -118266,6 +118478,7 @@
         "media-status:described",
         "media-status:has-alt-text",
         "media:animated-gif",
+        "policy:border",
         "topic:immigration"
       ],
       "genre_tags": [],
@@ -118276,7 +118489,7 @@
       "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "animated GIF; 498x498; 0.03 MiB; archived; alt text: Coal Wojak GIF; tweet context: @JoJoFromJerz You are neither Holly, nor Jolly. https://t.co/DV1buX30V7; source URL: https://video.twimg.com/tweet_video/G8oSP4naIAA63Ty.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/16_2002433048424620032.mp4. | animated GIF; 498x498; 0.03 MiB; archived; alt text: Coal Wojak GIF; tweet context: @JoJoFromJerz You are neither Holly, nor Jolly. https://t.co/DV1buX30V7; source URL: https://video.twimg.com/tweet_video/G8oSP4naIAA63Ty.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/16_2002433048424620032.mp4. Coal Wojak GIF @JoJoFromJerz You are neither Holly, nor Jolly. https://t.co/DV1buX30V7"
+      "description": "A meme-style animation shows a drawn face wrapped in a white cloth, holding a dark lump tied with a bright red bow. The frames are nearly static, with the image presented inside a thin green decorative border."
     },
     {
       "tweet_id": "2003173123777339864",
@@ -128375,7 +128588,7 @@
       "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "animated GIF; 498x280; 0.08 MiB; archived; alt text: Hot Dog Man GIF; tweet context: https://t.co/IW4sr10Kde; source URL: https://video.twimg.com/tweet_video/HIOMPpnWoAASl8G.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/16_2054640055507918848.mp4. | animated GIF; 498x280; 0.08 MiB; archived; alt text: Hot Dog Man GIF; tweet context: https://t.co/IW4sr10Kde; source URL: https://video.twimg.com/tweet_video/HIOMPpnWoAASl8G.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov/16_2054640055507918848.mp4. Hot Dog Man GIF https://t.co/IW4sr10Kde"
+      "description": "A reaction GIF shows several people in a room with a person in a hot dog costume standing among them. The camera angle stays fixed while the group shifts slightly across the repeated frames."
     },
     {
       "tweet_id": "2054647737186967670",
@@ -128413,7 +128626,7 @@
       "has_transcript": false,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "animated GIF; 498x354; 0.02 MiB; archived; alt text: Spider Man GIF; tweet context: @DHSgov The Biden admin: https://t.co/dW232CbsnG; source URL: https://video.twimg.com/tweet_video/HIOTOcxXgAARU2y.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/16_2054647731461783552.mp4. | animated GIF; 498x354; 0.02 MiB; archived; alt text: Spider Man GIF; tweet context: @DHSgov The Biden admin: https://t.co/dW232CbsnG; source URL: https://video.twimg.com/tweet_video/HIOTOcxXgAARU2y.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/16_2054647731461783552.mp4. Spider Man GIF @DHSgov The Biden admin: https://t.co/dW232CbsnG"
+      "description": "A cartoon-style frame shows two Spider-Man-like figures in a bright interior, with one figure pointing toward the other. Only a single visible keyframe is available, so the sequence reads as a static reaction image."
     },
     {
       "tweet_id": "2054655841605681186",
@@ -134937,42 +135150,6 @@
       "description": "video; 640x360; 7.1s; 0.58 MiB; archived; tweet context: Coasties on the @USCG BERTHOLF and @customsborder #AMO spotted &amp; stopped a submersible carrying 12k lbs of Cocaine https://t.co/e3pA9xgULd; source URL: https://video.twimg.com/ext_tw_video/714519500582948864/pu/vid/640x360/pnIWtLBVEOFJnAG1.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/7_714519500582948864.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 640x360; 7.1s; 0.58 MiB; archived; tweet context: Coasties on the @USCG BERTHOLF and @customsborder #AMO spotted &amp; stopped a submersible carrying 12k lbs of Cocaine https://t.co/e3pA9xgULd; source URL: https://video.twimg.com/ext_tw_video/714519500582948864/pu/vid/640x360/pnIWtLBVEOFJnAG1.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/7_714519500582948864.mp4; needs OCR, transcript, or frame-level vision before content claims. Coasties on the @USCG BERTHOLF and @customsborder #AMO spotted &amp; stopped a submersible carrying 12k lbs of Cocaine https://t.co/e3pA9xgULd"
     },
     {
-      "tweet_id": "736616817192538114",
-      "account_handle": "DHSgov",
-      "posted_at": "2016-05-28T17:55:09.000Z",
-      "tweet_url": "https://x.com/DHSgov/status/736616817192538114",
-      "tweet_text": "Shorten your wait this summer with #TSAPreCheck, with these simple steps from @TSA. https://t.co/wJxGbj0ifv",
-      "media_id": "16_736616567899885569",
-      "media_type": "animated_gif",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/16_736616567899885569.mp4",
-      "duration_sec": null,
-      "width": 1280,
-      "height": 1080,
-      "like_count": 0,
-      "retweet_count": 0,
-      "view_count": 0,
-      "bucket": "ordinary-video",
-      "priority": 30,
-      "tags": [
-        "agency:TSA",
-        "audio:no-audio",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:animated-gif",
-        "topic:immigration"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": true,
-      "has_vision_description": true,
-      "has_ocr": true,
-      "description": "The contact sheet lacks a usable local frame or thumbnail for this video. Only the tweet text and a missing-visual placeholder are visible."
-    },
-    {
       "tweet_id": "740257152162373632",
       "account_handle": "DHSgov",
       "posted_at": "2016-06-07T19:00:33.000Z",
@@ -137083,41 +137260,6 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 426x240; 42.0s; 0.53 MiB; archived; tweet context: If your area has been hit by Hurricane Laura and you're in a safe place, stay in your home and don't go out sightseeing. \"You put yourself, your family at risk, and you put first responders at risk,\" .@FEMA_Pete explains. https://t.co/E4t7PjpcKu; source URL: https://video.twimg.com/amplify_video/1299034083847278594/vid/426x238/a3DV5KrFZDCk4zLc.mp4?tag=13; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0003/13_1299034083847278594.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 426x240; 42.0s; 0.53 MiB; archived; tweet context: If your area has been hit by Hurricane Laura and you're in a safe place, stay in your home and don't go out sightseeing. \"You put yourself, your family at risk, and you put first responders at risk,\" .@FEMA_Pete explains. https://t.co/E4t7PjpcKu; source URL: https://video.twimg.com/amplify_video/1299034083847278594/vid/426x238/a3DV5KrFZDCk4zLc.mp4?tag=13; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0003/13_1299034083847278594.mp4; needs OCR, transcript, or frame-level vision before content claims. If your area"
-    },
-    {
-      "tweet_id": "1309477947913506822",
-      "account_handle": "DHSgov",
-      "posted_at": "2020-09-25T13:00:46.000Z",
-      "tweet_url": "https://x.com/DHSgov/status/1309477947913506822",
-      "tweet_text": "The #SeeSay team joined together on “If You See Something, Say Something®” national Awareness Day to remind Americans that if you see suspicious activity report it to authorities. #WhyISeeSay #SeeSayDay https://t.co/9chPNpNnWt",
-      "media_id": "16_1309477939025764355",
-      "media_type": "animated_gif",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0003/16_1309477939025764355.mp4",
-      "duration_sec": null,
-      "width": 1200,
-      "height": 630,
-      "like_count": 156,
-      "retweet_count": 67,
-      "view_count": 0,
-      "bucket": "ordinary-video",
-      "priority": 30,
-      "tags": [
-        "audio:no-audio",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:animated-gif",
-        "topic:immigration"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": true,
-      "has_vision_description": true,
-      "has_ocr": true,
-      "description": "The contact sheet lacks a usable local frame or thumbnail for this video. Only the tweet text and a missing-visual placeholder are visible."
     },
     {
       "tweet_id": "1319368970084995073",
@@ -145448,7 +145590,7 @@
       "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "animated GIF; 1200x600; 0.05 MiB; archived; alt text: Use holiday lighting safely graphic.; tweet context: 🎄As we begin taking down our holiday decorations, don't put any frayed or pinched items back in storage. Safely dispose of damaged decorations, saving only safe items in good condition for future celebrations. Prevent home fires with more tips from @usfire ⬇️...; source URL: https://video.twimg.com/tweet_video/GgY-Fd0WkAAHeid.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/16_1875254558470868992.mp4. | animated GIF; 1200x600; 0.05 MiB; archived; alt text: Use holiday lighting safely graphic.; tweet context: 🎄As we begin taking down our holiday decorations, don't put any frayed or pinched items back in storage. Safely dispose of damaged decorations, saving only safe items in good condition for future celebrations. Prevent home fires with more tips from @usfire ⬇️...; source URL: https://video.twimg.com/tweet_video/GgY-Fd0WkAAHeid.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/16_1875254558470868992.mp4. Use holiday lighting safely graphic. 🎄As we begin taking down our holiday decorations, don't put any"
+      "description": "Animated safety graphic showing a stylized Christmas tree with lights and an electrical plug against a blue circle. The frames alternate between the tree lights glowing and a close view of the plug area while a safety message remains on the right."
     },
     {
       "tweet_id": "1875965622737146175",
@@ -149528,45 +149670,6 @@
       "description": "video; 1280x720; 92.0s; 9.74 MiB; archived; tweet context: Making the streets safe: CBP is on the ground in D.C. enforcing the law. We will take D.C. back from the criminals. https://t.co/w9KP9PsqXt; source URL: https://video.twimg.com/ext_tw_video/1955953852642983939/pu/vid/avc1/1280x720/XQC_DWEeeYgh-cub.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/7_1955953852642983939.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 92.0s; 9.74 MiB; archived; tweet context: Making the streets safe: CBP is on the ground in D.C. enforcing the law. We will take D.C. back from the criminals. https://t.co/w9KP9PsqXt; source URL: https://video.twimg.com/ext_tw_video/1955953852642983939/pu/vid/avc1/1280x720/XQC_DWEeeYgh-cub.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/7_1955953852642983939.mp4; needs OCR, transcript, or frame-level vision before content claims. Making the streets safe: CBP is on the ground in D.C. enforcing the law. We will take D.C. back from the criminals. https://t.co/w9KP9PsqXt | patrol or eyes being a part of the federalization, if you will, of D.C. Metro Poli"
     },
     {
-      "tweet_id": "1956439046072434920",
-      "account_handle": "CBP",
-      "posted_at": "2025-08-15T19:33:12.000Z",
-      "tweet_url": "https://x.com/CBP/status/1956439046072434920",
-      "tweet_text": "@DHSgov https://t.co/LjyQlKr5CG",
-      "media_id": "16_1956439037989847040",
-      "media_type": "animated_gif",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-CBP/16_1956439037989847040.mp4",
-      "duration_sec": null,
-      "width": 532,
-      "height": 266,
-      "like_count": 128,
-      "retweet_count": 11,
-      "view_count": 6554,
-      "bucket": "ordinary-video",
-      "priority": 30,
-      "tags": [
-        "agency:CBP",
-        "agency:DHSgov",
-        "audio:no-audio",
-        "format:reply",
-        "media-status:archived",
-        "media-status:described",
-        "media-status:has-alt-text",
-        "media:animated-gif",
-        "topic:immigration"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": true,
-      "has_vision_description": true,
-      "has_ocr": true,
-      "description": "animated GIF; 532x266; 0.08 MiB; archived; alt text: Locked In Glitch GIF by Xbox; tweet context: @DHSgov https://t.co/LjyQlKr5CG; source URL: https://video.twimg.com/tweet_video/Gyaq8HwXgAAl5zv.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_1956439037989847040.mp4. | animated GIF; 532x266; 0.08 MiB; archived; alt text: Locked In Glitch GIF by Xbox; tweet context: @DHSgov https://t.co/LjyQlKr5CG; source URL: https://video.twimg.com/tweet_video/Gyaq8HwXgAAl5zv.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_1956439037989847040.mp4. Locked In Glitch GIF by Xbox @DHSgov https://t.co/LjyQlKr5CG"
-    },
-    {
       "tweet_id": "1956740742270828730",
       "account_handle": "CBP",
       "posted_at": "2025-08-16T15:32:02.000Z",
@@ -149601,45 +149704,6 @@
       "has_vision_description": true,
       "has_ocr": true,
       "description": "The keyframes show close-up views of reddish-brown packaged or contained material being held or displayed indoors. The tweet text refers to bushmeat at a port of entry."
-    },
-    {
-      "tweet_id": "1958233365888512238",
-      "account_handle": "CBP",
-      "posted_at": "2025-08-20T18:23:11.000Z",
-      "tweet_url": "https://x.com/CBP/status/1958233365888512238",
-      "tweet_text": "@DHSgov https://t.co/CvKHipuoNx",
-      "media_id": "16_1958233358279843840",
-      "media_type": "animated_gif",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-CBP/16_1958233358279843840.mp4",
-      "duration_sec": null,
-      "width": 498,
-      "height": 370,
-      "like_count": 811,
-      "retweet_count": 47,
-      "view_count": 20417,
-      "bucket": "ordinary-video",
-      "priority": 30,
-      "tags": [
-        "agency:CBP",
-        "agency:DHSgov",
-        "audio:no-audio",
-        "format:reply",
-        "media-status:archived",
-        "media-status:described",
-        "media-status:has-alt-text",
-        "media:animated-gif",
-        "topic:immigration"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": true,
-      "has_vision_description": true,
-      "has_ocr": true,
-      "description": "animated GIF; 498x370; 0.02 MiB; archived; alt text: Youknow GIF; tweet context: @DHSgov https://t.co/CvKHipuoNx; source URL: https://video.twimg.com/tweet_video/Gy0K3TuXIAAk7qJ.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_1958233358279843840.mp4. | animated GIF; 498x370; 0.02 MiB; archived; alt text: Youknow GIF; tweet context: @DHSgov https://t.co/CvKHipuoNx; source URL: https://video.twimg.com/tweet_video/Gy0K3TuXIAAk7qJ.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_1958233358279843840.mp4. Youknow GIF @DHSgov https://t.co/CvKHipuoNx"
     },
     {
       "tweet_id": "1958891959486992586",
@@ -150823,7 +150887,6 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
-        "agency:CBP",
         "agency:DHSgov",
         "audio:no-audio",
         "format:reply",
@@ -150841,46 +150904,7 @@
       "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "animated GIF; 164x92; 0.04 MiB; archived; alt text: Reach Halo GIF; tweet context: @DHSgov https://t.co/vpvxLp1I6V; source URL: https://video.twimg.com/tweet_video/G4RmLNxWwAEkbS8.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_1982822078811127809.mp4. | animated GIF; 164x92; 0.04 MiB; archived; alt text: Reach Halo GIF; tweet context: @DHSgov https://t.co/vpvxLp1I6V; source URL: https://video.twimg.com/tweet_video/G4RmLNxWwAEkbS8.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_1982822078811127809.mp4. Reach Halo GIF @DHSgov https://t.co/vpvxLp1I6V"
-    },
-    {
-      "tweet_id": "1982908219619192898",
-      "account_handle": "CBP",
-      "posted_at": "2025-10-27T20:32:14.000Z",
-      "tweet_url": "https://x.com/CBP/status/1982908219619192898",
-      "tweet_text": "@DHSgov https://t.co/hHrVQeXwuO",
-      "media_id": "16_1982908212299825152",
-      "media_type": "animated_gif",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-CBP/16_1982908212299825152.mp4",
-      "duration_sec": null,
-      "width": 480,
-      "height": 200,
-      "like_count": 484,
-      "retweet_count": 47,
-      "view_count": 12333,
-      "bucket": "ordinary-video",
-      "priority": 30,
-      "tags": [
-        "agency:CBP",
-        "agency:DHSgov",
-        "audio:no-audio",
-        "format:reply",
-        "media-status:archived",
-        "media-status:described",
-        "media-status:has-alt-text",
-        "media:animated-gif",
-        "topic:immigration"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": true,
-      "has_vision_description": true,
-      "has_ocr": true,
-      "description": "animated GIF; 480x200; 0.21 MiB; archived; alt text: Mel Gibson America GIF; tweet context: @DHSgov https://t.co/hHrVQeXwuO; source URL: https://video.twimg.com/tweet_video/G4S0g2BWAAAXPDx.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_1982908212299825152.mp4. | animated GIF; 480x200; 0.21 MiB; archived; alt text: Mel Gibson America GIF; tweet context: @DHSgov https://t.co/hHrVQeXwuO; source URL: https://video.twimg.com/tweet_video/G4S0g2BWAAAXPDx.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_1982908212299825152.mp4. Mel Gibson America GIF @DHSgov https://t.co/hHrVQeXwuO"
+      "description": "The video strip shows a short, low-resolution action-game style sequence of an armored character seen from behind. Across the sampled frames the figure remains mostly centered while the background shifts from orange-lit haze to bright overexposed light, suggesting a looping GIF or brief game clip."
     },
     {
       "tweet_id": "1984259114394882190",
@@ -152760,7 +152784,6 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
-        "agency:CBP",
         "audio:no-audio",
         "format:quote",
         "media-status:archived",
@@ -152777,7 +152800,7 @@
       "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "animated GIF; 220x166; 0.03 MiB; archived; alt text: Hmusicruof4 Rowley GIF; tweet context: https://t.co/xbod4hmnes; source URL: https://video.twimg.com/tweet_video/HEr85JLbMAAj31d.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_2038719839985152000.mp4. | animated GIF; 220x166; 0.03 MiB; archived; alt text: Hmusicruof4 Rowley GIF; tweet context: https://t.co/xbod4hmnes; source URL: https://video.twimg.com/tweet_video/HEr85JLbMAAj31d.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_2038719839985152000.mp4. Hmusicruof4 Rowley GIF https://t.co/xbod4hmnes"
+      "description": "The video strip shows a short reaction GIF of a young person in a striped vest standing in a crowded indoor room. The sampled frames show a small hand movement or wave while the camera angle stays fixed."
     },
     {
       "tweet_id": "2039391927783571919",
@@ -153702,7 +153725,8 @@
         "media-status:described",
         "media-status:has-alt-text",
         "media:animated-gif",
-        "topic:immigration"
+        "military:army",
+        "topic:military"
       ],
       "genre_tags": [],
       "produced_video_tags": [],
@@ -153712,7 +153736,7 @@
       "has_transcript": false,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "animated GIF; 498x358; 0.07 MiB; archived; alt text: Troopers Responsible GIF; tweet context: @estencooke @DAGToddBlanche @CAgovernor @GovPritzker @GovernorVA Thank you for the kind words, Anne. Just doing my part! https://t.co/rYtXfl2dwM; source URL: https://video.twimg.com/tweet_video/HGmrpFobEAAe5QY.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-GregoryKBovino/16_2047356227991310336.mp4. | animated GIF; 498x358; 0.07 MiB; archived; alt text: Troopers Responsible GIF; tweet context: @estencooke @DAGToddBlanche @CAgovernor @GovPritzker @GovernorVA Thank you for the kind words, Anne. Just doing my part! https://t.co/rYtXfl2dwM; source URL: https://video.twimg.com/tweet_video/HGmrpFobEAAe5QY.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-GregoryKBovino/16_2047356227991310336.mp4. Troopers Responsible GIF @estencooke @DAGToddBlanche @CAgovernor @GovPritzker @GovernorVA Thank you for the kind words, Anne. Just doing my part! https://t.co/rYtXfl2dwM"
+      "description": "A close-up of a helmeted soldier shows him speaking in formation, with other helmeted soldiers lined up behind him. The sequence stays on the same face as his mouth changes shape, with a short white subtitle at the bottom."
     },
     {
       "tweet_id": "2047708332937379856",
@@ -155480,7 +155504,6 @@
       "bucket": "ordinary-video",
       "priority": 30,
       "tags": [
-        "agency:CBP",
         "agency:DHSgov",
         "audio:no-audio",
         "format:reply",
@@ -155498,7 +155521,7 @@
       "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
-      "description": "animated GIF; 498x368; 0.07 MiB; archived; alt text: Aslan Roar GIF; tweet context: @DHSgov https://t.co/mY566PS42x; source URL: https://video.twimg.com/tweet_video/HI-GHZnXEAAmsPA.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_2058011016424787968.mp4. | animated GIF; 498x368; 0.07 MiB; archived; alt text: Aslan Roar GIF; tweet context: @DHSgov https://t.co/mY566PS42x; source URL: https://video.twimg.com/tweet_video/HI-GHZnXEAAmsPA.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP/16_2058011016424787968.mp4. Aslan Roar GIF @DHSgov https://t.co/mY566PS42x | <a : ~—« - . | a Fs .. z “ * ry Y = , Pe OTR 5 1 we SES ha eA a ot Vee i. | Bro, og rt PA SV se SS 2 ee le \\ te 2 2 | - Ls hie 4 eM | ae) ae 7», Oe te >"
+      "description": "The visible frame shows a lion standing or roaring from a rocky ledge against a bright sky. Only one usable frame is shown, so the sequence reads as a short reaction GIF centered on the animal's dramatic pose. | <a : ~—« - . | a Fs .. z “ * ry Y = , Pe OTR 5 1 we SES ha eA a ot Vee i. | Bro, og rt PA SV se SS 2 ee le \\ te 2 2 | - Ls hie 4 eM | ae) ae 7», Oe te >"
     },
     {
       "tweet_id": "2058578841988121062",

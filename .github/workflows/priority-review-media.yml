@@ -149,8 +149,8 @@ jobs:
           uv run python -m scripts.tag_review_curation
           uv run python -m scripts.tag_lexical
           uv run python -m scripts.build_core_video_audit
-          uv run python -m scripts.build_creative_site_data
           uv run python -m scripts.refresh_viewer_metadata
+          uv run python -m scripts.build_creative_site_data
 
       - name: commit (including the review frames)
         if: steps.guard.outputs.skip != '1'
