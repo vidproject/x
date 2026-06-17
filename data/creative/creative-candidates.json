@@ -1,11 +1,11 @@
 {
   "metadata": {
     "queue": "candidates",
-    "generated_at": "2026-06-16T23:14:31Z",
-    "source_commit": "22023d93",
+    "generated_at": "2026-06-17T00:00:20Z",
+    "source_commit": "cc95f375",
     "item_count": 96,
     "source_candidate_count": 1046,
-    "not_ready_count": 141,
+    "not_ready_count": 142,
     "all_items_ready": true,
     "basis_counts": {
       "real_footage_creative_use": 62,
@@ -711,6 +711,7 @@
       "confidence": "medium",
       "score": 84,
       "creative_forms": [
+        "advertisement",
         "cinematic",
         "music-led"
       ],
@@ -727,6 +728,7 @@
         "audio:has-audio",
         "country:Mexico",
         "format:statistics",
+        "genre:advertisement",
         "legal:criminal-prosecution",
         "media-status:archived",
         "media-status:needs-vision",
@@ -739,6 +741,7 @@
         "slogan:illegal-alien",
         "subject:enforcement-op",
         "theme:criminal",
+        "theme:directive",
         "topic:immigration",
         "video:medium",
         "video:produced"
@@ -1024,10 +1027,11 @@
             },
             "ocr": {
               "status_counts": {
-                "no-text": 5
+                "ok": 3,
+                "no-text": 2
               },
               "complete_row_count": 5,
-              "text": ""
+              "text": "ae Ms rave aie oe ee ee rere = a ee OP i Wie Re it 4 4 re ha Se ra keer\n\n¥ 1 goek SS) yi ‘ i ”\n\n: ' = pe Se"
             },
             "keyframes": {
               "status": "ok",
@@ -8288,7 +8292,7 @@
               "archived": true,
               "description": true,
               "keyframes": true,
-              "keyframe_count": 8,
+              "keyframe_count": 5,
               "thumbnail": true,
               "ocr": true,
               "audio_analysis": true,
@@ -8307,14 +8311,14 @@
             "ocr": {
               "status_counts": {
                 "no-text": 5,
-                "ok": 8
+                "ok": 13
               },
-              "complete_row_count": 13,
-              "text": "rT aS . =, ‘ 4 ' Vr\n\nee aS Y ae ry oF = SOT ee Be pat P| @\n\nai j ; q \\ A r ¢ yt Ps)\n\nyy UH me re s8.) oe\n\n’ { Ls @ ‘ ’ &»\n\n: it , oe . . er Ta i pp nm 4\n\n— inet it seared Pia Ss - Sasol Noe ed ee ieee @ukR tee eng Tees, ghana ae & Maeetyeng of a ail cen Seki OS ee Bie eR ge lie ag On ain eg Ey cage Cee ea mee ate Agee = Nas Fa 20 poe nee or Bae, Se ie abe 3 a ee A ete ea te eee es\n\nne oe"
+              "complete_row_count": 18,
+              "text": "rT aS . =, ‘ 4 ' Vr\n\nee aS Y ae ry oF = SOT ee Be pat P| @\n\nai j ; q \\ A r ¢ yt Ps)\n\nyy UH me re s8.) oe\n\n’ { Ls @ ‘ ’ &»\n\n: it , oe . . er Ta i pp nm 4\n\n— inet it seared Pia Ss - Sasol Noe ed ee ieee @ukR tee eng Tees, ghana ae & Maeetyeng of a ail cen Seki OS ee Bie eR ge lie ag On ain eg Ey cage Cee ea mee ate Agee = Nas Fa 20 poe nee or Bae, Se ie abe 3 a ee A ete ea te eee es\n\nne oe\n\nrT aS . =, ‘ 4 ' Vr\n\nee aS Y ae ry oF = SOT ee Be pat P| @\n\nai j ; q \\ A r ¢ yt Ps)\n\nyy UH me re s8.) oe\n\n’ { Ls @ ‘ ’ &»"
             },
             "keyframes": {
               "status": "ok",
-              "frame_count": 8
+              "frame_count": 5
             },
             "audio": {
               "status": "ok",

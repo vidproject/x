@@ -1,22 +1,22 @@
 {
   "metadata": {
     "queue": "2025_plus",
-    "generated_at": "2026-06-16T23:14:31Z",
-    "source_commit": "22023d93",
-    "item_count": 879,
+    "generated_at": "2026-06-17T00:00:20Z",
+    "source_commit": "cc95f375",
+    "item_count": 878,
     "source_candidate_count": 1046,
-    "not_ready_count": 141,
+    "not_ready_count": 142,
     "all_items_ready": true,
     "basis_counts": {
       "real_footage_creative_use": 80,
-      "wholly_creative_media": 799
+      "wholly_creative_media": 798
     },
     "top_accounts": {
       "ICEgov": 261,
       "USDOL": 136,
       "DHSgov": 123,
       "USCIS": 96,
-      "WhiteHouse": 55,
+      "WhiteHouse": 54,
       "RapidResponse47": 37,
       "CBP": 31,
       "POTUS": 14,
@@ -34549,139 +34549,6 @@
       }
     },
     {
-      "id": "2013620691661164617:13_2013619240939515905",
-      "tweet_id": "2013620691661164617",
-      "posted_at": "2026-01-20T14:32:38.000Z",
-      "era": "2025_plus",
-      "queue": "high_confidence",
-      "account": {
-        "handle": "WhiteHouse",
-        "category": "core",
-        "label": "The White House"
-      },
-      "tweet_url": "https://x.com/WhiteHouse/status/2013620691661164617",
-      "tweet_text": "365 DAYS OF PRESIDENT DONALD J. TRUMP. A Golden Age just getting started. 🇺🇸 https://t.co/Nz3mHNGZW0",
-      "review_state": "candidate",
-      "inclusion_basis": "wholly_creative_media",
-      "confidence": "medium",
-      "score": 90,
-      "creative_forms": [
-        "animation",
-        "cinematic",
-        "montage",
-        "music-led",
-        "text-overlay",
-        "utopian"
-      ],
-      "subjects": [],
-      "tags": [
-        "audio:has-audio",
-        "audio:music-likely",
-        "country:Ukraine",
-        "genre:utopian",
-        "media-status:archived",
-        "media-status:described",
-        "media-status:ocr-done",
-        "media:video",
-        "military:marines",
-        "review:screened-video",
-        "slogan:golden-age",
-        "theme:transgender",
-        "topic:general",
-        "topic:immigration",
-        "topic:military",
-        "video:medium",
-        "video:montage",
-        "video:produced",
-        "video:speech",
-        "video:text-overlay"
-      ],
-      "media": [
-        {
-          "media_id": "13_2013619240939515905",
-          "type": "video",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2013619240939515905.mp4",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/video/62954e607f8aa1ee309df0d447a98e912e421b23417cbbab86dfe2296293943a.jpg",
-          "sha256": "62954e607f8aa1ee309df0d447a98e912e421b23417cbbab86dfe2296293943a",
-          "duration_sec": 56.489,
-          "playable": true,
-          "readiness": {
-            "ready": true,
-            "blockers": [],
-            "checks": {
-              "archived": true,
-              "description": true,
-              "keyframes": true,
-              "keyframe_count": 5,
-              "thumbnail": true,
-              "ocr": true,
-              "audio_analysis": true,
-              "has_audio": true,
-              "transcript": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "opus-vision-review",
-              "text": "A vertical (9:16) montage set to music titled '365 Days of President Donald J. Trump' with animated text callouts. Fast cuts move between Trump seated before a row of world flags ('STRONG GLOBAL RELATIONSHIPS'), color-graded Marines on a wire obstacle, Trump walking through a flag-draped Rose Garden, a White House event captioned 'No Men In Women's SPORTS,' and a fireworks shot reading 'MAKING AMERICA GREAT AGAIN.' There is no speech; the audio is a music bed.  [0:05] Trump seated at a table in front of a row of world flags (German, Italian, Ukrainian, UK); large blue animated text overlay 'STRONG GLOBAL RELATIONSHIPS.' No talking (music bed).  [0:17] Color-graded shot of US Marines in helmets and packs working a concertina-razor-wire obstacle in the dirt.  [0:28] Trump in a long dark overcoat walking across a stage in the White House Rose Garden, flanked by American flags and tulips; slow-motion.  [0:39] Interior White House hallway with chandelier and flags as a group walks toward camera down a red carpet; yellow animated text 'No Men In Women's SPORTS.'  [0:50] Back-of-head shot of Trump and a woman watching a wall of fireworks/lights; centered serif text 'MAKING AMERICA GREAT AGAIN' to close.",
-              "sidecar_statuses": {
-                "manual-review": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {
-                "no-text": 5
-              },
-              "complete_row_count": 5,
-              "text": ""
-            },
-            "keyframes": {
-              "status": "ok",
-              "frame_count": 5
-            },
-            "audio": {
-              "status": "ok",
-              "audio_stream_count": 1,
-              "duration_sec": 56.533333,
-              "tags": [
-                "audio:has-audio"
-              ]
-            },
-            "transcript": {
-              "status": "empty-transcript",
-              "segment_count": 0,
-              "text": ""
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": true,
-        "blockers": [],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "A vertical (9:16) montage set to music titled '365 Days of President Donald J. Trump' with animated text callouts. Fast cuts move between Trump seated before a row of world flags ('STRONG GLOBAL RELATIONSHIPS'), color-graded Marines on a wire obstacle, Trump walking through a flag-draped Rose Garden, a White House event captioned 'No Men In Women's SPORTS,' and a fireworks shot reading 'MAKING AMERICA GREAT AGAIN.' There is no speech; the audio is a music bed.  [0:05] Trump seated at a table in front of a row of world flags (German, Italian, Ukrainian, UK); large blue animated text overlay 'STRONG GLOBAL RELATIONSHIPS.' No talking (music bed).  [0:17] Color-graded shot of US Marines in helmets and packs working a concertina-razor-wire obstacle in the dirt.  [0:28] Trump in a long dark overcoat walking across a stage in the White House Rose Garden, flanked by American flags and tulips; slow-motion.  [0:39] Interior White House hallway with chandelier and flags as a group walks toward camera down a red carpet; yellow animated text 'No Men In Women's SPORTS.'  [0:50] Back-of-head shot of Trump and a woman watching a wall of fireworks/lights; centered serif text 'MAKING AMERICA GREAT AGAIN' to close.",
-        "notable_text": "",
-        "reasons": [
-          "wholly creative media signal",
-          "creative treatment signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ]
-      },
-      "engagement": {
-        "likes": 42094,
-        "retweets": 9266,
-        "quotes": 874,
-        "views": 2413095
-      }
-    },
-    {
       "id": "2013624611280154733:13_2013619240939515905",
       "tweet_id": "2013624611280154733",
       "posted_at": "2026-01-20T14:48:13.000Z",
@@ -34866,7 +34733,7 @@
               "archived": true,
               "description": true,
               "keyframes": true,
-              "keyframe_count": 8,
+              "keyframe_count": 5,
               "thumbnail": true,
               "ocr": true,
               "audio_analysis": true,
@@ -34885,14 +34752,14 @@
             "ocr": {
               "status_counts": {
                 "no-text": 5,
-                "ok": 8
+                "ok": 13
               },
-              "complete_row_count": 13,
-              "text": "— é\n\n_§ i 2 , Ba “3 'f Py Ais\n\n~sgs \\ : SS > ¥ . j Ss aks ~% ’ *\n\n<— 4 Fl ol A . mat 5) aK FA =e Ss shat : malig oer » a : (eae ; ; * ag os Pa <—y oy Ree - _— . £ S —a , 23 =o 1 == ze. ae ‘=\n\n— = af ‘ te is 4 y\n\na 0) \\ Cid - Y\\ - “Nh 4 1 1 1 5 0 44 470 376 58 -1 5 1 1 1 5 1 44 482 99 46 24.563972 — 5 1 1 1 5 2 323 470 9 48 78.805161 \\ 5 1 1 1 5 3 388 475 32 24 0.000000 \\G 4 1 1 1 6 0 67 576 410 64 -1 5 1 1 1 6 1 0 591 16 46 53.383713 2 5 1 1 1 6 2 121 576 69 64 31.497513 a 5 1 1 1 6 3 239 590 89 33 38.712418 ae\n\nEe Ape ee f ieee tA 7 sed.|, 7 ue Z 2 ; oe = : 7 * Ny ¥ Ce . Pi: 7 WW ie <= - ee: A < Sa 1 By 4 — . Aer y : 5 iy. «if i. = ee he eae igh: -.\n\nee eg So 5 1 1 1 1 4 448 18 32 17 41.942402 le 4 1 1 1 2 0 0 46 480 44 -1 5 1 1 1 2 1 0 46 69 41 27.375450 a, 5 1 1 1 2 2 123 55 56 23 79.935181 — 5 1 1 1 2 3 190 46 35 44 44.453560 xy 5 1 1 1 2 4 241 48 50 23 0.229187 a 5 1 1 1 2 5 360 55 38 10 41.594994 ne 5 1 1 1 2 6 423 48 22 40 35.781181 Lay 5 1 1 1 2 7 462 52 18 19 24.923103 - 4 1 1 1 3 0 0 83 480 36 -1 5 1 1 1 3 1 0 83 480 36 0.000000 O_o 4 1 1 1 4 0 36 152 355 48 -1 5 1 1 1 4 1 36 152 127 48 49.974998 (CE 5 1 1 1 4 2 190 153 124 43 49.974998 AGENTS 5 1 1 1 4 3 376 194 15 6 71.102333 4 1 1 1 5 0 0 153 473 91 -1 5 1 1 1 5 1 0 153 148 91 11.652679 he 5 1 1 1 5 2 216 194 158 50 10.441727 ey 4 1 1 1 6 0 38 268 417 33 -1 5 1 1 1 6 1 38 268 139 33 94.829704 FROM 5 1 1 1 6 2 189 268 266 33 95.480370 DROWNING 4 1 1 1 7 0 38 322 322 65 -1 5 1 1 1 7 1 38 322 53 45 26.590401 (Ml 5 1 1 1 7 2 100 326 77 61 0.000000 BUX 5 1 1 1 7 3 193 326 167 58 0.000000 MQUTH 4 1 1 1 8 0 36 355 294 40 -1 5 1 1 1 8 1 36 355 54 40 21.458595 pode 5 1 1 1 8 2 246 368 2 3 0.975815 , 5 1 1 1 8 3 325 381 5 9 37.774002 1 4 1 1 1 9 0 37 361 293 67 -1 5 1 1 1 9 1 37 384 151 32 51.507126 MOTEL 5 1 1 1 9 2 203 361 127 67 54.784870 POOL 4 1 1 1 10 0 6 456 472 40 -1 5 1 1 1 10 1 6 468 52 15 39.963459 aT 5 1 1 1 10 2 132 456 32 28 30.643829 ta 5 1 1 1 10 3 179 468 23 12 27.281296 my 5 1 1 1 10 4 225 470 10 14 0.000000 Ss 5 1 1 1 10 5 271 460 138 36 0.000000 —ae, 5 1 1 1 10 6 427 473 1 8 68.298149 — 5 1 1 1 10 7 463 460 15 36 70.247894 |! 4 1 1 1 11 0 0 465 479 67 -1 5 1 1 1 11 1 0 486 118 44 29.556511 eee 5 1 1 1 11 2 142 465 97 67 18.572189 aah PEs Teor DS gut een ht 9, 2 Wy, ae etee i os <* a < the tat 2“ alan - = Sr 2 tn al on! te ogre tile"
+              "complete_row_count": 18,
+              "text": "— é\n\n_§ i 2 , Ba “3 'f Py Ais\n\n~sgs \\ : SS > ¥ . j Ss aks ~% ’ *\n\n<— 4 Fl ol A . mat 5) aK FA =e Ss shat : malig oer » a : (eae ; ; * ag os Pa <—y oy Ree - _— . £ S —a , 23 =o 1 == ze. ae ‘=\n\n— = af ‘ te is 4 y\n\na 0) \\ Cid - Y\\ - “Nh 4 1 1 1 5 0 44 470 376 58 -1 5 1 1 1 5 1 44 482 99 46 24.563972 — 5 1 1 1 5 2 323 470 9 48 78.805161 \\ 5 1 1 1 5 3 388 475 32 24 0.000000 \\G 4 1 1 1 6 0 67 576 410 64 -1 5 1 1 1 6 1 0 591 16 46 53.383713 2 5 1 1 1 6 2 121 576 69 64 31.497513 a 5 1 1 1 6 3 239 590 89 33 38.712418 ae\n\nEe Ape ee f ieee tA 7 sed.|, 7 ue Z 2 ; oe = : 7 * Ny ¥ Ce . Pi: 7 WW ie <= - ee: A < Sa 1 By 4 — . Aer y : 5 iy. «if i. = ee he eae igh: -.\n\nee eg So 5 1 1 1 1 4 448 18 32 17 41.942402 le 4 1 1 1 2 0 0 46 480 44 -1 5 1 1 1 2 1 0 46 69 41 27.375450 a, 5 1 1 1 2 2 123 55 56 23 79.935181 — 5 1 1 1 2 3 190 46 35 44 44.453560 xy 5 1 1 1 2 4 241 48 50 23 0.229187 a 5 1 1 1 2 5 360 55 38 10 41.594994 ne 5 1 1 1 2 6 423 48 22 40 35.781181 Lay 5 1 1 1 2 7 462 52 18 19 24.923103 - 4 1 1 1 3 0 0 83 480 36 -1 5 1 1 1 3 1 0 83 480 36 0.000000 O_o 4 1 1 1 4 0 36 152 355 48 -1 5 1 1 1 4 1 36 152 127 48 49.974998 (CE 5 1 1 1 4 2 190 153 124 43 49.974998 AGENTS 5 1 1 1 4 3 376 194 15 6 71.102333 4 1 1 1 5 0 0 153 473 91 -1 5 1 1 1 5 1 0 153 148 91 11.652679 he 5 1 1 1 5 2 216 194 158 50 10.441727 ey 4 1 1 1 6 0 38 268 417 33 -1 5 1 1 1 6 1 38 268 139 33 94.829704 FROM 5 1 1 1 6 2 189 268 266 33 95.480370 DROWNING 4 1 1 1 7 0 38 322 322 65 -1 5 1 1 1 7 1 38 322 53 45 26.590401 (Ml 5 1 1 1 7 2 100 326 77 61 0.000000 BUX 5 1 1 1 7 3 193 326 167 58 0.000000 MQUTH 4 1 1 1 8 0 36 355 294 40 -1 5 1 1 1 8 1 36 355 54 40 21.458595 pode 5 1 1 1 8 2 246 368 2 3 0.975815 , 5 1 1 1 8 3 325 381 5 9 37.774002 1 4 1 1 1 9 0 37 361 293 67 -1 5 1 1 1 9 1 37 384 151 32 51.507126 MOTEL 5 1 1 1 9 2 203 361 127 67 54.784870 POOL 4 1 1 1 10 0 6 456 472 40 -1 5 1 1 1 10 1 6 468 52 15 39.963459 aT 5 1 1 1 10 2 132 456 32 28 30.643829 ta 5 1 1 1 10 3 179 468 23 12 27.281296 my 5 1 1 1 10 4 225 470 10 14 0.000000 Ss 5 1 1 1 10 5 271 460 138 36 0.000000 —ae, 5 1 1 1 10 6 427 473 1 8 68.298149 — 5 1 1 1 10 7 463 460 15 36 70.247894 |! 4 1 1 1 11 0 0 465 479 67 -1 5 1 1 1 11 1 0 486 118 44 29.556511 eee 5 1 1 1 11 2 142 465 97 67 18.572189 aah PEs Teor DS gut een ht 9, 2 Wy, ae etee i os <* a < the tat 2“ alan - = Sr 2 tn al on! te ogre tile\n\n— é\n\n_§ i 2 , Ba “3 'f Py Ais\n\n~sgs \\ : SS > ¥ . j Ss aks ~% ’ *\n\n<— 4 Fl ol A . mat 5) aK FA =e Ss shat : malig oer » a : (eae ; ; * ag os Pa <—y oy Ree - _— . £ S —a , 23 =o 1 == ze. ae ‘=\n\n— = af ‘ te is 4 y"
             },
             "keyframes": {
               "status": "ok",
-              "frame_count": 8
+              "frame_count": 5
             },
             "audio": {
               "status": "ok",
@@ -36238,7 +36105,7 @@
               "archived": true,
               "description": true,
               "keyframes": true,
-              "keyframe_count": 8,
+              "keyframe_count": 5,
               "thumbnail": true,
               "ocr": true,
               "audio_analysis": true,
@@ -36257,14 +36124,14 @@
             "ocr": {
               "status_counts": {
                 "no-text": 5,
-                "ok": 8
+                "ok": 13
               },
-              "complete_row_count": 13,
-              "text": "K Ks KK (4 e 4 y ee ey 1 q\n\nA a er ees “ y f aN\n\n———_—S\"— KONG . ‘ —— r/ i pA — \\ ‘ WW }\n\n8. on yin 2) 7 m/ 1] ; lanai 2028 Wa —_ “ei YY\n\n' ais\n\nee Ye\n\nee ¢ ais\n\na ee ug z =a q = ae"
+              "complete_row_count": 18,
+              "text": "K Ks KK (4 e 4 y ee ey 1 q\n\nA a er ees “ y f aN\n\n———_—S\"— KONG . ‘ —— r/ i pA — \\ ‘ WW }\n\n8. on yin 2) 7 m/ 1] ; lanai 2028 Wa —_ “ei YY\n\n' ais\n\nee Ye\n\nee ¢ ais\n\na ee ug z =a q = ae\n\nK Ks KK (4 e 4 y ee ey 1 q\n\nA a er ees “ y f aN\n\n———_—S\"— KONG . ‘ —— r/ i pA — \\ ‘ WW }\n\n8. on yin 2) 7 m/ 1] ; lanai 2028 Wa —_ “ei YY\n\n' ais"
             },
             "keyframes": {
               "status": "ok",
-              "frame_count": 8
+              "frame_count": 5
             },
             "audio": {
               "status": "ok",
@@ -38492,10 +38359,10 @@
             },
             "ocr": {
               "status_counts": {
-                "no-text": 5
+                "ok": 5
               },
               "complete_row_count": 5,
-              "text": ""
+              "text": "! Bhs : 7 y’ , . ae\n\noe\n\nis —_—- NTE De iat} -\n\n} 2 - . . —— 1a ) —— <— > i, a\n\nTHE WHIT HO, SE"
             },
             "keyframes": {
               "status": "ok",
@@ -38707,7 +38574,7 @@
               "archived": true,
               "description": true,
               "keyframes": true,
-              "keyframe_count": 8,
+              "keyframe_count": 5,
               "thumbnail": true,
               "ocr": true,
               "audio_analysis": true,
@@ -38726,14 +38593,14 @@
             "ocr": {
               "status_counts": {
                 "no-text": 5,
-                "ok": 8
+                "ok": 13
               },
-              "complete_row_count": 13,
-              "text": "pa\n\n; Mette\n\n. : 4 bi ¥ oma ge o . ee OR 2 « ‘ ea, iB : Y as ; uf sede -\n\n—-, B07 WE ee a ce .\n\nha!\n\neS BRT fee —_— 4 Ame. at. ’ a 5 1 1 1 3 6 458 169 9 12 10.810699 : 4 1 1 1 4 0 0 190 423 80 -1 5 1 1 1 4 1 0 232 78 38 25.934128 5 1 1 1 4 2 174 190 55 80 53.057293 ‘rt 5 1 1 1 4 3 283 202 140 61 47.377380 ae\n\n& [i bee €\n\nPROTECT YOUR HOMELAND DEFEND YOUR CULTURE BECOME A HOMELAND DEFENDER USCIS.GOV/JOIN"
+              "complete_row_count": 18,
+              "text": "pa\n\n; Mette\n\n. : 4 bi ¥ oma ge o . ee OR 2 « ‘ ea, iB : Y as ; uf sede -\n\n—-, B07 WE ee a ce .\n\nha!\n\neS BRT fee —_— 4 Ame. at. ’ a 5 1 1 1 3 6 458 169 9 12 10.810699 : 4 1 1 1 4 0 0 190 423 80 -1 5 1 1 1 4 1 0 232 78 38 25.934128 5 1 1 1 4 2 174 190 55 80 53.057293 ‘rt 5 1 1 1 4 3 283 202 140 61 47.377380 ae\n\n& [i bee €\n\nPROTECT YOUR HOMELAND DEFEND YOUR CULTURE BECOME A HOMELAND DEFENDER USCIS.GOV/JOIN\n\npa\n\n; Mette\n\n. : 4 bi ¥ oma ge o . ee OR 2 « ‘ ea, iB : Y as ; uf sede -\n\n—-, B07 WE ee a ce .\n\nha!"
             },
             "keyframes": {
               "status": "ok",
-              "frame_count": 8
+              "frame_count": 5
             },
             "audio": {
               "status": "ok",
@@ -40628,7 +40495,7 @@
               "archived": true,
               "description": true,
               "keyframes": true,
-              "keyframe_count": 8,
+              "keyframe_count": 5,
               "thumbnail": true,
               "ocr": true,
               "audio_analysis": true,
@@ -40647,14 +40514,14 @@
             "ocr": {
               "status_counts": {
                 "no-text": 5,
-                "ok": 8
+                "ok": 13
               },
-              "complete_row_count": 13,
-              "text": "i ws 4 ~«\n\n= le\n\n* : ¥ it SS ‘ Nis F \\\" : “* = i) a AL? = |.‘\n\nma ih\n\n4\n\n(in. i: ie = Ay ie iy \\} 7° r <a] <1 . i @ =i Pare, 4 a é |’ oo we om\n\n. 8 *» >\n\n2"
+              "complete_row_count": 18,
+              "text": "i ws 4 ~«\n\n= le\n\n* : ¥ it SS ‘ Nis F \\\" : “* = i) a AL? = |.‘\n\nma ih\n\n4\n\n(in. i: ie = Ay ie iy \\} 7° r <a] <1 . i @ =i Pare, 4 a é |’ oo we om\n\n. 8 *» >\n\n2\n\ni ws 4 ~«\n\n= le\n\n* : ¥ it SS ‘ Nis F \\\" : “* = i) a AL? = |.‘\n\nma ih\n\n4"
             },
             "keyframes": {
               "status": "ok",
-              "frame_count": 8
+              "frame_count": 5
             },
             "audio": {
               "status": "ok",
@@ -96689,6 +96556,7 @@
       "confidence": "medium",
       "score": 84,
       "creative_forms": [
+        "advertisement",
         "cinematic",
         "music-led"
       ],
@@ -96705,6 +96573,7 @@
         "audio:has-audio",
         "country:Mexico",
         "format:statistics",
+        "genre:advertisement",
         "legal:criminal-prosecution",
         "media-status:archived",
         "media-status:needs-vision",
@@ -96717,6 +96586,7 @@
         "slogan:illegal-alien",
         "subject:enforcement-op",
         "theme:criminal",
+        "theme:directive",
         "topic:immigration",
         "video:medium",
         "video:produced"
@@ -97002,10 +96872,11 @@
             },
             "ocr": {
               "status_counts": {
-                "no-text": 5
+                "ok": 3,
+                "no-text": 2
               },
               "complete_row_count": 5,
-              "text": ""
+              "text": "ae Ms rave aie oe ee ee rere = a ee OP i Wie Re it 4 4 re ha Se ra keer\n\n¥ 1 goek SS) yi ‘ i ”\n\n: ' = pe Se"
             },
             "keyframes": {
               "status": "ok",
@@ -104266,7 +104137,7 @@
               "archived": true,
               "description": true,
               "keyframes": true,
-              "keyframe_count": 8,
+              "keyframe_count": 5,
               "thumbnail": true,
               "ocr": true,
               "audio_analysis": true,
@@ -104285,14 +104156,14 @@
             "ocr": {
               "status_counts": {
                 "no-text": 5,
-                "ok": 8
+                "ok": 13
               },
-              "complete_row_count": 13,
-              "text": "rT aS . =, ‘ 4 ' Vr\n\nee aS Y ae ry oF = SOT ee Be pat P| @\n\nai j ; q \\ A r ¢ yt Ps)\n\nyy UH me re s8.) oe\n\n’ { Ls @ ‘ ’ &»\n\n: it , oe . . er Ta i pp nm 4\n\n— inet it seared Pia Ss - Sasol Noe ed ee ieee @ukR tee eng Tees, ghana ae & Maeetyeng of a ail cen Seki OS ee Bie eR ge lie ag On ain eg Ey cage Cee ea mee ate Agee = Nas Fa 20 poe nee or Bae, Se ie abe 3 a ee A ete ea te eee es\n\nne oe"
+              "complete_row_count": 18,
+              "text": "rT aS . =, ‘ 4 ' Vr\n\nee aS Y ae ry oF = SOT ee Be pat P| @\n\nai j ; q \\ A r ¢ yt Ps)\n\nyy UH me re s8.) oe\n\n’ { Ls @ ‘ ’ &»\n\n: it , oe . . er Ta i pp nm 4\n\n— inet it seared Pia Ss - Sasol Noe ed ee ieee @ukR tee eng Tees, ghana ae & Maeetyeng of a ail cen Seki OS ee Bie eR ge lie ag On ain eg Ey cage Cee ea mee ate Agee = Nas Fa 20 poe nee or Bae, Se ie abe 3 a ee A ete ea te eee es\n\nne oe\n\nrT aS . =, ‘ 4 ' Vr\n\nee aS Y ae ry oF = SOT ee Be pat P| @\n\nai j ; q \\ A r ¢ yt Ps)\n\nyy UH me re s8.) oe\n\n’ { Ls @ ‘ ’ &»"
             },
             "keyframes": {
               "status": "ok",
-              "frame_count": 8
+              "frame_count": 5
             },
             "audio": {
               "status": "ok",
