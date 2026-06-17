@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-17T13:11:12Z",
+  "generated_at": "2026-06-17T22:16:59Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -7,7 +7,7 @@
       "label": "Department of Homeland Security",
       "category": "core",
       "parquet": "data/DHSgov.parquet",
-      "parquet_bytes": 1574037,
+      "parquet_bytes": 1585315,
       "row_count": 5489,
       "post_count": 4663,
       "reply_count": 826,
@@ -218,7 +218,7 @@
       "label": "U.S. Customs and Border Protection",
       "category": "core",
       "parquet": "data/CBP.parquet",
-      "parquet_bytes": 463005,
+      "parquet_bytes": 465523,
       "row_count": 1297,
       "post_count": 1266,
       "reply_count": 31,
@@ -1101,7 +1101,7 @@
       "label": "U.S. Secret Service",
       "category": "government",
       "parquet": "data/SecretService.parquet",
-      "parquet_bytes": 55354,
+      "parquet_bytes": 56145,
       "row_count": 35,
       "post_count": 35,
       "reply_count": 0,
@@ -2265,7 +2265,7 @@
       "label": "Department of State",
       "category": "government",
       "parquet": "data/StateDept.parquet",
-      "parquet_bytes": 226001,
+      "parquet_bytes": 239160,
       "row_count": 663,
       "post_count": 655,
       "reply_count": 8,
