@@ -107,6 +107,77 @@ PLAIN_INFOGRAPHIC_RE = re.compile(
     r"\b(?:infographic|statistics card|enforcement update|single-day statistics)\b",
     re.I,
 )
+STRONG_CREATIVE_REVIEW_RE = re.compile(
+    r"\b(?:ai[- ]generated|synthetic|pixel[- ]art|animation|animated|cgi|parody|"
+    r"cartoon|caricature|comic|meme[- ]style|"
+    r"tinder|swiped right|mirthnuke|nice agents|busted\s*&\s*booted|"
+    r"remigrate|set to music|music bed|soundtrack|montage|rapid[- ]cut|"
+    r"fast cuts?|color[- ]graded|cinematic|trailer[- ]style|war[- ]movie|"
+    r"slow[- ]motion|reticle|targeting reticle|vhs|glitch|neon|gothic|"
+    r"motion[- ]blur|wpa|wwii|art deco|vintage[- ]styled|"
+    r"pop[- ]culture|mandalorian|digitally composited|photorealistic ai|"
+    r"surreal|worst of the week[^.\n]{0,50}(?:graphic|card|collage)|"
+    r"worst of the worst[^.\n]{0,50}(?:graphic|card|collage)|"
+    r"rogues[- ]gallery|trading card)\b",
+    re.I,
+)
+LOW_VALUE_TRUMP_POST_RE = re.compile(
+    r"(?:@realdonaldtrump\b|\bdonald j\. trump\b[^.\n]{0,160}@realdonaldtrump\b|"
+    r"\b(?:truth social|x|social[- ]media)[^.\n]{0,140}\b(?:post|statement)\b"
+    r"[^.\n]{0,180}\b(?:donald j\. trump|donald trump|@realdonaldtrump)\b|"
+    r"\b(?:screenshot|screenshot[- ]style graphic|graphic in the form of a screenshot|"
+    r"plain screenshot|card on a plain white background|quote card)[^.\n]{0,240}"
+    r"\b(?:donald j\. trump|donald trump|trump statement|@realdonaldtrump|"
+    r"truth social)\b|\b(?:trump (?:tweet|post|statement) screenshot|"
+    r"quote card overlaying a trump statement)\b)",
+    re.I,
+)
+LOW_VALUE_NEWS_IMAGE_RE = re.compile(
+    r"\b(?:newspaper front page|tabloid front page|news[- ]article|article screenshot|"
+    r"headline[- ]card|headline[- ]cards|headline clipping|headline collage|"
+    r"clipped news headlines?|stacked headlines?|torn[- ]paper headlines?|"
+    r"news collage|press clipping|cable[- ]news clip|news clip|fox news segment|"
+    r"newsmax segment|cnn segment|msnbc segment|television segment|"
+    r"rebroadcast interview|talking[- ]head|press[- ]release|press[- ]conference|"
+    r"justice\.gov|local news segment|newswatch|news[- ]style video frame|"
+    r"new york post|wall street journal|politico|daily caller|breitbart|"
+    r"newsweek|associated press|ap news|washington post|kcra|ingraham angle|"
+    r"rob schmitt tonight)\b",
+    re.I,
+)
+LOW_VALUE_APPREHENSION_NOTICE_RE = re.compile(
+    r"\b(?:arrested and pending removal|arrest card|detainee card|"
+    r"booking[- ]style card|mugshot[- ]style|mugshot card|standardized template|"
+    r"standard template|single[- ]subject|criminal charges?|charges include|"
+    r"wanted for|['\"]?(?:wanted|deported|detained|arrested)['\"]?\s+card|"
+    r"wanted poster|fbi wanted poster|ten most wanted|apprehension notice|"
+    r"arrest notice|removal notice|for the record|enforcement update|"
+    r"single[- ]day statistics|detainers lodged|plain statistics|"
+    r"text[- ]only statement card|statement graphic|newsroom card|"
+    r"law enforcement bulletin|dangerous criminal alien|criminal alien arrested|"
+    r"booking(?:[-/ ]style)? (?:photo|portrait|mugshots?)|"
+    r"booking or intake portrait|booking/detainee photo|intake portrait|"
+    r"mugshots?|ice\.gov/newsroom|red banner[^.\n]{0,120}"
+    r"(?:arrested|detained|deported|wanted))\b|"
+    r"^\s*crimes\s*:",
+    re.I | re.M,
+)
+LOW_VALUE_ROUTINE_STATIC_CARD_RE = re.compile(
+    r"\b(?:quote[- ]card|news release|outreach (?:graphic|card)|"
+    r"voice program|statistics infographic|comparison[- ]style infographic|"
+    r"vertical (?:dhs )?infographic|vertical statistics infographic|"
+    r"ordinary infographic|headline graphic|recruitment graphic|program graphic|"
+    r"plain screenshot|standard press[- ]release layout|"
+    r"voice \(victims of immigration crime engagement\)|ice\.gov/voice|"
+    r"1-855-48-voice)\b",
+    re.I,
+)
+LOW_VALUE_EXCLUSION_RULES = [
+    ("trump-post-screenshot", LOW_VALUE_TRUMP_POST_RE),
+    ("news-image-or-clip", LOW_VALUE_NEWS_IMAGE_RE),
+    ("apprehension-notice-or-routine-card", LOW_VALUE_APPREHENSION_NOTICE_RE),
+    ("routine-static-card", LOW_VALUE_ROUTINE_STATIC_CARD_RE),
+]
 
 
 def now_iso() -> str:
@@ -202,6 +273,35 @@ def text_blob(*parts: Any) -> str:
         else:
             flat.append(str(part or ""))
     return "\n".join(flat)
+
+
+def item_review_blob(item: dict[str, Any]) -> str:
+    evidence = item.get("evidence") if isinstance(item.get("evidence"), dict) else {}
+    media = item.get("media") if isinstance(item.get("media"), list) else []
+    return text_blob(
+        item.get("tweet_text"),
+        item.get("inclusion_basis"),
+        item.get("review_state"),
+        item.get("creative_forms"),
+        item.get("subjects"),
+        item.get("tags"),
+        evidence,
+        media,
+    )
+
+
+def low_value_review_exclusion(item: dict[str, Any]) -> str | None:
+    blob = item_review_blob(item)
+    if STRONG_CREATIVE_REVIEW_RE.search(blob):
+        return None
+    for reason, pattern in LOW_VALUE_EXCLUSION_RULES:
+        if pattern.search(blob):
+            return reason
+    return None
+
+
+def low_value_reason_counts(items: list[dict[str, Any]]) -> dict[str, int]:
+    return dict(sorted(Counter(str(item.get("review_exclusion") or "unknown") for item in items).items()))
 
 
 def item_year(value: str) -> int:
@@ -770,6 +870,8 @@ def queue_payload(
     commit: str,
     source_total: int,
     not_ready_total: int,
+    excluded_total: int,
+    excluded_reasons: dict[str, int],
 ) -> dict[str, Any]:
     counts = Counter(item["inclusion_basis"] for item in items)
     accounts = Counter(item["account"]["handle"] for item in items)
@@ -781,6 +883,8 @@ def queue_payload(
             "item_count": len(items),
             "source_candidate_count": source_total,
             "not_ready_count": not_ready_total,
+            "review_scope_excluded_count": excluded_total,
+            "review_scope_excluded_reasons": excluded_reasons,
             "all_items_ready": all(item["readiness"]["ready"] for item in items),
             "basis_counts": dict(sorted(counts.items())),
             "top_accounts": dict(accounts.most_common(12)),
@@ -788,7 +892,7 @@ def queue_payload(
             "inclusion_rules": [
                 "wholly creative media object",
                 "or real enforcement/detainee/deportation footage used with creative treatment",
-                "exclude routine news clips, speeches, raw arrests, and plain statistics cards",
+                "exclude Trump-post screenshots, news images, apprehension notices, and routine static cards",
             ],
             "readiness_rules": [
                 "archived GitHub release media required",
@@ -984,8 +1088,18 @@ def main() -> int:
         existing_tweet_ids={key.split(":", 1)[0] for key in curated},
     )
     all_items = sort_items(list(curated.values()) + list(computed.values()))
-    ready_items = [item for item in all_items if item["readiness"]["ready"]]
-    not_ready = [item for item in all_items if not item["readiness"]["ready"]]
+    review_items: list[dict[str, Any]] = []
+    excluded_items: list[dict[str, Any]] = []
+    for item in all_items:
+        exclusion = low_value_review_exclusion(item)
+        if exclusion:
+            item["review_exclusion"] = exclusion
+            excluded_items.append(item)
+        else:
+            review_items.append(item)
+    excluded_reasons = low_value_reason_counts(excluded_items)
+    ready_items = [item for item in review_items if item["readiness"]["ready"]]
+    not_ready = [item for item in review_items if not item["readiness"]["ready"]]
     high_confidence = [item for item in ready_items if item["queue"] == "high_confidence"]
     candidates = [item for item in ready_items if item["queue"] == "candidates"]
     historical = [item for item in ready_items if item["queue"] == "historical_2016_2020"]
@@ -1010,6 +1124,8 @@ def main() -> int:
                 commit=commit,
                 source_total=len(all_items),
                 not_ready_total=len(not_ready),
+                excluded_total=len(excluded_items),
+                excluded_reasons=excluded_reasons,
             ),
         )
     write_json_stable(
@@ -1022,8 +1138,11 @@ def main() -> int:
                 "generated_at": now_iso(),
                 "source_commit": commit,
                 "source_candidate_count": len(all_items),
+                "review_scope_candidate_count": len(review_items),
                 "ready_count": len(ready_items),
                 "not_ready_count": len(not_ready),
+                "review_scope_excluded_count": len(excluded_items),
+                "review_scope_excluded_reasons": excluded_reasons,
                 "datasets": {
                     queue: filename for queue, (filename, _items) in review_datasets.items()
                 },
@@ -1042,6 +1161,7 @@ def main() -> int:
         high_confidence=len(high_confidence),
         candidates=len(candidates),
         historical=len(historical),
+        excluded=len(excluded_items),
         not_ready=len(not_ready),
         output=str(OUT_DIR),
     )

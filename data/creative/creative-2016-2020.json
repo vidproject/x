@@ -1,20 +1,26 @@
 {
   "metadata": {
     "queue": "historical_2016_2020",
-    "generated_at": "2026-06-17T13:22:54Z",
-    "source_commit": "51c138ec",
-    "item_count": 14,
+    "generated_at": "2026-06-17T15:33:38Z",
+    "source_commit": "e3439cb4",
+    "item_count": 13,
     "source_candidate_count": 1040,
-    "not_ready_count": 84,
+    "not_ready_count": 80,
+    "review_scope_excluded_count": 316,
+    "review_scope_excluded_reasons": {
+      "apprehension-notice-or-routine-card": 189,
+      "news-image-or-clip": 58,
+      "routine-static-card": 40,
+      "trump-post-screenshot": 29
+    },
     "all_items_ready": true,
     "basis_counts": {
-      "wholly_creative_media": 14
+      "wholly_creative_media": 13
     },
     "top_accounts": {
       "DHSgov": 6,
       "CBPJobs": 2,
       "ICEgov": 1,
-      "OFOEAC": 1,
       "EROSanFrancisco": 1,
       "CISAgov": 1,
       "CBP": 1,
@@ -29,7 +35,7 @@
     "inclusion_rules": [
       "wholly creative media object",
       "or real enforcement/detainee/deportation footage used with creative treatment",
-      "exclude routine news clips, speeches, raw arrests, and plain statistics cards"
+      "exclude Trump-post screenshots, news images, apprehension notices, and routine static cards"
     ],
     "readiness_rules": [
       "archived GitHub release media required",
@@ -623,118 +629,6 @@
       "engagement": {
         "likes": 19,
         "retweets": 9,
-        "quotes": 1,
-        "views": 0
-      }
-    },
-    {
-      "id": "1283814573653594119:3_1283814567466930177",
-      "tweet_id": "1283814573653594119",
-      "posted_at": "2020-07-16T17:23:41.000Z",
-      "era": "2016_2020",
-      "queue": "historical_2016_2020",
-      "account": {
-        "handle": "OFOEAC",
-        "category": "core",
-        "label": "CBP Office of Field Operations Executive Assistant Commissioner"
-      },
-      "tweet_url": "https://x.com/OFOEAC/status/1283814573653594119",
-      "tweet_text": "CBPOs in Eagle Pass found a 33 y/o male MX nat’l attempting to enter the US w/o inspection by hiding in a rail car, later learning he was wanted for rape. He was arrested and will be extradited to Tennessee. CBPOs are relentless in their commitment to keep our communities safe. https://t.co/eQ8MVod5Z2",
-      "review_state": "needs_review",
-      "inclusion_basis": "wholly_creative_media",
-      "confidence": "low",
-      "score": 90,
-      "creative_forms": [],
-      "subjects": [
-        "detainees"
-      ],
-      "tags": [
-        "action:detention",
-        "crime:rape",
-        "crime:sexual",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media-status:ocr-done",
-        "media:photo",
-        "policy:border",
-        "review:screened-photo",
-        "topic:immigration"
-      ],
-      "media": [
-        {
-          "media_id": "3_1283814567466930177",
-          "type": "photo",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-OFOEAC/3_1283814567466930177.jpg",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/photo/bc87d4adccfab18acd3b3a31d685399526ef44f1fb8a547efd6b043ef267b28b.jpg",
-          "sha256": "bc87d4adccfab18acd3b3a31d685399526ef44f1fb8a547efd6b043ef267b28b",
-          "duration_sec": null,
-          "playable": true,
-          "readiness": {
-            "ready": true,
-            "blockers": [],
-            "checks": {
-              "archived": true,
-              "description": true,
-              "thumbnail": true,
-              "ocr": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "opus-vision-review",
-              "text": "The photo is a close view of an officer's uniform sleeve with a border or customs-style shoulder patch, with seated people blurred in the background. The focus is on the officer's arm and patch.",
-              "sidecar_statuses": {
-                "manual-review": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {
-                "ok": 1
-              },
-              "complete_row_count": 1,
-              "text": "* Ogg 0 a. © / fe Lie / V, Bp 4 * ‘4 Vis ae : / 2 GIN = , f by sf Pe Altes pa Soe o A \\ Se Tek i + 5 (4 = ve y Ya Saiz Kd Peano"
-            },
-            "keyframes": {
-              "status": null,
-              "frame_count": 0
-            },
-            "audio": {
-              "status": null,
-              "audio_stream_count": 0,
-              "duration_sec": null,
-              "tags": []
-            },
-            "transcript": {
-              "status": null,
-              "segment_count": 0,
-              "text": ""
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": true,
-        "blockers": [],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "The photo is a close view of an officer's uniform sleeve with a border or customs-style shoulder patch, with seated people blurred in the background. The focus is on the officer's arm and patch.",
-        "notable_text": "",
-        "reasons": [
-          "wholly creative media signal",
-          "real enforcement/detainee subject signal",
-          "older-era candidate; annotations are thinner"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ]
-      },
-      "engagement": {
-        "likes": 9,
-        "retweets": 1,
         "quotes": 1,
         "views": 0
       }

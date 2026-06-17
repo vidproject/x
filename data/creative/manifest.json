@@ -1,10 +1,18 @@
 {
   "metadata": {
-    "generated_at": "2026-06-17T13:22:54Z",
-    "source_commit": "51c138ec",
+    "generated_at": "2026-06-17T15:32:35Z",
+    "source_commit": "e3439cb4",
     "source_candidate_count": 1040,
-    "ready_count": 956,
-    "not_ready_count": 84,
+    "review_scope_candidate_count": 724,
+    "ready_count": 644,
+    "not_ready_count": 80,
+    "review_scope_excluded_count": 316,
+    "review_scope_excluded_reasons": {
+      "apprehension-notice-or-routine-card": 189,
+      "news-image-or-clip": 58,
+      "routine-static-card": 40,
+      "trump-post-screenshot": 29
+    },
     "datasets": {
       "high_confidence": "creative-high-confidence.json",
       "candidates": "creative-candidates.json",
