@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T011524Z-5f335f3a-fema",
+  "account_handle": "fema",
+  "captured_at": "2026-06-14T01:15:45.586Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AERONewark%20since%3A2024-01-01%20until%3A2025-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1829190921042231596",
+      "account_handle": "fema",
+      "account_id": "16669075",
+      "posted_at": "2024-08-29T16:14:34.000Z",
+      "first_captured_at": "2026-06-14T01:15:33.893Z",
+      "last_seen_at": "2026-06-14T01:15:33.893Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/fema/status/1829190921042231596",
+      "tweet_type": "original",
+      "conversation_id": "1829190921042231596",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "If you're going on a trip for the upcoming holiday weekend, prepare for a safe adventure by being aware of extreme heat risks, @TSA guidelines, travel safety, &amp; weather forecasts.\n\nDownload the FEMA App to get real time alerts for up to five locations: https://t.co/bCOlw2Mh7B https://t.co/ucANpH24ip",
+      "text_resolved": "If you're going on a trip for the upcoming holiday weekend, prepare for a safe adventure by being aware of extreme heat risks, @TSA guidelines, travel safety, &amp; weather forecasts.\n\nDownload the FEMA App to get real time alerts for up to five locations: http://fema.gov/app https://t.co/ucANpH24ip",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "TSA"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/bCOlw2Mh7B",
+          "expanded": "http://fema.gov/app",
+          "display": "fema.gov/app"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1829190918538211328",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GWKXcu3XMAAxHCv.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1875,
+          "height": 1249,
+          "alt_text": "Two people packing clothes in a suitcase.\n",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 19,
+      "retweet_count": 13,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 12553,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:15:33.893Z",
+          "likes": 19,
+          "retweets": 13,
+          "replies": 0,
+          "quotes": 0,
+          "views": 12553,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "FEMA",
+        "avatar_url": "https://pbs.twimg.com/profile_images/875380682637234176/Fw_Rx4T-_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Helping people before, during and after disasters. To report an emergency, call 911 or alert local authorities.\n \nPolicies: https://t.co/9t2aegFKwB",
+        "location": "United States",
+        "url": "https://t.co/OjrrwmfFth",
+        "followers_count": 815060,
+        "friends_count": 778,
+        "statuses_count": 43142,
+        "account_created_at": "2008-10-09T16:54:20.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T011524Z-5f335f3a",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T011524Z-5f335f3a.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T011524Z-5f335f3a.jsonl",
+    "source_handle": "ERONewark"
+  }
+}

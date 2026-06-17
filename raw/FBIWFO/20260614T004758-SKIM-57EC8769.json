@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T004640Z-578ed259-FBIWFO",
+  "account_handle": "FBIWFO",
+  "captured_at": "2026-06-14T00:47:58.923Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEROAtlanta%20since%3A2021-01-01%20until%3A2022-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1372550521043759110",
+      "account_handle": "FBIWFO",
+      "account_id": "343452680",
+      "posted_at": "2021-03-18T14:08:39.000Z",
+      "first_captured_at": "2026-06-14T00:46:49.150Z",
+      "last_seen_at": "2026-06-14T00:46:49.150Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/FBIWFO/status/1372550521043759110",
+      "tweet_type": "original",
+      "conversation_id": "1372550521043759110",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "#Breaking: #FBIWFO releases new videos of suspects in 10 of the most violent and horrifying assaults on federal officers during the riots at the Jan 6th riots at the Capitol. We need your help to identify these individuals. https://t.co/MToMO7JAG2 https://t.co/YXaivEGPRL",
+      "text_resolved": "#Breaking: #FBIWFO releases new videos of suspects in 10 of the most violent and horrifying assaults on federal officers during the riots at the Jan 6th riots at the Capitol. We need your help to identify these individuals. https://www.fbi.gov/contact-us/field-offices/washingtondc/news/press-releases/fbi-washington-field-office-releases-videos-of-assaults-on-officers-at-us-capitol-seeks-publics-help-to-identify-suspects https://t.co/YXaivEGPRL",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "Breaking",
+        "FBIWFO"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/MToMO7JAG2",
+          "expanded": "https://www.fbi.gov/contact-us/field-offices/washingtondc/news/press-releases/fbi-washington-field-office-releases-videos-of-assaults-on-officers-at-us-capitol-seeks-publics-help-to-identify-suspects",
+          "display": "fbi.gov/contact-us/fie…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_1372550136174411777",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/1372550136174411777/pu/vid/1280x720/DquDSbiRGXMgWfVS.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 26.276,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 2313,
+      "retweet_count": 2161,
+      "reply_count": 145,
+      "quote_count": 269,
+      "view_count": null,
+      "bookmark_count": 71,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T00:46:49.150Z",
+          "likes": 2313,
+          "retweets": 2161,
+          "replies": 145,
+          "quotes": 269,
+          "views": null,
+          "bookmarks": 71
+        }
+      ],
+      "author": {
+        "display_name": "FBI Washington Field",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1957525306907955203/8zTz_4wf_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official FBI Washington Field X. Submit tips at https://t.co/NGk6gzdQ6H. Public info may be used for authorized purposes: https://t.co/yr6QTJ0VnO.",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/L8Z1wnaYGm",
+        "followers_count": 280783,
+        "friends_count": 126,
+        "statuses_count": 9519,
+        "account_created_at": "2011-07-27T16:07:59.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T004640Z-578ed259",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004640Z-578ed259.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004640Z-578ed259.jsonl",
+    "source_handle": "EROAtlanta"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T013015Z-6f865244-EROChicago",
+  "account_handle": "EROChicago",
+  "captured_at": "2026-06-14T01:30:40.743Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEROSanAntonio%20since%3A2024-01-01%20until%3A2025-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1869050268148482096",
+      "account_handle": "EROChicago",
+      "account_id": "1300494321385381893",
+      "posted_at": "2024-12-17T16:01:23.000Z",
+      "first_captured_at": "2026-06-14T01:30:26.901Z",
+      "last_seen_at": "2026-06-14T01:30:26.901Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/EROChicago/status/1869050268148482096",
+      "tweet_type": "original",
+      "conversation_id": "1869050268148482096",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "ERO Chicago removes notorious zeta cartel fugitive sought by Mexican authorities for murder | ICE https://t.co/zanW0ZaFRJ",
+      "text_resolved": "ERO Chicago removes notorious zeta cartel fugitive sought by Mexican authorities for murder | ICE https://www.ice.gov/news/releases/ero-chicago-removes-notorious-zeta-cartel-fugitive-sought-mexican-authorities-murder",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/zanW0ZaFRJ",
+          "expanded": "https://www.ice.gov/news/releases/ero-chicago-removes-notorious-zeta-cartel-fugitive-sought-mexican-authorities-murder",
+          "display": "ice.gov/news/releases/…"
+        }
+      ],
+      "card": {
+        "name": "summary",
+        "card_url": "https://t.co/zanW0ZaFRJ",
+        "vendor_url": "ice.gov",
+        "title": "ERO Chicago removes notorious zeta cartel fugitive sought by Mexican authorities for murder",
+        "description": "ICE's ERO Chicago, with assistance from ERO San Diego, Harlingen, Texas, Mexico City, and ERO Removals’ International Operations Division, today removed Osiel Cardenas Guillen, 57, a known zeta...",
+        "image_url": "https://pbs.twimg.com/card_img/2064670373551976449/wP5zqxcO?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 160,
+      "retweet_count": 52,
+      "reply_count": 55,
+      "quote_count": 4,
+      "view_count": 73970,
+      "bookmark_count": 6,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:30:26.901Z",
+          "likes": 160,
+          "retweets": 52,
+          "replies": 55,
+          "quotes": 4,
+          "views": 73970,
+          "bookmarks": 6
+        }
+      ],
+      "author": {
+        "display_name": "ICE Chicago",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1911161600704204801/xb_TuxFP_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official account for @ICEgov field office IL, IN, KS, KY, MO & WI.",
+        "location": "Chicago",
+        "url": "https://t.co/9Leorbefbv",
+        "followers_count": 6959,
+        "friends_count": 157,
+        "statuses_count": 325,
+        "account_created_at": "2020-08-31T18:04:44.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T013015Z-6f865244",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T013015Z-6f865244.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T013015Z-6f865244.jsonl",
+    "source_handle": "EROSanAntonio"
+  }
+}

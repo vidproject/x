@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-20260611-20260611T130941Z-809cf8a7-WashTimes",
+  "account_handle": "WashTimes",
+  "captured_at": "2026-06-11T13:09:59.022Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCIS%20since%3A2025-05-07%20until%3A2025-05-14",
+  "tweets": [
+    {
+      "tweet_id": "1921873382787760478",
+      "account_handle": "WashTimes",
+      "account_id": "14662354",
+      "posted_at": "2025-05-12T10:21:35.000Z",
+      "first_captured_at": "2026-06-11T13:09:49.074Z",
+      "last_seen_at": "2026-06-11T13:09:49.074Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/WashTimes/status/1921873382787760478",
+      "tweet_type": "original",
+      "conversation_id": "1921873382787760478",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Biden administration gave protected status to Afghans despite terrorism flags https://t.co/u7pqE60B4f",
+      "text_resolved": "Biden administration gave protected status to Afghans despite terrorism flags https://trib.al/ysOqJXt",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/u7pqE60B4f",
+          "expanded": "https://trib.al/ysOqJXt",
+          "display": "trib.al/ysOqJXt"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/u7pqE60B4f",
+        "vendor_url": "washingtontimes.com",
+        "title": "Biden administration gave protected status to Afghans despite terroris",
+        "description": "The Biden administration approved temporary protected status, a form of deportation amnesty, for Afghan migrants who had indications of terrorism in their histories, The Washington Times has learned.",
+        "image_url": "https://pbs.twimg.com/card_img/2064634548931956736/zq8pS3Sx?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 7,
+      "retweet_count": 5,
+      "reply_count": 5,
+      "quote_count": 1,
+      "view_count": 25362,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T13:09:49.074Z",
+          "likes": 7,
+          "retweets": 5,
+          "replies": 5,
+          "quotes": 1,
+          "views": 25362,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "The Washington Times",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1755281859146080256/D-S95q4t_normal.png",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Business",
+        "description": "Reliable reporting, hard-hitting analysis & breaking news, plus RTs from our writers and reporters. Also at @WashTimesOpEd, @WashTimesLocal, @WashTimesSports",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/lz8D7wwtBk",
+        "followers_count": 489018,
+        "friends_count": 1873,
+        "statuses_count": 1072097,
+        "account_created_at": "2008-05-05T17:43:25.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-20260611-20260611T130941Z-809cf8a7",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-import-20260611/x-com-search-20260611T130941Z-809cf8a7.summary.json",
+    "jsonl": ".skim/raw-import-20260611/x-com-search-20260611T130941Z-809cf8a7.jsonl",
+    "source_handle": "USCIS"
+  }
+}

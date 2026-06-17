@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T174704Z-ca1a22d6-USTreasury",
+  "account_handle": "USTreasury",
+  "captured_at": "2026-06-13T17:47:20.415Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ASecRollins%20since%3A2026-01-01%20until%3A2026-04-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2032547624491037085",
+      "account_handle": "USTreasury",
+      "account_id": "120176950",
+      "posted_at": "2026-03-13T20:01:31.000Z",
+      "first_captured_at": "2026-06-13T17:47:10.906Z",
+      "last_seen_at": "2026-06-13T17:47:10.906Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USTreasury/status/2032547624491037085",
+      "tweet_type": "original",
+      "conversation_id": "2032547624491037085",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "The Trump administration has been rapidly delivering on @POTUS' promise to help restore Venezuela’s economy to benefit both the American and Venezuelan people. Today, the Treasury Department’s Office of Foreign Assets Control updated several Venezuela-related licenses to further support the revitalization of the country’s energy sector and help ensure a well-supplied global commodity market. These authorizations expand permitted investment and activities in Venezuela’s energy industry and allow for the export of fertilizer directly to the U.S. to support our great American farmers.",
+      "text_resolved": "The Trump administration has been rapidly delivering on @POTUS' promise to help restore Venezuela’s economy to benefit both the American and Venezuelan people. Today, the Treasury Department’s Office of Foreign Assets Control updated several Venezuela-related licenses to further support the revitalization of the country’s energy sector and help ensure a well-supplied global commodity market. These authorizations expand permitted investment and activities in Venezuela’s energy industry and allow for the export of fertilizer directly to the U.S. to support our great American farmers.",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "POTUS"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [],
+      "like_count": 1224,
+      "retweet_count": 382,
+      "reply_count": 61,
+      "quote_count": 36,
+      "view_count": 190330,
+      "bookmark_count": 92,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:47:10.906Z",
+          "likes": 1224,
+          "retweets": 382,
+          "replies": 61,
+          "quotes": 36,
+          "views": 190330,
+          "bookmarks": 92
+        }
+      ],
+      "author": {
+        "display_name": "Treasury Department",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1356299139492040707/eOOxjLFn_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Executive agency responsible for promoting economic prosperity & ensuring financial security of the United States. Led by 79th Treasury @SecScottBessent",
+        "location": "Washington, DC, USA",
+        "url": "https://t.co/VPQh4RLWZc",
+        "followers_count": 1138661,
+        "friends_count": 196,
+        "statuses_count": 8227,
+        "account_created_at": "2010-03-05T18:03:14.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T174704Z-ca1a22d6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T174704Z-ca1a22d6.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T174704Z-ca1a22d6.jsonl",
+    "source_handle": "SecRollins"
+  }
+}

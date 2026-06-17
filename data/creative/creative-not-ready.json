@@ -1,0 +1,1103 @@
+{
+  "metadata": {
+    "queue": "not_ready",
+    "generated_at": "2026-06-17T00:43:14Z",
+    "source_commit": "e5a90d81",
+    "item_count": 8,
+    "blocker_counts": {
+      "missing archived media asset": 8,
+      "missing genuine visual description": 8,
+      "missing photo OCR": 6,
+      "missing photo thumbnail": 6,
+      "missing audio analysis": 2,
+      "missing complete OCR for extracted keyframes": 2,
+      "missing extracted video keyframes": 2,
+      "missing video thumbnail": 2
+    }
+  },
+  "items": [
+    {
+      "id": "2049968029459526081:3_2049968024287862784",
+      "tweet_id": "2049968029459526081",
+      "posted_at": "2026-04-30T21:43:59.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "SenatorBanks",
+        "category": "public_figures",
+        "label": "Senator Jim Banks"
+      },
+      "tweet_url": "https://x.com/SenatorBanks/status/2049968029459526081",
+      "tweet_text": "ICYMI: Last night, Senate Democrats voted to automatically extend work authorizations for illegal aliens.\n\nThey wanted to take jobs from hardworking Americans and give them to illegal aliens. \n\nThis is unacceptable and we blocked them. The American people must always come first.",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [],
+      "tags": [
+        "media-status:needs-ocr",
+        "slogan:illegal-alien",
+        "theme:criminal",
+        "topic:economy",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2049968024287862784",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "518db121d54ab4e991f72b7dcab6f5292d4f6c1fca3cc87f62462965f7695c7f",
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 4129,
+        "retweets": 1555,
+        "quotes": 0,
+        "views": 64915
+      }
+    },
+    {
+      "id": "2051989471076274534:13_2051989386720366595",
+      "tweet_id": "2051989471076274534",
+      "posted_at": "2026-05-06T11:36:28.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "Dapper_Det",
+        "category": null,
+        "label": "Dapper_Det"
+      },
+      "tweet_url": "https://x.com/Dapper_Det/status/2051989471076274534",
+      "tweet_text": "🚨ICE arrests another fugitive Illegal Alien MS-13 gang banger in Virginia — wanted in El Salvador for extortion and armed robbery.\n\nMS-13 gang members are flocking to sanctuary Virginia where they know @GovernorVA Abigail Spanberger and Democrats won’t deport them. https://t.co/IJB4NDXHr0",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [
+        "deportation",
+        "immigration-language"
+      ],
+      "tags": [
+        "action:deportation",
+        "agency:ICEgov",
+        "country:El-Salvador",
+        "crime:gang",
+        "crime:ms13",
+        "crime:robbery",
+        "format:statistics",
+        "slogan:illegal-alien",
+        "theme:criminal",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "media": [
+        {
+          "media_id": "13_2051989386720366595",
+          "type": "video",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "7c9e83d921293b3cbf10189e65f7d7ad948150a00f1fd26e91211185d51b9d2a",
+          "duration_sec": 41.338,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing audio analysis",
+              "missing complete OCR for extracted keyframes",
+              "missing extracted video keyframes",
+              "missing genuine visual description",
+              "missing video thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "keyframes": false,
+              "keyframe_count": 0,
+              "thumbnail": false,
+              "ocr": false,
+              "audio_analysis": false,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing audio analysis",
+          "missing complete OCR for extracted keyframes",
+          "missing extracted video keyframes",
+          "missing genuine visual description",
+          "missing video thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 2109,
+        "retweets": 655,
+        "quotes": 17,
+        "views": 46322
+      }
+    },
+    {
+      "id": "1948150529265197514:3_1948149827876847616,3_1948149837884440576,3_1948150137244532736,3_1948150156928364546",
+      "tweet_id": "1948150529265197514",
+      "posted_at": "2025-07-23T22:37:35.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "flyneworleans",
+        "category": null,
+        "label": "flyneworleans"
+      },
+      "tweet_url": "https://x.com/flyneworleans/status/1948150529265197514",
+      "tweet_text": "Time may pass, but valor endures.\n\nToday, we had the honor of welcoming 11 WWII veterans to New Orleans! The group of veterans, their guardians, and students traveled from Chicago O'Hare International Airport to visit the The National WWII Museum courtesy of the Gary Sinise Foundation. The veterans were greeted at the airport by the TSA Honor Guard, members of the Amelia Earhawts, members of the Coast Guard, the Honor Guard of the Covington VFW, airport staff and passengers before departing on their exciting trip in the city.",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [],
+      "tags": [
+        "agency:TSA",
+        "media-status:needs-ocr",
+        "military:coast-guard",
+        "topic:military"
+      ],
+      "media": [
+        {
+          "media_id": "3_1948149827876847616",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_1948149837884440576",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_1948150137244532736",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_1948150156928364546",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 4
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 14,
+        "retweets": 4,
+        "quotes": 2,
+        "views": 7972
+      }
+    },
+    {
+      "id": "2047367145630371956:3_2047367123618648065",
+      "tweet_id": "2047367145630371956",
+      "posted_at": "2026-04-23T17:29:00.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "LosAngelesFanz",
+        "category": null,
+        "label": "LosAngelesFanz"
+      },
+      "tweet_url": "https://x.com/LosAngelesFanz/status/2047367145630371956",
+      "tweet_text": "@GregoryKBovino @RepBrandonGill @EricLDaugh @SenSchumer Love this meme and reminds me of the great job Greg Bovino did in removing these criminals. https://t.co/gY5pnsEDxk",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "poster-or-meme"
+      ],
+      "subjects": [],
+      "tags": [
+        "format:reply",
+        "media-status:needs-ocr",
+        "topic:economy"
+      ],
+      "media": [
+        {
+          "media_id": "3_2047367123618648065",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "2444da4ed74baf50e3a4b170aa06ec33d1cb469e1f41c8777a33662ccb2e31f0",
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 11,
+        "retweets": 4,
+        "quotes": 0,
+        "views": 206
+      }
+    },
+    {
+      "id": "2049681466754285807:3_2049681463587610624",
+      "tweet_id": "2049681466754285807",
+      "posted_at": "2026-04-30T02:45:17.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "AlienBountyHunt",
+        "category": null,
+        "label": "AlienBountyHunt"
+      },
+      "tweet_url": "https://x.com/AlienBountyHunt/status/2049681466754285807",
+      "tweet_text": "@GregoryKBovino @emmavigeland767 So he wanted qualified and skilled people for the lead role positions instead of imposing DEI? https://t.co/rLkPTPB5zi",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [],
+      "tags": [
+        "format:reply",
+        "media-status:graphic-content",
+        "media-status:needs-ocr"
+      ],
+      "media": [
+        {
+          "media_id": "3_2049681463587610624",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "e4f04f5330b0699f0f3c10bfaeab65568a7b0587ec054d70160d9698bbc90c91",
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 6,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 371
+      }
+    },
+    {
+      "id": "2051304410220044743:3_2051304407468552192",
+      "tweet_id": "2051304410220044743",
+      "posted_at": "2026-05-04T14:14:17.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "wirelessany1",
+        "category": null,
+        "label": "wirelessany1"
+      },
+      "tweet_url": "https://x.com/wirelessany1/status/2051304410220044743",
+      "tweet_text": "@GregoryKBovino May the 4th be with you!  This is my good friend a police helicopter pilot having a blast! https://t.co/AhnsK10f0g",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "parody",
+        "poster-or-meme"
+      ],
+      "subjects": [],
+      "tags": [
+        "format:reply",
+        "genre:parody",
+        "media-status:needs-ocr",
+        "parody:star-wars",
+        "theme:pop-culture-reference",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2051304407468552192",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "a56af31ad822a4aad9fc93706c13f880428d71c0e195e0fb12918d902f6e0ef6",
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 4,
+        "retweets": 1,
+        "quotes": 0,
+        "views": 193
+      }
+    },
+    {
+      "id": "2054560556657336421:3_2054560547723489280",
+      "tweet_id": "2054560556657336421",
+      "posted_at": "2026-05-13T13:53:03.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "nypost",
+        "category": null,
+        "label": "nypost"
+      },
+      "tweet_url": "https://x.com/nypost/status/2054560556657336421",
+      "tweet_text": "Feds descend on California home of prominent anti-ICE agitator in dramatic early morning raid https://trib.al/mGEtQoa https://t.co/yBX0H7snrG",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "medium",
+      "score": 84,
+      "creative_forms": [
+        "cinematic",
+        "war-movie"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:ICEgov",
+        "genre:war-movie",
+        "media-status:needs-ocr",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2054560547723489280",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "68e41065afb4ef0c8f6c618195c833744feaeea5827c610a472c1204720774b3",
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 4284,
+        "retweets": 700,
+        "quotes": 33,
+        "views": 131836
+      }
+    },
+    {
+      "id": "2062200990191759690:13_2062200274509344768",
+      "tweet_id": "2062200990191759690",
+      "posted_at": "2026-06-03T15:53:24.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "JennieSTaer",
+        "category": null,
+        "label": "JennieSTaer"
+      },
+      "tweet_url": "https://x.com/JennieSTaer/status/2062200990191759690",
+      "tweet_text": "SCOOP: ICE officers successfully hunted down an illegal immigrant convicted of attempted murder who had been roaming the country for years despite having a deportation order and a lengthy rap sheet, @realDailyWire has learned.\n\nDramatic footage of the May 5 raid shows ICE officers arresting Sudanese illegal immigrant Gabriel Maror Ayuel at his Nashville apartment.\n\nAyuel received a conviction for first-degree attempted murder in Davidson County in 2003 and was sentenced to 20 years in prison.\n\nHe only served about nine years of his sentence, according to law enforcement sources. \n\nAyuel arrived in the US in 1995 as a refugee. While in the US, he received his attempted murder conviction, and was also arrested for DUI and failure to appear in Georgia, aggravated assault with a deadly weapon, felony possession of a prohibited weapon and felony flight to avoid prosecution in Tennessee.\n\nWhile he was behind bars in July 2008, Ayuel received a deportation order. Despite that, he never left the country, which is considered a felony offense.",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "medium",
+      "score": 84,
+      "creative_forms": [
+        "cinematic",
+        "war-movie"
+      ],
+      "subjects": [
+        "detainees",
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "action:deportation",
+        "action:detention",
+        "agency:ICEgov",
+        "country:Georgia",
+        "country:Sudan",
+        "crime:assault",
+        "crime:dui",
+        "crime:homicide",
+        "crime:murder",
+        "crime:weapon",
+        "genre:war-movie",
+        "legal:criminal-prosecution",
+        "phrase:immigrant",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2062200274509344768",
+          "type": "video",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": 53.219,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing audio analysis",
+              "missing complete OCR for extracted keyframes",
+              "missing extracted video keyframes",
+              "missing genuine visual description",
+              "missing video thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "keyframes": false,
+              "keyframe_count": 0,
+              "thumbnail": false,
+              "ocr": false,
+              "audio_analysis": false,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing audio analysis",
+          "missing complete OCR for extracted keyframes",
+          "missing extracted video keyframes",
+          "missing genuine visual description",
+          "missing video thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 1160,
+        "retweets": 192,
+        "quotes": 11,
+        "views": 126592
+      }
+    }
+  ]
+}

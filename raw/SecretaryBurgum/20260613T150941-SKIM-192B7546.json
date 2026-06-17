@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T150007Z-d2f36301-SecretaryBurgum",
+  "account_handle": "SecretaryBurgum",
+  "captured_at": "2026-06-13T15:09:41.834Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ASenLummis%20since%3A2026-04-01%20until%3A2026-06-13%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2061498044688839166",
+      "account_handle": "SecretaryBurgum",
+      "account_id": "1879585122175082496",
+      "posted_at": "2026-06-01T17:20:09.000Z",
+      "first_captured_at": "2026-06-13T15:00:19.729Z",
+      "last_seen_at": "2026-06-13T15:00:19.729Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/SecretaryBurgum/status/2061498044688839166",
+      "tweet_type": "original",
+      "conversation_id": "2061498044688839166",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "For too long, ranchers and land managers were forced to work under outdated rules.\n\n@POTUS made it clear that we must cut red tape, support those who feed our nation and ensure our public lands remain healthy for future generations. This does exactly that.\nhttps://t.co/tOTH7naPqN",
+      "text_resolved": "For too long, ranchers and land managers were forced to work under outdated rules.\n\n@POTUS made it clear that we must cut red tape, support those who feed our nation and ensure our public lands remain healthy for future generations. This does exactly that.\nhttps://www.doi.gov/pressreleases/department-interior-proposes-modernizing-grazing-regulations-support-ranchers-and",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "POTUS"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/tOTH7naPqN",
+          "expanded": "https://www.doi.gov/pressreleases/department-interior-proposes-modernizing-grazing-regulations-support-ranchers-and",
+          "display": "doi.gov/pressreleases/…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/tOTH7naPqN",
+        "vendor_url": "doi.gov",
+        "title": "Department of the Interior Proposes Modernizing Grazing Regulations to Support Ranchers and Healthy...",
+        "description": "The Department of the Interior continues to ask for public input on a proposal to update how livestock grazing is managed on public lands. The Bureau of Land Management's proposed grazing rule would...",
+        "image_url": "https://pbs.twimg.com/card_img/2061511078593605632/ZHI4Mjjt?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 1333,
+      "retweet_count": 312,
+      "reply_count": 62,
+      "quote_count": 12,
+      "view_count": 83589,
+      "bookmark_count": 31,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T15:00:19.729Z",
+          "likes": 1333,
+          "retweets": 312,
+          "replies": 62,
+          "quotes": 12,
+          "views": 83589,
+          "bookmarks": 31
+        }
+      ],
+      "author": {
+        "display_name": "Secretary Doug Burgum",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2015502798528401409/7OPHr17l_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "55th Secretary of the @Interior and Chairman of the National Energy Dominance Council. Serving under the leadership of @POTUS Trump! 🇺🇸",
+        "location": null,
+        "url": "https://t.co/5bl3CeEATZ",
+        "followers_count": 127813,
+        "friends_count": 71,
+        "statuses_count": 2129,
+        "account_created_at": "2025-01-15T17:43:26.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T150007Z-d2f36301",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T150007Z-d2f36301.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T150007Z-d2f36301.jsonl",
+    "source_handle": "SenLummis"
+  }
+}

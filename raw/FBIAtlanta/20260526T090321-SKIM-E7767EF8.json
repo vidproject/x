@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-gov-trawl-20260526-20260526T090308Z-5d2edf4e-FBIAtlanta",
+  "account_handle": "FBIAtlanta",
+  "captured_at": "2026-05-26T09:03:21.555Z",
+  "endpoint": "UserByScreenName,UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/FBI",
+  "tweets": [
+    {
+      "tweet_id": "2057870778566127645",
+      "account_handle": "FBIAtlanta",
+      "account_id": "347292182",
+      "posted_at": "2026-05-22T17:06:41.000Z",
+      "first_captured_at": "2026-05-26T09:03:10.837Z",
+      "last_seen_at": "2026-05-26T09:03:10.837Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/FBIAtlanta/status/2057870778566127645",
+      "tweet_type": "original",
+      "conversation_id": "2057870778566127645",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "🚨 Cold Case Solved After 35+ Years 🚨\n\nIn a breakthrough using investigative genetic genealogy, the FBI has identified human remains found at West Point Lake in Troup County back in 1990.\n\nThe victim, Craig Alexander Maddox from Arkansas, had been missing for decades. Despite the body being in an advanced state of decomposition, investigators preserved DNA evidence that ultimately led to his identification.\n\nThanks to the persistence of investigators in Troup County and cutting-edge genetic genealogy techniques, families now have answers—even after 35 years. The case remains an active homicide investigation as authorities continue to search for more information about how Maddox died. https://t.co/3kmYqmf5Vw",
+      "text_resolved": "🚨 Cold Case Solved After 35+ Years 🚨\n\nIn a breakthrough using investigative genetic genealogy, the FBI has identified human remains found at West Point Lake in Troup County back in 1990.\n\nThe victim, Craig Alexander Maddox from Arkansas, had been missing for decades. Despite the body being in an advanced state of decomposition, investigators preserved DNA evidence that ultimately led to his identification.\n\nThanks to the persistence of investigators in Troup County and cutting-edge genetic genealogy techniques, families now have answers—even after 35 years. The case remains an active homicide investigation as authorities continue to search for more information about how Maddox died. https://ow.ly/Op5X50Z3iBs",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/3kmYqmf5Vw",
+          "expanded": "https://ow.ly/Op5X50Z3iBs",
+          "display": "ow.ly/Op5X50Z3iBs"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2057870776573857793",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HI8GkXdXkAEQX1g.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 768,
+          "height": 1024,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 453,
+      "retweet_count": 134,
+      "reply_count": 15,
+      "quote_count": 1,
+      "view_count": 27725,
+      "bookmark_count": 14,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T09:03:10.837Z",
+          "likes": 453,
+          "retweets": 134,
+          "replies": 15,
+          "quotes": 1,
+          "views": 27725,
+          "bookmarks": 14
+        }
+      ],
+      "author": {
+        "display_name": "FBI Atlanta",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1957465306126835712/au6Ttpim_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official FBI Atlanta X. Submit tips at https://t.co/nUeVZqFYv8. Public info may be used for authorized purposes: https://t.co/ED3cSgYfWZ.",
+        "location": "Atlanta, GA",
+        "url": "https://t.co/ObGkTlFZ5b",
+        "followers_count": 26519,
+        "friends_count": 162,
+        "statuses_count": 6447,
+        "account_created_at": "2011-08-02T15:32:42.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-gov-trawl-20260526-20260526T090308Z-5d2edf4e",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/fbi-20260526T090308Z-5d2edf4e.summary.json",
+    "jsonl": ".skim/raw/fbi-20260526T090308Z-5d2edf4e.jsonl",
+    "source_handle": "FBI"
+  }
+}

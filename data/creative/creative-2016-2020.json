@@ -1,0 +1,1756 @@
+{
+  "metadata": {
+    "queue": "historical_2016_2020",
+    "generated_at": "2026-06-17T00:43:14Z",
+    "source_commit": "e5a90d81",
+    "item_count": 14,
+    "source_candidate_count": 1040,
+    "not_ready_count": 8,
+    "all_items_ready": true,
+    "basis_counts": {
+      "wholly_creative_media": 14
+    },
+    "top_accounts": {
+      "DHSgov": 6,
+      "CBPJobs": 2,
+      "ICEgov": 1,
+      "OFOEAC": 1,
+      "EROSanFrancisco": 1,
+      "CISAgov": 1,
+      "CBP": 1,
+      "EROSanDiego": 1
+    },
+    "review_actions": [
+      "yes",
+      "no",
+      "superlike",
+      "back"
+    ],
+    "inclusion_rules": [
+      "wholly creative media object",
+      "or real enforcement/detainee/deportation footage used with creative treatment",
+      "exclude routine news clips, speeches, raw arrests, and plain statistics cards"
+    ],
+    "readiness_rules": [
+      "archived GitHub release media required",
+      "photos require thumbnail, OCR, and genuine visual description",
+      "videos require keyframes, keyframe OCR, audio analysis, thumbnail, and genuine visual description",
+      "videos with audio require a completed transcript or completed empty-transcript result",
+      "captured alt text alone does not satisfy the visual-description requirement"
+    ]
+  },
+  "items": [
+    {
+      "id": "1309477947913506822:16_1309477939025764355",
+      "tweet_id": "1309477947913506822",
+      "posted_at": "2020-09-25T13:00:46.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1309477947913506822",
+      "tweet_text": "The #SeeSay team joined together on “If You See Something, Say Something®” national Awareness Day to remind Americans that if you see suspicious activity report it to authorities. #WhyISeeSay #SeeSayDay https://t.co/9chPNpNnWt",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "advertisement",
+        "animation",
+        "montage"
+      ],
+      "subjects": [],
+      "tags": [
+        "audio:no-audio",
+        "genre:advertisement",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "16_1309477939025764355",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0003/16_1309477939025764355.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/744fb1bcff7db30f3ff66c9657e61111dd3499601586e2d3c25cccc141344f6c.jpg",
+          "sha256": "744fb1bcff7db30f3ff66c9657e61111dd3499601586e2d3c25cccc141344f6c",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 4,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A social campaign video shows several people in separate indoor locations holding large hashtag signs toward the camera. The layout is a montage of talking-head style clips with a blue lower banner and consistent campaign branding across frames.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 4
+              },
+              "complete_row_count": 4,
+              "text": ""
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 4
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 6.0,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A social campaign video shows several people in separate indoor locations holding large hashtag signs toward the camera. The layout is a montage of talking-head style clips with a blue lower banner and consistent campaign branding across frames.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 156,
+        "retweets": 67,
+        "quotes": 0,
+        "views": 0
+      }
+    },
+    {
+      "id": "1338843758457200645:3_1338843755290431491",
+      "tweet_id": "1338843758457200645",
+      "posted_at": "2020-12-15T13:50:01.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "ICEgov",
+        "category": "core",
+        "label": "U.S. Immigration and Customs Enforcement"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/1338843758457200645",
+      "tweet_text": "#OTD in 2017, ICE removed El Salvadoran wanted in his home country for sexually assaulting a minor. Learn more:  https://xsm.link/zyf3y5 https://t.co/yyRMRd4l2j",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [],
+      "tags": [
+        "action:deportation",
+        "agency:ICEgov",
+        "country:El-Salvador",
+        "crime:assault",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1338843755290431491",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-ICEgov-0002/3_1338843755290431491.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/6149247028960226e319dd41d79f6f7e46f9a9c474980c885f00b1ed65070801.jpg",
+          "sha256": "6149247028960226e319dd41d79f6f7e46f9a9c474980c885f00b1ed65070801",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "The photo shows a person in a white shirt on aircraft stairs near a plane, with other figures partly visible nearby. The setting appears to be an airport or airfield.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "e = » 4"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "The photo shows a person in a white shirt on aircraft stairs near a plane, with other figures partly visible nearby. The setting appears to be an airport or airfield.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 120,
+        "retweets": 20,
+        "quotes": 2,
+        "views": 0
+      }
+    },
+    {
+      "id": "740963026812047363:16_740920863755640832",
+      "tweet_id": "740963026812047363",
+      "posted_at": "2016-06-09T17:45:26.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/740963026812047363",
+      "tweet_text": "Traveling this weekend? Here are some tips for a stress-free trip and #TSATravelSafe https://t.co/qC5o9NH5jI",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "animation"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:TSA",
+        "audio:no-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "16_740920863755640832",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/16_740920863755640832.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/7f403ebaa9c3a3a6b224b652e56adf7db2dc7d62fff91966a4f921ae3878c004.jpg",
+          "sha256": "7f403ebaa9c3a3a6b224b652e56adf7db2dc7d62fff91966a4f921ae3878c004",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "The visible keyframes are blue travel-tip graphics with icons including a bag, a laptop, and shoes. The frames use a TSA TravelSafe visual style, but most small text is unreadable in the contact sheet.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5
+              },
+              "complete_row_count": 5,
+              "text": ""
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 24.598,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "The visible keyframes are blue travel-tip graphics with icons including a bag, a laptop, and shoes. The frames use a TSA TravelSafe visual style, but most small text is unreadable in the contact sheet.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 30,
+        "retweets": 26,
+        "quotes": 0,
+        "views": 0
+      }
+    },
+    {
+      "id": "940774229284450304:3_940774003165233152",
+      "tweet_id": "940774229284450304",
+      "posted_at": "2017-12-13T02:43:49.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "CBPJobs",
+        "category": "core",
+        "label": "CBP Jobs"
+      },
+      "tweet_url": "https://x.com/CBPJobs/status/940774229284450304",
+      "tweet_text": "\"I urge those of you who are looking for an exciting, meaningful, and rewarding career – one that touches the lives of every American – to consider U.S. Customs and Border Protection.\" - #CBP Acting Commissioner Kevin K. McAleenan. #NowHiring | Full Blog: https://www.cbp.gov/newsroom/blogs/help-wanted-cbp-wants-you https://t.co/SXFRiublHC",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "recruitment"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "crime:narcotics",
+        "crime:weapon",
+        "format:statistics",
+        "genre:recruitment",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "policy:border",
+        "review:screened-photo",
+        "topic:economy",
+        "topic:general",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_940774003165233152",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBPJobs/3_940774003165233152.png",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/451bdc4dc5655c69c9a3f5ccbe466a5454249ede478fa279e558b077e59b3c0b.jpg",
+          "sha256": "451bdc4dc5655c69c9a3f5ccbe466a5454249ede478fa279e558b077e59b3c0b",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "The image is a CBP recruiting graphic with a portrait of a suited man on the left and a dark blue text panel on the right. The main heading asks why someone should consider CBP.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "WHY CBP? in e the largest law enforcement agency in the Nation, we = oe } 5 1 1 1 3 5 397 128 12 26 39.777775 Si 5 1 1 1 3 6 472 135 9 10 92.609764 a 5 1 1 1 3 7 488 131 105 19 96.483345 far-reaching 5 1 1 1 3 8 599 131 32 14 96.652802 and 5 1 1 1 3 9 637 131 74 18 95.836159 complex 5 1 1 1 3 10 718 131 67 15 95.821007 mission. 5 1 1 1 3 11 791 132 31 13 95.821007 Our 5 1 1 1 3 12 828 131 68 18 81.320961 “typical” 5 1 1 1 3 13 902 131 31 18 96.538857 day 5 1 1 1 3 14 940 135 11 10 96.106079 is 4 1 1 1 4 0 83 136 873 53 -1 5 1 1 1 4 1 83 175 6 8 8.749329 , 5 1 1 1 4 2 168 136 40 53 46.921394 r 5 1 1 1 4 3 237 152 2 5 42.463928 5 1 1 1 4 4 254 173 2 4 76.187897 J 5 1 1 1 4 5 381 161 77 18 96.862045 anything 5 1 1 1 4 6 465 161 29 14 96.384094 but 5 1 1 1 4 7 499 161 64 18 89.875496 typical. 5 1 1 1 4 8 569 162 30 13 78.624283 W/e 5 1 1 1 4 9 605 165 57 10 96.558357 screen 5 1 1 1 4 10 668 161 75 14 96.566170 travelers 5 1 1 1 4 11 749 161 31 14 96.446014 and 5 1 1 1 4 12 786 165 49 14 96.717186 cargo 5 1 1 1 4 13 841 161 31 14 96.101654 and 5 1 1 1 4 14 879 161 77 18 93.468254 intercept 4 1 1 1 5 0 1 181 971 32 -1 5 1 1 1 5 1 1 189 4 4 21.266487 , 5 1 1 1 5 2 68 181 22 15 0.000000 5 1 1 1 5 3 134 193 60 20 0.000000 5 1 1 1 5 4 366 191 66 14 96.706444 harmful 5 1 1 1 5 5 438 191 80 15 96.753876 narcotics, 5 1 1 1 5 6 526 191 36 14 94.971786 illicit 5 1 1 1 5 7 568 195 79 14 96.696892 currency, 5 1 1 1 5 8 654 191 92 18 93.959038 dangerous 5 1 1 1 5 9 752 195 81 14 96.515350 weapons, 5 1 1 1 5 10 840 191 31 14 96.832214 and 5 1 1 1 5 11 878 191 94 14 96.272049 counterfeit 4 1 1 1 6 0 13 212 969 36 -1 5 1 1 1 6 1 13 226 2 2 0.000000 . 5 1 1 1 6 2 118 212 39 36 37.401833 ae 5 1 1 1 6 3 354 221 76 18 96.364693 products. 5 1 1 1 6 4 439 222 30 13 96.961098 We 5 1 1 1 6 5 475 225 58 10 96.597565 secure 5 1 1 1 6 6 539 225 28 10 96.399025 our 5 1 1 1 6 7 573 222 66 13 96.998566 borders 5 1 1 1 6 8 645 221 32 14 96.994522 and 5 1 1 1 6 9 683 222 62 17 96.846474 protect 5 1 1 1 6 10 751 225 27 10 96.984146 our 5 1 1 1 6 11 784 222 65 17 96.486893 country 5 1 1 1 6 12 856 221 39 14 96.689751 from 5 1 1 1 6 13 902 221 80 15 95.164185 terrorism, 4 1 1 1 7 0 376 251 585 18 -1 5 1 1 1 7 1 376 251 58 14 96.401558 human 5 1 1 1 7 2 441 251 94 18 95.334961 smuggling, 5 1 1 1 7 3 542 251 50 18 95.161728 illegal 5 1 1 1 7 4 598 251 84 18 96.970673 migration, 5 1 1 1 7 5 688 251 32 14 96.727493 and 5 1 1 1 7 6 726 255 41 11 96.980721 even 5 1 1 1 7 7 773 251 98 18 96.880280 agricultural 5 1 1 1 7 8 877 252 45 17 95.703964 pests. 5 1 1 1 7 9 931 252 30 13 95.703964 We 4 1 1 1 8 0 122 266 854 38 -1 5 1 1 1 8 1 122 266 50 38 31.486122 WwW 5 1 1 1 8 2 179 274 7 5 0.000000 “ 5 1 1 1 8 3 360 281 66 14 96.519470 enforce 5 1 1 1 8 4 433 281 81 14 96.776085 hundreds 5 1 1 1 8 5 520 281 17 14 97.002808 of 5 1 1 1 8 6 543 281 38 14 96.196106 laws 5 1 1 1 8 7 587 281 31 14 96.452660 and 5 1 1 1 8 8 625 281 95 18 96.673241 regulations 5 1 1 1 8 9 726 281 23 14 96.981133 for 5 1 1 1 8 10 755 282 62 14 96.467010 dozens 5 1 1 1 8 11 823 281 17 14 96.467010 of 5 1 1 1 8 12 845 282 45 13 96.919250 other 5 1 1 1 8 13 896 281 80 18 96.827408 agencies, 4 1 1 1 9 0 346 310 613 19 -1 5 1 1 1 9 1 346 312 31 13 96.965050 and 5 1 1 1 9 2 384 315 25 10 96.451080 we 5 1 1 1 9 3 415 311 58 14 96.451080 collect 5 1 1 1 9 4 479 315 44 10 96.752495 more 5 1 1 1 9 5 529 311 37 14 96.752495 than 5 1 1 1 9 6 573 310 31 18 96.076149 $30 5 1 1 1 9 7 611 311 49 14 95.352959 billion 5 1 1 1 9 8 667 311 12 14 96.995667 in 5 1 1 1 9 9 686 312 44 17 96.890472 entry 5 1 1 1 9 10 736 311 52 14 96.863602 duties 5 1 1 1 9 11 794 311 31 14 96.794281 and 5 1 1 1 9 12 831 312 45 13 93.201958 taxes, 5 1 1 1 9 13 940 311 19 14 0.000000 ctit 4 1 1 1 10 0 354 341 508 18 -1 5 1 1 1 10 1 354 341 32 14 96.540047 that 5 1 1 1 10 2 393 341 64 18 96.465836 provide 5 1 1 1 10 3 463 341 27 14 96.465836 the 5 1 1 1 10 4 496 341 131 18 96.254326 second-largest 5 1 1 1 10 5 633 345 70 10 96.818748 revenue 5 1 1 1 10 6 709 345 58 10 96.254028 source 5 1 1 1 10 7 773 341 23 14 96.606758 for 5 1 1 1 10 8 802 341 27 14 96.662003 the 5 1 1 1 10 9 835 342 27 13 94.144669 U.S. 4 1 1 1 11 0 221 370 667 31 -1 5 1 1 1 11 1 221 370 18 21 72.615982 é 5 1 1 1 11 2 399 384 89 17 96.564445 ACTING 5 1 1 1 11 3 495 384 185 17 95.357376 COMMISSIONER 5 1 1 1 11 4 688 384 69 17 93.075554 KEVIN 5 1 1 1 11 5 766 384 19 17 92.857780 K. 5 1 1 1 11 6 793 384 95 17 73.003479 MCALEE! 4 1 1 1 12 0 58 452 935 40 -1 5 1 1 1 12 1 58 452 44 40 48.948406 SS) 5 1 1 1 12 2 122 455 139 30 41.755695 ps.Customsand 5 1 1 1 12 3 297 460 50 19 30.930428 Join 5 1 1 1 12 4 356 460 46 19 95.226318 Our 5 1 1 1 12 5 409 460 77 19 93.288811 Team: 5 1 1 1 12 6 495 460 291 25 30.424629 www.cbp.gov/careers 5 1 1 1 12 7 839 460 154 25 10.045509 #NowHiring"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "The image is a CBP recruiting graphic with a portrait of a suited man on the left and a dark blue text panel on the right. The main heading asks why someone should consider CBP.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 28,
+        "retweets": 16,
+        "quotes": 0,
+        "views": 0
+      }
+    },
+    {
+      "id": "944319136007585793:3_943149511261777920",
+      "tweet_id": "944319136007585793",
+      "posted_at": "2017-12-22T21:30:01.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "CBPJobs",
+        "category": "core",
+        "label": "CBP Jobs"
+      },
+      "tweet_url": "https://x.com/CBPJobs/status/944319136007585793",
+      "tweet_text": "#DYK in FY17, CBP officers and #BorderPatrol agents arrested 20,131 criminal aliens and another 10,908 individuals wanted by law enforcement? @CustomsBorder is a vital guardian of our nation's borders, and we're #hiring! Learn more at http://www.cbp.gov/careers! https://t.co/kd5yQ2Gbus",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "psa",
+        "recruitment"
+      ],
+      "subjects": [
+        "detainees",
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "action:detention",
+        "agency:CBP",
+        "format:statistics",
+        "genre:psa",
+        "genre:recruitment",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "policy:border",
+        "review:screened-photo",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:economy",
+        "topic:general",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_943149511261777920",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBPJobs/3_943149511261777920.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/126f285dc3af3b3e44079c51a74b290d4286ae64d027d0155092e239f5056bc8.jpg",
+          "sha256": "126f285dc3af3b3e44079c51a74b290d4286ae64d027d0155092e239f5056bc8",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "The photo shows CBP or Border Patrol personnel standing around a vehicle outdoors. One person wears a vest marked CBP.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "# ~° & “a e We ; ye a ae Sle ( ee jw ‘ Sy jee 4 3 Sin y= a 5 1 1 5 1 2 67 299 21 45 12.705391 a 5 1 1 5 1 3 177 327 20 15 72.929626 7 5 1 1 5 1 4 236 287 66 62 49.838860 8) 5 1 1 5 1 5 378 313 118 33 0.893692 o.. 4 1 1 5 2 0 77 348 323 20 -1 5 1 1 5 2 1 77 360 7 5 79.657784 q 5 1 1 5 2 2 255 347 49 7 0.000000 Neodl 5 1 1 5 2 3 374 348 26 20 0.000000 . 3 1 1 6 0 0 0 352 308 48 -1 4 1 1 6 1 0 0 352 308 48 -1 5 1 1 6 1 1 0 352 20 41 45.429440 5 5 1 1 6 1 2 109 379 35 21 7.964943 > 5 1 1 6 1 3 282 381 26 7 0.000000 mo 3 1 1 7 0 0 0 324 640 103 -1 4 1 1 7 1 0 0 324 639 103 -1 5 1 1 7 1 1 0 394 22 33 57.258949 af 5 1 1 7 1 2 120 402 20 25 0.000000 Z 5 1 1 7 1 3 191 324 18 103 20.918488 5 1 1 7 1 4 233 324 61 103 32.740112 ie 5 1 1 7 1 5 302 419 17 8 0.000000 e 5 1 1 7 1 6 383 342 100 85 69.044571 = 5 1 1 7 1 7 619 360 20 67 0.000000 r"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "The photo shows CBP or Border Patrol personnel standing around a vehicle outdoors. One person wears a vest marked CBP.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 19,
+        "retweets": 9,
+        "quotes": 1,
+        "views": 0
+      }
+    },
+    {
+      "id": "1283814573653594119:3_1283814567466930177",
+      "tweet_id": "1283814573653594119",
+      "posted_at": "2020-07-16T17:23:41.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "OFOEAC",
+        "category": "core",
+        "label": "CBP Office of Field Operations Executive Assistant Commissioner"
+      },
+      "tweet_url": "https://x.com/OFOEAC/status/1283814573653594119",
+      "tweet_text": "CBPOs in Eagle Pass found a 33 y/o male MX nat’l attempting to enter the US w/o inspection by hiding in a rail car, later learning he was wanted for rape. He was arrested and will be extradited to Tennessee. CBPOs are relentless in their commitment to keep our communities safe. https://t.co/eQ8MVod5Z2",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [
+        "detainees"
+      ],
+      "tags": [
+        "action:detention",
+        "crime:rape",
+        "crime:sexual",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "policy:border",
+        "review:screened-photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1283814567466930177",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-OFOEAC/3_1283814567466930177.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/bc87d4adccfab18acd3b3a31d685399526ef44f1fb8a547efd6b043ef267b28b.jpg",
+          "sha256": "bc87d4adccfab18acd3b3a31d685399526ef44f1fb8a547efd6b043ef267b28b",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "The photo is a close view of an officer's uniform sleeve with a border or customs-style shoulder patch, with seated people blurred in the background. The focus is on the officer's arm and patch.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "* Ogg 0 a. © / fe Lie / V, Bp 4 * ‘4 Vis ae : / 2 GIN = , f by sf Pe Altes pa Soe o A \\ Se Tek i + 5 (4 = ve y Ya Saiz Kd Peano"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "The photo is a close view of an officer's uniform sleeve with a border or customs-style shoulder patch, with seated people blurred in the background. The focus is on the officer's arm and patch.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 9,
+        "retweets": 1,
+        "quotes": 1,
+        "views": 0
+      }
+    },
+    {
+      "id": "1336829780126265345:3_1336829750359302144",
+      "tweet_id": "1336829780126265345",
+      "posted_at": "2020-12-10T00:27:11.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "EROSanFrancisco",
+        "category": "core",
+        "label": "ERO San Francisco"
+      },
+      "tweet_url": "https://x.com/EROSanFrancisco/status/1336829780126265345",
+      "tweet_text": "Using broad statutory authority, ICE identifies and removes dangerous criminals convicted of murder, predatory sexual offenses, narcotics trafficking, alien smuggling, and a host of other crimes with profound negative impacts on our society. http://www.ice.gov/most-wanted https://t.co/xRwlm4H5jP",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:ICEgov",
+        "crime:homicide",
+        "crime:murder",
+        "crime:narcotics",
+        "crime:trafficking",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "theme:criminal",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1336829750359302144",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-EROSanFrancisco/3_1336829750359302144.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/ae7ebdc22f02a00105a93f9686cf20b9689c3d027ec7e1d3fadb8e40f54c9791.jpg",
+          "sha256": "ae7ebdc22f02a00105a93f9686cf20b9689c3d027ec7e1d3fadb8e40f54c9791",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "The photo shows officers in a close enforcement scene, with one jacket back clearly marked for police and ERO. A person or group is partially obscured among the officers.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "4 i pouce + eas. CERO"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "The photo shows officers in a close enforcement scene, with one jacket back clearly marked for police and ERO. A person or group is partially obscured among the officers.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 1,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 0
+      }
+    },
+    {
+      "id": "736616817192538114:16_736616567899885569",
+      "tweet_id": "736616817192538114",
+      "posted_at": "2016-05-28T17:55:09.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/736616817192538114",
+      "tweet_text": "Shorten your wait this summer with #TSAPreCheck, with these simple steps from @TSA. https://t.co/wJxGbj0ifv",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "animation"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:TSA",
+        "audio:no-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "16_736616567899885569",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/16_736616567899885569.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/6371909c61438e4c213e1878883312260d996005c21b72d74e82bbdea68173a5.jpg",
+          "sha256": "6371909c61438e4c213e1878883312260d996005c21b72d74e82bbdea68173a5",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 4,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A blue TSA PreCheck explainer animation moves through four illustrated panels: a laptop form, a boarding pass with circled PreCheck indicators, an airport sign directing travelers, and a traveler walking with luggage. The style is flat vector animation with white instructional captions at the bottom of each panel.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 4
+              },
+              "complete_row_count": 4,
+              "text": ""
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 4
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 14.198,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A blue TSA PreCheck explainer animation moves through four illustrated panels: a laptop form, a boarding pass with circled PreCheck indicators, an airport sign directing travelers, and a traveler walking with luggage. The style is flat vector animation with white instructional captions at the bottom of each panel.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 0
+      }
+    },
+    {
+      "id": "740257152162373632:16_740250651439960066",
+      "tweet_id": "740257152162373632",
+      "posted_at": "2016-06-07T19:00:33.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/740257152162373632",
+      "tweet_text": "Planning a trip this summer? Take the stress out of travel with these tips from @TSA #TSATravelSafe https://t.co/YPrRV7dilL",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "animation"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:TSA",
+        "audio:no-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "16_740250651439960066",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/16_740250651439960066.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/d86bd52ff95cfa8caaa29721dd4e50b08bd1d3d4f150dc1d2e6ef429227fceb3.jpg",
+          "sha256": "d86bd52ff95cfa8caaa29721dd4e50b08bd1d3d4f150dc1d2e6ef429227fceb3",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "The visible keyframes are blue TSA travel-tip graphics with simple icons for air travel, including a bag, a laptop, and shoes. The small instructional text is mostly unreadable in the contact sheet.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5
+              },
+              "complete_row_count": 5,
+              "text": ""
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 24.598,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "The visible keyframes are blue TSA travel-tip graphics with simple icons for air travel, including a bag, a laptop, and shoes. The small instructional text is mostly unreadable in the contact sheet.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 0
+      }
+    },
+    {
+      "id": "740664817086664704:16_740250651439960066",
+      "tweet_id": "740664817086664704",
+      "posted_at": "2016-06-08T22:00:27.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/740664817086664704",
+      "tweet_text": "We cannot compromise safety for the sake of convenience; that’s the role of the @TSA &amp; how we ensure #TSATravelSafe: https://t.co/YPrRV7dilL",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "animation"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:TSA",
+        "audio:no-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "16_740250651439960066",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/16_740250651439960066.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/d86bd52ff95cfa8caaa29721dd4e50b08bd1d3d4f150dc1d2e6ef429227fceb3.jpg",
+          "sha256": "d86bd52ff95cfa8caaa29721dd4e50b08bd1d3d4f150dc1d2e6ef429227fceb3",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "The visible keyframes are the same blue TSA travel-tip graphics, with icons for air travel and checkpoint preparation. The small instructional text is mostly unreadable in the contact sheet.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5
+              },
+              "complete_row_count": 5,
+              "text": ""
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 24.598,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "The visible keyframes are the same blue TSA travel-tip graphics, with icons for air travel and checkpoint preparation. The small instructional text is mostly unreadable in the contact sheet.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 0
+      }
+    },
+    {
+      "id": "1059135687545413632:3_1058466187892477953",
+      "tweet_id": "1059135687545413632",
+      "posted_at": "2018-11-04T17:30:00.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "CISAgov",
+        "category": "government",
+        "label": "Cybersecurity and Infrastructure Security Agency"
+      },
+      "tweet_url": "https://x.com/CISAgov/status/1059135687545413632",
+      "tweet_text": "Check out a few tips so you can be confident about your vote. https://t.co/zMgZrfrWpi",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "poster-or-meme"
+      ],
+      "subjects": [],
+      "tags": [
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1058466187892477953",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CISAgov/3_1058466187892477953.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/f33f719c97152822381cc6e4d5b520d5454363c6b79850aadc629fbf7f6aff4b.jpg",
+          "sha256": "f33f719c97152822381cc6e4d5b520d5454363c6b79850aadc629fbf7f6aff4b",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A vertical election information poster shows a hand placing a ballot marked “VOTE” into a red ballot box on a teal background. A dark blue footer contains several small step icons and agency logos.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 2
+              },
+              "complete_row_count": 2,
+              "text": ". with Coniidence! » WE UX UG e © ©) : Request a Provisional Ask for Confirm Your Ballot, if Necessary Help Selections For reliable election information, use trusted sources: www.eac.gov/ electionoffice @) scx yas narrow snocucin « , @ Homeland (We) ses” week Stare vicrion ninscrons (QP Security\n\n. with Coniidence! » WE UX UG e © ©) : Request a Provisional Ask for Confirm Your Ballot, if Necessary Help Selections For reliable election information, use trusted sources: www.eac.gov/ electionoffice @) scx yas narrow snocucin « , @ Homeland (We) ses” week Stare vicrion ninscrons (QP Security"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A vertical election information poster shows a hand placing a ballot marked “VOTE” into a red ballot box on a teal background. A dark blue footer contains several small step icons and agency logos.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 0
+      }
+    },
+    {
+      "id": "1133353549532999680:3_1133353541156986880,3_1133353544847908864,3_1133353546957688832",
+      "tweet_id": "1133353549532999680",
+      "posted_at": "2019-05-28T12:45:17.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "CBP",
+        "category": "core",
+        "label": "U.S. Customs and Border Protection"
+      },
+      "tweet_url": "https://x.com/CBP/status/1133353549532999680",
+      "tweet_text": "The U.S. Border Patrol has been serving our nation for 95 years! On May 28, 1924, Congress passed the Labor Appropriation Act of 1924, officially establishing USBP for the purpose of securing the borders between inspection stations. Learn more: http://bit.ly/2C9stO6 #HonorFirst https://t.co/gVTPKyS819",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "poster-or-meme"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "policy:border",
+        "review:screened-photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1133353541156986880",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP/3_1133353541156986880.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/9ac01fd53e6f872f521c45acaf220c8bce6f9dc9a32976e3dd40a0385182d850.jpg",
+          "sha256": "9ac01fd53e6f872f521c45acaf220c8bce6f9dc9a32976e3dd40a0385182d850",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A plain candid color photograph (no on-image text or graphic design) of a U.S. Border Patrol agent on horseback patrolling a grassy brush-covered trail. The lead agent wears a green Border Patrol uniform, white cowboy hat, sunglasses, and a duty belt with sidearm, mounted on a dark bay horse with a saddlebag pack. Two additional mounted agents follow in the background along the path under a clear blue sky. The image documents the Border Patrol Horse Patrol unit and was posted to mark the 95th anniversary of the U.S. Border Patrol. There is no overlaid text, slogan, or logo, so it is a routine photograph rather than a designed meme/poster.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "Bo eee 5 a % 3 y y a Ex 4 IN) No : ge ; => : eS 7 Jt em. ‘ yon Ae N < \\ 1 hope AX» \\ \\ Ly ® ey y ry q hy, » WS e5 s \\ Y / é AR I VERO a KS at TZ . : eR catia TOO oe sou! ) ; So ie WO \\ anes Shy. Rha ee gk ste . Rasy, WS a). i 9 A \\ Ls ee eas WS SS ES I MN ee ON a ee ee 5, : INO GS RN OS ON 0 SERN a Oe ae eS Bh HS, LO RN OPA A PREM (1°) hice Notes PN) 1 RE SRS OS NU eh aici 1 Re mn 38 Sa Ape SU Sy act ak Za AE HR CSN Net PAU CL TENT Wau REN PR Sas Sea ."
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_1133353544847908864",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP/3_1133353544847908864.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/8068668469f4058431c6605b15b3e2becec49a5a4e4ae7f1801b239e569381eb.jpg",
+          "sha256": "8068668469f4058431c6605b15b3e2becec49a5a4e4ae7f1801b239e569381eb",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "The image is a black-and-white historical photo showing a uniformed person standing beside an older vehicle or bus. The scene appears archival.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "i fa TAd = — Sa"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_1133353546957688832",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP/3_1133353546957688832.png",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/169e0138309e770369de3b63153c4fff05b08aaa244b4a2acd785720277274ca.jpg",
+          "sha256": "169e0138309e770369de3b63153c4fff05b08aaa244b4a2acd785720277274ca",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "The photo shows a desert or border-area scene with uniformed personnel near a vehicle and a helicopter in the air overhead. The landscape is open and arid.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "\\ eS 2a i —=a =a ‘= u es a eon he) a i By Se a ="
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 3
+      },
+      "evidence": {
+        "summary": "A plain candid color photograph (no on-image text or graphic design) of a U.S. Border Patrol agent on horseback patrolling a grassy brush-covered trail. The lead agent wears a green Border Patrol uniform, white cowboy hat, sunglasses, and a duty belt with sidearm, mounted on a dark bay horse with a saddlebag pack. Two additional mounted agents follow in the background along the path under a clear blue sky. The image documents the Border Patrol Horse Patrol unit and was posted to mark the 95th anniversary of the U.S. Border Patrol. There is no overlaid text, slogan, or logo, so it is a routine photograph rather than a designed meme/poster.\n\nThe image is a black-and-white historical photo showing a uniformed person standing beside an older vehicle or bus. The scene appears archival.\n\nThe photo shows a desert or border-area scene with uniformed personnel near a vehicle and a helicopter in the air overhead. The landscape is open and arid.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 0
+      }
+    },
+    {
+      "id": "1306650532619202566:3_1306650528483602433",
+      "tweet_id": "1306650532619202566",
+      "posted_at": "2020-09-17T17:45:38.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1306650532619202566",
+      "tweet_text": "America has a proud heritage of welcoming new citizens into our nation every year. Each #NewUSCitizen is a continuation of that history and an illustration of the importance of a robust and lawful immigration policy. #CitizenshipDay https://t.co/41S9mtKs23",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "poster-or-meme"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:DHSgov",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1306650528483602433",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0003/3_1306650528483602433.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/d130a87ec008c003ba289c2d09739816b1d1fa5f27b683bb05d566f02c514cfc.jpg",
+          "sha256": "d130a87ec008c003ba289c2d09739816b1d1fa5f27b683bb05d566f02c514cfc",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "The image is a dark blue citizenship-themed graphic with a quote block on the left and a man speaking at a podium on the right. The small quote text is not fully readable in the contact sheet.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "SZ It is by living out FA » N our uniquely a3 mA CN American creed and fei| “a om ‘eS serving our country j om” wes that together we can j aye E % / further the American . /f Vy) d experiment. . 5 1 1 1 8 4 939 374 40 122 53.053986 j 5 1 1 1 8 5 1167 400 29 69 28.297112 ¥ 4 1 1 1 9 0 170 450 809 70 -1 5 1 1 1 9 1 170 499 81 1 38.735588 a 5 1 1 1 9 2 380 450 84 66 0.000000 Z Acting DHS Secretary Chad Wolf weit —"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "The image is a dark blue citizenship-themed graphic with a quote block on the left and a man speaking at a podium on the right. The small quote text is not fully readable in the contact sheet.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 0
+      }
+    },
+    {
+      "id": "1338876474187771906:3_1338876470962384903",
+      "tweet_id": "1338876474187771906",
+      "posted_at": "2020-12-15T16:00:01.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "EROSanDiego",
+        "category": "core",
+        "label": "ICE San Diego"
+      },
+      "tweet_url": "https://x.com/EROSanDiego/status/1338876474187771906",
+      "tweet_text": "ERO San Diego protects San Diego communities by prioritizing enforcement efforts on aliens who present a threat to national security &amp; public safety, such as transnational gang members &amp; child sex offenders. Learn more at http://ice.gov/most-wanted#tab1 https://t.co/YZDJk1NXpr",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "psa"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:ICEgov",
+        "crime:child",
+        "crime:child-sexual",
+        "crime:gang",
+        "crime:sexual",
+        "genre:psa",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1338876470962384903",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-EROSanDiego/3_1338876470962384903.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/6b407a80525791108b485635c1594197cfe80618aa6c1d02c87177a46fc1100e.jpg",
+          "sha256": "6b407a80525791108b485635c1594197cfe80618aa6c1d02c87177a46fc1100e",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "The photo shows an officer in an ERO-marked jacket writing on a clipboard while facing a person wearing a mask and bright green clothing. The scene is cropped closely around the interaction.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "“SAD DP «es ) \\"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "The photo shows an officer in an ERO-marked jacket writing on a clipboard while facing a person wearing a mask and bright green clothing. The scene is cropped closely around the interaction.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 0
+      }
+    }
+  ]
+}

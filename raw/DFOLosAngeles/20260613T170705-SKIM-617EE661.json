@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170648Z-eecf830d-DFOLosAngeles",
+  "account_handle": "DFOLosAngeles",
+  "captured_at": "2026-06-13T17:07:05.248Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AOFOEAC%20since%3A2020-11-01%20until%3A2020-12-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1327296218259730432",
+      "account_handle": "DFOLosAngeles",
+      "account_id": "1211771001274433536",
+      "posted_at": "2020-11-13T17:04:13.000Z",
+      "first_captured_at": "2026-06-13T17:06:55.843Z",
+      "last_seen_at": "2026-06-13T17:06:55.843Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DFOLosAngeles/status/1327296218259730432",
+      "tweet_type": "original",
+      "conversation_id": "1327296218259730432",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "CBP at the LA/LB Seaport seized over 27,000 pieces of counterfeit apparel, handbags, headphones, and vehicle accessories valued at over $2.4 million. @CBP facilitates legitimate trade, and keeps proceeds from counterfeit goods like these from reaching terrorists organizations. https://t.co/ajzqlegQS9",
+      "text_resolved": "CBP at the LA/LB Seaport seized over 27,000 pieces of counterfeit apparel, handbags, headphones, and vehicle accessories valued at over $2.4 million. @CBP facilitates legitimate trade, and keeps proceeds from counterfeit goods like these from reaching terrorists organizations. https://t.co/ajzqlegQS9",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "CBP"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1327295945084694531",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/EmuAoTaW8AMlqXe.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 20,
+      "retweet_count": 4,
+      "reply_count": 0,
+      "quote_count": 1,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:06:55.843Z",
+          "likes": 20,
+          "retweets": 4,
+          "replies": 0,
+          "quotes": 1,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "(A)DFO, Jeff Noe",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2046706479873536000/Dn-rcnfJ_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "(A)Director of Field Operations, Los Angeles Field Office",
+        "location": "Los Angeles, CA",
+        "url": null,
+        "followers_count": 2165,
+        "friends_count": 140,
+        "statuses_count": 1105,
+        "account_created_at": "2019-12-30T22:08:23.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170648Z-eecf830d",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T170648Z-eecf830d.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T170648Z-eecf830d.jsonl",
+    "source_handle": "OFOEAC"
+  }
+}

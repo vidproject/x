@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T011522Z-2e755e37-HSI_HQ",
+  "account_handle": "HSI_HQ",
+  "captured_at": "2026-06-14T01:15:45.003Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AERONewark%20since%3A2023-01-01%20until%3A2024-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1732514621406183501",
+      "account_handle": "HSI_HQ",
+      "account_id": "1339943881027313666",
+      "posted_at": "2023-12-06T21:37:28.000Z",
+      "first_captured_at": "2026-06-14T01:15:32.332Z",
+      "last_seen_at": "2026-06-14T01:15:32.332Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/HSI_HQ/status/1732514621406183501",
+      "tweet_type": "original",
+      "conversation_id": "1732514621406183501",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Four Russia-affiliated military personnel charged with war crimes against American citizen in connection with Russia’s invasion of Ukraine after @HSI_DC, @FBI and @TheJusticeDept investigation 🔗https://t.co/G6QPs42TX6\n\n📺Watch the entire press conference: https://t.co/QFPkFTmgPL https://t.co/KIxz8WIa57",
+      "text_resolved": "Four Russia-affiliated military personnel charged with war crimes against American citizen in connection with Russia’s invasion of Ukraine after @HSI_DC, @FBI and @TheJusticeDept investigation 🔗https://xsm.link/l7ewzl\n\n📺Watch the entire press conference: https://xsm.link/kyz236 https://t.co/KIxz8WIa57",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://app.nuvi.com/publishing\" rel=\"nofollow\">Nuvi Publish App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "HSI_DC",
+        "FBI",
+        "TheJusticeDept"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/G6QPs42TX6",
+          "expanded": "https://xsm.link/l7ewzl",
+          "display": "xsm.link/l7ewzl"
+        },
+        {
+          "short": "https://t.co/QFPkFTmgPL",
+          "expanded": "https://xsm.link/kyz236",
+          "display": "xsm.link/kyz236"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_1732514585452650496",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/1732514585452650496/pu/vid/avc1/1280x720/-xGnCYJvaORo-Zmc.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 28.032,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 38,
+      "retweet_count": 21,
+      "reply_count": 11,
+      "quote_count": 0,
+      "view_count": 12327,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:15:32.332Z",
+          "likes": 38,
+          "retweets": 21,
+          "replies": 11,
+          "quotes": 0,
+          "views": 12327,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "Homeland Security Investigations",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2031819826508021762/jLzZmzWl_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "@ICEgov HSI protects the U.S. by investigating global crimes that impact local communities. Privacy: https://t.co/aORjC5RLnf",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/BUaNOoNyCA",
+        "followers_count": 34336,
+        "friends_count": 106,
+        "statuses_count": 3676,
+        "account_created_at": "2020-12-18T14:41:53.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T011522Z-2e755e37",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T011522Z-2e755e37.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T011522Z-2e755e37.jsonl",
+    "source_handle": "ERONewark"
+  }
+}
