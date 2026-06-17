@@ -1,12 +1,11 @@
 {
-  "generated_at": "2026-06-17T13:17:22Z",
+  "generated_at": "2026-06-17T16:15:18Z",
   "layers": {
     "audio_music": {
-      "cache_hits": 211,
       "cost_estimate_usd": 0.0,
       "detector": "ffmpeg-audio-heuristic",
       "detector_version": "ffmpeg-audio-heuristic-v1",
-      "generated_at": "2026-06-17T13:17:14Z",
+      "generated_at": "2026-06-17T16:15:08Z",
       "row_count": 4462,
       "rows": 4462,
       "status_counts": {
@@ -24,44 +23,39 @@
       }
     },
     "image_ocr": {
-      "analyzed": 240,
-      "attempted": 240,
-      "cache_hits": 932,
+      "analyzed": 25,
+      "attempted": 25,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-17T13:16:28Z",
+      "generated_at": "2026-06-17T16:15:01Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.3.4",
-      "row_count": 19624,
-      "rows": 19624,
-      "skipped_max_items": 391,
+      "row_count": 19649,
+      "rows": 19649,
       "status_counts": {
         "fetch-failed": 1,
         "no-text": 5459,
-        "ok": 14164
+        "ok": 14189
       },
-      "status_no-text": 11,
-      "status_ok": 229
+      "status_ok": 25
     },
     "keyframes": {
-      "attempted": 59,
-      "cache_hits": 151,
+      "attempted": 5,
       "cost_estimate_usd": 0.0,
-      "extracted": 59,
+      "extracted": 5,
       "extractor_version": "ffmpeg-keyframes-v2",
-      "frame_count": 22169,
-      "generated_at": "2026-06-17T13:13:51Z",
-      "intra_run_dedup": 1,
-      "row_count": 4323,
-      "rows": 4323,
+      "frame_count": 22194,
+      "generated_at": "2026-06-17T16:14:54Z",
+      "row_count": 4328,
+      "rows": 4328,
       "status_counts": {
         "fetch-failed": 1,
-        "ok": 4320,
+        "ok": 4325,
         "video-too-large": 2
       },
-      "status_ok": 59
+      "status_ok": 5
     },
     "lexical": {
-      "generated_at": "2026-06-17T13:17:22Z",
+      "generated_at": "2026-06-17T16:15:18Z",
       "parquets_scanned": {
         "AGPamBondi.parquet": 15,
         "ATFHQ.parquet": 2,
@@ -151,7 +145,7 @@
         "agency:FLETC": 204,
         "agency:HHSGov": 107,
         "agency:HSI_HQ": 133,
-        "agency:ICEgov": 13805,
+        "agency:ICEgov": 13813,
         "agency:IPRCenter": 19,
         "agency:NSAGov": 23,
         "agency:ODNIgov": 27,
@@ -600,21 +594,18 @@
       "tagger_version": "lexical-v2"
     },
     "media_vision": {
-      "cache_hits": 13979,
       "cost_estimate_usd": 0.0,
-      "generated": 320,
-      "generated_at": "2026-06-17T12:48:05Z",
+      "generated_at": "2026-06-17T16:14:52Z",
       "model": "metadata",
       "model_version": "media-metadata-v4",
-      "preserved_after_max_items": 1927,
       "prompt_hash": "b18b19292ec51484",
       "row_count": 17024,
       "rows": 17024,
-      "skipped_max_items": 2238,
+      "skipped_not_in_filter": 33662,
       "status_counts": {
-        "manual-review": 3495,
+        "manual-review": 3499,
         "metadata-alt": 2622,
-        "metadata-context": 10907
+        "metadata-context": 10903
       },
       "tag_frequency": {
         "action:deportation": 1,
@@ -682,10 +673,9 @@
       "web_tweets_scanned": 100
     },
     "photo_thumbnails": {
-      "cache_hits": 1,
       "cost_estimate_usd": 0.0,
       "extractor_version": "photo-thumbnail-v1",
-      "generated_at": "2026-06-17T13:16:27Z",
+      "generated_at": "2026-06-17T16:15:00Z",
       "row_count": 10195,
       "rows": 10195,
       "status_counts": {
@@ -694,9 +684,8 @@
       "thumbnails": 10195
     },
     "transcripts": {
-      "cache_hits": 211,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-17T13:17:17Z",
+      "generated_at": "2026-06-17T16:15:12Z",
       "row_count": 2927,
       "rows": 2927,
       "status_counts": {
@@ -800,7 +789,7 @@
     "agency:FLETC": 204,
     "agency:HHSGov": 107,
     "agency:HSI_HQ": 133,
-    "agency:ICEgov": 13805,
+    "agency:ICEgov": 13813,
     "agency:IPRCenter": 19,
     "agency:NSAGov": 23,
     "agency:ODNIgov": 27,
