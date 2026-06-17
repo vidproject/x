@@ -1,15 +1,15 @@
 {
   "metadata": {
     "queue": "high_confidence",
-    "generated_at": "2026-06-17T00:24:30Z",
-    "source_commit": "42fe18b8",
-    "item_count": 921,
+    "generated_at": "2026-06-17T00:35:04Z",
+    "source_commit": "f9585575",
+    "item_count": 922,
     "source_candidate_count": 1040,
-    "not_ready_count": 9,
+    "not_ready_count": 8,
     "all_items_ready": true,
     "basis_counts": {
       "real_footage_creative_use": 18,
-      "wholly_creative_media": 903
+      "wholly_creative_media": 904
     },
     "top_accounts": {
       "ICEgov": 248,
@@ -17,7 +17,7 @@
       "DHSgov": 115,
       "USCIS": 86,
       "CBP": 52,
-      "WhiteHouse": 50,
+      "WhiteHouse": 51,
       "FBI": 44,
       "RapidResponse47": 28,
       "gwjfromparadise": 20,
@@ -34663,6 +34663,143 @@
         "retweets": 6761,
         "quotes": 1902,
         "views": 149
+      }
+    },
+    {
+      "id": "2013620691661164617:13_2013619240939515905",
+      "tweet_id": "2013620691661164617",
+      "posted_at": "2026-01-20T14:32:38.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "WhiteHouse",
+        "category": "core",
+        "label": "The White House"
+      },
+      "tweet_url": "https://x.com/WhiteHouse/status/2013620691661164617",
+      "tweet_text": "365 DAYS OF PRESIDENT DONALD J. TRUMP. A Golden Age just getting started. 🇺🇸 https://t.co/Nz3mHNGZW0",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "advertisement",
+        "animation",
+        "cinematic",
+        "montage",
+        "music-led",
+        "text-overlay",
+        "utopian"
+      ],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "audio:music-likely",
+        "country:Ukraine",
+        "genre:advertisement",
+        "genre:utopian",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:video",
+        "military:marines",
+        "review:screened-video",
+        "slogan:golden-age",
+        "theme:transgender",
+        "topic:economy",
+        "topic:general",
+        "topic:immigration",
+        "topic:military",
+        "video:medium",
+        "video:montage",
+        "video:produced",
+        "video:speech",
+        "video:text-overlay"
+      ],
+      "media": [
+        {
+          "media_id": "13_2013619240939515905",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2013619240939515905.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/62954e607f8aa1ee309df0d447a98e912e421b23417cbbab86dfe2296293943a.jpg",
+          "sha256": "62954e607f8aa1ee309df0d447a98e912e421b23417cbbab86dfe2296293943a",
+          "duration_sec": 56.489,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A vertical (9:16) montage set to music titled '365 Days of President Donald J. Trump' with animated text callouts. Fast cuts move between Trump seated before a row of world flags ('STRONG GLOBAL RELATIONSHIPS'), color-graded Marines on a wire obstacle, Trump walking through a flag-draped Rose Garden, a White House event captioned 'No Men In Women's SPORTS,' and a fireworks shot reading 'MAKING AMERICA GREAT AGAIN.' There is no speech; the audio is a music bed.  [0:05] Trump seated at a table in front of a row of world flags (German, Italian, Ukrainian, UK); large blue animated text overlay 'STRONG GLOBAL RELATIONSHIPS.' No talking (music bed).  [0:17] Color-graded shot of US Marines in helmets and packs working a concertina-razor-wire obstacle in the dirt.  [0:28] Trump in a long dark overcoat walking across a stage in the White House Rose Garden, flanked by American flags and tulips; slow-motion.  [0:39] Interior White House hallway with chandelier and flags as a group walks toward camera down a red carpet; yellow animated text 'No Men In Women's SPORTS.'  [0:50] Back-of-head shot of Trump and a woman watching a wall of fireworks/lights; centered serif text 'MAKING AMERICA GREAT AGAIN' to close.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 8
+              },
+              "complete_row_count": 13,
+              "text": "Ta be L. \\ = MU bani b ‘ i- AD = = - , — ,.\n\n/ f\n\neS - SEE U [Cr egaegeare i Borders 4 — >,\n\n——\n\n+ x *F +* Axx * + es a Mish 44 LG na Ree a FF aM \\ —————— ee\n\npl Z é $600 Billion 50,000 jobs ‘t 79 U.S. — factories q Vat’ ae } * os suppliers and Oo rs in all 50 states\n\n= * = LS = Se\n\n. ¥ MAKING AMERI GREAT AGAIN"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 56.533333,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "empty-transcript",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A vertical (9:16) montage set to music titled '365 Days of President Donald J. Trump' with animated text callouts. Fast cuts move between Trump seated before a row of world flags ('STRONG GLOBAL RELATIONSHIPS'), color-graded Marines on a wire obstacle, Trump walking through a flag-draped Rose Garden, a White House event captioned 'No Men In Women's SPORTS,' and a fireworks shot reading 'MAKING AMERICA GREAT AGAIN.' There is no speech; the audio is a music bed.  [0:05] Trump seated at a table in front of a row of world flags (German, Italian, Ukrainian, UK); large blue animated text overlay 'STRONG GLOBAL RELATIONSHIPS.' No talking (music bed).  [0:17] Color-graded shot of US Marines in helmets and packs working a concertina-razor-wire obstacle in the dirt.  [0:28] Trump in a long dark overcoat walking across a stage in the White House Rose Garden, flanked by American flags and tulips; slow-motion.  [0:39] Interior White House hallway with chandelier and flags as a group walks toward camera down a red carpet; yellow animated text 'No Men In Women's SPORTS.'  [0:50] Back-of-head shot of Trump and a woman watching a wall of fireworks/lights; centered serif text 'MAKING AMERICA GREAT AGAIN' to close.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ]
+      },
+      "engagement": {
+        "likes": 42094,
+        "retweets": 9266,
+        "quotes": 874,
+        "views": 2413095
       }
     },
     {
