@@ -306,6 +306,8 @@ function normalizeItem(raw, ref, metadata, index) {
     confidence: stringValue(raw.confidence),
     basis: stringValue(raw.inclusion_basis || raw.basis || raw.bucket),
     score: numberValue(raw.score || raw.priority),
+    preferenceScore: numberValue(raw.preference_score),
+    preferenceCategories: arrayValues(raw.preference_categories),
     readiness: raw.readiness || {},
     media,
     evidenceSummary: stringValue(
@@ -316,7 +318,12 @@ function normalizeItem(raw, ref, metadata, index) {
         raw.summary
     ),
     notableText: stringValue(evidence.notable_text || raw.notable_text),
-    reasons: unique([...arrayValues(evidence.reasons), ...arrayValues(raw.reasons)]),
+    reasons: unique([
+      ...arrayValues(evidence.preference_reasons),
+      ...arrayValues(raw.preference_reasons),
+      ...arrayValues(evidence.reasons),
+      ...arrayValues(raw.reasons),
+    ]),
     sourceSidecars: unique([
       ...arrayValues(evidence.source_sidecars),
       ...arrayValues(raw.source_rows),
@@ -690,6 +697,11 @@ function renderDetails(item) {
   );
   addMeta('Date', formatDate(item.postedAt));
   addMeta('Confidence', item.confidence || item.reviewState || 'Unknown');
+  addMeta('Preference', item.preferenceScore ? formatNumber(item.preferenceScore) : 'Unknown');
+  addMeta(
+    'Category',
+    item.preferenceCategories.length ? item.preferenceCategories.join(' / ') : 'Unknown'
+  );
   addMeta('Score', item.score ? formatNumber(item.score) : 'Unknown');
   addMeta('Basis', item.basis || 'Unknown');
   addMeta('Ready', readinessLabel(item));

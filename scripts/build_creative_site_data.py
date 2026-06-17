@@ -178,6 +178,130 @@ LOW_VALUE_EXCLUSION_RULES = [
     ("apprehension-notice-or-routine-card", LOW_VALUE_APPREHENSION_NOTICE_RE),
     ("routine-static-card", LOW_VALUE_ROUTINE_STATIC_CARD_RE),
 ]
+PREFERENCE_HIGH_CONFIDENCE_SCORE = 60
+PREFERENCE_CANDIDATE_SCORE = 28
+PREFERENCE_RULES = [
+    (
+        "spectacle:asmr-deportation",
+        60,
+        re.compile(
+            r"\b(?:asmr|sounds? of chains?|ratcheting handcuffs?|footsteps on a tarmac)\b",
+            re.I,
+        ),
+    ),
+    (
+        "spectacle:holiday-or-celebration",
+        34,
+        re.compile(
+            r"\b(?:christmas|merry christmas|cinco de mayo|holiday|celebrat(?:e|ion)|"
+            r"hearts grow|snow-covered|falling snow|thanksgiving|halloween)\b",
+            re.I,
+        ),
+    ),
+    (
+        "spectacle:gamified-deportation",
+        42,
+        re.compile(
+            r"\b(?:tinder|swiped right|it's a match|dating[- ]app|gamif(?:y|ied)|"
+            r"first[- ]class ticket|souvenirs|exit bonus|free flight|"
+            r"free ticket home|free ticket|receive \$?2,600|paid \$?2,600|"
+            r"\$?3,000 for your family)\b",
+            re.I,
+        ),
+    ),
+    (
+        "policy:self-deportation-ad",
+        26,
+        re.compile(
+            r"\b(?:self[- ]deport|cbp home|remigrate|homesick|free ticket home|"
+            r"free ticket|leave now|leave on your own terms|avoid the deportation flight|"
+            r"go home comfortably|i'm ready to leave|download the cbp home app)\b",
+            re.I,
+        ),
+    ),
+    (
+        "aesthetic:ai-synthetic-propaganda",
+        36,
+        re.compile(
+            r"\b(?:ai[- ]generated|synthetic|cgi|pixel[- ]art|photorealistic ai|"
+            r"digitally composited|generated image|ai[- ]illustrated|painted or ai|"
+            r"illustrated poster)\b",
+            re.I,
+        ),
+    ),
+    (
+        "aesthetic:nostalgia-americana",
+        32,
+        re.compile(
+            r"\b(?:wpa|art deco|art nouveau|mid[- ]20th[- ]century|vintage|"
+            r"nostalgic|american dream|america first|american workers|"
+            r"native-born workers|project firewall|statue of liberty(?:'s head|"
+            r"[^.\n]{0,80}(?:misty|background|harbor|sky))|church pew|"
+            r"stained[- ]glass|harold anderson|period tones|steamship|"
+            r"ellis island)\b",
+            re.I,
+        ),
+    ),
+    (
+        "aesthetic:dystopian-surreal",
+        35,
+        re.compile(
+            r"\b(?:mirthnuke|dystopian|surreal|gothic|vhs|glitch|neon|glowing|"
+            r"explosion blooming|night-lit earth|trailer[- ]style|war[- ]movie)\b",
+            re.I,
+        ),
+    ),
+    (
+        "editorialized:annotated-news-crime",
+        38,
+        re.compile(
+            r"\b(?:struck through|hand[- ]drawn red line|redline|blatant omission|"
+            r"shame on|red italic|dangerous repeat offenders|red annotation|"
+            r"words? [^.\n]{0,80}"
+            r"struck through)\b",
+            re.I,
+        ),
+    ),
+    (
+        "editorialized:dramatic-crime-composite",
+        35,
+        re.compile(
+            r"\b(?:darkened background photo[^.\n]{0,160}(?:booking|inset|arrested)|"
+            r"inset[^.\n]{0,120}booking photo|red rectangle[^.\n]{0,80}arrested|"
+            r"twice released|hammer in broad daylight|guilty)\b",
+            re.I,
+        ),
+    ),
+    (
+        "form:novel-interface-or-ticket",
+        18,
+        re.compile(
+            r"\b(?:boarding pass|airline ticket|ticket stub|smartphone|phone screen|"
+            r"app screen|profile card|mockups?|marquee[- ]bulb|dating[- ]app)\b",
+            re.I,
+        ),
+    ),
+    (
+        "spectacle:brutality-normalized",
+        24,
+        re.compile(
+            r"\b(?:deportation flight|shackled[^.\n]{0,120}airstairs|"
+            r"airstairs[^.\n]{0,120}chain|handcuffed[^.\n]{0,120}"
+            r"(?:bus|plane|aircraft)|chains?[^.\n]{0,120}(?:music|flight|tarmac))\b",
+            re.I,
+        ),
+    ),
+    (
+        "spectacle:militarized-power-showreel",
+        32,
+        re.compile(
+            r"\b(?:bearcat|bortac|gold hsi badge|black pistol|"
+            r"busy year[^.\n]{0,120}work is just getting started|"
+            r"1,000\+ signed partnerships)\b",
+            re.I,
+        ),
+    ),
+]
 
 
 def now_iso() -> str:
@@ -290,14 +414,77 @@ def item_review_blob(item: dict[str, Any]) -> str:
     )
 
 
-def low_value_review_exclusion(item: dict[str, Any]) -> str | None:
+def preference_profile(item: dict[str, Any]) -> dict[str, Any]:
     blob = item_review_blob(item)
-    if STRONG_CREATIVE_REVIEW_RE.search(blob):
+    categories: list[str] = []
+    reasons: list[str] = []
+    score = 0
+
+    def add(category: str, weight: int, reason: str) -> None:
+        nonlocal score
+        if category not in categories:
+            categories.append(category)
+            score += weight
+        reasons.append(reason)
+
+    for category, weight, pattern in PREFERENCE_RULES:
+        match = pattern.search(blob)
+        if match:
+            add(category, weight, f"{category}: {match.group(0)}")
+
+    tags = set(str(tag) for tag in item.get("tags") or [])
+    forms = set(str(form) for form in item.get("creative_forms") or [])
+    if "media:ai-generated" in tags and "aesthetic:ai-synthetic-propaganda" not in categories:
+        add("aesthetic:ai-synthetic-propaganda", 36, "media:ai-generated tag")
+    if "ai-or-synthetic" in forms and "aesthetic:ai-synthetic-propaganda" not in categories:
+        add("aesthetic:ai-synthetic-propaganda", 32, "ai-or-synthetic form")
+    if {"policy:cbp-home", "action:self-deportation"}.intersection(tags):
+        if "policy:self-deportation-ad" not in categories:
+            add("policy:self-deportation-ad", 36, "CBP Home/self-deportation tag")
+    if "genre:dystopian" in tags and "aesthetic:dystopian-surreal" not in categories:
+        add("aesthetic:dystopian-surreal", 32, "genre:dystopian tag")
+
+    has_video = any(str((media or {}).get("type")) == "video" for media in item.get("media") or [])
+    if score and has_video and {"video:produced", "review:produced-video"}.intersection(tags):
+        add("medium:produced-video-with-preference-signal", 6, "produced video with preference signal")
+    if score and REAL_ENFORCEMENT_RE.search(blob):
+        add("subject:enforcement-linked", 5, "enforcement/detainee subject plus preference signal")
+
+    return {
+        "score": score,
+        "categories": sorted(categories),
+        "reasons": reasons,
+    }
+
+
+def apply_preference_profile(item: dict[str, Any]) -> None:
+    profile = preference_profile(item)
+    score = int(profile["score"])
+    item["preference_score"] = score
+    item["preference_categories"] = profile["categories"]
+    evidence = item.get("evidence")
+    if isinstance(evidence, dict):
+        evidence["preference_reasons"] = profile["reasons"]
+    if item.get("era") == "2016_2020":
+        item["queue"] = "historical_2016_2020"
+        return
+    if score >= PREFERENCE_HIGH_CONFIDENCE_SCORE:
+        item["queue"] = "high_confidence"
+        item["confidence"] = "high"
+    elif score >= PREFERENCE_CANDIDATE_SCORE:
+        item["queue"] = "candidates"
+        if item.get("confidence") == "low":
+            item["confidence"] = "medium"
+
+
+def low_value_review_exclusion(item: dict[str, Any]) -> str | None:
+    if int(item.get("preference_score") or 0) >= PREFERENCE_CANDIDATE_SCORE:
         return None
+    blob = item_review_blob(item)
     for reason, pattern in LOW_VALUE_EXCLUSION_RULES:
         if pattern.search(blob):
             return reason
-    return None
+    return "outside-revealed-preference"
 
 
 def low_value_reason_counts(items: list[dict[str, Any]]) -> dict[str, int]:
@@ -855,6 +1042,7 @@ def sort_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
         key=lambda item: (
             item.get("era") != "2025_plus",
             item.get("queue") != "high_confidence",
+            -int(item.get("preference_score") or 0),
             -int(item.get("score") or 0),
             -int((item.get("engagement") or {}).get("likes") or 0)
             - int((item.get("engagement") or {}).get("retweets") or 0),
@@ -875,6 +1063,9 @@ def queue_payload(
 ) -> dict[str, Any]:
     counts = Counter(item["inclusion_basis"] for item in items)
     accounts = Counter(item["account"]["handle"] for item in items)
+    preference_categories = Counter(
+        category for item in items for category in item.get("preference_categories") or []
+    )
     return {
         "metadata": {
             "queue": queue,
@@ -887,12 +1078,12 @@ def queue_payload(
             "review_scope_excluded_reasons": excluded_reasons,
             "all_items_ready": all(item["readiness"]["ready"] for item in items),
             "basis_counts": dict(sorted(counts.items())),
+            "preference_category_counts": dict(preference_categories.most_common()),
             "top_accounts": dict(accounts.most_common(12)),
             "review_actions": ["yes", "no", "superlike", "back"],
             "inclusion_rules": [
-                "wholly creative media object",
-                "or real enforcement/detainee/deportation footage used with creative treatment",
-                "exclude Trump-post screenshots, news images, apprehension notices, and routine static cards",
+                "prioritize aestheticized enforcement propaganda: spectacle, holiday/gamified treatment, ASMR, self-deportation ads, AI/nostalgic propaganda, and editorialized crime/news composites",
+                "de-prioritize generic posters, routine PR montages, statistics cards, plain news screenshots, plain Trump-post screenshots, and bare apprehension notices",
             ],
             "readiness_rules": [
                 "archived GitHub release media required",
@@ -1087,7 +1278,10 @@ def main() -> int:
         manual_observations=manual_observations,
         existing_tweet_ids={key.split(":", 1)[0] for key in curated},
     )
-    all_items = sort_items(list(curated.values()) + list(computed.values()))
+    all_items = list(curated.values()) + list(computed.values())
+    for item in all_items:
+        apply_preference_profile(item)
+    all_items = sort_items(all_items)
     review_items: list[dict[str, Any]] = []
     excluded_items: list[dict[str, Any]] = []
     for item in all_items:
@@ -1143,6 +1337,16 @@ def main() -> int:
                 "not_ready_count": len(not_ready),
                 "review_scope_excluded_count": len(excluded_items),
                 "review_scope_excluded_reasons": excluded_reasons,
+                "preference_profile": {
+                    "high_confidence_score": PREFERENCE_HIGH_CONFIDENCE_SCORE,
+                    "candidate_score": PREFERENCE_CANDIDATE_SCORE,
+                    "principles": [
+                        "state enforcement rendered as spectacle, entertainment, ad, lifestyle, holiday, or joke",
+                        "surreal, AI-generated, nostalgic, dystopian, or otherwise aestheticized propaganda",
+                        "self-deportation / CBP Home incentives and app-like gamification",
+                        "editorialized crime or news composites, including redline/omission graphics and dramatic arrest composites",
+                    ],
+                },
                 "datasets": {
                     queue: filename for queue, (filename, _items) in review_datasets.items()
                 },
