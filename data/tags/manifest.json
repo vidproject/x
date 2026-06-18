@@ -24,11 +24,9 @@
       }
     },
     "image_ocr": {
-      "analyzed": 143,
-      "attempted": 143,
-      "cache_hits": 1420,
+      "cache_hits": 1563,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-18T12:46:52Z",
+      "generated_at": "2026-06-18T15:59:20Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.3.4",
       "row_count": 20665,
@@ -37,27 +35,21 @@
         "fetch-failed": 1,
         "no-text": 5525,
         "ok": 15139
-      },
-      "status_no-text": 1,
-      "status_ok": 142
+      }
     },
     "keyframes": {
-      "attempted": 59,
-      "cache_hits": 151,
+      "cache_hits": 211,
       "cost_estimate_usd": 0.0,
-      "extracted": 59,
       "extractor_version": "ffmpeg-keyframes-v2",
       "frame_count": 25364,
-      "generated_at": "2026-06-18T12:44:02Z",
-      "intra_run_dedup": 1,
+      "generated_at": "2026-06-18T15:59:17Z",
       "row_count": 4962,
       "rows": 4962,
       "status_counts": {
         "fetch-failed": 1,
         "ok": 4959,
         "video-too-large": 2
-      },
-      "status_ok": 59
+      }
     },
     "lexical": {
       "generated_at": "2026-06-18T12:47:32Z",
