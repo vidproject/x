@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T152455Z-d5919b34-DFONewYork",
+  "account_handle": "DFONewYork",
+  "captured_at": "2026-06-17T15:25:15.668Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBP%20since%3A2026-04-01%20until%3A2026-04-08%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2039659202398883937",
+      "account_handle": "DFONewYork",
+      "account_id": "1212043883627966465",
+      "posted_at": "2026-04-02T11:00:23.000Z",
+      "first_captured_at": "2026-06-17T15:25:04.634Z",
+      "last_seen_at": "2026-06-17T15:25:04.634Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DFONewYork/status/2039659202398883937",
+      "tweet_type": "original",
+      "conversation_id": "2039659202398883937",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Once upon a time, @CBP officers opened a shipment labeled as children’s picture books and found 27 kilograms of smuggled duck feet inside! Although this was not the storybook ending that we were expecting, protecting our borders, and our agriculture always is! https://t.co/0okwhMY7sx",
+      "text_resolved": "Once upon a time, @CBP officers opened a shipment labeled as children’s picture books and found 27 kilograms of smuggled duck feet inside! Although this was not the storybook ending that we were expecting, protecting our borders, and our agriculture always is! https://t.co/0okwhMY7sx",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "CBP"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2039659200482033664",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HE5TPHuWwAAQ1Mi.png",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 273,
+          "height": 194,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_2039659200284962816",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HE5TPG_XsAABAs1.png",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 264,
+          "height": 196,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 28,
+      "retweet_count": 3,
+      "reply_count": 6,
+      "quote_count": 2,
+      "view_count": 6016,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T15:25:04.634Z",
+          "likes": 28,
+          "retweets": 3,
+          "replies": 6,
+          "quotes": 2,
+          "views": 6016,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "Director of Field Operations, Francis J. Russo",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1618387374567727105/QPfzSFst_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "@CBP Director Field Operations New York Field Office. (@CBPNewYorkCity, @JFKairport, @EWRairport, @PortNYNJ, and the Pharmaceutical, Health, & Chemicals Center)",
+        "location": null,
+        "url": "https://t.co/U3p4fRAUrU",
+        "followers_count": 5226,
+        "friends_count": 942,
+        "statuses_count": 2899,
+        "account_created_at": "2019-12-31T16:12:46.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T152455Z-d5919b34",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T152455Z-d5919b34.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T152455Z-d5919b34.jsonl",
+    "source_handle": "CBP"
+  }
+}

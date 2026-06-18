@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T144036Z-334c41d7-EROWashington",
+  "account_handle": "EROWashington",
+  "captured_at": "2026-06-17T14:40:50.715Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AICEgov%20since%3A2025-03-12%20until%3A2025-03-19%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1900350903208821162",
+      "account_handle": "EROWashington",
+      "account_id": "1303386508326559747",
+      "posted_at": "2025-03-14T00:58:56.000Z",
+      "first_captured_at": "2026-06-17T14:40:39.503Z",
+      "last_seen_at": "2026-06-17T14:40:39.503Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/EROWashington/status/1900350903208821162",
+      "tweet_type": "original",
+      "conversation_id": "1900350903208821162",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "ICE @EROWashington and law enforcement partners arrest more than 200 alien offenders during enhanced gang operation in Northern Virginia \nLink: https://t.co/I5fZAooU8s https://t.co/X5qbNBwSgD",
+      "text_resolved": "ICE @EROWashington and law enforcement partners arrest more than 200 alien offenders during enhanced gang operation in Northern Virginia \nLink: https://www.ice.gov/news/releases/ice-law-enforcement-partners-arrest-more-200-alien-offenders-during-enhanced-gang https://t.co/X5qbNBwSgD",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "EROWashington"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/I5fZAooU8s",
+          "expanded": "https://www.ice.gov/news/releases/ice-law-enforcement-partners-arrest-more-200-alien-offenders-during-enhanced-gang",
+          "display": "ice.gov/news/releases/…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1900350878596337664",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Gl9nDjtWEAA2Kk9.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1336,
+          "height": 686,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 131,
+      "retweet_count": 38,
+      "reply_count": 11,
+      "quote_count": 4,
+      "view_count": 75609,
+      "bookmark_count": 7,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:40:39.503Z",
+          "likes": 131,
+          "retweets": 38,
+          "replies": 11,
+          "quotes": 4,
+          "views": 75609,
+          "bookmarks": 7
+        }
+      ],
+      "author": {
+        "display_name": "ICE Washington D.C.",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1912177216655413248/ZZEWAK21_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official account for ICE Washington DC & Virginia field offices to protect the U.S. by enforcing immigration laws to preserve national security & public safety.",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/XRyvEk5bDD",
+        "followers_count": 6453,
+        "friends_count": 58,
+        "statuses_count": 384,
+        "account_created_at": "2020-09-08T17:35:40.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T144036Z-334c41d7",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T144036Z-334c41d7.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T144036Z-334c41d7.jsonl",
+    "source_handle": "ICEgov"
+  }
+}

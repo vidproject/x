@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T204254Z-f9736ae8-NewsNation",
+  "account_handle": "NewsNation",
+  "captured_at": "2026-06-17T20:47:05.753Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCG%20since%3A2025-02-26%20until%3A2025-03-05%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1896019654520242290",
+      "account_handle": "NewsNation",
+      "account_id": "1217198127591186437",
+      "posted_at": "2025-03-02T02:08:06.000Z",
+      "first_captured_at": "2026-06-17T20:42:59.396Z",
+      "last_seen_at": "2026-06-17T20:42:59.396Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/NewsNation/status/1896019654520242290",
+      "tweet_type": "original",
+      "conversation_id": "1896019654520242290",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "While numbers at the southern border are declining, non-land encounters are on the rise. In response, the Coast Guard is increasing patrols. NewsNation’s @BrianEntin spent six hours in the air with them over the Florida coast. More: https://t.co/yH153QEYem https://t.co/wtEYcLJCaF",
+      "text_resolved": "While numbers at the southern border are declining, non-land encounters are on the rise. In response, the Coast Guard is increasing patrols. NewsNation’s @BrianEntin spent six hours in the air with them over the Florida coast. More: http://trib.al/DO4mFvQ https://t.co/wtEYcLJCaF",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.akta.tech\" rel=\"nofollow\">Akta Live Cloud</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "BrianEntin"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/yH153QEYem",
+          "expanded": "http://trib.al/DO4mFvQ",
+          "display": "trib.al/DO4mFvQ"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1896019139019378688",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1896019139019378688/vid/avc1/1280x720/x-seaZ-U5faBZ7jx.mp4?tag=16",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 253.553,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 240,
+      "retweet_count": 44,
+      "reply_count": 12,
+      "quote_count": 5,
+      "view_count": 221977,
+      "bookmark_count": 11,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T20:42:59.396Z",
+          "likes": 240,
+          "retweets": 44,
+          "replies": 12,
+          "quotes": 5,
+          "views": 221977,
+          "bookmarks": 11
+        }
+      ],
+      "author": {
+        "display_name": "NewsNation",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1790387697258770432/vx0E666D_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": "America’s source for fact-based, unbiased news for all Americans.\nFind us: https://t.co/OfH5oBmxDg\nPartnership inquiries: business@newsnationnow.com",
+        "location": "United States",
+        "url": "https://t.co/bcUlYrAXBw",
+        "followers_count": 309628,
+        "friends_count": 239,
+        "statuses_count": 121139,
+        "account_created_at": "2020-01-14T21:34:36.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T204254Z-f9736ae8",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T204254Z-f9736ae8.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T204254Z-f9736ae8.jsonl",
+    "source_handle": "USCG"
+  }
+}

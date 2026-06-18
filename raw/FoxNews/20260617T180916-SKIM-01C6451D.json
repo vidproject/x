@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T180902Z-f175654b-FoxNews",
+  "account_handle": "FoxNews",
+  "captured_at": "2026-06-17T18:09:16.430Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AStephenM%20since%3A2025-04-09%20until%3A2025-04-16%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1911897856748707880",
+      "account_handle": "FoxNews",
+      "account_id": "1367531",
+      "posted_at": "2025-04-14T21:42:25.000Z",
+      "first_captured_at": "2026-06-17T18:09:05.359Z",
+      "last_seen_at": "2026-06-17T18:09:05.359Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/FoxNews/status/1911897856748707880",
+      "tweet_type": "original",
+      "conversation_id": "1911897856748707880",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Rachel Morin murder: Jury finds illegal immigrant guilty of killing jogger\nhttps://t.co/7IpHLpNLzF",
+      "text_resolved": "Rachel Morin murder: Jury finds illegal immigrant guilty of killing jogger\nhttps://trib.al/rAOaXKu",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/7IpHLpNLzF",
+          "expanded": "https://trib.al/rAOaXKu",
+          "display": "trib.al/rAOaXKu"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/7IpHLpNLzF",
+        "vendor_url": "foxnews.com",
+        "title": "Rachel Morin murder: Jury finds illegal immigrant guilty of killing jogger",
+        "description": "Maryland jurors on Monday convicted Victor Antonio Martinez-Hernandez, the Salvadoran migrant accused of raping and murdering Rachel Morin in 2023.",
+        "image_url": "https://pbs.twimg.com/card_img/2065354926235275265/kCaGmjKa?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 1637,
+      "retweet_count": 335,
+      "reply_count": 149,
+      "quote_count": 41,
+      "view_count": 1027419,
+      "bookmark_count": 40,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T18:09:05.359Z",
+          "likes": 1637,
+          "retweets": 335,
+          "replies": 149,
+          "quotes": 41,
+          "views": 1027419,
+          "bookmarks": 40
+        }
+      ],
+      "author": {
+        "display_name": "Fox News",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1988465685639380992/PNFNFL7O_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Stay Ahead. Get Breaking News Here First. Download the App.",
+        "location": "U.S.A.",
+        "url": "https://t.co/ISpW9FcyGB",
+        "followers_count": 29144215,
+        "friends_count": 282,
+        "statuses_count": 702486,
+        "account_created_at": "2007-03-17T19:01:26.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T180902Z-f175654b",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T180902Z-f175654b.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T180902Z-f175654b.jsonl",
+    "source_handle": "StephenM"
+  }
+}

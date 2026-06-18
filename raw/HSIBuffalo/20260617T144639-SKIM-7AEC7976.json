@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T144423Z-c89588a1-HSIBuffalo",
+  "account_handle": "HSIBuffalo",
+  "captured_at": "2026-06-17T14:46:39.533Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AICEgov%20since%3A2025-05-07%20until%3A2025-05-14%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1920887635423252623",
+      "account_handle": "HSIBuffalo",
+      "account_id": "1300798656690429953",
+      "posted_at": "2025-05-09T17:04:35.000Z",
+      "first_captured_at": "2026-06-17T14:44:29.837Z",
+      "last_seen_at": "2026-06-17T14:44:29.837Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/HSIBuffalo/status/1920887635423252623",
+      "tweet_type": "original",
+      "conversation_id": "1920887635423252623",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "ICYMI: An @HSIBuffalo investigation with state &amp; local partners led to the conviction and yesterday's sentencing of a Jamestown, N.Y., man to 210 months in prison for distribution of child pornography. More here: https://t.co/ek5yhgOSuw",
+      "text_resolved": "ICYMI: An @HSIBuffalo investigation with state &amp; local partners led to the conviction and yesterday's sentencing of a Jamestown, N.Y., man to 210 months in prison for distribution of child pornography. More here: https://www.justice.gov/usao-wdny/pr/jamestown-man-going-prison-distributing-child-pornography",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "HSIBuffalo"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/ek5yhgOSuw",
+          "expanded": "https://www.justice.gov/usao-wdny/pr/jamestown-man-going-prison-distributing-child-pornography",
+          "display": "justice.gov/usao-wdny/pr/j…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/ek5yhgOSuw",
+        "vendor_url": "justice.gov",
+        "title": "Jamestown man going to prison for to distributing child pornography",
+        "description": "U.S. Attorney Michael DiGiacomo announced today that Brandon G. Uber, 24, of Jamestown, NY, who was convicted of distribution of child pornography, was sentenced to serve 210 months in prison by U.S....",
+        "image_url": "https://pbs.twimg.com/card_img/2063271416284549122/KL4Mmiyy?format=png&name=orig"
+      },
+      "media": [],
+      "like_count": 39,
+      "retweet_count": 7,
+      "reply_count": 3,
+      "quote_count": 1,
+      "view_count": 27317,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:44:29.837Z",
+          "likes": 39,
+          "retweets": 7,
+          "replies": 3,
+          "quotes": 1,
+          "views": 27317,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "HSI Buffalo",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1691082054648152064/7YY2pf81_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official account for @HSI_HQ field office in western and upstate New York.",
+        "location": null,
+        "url": "https://t.co/wYrnBNV8Ny",
+        "followers_count": 1600,
+        "friends_count": 118,
+        "statuses_count": 331,
+        "account_created_at": "2020-09-01T14:12:29.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T144423Z-c89588a1",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T144423Z-c89588a1.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T144423Z-c89588a1.jsonl",
+    "source_handle": "ICEgov"
+  }
+}

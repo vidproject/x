@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T151154Z-7da58e45-PressSec",
+  "account_handle": "PressSec",
+  "captured_at": "2026-06-17T15:12:13.249Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBP%20since%3A2025-09-10%20until%3A2025-09-17%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1967675356753825953",
+      "account_handle": "PressSec",
+      "account_id": "1879670389057474560",
+      "posted_at": "2025-09-15T19:42:17.000Z",
+      "first_captured_at": "2026-06-17T15:12:03.523Z",
+      "last_seen_at": "2026-06-17T15:12:03.523Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/PressSec/status/1967675356753825953",
+      "tweet_type": "original",
+      "conversation_id": "1967675356753825953",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "\"U.S. Customs and Border Protection is actively seeking dedicated individuals to join its ranks and contribute to safeguarding the nation's borders, enforcing legitimate trade and travel, and protecting the American people.\"\n\nhttps://t.co/WtMU2sdalD",
+      "text_resolved": "\"U.S. Customs and Border Protection is actively seeking dedicated individuals to join its ranks and contribute to safeguarding the nation's borders, enforcing legitimate trade and travel, and protecting the American people.\"\n\nhttps://www.cbp.gov/newsroom/national-media-release/cbp-filling-critical-roles-significant-incentives-available",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/WtMU2sdalD",
+          "expanded": "https://www.cbp.gov/newsroom/national-media-release/cbp-filling-critical-roles-significant-incentives-available",
+          "display": "cbp.gov/newsroom/natio…"
+        }
+      ],
+      "card": {
+        "name": "summary",
+        "card_url": "https://t.co/WtMU2sdalD",
+        "vendor_url": "cbp.gov",
+        "title": "CBP filling critical roles; significant incentives available",
+        "description": "WASHINGTON — U.S. Customs and Border Protection is actively seeking dedicated individuals to join its ranks and contribute to safeguarding the nation's borders, enforcing legitimate trade and travel,...",
+        "image_url": "https://pbs.twimg.com/card_img/2065590319517736960/YEfJKoPA?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 1264,
+      "retweet_count": 271,
+      "reply_count": 106,
+      "quote_count": 3,
+      "view_count": 75928,
+      "bookmark_count": 33,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T15:12:03.523Z",
+          "likes": 1264,
+          "retweets": 271,
+          "replies": 106,
+          "quotes": 3,
+          "views": 75928,
+          "bookmarks": 33
+        }
+      ],
+      "author": {
+        "display_name": "Karoline Leavitt",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1947447846317236225/rChs3LqV_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Assistant to the President and the 36th White House Press Secretary",
+        "location": null,
+        "url": "https://t.co/JCWgfmpm3T",
+        "followers_count": 1944939,
+        "friends_count": 195,
+        "statuses_count": 7927,
+        "account_created_at": "2025-01-15T23:22:04.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T151154Z-7da58e45",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T151154Z-7da58e45.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T151154Z-7da58e45.jsonl",
+    "source_handle": "CBP"
+  }
+}
