@@ -659,27 +659,27 @@
     },
     "news_mentions": {
       "article_count": 279,
-      "article_mentions": 253,
+      "article_mentions": 255,
       "article_sources": [
         "data/news/articles.jsonl"
       ],
-      "candidate_or_mentioned_tweets": 58,
-      "core_tweets_scanned": 21795,
+      "candidate_or_mentioned_tweets": 59,
+      "core_tweets_scanned": 33871,
       "cost_estimate_usd": 0.0,
       "detector": "exact-status-url",
       "detector_version": "news-mentions-v3",
-      "generated_at": "2026-06-14T02:27:40Z",
-      "local_article_mentions": 253,
-      "mentioned_tweets": 58,
+      "generated_at": "2026-06-18T17:05:32Z",
+      "local_article_mentions": 255,
+      "mentioned_tweets": 59,
       "query_export_path": "",
-      "row_count": 58,
-      "rows": 58,
+      "row_count": 59,
+      "rows": 59,
       "status_counts": {
-        "mentioned": 58
+        "mentioned": 59
       },
       "tag_frequency": {
-        "news:covered": 58,
-        "news:mentioned": 58
+        "news:covered": 59,
+        "news:mentioned": 59
       },
       "web_article_mentions": 0,
       "web_tweets_scanned": 100
