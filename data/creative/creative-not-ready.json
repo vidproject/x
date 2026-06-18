@@ -1,17 +1,17 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-06-18T22:38:32Z",
-    "source_commit": "226d9b90",
+    "generated_at": "2026-06-18T23:02:33Z",
+    "source_commit": "20d4711d",
     "item_count": 22,
     "blocker_counts": {
       "missing genuine visual description": 17,
-      "missing archived media asset": 15,
+      "missing archived media asset": 14,
       "missing complete OCR for extracted keyframes": 11,
       "missing extracted video keyframes": 11,
       "missing video thumbnail": 11,
-      "missing photo OCR": 9,
-      "missing photo thumbnail": 9,
+      "missing photo OCR": 8,
+      "missing photo thumbnail": 8,
       "missing audio analysis": 6
     }
   },
@@ -2498,44 +2498,48 @@
       "tags": [
         "crime:fentanyl",
         "crime:narcotics",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "topic:immigration"
       ],
       "media": [
         {
           "media_id": "3_1958620403649175552",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBPAMO/3_1958620403649175552.png",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/5d636b740f490bdc69e95670397b56ac80f13dd9a4c95b50d705a4586a2ef639.jpg",
+          "sha256": "5d636b740f490bdc69e95670397b56ac80f13dd9a4c95b50d705a4586a2ef639",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 440x363; 0.25 MiB; archived; tweet context: Fentanyl Prevention Day: Raising Awareness to Save Lives Today is Fentanyl Prevention Day, a vital opportunity to educate our communities about the dangers of fentanyl and the importance of prevention efforts. 🔹 Key Facts: Fentanyl is a synthetic opioid that...; source URL: https://pbs.twimg.com/media/Gy5q4UFXYAA0UlI.png; archive URL: https://github.com/vidproject/x/releases/download/media-CBPAMO/3_1958620403649175552.png; needs OCR, transcript, or frame-level vision before content claims. Fentanyl Prevention Day: Raising Awareness to Save Lives Today is Fentanyl Prevention Day, a vital opportunity to educate our communities about the dangers of fentanyl and the importance of prevention efforts. 🔹 Key Facts: Fentanyl is a synthetic opioid that is 50-100 times more potent than morphine. In 2024, over 81,000 Americans lost their lives to synthetic opioid overdoses, with fentanyl being the leading cause. Just 2 milligrams of fentanyl—an amount smaller than a grain of rice—can be lethal. Fentanyl is often mixed into counterfeit pills or other drugs, making it difficult to detect. 🔹 What You Can Do: Educate Yourself and Others: Learn the signs of an overdose and how to administer naloxone (Narcan). Spread Awareness: Share this post to inform others about the dangers of fentanyl. Talk to Loved Ones: Open conversations about the risks of drug misuse and the presence of fentanyl in illicit substances. Dispose of Medications Safely: Participate in drug take-back programs to prevent misuse. 🔹 Need Help?:If you or someone you know is struggling with substance use, call the SAMHSA National Helpline at 1-800-662-HELP (4357). This free, confidential, 24/7 helpline provides support, resources, and treatment referrals. Together, we can save lives and protect our communities. Let’s stand united against the fentanyl crisis. #FentanylPreventionDay #StopOverdoses #SaveLives #EndFentanylCrisis",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "PILL@\\"
             },
             "keyframes": {
               "status": null,
@@ -2558,15 +2562,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 440x363; 0.25 MiB; archived; tweet context: Fentanyl Prevention Day: Raising Awareness to Save Lives Today is Fentanyl Prevention Day, a vital opportunity to educate our communities about the dangers of fentanyl and the importance of prevention efforts. 🔹 Key Facts: Fentanyl is a synthetic opioid that...; source URL: https://pbs.twimg.com/media/Gy5q4UFXYAA0UlI.png; archive URL: https://github.com/vidproject/x/releases/download/media-CBPAMO/3_1958620403649175552.png; needs OCR, transcript, or frame-level vision before content claims. Fentanyl Prevention Day: Raising Awareness to Save Lives Today is Fentanyl Prevention Day, a vital opportunity to educate our communities about the dangers of fentanyl and the importance of prevention efforts. 🔹 Key Facts: Fentanyl is a synthetic opioid that is 50-100 times more potent than morphine. In 2024, over 81,000 Americans lost their lives to synthetic opioid overdoses, with fentanyl being the leading cause. Just 2 milligrams of fentanyl—an amount smaller than a grain of rice—can be lethal. Fentanyl is often mixed into counterfeit pills or other drugs, making it difficult to detect. 🔹 What You Can Do: Educate Yourself and Others: Learn the signs of an overdose and how to administer naloxone (Narcan). Spread Awareness: Share this post to inform others about the dangers of fentanyl. Talk to Loved Ones: Open conversations about the risks of drug misuse and the presence of fentanyl in illicit substances. Dispose of Medications Safely: Participate in drug take-back programs to prevent misuse. 🔹 Need Help?:If you or someone you know is struggling with substance use, call the SAMHSA National Helpline at 1-800-662-HELP (4357). This free, confidential, 24/7 helpline provides support, resources, and treatment referrals. Together, we can save lives and protect our communities. Let’s stand united against the fentanyl crisis. #FentanylPreventionDay #StopOverdoses #SaveLives #EndFentanylCrisis",
         "notable_text": "",
         "reasons": [
           "wholly creative media signal"
