@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T004413Z-413b29ec-CDCgov",
+  "account_handle": "CDCgov",
+  "captured_at": "2026-06-14T00:44:31.129Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBPCommissioner%20since%3A2022-01-01%20until%3A2023-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1608216496383168512",
+      "account_handle": "CDCgov",
+      "account_id": "146569971",
+      "posted_at": "2022-12-28T21:41:06.000Z",
+      "first_captured_at": "2026-06-14T00:44:21.120Z",
+      "last_seen_at": "2026-06-14T00:44:21.120Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CDCgov/status/1608216496383168512",
+      "tweet_type": "original",
+      "conversation_id": "1608216496383168512",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Starting Jan 5, 2023: Travelers flying to U.S. from China, or who have been in China in the past 10 days &amp; are flying from certain airports, must show a negative #COVID19 test taken within 2 days before #travel to the US or documentation of recovery. \nhttps://t.co/VSJz2W6kPT https://t.co/J9DujizieA",
+      "text_resolved": "Starting Jan 5, 2023: Travelers flying to U.S. from China, or who have been in China in the past 10 days &amp; are flying from certain airports, must show a negative #COVID19 test taken within 2 days before #travel to the US or documentation of recovery. \nhttps://bit.ly/3GqnSYU https://t.co/J9DujizieA",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://sproutsocial.com\" rel=\"nofollow\">Sprout Social</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "COVID19",
+        "travel"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/VSJz2W6kPT",
+          "expanded": "https://bit.ly/3GqnSYU",
+          "display": "bit.ly/3GqnSYU"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1608216475159912451",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/FlGIXQvWYAMhPqk.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 676,
+          "alt_text": "Illustration of an airplane circling a globe that is half covered in the American flag. Text says, International Travelers. U.S. travel requirements are changing.",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 632,
+      "retweet_count": 293,
+      "reply_count": 371,
+      "quote_count": 196,
+      "view_count": 916873,
+      "bookmark_count": 25,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T00:44:21.120Z",
+          "likes": 632,
+          "retweets": 293,
+          "replies": 371,
+          "quotes": 196,
+          "views": 916873,
+          "bookmarks": 25
+        }
+      ],
+      "author": {
+        "display_name": "CDC",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1775519665390772225/clcxou-0_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "CDC's official source for daily credible health & safety updates from Centers for Disease Control & Prevention. Privacy/comment policy: https://t.co/9LbZmE3Wzg",
+        "location": "Atlanta, GA",
+        "url": "https://t.co/yUmF6qOfT7",
+        "followers_count": 5507971,
+        "friends_count": 244,
+        "statuses_count": 37700,
+        "account_created_at": "2010-05-21T19:40:40.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T004413Z-413b29ec",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004413Z-413b29ec.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004413Z-413b29ec.jsonl",
+    "source_handle": "CBPCommissioner"
+  }
+}

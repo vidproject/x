@@ -1,0 +1,25 @@
+{
+  "name": "imm-archive-tooling",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc -p extension/tsconfig.json --noEmit",
+    "skim:x": "node tools/x-skim.mjs",
+    "build:extension": "python scripts/build_extension.py",
+    "build:extension:chrome": "python scripts/build_extension.py --browser chrome"
+  },
+  "devDependencies": {
+    "@types/firefox-webext-browser": "^120.0.4",
+    "@typescript-eslint/eslint-plugin": "^8.13.0",
+    "@typescript-eslint/parser": "^8.13.0",
+    "esbuild": "^0.24.2",
+    "eslint": "^9.14.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3"
+  }
+}

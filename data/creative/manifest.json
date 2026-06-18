@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "generated_at": "2026-06-18T16:05:12Z",
+    "source_commit": "9ee22bfe",
+    "source_candidate_count": 1040,
+    "review_scope_candidate_count": 265,
+    "ready_count": 258,
+    "not_ready_count": 7,
+    "review_scope_excluded_count": 775,
+    "review_scope_excluded_reasons": {
+      "apprehension-notice-or-routine-card": 192,
+      "news-image-or-clip": 46,
+      "outside-revealed-preference": 478,
+      "routine-static-card": 29,
+      "trump-post-screenshot": 30
+    },
+    "preference_profile": {
+      "high_confidence_score": 60,
+      "candidate_score": 28,
+      "principles": [
+        "state enforcement rendered as spectacle, entertainment, ad, lifestyle, holiday, or joke",
+        "surreal, AI-generated, nostalgic, dystopian, or otherwise aestheticized propaganda",
+        "self-deportation / CBP Home incentives and app-like gamification",
+        "editorialized crime or news composites, including redline/omission graphics and dramatic arrest composites"
+      ]
+    },
+    "datasets": {
+      "high_confidence": "creative-high-confidence.json",
+      "candidates": "creative-candidates.json",
+      "historical_2016_2020": "creative-2016-2020.json"
+    },
+    "additional_datasets": {
+      "2025_plus": "creative-2025-plus.json"
+    },
+    "not_ready": "creative-not-ready.json",
+    "default_queue": "high_confidence",
+    "review_actions": [
+      "yes",
+      "no",
+      "superlike",
+      "back"
+    ]
+  }
+}

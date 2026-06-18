@@ -1,0 +1,63 @@
+name: Build X Login Pinger APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/x-login-pinger.yml'
+      - 'tools/x-login-pinger/**'
+  pull_request:
+    paths:
+      - '.github/workflows/x-login-pinger.yml'
+      - 'tools/x-login-pinger/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: sdkmanager 'platforms;android-34' 'build-tools;34.0.0'
+
+      - name: Build debug APK
+        working-directory: tools/x-login-pinger
+        run: |
+          chmod +x ./gradlew
+          ./gradlew --no-daemon clean testDebugUnitTest assembleDebug
+          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/x-login-pinger-debug.apk
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: x-login-pinger-debug-apk
+          path: tools/x-login-pinger/app/build/outputs/apk/debug/x-login-pinger-debug.apk
+          if-no-files-found: error
+
+      - name: Publish direct APK release asset
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="x-login-pinger-${GITHUB_RUN_NUMBER}"
+          apk="tools/x-login-pinger/app/build/outputs/apk/debug/x-login-pinger-debug.apk"
+          notes="Direct APK download for side-loading. GitHub Actions artifacts are ZIP files; on Android, install this .apk release asset instead of tapping the artifact ZIP."
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" "$apk#x-login-pinger-debug.apk" --clobber
+          else
+            gh release create "$tag" "$apk#x-login-pinger-debug.apk" --target "$GITHUB_SHA" --title "X Login Pinger ${GITHUB_RUN_NUMBER}" --notes "$notes"
+          fi

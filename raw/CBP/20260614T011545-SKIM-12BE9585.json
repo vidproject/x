@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T011524Z-5f335f3a-CBP",
+  "account_handle": "CBP",
+  "captured_at": "2026-06-14T01:15:45.586Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AERONewark%20since%3A2024-01-01%20until%3A2025-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1828198310542254346",
+      "account_handle": "CBP",
+      "account_id": "16613128",
+      "posted_at": "2024-08-26T22:30:18.000Z",
+      "first_captured_at": "2026-06-14T01:15:33.893Z",
+      "last_seen_at": "2026-06-14T01:15:33.893Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBP/status/1828198310542254346",
+      "tweet_type": "original",
+      "conversation_id": "1828198310542254346",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "The women of CBP protect America every day: on land, in the air, and at sea.\n\nOn #WomensEqualityDay, and every single day, we are proud of the dedicated and resilient women that contribute to our CBP mission and keep our nation safe. https://t.co/4WverlS1rr",
+      "text_resolved": "The women of CBP protect America every day: on land, in the air, and at sea.\n\nOn #WomensEqualityDay, and every single day, we are proud of the dedicated and resilient women that contribute to our CBP mission and keep our nation safe. https://t.co/4WverlS1rr",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "WomensEqualityDay"
+      ],
+      "mentions": [],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_1828197546281336832",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/1828197546281336832/pu/vid/avc1/720x1280/0Q-iEtPjQRX56yVJ.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 36.069,
+          "width": 1080,
+          "height": 1920,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 123,
+      "retweet_count": 28,
+      "reply_count": 15,
+      "quote_count": 2,
+      "view_count": 13415,
+      "bookmark_count": 3,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:15:33.893Z",
+          "likes": 123,
+          "retweets": 28,
+          "replies": 15,
+          "quotes": 2,
+          "views": 13415,
+          "bookmarks": 3
+        }
+      ],
+      "author": {
+        "display_name": "CBP",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1355124069092515842/hC7JdgT-_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "The official page of United States Customs & Border Protection. https://t.co/dOTgpZSOKF",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/xTvN5KaiC5",
+        "followers_count": 593703,
+        "friends_count": 434,
+        "statuses_count": 24958,
+        "account_created_at": "2008-10-06T12:45:44.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T011524Z-5f335f3a",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T011524Z-5f335f3a.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T011524Z-5f335f3a.jsonl",
+    "source_handle": "ERONewark"
+  }
+}

@@ -1,0 +1,810 @@
+# Per-tweet tag taxonomy.
+#
+# Tags are an annotation layer over the canonical capture data. They
+# live in sidecar parquets under `data/tags/` (joined into the viewer
+# at load time on tweet_id), never as new columns on the per-account
+# parquets. The canonical parquet remains the honest record of what X
+# served; tagging is downstream and reversible. See docs/TAGGING.md
+# for the architecture and `scripts/tag_lexical.py` for the regex
+# implementation of Layer 1.
+#
+# Tag names are namespaced: `<namespace>:<slug>`. The namespace is the
+# over-category; the slug is the narrow chunk. The viewer colors pills
+# by namespace.
+#
+# Each tag declares a `classification`:
+#
+#   deterministic — Settable from a hard rule (regex, structural field,
+#                   composite of other deterministic tags). The
+#                   auto-tagger writes these directly without a
+#                   `tentative` flag.
+#   tentative     — Requires human judgement or a vision model; until
+#                   the relevant tagger lands, the auto-tagger emits
+#                   these with `tentative: true` (or leaves them unset).
+#   manual        — Auto-tagging not attempted; only humans set these.
+#
+# `tentative: true` on a stored tag entry means "best guess, subject to
+# correction" regardless of the taxonomy's declared classification.
+# Anyone can open a GitHub Discussion to suggest a change; see
+# docs/TAGGING.md for the protocol.
+#
+# Open-ended namespaces (country, origin, crime, state, agency, speaker) are
+# extracted by pattern and validated against fixed vocabularies; their
+# slug list is documented inline below rather than enumerated here.
+
+tags:
+  # ===== subject:* — who/what the post features =====================
+  subject:detainee:
+    description: Post features named or unnamed individuals in custody.
+    classification: tentative
+  subject:angel-family:
+    description: >-
+      Post explicitly uses the "Angel Family" framing or names a family
+      in that program.
+    classification: deterministic
+  # subject:crime-victim removed: no emitter in any script (only referenced
+  # as an "if already present" guard in tag_lexical.py intrinsic-topic logic).
+  # Re-add with a real emitter when a detector is written.
+  subject:native-born-citizen:
+    description: >-
+      Post explicitly references native-born U.S. citizens or Americans
+      as a class.
+    classification: deterministic
+  subject:cbp-home-app:
+    description: Post explicitly references the CBP Home app or CBP Home program.
+    classification: deterministic
+  subject:celebrity:
+    description: >-
+      Post explicitly references a named entertainer, influencer, model,
+      athlete, or other non-government celebrity/public persona. Emitted by
+      PATTERN_SUBJECT_CELEBRITY in tag_lexical.py (forward-looking: fires
+      more broadly once OCR/transcripts are present).
+    classification: deterministic
+  subject:enforcement-op:
+    description: >-
+      Post depicts an arrest, raid, deportation flight, or other operation.
+    classification: tentative
+  subject:official:
+    description: >-
+      Post centers on a named federal official (press conf, swearing-in,
+      etc.).
+    classification: tentative
+
+  # ===== genre:* — produced-video genre / aesthetic =================
+  genre:music-video:
+    description: >-
+      Produced video paced around a music track or presented as a music video.
+      (forward-looking: fires once OCR/transcripts/news data is present;
+      also emitted directly by tag_lexical.py, describe_media.py, and
+      build_core_video_audit.py on explicit cues)
+    classification: tentative
+  genre:psa:
+    description: Produced public-service announcement or public-information spot.
+    classification: tentative
+  genre:advertisement:
+    description: Produced ad, campaign spot, recruitment spot, or commercial-style video.
+    classification: tentative
+  genre:recruitment:
+    description: Produced recruitment or hiring spot for DHS, ICE, CBP, HSI, or related service.
+    classification: tentative
+  genre:war-movie:
+    description: Produced video using war-movie, battle, trailer, or military-cinematic style.
+    classification: tentative
+  genre:utopian:
+    description: Produced video using aspirational, golden-age, bright-future, or idealized imagery.
+    classification: tentative
+  genre:dystopian:
+    description: Produced video using bleak, apocalyptic, hellscape, or dark-future imagery.
+    classification: tentative
+  genre:lineup:
+    description: >-
+      The templated mugshot-reply form: tweet_type=reply AND
+      theme:criminal AND exactly one photo. Highly stable visual genre.
+    classification: deterministic
+  genre:parody:
+    description: >-
+      Post is a political or spoof parody of a recognizable media franchise
+      or pop-culture work (e.g. Star Wars). Emitted alongside the specific
+      parody:<franchise> tag identifying the source material.
+    classification: deterministic
+
+  # ===== parody:* — franchise-specific parody tags ==================
+  parody:star-wars:
+    description: >-
+      Parody of Star Wars universe content, detected via high-precision
+      franchise cues: "May the 4th/fourth be with you", "the force",
+      "Jedi/Sith/Death Star" with other SW-universe terms, or "this is
+      the way" co-occurring with another Star Wars cue.
+    classification: deterministic
+  parody:superman:
+    description: 'Parody of Superman (man of steel, kryptonite, fortress of solitude).'
+    classification: deterministic
+  parody:top-gun:
+    description: >-
+      Parody of Top Gun ("the need for speed", "danger zone").
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  parody:game-of-thrones:
+    description: >-
+      Parody of Game of Thrones ("winter is coming", "the iron throne").
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  parody:lord-of-the-rings:
+    description: >-
+      Parody of The Lord of the Rings ("you shall not pass", "one ring to rule them all").
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  parody:terminator:
+    description: >-
+      Parody of The Terminator ("hasta la vista, baby", Skynet).
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  parody:rocky:
+    description: >-
+      Parody of Rocky ("eye of the tiger", "gonna fly now").
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  parody:james-bond:
+    description: >-
+      Parody of James Bond / 007 ("shaken, not stirred", "licence to kill").
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  parody:marvel:
+    description: >-
+      Parody of Marvel / Avengers ("avengers assemble", Thanos, infinity gauntlet).
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  parody:ghostbusters:
+    description: 'Parody of Ghostbusters ("who you gonna call").'
+    classification: deterministic
+  parody:godfather:
+    description: >-
+      Parody of The Godfather ("an offer he can't refuse").
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  parody:pawn-stars:
+    description: 'Parody/tie-in of Pawn Stars.'
+    classification: deterministic
+
+  # ===== artist:* - named cultural figures / musicians ==============
+  # Fired only when the artist or a signature song is NAMED in text / OCR /
+  # transcript (audio cannot be identified by ear). Coverage grows as the OCR
+  # and transcript layers fill in. All artist:* entries are forward-looking:
+  # gazetteers exist in ARTIST_GAZETTEER (tag_lexical.py) but most matches
+  # are currently buried in un-OCR'd images or un-transcribed audio.
+  artist:sydney-sweeney:
+    description: >-
+      Sydney Sweeney (e.g. the American Eagle ad) named in text/OCR.
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  artist:lee-greenwood:
+    description: >-
+      Lee Greenwood / "God Bless the USA" / "Proud to be an American".
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  artist:kid-rock:
+    description: >-
+      Kid Rock named in text/OCR/transcript.
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  artist:village-people:
+    description: >-
+      Village People / "Macho Man" (rally staple).
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  artist:jason-aldean:
+    description: >-
+      Jason Aldean / "Try That in a Small Town".
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  artist:oliver-anthony:
+    description: >-
+      Oliver Anthony / "Rich Men North of Richmond".
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  artist:taylor-swift:
+    description: >-
+      Taylor Swift named in text/OCR/transcript.
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+  artist:beyonce:
+    description: >-
+      Beyoncé named in text/OCR/transcript.
+      (forward-looking: fires once OCR/transcripts/news data is present)
+    classification: deterministic
+
+  # ===== speaker:* - evidence-supported speaker attribution =========
+  speaker:*:
+    description: >-
+      Speaker identified by title or name from tweet text, source alt text,
+      transcript/captions, media descriptions, or captured replies/comments
+      with explicit speech, remarks, announcement, interview, or quote context;
+      do not guess from faces or setting.
+    classification: deterministic
+
+  # ===== media-status:* — pipeline / recognition flags =============
+  # Migrated from media:* (state/pipeline flags). See docs/TAGGING.md.
+  media-status:archived:
+    description: Media item has an archived GitHub Release asset.
+    classification: deterministic
+  media-status:described:
+    description: Media item has a generated sidecar description.
+    classification: deterministic
+  media-status:has-alt-text:
+    description: Media item includes source-provided alt text.
+    classification: deterministic
+  media-status:needs-vision:
+    description: >-
+      Media item still needs actual frame/scene analysis (a visual description
+      of what is shown) before content claims. Cleared only by a real visual
+      description (manual/agent review, alt text, or a future vision layer) —
+      never by OCR, which only recovers on-image text. Distinct from
+      media-status:needs-ocr.
+    classification: tentative
+  media-status:needs-ocr:
+    description: >-
+      Attached image text has not been extracted yet (OCR pending). Resolved by
+      the OCR layer recovering non-empty text. Orthogonal to media-status:needs-vision:
+      an image can need OCR (text) and frame analysis (scene) independently.
+    classification: tentative
+  media-status:ocr-done:
+    description: OCR sidecar has attempted and recorded image/keyframe text status for this tweet.
+    classification: deterministic
+  media-status:transcribed:
+    description: Transcript sidecar has attempted and recorded speech-to-text status for this video tweet.
+    classification: deterministic
+  media-status:graphic-content:
+    description: X/Twitter marked the tweet as possibly sensitive or graphic content.
+    classification: deterministic
+
+  # ===== review:* - curated review-workflow markers =================
+  review:produced-video:
+    description: Human or curation workflow marked this video for the produced-video review set.
+    classification: manual
+  review:meme-image:
+    description: Human or curation workflow marked this image for the designed/meme-image review set.
+    classification: manual
+  review:screened-video:
+    description: Curation workflow has screened this video for produced-video review.
+    classification: deterministic
+  review:screened-photo:
+    description: Curation workflow has screened this photo for designed/meme-image review.
+    classification: deterministic
+
+  # ===== media:* — attached media labels ============================
+  # media:photo-detainee removed: no emitter in any script.
+  # media:photo-operation removed: no emitter in any script.
+  # media:video-testimonial removed: no emitter in any script.
+  # Re-add any of these with a real emitter when a detector is written.
+  #
+  # Retired production-attr slugs (migrated):
+  #   media:music-video  -> genre:music-video  (dedupe; genre:music-video already existed)
+  #   media:montage      -> video:montage
+  #   media:text-overlay -> video:text-overlay
+  #   media:voiceover    -> video:voiceover
+  #   media:short-video  -> video:short        (dedupe; video:short already existed)
+  #
+  # Retired state/pipeline slugs (migrated to media-status:*):
+  #   media:archived      -> media-status:archived
+  #   media:described     -> media-status:described
+  #   media:has-alt-text  -> media-status:has-alt-text
+  #   media:needs-vision  -> media-status:needs-vision
+  #   media:needs-ocr     -> media-status:needs-ocr
+  #   media:graphic-content -> media-status:graphic-content
+  media:ai-generated:
+    description: >-
+      Media appears AI-generated or heavily synthetic. The tag is firm
+      only when based on C2PA, watermark, or other explicit provenance
+      signals; visual-cue-only detections remain tentative. Emitted by
+      tag_lexical.py on explicit provenance cues, and by any separately
+      curated visual-review sidecar that records provenance evidence.
+    classification: tentative
+
+  # ===== audio:* - audio-track / sound cues ==========================
+  audio:music-likely:
+    description: >-
+      Cheap signal that a video likely contains music, derived from
+      explicit tweet/media text, direct replies asking about the song,
+      or the bounded ffmpeg-only audio sidecar.
+    classification: deterministic
+  audio:has-audio:
+    description: Archived video has at least one detectable audio stream.
+    classification: deterministic
+  audio:no-audio:
+    description: Archived video or animated GIF has no detectable audio stream.
+    classification: deterministic
+  audio:silent:
+    description: Archived video has an audio stream but the sampled audio is effectively silent.
+    classification: deterministic
+  audio:music:
+    description: >-
+      Confirmed music detected in the archived video's audio track by a
+      future audio classifier sidecar. (forward-looking: fires once the
+      audio-classifier sidecar is present; current scripts only emit
+      audio:music-likely as a heuristic)
+    classification: model
+
+  # ===== news:* - external news coverage ============================
+  news:mentioned:
+    description: >-
+      A local news-corpus export, or high-confidence exact-status-URL
+      news-index query, contains an exact X/Twitter status URL for this
+      archived core tweet. (forward-looking: fires once OCR/transcripts/news
+      data is present; emitted by scripts/news_mentions.py)
+    classification: deterministic
+  news:covered:
+    description: >-
+      Alias for news:mentioned, kept as a user-friendly filter for
+      tweets cited or embedded by external news coverage. Emitted only
+      when article provenance is exact or high-confidence, not from
+      vague text similarity. (forward-looking: fires once OCR/transcripts/news
+      data is present; emitted by scripts/news_mentions.py)
+    classification: deterministic
+
+  event:palestine:
+    description: >-
+      References to Palestine, Palestinians, Gaza, Hamas, or the
+      Israel-Palestine / Israel-Hamas conflict.
+    classification: deterministic
+
+  media:photo:
+    description: Media item is a still image.
+    classification: deterministic
+  media:video:
+    description: Media item is a video.
+    classification: deterministic
+  media:animated-gif:
+    description: Media item is an animated GIF/video loop.
+    classification: deterministic
+
+  # ===== format:* — purely structural; derived from tweet_type ======
+  format:retweet:
+    description: Native retweet of another account.
+    classification: deterministic
+  format:quote:
+    description: Quote-tweet.
+    classification: deterministic
+  format:reply:
+    description: Reply (redundant with tweet_type=reply; kept for symmetry).
+    classification: deterministic
+  format:statistics:
+    description: >-
+      Uses statistics, numbered lists, totals, rankings, or quantified
+      evidence as the primary rhetorical mode. (migrated from theme:statistics)
+    classification: deterministic
+
+  # ===== policy:* — specific immigration/enforcement policy areas ===
+  # Migrated from theme:* (non-ideological policy references).
+  policy:border:
+    description: References to the southern border, border wall, crossings. (migrated from theme:border)
+    classification: deterministic
+    pattern: |
+      \b(border|southwest border|crossing|border wall)\b
+  policy:sanctuary-cities:
+    description: References to sanctuary cities / sanctuary policies. (migrated from theme:sanctuary-cities)
+    classification: deterministic
+    pattern: |
+      \b(sanctuary (?:cit(?:y|ies)|jurisdiction|polic(?:y|ies))|sanctuary state)\b
+  policy:worksite-enforcement:
+    description: Worksite raids / employment-related enforcement. (migrated from theme:worksite-enforcement)
+    classification: deterministic
+    pattern: |
+      \b(worksite|workplace|I-9|E-Verify|employer (?:audit|raid))\b
+  policy:cbp-home:
+    description: >-
+      CBP Home / Project Homecoming / self-deportation incentive campaign,
+      including free flight, exit bonus, and "go home" variants.
+      (migrated from theme:cbp-home)
+    classification: deterministic
+
+  # ===== status:* - availability / moderation state =================
+  status:unavailable:
+    description: X returned a tombstone or unavailable notice for this tweet.
+    classification: deterministic
+  status:copyright-removal:
+    description: >-
+      X indicated the tweet or attached media was removed or withheld for
+      copyright / DMCA reasons.
+    classification: deterministic
+  status:community-note:
+    description: X displayed a Community Note / Birdwatch note on the tweet.
+    classification: deterministic
+
+  # ===== frame:* - recurring rhetorical scaffolds ===================
+  # frame:criminal retired; merged into theme:criminal. See theme:criminal below.
+
+  # ===== action:* — enforcement verbs ===============================
+  action:detention:
+    description: Arrest, detain, apprehend, or take into custody.
+    classification: deterministic
+    pattern: |
+      \b(arrest(?:ed|ing)?|detain(?:ed|ing)?|apprehend(?:ed|ing)?|in custody|nab(?:bed)?)\b
+  action:deportation:
+    description: Deport, remove, or repatriate.
+    classification: deterministic
+    pattern: |
+      \b(deport(?:ed|ing|ation)?|remov(?:ed|al)|repatriat(?:ed|ion))\b
+  action:self-deportation:
+    description: Self-deport, voluntary departure, or CBP Home departure reporting.
+    classification: deterministic
+    pattern: |
+      \b(self[- ]deport(?:ed|ing|ation)?|voluntar(?:y|ily) depart(?:ure|ed|ing)?|leave voluntarily|report (?:your|their|his|her)? departure)\b
+  action:report-immigrants:
+    description: >-
+      Encourages an audience to call, contact, tip, or report people or
+      immigration violations to ICE/DHS.
+    classification: deterministic
+    pattern: |
+      \b(?:(?:call|contact)\s+(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b(?=.{0,180}\b(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b)|(?:report|tip|submit|send|notify)\b.{0,80}\b(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b.{0,80}\b(?:to|at|with)\s+(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|DHS|Department of Homeland Security|Homeland Security|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b|(?:submit|send)\s+(?:a\s+)?tip\b.{0,80}\b(?:to|with)\s+(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|DHS|Department of Homeland Security|Homeland Security|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b(?=.{0,120}\b(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b)|(?:illegal\s+(?:alien|immigrant)s?|criminal\s+aliens?|undocumented\s+(?:immigrant|alien)s?|immigration\s+(?:crime|violation)s?|alien(?:s|['’]s)?|immigrants?|migrants?)\b.{0,240}\b(?:call|contact)\s+(?:(?:our|the)\s+)?(?:ICE|I\.C\.E\.|Immigration and Customs Enforcement|U\.S\.\s+Immigration\s+and\s+Customs\s+Enforcement|ICE\s+)?(?:tip\s*line|hotline|866[-\s]?DHS[-\s]?2[-\s]?ICE|866[-\s]?347[-\s]?2423)\b)
+
+  # ===== legal:* - legal posture / litigation =======================
+  legal:birthright-citizenship:
+    description: >-
+      Post references "birthright citizenship" as a policy term (the
+      constitutional / legislative debate, executive orders, court cases,
+      or travel-tourism exploitation). Fires on the bare policy phrase
+      regardless of framing; theme:nativism fires separately when the
+      framing is nativist (e.g. "steals the actual birthright of every American").
+    classification: deterministic
+  legal:criminal-prosecution:
+    description: >-
+      Criminal prosecution posture: indictment, charges, plea,
+      conviction, sentencing, or criminal complaint.
+    classification: deterministic
+  legal:civil-lawsuit:
+    description: >-
+      Civil lawsuit / civil action posture, including complaints,
+      injunctions, TROs, settlements, or consent decrees.
+    classification: deterministic
+
+  # ===== topic:* - broad subject area ================================
+  topic:immigration:
+    description: >-
+      Post is about immigration / immigration enforcement / immigration
+      policy. Applied to every tweet from a tracked-tier account
+      (core / government / officials) unless an obvious non-immigration
+      signal blocks it. The corpus is overwhelmingly about immigration;
+      making this the default beats trying to infer it from sparse text.
+
+      Confidence split: emitted with `tentative: true` when the
+      tweet's text carries no explicit immigration-domain signal (no
+      origin/country pattern, no enforcement verb, no ICE/CBP/DHS
+      handle, no border keyword, etc.). These are the image-heavy /
+      template-light tweets where the author's identity is the only
+      reason we're confident. Confirmed (tentative omitted) when at
+      least one explicit signal fires.
+    classification: deterministic
+  topic:economy:
+    description: >-
+      Jobs, wages, workers, labor markets, business, taxes, prices,
+      trade, supply chains, or economy. Also emitted when a narrower
+      always-economic tag fires.
+    classification: deterministic
+  topic:military:
+    description: >-
+      Military, armed forces, veterans, service members, troops,
+      deployments, the Pentagon / DoD, combatant commands, carrier
+      strike groups, service academies, or combat.
+    classification: deterministic
+  topic:laudatory:
+    description: Lists or celebrates accomplishments, wins, or successes.
+    classification: deterministic
+  topic:general:
+    description: Broad or mixed-problem posts that are not a narrower topic.
+    classification: deterministic
+
+  # ===== military:* - military branch subtopics ======================
+  military:army:
+    description: References the U.S. Army, soldiers, West Point, or Army-specific handles.
+    classification: deterministic
+  military:navy:
+    description: >-
+      References the U.S. Navy, sailors, carrier strike groups, aircraft
+      carriers, USS/USNS ships, naval academy, or midshipmen.
+    classification: deterministic
+  military:air-force:
+    description: References the U.S. Air Force, airmen, or the Air Force Academy.
+    classification: deterministic
+  military:space-force:
+    description: References the U.S. Space Force.
+    classification: deterministic
+  military:marines:
+    description: References the U.S. Marine Corps or Marines.
+    classification: deterministic
+  military:coast-guard:
+    description: References the U.S. Coast Guard, Coast Guard Academy, or USCG handles.
+    classification: deterministic
+  military:national-guard:
+    description: References the National Guard or National Guard handles.
+    classification: deterministic
+
+  # ===== theme:* - rhetorical / ideological frames ==================
+  #
+  # Retired non-ideological policy entries (migrated to policy:*):
+  #   theme:border              -> policy:border
+  #   theme:sanctuary-cities    -> policy:sanctuary-cities
+  #   theme:worksite-enforcement -> policy:worksite-enforcement
+  #   theme:cbp-home            -> policy:cbp-home
+  #
+  # Retired format entries (migrated to format:*):
+  #   theme:statistics -> format:statistics
+  #
+  # Merged from frame:* (frame: namespace retired):
+  #   frame:criminal -> theme:criminal
+  theme:directive:
+    description: >-
+      Gives direct instructions, commands, compliance steps, or explicit
+      calls to action.
+    classification: deterministic
+  theme:criminal:
+    description: >-
+      DHS templated "Name, a criminal illegal alien from X, convicted of
+      Y in Z, State" reply pattern. (merged from frame:criminal; frame: namespace retired)
+    classification: deterministic
+    pattern: |
+      \b(criminal illegal alien|illegal alien|criminal alien|aggravated felon|convicted (?:for|of))\b
+
+  theme:homeland:
+    description: >-
+      References homeland framing: protecting, securing, or defending
+      the capital-H Homeland as a national object of loyalty or protection.
+    classification: deterministic
+  theme:nativism:
+    description: >-
+      Frames U.S.-born or American workers/citizens as displaced,
+      threatened, or specially entitled relative to immigrants,
+      foreign-born people, or foreign labor. Also catches coded
+      inheritance/inheritor language when it appears with national,
+      citizenship, Homeland, birthright, or immigration context.
+    classification: deterministic
+  theme:martyrdom:
+    description: >-
+      Frames victims, fallen officers, or named dead/injured people as
+      the moral reason for enforcement or policy action. Includes the
+      recurring "This is our why" / "they are our why" style when tied
+      to victim, memory, Angel Family, or line-of-duty framing.
+    classification: deterministic
+  theme:religion:
+    description: >-
+      References religious language, institutions, faith, prayer,
+      blessings, God, scripture, or worship, excluding casual expletive
+      uses like "oh my god" or "god damn".
+    classification: deterministic
+  religion:christianity:
+    description: >-
+      Christian-specific religious material, including Christianity,
+      Christian faith or values, Bible/scripture references, churches,
+      Jesus, Christ, and "in Jesus' name" formulations. Nested under
+      theme:religion in the viewer.
+    classification: deterministic
+  theme:transgender:
+    description: >-
+      References transgender identity, gender-identity policy, or the
+      recurring frame around men or boys in women's or girls' sports.
+    classification: deterministic
+  theme:civil-disturbance:
+    description: >-
+      References riots, violent protests, civil unrest, anti-ICE
+      disturbances, or similar large-scale street disorder.
+    classification: deterministic
+  theme:pop-culture-reference:
+    description: >-
+      Uses a celebrity, ad campaign, entertainment meme, or pop-culture
+      reference in the context of immigration or enforcement messaging.
+    classification: deterministic
+
+  # ===== video:* - video-nature heuristics ==========================
+  #
+  # Only emitted when the tweet actually has video media attached; a
+  # tweet's text alone never earns a video:* tag. Multiple kinds can
+  # co-apply (e.g. a music video that's also a recruitment ad).
+  video:montage:
+    description: Video assembled from multiple shots, scenes, or clips in an edited sequence.
+    classification: tentative
+  video:text-overlay:
+    description: Video or image contains visible title cards, captions, chyron text, or graphic text overlays.
+    classification: tentative
+  video:voiceover:
+    description: >-
+      Video includes narration or speech over other visuals. (forward-looking:
+      emitted by describe_media.py and build_core_video_audit.py; coverage
+      grows as media descriptions and transcripts fill in)
+    classification: tentative
+  video:bodycam:
+    description: >-
+      Body-worn camera or raid/arrest footage. Catches "bodycam",
+      "BWC", and "ICE/CBP/HSI raid footage" framings.
+    classification: deterministic
+  video:interview:
+    description: >-
+      Sit-down interview, joint appearance on a cable-news show, or
+      "X joins Y" framing where an official is being interviewed.
+    classification: deterministic
+  video:news-clip:
+    description: >-
+      Embedded cable-news / press clip. Matches major outlet names and
+      "reporting on / from" framings.
+    classification: deterministic
+  video:agency-roundup:
+    description: >-
+      Recurring agency-news digest or weekly roundup format, usually a
+      sequence of departmental highlights rather than a creative genre piece.
+    classification: tentative
+  video:ceremony:
+    description: >-
+      Single-event ceremonial or protocol footage, including arrivals,
+      anthem ceremonies, swearing-in events, signings, and similar official
+      proceedings.
+    classification: tentative
+  video:raw-enforcement-footage:
+    description: >-
+      Plain handheld or documentary arrest, raid, or enforcement footage with
+      no meaningful creative treatment beyond an end card or captions.
+    classification: tentative
+  video:speech:
+    description: >-
+      Speech, address, press conference, or remarks (Oval Office, Rose
+      Garden, podium, etc.).
+    classification: deterministic
+  video:produced:
+    description: Professionally edited or intentionally produced video rather than raw footage.
+    classification: tentative
+  video:short:
+    description: >-
+      Duration bucket — longest video on the tweet is 30 seconds or
+      less. Applied automatically based on media metadata.
+    classification: deterministic
+  video:medium:
+    description: >-
+      Duration bucket — longest video on the tweet is between 30s and
+      120s. Applied automatically based on media metadata.
+    classification: deterministic
+  video:long:
+    description: >-
+      Duration bucket — longest video on the tweet exceeds 120s.
+      Applied automatically based on media metadata.
+    classification: deterministic
+
+  # ===== slogan:* - branded phrases =================================
+  slogan:nice:
+    description: DHS "ICE is NICE" branded meme.
+    classification: deterministic
+    pattern: |
+      \b(NICE day|NICE morning|ICE is NICE|NICE city)\b
+  slogan:worst:
+    description: '"Worst of the Worst" branding.'
+    classification: deterministic
+    pattern: |
+      \bWORST OF THE WORST\b
+  slogan:reportrecon:
+    description: '"Report. Recon. Raid." branding.'
+    classification: deterministic
+    pattern: |
+      \bReport\.\s*Recon\.\s*Raid\.
+  slogan:illegal-alien:
+    description: Recurring "illegal alien(s)" phrase.
+    classification: deterministic
+    pattern: |
+      \billegal\s+aliens?\b
+  slogan:criminal-illegal-alien:
+    description: Recurring "criminal illegal alien(s)" phrase.
+    classification: deterministic
+    pattern: |
+      \bcriminal\s+illegal\s+aliens?\b
+  slogan:free-ticket-home:
+    description: '"Free ticket home" / "free flight home" CBP Home slogan.'
+    classification: deterministic
+  slogan:go-home:
+    description: '"Go home" imperative slogan in CBP Home / deportation context.'
+    classification: deterministic
+  slogan:project-homecoming:
+    description: '"Project Homecoming" self-deportation campaign branding.'
+    classification: deterministic
+
+  # ===== shape:* — composite tags ===================================
+  slogan:maga:
+    description: '"MAGA" / "Make America Great Again" campaign slogan.'
+    classification: deterministic
+  slogan:maha:
+    description: '"MAHA" / "Make America Healthy Again" slogan.'
+    classification: deterministic
+  slogan:masa:
+    description: '"Make America Safe Again" DHS/enforcement administration slogan.'
+    classification: deterministic
+  slogan:america-first:
+    description: '"America First" slogan.'
+    classification: deterministic
+  slogan:golden-age:
+    description: '"Golden Age" administration / campaign slogan.'
+    classification: deterministic
+  slogan:save-america:
+    description: '"Save America" slogan.'
+    classification: deterministic
+  slogan:law-and-order:
+    description: '"Law and Order" slogan.'
+    classification: deterministic
+  slogan:peace-through-strength:
+    description: '"Peace Through Strength" slogan.'
+    classification: deterministic
+  slogan:promises-kept:
+    description: '"Promises Made, Promises Kept" slogan.'
+    classification: deterministic
+  slogan:mass-deportation:
+    description: '"Mass deportation(s)" recurring campaign/enforcement slogan.'
+    classification: deterministic
+  slogan:most-secure-border:
+    description: '"Most secure border in (American) history" administration boast.'
+    classification: deterministic
+  slogan:catch-release:
+    description: '"Catch and release" immigration enforcement policy phrase.'
+    classification: deterministic
+  slogan:find-and-kill:
+    description: >-
+      "We will find you and kill you" / "find you and kill you" — Trump
+      administration threat phrase directed at violent criminals or those
+      who attack Americans; appears in image OCR overlays as well as tweet
+      body text.
+    classification: deterministic
+  slogan:import-third-world:
+    description: >-
+      "Import the Third World" / "if you import the Third World" — anti-immigration
+      demographic-change slogan attributed to Trump or used in administration
+      messaging.
+    classification: deterministic
+
+  # ===== phrase:* - recurring domain terms ===========================
+  phrase:migrant:
+    description: Plain-language "migrant(s)" reference; implies topic:immigration.
+    classification: deterministic
+    pattern: |
+      \bmigrants?\b
+  phrase:immigrant:
+    description: Plain-language "immigrant(s)" reference; implies topic:immigration.
+    classification: deterministic
+    pattern: |
+      \bimmigrants?\b
+
+# ===== Open-ended namespaces (extracted, validated) =================
+#
+# The auto-tagger emits these with slugs drawn from fixed vocabularies
+# bundled with the tagger script. They are not enumerated in this file
+# because the vocabularies are long (195 country names, 50 US states)
+# and rarely change.
+#
+#   origin:<COUNTRY>   — "from <COUNTRY>," validated against
+#                        sovereign-state list. Indicates an attributed
+#                        country of origin in templated DHS replies.
+#                        ~233 hits in the corpus as of 2026-05-20.
+#   country:<NAME>     — any sovereign-state name mention (superset of
+#                        origin:). Disambiguated against false-positive
+#                        words ("Chad" the name vs Chad the country) by
+#                        requiring a leading capital and adjacent
+#                        comma / "from" / "in".
+#   crime:<TYPE>       — vocabulary: rape, sodomy, murder / homicide, burglary,
+#                        theft, robbery, assault, battery, fentanyl,
+#                        cocaine, methamphetamine, trafficking, DUI,
+#                        DWI, kidnap, child, gang, MS-13,
+#                        tren-de-aragua, narcotics, fraud, disobedience,
+#                        perjury, arson, weapon, firearm. Broad buckets
+#                        such as crime:sexual, crime:child-sexual,
+#                        crime:narcotics, crime:homicide, and
+#                        crime:disobedience can contain narrower tags.
+#                        One match = one tag entry, so a tweet can carry
+#                        multiple `crime:*` tags.
+#   state:<NAME>       — US-state mention pattern "in <Place>, <State>,"
+#                        validated against the 50-state list.
+#   agency:<HANDLE>    — derived from `mentions[]` against a fixed list
+#                        of enforcement-adjacent handles. Distinct from
+#                        the post's `account_handle`: lets you find
+#                        tweets that mention ICE without being authored
+#                        by @ICEgov.
+#   event:<SLUG>       — named event/city clusters, currently including
+#                        los-angeles-disturbance, minneapolis-disturbance,
+#                        and portland-disturbance. These require explicit
+#                        protest/riot/unrest/federal-response language,
+#                        not just a city name.
+
+# Sentinel: when no other namespace matches and the post is plausibly
+# about immigration, this is the only tag emitted. Lets the viewer
+# distinguish "tagged + immigration-related but uncategorised" from
+# "no tags at all" (which means the tagger hasn't run yet).

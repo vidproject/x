@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T135145Z-1d8a3deb-USCGSoutheast",
+  "account_handle": "USCGSoutheast",
+  "captured_at": "2026-06-13T13:52:04.188Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCG%20since%3A2022-03-01%20until%3A2022-04-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1507155012472000515",
+      "account_handle": "USCGSoutheast",
+      "account_id": "84382289",
+      "posted_at": "2022-03-25T00:38:51.000Z",
+      "first_captured_at": "2026-06-13T13:51:55.126Z",
+      "last_seen_at": "2026-06-13T13:51:55.126Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USCGSoutheast/status/1507155012472000515",
+      "tweet_type": "original",
+      "conversation_id": "1507155012472000515",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "#DontTakeToTheSea @USCG crews assisted @TheRBDF with a Haitian sail freighter interdiction, Wednesday, approximately 40 miles off Andros Island, #Bahamas. For more information about @TheRBDF, please follow them on Facebook.\n\n@USEmbassyHaiti, @USEmbassyNassau, #Partnerships https://t.co/9ttukcsk9O",
+      "text_resolved": "#DontTakeToTheSea @USCG crews assisted @TheRBDF with a Haitian sail freighter interdiction, Wednesday, approximately 40 miles off Andros Island, #Bahamas. For more information about @TheRBDF, please follow them on Facebook.\n\n@USEmbassyHaiti, @USEmbassyNassau, #Partnerships https://t.co/9ttukcsk9O",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "DontTakeToTheSea",
+        "Bahamas",
+        "Partnerships"
+      ],
+      "mentions": [
+        "USCG",
+        "TheRBDF",
+        "TheRBDF",
+        "USEmbassyHaiti",
+        "USEmbassyNassau"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_1507147091767926786",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/1507147091767926786/pu/vid/1280x720/_PTmzCZIsEwfLKGL.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 15.582,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 59,
+      "retweet_count": 12,
+      "reply_count": 1,
+      "quote_count": 1,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T13:51:55.126Z",
+          "likes": 59,
+          "retweets": 12,
+          "replies": 1,
+          "quotes": 1,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Coast Guard Southeast",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1946257516708364288/2EhLMA3L_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Official news from @USCG Southeast District.. HQ📍Miami",
+        "location": "Miami, FL",
+        "url": "https://t.co/G4P3I7MuGq",
+        "followers_count": 65315,
+        "friends_count": 991,
+        "statuses_count": 10732,
+        "account_created_at": "2009-10-22T17:58:42.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T135145Z-1d8a3deb",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T135145Z-1d8a3deb.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T135145Z-1d8a3deb.jsonl",
+    "source_handle": "USCG"
+  }
+}

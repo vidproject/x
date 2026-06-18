@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "queue": "historical_2016_2020",
+    "generated_at": "2026-06-18T16:05:12Z",
+    "source_commit": "9ee22bfe",
+    "item_count": 0,
+    "source_candidate_count": 1040,
+    "not_ready_count": 7,
+    "review_scope_excluded_count": 775,
+    "review_scope_excluded_reasons": {
+      "apprehension-notice-or-routine-card": 192,
+      "news-image-or-clip": 46,
+      "outside-revealed-preference": 478,
+      "routine-static-card": 29,
+      "trump-post-screenshot": 30
+    },
+    "all_items_ready": true,
+    "basis_counts": {},
+    "preference_category_counts": {},
+    "top_accounts": {},
+    "review_actions": [
+      "yes",
+      "no",
+      "superlike",
+      "back"
+    ],
+    "inclusion_rules": [
+      "prioritize aestheticized enforcement propaganda: spectacle, holiday/gamified treatment, ASMR, self-deportation ads, AI/nostalgic propaganda, and editorialized crime/news composites",
+      "de-prioritize generic posters, routine PR montages, statistics cards, plain news screenshots, plain Trump-post screenshots, and bare apprehension notices"
+    ],
+    "readiness_rules": [
+      "archived GitHub release media required",
+      "photos require thumbnail, OCR, and genuine visual description",
+      "videos require keyframes, keyframe OCR, audio analysis, thumbnail, and genuine visual description",
+      "videos with audio require a completed transcript or completed empty-transcript result",
+      "captured alt text alone does not satisfy the visual-description requirement"
+    ]
+  },
+  "items": []
+}
