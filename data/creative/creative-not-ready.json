@@ -1,17 +1,17 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-06-18T18:53:56Z",
-    "source_commit": "6859dfd8",
+    "generated_at": "2026-06-18T19:31:06Z",
+    "source_commit": "9f981769",
     "item_count": 22,
     "blocker_counts": {
       "missing genuine visual description": 17,
-      "missing archived media asset": 16,
+      "missing archived media asset": 15,
       "missing complete OCR for extracted keyframes": 11,
       "missing extracted video keyframes": 11,
       "missing video thumbnail": 11,
-      "missing photo OCR": 10,
-      "missing photo thumbnail": 10,
+      "missing photo OCR": 9,
+      "missing photo thumbnail": 9,
       "missing audio analysis": 6
     }
   },
@@ -1026,44 +1026,48 @@
         "country:Canada",
         "crime:fentanyl",
         "crime:narcotics",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "topic:immigration"
       ],
       "media": [
         {
           "media_id": "3_1891582185162842112",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP-0002/3_1891582185162842112.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/6ec73975d29da35f1818f11429f73028556a74316897a45ea8bd9ee6079040d0.jpg",
+          "sha256": "6ec73975d29da35f1818f11429f73028556a74316897a45ea8bd9ee6079040d0",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 300x225; 0.01 MiB; archived; tweet context: Last month, CBP officers in Seattle intercepted a package from Canada containing over 1lb of fentanyl during a targeted enforcement operation. This synthetic opioid is 50x more potent than heroin, and even small amounts can be lethal. ➡️ https://go.dhs.gov/wJ...; source URL: https://pbs.twimg.com/media/GkA_-bIWoAA3IDn.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-CBP-0002/3_1891582185162842112.jpg; needs OCR, transcript, or frame-level vision before content claims. Last month, CBP officers in Seattle intercepted a package from Canada containing over 1lb of fentanyl during a targeted enforcement operation. This synthetic opioid is 50x more potent than heroin, and even small amounts can be lethal. ➡️ https://go.dhs.gov/wJs https://t.co/O7FOlL4N8F",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": ". an"
             },
             "keyframes": {
               "status": null,
@@ -1086,15 +1090,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 300x225; 0.01 MiB; archived; tweet context: Last month, CBP officers in Seattle intercepted a package from Canada containing over 1lb of fentanyl during a targeted enforcement operation. This synthetic opioid is 50x more potent than heroin, and even small amounts can be lethal. ➡️ https://go.dhs.gov/wJ...; source URL: https://pbs.twimg.com/media/GkA_-bIWoAA3IDn.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-CBP-0002/3_1891582185162842112.jpg; needs OCR, transcript, or frame-level vision before content claims. Last month, CBP officers in Seattle intercepted a package from Canada containing over 1lb of fentanyl during a targeted enforcement operation. This synthetic opioid is 50x more potent than heroin, and even small amounts can be lethal. ➡️ https://go.dhs.gov/wJs https://t.co/O7FOlL4N8F",
         "notable_text": "",
         "reasons": [
           "wholly creative media signal",
