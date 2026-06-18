@@ -1,16 +1,16 @@
 {
   "metadata": {
     "queue": "candidates",
-    "generated_at": "2026-06-18T16:05:12Z",
-    "source_commit": "9ee22bfe",
+    "generated_at": "2026-06-18T17:59:30Z",
+    "source_commit": "f4762a1c",
     "item_count": 195,
-    "source_candidate_count": 1040,
-    "not_ready_count": 7,
-    "review_scope_excluded_count": 775,
+    "source_candidate_count": 1252,
+    "not_ready_count": 22,
+    "review_scope_excluded_count": 972,
     "review_scope_excluded_reasons": {
-      "apprehension-notice-or-routine-card": 192,
-      "news-image-or-clip": 46,
-      "outside-revealed-preference": 478,
+      "apprehension-notice-or-routine-card": 273,
+      "news-image-or-clip": 47,
+      "outside-revealed-preference": 593,
       "routine-static-card": 29,
       "trump-post-screenshot": 30
     },
@@ -577,7 +577,7 @@
         "likes": 578,
         "retweets": 177,
         "quotes": 22,
-        "views": 52580
+        "views": 52587
       },
       "preference_score": 49,
       "preference_categories": [
@@ -709,7 +709,7 @@
         "likes": 96,
         "retweets": 29,
         "quotes": 1,
-        "views": 24513
+        "views": 24517
       },
       "preference_score": 49,
       "preference_categories": [
@@ -982,7 +982,7 @@
         "likes": 12981,
         "retweets": 2319,
         "quotes": 44,
-        "views": 201185
+        "views": 201907
       },
       "preference_score": 46,
       "preference_categories": [
@@ -1261,8 +1261,8 @@
       "engagement": {
         "likes": 3343,
         "retweets": 554,
-        "quotes": 0,
-        "views": 58571
+        "quotes": 22,
+        "views": 58573
       },
       "preference_score": 46,
       "preference_categories": [
@@ -2345,8 +2345,8 @@
       "engagement": {
         "likes": 0,
         "retweets": 0,
-        "quotes": 0,
-        "views": 150962
+        "quotes": 14,
+        "views": 150967
       },
       "preference_score": 43,
       "preference_categories": [
@@ -2473,8 +2473,8 @@
       "engagement": {
         "likes": 520,
         "retweets": 92,
-        "quotes": 0,
-        "views": 16093
+        "quotes": 3,
+        "views": 16095
       },
       "preference_score": 43,
       "preference_categories": [
@@ -3001,6 +3001,138 @@
       ]
     },
     {
+      "id": "2003284499065364846:3_2003284496628523008",
+      "tweet_id": "2003284499065364846",
+      "posted_at": "2025-12-23T02:00:18.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "ICEgov",
+        "category": "core",
+        "label": "U.S. Immigration and Customs Enforcement"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/2003284499065364846",
+      "tweet_text": "Meet Elliot Christian Hernandez-Padilla, a criminal illegal alien from Mexico with an extensive rap sheet. His criminal history includes convictions for: \n• DUI \n• HIT & RUN \n• AGGRAVATED ASSAULT \n• 5 TRAFFIC OFFENSES \n• SYNTHETIC NARCOTIC POSSESSION \n\nICE Nashville arrested him Dec. 10.",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "detainees",
+        "immigration-language"
+      ],
+      "tags": [
+        "action:detention",
+        "agency:ICEgov",
+        "country:Mexico",
+        "crime:assault",
+        "crime:dui",
+        "crime:narcotics",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "religion:christianity",
+        "review:screened-photo",
+        "slogan:criminal-illegal-alien",
+        "slogan:illegal-alien",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "theme:religion",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2003284496628523008",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-ICEgov/3_2003284496628523008.png",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/e5ca1cdf313cb186c6e262a00220ef45ca6b7b2126f188c1ee888d721ea33c9a.jpg",
+          "sha256": "e5ca1cdf313cb186c6e262a00220ef45ca6b7b2126f188c1ee888d721ea33c9a",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "The photo shows a man indoors wearing a dark T-shirt, seated or standing in front of a room with windows and shelves. No visible graphic text appears in the media.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "pe"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "The photo shows a man indoors wearing a dark T-shirt, seated or standing in front of a room with windows and shelves. No visible graphic text appears in the media.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: SYNTHETIC",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 2075,
+        "retweets": 558,
+        "quotes": 11,
+        "views": 32433
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
       "id": "2039482010012467379:3_2039481256518316032",
       "tweet_id": "2039482010012467379",
       "posted_at": "2026-04-01T23:16:17.000Z",
@@ -3235,10 +3367,10 @@
         ]
       },
       "engagement": {
-        "likes": 506,
-        "retweets": 136,
-        "quotes": 0,
-        "views": 9839
+        "likes": 504,
+        "retweets": 135,
+        "quotes": 3,
+        "views": 9845
       },
       "preference_score": 41,
       "preference_categories": [
@@ -3489,138 +3621,6 @@
         "retweets": 51,
         "quotes": 0,
         "views": 8752
-      },
-      "preference_score": 41,
-      "preference_categories": [
-        "aesthetic:ai-synthetic-propaganda",
-        "subject:enforcement-linked"
-      ]
-    },
-    {
-      "id": "2003284499065364846:3_2003284496628523008",
-      "tweet_id": "2003284499065364846",
-      "posted_at": "2025-12-23T02:00:18.000Z",
-      "era": "2025_plus",
-      "queue": "candidates",
-      "account": {
-        "handle": "ICEgov",
-        "category": "core",
-        "label": "U.S. Immigration and Customs Enforcement"
-      },
-      "tweet_url": "https://x.com/ICEgov/status/2003284499065364846",
-      "tweet_text": "Meet Elliot Christian Hernandez-Padilla, a criminal illegal alien from Mexico with an extensive rap sheet. His criminal history includes convictions for: \n• DUI \n• HIT & RUN \n• AGGRAVATED ASSAULT \n• 5 TRAFFIC OFFENSES \n• SYNTHETIC NARCOTIC POSSESSION \n\nICE Nashville arrested him Dec. 10.",
-      "review_state": "candidate",
-      "inclusion_basis": "wholly_creative_media",
-      "confidence": "medium",
-      "score": 90,
-      "creative_forms": [
-        "ai-or-synthetic"
-      ],
-      "subjects": [
-        "detainees",
-        "immigration-language"
-      ],
-      "tags": [
-        "action:detention",
-        "agency:ICEgov",
-        "country:Mexico",
-        "crime:assault",
-        "crime:dui",
-        "crime:narcotics",
-        "legal:criminal-prosecution",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media-status:ocr-done",
-        "media:photo",
-        "religion:christianity",
-        "review:screened-photo",
-        "slogan:criminal-illegal-alien",
-        "slogan:illegal-alien",
-        "subject:enforcement-op",
-        "theme:criminal",
-        "theme:religion",
-        "topic:immigration"
-      ],
-      "media": [
-        {
-          "media_id": "3_2003284496628523008",
-          "type": "photo",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-ICEgov/3_2003284496628523008.png",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/photo/e5ca1cdf313cb186c6e262a00220ef45ca6b7b2126f188c1ee888d721ea33c9a.jpg",
-          "sha256": "e5ca1cdf313cb186c6e262a00220ef45ca6b7b2126f188c1ee888d721ea33c9a",
-          "duration_sec": null,
-          "playable": true,
-          "readiness": {
-            "ready": true,
-            "blockers": [],
-            "checks": {
-              "archived": true,
-              "description": true,
-              "thumbnail": true,
-              "ocr": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "opus-vision-review",
-              "text": "The photo shows a man indoors wearing a dark T-shirt, seated or standing in front of a room with windows and shelves. No visible graphic text appears in the media.",
-              "sidecar_statuses": {
-                "manual-review": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {
-                "ok": 1
-              },
-              "complete_row_count": 1,
-              "text": "pe"
-            },
-            "keyframes": {
-              "status": null,
-              "frame_count": 0
-            },
-            "audio": {
-              "status": null,
-              "audio_stream_count": 0,
-              "duration_sec": null,
-              "tags": []
-            },
-            "transcript": {
-              "status": null,
-              "segment_count": 0,
-              "text": ""
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": true,
-        "blockers": [],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "The photo shows a man indoors wearing a dark T-shirt, seated or standing in front of a room with windows and shelves. No visible graphic text appears in the media.",
-        "notable_text": "",
-        "reasons": [
-          "wholly creative media signal",
-          "real enforcement/detainee subject signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ],
-        "preference_reasons": [
-          "aesthetic:ai-synthetic-propaganda: SYNTHETIC",
-          "enforcement/detainee subject plus preference signal"
-        ]
-      },
-      "engagement": {
-        "likes": 0,
-        "retweets": 0,
-        "quotes": 0,
-        "views": 32418
       },
       "preference_score": 41,
       "preference_categories": [
@@ -4001,8 +4001,8 @@
       "engagement": {
         "likes": 1473,
         "retweets": 499,
-        "quotes": 0,
-        "views": 35668
+        "quotes": 5,
+        "views": 35697
       },
       "preference_score": 40,
       "preference_categories": [
@@ -4514,10 +4514,10 @@
         ]
       },
       "engagement": {
-        "likes": 7519,
-        "retweets": 0,
-        "quotes": 0,
-        "views": 98808
+        "likes": 7485,
+        "retweets": 2057,
+        "quotes": 59,
+        "views": 98814
       },
       "preference_score": 40,
       "preference_categories": [
@@ -4643,10 +4643,10 @@
         ]
       },
       "engagement": {
-        "likes": 2113,
-        "retweets": 612,
-        "quotes": 0,
-        "views": 25761
+        "likes": 2109,
+        "retweets": 609,
+        "quotes": 27,
+        "views": 25837
       },
       "preference_score": 40,
       "preference_categories": [
@@ -4901,7 +4901,7 @@
         ]
       },
       "engagement": {
-        "likes": 804,
+        "likes": 801,
         "retweets": 134,
         "quotes": 7,
         "views": 27487
@@ -5030,8 +5030,8 @@
       "engagement": {
         "likes": 1145,
         "retweets": 352,
-        "quotes": 0,
-        "views": 30799
+        "quotes": 15,
+        "views": 30826
       },
       "preference_score": 40,
       "preference_categories": [
@@ -5263,10 +5263,10 @@
         ]
       },
       "engagement": {
-        "likes": 4582,
-        "retweets": 1073,
+        "likes": 4565,
+        "retweets": 1069,
         "quotes": 153,
-        "views": 949042
+        "views": 949070
       },
       "preference_score": 40,
       "preference_categories": [
@@ -5386,10 +5386,10 @@
         ]
       },
       "engagement": {
-        "likes": 2440,
-        "retweets": 566,
-        "quotes": 0,
-        "views": 121760
+        "likes": 2427,
+        "retweets": 558,
+        "quotes": 14,
+        "views": 121813
       },
       "preference_score": 40,
       "preference_categories": [
@@ -5507,10 +5507,10 @@
         ]
       },
       "engagement": {
-        "likes": 1689,
+        "likes": 1688,
         "retweets": 498,
         "quotes": 22,
-        "views": 84988
+        "views": 84990
       },
       "preference_score": 40,
       "preference_categories": [
@@ -5739,7 +5739,7 @@
         "likes": 545,
         "retweets": 117,
         "quotes": 1,
-        "views": 19803
+        "views": 19806
       },
       "preference_score": 40,
       "preference_categories": [
@@ -6022,7 +6022,7 @@
         "likes": 1598,
         "retweets": 477,
         "quotes": 19,
-        "views": 31088
+        "views": 31128
       },
       "preference_score": 39,
       "preference_categories": [
@@ -6430,7 +6430,7 @@
         ]
       },
       "engagement": {
-        "likes": 29489,
+        "likes": 29438,
         "retweets": 5022,
         "quotes": 457,
         "views": 112
@@ -6561,143 +6561,10 @@
         ]
       },
       "engagement": {
-        "likes": 29489,
-        "retweets": 4969,
+        "likes": 29438,
+        "retweets": 4951,
         "quotes": 457,
-        "views": 1008327
-      },
-      "preference_score": 38,
-      "preference_categories": [
-        "aesthetic:nostalgia-americana",
-        "medium:produced-video-with-preference-signal"
-      ]
-    },
-    {
-      "id": "1973913763784139208:13_1973913526159679488",
-      "tweet_id": "1973913763784139208",
-      "posted_at": "2025-10-03T00:51:29.000Z",
-      "era": "2025_plus",
-      "queue": "candidates",
-      "account": {
-        "handle": "DHSgov",
-        "category": "core",
-        "label": "Department of Homeland Security"
-      },
-      "tweet_url": "https://x.com/DHSgov/status/1973913763784139208",
-      "tweet_text": "We share one heart, one home, and one glorious destiny. https://t.co/55xaDCCySv",
-      "review_state": "candidate",
-      "inclusion_basis": "wholly_creative_media",
-      "confidence": "medium",
-      "score": 90,
-      "creative_forms": [
-        "montage"
-      ],
-      "subjects": [],
-      "tags": [
-        "agency:USCIS",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media-status:ocr-done",
-        "media-status:transcribed",
-        "media:video",
-        "policy:border",
-        "review:screened-video",
-        "slogan:america-first",
-        "topic:economy",
-        "topic:general",
-        "topic:immigration",
-        "video:medium",
-        "video:produced"
-      ],
-      "media": [
-        {
-          "media_id": "13_1973913526159679488",
-          "type": "video",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_1973913526159679488.mp4",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/video/a8124d8b09886f0832c7bf61f24d7467437530efd8748f4ce7b5096004931a8c.jpg",
-          "sha256": "a8124d8b09886f0832c7bf61f24d7467437530efd8748f4ce7b5096004931a8c",
-          "duration_sec": 39.708,
-          "playable": true,
-          "readiness": {
-            "ready": true,
-            "blockers": [],
-            "checks": {
-              "archived": true,
-              "description": true,
-              "keyframes": true,
-              "keyframe_count": 5,
-              "thumbnail": true,
-              "ocr": true,
-              "audio_analysis": true,
-              "has_audio": true,
-              "transcript": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "opus-vision-review",
-              "text": "A produced montage of patriotic American imagery. Sampled frames include a reproduction of the painting of George Washington crossing the Delaware River with a flag, and vintage color footage of a large industrial assembly line with rows of early automobiles and workers. The clip is composed of historical art and archival film.  [0:08] A reproduction of the painting of George Washington crossing the icy Delaware River in a boat with a flag.  [0:24] Vintage color footage of a long factory assembly line with rows of early automobiles and workers.",
-              "sidecar_statuses": {
-                "manual-review": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {
-                "no-text": 5,
-                "ok": 13
-              },
-              "complete_row_count": 18,
-              "text": "pa\n\n; Mette\n\n. : 4 bi ¥ oma ge o . ee OR 2 « ‘ ea, iB : Y as ; uf sede -\n\n—-, B07 WE ee a ce .\n\nha!\n\neS BRT fee —_— 4 Ame. at. ’ a 5 1 1 1 3 6 458 169 9 12 10.810699 : 4 1 1 1 4 0 0 190 423 80 -1 5 1 1 1 4 1 0 232 78 38 25.934128 5 1 1 1 4 2 174 190 55 80 53.057293 ‘rt 5 1 1 1 4 3 283 202 140 61 47.377380 ae\n\n& [i bee €\n\nPROTECT YOUR HOMELAND DEFEND YOUR CULTURE BECOME A HOMELAND DEFENDER USCIS.GOV/JOIN\n\npa\n\n; Mette\n\n. : 4 bi ¥ oma ge o . ee OR 2 « ‘ ea, iB : Y as ; uf sede -\n\n—-, B07 WE ee a ce .\n\nha!"
-            },
-            "keyframes": {
-              "status": "ok",
-              "frame_count": 5
-            },
-            "audio": {
-              "status": "ok",
-              "audio_stream_count": 1,
-              "duration_sec": 39.775782,
-              "tags": [
-                "audio:has-audio"
-              ]
-            },
-            "transcript": {
-              "status": "ok",
-              "segment_count": 6,
-              "text": "The United States of America is your country, a nation exists to serve its citizens. From this day forward, a new vision will govern our land. It's going to be only America first. At the bedrock of our politics will be a total allegiance to the United States of America. And through our loyalty to our country, we will rediscover our loyalty to each other. We share one heart, one home, and one glorious destiny."
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": true,
-        "blockers": [],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "A produced montage of patriotic American imagery. Sampled frames include a reproduction of the painting of George Washington crossing the Delaware River with a flag, and vintage color footage of a large industrial assembly line with rows of early automobiles and workers. The clip is composed of historical art and archival film.  [0:08] A reproduction of the painting of George Washington crossing the icy Delaware River in a boat with a flag.  [0:24] Vintage color footage of a long factory assembly line with rows of early automobiles and workers.",
-        "notable_text": "",
-        "reasons": [
-          "wholly creative media signal",
-          "creative treatment signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ],
-        "preference_reasons": [
-          "aesthetic:nostalgia-americana: vintage",
-          "produced video with preference signal"
-        ]
-      },
-      "engagement": {
-        "likes": 17399,
-        "retweets": 3192,
-        "quotes": 221,
-        "views": 489357
+        "views": 1009072
       },
       "preference_score": 38,
       "preference_categories": [
@@ -6827,10 +6694,143 @@
         ]
       },
       "engagement": {
-        "likes": 17399,
+        "likes": 17298,
         "retweets": 3192,
-        "quotes": 221,
+        "quotes": 220,
         "views": 0
+      },
+      "preference_score": 38,
+      "preference_categories": [
+        "aesthetic:nostalgia-americana",
+        "medium:produced-video-with-preference-signal"
+      ]
+    },
+    {
+      "id": "1973913763784139208:13_1973913526159679488",
+      "tweet_id": "1973913763784139208",
+      "posted_at": "2025-10-03T00:51:29.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1973913763784139208",
+      "tweet_text": "We share one heart, one home, and one glorious destiny. https://t.co/55xaDCCySv",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "montage"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:USCIS",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "policy:border",
+        "review:screened-video",
+        "slogan:america-first",
+        "topic:economy",
+        "topic:general",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_1973913526159679488",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_1973913526159679488.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/a8124d8b09886f0832c7bf61f24d7467437530efd8748f4ce7b5096004931a8c.jpg",
+          "sha256": "a8124d8b09886f0832c7bf61f24d7467437530efd8748f4ce7b5096004931a8c",
+          "duration_sec": 39.708,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A produced montage of patriotic American imagery. Sampled frames include a reproduction of the painting of George Washington crossing the Delaware River with a flag, and vintage color footage of a large industrial assembly line with rows of early automobiles and workers. The clip is composed of historical art and archival film.  [0:08] A reproduction of the painting of George Washington crossing the icy Delaware River in a boat with a flag.  [0:24] Vintage color footage of a long factory assembly line with rows of early automobiles and workers.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5,
+                "ok": 13
+              },
+              "complete_row_count": 18,
+              "text": "pa\n\n; Mette\n\n. : 4 bi ¥ oma ge o . ee OR 2 « ‘ ea, iB : Y as ; uf sede -\n\n—-, B07 WE ee a ce .\n\nha!\n\neS BRT fee —_— 4 Ame. at. ’ a 5 1 1 1 3 6 458 169 9 12 10.810699 : 4 1 1 1 4 0 0 190 423 80 -1 5 1 1 1 4 1 0 232 78 38 25.934128 5 1 1 1 4 2 174 190 55 80 53.057293 ‘rt 5 1 1 1 4 3 283 202 140 61 47.377380 ae\n\n& [i bee €\n\nPROTECT YOUR HOMELAND DEFEND YOUR CULTURE BECOME A HOMELAND DEFENDER USCIS.GOV/JOIN\n\npa\n\n; Mette\n\n. : 4 bi ¥ oma ge o . ee OR 2 « ‘ ea, iB : Y as ; uf sede -\n\n—-, B07 WE ee a ce .\n\nha!"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 39.775782,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 6,
+              "text": "The United States of America is your country, a nation exists to serve its citizens. From this day forward, a new vision will govern our land. It's going to be only America first. At the bedrock of our politics will be a total allegiance to the United States of America. And through our loyalty to our country, we will rediscover our loyalty to each other. We share one heart, one home, and one glorious destiny."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A produced montage of patriotic American imagery. Sampled frames include a reproduction of the painting of George Washington crossing the Delaware River with a flag, and vintage color footage of a large industrial assembly line with rows of early automobiles and workers. The clip is composed of historical art and archival film.  [0:08] A reproduction of the painting of George Washington crossing the icy Delaware River in a boat with a flag.  [0:24] Vintage color footage of a long factory assembly line with rows of early automobiles and workers.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:nostalgia-americana: vintage",
+          "produced video with preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 17298,
+        "retweets": 3178,
+        "quotes": 220,
+        "views": 489515
       },
       "preference_score": 38,
       "preference_categories": [
@@ -7492,10 +7492,10 @@
         ]
       },
       "engagement": {
-        "likes": 4106,
-        "retweets": 972,
+        "likes": 4102,
+        "retweets": 973,
         "quotes": 63,
-        "views": 90411
+        "views": 90415
       },
       "preference_score": 38,
       "preference_categories": [
@@ -7620,10 +7620,10 @@
         ]
       },
       "engagement": {
-        "likes": 1693,
-        "retweets": 282,
-        "quotes": 1057,
-        "views": 5150228
+        "likes": 1682,
+        "retweets": 283,
+        "quotes": 1046,
+        "views": 5164043
       },
       "preference_score": 38,
       "preference_categories": [
@@ -8690,10 +8690,10 @@
         ]
       },
       "engagement": {
-        "likes": 506,
+        "likes": 504,
         "retweets": 96,
         "quotes": 2,
-        "views": 8347
+        "views": 8350
       },
       "preference_score": 37,
       "preference_categories": [
@@ -8812,10 +8812,10 @@
         ]
       },
       "engagement": {
-        "likes": 496,
-        "retweets": 89,
-        "quotes": 0,
-        "views": 15308
+        "likes": 493,
+        "retweets": 88,
+        "quotes": 5,
+        "views": 15312
       },
       "preference_score": 37,
       "preference_categories": [
@@ -8954,8 +8954,8 @@
       "engagement": {
         "likes": 0,
         "retweets": 0,
-        "quotes": 0,
-        "views": 174981
+        "quotes": 9,
+        "views": 174987
       },
       "preference_score": 37,
       "preference_categories": [
@@ -9098,10 +9098,10 @@
         ]
       },
       "engagement": {
-        "likes": 392,
+        "likes": 393,
         "retweets": 86,
         "quotes": 5,
-        "views": 29394
+        "views": 29397
       },
       "preference_score": 37,
       "preference_categories": [
@@ -9231,10 +9231,10 @@
         ]
       },
       "engagement": {
-        "likes": 2355,
-        "retweets": 532,
-        "quotes": 0,
-        "views": 67066
+        "likes": 2345,
+        "retweets": 522,
+        "quotes": 32,
+        "views": 67086
       },
       "preference_score": 37,
       "preference_categories": [
@@ -9352,7 +9352,7 @@
         ]
       },
       "engagement": {
-        "likes": 61235,
+        "likes": 61137,
         "retweets": 8826,
         "quotes": 1641,
         "views": 222
@@ -9470,10 +9470,10 @@
         ]
       },
       "engagement": {
-        "likes": 61235,
-        "retweets": 8763,
+        "likes": 61137,
+        "retweets": 8730,
         "quotes": 1641,
-        "views": 4016914
+        "views": 4018285
       },
       "preference_score": 36,
       "preference_categories": [
@@ -10956,9 +10956,9 @@
         ]
       },
       "engagement": {
-        "likes": 5049,
+        "likes": 5020,
         "retweets": 740,
-        "quotes": 0,
+        "quotes": 94,
         "views": 0
       },
       "preference_score": 35,
@@ -11071,10 +11071,10 @@
         ]
       },
       "engagement": {
-        "likes": 5049,
-        "retweets": 739,
-        "quotes": 0,
-        "views": 295328
+        "likes": 5020,
+        "retweets": 729,
+        "quotes": 94,
+        "views": 295362
       },
       "preference_score": 35,
       "preference_categories": [
@@ -11189,10 +11189,10 @@
         ]
       },
       "engagement": {
-        "likes": 1907,
-        "retweets": 460,
-        "quotes": 0,
-        "views": 47240
+        "likes": 1892,
+        "retweets": 458,
+        "quotes": 26,
+        "views": 47354
       },
       "preference_score": 35,
       "preference_categories": [
@@ -11472,10 +11472,10 @@
         ]
       },
       "engagement": {
-        "likes": 301,
+        "likes": 300,
         "retweets": 48,
         "quotes": 3,
-        "views": 10965
+        "views": 10966
       },
       "preference_score": 35,
       "preference_categories": [
@@ -11956,10 +11956,10 @@
         ]
       },
       "engagement": {
-        "likes": 1220,
+        "likes": 1222,
         "retweets": 98,
-        "quotes": 0,
-        "views": 401750
+        "quotes": 32,
+        "views": 401758
       },
       "preference_score": 34,
       "preference_categories": [
@@ -12444,10 +12444,10 @@
         ]
       },
       "engagement": {
-        "likes": 206,
+        "likes": 207,
         "retweets": 16,
         "quotes": 2,
-        "views": 24310
+        "views": 24313
       },
       "preference_score": 34,
       "preference_categories": [
@@ -12717,7 +12717,7 @@
         "likes": 26,
         "retweets": 3,
         "quotes": 2,
-        "views": 13296
+        "views": 13298
       },
       "preference_score": 34,
       "preference_categories": [
@@ -12947,7 +12947,7 @@
         "likes": 20975,
         "retweets": 3015,
         "quotes": 171,
-        "views": 411301
+        "views": 411307
       },
       "preference_score": 32,
       "preference_categories": [
@@ -13064,7 +13064,7 @@
         "likes": 18926,
         "retweets": 3399,
         "quotes": 159,
-        "views": 433817
+        "views": 433833
       },
       "preference_score": 32,
       "preference_categories": [
@@ -13176,7 +13176,7 @@
         "likes": 14351,
         "retweets": 2668,
         "quotes": 118,
-        "views": 274767
+        "views": 274772
       },
       "preference_score": 32,
       "preference_categories": [
@@ -13406,7 +13406,7 @@
         "likes": 12886,
         "retweets": 2632,
         "quotes": 178,
-        "views": 360561
+        "views": 360650
       },
       "preference_score": 32,
       "preference_categories": [
@@ -13639,7 +13639,7 @@
         "likes": 11762,
         "retweets": 2009,
         "quotes": 124,
-        "views": 309675
+        "views": 309685
       },
       "preference_score": 32,
       "preference_categories": [
@@ -13752,8 +13752,8 @@
       "engagement": {
         "likes": 6832,
         "retweets": 1160,
-        "quotes": 0,
-        "views": 694693
+        "quotes": 109,
+        "views": 694716
       },
       "preference_score": 32,
       "preference_categories": [
@@ -13866,8 +13866,8 @@
       "engagement": {
         "likes": 6635,
         "retweets": 901,
-        "quotes": 0,
-        "views": 527068
+        "quotes": 205,
+        "views": 527299
       },
       "preference_score": 32,
       "preference_categories": [
@@ -13980,7 +13980,7 @@
         "likes": 6315,
         "retweets": 1071,
         "quotes": 56,
-        "views": 128559
+        "views": 128563
       },
       "preference_score": 32,
       "preference_categories": [
@@ -14333,8 +14333,8 @@
       "engagement": {
         "likes": 4612,
         "retweets": 1006,
-        "quotes": 0,
-        "views": 138506
+        "quotes": 61,
+        "views": 138517
       },
       "preference_score": 32,
       "preference_categories": [
@@ -14688,7 +14688,7 @@
         "likes": 3595,
         "retweets": 617,
         "quotes": 41,
-        "views": 82156
+        "views": 82159
       },
       "preference_score": 32,
       "preference_categories": [
@@ -14800,8 +14800,8 @@
       "engagement": {
         "likes": 3557,
         "retweets": 639,
-        "quotes": 0,
-        "views": 172903
+        "quotes": 34,
+        "views": 172916
       },
       "preference_score": 32,
       "preference_categories": [
@@ -14912,8 +14912,8 @@
       "engagement": {
         "likes": 3343,
         "retweets": 703,
-        "quotes": 0,
-        "views": 75764
+        "quotes": 33,
+        "views": 75771
       },
       "preference_score": 32,
       "preference_categories": [
@@ -15266,8 +15266,8 @@
       "engagement": {
         "likes": 2724,
         "retweets": 634,
-        "quotes": 0,
-        "views": 40978
+        "quotes": 27,
+        "views": 40991
       },
       "preference_score": 32,
       "preference_categories": [
@@ -15503,7 +15503,7 @@
         "likes": 2463,
         "retweets": 459,
         "quotes": 22,
-        "views": 111033
+        "views": 111034
       },
       "preference_score": 32,
       "preference_categories": [
@@ -15857,8 +15857,8 @@
       "engagement": {
         "likes": 2053,
         "retweets": 690,
-        "quotes": 0,
-        "views": 47472
+        "quotes": 39,
+        "views": 47488
       },
       "preference_score": 32,
       "preference_categories": [
@@ -16672,8 +16672,8 @@
       "engagement": {
         "likes": 663,
         "retweets": 159,
-        "quotes": 0,
-        "views": 22954
+        "quotes": 21,
+        "views": 23111
       },
       "preference_score": 32,
       "preference_categories": [
@@ -17258,10 +17258,10 @@
         ]
       },
       "engagement": {
-        "likes": 26963,
-        "retweets": 3345,
+        "likes": 26812,
+        "retweets": 3323,
         "quotes": 818,
-        "views": 2133903
+        "views": 2134482
       },
       "preference_score": 32,
       "preference_categories": [
@@ -17372,10 +17372,10 @@
         ]
       },
       "engagement": {
-        "likes": 18980,
-        "retweets": 3876,
+        "likes": 18942,
+        "retweets": 3859,
         "quotes": 290,
-        "views": 553830
+        "views": 554205
       },
       "preference_score": 32,
       "preference_categories": [
@@ -17718,9 +17718,9 @@
         ]
       },
       "engagement": {
-        "likes": 18557,
+        "likes": 18524,
         "retweets": 3168,
-        "quotes": 210,
+        "quotes": 209,
         "views": 70
       },
       "preference_score": 32,
@@ -17832,10 +17832,10 @@
         ]
       },
       "engagement": {
-        "likes": 18557,
-        "retweets": 3126,
-        "quotes": 210,
-        "views": 389995
+        "likes": 18524,
+        "retweets": 3118,
+        "quotes": 209,
+        "views": 390408
       },
       "preference_score": 32,
       "preference_categories": [
@@ -17947,10 +17947,10 @@
         ]
       },
       "engagement": {
-        "likes": 13505,
-        "retweets": 1738,
-        "quotes": 0,
-        "views": 304238
+        "likes": 13446,
+        "retweets": 1730,
+        "quotes": 154,
+        "views": 304328
       },
       "preference_score": 32,
       "preference_categories": [
@@ -18286,10 +18286,10 @@
         ]
       },
       "engagement": {
-        "likes": 10155,
-        "retweets": 2606,
-        "quotes": 0,
-        "views": 227189
+        "likes": 10101,
+        "retweets": 2588,
+        "quotes": 184,
+        "views": 227255
       },
       "preference_score": 32,
       "preference_categories": [
@@ -18727,10 +18727,10 @@
         ]
       },
       "engagement": {
-        "likes": 7413,
-        "retweets": 1358,
+        "likes": 7405,
+        "retweets": 1356,
         "quotes": 92,
-        "views": 218716
+        "views": 218727
       },
       "preference_score": 32,
       "preference_categories": [
@@ -18842,10 +18842,10 @@
         ]
       },
       "engagement": {
-        "likes": 7368,
+        "likes": 7358,
         "retweets": 1090,
         "quotes": 33,
-        "views": 856027
+        "views": 856031
       },
       "preference_score": 32,
       "preference_categories": [
@@ -19189,10 +19189,10 @@
         ]
       },
       "engagement": {
-        "likes": 3956,
-        "retweets": 578,
+        "likes": 3952,
+        "retweets": 577,
         "quotes": 66,
-        "views": 445690
+        "views": 445691
       },
       "preference_score": 32,
       "preference_categories": [
@@ -19224,7 +19224,6 @@
         "agency:USCIS",
         "media-status:archived",
         "media-status:described",
-        "media-status:needs-ocr",
         "media-status:ocr-done",
         "media:photo",
         "review:screened-photo",
@@ -19261,10 +19260,10 @@
             },
             "ocr": {
               "status_counts": {
-                "no-text": 1
+                "ok": 1
               },
               "complete_row_count": 1,
-              "text": ""
+              "text": "> PROTECT YOUR NY. HOMELAND al a USCIS.COV/JOIN"
             },
             "keyframes": {
               "status": null,
@@ -19423,9 +19422,9 @@
         ]
       },
       "engagement": {
-        "likes": 3557,
+        "likes": 3527,
         "retweets": 639,
-        "quotes": 0,
+        "quotes": 34,
         "views": 0
       },
       "preference_score": 32,
@@ -19537,10 +19536,10 @@
         ]
       },
       "engagement": {
-        "likes": 3611,
-        "retweets": 491,
-        "quotes": 0,
-        "views": 247702
+        "likes": 3581,
+        "retweets": 486,
+        "quotes": 67,
+        "views": 247719
       },
       "preference_score": 32,
       "preference_categories": [
@@ -19764,10 +19763,10 @@
         ]
       },
       "engagement": {
-        "likes": 3044,
-        "retweets": 620,
+        "likes": 3040,
+        "retweets": 619,
         "quotes": 60,
-        "views": 86928
+        "views": 86931
       },
       "preference_score": 32,
       "preference_categories": [
@@ -19881,10 +19880,10 @@
         ]
       },
       "engagement": {
-        "likes": 2708,
-        "retweets": 660,
-        "quotes": 0,
-        "views": 55624
+        "likes": 2695,
+        "retweets": 662,
+        "quotes": 39,
+        "views": 56888
       },
       "preference_score": 32,
       "preference_categories": [
@@ -20113,10 +20112,10 @@
         ]
       },
       "engagement": {
-        "likes": 2370,
-        "retweets": 700,
+        "likes": 2356,
+        "retweets": 690,
         "quotes": 48,
-        "views": 43421
+        "views": 43454
       },
       "preference_score": 32,
       "preference_categories": [
@@ -20263,7 +20262,6 @@
         "agency:USCIS",
         "media-status:archived",
         "media-status:described",
-        "media-status:needs-ocr",
         "media-status:ocr-done",
         "media:photo",
         "review:screened-photo",
@@ -20299,10 +20297,10 @@
             },
             "ocr": {
               "status_counts": {
-                "no-text": 1
+                "ok": 1
               },
               "complete_row_count": 1,
-              "text": ""
+              "text": "; —— a Gas = PROTECT YOUR 4 : = 7 ot y Ke aii , -_ um aprieee : ia © 3)? gee SE te Ne 2 a ee ye: on , 3 Sas |! a ae a bie ey 8. ) ee oe ay £ ie Pe se Socceee 4), 7 a “4 Lj, i Repos idsilaweioho"
             },
             "keyframes": {
               "status": null,
@@ -20495,7 +20493,6 @@
         "agency:USCIS",
         "media-status:archived",
         "media-status:described",
-        "media-status:needs-ocr",
         "media-status:ocr-done",
         "media:photo",
         "review:screened-photo",
@@ -20531,10 +20528,10 @@
             },
             "ocr": {
               "status_counts": {
-                "no-text": 1
+                "ok": 1
               },
               "complete_row_count": 1,
-              "text": ""
+              "text": "—_— — Hes 5 1 1 1 2 2 184 697 18 34 15.571838 ’ 5 1 1 1 2 3 220 739 25 43 50.570927 x 5 1 1 1 2 4 362 725 44 57 56.100788 0 5 1 1 1 2 5 391 713 59 64 37.666138 Kr 5 1 1 1 2 6 451 713 79 50 37.996525 = 4 1 1 1 3 0 156 770 375 103 -1 5 1 1 1 3 1 156 796 139 77 24.891014 we 5 1 1 1 3 2 361 797 6 26 46.913067 \\ 5 1 1 1 3 3 384 770 96 94 0.000000 e 5 1 1 1 3 4 517 802 14 6 13.430557 S 4 1 1 1 4 0 250 953 656 87 -1 5 1 1 1 4 1 193 967 165 73 54.651268 Wf) 5 1 1 1 4 2 468 973 56 8 23.519058 5 1 1 1 4 3 637 966 143 63 16.731857 S\\ii 5 1 1 1 4 4 812 953 94 69 76.508537 4, 4 1 1 1 5 0 265 1073 647 96 -1 5 1 1 1 5 1 265 1080 186 3 0.000000 USCIS. 5 1 1 1 5 2 445 1085 211 67 0.000000 GOV/JOIN 5 1 1 1 5 3 881 1073 31 96 91.691620 \\"
             },
             "keyframes": {
               "status": null,
@@ -20688,123 +20685,10 @@
         ]
       },
       "engagement": {
-        "likes": 1918,
-        "retweets": 272,
+        "likes": 1915,
+        "retweets": 271,
         "quotes": 9,
-        "views": 82729
-      },
-      "preference_score": 32,
-      "preference_categories": [
-        "aesthetic:nostalgia-americana"
-      ]
-    },
-    {
-      "id": "2027144203914891343:3_2027144194150522880",
-      "tweet_id": "2027144203914891343",
-      "posted_at": "2026-02-26T22:10:15.000Z",
-      "era": "2025_plus",
-      "queue": "candidates",
-      "account": {
-        "handle": "USDOL",
-        "category": "core",
-        "label": "U.S. Department of Labor"
-      },
-      "tweet_url": "https://x.com/USDOL/status/2027144203914891343",
-      "tweet_text": "The future of our country will be built by the hands of our Skilled Workforce. \n\nJOIN THE GREAT AMERICAN WORKFORCE REVIVAL 🇺🇸\n\nhttp://APPRENTICESHIP.GOV https://t.co/OBiOEO6MaR",
-      "review_state": "candidate",
-      "inclusion_basis": "wholly_creative_media",
-      "confidence": "medium",
-      "score": 90,
-      "creative_forms": [
-        "poster-or-meme"
-      ],
-      "subjects": [],
-      "tags": [
-        "media-status:archived",
-        "media-status:described",
-        "media-status:ocr-done",
-        "media:photo",
-        "review:screened-photo",
-        "topic:economy"
-      ],
-      "media": [
-        {
-          "media_id": "3_2027144194150522880",
-          "type": "photo",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-USDOL/3_2027144194150522880.jpg",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/photo/498f4ea691bc2a589c2b8e2fac27458a352624b875d036335c71830d80980f6a.jpg",
-          "sha256": "498f4ea691bc2a589c2b8e2fac27458a352624b875d036335c71830d80980f6a",
-          "duration_sec": null,
-          "playable": true,
-          "readiness": {
-            "ready": true,
-            "blockers": [],
-            "checks": {
-              "archived": true,
-              "description": true,
-              "thumbnail": true,
-              "ocr": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "opus-vision-review",
-              "text": "Painterly Art Deco style illustration. A man in profile, head bowed, wears a blue hard hat, a gray-blue jacket, and a yellow high-visibility vest. Behind him are golden geometric beams arranged in a sunburst pattern and blue marbled panels, in warm gold and blue light. The image is hand-painted with no photographic elements. At the bottom, centered white text reads 'APPRENTICESHIP.GOV', above a small circular government seal. There is no slogan headline.",
-              "sidecar_statuses": {
-                "manual-review": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {
-                "ok": 1
-              },
-              "complete_row_count": 1,
-              "text": "ae] BR ( ie ) 1h i ‘| ] H iy ey 5 1 1 1 2 4 400 297 47 72 21.547577 hy 5 1 1 1 2 5 478 349 3 8 79.304115 5 1 1 1 2 6 506 328 58 64 0.000000 Ay 5 1 1 1 2 7 576 317 19 72 0.000000 T 5 1 1 1 2 8 611 320 102 80 37.904945 Pi 5 1 1 1 2 9 763 330 167 146 22.415558 \\\\ 4 1 1 1 3 0 23 472 914 151 -1 5 1 1 1 3 1 23 472 68 80 74.521706 oll 5 1 1 1 3 2 122 481 87 104 45.974575 5 1 1 1 3 3 492 515 445 108 43.585152 RS 4 1 1 1 4 0 41 654 870 188 -1 5 1 1 1 4 1 41 709 138 64 23.192123 aN 5 1 1 1 4 2 584 654 327 200 12.607544 GIN 4 1 1 1 5 0 23 754 786 220 -1 5 1 1 1 5 1 23 772 187 87 35.269157 og 5 1 1 1 5 2 338 827 11 38 42.645435 \\ 5 1 1 1 5 3 371 754 110 186 0.000000 i 5 1 1 1 5 4 568 806 94 107 43.991020 Wi 5 1 1 1 5 5 681 806 128 168 19.215813 i) 3 1 1 2 0 0 129 946 625 101 -1 4 1 1 2 1 0 129 946 572 96 -1 5 1 1 2 1 1 129 946 66 57 66.663712 Ve 5 1 1 2 1 2 384 955 98 74 11.522942 a) 5 1 1 2 1 3 674 968 80 79 31.104172 a"
-            },
-            "keyframes": {
-              "status": null,
-              "frame_count": 0
-            },
-            "audio": {
-              "status": null,
-              "audio_stream_count": 0,
-              "duration_sec": null,
-              "tags": []
-            },
-            "transcript": {
-              "status": null,
-              "segment_count": 0,
-              "text": ""
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": true,
-        "blockers": [],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "Painterly Art Deco style illustration. A man in profile, head bowed, wears a blue hard hat, a gray-blue jacket, and a yellow high-visibility vest. Behind him are golden geometric beams arranged in a sunburst pattern and blue marbled panels, in warm gold and blue light. The image is hand-painted with no photographic elements. At the bottom, centered white text reads 'APPRENTICESHIP.GOV', above a small circular government seal. There is no slogan headline.",
-        "notable_text": "",
-        "reasons": [
-          "wholly creative media signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ],
-        "preference_reasons": [
-          "aesthetic:nostalgia-americana: Art Deco"
-        ]
-      },
-      "engagement": {
-        "likes": 1226,
-        "retweets": 364,
-        "quotes": 22,
-        "views": 20615
+        "views": 82730
       },
       "preference_score": 32,
       "preference_categories": [
@@ -20915,10 +20799,123 @@
         ]
       },
       "engagement": {
-        "likes": 1266,
-        "retweets": 322,
+        "likes": 1261,
+        "retweets": 321,
         "quotes": 11,
-        "views": 54089
+        "views": 54122
+      },
+      "preference_score": 32,
+      "preference_categories": [
+        "aesthetic:nostalgia-americana"
+      ]
+    },
+    {
+      "id": "2027144203914891343:3_2027144194150522880",
+      "tweet_id": "2027144203914891343",
+      "posted_at": "2026-02-26T22:10:15.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "USDOL",
+        "category": "core",
+        "label": "U.S. Department of Labor"
+      },
+      "tweet_url": "https://x.com/USDOL/status/2027144203914891343",
+      "tweet_text": "The future of our country will be built by the hands of our Skilled Workforce. \n\nJOIN THE GREAT AMERICAN WORKFORCE REVIVAL 🇺🇸\n\nhttp://APPRENTICESHIP.GOV https://t.co/OBiOEO6MaR",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "poster-or-meme"
+      ],
+      "subjects": [],
+      "tags": [
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "topic:economy"
+      ],
+      "media": [
+        {
+          "media_id": "3_2027144194150522880",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USDOL/3_2027144194150522880.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/498f4ea691bc2a589c2b8e2fac27458a352624b875d036335c71830d80980f6a.jpg",
+          "sha256": "498f4ea691bc2a589c2b8e2fac27458a352624b875d036335c71830d80980f6a",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Painterly Art Deco style illustration. A man in profile, head bowed, wears a blue hard hat, a gray-blue jacket, and a yellow high-visibility vest. Behind him are golden geometric beams arranged in a sunburst pattern and blue marbled panels, in warm gold and blue light. The image is hand-painted with no photographic elements. At the bottom, centered white text reads 'APPRENTICESHIP.GOV', above a small circular government seal. There is no slogan headline.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "ae] BR ( ie ) 1h i ‘| ] H iy ey 5 1 1 1 2 4 400 297 47 72 21.547577 hy 5 1 1 1 2 5 478 349 3 8 79.304115 5 1 1 1 2 6 506 328 58 64 0.000000 Ay 5 1 1 1 2 7 576 317 19 72 0.000000 T 5 1 1 1 2 8 611 320 102 80 37.904945 Pi 5 1 1 1 2 9 763 330 167 146 22.415558 \\\\ 4 1 1 1 3 0 23 472 914 151 -1 5 1 1 1 3 1 23 472 68 80 74.521706 oll 5 1 1 1 3 2 122 481 87 104 45.974575 5 1 1 1 3 3 492 515 445 108 43.585152 RS 4 1 1 1 4 0 41 654 870 188 -1 5 1 1 1 4 1 41 709 138 64 23.192123 aN 5 1 1 1 4 2 584 654 327 200 12.607544 GIN 4 1 1 1 5 0 23 754 786 220 -1 5 1 1 1 5 1 23 772 187 87 35.269157 og 5 1 1 1 5 2 338 827 11 38 42.645435 \\ 5 1 1 1 5 3 371 754 110 186 0.000000 i 5 1 1 1 5 4 568 806 94 107 43.991020 Wi 5 1 1 1 5 5 681 806 128 168 19.215813 i) 3 1 1 2 0 0 129 946 625 101 -1 4 1 1 2 1 0 129 946 572 96 -1 5 1 1 2 1 1 129 946 66 57 66.663712 Ve 5 1 1 2 1 2 384 955 98 74 11.522942 a) 5 1 1 2 1 3 674 968 80 79 31.104172 a"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Painterly Art Deco style illustration. A man in profile, head bowed, wears a blue hard hat, a gray-blue jacket, and a yellow high-visibility vest. Behind him are golden geometric beams arranged in a sunburst pattern and blue marbled panels, in warm gold and blue light. The image is hand-painted with no photographic elements. At the bottom, centered white text reads 'APPRENTICESHIP.GOV', above a small circular government seal. There is no slogan headline.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:nostalgia-americana: Art Deco"
+        ]
+      },
+      "engagement": {
+        "likes": 1220,
+        "retweets": 359,
+        "quotes": 22,
+        "views": 20660
       },
       "preference_score": 32,
       "preference_categories": [
@@ -21033,10 +21030,10 @@
         ]
       },
       "engagement": {
-        "likes": 927,
-        "retweets": 332,
-        "quotes": 0,
-        "views": 17992
+        "likes": 916,
+        "retweets": 321,
+        "quotes": 20,
+        "views": 18092
       },
       "preference_score": 32,
       "preference_categories": [
@@ -21068,7 +21065,6 @@
         "agency:USCIS",
         "media-status:archived",
         "media-status:described",
-        "media-status:needs-ocr",
         "media-status:ocr-done",
         "media:photo",
         "review:screened-photo",
@@ -21104,10 +21100,10 @@
             },
             "ocr": {
               "status_counts": {
-                "no-text": 1
+                "ok": 1
               },
               "complete_row_count": 1,
-              "text": ""
+              "text": "yy ? if, ow : Lo NWS... SECURE : a {'f 4] ih! if FUTURE “. a"
             },
             "keyframes": {
               "status": null,
@@ -21153,122 +21149,6 @@
         "retweets": 164,
         "quotes": 13,
         "views": 56848
-      },
-      "preference_score": 32,
-      "preference_categories": [
-        "aesthetic:nostalgia-americana"
-      ]
-    },
-    {
-      "id": "2029719069520241114:3_2029719066890448896",
-      "tweet_id": "2029719069520241114",
-      "posted_at": "2026-03-06T00:41:51.000Z",
-      "era": "2025_plus",
-      "queue": "candidates",
-      "account": {
-        "handle": "USDOL",
-        "category": "core",
-        "label": "U.S. Department of Labor"
-      },
-      "tweet_url": "https://x.com/USDOL/status/2029719069520241114",
-      "tweet_text": "There’s no better time to join the American Workforce 🇺🇸\n\nUnder @POTUS’ leadership, skilled tradesmen and women are seeing major wins as we refocus on creating jobs right here in America and putting AMERICAN WORKERS FIRST! \n\nhttp://APPRENTICESHIP.GOV https://t.co/RvYqvyDD2E",
-      "review_state": "candidate",
-      "inclusion_basis": "wholly_creative_media",
-      "confidence": "medium",
-      "score": 90,
-      "creative_forms": [
-        "advertisement",
-        "poster-or-meme"
-      ],
-      "subjects": [],
-      "tags": [
-        "agency:POTUS",
-        "genre:advertisement",
-        "media-status:archived",
-        "media-status:described",
-        "media-status:ocr-done",
-        "media:photo",
-        "review:screened-photo",
-        "topic:economy"
-      ],
-      "media": [
-        {
-          "media_id": "3_2029719066890448896",
-          "type": "photo",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-USDOL/3_2029719066890448896.jpg",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/photo/59fad34a0d49cffeee415eec13add852ee14a3d43495b2e5d3c76bc3e5e9d28e.jpg",
-          "sha256": "59fad34a0d49cffeee415eec13add852ee14a3d43495b2e5d3c76bc3e5e9d28e",
-          "duration_sec": null,
-          "playable": true,
-          "readiness": {
-            "ready": true,
-            "blockers": [],
-            "checks": {
-              "archived": true,
-              "description": true,
-              "thumbnail": true,
-              "ocr": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "opus-vision-review",
-              "text": "Widescreen promo poster built on a photograph of President Trump standing on a stage in an industrial machine shop or factory setting, wearing a dark blue suit, white shirt, and a purple-blue tie, pointing off to his left with his right arm. Behind him are an American flag and a gold-fringed presidential flag, with metalworking machinery and equipment on the shop floor, and a long blue banner reading 'JOBS! JOBS! JOBS!' on the back wall. Across the top in white serif capitals is the headline 'JOIN AMERICA'S WORKFORCE REVIVAL'. In the lower right corner is a small embossed Department of Labor seal and the URL 'APPRENTICESHIP.GOV'.",
-              "sidecar_statuses": {
-                "manual-review": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {
-                "ok": 1
-              },
-              "complete_row_count": 1,
-              "text": "YIN / /ORKFORGE, - ' . . fp ' m r= a / we wee hl - d e a \\ eS ba a y 4 =~ ha ‘ Pe! i i ie ar ws tk ~y = 72 — : a - APPRENTI@ESHUP.GOV"
-            },
-            "keyframes": {
-              "status": null,
-              "frame_count": 0
-            },
-            "audio": {
-              "status": null,
-              "audio_stream_count": 0,
-              "duration_sec": null,
-              "tags": []
-            },
-            "transcript": {
-              "status": null,
-              "segment_count": 0,
-              "text": ""
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": true,
-        "blockers": [],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "Widescreen promo poster built on a photograph of President Trump standing on a stage in an industrial machine shop or factory setting, wearing a dark blue suit, white shirt, and a purple-blue tie, pointing off to his left with his right arm. Behind him are an American flag and a gold-fringed presidential flag, with metalworking machinery and equipment on the shop floor, and a long blue banner reading 'JOBS! JOBS! JOBS!' on the back wall. Across the top in white serif capitals is the headline 'JOIN AMERICA'S WORKFORCE REVIVAL'. In the lower right corner is a small embossed Department of Labor seal and the URL 'APPRENTICESHIP.GOV'.",
-        "notable_text": "",
-        "reasons": [
-          "wholly creative media signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ],
-        "preference_reasons": [
-          "aesthetic:nostalgia-americana: AMERICAN WORKERS"
-        ]
-      },
-      "engagement": {
-        "likes": 485,
-        "retweets": 151,
-        "quotes": 0,
-        "views": 15969
       },
       "preference_score": 32,
       "preference_categories": [
@@ -21385,6 +21265,122 @@
         "retweets": 138,
         "quotes": 13,
         "views": 71204
+      },
+      "preference_score": 32,
+      "preference_categories": [
+        "aesthetic:nostalgia-americana"
+      ]
+    },
+    {
+      "id": "2029719069520241114:3_2029719066890448896",
+      "tweet_id": "2029719069520241114",
+      "posted_at": "2026-03-06T00:41:51.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "USDOL",
+        "category": "core",
+        "label": "U.S. Department of Labor"
+      },
+      "tweet_url": "https://x.com/USDOL/status/2029719069520241114",
+      "tweet_text": "There’s no better time to join the American Workforce 🇺🇸\n\nUnder @POTUS’ leadership, skilled tradesmen and women are seeing major wins as we refocus on creating jobs right here in America and putting AMERICAN WORKERS FIRST! \n\nhttp://APPRENTICESHIP.GOV https://t.co/RvYqvyDD2E",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "advertisement",
+        "poster-or-meme"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:POTUS",
+        "genre:advertisement",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "topic:economy"
+      ],
+      "media": [
+        {
+          "media_id": "3_2029719066890448896",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USDOL/3_2029719066890448896.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/59fad34a0d49cffeee415eec13add852ee14a3d43495b2e5d3c76bc3e5e9d28e.jpg",
+          "sha256": "59fad34a0d49cffeee415eec13add852ee14a3d43495b2e5d3c76bc3e5e9d28e",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Widescreen promo poster built on a photograph of President Trump standing on a stage in an industrial machine shop or factory setting, wearing a dark blue suit, white shirt, and a purple-blue tie, pointing off to his left with his right arm. Behind him are an American flag and a gold-fringed presidential flag, with metalworking machinery and equipment on the shop floor, and a long blue banner reading 'JOBS! JOBS! JOBS!' on the back wall. Across the top in white serif capitals is the headline 'JOIN AMERICA'S WORKFORCE REVIVAL'. In the lower right corner is a small embossed Department of Labor seal and the URL 'APPRENTICESHIP.GOV'.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "YIN / /ORKFORGE, - ' . . fp ' m r= a / we wee hl - d e a \\ eS ba a y 4 =~ ha ‘ Pe! i i ie ar ws tk ~y = 72 — : a - APPRENTI@ESHUP.GOV"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Widescreen promo poster built on a photograph of President Trump standing on a stage in an industrial machine shop or factory setting, wearing a dark blue suit, white shirt, and a purple-blue tie, pointing off to his left with his right arm. Behind him are an American flag and a gold-fringed presidential flag, with metalworking machinery and equipment on the shop floor, and a long blue banner reading 'JOBS! JOBS! JOBS!' on the back wall. Across the top in white serif capitals is the headline 'JOIN AMERICA'S WORKFORCE REVIVAL'. In the lower right corner is a small embossed Department of Labor seal and the URL 'APPRENTICESHIP.GOV'.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:nostalgia-americana: AMERICAN WORKERS"
+        ]
+      },
+      "engagement": {
+        "likes": 481,
+        "retweets": 150,
+        "quotes": 8,
+        "views": 15993
       },
       "preference_score": 32,
       "preference_categories": [
@@ -21619,10 +21615,10 @@
         ]
       },
       "engagement": {
-        "likes": 341,
-        "retweets": 106,
+        "likes": 338,
+        "retweets": 101,
         "quotes": 7,
-        "views": 11855
+        "views": 11930
       },
       "preference_score": 32,
       "preference_categories": [
@@ -21734,10 +21730,10 @@
         ]
       },
       "engagement": {
-        "likes": 328,
-        "retweets": 116,
-        "quotes": 0,
-        "views": 8717
+        "likes": 324,
+        "retweets": 114,
+        "quotes": 7,
+        "views": 8775
       },
       "preference_score": 32,
       "preference_categories": [
@@ -21847,10 +21843,10 @@
         ]
       },
       "engagement": {
-        "likes": 288,
-        "retweets": 110,
-        "quotes": 0,
-        "views": 7548
+        "likes": 287,
+        "retweets": 107,
+        "quotes": 13,
+        "views": 7573
       },
       "preference_score": 32,
       "preference_categories": [
@@ -21966,10 +21962,10 @@
         ]
       },
       "engagement": {
-        "likes": 246,
+        "likes": 245,
         "retweets": 84,
         "quotes": 3,
-        "views": 9016
+        "views": 9017
       },
       "preference_score": 32,
       "preference_categories": [
@@ -22905,8 +22901,8 @@
       "engagement": {
         "likes": 400,
         "retweets": 137,
-        "quotes": 0,
-        "views": 8075
+        "quotes": 7,
+        "views": 8099
       },
       "preference_score": 32,
       "preference_categories": [
@@ -23029,8 +23025,8 @@
       "engagement": {
         "likes": 2047,
         "retweets": 584,
-        "quotes": 0,
-        "views": 61794
+        "quotes": 39,
+        "views": 61819
       },
       "preference_score": 31,
       "preference_categories": [
@@ -23286,8 +23282,8 @@
       "engagement": {
         "likes": 0,
         "retweets": 0,
-        "quotes": 0,
-        "views": 50694
+        "quotes": 25,
+        "views": 50702
       },
       "preference_score": 31,
       "preference_categories": [
@@ -23665,8 +23661,8 @@
       "engagement": {
         "likes": 0,
         "retweets": 0,
-        "quotes": 0,
-        "views": 30244
+        "quotes": 15,
+        "views": 30246
       },
       "preference_score": 31,
       "preference_categories": [
@@ -23792,8 +23788,8 @@
       "engagement": {
         "likes": 0,
         "retweets": 0,
-        "quotes": 0,
-        "views": 26400
+        "quotes": 18,
+        "views": 26475
       },
       "preference_score": 31,
       "preference_categories": [
@@ -24315,9 +24311,9 @@
       },
       "engagement": {
         "likes": 1820,
-        "retweets": 386,
+        "retweets": 384,
         "quotes": 37,
-        "views": 458465
+        "views": 458471
       },
       "preference_score": 31,
       "preference_categories": [
@@ -24450,10 +24446,10 @@
         ]
       },
       "engagement": {
-        "likes": 0,
-        "retweets": 0,
-        "quotes": 0,
-        "views": 20204
+        "likes": 404,
+        "retweets": 84,
+        "quotes": 7,
+        "views": 20205
       },
       "preference_score": 31,
       "preference_categories": [
