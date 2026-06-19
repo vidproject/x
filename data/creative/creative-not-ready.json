@@ -1,17 +1,17 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-06-19T20:41:07Z",
-    "source_commit": "864bc5ec",
+    "generated_at": "2026-06-19T22:01:56Z",
+    "source_commit": "a7c634eb",
     "item_count": 22,
     "blocker_counts": {
       "missing genuine visual description": 17,
       "missing complete OCR for extracted keyframes": 11,
-      "missing archived media asset": 11,
+      "missing archived media asset": 10,
       "missing extracted video keyframes": 9,
       "missing video thumbnail": 9,
-      "missing photo OCR": 7,
-      "missing photo thumbnail": 7,
+      "missing photo OCR": 6,
+      "missing photo thumbnail": 6,
       "missing audio analysis": 4,
       "missing transcript for video with audio": 2
     }
@@ -1153,13 +1153,14 @@
         "immigration-language"
       ],
       "tags": [
+        "action:deportation",
         "action:detention",
         "agency:ICEgov",
         "country:Mexico",
         "crime:dui",
         "crime:narcotics",
         "legal:criminal-prosecution",
-        "media-status:needs-ocr",
+        "media-status:ocr-done",
         "slogan:criminal-illegal-alien",
         "slogan:illegal-alien",
         "subject:enforcement-op",
@@ -1170,25 +1171,22 @@
         {
           "media_id": "3_2066990721844834304",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-ERO__Phoenix/3_2066990721844834304.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/70d2de57134b18f6e409b04e8588803c0240096c51159adfaf0b3056738f1082.jpg",
+          "sha256": "70d2de57134b18f6e409b04e8588803c0240096c51159adfaf0b3056738f1082",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
@@ -1198,9 +1196,11 @@
               "sidecar_statuses": {}
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "a PHOENDC AZ ARRESTED 1) FACING REMOVAL ICE"
             },
             "keyframes": {
               "status": null,
@@ -1223,10 +1223,7 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
