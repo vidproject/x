@@ -1,18 +1,19 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-06-19T11:29:28Z",
-    "source_commit": "1912177b",
+    "generated_at": "2026-06-19T16:03:54Z",
+    "source_commit": "056ba093",
     "item_count": 22,
     "blocker_counts": {
       "missing genuine visual description": 17,
-      "missing archived media asset": 14,
+      "missing archived media asset": 12,
       "missing complete OCR for extracted keyframes": 11,
-      "missing extracted video keyframes": 11,
-      "missing video thumbnail": 11,
-      "missing photo OCR": 8,
-      "missing photo thumbnail": 8,
-      "missing audio analysis": 6
+      "missing extracted video keyframes": 10,
+      "missing video thumbnail": 10,
+      "missing photo OCR": 7,
+      "missing photo thumbnail": 7,
+      "missing audio analysis": 5,
+      "missing transcript for video with audio": 1
     }
   },
   "items": [
@@ -898,7 +899,7 @@
         "format:reply",
         "genre:lineup",
         "legal:criminal-prosecution",
-        "media-status:needs-ocr",
+        "media-status:ocr-done",
         "slogan:criminal-illegal-alien",
         "slogan:illegal-alien",
         "theme:criminal",
@@ -908,25 +909,22 @@
         {
           "media_id": "3_2011090967516893184",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/3_2011090967516893184.png",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/94b05f36501afea0c88256e00e0a621e5b3e2bff1e863addfd6acc650ed2de03.jpg",
+          "sha256": "94b05f36501afea0c88256e00e0a621e5b3e2bff1e863addfd6acc650ed2de03",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
@@ -936,9 +934,11 @@
               "sidecar_statuses": {}
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "aa"
             },
             "keyframes": {
               "status": null,
@@ -961,10 +961,7 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
@@ -2997,6 +2994,7 @@
       ],
       "tags": [
         "agency:DHSgov",
+        "audio:has-audio",
         "country:Ecuador",
         "crime:assault",
         "crime:homicide",
@@ -3014,32 +3012,29 @@
         {
           "media_id": "13_2008552165787287553",
           "type": "video",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2008552165787287553.mp4",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/video/e679545c05210d743141f90951735dfc840ea2717bb4eee72990e94d86313302.jpg",
+          "sha256": "e679545c05210d743141f90951735dfc840ea2717bb4eee72990e94d86313302",
           "duration_sec": 90.466,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing audio analysis",
               "missing complete OCR for extracted keyframes",
-              "missing extracted video keyframes",
               "missing genuine visual description",
-              "missing video thumbnail"
+              "missing transcript for video with audio"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "keyframes": false,
-              "keyframe_count": 0,
-              "thumbnail": false,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
               "ocr": false,
-              "audio_analysis": false,
-              "has_audio": false,
-              "transcript": true
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": false
             }
           },
           "analysis": {
@@ -3054,14 +3049,16 @@
               "text": ""
             },
             "keyframes": {
-              "status": null,
-              "frame_count": 0
+              "status": "ok",
+              "frame_count": 5
             },
             "audio": {
-              "status": null,
-              "audio_stream_count": 0,
-              "duration_sec": null,
-              "tags": []
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 90.517333,
+              "tags": [
+                "audio:has-audio"
+              ]
             },
             "transcript": {
               "status": null,
@@ -3074,12 +3071,9 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing audio analysis",
           "missing complete OCR for extracted keyframes",
-          "missing extracted video keyframes",
           "missing genuine visual description",
-          "missing video thumbnail"
+          "missing transcript for video with audio"
         ],
         "media_count": 1
       },

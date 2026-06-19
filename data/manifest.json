@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T11:28:59Z",
+  "generated_at": "2026-06-19T16:03:24Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -7,7 +7,7 @@
       "label": "Department of Homeland Security",
       "category": "core",
       "parquet": "data/DHSgov.parquet",
-      "parquet_bytes": 1856597,
+      "parquet_bytes": 1869896,
       "row_count": 6328,
       "post_count": 5223,
       "reply_count": 1105,
@@ -1228,7 +1228,7 @@
       "label": "DHS Blue Campaign",
       "category": "government",
       "parquet": "data/DHSBlueCampaign.parquet",
-      "parquet_bytes": 54552,
+      "parquet_bytes": 54596,
       "row_count": 31,
       "post_count": 29,
       "reply_count": 2,
@@ -1345,7 +1345,7 @@
       "label": "CBP Jobs",
       "category": "core",
       "parquet": "data/CBPJobs.parquet",
-      "parquet_bytes": 323845,
+      "parquet_bytes": 326052,
       "row_count": 858,
       "post_count": 857,
       "reply_count": 1,
