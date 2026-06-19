@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T182454Z-2c32b4d9-ABC",
+  "account_handle": "ABC",
+  "captured_at": "2026-06-17T18:25:10.470Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AStephenM%20since%3A2025-12-17%20until%3A2025-12-24%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2001406305802555894",
+      "account_handle": "ABC",
+      "account_id": "28785486",
+      "posted_at": "2025-12-17T21:37:02.000Z",
+      "first_captured_at": "2026-06-17T18:25:01.883Z",
+      "last_seen_at": "2026-06-17T18:25:01.883Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/ABC/status/2001406305802555894",
+      "tweet_type": "original",
+      "conversation_id": "2001406305802555894",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Two Massachusetts men trafficked nearly $7 million worth of benefits intended for people who cannot afford food, federal prosecutors in Boston said Wednesday. https://t.co/7KraJ8Ebmx",
+      "text_resolved": "Two Massachusetts men trafficked nearly $7 million worth of benefits intended for people who cannot afford food, federal prosecutors in Boston said Wednesday. https://abcnews.link/KRKTv6F",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/7KraJ8Ebmx",
+          "expanded": "https://abcnews.link/KRKTv6F",
+          "display": "abcnews.link/KRKTv6F"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/7KraJ8Ebmx",
+        "vendor_url": "abcnews.com",
+        "title": "2 men arrested for allegedly trafficking nearly $7 million worth of SNAP benefits: Officials",
+        "description": "Antonio Bonheur, 74, of Mattapan, and Saul Alisme, 21, of Hyde Park, were arrested Wednesday morning and charged with one count of food stamp fraud.",
+        "image_url": null
+      },
+      "media": [],
+      "like_count": 1524,
+      "retweet_count": 501,
+      "reply_count": 1836,
+      "quote_count": 259,
+      "view_count": 4354480,
+      "bookmark_count": 282,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T18:25:01.883Z",
+          "likes": 1524,
+          "retweets": 501,
+          "replies": 1836,
+          "quotes": 259,
+          "views": 4354480,
+          "bookmarks": 282
+        }
+      ],
+      "author": {
+        "display_name": "ABC News",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1605211963096801282/3flU1i5o_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": "The only official ABC News account. Download our mobile app for the latest updates: https://t.co/BHFi2mi2To",
+        "location": null,
+        "url": "https://t.co/qys9hFtGVP",
+        "followers_count": 18346359,
+        "friends_count": 403,
+        "statuses_count": 507109,
+        "account_created_at": "2009-04-04T12:40:32.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T182454Z-2c32b4d9",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T182454Z-2c32b4d9.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T182454Z-2c32b4d9.jsonl",
+    "source_handle": "StephenM"
+  }
+}

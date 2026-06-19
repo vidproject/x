@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T011122Z-e5006064-ICEgov",
+  "account_handle": "ICEgov",
+  "captured_at": "2026-06-14T01:11:43.529Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEroHarlingen%20since%3A2023-01-01%20until%3A2024-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1729531507327340892",
+      "account_handle": "ICEgov",
+      "account_id": "39384517",
+      "posted_at": "2023-11-28T16:03:39.000Z",
+      "first_captured_at": "2026-06-14T01:11:31.402Z",
+      "last_seen_at": "2026-06-14T01:11:31.402Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/ICEgov/status/1729531507327340892",
+      "tweet_type": "original",
+      "conversation_id": "1729531507327340892",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "ICE, with @DHSgov &amp; @CBP, facilitated multiple removal flights—including single adults and family units—to Venezuela and Central America as part of dozens of routine ICE removal flights conducted around the world ▶️https://t.co/0kubQMTpst https://t.co/TZBOLMZH0O",
+      "text_resolved": "ICE, with @DHSgov &amp; @CBP, facilitated multiple removal flights—including single adults and family units—to Venezuela and Central America as part of dozens of routine ICE removal flights conducted around the world ▶️https://xsm.link/nedk9h https://t.co/TZBOLMZH0O",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://app.nuvi.com/publishing\" rel=\"nofollow\">Nuvi Publish App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DHSgov",
+        "CBP"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/0kubQMTpst",
+          "expanded": "https://xsm.link/nedk9h",
+          "display": "xsm.link/nedk9h"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_1729531478248226816",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/1729531478248226816/pu/vid/avc1/1280x720/Y1vS-CbTqFmiD65C.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 13.952,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 22,
+      "retweet_count": 11,
+      "reply_count": 10,
+      "quote_count": 0,
+      "view_count": 4070,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:11:31.402Z",
+          "likes": 22,
+          "retweets": 11,
+          "replies": 10,
+          "quotes": 0,
+          "views": 4070,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Immigration and Customs Enforcement",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1924467797544808448/20-3dZrS_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Protects America through criminal investigations and by enforcing immigration law to preserve national security and public safety.  https://t.co/rDI2IeFofc",
+        "location": "Washington, DC",
+        "url": "https://t.co/tgKUL8Kwur",
+        "followers_count": 1140184,
+        "friends_count": 324,
+        "statuses_count": 27763,
+        "account_created_at": "2009-05-12T00:20:23.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T011122Z-e5006064",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T011122Z-e5006064.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T011122Z-e5006064.jsonl",
+    "source_handle": "EroHarlingen"
+  }
+}

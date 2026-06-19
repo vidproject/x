@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T175547Z-82ab81a1-PressSec",
+  "account_handle": "PressSec",
+  "captured_at": "2026-06-17T17:56:05.048Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ARapidResponse47%20since%3A2026-01-28%20until%3A2026-02-04%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2018757055277039897",
+      "account_handle": "PressSec",
+      "account_id": "1879670389057474560",
+      "posted_at": "2026-02-03T18:42:43.000Z",
+      "first_captured_at": "2026-06-17T17:55:54.464Z",
+      "last_seen_at": "2026-06-17T17:55:54.464Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/PressSec/status/2018757055277039897",
+      "tweet_type": "original",
+      "conversation_id": "2018757055277039897",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Trump’s Energy Policy Just Fueled A $1B Investment In American Power And Jobs\n\nhttps://t.co/63rNSoPsir",
+      "text_resolved": "Trump’s Energy Policy Just Fueled A $1B Investment In American Power And Jobs\n\nhttps://www.dailywire.com/news/trumps-energy-policy-just-fueled-a-1b-investment-in-american-power-and-jobs",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/63rNSoPsir",
+          "expanded": "https://www.dailywire.com/news/trumps-energy-policy-just-fueled-a-1b-investment-in-american-power-and-jobs",
+          "display": "dailywire.com/news/trumps-en…"
+        }
+      ],
+      "card": null,
+      "media": [],
+      "like_count": 2015,
+      "retweet_count": 388,
+      "reply_count": 177,
+      "quote_count": 12,
+      "view_count": 198249,
+      "bookmark_count": 24,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T17:55:54.464Z",
+          "likes": 2015,
+          "retweets": 388,
+          "replies": 177,
+          "quotes": 12,
+          "views": 198249,
+          "bookmarks": 24
+        }
+      ],
+      "author": {
+        "display_name": "Karoline Leavitt",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1947447846317236225/rChs3LqV_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Assistant to the President and the 36th White House Press Secretary",
+        "location": null,
+        "url": "https://t.co/JCWgfmpm3T",
+        "followers_count": 1944883,
+        "friends_count": 195,
+        "statuses_count": 7927,
+        "account_created_at": "2025-01-15T23:22:04.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T175547Z-82ab81a1",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T175547Z-82ab81a1.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T175547Z-82ab81a1.jsonl",
+    "source_handle": "RapidResponse47"
+  }
+}

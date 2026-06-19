@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T161407Z-5696af65-VernBuchanan",
+  "account_handle": "VernBuchanan",
+  "captured_at": "2026-06-17T16:14:25.590Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AWhiteHouse%20since%3A2025-12-24%20until%3A2025-12-31%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2005753080609165708",
+      "account_handle": "VernBuchanan",
+      "account_id": "20467163",
+      "posted_at": "2025-12-29T21:29:34.000Z",
+      "first_captured_at": "2026-06-17T16:14:14.655Z",
+      "last_seen_at": "2026-06-17T16:14:14.655Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/VernBuchanan/status/2005753080609165708",
+      "tweet_type": "original",
+      "conversation_id": "2005753080609165708",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "🚨 Florida will receive $209.9 million to strengthen rural hospitals, expand telehealth and support local providers—thanks to @HouseGOP’s Working Families Tax Cuts.\n \nQuality care, closer to home. 🇺🇸https://t.co/IHQfFbaISw https://t.co/8MQsAhtmBe",
+      "text_resolved": "🚨 Florida will receive $209.9 million to strengthen rural hospitals, expand telehealth and support local providers—thanks to @HouseGOP’s Working Families Tax Cuts.\n \nQuality care, closer to home. 🇺🇸https://www.cms.gov/newsroom/press-releases/cms-announces-50-billion-awards-strengthen-rural-health-all-50-states https://t.co/8MQsAhtmBe",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "HouseGOP"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/IHQfFbaISw",
+          "expanded": "https://www.cms.gov/newsroom/press-releases/cms-announces-50-billion-awards-strengthen-rural-health-all-50-states",
+          "display": "cms.gov/newsroom/press…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2005753076691480576",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G9Xdy9tXsAAqthT.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1638,
+          "height": 2048,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 42,
+      "retweet_count": 17,
+      "reply_count": 25,
+      "quote_count": 2,
+      "view_count": 10919,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T16:14:14.655Z",
+          "likes": 42,
+          "retweets": 17,
+          "replies": 25,
+          "quotes": 2,
+          "views": 10919,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "Rep. Vern Buchanan",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1584632814951071744/Zq9gm4mn_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Vice Chairman @WaysandMeansGOP. Member @JCTgov. Serving Florida’s 16th Congressional District, including Manatee and Hillsborough Counties.",
+        "location": "Florida's 16th District",
+        "url": "https://t.co/NjniJLuuxm",
+        "followers_count": 36321,
+        "friends_count": 7121,
+        "statuses_count": 6510,
+        "account_created_at": "2009-02-09T21:05:19.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T161407Z-5696af65",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T161407Z-5696af65.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T161407Z-5696af65.jsonl",
+    "source_handle": "WhiteHouse"
+  }
+}

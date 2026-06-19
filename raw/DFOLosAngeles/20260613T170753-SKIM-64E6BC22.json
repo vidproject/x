@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170738Z-1a4dbf90-DFOLosAngeles",
+  "account_handle": "DFOLosAngeles",
+  "captured_at": "2026-06-13T17:07:53.497Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AOFOEAC%20since%3A2021-02-01%20until%3A2021-03-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1364228821600280578",
+      "account_handle": "DFOLosAngeles",
+      "account_id": "1211771001274433536",
+      "posted_at": "2021-02-23T15:01:11.000Z",
+      "first_captured_at": "2026-06-13T17:07:44.878Z",
+      "last_seen_at": "2026-06-13T17:07:44.878Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DFOLosAngeles/status/1364228821600280578",
+      "tweet_type": "original",
+      "conversation_id": "1364228821600280578",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "🚨NEWS RELEASE🚨 Amidst COVID-19 Pandemic, Meat Contraband from China Hit Record Levels. For the full story click here: https://t.co/Ygonz3mBFS https://t.co/Su7fFAr5EM",
+      "text_resolved": "🚨NEWS RELEASE🚨 Amidst COVID-19 Pandemic, Meat Contraband from China Hit Record Levels. For the full story click here: http://bit.ly/3k6oB4I https://t.co/Su7fFAr5EM",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/Ygonz3mBFS",
+          "expanded": "http://bit.ly/3k6oB4I",
+          "display": "bit.ly/3k6oB4I"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1364228816856440834",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Eu624YUUYAIljo0.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 11,
+      "retweet_count": 6,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:07:44.878Z",
+          "likes": 11,
+          "retweets": 6,
+          "replies": 0,
+          "quotes": 0,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "(A)DFO, Jeff Noe",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2046706479873536000/Dn-rcnfJ_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "(A)Director of Field Operations, Los Angeles Field Office",
+        "location": "Los Angeles, CA",
+        "url": null,
+        "followers_count": 2165,
+        "friends_count": 140,
+        "statuses_count": 1105,
+        "account_created_at": "2019-12-30T22:08:23.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170738Z-1a4dbf90",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T170738Z-1a4dbf90.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T170738Z-1a4dbf90.jsonl",
+    "source_handle": "OFOEAC"
+  }
+}

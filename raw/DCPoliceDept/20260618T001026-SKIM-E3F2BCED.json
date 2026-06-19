@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260618T000958Z-dfe57a77-DCPoliceDept",
+  "account_handle": "DCPoliceDept",
+  "captured_at": "2026-06-18T00:10:26.881Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AFPSDHS%20since%3A2026-02-25%20until%3A2026-03-04%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2027448280800538843",
+      "account_handle": "DCPoliceDept",
+      "account_id": "285198536",
+      "posted_at": "2026-02-27T18:18:32.000Z",
+      "first_captured_at": "2026-06-18T00:10:16.236Z",
+      "last_seen_at": "2026-06-18T00:10:16.236Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DCPoliceDept/status/2027448280800538843",
+      "tweet_type": "original",
+      "conversation_id": "2027448280800538843",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "There are 15 days left to register for the DMV Law Enforcement Career Fair! \n\nMeet DC Police and other law enforcement agencies, explore career opportunities, and take the first step toward a rewarding future! \n\nTo register, please visit:  https://t.co/JDolMwiflG https://t.co/qYDttj4mEo",
+      "text_resolved": "There are 15 days left to register for the DMV Law Enforcement Career Fair! \n\nMeet DC Police and other law enforcement agencies, explore career opportunities, and take the first step toward a rewarding future! \n\nTo register, please visit:  https://forms.office.com/Pages/ResponsePage.aspx?id=8Unkj5SLt0-ZBm-Tnagtc5c3Q6w7w5lLtgkQFrOGNo9UMFhGWTg0SFQxVTIxM0NZRzFFVjRCREsxRS4u&origin=QRCode https://t.co/qYDttj4mEo",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/JDolMwiflG",
+          "expanded": "https://forms.office.com/Pages/ResponsePage.aspx?id=8Unkj5SLt0-ZBm-Tnagtc5c3Q6w7w5lLtgkQFrOGNo9UMFhGWTg0SFQxVTIxM0NZRzFFVjRCREsxRS4u&origin=QRCode",
+          "display": "forms.office.com/Pages/Response…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2027448272911015938",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HCLxdltXIAIRTo6.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 800,
+          "height": 800,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 9,
+      "retweet_count": 2,
+      "reply_count": 0,
+      "quote_count": 1,
+      "view_count": 3376,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-18T00:10:16.236Z",
+          "likes": 9,
+          "retweets": 2,
+          "replies": 0,
+          "quotes": 1,
+          "views": 3376,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "DC Police Department",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2015065649265967104/wzFD00vo_normal.png",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Updates & prelim info on active incidents & upcoming events. Will not reply instantly or in real time. Call 911 for emergencies.",
+        "location": "Washington, DC",
+        "url": "https://t.co/N6DnwJRVNT",
+        "followers_count": 278269,
+        "friends_count": 474,
+        "statuses_count": 101801,
+        "account_created_at": "2011-04-20T18:18:29.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260618T000958Z-dfe57a77",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260618T000958Z-dfe57a77.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260618T000958Z-dfe57a77.jsonl",
+    "source_handle": "FPSDHS"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-icegov-resume-20260522-20260522T211232Z-09d83383-ERONewark",
+  "account_handle": "ERONewark",
+  "captured_at": "2026-05-22T21:13:30.817Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AICEgov%20since%3A2025-02-01%20until%3A2025-03-01",
+  "tweets": [
+    {
+      "tweet_id": "1893080786112229613",
+      "account_handle": "ERONewark",
+      "account_id": "1300970135684108295",
+      "posted_at": "2025-02-21T23:30:05.000Z",
+      "first_captured_at": "2026-05-22T21:12:39.908Z",
+      "last_seen_at": "2026-05-22T21:12:39.908Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/ERONewark/status/1893080786112229613",
+      "tweet_type": "original",
+      "conversation_id": "1893080786112229613",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "ICE arrested a citizen of Jamaica who has an extended history of convictions and sentencings in New Jersey. Multiple law enforcement agencies provided resources and support leading up to the alien’s arrest. He is in ICE custody pending removal proceedings. https://t.co/hdUkvjW1OC https://t.co/GSAZGgWnel",
+      "text_resolved": "ICE arrested a citizen of Jamaica who has an extended history of convictions and sentencings in New Jersey. Multiple law enforcement agencies provided resources and support leading up to the alien’s arrest. He is in ICE custody pending removal proceedings. https://www.ice.gov/news/releases/ice-newark-law-enforcement-partners-arrest-illegal-alien-new-jersey-extensive https://t.co/GSAZGgWnel",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/hdUkvjW1OC",
+          "expanded": "https://www.ice.gov/news/releases/ice-newark-law-enforcement-partners-arrest-illegal-alien-new-jersey-extensive",
+          "display": "ice.gov/news/releases/…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1893080608202526720",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GkWSyH8XkAAslcg.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 960,
+          "height": 960,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 186,
+      "retweet_count": 57,
+      "reply_count": 35,
+      "quote_count": 0,
+      "view_count": 142353,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-22T21:12:39.908Z",
+          "likes": 186,
+          "retweets": 57,
+          "replies": 35,
+          "quotes": 0,
+          "views": 142353,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "ERO Newark",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1924457070213943296/TQQYEyh__normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official account for @ICEgov Enforcement and Removal Operations Newark field office covering New Jersey.",
+        "location": "New Jersey",
+        "url": "https://t.co/V67qjrqXGs",
+        "followers_count": 4079,
+        "friends_count": 184,
+        "statuses_count": 789,
+        "account_created_at": "2020-09-02T01:33:54.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-icegov-resume-20260522-20260522T211232Z-09d83383",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-fresh-resume-20260522/x-com-search-20260522T211232Z-09d83383.summary.json",
+    "jsonl": ".skim/raw-core-fresh-resume-20260522/x-com-search-20260522T211232Z-09d83383.jsonl",
+    "source_handle": "ICEgov"
+  }
+}

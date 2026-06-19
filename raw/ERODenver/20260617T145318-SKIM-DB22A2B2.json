@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T145239Z-5f8c14bc-ERODenver",
+  "account_handle": "ERODenver",
+  "captured_at": "2026-06-17T14:53:18.965Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AICEgov%20since%3A2025-07-30%20until%3A2025-08-06%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1951283993485385829",
+      "account_handle": "ERODenver",
+      "account_id": "1300497277023391745",
+      "posted_at": "2025-08-01T14:08:51.000Z",
+      "first_captured_at": "2026-06-17T14:52:46.351Z",
+      "last_seen_at": "2026-06-17T14:52:46.351Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/ERODenver/status/1951283993485385829",
+      "tweet_type": "original",
+      "conversation_id": "1951283993485385829",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Operating for at least 11 hours in Western Wyoming, federal immigration authorities arrested a Romanian and two Mexican nationals and picked up two more Mexican nationals from the Teton County Detention Center.\nhttps://t.co/vmsVy7qjHW",
+      "text_resolved": "Operating for at least 11 hours in Western Wyoming, federal immigration authorities arrested a Romanian and two Mexican nationals and picked up two more Mexican nationals from the Teton County Detention Center.\nhttps://cowboystatedaily.com/2025/07/26/ice-grabs-foreign-nationals-in-western-wyoming-as-agency-eyes-massive-expansion/",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/vmsVy7qjHW",
+          "expanded": "https://cowboystatedaily.com/2025/07/26/ice-grabs-foreign-nationals-in-western-wyoming-as-agency-eyes-massive-expansion/",
+          "display": "cowboystatedaily.com/2025/07/26/ice…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/vmsVy7qjHW",
+        "vendor_url": "cowboystatedaily.com",
+        "title": "ICE Grabs Illegal Immigrants In Western Wyoming As Agency Eyes Massive Expansion | Cowboy State...",
+        "description": "ICE officers arrested multiple foreign nationals in a coordinated early-morning operation across Western Wyoming this week. They also discussed implanting…",
+        "image_url": "https://pbs.twimg.com/card_img/2066163598137729026/jXSbnpkE?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 1206,
+      "retweet_count": 224,
+      "reply_count": 36,
+      "quote_count": 5,
+      "view_count": 40502,
+      "bookmark_count": 10,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:52:46.351Z",
+          "likes": 1206,
+          "retweets": 224,
+          "replies": 36,
+          "quotes": 5,
+          "views": 40502,
+          "bookmarks": 10
+        }
+      ],
+      "author": {
+        "display_name": "ICE Denver",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1912984123679158272/sIXFjVKv_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "NOTICE: This account will not be actively managed during the lapse in federal funding. Read more: https://t.co/zyy712iBVN",
+        "location": "Colorado and Wyoming",
+        "url": "https://t.co/MXZwfpII01",
+        "followers_count": 17616,
+        "friends_count": 179,
+        "statuses_count": 928,
+        "account_created_at": "2020-08-31T18:14:55.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T145239Z-5f8c14bc",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T145239Z-5f8c14bc.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T145239Z-5f8c14bc.jsonl",
+    "source_handle": "ICEgov"
+  }
+}

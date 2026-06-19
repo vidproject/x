@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T174724Z-ce0a7252-interstatejuche",
+  "account_handle": "interstatejuche",
+  "captured_at": "2026-06-13T17:47:41.391Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3Ainterstatejuche%20since%3A2025-10-01%20until%3A2026-01-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2006066536759374277",
+      "account_handle": "interstatejuche",
+      "account_id": "1814406431505776640",
+      "posted_at": "2025-12-30T18:15:07.000Z",
+      "first_captured_at": "2026-06-13T17:47:31.489Z",
+      "last_seen_at": "2026-06-13T17:47:31.489Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/interstatejuche/status/2006066536759374277",
+      "tweet_type": "reply",
+      "conversation_id": "2006065736200945695",
+      "reply_to_tweet_id": "2006065736200945695",
+      "reply_to_account": "BenadrylChud88",
+      "reply_to_account_id": "1854944616291938304",
+      "quoted_tweet_id": "2005764926045053023",
+      "retweeted_tweet_id": null,
+      "text": "@BenadrylChud88 https://t.co/Z96dnWt8Gh",
+      "text_resolved": "@BenadrylChud88 https://x.com/i/status/2005764926045053023",
+      "lang": "qme",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "BenadrylChud88"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/Z96dnWt8Gh",
+          "expanded": "https://x.com/i/status/2005764926045053023",
+          "display": "x.com/i/status/20057…"
+        }
+      ],
+      "card": null,
+      "media": [],
+      "like_count": 6,
+      "retweet_count": 0,
+      "reply_count": 1,
+      "quote_count": 0,
+      "view_count": 74,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:47:31.489Z",
+          "likes": 6,
+          "retweets": 0,
+          "replies": 1,
+          "quotes": 0,
+          "views": 74,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "KG",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1976090960640528384/1vCvktb9_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Situation Monitor",
+        "location": "Breezewood, PA",
+        "url": "https://t.co/ZnjOx3Mdtj",
+        "followers_count": 7437,
+        "friends_count": 773,
+        "statuses_count": 43473,
+        "account_created_at": "2024-07-19T21:06:35.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T174724Z-ce0a7252",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T174724Z-ce0a7252.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T174724Z-ce0a7252.jsonl",
+    "source_handle": "interstatejuche"
+  }
+}

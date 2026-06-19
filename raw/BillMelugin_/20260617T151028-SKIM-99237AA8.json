@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T151011Z-8a46c125-BillMelugin_",
+  "account_handle": "BillMelugin_",
+  "captured_at": "2026-06-17T15:10:28.019Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBP%20since%3A2025-06-04%20until%3A2025-06-11%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1931480398824890496",
+      "account_handle": "BillMelugin_",
+      "account_id": "1071585991",
+      "posted_at": "2025-06-07T22:36:26.000Z",
+      "first_captured_at": "2026-06-17T15:10:16.679Z",
+      "last_seen_at": "2026-06-17T15:10:16.679Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/BillMelugin_/status/1931480398824890496",
+      "tweet_type": "original",
+      "conversation_id": "1931480398824890496",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "BREAKING: @FoxNews has obtained intense video showing @CBP agents’ perspective inside their vehicle as it is pelted with rocks while they attempt to leave the anti-ICE protest in Paramount, CA today. You can hear & see the windows & windshield breaking w/ each hit. Federal source who sent me this video tells this attack could have killed one of the Border Patrol agents or caused a serious crash. The rocks broke clean through the windshield, leaving a gaping hole. (Aftermath images in next post).",
+      "text_resolved": "BREAKING: @FoxNews has obtained intense video showing @CBP agents’ perspective inside their vehicle as it is pelted with rocks while they attempt to leave the anti-ICE protest in Paramount, CA today. You can hear & see the windows & windshield breaking w/ each hit. Federal source who sent me this video tells this attack could have killed one of the Border Patrol agents or caused a serious crash. The rocks broke clean through the windshield, leaving a gaping hole. (Aftermath images in next post).",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "FoxNews",
+        "CBP"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1931480196151951360",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1931480196151951360/vid/avc1/720x1280/QKSg5uPmh2h3wkPY.mp4?tag=21",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 34.2,
+          "width": 720,
+          "height": 1280,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 27214,
+      "retweet_count": 7489,
+      "reply_count": 2703,
+      "quote_count": 1377,
+      "view_count": 8456489,
+      "bookmark_count": 4581,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T15:10:16.679Z",
+          "likes": 27214,
+          "retweets": 7489,
+          "replies": 2703,
+          "quotes": 1377,
+          "views": 8456489,
+          "bookmarks": 4581
+        }
+      ],
+      "author": {
+        "display_name": "Bill Melugin",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1922669778436550659/SM0mVTSg_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Congressional correspondent for @foxnews in DC. 4x EMMY winner, 3x Edward R. Murrow winner, 4x RTNA Golden Mike winner. @Cronkite_ASU grad & SoCal native.",
+        "location": "Washington, DC",
+        "url": "https://t.co/jb42Zqe43A",
+        "followers_count": 643217,
+        "friends_count": 3738,
+        "statuses_count": 28308,
+        "account_created_at": "2013-01-08T18:03:50.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T151011Z-8a46c125",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T151011Z-8a46c125.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T151011Z-8a46c125.jsonl",
+    "source_handle": "CBP"
+  }
+}

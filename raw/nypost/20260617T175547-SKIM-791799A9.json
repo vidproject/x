@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T175531Z-ebe8bdd5-nypost",
+  "account_handle": "nypost",
+  "captured_at": "2026-06-17T17:55:47.537Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ARapidResponse47%20since%3A2026-01-14%20until%3A2026-01-21%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2013725439626215547",
+      "account_handle": "nypost",
+      "account_id": "17469289",
+      "posted_at": "2026-01-20T21:28:52.000Z",
+      "first_captured_at": "2026-06-17T17:55:35.993Z",
+      "last_seen_at": "2026-06-17T17:55:35.993Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/nypost/status/2013725439626215547",
+      "tweet_type": "original",
+      "conversation_id": "2013725439626215547",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "ICE detains US citizen in his underwear during ‘targeted operation’ searching for sex offenders in Minnesota https://t.co/1iH0fX9oN1 https://t.co/oStYwNvqUL",
+      "text_resolved": "ICE detains US citizen in his underwear during ‘targeted operation’ searching for sex offenders in Minnesota https://trib.al/uZ32SAp https://t.co/oStYwNvqUL",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/1iH0fX9oN1",
+          "expanded": "https://trib.al/uZ32SAp",
+          "display": "trib.al/uZ32SAp"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2013725429329219584",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G_Iwm9pW0AAfLAh.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 799,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 51,
+      "retweet_count": 5,
+      "reply_count": 45,
+      "quote_count": 5,
+      "view_count": 216953,
+      "bookmark_count": 3,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T17:55:35.993Z",
+          "likes": 51,
+          "retweets": 5,
+          "replies": 45,
+          "quotes": 5,
+          "views": 216953,
+          "bookmarks": 3
+        }
+      ],
+      "author": {
+        "display_name": "New York Post",
+        "avatar_url": "https://pbs.twimg.com/profile_images/966372680306868224/60wfGe9e_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": "Breaking news, features and more from the NY Post. Follow ➡️  @pagesix, @nypmetro, @nypostbiz, @nypostsports, @nypfashion, @nypostopinion, @vrtpod, @_nynext",
+        "location": "New York, NY",
+        "url": "https://t.co/PwCuyvAYAJ",
+        "followers_count": 3917085,
+        "friends_count": 10030,
+        "statuses_count": 845335,
+        "account_created_at": "2008-11-18T19:46:36.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T175531Z-ebe8bdd5",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T175531Z-ebe8bdd5.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T175531Z-ebe8bdd5.jsonl",
+    "source_handle": "RapidResponse47"
+  }
+}

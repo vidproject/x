@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170648Z-eecf830d-CBPMarkMorgan",
+  "account_handle": "CBPMarkMorgan",
+  "captured_at": "2026-06-13T17:07:05.248Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AOFOEAC%20since%3A2020-11-01%20until%3A2020-12-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1325131541899571201",
+      "account_handle": "CBPMarkMorgan",
+      "account_id": "1148223852494950400",
+      "posted_at": "2020-11-07T17:42:33.000Z",
+      "first_captured_at": "2026-06-13T17:06:55.843Z",
+      "last_seen_at": "2026-06-13T17:06:55.843Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBPMarkMorgan/status/1325131541899571201",
+      "tweet_type": "original",
+      "conversation_id": "1325131541899571201",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "With great sadness, @OFOEAC and I share the loss of CBP Officer Domingo Jasso. He began his CBP career in 2011 and was a member of Port of Progreso’s Honor Guard. We extend our deepest condolences to his family, friends, and colleagues. He will never be forgotten. https://t.co/RTQIkBWZDK",
+      "text_resolved": "With great sadness, @OFOEAC and I share the loss of CBP Officer Domingo Jasso. He began his CBP career in 2011 and was a member of Port of Progreso’s Honor Guard. We extend our deepest condolences to his family, friends, and colleagues. He will never be forgotten. https://t.co/RTQIkBWZDK",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://sproutsocial.com\" rel=\"nofollow\">Sprout Social</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "OFOEAC"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1325131537256386562",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/EmPQHL7VkAIXJgX.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 231,
+          "height": 257,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_1325131540016279553",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/EmPQHWNWMAEbVdP.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 691,
+          "height": 346,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 494,
+      "retweet_count": 95,
+      "reply_count": 36,
+      "quote_count": 23,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:06:55.843Z",
+          "likes": 494,
+          "retweets": 95,
+          "replies": 36,
+          "quotes": 23,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "CBP Mark Morgan",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1149350858561392641/kQeuudZN_normal.png",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Archived account of Mark Morgan, Senior Official Performing the Duties of the Commissioner of U.S. Customs and Border Protection (@CBP)",
+        "location": "Washington, DC",
+        "url": "https://t.co/8QUkU7xNlf",
+        "followers_count": 31027,
+        "friends_count": 137,
+        "statuses_count": 1730,
+        "account_created_at": "2019-07-08T13:34:34.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170648Z-eecf830d",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T170648Z-eecf830d.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T170648Z-eecf830d.jsonl",
+    "source_handle": "OFOEAC"
+  }
+}

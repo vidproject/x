@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T134627Z-b4cca96b-USCGNorCal",
+  "account_handle": "USCGNorCal",
+  "captured_at": "2026-06-13T13:46:49.362Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCG%20since%3A2021-09-01%20until%3A2021-10-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1441433037372223503",
+      "account_handle": "USCGNorCal",
+      "account_id": "412409320",
+      "posted_at": "2021-09-24T16:03:11.000Z",
+      "first_captured_at": "2026-06-13T13:46:40.322Z",
+      "last_seen_at": "2026-06-13T13:46:40.322Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USCGNorCal/status/1441433037372223503",
+      "tweet_type": "original",
+      "conversation_id": "1441433037372223503",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "#HappyFriday! The @USCG wants to encourage everyone to have fun and be safe this weekend! If you're planning to be out on the water be sure to have safety gear and let someone know your plan! https://t.co/QJq1DeQiJF",
+      "text_resolved": "#HappyFriday! The @USCG wants to encourage everyone to have fun and be safe this weekend! If you're planning to be out on the water be sure to have safety gear and let someone know your plan! https://t.co/QJq1DeQiJF",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "HappyFriday"
+      ],
+      "mentions": [
+        "USCG"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_1441432903540350987",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/1441432903540350987/pu/vid/1280x720/w1tweiXRkT1MLflP.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 11.469,
+          "width": 1920,
+          "height": 1080,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 57,
+      "retweet_count": 10,
+      "reply_count": 1,
+      "quote_count": 3,
+      "view_count": null,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T13:46:40.322Z",
+          "likes": 57,
+          "retweets": 10,
+          "replies": 1,
+          "quotes": 3,
+          "views": null,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "USCGNorCal",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1997501531067936768/fs_VX-Ah_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Official USCG Northern California Twitter account. Providing breaking USCG news from the Calif. - Ore. border south to Monterey Bay, CA. Phone 2068156689",
+        "location": "Alameda, Calif.",
+        "url": "https://t.co/G4Voxf6d3h",
+        "followers_count": 5753,
+        "friends_count": 404,
+        "statuses_count": 2142,
+        "account_created_at": "2011-11-14T17:07:59.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T134627Z-b4cca96b",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T134627Z-b4cca96b.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T134627Z-b4cca96b.jsonl",
+    "source_handle": "USCG"
+  }
+}

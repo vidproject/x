@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T004122Z-46d1ee1d-seattletimes",
+  "account_handle": "seattletimes",
+  "captured_at": "2026-06-14T00:41:44.269Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AHSI_HQ%20since%3A2021-01-01%20until%3A2022-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1471239332518408193",
+      "account_handle": "seattletimes",
+      "account_id": "14352556",
+      "posted_at": "2021-12-15T22:02:45.000Z",
+      "first_captured_at": "2026-06-14T00:41:43.463Z",
+      "last_seen_at": "2026-06-14T00:41:43.463Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/seattletimes/status/1471239332518408193",
+      "tweet_type": "original",
+      "conversation_id": "1471239332518408193",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Seattle police and federal agents found 50,000 fentanyl pills secreted in the wheel well of a mid-size SUV. Another 15,000 pills were recently recovered inside a backpack at a local hotel.\n@sjgtimes: https://t.co/N1qjeLSvS3",
+      "text_resolved": "Seattle police and federal agents found 50,000 fentanyl pills secreted in the wheel well of a mid-size SUV. Another 15,000 pills were recently recovered inside a backpack at a local hotel.\n@sjgtimes: https://st.news/3DYTksQ",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://erased6644614_QyctI2jsZ5.com\" rel=\"nofollow\">erased6644614_QyctI2jsZ5</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "sjgtimes"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/N1qjeLSvS3",
+          "expanded": "https://st.news/3DYTksQ",
+          "display": "st.news/3DYTksQ"
+        }
+      ],
+      "card": null,
+      "media": [],
+      "like_count": 3,
+      "retweet_count": 2,
+      "reply_count": 1,
+      "quote_count": 2,
+      "view_count": null,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T00:41:43.463Z",
+          "likes": 3,
+          "retweets": 2,
+          "replies": 1,
+          "quotes": 2,
+          "views": null,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "The Seattle Times",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1605286152172212225/SbfMuNeR_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Business",
+        "description": "Local news, sports, business, politics, entertainment, travel, restaurants and opinion for Seattle and the Pacific Northwest. Subscribe here: https://t.co/GYVl7xKPYg",
+        "location": "Seattle, WA",
+        "url": "https://t.co/ktDgiF5R17",
+        "followers_count": 719055,
+        "friends_count": 10846,
+        "statuses_count": 272769,
+        "account_created_at": "2008-04-10T16:15:09.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T004122Z-46d1ee1d",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004122Z-46d1ee1d.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004122Z-46d1ee1d.jsonl",
+    "source_handle": "HSI_HQ"
+  }
+}

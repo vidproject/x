@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T151124Z-b2008dda-DHSgov",
+  "account_handle": "DHSgov",
+  "captured_at": "2026-06-17T15:11:40.617Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBP%20since%3A2025-08-13%20until%3A2025-08-20%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1957532514311950785",
+      "account_handle": "DHSgov",
+      "account_id": "15647676",
+      "posted_at": "2025-08-18T19:58:15.000Z",
+      "first_captured_at": "2026-06-17T15:11:30.445Z",
+      "last_seen_at": "2026-06-17T15:11:30.445Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DHSgov/status/1957532514311950785",
+      "tweet_type": "quote",
+      "conversation_id": "1957532514311950785",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": "1957517986119533012",
+      "retweeted_tweet_id": null,
+      "text": "Bye-bye 👋\n\nHere illegally? Book your one-way ticket home on the CBP HOME app today!\n\nhttps://t.co/zRcQr3tLoH",
+      "text_resolved": "Bye-bye 👋\n\nHere illegally? Book your one-way ticket home on the CBP HOME app today!\n\nhttp://DHS.gov/CBPhome",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/zRcQr3tLoH",
+          "expanded": "http://DHS.gov/CBPhome",
+          "display": "DHS.gov/CBPhome"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/zRcQr3tLoH",
+        "vendor_url": "dhs.gov",
+        "title": "CBP Home | Homeland Security",
+        "description": "DHS has announced financial and travel document support to illegal aliens, to facilitate travel back to their home country or another country where they have lawful status through the CBP Home App.",
+        "image_url": "https://pbs.twimg.com/card_img/2066267627606130688/4Q_0iHKC?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 4632,
+      "retweet_count": 758,
+      "reply_count": 175,
+      "quote_count": 28,
+      "view_count": 106247,
+      "bookmark_count": 31,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T15:11:30.445Z",
+          "likes": 4632,
+          "retweets": 758,
+          "replies": 175,
+          "quotes": 28,
+          "views": 106247,
+          "bookmarks": 31
+        }
+      ],
+      "author": {
+        "display_name": "Homeland Security",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1882507181481656320/gzdbVHMv_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "With honor and integrity, we will safeguard the American people, our homeland, and our values. #WeAreDHS",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/AwsNW68gRr",
+        "followers_count": 2990121,
+        "friends_count": 213,
+        "statuses_count": 35127,
+        "account_created_at": "2008-07-29T16:32:34.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T151124Z-b2008dda",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T151124Z-b2008dda.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T151124Z-b2008dda.jsonl",
+    "source_handle": "CBP"
+  }
+}

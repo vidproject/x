@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T181014Z-05b48197-PressSec",
+  "account_handle": "PressSec",
+  "captured_at": "2026-06-17T18:10:29.158Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AStephenM%20since%3A2025-07-02%20until%3A2025-07-09%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1940432050370290171",
+      "account_handle": "PressSec",
+      "account_id": "1879670389057474560",
+      "posted_at": "2025-07-02T15:27:06.000Z",
+      "first_captured_at": "2026-06-17T18:10:18.449Z",
+      "last_seen_at": "2026-06-17T18:10:18.449Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/PressSec/status/1940432050370290171",
+      "tweet_type": "original",
+      "conversation_id": "1940432050370290171",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "President Trump Drives Illegal Border Crossings to a New Historic Low\n\nhttps://t.co/0tNhcrghai",
+      "text_resolved": "President Trump Drives Illegal Border Crossings to a New Historic Low\n\nhttps://www.whitehouse.gov/articles/2025/07/extraordinary-president-trump-drives-illegal-border-crossings-to-a-new-historic-low/",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/0tNhcrghai",
+          "expanded": "https://www.whitehouse.gov/articles/2025/07/extraordinary-president-trump-drives-illegal-border-crossings-to-a-new-historic-low/",
+          "display": "whitehouse.gov/articles/2025/…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/0tNhcrghai",
+        "vendor_url": "whitehouse.gov",
+        "title": "“EXTRAORDINARY”: President Trump Drives Illegal Border Crossings to a New Historic Low",
+        "description": "Border Patrol encountered just 6,070 illegal immigrants at the southern border in June — another record-setting low (15% lower than the previous record",
+        "image_url": "https://pbs.twimg.com/card_img/2063242418523377664/Wni9tb_B?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 2926,
+      "retweet_count": 437,
+      "reply_count": 242,
+      "quote_count": 22,
+      "view_count": 274601,
+      "bookmark_count": 28,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T18:10:18.449Z",
+          "likes": 2926,
+          "retweets": 437,
+          "replies": 242,
+          "quotes": 22,
+          "views": 274601,
+          "bookmarks": 28
+        }
+      ],
+      "author": {
+        "display_name": "Karoline Leavitt",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1947447846317236225/rChs3LqV_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Assistant to the President and the 36th White House Press Secretary",
+        "location": null,
+        "url": "https://t.co/JCWgfmpm3T",
+        "followers_count": 1944883,
+        "friends_count": 195,
+        "statuses_count": 7927,
+        "account_created_at": "2025-01-15T23:22:04.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T181014Z-05b48197",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T181014Z-05b48197.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T181014Z-05b48197.jsonl",
+    "source_handle": "StephenM"
+  }
+}

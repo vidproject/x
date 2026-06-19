@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T011640Z-9b23f25c-fema",
+  "account_handle": "fema",
+  "captured_at": "2026-06-14T01:16:56.100Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AERONewOrleans%20since%3A2023-01-01%20until%3A2024-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1709574027503669592",
+      "account_handle": "fema",
+      "account_id": "16669075",
+      "posted_at": "2023-10-04T14:19:45.000Z",
+      "first_captured_at": "2026-06-14T01:16:46.823Z",
+      "last_seen_at": "2026-06-14T01:16:46.823Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/fema/status/1709574027503669592",
+      "tweet_type": "original",
+      "conversation_id": "1709574027503669592",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "TODAY: There will be a nationwide emergency alert test on cell phones, wireless devices, radios, and TVs.\n\n2:20 p.m. ET\n1:20 p.m. CT\n12:20 p.m. MT\n11:20 a.m. PT\n10:20 a.m. AKT\n8:20 a.m. HT\n\nInformation from @FEMA_Deanne ⤵️ https://t.co/aLSTpvhJzN",
+      "text_resolved": "TODAY: There will be a nationwide emergency alert test on cell phones, wireless devices, radios, and TVs.\n\n2:20 p.m. ET\n1:20 p.m. CT\n12:20 p.m. MT\n11:20 a.m. PT\n10:20 a.m. AKT\n8:20 a.m. HT\n\nInformation from @FEMA_Deanne ⤵️ https://t.co/aLSTpvhJzN",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "FEMA_Deanne"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_1709573954443120640",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/1709573954443120640/pu/vid/avc1/1280x720/EBDTAM3a8vWxWOfz.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 97.082,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 2093,
+      "retweet_count": 1734,
+      "reply_count": 315,
+      "quote_count": 552,
+      "view_count": 1621890,
+      "bookmark_count": 112,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:16:46.823Z",
+          "likes": 2093,
+          "retweets": 1734,
+          "replies": 315,
+          "quotes": 552,
+          "views": 1621890,
+          "bookmarks": 112
+        }
+      ],
+      "author": {
+        "display_name": "FEMA",
+        "avatar_url": "https://pbs.twimg.com/profile_images/875380682637234176/Fw_Rx4T-_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Helping people before, during and after disasters. To report an emergency, call 911 or alert local authorities.\n \nPolicies: https://t.co/9t2aegFKwB",
+        "location": "United States",
+        "url": "https://t.co/OjrrwmfFth",
+        "followers_count": 815063,
+        "friends_count": 778,
+        "statuses_count": 43142,
+        "account_created_at": "2008-10-09T16:54:20.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T011640Z-9b23f25c",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T011640Z-9b23f25c.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T011640Z-9b23f25c.jsonl",
+    "source_handle": "ERONewOrleans"
+  }
+}

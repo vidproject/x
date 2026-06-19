@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T225313Z-6babf9fb-theblaze",
+  "account_handle": "theblaze",
+  "captured_at": "2026-06-17T22:53:57.645Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSBPChiefELC%20since%3A2025-06-18%20until%3A2025-06-25%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1935364268117082569",
+      "account_handle": "theblaze",
+      "account_id": "10774652",
+      "posted_at": "2025-06-18T15:49:33.000Z",
+      "first_captured_at": "2026-06-17T22:53:38.173Z",
+      "last_seen_at": "2026-06-17T22:53:38.173Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/theblaze/status/1935364268117082569",
+      "tweet_type": "original",
+      "conversation_id": "1935364268117082569",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Border Patrol arrest at Home Depot punches hole in Democrats' narrative https://t.co/YpSYSOntyX https://t.co/GbVKRVYFx0",
+      "text_resolved": "Border Patrol arrest at Home Depot punches hole in Democrats' narrative http://dlvr.it/TLQqBy https://t.co/GbVKRVYFx0",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://dlvrit.com/\" rel=\"nofollow\">dlvr.it</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/YpSYSOntyX",
+          "expanded": "http://dlvr.it/TLQqBy",
+          "display": "dlvr.it/TLQqBy"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1935364266279968769",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GtvLi9KaIAEl3YQ.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 600,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 83,
+      "retweet_count": 10,
+      "reply_count": 5,
+      "quote_count": 2,
+      "view_count": 71966,
+      "bookmark_count": 4,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T22:53:38.173Z",
+          "likes": 83,
+          "retweets": 10,
+          "replies": 5,
+          "quotes": 2,
+          "views": 71966,
+          "bookmarks": 4
+        }
+      ],
+      "author": {
+        "display_name": "TheBlaze",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1716691045419765760/YatcqDHU_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Business",
+        "description": "News and entertainment for people who love America and the American way of life. Retweets =/= endorsements.",
+        "location": "Dallas, TX",
+        "url": "https://t.co/fzW2udWeEx",
+        "followers_count": 1041073,
+        "friends_count": 762,
+        "statuses_count": 215720,
+        "account_created_at": "2007-12-01T22:23:57.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T225313Z-6babf9fb",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T225313Z-6babf9fb.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T225313Z-6babf9fb.jsonl",
+    "source_handle": "USBPChiefELC"
+  }
+}
