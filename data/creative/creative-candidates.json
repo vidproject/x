@@ -1,16 +1,16 @@
 {
   "metadata": {
     "queue": "candidates",
-    "generated_at": "2026-06-19T16:16:18Z",
-    "source_commit": "910ef5bd",
+    "generated_at": "2026-06-19T18:32:28Z",
+    "source_commit": "7208506d",
     "item_count": 195,
-    "source_candidate_count": 1254,
+    "source_candidate_count": 1258,
     "not_ready_count": 22,
-    "review_scope_excluded_count": 974,
+    "review_scope_excluded_count": 978,
     "review_scope_excluded_reasons": {
       "apprehension-notice-or-routine-card": 273,
       "news-image-or-clip": 47,
-      "outside-revealed-preference": 595,
+      "outside-revealed-preference": 599,
       "routine-static-card": 29,
       "trump-post-screenshot": 30
     },
@@ -19223,7 +19223,7 @@
       "tags": [
         "agency:USCIS",
         "media-status:archived",
-        "media-status:described",
+        "media-status:needs-vision",
         "media-status:ocr-done",
         "media:photo",
         "review:screened-photo",
@@ -20261,7 +20261,7 @@
       "tags": [
         "agency:USCIS",
         "media-status:archived",
-        "media-status:described",
+        "media-status:needs-vision",
         "media-status:ocr-done",
         "media:photo",
         "review:screened-photo",
@@ -20492,7 +20492,7 @@
       "tags": [
         "agency:USCIS",
         "media-status:archived",
-        "media-status:described",
+        "media-status:needs-vision",
         "media-status:ocr-done",
         "media:photo",
         "review:screened-photo",
@@ -20719,7 +20719,7 @@
       "tags": [
         "agency:USCIS",
         "media-status:archived",
-        "media-status:described",
+        "media-status:needs-vision",
         "media-status:ocr-done",
         "media:photo",
         "review:screened-photo",
@@ -21064,7 +21064,7 @@
       "tags": [
         "agency:USCIS",
         "media-status:archived",
-        "media-status:described",
+        "media-status:needs-vision",
         "media-status:ocr-done",
         "media:photo",
         "review:screened-photo",
@@ -21179,7 +21179,7 @@
       "tags": [
         "agency:USCIS",
         "media-status:archived",
-        "media-status:described",
+        "media-status:needs-vision",
         "media-status:ocr-done",
         "media:photo",
         "review:screened-photo",
@@ -24090,13 +24090,13 @@
         "arrest-or-raid"
       ],
       "tags": [
+        "action:deportation",
         "action:detention",
         "action:self-deportation",
         "agency:DHSgov",
         "agency:ICEgov",
         "media-status:archived",
         "media-status:described",
-        "media-status:needs-ocr",
         "media-status:ocr-done",
         "media:photo",
         "policy:cbp-home",
@@ -24133,10 +24133,10 @@
             },
             "ocr": {
               "status_counts": {
-                "no-text": 1
+                "ok": 1
               },
               "complete_row_count": 1,
-              "text": ""
+              "text": "How do I bi deport ( Ya AS ) Sea = ICE a"
             },
             "keyframes": {
               "status": null,

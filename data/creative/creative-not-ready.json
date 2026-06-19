@@ -1,19 +1,19 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-06-19T16:16:19Z",
-    "source_commit": "910ef5bd",
+    "generated_at": "2026-06-19T18:32:29Z",
+    "source_commit": "7208506d",
     "item_count": 22,
     "blocker_counts": {
       "missing genuine visual description": 17,
-      "missing archived media asset": 12,
       "missing complete OCR for extracted keyframes": 11,
-      "missing extracted video keyframes": 10,
-      "missing video thumbnail": 10,
+      "missing archived media asset": 11,
+      "missing extracted video keyframes": 9,
+      "missing video thumbnail": 9,
       "missing photo OCR": 7,
       "missing photo thumbnail": 7,
-      "missing audio analysis": 5,
-      "missing transcript for video with audio": 1
+      "missing audio analysis": 4,
+      "missing transcript for video with audio": 2
     }
   },
   "items": [
@@ -44,8 +44,12 @@
       "tags": [
         "action:detention",
         "agency:USCG",
+        "audio:has-audio",
         "crime:cocaine",
         "crime:narcotics",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
         "military:coast-guard",
         "topic:immigration",
         "topic:military",
@@ -55,39 +59,38 @@
         {
           "media_id": "13_1965514270424055808",
           "type": "video",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_1965514270424055808.mp4",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/video/24294411ca81374273e175c808ce0d6a39ddba6b2d2454c6e19388a7432ae618.jpg",
+          "sha256": "24294411ca81374273e175c808ce0d6a39ddba6b2d2454c6e19388a7432ae618",
           "duration_sec": 47.26,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing audio analysis",
               "missing complete OCR for extracted keyframes",
-              "missing extracted video keyframes",
               "missing genuine visual description",
-              "missing video thumbnail"
+              "missing transcript for video with audio"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "keyframes": false,
-              "keyframe_count": 0,
-              "thumbnail": false,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
               "ocr": false,
-              "audio_analysis": false,
-              "has_audio": false,
-              "transcript": true
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": false
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "video; 1920x1080; 47.3s; 15.40 MiB; archived; tweet context: ASMR: @USCG captures, burns, and sinks a drug boat. Over the weekend, as part of Operation Pacific Viper, the @USCG Cutter Stone conducted three interdictions in a single night—seizing nearly 13,000 pounds of cocaine and apprehending seven suspected drug smug...; source URL: https://video.twimg.com/amplify_video/1965514270424055808/vid/avc1/1920x1080/ebMFkJTqVlR6_mAY.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_1965514270424055808.mp4; needs OCR, transcript, or frame-level vision before content claims. ASMR: @USCG captures, burns, and sinks a drug boat. Over the weekend, as part of Operation Pacific Viper, the @USCG Cutter Stone conducted three interdictions in a single night—seizing nearly 13,000 pounds of cocaine and apprehending seven suspected drug smugglers. https://t.co/wHRGUGYtTw",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
               "status_counts": {},
@@ -95,14 +98,16 @@
               "text": ""
             },
             "keyframes": {
-              "status": null,
-              "frame_count": 0
+              "status": "ok",
+              "frame_count": 5
             },
             "audio": {
-              "status": null,
-              "audio_stream_count": 0,
-              "duration_sec": null,
-              "tags": []
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 47.322268,
+              "tags": [
+                "audio:has-audio"
+              ]
             },
             "transcript": {
               "status": null,
@@ -115,17 +120,14 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing audio analysis",
           "missing complete OCR for extracted keyframes",
-          "missing extracted video keyframes",
           "missing genuine visual description",
-          "missing video thumbnail"
+          "missing transcript for video with audio"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "video; 1920x1080; 47.3s; 15.40 MiB; archived; tweet context: ASMR: @USCG captures, burns, and sinks a drug boat. Over the weekend, as part of Operation Pacific Viper, the @USCG Cutter Stone conducted three interdictions in a single night—seizing nearly 13,000 pounds of cocaine and apprehending seven suspected drug smug...; source URL: https://video.twimg.com/amplify_video/1965514270424055808/vid/avc1/1920x1080/ebMFkJTqVlR6_mAY.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_1965514270424055808.mp4; needs OCR, transcript, or frame-level vision before content claims. ASMR: @USCG captures, burns, and sinks a drug boat. Over the weekend, as part of Operation Pacific Viper, the @USCG Cutter Stone conducted three interdictions in a single night—seizing nearly 13,000 pounds of cocaine and apprehending seven suspected drug smugglers. https://t.co/wHRGUGYtTw",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -899,7 +901,10 @@
         "format:reply",
         "genre:lineup",
         "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:needs-vision",
         "media-status:ocr-done",
+        "media:photo",
         "slogan:criminal-illegal-alien",
         "slogan:illegal-alien",
         "theme:criminal",
@@ -929,9 +934,11 @@
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 241x241; 0.06 MiB; archived; tweet context: Somsalao Thonesavanh, a criminal illegal alien from Laos convicted of drug trafficking and selling a synthetic narcotic. https://t.co/mK6cIgNWzd; source URL: https://pbs.twimg.com/media/G-jUlGnXUAAPg7I.png; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/3_2011090967516893184.png; needs OCR, transcript, or frame-level vision before content claims. Somsalao Thonesavanh, a criminal illegal alien from Laos convicted of drug trafficking and selling a synthetic narcotic. https://t.co/mK6cIgNWzd",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
               "status_counts": {
@@ -966,7 +973,7 @@
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 241x241; 0.06 MiB; archived; tweet context: Somsalao Thonesavanh, a criminal illegal alien from Laos convicted of drug trafficking and selling a synthetic narcotic. https://t.co/mK6cIgNWzd; source URL: https://pbs.twimg.com/media/G-jUlGnXUAAPg7I.png; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/3_2011090967516893184.png; needs OCR, transcript, or frame-level vision before content claims. Somsalao Thonesavanh, a criminal illegal alien from Laos convicted of drug trafficking and selling a synthetic narcotic. https://t.co/mK6cIgNWzd",
         "notable_text": "",
         "reasons": [
           "wholly creative media signal",
@@ -1642,6 +1649,152 @@
       "preference_score": 40,
       "preference_categories": [
         "aesthetic:dystopian-surreal",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2008552276613353655:13_2008552165787287553",
+      "tweet_id": "2008552276613353655",
+      "posted_at": "2026-01-06T14:52:34.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/2008552276613353655",
+      "tweet_text": "MURDERERS HAVE NO HOME IN MINNEAPOLIS.\n\n@Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT.\n\nTo the criminals living among us, you are NOT our neighbors. Leave now or we will find you.",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "advertisement"
+      ],
+      "subjects": [
+        "immigration-language"
+      ],
+      "tags": [
+        "agency:DHSgov",
+        "audio:has-audio",
+        "country:Ecuador",
+        "crime:assault",
+        "crime:homicide",
+        "crime:murder",
+        "crime:robbery",
+        "crime:sexual",
+        "genre:advertisement",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "slogan:illegal-alien",
+        "theme:criminal",
+        "theme:directive",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2008552165787287553",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2008552165787287553.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/e679545c05210d743141f90951735dfc840ea2717bb4eee72990e94d86313302.jpg",
+          "sha256": "e679545c05210d743141f90951735dfc840ea2717bb4eee72990e94d86313302",
+          "duration_sec": 90.466,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing complete OCR for extracted keyframes",
+              "missing genuine visual description",
+              "missing transcript for video with audio"
+            ],
+            "checks": {
+              "archived": true,
+              "description": false,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": false,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "metadata-placeholder",
+              "text": "video; 1080x1920; 90.5s; 43.45 MiB; archived; tweet context: MURDERERS HAVE NO HOME IN MINNEAPOLIS. @Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT. To the criminals living among us, you a...; source URL: https://video.twimg.com/amplify_video/2008552165787287553/vid/avc1/1080x1920/8daXWr5uJIQJiRaH.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2008552165787287553.mp4; needs OCR, transcript, or frame-level vision before content claims. MURDERERS HAVE NO HOME IN MINNEAPOLIS. @Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT. To the criminals living among us, you are NOT our neighbors. Leave now or we will find you.",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 90.517333,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing complete OCR for extracted keyframes",
+          "missing genuine visual description",
+          "missing transcript for video with audio"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "video; 1080x1920; 90.5s; 43.45 MiB; archived; tweet context: MURDERERS HAVE NO HOME IN MINNEAPOLIS. @Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT. To the criminals living among us, you a...; source URL: https://video.twimg.com/amplify_video/2008552165787287553/vid/avc1/1080x1920/8daXWr5uJIQJiRaH.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2008552165787287553.mp4; needs OCR, transcript, or frame-level vision before content claims. MURDERERS HAVE NO HOME IN MINNEAPOLIS. @Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT. To the criminals living among us, you are NOT our neighbors. Leave now or we will find you.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "policy:self-deportation-ad: Leave now",
+          "produced video with preference signal",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 19451,
+        "retweets": 3765,
+        "quotes": 218,
+        "views": 706996
+      },
+      "preference_score": 37,
+      "preference_categories": [
+        "medium:produced-video-with-preference-signal",
+        "policy:self-deportation-ad",
         "subject:enforcement-linked"
       ]
     },
@@ -2969,141 +3122,6 @@
       "preference_score": 34,
       "preference_categories": [
         "spectacle:holiday-or-celebration"
-      ]
-    },
-    {
-      "id": "2008552276613353655:13_2008552165787287553",
-      "tweet_id": "2008552276613353655",
-      "posted_at": "2026-01-06T14:52:34.000Z",
-      "era": "2025_plus",
-      "queue": "candidates",
-      "account": {
-        "handle": "DHSgov",
-        "category": "core",
-        "label": "Department of Homeland Security"
-      },
-      "tweet_url": "https://x.com/DHSgov/status/2008552276613353655",
-      "tweet_text": "MURDERERS HAVE NO HOME IN MINNEAPOLIS.\n\n@Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT.\n\nTo the criminals living among us, you are NOT our neighbors. Leave now or we will find you.",
-      "review_state": "candidate",
-      "inclusion_basis": "wholly_creative_media",
-      "confidence": "medium",
-      "score": 90,
-      "creative_forms": [],
-      "subjects": [
-        "immigration-language"
-      ],
-      "tags": [
-        "agency:DHSgov",
-        "audio:has-audio",
-        "country:Ecuador",
-        "crime:assault",
-        "crime:homicide",
-        "crime:murder",
-        "crime:robbery",
-        "crime:sexual",
-        "legal:criminal-prosecution",
-        "slogan:illegal-alien",
-        "theme:criminal",
-        "theme:directive",
-        "topic:immigration",
-        "video:medium"
-      ],
-      "media": [
-        {
-          "media_id": "13_2008552165787287553",
-          "type": "video",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2008552165787287553.mp4",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/video/e679545c05210d743141f90951735dfc840ea2717bb4eee72990e94d86313302.jpg",
-          "sha256": "e679545c05210d743141f90951735dfc840ea2717bb4eee72990e94d86313302",
-          "duration_sec": 90.466,
-          "playable": true,
-          "readiness": {
-            "ready": false,
-            "blockers": [
-              "missing complete OCR for extracted keyframes",
-              "missing genuine visual description",
-              "missing transcript for video with audio"
-            ],
-            "checks": {
-              "archived": true,
-              "description": false,
-              "keyframes": true,
-              "keyframe_count": 5,
-              "thumbnail": true,
-              "ocr": false,
-              "audio_analysis": true,
-              "has_audio": true,
-              "transcript": false
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
-            },
-            "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
-            },
-            "keyframes": {
-              "status": "ok",
-              "frame_count": 5
-            },
-            "audio": {
-              "status": "ok",
-              "audio_stream_count": 1,
-              "duration_sec": 90.517333,
-              "tags": [
-                "audio:has-audio"
-              ]
-            },
-            "transcript": {
-              "status": null,
-              "segment_count": 0,
-              "text": ""
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": false,
-        "blockers": [
-          "missing complete OCR for extracted keyframes",
-          "missing genuine visual description",
-          "missing transcript for video with audio"
-        ],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "",
-        "notable_text": "",
-        "reasons": [
-          "wholly creative media signal",
-          "real enforcement/detainee subject signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ],
-        "preference_reasons": [
-          "policy:self-deportation-ad: Leave now",
-          "enforcement/detainee subject plus preference signal"
-        ]
-      },
-      "engagement": {
-        "likes": 19451,
-        "retweets": 3765,
-        "quotes": 218,
-        "views": 706996
-      },
-      "preference_score": 31,
-      "preference_categories": [
-        "policy:self-deportation-ad",
-        "subject:enforcement-linked"
       ]
     },
     {
