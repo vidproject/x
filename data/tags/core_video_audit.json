@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-06-20T12:22:24Z",
+  "generated_at": "2026-06-20T13:27:23Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -55,18 +55,18 @@
     "videos": 6080,
     "bucket_counts": {
       "genre-experiment": 106,
-      "missing-media": 1657,
-      "needs-recognition": 1640,
+      "missing-media": 1655,
+      "needs-recognition": 1642,
       "ordinary-video": 1574,
       "produced-video": 1103
     },
     "top_tags": {
       "topic:immigration": 4979,
-      "audio:has-audio": 4231,
-      "media-status:archived": 4215,
-      "media:video": 4175,
+      "audio:has-audio": 4233,
+      "media-status:archived": 4217,
+      "media:video": 4177,
       "video:medium": 3563,
-      "media-status:needs-vision": 3467,
+      "media-status:needs-vision": 3469,
       "video:short": 1848,
       "video:produced": 1140,
       "agency:POTUS": 1129,
@@ -99,7 +99,7 @@
       "genre:psa": 263,
       "crime:murder": 252,
       "format:quote": 247,
-      "theme:religion": 245,
+      "theme:religion": 246,
       "crime:narcotics": 229,
       "crime:assault": 206,
       "crime:fraud": 189,
@@ -113,12 +113,12 @@
       "video:montage": 148
     },
     "missing_step_counts": {
-      "archive-media": 1657,
+      "archive-media": 1655,
       "assign-produced-video-genre": 138,
-      "describe-with-vision": 1865,
+      "describe-with-vision": 1863,
       "detect-audio": 2,
       "extract-keyframes": 4,
-      "transcribe-audio": 1834
+      "transcribe-audio": 1836
     }
   },
   "items": [
@@ -18381,7 +18381,7 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
+      "has_ocr": true,
       "description": "video; 1080x1920; 90.5s; 43.45 MiB; archived; tweet context: MURDERERS HAVE NO HOME IN MINNEAPOLIS. @Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT. To the criminals living among us, you a...; source URL: https://video.twimg.com/amplify_video/2008552165787287553/vid/avc1/1080x1920/8daXWr5uJIQJiRaH.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2008552165787287553.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1920; 90.5s; 43.45 MiB; archived; tweet context: MURDERERS HAVE NO HOME IN MINNEAPOLIS. @Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT. To the criminals living among us, you a...; source URL: https://video.twimg.com/amplify_video/2008552165787287553/vid/avc1/1080x1920/8daXWr5uJIQJiRaH.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2008552165787287553.mp4; needs OCR, transcript, or "
     },
     {
@@ -64394,6 +64394,44 @@
       "description": "video; 2000x2000; 77.3s; 4.93 MiB; archived; tweet context: 🔥Kid Rock joins @POTUS in the Oval Office for the signing of an Executive Order to crack down on unfair ticket scalping. 'Thank you, Mr. President, because this has happened at lightning speed... thank you for making this happen so quick.' - Kid Rock https://...; source URL: https://video.twimg.com/ext_tw_video/1906844127376916481/pu/vid/avc1/720x720/WGALa728VnvR2BJJ.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/7_1906844127376916481.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 2000x2000; 77.3s; 4.93 MiB; archived; tweet context: 🔥Kid Rock joins @POTUS in the Oval Office for the signing of an Executive Order to crack down on unfair ticket scalping. 'Thank you, Mr. President, because this has happened at lightning speed... thank you for making this happen so quick.' - Kid Rock https://...; source URL: https://video.twimg.com/ext_tw_video/1906844127376916481/pu/vid/avc1/720x720/WGALa728VnvR2BJJ.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/7_1906844127376916481.mp4; needs OCR, transcript, or frame-"
     },
     {
+      "tweet_id": "1907174625936593010",
+      "account_handle": "WhiteHouse",
+      "posted_at": "2025-04-01T20:53:59.000Z",
+      "tweet_url": "https://x.com/WhiteHouse/status/1907174625936593010",
+      "tweet_text": ".@FLOTUS Melania Trump honors courageous women at the International Women of Courage Award Ceremony.\n\n'Today we celebrate courage, a strength that is based in love. This truth is illustrated in our honorees who prove that love can inspire extraordinary valor.' ❤️ https://t.co/QzBlW55yLk",
+      "media_id": "7_1907173400994340864",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/7_1907173400994340864.mp4",
+      "duration_sec": 50.116,
+      "width": 2000,
+      "height": 2000,
+      "like_count": 16796,
+      "retweet_count": 2845,
+      "view_count": 469261,
+      "bucket": "needs-recognition",
+      "priority": 75,
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "transcribe-audio"
+      ],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": false,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "video; 2000x2000; 50.1s; 2.44 MiB; archived; tweet context: .@FLOTUS Melania Trump honors courageous women at the International Women of Courage Award Ceremony. 'Today we celebrate courage, a strength that is based in love. This truth is illustrated in our honorees who prove that love can inspire extraordinary valor.'...; source URL: https://video.twimg.com/ext_tw_video/1907173400994340864/pu/vid/avc1/720x720/Er3xClO7SSMSqeUc.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/7_1907173400994340864.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 2000x2000; 50.1s; 2.44 MiB; archived; tweet context: .@FLOTUS Melania Trump honors courageous women at the International Women of Courage Award Ceremony. 'Today we celebrate courage, a strength that is based in love. This truth is illustrated in our honorees who prove that love can inspire extraordinary valor.'...; source URL: https://video.twimg.com/ext_tw_video/1907173400994340864/pu/vid/avc1/720x720/Er3xClO7SSMSqeUc.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/7_1907173400994340864.mp4; needs OCR, transcript, or frame-"
+    },
+    {
       "tweet_id": "1911484781768155339",
       "account_handle": "DHSgov",
       "posted_at": "2025-04-13T18:21:00.000Z",
@@ -67063,6 +67101,46 @@
       "has_vision_description": false,
       "has_ocr": false,
       "description": ""
+    },
+    {
+      "tweet_id": "1947749202387472487",
+      "account_handle": "RapidResponse47",
+      "posted_at": "2025-07-22T20:02:51.000Z",
+      "tweet_url": "https://x.com/RapidResponse47/status/1947749202387472487",
+      "tweet_text": "WINNING: Today, the Consumer Brands Association — which includes brands like Coca-Cola, Amazon, and Target — announced its pledge to eliminate synthetic food dyes from its products.\n\nMAKE AMERICA HEALTHY AGAIN! https://t.co/Z4AqAo0Sfa",
+      "media_id": "13_1947748613360066560",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47-0002/13_1947748613360066560.mp4",
+      "duration_sec": 14.814,
+      "width": 1280,
+      "height": 720,
+      "like_count": 8910,
+      "retweet_count": 1554,
+      "view_count": 278620,
+      "bucket": "needs-recognition",
+      "priority": 75,
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "slogan:maha",
+        "theme:religion",
+        "topic:general",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "transcribe-audio"
+      ],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": false,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "video; 1280x720; 14.8s; 1.20 MiB; archived; tweet context: WINNING: Today, the Consumer Brands Association — which includes brands like Coca-Cola, Amazon, and Target — announced its pledge to eliminate synthetic food dyes from its products. MAKE AMERICA HEALTHY AGAIN! https://t.co/Z4AqAo0Sfa; source URL: https://video.twimg.com/amplify_video/1947748613360066560/vid/avc1/1280x720/-EI_4qAgJYuQKsMK.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47-0002/13_1947748613360066560.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 14.8s; 1.20 MiB; archived; tweet context: WINNING: Today, the Consumer Brands Association — which includes brands like Coca-Cola, Amazon, and Target — announced its pledge to eliminate synthetic food dyes from its products. MAKE AMERICA HEALTHY AGAIN! https://t.co/Z4AqAo0Sfa; source URL: https://video.twimg.com/amplify_video/1947748613360066560/vid/avc1/1280x720/-EI_4qAgJYuQKsMK.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47-0002/13_1947748613360066560.mp4; needs OCR, transcript, or frame-level vision before content claims. WINN"
     },
     {
       "tweet_id": "1947778737740677229",
@@ -133136,41 +133214,6 @@
       "description": ""
     },
     {
-      "tweet_id": "1907174625936593010",
-      "account_handle": "WhiteHouse",
-      "posted_at": "2025-04-01T20:53:59.000Z",
-      "tweet_url": "https://x.com/WhiteHouse/status/1907174625936593010",
-      "tweet_text": ".@FLOTUS Melania Trump honors courageous women at the International Women of Courage Award Ceremony.\n\n'Today we celebrate courage, a strength that is based in love. This truth is illustrated in our honorees who prove that love can inspire extraordinary valor.' ❤️ https://t.co/QzBlW55yLk",
-      "media_id": "7_1907173400994340864",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 50.116,
-      "width": 2000,
-      "height": 2000,
-      "like_count": 16796,
-      "retweet_count": 2845,
-      "view_count": 469261,
-      "bucket": "missing-media",
-      "priority": 60,
-      "tags": [
-        "topic:immigration",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
       "tweet_id": "1907267469594525949",
       "account_handle": "StephenM",
       "posted_at": "2025-04-02T03:02:54.000Z",
@@ -140469,42 +140512,6 @@
         "topic:economy",
         "topic:general",
         "topic:immigration",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "1947749202387472487",
-      "account_handle": "RapidResponse47",
-      "posted_at": "2025-07-22T20:02:51.000Z",
-      "tweet_url": "https://x.com/RapidResponse47/status/1947749202387472487",
-      "tweet_text": "WINNING: Today, the Consumer Brands Association — which includes brands like Coca-Cola, Amazon, and Target — announced its pledge to eliminate synthetic food dyes from its products.\n\nMAKE AMERICA HEALTHY AGAIN! https://t.co/Z4AqAo0Sfa",
-      "media_id": "13_1947748613360066560",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 14.814,
-      "width": 1280,
-      "height": 720,
-      "like_count": 8910,
-      "retweet_count": 1554,
-      "view_count": 278620,
-      "bucket": "missing-media",
-      "priority": 60,
-      "tags": [
-        "slogan:maha",
-        "topic:general",
         "video:short"
       ],
       "genre_tags": [],
@@ -194152,7 +194159,7 @@
       "has_audio_analysis": true,
       "has_transcript": true,
       "has_vision_description": true,
-      "has_ocr": false,
+      "has_ocr": true,
       "description": "video; 1920x1080; 47.3s; 15.40 MiB; archived; tweet context: ASMR: @USCG captures, burns, and sinks a drug boat. Over the weekend, as part of Operation Pacific Viper, the @USCG Cutter Stone conducted three interdictions in a single night—seizing nearly 13,000 pounds of cocaine and apprehending seven suspected drug smug...; source URL: https://video.twimg.com/amplify_video/1965514270424055808/vid/avc1/1920x1080/ebMFkJTqVlR6_mAY.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_1965514270424055808.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 47.3s; 15.40 MiB; archived; tweet context: ASMR: @USCG captures, burns, and sinks a drug boat. Over the weekend, as part of Operation Pacific Viper, the @USCG Cutter Stone conducted three interdictions in a single night—seizing nearly 13,000 pounds of cocaine and apprehending seven suspected drug smug...; source URL: https://video.twimg.com/amplify_video/1965514270424055808/vid/avc1/1920x1080/ebMFkJTqVlR6_mAY.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_1965514270424055808.mp4; needs OCR, transcript, or "
     },
     {

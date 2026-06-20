@@ -1,11 +1,11 @@
 {
   "metadata": {
     "queue": "candidates",
-    "generated_at": "2026-06-20T12:35:40Z",
-    "source_commit": "e28e315c",
-    "item_count": 195,
+    "generated_at": "2026-06-20T13:27:55Z",
+    "source_commit": "c73d1a32",
+    "item_count": 200,
     "source_candidate_count": 1399,
-    "not_ready_count": 27,
+    "not_ready_count": 22,
     "review_scope_excluded_count": 1114,
     "review_scope_excluded_reasons": {
       "apprehension-notice-or-routine-card": 327,
@@ -16,15 +16,15 @@
     },
     "all_items_ready": true,
     "basis_counts": {
-      "real_footage_creative_use": 20,
-      "wholly_creative_media": 175
+      "real_footage_creative_use": 21,
+      "wholly_creative_media": 179
     },
     "preference_category_counts": {
-      "aesthetic:nostalgia-americana": 108,
-      "subject:enforcement-linked": 67,
-      "medium:produced-video-with-preference-signal": 34,
-      "policy:self-deportation-ad": 21,
-      "aesthetic:dystopian-surreal": 21,
+      "aesthetic:nostalgia-americana": 109,
+      "subject:enforcement-linked": 70,
+      "medium:produced-video-with-preference-signal": 36,
+      "aesthetic:dystopian-surreal": 24,
+      "policy:self-deportation-ad": 22,
       "spectacle:holiday-or-celebration": 16,
       "aesthetic:ai-synthetic-propaganda": 14,
       "editorialized:dramatic-crime-composite": 8,
@@ -42,10 +42,10 @@
       "WhiteHouse": 9,
       "TheJusticeDept": 4,
       "POTUS": 3,
+      "gwjfromparadise": 2,
       "USBPChief": 2,
       "FBI": 2,
-      "RapidResponse47": 1,
-      "VP": 1
+      "Epointerdog": 1
     },
     "review_actions": [
       "yes",
@@ -1395,6 +1395,145 @@
         "retweets": 11,
         "quotes": 0,
         "views": 6554
+      },
+      "preference_score": 46,
+      "preference_categories": [
+        "aesthetic:dystopian-surreal",
+        "medium:produced-video-with-preference-signal",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2054462029226967310:16_2054462014228148224",
+      "tweet_id": "2054462029226967310",
+      "posted_at": "2026-05-13T07:21:32.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "gwjfromparadise",
+        "category": null,
+        "label": "gwjfromparadise"
+      },
+      "tweet_url": "https://x.com/gwjfromparadise/status/2054462029226967310",
+      "tweet_text": "@SecMullinDHS @CBP @DHSgov @CBPCommissioner https://t.co/UjtpbmNyKx",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "dystopian",
+        "text-overlay"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "agency:DHSgov",
+        "agency:SecMullinDHS",
+        "audio:no-audio",
+        "format:reply",
+        "genre:dystopian",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "16_2054462014228148224",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2054462014228148224.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/3df00d9281ac6ee62450b93f987e2ebeab32ccded380c48ab0754cd689a1b90e.jpg",
+          "sha256": "3df00d9281ac6ee62450b93f987e2ebeab32ccded380c48ab0754cd689a1b90e",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Stylized clip of a woman in profile against a blue and pink fantasy or sci-fi background. White uppercase caption text fills much of the left side as the frames hold on the same pose.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "y TA. wie 4 NEEDBARES, MOMENTO: 4 GET OVER THIS® STUPIDITY Im\n\n» 5 7 NEBDBAR MOMENT#TO* GET OVER THIS™ : 8 STUPIDITY ‘4\n\na.) NEED Ns MOMENT&TO: & * GET OVER THIS® © a STUPIDITY a\n\nNEEDBAT ES, MOMENTTOS GET OVER THIS®™ A STUPIDITY =\n\n» eo F ” Tho ‘a , NEEDBAtE ws.» MOMENTsT@: & * GET OVER THIS™ & \\ STUPIDITY Be"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 4.0,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Stylized clip of a woman in profile against a blue and pink fantasy or sci-fi background. White uppercase caption text fills much of the left side as the frames hold on the same pose.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:dystopian-surreal: dystopian",
+          "produced video with preference signal",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 9
       },
       "preference_score": 46,
       "preference_categories": [
@@ -3626,6 +3765,141 @@
       "preference_categories": [
         "aesthetic:ai-synthetic-propaganda",
         "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2053204843112837310:16_2053204836716527616",
+      "tweet_id": "2053204843112837310",
+      "posted_at": "2026-05-09T20:05:55.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "Epointerdog",
+        "category": "public",
+        "label": "me"
+      },
+      "tweet_url": "https://x.com/Epointerdog/status/2053204843112837310",
+      "tweet_text": "@DHSgov https://t.co/AGGn2VA0Fp",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "cinematic",
+        "dystopian",
+        "war-movie"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:DHSgov",
+        "audio:no-audio",
+        "format:reply",
+        "genre:dystopian",
+        "genre:war-movie",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration",
+        "topic:military",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "16_2053204836716527616",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2053204836716527616.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/29e62b1880e85e73b02a1937f9bfbe834c08dbf06e5983c5764188ecdeef282f.jpg",
+          "sha256": "29e62b1880e85e73b02a1937f9bfbe834c08dbf06e5983c5764188ecdeef282f",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Cinematic clip of a helmeted person seated in a cold, blue-gray military or sci-fi vehicle interior. The sequence shows the person looking forward and gesturing slightly, with subtitles changing near the bottom.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "=, i. , y 4 al ‘ aw // a Hey, ——\n\n— }) i ihe y r 1 am. “e = A y * ] a ‘ a ; Y > > ea Hey, —— es\n\n= q os ™ Iph = £ 1 » \\ . as —_=. f a A , yp , . a ; a 4 3 . £ a —— “s\n\n2 a y =~ f f 1 1 ¥ —_——< a itis 2. j és j as Shootthat guy. “\n\na los po a vila vi ‘ —=_ 4 Shootthat guy."
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 1.62,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Cinematic clip of a helmeted person seated in a cold, blue-gray military or sci-fi vehicle interior. The sequence shows the person looking forward and gesturing slightly, with subtitles changing near the bottom.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:dystopian-surreal: dystopian",
+          "produced video with preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 28
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:dystopian-surreal",
+        "medium:produced-video-with-preference-signal"
       ]
     },
     {
@@ -8824,6 +9098,141 @@
       ]
     },
     {
+      "id": "2054461699516928485:16_2054461684673380352",
+      "tweet_id": "2054461699516928485",
+      "posted_at": "2026-05-13T07:20:13.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "gwjfromparadise",
+        "category": null,
+        "label": "gwjfromparadise"
+      },
+      "tweet_url": "https://x.com/gwjfromparadise/status/2054461699516928485",
+      "tweet_text": "@SecMullinDHS @CBP @DHSgov @CBPCommissioner https://t.co/MxAbqvq9nB",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "text-overlay"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "agency:DHSgov",
+        "agency:SecMullinDHS",
+        "audio:no-audio",
+        "format:reply",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration",
+        "video:news-clip"
+      ],
+      "media": [
+        {
+          "media_id": "16_2054461684673380352",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2054461684673380352.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/d36edd7dfd19233a996b29d7ef203aaaeffa728a207fdaf90fb2a39321bc1fdd.jpg",
+          "sha256": "d36edd7dfd19233a996b29d7ef203aaaeffa728a207fdaf90fb2a39321bc1fdd",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Vintage-looking clip of a man in a blue suit speaking against a plain beige background. The frames show slight changes in his expression and head angle before a caption appears near the lower right.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "7 ™ a a. : l = S : 9 ‘ re\n\nir = 7 — ey taal = = 4 : » ai - WK 7 f /\n\nHe =— _— Sa : a TAN — : \\ > > —. & 1 ¥ /% — yy 4 ‘ . \\ aw i ay i —y f ’ :\n\n= a = i} = —<—. am mn” Vg — ATG Pi a DWiShh QO RCEAD! INCOMPETENCE! VPEVENCE\n\nan ji b= t — - *. = |=. x - >. y : oe ai > [a= = 5 1 1 1 11 2 143 388 164 39 1.196457 L.WISH) 5 1 1 1 11 3 294 380 62 59 41.614361 TO: 5 1 1 1 11 4 352 384 151 45 41.614361 REEAD) 4 1 1 1 12 0 158 426 317 53 -1 5 1 1 1 12 1 158 426 96 33 86.288155 INCO 5 1 1 1 12 2 274 474 1 3 0.000000 ! 5 1 1 1 12 3 299 434 15 24 79.967461 P 5 1 1 1 12 4 329 435 50 44 34.866241 TT 5 1 1 1 12 5 397 434 78 44 88.602974 NCE"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 4.72,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Vintage-looking clip of a man in a blue suit speaking against a plain beige background. The frames show slight changes in his expression and head angle before a caption appears near the lower right.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:nostalgia-americana: Vintage",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 9
+      },
+      "preference_score": 37,
+      "preference_categories": [
+        "aesthetic:nostalgia-americana",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
       "id": "1906374869379334638:3_1906372701490417664",
       "tweet_id": "1906374869379334638",
       "posted_at": "2025-03-30T15:56:02.000Z",
@@ -11476,6 +11885,132 @@
         "retweets": 48,
         "quotes": 3,
         "views": 10966
+      },
+      "preference_score": 35,
+      "preference_categories": [
+        "aesthetic:dystopian-surreal"
+      ]
+    },
+    {
+      "id": "2027152094281523249:16_2027152087969124352",
+      "tweet_id": "2027152094281523249",
+      "posted_at": "2026-02-26T22:41:36.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "STFUabtChicago",
+        "category": null,
+        "label": "STFUabtChicago"
+      },
+      "tweet_url": "https://x.com/STFUabtChicago/status/2027152094281523249",
+      "tweet_text": "@DHSgov Why dafuq are you LYING?\nYou KILLED a poor, crippled, defenseless man!\n\nYOU REPRESENT EVIL ABROAD IN THE WORLD\n\nWhen you get to the Gates of Hell, they will show you around to the Employees Entrance. https://t.co/FhX5QyHfX4",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:DHSgov",
+        "audio:no-audio",
+        "format:reply",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "16_2027152087969124352",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2027152087969124352.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/015823fb45ca2c6aedbd1a34641477320e8017dee008fb430501643eab61379b.jpg",
+          "sha256": "015823fb45ca2c6aedbd1a34641477320e8017dee008fb430501643eab61379b",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Dark red and black neon-style graphic with the same sign held across the visible frames. The words glow in red as if on a wall or window, with little visible motion besides flicker or compression.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "GATES OF HELL EMPLOYEES ONLY\n\nGATES. OF HELL EMPLOYEES ONLY\n\nGATES. OF HELL EMPLOYEES ONLY\n\nGATES. OF HELL EMPLOYEES ONLY\n\nGATES OF HELL EMPLOYEES ONLY"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 4.41,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Dark red and black neon-style graphic with the same sign held across the visible frames. The words glow in red as if on a wall or window, with little visible motion besides flicker or compression.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:dystopian-surreal: neon"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 841
       },
       "preference_score": 35,
       "preference_categories": [
@@ -24450,6 +24985,144 @@
         "retweets": 84,
         "quotes": 7,
         "views": 20205
+      },
+      "preference_score": 31,
+      "preference_categories": [
+        "policy:self-deportation-ad",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2051992371760611626:13_2051889492651286529",
+      "tweet_id": "2051992371760611626",
+      "posted_at": "2026-05-06T11:48:00.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "LongTimeHistory",
+        "category": null,
+        "label": "LongTimeHistory"
+      },
+      "tweet_url": "https://x.com/LongTimeHistory/status/2051992371760611626",
+      "tweet_text": "18-year-old U.S. citizen dying from cancer begs to see parents one last time—ICE is keeping them detained.\n\nParents were denied humanitarian visa—so forced to cross border illegally.\n\nSon is in hospice care—only wish is to hug mom and dad before he dies.\n\nWilling to self-deport and sign any paperwork voluntarily just to be released from the detention center before it's too late.\n\n\"It’s very difficult because the processes are very slow,\" said their lawyer.\n\nMeanwhile, Kevin faces the possibility of dying in just a matter of days far away from his parents.\n\n\"Please help me fulfill my last wish.\"",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "medium",
+      "score": 84,
+      "creative_forms": [
+        "text-overlay"
+      ],
+      "subjects": [
+        "detainees",
+        "deportation",
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "action:detention",
+        "action:self-deportation",
+        "agency:ICEgov",
+        "audio:has-audio",
+        "country:Mexico",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "policy:border",
+        "policy:cbp-home",
+        "review:screened-video",
+        "theme:religion",
+        "topic:immigration",
+        "video:long"
+      ],
+      "media": [
+        {
+          "media_id": "13_2051889492651286529",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2051889492651286529.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/92a5db29a3fe42c6752f3e8718816d9a16d93798bbc229cc44dec8d0342d0d42.jpg",
+          "sha256": "92a5db29a3fe42c6752f3e8718816d9a16d93798bbc229cc44dec8d0342d0d42",
+          "duration_sec": 234.898,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Reposted Telemundo Chicago news segment with an English headline overlay reading 'Young man from Chicago with terminal cancer asks to see his parents detained by ICE.' The video shows two young men seated together indoors, one wearing a pink soccer jersey and resting under a patterned blanket. A Spanish lower-third reads 'KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE' with an 'EXCLUSIVA' tag and a 'TelemundoChicago' bug and clock. The audio is Spanish-language reporting about a young man with terminal cancer whose parents are in ICE detention.  [0:15] Two young men seated together indoors, one in a pink jersey under a blanket; English headline overlay and Spanish chyron 'KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE.'",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "Young man from Chicago with terminal cancer asks to see his parents detained by ICE EXCLUSIVA\n\nYoung man from Chicago with terminal cancer asks to see his parents detained by ICE —s Hy, ws EXCLUSIVA, a = ENTRE EL CANCER Y EL MURO DE ICE: KEVIN PIDE UN MILAGRO [iam Be BLOX Telemuncochicago AIDTEMIED\n\nYoung man from Chicago with terminal cancer asks to see his parents detained by ICE > ’ * Wy, va BS, r ss A ¥ = J EXCLUSIV) ‘ KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE iy\n\nYoung man from Chicago with terminal cancer asks to see his parents detained by ICE LN 2 vy >) / By wk KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE g atty Sal Cicero [0x2 Telemundochicago (ERENT\n\nYoung man from Chicago with terminal cancer asks to see his parents detained by ICE i= ¢"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 234.944,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 60,
+              "text": "Now, greater than fulfilling my last wish is possible. Visibly affected by terminal cancer, Kevin Gonzalez, who is from Chicago, only has one wish before he dies to O.C.E. and hug his parents. Who are still detained? Esan Zabritere, Santiago, Gallego spoke exclusively with him and now he shares his request, which is quite emotional. So, tonight's Santiago, without a doubt, words are too many. Alfonso, it's a very hard story. This young man has stage four coal and cancer. It has spread throughout his body to the point that the doctors are no longer giving him any type of care. All he wants is for his parents to be released. So he can see them before he dies. To see my parents for the last time. That pretty big time of Cabo of Kevin, and 18 minus year old young man born in Chicago today, that written in his grandmother's house in Durango, Mexico, where he spends his last days, mom. He doesn't take anything. All the medications that we brought from the United States are just in January. Kevin was diagnosed with terminal stage four coal and cancer. The disease has spread throughout his body. Doctors say there is no treatment or options left. Only time and less and less of it. My brothers days are numbered. And now all he really wanted was for my parents to be here. For months, his brother took care of him at the hospital. He prayed to the Virgin Mary for a miracle, while his parents were desperate to travel from Mexico. He had an appointment to see if he could get a humanitarian visa, but they denied it. Seeing no other option, Kevin's parents crossed the border illegally. They were detained by immigration and taken to a detention center in Arizona, as he lost hope of ever seeing his parents. Again, Kevin decided to hug his brother one last time and travel to Mexico before the doctor told him not to get on a plane. Let them release him. They are not criminals. They were just going to see their son. In these letters from the University of Chicago Hospital, the doctors are clear. Kevin is in his final days of life and they are asking for compassion so that his parents can be released. It is unlikely, unless there is active intervention, perhaps from the Mexican government. According to this immigration lawyer who is not connected to the case, although a humanitarian release is possible, it is not quick or guaranteed. Yeah. It is very difficult because the courts are very backlogged, so really, if they want to leave voluntarily, and they sign the voluntary departure, the government can take them out, right, right? Hello. Are you? I hope you're well. For Kevin, time is running out every day. A US citizen dying far from home with a wish that he cannot express without getting tired."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Reposted Telemundo Chicago news segment with an English headline overlay reading 'Young man from Chicago with terminal cancer asks to see his parents detained by ICE.' The video shows two young men seated together indoors, one wearing a pink soccer jersey and resting under a patterned blanket. A Spanish lower-third reads 'KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE' with an 'EXCLUSIVA' tag and a 'TelemundoChicago' bug and clock. The audio is Spanish-language reporting about a young man with terminal cancer whose parents are in ICE detention.  [0:15] Two young men seated together indoors, one in a pink jersey under a blanket; English headline overlay and Spanish chyron 'KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE.'",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "policy:self-deportation-ad: self-deport",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 9305,
+        "retweets": 4131,
+        "quotes": 258,
+        "views": 3349197
       },
       "preference_score": 31,
       "preference_categories": [
