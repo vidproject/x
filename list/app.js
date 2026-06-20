@@ -20,9 +20,7 @@ async function load() {
     const items = payload?.collections?.[collectionId] || [];
     renderSummary(payload.metadata || {}, items);
     renderItems(items);
-    setStatus(
-      `${formatNumber(items.length)} ${items.length === 1 ? 'item' : 'items'} loaded`
-    );
+    setStatus(`${formatNumber(items.length)} ${items.length === 1 ? 'item' : 'items'} loaded`);
   } catch (error) {
     setStatus(`Could not load ${DATA_URL}: ${error.message}`);
     els.summary.replaceChildren();
@@ -252,22 +250,24 @@ function firstPlayableMedia(item) {
 
 function isVideo(media) {
   const type = String(media.type || media.media_type || '').toLowerCase();
-  const url = String(media.archive_url || '').split('?')[0].toLowerCase();
+  const url = String(media.archive_url || '')
+    .split('?')[0]
+    .toLowerCase();
   return type.includes('video') || type.includes('gif') || /\.(mp4|webm|mov|m4v)$/.test(url);
 }
 
 function mediaAlt(item, media) {
   return (
-    media?.analysis?.description?.text ||
-    item.tweet_text ||
-    `${accountLabel(item)} media item`
+    media?.analysis?.description?.text || item.tweet_text || `${accountLabel(item)} media item`
   );
 }
 
 function accountLabel(item) {
   const account = item.account || {};
   const handle = account.handle ? `@${account.handle}` : '';
-  return account.label && handle ? `${account.label} (${handle})` : account.label || handle || 'Unknown account';
+  return account.label && handle
+    ? `${account.label} (${handle})`
+    : account.label || handle || 'Unknown account';
 }
 
 function setStatus(message) {

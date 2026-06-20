@@ -3,19 +3,19 @@
     "schema_version": 1,
     "generated_at": "2026-06-20T00:00:00Z",
     "purpose": "Named creative/cruelty incidents that should surface in creative review once captured.",
-    "local_corpus_note": "No local catalog/raw hit for dieworkwear, Derek Guy, Menswear Guy, RoW7oiWPZw, or 0t2Oj74C85 when this file was created."
+    "local_corpus_note": "No local catalog/raw hit for dieworkwear, Derek Guy, Menswear Guy, RoW7oiWPZw, 0t2Oj74C85, DHSgov/status/1932151121356988888, or YashiPhougat/status/1931936559726481584 when this file was updated."
   },
   "targets": [
     {
       "id": "derek-guy-menswear-deportation-threat-2025-06-09",
       "status": "missing-from-local-corpus",
       "priority": "high",
-        "candidate_categories": [
-          "cruelty:personalized-deportation-threat",
-          "cruelty:surveillance-taunt",
-          "cruelty:mocking-deportation-joke",
-          "media:reaction-gif",
-          "emoji:eyes"
+      "candidate_categories": [
+        "cruelty:personalized-deportation-threat",
+        "cruelty:surveillance-taunt",
+        "cruelty:mocking-deportation-joke",
+        "media:reaction-gif",
+        "emoji:eyes"
       ],
       "accounts_to_check": [
         "JDVance",
@@ -31,9 +31,19 @@
           "role": "Derek Guy immigration-status disclosure thread"
         },
         {
+          "tweet_id": "1931936559726481584",
+          "account": "YashiPhougat",
+          "role": "Quoted post noting Guy's undocumented status"
+        },
+        {
           "tweet_id": "1932098810651521328",
           "account": "JDVance",
           "role": "Vance reaction-GIF reply interpreted as deportation threat"
+        },
+        {
+          "tweet_id": "1932151121356988888",
+          "account": "DHSgov",
+          "role": "DHS quote-tweet using Spy Kids zoom-glasses GIF as surveillance taunt"
         },
         {
           "tweet_id": "1932123871312064996",
@@ -51,11 +61,13 @@
         "date": "2025-06-09",
         "shortlink": "https://t.co/RoW7oiWPZw",
         "media_shortlink": "https://pic.twitter.com/0t2Oj74C85",
-        "exact_tweet_id": null,
-        "description": "DHS reportedly posted a Spy Kids zoom-glasses GIF in response to a post about Derek Guy's immigration status."
+        "exact_tweet_id": "1932151121356988888",
+        "quoted_tweet_id": "1931936559726481584",
+        "description": "DHS posted a Spy Kids zoom-glasses GIF in response to a post about Derek Guy's immigration status. Press accounts described the implication as surveillance or 'we're watching you.'"
       },
       "additional_search_clues": [
-        "👀",
+        "\ud83d\udc40",
+        "eyes looking left emoji",
         "eyes emoji",
         "side eye",
         "we're watching you",
@@ -64,9 +76,13 @@
         "zoom glasses"
       ],
       "source_urls": [
+        "https://x.com/DHSgov/status/1932151121356988888",
+        "https://x.com/YashiPhougat/status/1931936559726481584",
         "https://www.axios.com/2025/06/09/vance-post-suggests-deporting-the-menswear-guy",
         "https://newrepublic.com/post/196307/jd-vance-threatens-deport-menswear-guy-confession-immigration-status",
-        "https://www.theguardian.com/us-news/2025/jun/09/menswear-guy-derek-guy-immigration-status-jd-vance"
+        "https://www.theguardian.com/us-news/2025/jun/14/jd-vance-deport-derek-guy-menswear",
+        "https://knowyourmeme.com/memes/events/homeland-security-and-jd-vances-menswear-guy-deportation-tweets",
+        "https://www.mediaite.com/politics/department-of-homeland-security-responds-after-fashion-critic-who-mocked-trumps-clothes-reveals-hes-undocumented/"
       ],
       "notes": "Treat this as the pattern case for personalized official cruelty: a named civilian's immigration history becomes the object of a deportation joke/threat through official or senior political accounts using reaction-GIF/meme language."
     }

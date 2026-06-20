@@ -79,8 +79,10 @@ def write_json_stable(path: Path, payload: dict[str, Any]) -> None:
         if isinstance(loaded, dict):
             prior = loaded
     if prior is not None:
-        old_meta = prior.get("metadata") if isinstance(prior.get("metadata"), dict) else {}
-        new_meta = payload.get("metadata") if isinstance(payload.get("metadata"), dict) else {}
+        old_meta_raw = prior.get("metadata")
+        new_meta_raw = payload.get("metadata")
+        old_meta: dict[str, Any] = dict(old_meta_raw) if isinstance(old_meta_raw, dict) else {}
+        new_meta: dict[str, Any] = dict(new_meta_raw) if isinstance(new_meta_raw, dict) else {}
         comparable_prior = dict(prior)
         comparable_prior["metadata"] = {**old_meta, "generated_at": None}
         comparable_new = dict(payload)
