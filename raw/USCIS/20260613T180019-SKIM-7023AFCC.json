@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T180004Z-8be520a2-USCIS",
+  "account_handle": "USCIS",
+  "captured_at": "2026-06-13T18:00:19.708Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ASpeakSamuel%20since%3A2025-10-01%20until%3A2026-01-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2003485146968969429",
+      "account_handle": "USCIS",
+      "account_id": "14625398",
+      "posted_at": "2025-12-23T15:17:36.000Z",
+      "first_captured_at": "2026-06-13T18:00:18.928Z",
+      "last_seen_at": "2026-06-13T18:00:18.928Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USCIS/status/2003485146968969429",
+      "tweet_type": "original",
+      "conversation_id": "2003485146968969429",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": ".@DHSgov is publishing a final new rule for the H-1B work visa program to better protect American workers and wages. For too long, the H-1B program has failed to meet Congress’ intent.\n\nLearn more: https://t.co/gHK64EAALO https://t.co/3pIIvOyrPz",
+      "text_resolved": ".@DHSgov is publishing a final new rule for the H-1B work visa program to better protect American workers and wages. For too long, the H-1B program has failed to meet Congress’ intent.\n\nLearn more: https://www.uscis.gov/newsroom/news-releases/dhs-changes-process-for-awarding-h-1b-work-visas-to-better-protect-american-workers https://t.co/3pIIvOyrPz",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DHSgov"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/gHK64EAALO",
+          "expanded": "https://www.uscis.gov/newsroom/news-releases/dhs-changes-process-for-awarding-h-1b-work-visas-to-better-protect-american-workers",
+          "display": "uscis.gov/newsroom/news-…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2003485076596588544",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G83PD-9WAAAaRZz.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 628,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1426,
+      "retweet_count": 293,
+      "reply_count": 223,
+      "quote_count": 45,
+      "view_count": 377277,
+      "bookmark_count": 211,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T18:00:18.928Z",
+          "likes": 1426,
+          "retweets": 293,
+          "replies": 223,
+          "quotes": 45,
+          "views": 377277,
+          "bookmarks": 211
+        }
+      ],
+      "author": {
+        "display_name": "USCIS",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1882164862987489280/kDwtH0hc_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official X account of U.S. Citizenship and Immigration Services. \nApply to be a Homeland Defender NOW: https://t.co/ataEwyi3UT",
+        "location": "Washington, DC",
+        "url": "https://t.co/GrphfGhLRD",
+        "followers_count": 566225,
+        "friends_count": 336,
+        "statuses_count": 22136,
+        "account_created_at": "2008-05-02T13:03:21.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T180004Z-8be520a2",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T180004Z-8be520a2.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T180004Z-8be520a2.jsonl",
+    "source_handle": "SpeakSamuel"
+  }
+}

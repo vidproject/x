@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T162808Z-dfcdfa28-BillMelugin_",
+  "account_handle": "BillMelugin_",
+  "captured_at": "2026-06-17T16:28:24.409Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APressSec%20since%3A2025-04-30%20until%3A2025-05-07%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1918096549038760188",
+      "account_handle": "BillMelugin_",
+      "account_id": "1071585991",
+      "posted_at": "2025-05-02T00:13:48.000Z",
+      "first_captured_at": "2026-06-17T16:28:12.885Z",
+      "last_seen_at": "2026-06-17T16:28:12.885Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/BillMelugin_/status/1918096549038760188",
+      "tweet_type": "original",
+      "conversation_id": "1918096549038760188",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "BREAKING: @FoxNews has obtained the Tennessee Highway Patrol bodycam footage from when “Maryland Man” Kilmar Abrego Garcia was suspected of human trafficking during a traffic stop in 2022. \n\n“He’s hauling these people for money,” a trooper says. \n\nhttps://t.co/GbCdtAEGBa",
+      "text_resolved": "BREAKING: @FoxNews has obtained the Tennessee Highway Patrol bodycam footage from when “Maryland Man” Kilmar Abrego Garcia was suspected of human trafficking during a traffic stop in 2022. \n\n“He’s hauling these people for money,” a trooper says. \n\nhttps://www.foxnews.com/us/tennessee-bodycam-maryland-man-traffic-stop-shows-troopers-hands-tied-despite-smuggling-clues",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "FoxNews"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/GbCdtAEGBa",
+          "expanded": "https://www.foxnews.com/us/tennessee-bodycam-maryland-man-traffic-stop-shows-troopers-hands-tied-despite-smuggling-clues",
+          "display": "foxnews.com/us/tennessee-b…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/GbCdtAEGBa",
+        "vendor_url": "foxnews.com",
+        "title": "Tennessee bodycam of 'Maryland man' traffic stop shows troopers' hands tied despite smuggling clues",
+        "description": "The Tennessee Highway Patrol released body camera video of its 2022 encounter with illegal immigrant Abrego-Garcia, who was deported to El Salvador's Terrorist Confinement Center (CECOT).",
+        "image_url": null
+      },
+      "media": [],
+      "like_count": 11673,
+      "retweet_count": 4282,
+      "reply_count": 532,
+      "quote_count": 370,
+      "view_count": 1526303,
+      "bookmark_count": 940,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T16:28:12.885Z",
+          "likes": 11673,
+          "retweets": 4282,
+          "replies": 532,
+          "quotes": 370,
+          "views": 1526303,
+          "bookmarks": 940
+        }
+      ],
+      "author": {
+        "display_name": "Bill Melugin",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1922669778436550659/SM0mVTSg_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Congressional correspondent for @foxnews in DC. 4x EMMY winner, 3x Edward R. Murrow winner, 4x RTNA Golden Mike winner. @Cronkite_ASU grad & SoCal native.",
+        "location": "Washington, DC",
+        "url": "https://t.co/jb42Zqe43A",
+        "followers_count": 643216,
+        "friends_count": 3739,
+        "statuses_count": 28308,
+        "account_created_at": "2013-01-08T18:03:50.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T162808Z-dfcdfa28",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T162808Z-dfcdfa28.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T162808Z-dfcdfa28.jsonl",
+    "source_handle": "PressSec"
+  }
+}

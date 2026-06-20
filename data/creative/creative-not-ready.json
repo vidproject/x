@@ -1,0 +1,3271 @@
+{
+  "metadata": {
+    "queue": "not_ready",
+    "generated_at": "2026-06-20T04:53:44Z",
+    "source_commit": "d1a03f8b",
+    "item_count": 22,
+    "blocker_counts": {
+      "missing genuine visual description": 17,
+      "missing complete OCR for extracted keyframes": 11,
+      "missing archived media asset": 10,
+      "missing extracted video keyframes": 9,
+      "missing video thumbnail": 9,
+      "missing photo OCR": 6,
+      "missing photo thumbnail": 6,
+      "missing audio analysis": 4,
+      "missing transcript for video with audio": 2
+    }
+  },
+  "items": [
+    {
+      "id": "1965514384803061765:13_1965514270424055808",
+      "tweet_id": "1965514384803061765",
+      "posted_at": "2025-09-09T20:35:21.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1965514384803061765",
+      "tweet_text": "ASMR: @USCG captures, burns, and sinks a drug boat.\n\nOver the weekend, as part of Operation Pacific Viper, the @USCG Cutter Stone conducted three interdictions in a single night—seizing nearly 13,000 pounds of cocaine and apprehending seven suspected drug smugglers. https://t.co/wHRGUGYtTw",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "high",
+      "score": 84,
+      "creative_forms": [
+        "asmr"
+      ],
+      "subjects": [
+        "detainees",
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "action:detention",
+        "agency:USCG",
+        "audio:has-audio",
+        "crime:cocaine",
+        "crime:narcotics",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "military:coast-guard",
+        "topic:immigration",
+        "topic:military",
+        "video:medium"
+      ],
+      "media": [
+        {
+          "media_id": "13_1965514270424055808",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_1965514270424055808.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/24294411ca81374273e175c808ce0d6a39ddba6b2d2454c6e19388a7432ae618.jpg",
+          "sha256": "24294411ca81374273e175c808ce0d6a39ddba6b2d2454c6e19388a7432ae618",
+          "duration_sec": 47.26,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing complete OCR for extracted keyframes",
+              "missing genuine visual description",
+              "missing transcript for video with audio"
+            ],
+            "checks": {
+              "archived": true,
+              "description": false,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": false,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "metadata-placeholder",
+              "text": "video; 1920x1080; 47.3s; 15.40 MiB; archived; tweet context: ASMR: @USCG captures, burns, and sinks a drug boat. Over the weekend, as part of Operation Pacific Viper, the @USCG Cutter Stone conducted three interdictions in a single night—seizing nearly 13,000 pounds of cocaine and apprehending seven suspected drug smug...; source URL: https://video.twimg.com/amplify_video/1965514270424055808/vid/avc1/1920x1080/ebMFkJTqVlR6_mAY.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_1965514270424055808.mp4; needs OCR, transcript, or frame-level vision before content claims. ASMR: @USCG captures, burns, and sinks a drug boat. Over the weekend, as part of Operation Pacific Viper, the @USCG Cutter Stone conducted three interdictions in a single night—seizing nearly 13,000 pounds of cocaine and apprehending seven suspected drug smugglers. https://t.co/wHRGUGYtTw",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 47.322268,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing complete OCR for extracted keyframes",
+          "missing genuine visual description",
+          "missing transcript for video with audio"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "video; 1920x1080; 47.3s; 15.40 MiB; archived; tweet context: ASMR: @USCG captures, burns, and sinks a drug boat. Over the weekend, as part of Operation Pacific Viper, the @USCG Cutter Stone conducted three interdictions in a single night—seizing nearly 13,000 pounds of cocaine and apprehending seven suspected drug smug...; source URL: https://video.twimg.com/amplify_video/1965514270424055808/vid/avc1/1920x1080/ebMFkJTqVlR6_mAY.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_1965514270424055808.mp4; needs OCR, transcript, or frame-level vision before content claims. ASMR: @USCG captures, burns, and sinks a drug boat. Over the weekend, as part of Operation Pacific Viper, the @USCG Cutter Stone conducted three interdictions in a single night—seizing nearly 13,000 pounds of cocaine and apprehending seven suspected drug smugglers. https://t.co/wHRGUGYtTw",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "spectacle:asmr-deportation: ASMR",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 5215,
+        "retweets": 1140,
+        "quotes": 181,
+        "views": 204615
+      },
+      "preference_score": 65,
+      "preference_categories": [
+        "spectacle:asmr-deportation",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2054462029226967310:16_2054462014228148224",
+      "tweet_id": "2054462029226967310",
+      "posted_at": "2026-05-13T07:21:32.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "gwjfromparadise",
+        "category": null,
+        "label": "gwjfromparadise"
+      },
+      "tweet_url": "https://x.com/gwjfromparadise/status/2054462029226967310",
+      "tweet_text": "@SecMullinDHS @CBP @DHSgov @CBPCommissioner https://t.co/UjtpbmNyKx",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "dystopian",
+        "text-overlay"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "agency:DHSgov",
+        "agency:SecMullinDHS",
+        "audio:no-audio",
+        "format:reply",
+        "genre:dystopian",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "16_2054462014228148224",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2054462014228148224.mp4",
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "3df00d9281ac6ee62450b93f987e2ebeab32ccded380c48ab0754cd689a1b90e",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing complete OCR for extracted keyframes",
+              "missing extracted video keyframes",
+              "missing video thumbnail"
+            ],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": false,
+              "keyframe_count": 0,
+              "thumbnail": false,
+              "ocr": false,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Stylized clip of a woman in profile against a blue and pink fantasy or sci-fi background. White uppercase caption text fills much of the left side as the frames hold on the same pose.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "y TA. wie 4 NEEDBARES, MOMENTO: 4 GET OVER THIS® STUPIDITY Im\n\n» 5 7 NEBDBAR MOMENT#TO* GET OVER THIS™ : 8 STUPIDITY ‘4\n\na.) NEED Ns MOMENT&TO: & * GET OVER THIS® © a STUPIDITY a\n\nNEEDBAT ES, MOMENTTOS GET OVER THIS®™ A STUPIDITY =\n\n» eo F ” Tho ‘a , NEEDBAtE ws.» MOMENTsT@: & * GET OVER THIS™ & \\ STUPIDITY Be"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 4.0,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing complete OCR for extracted keyframes",
+          "missing extracted video keyframes",
+          "missing video thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Stylized clip of a woman in profile against a blue and pink fantasy or sci-fi background. White uppercase caption text fills much of the left side as the frames hold on the same pose.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:dystopian-surreal: dystopian",
+          "produced video with preference signal",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 9
+      },
+      "preference_score": 46,
+      "preference_categories": [
+        "aesthetic:dystopian-surreal",
+        "medium:produced-video-with-preference-signal",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2062200990191759690:13_2062200274509344768",
+      "tweet_id": "2062200990191759690",
+      "posted_at": "2026-06-03T15:53:24.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "JennieSTaer",
+        "category": null,
+        "label": "JennieSTaer"
+      },
+      "tweet_url": "https://x.com/JennieSTaer/status/2062200990191759690",
+      "tweet_text": "SCOOP: ICE officers successfully hunted down an illegal immigrant convicted of attempted murder who had been roaming the country for years despite having a deportation order and a lengthy rap sheet, @realDailyWire has learned.\n\nDramatic footage of the May 5 raid shows ICE officers arresting Sudanese illegal immigrant Gabriel Maror Ayuel at his Nashville apartment.\n\nAyuel received a conviction for first-degree attempted murder in Davidson County in 2003 and was sentenced to 20 years in prison.\n\nHe only served about nine years of his sentence, according to law enforcement sources. \n\nAyuel arrived in the US in 1995 as a refugee. While in the US, he received his attempted murder conviction, and was also arrested for DUI and failure to appear in Georgia, aggravated assault with a deadly weapon, felony possession of a prohibited weapon and felony flight to avoid prosecution in Tennessee.\n\nWhile he was behind bars in July 2008, Ayuel received a deportation order. Despite that, he never left the country, which is considered a felony offense.",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "medium",
+      "score": 84,
+      "creative_forms": [
+        "cinematic",
+        "war-movie"
+      ],
+      "subjects": [
+        "detainees",
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "action:deportation",
+        "action:detention",
+        "agency:ICEgov",
+        "country:Georgia",
+        "country:Sudan",
+        "crime:assault",
+        "crime:dui",
+        "crime:homicide",
+        "crime:murder",
+        "crime:weapon",
+        "genre:war-movie",
+        "legal:criminal-prosecution",
+        "phrase:immigrant",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2062200274509344768",
+          "type": "video",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": 53.219,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing audio analysis",
+              "missing complete OCR for extracted keyframes",
+              "missing extracted video keyframes",
+              "missing genuine visual description",
+              "missing video thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "keyframes": false,
+              "keyframe_count": 0,
+              "thumbnail": false,
+              "ocr": false,
+              "audio_analysis": false,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing audio analysis",
+          "missing complete OCR for extracted keyframes",
+          "missing extracted video keyframes",
+          "missing genuine visual description",
+          "missing video thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:dystopian-surreal: war-movie",
+          "produced video with preference signal",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 1160,
+        "retweets": 192,
+        "quotes": 11,
+        "views": 126592
+      },
+      "preference_score": 46,
+      "preference_categories": [
+        "aesthetic:dystopian-surreal",
+        "medium:produced-video-with-preference-signal",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "1951291639751696659:3_1951290947158835200",
+      "tweet_id": "1951291639751696659",
+      "posted_at": "2025-08-01T14:39:14.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "kyledcheney",
+        "category": null,
+        "label": "kyledcheney"
+      },
+      "tweet_url": "https://x.com/kyledcheney/status/1951291639751696659",
+      "tweet_text": "BREAKING: Judge Cobb has blocked the Trump administration's use of summary deportation for those who had previously been paroled into the U.S. — and warns the tactics used by the administration are beginning to resemble the countries these people fled. https://ecf.dcd.uscourts.gov/cgi-bin/show_public_doc?2025cv0872-41 https://t.co/mK3Yk53iai",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic",
+        "animation"
+      ],
+      "subjects": [],
+      "tags": [
+        "action:deportation",
+        "media-status:needs-ocr",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1951290947158835200",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: cgi",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 3119,
+        "retweets": 1148,
+        "quotes": 56,
+        "views": 380807
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2010771099987165674:3_2010771084342132738,3_2010771084346261505,3_2010771084342071296,3_2010771084363042816",
+      "tweet_id": "2010771099987165674",
+      "posted_at": "2026-01-12T17:49:23.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "MattFinnFNC",
+        "category": null,
+        "label": "MattFinnFNC"
+      },
+      "tweet_url": "https://x.com/MattFinnFNC/status/2010771099987165674",
+      "tweet_text": "NEW: amid ongoing tension between Minnesota and Trump admin, DHS is calling on Gov. Walz & Mayor Frey to co-operate with 1,360 detainers of criminal illegal aliens after DHS says MN already released 470 criminal illegal aliens onto streets.    \n\n“Governor Walz and Mayor Frey REFUSE to cooperate with ICE law enforcement and have released nearly 470 criminal illegal aliens back onto the streets of Minneapolis. We are calling on Walz and Frey to stop this dangerous policy and commit to honoring the ICE arrest detainers of the more than 1,360 criminal illegal aliens in Minnesota’s custody,” said Assistant Secretary @TriciaOhio . “It is common sense. Criminal illegal aliens should not be released back onto our streets to terrorize more innocent Americans.” \n\n•Leny Odemel Ramirez-Santos, a criminal illegal alien from Honduras charged with sex offense against a child – fondling and driving under the influence of liquor. \n\n•Edwin Amable Ashca Ninasuta, a criminal illegal alien from Ecuador with charges for lewd or lascivious acts with a minor.\n\n•Lenda Neh Mama Epse George, a criminal illegal alien from Cameroon with charges for cruelty toward a child and domestic violence. \n  \n•German Adriano Llangari Inga, a criminal illegal alien from Ecuador charged with homicide – negligent manslaughter with a vehicle and driving under the influence of liquor. \n \n•Puol Both, a criminal illegal alien from Sudan convicted of making terroristic threats, burglary, first-degree aggravated robbery, and larceny. \n\n•Somsalao Thonesavanh, a criminal illegal alien from Laos convicted of drug trafficking and selling a synthetic narcotic.",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "detainees",
+        "arrest-or-raid",
+        "immigration-language"
+      ],
+      "tags": [
+        "action:detention",
+        "agency:DHSgov",
+        "agency:ICEgov",
+        "country:Cameroon",
+        "country:Ecuador",
+        "country:Honduras",
+        "country:Laos",
+        "country:Sudan",
+        "crime:burglary",
+        "crime:homicide",
+        "crime:narcotics",
+        "crime:robbery",
+        "crime:sexual",
+        "crime:trafficking",
+        "format:statistics",
+        "legal:criminal-prosecution",
+        "media-status:needs-ocr",
+        "slogan:criminal-illegal-alien",
+        "slogan:illegal-alien",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2010771084342132738",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_2010771084346261505",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_2010771084342071296",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_2010771084363042816",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 4
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 2871,
+        "retweets": 1349,
+        "quotes": 139,
+        "views": 203843
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2011091203375190332:3_2011090967516893184",
+      "tweet_id": "2011091203375190332",
+      "posted_at": "2026-01-13T15:01:21.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/2011091203375190332",
+      "tweet_text": "Somsalao Thonesavanh, a criminal illegal alien from Laos convicted of drug trafficking and selling a synthetic narcotic. https://t.co/mK6cIgNWzd",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic",
+        "lineup"
+      ],
+      "subjects": [
+        "immigration-language"
+      ],
+      "tags": [
+        "country:Laos",
+        "crime:narcotics",
+        "crime:trafficking",
+        "format:reply",
+        "genre:lineup",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "slogan:criminal-illegal-alien",
+        "slogan:illegal-alien",
+        "theme:criminal",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2011090967516893184",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/3_2011090967516893184.png",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/94b05f36501afea0c88256e00e0a621e5b3e2bff1e863addfd6acc650ed2de03.jpg",
+          "sha256": "94b05f36501afea0c88256e00e0a621e5b3e2bff1e863addfd6acc650ed2de03",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing genuine visual description"
+            ],
+            "checks": {
+              "archived": true,
+              "description": false,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "metadata-placeholder",
+              "text": "photo; 241x241; 0.06 MiB; archived; tweet context: Somsalao Thonesavanh, a criminal illegal alien from Laos convicted of drug trafficking and selling a synthetic narcotic. https://t.co/mK6cIgNWzd; source URL: https://pbs.twimg.com/media/G-jUlGnXUAAPg7I.png; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/3_2011090967516893184.png; needs OCR, transcript, or frame-level vision before content claims. Somsalao Thonesavanh, a criminal illegal alien from Laos convicted of drug trafficking and selling a synthetic narcotic. https://t.co/mK6cIgNWzd",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "aa"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing genuine visual description"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "photo; 241x241; 0.06 MiB; archived; tweet context: Somsalao Thonesavanh, a criminal illegal alien from Laos convicted of drug trafficking and selling a synthetic narcotic. https://t.co/mK6cIgNWzd; source URL: https://pbs.twimg.com/media/G-jUlGnXUAAPg7I.png; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/3_2011090967516893184.png; needs OCR, transcript, or frame-level vision before content claims. Somsalao Thonesavanh, a criminal illegal alien from Laos convicted of drug trafficking and selling a synthetic narcotic. https://t.co/mK6cIgNWzd",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 1601,
+        "retweets": 216,
+        "quotes": 6,
+        "views": 146748
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "1891582186244993194:3_1891582185162842112",
+      "tweet_id": "1891582186244993194",
+      "posted_at": "2025-02-17T20:15:11.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "CBP",
+        "category": "core",
+        "label": "U.S. Customs and Border Protection"
+      },
+      "tweet_url": "https://x.com/CBP/status/1891582186244993194",
+      "tweet_text": "Last month, CBP officers in Seattle intercepted a package from Canada containing over 1lb of fentanyl during a targeted enforcement operation. This synthetic opioid is 50x more potent than heroin, and even small amounts can be lethal.\n\n➡️ https://go.dhs.gov/wJs https://t.co/O7FOlL4N8F",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "agency:DHSgov",
+        "country:Canada",
+        "crime:fentanyl",
+        "crime:narcotics",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1891582185162842112",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP-0002/3_1891582185162842112.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/6ec73975d29da35f1818f11429f73028556a74316897a45ea8bd9ee6079040d0.jpg",
+          "sha256": "6ec73975d29da35f1818f11429f73028556a74316897a45ea8bd9ee6079040d0",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing genuine visual description"
+            ],
+            "checks": {
+              "archived": true,
+              "description": false,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "metadata-placeholder",
+              "text": "photo; 300x225; 0.01 MiB; archived; tweet context: Last month, CBP officers in Seattle intercepted a package from Canada containing over 1lb of fentanyl during a targeted enforcement operation. This synthetic opioid is 50x more potent than heroin, and even small amounts can be lethal. ➡️ https://go.dhs.gov/wJ...; source URL: https://pbs.twimg.com/media/GkA_-bIWoAA3IDn.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-CBP-0002/3_1891582185162842112.jpg; needs OCR, transcript, or frame-level vision before content claims. Last month, CBP officers in Seattle intercepted a package from Canada containing over 1lb of fentanyl during a targeted enforcement operation. This synthetic opioid is 50x more potent than heroin, and even small amounts can be lethal. ➡️ https://go.dhs.gov/wJs https://t.co/O7FOlL4N8F",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": ". an"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing genuine visual description"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "photo; 300x225; 0.01 MiB; archived; tweet context: Last month, CBP officers in Seattle intercepted a package from Canada containing over 1lb of fentanyl during a targeted enforcement operation. This synthetic opioid is 50x more potent than heroin, and even small amounts can be lethal. ➡️ https://go.dhs.gov/wJ...; source URL: https://pbs.twimg.com/media/GkA_-bIWoAA3IDn.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-CBP-0002/3_1891582185162842112.jpg; needs OCR, transcript, or frame-level vision before content claims. Last month, CBP officers in Seattle intercepted a package from Canada containing over 1lb of fentanyl during a targeted enforcement operation. This synthetic opioid is 50x more potent than heroin, and even small amounts can be lethal. ➡️ https://go.dhs.gov/wJs https://t.co/O7FOlL4N8F",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 381,
+        "retweets": 99,
+        "quotes": 13,
+        "views": 25638
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2067004288757645785:3_2066990721844834304",
+      "tweet_id": "2067004288757645785",
+      "posted_at": "2026-06-16T22:00:00.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "ERO__Phoenix",
+        "category": "core",
+        "label": "ICE ERO Phoenix"
+      },
+      "tweet_url": "https://x.com/ERO__Phoenix/status/2067004288757645785",
+      "tweet_text": "Arizona is safer after the arrest of Ruben Rosas-Romero, a 54-year-old criminal illegal alien from Mexico charged with attempted synthetic narcotic possession and extreme DUI. ICE Phoenix remains committed to removing public safety threats. Learn more: http://ice.gov https://t.co/7EmV57M0dW",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "detainees",
+        "arrest-or-raid",
+        "immigration-language"
+      ],
+      "tags": [
+        "action:deportation",
+        "action:detention",
+        "agency:ICEgov",
+        "country:Mexico",
+        "crime:dui",
+        "crime:narcotics",
+        "legal:criminal-prosecution",
+        "media-status:ocr-done",
+        "slogan:criminal-illegal-alien",
+        "slogan:illegal-alien",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2066990721844834304",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-ERO__Phoenix/3_2066990721844834304.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/70d2de57134b18f6e409b04e8588803c0240096c51159adfaf0b3056738f1082.jpg",
+          "sha256": "70d2de57134b18f6e409b04e8588803c0240096c51159adfaf0b3056738f1082",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing genuine visual description"
+            ],
+            "checks": {
+              "archived": true,
+              "description": false,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "a PHOENDC AZ ARRESTED 1) FACING REMOVAL ICE"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing genuine visual description"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 132,
+        "retweets": 35,
+        "quotes": 2,
+        "views": 919
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "1912129127408185638:3_1912129121456377856",
+      "tweet_id": "1912129127408185638",
+      "posted_at": "2025-04-15T13:01:24.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "CBP",
+        "category": "core",
+        "label": "U.S. Customs and Border Protection"
+      },
+      "tweet_url": "https://x.com/CBP/status/1912129127408185638",
+      "tweet_text": "CBP is proud to support Operation FREE 3.0, a multiagency effort targeting fentanyl trafficking and synthetic drug threats. We're bringing together over 175 federal, state, and local agencies from 14 states to help protect communities.\n\n➡️ https://go.dhs.gov/wAr https://t.co/ZGH1oaWO9Y",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "agency:DHSgov",
+        "crime:fentanyl",
+        "crime:narcotics",
+        "crime:trafficking",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1912129121456377856",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP-0002/3_1912129121456377856.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/66dd2ab89a1db1f7719848d64b28b3b9e3ec2e660382d4bd64cac8ec48fbb9f3.jpg",
+          "sha256": "66dd2ab89a1db1f7719848d64b28b3b9e3ec2e660382d4bd64cac8ec48fbb9f3",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing genuine visual description"
+            ],
+            "checks": {
+              "archived": true,
+              "description": false,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "metadata-placeholder",
+              "text": "photo; 4000x2250; 0.14 MiB; archived; alt text: Graphic with bags of blue fentanyl pills and the text Operation Free 3.0 Statement from CBP’s Acting Commissioner Pete R. Flores.; tweet context: CBP is proud to support Operation FREE 3.0, a multiagency effort targeting fentanyl trafficking and synthetic drug threats. We're bringing together over 175 federal, state, and local agencies from 14 states to help protect communities. ➡️ https://go.dhs.gov/w...; source URL: https://pbs.twimg.com/media/Gok_ThkWUAAXZr4.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-CBP-0002/3_1912129121456377856.jpg. Graphic with bags of blue fentanyl pills and the text Operation Free 3.0 Statement from CBP’s Acting Commissioner Pete R. Flores. CBP is proud to support Operation FREE 3.0, a multiagency effort targeting fentanyl trafficking and synthetic drug threats. We're bringing together over 175 federal, state, and local agencies from 14 states to help protect communities. ➡️ https://go.dhs.gov/wAr https://t.co/ZGH1oaWO9Y",
+              "sidecar_statuses": {
+                "metadata-alt": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "CBPNEWS © some, _~— (2 j Operation Free 3.0 a. 3 ‘ Statement from CBP’s IN ae <... Acting Commissioner “a Th hl Pete R. Flores. «A 5 / 5 1 1 5 1 8 925 321 21 287 2.317291 . 5 1 1 5 1 9 1038 467 162 64 22.631256 LP 3 1 1 6 0 0 888 552 250 96 -1 4 1 1 6 1 0 888 552 250 46 -1 5 1 1 6 1 1 888 581 76 23 21.851456 23am 5 1 1 6 1 2 1123 552 15 19 0.000000 - 4 1 1 6 2 0 934 609 48 39 -1 5 1 1 6 2 1 934 609 48 39 23.994644 hy"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing genuine visual description"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "photo; 4000x2250; 0.14 MiB; archived; alt text: Graphic with bags of blue fentanyl pills and the text Operation Free 3.0 Statement from CBP’s Acting Commissioner Pete R. Flores.; tweet context: CBP is proud to support Operation FREE 3.0, a multiagency effort targeting fentanyl trafficking and synthetic drug threats. We're bringing together over 175 federal, state, and local agencies from 14 states to help protect communities. ➡️ https://go.dhs.gov/w...; source URL: https://pbs.twimg.com/media/Gok_ThkWUAAXZr4.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-CBP-0002/3_1912129121456377856.jpg. Graphic with bags of blue fentanyl pills and the text Operation Free 3.0 Statement from CBP’s Acting Commissioner Pete R. Flores. CBP is proud to support Operation FREE 3.0, a multiagency effort targeting fentanyl trafficking and synthetic drug threats. We're bringing together over 175 federal, state, and local agencies from 14 states to help protect communities. ➡️ https://go.dhs.gov/wAr https://t.co/ZGH1oaWO9Y",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 63,
+        "retweets": 13,
+        "quotes": 0,
+        "views": 4460
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2053204843112837310:16_2053204836716527616",
+      "tweet_id": "2053204843112837310",
+      "posted_at": "2026-05-09T20:05:55.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "Epointerdog",
+        "category": "public",
+        "label": "me"
+      },
+      "tweet_url": "https://x.com/Epointerdog/status/2053204843112837310",
+      "tweet_text": "@DHSgov https://t.co/AGGn2VA0Fp",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "cinematic",
+        "dystopian",
+        "war-movie"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:DHSgov",
+        "audio:no-audio",
+        "format:reply",
+        "genre:dystopian",
+        "genre:war-movie",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration",
+        "topic:military",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "16_2053204836716527616",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2053204836716527616.mp4",
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "29e62b1880e85e73b02a1937f9bfbe834c08dbf06e5983c5764188ecdeef282f",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing complete OCR for extracted keyframes",
+              "missing extracted video keyframes",
+              "missing video thumbnail"
+            ],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": false,
+              "keyframe_count": 0,
+              "thumbnail": false,
+              "ocr": false,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Cinematic clip of a helmeted person seated in a cold, blue-gray military or sci-fi vehicle interior. The sequence shows the person looking forward and gesturing slightly, with subtitles changing near the bottom.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "=, i. , y 4 al ‘ aw // a Hey, ——\n\n— }) i ihe y r 1 am. “e = A y * ] a ‘ a ; Y > > ea Hey, —— es\n\n= q os ™ Iph = £ 1 » \\ . as —_=. f a A , yp , . a ; a 4 3 . £ a —— “s\n\n2 a y =~ f f 1 1 ¥ —_——< a itis 2. j és j as Shootthat guy. “\n\na los po a vila vi ‘ —=_ 4 Shootthat guy."
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 1.62,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing complete OCR for extracted keyframes",
+          "missing extracted video keyframes",
+          "missing video thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Cinematic clip of a helmeted person seated in a cold, blue-gray military or sci-fi vehicle interior. The sequence shows the person looking forward and gesturing slightly, with subtitles changing near the bottom.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:dystopian-surreal: dystopian",
+          "produced video with preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 28
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:dystopian-surreal",
+        "medium:produced-video-with-preference-signal"
+      ]
+    },
+    {
+      "id": "2054560556657336421:3_2054560547723489280",
+      "tweet_id": "2054560556657336421",
+      "posted_at": "2026-05-13T13:53:03.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "nypost",
+        "category": null,
+        "label": "nypost"
+      },
+      "tweet_url": "https://x.com/nypost/status/2054560556657336421",
+      "tweet_text": "Feds descend on California home of prominent anti-ICE agitator in dramatic early morning raid https://trib.al/mGEtQoa https://t.co/yBX0H7snrG",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "medium",
+      "score": 84,
+      "creative_forms": [
+        "cinematic",
+        "war-movie"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:ICEgov",
+        "genre:war-movie",
+        "media-status:needs-ocr",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2054560547723489280",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "68e41065afb4ef0c8f6c618195c833744feaeea5827c610a472c1204720774b3",
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:dystopian-surreal: war-movie",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 4284,
+        "retweets": 700,
+        "quotes": 33,
+        "views": 131836
+      },
+      "preference_score": 40,
+      "preference_categories": [
+        "aesthetic:dystopian-surreal",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2008552276613353655:13_2008552165787287553",
+      "tweet_id": "2008552276613353655",
+      "posted_at": "2026-01-06T14:52:34.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/2008552276613353655",
+      "tweet_text": "MURDERERS HAVE NO HOME IN MINNEAPOLIS.\n\n@Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT.\n\nTo the criminals living among us, you are NOT our neighbors. Leave now or we will find you.",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "advertisement"
+      ],
+      "subjects": [
+        "immigration-language"
+      ],
+      "tags": [
+        "agency:DHSgov",
+        "audio:has-audio",
+        "country:Ecuador",
+        "crime:assault",
+        "crime:homicide",
+        "crime:murder",
+        "crime:robbery",
+        "crime:sexual",
+        "genre:advertisement",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "slogan:illegal-alien",
+        "theme:criminal",
+        "theme:directive",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2008552165787287553",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2008552165787287553.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/e679545c05210d743141f90951735dfc840ea2717bb4eee72990e94d86313302.jpg",
+          "sha256": "e679545c05210d743141f90951735dfc840ea2717bb4eee72990e94d86313302",
+          "duration_sec": 90.466,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing complete OCR for extracted keyframes",
+              "missing genuine visual description",
+              "missing transcript for video with audio"
+            ],
+            "checks": {
+              "archived": true,
+              "description": false,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": false,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "metadata-placeholder",
+              "text": "video; 1080x1920; 90.5s; 43.45 MiB; archived; tweet context: MURDERERS HAVE NO HOME IN MINNEAPOLIS. @Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT. To the criminals living among us, you a...; source URL: https://video.twimg.com/amplify_video/2008552165787287553/vid/avc1/1080x1920/8daXWr5uJIQJiRaH.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2008552165787287553.mp4; needs OCR, transcript, or frame-level vision before content claims. MURDERERS HAVE NO HOME IN MINNEAPOLIS. @Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT. To the criminals living among us, you are NOT our neighbors. Leave now or we will find you.",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 90.517333,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing complete OCR for extracted keyframes",
+          "missing genuine visual description",
+          "missing transcript for video with audio"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "video; 1080x1920; 90.5s; 43.45 MiB; archived; tweet context: MURDERERS HAVE NO HOME IN MINNEAPOLIS. @Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT. To the criminals living among us, you a...; source URL: https://video.twimg.com/amplify_video/2008552165787287553/vid/avc1/1080x1920/8daXWr5uJIQJiRaH.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2008552165787287553.mp4; needs OCR, transcript, or frame-level vision before content claims. MURDERERS HAVE NO HOME IN MINNEAPOLIS. @Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT. To the criminals living among us, you are NOT our neighbors. Leave now or we will find you.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "policy:self-deportation-ad: Leave now",
+          "produced video with preference signal",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 19451,
+        "retweets": 3765,
+        "quotes": 218,
+        "views": 706996
+      },
+      "preference_score": 37,
+      "preference_categories": [
+        "medium:produced-video-with-preference-signal",
+        "policy:self-deportation-ad",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2054461699516928485:16_2054461684673380352",
+      "tweet_id": "2054461699516928485",
+      "posted_at": "2026-05-13T07:20:13.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "gwjfromparadise",
+        "category": null,
+        "label": "gwjfromparadise"
+      },
+      "tweet_url": "https://x.com/gwjfromparadise/status/2054461699516928485",
+      "tweet_text": "@SecMullinDHS @CBP @DHSgov @CBPCommissioner https://t.co/MxAbqvq9nB",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "text-overlay"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "agency:DHSgov",
+        "agency:SecMullinDHS",
+        "audio:no-audio",
+        "format:reply",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration",
+        "video:news-clip"
+      ],
+      "media": [
+        {
+          "media_id": "16_2054461684673380352",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2054461684673380352.mp4",
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "d36edd7dfd19233a996b29d7ef203aaaeffa728a207fdaf90fb2a39321bc1fdd",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing complete OCR for extracted keyframes",
+              "missing extracted video keyframes",
+              "missing video thumbnail"
+            ],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": false,
+              "keyframe_count": 0,
+              "thumbnail": false,
+              "ocr": false,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Vintage-looking clip of a man in a blue suit speaking against a plain beige background. The frames show slight changes in his expression and head angle before a caption appears near the lower right.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "7 ™ a a. : l = S : 9 ‘ re\n\nir = 7 — ey taal = = 4 : » ai - WK 7 f /\n\nHe =— _— Sa : a TAN — : \\ > > —. & 1 ¥ /% — yy 4 ‘ . \\ aw i ay i —y f ’ :\n\n= a = i} = —<—. am mn” Vg — ATG Pi a DWiShh QO RCEAD! INCOMPETENCE! VPEVENCE\n\nan ji b= t — - *. = |=. x - >. y : oe ai > [a= = 5 1 1 1 11 2 143 388 164 39 1.196457 L.WISH) 5 1 1 1 11 3 294 380 62 59 41.614361 TO: 5 1 1 1 11 4 352 384 151 45 41.614361 REEAD) 4 1 1 1 12 0 158 426 317 53 -1 5 1 1 1 12 1 158 426 96 33 86.288155 INCO 5 1 1 1 12 2 274 474 1 3 0.000000 ! 5 1 1 1 12 3 299 434 15 24 79.967461 P 5 1 1 1 12 4 329 435 50 44 34.866241 TT 5 1 1 1 12 5 397 434 78 44 88.602974 NCE"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 4.72,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing complete OCR for extracted keyframes",
+          "missing extracted video keyframes",
+          "missing video thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Vintage-looking clip of a man in a blue suit speaking against a plain beige background. The frames show slight changes in his expression and head angle before a caption appears near the lower right.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:nostalgia-americana: Vintage",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 9
+      },
+      "preference_score": 37,
+      "preference_categories": [
+        "aesthetic:nostalgia-americana",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "1947749202387472487:13_1947748613360066560",
+      "tweet_id": "1947749202387472487",
+      "posted_at": "2025-07-22T20:02:51.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "RapidResponse47",
+        "category": "core",
+        "label": "Rapid Response 47"
+      },
+      "tweet_url": "https://x.com/RapidResponse47/status/1947749202387472487",
+      "tweet_text": "WINNING: Today, the Consumer Brands Association — which includes brands like Coca-Cola, Amazon, and Target — announced its pledge to eliminate synthetic food dyes from its products.\n\nMAKE AMERICA HEALTHY AGAIN! https://t.co/Z4AqAo0Sfa",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "slogan:maha",
+        "topic:general",
+        "video:short"
+      ],
+      "media": [
+        {
+          "media_id": "13_1947748613360066560",
+          "type": "video",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": 14.814,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing audio analysis",
+              "missing complete OCR for extracted keyframes",
+              "missing extracted video keyframes",
+              "missing genuine visual description",
+              "missing video thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "keyframes": false,
+              "keyframe_count": 0,
+              "thumbnail": false,
+              "ocr": false,
+              "audio_analysis": false,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing audio analysis",
+          "missing complete OCR for extracted keyframes",
+          "missing extracted video keyframes",
+          "missing genuine visual description",
+          "missing video thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 8910,
+        "retweets": 1554,
+        "quotes": 76,
+        "views": 278620
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "1896970980238745803:3_1896970809064783872,3_1896970809073102848,3_1896970809060491264,3_1896970873820618753",
+      "tweet_id": "1896970980238745803",
+      "posted_at": "2025-03-04T17:08:20.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "WhiteHouse",
+        "category": "core",
+        "label": "The White House"
+      },
+      "tweet_url": "https://x.com/WhiteHouse/status/1896970980238745803",
+      "tweet_text": "🇺🇸 @FLOTUS Melania Trump at the United States Capitol for the Be Best Roundtable on A.I. and Deepfakes. https://t.co/Ahcu3E9a9c",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "media-status:needs-ocr",
+        "media:ai-generated",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1896970809064783872",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_1896970809073102848",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_1896970809060491264",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_1896970873820618753",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 4
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 7194,
+        "retweets": 996,
+        "quotes": 43,
+        "views": 204691
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "2017346662381789275:3_2017346655213780993",
+      "tweet_id": "2017346662381789275",
+      "posted_at": "2026-01-30T21:18:19.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "kyledcheney",
+        "category": null,
+        "label": "kyledcheney"
+      },
+      "tweet_url": "https://x.com/kyledcheney/status/2017346662381789275",
+      "tweet_text": "JUST IN: Judge Kollar-Kotelly permanently enjoins President Trump's executive order claiming to impose a citizenship requirement to vote or register to vote. \n\nHer 110 page ruling. https://ecf.dcd.uscourts.gov/cgi-bin/show_public_doc?2025cv0946-236 https://t.co/tknz0vy1vA",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic",
+        "animation"
+      ],
+      "subjects": [],
+      "tags": [
+        "media-status:needs-ocr"
+      ],
+      "media": [
+        {
+          "media_id": "3_2017346655213780993",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: cgi"
+        ]
+      },
+      "engagement": {
+        "likes": 5017,
+        "retweets": 1390,
+        "quotes": 170,
+        "views": 1432472
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "1944471894394077420:3_1943785257276248064,3_1943785302239162368",
+      "tweet_id": "1944471894394077420",
+      "posted_at": "2025-07-13T19:00:00.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "USBPChief",
+        "category": "core",
+        "label": "U.S. Border Patrol Chief"
+      },
+      "tweet_url": "https://x.com/USBPChief/status/1944471894394077420",
+      "tweet_text": "7/7- USBP agents alongside their highly trained USBP K9 partner, responded to a mail courier facility in Tampa, FL, to investigate suspicious parcels. The K9 quickly alerted to two packages. Inside, agents discovered several sealed bags containing 13.3 lbs. of synthetic cathinone, a dangerous substance designed to mimic the effects of cocaine and meth.\n\nIf it threatens our communities, we'll find it- no matter how it gets delivered.",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "crime:cocaine",
+        "crime:meth",
+        "crime:narcotics",
+        "media-status:needs-ocr",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1943785257276248064",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_1943785302239162368",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 2
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 572,
+        "retweets": 148,
+        "quotes": 3,
+        "views": 5438
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "1958620408111825033:3_1958620403649175552",
+      "tweet_id": "1958620408111825033",
+      "posted_at": "2025-08-21T20:01:09.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "CBPAMO",
+        "category": "core",
+        "label": "CBP Air and Marine Operations"
+      },
+      "tweet_url": "https://x.com/CBPAMO/status/1958620408111825033",
+      "tweet_text": "Fentanyl Prevention Day: Raising Awareness to Save Lives\nToday is Fentanyl Prevention Day, a vital opportunity to educate our communities about the dangers of fentanyl and the importance of prevention efforts.\n🔹 Key Facts:\nFentanyl is a synthetic opioid that is 50-100 times more potent than morphine.\nIn 2024, over 81,000 Americans lost their lives to synthetic opioid overdoses, with fentanyl being the leading cause.\nJust 2 milligrams of fentanyl—an amount smaller than a grain of rice—can be lethal.\nFentanyl is often mixed into counterfeit pills or other drugs, making it difficult to detect.\n🔹 What You Can Do:\nEducate Yourself and Others: Learn the signs of an overdose and how to administer naloxone (Narcan).\nSpread Awareness: Share this post to inform others about the dangers of fentanyl.\nTalk to Loved Ones: Open conversations about the risks of drug misuse and the presence of fentanyl in illicit substances.\nDispose of Medications Safely: Participate in drug take-back programs to prevent misuse.\n🔹 Need Help?:If you or someone you know is struggling with substance use, call the SAMHSA National Helpline at 1-800-662-HELP (4357). This free, confidential, 24/7 helpline provides support, resources, and treatment referrals.\nTogether, we can save lives and protect our communities. Let’s stand united against the fentanyl crisis.\n#FentanylPreventionDay #StopOverdoses #SaveLives #EndFentanylCrisis",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "crime:fentanyl",
+        "crime:narcotics",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1958620403649175552",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBPAMO/3_1958620403649175552.png",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/5d636b740f490bdc69e95670397b56ac80f13dd9a4c95b50d705a4586a2ef639.jpg",
+          "sha256": "5d636b740f490bdc69e95670397b56ac80f13dd9a4c95b50d705a4586a2ef639",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing genuine visual description"
+            ],
+            "checks": {
+              "archived": true,
+              "description": false,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "metadata-placeholder",
+              "text": "photo; 440x363; 0.25 MiB; archived; tweet context: Fentanyl Prevention Day: Raising Awareness to Save Lives Today is Fentanyl Prevention Day, a vital opportunity to educate our communities about the dangers of fentanyl and the importance of prevention efforts. 🔹 Key Facts: Fentanyl is a synthetic opioid that...; source URL: https://pbs.twimg.com/media/Gy5q4UFXYAA0UlI.png; archive URL: https://github.com/vidproject/x/releases/download/media-CBPAMO/3_1958620403649175552.png; needs OCR, transcript, or frame-level vision before content claims. Fentanyl Prevention Day: Raising Awareness to Save Lives Today is Fentanyl Prevention Day, a vital opportunity to educate our communities about the dangers of fentanyl and the importance of prevention efforts. 🔹 Key Facts: Fentanyl is a synthetic opioid that is 50-100 times more potent than morphine. In 2024, over 81,000 Americans lost their lives to synthetic opioid overdoses, with fentanyl being the leading cause. Just 2 milligrams of fentanyl—an amount smaller than a grain of rice—can be lethal. Fentanyl is often mixed into counterfeit pills or other drugs, making it difficult to detect. 🔹 What You Can Do: Educate Yourself and Others: Learn the signs of an overdose and how to administer naloxone (Narcan). Spread Awareness: Share this post to inform others about the dangers of fentanyl. Talk to Loved Ones: Open conversations about the risks of drug misuse and the presence of fentanyl in illicit substances. Dispose of Medications Safely: Participate in drug take-back programs to prevent misuse. 🔹 Need Help?:If you or someone you know is struggling with substance use, call the SAMHSA National Helpline at 1-800-662-HELP (4357). This free, confidential, 24/7 helpline provides support, resources, and treatment referrals. Together, we can save lives and protect our communities. Let’s stand united against the fentanyl crisis. #FentanylPreventionDay #StopOverdoses #SaveLives #EndFentanylCrisis",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "PILL@\\"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing genuine visual description"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "photo; 440x363; 0.25 MiB; archived; tweet context: Fentanyl Prevention Day: Raising Awareness to Save Lives Today is Fentanyl Prevention Day, a vital opportunity to educate our communities about the dangers of fentanyl and the importance of prevention efforts. 🔹 Key Facts: Fentanyl is a synthetic opioid that...; source URL: https://pbs.twimg.com/media/Gy5q4UFXYAA0UlI.png; archive URL: https://github.com/vidproject/x/releases/download/media-CBPAMO/3_1958620403649175552.png; needs OCR, transcript, or frame-level vision before content claims. Fentanyl Prevention Day: Raising Awareness to Save Lives Today is Fentanyl Prevention Day, a vital opportunity to educate our communities about the dangers of fentanyl and the importance of prevention efforts. 🔹 Key Facts: Fentanyl is a synthetic opioid that is 50-100 times more potent than morphine. In 2024, over 81,000 Americans lost their lives to synthetic opioid overdoses, with fentanyl being the leading cause. Just 2 milligrams of fentanyl—an amount smaller than a grain of rice—can be lethal. Fentanyl is often mixed into counterfeit pills or other drugs, making it difficult to detect. 🔹 What You Can Do: Educate Yourself and Others: Learn the signs of an overdose and how to administer naloxone (Narcan). Spread Awareness: Share this post to inform others about the dangers of fentanyl. Talk to Loved Ones: Open conversations about the risks of drug misuse and the presence of fentanyl in illicit substances. Dispose of Medications Safely: Participate in drug take-back programs to prevent misuse. 🔹 Need Help?:If you or someone you know is struggling with substance use, call the SAMHSA National Helpline at 1-800-662-HELP (4357). This free, confidential, 24/7 helpline provides support, resources, and treatment referrals. Together, we can save lives and protect our communities. Let’s stand united against the fentanyl crisis. #FentanylPreventionDay #StopOverdoses #SaveLives #EndFentanylCrisis",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 12,
+        "retweets": 3,
+        "quotes": 0,
+        "views": 560
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "2027152094281523249:16_2027152087969124352",
+      "tweet_id": "2027152094281523249",
+      "posted_at": "2026-02-26T22:41:36.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "STFUabtChicago",
+        "category": null,
+        "label": "STFUabtChicago"
+      },
+      "tweet_url": "https://x.com/STFUabtChicago/status/2027152094281523249",
+      "tweet_text": "@DHSgov Why dafuq are you LYING?\nYou KILLED a poor, crippled, defenseless man!\n\nYOU REPRESENT EVIL ABROAD IN THE WORLD\n\nWhen you get to the Gates of Hell, they will show you around to the Employees Entrance. https://t.co/FhX5QyHfX4",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:DHSgov",
+        "audio:no-audio",
+        "format:reply",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "16_2027152087969124352",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2027152087969124352.mp4",
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "015823fb45ca2c6aedbd1a34641477320e8017dee008fb430501643eab61379b",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing complete OCR for extracted keyframes",
+              "missing extracted video keyframes",
+              "missing video thumbnail"
+            ],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": false,
+              "keyframe_count": 0,
+              "thumbnail": false,
+              "ocr": false,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Dark red and black neon-style graphic with the same sign held across the visible frames. The words glow in red as if on a wall or window, with little visible motion besides flicker or compression.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "GATES OF HELL EMPLOYEES ONLY\n\nGATES. OF HELL EMPLOYEES ONLY\n\nGATES. OF HELL EMPLOYEES ONLY\n\nGATES. OF HELL EMPLOYEES ONLY\n\nGATES OF HELL EMPLOYEES ONLY"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 4.41,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing complete OCR for extracted keyframes",
+          "missing extracted video keyframes",
+          "missing video thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Dark red and black neon-style graphic with the same sign held across the visible frames. The words glow in red as if on a wall or window, with little visible motion besides flicker or compression.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:dystopian-surreal: neon"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 841
+      },
+      "preference_score": 35,
+      "preference_categories": [
+        "aesthetic:dystopian-surreal"
+      ]
+    },
+    {
+      "id": "1955034224328679822:13_1955032802925178880",
+      "tweet_id": "1955034224328679822",
+      "posted_at": "2025-08-11T22:30:56.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "katiemillerpod",
+        "category": null,
+        "label": "katiemillerpod"
+      },
+      "tweet_url": "https://x.com/katiemillerpod/status/1955034224328679822",
+      "tweet_text": "My must-watch interview with Vice President @JDVance:\n\n0:00 - Moving into the Vice President’s residence\n3:15 - One surprise about being Vice President\n4:34 - Who makes breakfast?\n5:13 - What do VP's children think he does all day?\n7:09 - Public appearances with children\n10:36 - Dad icks\n11:56 - Best dad superpower\n13:05 - The Vance Family house vibe\n14:21 - Handling toddler tantrums in public\n15:24 - Keeping marriage solid while in the limelight\n16:50 - What men today get wrong about marriage and fatherhood\n19:02 - Second Lady Usha Vance's debating skills\n19:43 - Harder to negotiate with: children at bedtime or Senate Democrats?\n20:05 - Who do the children take after?\n20:42 - White House schedule vs. the Senate\n21:45 - Daily routine from the gym to diet\n23:37 - Favorite fictional vice president\n24:56 - Cabinet confidential\n28:40 - Would You Rather questions\n30:22 - Best dad joke\n30:53 - Favorite JD Vance meme\n31:40 - One thing that would be a political scandal if the public knew\n32:09 - At what age can children watch The Lord of the Rings?\n33:05 - Why was the Vice President running after his kids at Disneyland?\n34:17 - Favorite TV shows right now\n35:19 - Latest book club reads\n35:56 - Guilty pleasure TV show\n36:49 - Current song playlist\n38:22 - Rapid-fire food questions\n39:01 - Opinion on cargo shorts\n39:52 - Read the instructions or wing it?\n39:57 - Last search using AI\n40:38 - Hill willing to die on\n42:21 - Dream vacation destination\n43:11 - Sauna or cold plunge?\n43:25 - What does a perfect day look like?\n43:52 - If you could have dinner with anyone, living or dead, who would you invite?",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 72,
+      "creative_forms": [
+        "poster-or-meme"
+      ],
+      "subjects": [],
+      "tags": [
+        "theme:religion",
+        "video:interview",
+        "video:long"
+      ],
+      "media": [
+        {
+          "media_id": "13_1955032802925178880",
+          "type": "video",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": 2680.344,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing audio analysis",
+              "missing complete OCR for extracted keyframes",
+              "missing extracted video keyframes",
+              "missing genuine visual description",
+              "missing video thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "keyframes": false,
+              "keyframe_count": 0,
+              "thumbnail": false,
+              "ocr": false,
+              "audio_analysis": false,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing audio analysis",
+          "missing complete OCR for extracted keyframes",
+          "missing extracted video keyframes",
+          "missing genuine visual description",
+          "missing video thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "routine news/speech signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "editorialized:dramatic-crime-composite: Guilty"
+        ]
+      },
+      "engagement": {
+        "likes": 4235,
+        "retweets": 891,
+        "quotes": 95,
+        "views": 1663000
+      },
+      "preference_score": 35,
+      "preference_categories": [
+        "editorialized:dramatic-crime-composite"
+      ]
+    },
+    {
+      "id": "1907174625936593010:7_1907173400994340864",
+      "tweet_id": "1907174625936593010",
+      "posted_at": "2025-04-01T20:53:59.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "WhiteHouse",
+        "category": "core",
+        "label": "The White House"
+      },
+      "tweet_url": "https://x.com/WhiteHouse/status/1907174625936593010",
+      "tweet_text": ".@FLOTUS Melania Trump honors courageous women at the International Women of Courage Award Ceremony.\n\n'Today we celebrate courage, a strength that is based in love. This truth is illustrated in our honorees who prove that love can inspire extraordinary valor.' ❤️ https://t.co/QzBlW55yLk",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [],
+      "tags": [
+        "topic:immigration",
+        "video:medium"
+      ],
+      "media": [
+        {
+          "media_id": "7_1907173400994340864",
+          "type": "video",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": 50.116,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing audio analysis",
+              "missing complete OCR for extracted keyframes",
+              "missing extracted video keyframes",
+              "missing genuine visual description",
+              "missing video thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "keyframes": false,
+              "keyframe_count": 0,
+              "thumbnail": false,
+              "ocr": false,
+              "audio_analysis": false,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing audio analysis",
+          "missing complete OCR for extracted keyframes",
+          "missing extracted video keyframes",
+          "missing genuine visual description",
+          "missing video thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "spectacle:holiday-or-celebration: celebrate"
+        ]
+      },
+      "engagement": {
+        "likes": 16796,
+        "retweets": 2845,
+        "quotes": 185,
+        "views": 469261
+      },
+      "preference_score": 34,
+      "preference_categories": [
+        "spectacle:holiday-or-celebration"
+      ]
+    },
+    {
+      "id": "2051992371760611626:13_2051889492651286529",
+      "tweet_id": "2051992371760611626",
+      "posted_at": "2026-05-06T11:48:00.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "LongTimeHistory",
+        "category": null,
+        "label": "LongTimeHistory"
+      },
+      "tweet_url": "https://x.com/LongTimeHistory/status/2051992371760611626",
+      "tweet_text": "18-year-old U.S. citizen dying from cancer begs to see parents one last time—ICE is keeping them detained.\n\nParents were denied humanitarian visa—so forced to cross border illegally.\n\nSon is in hospice care—only wish is to hug mom and dad before he dies.\n\nWilling to self-deport and sign any paperwork voluntarily just to be released from the detention center before it's too late.\n\n\"It’s very difficult because the processes are very slow,\" said their lawyer.\n\nMeanwhile, Kevin faces the possibility of dying in just a matter of days far away from his parents.\n\n\"Please help me fulfill my last wish.\"",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "medium",
+      "score": 84,
+      "creative_forms": [
+        "text-overlay"
+      ],
+      "subjects": [
+        "detainees",
+        "deportation",
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "action:detention",
+        "action:self-deportation",
+        "agency:ICEgov",
+        "audio:has-audio",
+        "country:Mexico",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "policy:border",
+        "policy:cbp-home",
+        "review:screened-video",
+        "theme:religion",
+        "topic:immigration",
+        "video:long"
+      ],
+      "media": [
+        {
+          "media_id": "13_2051889492651286529",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2051889492651286529.mp4",
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "92a5db29a3fe42c6752f3e8718816d9a16d93798bbc229cc44dec8d0342d0d42",
+          "duration_sec": 234.898,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing complete OCR for extracted keyframes",
+              "missing extracted video keyframes",
+              "missing video thumbnail"
+            ],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": false,
+              "keyframe_count": 0,
+              "thumbnail": false,
+              "ocr": false,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Reposted Telemundo Chicago news segment with an English headline overlay reading 'Young man from Chicago with terminal cancer asks to see his parents detained by ICE.' The video shows two young men seated together indoors, one wearing a pink soccer jersey and resting under a patterned blanket. A Spanish lower-third reads 'KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE' with an 'EXCLUSIVA' tag and a 'TelemundoChicago' bug and clock. The audio is Spanish-language reporting about a young man with terminal cancer whose parents are in ICE detention.  [0:15] Two young men seated together indoors, one in a pink jersey under a blanket; English headline overlay and Spanish chyron 'KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE.'",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "Young man from Chicago with terminal cancer asks to see his parents detained by ICE EXCLUSIVA\n\nYoung man from Chicago with terminal cancer asks to see his parents detained by ICE —s Hy, ws EXCLUSIVA, a = ENTRE EL CANCER Y EL MURO DE ICE: KEVIN PIDE UN MILAGRO [iam Be BLOX Telemuncochicago AIDTEMIED\n\nYoung man from Chicago with terminal cancer asks to see his parents detained by ICE > ’ * Wy, va BS, r ss A ¥ = J EXCLUSIV) ‘ KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE iy\n\nYoung man from Chicago with terminal cancer asks to see his parents detained by ICE LN 2 vy >) / By wk KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE g atty Sal Cicero [0x2 Telemundochicago (ERENT\n\nYoung man from Chicago with terminal cancer asks to see his parents detained by ICE i= ¢"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 234.944,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 60,
+              "text": "Now, greater than fulfilling my last wish is possible. Visibly affected by terminal cancer, Kevin Gonzalez, who is from Chicago, only has one wish before he dies to O.C.E. and hug his parents. Who are still detained? Esan Zabritere, Santiago, Gallego spoke exclusively with him and now he shares his request, which is quite emotional. So, tonight's Santiago, without a doubt, words are too many. Alfonso, it's a very hard story. This young man has stage four coal and cancer. It has spread throughout his body to the point that the doctors are no longer giving him any type of care. All he wants is for his parents to be released. So he can see them before he dies. To see my parents for the last time. That pretty big time of Cabo of Kevin, and 18 minus year old young man born in Chicago today, that written in his grandmother's house in Durango, Mexico, where he spends his last days, mom. He doesn't take anything. All the medications that we brought from the United States are just in January. Kevin was diagnosed with terminal stage four coal and cancer. The disease has spread throughout his body. Doctors say there is no treatment or options left. Only time and less and less of it. My brothers days are numbered. And now all he really wanted was for my parents to be here. For months, his brother took care of him at the hospital. He prayed to the Virgin Mary for a miracle, while his parents were desperate to travel from Mexico. He had an appointment to see if he could get a humanitarian visa, but they denied it. Seeing no other option, Kevin's parents crossed the border illegally. They were detained by immigration and taken to a detention center in Arizona, as he lost hope of ever seeing his parents. Again, Kevin decided to hug his brother one last time and travel to Mexico before the doctor told him not to get on a plane. Let them release him. They are not criminals. They were just going to see their son. In these letters from the University of Chicago Hospital, the doctors are clear. Kevin is in his final days of life and they are asking for compassion so that his parents can be released. It is unlikely, unless there is active intervention, perhaps from the Mexican government. According to this immigration lawyer who is not connected to the case, although a humanitarian release is possible, it is not quick or guaranteed. Yeah. It is very difficult because the courts are very backlogged, so really, if they want to leave voluntarily, and they sign the voluntary departure, the government can take them out, right, right? Hello. Are you? I hope you're well. For Kevin, time is running out every day. A US citizen dying far from home with a wish that he cannot express without getting tired."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing complete OCR for extracted keyframes",
+          "missing extracted video keyframes",
+          "missing video thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Reposted Telemundo Chicago news segment with an English headline overlay reading 'Young man from Chicago with terminal cancer asks to see his parents detained by ICE.' The video shows two young men seated together indoors, one wearing a pink soccer jersey and resting under a patterned blanket. A Spanish lower-third reads 'KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE' with an 'EXCLUSIVA' tag and a 'TelemundoChicago' bug and clock. The audio is Spanish-language reporting about a young man with terminal cancer whose parents are in ICE detention.  [0:15] Two young men seated together indoors, one in a pink jersey under a blanket; English headline overlay and Spanish chyron 'KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE.'",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "policy:self-deportation-ad: self-deport",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 9305,
+        "retweets": 4131,
+        "quotes": 258,
+        "views": 3349197
+      },
+      "preference_score": 31,
+      "preference_categories": [
+        "policy:self-deportation-ad",
+        "subject:enforcement-linked"
+      ]
+    }
+  ]
+}

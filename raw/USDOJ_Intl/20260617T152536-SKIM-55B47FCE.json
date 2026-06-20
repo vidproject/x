@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T152516Z-54faa679-USDOJ_Intl",
+  "account_handle": "USDOJ_Intl",
+  "captured_at": "2026-06-17T15:25:36.290Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBP%20since%3A2026-04-15%20until%3A2026-04-22%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2044271905142620505",
+      "account_handle": "USDOJ_Intl",
+      "account_id": "1333803869248385024",
+      "posted_at": "2026-04-15T04:29:37.000Z",
+      "first_captured_at": "2026-06-17T15:25:25.302Z",
+      "last_seen_at": "2026-06-17T15:25:25.302Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USDOJ_Intl/status/2044271905142620505",
+      "tweet_type": "original",
+      "conversation_id": "2044271905142620505",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Two Boat Captains Working with a Mexico-Based Alien Smuggling Organization Plead Guilty in Deadly Maritime Smuggling Venture Resulting in Four Deaths including Two Children. #JointTaskForceAlpha\nhttps://t.co/MkIbAamoxq",
+      "text_resolved": "Two Boat Captains Working with a Mexico-Based Alien Smuggling Organization Plead Guilty in Deadly Maritime Smuggling Venture Resulting in Four Deaths including Two Children. #JointTaskForceAlpha\nhttps://www.justice.gov/usao-sdca/pr/boat-captains-plead-guilty-deadly-maritime-smuggling-events",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "JointTaskForceAlpha"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/MkIbAamoxq",
+          "expanded": "https://www.justice.gov/usao-sdca/pr/boat-captains-plead-guilty-deadly-maritime-smuggling-events",
+          "display": "justice.gov/usao-sdca/pr/b…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/MkIbAamoxq",
+        "vendor_url": "justice.gov",
+        "title": "Boat Captains Plead Guilty in Deadly Maritime Smuggling Events",
+        "description": "SAN DIEGO – Two boat captains whose ill-fated maritime smuggling attempt resulted in the deaths of four migrants, including two children, pleaded guilty in federal court today. Jesus Ivan Rodriguez...",
+        "image_url": "https://pbs.twimg.com/card_img/2065691426755612672/BlVfuD1V?format=png&name=orig"
+      },
+      "media": [],
+      "like_count": 127,
+      "retweet_count": 44,
+      "reply_count": 3,
+      "quote_count": 3,
+      "view_count": 10907,
+      "bookmark_count": 9,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T15:25:25.302Z",
+          "likes": 127,
+          "retweets": 44,
+          "replies": 3,
+          "quotes": 3,
+          "views": 10907,
+          "bookmarks": 9
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Department of Justice - International",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1333804117270130690/dooQFjjC_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official U.S. Department of Justice Twitter account focusing on international law enforcement. Privacy policy: https://t.co/XyHvZY52Fv…",
+        "location": null,
+        "url": null,
+        "followers_count": 20445,
+        "friends_count": 37,
+        "statuses_count": 5705,
+        "account_created_at": "2020-12-01T16:03:45.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T152516Z-54faa679",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T152516Z-54faa679.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T152516Z-54faa679.jsonl",
+    "source_handle": "CBP"
+  }
+}

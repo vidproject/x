@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-dhsgov-resume-20260522-20260522T211029Z-4dbcd5a0-nypost",
+  "account_handle": "nypost",
+  "captured_at": "2026-05-22T21:11:27.061Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-03-01%20until%3A2026-04-01",
+  "tweets": [
+    {
+      "tweet_id": "2038946340625870982",
+      "account_handle": "nypost",
+      "account_id": "17469289",
+      "posted_at": "2026-03-31T11:47:44.000Z",
+      "first_captured_at": "2026-05-22T21:10:37.170Z",
+      "last_seen_at": "2026-05-22T21:10:37.170Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/nypost/status/2038946340625870982",
+      "tweet_type": "original",
+      "conversation_id": "2038946340625870982",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "DHS slams California 'sanctuary' county after mom allegedly murdered by 2 Honduran nationals https://t.co/IpRWfbruMg https://t.co/1HhPgVnXlT",
+      "text_resolved": "DHS slams California 'sanctuary' county after mom allegedly murdered by 2 Honduran nationals https://trib.al/0vNbNbf https://t.co/1HhPgVnXlT",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/IpRWfbruMg",
+          "expanded": "https://trib.al/0vNbNbf",
+          "display": "trib.al/0vNbNbf"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2038946334879694848",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HEvK44aWwAA90S9.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 799,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1634,
+      "retweet_count": 660,
+      "reply_count": 91,
+      "quote_count": 0,
+      "view_count": 145798,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-22T21:10:37.170Z",
+          "likes": 1634,
+          "retweets": 660,
+          "replies": 91,
+          "quotes": 0,
+          "views": 145798,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "New York Post",
+        "avatar_url": "https://pbs.twimg.com/profile_images/966372680306868224/60wfGe9e_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": "Breaking news, features and more from the NY Post. Follow ➡️  @pagesix, @nypmetro, @nypostbiz, @nypostsports, @nypfashion, @nypostopinion, @vrtpod, @_nynext",
+        "location": "New York, NY",
+        "url": "https://t.co/PwCuyvAYAJ",
+        "followers_count": 3835321,
+        "friends_count": 10045,
+        "statuses_count": 837048,
+        "account_created_at": "2008-11-18T19:46:36.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-dhsgov-resume-20260522-20260522T211029Z-4dbcd5a0",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-fresh-resume-20260522/x-com-search-20260522T211029Z-4dbcd5a0.summary.json",
+    "jsonl": ".skim/raw-core-fresh-resume-20260522/x-com-search-20260522T211029Z-4dbcd5a0.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

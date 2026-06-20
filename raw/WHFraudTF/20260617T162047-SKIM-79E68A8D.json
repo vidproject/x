@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T161833Z-3a65f745-WHFraudTF",
+  "account_handle": "WHFraudTF",
+  "captured_at": "2026-06-17T16:20:47.379Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AWhiteHouse%20since%3A2026-06-17%20until%3A2026-06-18%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2067015802994168179",
+      "account_handle": "WHFraudTF",
+      "account_id": "2051754537367588872",
+      "posted_at": "2026-06-16T22:45:45.000Z",
+      "first_captured_at": "2026-06-17T16:18:36.738Z",
+      "last_seen_at": "2026-06-17T16:18:36.738Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/WHFraudTF/status/2067015802994168179",
+      "tweet_type": "quote",
+      "conversation_id": "2067015802994168179",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": "2067007140368118118",
+      "retweeted_tweet_id": null,
+      "text": ".@VP’s Fraud Task Force and @DOLOIG have successfully recovered $512 MILLION stolen by fraudsters. The Trump-Vance Administration is winning the War on Fraud. 🇺🇸",
+      "text_resolved": ".@VP’s Fraud Task Force and @DOLOIG have successfully recovered $512 MILLION stolen by fraudsters. The Trump-Vance Administration is winning the War on Fraud. 🇺🇸",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "VP",
+        "DOLOIG"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [],
+      "like_count": 1814,
+      "retweet_count": 428,
+      "reply_count": 135,
+      "quote_count": 20,
+      "view_count": 129611,
+      "bookmark_count": 37,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T16:18:36.738Z",
+          "likes": 1814,
+          "retweets": 428,
+          "replies": 135,
+          "quotes": 20,
+          "views": 129611,
+          "bookmarks": 37
+        }
+      ],
+      "author": {
+        "display_name": "White House Task Force to Eliminate Fraud",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2054379185997590529/6U5rVJkr_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Ending fraud against the American taxpayer.",
+        "location": null,
+        "url": "https://t.co/3GiYRO6cse",
+        "followers_count": 211219,
+        "friends_count": 47,
+        "statuses_count": 445,
+        "account_created_at": "2026-05-05T20:07:11.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T161833Z-3a65f745",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T161833Z-3a65f745.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T161833Z-3a65f745.jsonl",
+    "source_handle": "WhiteHouse"
+  }
+}

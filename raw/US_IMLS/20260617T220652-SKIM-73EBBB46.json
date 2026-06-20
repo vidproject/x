@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T220601Z-30f0c11c-US_IMLS",
+  "account_handle": "US_IMLS",
+  "captured_at": "2026-06-17T22:06:52.216Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ASonderling47%20since%3A2026-01-21%20until%3A2026-01-28%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2016281961107484873",
+      "account_handle": "US_IMLS",
+      "account_id": "36240331",
+      "posted_at": "2026-01-27T22:47:34.000Z",
+      "first_captured_at": "2026-06-17T22:06:34.933Z",
+      "last_seen_at": "2026-06-17T22:06:34.933Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/US_IMLS/status/2016281961107484873",
+      "tweet_type": "original",
+      "conversation_id": "2016281961107484873",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "On this International Holocaust Remembrance Day, Acting Director @Sonderling47 and everyone at @US_IMLS urges all Americans to heed the call of history and Never Forget. https://t.co/iS80dK2RGn",
+      "text_resolved": "On this International Holocaust Remembrance Day, Acting Director @Sonderling47 and everyone at @US_IMLS urges all Americans to heed the call of history and Never Forget. https://t.co/iS80dK2RGn",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "Sonderling47",
+        "US_IMLS"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2016281956791541760",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G_tFwcmW4AALmPu.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1080,
+          "height": 1350,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 7,
+      "retweet_count": 2,
+      "reply_count": 1,
+      "quote_count": 1,
+      "view_count": 1180,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T22:06:34.933Z",
+          "likes": 7,
+          "retweets": 2,
+          "replies": 1,
+          "quotes": 1,
+          "views": 1180,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "IMLS",
+        "avatar_url": "https://pbs.twimg.com/profile_images/928634418033459205/OWhlYNfV_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "The Institute of Museum and Library Services is the primary source of federal support for US libraries and museums. Honoring America’s History 🇺🇸",
+        "location": "Washington, DC",
+        "url": "https://t.co/7BuGq4R3nt",
+        "followers_count": 24143,
+        "friends_count": 855,
+        "statuses_count": 13092,
+        "account_created_at": "2009-04-29T01:16:30.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T220601Z-30f0c11c",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T220601Z-30f0c11c.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T220601Z-30f0c11c.jsonl",
+    "source_handle": "Sonderling47"
+  }
+}

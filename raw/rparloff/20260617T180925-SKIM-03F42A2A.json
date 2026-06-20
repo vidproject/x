@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T180911Z-06b905aa-rparloff",
+  "account_handle": "rparloff",
+  "captured_at": "2026-06-17T18:09:25.941Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AStephenM%20since%3A2025-04-16%20until%3A2025-04-23%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1914734251330744694",
+      "account_handle": "rparloff",
+      "account_id": "97019544",
+      "posted_at": "2025-04-22T17:33:14.000Z",
+      "first_captured_at": "2026-06-17T18:09:14.828Z",
+      "last_seen_at": "2026-06-17T18:09:14.828Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/rparloff/status/1914734251330744694",
+      "tweet_type": "original",
+      "conversation_id": "1914734251330744694",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "In 35-page ruling, DColo judge grants class-wide (statewide) TRO against removing Venezuelans under Alien Enemy Act. Plaintiffs likely to win on argument that ACT DOES NOT APPLY. \"Invasion,\" \"predatory incursion,\" \"foreign nation or govt\" all absent here. https://t.co/bndNsNC9qe https://t.co/GM33dIdEmX",
+      "text_resolved": "In 35-page ruling, DColo judge grants class-wide (statewide) TRO against removing Venezuelans under Alien Enemy Act. Plaintiffs likely to win on argument that ACT DOES NOT APPLY. \"Invasion,\" \"predatory incursion,\" \"foreign nation or govt\" all absent here. https://storage.courtlistener.com/recap/gov.uscourts.cod.243061/gov.uscourts.cod.243061.35.0_1.pdf https://t.co/GM33dIdEmX",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/bndNsNC9qe",
+          "expanded": "https://storage.courtlistener.com/recap/gov.uscourts.cod.243061/gov.uscourts.cod.243061.35.0_1.pdf",
+          "display": "storage.courtlistener.com/recap/gov.usco…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1914734133001043968",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GpKAjJzXwAAmSeE.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1542,
+          "height": 832,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_1914734153104310273",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GpKAkUsXQAEVbgQ.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1524,
+          "height": 1224,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1036,
+      "retweet_count": 370,
+      "reply_count": 187,
+      "quote_count": 77,
+      "view_count": 656141,
+      "bookmark_count": 114,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T18:09:14.828Z",
+          "likes": 1036,
+          "retweets": 370,
+          "replies": 187,
+          "quotes": 77,
+          "views": 656141,
+          "bookmarks": 114
+        }
+      ],
+      "author": {
+        "display_name": "Roger Parloff",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1849820802436186113/zjTJU757_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Senior editor, Lawfare. Journalist. Practiced law a long time ago. Email: roger.parloff@lawfaremedia.org ; signal rparloff.61",
+        "location": "Washington, DC area",
+        "url": "https://t.co/JJzcYBTKtm",
+        "followers_count": 53590,
+        "friends_count": 1136,
+        "statuses_count": 29899,
+        "account_created_at": "2009-12-15T17:13:11.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T180911Z-06b905aa",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T180911Z-06b905aa.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T180911Z-06b905aa.jsonl",
+    "source_handle": "StephenM"
+  }
+}

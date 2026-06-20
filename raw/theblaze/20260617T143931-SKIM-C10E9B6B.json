@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143914Z-13216f8e-theblaze",
+  "account_handle": "theblaze",
+  "captured_at": "2026-06-17T14:39:31.529Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-06-10%20until%3A2026-06-17%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2066945812450668713",
+      "account_handle": "theblaze",
+      "account_id": "10774652",
+      "posted_at": "2026-06-16T18:07:38.000Z",
+      "first_captured_at": "2026-06-17T14:39:20.572Z",
+      "last_seen_at": "2026-06-17T14:39:20.572Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/theblaze/status/2066945812450668713",
+      "tweet_type": "original",
+      "conversation_id": "2066945812450668713",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Exclusive: ICE arrests illegal aliens convicted of child sex crime, forcible sexual assault, and drug trafficking https://t.co/9J8gBec8EU https://t.co/opnfCSREJi",
+      "text_resolved": "Exclusive: ICE arrests illegal aliens convicted of child sex crime, forcible sexual assault, and drug trafficking http://dlvr.it/TT4G46 https://t.co/opnfCSREJi",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://dlvrit.com/\" rel=\"nofollow\">dlvr.it</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/9J8gBec8EU",
+          "expanded": "http://dlvr.it/TT4G46",
+          "display": "dlvr.it/TT4G46"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2066945810596818944",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HK9EQ3qa8AANlYl.png",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 600,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 79,
+      "retweet_count": 24,
+      "reply_count": 4,
+      "quote_count": 2,
+      "view_count": 38849,
+      "bookmark_count": 3,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:39:20.572Z",
+          "likes": 79,
+          "retweets": 24,
+          "replies": 4,
+          "quotes": 2,
+          "views": 38849,
+          "bookmarks": 3
+        }
+      ],
+      "author": {
+        "display_name": "TheBlaze",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1716691045419765760/YatcqDHU_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Business",
+        "description": "News and entertainment for people who love America and the American way of life. Retweets =/= endorsements.",
+        "location": "Dallas, TX",
+        "url": "https://t.co/fzW2udWeEx",
+        "followers_count": 1041115,
+        "friends_count": 762,
+        "statuses_count": 215690,
+        "account_created_at": "2007-12-01T22:23:57.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143914Z-13216f8e",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143914Z-13216f8e.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143914Z-13216f8e.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T232231Z-0190b75c-HSI_HQ",
+  "account_handle": "HSI_HQ",
+  "captured_at": "2026-06-17T23:23:10.606Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AHSI_HQ%20since%3A2025-02-26%20until%3A2025-03-05%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1896999451899617460",
+      "account_handle": "HSI_HQ",
+      "account_id": "1339943881027313666",
+      "posted_at": "2025-03-04T19:01:28.000Z",
+      "first_captured_at": "2026-06-17T23:22:56.876Z",
+      "last_seen_at": "2026-06-17T23:22:56.876Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/HSI_HQ/status/1896999451899617460",
+      "tweet_type": "original",
+      "conversation_id": "1896999451899617460",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Today we honor the 8-year legacy of Special Agent Gary P. Friedli, 36, who died in 1998 after a truck struck his vehicle while in pursuit of suspected drug dealers. #HSI pledges to continue his resolve in securing today for a safer tomorrow. See his story: https://t.co/bP69fK6YiK https://t.co/mrglDZIL5w",
+      "text_resolved": "Today we honor the 8-year legacy of Special Agent Gary P. Friedli, 36, who died in 1998 after a truck struck his vehicle while in pursuit of suspected drug dealers. #HSI pledges to continue his resolve in securing today for a safer tomorrow. See his story: https://go.dhs.gov/UZo https://t.co/mrglDZIL5w",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "HSI"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/bP69fK6YiK",
+          "expanded": "https://go.dhs.gov/UZo",
+          "display": "go.dhs.gov/UZo"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1896999448732917760",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GlN-8qjWYAA5dZc.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1920,
+          "height": 1080,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 11,
+      "retweet_count": 4,
+      "reply_count": 4,
+      "quote_count": 0,
+      "view_count": 2627,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T23:22:56.876Z",
+          "likes": 11,
+          "retweets": 4,
+          "replies": 4,
+          "quotes": 0,
+          "views": 2627,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "Homeland Security Investigations",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2031819826508021762/jLzZmzWl_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "@ICEgov HSI protects the U.S. by investigating global crimes that impact local communities. Privacy: https://t.co/aORjC5RLnf",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/BUaNOoNyCA",
+        "followers_count": 34522,
+        "friends_count": 106,
+        "statuses_count": 3688,
+        "account_created_at": "2020-12-18T14:41:53.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T232231Z-0190b75c",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T232231Z-0190b75c.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T232231Z-0190b75c.jsonl",
+    "source_handle": "HSI_HQ"
+  }
+}

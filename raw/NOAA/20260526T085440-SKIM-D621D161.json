@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-gov-trawl-20260526-20260526T085421Z-c408ff31-NOAA",
+  "account_handle": "NOAA",
+  "captured_at": "2026-05-26T08:54:40.971Z",
+  "endpoint": "UserByScreenName,UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/FEMA",
+  "tweets": [
+    {
+      "tweet_id": "2057490101148532962",
+      "account_handle": "NOAA",
+      "account_id": "14342564",
+      "posted_at": "2026-05-21T15:54:01.000Z",
+      "first_captured_at": "2026-05-26T08:54:32.841Z",
+      "last_seen_at": "2026-05-26T08:54:32.841Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/NOAA/status/2057490101148532962",
+      "tweet_type": "original",
+      "conversation_id": "2057490101148532962",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Just in: NOAA forecasters predict a below-normal 2026 Atlantic #HurricaneSeason:\n\nhttps://t.co/ZIJaaAkgjC\n\n@NWSCPC #HurricaneOutlook #WeatherReadyNation",
+      "text_resolved": "Just in: NOAA forecasters predict a below-normal 2026 Atlantic #HurricaneSeason:\n\nhttps://bit.ly/2026AtlanticHurricaneSeasonOutlook\n\n@NWSCPC #HurricaneOutlook #WeatherReadyNation",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "HurricaneSeason",
+        "HurricaneOutlook",
+        "WeatherReadyNation"
+      ],
+      "mentions": [
+        "NWSCPC"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/ZIJaaAkgjC",
+          "expanded": "https://bit.ly/2026AtlanticHurricaneSeasonOutlook",
+          "display": "bit.ly/2026AtlanticHu…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/ZIJaaAkgjC",
+        "vendor_url": "noaa.gov",
+        "title": "NOAA predicts below-normal 2026 Atlantic hurricane season",
+        "description": "Early preparation essential to staying safe all season",
+        "image_url": "https://pbs.twimg.com/card_img/2057479723345649665/bdKqSR2k?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 154,
+      "retweet_count": 76,
+      "reply_count": 9,
+      "quote_count": 9,
+      "view_count": 41115,
+      "bookmark_count": 12,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-26T08:54:32.841Z",
+          "likes": 154,
+          "retweets": 76,
+          "replies": 9,
+          "quotes": 9,
+          "views": 41115,
+          "bookmarks": 12
+        }
+      ],
+      "author": {
+        "display_name": "NOAA",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1770469994297716736/T76gtJDu_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "NOAA provides science, service and stewardship to protect life, property & Earth's natural resources. An agency of @CommerceGov. Join us on Instagram & Facebook",
+        "location": "USA (Formerly @usNOAAgov)",
+        "url": "https://t.co/4RB5BEvHoD",
+        "followers_count": 1309133,
+        "friends_count": 158,
+        "statuses_count": 20792,
+        "account_created_at": "2008-04-09T15:26:21.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-gov-trawl-20260526-20260526T085421Z-c408ff31",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/fema-20260526T085421Z-c408ff31.summary.json",
+    "jsonl": ".skim/raw/fema-20260526T085421Z-c408ff31.jsonl",
+    "source_handle": "FEMA"
+  }
+}

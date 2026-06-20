@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-20250101-partial-20260522-20260522T205218Z-17d36eec-usphscc",
+  "account_handle": "usphscc",
+  "captured_at": "2026-05-22T20:53:35.289Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2025-01-01%20until%3A2025-02-01",
+  "tweets": [
+    {
+      "tweet_id": "1875557814040748363",
+      "account_handle": "usphscc",
+      "account_id": "3310118770",
+      "posted_at": "2025-01-04T15:00:03.000Z",
+      "first_captured_at": "2026-05-22T20:52:50.535Z",
+      "last_seen_at": "2026-05-22T20:52:50.535Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/usphscc/status/1875557814040748363",
+      "tweet_type": "original",
+      "conversation_id": "1875557814040748363",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Today marks 136 years of service to the nation! Since 1889, the #USPHS Commissioned Corps has been dedicated to protecting and promoting the health of the American people. Thank you to all who serve and have served! #USPHSCC136 #PublicHealth https://t.co/QC3COBckuR",
+      "text_resolved": "Today marks 136 years of service to the nation! Since 1889, the #USPHS Commissioned Corps has been dedicated to protecting and promoting the health of the American people. Thank you to all who serve and have served! #USPHSCC136 #PublicHealth https://t.co/QC3COBckuR",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "USPHS",
+        "USPHSCC136",
+        "PublicHealth"
+      ],
+      "mentions": [],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1875293036537634816",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GgZhFLyW4AAJhui.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 4096,
+          "height": 2734,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 0,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 28816,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-22T20:52:50.535Z",
+          "likes": 0,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 0,
+          "views": 28816,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "USPHS Commissioned Corps",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1364668169584001024/y-L04Dnk_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official X account of the U.S. Public Health Service Commissioned Corps, America's Health Responders. Repost, like, follow ≠ endorsement.",
+        "location": "Washington, DC",
+        "url": "https://t.co/vOKmY8pV6d",
+        "followers_count": 2216,
+        "friends_count": 58,
+        "statuses_count": 1084,
+        "account_created_at": "2015-06-06T01:54:16.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-20250101-partial-20260522-20260522T205218Z-17d36eec",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-20250101-20260523-20260522/x-com-search-20260522T205218Z-17d36eec.summary.json",
+    "jsonl": ".skim/raw-core-20250101-20260523-20260522/x-com-search-20260522T205218Z-17d36eec.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

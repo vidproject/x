@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T164008Z-843f2cee-USCIS",
+  "account_handle": "USCIS",
+  "captured_at": "2026-06-13T16:50:55.129Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ARepDanGoldman%20since%3A2026-04-01%20until%3A2026-06-13%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2057825189035999517",
+      "account_handle": "USCIS",
+      "account_id": "14625398",
+      "posted_at": "2026-05-22T14:05:32.000Z",
+      "first_captured_at": "2026-06-13T16:40:15.427Z",
+      "last_seen_at": "2026-06-13T16:40:15.427Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USCIS/status/2057825189035999517",
+      "tweet_type": "original",
+      "conversation_id": "2057825189035999517",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "USCIS is applying long-standing law and prior court decisions to require certain aliens with temporary visas who decide they want to permanently reside in the U.S. to return to their home countries to apply for permanent visas through the @StateDept.\n\nWe're returning to the original intent of the law to ensure aliens navigate our nation’s immigration system properly. \n\nHere’s what you should know: https://t.co/GeaZd3BeV2",
+      "text_resolved": "USCIS is applying long-standing law and prior court decisions to require certain aliens with temporary visas who decide they want to permanently reside in the U.S. to return to their home countries to apply for permanent visas through the @StateDept.\n\nWe're returning to the original intent of the law to ensure aliens navigate our nation’s immigration system properly. \n\nHere’s what you should know: https://www.uscis.gov/newsroom/news-releases/us-citizenship-and-immigration-services-will-grant-adjustment-of-status-only-in-extraordinary",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "StateDept"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/GeaZd3BeV2",
+          "expanded": "https://www.uscis.gov/newsroom/news-releases/us-citizenship-and-immigration-services-will-grant-adjustment-of-status-only-in-extraordinary",
+          "display": "uscis.gov/newsroom/news-…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2057824435046924288",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HI7ca70XQAANJLE.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1080,
+          "height": 1350,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 3836,
+      "retweet_count": 877,
+      "reply_count": 620,
+      "quote_count": 560,
+      "view_count": 5480486,
+      "bookmark_count": 1313,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T16:40:15.427Z",
+          "likes": 3836,
+          "retweets": 877,
+          "replies": 620,
+          "quotes": 560,
+          "views": 5480486,
+          "bookmarks": 1313
+        }
+      ],
+      "author": {
+        "display_name": "USCIS",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1882164862987489280/kDwtH0hc_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official X account of U.S. Citizenship and Immigration Services. \nApply to be a Homeland Defender NOW: https://t.co/ataEwyi3UT",
+        "location": "Washington, DC",
+        "url": "https://t.co/GrphfGhLRD",
+        "followers_count": 566220,
+        "friends_count": 336,
+        "statuses_count": 22136,
+        "account_created_at": "2008-05-02T13:03:21.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass4-20260613T164008Z-843f2cee",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T164008Z-843f2cee.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass4/x-com-search-20260613T164008Z-843f2cee.jsonl",
+    "source_handle": "RepDanGoldman"
+  }
+}

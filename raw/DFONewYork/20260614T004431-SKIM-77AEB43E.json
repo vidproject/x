@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T004413Z-413b29ec-DFONewYork",
+  "account_handle": "DFONewYork",
+  "captured_at": "2026-06-14T00:44:31.129Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBPCommissioner%20since%3A2022-01-01%20until%3A2023-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1608445916691709953",
+      "account_handle": "DFONewYork",
+      "account_id": "1212043883627966465",
+      "posted_at": "2022-12-29T12:52:44.000Z",
+      "first_captured_at": "2026-06-14T00:44:21.120Z",
+      "last_seen_at": "2026-06-14T00:44:21.120Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DFONewYork/status/1608445916691709953",
+      "tweet_type": "original",
+      "conversation_id": "1608445916691709953",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Recently, the #NYFO encountered a subject attempting to enter the U.S. with a counterfeit B1/B2 visa. The interception of fraudulent documents is a critical component of our #bordersecurity posture and our @CBP officers are highly trained to find the fakes! https://t.co/1t2eeV5Es7",
+      "text_resolved": "Recently, the #NYFO encountered a subject attempting to enter the U.S. with a counterfeit B1/B2 visa. The interception of fraudulent documents is a critical component of our #bordersecurity posture and our @CBP officers are highly trained to find the fakes! https://t.co/1t2eeV5Es7",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "NYFO",
+        "bordersecurity"
+      ],
+      "mentions": [
+        "CBP"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1608445913944530944",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/FlJZCW0XoAAwF5E.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 863,
+          "height": 465,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 9,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 1,
+      "view_count": 1165,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T00:44:21.120Z",
+          "likes": 9,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 1,
+          "views": 1165,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Director of Field Operations, Francis J. Russo",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1618387374567727105/QPfzSFst_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "@CBP Director Field Operations New York Field Office. (@CBPNewYorkCity, @JFKairport, @EWRairport, @PortNYNJ, and the Pharmaceutical, Health, & Chemicals Center)",
+        "location": null,
+        "url": "https://t.co/U3p4fRAUrU",
+        "followers_count": 5208,
+        "friends_count": 942,
+        "statuses_count": 2890,
+        "account_created_at": "2019-12-31T16:12:46.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T004413Z-413b29ec",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004413Z-413b29ec.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004413Z-413b29ec.jsonl",
+    "source_handle": "CBPCommissioner"
+  }
+}

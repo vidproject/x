@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T142830Z-b112c7f6-BlockClubCHI",
+  "account_handle": "BlockClubCHI",
+  "captured_at": "2026-06-17T14:30:46.719Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2025-10-22%20until%3A2025-10-29%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1982190489190216066",
+      "account_handle": "BlockClubCHI",
+      "account_id": "552151606",
+      "posted_at": "2025-10-25T21:00:14.000Z",
+      "first_captured_at": "2026-06-17T14:28:36.321Z",
+      "last_seen_at": "2026-06-17T14:28:36.321Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/BlockClubCHI/status/1982190489190216066",
+      "tweet_type": "original",
+      "conversation_id": "1982190489190216066",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Border Patrol boss Greg Bovino tear-gassed a crowd in Chicago's Little Village neighborhood, violating a judge's order, attorneys said. https://t.co/QmuOaamJsj https://t.co/e3ySHaLO5L",
+      "text_resolved": "Border Patrol boss Greg Bovino tear-gassed a crowd in Chicago's Little Village neighborhood, violating a judge's order, attorneys said. https://blockclubchi.co/42V0Apd https://t.co/e3ySHaLO5L",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://buffer.com\" rel=\"nofollow\">Buffer</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/QmuOaamJsj",
+          "expanded": "https://blockclubchi.co/42V0Apd",
+          "display": "blockclubchi.co/42V0Apd"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1982190485381758976",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G4Invo5WwAAdIvC.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 2560,
+          "height": 1707,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 190,
+      "retweet_count": 35,
+      "reply_count": 369,
+      "quote_count": 15,
+      "view_count": 2348231,
+      "bookmark_count": 26,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:28:36.321Z",
+          "likes": 190,
+          "retweets": 35,
+          "replies": 369,
+          "quotes": 15,
+          "views": 2348231,
+          "bookmarks": 26
+        }
+      ],
+      "author": {
+        "display_name": "Block Club Chicago",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1975586139152031744/jnP3F41X_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Reader-supported nonprofit newsroom delivering essential coverage of Chicago’s neighborhoods.",
+        "location": "Chicago, Illinois",
+        "url": "https://t.co/q8KRMSrUmk",
+        "followers_count": 235974,
+        "friends_count": 1052,
+        "statuses_count": 140259,
+        "account_created_at": "2012-04-12T20:35:21.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T142830Z-b112c7f6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T142830Z-b112c7f6.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T142830Z-b112c7f6.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

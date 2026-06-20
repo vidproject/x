@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T174504Z-002108e2-CBP",
+  "account_handle": "CBP",
+  "captured_at": "2026-06-13T17:45:20.468Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AOFOEAC%20since%3A2023-10-01%20until%3A2023-11-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1712946367985848598",
+      "account_handle": "CBP",
+      "account_id": "16613128",
+      "posted_at": "2023-10-13T21:40:13.000Z",
+      "first_captured_at": "2026-06-13T17:45:10.525Z",
+      "last_seen_at": "2026-06-13T17:45:10.525Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBP/status/1712946367985848598",
+      "tweet_type": "original",
+      "conversation_id": "1712946367985848598",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Los puertos de entrada a los Estados Unidos permanecen abiertos y no ha habido ningún cambio en nuestras leyes de inmigración. \nLos migrantes deben continuar usando la app CBP One para programar una cita. \nDescarguen la app CBP One aquí: https://t.co/KHUIrg4R1j https://t.co/0XLwhnXur8",
+      "text_resolved": "Los puertos de entrada a los Estados Unidos permanecen abiertos y no ha habido ningún cambio en nuestras leyes de inmigración. \nLos migrantes deben continuar usando la app CBP One para programar una cita. \nDescarguen la app CBP One aquí: https://go.dhs.gov/4ZR https://t.co/0XLwhnXur8",
+      "lang": "es",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/KHUIrg4R1j",
+          "expanded": "https://go.dhs.gov/4ZR",
+          "display": "go.dhs.gov/4ZR"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1712946366110982144",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/F8WbpPdXYAAF4qN.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1600,
+          "height": 900,
+          "alt_text": "No hay ningun cambio en las leyes de inmigracion ni en el control de fronteras de Estados Unidos. Los Rumos de que lose puertos de entrada estan cerradoes hot, 13 de octubre, son falsos. Los migrantes deben seguis usando la aplicacion CBP One para programar su cita. Estados Unidos continuara aplicando nuestras leyes de inmigracion.",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 25,
+      "retweet_count": 5,
+      "reply_count": 8,
+      "quote_count": 2,
+      "view_count": 6025,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:45:10.525Z",
+          "likes": 25,
+          "retweets": 5,
+          "replies": 8,
+          "quotes": 2,
+          "views": 6025,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "CBP",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1355124069092515842/hC7JdgT-_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "The official page of United States Customs & Border Protection. https://t.co/dOTgpZSOKF",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/xTvN5KaiC5",
+        "followers_count": 593598,
+        "friends_count": 434,
+        "statuses_count": 24958,
+        "account_created_at": "2008-10-06T12:45:44.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T174504Z-002108e2",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T174504Z-002108e2.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T174504Z-002108e2.jsonl",
+    "source_handle": "OFOEAC"
+  }
+}

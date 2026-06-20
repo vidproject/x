@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T175910Z-c46096b3-DOWResponse",
+  "account_handle": "DOWResponse",
+  "captured_at": "2026-06-13T17:59:45.826Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AJamesSurowiecki%20since%3A2026-04-01%20until%3A2026-06-13%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2065193943273218323",
+      "account_handle": "DOWResponse",
+      "account_id": "1893027782684483585",
+      "posted_at": "2026-06-11T22:06:20.000Z",
+      "first_captured_at": "2026-06-13T17:59:36.475Z",
+      "last_seen_at": "2026-06-13T17:59:36.475Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DOWResponse/status/2065193943273218323",
+      "tweet_type": "original",
+      "conversation_id": "2065193943273218323",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "America’s @SECWAR CRUSHED 44 reps on the bench after a morning run with the troops yesterday in GTMO. https://t.co/NSBs5pmZio",
+      "text_resolved": "America’s @SECWAR CRUSHED 44 reps on the bench after a morning run with the troops yesterday in GTMO. https://t.co/NSBs5pmZio",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "SecWar"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_2065193626825633792",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2065193626825633792/vid/avc1/1920x1080/H5pRBAb_bx38WvzI.mp4?tag=27",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 55.841,
+          "width": 1920,
+          "height": 1080,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 7220,
+      "retweet_count": 818,
+      "reply_count": 2558,
+      "quote_count": 819,
+      "view_count": 4476097,
+      "bookmark_count": 388,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:59:36.475Z",
+          "likes": 7220,
+          "retweets": 818,
+          "replies": 2558,
+          "quotes": 819,
+          "views": 4476097,
+          "bookmarks": 388
+        }
+      ],
+      "author": {
+        "display_name": "DOW Rapid Response",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1918397237559701505/4GUQnNbt_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Welcome to the Official Rapid Response Account of the Department of War.",
+        "location": "The Pentagon",
+        "url": "https://t.co/Dg0BPkFRGJ",
+        "followers_count": 652501,
+        "friends_count": 16,
+        "statuses_count": 3087,
+        "account_created_at": "2025-02-21T20:00:27.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T175910Z-c46096b3",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T175910Z-c46096b3.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T175910Z-c46096b3.jsonl",
+    "source_handle": "JamesSurowiecki"
+  }
+}
