@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-20T15:37:31Z",
+  "generated_at": "2026-06-20T16:18:16Z",
   "layers": {
     "audio_music": {
       "cost_estimate_usd": 0.0,
@@ -24,9 +24,9 @@
     },
     "image_ocr": {
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-20T15:36:47Z",
+      "generated_at": "2026-06-20T16:18:01Z",
       "ocr_engine": "tesseract",
-      "ocr_version": "tesseract 5.5.1",
+      "ocr_version": "tesseract 5.3.4",
       "row_count": 25151,
       "rows": 25151,
       "status_counts": {
@@ -36,23 +36,20 @@
       }
     },
     "keyframes": {
-      "attempted": 5,
       "cost_estimate_usd": 0.0,
       "extractor_version": "ffmpeg-keyframes-v2",
-      "frame_count": 31022,
-      "generated_at": "2026-06-20T15:36:27Z",
+      "frame_count": 31047,
+      "generated_at": "2026-06-20T16:17:58Z",
       "row_count": 6101,
       "rows": 6101,
       "status_counts": {
         "fetch-failed": 1,
-        "ffprobe-failed": 5,
-        "ok": 6092,
+        "ok": 6097,
         "video-too-large": 3
-      },
-      "status_ffprobe-failed": 5
+      }
     },
     "lexical": {
-      "generated_at": "2026-06-20T15:37:31Z",
+      "generated_at": "2026-06-20T16:18:16Z",
       "parquets_scanned": {
         "AGPamBondi.parquet": 19,
         "ATFHQ.parquet": 3,
@@ -268,7 +265,7 @@
         "country:Mali": 1,
         "country:Malta": 1,
         "country:Mauritania": 9,
-        "country:Mexico": 6417,
+        "country:Mexico": 6408,
         "country:Moldova": 1,
         "country:Mongolia": 1,
         "country:Montenegro": 7,
@@ -332,7 +329,7 @@
         "country:Yemen": 13,
         "country:Zimbabwe": 4,
         "crime:arson": 141,
-        "crime:assault": 5985,
+        "crime:assault": 5984,
         "crime:battery": 1343,
         "crime:burglary": 919,
         "crime:child": 1390,
@@ -353,7 +350,7 @@
         "crime:perjury": 10,
         "crime:rape": 1778,
         "crime:robbery": 1039,
-        "crime:sexual": 4260,
+        "crime:sexual": 4259,
         "crime:sodomy": 123,
         "crime:theft": 1639,
         "crime:trafficking": 3771,
@@ -609,19 +606,18 @@
       "tagger_version": "lexical-v2"
     },
     "media_vision": {
-      "cache_hits": 1,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-20T15:36:16Z",
+      "generated_at": "2026-06-20T16:17:55Z",
       "model": "metadata",
       "model_version": "media-metadata-v4",
       "prompt_hash": "b18b19292ec51484",
       "row_count": 20762,
       "rows": 20762,
-      "skipped_not_in_filter": 49531,
+      "skipped_not_in_filter": 49532,
       "status_counts": {
-        "manual-review": 3523,
+        "manual-review": 3524,
         "metadata-alt": 3465,
-        "metadata-context": 13774
+        "metadata-context": 13773
       },
       "tag_frequency": {
         "action:deportation": 1,
@@ -700,9 +696,8 @@
       "thumbnails": 15604
     },
     "transcripts": {
-      "cache_hits": 211,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-20T14:58:44Z",
+      "generated_at": "2026-06-20T16:18:09Z",
       "row_count": 3578,
       "rows": 3578,
       "status_counts": {
@@ -932,7 +927,7 @@
     "country:Mali": 1,
     "country:Malta": 1,
     "country:Mauritania": 9,
-    "country:Mexico": 6417,
+    "country:Mexico": 6408,
     "country:Moldova": 1,
     "country:Mongolia": 1,
     "country:Montenegro": 7,
@@ -996,7 +991,7 @@
     "country:Yemen": 13,
     "country:Zimbabwe": 4,
     "crime:arson": 141,
-    "crime:assault": 5985,
+    "crime:assault": 5984,
     "crime:battery": 1343,
     "crime:burglary": 919,
     "crime:child": 1390,
@@ -1017,7 +1012,7 @@
     "crime:perjury": 10,
     "crime:rape": 1778,
     "crime:robbery": 1039,
-    "crime:sexual": 4260,
+    "crime:sexual": 4259,
     "crime:sodomy": 123,
     "crime:theft": 1639,
     "crime:trafficking": 3771,
