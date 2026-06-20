@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "schema_version": 1,
+    "generated_at": "2026-06-20T00:00:00Z",
+    "purpose": "Named creative/cruelty incidents that should surface in creative review once captured.",
+    "local_corpus_note": "No local catalog/raw hit for dieworkwear, Derek Guy, Menswear Guy, RoW7oiWPZw, or 0t2Oj74C85 when this file was created."
+  },
+  "targets": [
+    {
+      "id": "derek-guy-menswear-deportation-threat-2025-06-09",
+      "status": "missing-from-local-corpus",
+      "priority": "high",
+        "candidate_categories": [
+          "cruelty:personalized-deportation-threat",
+          "cruelty:surveillance-taunt",
+          "cruelty:mocking-deportation-joke",
+          "media:reaction-gif",
+          "emoji:eyes"
+      ],
+      "accounts_to_check": [
+        "JDVance",
+        "VP",
+        "DHSgov",
+        "Homeland Security",
+        "dieworkwear"
+      ],
+      "known_tweet_ids": [
+        {
+          "tweet_id": "1931808967363289500",
+          "account": "dieworkwear",
+          "role": "Derek Guy immigration-status disclosure thread"
+        },
+        {
+          "tweet_id": "1932098810651521328",
+          "account": "JDVance",
+          "role": "Vance reaction-GIF reply interpreted as deportation threat"
+        },
+        {
+          "tweet_id": "1932123871312064996",
+          "account": "dieworkwear",
+          "role": "Derek Guy response to Vance"
+        },
+        {
+          "tweet_id": "1932125781419016286",
+          "account": "dieworkwear",
+          "role": "Derek Guy follow-up giving his address"
+        }
+      ],
+      "dhs_post_clues": {
+        "account": "DHSgov",
+        "date": "2025-06-09",
+        "shortlink": "https://t.co/RoW7oiWPZw",
+        "media_shortlink": "https://pic.twitter.com/0t2Oj74C85",
+        "exact_tweet_id": null,
+        "description": "DHS reportedly posted a Spy Kids zoom-glasses GIF in response to a post about Derek Guy's immigration status."
+      },
+      "additional_search_clues": [
+        "👀",
+        "eyes emoji",
+        "side eye",
+        "we're watching you",
+        "we are watching you",
+        "Spy Kids",
+        "zoom glasses"
+      ],
+      "source_urls": [
+        "https://www.axios.com/2025/06/09/vance-post-suggests-deporting-the-menswear-guy",
+        "https://newrepublic.com/post/196307/jd-vance-threatens-deport-menswear-guy-confession-immigration-status",
+        "https://www.theguardian.com/us-news/2025/jun/09/menswear-guy-derek-guy-immigration-status-jd-vance"
+      ],
+      "notes": "Treat this as the pattern case for personalized official cruelty: a named civilian's immigration history becomes the object of a deportation joke/threat through official or senior political accounts using reaction-GIF/meme language."
+    }
+  ]
+}

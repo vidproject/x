@@ -77,7 +77,8 @@ TRANSCRIPT_COMPLETE_STATUSES = {"ok", "empty-transcript", "no-audio-stream"}
 
 WHOLLY_CREATIVE_RE = re.compile(
     r"\b(?:ai-generated|synthetic|pixel[- ]art|animation|animated|cgi|poster|meme|"
-    r"parody|cartoon|illustration|illustrated|comic|collage|photoshop|vintage|"
+    r"animated gif|reaction gif|gif|parody|cartoon|illustration|illustrated|comic|"
+    r"collage|photoshop|vintage|"
     r"wpa|wwii|propaganda|stylized|mirthnuke|nice agents|busted\s*&\s*booted|"
     r"remigrate|wanted|booking card|rogues-gallery|trading card)\b",
     re.I,
@@ -86,7 +87,8 @@ CREATIVE_USE_RE = re.compile(
     r"\b(?:asmr|set to music|music bed|soundtrack|montage|rapid[- ]cut|fast cuts?|"
     r"color[- ]graded|cinematic|trailer[- ]style|war[- ]movie|slow[- ]motion|"
     r"title card|text overlay|lower-third|reticle|vhs|glitch|neon|gothic|"
-    r"motion[- ]blur|stylized|animated|cgi|pixel[- ]art|voiceover|voice-over)\b",
+    r"motion[- ]blur|stylized|animated|reaction gif|animated gif|cgi|pixel[- ]art|"
+    r"voiceover|voice-over)\b",
     re.I,
 )
 REAL_ENFORCEMENT_RE = re.compile(
@@ -94,6 +96,33 @@ REAL_ENFORCEMENT_RE = re.compile(
     r"belly chains?|custody|detention|deport(?:ed|ation|ing)?|self-deport|"
     r"illegal alien|illegal aliens|migrant|migrants|arrest(?:ed|s)?|raid|"
     r"removal flight|deportation flight|ice air|ero|hsi|cbp|border patrol)\b",
+    re.I,
+)
+IMMIGRATION_CONTEXT_RE = re.compile(
+    r"\b(?:immigration|deport|ice|dhs|cbp|uscis|homeland security|illegal alien|"
+    r"illegal aliens|cbp home|self-deport|removal)\b",
+    re.I,
+)
+TEXTUAL_CRUELTY_RE = re.compile(
+    r"\b(?:do the funniest thing ever|made in heaven[^.\n]{0,120}made up|"
+    r"buying a spouse doesn't make you a citizen|walking out in handcuffs|"
+    r"ice said nah|no dress[^.\n]{0,120}no citizenship[^.\n]{0,120}just deported|"
+    r"adios\.?|nice city|have a nice day|"
+    r"you will be found and deported with zero chance of returning|"
+    r"found and deported with zero chance of returning|"
+    r"we will arrest you, deport you and you will never return|"
+    r"we will find you\.\s*we will arrest you\.\s*we will deport you|"
+    r"we will find you(?:,?[^.\n]{0,80})?we will arrest you(?:,?[^.\n]{0,80})?"
+    r"we will deport you|"
+    r"we will find you and deport you|"
+    r"if you are illegal[^.\n]{0,160}we will find you|"
+    r"leave on your terms or you will leave on ours|"
+    r"self-deport now or face consequences|"
+    r"last chance to leave the u\.?s\.? legally|"
+    r"avoid the humiliation|"
+    r"avoid the discomfort of not knowing when we(?:'re| are) going to arrest you)\b|"
+    r"👀[^.\n]{0,160}(?:illegal|border|deport|arrest|caught|removed|ice|cbp|ero|hsi)|"
+    r"(?:illegal|border|deport|arrest|caught|removed|ice|cbp|ero|hsi)[^.\n]{0,160}👀",
     re.I,
 )
 ROUTINE_EXCLUDE_RE = re.compile(
@@ -109,7 +138,7 @@ PLAIN_INFOGRAPHIC_RE = re.compile(
 )
 STRONG_CREATIVE_REVIEW_RE = re.compile(
     r"\b(?:ai[- ]generated|synthetic|pixel[- ]art|animation|animated|cgi|parody|"
-    r"cartoon|caricature|comic|meme[- ]style|"
+    r"reaction gif|animated gif|cartoon|caricature|comic|meme[- ]style|"
     r"tinder|swiped right|mirthnuke|nice agents|busted\s*&\s*booted|"
     r"remigrate|set to music|music bed|soundtrack|montage|rapid[- ]cut|"
     r"fast cuts?|color[- ]graded|cinematic|trailer[- ]style|war[- ]movie|"
@@ -188,6 +217,10 @@ WEAK_STANDALONE_PREFERENCE_CATEGORIES = {
     "spectacle:holiday-or-celebration",
 }
 STRONG_PREFERENCE_CATEGORIES = {
+    "cruelty:personalized-deportation-threat",
+    "cruelty:mocking-deportation-joke",
+    "cruelty:public-humiliation",
+    "cruelty:surveillance-taunt",
     "spectacle:asmr-deportation",
     "spectacle:gamified-deportation",
     "policy:self-deportation-ad",
@@ -201,6 +234,9 @@ STRONG_PREFERENCE_CATEGORIES = {
     "medium:produced-video-with-preference-signal",
 }
 DECISIVE_CREATIVE_CATEGORIES = {
+    "cruelty:personalized-deportation-threat",
+    "cruelty:mocking-deportation-joke",
+    "cruelty:surveillance-taunt",
     "spectacle:asmr-deportation",
     "spectacle:gamified-deportation",
     "aesthetic:ai-synthetic-propaganda",
@@ -211,6 +247,71 @@ DECISIVE_CREATIVE_CATEGORIES = {
     "medium:produced-video-with-preference-signal",
 }
 PREFERENCE_RULES = [
+    (
+        "cruelty:personalized-deportation-threat",
+        78,
+        re.compile(
+            r"\b(?:opportunity to do the funniest thing ever|do the funniest thing ever|"
+            r"deport (?:him|her|them|you)|should deport|we(?:'ll| will| are going to) "
+            r"(?:find|deport|remove|arrest|catch) (?:you|him|her|them)|"
+            r"we(?:'ll| will| are going to) hunt you down|"
+            r"you(?:'re| are) next|you (?:can|will) be deported|"
+            r"you can and will be deported|"
+            r"you will be found and deported with zero chance of returning|"
+            r"found and deported with zero chance of returning|"
+            r"we will arrest you, deport you and you will never return|"
+            r"we will find you and deport you|"
+            r"if you are illegal[^.\n]{0,160}we will find you|"
+            r"leave on your terms or you will leave on ours|"
+            r"self-deport now or face consequences|"
+            r"last chance to leave the u\.?s\.? legally|"
+            r"last time (?:he|she|they) "
+            r"sees? (?:u\.?s\.? soil|america))\b",
+            re.I,
+        ),
+    ),
+    (
+        "cruelty:surveillance-taunt",
+        64,
+        re.compile(
+            r"\b(?:we(?:'re| are) watching you|we see you|eyes on you|"
+            r"zoom(?:ing)? in|surveillance[^.\n]{0,80}(?:gif|meme|taunt)|"
+            r"spy kids|zoom glasses|eyes emoji|side[- ]eye|side eye|"
+            r"target acquired)\b|"
+            r"👀[^.\n]{0,160}(?:illegal|border|deport|arrest|caught|removed|ice|cbp|ero|hsi)|"
+            r"(?:illegal|border|deport|arrest|caught|removed|ice|cbp|ero|hsi)[^.\n]{0,160}👀",
+            re.I,
+        ),
+    ),
+    (
+        "cruelty:mocking-deportation-joke",
+        56,
+        re.compile(
+            r"\b(?:have a nice day|ice\s*[-=]>?\s*nice|swiped right|it's a match|"
+            r"nice city|ice said nah|adios|"
+            r"made in heaven[^.\n]{0,120}made up|"
+            r"buying a spouse doesn't make you a citizen|"
+            r"no dress[^.\n]{0,120}no citizenship[^.\n]{0,120}just deported|"
+            r"avoid the deportation flight|hearts grow as our illegal population shrinks|"
+            r"go home comfortably|homesick\?|free ticket home|"
+            r"(?:one[- ]way|first[- ]class) ticket (?:home|out)|"
+            r"deportation[^.\n]{0,80}(?:christmas|holiday|joke|meme|gift))\b",
+            re.I,
+        ),
+    ),
+    (
+        "cruelty:public-humiliation",
+        48,
+        re.compile(
+            r"\b(?:fake news sob stories|sob stories|media lies|"
+            r"here'?s who (?:they|democrats|the media)(?:'re| are) defending|"
+            r"who they(?:'re| are) defending|criminal illegal alien abandoned his child|"
+            r"walking out in handcuffs|avoid the humiliation|"
+            r"murderers have no home here|worst of the worst|"
+            r"meet (?:the|our) (?:criminal|illegal|deportable))\b",
+            re.I,
+        ),
+    ),
     (
         "spectacle:asmr-deportation",
         60,
@@ -538,6 +639,14 @@ def apply_preference_profile(item: dict[str, Any]) -> None:
             item["confidence"] = "medium"
 
 
+def cruelty_category_count(item: dict[str, Any]) -> int:
+    return sum(
+        1
+        for category in item.get("preference_categories") or []
+        if str(category).startswith("cruelty:")
+    )
+
+
 def low_value_review_exclusion(item: dict[str, Any]) -> str | None:
     categories = set(str(category) for category in item.get("preference_categories") or [])
     forms = set(str(form) for form in item.get("creative_forms") or [])
@@ -848,6 +957,7 @@ def classify_inclusion(
     creative = bool(WHOLLY_CREATIVE_RE.search(blob))
     real = bool(REAL_ENFORCEMENT_RE.search(blob))
     creative_use = bool(CREATIVE_USE_RE.search(blob))
+    cruelty = bool(TEXTUAL_CRUELTY_RE.search(blob))
     routine = bool(ROUTINE_EXCLUDE_RE.search(blob))
     plain_infographic = bool(PLAIN_INFOGRAPHIC_RE.search(blob)) and not creative
     reasons: list[str] = []
@@ -857,10 +967,14 @@ def classify_inclusion(
         reasons.append("real enforcement/detainee subject signal")
     if creative_use:
         reasons.append("creative treatment signal")
+    if cruelty and IMMIGRATION_CONTEXT_RE.search(blob):
+        reasons.append("explicit cruelty, taunt, or threat signal")
     if routine and not allow_routine:
         reasons.append("routine news/speech signal")
     if plain_infographic:
         reasons.append("plain infographic/statistics signal")
+    if cruelty and IMMIGRATION_CONTEXT_RE.search(blob):
+        return "cruelty_taunting_enforcement", 86, reasons
     if creative and not plain_infographic:
         return "wholly_creative_media", 90 if not routine else 72, reasons
     if real and creative_use and not (routine and not allow_routine):
@@ -1126,6 +1240,7 @@ def sort_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
         key=lambda item: (
             item.get("era") != "2025_plus",
             item.get("queue") != "high_confidence",
+            -cruelty_category_count(item),
             -int(item.get("preference_score") or 0),
             -int(item.get("score") or 0),
             -int((item.get("engagement") or {}).get("likes") or 0)
@@ -1167,7 +1282,7 @@ def queue_payload(
             "review_actions": ["yes", "no", "superlike", "back"],
             "inclusion_rules": [
                 "limit swipe queues to core, government, and official-source accounts",
-                "prioritize aestheticized enforcement propaganda: spectacle, holiday/gamified treatment, ASMR, self-deportation ads, AI/nostalgic propaganda, and editorialized crime/news composites",
+                "prioritize aestheticized enforcement propaganda: personalized cruelty, deportation threats, taunting jokes, holiday/gamified treatment, ASMR, self-deportation ads, AI/nostalgic propaganda, and editorialized crime/news composites",
                 "de-prioritize generic posters, routine PR montages, statistics cards, plain news screenshots, plain Trump-post screenshots, and bare apprehension notices",
             ],
             "readiness_rules": [
@@ -1427,6 +1542,7 @@ def main() -> int:
                     "candidate_score": PREFERENCE_CANDIDATE_SCORE,
                     "principles": [
                         "review queues are limited to core, government, and official-source accounts",
+                        "personalized cruelty, deportation threats, surveillance taunts, or public humiliation",
                         "state enforcement rendered as spectacle, entertainment, ad, lifestyle, holiday, or joke",
                         "surreal, AI-generated, nostalgic, dystopian, or otherwise aestheticized propaganda",
                         "self-deportation / CBP Home incentives and app-like gamification",

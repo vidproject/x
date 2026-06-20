@@ -1,19 +1,19 @@
 {
   "metadata": {
     "queue": "historical_2016_2020",
-    "generated_at": "2026-06-20T22:13:20Z",
-    "source_commit": "5a9373e2",
+    "generated_at": "2026-06-20T22:25:37Z",
+    "source_commit": "37a78c4e8",
     "item_count": 0,
-    "source_candidate_count": 1303,
-    "not_ready_count": 0,
-    "review_scope_excluded_count": 1174,
+    "source_candidate_count": 1371,
+    "not_ready_count": 69,
+    "review_scope_excluded_count": 1164,
     "review_scope_excluded_reasons": {
-      "apprehension-notice-or-routine-card": 321,
-      "generic-enforcement-poster": 8,
+      "apprehension-notice-or-routine-card": 318,
+      "generic-enforcement-poster": 13,
       "generic-self-deportation-psa": 14,
-      "news-image-or-clip": 62,
-      "outside-revealed-preference": 689,
-      "routine-static-card": 50,
+      "news-image-or-clip": 61,
+      "outside-revealed-preference": 679,
+      "routine-static-card": 49,
       "trump-post-screenshot": 30
     },
     "all_items_ready": true,
@@ -28,7 +28,7 @@
     ],
     "inclusion_rules": [
       "limit swipe queues to core, government, and official-source accounts",
-      "prioritize aestheticized enforcement propaganda: spectacle, holiday/gamified treatment, ASMR, self-deportation ads, AI/nostalgic propaganda, and editorialized crime/news composites",
+      "prioritize aestheticized enforcement propaganda: personalized cruelty, deportation threats, taunting jokes, holiday/gamified treatment, ASMR, self-deportation ads, AI/nostalgic propaganda, and editorialized crime/news composites",
       "de-prioritize generic posters, routine PR montages, statistics cards, plain news screenshots, plain Trump-post screenshots, and bare apprehension notices"
     ],
     "readiness_rules": [
