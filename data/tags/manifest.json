@@ -24,7 +24,7 @@
     },
     "image_ocr": {
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-20T16:18:01Z",
+      "generated_at": "2026-06-20T17:23:41Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.3.4",
       "row_count": 25151,
@@ -39,7 +39,7 @@
       "cost_estimate_usd": 0.0,
       "extractor_version": "ffmpeg-keyframes-v2",
       "frame_count": 31047,
-      "generated_at": "2026-06-20T16:17:58Z",
+      "generated_at": "2026-06-20T17:23:38Z",
       "row_count": 6101,
       "rows": 6101,
       "status_counts": {
@@ -607,13 +607,13 @@
     },
     "media_vision": {
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-20T16:17:55Z",
+      "generated_at": "2026-06-20T17:23:35Z",
       "model": "metadata",
       "model_version": "media-metadata-v4",
       "prompt_hash": "b18b19292ec51484",
       "row_count": 20762,
       "rows": 20762,
-      "skipped_not_in_filter": 49532,
+      "skipped_not_in_filter": 49538,
       "status_counts": {
         "manual-review": 3524,
         "metadata-alt": 3465,
