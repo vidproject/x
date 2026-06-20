@@ -1,17 +1,17 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-06-20T10:23:48Z",
-    "source_commit": "9d0ebc5d",
-    "item_count": 22,
+    "generated_at": "2026-06-20T12:22:46Z",
+    "source_commit": "13fd6cce",
+    "item_count": 27,
     "blocker_counts": {
-      "missing genuine visual description": 17,
+      "missing genuine visual description": 22,
+      "missing archived media asset": 15,
       "missing complete OCR for extracted keyframes": 11,
-      "missing archived media asset": 10,
+      "missing photo OCR": 11,
+      "missing photo thumbnail": 11,
       "missing extracted video keyframes": 9,
       "missing video thumbnail": 9,
-      "missing photo OCR": 6,
-      "missing photo thumbnail": 6,
       "missing audio analysis": 4
     }
   },
@@ -436,10 +436,10 @@
         ]
       },
       "engagement": {
-        "likes": 1160,
-        "retweets": 192,
+        "likes": 1163,
+        "retweets": 191,
         "quotes": 11,
-        "views": 126592
+        "views": 128750
       },
       "preference_score": 46,
       "preference_categories": [
@@ -999,6 +999,262 @@
       ]
     },
     {
+      "id": "1954935847117287574:3_1952447131165560832",
+      "tweet_id": "1954935847117287574",
+      "posted_at": "2025-08-11T16:00:01.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "ERONewOrleans",
+        "category": "core",
+        "label": "ICE ERO New Orleans"
+      },
+      "tweet_url": "https://x.com/ERONewOrleans/status/1954935847117287574",
+      "tweet_text": "🚨DRUG TRAFFICKER ARRESTED: ICE New Orleans arrested Eduardo Luis Machin of Cuba 🇨🇺. His criminal history includes:\n💥Drug Trafficking\n💥Drug Possession\n💥Dangerous Drug Possession\n💥Synthetic Narcotic Possession\n\n📢Smuggling drugs into the U.S.? Bold move. Also, illegal. https://t.co/ULM0YFHpBQ",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "detainees"
+      ],
+      "tags": [
+        "action:detention",
+        "agency:ICEgov",
+        "country:Cuba",
+        "crime:narcotics",
+        "crime:trafficking",
+        "media-status:needs-ocr",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1952447131165560832",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: Synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 1010,
+        "retweets": 240,
+        "quotes": 7,
+        "views": 43772
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "1997365424422285519:3_1995552431724249088",
+      "tweet_id": "1997365424422285519",
+      "posted_at": "2025-12-06T18:00:01.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "ERONewOrleans",
+        "category": "core",
+        "label": "ICE ERO New Orleans"
+      },
+      "tweet_url": "https://x.com/ERONewOrleans/status/1997365424422285519",
+      "tweet_text": "ICE New Orleans arrested Juan Antonio Gonzalez-Lopez, an illegal alien from Mexico🇲🇽 \nLengthy criminal history includes: \n💥Assault arrest\n💥DUI\n💥Trespassing\n💥Public order crimes\n💥Resisting an officer \n💥Stolen property\n💥Possession of narcotic equipment\n💥Possession of synthetic narcotic \n💥Larceny",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "detainees",
+        "arrest-or-raid",
+        "immigration-language"
+      ],
+      "tags": [
+        "action:detention",
+        "agency:ICEgov",
+        "country:Mexico",
+        "crime:assault",
+        "crime:dui",
+        "crime:narcotics",
+        "media-status:needs-ocr",
+        "slogan:illegal-alien",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1995552431724249088",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 885,
+        "retweets": 264,
+        "quotes": 8,
+        "views": 8126
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
       "id": "1891582186244993194:3_1891582185162842112",
       "tweet_id": "1891582186244993194",
       "posted_at": "2025-02-17T20:15:11.000Z",
@@ -1117,6 +1373,134 @@
         "retweets": 99,
         "quotes": 13,
         "views": 25638
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2045858957017935917:3_2044847515325939712",
+      "tweet_id": "2045858957017935917",
+      "posted_at": "2026-04-19T13:36:00.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "EROSanDiego",
+        "category": "core",
+        "label": "ICE San Diego"
+      },
+      "tweet_url": "https://x.com/EROSanDiego/status/2045858957017935917",
+      "tweet_text": "ICE San Diego arrested Edgardo Valenzuela, 61, a criminal alien who has prior convictions for sale of synthetic narcotics and illegal reentry after removal. Valenzuela was removed to Mexico. https://t.co/Fpxwi3eKxW",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "detainees"
+      ],
+      "tags": [
+        "action:deportation",
+        "action:detention",
+        "agency:ICEgov",
+        "country:Mexico",
+        "crime:narcotics",
+        "legal:criminal-prosecution",
+        "media-status:needs-ocr",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2044847515325939712",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 160,
+        "retweets": 37,
+        "quotes": 3,
+        "views": 1297
       },
       "preference_score": 41,
       "preference_categories": [
@@ -3120,6 +3504,274 @@
       "preference_score": 34,
       "preference_categories": [
         "spectacle:holiday-or-celebration"
+      ]
+    },
+    {
+      "id": "1906789639433900480:3_1906789627144581120",
+      "tweet_id": "1906789639433900480",
+      "posted_at": "2025-03-31T19:24:11.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "EROSaltLakeCity",
+        "category": "core",
+        "label": "ICE ERO Salt Lake City"
+      },
+      "tweet_url": "https://x.com/EROSaltLakeCity/status/1906789639433900480",
+      "tweet_text": "Last week we arrested and deported more TdA &amp; MS-13 gangsters, fugitives wanted for sex crimes, aliens convicted of child neglect/cruelty, assault, drug trafficking, a lot of DUIs &amp; more.  Use CBP Home to self-deport on economy class or we’ll do it for you, like this guy. https://t.co/VwXquL13IN",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [
+        "detainees",
+        "deportation",
+        "arrest-or-raid",
+        "immigration-language"
+      ],
+      "tags": [
+        "action:deportation",
+        "action:detention",
+        "action:self-deportation",
+        "agency:CBP",
+        "crime:assault",
+        "crime:ms13",
+        "crime:trafficking",
+        "crime:tren-de-aragua",
+        "format:statistics",
+        "legal:criminal-prosecution",
+        "media-status:needs-ocr",
+        "policy:cbp-home",
+        "subject:cbp-home-app",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:economy",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1906789627144581120",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "policy:self-deportation-ad: CBP Home",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 1749,
+        "retweets": 323,
+        "quotes": 22,
+        "views": 33688
+      },
+      "preference_score": 31,
+      "preference_categories": [
+        "policy:self-deportation-ad",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "1996982646128480386:3_1996982392746348544",
+      "tweet_id": "1996982646128480386",
+      "posted_at": "2025-12-05T16:38:59.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "EROSanAntonio",
+        "category": "core",
+        "label": "ICE San Antonio"
+      },
+      "tweet_url": "https://x.com/EROSanAntonio/status/1996982646128480386",
+      "tweet_text": "If you committed a crime in your home country, self-deport now or ICE will find you, arrest you and deport you. Leave on your own terms or you will leave on ours. \n\nJust like Samuel Osoria-Flores, 51, an illegal alien wanted for involuntary homicide in Mexico now in ICE custody. https://t.co/Yqn391do2T",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [
+        "detainees",
+        "deportation",
+        "arrest-or-raid",
+        "immigration-language"
+      ],
+      "tags": [
+        "action:deportation",
+        "action:detention",
+        "action:self-deportation",
+        "agency:ICEgov",
+        "country:Mexico",
+        "crime:homicide",
+        "media-status:needs-ocr",
+        "policy:cbp-home",
+        "slogan:illegal-alien",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "theme:directive",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1996982392746348544",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "policy:self-deportation-ad: self-deport",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 970,
+        "retweets": 223,
+        "quotes": 8,
+        "views": 24689
+      },
+      "preference_score": 31,
+      "preference_categories": [
+        "policy:self-deportation-ad",
+        "subject:enforcement-linked"
       ]
     },
     {
