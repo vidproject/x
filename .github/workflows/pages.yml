@@ -6,6 +6,7 @@ on:
       - 'index.html'
       - 'viewer/**'
       - 'creative/**'
+      - 'list/**'
       - 'data/**'
       - 'extension.zip'
       - 'extension-chrome.zip'
@@ -43,6 +44,7 @@ jobs:
           if [ -f extension-chrome.zip ]; then cp extension-chrome.zip _site/extension-chrome.zip; fi
           cp -r viewer _site/viewer
           if [ -d creative ]; then cp -r creative _site/creative; fi
+          if [ -d list ]; then cp -r list _site/list; fi
           if [ -d data ]; then cp -r data _site/data; fi
           # CRITICAL: .nojekyll disables Jekyll preprocessing on Pages.
           # Without it, Pages silently drops any path starting with `_` —
