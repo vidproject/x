@@ -2,10 +2,11 @@
   "generated_at": "2026-06-20T22:29:47Z",
   "layers": {
     "audio_music": {
+      "cache_hits": 211,
       "cost_estimate_usd": 0.0,
       "detector": "ffmpeg-audio-heuristic",
       "detector_version": "ffmpeg-audio-heuristic-v1",
-      "generated_at": "2026-06-20T22:29:36Z",
+      "generated_at": "2026-06-20T23:39:00Z",
       "row_count": 6246,
       "rows": 6246,
       "status_counts": {
@@ -23,10 +24,9 @@
       }
     },
     "image_ocr": {
-      "analyzed": 67,
-      "attempted": 67,
+      "cache_hits": 1563,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-20T22:29:07Z",
+      "generated_at": "2026-06-20T23:38:58Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.3.4",
       "row_count": 26178,
@@ -35,26 +35,21 @@
         "fetch-failed": 1,
         "no-text": 5679,
         "ok": 20498
-      },
-      "status_no-text": 3,
-      "status_ok": 64
+      }
     },
     "keyframes": {
-      "attempted": 7,
-      "cache_hits": 1,
+      "cache_hits": 211,
       "cost_estimate_usd": 0.0,
-      "extracted": 7,
       "extractor_version": "ffmpeg-keyframes-v2",
       "frame_count": 31087,
-      "generated_at": "2026-06-20T22:28:47Z",
+      "generated_at": "2026-06-20T23:38:54Z",
       "row_count": 6110,
       "rows": 6110,
       "status_counts": {
         "fetch-failed": 1,
         "ok": 6105,
         "video-too-large": 4
-      },
-      "status_ok": 7
+      }
     },
     "lexical": {
       "generated_at": "2026-06-20T22:29:47Z",
@@ -695,24 +690,21 @@
       "web_tweets_scanned": 100
     },
     "photo_thumbnails": {
-      "attempted": 17,
-      "cache_hits": 2,
+      "cache_hits": 1,
       "cost_estimate_usd": 0.0,
-      "extracted": 17,
       "extractor_version": "photo-thumbnail-v1",
-      "generated_at": "2026-06-20T22:29:01Z",
-      "intra_run_dedup": 8,
+      "generated_at": "2026-06-20T23:38:56Z",
       "row_count": 16576,
       "rows": 16576,
       "status_counts": {
         "ok": 16576
       },
-      "status_ok": 17,
       "thumbnails": 16576
     },
     "transcripts": {
+      "cache_hits": 211,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-20T22:29:40Z",
+      "generated_at": "2026-06-20T23:39:03Z",
       "row_count": 3698,
       "rows": 3698,
       "status_counts": {
