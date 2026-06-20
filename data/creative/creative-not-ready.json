@@ -1,15 +1,11 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-06-20T22:25:37Z",
-    "source_commit": "37a78c4e8",
-    "item_count": 69,
+    "generated_at": "2026-06-20T22:37:45Z",
+    "source_commit": "eb754475",
+    "item_count": 67,
     "blocker_counts": {
-      "missing genuine visual description": 67,
-      "missing archived media asset": 20,
-      "missing photo OCR": 20,
-      "missing photo thumbnail": 20,
-      "missing complete OCR for extracted keyframes": 8
+      "missing genuine visual description": 67
     }
   },
   "items": [
@@ -36,10 +32,17 @@
       ],
       "tags": [
         "action:deportation",
+        "agency:ICEgov",
         "audio:has-audio",
+        "crime:child",
+        "crime:child-sexual",
+        "crime:sexual",
+        "crime:sodomy",
         "crime:trafficking",
+        "format:statistics",
         "media-status:archived",
         "media-status:needs-vision",
+        "media-status:ocr-done",
         "media-status:transcribed",
         "media:video",
         "slogan:worst",
@@ -60,7 +63,6 @@
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing complete OCR for extracted keyframes",
               "missing genuine visual description"
             ],
             "checks": {
@@ -69,7 +71,7 @@
               "keyframes": true,
               "keyframe_count": 5,
               "thumbnail": true,
-              "ocr": false,
+              "ocr": true,
               "audio_analysis": true,
               "has_audio": true,
               "transcript": true
@@ -84,9 +86,11 @@
               }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 5
+              },
+              "complete_row_count": 5,
+              "text": "4 1 1 1 2 0 117 194 445 88 -1 5 1 1 1 2 1 117 228 84 46 96.915817 ast 5 1 1 1 2 2 220 225 190 57 96.915817 week, 5 1 1 1 2 3 434 194 128 80 93.925079 ICE 4 1 1 1 3 0 67 306 410 53 -1 5 1 1 1 3 1 67 306 323 53 95.962212 continued 5 1 1 1 3 2 412 314 65 45 96.754036 to 4 1 1 1 4 0 67 391 525 66 -1 5 1 1 1 4 1 67 399 247 58 96.453011 capture 5 1 1 1 4 2 335 391 257 53 96.376862 criminal 4 1 1 1 5 0 68 477 402 66 -1 5 1 1 1 5 1 68 473 189 75 96.400879 illegal 5 1 1 1 5 2 282 473 188 75 95.372574 aliens 4 1 1 1 6 0 67 565 482 50 -1 5 1 1 1 6 1 67 578 208 37 95.688698 across 5 1 1 1 6 2 295 566 105 49 95.688698 the 5 1 1 1 6 3 424 565 125 50 95.162369 U.S. 4 1 1 1 7 0 117 668 113 32 -1 5 1 1 1 7 1 117 668 113 32 15.174957 —-_\n\n. -< ites\n\n{ =~ om POSSESSION OF CHILD PORNOGRAPHY es\n\nco > § >. a j ORAL COPULATION WITH A MINOR\n\n‘ , ‘ c 5 1 1 1 3 3 391 286 32 117 0.000000 : 5 1 1 1 3 4 493 382 10 32 36.540398 4 1 1 1 4 0 135 431 251 49 -1 5 1 1 1 4 1 135 432 65 48 5.165749 to 5 1 1 1 4 2 377 431 9 17 9.828537 ; 4 1 1 1 5 0 131 464 277 25 -1 5 1 1 1 5 1 131 477 7 12 9.735756 A 5 1 1 1 5 2 254 478 2 2 73.912498 f 5 1 1 1 5 3 395 464 13 16 86.801735 t 4 1 1 1 6 0 198 501 220 22 -1 5 1 1 1 6 1 198 501 58 22 39.803253 4 5 1 1 1 6 2 415 504 3 3 57.678719 : 4 1 1 1 7 0 98 607 445 23 -1 5 1 1 1 7 1 98 607 119 23 94.499405 SEXUAL 5 1 1 1 7 2 225 607 103 23 94.499405 ABUSE 5 1 1 1 7 3 337 608 64 22 96.418015 AND 5 1 1 1 7 4 411 607 132 23 96.521599 SODOMY 4 1 1 1 8 0 198 641 304 24 -1 5 1 1 1 8 1 198 656 2 8 92.965553 q 5 1 1 1 8 2 245 642 18 12 20.873734 ™ 5 1 1 1 8 3 371 641 29 18 23.508553 i 5 1 1 1 8 4 420 658 2 4 34.943840 d 5 1 1 1 8 5 492 648 4 24 30.556007 ."
             },
             "keyframes": {
               "status": "ok",
@@ -111,7 +115,6 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing complete OCR for extracted keyframes",
           "missing genuine visual description"
         ],
         "media_count": 1
@@ -173,9 +176,11 @@
       "tags": [
         "action:deportation",
         "audio:has-audio",
+        "crime:firearm",
         "crime:trafficking",
         "media-status:archived",
         "media-status:needs-vision",
+        "media-status:ocr-done",
         "media-status:transcribed",
         "media:video",
         "slogan:worst",
@@ -196,7 +201,6 @@
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing complete OCR for extracted keyframes",
               "missing genuine visual description"
             ],
             "checks": {
@@ -205,7 +209,7 @@
               "keyframes": true,
               "keyframe_count": 5,
               "thumbnail": true,
-              "ocr": false,
+              "ocr": true,
               "audio_analysis": true,
               "has_audio": true,
               "transcript": true
@@ -220,9 +224,11 @@
               }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 5
+              },
+              "complete_row_count": 5,
+              "text": "' = POLICE x @ 3\n\n= ey ) 7e ; . ao» A ) SS j / POSSESSION OF A FIREARM BY A FELON . Ae\n\n- “| t } —— 4 all X ly J : & » -t —— Oz hi — . Sac r\n\nZB\n\nee + ae —~ ‘tty —_— ."
             },
             "keyframes": {
               "status": "ok",
@@ -247,7 +253,6 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing complete OCR for extracted keyframes",
           "missing genuine visual description"
         ],
         "media_count": 1
@@ -286,6 +291,152 @@
       ]
     },
     {
+      "id": "1902006143616000060:7_1902003212405841920",
+      "tweet_id": "1902006143616000060",
+      "posted_at": "2025-03-18T14:36:16.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1902006143616000060",
+      "tweet_text": "MAKING AMERICA SAFE AGAIN: @ICEgov is removing criminal illegal aliens, including rapists and murderers from America's streets. \n\nSecretary Noem's message is clear: If you come here and break our laws, we will find you and deport you. https://t.co/vxOSxbye2w",
+      "review_state": "candidate",
+      "inclusion_basis": "cruelty_taunting_enforcement",
+      "confidence": "high",
+      "score": 86,
+      "creative_forms": [
+        "advertisement"
+      ],
+      "subjects": [
+        "deportation"
+      ],
+      "tags": [
+        "action:deportation",
+        "agency:ICEgov",
+        "audio:has-audio",
+        "crime:homicide",
+        "crime:murder",
+        "crime:trafficking",
+        "genre:advertisement",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "slogan:criminal-illegal-alien",
+        "slogan:illegal-alien",
+        "theme:criminal",
+        "theme:directive",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "7_1902003212405841920",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0002/7_1902003212405841920.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/2ab6c019e91bbae05956ef601ea3ccb9506e15ea99b551a598d67b2265abf1a6.jpg",
+          "sha256": "2ab6c019e91bbae05956ef601ea3ccb9506e15ea99b551a598d67b2265abf1a6",
+          "duration_sec": 81.666,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing genuine visual description"
+            ],
+            "checks": {
+              "archived": true,
+              "description": false,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "metadata-placeholder",
+              "text": "video; 1080x1350; 81.7s; 5.82 MiB; archived; tweet context: MAKING AMERICA SAFE AGAIN: @ICEgov is removing criminal illegal aliens, including rapists and murderers from America's streets. Secretary Noem's message is clear: If you come here and break our laws, we will find you and deport you. https://t.co/vxOSxbye2w; source URL: https://video.twimg.com/ext_tw_video/1902003212405841920/pu/vid/avc1/720x900/2-cgVcuPWH3VRJ8c.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/7_1902003212405841920.mp4; needs OCR, transcript, or frame-level vision before content claims. MAKING AMERICA SAFE AGAIN: @ICEgov is removing criminal illegal aliens, including rapists and murderers from America's streets. Secretary Noem's message is clear: If you come here and break our laws, we will find you and deport you. https://t.co/vxOSxbye2w",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 5
+              },
+              "complete_row_count": 5,
+              "text": "©\n\n: \\ ¥ ji\n\nad a jn AGGRAVATED a\n\n- . 2\n\nfa ) jf 4 Se B ‘es : ; \\ . ‘va “Ain se . >. eo, % A. . ;"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 81.728,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 9,
+              "text": "President Trump has a clear message for those that are in our country illegally. Leave now. If you don't, we will find you, and we will deport you. You will never return. For too long, weak politicians left our borders wide open. They flooded our communities with drugs, human trafficking, and violent criminals. They put American lives at risk, while those days are over. America's borders are closed to law bringers. America welcomes those who respect our laws, because a strong nation is a safe nation."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing genuine visual description"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "video; 1080x1350; 81.7s; 5.82 MiB; archived; tweet context: MAKING AMERICA SAFE AGAIN: @ICEgov is removing criminal illegal aliens, including rapists and murderers from America's streets. Secretary Noem's message is clear: If you come here and break our laws, we will find you and deport you. https://t.co/vxOSxbye2w; source URL: https://video.twimg.com/ext_tw_video/1902003212405841920/pu/vid/avc1/720x900/2-cgVcuPWH3VRJ8c.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/7_1902003212405841920.mp4; needs OCR, transcript, or frame-level vision before content claims. MAKING AMERICA SAFE AGAIN: @ICEgov is removing criminal illegal aliens, including rapists and murderers from America's streets. Secretary Noem's message is clear: If you come here and break our laws, we will find you and deport you. https://t.co/vxOSxbye2w",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "explicit cruelty, taunt, or threat signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "cruelty:personalized-deportation-threat: we will find you",
+          "policy:self-deportation-ad: Leave now",
+          "produced video with preference signal",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 1203,
+        "retweets": 286,
+        "quotes": 19,
+        "views": 32595
+      },
+      "preference_score": 115,
+      "preference_categories": [
+        "cruelty:personalized-deportation-threat",
+        "medium:produced-video-with-preference-signal",
+        "policy:self-deportation-ad",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
       "id": "1909996874876019017:7_1909996811059671040",
       "tweet_id": "1909996874876019017",
       "posted_at": "2025-04-09T15:48:35.000Z",
@@ -317,6 +468,7 @@
         "genre:advertisement",
         "media-status:archived",
         "media-status:needs-vision",
+        "media-status:ocr-done",
         "media:video",
         "policy:border",
         "policy:cbp-home",
@@ -339,7 +491,6 @@
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing complete OCR for extracted keyframes",
               "missing genuine visual description"
             ],
             "checks": {
@@ -348,7 +499,7 @@
               "keyframes": true,
               "keyframe_count": 5,
               "thumbnail": true,
-              "ocr": false,
+              "ocr": true,
               "audio_analysis": true,
               "has_audio": true,
               "transcript": true
@@ -363,9 +514,12 @@
               }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 2,
+                "no-text": 3
+              },
+              "complete_row_count": 5,
+              "text": ", - mes “iy\n\n— S. jh -a ‘ q IS Cus ant Donte Protect Ss a j Up Ls ait i r — > — oh g x : » = . oy ; a Mn. ag ¢ Mi i A Z ‘ 2 ¢ Si ia. - = * : Say D <- noeiahe ati — ee oe S| ee “ a ie ae x pe ye 4 1 1 1 20 0 2 1115 385 23 -1 5 1 1 1 20 1 2 1126 40 10 10.833092 wee. 5 1 1 1 20 2 100 1115 8 23 20.183670 Ps 5 1 1 1 20 3 168 1127 18 4 0.000000 el, 5 1 1 1 20 4 353 1117 34 19 72.442467 wer"
             },
             "keyframes": {
               "status": "ok",
@@ -390,7 +544,6 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing complete OCR for extracted keyframes",
           "missing genuine visual description"
         ],
         "media_count": 1
@@ -557,145 +710,6 @@
       ]
     },
     {
-      "id": "1902006143616000060:7_1902003212405841920",
-      "tweet_id": "1902006143616000060",
-      "posted_at": "2025-03-18T14:36:16.000Z",
-      "era": "2025_plus",
-      "queue": "high_confidence",
-      "account": {
-        "handle": "DHSgov",
-        "category": "core",
-        "label": "Department of Homeland Security"
-      },
-      "tweet_url": "https://x.com/DHSgov/status/1902006143616000060",
-      "tweet_text": "MAKING AMERICA SAFE AGAIN: @ICEgov is removing criminal illegal aliens, including rapists and murderers from America's streets. \n\nSecretary Noem's message is clear: If you come here and break our laws, we will find you and deport you. https://t.co/vxOSxbye2w",
-      "review_state": "candidate",
-      "inclusion_basis": "cruelty_taunting_enforcement",
-      "confidence": "high",
-      "score": 86,
-      "creative_forms": [],
-      "subjects": [
-        "deportation"
-      ],
-      "tags": [
-        "action:deportation",
-        "agency:ICEgov",
-        "audio:has-audio",
-        "crime:homicide",
-        "crime:murder",
-        "crime:trafficking",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media-status:transcribed",
-        "media:video",
-        "slogan:criminal-illegal-alien",
-        "slogan:illegal-alien",
-        "theme:criminal",
-        "theme:directive",
-        "topic:immigration",
-        "video:medium"
-      ],
-      "media": [
-        {
-          "media_id": "7_1902003212405841920",
-          "type": "video",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0002/7_1902003212405841920.mp4",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/video/2ab6c019e91bbae05956ef601ea3ccb9506e15ea99b551a598d67b2265abf1a6.jpg",
-          "sha256": "2ab6c019e91bbae05956ef601ea3ccb9506e15ea99b551a598d67b2265abf1a6",
-          "duration_sec": 81.666,
-          "playable": true,
-          "readiness": {
-            "ready": false,
-            "blockers": [
-              "missing complete OCR for extracted keyframes",
-              "missing genuine visual description"
-            ],
-            "checks": {
-              "archived": true,
-              "description": false,
-              "keyframes": true,
-              "keyframe_count": 5,
-              "thumbnail": true,
-              "ocr": false,
-              "audio_analysis": true,
-              "has_audio": true,
-              "transcript": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "metadata-placeholder",
-              "text": "video; 1080x1350; 81.7s; 5.82 MiB; archived; tweet context: MAKING AMERICA SAFE AGAIN: @ICEgov is removing criminal illegal aliens, including rapists and murderers from America's streets. Secretary Noem's message is clear: If you come here and break our laws, we will find you and deport you. https://t.co/vxOSxbye2w; source URL: https://video.twimg.com/ext_tw_video/1902003212405841920/pu/vid/avc1/720x900/2-cgVcuPWH3VRJ8c.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/7_1902003212405841920.mp4; needs OCR, transcript, or frame-level vision before content claims. MAKING AMERICA SAFE AGAIN: @ICEgov is removing criminal illegal aliens, including rapists and murderers from America's streets. Secretary Noem's message is clear: If you come here and break our laws, we will find you and deport you. https://t.co/vxOSxbye2w",
-              "sidecar_statuses": {
-                "metadata-context": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
-            },
-            "keyframes": {
-              "status": "ok",
-              "frame_count": 5
-            },
-            "audio": {
-              "status": "ok",
-              "audio_stream_count": 1,
-              "duration_sec": 81.728,
-              "tags": [
-                "audio:has-audio"
-              ]
-            },
-            "transcript": {
-              "status": "ok",
-              "segment_count": 9,
-              "text": "President Trump has a clear message for those that are in our country illegally. Leave now. If you don't, we will find you, and we will deport you. You will never return. For too long, weak politicians left our borders wide open. They flooded our communities with drugs, human trafficking, and violent criminals. They put American lives at risk, while those days are over. America's borders are closed to law bringers. America welcomes those who respect our laws, because a strong nation is a safe nation."
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": false,
-        "blockers": [
-          "missing complete OCR for extracted keyframes",
-          "missing genuine visual description"
-        ],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "video; 1080x1350; 81.7s; 5.82 MiB; archived; tweet context: MAKING AMERICA SAFE AGAIN: @ICEgov is removing criminal illegal aliens, including rapists and murderers from America's streets. Secretary Noem's message is clear: If you come here and break our laws, we will find you and deport you. https://t.co/vxOSxbye2w; source URL: https://video.twimg.com/ext_tw_video/1902003212405841920/pu/vid/avc1/720x900/2-cgVcuPWH3VRJ8c.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0002/7_1902003212405841920.mp4; needs OCR, transcript, or frame-level vision before content claims. MAKING AMERICA SAFE AGAIN: @ICEgov is removing criminal illegal aliens, including rapists and murderers from America's streets. Secretary Noem's message is clear: If you come here and break our laws, we will find you and deport you. https://t.co/vxOSxbye2w",
-        "notable_text": "",
-        "reasons": [
-          "real enforcement/detainee subject signal",
-          "explicit cruelty, taunt, or threat signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ],
-        "preference_reasons": [
-          "cruelty:personalized-deportation-threat: we will find you",
-          "policy:self-deportation-ad: Leave now",
-          "enforcement/detainee subject plus preference signal"
-        ]
-      },
-      "engagement": {
-        "likes": 1203,
-        "retweets": 286,
-        "quotes": 19,
-        "views": 32595
-      },
-      "preference_score": 99,
-      "preference_categories": [
-        "cruelty:personalized-deportation-threat",
-        "policy:self-deportation-ad",
-        "subject:enforcement-linked"
-      ]
-    },
-    {
       "id": "1944074328527528219:3_1944074326732361728",
       "tweet_id": "1944074328527528219",
       "posted_at": "2025-07-12T16:40:13.000Z",
@@ -852,7 +866,10 @@
         "action:self-deportation",
         "agency:CBP",
         "agency:DHSgov",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "policy:cbp-home",
         "subject:cbp-home-app",
         "topic:immigration"
@@ -861,37 +878,38 @@
         {
           "media_id": "3_1937135633350184960",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1937135633350184960.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/1048b5cac63d732467ac0bf55e7d7129f545f626ba2e7efcda03aff74273aadf.jpg",
+          "sha256": "1048b5cac63d732467ac0bf55e7d7129f545f626ba2e7efcda03aff74273aadf",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 2917x3333; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/3BROZ7Fsfi; source URL: https://pbs.twimg.com/media/GuIWmFuW0AA-Ewd.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1937135633350184960.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/3BROZ7Fsfi",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "Stay in the U.S. illegally, and you face: Immediate deportation Fines up to $5,000 Jail time ®&) A lifetime ban"
             },
             "keyframes": {
               "status": null,
@@ -913,37 +931,38 @@
         {
           "media_id": "3_1937135633345966081",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1937135633345966081.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/c5b8b0844b964bb0c593b1e48d9a493ad737e4f3dbed4a47dc57a3ddc8c9cc76.jpg",
+          "sha256": "c5b8b0844b964bb0c593b1e48d9a493ad737e4f3dbed4a47dc57a3ddc8c9cc76",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 2917x3333; 0.14 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/3BROZ7Fsfi; source URL: https://pbs.twimg.com/media/GuIWmFtWcAEXVjh.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1937135633345966081.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/3BROZ7Fsfi",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "9 Use the CBP Home app Nei to begin planning your ee departure and transition a back to your home country fetes am balan or another location where you have legal status. : od a By ig Q 1 PLAN YOUR"
             },
             "keyframes": {
               "status": null,
@@ -966,15 +985,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 2
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 2917x3333; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/3BROZ7Fsfi; source URL: https://pbs.twimg.com/media/GuIWmFuW0AA-Ewd.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1937135633350184960.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/3BROZ7Fsfi\n\nphoto; 2917x3333; 0.14 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/3BROZ7Fsfi; source URL: https://pbs.twimg.com/media/GuIWmFtWcAEXVjh.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1937135633345966081.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/3BROZ7Fsfi",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -1552,7 +1568,11 @@
         "action:self-deportation",
         "agency:CBP",
         "agency:DHSgov",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "policy:border",
         "policy:cbp-home",
         "subject:cbp-home-app",
         "topic:immigration"
@@ -1561,37 +1581,38 @@
         {
           "media_id": "3_1952354001644605440",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1952354001644605440.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/dfcde78e875a67be0a8b69b3a70fb00fd25d2e555a06751b2e126adc88fd7410.jpg",
+          "sha256": "dfcde78e875a67be0a8b69b3a70fb00fd25d2e555a06751b2e126adc88fd7410",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 4000x2250; 0.09 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh http://go.dhs.gov/wqB https://t.co/lcTKpwi8e5; source URL: https://pbs.twimg.com/media/GxgnntfW0AANNO5.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1952354001644605440.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh http://go.dhs.gov/wqB https://t.co/lcTKpwi8e5",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "U.S. Customs and = Border Protection APP Liew-e A — @ App Store CBP Home Aor 3 UD omeApp a The CBP Home app is your chance to Home leave voluntarily if you're in the country —— >» illegally. Use it now—or you will be found and deported with zero chance Panes of returning. cep"
             },
             "keyframes": {
               "status": null,
@@ -1614,15 +1635,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 4000x2250; 0.09 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh http://go.dhs.gov/wqB https://t.co/lcTKpwi8e5; source URL: https://pbs.twimg.com/media/GxgnntfW0AANNO5.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1952354001644605440.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh http://go.dhs.gov/wqB https://t.co/lcTKpwi8e5",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -1676,10 +1694,14 @@
         "immigration-language"
       ],
       "tags": [
+        "action:deportation",
         "action:self-deportation",
         "agency:CBP",
         "agency:DHSgov",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "policy:cbp-home",
         "subject:cbp-home-app",
         "theme:directive",
@@ -1689,37 +1711,38 @@
         {
           "media_id": "3_1923076265344483328",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1923076265344483328.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/faa66bcd0e1e391bd3edabcd044de2d4230cfa860e9b7bb864f49182bede6ca9.jpg",
+          "sha256": "faa66bcd0e1e391bd3edabcd044de2d4230cfa860e9b7bb864f49182bede6ca9",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 579x660; 0.05 MiB; archived; tweet context: Self-deport now or face consequences. The CBP Home app is your last chance to leave the U.S. legally. CBP Home App: https://go.dhs.gov/wqh https://t.co/6bi1REBUwr; source URL: https://pbs.twimg.com/media/GrAjrKfXwAAVu0D.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1923076265344483328.jpg; needs OCR, transcript, or frame-level vision before content claims. Self-deport now or face consequences. The CBP Home app is your last chance to leave the U.S. legally. CBP Home App: https://go.dhs.gov/wqh https://t.co/6bi1REBUwr",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "GD) tScsoren Stay in the U.S. illegally, and you face: Immediate deportation ‘$) Fines up to $5,000 Jail time A lifetime ban"
             },
             "keyframes": {
               "status": null,
@@ -1741,37 +1764,38 @@
         {
           "media_id": "3_1923076265629650944",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1923076265629650944.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/34e190b6f55e08b01d941c8ae4679c4157c8b38bcaf9d65f7b206dcd90266cfd.jpg",
+          "sha256": "34e190b6f55e08b01d941c8ae4679c4157c8b38bcaf9d65f7b206dcd90266cfd",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 579x660; 0.07 MiB; archived; tweet context: Self-deport now or face consequences. The CBP Home app is your last chance to leave the U.S. legally. CBP Home App: https://go.dhs.gov/wqh https://t.co/6bi1REBUwr; source URL: https://pbs.twimg.com/media/GrAjrLjXEAAFC8Z.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1923076265629650944.jpg; needs OCR, transcript, or frame-level vision before content claims. Self-deport now or face consequences. The CBP Home app is your last chance to leave the U.S. legally. CBP Home App: https://go.dhs.gov/wqh https://t.co/6bi1REBUwr",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "5 a .. Use the CBP Home app a to begin planning your idcone C8? Home departure and transition back to your home country == or another location where you have legal status. aay) a D [ aad PLAN YOUR"
             },
             "keyframes": {
               "status": null,
@@ -1794,15 +1818,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 2
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 579x660; 0.05 MiB; archived; tweet context: Self-deport now or face consequences. The CBP Home app is your last chance to leave the U.S. legally. CBP Home App: https://go.dhs.gov/wqh https://t.co/6bi1REBUwr; source URL: https://pbs.twimg.com/media/GrAjrKfXwAAVu0D.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1923076265344483328.jpg; needs OCR, transcript, or frame-level vision before content claims. Self-deport now or face consequences. The CBP Home app is your last chance to leave the U.S. legally. CBP Home App: https://go.dhs.gov/wqh https://t.co/6bi1REBUwr\n\nphoto; 579x660; 0.07 MiB; archived; tweet context: Self-deport now or face consequences. The CBP Home app is your last chance to leave the U.S. legally. CBP Home App: https://go.dhs.gov/wqh https://t.co/6bi1REBUwr; source URL: https://pbs.twimg.com/media/GrAjrLjXEAAFC8Z.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1923076265629650944.jpg; needs OCR, transcript, or frame-level vision before content claims. Self-deport now or face consequences. The CBP Home app is your last chance to leave the U.S. legally. CBP Home App: https://go.dhs.gov/wqh https://t.co/6bi1REBUwr",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -3069,7 +3090,10 @@
         "action:self-deportation",
         "agency:CBP",
         "agency:DHSgov",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "policy:cbp-home",
         "subject:cbp-home-app",
         "topic:immigration"
@@ -3078,37 +3102,38 @@
         {
           "media_id": "3_1950904524291379200",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1950904524291379200.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/1048b5cac63d732467ac0bf55e7d7129f545f626ba2e7efcda03aff74273aadf.jpg",
+          "sha256": "1048b5cac63d732467ac0bf55e7d7129f545f626ba2e7efcda03aff74273aadf",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 2917x3333; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/zPtioHC9My; source URL: https://pbs.twimg.com/media/GxMBVBkXEAAQa_B.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1950904524291379200.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/zPtioHC9My",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "Stay in the U.S. illegally, and you face: Immediate deportation Fines up to $5,000 Jail time ®&) A lifetime ban"
             },
             "keyframes": {
               "status": null,
@@ -3130,37 +3155,38 @@
         {
           "media_id": "3_1950904524375302147",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1950904524375302147.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/c5b8b0844b964bb0c593b1e48d9a493ad737e4f3dbed4a47dc57a3ddc8c9cc76.jpg",
+          "sha256": "c5b8b0844b964bb0c593b1e48d9a493ad737e4f3dbed4a47dc57a3ddc8c9cc76",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 2917x3333; 0.14 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/zPtioHC9My; source URL: https://pbs.twimg.com/media/GxMBVB4XoAMisuy.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1950904524375302147.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/zPtioHC9My",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "9 Use the CBP Home app Nei to begin planning your ee departure and transition a back to your home country fetes am balan or another location where you have legal status. : od a By ig Q 1 PLAN YOUR"
             },
             "keyframes": {
               "status": null,
@@ -3183,15 +3209,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 2
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 2917x3333; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/zPtioHC9My; source URL: https://pbs.twimg.com/media/GxMBVBkXEAAQa_B.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1950904524291379200.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/zPtioHC9My\n\nphoto; 2917x3333; 0.14 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/zPtioHC9My; source URL: https://pbs.twimg.com/media/GxMBVB4XoAMisuy.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1950904524375302147.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/zPtioHC9My",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -3636,7 +3659,11 @@
         "action:self-deportation",
         "agency:CBP",
         "agency:DHSgov",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "policy:border",
         "policy:cbp-home",
         "subject:cbp-home-app",
         "topic:immigration"
@@ -3645,37 +3672,38 @@
         {
           "media_id": "3_1946026718893867008",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1946026718893867008.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/dfcde78e875a67be0a8b69b3a70fb00fd25d2e555a06751b2e126adc88fd7410.jpg",
+          "sha256": "dfcde78e875a67be0a8b69b3a70fb00fd25d2e555a06751b2e126adc88fd7410",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 4000x2250; 0.09 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/lDYxJA62xn; source URL: https://pbs.twimg.com/media/GwGs_YcWgAAfhXx.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1946026718893867008.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/lDYxJA62xn",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "U.S. Customs and = Border Protection APP Liew-e A — @ App Store CBP Home Aor 3 UD omeApp a The CBP Home app is your chance to Home leave voluntarily if you're in the country —— >» illegally. Use it now—or you will be found and deported with zero chance Panes of returning. cep"
             },
             "keyframes": {
               "status": null,
@@ -3698,15 +3726,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 4000x2250; 0.09 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/lDYxJA62xn; source URL: https://pbs.twimg.com/media/GwGs_YcWgAAfhXx.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1946026718893867008.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/lDYxJA62xn",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -3763,7 +3788,10 @@
         "action:self-deportation",
         "agency:CBP",
         "agency:DHSgov",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "policy:cbp-home",
         "subject:cbp-home-app",
         "topic:immigration"
@@ -3772,37 +3800,38 @@
         {
           "media_id": "3_1909689818168074240",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1909689818168074240.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/120a33f84f343f9916f044d2ddba433e9c74bb5426255a8547e3257b9e43218b.jpg",
+          "sha256": "120a33f84f343f9916f044d2ddba433e9c74bb5426255a8547e3257b9e43218b",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 1792x2048; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/MMReYoBuFn; source URL: https://pbs.twimg.com/media/GoCUxYsWoAAguBP.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1909689818168074240.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/MMReYoBuFn",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "oe Stay in the U.S. illegally, and you face: Immediate deportation Fines up to $5,000 Jail time (®) A lifetime ban"
             },
             "keyframes": {
               "status": null,
@@ -3824,37 +3853,38 @@
         {
           "media_id": "3_1909689818147119104",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1909689818147119104.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/f38bd462d18b7f5f5920a561e99703226766c9e6a43b2cbbf7db20d415949c5e.jpg",
+          "sha256": "f38bd462d18b7f5f5920a561e99703226766c9e6a43b2cbbf7db20d415949c5e",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 1792x2048; 0.14 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/MMReYoBuFn; source URL: https://pbs.twimg.com/media/GoCUxYnW4AAZUQK.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1909689818147119104.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/MMReYoBuFn",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "Use the CBP Home app a to begin planning your WeleonTs Ce Home departure and transition Asien oreo back to your home country or another location where you have legal status. (as, = cy ig /® ~=\"@ PLAN YOUR"
             },
             "keyframes": {
               "status": null,
@@ -3877,15 +3907,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 2
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 1792x2048; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/MMReYoBuFn; source URL: https://pbs.twimg.com/media/GoCUxYsWoAAguBP.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1909689818168074240.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/MMReYoBuFn\n\nphoto; 1792x2048; 0.14 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/MMReYoBuFn; source URL: https://pbs.twimg.com/media/GoCUxYnW4AAZUQK.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1909689818147119104.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/MMReYoBuFn",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -3942,7 +3969,10 @@
         "action:self-deportation",
         "agency:CBP",
         "agency:DHSgov",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "policy:cbp-home",
         "subject:cbp-home-app",
         "topic:immigration"
@@ -3951,37 +3981,38 @@
         {
           "media_id": "3_1943445252469043200",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1943445252469043200.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/1048b5cac63d732467ac0bf55e7d7129f545f626ba2e7efcda03aff74273aadf.jpg",
+          "sha256": "1048b5cac63d732467ac0bf55e7d7129f545f626ba2e7efcda03aff74273aadf",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 2917x3333; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/nxZVQSXTZ8; source URL: https://pbs.twimg.com/media/GviBKQnWMAAkzA_.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1943445252469043200.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/nxZVQSXTZ8",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "Stay in the U.S. illegally, and you face: Immediate deportation Fines up to $5,000 Jail time ®&) A lifetime ban"
             },
             "keyframes": {
               "status": null,
@@ -4003,37 +4034,38 @@
         {
           "media_id": "3_1943445252699824128",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1943445252699824128.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/c5b8b0844b964bb0c593b1e48d9a493ad737e4f3dbed4a47dc57a3ddc8c9cc76.jpg",
+          "sha256": "c5b8b0844b964bb0c593b1e48d9a493ad737e4f3dbed4a47dc57a3ddc8c9cc76",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 2917x3333; 0.14 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/nxZVQSXTZ8; source URL: https://pbs.twimg.com/media/GviBKReXoAAJrqY.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1943445252699824128.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/nxZVQSXTZ8",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "9 Use the CBP Home app Nei to begin planning your ee departure and transition a back to your home country fetes am balan or another location where you have legal status. : od a By ig Q 1 PLAN YOUR"
             },
             "keyframes": {
               "status": null,
@@ -4056,15 +4088,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 2
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 2917x3333; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/nxZVQSXTZ8; source URL: https://pbs.twimg.com/media/GviBKQnWMAAkzA_.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1943445252469043200.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/nxZVQSXTZ8\n\nphoto; 2917x3333; 0.14 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/nxZVQSXTZ8; source URL: https://pbs.twimg.com/media/GviBKReXoAAJrqY.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1943445252699824128.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/nxZVQSXTZ8",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -4121,7 +4150,11 @@
         "action:self-deportation",
         "agency:CBP",
         "agency:DHSgov",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "policy:border",
         "policy:cbp-home",
         "subject:cbp-home-app",
         "topic:immigration"
@@ -4130,37 +4163,38 @@
         {
           "media_id": "3_1938236313213259777",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1938236313213259777.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/dfcde78e875a67be0a8b69b3a70fb00fd25d2e555a06751b2e126adc88fd7410.jpg",
+          "sha256": "dfcde78e875a67be0a8b69b3a70fb00fd25d2e555a06751b2e126adc88fd7410",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 4000x2250; 0.09 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh http://go.dhs.gov/wqB https://t.co/VCYiSd0cKO; source URL: https://pbs.twimg.com/media/GuX_qFvW0AEYKme.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1938236313213259777.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh http://go.dhs.gov/wqB https://t.co/VCYiSd0cKO",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "U.S. Customs and = Border Protection APP Liew-e A — @ App Store CBP Home Aor 3 UD omeApp a The CBP Home app is your chance to Home leave voluntarily if you're in the country —— >» illegally. Use it now—or you will be found and deported with zero chance Panes of returning. cep"
             },
             "keyframes": {
               "status": null,
@@ -4183,15 +4217,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 4000x2250; 0.09 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh http://go.dhs.gov/wqB https://t.co/VCYiSd0cKO; source URL: https://pbs.twimg.com/media/GuX_qFvW0AEYKme.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1938236313213259777.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh http://go.dhs.gov/wqB https://t.co/VCYiSd0cKO",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -4248,7 +4279,10 @@
         "action:self-deportation",
         "agency:CBP",
         "agency:DHSgov",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "policy:cbp-home",
         "subject:cbp-home-app",
         "topic:immigration"
@@ -4257,37 +4291,38 @@
         {
           "media_id": "3_1928149543939432448",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1928149543939432448.png",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/57facf97c38994a16887a4c01b658d6f62368ac33be5686f4be93309cd3e91a8.jpg",
+          "sha256": "57facf97c38994a16887a4c01b658d6f62368ac33be5686f4be93309cd3e91a8",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 583x660; 0.12 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/SoCXA7XhdC; source URL: https://pbs.twimg.com/media/GsIpy2BXYAAz0wC.png; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1928149543939432448.png; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/SoCXA7XhdC",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "©) woven Stay in the U.S. illegally, and you face: Immediate deportation Fines up to $5,000 Jail time A lifetime ban"
             },
             "keyframes": {
               "status": null,
@@ -4309,37 +4344,38 @@
         {
           "media_id": "3_1928149544044285953",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1928149544044285953.png",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/70802994014e003969afd97cf1020a3df40aa96e1cd8caf4bd2804129c0c94f6.jpg",
+          "sha256": "70802994014e003969afd97cf1020a3df40aa96e1cd8caf4bd2804129c0c94f6",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 583x660; 0.27 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/SoCXA7XhdC; source URL: https://pbs.twimg.com/media/GsIpy2aXUAE92Fc.png; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1928149544044285953.png; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/SoCXA7XhdC",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": ". Use the CBP Home app e a to begin planning your wasene CoP Heme departure and transition back to your home country eaaperoreed or another location where you have legal status. (Sey) ee] SST ) ¢ » 2 1 PLAN YOUR"
             },
             "keyframes": {
               "status": null,
@@ -4362,15 +4398,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 2
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 583x660; 0.12 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/SoCXA7XhdC; source URL: https://pbs.twimg.com/media/GsIpy2BXYAAz0wC.png; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1928149543939432448.png; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/SoCXA7XhdC\n\nphoto; 583x660; 0.27 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/SoCXA7XhdC; source URL: https://pbs.twimg.com/media/GsIpy2aXUAE92Fc.png; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_1928149544044285953.png; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/SoCXA7XhdC",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -4607,7 +4640,10 @@
         "action:deportation",
         "action:self-deportation",
         "agency:CBP",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "policy:cbp-home",
         "subject:cbp-home-app",
         "topic:immigration"
@@ -4616,37 +4652,38 @@
         {
           "media_id": "3_1994390898877124608",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1994390898877124608.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/1048b5cac63d732467ac0bf55e7d7129f545f626ba2e7efcda03aff74273aadf.jpg",
+          "sha256": "1048b5cac63d732467ac0bf55e7d7129f545f626ba2e7efcda03aff74273aadf",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 2917x3333; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. https://ow.ly/OHOa50WxiWz https://t.co/bCjKXqs51p; source URL: https://pbs.twimg.com/media/G61_9K7X0AA0Vsd.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1994390898877124608.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. https://ow.ly/OHOa50WxiWz https://t.co/bCjKXqs51p",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "Stay in the U.S. illegally, and you face: Immediate deportation Fines up to $5,000 Jail time ®&) A lifetime ban"
             },
             "keyframes": {
               "status": null,
@@ -4669,15 +4706,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 2917x3333; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. https://ow.ly/OHOa50WxiWz https://t.co/bCjKXqs51p; source URL: https://pbs.twimg.com/media/G61_9K7X0AA0Vsd.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1994390898877124608.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. https://ow.ly/OHOa50WxiWz https://t.co/bCjKXqs51p",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -4734,7 +4768,10 @@
         "action:self-deportation",
         "agency:CBP",
         "agency:DHSgov",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "policy:cbp-home",
         "subject:cbp-home-app",
         "topic:immigration"
@@ -4743,37 +4780,38 @@
         {
           "media_id": "3_1908867035066515456",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1908867035066515456.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/e7e5c020cf7469a218456ce1207f5b0ec0236d61e1e59e93b078516888d78764.jpg",
+          "sha256": "e7e5c020cf7469a218456ce1207f5b0ec0236d61e1e59e93b078516888d78764",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 1792x2048; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/3a7jFNz43Z; source URL: https://pbs.twimg.com/media/Gn2odGyXwAAU9YJ.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1908867035066515456.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/3a7jFNz43Z",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "© sovee, Stay in the U.S. illegally, and you face: Immediate deportation ) Fines up to $5,000 x Jail time (®) A lifetime ban"
             },
             "keyframes": {
               "status": null,
@@ -4795,37 +4833,38 @@
         {
           "media_id": "3_1908867035045462016",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1908867035045462016.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/2ff7cb5667e94cb466ade1f8e2b786b73d5041c5bc5e30e78e7d61bd52a9e192.jpg",
+          "sha256": "2ff7cb5667e94cb466ade1f8e2b786b73d5041c5bc5e30e78e7d61bd52a9e192",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 1792x2048; 0.14 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/3a7jFNz43Z; source URL: https://pbs.twimg.com/media/Gn2odGtWgAAQMN3.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1908867035045462016.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/3a7jFNz43Z",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "Use the CBP Home app a to begin planning your elcome T CHP Heme departure and transition a back to your home country or another location where you have legal status. ae we kay Saag’ PLAN YOUR"
             },
             "keyframes": {
               "status": null,
@@ -4848,15 +4887,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 2
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 1792x2048; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/3a7jFNz43Z; source URL: https://pbs.twimg.com/media/Gn2odGyXwAAU9YJ.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1908867035066515456.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/3a7jFNz43Z\n\nphoto; 1792x2048; 0.14 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/3a7jFNz43Z; source URL: https://pbs.twimg.com/media/Gn2odGtWgAAQMN3.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1908867035045462016.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. CBP Home App: https://go.dhs.gov/wqh https://t.co/3a7jFNz43Z",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -4913,7 +4949,11 @@
         "action:self-deportation",
         "agency:CBP",
         "agency:DHSgov",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:photo",
         "policy:cbp-home",
         "subject:cbp-home-app",
         "topic:immigration"
@@ -4922,37 +4962,38 @@
         {
           "media_id": "3_1937483386219630592",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1937483386219630592.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/6fab0a81c95b36fedb34c077ebc630c4535f16c5f8fb9e7ef328192d60580790.jpg",
+          "sha256": "6fab0a81c95b36fedb34c077ebc630c4535f16c5f8fb9e7ef328192d60580790",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 4000x2250; 0.10 MiB; archived; alt text: CBP Home App; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh http://go.dhs.gov/wqB https://t.co/NQxpW1TWkD; source URL: https://pbs.twimg.com/media/GuNS3-HXkAAINzI.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1937483386219630592.jpg. CBP Home App The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh http://go.dhs.gov/wqB https://t.co/NQxpW1TWkD",
+              "sidecar_statuses": {
+                "metadata-alt": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "Use the CBP Home app Fight to begin planning your y departure and transition pea back to your home country — or another location where you have legal status. Tees PLAN YOUR"
             },
             "keyframes": {
               "status": null,
@@ -4975,15 +5016,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 4000x2250; 0.10 MiB; archived; alt text: CBP Home App; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh http://go.dhs.gov/wqB https://t.co/NQxpW1TWkD; source URL: https://pbs.twimg.com/media/GuNS3-HXkAAINzI.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1937483386219630592.jpg. CBP Home App The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh http://go.dhs.gov/wqB https://t.co/NQxpW1TWkD",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -5040,7 +5078,10 @@
         "action:self-deportation",
         "agency:CBP",
         "agency:DHSgov",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "policy:cbp-home",
         "subject:cbp-home-app",
         "topic:immigration"
@@ -5049,37 +5090,38 @@
         {
           "media_id": "3_1993303725742395392",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1993303725742395392.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/1048b5cac63d732467ac0bf55e7d7129f545f626ba2e7efcda03aff74273aadf.jpg",
+          "sha256": "1048b5cac63d732467ac0bf55e7d7129f545f626ba2e7efcda03aff74273aadf",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 2917x3333; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. https://go.dhs.gov/wqh https://t.co/uz7tWV46yg; source URL: https://pbs.twimg.com/media/G6mjLXZWkAAl4HG.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1993303725742395392.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. https://go.dhs.gov/wqh https://t.co/uz7tWV46yg",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "Stay in the U.S. illegally, and you face: Immediate deportation Fines up to $5,000 Jail time ®&) A lifetime ban"
             },
             "keyframes": {
               "status": null,
@@ -5102,15 +5144,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 2917x3333; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. https://go.dhs.gov/wqh https://t.co/uz7tWV46yg; source URL: https://pbs.twimg.com/media/G6mjLXZWkAAl4HG.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1993303725742395392.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. https://go.dhs.gov/wqh https://t.co/uz7tWV46yg",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -5167,7 +5206,11 @@
         "action:self-deportation",
         "agency:CBP",
         "agency:DHSgov",
-        "media-status:needs-ocr",
+        "agency:ICEgov",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "policy:cbp-home",
         "subject:cbp-home-app",
         "topic:immigration"
@@ -5176,37 +5219,38 @@
         {
           "media_id": "3_1941104919768862721",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1941104919768862721.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/b529e76fc5e50d5a6794463000de296b574159978b540d6b0d51c53a8a6b7150.jpg",
+          "sha256": "b529e76fc5e50d5a6794463000de296b574159978b540d6b0d51c53a8a6b7150",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 4000x2250; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/x3AtkIALQh; source URL: https://pbs.twimg.com/media/GvAwo96WEAEzB_s.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1941104919768862721.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/x3AtkIALQh",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "@O seeuz, LEAVE ON YOUR TERMS WITH BENEFITS CBP Home App Self-Deportation Assistance Program eI > VAN fof. Om iS» 4+) Take control of Financial and travel Be deprioritized for ICE your departure. documentation assistance detention and for those in need. enforcement actions."
             },
             "keyframes": {
               "status": null,
@@ -5229,15 +5273,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 4000x2250; 0.10 MiB; archived; tweet context: The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/x3AtkIALQh; source URL: https://pbs.twimg.com/media/GvAwo96WEAEzB_s.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1941104919768862721.jpg; needs OCR, transcript, or frame-level vision before content claims. The CBP Home app is your chance to leave voluntarily if you’re in the country illegally. Use it now—or you will be found and deported with zero chance of returning. http://go.dhs.gov/wqh https://t.co/x3AtkIALQh",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -5396,6 +5437,147 @@
       ]
     },
     {
+      "id": "2054677458192830876:13_2054677308624027649",
+      "tweet_id": "2054677458192830876",
+      "posted_at": "2026-05-13T21:37:34.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "CBPAMO",
+        "category": "core",
+        "label": "CBP Air and Marine Operations"
+      },
+      "tweet_url": "https://x.com/CBPAMO/status/2054677458192830876",
+      "tweet_text": "👀There is no two stepping across the border! The border is CLOSED to illegal entry. You will be caught, arrested and removed. #BorderSecurity. https://t.co/rDH2N8h7Eq",
+      "review_state": "candidate",
+      "inclusion_basis": "cruelty_taunting_enforcement",
+      "confidence": "high",
+      "score": 86,
+      "creative_forms": [
+        "advertisement",
+        "psa"
+      ],
+      "subjects": [
+        "detainees"
+      ],
+      "tags": [
+        "action:deportation",
+        "action:detention",
+        "agency:ICEgov",
+        "audio:has-audio",
+        "genre:advertisement",
+        "genre:psa",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "policy:border",
+        "topic:immigration",
+        "video:produced",
+        "video:short"
+      ],
+      "media": [
+        {
+          "media_id": "13_2054677308624027649",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBPAMO/13_2054677308624027649.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/b3e73cd3245894f4c1ec6459cf8ac696c9b0618b0bee530eb8dcf5735ddc38b8.jpg",
+          "sha256": "b3e73cd3245894f4c1ec6459cf8ac696c9b0618b0bee530eb8dcf5735ddc38b8",
+          "duration_sec": 16.5,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing genuine visual description"
+            ],
+            "checks": {
+              "archived": true,
+              "description": false,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "metadata-placeholder",
+              "text": "video; 720x1280; 16.5s; 4.62 MiB; archived; tweet context: 👀There is no two stepping across the border! The border is CLOSED to illegal entry. You will be caught, arrested and removed. #BorderSecurity. https://t.co/rDH2N8h7Eq; source URL: https://video.twimg.com/amplify_video/2054677308624027649/vid/avc1/720x1280/b7I3AVaanAoHU_gx.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-CBPAMO/13_2054677308624027649.mp4; needs OCR, transcript, or frame-level vision before content claims. 👀There is no two stepping across the border! The border is CLOSED to illegal entry. You will be caught, arrested and removed. #BorderSecurity. https://t.co/rDH2N8h7Eq",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 5
+              },
+              "complete_row_count": 5,
+              "text": "ee Re Sa Pt BS Gar te See See Pegs oe pa ne Sie eg AR Sey ‘353. Ree a. - 3 aS = ek, ee ae ry ee el Ley = = SRP = 5 aS oS SS La eS oe Se Se ee wee em Sn =? ra ee i » =. ae i= EE, eee Sees eae eee Pete Sac ee oy ver ae Sian Ba a gee Sater a i a Pu oe Sea Ss ee ete aa eras mee See eet ioe is Sostex AAs SU Pe eg il ic 7 ee Se de aie Det os Lee ee oy nee ities Seren wk ee ie ene ce Genes : b= ee 2 oe ae Ce i ee Le ae PSA Steg GES RG ge ee AY BE se ET eee 0 NR Re Cy ee ae Ogee We OG Ae Oe Pigs POS Re STINT cr eS... eA ae (ot. Rss OP pegged a Cag 2 £ Gt AA a, er, al, See Sone artenaaye We: eX pO EES eae at ogee SS 5 1 1 1 31 8 633 1102 5 3 53.084816 : 4 1 1 1 32 0 0 1114 445 24 -1 5 1 1 1 32 1 0 1120 35 18 13.277298 Pa 5 1 1 1 32 2 70 1122 19 16 31.121002 EN 5 1 1 1 32 3 105 1115 42 18 3.865463 hl» 5 1 1 1 32 4 161 1127 27 11 33.158318 Ee 5 1 1 1 32 5 200 1121 20 17 28.789406 ON 5 1 1 1 32 6 228 1110 29 28 41.918137 Rage 5 1 1 1 32 7 263 1110 14 28 19.660202 OL 5 1 1 1 32 8 287 1135 4 3 8.576401 iia. 5 1 1 1 32 9 345 1119 14 18 0.000000 S. 5 1 1 1 32 10 366 1127 2 2 0.000000 “ 5 1 1 1 32 11 373 1119 45 19 0.000000 Saepc 5 1 1 1 32 12 424 1114 21 22 0.000000 Sons\n\nOs aS = eS ea eee pag iS + AS Se ee es, a PES Sek. SUS, = =e es > Seeks Pee Se = Ss 5 1 1 1 6 3 256 565 66 26 42.507042 ae” 5 1 1 1 6 4 369 565 35 23 54.781174 = 5 1 1 1 6 5 501 545 135 33 29.606247 a 4 1 1 1 7 0 60 574 578 59 -1 5 1 1 1 7 1 60 598 15 35 59.644718 a. 5 1 1 1 7 2 148 594 37 23 45.509930 a 5 1 1 1 7 3 284 594 24 11 96.143433 = 5 1 1 1 7 4 416 577 99 23 12.468216 ee 4 1 1 1 8 0 5 594 635 45 -1 5 1 1 1 8 1 5 625 2 3 59.183525 = 5 1 1 1 8 2 65 613 111 26 13.750984 ene, 5 1 1 1 8 3 293 609 4 2 24.377563 . 5 1 1 1 8 4 381 615 26 4 55.764103 om, 5 1 1 1 8 5 434 603 21 11 31.910042 9. 5 1 1 1 8 6 633 594 7 5 19.434654 = 4 1 1 1 9 0 24 613 471 34 -1 5 1 1 1 9 1 24 639 17 8 74.841339 = 5 1 1 1 9 2 109 628 116 15 29.545959 ore. 5 1 1 1 9 3 382 618 43 8 20.578552 =? 5 1 1 1 9 4 480 613 15 7 73.117386 = 4 1 1 1 10 0 147 621 402 28 -1 5 1 1 1 10 1 147 641 2 2 6.760063 . 5 1 1 1 10 2 193 638 19 11 56.231915 te 5 1 1 1 10 3 255 634 49 7 22.716766 Sat 5 1 1 1 10 4 345 631 8 4 37.612007 4 5 1 1 1 10 5 451 621 98 17 21.585228 <> 4 1 1 1 11 0 26 637 613 31 -1 5 1 1 1 11 1 26 665 5 3 67.063759 a 5 1 1 1 11 2 120 663 47 19 17.507156 Sy 5 1 1 1 11 3 197 661 20 4 36.104084 ee 5 1 1 1 11 4 362 657 3 3 57.799080 3 5 1 1 1 11 5 442 637 83 17 34.769341 TORS 5 1 1 1 11 6 637 638 2 2 57.263302 ; 4 1 1 1 12 0 4 647 636 52 -1 5 1 1 1 12 1 4 672 46 27 23.217850 re 5 1 1 1 12 2 69 679 22 12 10.856888 Pe 5 1 1 1 12 3 154 675 10 8 29.982689 a 5 1 1 1 12 4 305 662 60 30 23.241585 ae 5 1 1 1 12 5 447 653 12 28 12.236435 ai 5 1 1 1 12 6 479 659 7 12 34.895020 3 5 1 1 1 12 7 597 647 43 15 54.766296 Bote 4 1 1 1 13 0 2 666 635 47 -1 5 1 1 1 13 1 2 685 10 28 9.485336 oy. 5 1 1 1 13 2 80 688 51 13 27.014465 ae. 5 1 1 1 13 3 161 687 4 4 55.824974 4 5 1 1 1 13 4 206 688 2 2 25.942413 . 5 1 1 1 13 5 296 684 64 7 36.324257 ae. 5 1 1 1 13 6 432 672 44 15 27.977097 oe 5 1 1 1 13 7 578 665 59 14 41.652863 er 4 1 1 1 14 0 15 709 613 50 -1 5 1 1 1 14 1 15 735 49 24 0.000000 SBR 5 1 1 1 14 2 109 730 122 30 38.910866 eggs 5 1 1 1 14 3 292 721 45 27 59.616371 BS 5 1 1 1 14 4 389 720 81 27 22.660233 sic 5 1 1 1 14 5 487 715 41 26 34.822426 ye 5 1 1 1 14 6 556 709 72 27 26.292252 ee: 4 1 1 1 15 0 120 744 493 33 -1 5 1 1 1 15 1 120 756 102 21 7.544182 Mi 5 1 1 1 15 2 342 744 73 24 26.420364 (ice 5 1 1 1 15 3 441 738 136 25 28.596275 cain, 5 1 1 1 15 4 490 733 27 39 26.403870 SS 5 1 1 1 15 5 536 737 103 26 12.608253 ET 4 1 1 1 16 0 3 753 631 46 -1 5 1 1 1 16 1 3 782 100 17 29.022720 pee 5 1 1 1 16 2 151 766 166 30 27.033089 Wena 5 1 1 1 16 3 439 760 55 19 17.647820 Pg 5 1 1 1 16 4 518 768 61 3 16.646179 aes 5 1 1 1 16 5 632 753 2 2 19.923264 ee 4 1 1 1 17 0 0 772 621 47 -1 5 1 1 1 17 1 0 802 43 16 4.624954 ME 5 1 1 1 17 2 44 794 173 25 20.274345 ee 5 1 1 1 17 3 233 786 71 22 18.412178 Ree 5 1 1 1 17 4 314 782 122 23 27.729370 Sag 5 1 1 1 17 5 458 776 47 22 9.013252 RET 5 1 1 1 17 6 579 772 42 19 9.949074 tee 4 1 1 1 18 0 2 789 636 47 -1 5 1 1 1 18 1 2 812 119 24 5.524223 ee 5 1 1 1 18 2 174 810 16 9 12.995041 i 5 1 1 1 18 3 206 799 47 34 20.688950 sant 5 1 1 1 18 4 268 790 125 37 7.090820 Foe 5 1 1 1 18 5 367 798 80 19 29.762329 be 5 1 1 1 18 6 481 795 53 13 33.470879 ee 5 1 1 1 18 7 566 792 30 8 13.701317 ea 5 1 1 1 18 8 608 789 30 6 23.742378 ee 4 1 1 1 19 0 22 809 617 38 -1 5 1 1 1 19 1 22 832 24 15 37.417023 ee 5 1 1 1 19 2 68 832 35 15 12.460060 ee 5 1 1 1 19 3 110 833 19 11 26.665123 OS 5 1 1 1 19 4 214 822 32 17 27.433136 Se 5 1 1 1 19 5 289 822 38 17 24.726906 ee 5 1 1 1 19 6 346 816 45 17 29.508011 ee 5 1 1 1 19 7 446 813 13 11 18.512329 ee 5 1 1 1 19 8 477 818 60 7 30.302086 RY 5 1 1 1 19 9 580 809 59 8 3.294769 goo 4 1 1 1 20 0 41 819 598 50 -1 5 1 1 1 20 1 41 850 2 2 17.087669 5 5 1 1 1 20 2 56 843 49 26 0.000000 aac 5 1 1 1 20 3 141 843 40 21 14.060326 aes 5 1 1 1 20 4 206 838 32 16 14.993698 EAS 5 1 1 1 20 5 254 832 99 31 3.656502 aia 5 1 1 1 20 6 364 832 55 14 0.000000 PEDO 5 1 1 1 20 7 430 815 65 35 0.000000 ERIN 5 1 1 1 20 8 508 830 8 11 12.728874 TR 5 1 1 1 20 9 564 819 75 19 0.000000 Rte 4 1 1 1 21 0 93 840 547 44 -1 5 1 1 1 21 1 42 861 76 21 17.592728 ieee 5 1 1 1 21 2 125 862 20 19 33.728531 ee 5 1 1 1 21 3 149 850 68 30 25.639175 ES 5 1 1 1 21 4 252 841 40 43 26.007858 RR 5 1 1 1 21 5 320 849 37 28 27.276886 ce 5 1 1 1 21 6 406 865 2 2 28.817093 Be 5 1 1 1 21 7 429 843 112 21 21.985641 ee 5 1 1 1 21 8 585 837 23 23 21.402100 nn 4 1 1 1 22 0 9 856 583 39 -1 5 1 1 1 22 1 9 886 36 9 0.000000 cect 5 1 1 1 22 2 74 882 19 11 35.939590 = 5 1 1 1 22 3 108 881 21 9 25.278519 BS 5 1 1 1 22 4 137 870 83 19 13.527687 BAe 5 1 1 1 22 5 228 872 20 13 26.643593 Pn 5 1 1 1 22 6 263 870 55 13 13.493530 Roa 5 1 1 1 22 7 329 865 16 28 21.799805 oi 5 1 1 1 22 8 435 863 43 12 16.211914 BBs 5 1 1 1 22 9 468 847 25 32 0.000000 Seas 5 1 1 1 22 10 524 847 14 32 17.814041 Tie 5 1 1 1 22 11 538 855 99 14 25.377365 EE 5 1 1 1 22 12 628 847 11 32 4.279778 ne 4 1 1 1 23 0 0 863 633 43 -1 5 1 1 1 23 1 0 882 227 24 7.592857 settee 5 1 1 1 23 2 206 873 26 37 27.396652 a Saleen ees ee 5 re oe es RACE eb ce Sa Ss ues Ge RE A ee a te ee Pe PRA Se ae Be EL eee Wh a Sa tS EB ROU ens ease 2 Rabe ot ae ie eae ie oe a a on rk gee OS pede aie i \\ PAG ae eR NRF eRe a4 : oe ee ae ie Zo 2 na ie Seat ae oe Re shin or ee ae ea Te en TNS ape Me Enna seas Bee ss me Re ey ak ae OS Ee EN hr eS AE PM St LN si er tht SAAS WLU Ge\n\nPS ae Ss SES pe — = ae * a Ne a. = Sa ee Sete SI eee = SSE te Sey n a eee SS —— = za ee = eae. = — ae mat a = — Je.\" = eS <—— = Ze EE o> — = wa Ax cael — = cae ae = 5 1 1 1 15 3 146 669 135 23 10.350937 ge 5 1 1 1 15 4 267 657 59 39 19.714920 tog 5 1 1 1 15 5 406 657 49 40 29.122299 cone 5 1 1 1 15 6 488 670 3 6 24.354393 eat 5 1 1 1 15 7 530 686 5 7 8.757553 at 5 1 1 1 15 8 568 690 3 1 14.912483 Se 4 1 1 1 16 0 4 683 625 34 -1 5 1 1 1 16 1 4 683 13 34 35.692856 fe 5 1 1 1 16 2 145 690 64 17 49.588589 — 5 1 1 1 16 3 305 691 32 16 11.518066 eS 5 1 1 1 16 4 449 688 10 15 54.736908 A 5 1 1 1 16 5 557 689 8 11 62.210815 é 5 1 1 1 16 6 626 702 3 3 39.786118 5 4 1 1 1 17 0 156 703 380 37 -1 5 1 1 1 17 1 0 710 238 24 29.652718 ee 5 1 1 1 17 2 450 703 185 37 30.371651 ae 4 1 1 1 18 0 32 718 608 44 -1 5 1 1 1 18 1 2 734 17 26 12.148788 FIT 5 1 1 1 18 2 76 732 21 30 13.708664 gg 5 1 1 1 18 3 113 735 24 23 30.702904 ere 5 1 1 1 18 4 150 736 47 24 15.477417 OY 5 1 1 1 18 5 235 742 28 9 28.817429 ele 5 1 1 1 18 6 462 718 110 40 19.568085 i 5 1 1 1 18 7 596 733 44 28 49.633698 a 4 1 1 1 19 0 4 780 573 26 -1 5 1 1 1 19 1 4 782 160 23 17.207260 Pee 5 1 1 1 19 2 286 780 291 26 41.479076 ee 5 1 1 1 19 3 506 767 34 45 23.657562 Le 4 1 1 1 20 0 19 799 494 32 -1 5 1 1 1 20 1 19 804 344 20 33.551498 ps 5 1 1 1 20 2 508 809 5 10 0.000000 ¢ 4 1 1 1 21 0 20 814 513 39 -1 5 1 1 1 21 1 20 814 13 25 9.993683 Bh 5 1 1 1 21 2 38 829 13 4 31.062225 5 5 1 1 1 21 3 89 823 35 19 27.523933 ae 5 1 1 1 21 4 162 837 8 5 0.000000 S. 5 1 1 1 21 5 191 827 11 6 27.134254 * 5 1 1 1 21 6 211 822 53 26 13.943771 2s 5 1 1 1 21 7 278 824 20 17 25.268738 ie 5 1 1 1 21 8 308 821 41 18 35.468597 cats 5 1 1 1 21 9 362 825 9 20 29.039909 9 5 1 1 1 21 10 393 824 52 29 0.000000 a 5 1 1 1 21 11 460 818 15 33 41.630356 hs 5 1 1 1 21 12 506 823 27 19 7.975891 pom 4 1 1 1 22 0 9 843 507 24 -1 5 1 1 1 22 1 9 847 12 12 0.000000 Sil 5 1 1 1 22 2 49 844 90 22 0.000000 hee 5 1 1 1 22 3 220 854 22 10 32.742241 7S 5 1 1 1 22 4 287 845 121 21 13.222153 te 5 1 1 1 22 5 427 850 5 5 43.758411 ae 5 1 1 1 22 6 466 843 50 24 19.989563 eat 4 1 1 1 23 0 23 852 522 29 -1 5 1 1 1 23 1 23 852 38 28 34.778259 ae 5 1 1 1 23 2 72 862 13 11 29.131767 a 5 1 1 1 23 3 144 852 23 29 50.241943 ony; 5 1 1 1 23 4 220 852 50 28 29.321411 Sant 5 1 1 1 23 5 272 864 170 11 0.000000 $a 5 1 1 1 23 6 500 852 13 28 34.397781 OF 5 1 1 1 23 7 513 860 32 15 42.576618 es 4 1 1 1 24 0 3 869 560 31 -1 5 1 1 1 24 1 3 871 364 29 19.807472 ee 5 1 1 1 24 2 484 873 2 3 27.048332 5 1 1 1 24 3 506 870 57 29 0.000000 eS, 4 1 1 1 25 0 1 893 570 32 -1 5 1 1 1 25 1 1 893 311 32 22.760002 ee 5 1 1 1 25 2 363 896 82 29 36.750336 ap 4 1 1 1 26 0 11 901 629 45 -1 5 1 1 1 26 1 11 922 47 22 23.898384 ie 5 1 1 1 26 2 71 901 125 45 33.921150 wes 5 1 1 1 26 3 209 919 158 26 5.588654 poe. 5 1 1 1 26 4 398 919 49 25 9.651154 SS 5 1 1 1 26 5 531 920 109 24 27.943848 Se 4 1 1 1 27 0 1 928 639 38 -1 5 1 1 1 27 1 1 941 160 25 44.332195 pe 5 1 1 1 27 2 184 936 93 21 20.682541 age 5 1 1 1 27 3 385 941 16 4 2.229759 2 5 1 1 1 27 4 477 928 27 38 47.944145 A 5 1 1 1 27 5 511 937 129 28 8.648338 aS 4 1 1 1 28 0 3 954 637 45 -1 5 1 1 1 28 1 3 963 170 29 6.931320 ee 5 1 1 1 28 2 182 954 115 45 37.868805 ae 5 1 1 1 28 3 401 961 239 34 27.401382 ‘fae 4 1 1 1 29 0 1 986 639 43 -1 5 1 1 1 29 1 1 991 58 28 28.552429 pte 5 1 1 1 29 2 80 986 39 38 9.915092 or, 5 1 1 1 29 3 156 991 43 38 42.145138 ee 5 1 1 1 29 4 212 982 25 51 0.958519 Te 5 1 1 1 29 5 271 996 60 13 16.386841 a 5 1 1 1 29 6 408 989 119 32 15.436218 eRe 5 1 1 1 29 7 555 988 85 29 36.137562 Sere 4 1 1 1 30 0 1 1018 583 34 -1 5 1 1 1 30 1 1 1018 123 29 21.413864 PE 5 1 1 1 30 2 142 1018 98 34 0.000000 pte. 5 1 1 1 30 3 267 1025 35 23 0.000000 2, 5 1 1 1 30 4 318 1019 31 25 18.199646 sz 5 1 1 1 30 5 360 1024 20 8 8.973610 op 5 1 1 1 30 6 391 1020 160 27 16.476578 eae 5 1 1 1 30 7 582 1031 2 2 0.000000 . 4 1 1 1 31 0 11 1063 543 26 -1 5 1 1 1 31 1 11 1065 125 22 19.758163 ee 5 1 1 1 31 2 147 1080 5 7 45.619884 PS 5 1 1 1 31 3 217 1081 38 7 3.520035 ee, 5 1 1 1 31 4 315 1082 6 6 0.000000 eae 5 1 1 1 31 5 415 1063 139 26 0.000000 pacer 5 1 1 1 31 6 580 1067 44 19 36.713390 abi 5 1 1 1 31 7 616 1052 11 42 39.865475 a 4 1 1 1 32 0 1 1068 639 61 -1 5 1 1 1 32 1 1 1084 70 26 11.417801 fh 5 1 1 1 32 2 97 1101 109 7 28.529877 eee 5 1 1 1 32 3 223 1072 101 38 25.691643 EE 5 1 1 1 32 4 356 1084 21 23 11.000221 eae 5 1 1 1 32 5 409 1070 95 41 41.216183 OS: 5 1 1 1 32 6 512 1068 81 43 14.111557 abs 5 1 1 1 32 7 601 1070 39 59 0.000000 p- 4 1 1 1 33 0 2 1097 624 31 -1 5 1 1 1 33 1 2 1108 74 18 3.339462 Serpe 5 1 1 1 33 2 140 1108 55 20 40.863701 i 5 1 1 1 33 3 271 1105 64 13 22.163666 A 5 1 1 1 33 4 363 1097 231 31 2.658737 IRR 5 1 1 1 33 5 501 1093 33 43 10.694717 aa 5 1 1 1 33 6 559 1093 40 43 19.873337 sey) 5 1 1 1 33 7 624 1120 2 3 25.355011 6 4 1 1 1 34 0 1 1117 639 21 -1 5 1 1 1 34 1 1 1126 17 9 12.971916 =) 5 1 1 1 34 2 27 1129 18 7 33.573242 57 5 1 1 1 34 3 63 1128 31 10 32.240585 in 5 1 1 1 34 4 143 1125 22 13 12.090683 ah 5 1 1 1 34 5 277 1132 2 4 12.570770 ,_ 5 1 1 1 34 6 306 1117 13 12 35.674240 ss 5 1 1 1 34 7 348 1123 70 15 47.381130 Se 5 1 1 1 34 8 472 1128 4 3 6.173019 o 5 1 1 1 34 9 529 1129 24 4 18.237144 SDS\n\nPe. (ie Boer ae ee eee pre = ees SY se mo ae SSeS See > eR eee aE Se =. aes Fy ge RS - ’ “ ik 32 % = 5 a ee 3 AS ae Memes Oe =, SB gti” SS = a eae Nae 5 9 = a Te : eee a Mig os aa Eee 2 oe = = a ee pis ee ve De eR ag ae Oe Ce ae Pence. a Riek eae Do or ge ey PE nf FO are ATG Bee PO BE te ERS AD EN eR EECA TA Borda eee REE ry Oe og Ae oe eI Tay ge oo ke ee rr GS SIRO ID URE ae GRE tan ame WUE A AGRE wath pe tee est deo ae a Dec OC Ge Aig SAME? AC me MB De a TAMALES PERG ee ig EHS AB, LEASE Olas TRE ROBO TAOS ME eh, GEIL USE DTN ee aM Es ee EAE tiga et a ea Ste clone em ar Rete Te a i ae Re Ca tae BGs LE IO LNT LED TT PAR Gar IBS CSL LGS ee ALE gO EN apa 8 EAA ter ene mata ONES tad a ae ae\n\npp ae Grae 2 » ate oe * <i 2s; ag Sige ee ——s bo ay —— = Pe 5 a ¥ Sa eas ix . ae SS, = = i a oe , . Ss Se pee = Te Aa ae af 2, aa : a = Epsosgie me ‘ine sa ae % SS = ee. e = = ee Ee ey a) ee = es =a Sf eadler ae = sage eee , a ae Uae ee eee SEN ES on ee es jae ee os i Fe ane ae Bae een oy Eatin ener Cig Ban ee oe he SE ae A Ai oe ae Sa gare Voges. Seat aie 3 REE Se ee Be 5. a ie aN 1 Eo ire eS oil, ol Ge Ve 5 phere ge COL ae a am a at De a RA ES ae a pe ee gi) ae bl ba Bo SP Sy ye eee 2 ae ay ke 7 it eRe ek Be ig pee Se ; “a eT GN nat eer: PRS paper RL Oe mt Rabe hay ene, Tr Se ee eu"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 16.555828,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 1,
+              "text": "Change from text to second-"
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing genuine visual description"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "video; 720x1280; 16.5s; 4.62 MiB; archived; tweet context: 👀There is no two stepping across the border! The border is CLOSED to illegal entry. You will be caught, arrested and removed. #BorderSecurity. https://t.co/rDH2N8h7Eq; source URL: https://video.twimg.com/amplify_video/2054677308624027649/vid/avc1/720x1280/b7I3AVaanAoHU_gx.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-CBPAMO/13_2054677308624027649.mp4; needs OCR, transcript, or frame-level vision before content claims. 👀There is no two stepping across the border! The border is CLOSED to illegal entry. You will be caught, arrested and removed. #BorderSecurity. https://t.co/rDH2N8h7Eq",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "explicit cruelty, taunt, or threat signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "cruelty:surveillance-taunt: 👀There is no two stepping across the border! The border is CLOSED to illegal",
+          "produced video with preference signal",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 1614,
+        "retweets": 234,
+        "quotes": 1,
+        "views": 22513
+      },
+      "preference_score": 85,
+      "preference_categories": [
+        "cruelty:surveillance-taunt",
+        "medium:produced-video-with-preference-signal",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
       "id": "2043826647581823422:3_2043826640526987264",
       "tweet_id": "2043826647581823422",
       "posted_at": "2026-04-13T23:00:19.000Z",
@@ -5412,7 +5594,9 @@
       "inclusion_basis": "wholly_creative_media",
       "confidence": "high",
       "score": 90,
-      "creative_forms": [],
+      "creative_forms": [
+        "advertisement"
+      ],
       "subjects": [
         "detainees"
       ],
@@ -5421,7 +5605,12 @@
         "action:detention",
         "agency:USMarshalsHQ",
         "country:Mexico",
-        "media-status:needs-ocr",
+        "genre:advertisement",
+        "legal:civil-lawsuit",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "origin:Mexico",
         "topic:immigration"
       ],
@@ -5429,37 +5618,38 @@
         {
           "media_id": "3_2043826640526987264",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_2043826640526987264.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/3066b36d8b7c825bb1ae15f775aede31d5da6b22e72205658a84ac36d12f1f69.jpg",
+          "sha256": "3066b36d8b7c825bb1ae15f775aede31d5da6b22e72205658a84ac36d12f1f69",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 3000x3000; 0.29 MiB; archived; tweet context: A suspected brutal killer arrested in Illinois! USBP agents in El Centro, CA, and the U.S. Marshals tracked down a Mexican national wanted for a horrific femicide in Mexico. The suspect is accused of strangling his victim and then decapitating her with a mach...; source URL: https://pbs.twimg.com/media/HF0hgDsXUAATjs5.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_2043826640526987264.jpg; needs OCR, transcript, or frame-level vision before content claims. A suspected brutal killer arrested in Illinois! USBP agents in El Centro, CA, and the U.S. Marshals tracked down a Mexican national wanted for a horrific femicide in Mexico. The suspect is accused of strangling his victim and then decapitating her with a machete before fleeing to the U.S. He’s now in U.S. Marshals custody, awaiting international extradition to face justice in Mexico. The U.S. is not a sanctuary for criminals- through relentless intelligence sharing and rapid tactical response, we will find you, hold you accountable, and ensure you are deported from our country.",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "wae & ye . A TE Sy” li, Mexico RE Viet a CN h ii} f : sgn ve ae : Ne ix se =e .@ ie, Ye] al g € a. - y a a Sty Dive!) /= Seat SWRA, aD) aie » ~) F- alli I ad Se J TRO, ot OR. o. a_- by “2: SL Ae aS ws < ae - « ft sch je = a ies 5 a > M"
             },
             "keyframes": {
               "status": null,
@@ -5482,15 +5672,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 3000x3000; 0.29 MiB; archived; tweet context: A suspected brutal killer arrested in Illinois! USBP agents in El Centro, CA, and the U.S. Marshals tracked down a Mexican national wanted for a horrific femicide in Mexico. The suspect is accused of strangling his victim and then decapitating her with a mach...; source URL: https://pbs.twimg.com/media/HF0hgDsXUAATjs5.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChief/3_2043826640526987264.jpg; needs OCR, transcript, or frame-level vision before content claims. A suspected brutal killer arrested in Illinois! USBP agents in El Centro, CA, and the U.S. Marshals tracked down a Mexican national wanted for a horrific femicide in Mexico. The suspect is accused of strangling his victim and then decapitating her with a machete before fleeing to the U.S. He’s now in U.S. Marshals custody, awaiting international extradition to face justice in Mexico. The U.S. is not a sanctuary for criminals- through relentless intelligence sharing and rapid tactical response, we will find you, hold you accountable, and ensure you are deported from our country.",
         "notable_text": "",
         "reasons": [
           "wholly creative media signal",
@@ -8116,397 +8303,6 @@
       ]
     },
     {
-      "id": "2052857823063629959:13_2052801538859417602",
-      "tweet_id": "2052857823063629959",
-      "posted_at": "2026-05-08T21:06:59.000Z",
-      "era": "2025_plus",
-      "queue": "high_confidence",
-      "account": {
-        "handle": "DHSgov",
-        "category": "core",
-        "label": "Department of Homeland Security"
-      },
-      "tweet_url": "https://x.com/DHSgov/status/2052857823063629959",
-      "tweet_text": "RT @DHSgov: NICE City. https://t.co/NJ5XLXanq9",
-      "review_state": "candidate",
-      "inclusion_basis": "cruelty_taunting_enforcement",
-      "confidence": "high",
-      "score": 86,
-      "creative_forms": [
-        "montage"
-      ],
-      "subjects": [],
-      "tags": [
-        "agency:DHSgov",
-        "audio:has-audio",
-        "format:retweet",
-        "media-status:archived",
-        "media-status:described",
-        "media-status:transcribed",
-        "media:video",
-        "review:screened-video",
-        "slogan:nice",
-        "topic:immigration",
-        "video:medium",
-        "video:produced"
-      ],
-      "media": [
-        {
-          "media_id": "13_2052801538859417602",
-          "type": "video",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_2052801538859417602.mp4",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/video/f9c651417ce5fbe21ccd111f267a9be80a28b87aff27ff8552664f1257d9b71f.jpg",
-          "sha256": "f9c651417ce5fbe21ccd111f267a9be80a28b87aff27ff8552664f1257d9b71f",
-          "duration_sec": 69.235,
-          "playable": true,
-          "readiness": {
-            "ready": false,
-            "blockers": [
-              "missing complete OCR for extracted keyframes"
-            ],
-            "checks": {
-              "archived": true,
-              "description": true,
-              "keyframes": true,
-              "keyframe_count": 5,
-              "thumbnail": true,
-              "ocr": false,
-              "audio_analysis": true,
-              "has_audio": true,
-              "transcript": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "opus-vision-review",
-              "text": "A repost of a produced vertical montage. One sampled frame shows two pink flamingos wading and feeding in shallow water beside green foliage. Another frame shows an officer in a tactical vest marked 'POLICE', with a holstered sidearm, standing close to a person whose face is blurred outside a storefront. The clip juxtaposes nature footage with enforcement footage.  [0:09] Two pink flamingos wade and feed in shallow water beside green plants.  [0:39] An officer in a 'POLICE' vest with a holstered sidearm stands close to a person whose face is blurred, outside a store.",
-              "sidecar_statuses": {
-                "manual-review": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
-            },
-            "keyframes": {
-              "status": "ok",
-              "frame_count": 5
-            },
-            "audio": {
-              "status": "ok",
-              "audio_stream_count": 1,
-              "duration_sec": 69.288345,
-              "tags": [
-                "audio:has-audio"
-              ]
-            },
-            "transcript": {
-              "status": "ok",
-              "segment_count": 1,
-              "text": "You"
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": false,
-        "blockers": [
-          "missing complete OCR for extracted keyframes"
-        ],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "A repost of a produced vertical montage. One sampled frame shows two pink flamingos wading and feeding in shallow water beside green foliage. Another frame shows an officer in a tactical vest marked 'POLICE', with a holstered sidearm, standing close to a person whose face is blurred outside a storefront. The clip juxtaposes nature footage with enforcement footage.  [0:09] Two pink flamingos wade and feed in shallow water beside green plants.  [0:39] An officer in a 'POLICE' vest with a holstered sidearm stands close to a person whose face is blurred, outside a store.",
-        "notable_text": "",
-        "reasons": [
-          "creative treatment signal",
-          "explicit cruelty, taunt, or threat signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ],
-        "preference_reasons": [
-          "cruelty:mocking-deportation-joke: NICE City",
-          "produced video with preference signal"
-        ]
-      },
-      "engagement": {
-        "likes": 13429,
-        "retweets": 1997,
-        "quotes": 115,
-        "views": 21
-      },
-      "preference_score": 72,
-      "preference_categories": [
-        "cruelty:mocking-deportation-joke",
-        "medium:produced-video-with-preference-signal"
-      ]
-    },
-    {
-      "id": "2052801741389750768:13_2052801538859417602",
-      "tweet_id": "2052801741389750768",
-      "posted_at": "2026-05-08T17:24:09.000Z",
-      "era": "2025_plus",
-      "queue": "high_confidence",
-      "account": {
-        "handle": "DHSgov",
-        "category": "core",
-        "label": "Department of Homeland Security"
-      },
-      "tweet_url": "https://x.com/DHSgov/status/2052801741389750768",
-      "tweet_text": "NICE City. https://t.co/NJ5XLXanq9",
-      "review_state": "candidate",
-      "inclusion_basis": "cruelty_taunting_enforcement",
-      "confidence": "high",
-      "score": 86,
-      "creative_forms": [
-        "montage"
-      ],
-      "subjects": [],
-      "tags": [
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:described",
-        "media-status:transcribed",
-        "media:video",
-        "review:screened-video",
-        "slogan:nice",
-        "topic:immigration",
-        "video:medium",
-        "video:produced"
-      ],
-      "media": [
-        {
-          "media_id": "13_2052801538859417602",
-          "type": "video",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_2052801538859417602.mp4",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/video/f9c651417ce5fbe21ccd111f267a9be80a28b87aff27ff8552664f1257d9b71f.jpg",
-          "sha256": "f9c651417ce5fbe21ccd111f267a9be80a28b87aff27ff8552664f1257d9b71f",
-          "duration_sec": 69.235,
-          "playable": true,
-          "readiness": {
-            "ready": false,
-            "blockers": [
-              "missing complete OCR for extracted keyframes"
-            ],
-            "checks": {
-              "archived": true,
-              "description": true,
-              "keyframes": true,
-              "keyframe_count": 5,
-              "thumbnail": true,
-              "ocr": false,
-              "audio_analysis": true,
-              "has_audio": true,
-              "transcript": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "opus-vision-review",
-              "text": "A produced vertical montage. One sampled frame shows two pink flamingos wading and feeding in shallow water beside green foliage. Another frame shows an officer in a tactical vest marked 'POLICE', with a holstered sidearm, standing close to a person whose face is blurred outside a storefront. The clip juxtaposes nature footage with enforcement footage.  [0:09] Two pink flamingos wade and feed in shallow water beside green plants.  [0:39] An officer in a 'POLICE' vest with a holstered sidearm stands close to a person whose face is blurred, outside a store.",
-              "sidecar_statuses": {
-                "manual-review": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
-            },
-            "keyframes": {
-              "status": "ok",
-              "frame_count": 5
-            },
-            "audio": {
-              "status": "ok",
-              "audio_stream_count": 1,
-              "duration_sec": 69.288345,
-              "tags": [
-                "audio:has-audio"
-              ]
-            },
-            "transcript": {
-              "status": "ok",
-              "segment_count": 1,
-              "text": "You"
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": false,
-        "blockers": [
-          "missing complete OCR for extracted keyframes"
-        ],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "A produced vertical montage. One sampled frame shows two pink flamingos wading and feeding in shallow water beside green foliage. Another frame shows an officer in a tactical vest marked 'POLICE', with a holstered sidearm, standing close to a person whose face is blurred outside a storefront. The clip juxtaposes nature footage with enforcement footage.  [0:09] Two pink flamingos wade and feed in shallow water beside green plants.  [0:39] An officer in a 'POLICE' vest with a holstered sidearm stands close to a person whose face is blurred, outside a store.",
-        "notable_text": "",
-        "reasons": [
-          "creative treatment signal",
-          "explicit cruelty, taunt, or threat signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ],
-        "preference_reasons": [
-          "cruelty:mocking-deportation-joke: NICE City",
-          "produced video with preference signal"
-        ]
-      },
-      "engagement": {
-        "likes": 13429,
-        "retweets": 1994,
-        "quotes": 115,
-        "views": 384459
-      },
-      "preference_score": 72,
-      "preference_categories": [
-        "cruelty:mocking-deportation-joke",
-        "medium:produced-video-with-preference-signal"
-      ]
-    },
-    {
-      "id": "2054677458192830876:13_2054677308624027649",
-      "tweet_id": "2054677458192830876",
-      "posted_at": "2026-05-13T21:37:34.000Z",
-      "era": "2025_plus",
-      "queue": "high_confidence",
-      "account": {
-        "handle": "CBPAMO",
-        "category": "core",
-        "label": "CBP Air and Marine Operations"
-      },
-      "tweet_url": "https://x.com/CBPAMO/status/2054677458192830876",
-      "tweet_text": "👀There is no two stepping across the border! The border is CLOSED to illegal entry. You will be caught, arrested and removed. #BorderSecurity. https://t.co/rDH2N8h7Eq",
-      "review_state": "candidate",
-      "inclusion_basis": "cruelty_taunting_enforcement",
-      "confidence": "high",
-      "score": 86,
-      "creative_forms": [],
-      "subjects": [
-        "detainees"
-      ],
-      "tags": [
-        "action:deportation",
-        "action:detention",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media-status:transcribed",
-        "media:video",
-        "policy:border",
-        "topic:immigration",
-        "video:short"
-      ],
-      "media": [
-        {
-          "media_id": "13_2054677308624027649",
-          "type": "video",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBPAMO/13_2054677308624027649.mp4",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/video/b3e73cd3245894f4c1ec6459cf8ac696c9b0618b0bee530eb8dcf5735ddc38b8.jpg",
-          "sha256": "b3e73cd3245894f4c1ec6459cf8ac696c9b0618b0bee530eb8dcf5735ddc38b8",
-          "duration_sec": 16.5,
-          "playable": true,
-          "readiness": {
-            "ready": false,
-            "blockers": [
-              "missing complete OCR for extracted keyframes",
-              "missing genuine visual description"
-            ],
-            "checks": {
-              "archived": true,
-              "description": false,
-              "keyframes": true,
-              "keyframe_count": 5,
-              "thumbnail": true,
-              "ocr": false,
-              "audio_analysis": true,
-              "has_audio": true,
-              "transcript": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "metadata-placeholder",
-              "text": "video; 720x1280; 16.5s; 4.62 MiB; archived; tweet context: 👀There is no two stepping across the border! The border is CLOSED to illegal entry. You will be caught, arrested and removed. #BorderSecurity. https://t.co/rDH2N8h7Eq; source URL: https://video.twimg.com/amplify_video/2054677308624027649/vid/avc1/720x1280/b7I3AVaanAoHU_gx.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-CBPAMO/13_2054677308624027649.mp4; needs OCR, transcript, or frame-level vision before content claims. 👀There is no two stepping across the border! The border is CLOSED to illegal entry. You will be caught, arrested and removed. #BorderSecurity. https://t.co/rDH2N8h7Eq",
-              "sidecar_statuses": {
-                "metadata-context": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
-            },
-            "keyframes": {
-              "status": "ok",
-              "frame_count": 5
-            },
-            "audio": {
-              "status": "ok",
-              "audio_stream_count": 1,
-              "duration_sec": 16.555828,
-              "tags": [
-                "audio:has-audio"
-              ]
-            },
-            "transcript": {
-              "status": "ok",
-              "segment_count": 1,
-              "text": "Change from text to second-"
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": false,
-        "blockers": [
-          "missing complete OCR for extracted keyframes",
-          "missing genuine visual description"
-        ],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "video; 720x1280; 16.5s; 4.62 MiB; archived; tweet context: 👀There is no two stepping across the border! The border is CLOSED to illegal entry. You will be caught, arrested and removed. #BorderSecurity. https://t.co/rDH2N8h7Eq; source URL: https://video.twimg.com/amplify_video/2054677308624027649/vid/avc1/720x1280/b7I3AVaanAoHU_gx.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-CBPAMO/13_2054677308624027649.mp4; needs OCR, transcript, or frame-level vision before content claims. 👀There is no two stepping across the border! The border is CLOSED to illegal entry. You will be caught, arrested and removed. #BorderSecurity. https://t.co/rDH2N8h7Eq",
-        "notable_text": "",
-        "reasons": [
-          "real enforcement/detainee subject signal",
-          "explicit cruelty, taunt, or threat signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ],
-        "preference_reasons": [
-          "cruelty:surveillance-taunt: 👀There is no two stepping across the border! The border is CLOSED to illegal",
-          "enforcement/detainee subject plus preference signal"
-        ]
-      },
-      "engagement": {
-        "likes": 1614,
-        "retweets": 234,
-        "quotes": 1,
-        "views": 22513
-      },
-      "preference_score": 69,
-      "preference_categories": [
-        "cruelty:surveillance-taunt",
-        "subject:enforcement-linked"
-      ]
-    },
-    {
       "id": "2050197721378603517:3_2050197711123603456",
       "tweet_id": "2050197721378603517",
       "posted_at": "2026-05-01T12:56:42.000Z",
@@ -8533,7 +8329,10 @@
         "agency:ICEgov",
         "country:El-Salvador",
         "crime:gang",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "slogan:criminal-illegal-alien",
         "slogan:illegal-alien",
         "theme:criminal",
@@ -8543,37 +8342,38 @@
         {
           "media_id": "3_2050197711123603456",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChiefELC/3_2050197711123603456.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/fada0a7ac8aabb7d504c45473a4b598906ad02035d6e0bfd7463c6ae466e18df.jpg",
+          "sha256": "fada0a7ac8aabb7d504c45473a4b598906ad02035d6e0bfd7463c6ae466e18df",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 1431x1073; 0.22 MiB; archived; tweet context: 👀Well, look what we found! Our El Centro Sector Intelligence Unit and ICE/ERO Los Angeles teamed up and caught a known fugitive, and Pandilla 18 Sureños gang member, from El Salvador. He apparently thought it was a great idea to hide here in the good ol’ Unit...; source URL: https://pbs.twimg.com/media/HHPD9LLXYAAVlYv.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChiefELC/3_2050197711123603456.jpg; needs OCR, transcript, or frame-level vision before content claims. 👀Well, look what we found! Our El Centro Sector Intelligence Unit and ICE/ERO Los Angeles teamed up and caught a known fugitive, and Pandilla 18 Sureños gang member, from El Salvador. He apparently thought it was a great idea to hide here in the good ol’ United States. But our Premier Sector folks noticed him. So, ICE/ERO went and picked him up. Just another day, and another criminal illegal alien off our streets.🇺🇸 #CBP #USBP #PremierSector #CaughtOne",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "[ » aS fey nee 5 Si iene |” poe = SS Se ae a i ae he =< — Ee al reese as ae : 2} J = i. 1 pe a ane —— pad ee i = z i / Se ee E = hi ——T a 4 é =~ , 4 ( Ty = lf ¢ L ae. (POLICE 4 RS eo. SU ii as (eee ere’ S| 1 EN Nee — an Sa > eee \\ pa NS ee NS (ye. Sa 1 ‘Si; 7) \\GfiRensimetsiomsiat)\\ 7, 7 } aa bat a i a(t ey Ng ee ey Ul |. oan Pa i ee Se = ‘ ie 7 x [ 2= ‘ Dail = hea ey 1 tn SH G iw . Fee . as of RE ae oop <e eS ies to Oe th ei a S—= 3 a.) sS - fe. 7 } a ; LW wo"
             },
             "keyframes": {
               "status": null,
@@ -8596,15 +8396,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 1431x1073; 0.22 MiB; archived; tweet context: 👀Well, look what we found! Our El Centro Sector Intelligence Unit and ICE/ERO Los Angeles teamed up and caught a known fugitive, and Pandilla 18 Sureños gang member, from El Salvador. He apparently thought it was a great idea to hide here in the good ol’ Unit...; source URL: https://pbs.twimg.com/media/HHPD9LLXYAAVlYv.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-USBPChiefELC/3_2050197711123603456.jpg; needs OCR, transcript, or frame-level vision before content claims. 👀Well, look what we found! Our El Centro Sector Intelligence Unit and ICE/ERO Los Angeles teamed up and caught a known fugitive, and Pandilla 18 Sureños gang member, from El Salvador. He apparently thought it was a great idea to hide here in the good ol’ United States. But our Premier Sector folks noticed him. So, ICE/ERO went and picked him up. Just another day, and another criminal illegal alien off our streets.🇺🇸 #CBP #USBP #PremierSector #CaughtOne",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -8657,44 +8454,49 @@
         "agency:CBP",
         "crime:cocaine",
         "crime:narcotics",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:photo",
         "topic:immigration"
       ],
       "media": [
         {
           "media_id": "3_1881733852520939520",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1881733852520939520.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/9a4b4c27e706b8290b4826d87e55f6a6da4147703c78b59742b84fd290439c0c.jpg",
+          "sha256": "9a4b4c27e706b8290b4826d87e55f6a6da4147703c78b59742b84fd290439c0c",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 801x1008; 0.12 MiB; archived; alt text: A scale weighing packages amounting to nearly 74 pounds of cocaine seized by CBP officers at Pharr International Bridge.; tweet context: We don’t just inspect, we detect! 👀 CBP officers at Pharr Int'l Bridge uncovered 74 lbs of cocaine—worth $987K—hidden in a tractor. Nice try, but not on our watch. 🚛❌ #DrugSeizure #BorderSecurity #ofoproud🇺🇸 Read more: https://ow.ly/arYH50UIn41 https://t.co/s...; source URL: https://pbs.twimg.com/media/Gh1C-BFWgAAnVfz.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1881733852520939520.jpg. A scale weighing packages amounting to nearly 74 pounds of cocaine seized by CBP officers at Pharr International Bridge. We don’t just inspect, we detect! 👀 CBP officers at Pharr Int'l Bridge uncovered 74 lbs of cocaine—worth $987K—hidden in a tractor. Nice try, but not on our watch. 🚛❌ #DrugSeizure #BorderSecurity #ofoproud🇺🇸 Read more: https://ow.ly/arYH50UIn41 https://t.co/sRAKYJTGzU",
+              "sidecar_statuses": {
+                "metadata-alt": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "BS } ‘an i 7 i ae —_ =| o0ccece lpr eA E s a fe An o |. : 4 AG i We mu A { ey, ge ! NG) wat 7 a aya, =) m__ ir 7 aon ee : a Lt {ifs} ee a ag i pe = ee Vane a So ee mse Sgn > \\—"
             },
             "keyframes": {
               "status": null,
@@ -8717,15 +8519,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 801x1008; 0.12 MiB; archived; alt text: A scale weighing packages amounting to nearly 74 pounds of cocaine seized by CBP officers at Pharr International Bridge.; tweet context: We don’t just inspect, we detect! 👀 CBP officers at Pharr Int'l Bridge uncovered 74 lbs of cocaine—worth $987K—hidden in a tractor. Nice try, but not on our watch. 🚛❌ #DrugSeizure #BorderSecurity #ofoproud🇺🇸 Read more: https://ow.ly/arYH50UIn41 https://t.co/s...; source URL: https://pbs.twimg.com/media/Gh1C-BFWgAAnVfz.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC-0002/3_1881733852520939520.jpg. A scale weighing packages amounting to nearly 74 pounds of cocaine seized by CBP officers at Pharr International Bridge. We don’t just inspect, we detect! 👀 CBP officers at Pharr Int'l Bridge uncovered 74 lbs of cocaine—worth $987K—hidden in a tractor. Nice try, but not on our watch. 🚛❌ #DrugSeizure #BorderSecurity #ofoproud🇺🇸 Read more: https://ow.ly/arYH50UIn41 https://t.co/sRAKYJTGzU",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -8773,44 +8572,48 @@
       "creative_forms": [],
       "subjects": [],
       "tags": [
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "topic:immigration"
       ],
       "media": [
         {
           "media_id": "3_1961489415835889664",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/3_1961489415835889664.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/5ea427d7222d1abb17ecfa849cc6801318a393b077a69909c6c8cb44c32e680c.jpg",
+          "sha256": "5ea427d7222d1abb17ecfa849cc6801318a393b077a69909c6c8cb44c32e680c",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 3000x1999; 0.20 MiB; archived; tweet context: NEW in the Oval Office 👀🇺🇸 https://t.co/zyj8O22NeR; source URL: https://pbs.twimg.com/media/GzicOzWWMAARpTb.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/3_1961489415835889664.jpg; needs OCR, transcript, or frame-level vision before content claims. NEW in the Oval Office 👀🇺🇸 https://t.co/zyj8O22NeR",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "fy ONS Ay ee ORB) \\\\\\\\ in VEST a HI 8) hi AWG ie, r WN i 1) WU ae B if Ks easy = i li \\ \\\\| mA Da ay 3 Fe . 7] wy Ne we a = omen ae vm s Y ¥ j ’ , ) mane AW a - & ‘ i] aif i a, 2 ry ee } i"
             },
             "keyframes": {
               "status": null,
@@ -8833,15 +8636,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 3000x1999; 0.20 MiB; archived; tweet context: NEW in the Oval Office 👀🇺🇸 https://t.co/zyj8O22NeR; source URL: https://pbs.twimg.com/media/GzicOzWWMAARpTb.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/3_1961489415835889664.jpg; needs OCR, transcript, or frame-level vision before content claims. NEW in the Oval Office 👀🇺🇸 https://t.co/zyj8O22NeR",
         "notable_text": "",
         "reasons": [
           "explicit cruelty, taunt, or threat signal"
@@ -8888,44 +8688,48 @@
       "tags": [
         "agency:ICEgov",
         "legal:criminal-prosecution",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "topic:immigration"
       ],
       "media": [
         {
           "media_id": "3_1951364831786790912",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc-0003/3_1951364831786790912.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/a04fcfe373da191390996a8532061466880ee7e0e1fd13eb81435a39577a3bd4.jpg",
+          "sha256": "a04fcfe373da191390996a8532061466880ee7e0e1fd13eb81435a39577a3bd4",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 1136x350; 0.05 MiB; archived; tweet context: 👀 FYI - Starting today, any public official who interferes in @ICEgov performing their duties can be charged with malfeasance in office. @JayJaymorris3 #lalege https://t.co/fznra8aSiC; source URL: https://pbs.twimg.com/media/GxSj-cnXcAA8C7V.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-_misc-0003/3_1951364831786790912.jpg; needs OCR, transcript, or frame-level vision before content claims. 👀 FYI - Starting today, any public official who interferes in @ICEgov performing their duties can be charged with malfeasance in office. @JayJaymorris3 #lalege https://t.co/fznra8aSiC",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "2025 REGULAR SESSION $B15 by Senator Jay Morris & CRIME/PUNISHMENT: Prohibits any act intended to hinder, delay, prevent, or otherwise interfere with or thwart federal immigration enforcement efforts. (8/1/25) (EN SEE FISC NOTE GF EX) Current Status: Signed by the Governor - Act 399"
             },
             "keyframes": {
               "status": null,
@@ -8948,15 +8752,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 1136x350; 0.05 MiB; archived; tweet context: 👀 FYI - Starting today, any public official who interferes in @ICEgov performing their duties can be charged with malfeasance in office. @JayJaymorris3 #lalege https://t.co/fznra8aSiC; source URL: https://pbs.twimg.com/media/GxSj-cnXcAA8C7V.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-_misc-0003/3_1951364831786790912.jpg; needs OCR, transcript, or frame-level vision before content claims. 👀 FYI - Starting today, any public official who interferes in @ICEgov performing their duties can be charged with malfeasance in office. @JayJaymorris3 #lalege https://t.co/fznra8aSiC",
         "notable_text": "",
         "reasons": [
           "explicit cruelty, taunt, or threat signal"
@@ -9389,7 +9190,10 @@
         "crime:child-sexual",
         "crime:sexual",
         "legal:criminal-prosecution",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "slogan:illegal-alien",
         "subject:enforcement-op",
         "theme:criminal",
@@ -9399,37 +9203,38 @@
         {
           "media_id": "3_2052820707688505350",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-EROSeattle/3_2052820707688505350.jpg",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/photo/0fce9d6ff89085c8886d3121433bbd60a40b42273643589c53f7de3965e649d2.jpg",
+          "sha256": "0fce9d6ff89085c8886d3121433bbd60a40b42273643589c53f7de3965e649d2",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "thumbnail": false,
-              "ocr": false
+              "thumbnail": true,
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 1748x2290; 0.14 MiB; archived; tweet context: ICE Seattle arrested illegal alien Miguel Espinoza-Alvarez, 63, of Mexico. Has felony convictions in WA for child molestation, possession of depictions of minor engaged in sexually explicit conduct. Charged last month with two more aggravated felonies against...; source URL: https://pbs.twimg.com/media/HH0Vjq1W4AYZCpt.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-EROSeattle/3_2052820707688505350.jpg; needs OCR, transcript, or frame-level vision before content claims. ICE Seattle arrested illegal alien Miguel Espinoza-Alvarez, 63, of Mexico. Has felony convictions in WA for child molestation, possession of depictions of minor engaged in sexually explicit conduct. Charged last month with two more aggravated felonies against kids. Adios. https://t.co/ZlhBBNgP4B",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "SEATTLE, WA i) = : oat eo) Ja . fe om Convicted child molester ARRESTED ICE"
             },
             "keyframes": {
               "status": null,
@@ -9452,15 +9257,12 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 1748x2290; 0.14 MiB; archived; tweet context: ICE Seattle arrested illegal alien Miguel Espinoza-Alvarez, 63, of Mexico. Has felony convictions in WA for child molestation, possession of depictions of minor engaged in sexually explicit conduct. Charged last month with two more aggravated felonies against...; source URL: https://pbs.twimg.com/media/HH0Vjq1W4AYZCpt.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-EROSeattle/3_2052820707688505350.jpg; needs OCR, transcript, or frame-level vision before content claims. ICE Seattle arrested illegal alien Miguel Espinoza-Alvarez, 63, of Mexico. Has felony convictions in WA for child molestation, possession of depictions of minor engaged in sexually explicit conduct. Charged last month with two more aggravated felonies against kids. Adios. https://t.co/ZlhBBNgP4B",
         "notable_text": "",
         "reasons": [
           "real enforcement/detainee subject signal",
@@ -9637,6 +9439,7 @@
         "format:retweet",
         "media-status:archived",
         "media-status:needs-vision",
+        "media-status:ocr-done",
         "media:video",
         "slogan:nice",
         "topic:immigration",
@@ -9655,7 +9458,6 @@
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing complete OCR for extracted keyframes",
               "missing genuine visual description"
             ],
             "checks": {
@@ -9664,7 +9466,7 @@
               "keyframes": true,
               "keyframe_count": 5,
               "thumbnail": true,
-              "ocr": false,
+              "ocr": true,
               "audio_analysis": true,
               "has_audio": true,
               "transcript": true
@@ -9679,9 +9481,11 @@
               }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 5
+              },
+              "complete_row_count": 5,
+              "text": "oi = aif TARGETED ENFORCEMENT OPERATION aa at\n\n_—_ 5-1 - . ae\n\ns ._- STAKEOUT BEGINS\n\n= - . —_—__ «f* m ‘ 2 it wy\n\nZ a > ef q —~ Wy rae} MOVAL"
             },
             "keyframes": {
               "status": "ok",
@@ -9706,7 +9510,6 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing complete OCR for extracted keyframes",
           "missing genuine visual description"
         ],
         "media_count": 1

@@ -1,11 +1,11 @@
 {
   "metadata": {
     "queue": "2025_plus",
-    "generated_at": "2026-06-20T22:25:37Z",
-    "source_commit": "37a78c4e8",
-    "item_count": 138,
+    "generated_at": "2026-06-20T22:37:45Z",
+    "source_commit": "eb754475",
+    "item_count": 140,
     "source_candidate_count": 1371,
-    "not_ready_count": 69,
+    "not_ready_count": 67,
     "review_scope_excluded_count": 1164,
     "review_scope_excluded_reasons": {
       "apprehension-notice-or-routine-card": 318,
@@ -18,21 +18,21 @@
     },
     "all_items_ready": true,
     "basis_counts": {
-      "cruelty_taunting_enforcement": 5,
+      "cruelty_taunting_enforcement": 7,
       "real_footage_creative_use": 17,
       "wholly_creative_media": 116
     },
     "preference_category_counts": {
       "subject:enforcement-linked": 81,
-      "medium:produced-video-with-preference-signal": 53,
+      "medium:produced-video-with-preference-signal": 55,
       "aesthetic:ai-synthetic-propaganda": 49,
       "aesthetic:nostalgia-americana": 39,
       "policy:self-deportation-ad": 29,
       "spectacle:holiday-or-celebration": 17,
       "spectacle:gamified-deportation": 15,
+      "cruelty:mocking-deportation-joke": 14,
       "aesthetic:dystopian-surreal": 14,
       "editorialized:dramatic-crime-composite": 14,
-      "cruelty:mocking-deportation-joke": 12,
       "form:novel-interface-or-ticket": 11,
       "cruelty:personalized-deportation-threat": 10,
       "cruelty:public-humiliation": 7,
@@ -42,7 +42,7 @@
       "spectacle:asmr-deportation": 2
     },
     "top_accounts": {
-      "DHSgov": 33,
+      "DHSgov": 35,
       "ICEgov": 28,
       "USDOL": 19,
       "CBP": 12,
@@ -3301,6 +3301,264 @@
       "preference_categories": [
         "cruelty:personalized-deportation-threat",
         "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2052857823063629959:13_2052801538859417602",
+      "tweet_id": "2052857823063629959",
+      "posted_at": "2026-05-08T21:06:59.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/2052857823063629959",
+      "tweet_text": "RT @DHSgov: NICE City. https://t.co/NJ5XLXanq9",
+      "review_state": "candidate",
+      "inclusion_basis": "cruelty_taunting_enforcement",
+      "confidence": "high",
+      "score": 86,
+      "creative_forms": [
+        "montage"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:DHSgov",
+        "audio:has-audio",
+        "format:retweet",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "slogan:nice",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2052801538859417602",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_2052801538859417602.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/f9c651417ce5fbe21ccd111f267a9be80a28b87aff27ff8552664f1257d9b71f.jpg",
+          "sha256": "f9c651417ce5fbe21ccd111f267a9be80a28b87aff27ff8552664f1257d9b71f",
+          "duration_sec": 69.235,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A repost of a produced vertical montage. One sampled frame shows two pink flamingos wading and feeding in shallow water beside green foliage. Another frame shows an officer in a tactical vest marked 'POLICE', with a holstered sidearm, standing close to a person whose face is blurred outside a storefront. The clip juxtaposes nature footage with enforcement footage.  [0:09] Two pink flamingos wade and feed in shallow water beside green plants.  [0:39] An officer in a 'POLICE' vest with a holstered sidearm stands close to a person whose face is blurred, outside a store.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 5
+              },
+              "complete_row_count": 5,
+              "text": ". @\n\n: ae REL ery baa Se Te be — LAs, Sag 3 5 1 1 1 6 3 588 289 51 44 45.033108 ane 4 1 1 1 7 0 10 411 411 43 -1 5 1 1 1 7 1 10 433 6 6 6.304153 ae 5 1 1 1 7 2 66 427 4 13 60.560196 5 1 1 1 7 3 90 411 42 43 32.665276 pul 5 1 1 1 7 4 325 417 96 25 14.657715 — 4 1 1 1 8 0 8 474 432 37 -1 5 1 1 1 8 1 8 502 4 3 34.926010 . 5 1 1 1 8 2 249 483 16 21 85.378044 \\ 5 1 1 1 8 3 334 502 34 9 41.536366 ae 4 1 1 1 9 0 2 503 454 57 -1 5 1 1 1 9 1 2 503 29 41 0.000000 5 5 1 1 1 9 2 275 514 181 46 11.249603 oS 4 1 1 1 10 0 2 552 560 60 -1 5 1 1 1 10 1 2 564 1 5 77.338722 5 1 1 1 10 2 279 552 120 60 14.860344 We 5 1 1 1 10 3 547 595 15 13 0.000000 ° 4 1 1 1 11 0 111 593 323 52 -1 5 1 1 1 11 1 111 593 42 39 25.266632 ao” 5 1 1 1 11 2 228 613 4 2 30.995102 7 5 1 1 1 11 3 392 597 42 48 24.619286 me 4 1 1 1 12 0 8 613 537 88 -1 5 1 1 1 12 1 8 643 41 34 24.311897 a 5 1 1 1 12 2 265 613 105 88 59.920891 A 5 1 1 1 12 3 401 652 58 30 22.358246 oo, 5 1 1 1 12 4 470 646 11 40 41.206112 a 5 1 1 1 12 5 540 666 5 4 36.138138 ee 4 1 1 1 13 0 6 701 625 64 -1 5 1 1 1 13 1 6 736 6 17 4.790504 * 5 1 1 1 13 2 33 701 68 64 36.957264 att 5 1 1 1 13 3 268 704 21 14 39.434471 # 5 1 1 1 13 4 323 724 22 25 0.000000 5 1 1 1 13 5 578 714 53 45 13.191513 od 4 1 1 1 14 0 35 760 599 33 -1 5 1 1 1 14 1 35 760 327 37 18.127861 aa 5 1 1 1 14 2 605 775 29 18 69.710159 “a 4 1 1 1 15 0 17 776 621 71 -1 5 1 1 1 15 1 17 816 98 17 38.827648 i 5 1 1 1 15 2 208 831 3 3 33.653580 . 5 1 1 1 15 3 300 804 78 18 0.000000 = 5 1 1 1 15 4 395 776 66 71 0.000000 —- 5 1 1 1 15 5 489 780 25 62 23.944969 - 5 1 1 1 15 6 553 802 39 27 45.690872 a 5 1 1 1 15 7 632 802 6 19 24.117554 ' 4 1 1 1 16 0 184 822 448 54 -1 5 1 1 1 16 1 184 873 3 2 40.764729 : 5 1 1 1 16 2 296 848 8 2 79.390022 = 5 1 1 1 16 3 364 822 50 54 34.943108 = 5 1 1 1 16 4 616 822 16 53 58.586178 4 1 1 1 17 0 8 906 627 79 -1 5 1 1 1 17 1 8 906 128 33 18.241608 oe 5 1 1 1 17 2 305 924 48 28 80.510475 = 5 1 1 1 17 3 575 915 60 70 0.000000 is 4 1 1 1 18 0 115 957 459 70 -1 5 1 1 1 18 1 115 959 5 10 34.967239 ; 5 1 1 1 18 2 145 971 67 56 41.218102 tm = ——SEE on ——| se ‘all S| of , ‘¥ 4\n\na . \\ —\n\n=v > Ed. he aR ) is e ’ vs a — g j\n\n= fs in Gis —. 7\" 7 © . \\ > a - . ¢ = aay ="
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 69.288345,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 1,
+              "text": "You"
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A repost of a produced vertical montage. One sampled frame shows two pink flamingos wading and feeding in shallow water beside green foliage. Another frame shows an officer in a tactical vest marked 'POLICE', with a holstered sidearm, standing close to a person whose face is blurred outside a storefront. The clip juxtaposes nature footage with enforcement footage.  [0:09] Two pink flamingos wade and feed in shallow water beside green plants.  [0:39] An officer in a 'POLICE' vest with a holstered sidearm stands close to a person whose face is blurred, outside a store.",
+        "notable_text": "",
+        "reasons": [
+          "creative treatment signal",
+          "explicit cruelty, taunt, or threat signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "cruelty:mocking-deportation-joke: NICE City",
+          "produced video with preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 13429,
+        "retweets": 1997,
+        "quotes": 115,
+        "views": 21
+      },
+      "preference_score": 72,
+      "preference_categories": [
+        "cruelty:mocking-deportation-joke",
+        "medium:produced-video-with-preference-signal"
+      ]
+    },
+    {
+      "id": "2052801741389750768:13_2052801538859417602",
+      "tweet_id": "2052801741389750768",
+      "posted_at": "2026-05-08T17:24:09.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/2052801741389750768",
+      "tweet_text": "NICE City. https://t.co/NJ5XLXanq9",
+      "review_state": "candidate",
+      "inclusion_basis": "cruelty_taunting_enforcement",
+      "confidence": "high",
+      "score": 86,
+      "creative_forms": [
+        "montage"
+      ],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "slogan:nice",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2052801538859417602",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_2052801538859417602.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/f9c651417ce5fbe21ccd111f267a9be80a28b87aff27ff8552664f1257d9b71f.jpg",
+          "sha256": "f9c651417ce5fbe21ccd111f267a9be80a28b87aff27ff8552664f1257d9b71f",
+          "duration_sec": 69.235,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A produced vertical montage. One sampled frame shows two pink flamingos wading and feeding in shallow water beside green foliage. Another frame shows an officer in a tactical vest marked 'POLICE', with a holstered sidearm, standing close to a person whose face is blurred outside a storefront. The clip juxtaposes nature footage with enforcement footage.  [0:09] Two pink flamingos wade and feed in shallow water beside green plants.  [0:39] An officer in a 'POLICE' vest with a holstered sidearm stands close to a person whose face is blurred, outside a store.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 5
+              },
+              "complete_row_count": 5,
+              "text": ". @\n\n: ae REL ery baa Se Te be — LAs, Sag 3 5 1 1 1 6 3 588 289 51 44 45.033108 ane 4 1 1 1 7 0 10 411 411 43 -1 5 1 1 1 7 1 10 433 6 6 6.304153 ae 5 1 1 1 7 2 66 427 4 13 60.560196 5 1 1 1 7 3 90 411 42 43 32.665276 pul 5 1 1 1 7 4 325 417 96 25 14.657715 — 4 1 1 1 8 0 8 474 432 37 -1 5 1 1 1 8 1 8 502 4 3 34.926010 . 5 1 1 1 8 2 249 483 16 21 85.378044 \\ 5 1 1 1 8 3 334 502 34 9 41.536366 ae 4 1 1 1 9 0 2 503 454 57 -1 5 1 1 1 9 1 2 503 29 41 0.000000 5 5 1 1 1 9 2 275 514 181 46 11.249603 oS 4 1 1 1 10 0 2 552 560 60 -1 5 1 1 1 10 1 2 564 1 5 77.338722 5 1 1 1 10 2 279 552 120 60 14.860344 We 5 1 1 1 10 3 547 595 15 13 0.000000 ° 4 1 1 1 11 0 111 593 323 52 -1 5 1 1 1 11 1 111 593 42 39 25.266632 ao” 5 1 1 1 11 2 228 613 4 2 30.995102 7 5 1 1 1 11 3 392 597 42 48 24.619286 me 4 1 1 1 12 0 8 613 537 88 -1 5 1 1 1 12 1 8 643 41 34 24.311897 a 5 1 1 1 12 2 265 613 105 88 59.920891 A 5 1 1 1 12 3 401 652 58 30 22.358246 oo, 5 1 1 1 12 4 470 646 11 40 41.206112 a 5 1 1 1 12 5 540 666 5 4 36.138138 ee 4 1 1 1 13 0 6 701 625 64 -1 5 1 1 1 13 1 6 736 6 17 4.790504 * 5 1 1 1 13 2 33 701 68 64 36.957264 att 5 1 1 1 13 3 268 704 21 14 39.434471 # 5 1 1 1 13 4 323 724 22 25 0.000000 5 1 1 1 13 5 578 714 53 45 13.191513 od 4 1 1 1 14 0 35 760 599 33 -1 5 1 1 1 14 1 35 760 327 37 18.127861 aa 5 1 1 1 14 2 605 775 29 18 69.710159 “a 4 1 1 1 15 0 17 776 621 71 -1 5 1 1 1 15 1 17 816 98 17 38.827648 i 5 1 1 1 15 2 208 831 3 3 33.653580 . 5 1 1 1 15 3 300 804 78 18 0.000000 = 5 1 1 1 15 4 395 776 66 71 0.000000 —- 5 1 1 1 15 5 489 780 25 62 23.944969 - 5 1 1 1 15 6 553 802 39 27 45.690872 a 5 1 1 1 15 7 632 802 6 19 24.117554 ' 4 1 1 1 16 0 184 822 448 54 -1 5 1 1 1 16 1 184 873 3 2 40.764729 : 5 1 1 1 16 2 296 848 8 2 79.390022 = 5 1 1 1 16 3 364 822 50 54 34.943108 = 5 1 1 1 16 4 616 822 16 53 58.586178 4 1 1 1 17 0 8 906 627 79 -1 5 1 1 1 17 1 8 906 128 33 18.241608 oe 5 1 1 1 17 2 305 924 48 28 80.510475 = 5 1 1 1 17 3 575 915 60 70 0.000000 is 4 1 1 1 18 0 115 957 459 70 -1 5 1 1 1 18 1 115 959 5 10 34.967239 ; 5 1 1 1 18 2 145 971 67 56 41.218102 tm = ——SEE on ——| se ‘all S| of , ‘¥ 4\n\na . \\ —\n\n=v > Ed. he aR ) is e ’ vs a — g j\n\n= fs in Gis —. 7\" 7 © . \\ > a - . ¢ = aay ="
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 69.288345,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 1,
+              "text": "You"
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A produced vertical montage. One sampled frame shows two pink flamingos wading and feeding in shallow water beside green foliage. Another frame shows an officer in a tactical vest marked 'POLICE', with a holstered sidearm, standing close to a person whose face is blurred outside a storefront. The clip juxtaposes nature footage with enforcement footage.  [0:09] Two pink flamingos wade and feed in shallow water beside green plants.  [0:39] An officer in a 'POLICE' vest with a holstered sidearm stands close to a person whose face is blurred, outside a store.",
+        "notable_text": "",
+        "reasons": [
+          "creative treatment signal",
+          "explicit cruelty, taunt, or threat signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "cruelty:mocking-deportation-joke: NICE City",
+          "produced video with preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 13429,
+        "retweets": 1994,
+        "quotes": 115,
+        "views": 384459
+      },
+      "preference_score": 72,
+      "preference_categories": [
+        "cruelty:mocking-deportation-joke",
+        "medium:produced-video-with-preference-signal"
       ]
     },
     {
