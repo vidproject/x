@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-06-20T18:11:52Z",
+  "generated_at": "2026-06-20T20:27:39Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -55,18 +55,18 @@
     "videos": 6080,
     "bucket_counts": {
       "genre-experiment": 107,
-      "missing-media": 1583,
-      "needs-recognition": 1582,
-      "ordinary-video": 1654,
+      "missing-media": 1580,
+      "needs-recognition": 1584,
+      "ordinary-video": 1655,
       "produced-video": 1154
     },
     "top_tags": {
       "topic:immigration": 4979,
-      "media-status:archived": 4290,
-      "media:video": 4249,
-      "audio:has-audio": 4242,
+      "media-status:archived": 4292,
+      "media:video": 4252,
+      "audio:has-audio": 4244,
       "video:medium": 3563,
-      "media-status:needs-vision": 3207,
+      "media-status:needs-vision": 3209,
       "video:short": 1848,
       "video:produced": 1147,
       "agency:POTUS": 1129,
@@ -113,12 +113,12 @@
       "country:Mexico": 148
     },
     "missing_step_counts": {
-      "archive-media": 1583,
+      "archive-media": 1580,
       "assign-produced-video-genre": 138,
-      "describe-with-vision": 1791,
+      "describe-with-vision": 1788,
       "detect-audio": 2,
-      "extract-keyframes": 4,
-      "transcribe-audio": 1767
+      "extract-keyframes": 5,
+      "transcribe-audio": 1769
     }
   },
   "items": [
@@ -113387,6 +113387,45 @@
       "description": "video; 606x1080; 58.6s; 4.26 MiB; archived; tweet context: USCIS is committed to supporting @DHSgov efforts to implement more prudent, durable, and appropriate measures to enhance the security of our borders. https://t.co/oz6i4FG9nD; source URL: https://video.twimg.com/amplify_video/1950219463313293312/vid/avc1/606x1080/ReMj9fBeDsQbrKDu.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USCIS/13_1950219463313293312.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 606x1080; 58.6s; 4.26 MiB; archived; tweet context: USCIS is committed to supporting @DHSgov efforts to implement more prudent, durable, and appropriate measures to enhance the security of our borders. https://t.co/oz6i4FG9nD; source URL: https://video.twimg.com/amplify_video/1950219463313293312/vid/avc1/606x1080/ReMj9fBeDsQbrKDu.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USCIS/13_1950219463313293312.mp4; needs OCR, transcript, or frame-level vision before content claims. USCIS is committed to supporting @DHSgov efforts to implement more prudent, durable, and appropriate measures to enhance the security of our borders. http"
     },
     {
+      "tweet_id": "1950310467198496782",
+      "account_handle": "ERONewYork",
+      "posted_at": "2025-07-29T21:40:25.000Z",
+      "tweet_url": "https://x.com/ERONewYork/status/1950310467198496782",
+      "tweet_text": "ERO New York City expresses our sincerest condolences to @NYPDnews, @NYPDPC, @NYCMayor  and all New Yorkers for the tragic loss of Officer Didarul Islam. Our thoughts and prayers remain with his family during this difficult time. https://t.co/tNjjH2MNzZ",
+      "media_id": "13_1950310020379189248",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-ERONewYork/13_1950310020379189248.mp4",
+      "duration_sec": 10.048,
+      "width": 558,
+      "height": 396,
+      "like_count": 38,
+      "retweet_count": 7,
+      "view_count": 5805,
+      "bucket": "needs-recognition",
+      "priority": 70,
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "theme:religion",
+        "topic:immigration",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "transcribe-audio"
+      ],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": false,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 558x396; 10.0s; 0.36 MiB; archived; tweet context: ERO New York City expresses our sincerest condolences to @NYPDnews, @NYPDPC, @NYCMayor and all New Yorkers for the tragic loss of Officer Didarul Islam. Our thoughts and prayers remain with his family during this difficult time. https://t.co/tNjjH2MNzZ; source URL: https://video.twimg.com/amplify_video/1950310020379189248/vid/avc1/558x396/0b80Tw-K9VKGOQ6R.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-ERONewYork/13_1950310020379189248.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 558x396; 10.0s; 0.36 MiB; archived; tweet context: ERO New York City expresses our sincerest condolences to @NYPDnews, @NYPDPC, @NYCMayor and all New Yorkers for the tragic loss of Officer Didarul Islam. Our thoughts and prayers remain with his family during this difficult time. https://t.co/tNjjH2MNzZ; source URL: https://video.twimg.com/amplify_video/1950310020379189248/vid/avc1/558x396/0b80Tw-K9VKGOQ6R.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-ERONewYork/13_1950310020379189248.mp4; needs OCR, transcript, or frame-level vision before conten"
+    },
+    {
       "tweet_id": "1950682191090082204",
       "account_handle": "USCG",
       "posted_at": "2025-07-30T22:17:30.000Z",
@@ -115364,6 +115403,45 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 23.1s; 1.77 MiB; archived; tweet context: .@USCISJoe sat down with @davidwebbshow to discuss our new Homeland Defenders and our commitment to restore integrity to our immigration system. https://t.co/1HCU7H8Oec; source URL: https://video.twimg.com/amplify_video/1989059824730984450/vid/avc1/1280x720/hi_7RzO7Svn406SM.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USCIS/13_1989059824730984450.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 23.1s; 1.77 MiB; archived; tweet context: .@USCISJoe sat down with @davidwebbshow to discuss our new Homeland Defenders and our commitment to restore integrity to our immigration system. https://t.co/1HCU7H8Oec; source URL: https://video.twimg.com/amplify_video/1989059824730984450/vid/avc1/1280x720/hi_7RzO7Svn406SM.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-USCIS/13_1989059824730984450.mp4; needs OCR, transcript, or frame-level vision before content claims. .@USCISJoe sat down with @davidwebbshow to discuss our new Homeland Defenders and our commitment to restore integrity to our immigration system. https://t.co/1HCU7H"
+    },
+    {
+      "tweet_id": "1989425412800454874",
+      "account_handle": "ERONewYork",
+      "posted_at": "2025-11-14T20:09:14.000Z",
+      "tweet_url": "https://x.com/ERONewYork/status/1989425412800454874",
+      "tweet_text": "ICE officers continue to face an unprecedented number of violent attacks due to activists and lawless sanctuary politicians who use vile and demonizing rhetoric against them, encouraging the misinformed public, like this person, to try to dox our officers at every opportunity. https://t.co/hlnzCcw0TP",
+      "media_id": "13_1989425320458387456",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-ERONewYork/13_1989425320458387456.mp4",
+      "duration_sec": 28.135,
+      "width": 720,
+      "height": 1280,
+      "like_count": 17,
+      "retweet_count": 1,
+      "view_count": 7112,
+      "bucket": "needs-recognition",
+      "priority": 70,
+      "tags": [
+        "agency:ICEgov",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "topic:immigration",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "transcribe-audio"
+      ],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": false,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 720x1280; 28.1s; 5.27 MiB; archived; tweet context: ICE officers continue to face an unprecedented number of violent attacks due to activists and lawless sanctuary politicians who use vile and demonizing rhetoric against them, encouraging the misinformed public, like this person, to try to dox our officers at...; source URL: https://video.twimg.com/amplify_video/1989425320458387456/vid/avc1/720x1280/FCpEUS57BIEbVN1Q.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-ERONewYork/13_1989425320458387456.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 720x1280; 28.1s; 5.27 MiB; archived; tweet context: ICE officers continue to face an unprecedented number of violent attacks due to activists and lawless sanctuary politicians who use vile and demonizing rhetoric against them, encouraging the misinformed public, like this person, to try to dox our officers at...; source URL: https://video.twimg.com/amplify_video/1989425320458387456/vid/avc1/720x1280/FCpEUS57BIEbVN1Q.mp4?tag=14; archive URL: https://github.com/vidproject/x/releases/download/media-ERONewYork/13_1989425320458387456.mp4; needs OCR, transcript, or frame-leve"
     },
     {
       "tweet_id": "1990486198704615923",
@@ -172307,51 +172385,6 @@
       "description": ""
     },
     {
-      "tweet_id": "1929614768996077897",
-      "account_handle": "EROMiami",
-      "posted_at": "2025-06-02T19:03:06.000Z",
-      "tweet_url": "https://x.com/EROMiami/status/1929614768996077897",
-      "tweet_text": "ARRESTED! Atilio Jose Mendoza-Campos, 40, a criminal illegal Venezuelan &amp; Tren de Aragua gang member, has charges pending with @OsceolaSheriff for aggravated assault w/deadly weapon w/bodily injury &amp; burglary.  @EricBolling embeds with @EROMiami ...  https://x.com/MarioNawfal/status/1929271774287692035/video/1 https://t.co/mtGSpASsBl",
-      "media_id": "13_1929251940573085696",
-      "media_type": "video",
-      "archive_status": "failed",
-      "release_asset_url": null,
-      "duration_sec": 4140.08,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 10,
-      "retweet_count": 1,
-      "view_count": 1319,
-      "bucket": "missing-media",
-      "priority": 55,
-      "tags": [
-        "action:detention",
-        "country:Venezuela",
-        "crime:assault",
-        "crime:burglary",
-        "crime:gang",
-        "crime:tren-de-aragua",
-        "crime:weapon",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:photo",
-        "topic:immigration",
-        "video:long"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
       "tweet_id": "1930640789454897532",
       "account_handle": "OFOEAC",
       "posted_at": "2025-06-05T15:00:08.000Z",
@@ -174540,42 +174573,6 @@
       "priority": 55,
       "tags": [
         "format:reply",
-        "topic:immigration",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "1950310467198496782",
-      "account_handle": "ERONewYork",
-      "posted_at": "2025-07-29T21:40:25.000Z",
-      "tweet_url": "https://x.com/ERONewYork/status/1950310467198496782",
-      "tweet_text": "ERO New York City expresses our sincerest condolences to @NYPDnews, @NYPDPC, @NYCMayor  and all New Yorkers for the tragic loss of Officer Didarul Islam. Our thoughts and prayers remain with his family during this difficult time. https://t.co/tNjjH2MNzZ",
-      "media_id": "13_1950310020379189248",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 10.048,
-      "width": 558,
-      "height": 396,
-      "like_count": 38,
-      "retweet_count": 7,
-      "view_count": 5805,
-      "bucket": "missing-media",
-      "priority": 55,
-      "tags": [
-        "theme:religion",
         "topic:immigration",
         "video:short"
       ],
@@ -177398,42 +177395,6 @@
         "policy:border",
         "topic:immigration",
         "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "archive-media",
-        "describe-with-vision"
-      ],
-      "has_keyframes": false,
-      "has_audio_analysis": false,
-      "has_transcript": false,
-      "has_vision_description": false,
-      "has_ocr": false,
-      "description": ""
-    },
-    {
-      "tweet_id": "1989425412800454874",
-      "account_handle": "ERONewYork",
-      "posted_at": "2025-11-14T20:09:14.000Z",
-      "tweet_url": "https://x.com/ERONewYork/status/1989425412800454874",
-      "tweet_text": "ICE officers continue to face an unprecedented number of violent attacks due to activists and lawless sanctuary politicians who use vile and demonizing rhetoric against them, encouraging the misinformed public, like this person, to try to dox our officers at every opportunity. https://t.co/hlnzCcw0TP",
-      "media_id": "13_1989425320458387456",
-      "media_type": "video",
-      "archive_status": "pending",
-      "release_asset_url": null,
-      "duration_sec": 28.135,
-      "width": 720,
-      "height": 1280,
-      "like_count": 17,
-      "retweet_count": 1,
-      "view_count": 7112,
-      "bucket": "missing-media",
-      "priority": 55,
-      "tags": [
-        "agency:ICEgov",
-        "topic:immigration",
-        "video:short"
       ],
       "genre_tags": [],
       "produced_video_tags": [],
@@ -235719,6 +235680,51 @@
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1280x720; 23.5s; 3.65 MiB; archived; tweet context: U.S. Steel Worker: \"I would rather be nowhere than where I am today, with all of my U.S. Steel family... Thank you, Donald J. Trump!\" https://t.co/i2QoigOZqB; source URL: https://video.twimg.com/amplify_video/1928587142571184128/vid/avc1/1280x720/CCFh6UvItZSqVwhR.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47-0002/13_1928587142571184128.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 23.5s; 3.65 MiB; archived; tweet context: U.S. Steel Worker: \"I would rather be nowhere than where I am today, with all of my U.S. Steel family... Thank you, Donald J. Trump!\" https://t.co/i2QoigOZqB; source URL: https://video.twimg.com/amplify_video/1928587142571184128/vid/avc1/1280x720/CCFh6UvItZSqVwhR.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-RapidResponse47-0002/13_1928587142571184128.mp4; needs OCR, transcript, or frame-level vision before content claims. U.S. Steel Worker: \"I would rather be nowhere than where I am today, with all of my U.S. Steel family... Thank you, Donald J. Trump!\" https://t.co/i2QoigOZq"
+    },
+    {
+      "tweet_id": "1929614768996077897",
+      "account_handle": "EROMiami",
+      "posted_at": "2025-06-02T19:03:06.000Z",
+      "tweet_url": "https://x.com/EROMiami/status/1929614768996077897",
+      "tweet_text": "ARRESTED! Atilio Jose Mendoza-Campos, 40, a criminal illegal Venezuelan &amp; Tren de Aragua gang member, has charges pending with @OsceolaSheriff for aggravated assault w/deadly weapon w/bodily injury &amp; burglary.  @EricBolling embeds with @EROMiami ...  https://x.com/MarioNawfal/status/1929271774287692035/video/1 https://t.co/mtGSpASsBl",
+      "media_id": "13_1929251940573085696",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-EROMiami/13_1929251940573085696.mp4",
+      "duration_sec": 4140.08,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 10,
+      "retweet_count": 1,
+      "view_count": 1319,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "action:detention",
+        "country:Venezuela",
+        "crime:assault",
+        "crime:burglary",
+        "crime:gang",
+        "crime:tren-de-aragua",
+        "crime:weapon",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:photo",
+        "media:video",
+        "topic:immigration",
+        "video:long"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [
+        "extract-keyframes"
+      ],
+      "has_keyframes": false,
+      "has_audio_analysis": true,
+      "has_transcript": false,
+      "has_vision_description": true,
+      "has_ocr": false,
+      "description": "video; 1920x1080; 4140.1s; 795.15 MiB; archived; tweet context: ARRESTED! Atilio Jose Mendoza-Campos, 40, a criminal illegal Venezuelan &amp; Tren de Aragua gang member, has charges pending with @OsceolaSheriff for aggravated assault w/deadly weapon w/bodily injury &amp; burglary. @EricBolling embeds with @EROMiami ... ht...; source URL: https://video.twimg.com/amplify_video/1929251940573085696/vid/avc1/1920x1080/LzCLOD0wyS8uB57f.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-EROMiami/13_1929251940573085696.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 4140.1s; 795.15 MiB; archived; tweet context: ARRESTED! Atilio Jose Mendoza-Campos, 40, a criminal illegal Venezuelan &amp; Tren de Aragua gang member, has charges pending with @OsceolaSheriff for aggravated assault w/deadly weapon w/bodily injury &amp; burglary. @EricBolling embeds with @EROMiami ... ht...; source URL: https://video.twimg.com/amplify_video/1929251940573085696/vid/avc1/1920x1080/LzCLOD0wyS8uB57f.mp4?tag=21; archive URL: https://github.com/vidproject/x/releases/download/media-EROMiami/13_1929251940573085696.mp4; needs OCR, transcript, or "
     },
     {
       "tweet_id": "1929880603723194525",
