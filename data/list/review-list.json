@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "generated_at": "2026-06-20T22:24:48Z",
-    "source_commit": "37a78c4e8",
+    "generated_at": "2026-06-20T23:04:44Z",
+    "source_commit": "c529ff786",
     "source_decisions_file": "creative-review-decisions-20260620T190327Z.json",
     "selected_decision_counts": {
       "superlike": 31,
@@ -53,9 +53,10 @@
         "inclusion_basis": "wholly_creative_media",
         "confidence": "high",
         "score": 105,
-        "preference_score": 143,
+        "preference_score": 199,
         "preference_categories": [
           "aesthetic:ai-synthetic-propaganda",
+          "cruelty:mocking-deportation-joke",
           "policy:self-deportation-ad",
           "spectacle:brutality-normalized",
           "spectacle:gamified-deportation",
@@ -151,6 +152,7 @@
             "meme_images.csv"
           ],
           "preference_reasons": [
+            "cruelty:mocking-deportation-joke: Avoid the deportation flight",
             "spectacle:holiday-or-celebration: Christmas",
             "spectacle:gamified-deportation: 3,000 for your family",
             "policy:self-deportation-ad: Avoid the deportation flight",
@@ -488,10 +490,11 @@
         "inclusion_basis": "wholly_creative_media",
         "confidence": "high",
         "score": 110,
-        "preference_score": 112,
+        "preference_score": 168,
         "preference_categories": [
           "aesthetic:ai-synthetic-propaganda",
           "aesthetic:dystopian-surreal",
+          "cruelty:mocking-deportation-joke",
           "medium:produced-video-with-preference-signal",
           "spectacle:holiday-or-celebration",
           "subject:enforcement-linked"
@@ -590,6 +593,7 @@
             "produced_videos.csv"
           ],
           "preference_reasons": [
+            "cruelty:mocking-deportation-joke: hearts grow as our illegal population shrinks",
             "spectacle:holiday-or-celebration: Christmas",
             "aesthetic:ai-synthetic-propaganda: synthetic",
             "aesthetic:dystopian-surreal: dystopian",
@@ -1445,10 +1449,11 @@
         "inclusion_basis": "wholly_creative_media",
         "confidence": "high",
         "score": 105,
-        "preference_score": 48,
+        "preference_score": 104,
         "preference_categories": [
           "aesthetic:ai-synthetic-propaganda",
-          "aesthetic:nostalgia-americana"
+          "aesthetic:nostalgia-americana",
+          "cruelty:mocking-deportation-joke"
         ],
         "creative_forms": [
           "ai-or-synthetic",
@@ -1533,6 +1538,7 @@
             "meme_images.csv"
           ],
           "preference_reasons": [
+            "cruelty:mocking-deportation-joke: ICE -> NICE",
             "aesthetic:ai-synthetic-propaganda: synthetic",
             "aesthetic:nostalgia-americana: Vintage"
           ]
@@ -1683,11 +1689,12 @@
         "tweet_url": "https://x.com/WhiteHouse/status/1944799325927747749",
         "tweet_text": "Jiejun tried to finesse a wedding for a free pass — BUT ICE SAID NAH AND SWIPED RIGHT.\n\nNo dress. No vows. No citizenship. JUST DEPORTED.\n\nIT'S A MATCH ❤️🥰 https://t.co/GEkGrZL0vp",
         "review_state": "curated",
-        "inclusion_basis": "wholly_creative_media",
+        "inclusion_basis": "cruelty_taunting_enforcement",
         "confidence": "high",
-        "score": 105,
-        "preference_score": 65,
+        "score": 101,
+        "preference_score": 121,
         "preference_categories": [
+          "cruelty:mocking-deportation-joke",
           "form:novel-interface-or-ticket",
           "spectacle:gamified-deportation",
           "subject:enforcement-linked"
@@ -1769,12 +1776,14 @@
           "notable_text": "ICE SWIPED RIGHT; Recently Arrested; Jiejun Shen China; Extortion - Intent to Extort Marriage; IT'S A MATCH!; ICE; The WHITE HOUSE",
           "reasons": [
             "wholly creative media signal",
-            "real enforcement/detainee subject signal"
+            "real enforcement/detainee subject signal",
+            "explicit cruelty, taunt, or threat signal"
           ],
           "source_sidecars": [
             "meme_images.csv"
           ],
           "preference_reasons": [
+            "cruelty:mocking-deportation-joke: ICE SAID NAH",
             "spectacle:gamified-deportation: SWIPED RIGHT",
             "form:novel-interface-or-ticket: dating-app",
             "enforcement/detainee subject plus preference signal"
@@ -2028,9 +2037,10 @@
         "inclusion_basis": "real_footage_creative_use",
         "confidence": "high",
         "score": 104,
-        "preference_score": 56,
+        "preference_score": 134,
         "preference_categories": [
           "aesthetic:dystopian-surreal",
+          "cruelty:personalized-deportation-threat",
           "medium:produced-video-with-preference-signal",
           "subject:enforcement-linked"
         ],
@@ -2133,6 +2143,7 @@
             "produced_videos.csv"
           ],
           "preference_reasons": [
+            "cruelty:personalized-deportation-threat: we will hunt you down",
             "aesthetic:dystopian-surreal: dystopian",
             "produced video with preference signal",
             "enforcement/detainee subject plus preference signal"
@@ -3696,9 +3707,10 @@
         "inclusion_basis": "wholly_creative_media",
         "confidence": "high",
         "score": 90,
-        "preference_score": 75,
+        "preference_score": 131,
         "preference_categories": [
           "aesthetic:nostalgia-americana",
+          "cruelty:mocking-deportation-joke",
           "policy:self-deportation-ad",
           "spectacle:gamified-deportation",
           "subject:enforcement-linked"
@@ -3791,6 +3803,7 @@
             "tags"
           ],
           "preference_reasons": [
+            "cruelty:mocking-deportation-joke: FREE TICKET HOME",
             "spectacle:gamified-deportation: FREE TICKET HOME",
             "policy:self-deportation-ad: FREE TICKET HOME",
             "aesthetic:nostalgia-americana: vintage",
@@ -4099,9 +4112,10 @@
         "inclusion_basis": "wholly_creative_media",
         "confidence": "high",
         "score": 90,
-        "preference_score": 75,
+        "preference_score": 131,
         "preference_categories": [
           "aesthetic:nostalgia-americana",
+          "cruelty:mocking-deportation-joke",
           "policy:self-deportation-ad",
           "spectacle:gamified-deportation",
           "subject:enforcement-linked"
@@ -4195,6 +4209,7 @@
             "tags"
           ],
           "preference_reasons": [
+            "cruelty:mocking-deportation-joke: FREE TICKET HOME",
             "spectacle:gamified-deportation: FREE TICKET HOME",
             "policy:self-deportation-ad: FREE TICKET HOME",
             "aesthetic:nostalgia-americana: vintage",
@@ -6614,12 +6629,13 @@
         "tweet_url": "https://x.com/DHSgov/status/2052389262989926576",
         "tweet_text": "Have a NICE day! https://t.co/DqVMnSyN1e",
         "review_state": "candidate",
-        "inclusion_basis": "real_footage_creative_use",
-        "confidence": "medium",
-        "score": 84,
-        "preference_score": 56,
+        "inclusion_basis": "cruelty_taunting_enforcement",
+        "confidence": "high",
+        "score": 86,
+        "preference_score": 112,
         "preference_categories": [
           "aesthetic:dystopian-surreal",
+          "cruelty:mocking-deportation-joke",
           "medium:produced-video-with-preference-signal",
           "subject:enforcement-linked"
         ],
@@ -6707,7 +6723,8 @@
           "notable_text": "",
           "reasons": [
             "real enforcement/detainee subject signal",
-            "creative treatment signal"
+            "creative treatment signal",
+            "explicit cruelty, taunt, or threat signal"
           ],
           "source_sidecars": [
             "catalog.parquet",
@@ -6715,6 +6732,7 @@
             "tags"
           ],
           "preference_reasons": [
+            "cruelty:mocking-deportation-joke: Have a NICE day",
             "aesthetic:dystopian-surreal: glitch",
             "produced video with preference signal",
             "enforcement/detainee subject plus preference signal"
