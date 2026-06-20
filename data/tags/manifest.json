@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-20T13:20:25Z",
+  "generated_at": "2026-06-20T14:20:13Z",
   "layers": {
     "audio_music": {
       "cost_estimate_usd": 0.0,
@@ -24,9 +24,9 @@
     },
     "image_ocr": {
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-20T14:08:24Z",
+      "generated_at": "2026-06-20T14:19:59Z",
       "ocr_engine": "tesseract",
-      "ocr_version": "tesseract 5.5.0",
+      "ocr_version": "tesseract 5.3.4",
       "row_count": 24831,
       "rows": 24831,
       "status_counts": {
@@ -39,7 +39,7 @@
       "cost_estimate_usd": 0.0,
       "extractor_version": "ffmpeg-keyframes-v2",
       "frame_count": 30727,
-      "generated_at": "2026-06-20T14:08:20Z",
+      "generated_at": "2026-06-20T14:19:56Z",
       "row_count": 6037,
       "rows": 6037,
       "status_counts": {
@@ -49,7 +49,7 @@
       }
     },
     "lexical": {
-      "generated_at": "2026-06-20T13:20:25Z",
+      "generated_at": "2026-06-20T14:20:13Z",
       "parquets_scanned": {
         "AGPamBondi.parquet": 19,
         "ATFHQ.parquet": 3,
@@ -377,11 +377,11 @@
         "legal:civil-lawsuit": 203,
         "legal:criminal-prosecution": 5262,
         "media-status:archived": 17343,
-        "media-status:described": 4743,
+        "media-status:described": 5656,
         "media-status:graphic-content": 6,
         "media-status:has-alt-text": 2694,
         "media-status:needs-ocr": 9247,
-        "media-status:needs-vision": 12697,
+        "media-status:needs-vision": 11760,
         "media:ai-generated": 24,
         "media:animated-gif": 102,
         "media:photo": 11990,
@@ -608,7 +608,7 @@
     "media_vision": {
       "cache_hits": 20,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-20T14:08:17Z",
+      "generated_at": "2026-06-20T14:19:53Z",
       "model": "metadata",
       "model_version": "media-metadata-v4",
       "prompt_hash": "b18b19292ec51484",
@@ -632,9 +632,9 @@
         "genre:recruitment": 39,
         "genre:utopian": 21,
         "media-status:archived": 20442,
-        "media-status:described": 5899,
+        "media-status:described": 6966,
         "media-status:has-alt-text": 3701,
-        "media-status:needs-vision": 14543,
+        "media-status:needs-vision": 13476,
         "media:animated-gif": 102,
         "media:photo": 15062,
         "media:video": 5278,
@@ -697,9 +697,8 @@
       "thumbnails": 15348
     },
     "transcripts": {
-      "attempted": 2,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-20T14:08:28Z",
+      "generated_at": "2026-06-20T14:20:07Z",
       "row_count": 3539,
       "rows": 3539,
       "status_counts": {
@@ -709,8 +708,7 @@
         "ok": 2671,
         "video-too-large": 2
       },
-      "status_ok": 2,
-      "transcribed": 2,
+      "transcribed": 2671,
       "transcriber": "faster-whisper",
       "transcriber_version": "faster-whisper-v1"
     }
@@ -1042,11 +1040,11 @@
     "legal:civil-lawsuit": 203,
     "legal:criminal-prosecution": 5262,
     "media-status:archived": 17343,
-    "media-status:described": 4743,
+    "media-status:described": 5656,
     "media-status:graphic-content": 6,
     "media-status:has-alt-text": 2694,
     "media-status:needs-ocr": 9247,
-    "media-status:needs-vision": 12697,
+    "media-status:needs-vision": 11760,
     "media:ai-generated": 24,
     "media:animated-gif": 102,
     "media:photo": 11990,
