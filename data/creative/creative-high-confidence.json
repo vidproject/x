@@ -1,11 +1,11 @@
 {
   "metadata": {
     "queue": "high_confidence",
-    "generated_at": "2026-06-20T15:06:25Z",
-    "source_commit": "b097c90f",
-    "item_count": 63,
+    "generated_at": "2026-06-20T16:15:08Z",
+    "source_commit": "9d3ba91c",
+    "item_count": 64,
     "source_candidate_count": 1400,
-    "not_ready_count": 28,
+    "not_ready_count": 6,
     "review_scope_excluded_count": 1114,
     "review_scope_excluded_reasons": {
       "apprehension-notice-or-routine-card": 327,
@@ -16,12 +16,12 @@
     },
     "all_items_ready": true,
     "basis_counts": {
-      "real_footage_creative_use": 3,
+      "real_footage_creative_use": 4,
       "wholly_creative_media": 60
     },
     "preference_category_counts": {
       "aesthetic:nostalgia-americana": 32,
-      "subject:enforcement-linked": 30,
+      "subject:enforcement-linked": 31,
       "aesthetic:ai-synthetic-propaganda": 24,
       "aesthetic:dystopian-surreal": 21,
       "policy:self-deportation-ad": 20,
@@ -31,12 +31,12 @@
       "form:novel-interface-or-ticket": 7,
       "editorialized:dramatic-crime-composite": 6,
       "spectacle:brutality-normalized": 2,
+      "spectacle:asmr-deportation": 2,
       "editorialized:annotated-news-crime": 2,
-      "spectacle:militarized-power-showreel": 2,
-      "spectacle:asmr-deportation": 1
+      "spectacle:militarized-power-showreel": 2
     },
     "top_accounts": {
-      "DHSgov": 19,
+      "DHSgov": 20,
       "USDOL": 18,
       "ICEgov": 10,
       "WhiteHouse": 5,
@@ -8611,6 +8611,141 @@
       "preference_categories": [
         "form:novel-interface-or-ticket",
         "spectacle:gamified-deportation",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "1965514384803061765:13_1965514270424055808",
+      "tweet_id": "1965514384803061765",
+      "posted_at": "2025-09-09T20:35:21.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1965514384803061765",
+      "tweet_text": "ASMR: @USCG captures, burns, and sinks a drug boat.\n\nOver the weekend, as part of Operation Pacific Viper, the @USCG Cutter Stone conducted three interdictions in a single night—seizing nearly 13,000 pounds of cocaine and apprehending seven suspected drug smugglers. https://t.co/wHRGUGYtTw",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "high",
+      "score": 84,
+      "creative_forms": [
+        "asmr"
+      ],
+      "subjects": [
+        "detainees",
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "action:detention",
+        "agency:USCG",
+        "audio:has-audio",
+        "crime:cocaine",
+        "crime:narcotics",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:video",
+        "military:coast-guard",
+        "review:screened-video",
+        "topic:immigration",
+        "topic:military",
+        "video:medium"
+      ],
+      "media": [
+        {
+          "media_id": "13_1965514270424055808",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_1965514270424055808.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/24294411ca81374273e175c808ce0d6a39ddba6b2d2454c6e19388a7432ae618.jpg",
+          "sha256": "24294411ca81374273e175c808ce0d6a39ddba6b2d2454c6e19388a7432ae618",
+          "duration_sec": 47.26,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Dark video frame with a small bright fire or explosion isolated against a nearly black background, consistent with a night or low-light shot of a burning vessel or object on the water.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 3,
+                "no-text": 2
+              },
+              "complete_row_count": 5,
+              "text": "Se.\n\n~z\n\nrs"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 47.322268,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "empty-transcript",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Dark video frame with a small bright fire or explosion isolated against a nearly black background, consistent with a night or low-light shot of a burning vessel or object on the water.",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "spectacle:asmr-deportation: ASMR",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 5215,
+        "retweets": 1140,
+        "quotes": 181,
+        "views": 204615
+      },
+      "preference_score": 65,
+      "preference_categories": [
+        "spectacle:asmr-deportation",
         "subject:enforcement-linked"
       ]
     },

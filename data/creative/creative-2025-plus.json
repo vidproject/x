@@ -1,11 +1,11 @@
 {
   "metadata": {
     "queue": "2025_plus",
-    "generated_at": "2026-06-20T15:06:25Z",
-    "source_commit": "b097c90f",
-    "item_count": 254,
+    "generated_at": "2026-06-20T16:15:08Z",
+    "source_commit": "9d3ba91c",
+    "item_count": 276,
     "source_candidate_count": 1400,
-    "not_ready_count": 28,
+    "not_ready_count": 6,
     "review_scope_excluded_count": 1114,
     "review_scope_excluded_reasons": {
       "apprehension-notice-or-routine-card": 327,
@@ -16,38 +16,38 @@
     },
     "all_items_ready": true,
     "basis_counts": {
-      "real_footage_creative_use": 23,
-      "wholly_creative_media": 231
+      "real_footage_creative_use": 25,
+      "wholly_creative_media": 251
     },
     "preference_category_counts": {
-      "aesthetic:nostalgia-americana": 139,
-      "subject:enforcement-linked": 96,
-      "medium:produced-video-with-preference-signal": 53,
-      "aesthetic:dystopian-surreal": 42,
-      "policy:self-deportation-ad": 41,
-      "aesthetic:ai-synthetic-propaganda": 38,
-      "spectacle:holiday-or-celebration": 29,
+      "aesthetic:nostalgia-americana": 140,
+      "subject:enforcement-linked": 111,
+      "medium:produced-video-with-preference-signal": 56,
+      "aesthetic:ai-synthetic-propaganda": 49,
+      "aesthetic:dystopian-surreal": 46,
+      "policy:self-deportation-ad": 45,
+      "spectacle:holiday-or-celebration": 30,
       "spectacle:gamified-deportation": 15,
       "editorialized:dramatic-crime-composite": 14,
       "form:novel-interface-or-ticket": 11,
       "spectacle:militarized-power-showreel": 6,
       "spectacle:brutality-normalized": 4,
       "editorialized:annotated-news-crime": 4,
-      "spectacle:asmr-deportation": 1
+      "spectacle:asmr-deportation": 2
     },
     "top_accounts": {
       "USDOL": 98,
-      "DHSgov": 45,
+      "DHSgov": 48,
       "ICEgov": 36,
       "USCIS": 24,
-      "CBP": 14,
-      "WhiteHouse": 14,
+      "CBP": 16,
+      "WhiteHouse": 16,
       "TheJusticeDept": 6,
       "POTUS": 5,
       "FBI": 3,
-      "USBPChief": 2,
-      "Sonderling47": 1,
-      "RapidResponse47": 1
+      "USBPChief": 3,
+      "gwjfromparadise": 2,
+      "ERONewOrleans": 2
     },
     "review_actions": [
       "yes",
@@ -8617,6 +8617,141 @@
       ]
     },
     {
+      "id": "1965514384803061765:13_1965514270424055808",
+      "tweet_id": "1965514384803061765",
+      "posted_at": "2025-09-09T20:35:21.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1965514384803061765",
+      "tweet_text": "ASMR: @USCG captures, burns, and sinks a drug boat.\n\nOver the weekend, as part of Operation Pacific Viper, the @USCG Cutter Stone conducted three interdictions in a single night—seizing nearly 13,000 pounds of cocaine and apprehending seven suspected drug smugglers. https://t.co/wHRGUGYtTw",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "high",
+      "score": 84,
+      "creative_forms": [
+        "asmr"
+      ],
+      "subjects": [
+        "detainees",
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "action:detention",
+        "agency:USCG",
+        "audio:has-audio",
+        "crime:cocaine",
+        "crime:narcotics",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:video",
+        "military:coast-guard",
+        "review:screened-video",
+        "topic:immigration",
+        "topic:military",
+        "video:medium"
+      ],
+      "media": [
+        {
+          "media_id": "13_1965514270424055808",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_1965514270424055808.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/24294411ca81374273e175c808ce0d6a39ddba6b2d2454c6e19388a7432ae618.jpg",
+          "sha256": "24294411ca81374273e175c808ce0d6a39ddba6b2d2454c6e19388a7432ae618",
+          "duration_sec": 47.26,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Dark video frame with a small bright fire or explosion isolated against a nearly black background, consistent with a night or low-light shot of a burning vessel or object on the water.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 3,
+                "no-text": 2
+              },
+              "complete_row_count": 5,
+              "text": "Se.\n\n~z\n\nrs"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 47.322268,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "empty-transcript",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Dark video frame with a small bright fire or explosion isolated against a nearly black background, consistent with a night or low-light shot of a burning vessel or object on the water.",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "spectacle:asmr-deportation: ASMR",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 5215,
+        "retweets": 1140,
+        "quotes": 181,
+        "views": 204615
+      },
+      "preference_score": 65,
+      "preference_categories": [
+        "spectacle:asmr-deportation",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
       "id": "1915752662831603868:3_1915752658264113152",
       "tweet_id": "1915752662831603868",
       "posted_at": "2025-04-25T13:00:02.000Z",
@@ -10198,6 +10333,145 @@
         "retweets": 11,
         "quotes": 0,
         "views": 6554
+      },
+      "preference_score": 46,
+      "preference_categories": [
+        "aesthetic:dystopian-surreal",
+        "medium:produced-video-with-preference-signal",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2054462029226967310:16_2054462014228148224",
+      "tweet_id": "2054462029226967310",
+      "posted_at": "2026-05-13T07:21:32.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "gwjfromparadise",
+        "category": null,
+        "label": "gwjfromparadise"
+      },
+      "tweet_url": "https://x.com/gwjfromparadise/status/2054462029226967310",
+      "tweet_text": "@SecMullinDHS @CBP @DHSgov @CBPCommissioner https://t.co/UjtpbmNyKx",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "dystopian",
+        "text-overlay"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "agency:DHSgov",
+        "agency:SecMullinDHS",
+        "audio:no-audio",
+        "format:reply",
+        "genre:dystopian",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "16_2054462014228148224",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2054462014228148224.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/3df00d9281ac6ee62450b93f987e2ebeab32ccded380c48ab0754cd689a1b90e.jpg",
+          "sha256": "3df00d9281ac6ee62450b93f987e2ebeab32ccded380c48ab0754cd689a1b90e",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Stylized clip of a woman in profile against a blue and pink fantasy or sci-fi background. White uppercase caption text fills much of the left side as the frames hold on the same pose.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "y TA. wie 4 NEEDBARES, MOMENTO: 4 GET OVER THIS® STUPIDITY Im\n\n» 5 7 NEBDBAR MOMENT#TO* GET OVER THIS™ : 8 STUPIDITY ‘4\n\na.) NEED Ns MOMENT&TO: & * GET OVER THIS® © a STUPIDITY a\n\nNEEDBAT ES, MOMENTTOS GET OVER THIS®™ A STUPIDITY =\n\n» eo F ” Tho ‘a , NEEDBAtE ws.» MOMENTsT@: & * GET OVER THIS™ & \\ STUPIDITY Be"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 4.0,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Stylized clip of a woman in profile against a blue and pink fantasy or sci-fi background. White uppercase caption text fills much of the left side as the frames hold on the same pose.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:dystopian-surreal: dystopian",
+          "produced video with preference signal",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 9
       },
       "preference_score": 46,
       "preference_categories": [
@@ -11936,6 +12210,135 @@
       ]
     },
     {
+      "id": "2011091203375190332:3_2011090967516893184",
+      "tweet_id": "2011091203375190332",
+      "posted_at": "2026-01-13T15:01:21.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/2011091203375190332",
+      "tweet_text": "Somsalao Thonesavanh, a criminal illegal alien from Laos convicted of drug trafficking and selling a synthetic narcotic. https://t.co/mK6cIgNWzd",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic",
+        "lineup"
+      ],
+      "subjects": [
+        "detainees",
+        "immigration-language"
+      ],
+      "tags": [
+        "country:Laos",
+        "crime:narcotics",
+        "crime:trafficking",
+        "format:reply",
+        "genre:lineup",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "slogan:criminal-illegal-alien",
+        "slogan:illegal-alien",
+        "theme:criminal",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2011090967516893184",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/3_2011090967516893184.png",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/94b05f36501afea0c88256e00e0a621e5b3e2bff1e863addfd6acc650ed2de03.jpg",
+          "sha256": "94b05f36501afea0c88256e00e0a621e5b3e2bff1e863addfd6acc650ed2de03",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Low-resolution detention or booking-style portrait of a man in an orange jail shirt seated in an institutional room, with shelving and stored items behind him.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "aa"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Low-resolution detention or booking-style portrait of a man in an orange jail shirt seated in an institutional room, with shelving and stored items behind him.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 1601,
+        "retweets": 216,
+        "quotes": 6,
+        "views": 146748
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
       "id": "2039482010012467379:3_2039481256518316032",
       "tweet_id": "2039482010012467379",
       "posted_at": "2026-04-01T23:16:17.000Z",
@@ -12060,6 +12463,258 @@
       ]
     },
     {
+      "id": "1954935847117287574:3_1952447131165560832",
+      "tweet_id": "1954935847117287574",
+      "posted_at": "2025-08-11T16:00:01.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "ERONewOrleans",
+        "category": "core",
+        "label": "ICE ERO New Orleans"
+      },
+      "tweet_url": "https://x.com/ERONewOrleans/status/1954935847117287574",
+      "tweet_text": "🚨DRUG TRAFFICKER ARRESTED: ICE New Orleans arrested Eduardo Luis Machin of Cuba 🇨🇺. His criminal history includes:\n💥Drug Trafficking\n💥Drug Possession\n💥Dangerous Drug Possession\n💥Synthetic Narcotic Possession\n\n📢Smuggling drugs into the U.S.? Bold move. Also, illegal. https://t.co/ULM0YFHpBQ",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "detainees"
+      ],
+      "tags": [
+        "action:detention",
+        "agency:ICEgov",
+        "country:Cuba",
+        "crime:narcotics",
+        "crime:trafficking",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1952447131165560832",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-ERONewOrleans/3_1952447131165560832.png",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/7ce6c5abbcbf268656700c25651d1121ff73f3b3ff75c0c85ffb9c76418aba2e.jpg",
+          "sha256": "7ce6c5abbcbf268656700c25651d1121ff73f3b3ff75c0c85ffb9c76418aba2e",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Close cropped booking-style portrait of an older bald man with a gray beard, photographed indoors against a plain institutional background.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "2."
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Close cropped booking-style portrait of an older bald man with a gray beard, photographed indoors against a plain institutional background.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: Synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 1010,
+        "retweets": 240,
+        "quotes": 7,
+        "views": 43772
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "1997365424422285519:3_1995552431724249088",
+      "tweet_id": "1997365424422285519",
+      "posted_at": "2025-12-06T18:00:01.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "ERONewOrleans",
+        "category": "core",
+        "label": "ICE ERO New Orleans"
+      },
+      "tweet_url": "https://x.com/ERONewOrleans/status/1997365424422285519",
+      "tweet_text": "ICE New Orleans arrested Juan Antonio Gonzalez-Lopez, an illegal alien from Mexico🇲🇽 \nLengthy criminal history includes: \n💥Assault arrest\n💥DUI\n💥Trespassing\n💥Public order crimes\n💥Resisting an officer \n💥Stolen property\n💥Possession of narcotic equipment\n💥Possession of synthetic narcotic \n💥Larceny",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "detainees",
+        "arrest-or-raid",
+        "immigration-language"
+      ],
+      "tags": [
+        "action:detention",
+        "agency:ICEgov",
+        "country:Mexico",
+        "crime:assault",
+        "crime:dui",
+        "crime:narcotics",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "slogan:illegal-alien",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1995552431724249088",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-ERONewOrleans/3_1995552431724249088.png",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/538fc800a48318b56311a1223a2ef7813ea5272486ae264d640d554242fccf48.jpg",
+          "sha256": "538fc800a48318b56311a1223a2ef7813ea5272486ae264d640d554242fccf48",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Booking or custody-style portrait of a man in a light shirt standing indoors, with a television or monitor visible high on the wall behind him.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "a fa a ) a a Me ‘ yy if a // P — / Ny \\ ¥ * ded i b"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Booking or custody-style portrait of a man in a light shirt standing indoors, with a television or monitor visible high on the wall behind him.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 885,
+        "retweets": 264,
+        "quotes": 8,
+        "views": 8126
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
       "id": "1986816074940076385:3_1986816070565412864",
       "tweet_id": "1986816074940076385",
       "posted_at": "2025-11-07T15:20:40.000Z",
@@ -12174,6 +12829,129 @@
         "retweets": 135,
         "quotes": 3,
         "views": 9845
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "1891582186244993194:3_1891582185162842112",
+      "tweet_id": "1891582186244993194",
+      "posted_at": "2025-02-17T20:15:11.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "CBP",
+        "category": "core",
+        "label": "U.S. Customs and Border Protection"
+      },
+      "tweet_url": "https://x.com/CBP/status/1891582186244993194",
+      "tweet_text": "Last month, CBP officers in Seattle intercepted a package from Canada containing over 1lb of fentanyl during a targeted enforcement operation. This synthetic opioid is 50x more potent than heroin, and even small amounts can be lethal.\n\n➡️ https://go.dhs.gov/wJs https://t.co/O7FOlL4N8F",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "agency:DHSgov",
+        "country:Canada",
+        "crime:fentanyl",
+        "crime:narcotics",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1891582185162842112",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP-0002/3_1891582185162842112.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/6ec73975d29da35f1818f11429f73028556a74316897a45ea8bd9ee6079040d0.jpg",
+          "sha256": "6ec73975d29da35f1818f11429f73028556a74316897a45ea8bd9ee6079040d0",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Evidence photo showing a small bagged item or bundle resting on a digital scale on a counter or table.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": ". an"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Evidence photo showing a small bagged item or bundle resting on a digital scale on a counter or table.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 381,
+        "retweets": 99,
+        "quotes": 13,
+        "views": 25638
       },
       "preference_score": 41,
       "preference_categories": [
@@ -12429,6 +13207,523 @@
       "preference_categories": [
         "aesthetic:ai-synthetic-propaganda",
         "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2045858957017935917:3_2044847515325939712",
+      "tweet_id": "2045858957017935917",
+      "posted_at": "2026-04-19T13:36:00.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "EROSanDiego",
+        "category": "core",
+        "label": "ICE San Diego"
+      },
+      "tweet_url": "https://x.com/EROSanDiego/status/2045858957017935917",
+      "tweet_text": "ICE San Diego arrested Edgardo Valenzuela, 61, a criminal alien who has prior convictions for sale of synthetic narcotics and illegal reentry after removal. Valenzuela was removed to Mexico. https://t.co/Fpxwi3eKxW",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "detainees"
+      ],
+      "tags": [
+        "action:deportation",
+        "action:detention",
+        "agency:ICEgov",
+        "country:Mexico",
+        "crime:narcotics",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2044847515325939712",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-EROSanDiego/3_2044847515325939712.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/e2bd80824bac047575f106a9aa0dba9f47cd2448b7d8b6dedb3f814db0877f83.jpg",
+          "sha256": "e2bd80824bac047575f106a9aa0dba9f47cd2448b7d8b6dedb3f814db0877f83",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Close booking-style portrait of an older man with a mustache in a brown shirt, photographed in front of a plain indoor wall.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "pas ae vo NE ‘ef er"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Close booking-style portrait of an older man with a mustache in a brown shirt, photographed in front of a plain indoor wall.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 160,
+        "retweets": 37,
+        "quotes": 3,
+        "views": 1297
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2067004288757645785:3_2066990721844834304",
+      "tweet_id": "2067004288757645785",
+      "posted_at": "2026-06-16T22:00:00.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "ERO__Phoenix",
+        "category": "core",
+        "label": "ICE ERO Phoenix"
+      },
+      "tweet_url": "https://x.com/ERO__Phoenix/status/2067004288757645785",
+      "tweet_text": "Arizona is safer after the arrest of Ruben Rosas-Romero, a 54-year-old criminal illegal alien from Mexico charged with attempted synthetic narcotic possession and extreme DUI. ICE Phoenix remains committed to removing public safety threats. Learn more: http://ice.gov https://t.co/7EmV57M0dW",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "detainees",
+        "arrest-or-raid",
+        "immigration-language"
+      ],
+      "tags": [
+        "action:deportation",
+        "action:detention",
+        "agency:ICEgov",
+        "country:Mexico",
+        "crime:dui",
+        "crime:narcotics",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "slogan:criminal-illegal-alien",
+        "slogan:illegal-alien",
+        "state:Arizona",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2066990721844834304",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-ERO__Phoenix/3_2066990721844834304.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/70d2de57134b18f6e409b04e8588803c0240096c51159adfaf0b3056738f1082.jpg",
+          "sha256": "70d2de57134b18f6e409b04e8588803c0240096c51159adfaf0b3056738f1082",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "ICE-branded apprehension card showing a man's portrait in front of a vehicle, with the words ARRESTED and FACING REMOVAL in large text and a Phoenix, Arizona location label.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "a PHOENDC AZ ARRESTED 1) FACING REMOVAL ICE"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "ICE-branded apprehension card showing a man's portrait in front of a vehicle, with the words ARRESTED and FACING REMOVAL in large text and a Phoenix, Arizona location label.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 132,
+        "retweets": 35,
+        "quotes": 2,
+        "views": 919
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "1912129127408185638:3_1912129121456377856",
+      "tweet_id": "1912129127408185638",
+      "posted_at": "2025-04-15T13:01:24.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "CBP",
+        "category": "core",
+        "label": "U.S. Customs and Border Protection"
+      },
+      "tweet_url": "https://x.com/CBP/status/1912129127408185638",
+      "tweet_text": "CBP is proud to support Operation FREE 3.0, a multiagency effort targeting fentanyl trafficking and synthetic drug threats. We're bringing together over 175 federal, state, and local agencies from 14 states to help protect communities.\n\n➡️ https://go.dhs.gov/wAr https://t.co/ZGH1oaWO9Y",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "agency:DHSgov",
+        "crime:fentanyl",
+        "crime:narcotics",
+        "crime:trafficking",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1912129121456377856",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP-0002/3_1912129121456377856.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/66dd2ab89a1db1f7719848d64b28b3b9e3ec2e660382d4bd64cac8ec48fbb9f3.jpg",
+          "sha256": "66dd2ab89a1db1f7719848d64b28b3b9e3ec2e660382d4bd64cac8ec48fbb9f3",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Blue CBP News statement graphic with a close-up image of blue pills and white text announcing Operation Free 3.0 and a statement from CBP's Acting Commissioner.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "CBPNEWS © some, _~— (2 j Operation Free 3.0 a. 3 ‘ Statement from CBP’s IN ae <... Acting Commissioner “a Th hl Pete R. Flores. «A 5 / 5 1 1 5 1 8 925 321 21 287 2.317291 . 5 1 1 5 1 9 1038 467 162 64 22.631256 LP 3 1 1 6 0 0 888 552 250 96 -1 4 1 1 6 1 0 888 552 250 46 -1 5 1 1 6 1 1 888 581 76 23 21.851456 23am 5 1 1 6 1 2 1123 552 15 19 0.000000 - 4 1 1 6 2 0 934 609 48 39 -1 5 1 1 6 2 1 934 609 48 39 23.994644 hy"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Blue CBP News statement graphic with a close-up image of blue pills and white text announcing Operation Free 3.0 and a statement from CBP's Acting Commissioner.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 63,
+        "retweets": 13,
+        "quotes": 0,
+        "views": 4460
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2053204843112837310:16_2053204836716527616",
+      "tweet_id": "2053204843112837310",
+      "posted_at": "2026-05-09T20:05:55.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "Epointerdog",
+        "category": "public",
+        "label": "me"
+      },
+      "tweet_url": "https://x.com/Epointerdog/status/2053204843112837310",
+      "tweet_text": "@DHSgov https://t.co/AGGn2VA0Fp",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "cinematic",
+        "dystopian",
+        "war-movie"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:DHSgov",
+        "audio:no-audio",
+        "format:reply",
+        "genre:dystopian",
+        "genre:war-movie",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration",
+        "topic:military",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "16_2053204836716527616",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2053204836716527616.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/29e62b1880e85e73b02a1937f9bfbe834c08dbf06e5983c5764188ecdeef282f.jpg",
+          "sha256": "29e62b1880e85e73b02a1937f9bfbe834c08dbf06e5983c5764188ecdeef282f",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Cinematic clip of a helmeted person seated in a cold, blue-gray military or sci-fi vehicle interior. The sequence shows the person looking forward and gesturing slightly, with subtitles changing near the bottom.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "=, i. , y 4 al ‘ aw // a Hey, ——\n\n— }) i ihe y r 1 am. “e = A y * ] a ‘ a ; Y > > ea Hey, —— es\n\n= q os ™ Iph = £ 1 » \\ . as —_=. f a A , yp , . a ; a 4 3 . £ a —— “s\n\n2 a y =~ f f 1 1 ¥ —_——< a itis 2. j és j as Shootthat guy. “\n\na los po a vila vi ‘ —=_ 4 Shootthat guy."
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 1.62,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Cinematic clip of a helmeted person seated in a cold, blue-gray military or sci-fi vehicle interior. The sequence shows the person looking forward and gesturing slightly, with subtitles changing near the bottom.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:dystopian-surreal: dystopian",
+          "produced video with preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 28
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:dystopian-surreal",
+        "medium:produced-video-with-preference-signal"
       ]
     },
     {
@@ -13708,6 +15003,127 @@
         "retweets": 134,
         "quotes": 7,
         "views": 27487
+      },
+      "preference_score": 40,
+      "preference_categories": [
+        "aesthetic:dystopian-surreal",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "1991603796947136549:3_1991603788978036736",
+      "tweet_id": "1991603796947136549",
+      "posted_at": "2025-11-20T20:25:22.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "EROElPaso",
+        "category": "core",
+        "label": "ERO El Paso"
+      },
+      "tweet_url": "https://x.com/EROElPaso/status/1991603796947136549",
+      "tweet_text": "#EROElPaso deportation officers removed Joaquin Agustin Lozoya-Chavez, 28, an illegal alien from Mexico. Officers turned him over to Mexican officials  at the Stanton Street International Bridge. Lozoya-Chavez is a fugitive wanted in Mexico for aggravated sexual assault. https://t.co/fMLKWA0kdG",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [
+        "immigration-language"
+      ],
+      "tags": [
+        "action:deportation",
+        "country:Mexico",
+        "crime:assault",
+        "crime:sexual",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "slogan:illegal-alien",
+        "theme:criminal",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1991603788978036736",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-EROElPaso/3_1991603788978036736.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/20d275079dcb1dd575457a36e570391cc6ab59a14e3ad75e7bfa7597764dace9.jpg",
+          "sha256": "20d275079dcb1dd575457a36e570391cc6ab59a14e3ad75e7bfa7597764dace9",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Custody or removal photo showing a man in a purple sweatshirt standing beside a masked officer on a street near parked law-enforcement vehicles; this is a routine enforcement/removal image rather than creative artwork.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "Vhs. 2 jit ‘ 1 »"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "photo; 425x439; 0.05 MiB; archived; tweet context: #EROElPaso deportation officers removed Joaquin Agustin Lozoya-Chavez, 28, an illegal alien from Mexico. Officers turned him over to Mexican officials at the Stanton Street International Bridge. Lozoya-Chavez is a fugitive wanted in Mexico for aggravated sexu...; source URL: https://pbs.twimg.com/media/G6OZGBdboAAGYNj.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-EROElPaso/3_1991603788978036736.jpg; needs OCR, transcript, or frame-level vision before content claims. #EROElPaso deportation officers removed Joaquin Agustin Lozoya-Chavez, 28, an illegal alien from Mexico. Officers turned him over to Mexican officials at the Stanton Street International Bridge. Lozoya-Chavez is a fugitive wanted in Mexico for aggravated sexual assault. https://t.co/fMLKWA0kdG",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:dystopian-surreal: Vhs",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 12,
+        "retweets": 5,
+        "quotes": 1,
+        "views": 940
       },
       "preference_score": 40,
       "preference_categories": [
@@ -16988,6 +18404,149 @@
       ]
     },
     {
+      "id": "2008552276613353655:13_2008552165787287553",
+      "tweet_id": "2008552276613353655",
+      "posted_at": "2026-01-06T14:52:34.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/2008552276613353655",
+      "tweet_text": "MURDERERS HAVE NO HOME IN MINNEAPOLIS.\n\n@Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT.\n\nTo the criminals living among us, you are NOT our neighbors. Leave now or we will find you.",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "advertisement"
+      ],
+      "subjects": [
+        "immigration-language"
+      ],
+      "tags": [
+        "agency:DHSgov",
+        "audio:has-audio",
+        "country:Ecuador",
+        "crime:assault",
+        "crime:homicide",
+        "crime:murder",
+        "crime:robbery",
+        "crime:sexual",
+        "genre:advertisement",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "slogan:illegal-alien",
+        "theme:criminal",
+        "theme:directive",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2008552165787287553",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2008552165787287553.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/e679545c05210d743141f90951735dfc840ea2717bb4eee72990e94d86313302.jpg",
+          "sha256": "e679545c05210d743141f90951735dfc840ea2717bb4eee72990e94d86313302",
+          "duration_sec": 90.466,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Vertical video frame inside a crowded office or room, with multiple people standing close together and several wearing tactical or law-enforcement style clothing.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 5
+              },
+              "complete_row_count": 5,
+              "text": "— TL wea gues aaah ee 4 7 ale A —= ey —— ab 7 ‘a (QG—- ZS. Ber ‘S : [Se 3 ee\n\n(hi +h » aot an . 889 {Ligp Lt\n\n{| Z A oy > j = Lis [ ag Goad ‘ tb = 'd = pS dil: CaS f . Ae ke xP A uM MT aay aan 1 + me it at Oe A . : ,, “Or Rw H \\ J ye} N Ny: ete) s i's. “Ain 2) bro A / a 4 >\n\n-. + “ yy : , = i i ‘ < . ) -\n\na cit ong iar se Wait Li Ne tow’ 5¥ May a Z is ii If ay J sy Oy oe = init Ak . } p78 Si %& ; - < ‘| of 3 =="
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 90.517333,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 14,
+              "text": "¿Verdad? Estan ahorita en dos puntos. ¿Verdad? ¿Le voy a saber quién estamos aquí? ¿¿No sé? ¿Hi? ¿Será les de la piel? ¿Qué tienes? Deje a él a la imagen. ¿Qué quieres? Hay unDDD, y no puedo pisar. Les deje a él a él a él a él a él a él a él. ¿Qué quieres? ¿Qué quieres?"
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Vertical video frame inside a crowded office or room, with multiple people standing close together and several wearing tactical or law-enforcement style clothing.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "policy:self-deportation-ad: Leave now",
+          "produced video with preference signal",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 19451,
+        "retweets": 3765,
+        "quotes": 218,
+        "views": 706996
+      },
+      "preference_score": 37,
+      "preference_categories": [
+        "medium:produced-video-with-preference-signal",
+        "policy:self-deportation-ad",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
       "id": "1998867904771580233:3_1998867902242476033",
       "tweet_id": "1998867904771580233",
       "posted_at": "2025-12-10T21:30:20.000Z",
@@ -17619,6 +19178,141 @@
         "retweets": 88,
         "quotes": 5,
         "views": 15312
+      },
+      "preference_score": 37,
+      "preference_categories": [
+        "aesthetic:nostalgia-americana",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2054461699516928485:16_2054461684673380352",
+      "tweet_id": "2054461699516928485",
+      "posted_at": "2026-05-13T07:20:13.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "gwjfromparadise",
+        "category": null,
+        "label": "gwjfromparadise"
+      },
+      "tweet_url": "https://x.com/gwjfromparadise/status/2054461699516928485",
+      "tweet_text": "@SecMullinDHS @CBP @DHSgov @CBPCommissioner https://t.co/MxAbqvq9nB",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation",
+        "text-overlay"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "agency:DHSgov",
+        "agency:SecMullinDHS",
+        "audio:no-audio",
+        "format:reply",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration",
+        "video:news-clip"
+      ],
+      "media": [
+        {
+          "media_id": "16_2054461684673380352",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2054461684673380352.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/d36edd7dfd19233a996b29d7ef203aaaeffa728a207fdaf90fb2a39321bc1fdd.jpg",
+          "sha256": "d36edd7dfd19233a996b29d7ef203aaaeffa728a207fdaf90fb2a39321bc1fdd",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Vintage-looking clip of a man in a blue suit speaking against a plain beige background. The frames show slight changes in his expression and head angle before a caption appears near the lower right.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "7 ™ a a. : l = S : 9 ‘ re\n\nir = 7 — ey taal = = 4 : » ai - WK 7 f /\n\nHe =— _— Sa : a TAN — : \\ > > —. & 1 ¥ /% — yy 4 ‘ . \\ aw i ay i —y f ’ :\n\n= a = i} = —<—. am mn” Vg — ATG Pi a DWiShh QO RCEAD! INCOMPETENCE! VPEVENCE\n\nan ji b= t — - *. = |=. x - >. y : oe ai > [a= = 5 1 1 1 11 2 143 388 164 39 1.196457 L.WISH) 5 1 1 1 11 3 294 380 62 59 41.614361 TO: 5 1 1 1 11 4 352 384 151 45 41.614361 REEAD) 4 1 1 1 12 0 158 426 317 53 -1 5 1 1 1 12 1 158 426 96 33 86.288155 INCO 5 1 1 1 12 2 274 474 1 3 0.000000 ! 5 1 1 1 12 3 299 434 15 24 79.967461 P 5 1 1 1 12 4 329 435 50 44 34.866241 TT 5 1 1 1 12 5 397 434 78 44 88.602974 NCE"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 4.72,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": "no-audio-stream",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Vintage-looking clip of a man in a blue suit speaking against a plain beige background. The frames show slight changes in his expression and head angle before a caption appears near the lower right.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:nostalgia-americana: Vintage",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 9
       },
       "preference_score": 37,
       "preference_categories": [
@@ -18450,6 +20144,133 @@
       ]
     },
     {
+      "id": "1947749202387472487:13_1947748613360066560",
+      "tweet_id": "1947749202387472487",
+      "posted_at": "2025-07-22T20:02:51.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "RapidResponse47",
+        "category": "core",
+        "label": "Rapid Response 47"
+      },
+      "tweet_url": "https://x.com/RapidResponse47/status/1947749202387472487",
+      "tweet_text": "WINNING: Today, the Consumer Brands Association — which includes brands like Coca-Cola, Amazon, and Target — announced its pledge to eliminate synthetic food dyes from its products.\n\nMAKE AMERICA HEALTHY AGAIN! https://t.co/Z4AqAo0Sfa",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic",
+        "text-overlay"
+      ],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "slogan:maha",
+        "theme:religion",
+        "topic:general",
+        "video:short"
+      ],
+      "media": [
+        {
+          "media_id": "13_1947748613360066560",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-RapidResponse47-0002/13_1947748613360066560.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/0b3e00a5796d0d27f2a643b468165f560a81352e7bf1bfa2bc6154d6df4bede7.jpg",
+          "sha256": "0b3e00a5796d0d27f2a643b468165f560a81352e7bf1bfa2bc6154d6df4bede7",
+          "duration_sec": 14.814,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Television news-style video frame with a lower-third graphic and a small image of a woman on the left, laid out like a broadcast segment rather than original creative artwork.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 5
+              },
+              "complete_row_count": 5,
+              "text": "[Live re ee “| CONSUMER BRANDS ASSOCIATION MEMBERS rt is 5 = —aal hex MAJOR MAHA VICTORY ON EFFORTS TO PHASE OUT DYES [fm Cin EEE ASO 7 with Maths MacCain, a aha\n\na ba * WY CONSUMER BRANDS ASSOCIATION MEMBERS ie / sz ‘AB World Foods USA Inc. ee 3 Abbott Nutrition 4 { = \\ ACH Food Companies, Inc. i B&G Foods, Inc. i \\ ee BellRing Brands, Inc. l rF Bonduelle Americas I ee 5 1 1 1 10 2 516 242 24 32 4.566460 y/, 4 1 1 1 11 0 35 282 559 54 -1 5 1 1 1 11 1 35 282 58 54 0.000000 feox 5 1 1 1 11 2 108 295 61 21 96.673264 MAJOR 5 1 1 1 11 3 175 295 53 21 95.791397 MAHA 5 1 1 1 11 4 233 295 74 21 96.909798 VICTORY 5 1 1 1 11 5 312 295 28 21 96.913483 ON 5 1 1 1 11 6 347 295 70 21 96.789703 EFFORTS 5 1 1 1 11 7 422 296 23 20 96.537674 TO 5 1 1 1 11 8 451 296 54 20 96.537674 PHASE 5 1 1 1 11 9 511 295 35 21 96.769745 OUT 5 1 1 1 11 10 552 296 42 20 96.837418 DYES 4 1 1 1 12 0 0 298 607 62 -1 5 1 1 1 12 1 0 298 32 62 87.400970 q 5 1 1 1 12 2 41 341 17 2 0.000000 vt 5 1 1 1 12 3 98 328 181 15 0.000000 CT 5 1 1 1 12 4 265 323 52 24 0.000000 ISCOAg 5 1 1 1 12 5 325 332 23 8 96.800987 with 5 1 1 1 12 6 355 323 36 24 93.998611 Martha 5 1 1 1 12 7 394 328 60 15 62.525360 MacCallum, 5 1 1 1 12 8 470 324 62 36 13.315361 Caer 5 1 1 1 12 9 544 324 63 36 0.000000 rerkerr\n\nLa ; im TY CONSUMER BRANDS ASSOCIATION MEMBERS “wi Bush Brothers & Company j : Campari Grou On The Campos Company - \\ Church & Dwight, Co., Inc. * ‘ The Clorox Company i The Coca-Cola Company ha IT wy - feox MAJOR MAHA VICTORY ON EFFORTS TO PHASE OUT DYES a 2 E/E i, / —a|\n\nao ter ~*~ TP) CONSUMER BRANDS ASSOCIATION MEMBERS faa olgate-Palmolive Compan mal \\ : rae ae eee = Danone LC ( \\ Del Monte Foods, Inc. f Le > Diageo North America \\/ Dole Sunshine Tl \\ ‘ [ / f (ZF Mason MAHA VICTORY ON EFFORTS TO PHASE OUT DYES + 1 Ey /AITISIAZ with Martha MacCallum ————\n\ni i * I CONSUMER BRANDS ASSOCIATION MEMBERS S 7:7 Feribol Foods ic eae pee Inc. \\ reshpet r , a] General mils, Inc. 4 r ox MAJOR MAHA VICTORY ON EFFORTS TO PHASE OUT DYES t i CA os —s"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 14.869333,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 3,
+              "text": "Breaking today, some of America's biggest brands are backing the making America healthy again movement. This consumer brands association includes all the big brands like Coca-Cola, Amazon Target, pledging to eliminate synthetic food dies by the end of 2027."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Television news-style video frame with a lower-third graphic and a small image of a woman on the left, laid out like a broadcast segment rather than original creative artwork.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 8910,
+        "retweets": 1554,
+        "quotes": 76,
+        "views": 278620
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
       "id": "2053547959447376012:3_2053547132095717377",
       "tweet_id": "2053547959447376012",
       "posted_at": "2026-05-10T18:49:21.000Z",
@@ -18558,6 +20379,274 @@
         "retweets": 1657,
         "quotes": 118,
         "views": 737772
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "1896970980238745803:3_1896970809064783872,3_1896970809073102848,3_1896970809060491264,3_1896970873820618753",
+      "tweet_id": "1896970980238745803",
+      "posted_at": "2025-03-04T17:08:20.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "WhiteHouse",
+        "category": "core",
+        "label": "The White House"
+      },
+      "tweet_url": "https://x.com/WhiteHouse/status/1896970980238745803",
+      "tweet_text": "🇺🇸 @FLOTUS Melania Trump at the United States Capitol for the Be Best Roundtable on A.I. and Deepfakes. https://t.co/Ahcu3E9a9c",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "country:United-States",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:ai-generated",
+        "media:photo",
+        "review:screened-photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1896970809064783872",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/3_1896970809064783872.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/90407291f24659a562e9726ba0801cad1fbc3e7753ef169bd837a2718e5ee045.jpg",
+          "sha256": "90407291f24659a562e9726ba0801cad1fbc3e7753ef169bd837a2718e5ee045",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Photo from a formal roundtable setting showing Melania Trump seated at a table beside a young woman in a meeting room.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "Wiles a. de w 4 7 al y \\ EF on ean. (2 oe :"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_1896970809073102848",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/3_1896970809073102848.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/399e7c676a0fdbb228ac5bee43ce951986f5bbbe7376fd0fbbc2bed0ed6d971f.jpg",
+          "sha256": "399e7c676a0fdbb228ac5bee43ce951986f5bbbe7376fd0fbbc2bed0ed6d971f",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Wider photo of a formal roundtable with Melania Trump, a young woman, and another official seated at a long table in a government meeting room.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "[- 2 ——_—_—_—————— 4 . —— ee — Ht ' ———— OUT 4 1 1 1 6 0 149 263 23 37 -1 5 1 1 1 6 1 149 263 23 41 0.000000 H 4 1 1 1 7 0 31 400 979 41 -1 5 1 1 1 7 1 31 403 23 37 22.340179 Ht 5 1 1 1 7 2 87 427 1 8 35.526245 5 1 1 1 7 3 164 421 32 17 61.147484 we 5 1 1 1 7 4 560 400 7 9 60.185440 ‘ 5 1 1 1 7 5 615 429 6 10 92.231659 \\ 5 1 1 1 7 6 662 403 1 3 37.765419 \\ 5 1 1 1 7 7 679 437 2 3 22.472275 ' 5 1 1 1 7 8 893 401 88 24 37.491192 ‘We 5 1 1 1 7 9 1003 435 7 6 0.000000 ; 4 1 1 1 8 0 63 438 916 51 -1 5 1 1 1 8 1 63 472 2 2 27.021912 ; 5 1 1 1 8 2 86 438 4 37 71.802040 5 1 1 1 8 3 171 459 27 18 54.791878 3 5 1 1 1 8 4 557 439 102 50 0.000000 x 5 1 1 1 8 5 693 471 1 3 0.000000 ' 5 1 1 1 8 6 889 439 90 29 19.840118 Ci 4 1 1 1 9 0 79 475 898 53 -1 5 1 1 1 9 1 79 493 89 35 22.586792 Wh 5 1 1 1 9 2 291 504 3 9 88.229294 j 5 1 1 1 9 3 532 488 16 25 0.000000 ‘ 5 1 1 1 9 4 565 475 22 51 81.816795 ) 5 1 1 1 9 5 606 484 125 38 0.000000 4 5 1 1 1 9 6 965 502 12 19 34.896843 ye 4 1 1 1 10 0 129 567 925 98 -1 5 1 1 1 10 1 129 567 42 42 47.491421 yy 5 1 1 1 10 2 386 604 1 3 85.105965 5 1 1 1 10 3 542 587 23 78 0.000000 [ 5 1 1 1 10 4 956 576 98 37 35.345085 q- 4 1 1 1 11 0 506 616 454 25 -1 5 1 1 1 11 1 506 616 11 21 81.760025 4 5 1 1 1 11 2 571 627 60 14 44.283577 Liat 5 1 1 1 11 3 894 625 66 6 14.137024 “ey 4 1 1 1 12 0 269 634 634 54 -1 5 1 1 1 12 1 269 664 78 11 0.000000 = 5 1 1 1 12 2 365 670 37 8 28.429306 5 1 1 1 12 3 486 634 41 40 0.000000 a) 5 1 1 1 12 4 580 639 44 31 29.725883 “GG 5 1 1 1 12 5 636 673 8 3 0.000000 Z 5 1 1 1 12 6 671 637 44 17 54.243927 = 5 1 1 1 12 7 843 654 60 34 0.000000 a 5 1 1 1 12 8 958 657 8 7 49.506588 A"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_1896970809060491264",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/3_1896970809060491264.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/79e41ede6fe231595e52fa0d54f25a6891dacf1e05346b78043a2f294bac16bd.jpg",
+          "sha256": "79e41ede6fe231595e52fa0d54f25a6891dacf1e05346b78043a2f294bac16bd",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Group photo in a formal government meeting room, with several participants standing behind a long table flanked by United States flags.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "‘ WA LS 5 1 1 1 1 5 640 225 91 56 0.000000 I! 5 1 1 1 1 6 864 193 98 94 23.023293 “1 5 1 1 1 1 7 1023 195 16 50 48.495865 5 1 1 1 1 8 1088 190 14 81 94.367035 5 1 1 1 1 9 1110 258 6 14 7.047043 . 5 1 1 1 1 10 1125 199 29 58 58.747196 \\ 5 1 1 1 1 11 1177 194 10 81 89.223236 4 1 1 1 2 0 5 426 1179 154 -1 5 1 1 1 2 1 5 460 117 122 11.347115 NYS! 5 1 1 1 2 2 313 576 8 4 0.000000 PM 5 1 1 1 2 3 470 462 337 118 0.000000 TeWeW7 5 1 1 1 2 4 875 440 176 141 0.000000 ie 5 1 1 1 2 5 1120 426 64 130 0.000000 - 4 1 1 1 3 0 18 538 1182 104 -1 5 1 1 1 3 1 18 552 106 55 36.351490 Jae 5 1 1 1 3 2 234 538 122 95 31.951187 ai) 5 1 1 1 3 3 464 615 1 3 55.076084 5 1 1 1 3 4 567 545 92 97 41.609379 MA 4 1 1 1 4 0 35 750 1165 139 -1 5 1 1 1 4 1 35 750 300 139 33.459152 Sg 4 1 1 1 5 0 0 894 1102 66 -1 5 1 1 1 5 1 0 914 7 11 29.454124 “ 5 1 1 1 5 2 931 845 68 115 32.533730 oo"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_1896970873820618753",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/3_1896970873820618753.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/42978f244d52b28a3bb4429cf5100e29cd33de4594f2e31bcec594aa3bc52eea.jpg",
+          "sha256": "42978f244d52b28a3bb4429cf5100e29cd33de4594f2e31bcec594aa3bc52eea",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Photo of a formal greeting or conversation in a government room, with Melania Trump and several women standing near officials.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "— ah a a , z) ‘| : } if bY : rN; , \\aS f f : Vv —= q > — :"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 4
+      },
+      "evidence": {
+        "summary": "Photo from a formal roundtable setting showing Melania Trump seated at a table beside a young woman in a meeting room.\n\nWider photo of a formal roundtable with Melania Trump, a young woman, and another official seated at a long table in a government meeting room.\n\nGroup photo in a formal government meeting room, with several participants standing behind a long table flanked by United States flags.\n\nPhoto of a formal greeting or conversation in a government room, with Melania Trump and several women standing near officials.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 7194,
+        "retweets": 996,
+        "quotes": 43,
+        "views": 204691
       },
       "preference_score": 36,
       "preference_categories": [
@@ -19037,6 +21126,173 @@
       ]
     },
     {
+      "id": "1944471894394077420:3_1943785257276248064,3_1943785302239162368",
+      "tweet_id": "1944471894394077420",
+      "posted_at": "2025-07-13T19:00:00.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "USBPChief",
+        "category": "core",
+        "label": "U.S. Border Patrol Chief"
+      },
+      "tweet_url": "https://x.com/USBPChief/status/1944471894394077420",
+      "tweet_text": "7/7- USBP agents alongside their highly trained USBP K9 partner, responded to a mail courier facility in Tampa, FL, to investigate suspicious parcels. The K9 quickly alerted to two packages. Inside, agents discovered several sealed bags containing 13.3 lbs. of synthetic cathinone, a dangerous substance designed to mimic the effects of cocaine and meth.\n\nIf it threatens our communities, we'll find it- no matter how it gets delivered.",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "crime:cocaine",
+        "crime:meth",
+        "crime:narcotics",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1943785257276248064",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1943785257276248064.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/58e77bd19b6e7fbe58610d071ba26a8231ea18d6709e8f483daa47e5a61471bf.jpg",
+          "sha256": "58e77bd19b6e7fbe58610d071ba26a8231ea18d6709e8f483daa47e5a61471bf",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Evidence-style photo of a large pale wrapped package or powder bundle on foil or plastic, with overlaid text reading NARCOTIC SEIZURE.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "—SS=== - fl > i ; . Me NI a aS ae ¢ ey \\ 2S = o ——— a So eS a a — bad - 7 . = -— —_ ef WAR / R ,"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        },
+        {
+          "media_id": "3_1943785302239162368",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-USBPChief/3_1943785302239162368.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/b6a0a62c8d49f1919e25e0eba7306799aca2336e25bc0ed18bab3f4a5ed6c406.jpg",
+          "sha256": "b6a0a62c8d49f1919e25e0eba7306799aca2336e25bc0ed18bab3f4a5ed6c406",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Evidence photo showing a taped rectangular parcel and other packaging materials laid on a floor or table.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "Bers op iS ae : ba pte ee vs ghee a a EN ay : ean ¥ : ia é i a Cha WIL \\ eae ek \\ o oe. => TE kay ih 2 A a 2 “Pu \\ - meee 2 ll 5 1 1 1 11 4 496 1009 20 21 20.228180 ij 5 1 1 1 11 5 596 1037 3 1 0.000000 : 5 1 1 1 11 6 738 1020 43 24 18.358681 can]"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 2
+      },
+      "evidence": {
+        "summary": "Evidence-style photo of a large pale wrapped package or powder bundle on foil or plastic, with overlaid text reading NARCOTIC SEIZURE.\n\nEvidence photo showing a taped rectangular parcel and other packaging materials laid on a floor or table.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 572,
+        "retweets": 148,
+        "quotes": 3,
+        "views": 5438
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
       "id": "2039482019458007539:3_2039481814092337152",
       "tweet_id": "2039482019458007539",
       "posted_at": "2026-04-01T23:16:19.000Z",
@@ -19145,6 +21401,121 @@
         "retweets": 9,
         "quotes": 0,
         "views": 6290
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "1958620408111825033:3_1958620403649175552",
+      "tweet_id": "1958620408111825033",
+      "posted_at": "2025-08-21T20:01:09.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "CBPAMO",
+        "category": "core",
+        "label": "CBP Air and Marine Operations"
+      },
+      "tweet_url": "https://x.com/CBPAMO/status/1958620408111825033",
+      "tweet_text": "Fentanyl Prevention Day: Raising Awareness to Save Lives\nToday is Fentanyl Prevention Day, a vital opportunity to educate our communities about the dangers of fentanyl and the importance of prevention efforts.\n🔹 Key Facts:\nFentanyl is a synthetic opioid that is 50-100 times more potent than morphine.\nIn 2024, over 81,000 Americans lost their lives to synthetic opioid overdoses, with fentanyl being the leading cause.\nJust 2 milligrams of fentanyl—an amount smaller than a grain of rice—can be lethal.\nFentanyl is often mixed into counterfeit pills or other drugs, making it difficult to detect.\n🔹 What You Can Do:\nEducate Yourself and Others: Learn the signs of an overdose and how to administer naloxone (Narcan).\nSpread Awareness: Share this post to inform others about the dangers of fentanyl.\nTalk to Loved Ones: Open conversations about the risks of drug misuse and the presence of fentanyl in illicit substances.\nDispose of Medications Safely: Participate in drug take-back programs to prevent misuse.\n🔹 Need Help?:If you or someone you know is struggling with substance use, call the SAMHSA National Helpline at 1-800-662-HELP (4357). This free, confidential, 24/7 helpline provides support, resources, and treatment referrals.\nTogether, we can save lives and protect our communities. Let’s stand united against the fentanyl crisis.\n#FentanylPreventionDay #StopOverdoses #SaveLives #EndFentanylCrisis",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "crime:fentanyl",
+        "crime:narcotics",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:photo",
+        "review:screened-photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1958620403649175552",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBPAMO/3_1958620403649175552.png",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/5d636b740f490bdc69e95670397b56ac80f13dd9a4c95b50d705a4586a2ef639.jpg",
+          "sha256": "5d636b740f490bdc69e95670397b56ac80f13dd9a4c95b50d705a4586a2ef639",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Gray public-safety graphic with large black and white text reading ONE PILL CAN KILL and small law-enforcement logos near the bottom.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "PILL@\\"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Gray public-safety graphic with large black and white text reading ONE PILL CAN KILL and small law-enforcement logos near the bottom.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 12,
+        "retweets": 3,
+        "quotes": 0,
+        "views": 560
       },
       "preference_score": 36,
       "preference_categories": [
@@ -20285,6 +22656,132 @@
       ]
     },
     {
+      "id": "2027152094281523249:16_2027152087969124352",
+      "tweet_id": "2027152094281523249",
+      "posted_at": "2026-02-26T22:41:36.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "STFUabtChicago",
+        "category": null,
+        "label": "STFUabtChicago"
+      },
+      "tweet_url": "https://x.com/STFUabtChicago/status/2027152094281523249",
+      "tweet_text": "@DHSgov Why dafuq are you LYING?\nYou KILLED a poor, crippled, defenseless man!\n\nYOU REPRESENT EVIL ABROAD IN THE WORLD\n\nWhen you get to the Gates of Hell, they will show you around to the Employees Entrance. https://t.co/FhX5QyHfX4",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "animation"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:DHSgov",
+        "audio:no-audio",
+        "format:reply",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:animated-gif",
+        "review:screened-video",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "16_2027152087969124352",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/16_2027152087969124352.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/015823fb45ca2c6aedbd1a34641477320e8017dee008fb430501643eab61379b.jpg",
+          "sha256": "015823fb45ca2c6aedbd1a34641477320e8017dee008fb430501643eab61379b",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Dark red and black neon-style graphic with the same sign held across the visible frames. The words glow in red as if on a wall or window, with little visible motion besides flicker or compression.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "GATES OF HELL EMPLOYEES ONLY\n\nGATES. OF HELL EMPLOYEES ONLY\n\nGATES. OF HELL EMPLOYEES ONLY\n\nGATES. OF HELL EMPLOYEES ONLY\n\nGATES OF HELL EMPLOYEES ONLY"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "no-audio-stream",
+              "audio_stream_count": 0,
+              "duration_sec": 4.41,
+              "tags": [
+                "audio:no-audio"
+              ]
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Dark red and black neon-style graphic with the same sign held across the visible frames. The words glow in red as if on a wall or window, with little visible motion besides flicker or compression.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:dystopian-surreal: neon"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 841
+      },
+      "preference_score": 35,
+      "preference_categories": [
+        "aesthetic:dystopian-surreal"
+      ]
+    },
+    {
       "id": "1920176847872049569:13_1920176813575204865",
       "tweet_id": "1920176847872049569",
       "posted_at": "2025-05-07T18:00:10.000Z",
@@ -20531,6 +23028,131 @@
         "retweets": 4091,
         "quotes": 112,
         "views": 238565
+      },
+      "preference_score": 34,
+      "preference_categories": [
+        "spectacle:holiday-or-celebration"
+      ]
+    },
+    {
+      "id": "1907174625936593010:7_1907173400994340864",
+      "tweet_id": "1907174625936593010",
+      "posted_at": "2025-04-01T20:53:59.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "WhiteHouse",
+        "category": "core",
+        "label": "The White House"
+      },
+      "tweet_url": "https://x.com/WhiteHouse/status/1907174625936593010",
+      "tweet_text": ".@FLOTUS Melania Trump honors courageous women at the International Women of Courage Award Ceremony.\n\n'Today we celebrate courage, a strength that is based in love. This truth is illustrated in our honorees who prove that love can inspire extraordinary valor.' ❤️ https://t.co/QzBlW55yLk",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "text-overlay"
+      ],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "speaker:First Lady Melania Trump",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "media": [
+        {
+          "media_id": "7_1907173400994340864",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse/7_1907173400994340864.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/345bad0381a86c3e36e906eda0e01072f0042bc6691afc0640dd195ba90baf8e.jpg",
+          "sha256": "345bad0381a86c3e36e906eda0e01072f0042bc6691afc0640dd195ba90baf8e",
+          "duration_sec": 50.116,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Television or event video frame showing Melania Trump speaking at a podium with a blue backdrop and a lower-third style caption about the International Women of Courage Award Ceremony.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 5
+              },
+              "complete_row_count": 5,
+              "text": "INTERNATIONAL IND ety WOMEN OF COURAC’ WOMEN OF Cé \\ATIONAT NATIONAL OF COURAGE OF COURAGE — & ie ___— a i eZ , 4 INTERNAT! WOME? 2 \\ WOMEN OF Cé \\ Ul fin EP) H - WO) \\\\ \\ as a source of strength >| t ‘ Acting challenging times. } MOE El win? a (a ™ WHITE HOUSE\n\nINTERNATIONAL INbERva WOMEN OF COURAC WOMEN OF CC Ce } \\ATTONAL NATIONAL OF COURAGE ‘OF COURAGE a GC ihe wz ay ee a iwnen ( //)7 . INTERNAT WOME) & \\N WOMEN OF Ct Wf Nt Tk 4 Gy = RANE Nt) 4 nurture empathy and exhibit bravery WS, USA di NY tae tt O87] b Hie Me WHITE HOUSE\n\nINTERNATIONAL INTERNAL WOMEN OF COURAC WOMEN OF CC Coe wat a NATIONAL NATIONAL OF COURAGE y OF COURAGE me ‘wy lt _&€ INTE! INTERNAT WOME iyy Z, WOMEN OF Ct HN d xi Cail) = NOHO 109 aan a ‘a ronan that is based in love. ¥, NGAUS ae id) Ses 1 On (Me WHITE HOUSE\n\nINTERNATIONAL IN DER WOMEN OF COURAG! WOMEN OF C¢ Cae ee NATIONAL r NATIONAL OF COURAGL © OF COURAGE an ae: a @ aR INTERNAT WOMEN) (7 \\ WOMEN OF C 47 eG . 4 Oy) iA mel WAH NI} y 4 PN} ’ can inspire extraordinary valor WHS UU }| i ‘Fr WAY, Adc (A Me WHITE HOUSE\n\nINTERNATIONAL PNT Ete WOMEN OF COURACT WOMEN OF C Ca / @ NATIONAL a arlene OF COURAGE OF COURAGE /j heart Ke (rae ZS INTERNAT! WOME LG - WOMEN OF Ct f AA \\ f Fo @ i} 3 \\ el? JAG yy \\ 7 \\ to the Bower of love in practice. \\ NY} A 4) wit C SANUS Oa ‘y (ww Me WHITE HOUSE"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 50.176,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 17,
+              "text": "Doby fejr gown has mese pa njewa, Runnešu bog i glaleginja gavala svi. Ravneša mene to kaj vidi v rečinja, Meneša ampati, Nintor je v rečinja, Nintor je v plastiko postamle. PokSecne izlejno. Vit exčarza, Ravneša vršinja sado, Jeste je zelo njsrednje zelo uvojena oročlič Na prijadnih možnočem se zaih zeločelišno pa kaisipovčke, zeločno NBA, mičnom si aj sveččićな čestr odnir so dolečnost, zeločno zeločči na čestr odnir je 번. Vajčna tačešt埢ač Negratnost, a zeločno živničko naš obvoričnost. Zeločno strhne vzmatojali. Kliknati in zeločen svojani."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Television or event video frame showing Melania Trump speaking at a podium with a blue backdrop and a lower-third style caption about the International Women of Courage Award Ceremony.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "spectacle:holiday-or-celebration: celebrate"
+        ]
+      },
+      "engagement": {
+        "likes": 16796,
+        "retweets": 2845,
+        "quotes": 185,
+        "views": 469261
       },
       "preference_score": 34,
       "preference_categories": [
@@ -33120,6 +35742,270 @@
       ]
     },
     {
+      "id": "1906789639433900480:3_1906789627144581120",
+      "tweet_id": "1906789639433900480",
+      "posted_at": "2025-03-31T19:24:11.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "EROSaltLakeCity",
+        "category": "core",
+        "label": "ICE ERO Salt Lake City"
+      },
+      "tweet_url": "https://x.com/EROSaltLakeCity/status/1906789639433900480",
+      "tweet_text": "Last week we arrested and deported more TdA &amp; MS-13 gangsters, fugitives wanted for sex crimes, aliens convicted of child neglect/cruelty, assault, drug trafficking, a lot of DUIs &amp; more.  Use CBP Home to self-deport on economy class or we’ll do it for you, like this guy. https://t.co/VwXquL13IN",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [
+        "detainees",
+        "deportation",
+        "arrest-or-raid",
+        "immigration-language"
+      ],
+      "tags": [
+        "action:deportation",
+        "action:detention",
+        "action:self-deportation",
+        "agency:CBP",
+        "crime:assault",
+        "crime:ms13",
+        "crime:trafficking",
+        "crime:tren-de-aragua",
+        "format:statistics",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:photo",
+        "policy:cbp-home",
+        "review:screened-photo",
+        "subject:cbp-home-app",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:economy",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1906789627144581120",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-EROSaltLakeCity/3_1906789627144581120.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/234a0a5954664e9bf4a7e9161a5b33054777842a94fb81a6c220a07dd69eb56e.jpg",
+          "sha256": "234a0a5954664e9bf4a7e9161a5b33054777842a94fb81a6c220a07dd69eb56e",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Arrest photo showing a man standing beside a vehicle with his hands restrained while an officer wearing a POLICE ERO vest faces him.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "wi = = = \\ ra] rises mae jE mt ae 2 oe =< —— Z Re ¥ y ee = = — F Se yd : — = a’ See / —— ; ay 7 / jf ; wy / a LF 3 = = 7 — ( SS ss, a ; “ i \\ » 7 IF @ Antes, \\ FZ y — E )— — see. £ ao r - B =m € way A oe ——e : ING 4 sees mo So Ve aA : ty ) \\ a Ss ir re i N So x < a Peo Bee EES ages poe ee oy bo z Bee ee er Je Sie SC eet eee eee Sas es ae Pie Rese sy Bee ESSE ee Bee eee Oe. e\\ —— ies i ET ale > as PP Sir Oe = NESTE SIRI © <4 Sp Soto es Nl apiece sae =a 2 Ls © = - : 4"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Arrest photo showing a man standing beside a vehicle with his hands restrained while an officer wearing a POLICE ERO vest faces him.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "policy:self-deportation-ad: CBP Home",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 1749,
+        "retweets": 323,
+        "quotes": 22,
+        "views": 33688
+      },
+      "preference_score": 31,
+      "preference_categories": [
+        "policy:self-deportation-ad",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "1996982646128480386:3_1996982392746348544",
+      "tweet_id": "1996982646128480386",
+      "posted_at": "2025-12-05T16:38:59.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "EROSanAntonio",
+        "category": "core",
+        "label": "ICE San Antonio"
+      },
+      "tweet_url": "https://x.com/EROSanAntonio/status/1996982646128480386",
+      "tweet_text": "If you committed a crime in your home country, self-deport now or ICE will find you, arrest you and deport you. Leave on your own terms or you will leave on ours. \n\nJust like Samuel Osoria-Flores, 51, an illegal alien wanted for involuntary homicide in Mexico now in ICE custody. https://t.co/Yqn391do2T",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [
+        "detainees",
+        "deportation",
+        "arrest-or-raid",
+        "immigration-language"
+      ],
+      "tags": [
+        "action:deportation",
+        "action:detention",
+        "action:self-deportation",
+        "agency:ICEgov",
+        "country:Mexico",
+        "crime:homicide",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:photo",
+        "policy:cbp-home",
+        "review:screened-photo",
+        "slogan:illegal-alien",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "theme:directive",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1996982392746348544",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-EROSanAntonio/3_1996982392746348544.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/3a676d51319150d4b60ae693778dab76c79ce9a960f6e97c745116fe6ce6b1bf.jpg",
+          "sha256": "3a676d51319150d4b60ae693778dab76c79ce9a960f6e97c745116fe6ce6b1bf",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Booking or custody-style photo of a man standing indoors in a black jacket and shorts, with his hands held together in front of him.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "{za} , ww we OS a i 3 ae"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Booking or custody-style photo of a man standing indoors in a black jacket and shorts, with his hands held together in front of him.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "policy:self-deportation-ad: self-deport",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 970,
+        "retweets": 223,
+        "quotes": 8,
+        "views": 24689
+      },
+      "preference_score": 31,
+      "preference_categories": [
+        "policy:self-deportation-ad",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
       "id": "1909662717884916210:3_1909662707801845760",
       "tweet_id": "1909662717884916210",
       "posted_at": "2025-04-08T17:40:46.000Z",
@@ -33248,6 +36134,144 @@
         "retweets": 84,
         "quotes": 7,
         "views": 20205
+      },
+      "preference_score": 31,
+      "preference_categories": [
+        "policy:self-deportation-ad",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2051992371760611626:13_2051889492651286529",
+      "tweet_id": "2051992371760611626",
+      "posted_at": "2026-05-06T11:48:00.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "LongTimeHistory",
+        "category": null,
+        "label": "LongTimeHistory"
+      },
+      "tweet_url": "https://x.com/LongTimeHistory/status/2051992371760611626",
+      "tweet_text": "18-year-old U.S. citizen dying from cancer begs to see parents one last time—ICE is keeping them detained.\n\nParents were denied humanitarian visa—so forced to cross border illegally.\n\nSon is in hospice care—only wish is to hug mom and dad before he dies.\n\nWilling to self-deport and sign any paperwork voluntarily just to be released from the detention center before it's too late.\n\n\"It’s very difficult because the processes are very slow,\" said their lawyer.\n\nMeanwhile, Kevin faces the possibility of dying in just a matter of days far away from his parents.\n\n\"Please help me fulfill my last wish.\"",
+      "review_state": "candidate",
+      "inclusion_basis": "real_footage_creative_use",
+      "confidence": "medium",
+      "score": 84,
+      "creative_forms": [
+        "text-overlay"
+      ],
+      "subjects": [
+        "detainees",
+        "deportation",
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "action:detention",
+        "action:self-deportation",
+        "agency:ICEgov",
+        "audio:has-audio",
+        "country:Mexico",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "policy:border",
+        "policy:cbp-home",
+        "review:screened-video",
+        "theme:religion",
+        "topic:immigration",
+        "video:long"
+      ],
+      "media": [
+        {
+          "media_id": "13_2051889492651286529",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2051889492651286529.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/92a5db29a3fe42c6752f3e8718816d9a16d93798bbc229cc44dec8d0342d0d42.jpg",
+          "sha256": "92a5db29a3fe42c6752f3e8718816d9a16d93798bbc229cc44dec8d0342d0d42",
+          "duration_sec": 234.898,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Reposted Telemundo Chicago news segment with an English headline overlay reading 'Young man from Chicago with terminal cancer asks to see his parents detained by ICE.' The video shows two young men seated together indoors, one wearing a pink soccer jersey and resting under a patterned blanket. A Spanish lower-third reads 'KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE' with an 'EXCLUSIVA' tag and a 'TelemundoChicago' bug and clock. The audio is Spanish-language reporting about a young man with terminal cancer whose parents are in ICE detention.  [0:15] Two young men seated together indoors, one in a pink jersey under a blanket; English headline overlay and Spanish chyron 'KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE.'",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13,
+                "ok": 5
+              },
+              "complete_row_count": 18,
+              "text": "Young man from Chicago with terminal cancer asks to see his parents detained by ICE EXCLUSIVA\n\nYoung man from Chicago with terminal cancer asks to see his parents detained by ICE —s Hy, ws EXCLUSIVA, a = ENTRE EL CANCER Y EL MURO DE ICE: KEVIN PIDE UN MILAGRO [iam Be BLOX Telemuncochicago AIDTEMIED\n\nYoung man from Chicago with terminal cancer asks to see his parents detained by ICE > ’ * Wy, va BS, r ss A ¥ = J EXCLUSIV) ‘ KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE iy\n\nYoung man from Chicago with terminal cancer asks to see his parents detained by ICE LN 2 vy >) / By wk KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE g atty Sal Cicero [0x2 Telemundochicago (ERENT\n\nYoung man from Chicago with terminal cancer asks to see his parents detained by ICE i= ¢"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 234.944,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 60,
+              "text": "Now, greater than fulfilling my last wish is possible. Visibly affected by terminal cancer, Kevin Gonzalez, who is from Chicago, only has one wish before he dies to O.C.E. and hug his parents. Who are still detained? Esan Zabritere, Santiago, Gallego spoke exclusively with him and now he shares his request, which is quite emotional. So, tonight's Santiago, without a doubt, words are too many. Alfonso, it's a very hard story. This young man has stage four coal and cancer. It has spread throughout his body to the point that the doctors are no longer giving him any type of care. All he wants is for his parents to be released. So he can see them before he dies. To see my parents for the last time. That pretty big time of Cabo of Kevin, and 18 minus year old young man born in Chicago today, that written in his grandmother's house in Durango, Mexico, where he spends his last days, mom. He doesn't take anything. All the medications that we brought from the United States are just in January. Kevin was diagnosed with terminal stage four coal and cancer. The disease has spread throughout his body. Doctors say there is no treatment or options left. Only time and less and less of it. My brothers days are numbered. And now all he really wanted was for my parents to be here. For months, his brother took care of him at the hospital. He prayed to the Virgin Mary for a miracle, while his parents were desperate to travel from Mexico. He had an appointment to see if he could get a humanitarian visa, but they denied it. Seeing no other option, Kevin's parents crossed the border illegally. They were detained by immigration and taken to a detention center in Arizona, as he lost hope of ever seeing his parents. Again, Kevin decided to hug his brother one last time and travel to Mexico before the doctor told him not to get on a plane. Let them release him. They are not criminals. They were just going to see their son. In these letters from the University of Chicago Hospital, the doctors are clear. Kevin is in his final days of life and they are asking for compassion so that his parents can be released. It is unlikely, unless there is active intervention, perhaps from the Mexican government. According to this immigration lawyer who is not connected to the case, although a humanitarian release is possible, it is not quick or guaranteed. Yeah. It is very difficult because the courts are very backlogged, so really, if they want to leave voluntarily, and they sign the voluntary departure, the government can take them out, right, right? Hello. Are you? I hope you're well. For Kevin, time is running out every day. A US citizen dying far from home with a wish that he cannot express without getting tired."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "Reposted Telemundo Chicago news segment with an English headline overlay reading 'Young man from Chicago with terminal cancer asks to see his parents detained by ICE.' The video shows two young men seated together indoors, one wearing a pink soccer jersey and resting under a patterned blanket. A Spanish lower-third reads 'KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE' with an 'EXCLUSIVA' tag and a 'TelemundoChicago' bug and clock. The audio is Spanish-language reporting about a young man with terminal cancer whose parents are in ICE detention.  [0:15] Two young men seated together indoors, one in a pink jersey under a blanket; English headline overlay and Spanish chyron 'KEVIN PIDE VER A SUS PADRES DETENIDOS POR ICE.'",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "policy:self-deportation-ad: self-deport",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 9305,
+        "retweets": 4131,
+        "quotes": 258,
+        "views": 3349197
       },
       "preference_score": 31,
       "preference_categories": [
