@@ -1,8 +1,8 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-06-20T05:19:49Z",
-    "source_commit": "06d01326",
+    "generated_at": "2026-06-20T10:13:18Z",
+    "source_commit": "36bf182a",
     "item_count": 22,
     "blocker_counts": {
       "missing genuine visual description": 17,
@@ -12,8 +12,7 @@
       "missing video thumbnail": 9,
       "missing photo OCR": 6,
       "missing photo thumbnail": 6,
-      "missing audio analysis": 4,
-      "missing transcript for video with audio": 1
+      "missing audio analysis": 4
     }
   },
   "items": [
@@ -69,8 +68,7 @@
             "ready": false,
             "blockers": [
               "missing complete OCR for extracted keyframes",
-              "missing genuine visual description",
-              "missing transcript for video with audio"
+              "missing genuine visual description"
             ],
             "checks": {
               "archived": true,
@@ -81,7 +79,7 @@
               "ocr": false,
               "audio_analysis": true,
               "has_audio": true,
-              "transcript": false
+              "transcript": true
             }
           },
           "analysis": {
@@ -110,7 +108,7 @@
               ]
             },
             "transcript": {
-              "status": null,
+              "status": "empty-transcript",
               "segment_count": 0,
               "text": ""
             }
@@ -121,8 +119,7 @@
         "ready": false,
         "blockers": [
           "missing complete OCR for extracted keyframes",
-          "missing genuine visual description",
-          "missing transcript for video with audio"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
