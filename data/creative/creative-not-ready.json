@@ -1,8 +1,8 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-06-20T13:27:55Z",
-    "source_commit": "c73d1a32",
+    "generated_at": "2026-06-20T14:16:39Z",
+    "source_commit": "8d1cf3fc",
     "item_count": 22,
     "blocker_counts": {
       "missing genuine visual description": 22,
@@ -12,8 +12,7 @@
       "missing audio analysis": 2,
       "missing complete OCR for extracted keyframes": 2,
       "missing extracted video keyframes": 2,
-      "missing video thumbnail": 2,
-      "missing transcript for video with audio": 2
+      "missing video thumbnail": 2
     }
   },
   "items": [
@@ -1923,6 +1922,7 @@
         "media-status:archived",
         "media-status:needs-vision",
         "media-status:ocr-done",
+        "media-status:transcribed",
         "media:video",
         "slogan:maha",
         "theme:religion",
@@ -1942,8 +1942,7 @@
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing genuine visual description",
-              "missing transcript for video with audio"
+              "missing genuine visual description"
             ],
             "checks": {
               "archived": true,
@@ -1954,7 +1953,7 @@
               "ocr": true,
               "audio_analysis": true,
               "has_audio": true,
-              "transcript": false
+              "transcript": true
             }
           },
           "analysis": {
@@ -1985,9 +1984,9 @@
               ]
             },
             "transcript": {
-              "status": null,
-              "segment_count": 0,
-              "text": ""
+              "status": "ok",
+              "segment_count": 3,
+              "text": "Breaking today, some of America's biggest brands are backing the making America healthy again movement. This consumer brands association includes all the big brands like Coca-Cola, Amazon Target, pledging to eliminate synthetic food dies by the end of 2027."
             }
           }
         }
@@ -1995,8 +1994,7 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing genuine visual description",
-          "missing transcript for video with audio"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
@@ -2858,6 +2856,7 @@
         "media-status:archived",
         "media-status:needs-vision",
         "media-status:ocr-done",
+        "media-status:transcribed",
         "media:video",
         "topic:immigration",
         "video:medium"
@@ -2875,8 +2874,7 @@
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing genuine visual description",
-              "missing transcript for video with audio"
+              "missing genuine visual description"
             ],
             "checks": {
               "archived": true,
@@ -2887,7 +2885,7 @@
               "ocr": true,
               "audio_analysis": true,
               "has_audio": true,
-              "transcript": false
+              "transcript": true
             }
           },
           "analysis": {
@@ -2918,9 +2916,9 @@
               ]
             },
             "transcript": {
-              "status": null,
-              "segment_count": 0,
-              "text": ""
+              "status": "ok",
+              "segment_count": 17,
+              "text": "Doby fejr gown has mese pa njewa, Runnešu bog i glaleginja gavala svi. Ravneša mene to kaj vidi v rečinja, Meneša ampati, Nintor je v rečinja, Nintor je v plastiko postamle. PokSecne izlejno. Vit exčarza, Ravneša vršinja sado, Jeste je zelo njsrednje zelo uvojena oročlič Na prijadnih možnočem se zaih zeločelišno pa kaisipovčke, zeločno NBA, mičnom si aj sveččićな čestr odnir so dolečnost, zeločno zeločči na čestr odnir je 번. Vajčna tačešt埢ač Negratnost, a zeločno živničko naš obvoričnost. Zeločno strhne vzmatojali. Kliknati in zeločen svojani."
             }
           }
         }
@@ -2928,8 +2926,7 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing genuine visual description",
-          "missing transcript for video with audio"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
