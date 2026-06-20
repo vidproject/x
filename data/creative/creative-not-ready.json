@@ -1,8 +1,8 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-06-20T04:53:44Z",
-    "source_commit": "d1a03f8b",
+    "generated_at": "2026-06-20T05:19:49Z",
+    "source_commit": "06d01326",
     "item_count": 22,
     "blocker_counts": {
       "missing genuine visual description": 17,
@@ -13,7 +13,7 @@
       "missing photo OCR": 6,
       "missing photo thumbnail": 6,
       "missing audio analysis": 4,
-      "missing transcript for video with audio": 2
+      "missing transcript for video with audio": 1
     }
   },
   "items": [
@@ -1160,7 +1160,10 @@
         "crime:dui",
         "crime:narcotics",
         "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:needs-vision",
         "media-status:ocr-done",
+        "media:photo",
         "slogan:criminal-illegal-alien",
         "slogan:illegal-alien",
         "subject:enforcement-op",
@@ -1191,9 +1194,11 @@
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 960x960; 0.13 MiB; archived; tweet context: Arizona is safer after the arrest of Ruben Rosas-Romero, a 54-year-old criminal illegal alien from Mexico charged with attempted synthetic narcotic possession and extreme DUI. ICE Phoenix remains committed to removing public safety threats. Learn more: http:/...; source URL: https://pbs.twimg.com/media/HK9tHDGW8AAf7ka.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-ERO__Phoenix/3_2066990721844834304.jpg; needs OCR, transcript, or frame-level vision before content claims. Arizona is safer after the arrest of Ruben Rosas-Romero, a 54-year-old criminal illegal alien from Mexico charged with attempted synthetic narcotic possession and extreme DUI. ICE Phoenix remains committed to removing public safety threats. Learn more: http://ice.gov https://t.co/7EmV57M0dW",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
               "status_counts": {
@@ -1228,7 +1233,7 @@
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 960x960; 0.13 MiB; archived; tweet context: Arizona is safer after the arrest of Ruben Rosas-Romero, a 54-year-old criminal illegal alien from Mexico charged with attempted synthetic narcotic possession and extreme DUI. ICE Phoenix remains committed to removing public safety threats. Learn more: http:/...; source URL: https://pbs.twimg.com/media/HK9tHDGW8AAf7ka.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-ERO__Phoenix/3_2066990721844834304.jpg; needs OCR, transcript, or frame-level vision before content claims. Arizona is safer after the arrest of Ruben Rosas-Romero, a 54-year-old criminal illegal alien from Mexico charged with attempted synthetic narcotic possession and extreme DUI. ICE Phoenix remains committed to removing public safety threats. Learn more: http://ice.gov https://t.co/7EmV57M0dW",
         "notable_text": "",
         "reasons": [
           "wholly creative media signal",
@@ -1685,6 +1690,7 @@
         "legal:criminal-prosecution",
         "media-status:archived",
         "media-status:needs-vision",
+        "media-status:transcribed",
         "media:video",
         "slogan:illegal-alien",
         "theme:criminal",
@@ -1707,8 +1713,7 @@
             "ready": false,
             "blockers": [
               "missing complete OCR for extracted keyframes",
-              "missing genuine visual description",
-              "missing transcript for video with audio"
+              "missing genuine visual description"
             ],
             "checks": {
               "archived": true,
@@ -1719,7 +1724,7 @@
               "ocr": false,
               "audio_analysis": true,
               "has_audio": true,
-              "transcript": false
+              "transcript": true
             }
           },
           "analysis": {
@@ -1748,9 +1753,9 @@
               ]
             },
             "transcript": {
-              "status": null,
-              "segment_count": 0,
-              "text": ""
+              "status": "ok",
+              "segment_count": 14,
+              "text": "¿Verdad? Estan ahorita en dos puntos. ¿Verdad? ¿Le voy a saber quién estamos aquí? ¿¿No sé? ¿Hi? ¿Será les de la piel? ¿Qué tienes? Deje a él a la imagen. ¿Qué quieres? Hay unDDD, y no puedo pisar. Les deje a él a él a él a él a él a él a él. ¿Qué quieres? ¿Qué quieres?"
             }
           }
         }
@@ -1759,8 +1764,7 @@
         "ready": false,
         "blockers": [
           "missing complete OCR for extracted keyframes",
-          "missing genuine visual description",
-          "missing transcript for video with audio"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
