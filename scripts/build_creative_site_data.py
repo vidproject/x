@@ -168,6 +168,8 @@ LOW_VALUE_ROUTINE_STATIC_CARD_RE = re.compile(
     r"vertical (?:dhs )?infographic|vertical statistics infographic|"
     r"ordinary infographic|headline graphic|recruitment graphic|program graphic|"
     r"plain screenshot|standard press[- ]release layout|"
+    r"plain candid operational/arrest photograph|documentary rather than designed|"
+    r"no on-image text or graphic design|"
     r"voice \(victims of immigration crime engagement\)|ice\.gov/voice|"
     r"1-855-48-voice)\b",
     re.I,
@@ -178,8 +180,36 @@ LOW_VALUE_EXCLUSION_RULES = [
     ("apprehension-notice-or-routine-card", LOW_VALUE_APPREHENSION_NOTICE_RE),
     ("routine-static-card", LOW_VALUE_ROUTINE_STATIC_CARD_RE),
 ]
+REVIEW_ACCOUNT_CATEGORIES = {"core", "government", "officials"}
 PREFERENCE_HIGH_CONFIDENCE_SCORE = 60
 PREFERENCE_CANDIDATE_SCORE = 28
+WEAK_STANDALONE_PREFERENCE_CATEGORIES = {
+    "aesthetic:nostalgia-americana",
+    "spectacle:holiday-or-celebration",
+}
+STRONG_PREFERENCE_CATEGORIES = {
+    "spectacle:asmr-deportation",
+    "spectacle:gamified-deportation",
+    "policy:self-deportation-ad",
+    "aesthetic:ai-synthetic-propaganda",
+    "aesthetic:dystopian-surreal",
+    "editorialized:annotated-news-crime",
+    "editorialized:dramatic-crime-composite",
+    "form:novel-interface-or-ticket",
+    "spectacle:brutality-normalized",
+    "spectacle:militarized-power-showreel",
+    "medium:produced-video-with-preference-signal",
+}
+DECISIVE_CREATIVE_CATEGORIES = {
+    "spectacle:asmr-deportation",
+    "spectacle:gamified-deportation",
+    "aesthetic:ai-synthetic-propaganda",
+    "editorialized:annotated-news-crime",
+    "editorialized:dramatic-crime-composite",
+    "form:novel-interface-or-ticket",
+    "spectacle:brutality-normalized",
+    "medium:produced-video-with-preference-signal",
+}
 PREFERENCE_RULES = [
     (
         "spectacle:asmr-deportation",
@@ -191,7 +221,7 @@ PREFERENCE_RULES = [
     ),
     (
         "spectacle:holiday-or-celebration",
-        34,
+        20,
         re.compile(
             r"\b(?:christmas|merry christmas|cinco de mayo|holiday|celebrat(?:e|ion)|"
             r"hearts grow|snow-covered|falling snow|thanksgiving|halloween)\b",
@@ -211,7 +241,7 @@ PREFERENCE_RULES = [
     ),
     (
         "policy:self-deportation-ad",
-        26,
+        16,
         re.compile(
             r"\b(?:self[- ]deport|cbp home|remigrate|homesick|free ticket home|"
             r"free ticket|leave now|leave on your own terms|avoid the deportation flight|"
@@ -231,7 +261,7 @@ PREFERENCE_RULES = [
     ),
     (
         "aesthetic:nostalgia-americana",
-        32,
+        12,
         re.compile(
             r"\b(?:wpa|art deco|art nouveau|mid[- ]20th[- ]century|vintage|"
             r"nostalgic|american dream|america first|american workers|"
@@ -246,7 +276,7 @@ PREFERENCE_RULES = [
         "aesthetic:dystopian-surreal",
         35,
         re.compile(
-            r"\b(?:mirthnuke|dystopian|surreal|gothic|vhs|glitch|neon|glowing|"
+            r"\b(?:mirthnuke|dystopian|surreal|gothic|vhs|glitch|"
             r"explosion blooming|night-lit earth|trailer[- ]style|war[- ]movie)\b",
             re.I,
         ),
@@ -330,6 +360,22 @@ def load_account_categories() -> dict[str, dict[str, Any]]:
         return {}
     data = read_json(ACCOUNT_CATEGORIES_PATH)
     return data.get("categories", {}) if isinstance(data, dict) else {}
+
+
+def account_handle_for(tweet: dict[str, Any], row: dict[str, Any] | None = None) -> str:
+    row = row or {}
+    return str(
+        tweet.get("account_handle") or row.get("account_handle") or row.get("handle") or ""
+    ).strip()
+
+
+def account_meta_for(handle: str, account_categories: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    return account_categories.get(handle, {})
+
+
+def is_review_source(handle: str, account_categories: dict[str, dict[str, Any]]) -> bool:
+    category = str(account_meta_for(handle, account_categories).get("category") or "").strip()
+    return category in REVIEW_ACCOUNT_CATEGORIES
 
 
 def load_catalog() -> dict[str, dict[str, Any]]:
@@ -441,7 +487,7 @@ def preference_profile(item: dict[str, Any]) -> dict[str, Any]:
     if {"policy:cbp-home", "action:self-deportation"}.intersection(
         tags
     ) and "policy:self-deportation-ad" not in categories:
-        add("policy:self-deportation-ad", 36, "CBP Home/self-deportation tag")
+        add("policy:self-deportation-ad", 20, "CBP Home/self-deportation tag")
     if "genre:dystopian" in tags and "aesthetic:dystopian-surreal" not in categories:
         add("aesthetic:dystopian-surreal", 32, "genre:dystopian tag")
 
@@ -449,11 +495,21 @@ def preference_profile(item: dict[str, Any]) -> dict[str, Any]:
     if score and has_video and {"video:produced", "review:produced-video"}.intersection(tags):
         add(
             "medium:produced-video-with-preference-signal",
-            6,
+            16,
             "produced video with preference signal",
         )
     if score and REAL_ENFORCEMENT_RE.search(blob):
         add("subject:enforcement-linked", 5, "enforcement/detainee subject plus preference signal")
+
+    has_strong_signal = bool(set(categories).intersection(STRONG_PREFERENCE_CATEGORIES))
+    has_weak_standalone_signal = bool(
+        set(categories).intersection(WEAK_STANDALONE_PREFERENCE_CATEGORIES)
+    )
+    if has_weak_standalone_signal and not has_strong_signal:
+        score = min(score, PREFERENCE_CANDIDATE_SCORE - 1)
+        reasons.append(
+            "decision-signal penalty: holiday/nostalgia cue without stronger creative enforcement pattern"
+        )
 
     return {
         "score": score,
@@ -483,12 +539,27 @@ def apply_preference_profile(item: dict[str, Any]) -> None:
 
 
 def low_value_review_exclusion(item: dict[str, Any]) -> str | None:
-    if int(item.get("preference_score") or 0) >= PREFERENCE_CANDIDATE_SCORE:
-        return None
+    categories = set(str(category) for category in item.get("preference_categories") or [])
+    forms = set(str(form) for form in item.get("creative_forms") or [])
+    has_decisive_creative_signal = bool(categories.intersection(DECISIVE_CREATIVE_CATEGORIES))
     blob = item_review_blob(item)
     for reason, pattern in LOW_VALUE_EXCLUSION_RULES:
-        if pattern.search(blob):
+        if pattern.search(blob) and not has_decisive_creative_signal:
             return reason
+    if (
+        "policy:self-deportation-ad" in categories
+        and not has_decisive_creative_signal
+        and forms.issubset({"poster-or-meme", "psa", "text-overlay"})
+    ):
+        return "generic-self-deportation-psa"
+    if (
+        "subject:enforcement-linked" in categories
+        and not has_decisive_creative_signal
+        and forms.issubset({"poster-or-meme", "psa", "text-overlay"})
+    ):
+        return "generic-enforcement-poster"
+    if int(item.get("preference_score") or 0) >= PREFERENCE_CANDIDATE_SCORE:
+        return None
     return "outside-revealed-preference"
 
 
@@ -865,8 +936,8 @@ def base_item(
     tags: list[str],
     row: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    handle = str(tweet.get("account_handle") or (row or {}).get("account_handle") or "")
-    account_meta = account_categories.get(handle, {})
+    handle = account_handle_for(tweet, row)
+    account_meta = account_meta_for(handle, account_categories)
     blob = text_blob(
         evidence_summary, notable_text, tweet.get("text_resolved") or tweet.get("text"), tags
     )
@@ -917,6 +988,8 @@ def build_from_curated(
         tweet = catalog.get(str(row.get("tweet_id") or ""))
         if not tweet:
             continue
+        if not is_review_source(account_handle_for(tweet, row), account_categories):
+            continue
         curated_description = text_blob(
             row.get("summary"), row.get("script"), row.get("notable_text")
         )
@@ -953,6 +1026,8 @@ def build_from_curated(
     for row in csv_rows(MEME_CSV):
         tweet = catalog.get(str(row.get("tweet_id") or ""))
         if not tweet:
+            continue
+        if not is_review_source(account_handle_for(tweet, row), account_categories):
             continue
         curated_description = str(row.get("description") or "")
         blob = text_blob(row, tweet.get("text_resolved") or tweet.get("text"), tweet.get("tags"))
@@ -1001,6 +1076,8 @@ def build_computed_candidates(
     for tweet_id, tweet in catalog.items():
         era = era_for(str(tweet.get("posted_at") or ""))
         if era not in {"2025_plus", "2016_2020"} or tweet_id in existing_tweet_ids:
+            continue
+        if not is_review_source(account_handle_for(tweet), account_categories):
             continue
         tags = tag_names(tweet.get("tags"))
         descriptions = []
@@ -1089,6 +1166,7 @@ def queue_payload(
             "top_accounts": dict(accounts.most_common(12)),
             "review_actions": ["yes", "no", "superlike", "back"],
             "inclusion_rules": [
+                "limit swipe queues to core, government, and official-source accounts",
                 "prioritize aestheticized enforcement propaganda: spectacle, holiday/gamified treatment, ASMR, self-deportation ads, AI/nostalgic propaganda, and editorialized crime/news composites",
                 "de-prioritize generic posters, routine PR montages, statistics cards, plain news screenshots, plain Trump-post screenshots, and bare apprehension notices",
             ],
@@ -1348,6 +1426,7 @@ def main() -> int:
                     "high_confidence_score": PREFERENCE_HIGH_CONFIDENCE_SCORE,
                     "candidate_score": PREFERENCE_CANDIDATE_SCORE,
                     "principles": [
+                        "review queues are limited to core, government, and official-source accounts",
                         "state enforcement rendered as spectacle, entertainment, ad, lifestyle, holiday, or joke",
                         "surreal, AI-generated, nostalgic, dystopian, or otherwise aestheticized propaganda",
                         "self-deportation / CBP Home incentives and app-like gamification",
