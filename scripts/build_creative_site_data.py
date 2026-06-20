@@ -438,9 +438,11 @@ def preference_profile(item: dict[str, Any]) -> dict[str, Any]:
         add("aesthetic:ai-synthetic-propaganda", 36, "media:ai-generated tag")
     if "ai-or-synthetic" in forms and "aesthetic:ai-synthetic-propaganda" not in categories:
         add("aesthetic:ai-synthetic-propaganda", 32, "ai-or-synthetic form")
-    if {"policy:cbp-home", "action:self-deportation"}.intersection(tags):
-        if "policy:self-deportation-ad" not in categories:
-            add("policy:self-deportation-ad", 36, "CBP Home/self-deportation tag")
+    if (
+        {"policy:cbp-home", "action:self-deportation"}.intersection(tags)
+        and "policy:self-deportation-ad" not in categories
+    ):
+        add("policy:self-deportation-ad", 36, "CBP Home/self-deportation tag")
     if "genre:dystopian" in tags and "aesthetic:dystopian-surreal" not in categories:
         add("aesthetic:dystopian-surreal", 32, "genre:dystopian tag")
 
