@@ -438,17 +438,20 @@ def preference_profile(item: dict[str, Any]) -> dict[str, Any]:
         add("aesthetic:ai-synthetic-propaganda", 36, "media:ai-generated tag")
     if "ai-or-synthetic" in forms and "aesthetic:ai-synthetic-propaganda" not in categories:
         add("aesthetic:ai-synthetic-propaganda", 32, "ai-or-synthetic form")
-    if (
-        {"policy:cbp-home", "action:self-deportation"}.intersection(tags)
-        and "policy:self-deportation-ad" not in categories
-    ):
+    if {"policy:cbp-home", "action:self-deportation"}.intersection(
+        tags
+    ) and "policy:self-deportation-ad" not in categories:
         add("policy:self-deportation-ad", 36, "CBP Home/self-deportation tag")
     if "genre:dystopian" in tags and "aesthetic:dystopian-surreal" not in categories:
         add("aesthetic:dystopian-surreal", 32, "genre:dystopian tag")
 
     has_video = any(str((media or {}).get("type")) == "video" for media in item.get("media") or [])
     if score and has_video and {"video:produced", "review:produced-video"}.intersection(tags):
-        add("medium:produced-video-with-preference-signal", 6, "produced video with preference signal")
+        add(
+            "medium:produced-video-with-preference-signal",
+            6,
+            "produced video with preference signal",
+        )
     if score and REAL_ENFORCEMENT_RE.search(blob):
         add("subject:enforcement-linked", 5, "enforcement/detainee subject plus preference signal")
 
@@ -490,7 +493,9 @@ def low_value_review_exclusion(item: dict[str, Any]) -> str | None:
 
 
 def low_value_reason_counts(items: list[dict[str, Any]]) -> dict[str, int]:
-    return dict(sorted(Counter(str(item.get("review_exclusion") or "unknown") for item in items).items()))
+    return dict(
+        sorted(Counter(str(item.get("review_exclusion") or "unknown") for item in items).items())
+    )
 
 
 def item_year(value: str) -> int:
