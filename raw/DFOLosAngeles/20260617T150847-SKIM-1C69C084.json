@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T150831Z-7a4c54bb-DFOLosAngeles",
+  "account_handle": "DFOLosAngeles",
+  "captured_at": "2026-06-17T15:08:47.073Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBP%20since%3A2025-02-12%20until%3A2025-02-19%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1889691402730115151",
+      "account_handle": "DFOLosAngeles",
+      "account_id": "1211771001274433536",
+      "posted_at": "2025-02-12T15:01:53.000Z",
+      "first_captured_at": "2026-06-17T15:08:37.298Z",
+      "last_seen_at": "2026-06-17T15:08:37.298Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DFOLosAngeles/status/1889691402730115151",
+      "tweet_type": "original",
+      "conversation_id": "1889691402730115151",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "For more detailed information regarding the process of bringing your beloved pets to the United States, we encourage you to log on to the Know Before You Go site at https://t.co/eXAnmctc5H. \n#ofoproud🇺🇸 https://t.co/0w5mnimeM2",
+      "text_resolved": "For more detailed information regarding the process of bringing your beloved pets to the United States, we encourage you to log on to the Know Before You Go site at https://www.cbp.gov/travel/us-citizens/know-before-you-go. \n#ofoproud🇺🇸 https://t.co/0w5mnimeM2",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "ofoproud"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/eXAnmctc5H",
+          "expanded": "https://www.cbp.gov/travel/us-citizens/know-before-you-go",
+          "display": "cbp.gov/travel/us-citi…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_1889690086209388544",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/1889690086209388544/pu/vid/avc1/720x720/4J3tXQOiCFuLZAGY.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 8.469,
+          "width": 1080,
+          "height": 1080,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 1,
+      "view_count": 9260,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T15:08:37.298Z",
+          "likes": 1,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 1,
+          "views": 9260,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "(A)DFO, Jeff Noe",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2046706479873536000/Dn-rcnfJ_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "(A)Director of Field Operations, Los Angeles Field Office",
+        "location": "Los Angeles, CA",
+        "url": null,
+        "followers_count": 2164,
+        "friends_count": 140,
+        "statuses_count": 1106,
+        "account_created_at": "2019-12-30T22:08:23.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T150831Z-7a4c54bb",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T150831Z-7a4c54bb.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T150831Z-7a4c54bb.jsonl",
+    "source_handle": "CBP"
+  }
+}

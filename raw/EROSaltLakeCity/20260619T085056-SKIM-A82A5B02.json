@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-resume2-20260619T020329Z-20260619T085042Z-b733304a-EROSaltLakeCity",
+  "account_handle": "EROSaltLakeCity",
+  "captured_at": "2026-06-19T08:50:56.279Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEROSaltLakeCity%20since%3A2026-06-10%20until%3A2026-06-17%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2065474962714943887",
+      "account_handle": "EROSaltLakeCity",
+      "account_id": "1303384859348471808",
+      "posted_at": "2026-06-12T16:43:00.000Z",
+      "first_captured_at": "2026-06-19T08:50:44.357Z",
+      "last_seen_at": "2026-06-19T08:50:44.357Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/EROSaltLakeCity/status/2065474962714943887",
+      "tweet_type": "retweet",
+      "conversation_id": "2065474962714943887",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": "2064761031520350654",
+      "text": "RT @USAO_UT: Two Former Utah Court Clerks Arrested and Facing Federal Charges after Allegedly Helping Illegal Aliens Evade ICE Arrest \n\nPRE…",
+      "text_resolved": "RT @USAO_UT: Two Former Utah Court Clerks Arrested and Facing Federal Charges after Allegedly Helping Illegal Aliens Evade ICE Arrest \n\nPRE…",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "USAO_UT"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [],
+      "like_count": 8743,
+      "retweet_count": 2611,
+      "reply_count": 379,
+      "quote_count": 90,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-19T08:50:44.357Z",
+          "likes": 8743,
+          "retweets": 2611,
+          "replies": 379,
+          "quotes": 90,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "ICE Salt Lake City",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1910349172026306560/Z-SfaM7n_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "The official account for the ICE Salt Lake City Field Office in Utah, Idaho, Nevada, and Montana.  \nPrivacy policies: https://t.co/2Cvsirmcom",
+        "location": null,
+        "url": null,
+        "followers_count": 8931,
+        "friends_count": 66,
+        "statuses_count": 615,
+        "account_created_at": "2020-09-08T17:29:07.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-resume2-20260619T020329Z-20260619T085042Z-b733304a",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [
+    {
+      "retweeter_handle": "EROSaltLakeCity",
+      "retweeter_account_id": "1303384859348471808",
+      "retweeter_category": "core",
+      "retweet_tweet_id": "2065474962714943887",
+      "retweet_url": "https://x.com/EROSaltLakeCity/status/2065474962714943887",
+      "original_tweet_id": "2064761031520350654",
+      "original_author_handle": "USAO_UT",
+      "original_author_account_id": "530883158",
+      "original_author_category": "public",
+      "captured_at": "2026-06-19T08:50:44.357Z",
+      "capture_run_id": "core-2025-full-weekly-resume2-20260619T020329Z-20260619T085042Z-b733304a",
+      "endpoint": "SearchTimeline",
+      "source_url": "https://x.com/search?q=from%3AEROSaltLakeCity%20since%3A2026-06-10%20until%3A2026-06-17%20include%3Anativeretweets&src=typed_query&f=live"
+    }
+  ],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": "../../root/x-skim-worker/.skim/raw-core-2025-full-weekly-resume2-20260619T020329Z/x-com-search-20260619T085042Z-b733304a.summary.json",
+    "jsonl": "../../root/x-skim-worker/.skim/raw-core-2025-full-weekly-resume2-20260619T020329Z/x-com-search-20260619T085042Z-b733304a.jsonl",
+    "source_handle": "EROSaltLakeCity"
+  }
+}

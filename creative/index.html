@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creative Review</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <h1>Creative Review</h1>
+        <div class="status-line" id="load-status" aria-live="polite">Loading manifest...</div>
+      </div>
+      <div class="top-actions">
+        <label class="toggle">
+          <input id="unreviewed-only" type="checkbox" checked />
+          <span>Unreviewed only</span>
+        </label>
+        <button type="button" class="utility-btn" id="export-btn">Export</button>
+        <label class="utility-btn file-btn">
+          <input id="import-input" type="file" accept="application/json,.json" />
+          <span>Import</span>
+        </label>
+      </div>
+    </header>
+
+    <nav class="queue-tabs" id="queue-tabs" aria-label="Review queues"></nav>
+
+    <main class="workspace" id="workspace">
+      <section class="media-panel" aria-labelledby="media-title">
+        <div class="panel-head">
+          <div>
+            <h2 id="media-title">Candidate</h2>
+            <div class="progress" id="progress-text">No queue selected</div>
+          </div>
+          <div class="decision-pill" id="decision-pill">Undecided</div>
+        </div>
+        <div class="media-stage" id="media-stage"></div>
+        <div class="media-strip" id="media-strip"></div>
+      </section>
+
+      <section class="detail-panel" aria-label="Candidate details">
+        <div class="meta-grid" id="meta-grid"></div>
+        <p class="tweet-text" id="tweet-text"></p>
+        <div class="section-block">
+          <h3>Evidence</h3>
+          <p id="evidence-summary"></p>
+          <ul class="reason-list" id="reason-list"></ul>
+        </div>
+        <div class="section-block">
+          <h3>Media Analysis</h3>
+          <div class="analysis-stack" id="analysis-stack"></div>
+        </div>
+        <div class="section-block">
+          <h3>Tags</h3>
+          <div class="tag-list" id="tag-list"></div>
+        </div>
+        <div class="source-links" id="source-links"></div>
+      </section>
+    </main>
+
+    <section class="empty-state" id="empty-state" hidden>
+      <h2 id="empty-title">Nothing to review</h2>
+      <p id="empty-body">No candidates are available for this queue.</p>
+    </section>
+
+    <footer class="review-bar">
+      <button type="button" class="review-btn back" id="back-btn">Back</button>
+      <div class="decision-actions">
+        <button type="button" class="review-btn no" id="no-btn">No</button>
+        <button type="button" class="review-btn superlike" id="superlike-btn">Superlike</button>
+        <button type="button" class="review-btn yes" id="yes-btn">Yes</button>
+      </div>
+    </footer>
+  </body>
+</html>

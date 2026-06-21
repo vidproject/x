@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T144144Z-0ce2dd3d-DHSgov",
+  "account_handle": "DHSgov",
+  "captured_at": "2026-06-13T14:41:59.338Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ATSA%20since%3A2026-04-01%20until%3A2026-06-13%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2051313003341979706",
+      "account_handle": "DHSgov",
+      "account_id": "15647676",
+      "posted_at": "2026-05-04T14:48:26.000Z",
+      "first_captured_at": "2026-06-13T14:41:48.794Z",
+      "last_seen_at": "2026-06-13T14:41:48.794Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DHSgov/status/2051313003341979706",
+      "tweet_type": "original",
+      "conversation_id": "2051313003341979706",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "AN INSPIRATION.\n\nAt 90 years old, Army veteran Lawrence Santucci is the oldest @TSA officer in the country. \n\nHis commitment to serving others and keeping our nation safe is truly incredible.\n\nThank you to him and all of our heroic TSA officers. https://t.co/gVNPNXDUcs",
+      "text_resolved": "AN INSPIRATION.\n\nAt 90 years old, Army veteran Lawrence Santucci is the oldest @TSA officer in the country. \n\nHis commitment to serving others and keeping our nation safe is truly incredible.\n\nThank you to him and all of our heroic TSA officers. https://t.co/gVNPNXDUcs",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "TSA"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_2051312899956596736",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2051312899956596736/vid/avc1/960x540/sg6pDINk3X6uc5G4.mp4?tag=27",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 77.933,
+          "width": 960,
+          "height": 540,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 2389,
+      "retweet_count": 388,
+      "reply_count": 58,
+      "quote_count": 8,
+      "view_count": 62127,
+      "bookmark_count": 43,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T14:41:48.794Z",
+          "likes": 2389,
+          "retweets": 388,
+          "replies": 58,
+          "quotes": 8,
+          "views": 62127,
+          "bookmarks": 43
+        }
+      ],
+      "author": {
+        "display_name": "Homeland Security",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1882507181481656320/gzdbVHMv_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "With honor and integrity, we will safeguard the American people, our homeland, and our values. #WeAreDHS",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/AwsNW68gRr",
+        "followers_count": 2988027,
+        "friends_count": 213,
+        "statuses_count": 35056,
+        "account_created_at": "2008-07-29T16:32:34.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T144144Z-0ce2dd3d",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T144144Z-0ce2dd3d.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T144144Z-0ce2dd3d.jsonl",
+    "source_handle": "TSA"
+  }
+}

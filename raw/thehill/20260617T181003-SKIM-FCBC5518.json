@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T180946Z-cf5907a4-thehill",
+  "account_handle": "thehill",
+  "captured_at": "2026-06-17T18:10:03.293Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AStephenM%20since%3A2025-05-28%20until%3A2025-06-04%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1929497231654023597",
+      "account_handle": "thehill",
+      "account_id": "1917731",
+      "posted_at": "2025-06-02T11:16:03.000Z",
+      "first_captured_at": "2026-06-17T18:09:54.831Z",
+      "last_seen_at": "2026-06-17T18:09:54.831Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/thehill/status/1929497231654023597",
+      "tweet_type": "original",
+      "conversation_id": "1929497231654023597",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Mass deportation effort sweeps up U.S. citizen children with deported parents https://t.co/pejP4lypcP",
+      "text_resolved": "Mass deportation effort sweeps up U.S. citizen children with deported parents https://trib.al/samqr5G",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/pejP4lypcP",
+          "expanded": "https://trib.al/samqr5G",
+          "display": "trib.al/samqr5G"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/pejP4lypcP",
+        "vendor_url": "thehill.com",
+        "title": "Mass deportation effort sweeps up U.S. citizen children with deported parents",
+        "description": "The Trump administration is coming under scrutiny for deporting several U.S. citizen children along with their foreign-born parents. Trump officials have defended the move, saying the minors were n…",
+        "image_url": "https://pbs.twimg.com/card_img/2065027808326258689/aKntUbG5?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 544,
+      "retweet_count": 81,
+      "reply_count": 1793,
+      "quote_count": 166,
+      "view_count": 1868996,
+      "bookmark_count": 38,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T18:09:54.831Z",
+          "likes": 544,
+          "retweets": 81,
+          "replies": 1793,
+          "quotes": 166,
+          "views": 1868996,
+          "bookmarks": 38
+        }
+      ],
+      "author": {
+        "display_name": "The Hill",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2008638839732977664/j-XR98dG_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": "The Hill is the premier source for policy and political news. Follow for tweets on what's happening in Washington, breaking news and retweets of our reporters.",
+        "location": "Washington, DC",
+        "url": "https://t.co/YepTkupUgx",
+        "followers_count": 4209207,
+        "friends_count": 350,
+        "statuses_count": 1244270,
+        "account_created_at": "2007-03-22T18:15:18.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T180946Z-cf5907a4",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T180946Z-cf5907a4.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T180946Z-cf5907a4.jsonl",
+    "source_handle": "StephenM"
+  }
+}

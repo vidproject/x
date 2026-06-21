@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T004159Z-719d393e-HSIHouston",
+  "account_handle": "HSIHouston",
+  "captured_at": "2026-06-14T00:42:15.957Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AHSI_HQ%20since%3A2024-01-01%20until%3A2025-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1867681392731336766",
+      "account_handle": "HSIHouston",
+      "account_id": "1300973998373851136",
+      "posted_at": "2024-12-13T21:21:58.000Z",
+      "first_captured_at": "2026-06-14T00:42:06.616Z",
+      "last_seen_at": "2026-06-14T00:42:06.616Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/HSIHouston/status/1867681392731336766",
+      "tweet_type": "original",
+      "conversation_id": "1867681392731336766",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "The 6th and final person involved in a brutal human smuggling scheme that resulted in the murder of 2 migrants who were unable to pay their smuggling fees has been convicted following an investigation by @HSIHouston, @HoustonPolice and @FBCSO. Details: 👉 https://t.co/3XoClEJErO https://t.co/VlfkboVBwF",
+      "text_resolved": "The 6th and final person involved in a brutal human smuggling scheme that resulted in the murder of 2 migrants who were unable to pay their smuggling fees has been convicted following an investigation by @HSIHouston, @HoustonPolice and @FBCSO. Details: 👉 https://www.dhs.gov/hsi/news/2024/12/13/sixth-human-smuggler-convicted-role-horrifyingly-brutal-smuggling-scheme https://t.co/VlfkboVBwF",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "HSIHouston",
+        "HoustonPolice",
+        "FBCSO"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/3XoClEJErO",
+          "expanded": "https://www.dhs.gov/hsi/news/2024/12/13/sixth-human-smuggler-convicted-role-horrifyingly-brutal-smuggling-scheme",
+          "display": "dhs.gov/hsi/news/2024/…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_1867681270353874944",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/1867681270353874944/pu/vid/avc1/960x720/tL7Z9QwnXZyYmC6w.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 65,
+          "width": 1662,
+          "height": 1246,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 8,
+      "retweet_count": 1,
+      "reply_count": 1,
+      "quote_count": 1,
+      "view_count": 1420,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T00:42:06.616Z",
+          "likes": 8,
+          "retweets": 1,
+          "replies": 1,
+          "quotes": 1,
+          "views": 1420,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "HSI Houston",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1928487135000080384/8nOe7E9S_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official account for the @HSI_HQ field office in the Houston area.",
+        "location": "Houston, Texas",
+        "url": "https://t.co/YyNkuAQ3M7",
+        "followers_count": 3510,
+        "friends_count": 331,
+        "statuses_count": 1039,
+        "account_created_at": "2020-09-02T01:49:16.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T004159Z-719d393e",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004159Z-719d393e.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004159Z-719d393e.jsonl",
+    "source_handle": "HSI_HQ"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T152558Z-47488687-DFOFlorida",
+  "account_handle": "DFOFlorida",
+  "captured_at": "2026-06-17T15:26:20.939Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBP%20since%3A2026-06-10%20until%3A2026-06-17%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2066883882419384441",
+      "account_handle": "DFOFlorida",
+      "account_id": "1212001189136457728",
+      "posted_at": "2026-06-16T14:01:33.000Z",
+      "first_captured_at": "2026-06-17T15:26:09.653Z",
+      "last_seen_at": "2026-06-17T15:26:09.653Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DFOFlorida/status/2066883882419384441",
+      "tweet_type": "original",
+      "conversation_id": "2066883882419384441",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Excellent work by @FLLFlyer CBP officers who recently stopped a US citizen arriving from the Dominican Republic with 236 off-brand Viagra pills without a prescription and child sex abuse materials on his phone. Prosecution accepted. #OFOProud🇺🇸 https://t.co/hCbAqEpFmw",
+      "text_resolved": "Excellent work by @FLLFlyer CBP officers who recently stopped a US citizen arriving from the Dominican Republic with 236 off-brand Viagra pills without a prescription and child sex abuse materials on his phone. Prosecution accepted. #OFOProud🇺🇸 https://t.co/hCbAqEpFmw",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "OFOProud"
+      ],
+      "mentions": [
+        "FLLFlyer"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2066883880292921344",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HK8L8DTXMAAlV6f.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 654,
+          "height": 743,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_2066883880632672256",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HK8L8EkXYAAKsl2.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 267,
+          "height": 323,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 141,
+      "retweet_count": 31,
+      "reply_count": 8,
+      "quote_count": 2,
+      "view_count": 9845,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T15:26:09.653Z",
+          "likes": 141,
+          "retweets": 31,
+          "replies": 8,
+          "quotes": 2,
+          "views": 9845,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "Director of Field Operations",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1991153410763067392/Odz-QbCw_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": null,
+        "location": "Florida, USA",
+        "url": "https://t.co/GspX2Rhx22",
+        "followers_count": 3307,
+        "friends_count": 661,
+        "statuses_count": 2424,
+        "account_created_at": "2019-12-31T13:23:03.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T152558Z-47488687",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T152558Z-47488687.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T152558Z-47488687.jsonl",
+    "source_handle": "CBP"
+  }
+}

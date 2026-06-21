@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-20260611-20260611T130809Z-98850400-USCIS",
+  "account_handle": "USCIS",
+  "captured_at": "2026-06-11T13:08:26.452Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCIS%20since%3A2025-01-22%20until%3A2025-01-29",
+  "tweets": [
+    {
+      "tweet_id": "1882208077556097118",
+      "account_handle": "USCIS",
+      "account_id": "14625398",
+      "posted_at": "2025-01-22T23:25:50.000Z",
+      "first_captured_at": "2026-06-11T13:08:16.545Z",
+      "last_seen_at": "2026-06-11T13:08:16.545Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USCIS/status/1882208077556097118",
+      "tweet_type": "original",
+      "conversation_id": "1882208077556097118",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Effective today, Jan. 22, 2025, USCIS will not deny any adjustment of status application based on an applicant not presenting documentation that they received the COVID-19 vaccination. Learn more: https://t.co/YcOSsyRud7",
+      "text_resolved": "Effective today, Jan. 22, 2025, USCIS will not deny any adjustment of status application based on an applicant not presenting documentation that they received the COVID-19 vaccination. Learn more: https://www.uscis.gov/newsroom/alerts/uscis-waives-covid-19-vaccination-requirement-for-adjustment-of-status-applicants",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/YcOSsyRud7",
+          "expanded": "https://www.uscis.gov/newsroom/alerts/uscis-waives-covid-19-vaccination-requirement-for-adjustment-of-status-applicants",
+          "display": "uscis.gov/newsroom/alert…"
+        }
+      ],
+      "card": null,
+      "media": [],
+      "like_count": 1242,
+      "retweet_count": 198,
+      "reply_count": 125,
+      "quote_count": 45,
+      "view_count": 197763,
+      "bookmark_count": 99,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T13:08:16.545Z",
+          "likes": 1242,
+          "retweets": 198,
+          "replies": 125,
+          "quotes": 45,
+          "views": 197763,
+          "bookmarks": 99
+        }
+      ],
+      "author": {
+        "display_name": "USCIS",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1882164862987489280/kDwtH0hc_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official X account of U.S. Citizenship and Immigration Services. \nApply to be a Homeland Defender NOW: https://t.co/ataEwyi3UT",
+        "location": "Washington, DC",
+        "url": "https://t.co/GrphfGhLRD",
+        "followers_count": 566054,
+        "friends_count": 336,
+        "statuses_count": 22137,
+        "account_created_at": "2008-05-02T13:03:21.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-20260611-20260611T130809Z-98850400",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-import-20260611/x-com-search-20260611T130809Z-98850400.summary.json",
+    "jsonl": ".skim/raw-import-20260611/x-com-search-20260611T130809Z-98850400.jsonl",
+    "source_handle": "USCIS"
+  }
+}

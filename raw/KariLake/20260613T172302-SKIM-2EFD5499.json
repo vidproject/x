@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T172244Z-daa878e6-KariLake",
+  "account_handle": "KariLake",
+  "captured_at": "2026-06-13T17:23:02.728Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AGenFlynn%20since%3A2025-10-01%20until%3A2026-01-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2005841377972875590",
+      "account_handle": "KariLake",
+      "account_id": "1082197856",
+      "posted_at": "2025-12-30T03:20:25.000Z",
+      "first_captured_at": "2026-06-13T17:22:54.386Z",
+      "last_seen_at": "2026-06-13T17:22:54.386Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/KariLake/status/2005841377972875590",
+      "tweet_type": "original",
+      "conversation_id": "2005841377972875590",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "What happened in Minnesota is not merely criminal, it’s treasonous.\n\nAnd I have so much anger seeing this, seeing the corruption where I’m working in Washington, DC, and knowing no one's been held accountable yet.\n\nThey steal our elections, pilfer our money, they dragged @RogerJStoneJr out of bed & into jail, raided Mar-A-Lago, they tried to put @POTUS behind bars.\n\nWhen are we gonna see some effing handcuffs on some effing criminals in this country?",
+      "text_resolved": "What happened in Minnesota is not merely criminal, it’s treasonous.\n\nAnd I have so much anger seeing this, seeing the corruption where I’m working in Washington, DC, and knowing no one's been held accountable yet.\n\nThey steal our elections, pilfer our money, they dragged @RogerJStoneJr out of bed & into jail, raided Mar-A-Lago, they tried to put @POTUS behind bars.\n\nWhen are we gonna see some effing handcuffs on some effing criminals in this country?",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "RogerJStoneJr",
+        "POTUS"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_2005841317318819840",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2005841317318819840/vid/avc1/1280x720/EIxiLPdtexDZLvrP.mp4?tag=21",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 90.19,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 37439,
+      "retweet_count": 11360,
+      "reply_count": 1995,
+      "quote_count": 420,
+      "view_count": 384311,
+      "bookmark_count": 658,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:22:54.386Z",
+          "likes": 37439,
+          "retweets": 11360,
+          "replies": 1995,
+          "quotes": 420,
+          "views": 384311,
+          "bookmarks": 658
+        }
+      ],
+      "author": {
+        "display_name": "Kari Lake",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1600623137300750336/JAUThK8o_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Follower of Christ. Jeff’s Wife. Ruby & Leo’s Mom. Trump Administrator leading @USAGM",
+        "location": "Arizona & Washington, DC",
+        "url": null,
+        "followers_count": 3106687,
+        "friends_count": 1133,
+        "statuses_count": 44480,
+        "account_created_at": "2013-01-12T07:47:51.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T172244Z-daa878e6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T172244Z-daa878e6.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T172244Z-daa878e6.jsonl",
+    "source_handle": "GenFlynn"
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T203806Z-6142d443-CBPAMORegDirSW",
+  "account_handle": "CBPAMORegDirSW",
+  "captured_at": "2026-06-17T20:38:25.884Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBPAMO%20since%3A2026-02-11%20until%3A2026-02-18%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2021605017552388430",
+      "account_handle": "CBPAMORegDirSW",
+      "account_id": "1211716207910342658",
+      "posted_at": "2026-02-11T15:19:30.000Z",
+      "first_captured_at": "2026-06-17T20:38:11.175Z",
+      "last_seen_at": "2026-06-17T20:38:11.175Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBPAMORegDirSW/status/2021605017552388430",
+      "tweet_type": "original",
+      "conversation_id": "2021605017552388430",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "🚁 I told them I fly helicopters professionally. 🚁#HolyAirBall #ViralVideos #ElPaso\n@CBPAMO @CBPAMOEAC @CBPAMODEAC @CBP https://t.co/R06xvFotxy",
+      "text_resolved": "🚁 I told them I fly helicopters professionally. 🚁#HolyAirBall #ViralVideos #ElPaso\n@CBPAMO @CBPAMOEAC @CBPAMODEAC @CBP https://t.co/R06xvFotxy",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "HolyAirBall",
+        "ViralVideos",
+        "ElPaso"
+      ],
+      "mentions": [
+        "CBPAMO",
+        "CBPAMOEAC",
+        "CBPAMODEAC",
+        "CBP"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_2021603959610490880",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2021603959610490880/vid/avc1/2158x3838/pzxaHY9qiobRfyhv.mp4?tag=21",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 53.333,
+          "width": 2158,
+          "height": 3838,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 25,
+      "retweet_count": 7,
+      "reply_count": 0,
+      "quote_count": 2,
+      "view_count": 1385,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T20:38:11.175Z",
+          "likes": 25,
+          "retweets": 7,
+          "replies": 0,
+          "quotes": 2,
+          "views": 1385,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "CBP AMO Southwest Region XD Hunter Robinson",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1528229709795975169/HachMcq9_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Executive Director of Air and Marine Operations Southwest Region\nhttps://t.co/yJGCpiEkVO",
+        "location": null,
+        "url": "https://t.co/y757ZAtYic",
+        "followers_count": 1447,
+        "friends_count": 298,
+        "statuses_count": 851,
+        "account_created_at": "2019-12-30T18:30:46.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T203806Z-6142d443",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T203806Z-6142d443.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T203806Z-6142d443.jsonl",
+    "source_handle": "CBPAMO"
+  }
+}

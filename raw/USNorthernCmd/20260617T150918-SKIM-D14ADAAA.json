@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T150903Z-416280b1-USNorthernCmd",
+  "account_handle": "USNorthernCmd",
+  "captured_at": "2026-06-17T15:09:18.161Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBP%20since%3A2025-03-05%20until%3A2025-03-12%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1899497807364387086",
+      "account_handle": "USNorthernCmd",
+      "account_id": "18144581",
+      "posted_at": "2025-03-11T16:29:02.000Z",
+      "first_captured_at": "2026-06-17T15:09:08.504Z",
+      "last_seen_at": "2026-06-17T15:09:08.504Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USNorthernCmd/status/1899497807364387086",
+      "tweet_type": "original",
+      "conversation_id": "1899497807364387086",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Packing up for deployment – heading to work with @CBP  and @DHSgov  at the #southernborder \n@USArmy https://t.co/nY1DaQwjZC",
+      "text_resolved": "Packing up for deployment – heading to work with @CBP  and @DHSgov  at the #southernborder \n@USArmy https://t.co/nY1DaQwjZC",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "southernborder"
+      ],
+      "mentions": [
+        "CBP",
+        "DHSgov",
+        "USArmy"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1899496908306939904",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GlxeX8eWgAAhgiw.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 800,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_1899497452127809536",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Glxe3mXWcAAp3gB.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 800,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_1899497623897149440",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GlxfBmQWkAA3IVi.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 800,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 661,
+      "retweet_count": 114,
+      "reply_count": 24,
+      "quote_count": 9,
+      "view_count": 30508,
+      "bookmark_count": 16,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T15:09:08.504Z",
+          "likes": 661,
+          "retweets": 114,
+          "replies": 24,
+          "quotes": 9,
+          "views": 30508,
+          "bookmarks": 16
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Northern Command",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1094992299312918529/xX3lLSy2_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official profile of U.S. Northern Command. RTs/Follows/Favs ≠ endorsement",
+        "location": "Peterson Space Force Base, CO",
+        "url": "https://t.co/QeStvVsVMF",
+        "followers_count": 223468,
+        "friends_count": 452,
+        "statuses_count": 7897,
+        "account_created_at": "2008-12-15T19:50:31.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T150903Z-416280b1",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T150903Z-416280b1.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T150903Z-416280b1.jsonl",
+    "source_handle": "CBP"
+  }
+}

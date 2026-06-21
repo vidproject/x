@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T174357Z-1895a886-EWess92",
+  "account_handle": "EWess92",
+  "captured_at": "2026-06-13T17:44:12.817Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AHorEmperor%20since%3A2026-04-01%20until%3A2026-06-13%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2064380775542464920",
+      "account_handle": "EWess92",
+      "account_id": "50901464",
+      "posted_at": "2026-06-09T16:15:05.000Z",
+      "first_captured_at": "2026-06-13T17:44:04.594Z",
+      "last_seen_at": "2026-06-13T17:44:04.594Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/EWess92/status/2064380775542464920",
+      "tweet_type": "original",
+      "conversation_id": "2064380775542464920",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "🔥Hot off the presses: @TheJusticeDept issued an opinion today explaining that disparate-impact liability under federal employment law is *unconstitutional*. This is an earthquake in federal civil rights law. If right, this is the foundation to overturn that pernicious regime. https://t.co/IBa3htR1FG",
+      "text_resolved": "🔥Hot off the presses: @TheJusticeDept issued an opinion today explaining that disparate-impact liability under federal employment law is *unconstitutional*. This is an earthquake in federal civil rights law. If right, this is the foundation to overturn that pernicious regime. https://t.co/IBa3htR1FG",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "TheJusticeDept"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2064380329817972736",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HKYm-PAaoAAZTDC.png",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 459,
+          "height": 308,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 7026,
+      "retweet_count": 1183,
+      "reply_count": 147,
+      "quote_count": 267,
+      "view_count": 1509072,
+      "bookmark_count": 1012,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:44:04.594Z",
+          "likes": 7026,
+          "retweets": 1183,
+          "replies": 147,
+          "quotes": 267,
+          "views": 1509072,
+          "bookmarks": 1012
+        }
+      ],
+      "author": {
+        "display_name": "Eric W.",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1978901895801376769/0AGxJ88T_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Conservative, Textualist, Originalist. University of Chicago AB/JD. Mostly bad takes, but politely. Generally Solicitous in Iowa",
+        "location": "Des Moines, IA",
+        "url": null,
+        "followers_count": 14657,
+        "friends_count": 867,
+        "statuses_count": 8600,
+        "account_created_at": "2009-06-26T03:20:57.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T174357Z-1895a886",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T174357Z-1895a886.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T174357Z-1895a886.jsonl",
+    "source_handle": "HorEmperor"
+  }
+}

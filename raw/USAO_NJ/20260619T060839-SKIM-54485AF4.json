@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-resume2-20260619T020329Z-20260619T060825Z-add75da8-USAO_NJ",
+  "account_handle": "USAO_NJ",
+  "captured_at": "2026-06-19T06:08:39.626Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AERONewark%20since%3A2025-05-21%20until%3A2025-05-28%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1927416680566718657",
+      "account_handle": "USAO_NJ",
+      "account_id": "1528027123",
+      "posted_at": "2025-05-27T17:28:40.000Z",
+      "first_captured_at": "2026-06-19T06:08:28.111Z",
+      "last_seen_at": "2026-06-19T06:08:28.111Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USAO_NJ/status/1927416680566718657",
+      "tweet_type": "original",
+      "conversation_id": "1927416680566718657",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "El Salvador National Charged with Illegal Possession of Firearms https://t.co/nj9EdBNlHx",
+      "text_resolved": "El Salvador National Charged with Illegal Possession of Firearms https://www.justice.gov/usao-nj/pr/el-salvador-national-charged-illegal-possession-firearms",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/nj9EdBNlHx",
+          "expanded": "https://www.justice.gov/usao-nj/pr/el-salvador-national-charged-illegal-possession-firearms",
+          "display": "justice.gov/usao-nj/pr/el-…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/nj9EdBNlHx",
+        "vendor_url": "justice.gov",
+        "title": "El Salvador National Charged with Illegal Possession of Firearms",
+        "description": "An El Salvador national was arrested and charged with possessing firearms as an illegal alien.",
+        "image_url": "https://pbs.twimg.com/card_img/2065691426755612672/BlVfuD1V?format=png&name=orig"
+      },
+      "media": [],
+      "like_count": 7,
+      "retweet_count": 2,
+      "reply_count": 1,
+      "quote_count": 1,
+      "view_count": 2107,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-19T06:08:28.111Z",
+          "likes": 7,
+          "retweets": 2,
+          "replies": 1,
+          "quotes": 1,
+          "views": 2107,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "NJ US Attorney",
+        "avatar_url": "https://pbs.twimg.com/profile_images/466596488194170880/_WIxnkmY_normal.jpeg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official account of the US Attorney's Office for the District of New Jersey. We don't collect comments or messages. Learn more http://t.co/5toBkkG2C6",
+        "location": "Newark, New Jersey",
+        "url": "http://t.co/9nwhJRbdfI",
+        "followers_count": 16432,
+        "friends_count": 327,
+        "statuses_count": 5617,
+        "account_created_at": "2013-06-18T15:03:15.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-resume2-20260619T020329Z-20260619T060825Z-add75da8",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": "../../root/x-skim-worker/.skim/raw-core-2025-full-weekly-resume2-20260619T020329Z/x-com-search-20260619T060825Z-add75da8.summary.json",
+    "jsonl": "../../root/x-skim-worker/.skim/raw-core-2025-full-weekly-resume2-20260619T020329Z/x-com-search-20260619T060825Z-add75da8.jsonl",
+    "source_handle": "ERONewark"
+  }
+}

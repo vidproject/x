@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T211122Z-a8c95209-USCGGreatLakes",
+  "account_handle": "USCGGreatLakes",
+  "captured_at": "2026-06-17T21:11:37.598Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCG%20since%3A2026-04-01%20until%3A2026-04-08%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2041147045138846041",
+      "account_handle": "USCGGreatLakes",
+      "account_id": "377578077",
+      "posted_at": "2026-04-06T13:32:32.000Z",
+      "first_captured_at": "2026-06-17T21:11:26.407Z",
+      "last_seen_at": "2026-06-17T21:11:26.407Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USCGGreatLakes/status/2041147045138846041",
+      "tweet_type": "original",
+      "conversation_id": "2041147045138846041",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "BZ @USCG Cutter SPAR (WLB 206) for assisting the M/V Lee A. Tregurtha after it became beset by ice near #Duluth on #LakeSuperior on April 3, 2026.\n\nSPAR and crew arrived on scene, broke the ice around the #Vessel Tregurtha, allowing it to make way #OperationTaconite #IceBreaking https://t.co/n75jSu7L1A",
+      "text_resolved": "BZ @USCG Cutter SPAR (WLB 206) for assisting the M/V Lee A. Tregurtha after it became beset by ice near #Duluth on #LakeSuperior on April 3, 2026.\n\nSPAR and crew arrived on scene, broke the ice around the #Vessel Tregurtha, allowing it to make way #OperationTaconite #IceBreaking https://t.co/n75jSu7L1A",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "Duluth",
+        "LakeSuperior",
+        "Vessel",
+        "OperationTaconite",
+        "IceBreaking"
+      ],
+      "mentions": [
+        "USCG"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2041145972252659712",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HFObcoLW0AAt5Mz.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 3024,
+          "height": 4032,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_2041145972370358272",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HFObconawAAZ0OT.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1920,
+          "height": 1080,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 47,
+      "retweet_count": 13,
+      "reply_count": 1,
+      "quote_count": 2,
+      "view_count": 14485,
+      "bookmark_count": 3,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T21:11:26.407Z",
+          "likes": 47,
+          "retweets": 13,
+          "replies": 1,
+          "quotes": 2,
+          "views": 14485,
+          "bookmarks": 3
+        }
+      ],
+      "author": {
+        "display_name": "USCG Great Lakes",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2001410736417849345/0PZDC7Xh_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "The official account for U.S. Coast Guard Great Lakes District",
+        "location": "Cleveland, Ohio",
+        "url": "https://t.co/IFNBZ5Z6ay",
+        "followers_count": 14374,
+        "friends_count": 383,
+        "statuses_count": 4986,
+        "account_created_at": "2011-09-21T20:01:20.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T211122Z-a8c95209",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T211122Z-a8c95209.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T211122Z-a8c95209.jsonl",
+    "source_handle": "USCG"
+  }
+}

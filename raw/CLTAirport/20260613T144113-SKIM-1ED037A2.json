@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T144057Z-96979e43-CLTAirport",
+  "account_handle": "CLTAirport",
+  "captured_at": "2026-06-13T14:41:13.006Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ATSA%20since%3A2025-07-01%20until%3A2025-10-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1961433184173781442",
+      "account_handle": "CLTAirport",
+      "account_id": "407101742",
+      "posted_at": "2025-08-29T14:18:07.000Z",
+      "first_captured_at": "2026-06-13T14:41:02.847Z",
+      "last_seen_at": "2026-06-13T14:41:02.847Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CLTAirport/status/1961433184173781442",
+      "tweet_type": "original",
+      "conversation_id": "1961433184173781442",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Traveling with little ones at #CLTairport just got easier! 🙌 The “Families on the Fly” initiative by TSA is designed to support families with young children through the screening process, making your airport experience smoother, faster and less stressful.\n \nBenefits for families include:  \n- A dedicated Family Lane\n- Discounted TSA PreCheck fees for families\n- Dedicated PreCheck lanes for service members and their families",
+      "text_resolved": "Traveling with little ones at #CLTairport just got easier! 🙌 The “Families on the Fly” initiative by TSA is designed to support families with young children through the screening process, making your airport experience smoother, faster and less stressful.\n \nBenefits for families include:  \n- A dedicated Family Lane\n- Discounted TSA PreCheck fees for families\n- Dedicated PreCheck lanes for service members and their families",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://sproutsocial.com\" rel=\"nofollow\">Sprout Social</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "CLTairport"
+      ],
+      "mentions": [],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1961433163474915330",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GzhpEe-X0AIhV4S.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 3866,
+          "height": 2566,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 25,
+      "retweet_count": 7,
+      "reply_count": 3,
+      "quote_count": 1,
+      "view_count": 6909,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T14:41:02.847Z",
+          "likes": 25,
+          "retweets": 7,
+          "replies": 3,
+          "quotes": 1,
+          "views": 6909,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "CLT Airport",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1516846251022688256/yaNBnkEP_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Charlotte Douglas International Airport (CLT). ✈️ Share your travels with us using #CLTairport",
+        "location": "Charlotte, North Carolina",
+        "url": "https://t.co/KRqijpS6Yq",
+        "followers_count": 43786,
+        "friends_count": 540,
+        "statuses_count": 31872,
+        "account_created_at": "2011-11-07T16:51:33.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T144057Z-96979e43",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T144057Z-96979e43.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T144057Z-96979e43.jsonl",
+    "source_handle": "TSA"
+  }
+}

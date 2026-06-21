@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T164435Z-25508d46-WSJopinion",
+  "account_handle": "WSJopinion",
+  "captured_at": "2026-06-17T16:44:52.623Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APressSec%20since%3A2026-03-11%20until%3A2026-03-18%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2033629325820330383",
+      "account_handle": "WSJopinion",
+      "account_id": "7228682",
+      "posted_at": "2026-03-16T19:39:48.000Z",
+      "first_captured_at": "2026-06-17T16:44:42.942Z",
+      "last_seen_at": "2026-06-17T16:44:42.942Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/WSJopinion/status/2033629325820330383",
+      "tweet_type": "original",
+      "conversation_id": "2033629325820330383",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Much of the news media seems determined to advance a narrative that Trump is wrong about everything and that the U.S. is getting its clock cleaned by a powerful Iranian war machine, write @Mark_Penn and Andrew Stein\nhttps://t.co/ClxjFUt0q1",
+      "text_resolved": "Much of the news media seems determined to advance a narrative that Trump is wrong about everything and that the U.S. is getting its clock cleaned by a powerful Iranian war machine, write @Mark_Penn and Andrew Stein\nhttps://on.wsj.com/4rA57XC",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "Mark_Penn"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/ClxjFUt0q1",
+          "expanded": "https://on.wsj.com/4rA57XC",
+          "display": "on.wsj.com/4rA57XC"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/ClxjFUt0q1",
+        "vendor_url": "wsj.com",
+        "title": "Opinion | On Iran, Is Only Bad News Fit to Print?",
+        "description": "Media partisanship has been worse than ever in this war.",
+        "image_url": "https://pbs.twimg.com/card_img/2066212769506922497/v42uHysm?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 914,
+      "retweet_count": 200,
+      "reply_count": 93,
+      "quote_count": 17,
+      "view_count": 350403,
+      "bookmark_count": 111,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T16:44:42.942Z",
+          "likes": 914,
+          "retweets": 200,
+          "replies": 93,
+          "quotes": 17,
+          "views": 350403,
+          "bookmarks": 111
+        }
+      ],
+      "author": {
+        "display_name": "Wall Street Journal Opinion",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1522643223230963715/JYkirmo4_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Business",
+        "description": "Opinion & Commentary from The Wall Street Journal.",
+        "location": "New York",
+        "url": "https://t.co/nLhNNCaqmr",
+        "followers_count": 180648,
+        "friends_count": 85,
+        "statuses_count": 117692,
+        "account_created_at": "2007-07-03T13:39:08.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T164435Z-25508d46",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T164435Z-25508d46.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T164435Z-25508d46.jsonl",
+    "source_handle": "PressSec"
+  }
+}

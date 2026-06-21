@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143651Z-e18558ac-USCIS",
+  "account_handle": "USCIS",
+  "captured_at": "2026-06-17T14:37:06.288Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-01-07%20until%3A2026-01-14%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2011075961249546458",
+      "account_handle": "USCIS",
+      "account_id": "14625398",
+      "posted_at": "2026-01-13T14:00:47.000Z",
+      "first_captured_at": "2026-06-17T14:36:55.296Z",
+      "last_seen_at": "2026-06-17T14:36:55.296Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USCIS/status/2011075961249546458",
+      "tweet_type": "original",
+      "conversation_id": "2011075961249546458",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "BREAKING: DHS and USCIS are ending Temporary Protected Status (TPS) for Somalia. \n\nTemporary means TEMPORARY. \n\nSomali nationals with TPS are now required to leave the United States by March 17, 2026.\nhttps://t.co/kTBIaf4KlW",
+      "text_resolved": "BREAKING: DHS and USCIS are ending Temporary Protected Status (TPS) for Somalia. \n\nTemporary means TEMPORARY. \n\nSomali nationals with TPS are now required to leave the United States by March 17, 2026.\nhttps://www.foxnews.com/politics/trump-administration-ends-temporary-protected-status-thousands-somalis-us",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/kTBIaf4KlW",
+          "expanded": "https://www.foxnews.com/politics/trump-administration-ends-temporary-protected-status-thousands-somalis-us",
+          "display": "foxnews.com/politics/trump…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/kTBIaf4KlW",
+        "vendor_url": "foxnews.com",
+        "title": "Trump administration ends temporary protected status for thousands of Somalis in US",
+        "description": "Trump administration ends temporary protection status for Somalia, requiring several thousand Somali nationals to leave U.S. by March 17 deadline.",
+        "image_url": "https://pbs.twimg.com/card_img/2067010813605392385/mdZK-WVM?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 22546,
+      "retweet_count": 3065,
+      "reply_count": 1104,
+      "quote_count": 470,
+      "view_count": 5938132,
+      "bookmark_count": 859,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:36:55.296Z",
+          "likes": 22546,
+          "retweets": 3065,
+          "replies": 1104,
+          "quotes": 470,
+          "views": 5938132,
+          "bookmarks": 859
+        }
+      ],
+      "author": {
+        "display_name": "USCIS",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1882164862987489280/kDwtH0hc_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official X account of U.S. Citizenship and Immigration Services. \nApply to be a Homeland Defender NOW: https://t.co/ataEwyi3UT",
+        "location": "Washington, DC",
+        "url": "https://t.co/GrphfGhLRD",
+        "followers_count": 567051,
+        "friends_count": 337,
+        "statuses_count": 22136,
+        "account_created_at": "2008-05-02T13:03:21.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143651Z-e18558ac",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143651Z-e18558ac.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143651Z-e18558ac.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

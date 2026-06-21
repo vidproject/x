@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T161633Z-5b27990a-FoxNews",
+  "account_handle": "FoxNews",
+  "captured_at": "2026-06-17T16:18:49.195Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AWhiteHouse%20since%3A2026-06-10%20until%3A2026-06-17%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2066824484057751938",
+      "account_handle": "FoxNews",
+      "account_id": "1367531",
+      "posted_at": "2026-06-16T10:05:31.000Z",
+      "first_captured_at": "2026-06-17T16:16:36.490Z",
+      "last_seen_at": "2026-06-17T16:16:36.490Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/FoxNews/status/2066824484057751938",
+      "tweet_type": "original",
+      "conversation_id": "2066824484057751938",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "BREAKING: FBI, law enforcement partners disrupt alleged plot against UFC Freedom 250 event at White House; 5 in custody, officials say https://t.co/CEBKJA5zPt",
+      "text_resolved": "BREAKING: FBI, law enforcement partners disrupt alleged plot against UFC Freedom 250 event at White House; 5 in custody, officials say https://www.foxnews.com/politics/fbi-disrupts-alleged-explosive-drone-plot-targeting-white-house-ufc-event-officials-say",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/CEBKJA5zPt",
+          "expanded": "https://www.foxnews.com/politics/fbi-disrupts-alleged-explosive-drone-plot-targeting-white-house-ufc-event-officials-say",
+          "display": "foxnews.com/politics/fbi-d…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/CEBKJA5zPt",
+        "vendor_url": "foxnews.com",
+        "title": "FBI disrupts alleged explosive-drone plot targeting White House UFC event, officials say",
+        "description": "The FBI and partners disrupted an alleged plot targeting the UFC Freedom 250 event in Washington, D.C., with five people now in custody across multiple states.",
+        "image_url": "https://pbs.twimg.com/card_img/2066825461292781570/YomfQB0H?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 3965,
+      "retweet_count": 902,
+      "reply_count": 542,
+      "quote_count": 150,
+      "view_count": 1213111,
+      "bookmark_count": 246,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T16:16:36.490Z",
+          "likes": 3965,
+          "retweets": 902,
+          "replies": 542,
+          "quotes": 150,
+          "views": 1213111,
+          "bookmarks": 246
+        }
+      ],
+      "author": {
+        "display_name": "Fox News",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1988465685639380992/PNFNFL7O_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Stay Ahead. Get Breaking News Here First. Download the App.",
+        "location": "U.S.A.",
+        "url": "https://t.co/ISpW9FcyGB",
+        "followers_count": 29143641,
+        "friends_count": 282,
+        "statuses_count": 702472,
+        "account_created_at": "2007-03-17T19:01:26.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T161633Z-5b27990a",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T161633Z-5b27990a.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T161633Z-5b27990a.jsonl",
+    "source_handle": "WhiteHouse"
+  }
+}

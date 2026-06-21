@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T212819Z-9d76858d-USCISJoe",
+  "account_handle": "USCISJoe",
+  "captured_at": "2026-06-17T21:28:33.837Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCISJoe%20since%3A2025-09-17%20until%3A2025-09-24%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1969516567886024978",
+      "account_handle": "USCISJoe",
+      "account_id": "1232668204251668482",
+      "posted_at": "2025-09-20T21:38:36.000Z",
+      "first_captured_at": "2026-06-17T21:28:22.440Z",
+      "last_seen_at": "2026-06-17T21:28:22.440Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USCISJoe/status/1969516567886024978",
+      "tweet_type": "quote",
+      "conversation_id": "1969516567886024978",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": "1969515779251953876",
+      "retweeted_tweet_id": null,
+      "text": "Below is the truth about @POTUS’ latest H-1B proclamation:",
+      "text_resolved": "Below is the truth about @POTUS’ latest H-1B proclamation:",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "POTUS"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [],
+      "like_count": 216,
+      "retweet_count": 39,
+      "reply_count": 155,
+      "quote_count": 10,
+      "view_count": 59712,
+      "bookmark_count": 59,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T21:28:22.440Z",
+          "likes": 216,
+          "retweets": 39,
+          "replies": 155,
+          "quotes": 10,
+          "views": 59712,
+          "bookmarks": 59
+        }
+      ],
+      "author": {
+        "display_name": "USCIS Director Joseph B. Edlow",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1948107848501620737/iiDwS-H7_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "This is the official X account of USCIS Director Joseph B. Edlow.\nApply to be a Homeland Defender NOW: https://t.co/ZG8Mn5agZC",
+        "location": null,
+        "url": "https://t.co/oCzR5Vjwjo",
+        "followers_count": 21066,
+        "friends_count": 283,
+        "statuses_count": 47,
+        "account_created_at": "2020-02-26T14:06:45.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T212819Z-9d76858d",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T212819Z-9d76858d.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T212819Z-9d76858d.jsonl",
+    "source_handle": "USCISJoe"
+  }
+}

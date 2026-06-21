@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T154606Z-d0467dc7-HughDougherty",
+  "account_handle": "HughDougherty",
+  "captured_at": "2026-06-13T15:46:22.353Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AAnnaKelly47%20since%3A2025-10-01%20until%3A2026-01-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1985864052271169999",
+      "account_handle": "HughDougherty",
+      "account_id": "20667377",
+      "posted_at": "2025-11-05T00:17:40.000Z",
+      "first_captured_at": "2026-06-13T15:46:12.498Z",
+      "last_seen_at": "2026-06-13T15:46:12.498Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/HughDougherty/status/1985864052271169999",
+      "tweet_type": "original",
+      "conversation_id": "1985864052271169999",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Everyday life for @thedailybeast  journalists dealing with the @WhiteHouse: Being called a moron, f***ing blind, mentally ill or a crackhead. https://t.co/w6M3t2k3lZ",
+      "text_resolved": "Everyday life for @thedailybeast  journalists dealing with the @WhiteHouse: Being called a moron, f***ing blind, mentally ill or a crackhead. https://www.thedailybeast.com/trump-aides-foul-mouthed-emails-to-journalists-laid-bare/",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "thedailybeast",
+        "WhiteHouse"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/w6M3t2k3lZ",
+          "expanded": "https://www.thedailybeast.com/trump-aides-foul-mouthed-emails-to-journalists-laid-bare/",
+          "display": "thedailybeast.com/trump-aides-fo…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/w6M3t2k3lZ",
+        "vendor_url": "thedailybeast.com",
+        "title": "Trump Aides’ Foul-Mouthed Emails to Journalists Laid Bare",
+        "description": "“Your mom” is the family friendly tip of the iceberg, our must-read newsletter The Swamp reveals.",
+        "image_url": "https://pbs.twimg.com/card_img/2064559740940890112/_Jp_F7Uf?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 240,
+      "retweet_count": 55,
+      "reply_count": 966,
+      "quote_count": 129,
+      "view_count": 1015355,
+      "bookmark_count": 89,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T15:46:12.498Z",
+          "likes": 240,
+          "retweets": 55,
+          "replies": 966,
+          "quotes": 129,
+          "views": 1015355,
+          "bookmarks": 89
+        }
+      ],
+      "author": {
+        "display_name": "Hugh Dougherty",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1367967021074440196/NpDMYdW5_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Executive Editor of The Daily Beast. Stories? tips@thedailybeast.com\nPrevious: @nypost @dailymail, @Telegraph, @standardnews, @PA",
+        "location": "New York",
+        "url": "https://t.co/7SXuw0Uags",
+        "followers_count": 927,
+        "friends_count": 1004,
+        "statuses_count": 663,
+        "account_created_at": "2009-02-12T10:46:58.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T154606Z-d0467dc7",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T154606Z-d0467dc7.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T154606Z-d0467dc7.jsonl",
+    "source_handle": "AnnaKelly47"
+  }
+}
