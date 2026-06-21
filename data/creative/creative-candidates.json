@@ -1,18 +1,18 @@
 {
   "metadata": {
     "queue": "candidates",
-    "generated_at": "2026-06-21T05:55:28Z",
-    "source_commit": "f0b7a7e1",
+    "generated_at": "2026-06-21T10:27:04Z",
+    "source_commit": "732f45e6",
     "item_count": 92,
-    "source_candidate_count": 1371,
+    "source_candidate_count": 1372,
     "not_ready_count": 67,
-    "review_scope_excluded_count": 1164,
+    "review_scope_excluded_count": 1165,
     "review_scope_excluded_reasons": {
       "apprehension-notice-or-routine-card": 318,
       "generic-enforcement-poster": 13,
       "generic-self-deportation-psa": 14,
       "news-image-or-clip": 61,
-      "outside-revealed-preference": 679,
+      "outside-revealed-preference": 680,
       "routine-static-card": 49,
       "trump-post-screenshot": 30
     },
@@ -22,7 +22,7 @@
       "wholly_creative_media": 80
     },
     "preference_category_counts": {
-      "subject:enforcement-linked": 43,
+      "subject:enforcement-linked": 44,
       "medium:produced-video-with-preference-signal": 38,
       "aesthetic:ai-synthetic-propaganda": 37,
       "aesthetic:nostalgia-americana": 29,
@@ -4328,14 +4328,15 @@
       "tags": [
         "agency:DOJgov",
         "country:China",
+        "country:Georgia",
         "crime:fentanyl",
         "crime:narcotics",
         "crime:trafficking",
         "media-status:archived",
         "media-status:described",
-        "media-status:needs-ocr",
         "media-status:ocr-done",
         "media:photo",
+        "origin:China",
         "review:screened-photo",
         "theme:directive",
         "topic:immigration"
@@ -4370,10 +4371,10 @@
             },
             "ocr": {
               "status_counts": {
-                "no-text": 1
+                "ok": 1
               },
               "complete_row_count": 1,
-              "text": ""
+              "text": "j SL tt es Se) [ N an 1 =_ =) = : i , ‘ a —. = TWO GEORGIA MEN FACE LIFE IN PRISON FOR TRAFFICKING FENTANYL FROM CHINA Us, ATTORNEY'S OFFICE, MIDDLE DISTRICT OF GEORGIA @ juste"
             },
             "keyframes": {
               "status": null,
@@ -4419,6 +4420,131 @@
         "retweets": 433,
         "quotes": 0,
         "views": 34980
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2053929373431201915:3_2053929244808314880",
+      "tweet_id": "2053929373431201915",
+      "posted_at": "2026-05-11T20:04:57.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "TheJusticeDept",
+        "category": "government",
+        "label": "U.S. Department of Justice"
+      },
+      "tweet_url": "https://x.com/TheJusticeDept/status/2053929373431201915",
+      "tweet_text": "HSTF: Chinese National and Las Vegas Man Charged in Scheme to Import Deadly Synthetic Opioid into US\n\n“This case shows why President Trump’s Homeland Security Task Force matters,” said U.S. Attorney Jason A. Reding Quiñones for @USAO_SDFL. “The indictment alleges that a China-based supplier and a domestic distributor worked together to bring a deadly synthetic opioid into the United States and turn it into counterfeit pills for distribution across the country. These pills are made to look familiar, but one pill can kill.\"\n\nRead more: https://www.justice.gov/usao-sdfl/pr/hstf-chinese-national-and-las-vegas-man-charged-scheme-import-deadly-synthetic-opioid",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "detainees"
+      ],
+      "tags": [
+        "action:detention",
+        "agency:DOJgov",
+        "country:China",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:has-alt-text",
+        "media-status:ocr-done",
+        "media:photo",
+        "origin:China",
+        "review:screened-photo",
+        "speaker:President Trump",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2053929244808314880",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-TheJusticeDept/3_2053929244808314880.jpg",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/bd4dc694c8edf705b2ab72aa04dc4c7c6bc6eb735e1998405771d12138a1ef31.jpg",
+          "sha256": "bd4dc694c8edf705b2ab72aa04dc4c7c6bc6eb735e1998405771d12138a1ef31",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "thumbnail": true,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A Justice Department graphic combines a photo of seized or packaged materials on a tabletop with a dark blue text panel beneath it. Yellow highlighting emphasizes part of the headline, and the DOJ seal appears at the bottom.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "- x Rn ws - os ; @ mm 4! ‘a Wi, Fy 4 oY . =i A of, - . $ a 4 —_ U.S. ATTORNEY’S Ps ay DISTRIC TOF FLO RIDA a y LAW ENFORCEMENT IN THE PEOPLE’S REPUBLIC OF CHINA CONFIRMED THAT A DEFENDANT WAS ARRESTED AS PART OF A PARALLEL INVESTIGATION fee U.S. Department of 7 JUSTICE"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "A Justice Department graphic combines a photo of seized or packaged materials on a tabletop with a dark blue text panel beneath it. Yellow highlighting emphasizes part of the headline, and the DOJ seal appears at the bottom.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: Synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 902,
+        "retweets": 394,
+        "quotes": 0,
+        "views": 29247
       },
       "preference_score": 41,
       "preference_categories": [
@@ -9581,126 +9707,6 @@
       ]
     },
     {
-      "id": "2053929373431201915:3_2053929244808314880",
-      "tweet_id": "2053929373431201915",
-      "posted_at": "2026-05-11T20:04:57.000Z",
-      "era": "2025_plus",
-      "queue": "candidates",
-      "account": {
-        "handle": "TheJusticeDept",
-        "category": "government",
-        "label": "U.S. Department of Justice"
-      },
-      "tweet_url": "https://x.com/TheJusticeDept/status/2053929373431201915",
-      "tweet_text": "HSTF: Chinese National and Las Vegas Man Charged in Scheme to Import Deadly Synthetic Opioid into US\n\n“This case shows why President Trump’s Homeland Security Task Force matters,” said U.S. Attorney Jason A. Reding Quiñones for @USAO_SDFL. “The indictment alleges that a China-based supplier and a domestic distributor worked together to bring a deadly synthetic opioid into the United States and turn it into counterfeit pills for distribution across the country. These pills are made to look familiar, but one pill can kill.\"\n\nRead more: https://www.justice.gov/usao-sdfl/pr/hstf-chinese-national-and-las-vegas-man-charged-scheme-import-deadly-synthetic-opioid",
-      "review_state": "candidate",
-      "inclusion_basis": "wholly_creative_media",
-      "confidence": "medium",
-      "score": 90,
-      "creative_forms": [
-        "ai-or-synthetic"
-      ],
-      "subjects": [],
-      "tags": [
-        "agency:DOJgov",
-        "country:China",
-        "legal:criminal-prosecution",
-        "media-status:archived",
-        "media-status:described",
-        "media-status:has-alt-text",
-        "media-status:needs-ocr",
-        "media-status:ocr-done",
-        "media:photo",
-        "origin:China",
-        "review:screened-photo",
-        "speaker:President Trump",
-        "topic:immigration"
-      ],
-      "media": [
-        {
-          "media_id": "3_2053929244808314880",
-          "type": "photo",
-          "archive_url": "https://github.com/vidproject/x/releases/download/media-TheJusticeDept/3_2053929244808314880.jpg",
-          "original_url": null,
-          "thumbnail_url": "../data/thumbnails/photo/bd4dc694c8edf705b2ab72aa04dc4c7c6bc6eb735e1998405771d12138a1ef31.jpg",
-          "sha256": "bd4dc694c8edf705b2ab72aa04dc4c7c6bc6eb735e1998405771d12138a1ef31",
-          "duration_sec": null,
-          "playable": true,
-          "readiness": {
-            "ready": true,
-            "blockers": [],
-            "checks": {
-              "archived": true,
-              "description": true,
-              "thumbnail": true,
-              "ocr": true
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "opus-vision-review",
-              "text": "A Justice Department graphic combines a photo of seized or packaged materials on a tabletop with a dark blue text panel beneath it. Yellow highlighting emphasizes part of the headline, and the DOJ seal appears at the bottom.",
-              "sidecar_statuses": {
-                "manual-review": 1
-              }
-            },
-            "ocr": {
-              "status_counts": {
-                "no-text": 1
-              },
-              "complete_row_count": 1,
-              "text": ""
-            },
-            "keyframes": {
-              "status": null,
-              "frame_count": 0
-            },
-            "audio": {
-              "status": null,
-              "audio_stream_count": 0,
-              "duration_sec": null,
-              "tags": []
-            },
-            "transcript": {
-              "status": null,
-              "segment_count": 0,
-              "text": ""
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": true,
-        "blockers": [],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "A Justice Department graphic combines a photo of seized or packaged materials on a tabletop with a dark blue text panel beneath it. Yellow highlighting emphasizes part of the headline, and the DOJ seal appears at the bottom.",
-        "notable_text": "",
-        "reasons": [
-          "wholly creative media signal"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ],
-        "preference_reasons": [
-          "aesthetic:ai-synthetic-propaganda: Synthetic"
-        ]
-      },
-      "engagement": {
-        "likes": 902,
-        "retweets": 394,
-        "quotes": 0,
-        "views": 29247
-      },
-      "preference_score": 36,
-      "preference_categories": [
-        "aesthetic:ai-synthetic-propaganda"
-      ]
-    },
-    {
       "id": "2057567340401705090:3_2057567337096654848",
       "tweet_id": "2057567340401705090",
       "posted_at": "2026-05-21T21:00:56.000Z",
@@ -10008,9 +10014,9 @@
       "subjects": [],
       "tags": [
         "format:reply",
+        "format:statistics",
         "media-status:archived",
         "media-status:described",
-        "media-status:needs-ocr",
         "media-status:ocr-done",
         "media:photo",
         "review:screened-photo",
@@ -10046,10 +10052,10 @@
             },
             "ocr": {
               "status_counts": {
-                "no-text": 1
+                "ok": 1
               },
               "complete_row_count": 1,
-              "text": ""
+              "text": "bi * .” Sb i. hy P. { : t - — *) ; % - — ‘R= p 5 1 1 1 6 2 665 180 26 3 58.949799 = 5 1 1 1 6 3 737 178 20 12 39.375591 4 1 1 1 7 0 78 185 754 57 -1 5 1 1 1 7 1 78 185 55 28 90.137833 = 5 1 1 1 7 2 189 206 16 8 46.297478 ¥. 5 1 1 1 7 3 260 191 44 51 13.217010 a 5 1 1 1 7 4 339 212 3 2 0.000000 : 5 1 1 1 7 5 592 197 31 15 49.348022 = 5 1 1 1 7 6 714 215 4 3 47.293152 : 5 1 1 1 7 7 797 194 35 10 42.937782 — 4 1 1 1 8 0 0 227 956 26 -1 5 1 1 1 8 1 0 239 2 3 13.870316 . 5 1 1 1 8 2 64 240 27 12 51.021381 ~s 5 1 1 1 8 3 151 229 51 12 21.437927 al 5 1 1 1 8 4 500 240 17 10 20.015251 cs 5 1 1 1 8 5 634 229 17 17 11.850967 ‘. 5 1 1 1 8 6 937 227 19 26 21.605179 th 4 1 1 1 9 0 74 254 580 19 -1 5 1 1 1 9 1 74 272 3 1 16.948257 e 5 1 1 1 9 2 599 254 55 15 46.269768 —_ 4 1 1 1 10 0 0 267 1160 43 -1 5 1 1 1 10 1 0 296 16 14 71.367867 4 5 1 1 1 10 2 691 267 119 42 63.734402 => 5 1 1 1 10 3 914 280 38 19 42.654587 7 5 1 1 1 10 4 1127 283 33 22 45.771122 4 1 1 1 11 0 714 307 486 23 -1 5 1 1 1 11 1 714 315 43 8 40.115822 — 5 1 1 1 11 2 797 316 9 7 15.783127 _—_- 5 1 1 1 11 3 1105 307 95 23 17.261421 ae 4 1 1 1 12 0 769 357 392 23 -1 5 1 1 1 12 1 769 365 31 14 19.124458 > 5 1 1 1 12 2 894 358 49 22 35.000221 ea 5 1 1 1 12 3 986 364 5 14 12.404556 Se 5 1 1 1 12 4 1084 357 77 22 68.944389 — 4 1 1 1 13 0 122 368 883 60 -1 5 1 1 1 13 1 122 370 103 58 46.254852 a> 5 1 1 1 13 2 328 383 29 15 32.904404 ca 5 1 1 1 13 3 545 392 76 36 66.671295 — 5 1 1 1 13 4 732 381 54 16 0.000000 - 5 1 1 1 13 5 830 368 175 60 45.840343 3a 5 1 1 1 13 6 1103 378 40 12 0.000000 (i 4 1 1 1 14 0 537 407 621 7 -1 5 1 1 1 14 1 537 407 4 7 73.409767 4 5 1 1 1 14 2 731 409 21 3 72.662582 = 5 1 1 1 14 3 1147 408 11 3 86.460922 = 4 1 1 1 15 0 395 421 261 61 -1 5 1 1 1 15 1 395 421 261 61 0.461975 = 5 1 1 1 15 2 1182 454 18 5 8.197937 : 4 1 1 1 16 0 302 563 883 39 -1 5 1 1 1 16 1 302 572 8 6 0.000000 » 5 1 1 1 16 2 420 578 37 24 46.294209 = 5 1 1 1 16 3 474 563 33 25 70.598724 = 5 1 1 1 16 4 513 595 10 6 92.456261 5 1 1 1 16 5 722 580 57 13 94.680573 Interior 5 1 1 1 16 6 785 580 15 13 96.756462 of 5 1 1 1 16 7 806 579 47 14 93.272354 Oliver 5 1 1 1 16 8 859 580 25 13 79.645554 Jr’s 5 1 1 1 16 9 891 579 78 14 95.603371 residence 5 1 1 1 16 10 975 579 46 14 93.479584 which 5 1 1 1 16 11 1028 579 74 17 96.287781 allegedly 5 1 1 1 16 12 1108 580 53 13 95.602531 served 5 1 1 1 16 13 1168 583 17 10 96.937508 as 4 1 1 1 17 0 448 596 737 19 -1 5 1 1 1 17 1 448 596 27 18 26.986397 Y 5 1 1 1 17 2 721 603 18 9 95.188805 an 5 1 1 1 17 3 748 599 48 16 95.188805 illegal 5 1 1 1 17 4 803 599 37 16 96.041420 drug 5 1 1 1 17 5 847 599 86 13 93.646309 conversion 5 1 1 1 17 6 942 599 27 13 81.370300 lab. 5 1 1 1 17 7 976 599 33 13 95.346878 This 5 1 1 1 17 8 1018 603 47 12 92.568810 image 5 1 1 1 17 9 1073 599 50 13 92.568810 shows 5 1 1 1 17 10 1131 602 54 13 96.986618 papers 4 1 1 1 18 0 306 607 879 31 -1 5 1 1 1 18 1 306 616 6 11 0.000000 Y 5 1 1 1 18 2 472 607 39 31 90.932587 + 5 1 1 1 18 3 721 618 56 14 96.682556 soaked 5 1 1 1 18 4 788 622 13 9 92.836983 in 5 1 1 1 18 5 812 622 37 12 92.836983 pans 5 1 1 1 18 6 859 618 33 13 96.840012 with 5 1 1 1 18 7 903 618 74 16 93.821144 synthetic 5 1 1 1 18 8 987 618 97 14 96.749443 cannabinoid 5 1 1 1 18 9 1095 618 47 16 96.480324 liquid. 5 1 1 1 18 10 1152 618 33 14 96.838974 This 4 1 1 1 19 0 255 635 891 26 -1 5 1 1 1 19 1 255 646 5 9 0.000000 . 5 1 1 1 19 2 455 647 24 14 86.341156 S 5 1 1 1 19 3 508 646 8 7 71.732162 A 5 1 1 1 19 4 570 635 16 9 61.028526 5 1 1 1 19 5 721 637 45 17 96.931068 photo 5 1 1 1 19 6 771 641 31 10 96.816162 was 5 1 1 1 19 7 807 638 72 13 95.623665 admitted 5 1 1 1 19 8 885 637 52 17 96.813484 during 5 1 1 1 19 9 942 638 25 13 96.937897 the 5 1 1 1 19 10 973 638 64 13 96.775650 criminal 5 1 1 1 19 11 1043 638 103 16 96.523773 proceedings. 4 1 1 1 20 0 220 655 486 20 -1 5 1 1 1 20 1 220 656 21 17 42.909184 ¥ 5 1 1 1 20 2 315 655 36 20 18.716881 . 5 1 1 1 20 3 455 659 47 16 27.848137 mT 5 1 1 1 20 4 500 654 55 21 28.137253 NS 5 1 1 1 20 5 678 658 28 17 61.659733 a"
             },
             "keyframes": {
               "status": null,
