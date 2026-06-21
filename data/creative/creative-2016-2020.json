@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "queue": "historical_2016_2020",
+    "generated_at": "2026-06-21T21:00:24Z",
+    "source_commit": "e17364f2",
+    "item_count": 0,
+    "source_candidate_count": 1375,
+    "not_ready_count": 68,
+    "review_scope_excluded_count": 1167,
+    "review_scope_excluded_reasons": {
+      "apprehension-notice-or-routine-card": 318,
+      "generic-enforcement-poster": 13,
+      "generic-self-deportation-psa": 14,
+      "news-image-or-clip": 61,
+      "outside-revealed-preference": 682,
+      "routine-static-card": 49,
+      "trump-post-screenshot": 30
+    },
+    "all_items_ready": true,
+    "basis_counts": {},
+    "preference_category_counts": {},
+    "top_accounts": {},
+    "review_actions": [
+      "yes",
+      "no",
+      "superlike",
+      "back"
+    ],
+    "inclusion_rules": [
+      "limit swipe queues to core, government, and official-source accounts",
+      "prioritize aestheticized enforcement propaganda: personalized cruelty, deportation threats, taunting jokes, holiday/gamified treatment, ASMR, self-deportation ads, AI/nostalgic propaganda, and editorialized crime/news composites",
+      "de-prioritize generic posters, routine PR montages, statistics cards, plain news screenshots, plain Trump-post screenshots, and bare apprehension notices"
+    ],
+    "readiness_rules": [
+      "archived GitHub release media required",
+      "photos require thumbnail, OCR, and genuine visual description",
+      "videos require keyframes, keyframe OCR, audio analysis, thumbnail, and genuine visual description",
+      "videos with audio require a completed transcript or completed empty-transcript result",
+      "captured alt text alone does not satisfy the visual-description requirement"
+    ]
+  },
+  "items": []
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T181316Z-2e8fae9c-AlexThomp",
+  "account_handle": "AlexThomp",
+  "captured_at": "2026-06-17T18:15:30.764Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AStephenM%20since%3A2025-09-24%20until%3A2025-10-01%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1973063247822553595",
+      "account_handle": "AlexThomp",
+      "account_id": "370982639",
+      "posted_at": "2025-09-30T16:31:50.000Z",
+      "first_captured_at": "2026-06-17T18:13:20.016Z",
+      "last_seen_at": "2026-06-17T18:13:20.016Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/AlexThomp/status/1973063247822553595",
+      "tweet_type": "original",
+      "conversation_id": "1973063247822553595",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Tough poll for Democrats on a shutdown.\n\nhttps://t.co/R6HpXz6oXl https://t.co/3Hz1Muxlad",
+      "text_resolved": "Tough poll for Democrats on a shutdown.\n\nhttps://www.nytimes.com/2025/09/30/polls/trump-approval-poll.html https://t.co/3Hz1Muxlad",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/R6HpXz6oXl",
+          "expanded": "https://www.nytimes.com/2025/09/30/polls/trump-approval-poll.html",
+          "display": "nytimes.com/2025/09/30/pol…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1973062262391713796",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G2G5rIWWMAQ9Sm_.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1290,
+          "height": 1697,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 5113,
+      "retweet_count": 1347,
+      "reply_count": 772,
+      "quote_count": 409,
+      "view_count": 4323523,
+      "bookmark_count": 338,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T18:13:20.016Z",
+          "likes": 5113,
+          "retweets": 1347,
+          "replies": 772,
+          "quotes": 409,
+          "views": 4323523,
+          "bookmarks": 338
+        }
+      ],
+      "author": {
+        "display_name": "Alex Thompson",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1477329812339535877/Hz793EVE_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "national political correspondent for @Axios. @CNN contributor. co-author of #1 NYT bestseller “Original Sin.”",
+        "location": "Washington, DC",
+        "url": "https://t.co/myzbPxHgjK",
+        "followers_count": 110375,
+        "friends_count": 12449,
+        "statuses_count": 30277,
+        "account_created_at": "2011-09-10T00:19:31.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T181316Z-2e8fae9c",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T181316Z-2e8fae9c.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T181316Z-2e8fae9c.jsonl",
+    "source_handle": "StephenM"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T181029Z-f68a10cb-nypost",
+  "account_handle": "nypost",
+  "captured_at": "2026-06-17T18:10:44.895Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AStephenM%20since%3A2025-07-23%20until%3A2025-07-30%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1948082285141426686",
+      "account_handle": "nypost",
+      "account_id": "17469289",
+      "posted_at": "2025-07-23T18:06:25.000Z",
+      "first_captured_at": "2026-06-17T18:10:33.484Z",
+      "last_seen_at": "2026-06-17T18:10:33.484Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/nypost/status/1948082285141426686",
+      "tweet_type": "original",
+      "conversation_id": "1948082285141426686",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Trump admin sent 6,000 ICE detainers to NYC — nearly all of them have been ignored, DHS says https://t.co/h4CMOG49Tr https://t.co/r4HJB2deGC",
+      "text_resolved": "Trump admin sent 6,000 ICE detainers to NYC — nearly all of them have been ignored, DHS says https://trib.al/bhymKpO https://t.co/r4HJB2deGC",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/h4CMOG49Tr",
+          "expanded": "https://trib.al/bhymKpO",
+          "display": "trib.al/bhymKpO"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1948082278673920000",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Gwj6gtWXsAA2etT.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1024,
+          "height": 682,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1050,
+      "retweet_count": 367,
+      "reply_count": 104,
+      "quote_count": 39,
+      "view_count": 478549,
+      "bookmark_count": 43,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T18:10:33.484Z",
+          "likes": 1050,
+          "retweets": 367,
+          "replies": 104,
+          "quotes": 39,
+          "views": 478549,
+          "bookmarks": 43
+        }
+      ],
+      "author": {
+        "display_name": "New York Post",
+        "avatar_url": "https://pbs.twimg.com/profile_images/966372680306868224/60wfGe9e_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": "Breaking news, features and more from the NY Post. Follow ➡️  @pagesix, @nypmetro, @nypostbiz, @nypostsports, @nypfashion, @nypostopinion, @vrtpod, @_nynext",
+        "location": "New York, NY",
+        "url": "https://t.co/PwCuyvAYAJ",
+        "followers_count": 3917119,
+        "friends_count": 10030,
+        "statuses_count": 845343,
+        "account_created_at": "2008-11-18T19:46:36.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T181029Z-f68a10cb",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T181029Z-f68a10cb.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T181029Z-f68a10cb.jsonl",
+    "source_handle": "StephenM"
+  }
+}

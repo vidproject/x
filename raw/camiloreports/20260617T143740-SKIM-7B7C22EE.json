@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143723Z-d07e8ef4-camiloreports",
+  "account_handle": "camiloreports",
+  "captured_at": "2026-06-17T14:37:40.549Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-02-04%20until%3A2026-02-11%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2020852766155907297",
+      "account_handle": "camiloreports",
+      "account_id": "4770270556",
+      "posted_at": "2026-02-09T13:30:19.000Z",
+      "first_captured_at": "2026-06-17T14:37:31.772Z",
+      "last_seen_at": "2026-06-17T14:37:31.772Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/camiloreports/status/2020852766155907297",
+      "tweet_type": "original",
+      "conversation_id": "2020852766155907297",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "CBS News Exclusive: An internal DHS document shows that less than 14% of nearly 400,000 individuals arrested by ICE in President Trump's first year back in power had violent criminal records.  \n\nIt's the most detailed look yet at who ICE has arrested.\nhttps://t.co/zMt5Y2vfCJ",
+      "text_resolved": "CBS News Exclusive: An internal DHS document shows that less than 14% of nearly 400,000 individuals arrested by ICE in President Trump's first year back in power had violent criminal records.  \n\nIt's the most detailed look yet at who ICE has arrested.\nhttps://www.cbsnews.com/news/ice-arrests-violent-criminal-records-trump-first-year/",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/zMt5Y2vfCJ",
+          "expanded": "https://www.cbsnews.com/news/ice-arrests-violent-criminal-records-trump-first-year/",
+          "display": "cbsnews.com/news/ice-arres…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/zMt5Y2vfCJ",
+        "vendor_url": "cbsnews.com",
+        "title": "Less than 14% of those arrested by ICE in Trump's 1st year back in office had violent criminal...",
+        "description": "The official DHS statistics, which had not been previously reported, provide the most detailed look yet into who ICE has arrested during the Trump administration's crackdown.",
+        "image_url": "https://pbs.twimg.com/card_img/2067169777723097088/tL_xthkj?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 4429,
+      "retweet_count": 1905,
+      "reply_count": 2427,
+      "quote_count": 289,
+      "view_count": 3059388,
+      "bookmark_count": 1102,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:37:31.772Z",
+          "likes": 4429,
+          "retweets": 1905,
+          "replies": 2427,
+          "quotes": 289,
+          "views": 3059388,
+          "bookmarks": 1102
+        }
+      ],
+      "author": {
+        "display_name": "Camilo Montoya-Galvez",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2052560213929025537/2h2t8cY6_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "@CBSNews Immigration Correspondent. @RutgersU alum. ⚽️ ✍️ 📚 📧: camilo@cbsnews.com - signal: camiloreports.02",
+        "location": "DMs open for tips",
+        "url": "https://t.co/WXNYzEGCTH",
+        "followers_count": 29600,
+        "friends_count": 550,
+        "statuses_count": 14396,
+        "account_created_at": "2016-01-11T02:58:04.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143723Z-d07e8ef4",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143723Z-d07e8ef4.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143723Z-d07e8ef4.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

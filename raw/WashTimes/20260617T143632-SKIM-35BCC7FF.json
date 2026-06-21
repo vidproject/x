@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143617Z-84e7e623-WashTimes",
+  "account_handle": "WashTimes",
+  "captured_at": "2026-06-17T14:36:32.726Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2025-12-10%20until%3A2025-12-17%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2000946532657291509",
+      "account_handle": "WashTimes",
+      "account_id": "14662354",
+      "posted_at": "2025-12-16T15:10:03.000Z",
+      "first_captured_at": "2026-06-17T14:36:22.049Z",
+      "last_seen_at": "2026-06-17T14:36:22.049Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/WashTimes/status/2000946532657291509",
+      "tweet_type": "original",
+      "conversation_id": "2000946532657291509",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Rep. Ilhan Omar said that her son was pulled over by Immigration and Customs Enforcement agents and asked to provide proof of citizenship.\n\nhttps://t.co/CFlguS1bvt",
+      "text_resolved": "Rep. Ilhan Omar said that her son was pulled over by Immigration and Customs Enforcement agents and asked to provide proof of citizenship.\n\nhttps://trib.al/uJqcmrf",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/CFlguS1bvt",
+          "expanded": "https://trib.al/uJqcmrf",
+          "display": "trib.al/uJqcmrf"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/CFlguS1bvt",
+        "vendor_url": "washingtontimes.com",
+        "title": "Rep. Ilhan Omar says her son was pulled over by ICE",
+        "description": "Rep. Ilhan Omar said that her son was pulled over by Immigration and Customs Enforcement agents and asked to provide proof of citizenship.",
+        "image_url": "https://pbs.twimg.com/card_img/2066008602255724545/XuYU3ttF?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 175,
+      "retweet_count": 40,
+      "reply_count": 347,
+      "quote_count": 41,
+      "view_count": 1068231,
+      "bookmark_count": 19,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:36:22.049Z",
+          "likes": 175,
+          "retweets": 40,
+          "replies": 347,
+          "quotes": 41,
+          "views": 1068231,
+          "bookmarks": 19
+        }
+      ],
+      "author": {
+        "display_name": "The Washington Times",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1755281859146080256/D-S95q4t_normal.png",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Business",
+        "description": "Reliable reporting, hard-hitting analysis & breaking news, plus RTs from our writers and reporters. Also at @WashTimesOpEd, @WashTimesLocal, @WashTimesSports",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/lz8D7wwtBk",
+        "followers_count": 489137,
+        "friends_count": 1874,
+        "statuses_count": 1072846,
+        "account_created_at": "2008-05-05T17:43:25.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143617Z-84e7e623",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143617Z-84e7e623.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143617Z-84e7e623.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T164422Z-c318bed8-RapidResponse47",
+  "account_handle": "RapidResponse47",
+  "captured_at": "2026-06-17T16:44:37.926Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APressSec%20since%3A2026-02-25%20until%3A2026-03-04%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2028873783885336601",
+      "account_handle": "RapidResponse47",
+      "account_id": "1881451105454002176",
+      "posted_at": "2026-03-03T16:42:59.000Z",
+      "first_captured_at": "2026-06-17T16:44:26.522Z",
+      "last_seen_at": "2026-06-17T16:44:26.522Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/RapidResponse47/status/2028873783885336601",
+      "tweet_type": "quote",
+      "conversation_id": "2028873783885336601",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": "2028870700182782199",
+      "retweeted_tweet_id": null,
+      "text": "\"Was the US forced to strike because of an impending Israeli action?\"\n\n@SecRubio: \"No... No matter what, ultimately, this operation needed to happen — that's the question of 'why now?' But this operation needed to happen because Iran, in about a year or a year and a half, would cross the line of immunity, meaning they would have so many short-range missiles, so many drones, that no one could do anything about it because they could hold the whole world hostage. Look at the damage they're doing now — and this is a weakened Iran. Imagine a year from now. So, that had to happen. Obviously, we were aware of Israeli intentions and understood what that would mean for us, and we had to be prepared to act as a result of it — but this had to happen no matter what.\"",
+      "text_resolved": "\"Was the US forced to strike because of an impending Israeli action?\"\n\n@SecRubio: \"No... No matter what, ultimately, this operation needed to happen — that's the question of 'why now?' But this operation needed to happen because Iran, in about a year or a year and a half, would cross the line of immunity, meaning they would have so many short-range missiles, so many drones, that no one could do anything about it because they could hold the whole world hostage. Look at the damage they're doing now — and this is a weakened Iran. Imagine a year from now. So, that had to happen. Obviously, we were aware of Israeli intentions and understood what that would mean for us, and we had to be prepared to act as a result of it — but this had to happen no matter what.\"",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "SecRubio"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_2028872835028992000",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2028872835028992000/vid/avc1/1280x720/jDRvCfqTPzOGrz6U.mp4?tag=21",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 34.96,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 6210,
+      "retweet_count": 1419,
+      "reply_count": 453,
+      "quote_count": 118,
+      "view_count": 979286,
+      "bookmark_count": 388,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T16:44:26.522Z",
+          "likes": 6210,
+          "retweets": 1419,
+          "replies": 453,
+          "quotes": 118,
+          "views": 979286,
+          "bookmarks": 388
+        }
+      ],
+      "author": {
+        "display_name": "Rapid Response 47",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2062578057836142592/IYAK6I1p_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official White House Rapid Response account. Supporting @POTUS's America First agenda and holding the Fake News accountable. MAGA!",
+        "location": "🇺🇸🇺🇸🇺🇸",
+        "url": "https://t.co/8qhSUMpp7C",
+        "followers_count": 1963522,
+        "friends_count": 74,
+        "statuses_count": 27885,
+        "account_created_at": "2025-01-20T21:18:05.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T164422Z-c318bed8",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T164422Z-c318bed8.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T164422Z-c318bed8.jsonl",
+    "source_handle": "PressSec"
+  }
+}

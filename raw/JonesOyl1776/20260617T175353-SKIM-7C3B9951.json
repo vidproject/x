@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T175328Z-daae2da7-JonesOyl1776",
+  "account_handle": "JonesOyl1776",
+  "captured_at": "2026-06-17T17:53:53.881Z",
+  "endpoint": "SearchTimeline,TweetDetail",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ARapidResponse47%20since%3A2025-09-03%20until%3A2025-09-10%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1965566171627094324",
+      "account_handle": "JonesOyl1776",
+      "account_id": "1853841405472370688",
+      "posted_at": "2025-09-10T00:01:08.000Z",
+      "first_captured_at": "2026-06-17T17:53:46.686Z",
+      "last_seen_at": "2026-06-17T17:53:46.686Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/JonesOyl1776/status/1965566171627094324",
+      "tweet_type": "reply",
+      "conversation_id": "1965565876201296182",
+      "reply_to_tweet_id": "1965565876201296182",
+      "reply_to_account": "RapidResponse47",
+      "reply_to_account_id": "1881451105454002176",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@RapidResponse47 @AndrewFeinberg 🇺🇸🫡 https://t.co/1y42lw6qYN",
+      "text_resolved": "@RapidResponse47 @AndrewFeinberg 🇺🇸🫡 https://t.co/1y42lw6qYN",
+      "lang": "qme",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "RapidResponse47",
+        "AndrewFeinberg"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1965566129968906240",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G0cX-y9WAAALb70.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 960,
+          "height": 960,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 9,
+      "retweet_count": 0,
+      "reply_count": 1,
+      "quote_count": 1,
+      "view_count": 555,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T17:53:46.686Z",
+          "likes": 9,
+          "retweets": 0,
+          "replies": 1,
+          "quotes": 1,
+          "views": 555,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "M Jones",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1853894317611405312/p8sLfuY1_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Love Life",
+        "location": null,
+        "url": null,
+        "followers_count": 7746,
+        "friends_count": 7774,
+        "statuses_count": 45178,
+        "account_created_at": "2024-11-05T16:47:01.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T175328Z-daae2da7",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T175328Z-daae2da7.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T175328Z-daae2da7.jsonl",
+    "source_handle": "RapidResponse47"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "generated_at": "2026-06-21T21:00:24Z",
+    "source_commit": "e17364f2",
+    "source_candidate_count": 1375,
+    "review_scope_candidate_count": 208,
+    "ready_count": 140,
+    "not_ready_count": 68,
+    "review_scope_excluded_count": 1167,
+    "review_scope_excluded_reasons": {
+      "apprehension-notice-or-routine-card": 318,
+      "generic-enforcement-poster": 13,
+      "generic-self-deportation-psa": 14,
+      "news-image-or-clip": 61,
+      "outside-revealed-preference": 682,
+      "routine-static-card": 49,
+      "trump-post-screenshot": 30
+    },
+    "preference_profile": {
+      "high_confidence_score": 60,
+      "candidate_score": 28,
+      "principles": [
+        "review queues are limited to core, government, and official-source accounts",
+        "personalized cruelty, deportation threats, surveillance taunts, or public humiliation",
+        "state enforcement rendered as spectacle, entertainment, ad, lifestyle, holiday, or joke",
+        "surreal, AI-generated, nostalgic, dystopian, or otherwise aestheticized propaganda",
+        "self-deportation / CBP Home incentives and app-like gamification",
+        "editorialized crime or news composites, including redline/omission graphics and dramatic arrest composites"
+      ]
+    },
+    "datasets": {
+      "high_confidence": "creative-high-confidence.json",
+      "candidates": "creative-candidates.json",
+      "historical_2016_2020": "creative-2016-2020.json"
+    },
+    "additional_datasets": {
+      "2025_plus": "creative-2025-plus.json"
+    },
+    "not_ready": "creative-not-ready.json",
+    "default_queue": "high_confidence",
+    "review_actions": [
+      "yes",
+      "no",
+      "superlike",
+      "back"
+    ]
+  }
+}

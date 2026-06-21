@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-resume2-20260619T020329Z-20260619T052328Z-3df4005f-EROHouston",
+  "account_handle": "EROHouston",
+  "captured_at": "2026-06-19T05:25:42.445Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEROHouston%20since%3A2026-05-27%20until%3A2026-06-03%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2059716920790933510",
+      "account_handle": "EROHouston",
+      "account_id": "1300966464376184832",
+      "posted_at": "2026-05-27T19:22:36.000Z",
+      "first_captured_at": "2026-06-19T05:23:30.316Z",
+      "last_seen_at": "2026-06-19T05:23:30.316Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/EROHouston/status/2059716920790933510",
+      "tweet_type": "reply",
+      "conversation_id": "2054921839928029224",
+      "reply_to_tweet_id": "2054921839928029224",
+      "reply_to_account": "EROHouston",
+      "reply_to_account_id": "1300966464376184832",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "https://t.co/ns67zUJI4o",
+      "text_resolved": "https://www.ice.gov/news/releases/ice-arrests-criminal-illegal-alien-texas-convicted-attempted-capital-murder-police",
+      "lang": "zxx",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/ns67zUJI4o",
+          "expanded": "https://www.ice.gov/news/releases/ice-arrests-criminal-illegal-alien-texas-convicted-attempted-capital-murder-police",
+          "display": "ice.gov/news/releases/…"
+        }
+      ],
+      "card": {
+        "name": "summary",
+        "card_url": "https://t.co/ns67zUJI4o",
+        "vendor_url": "ice.gov",
+        "title": "ICE arrests criminal illegal alien in Texas convicted of attempted capital murder of police...",
+        "description": "ICE arrested Dinh Quy Nguyen, a 56-year-old criminal illegal alien from Vietnam, May 5 in Houston.",
+        "image_url": "https://pbs.twimg.com/card_img/2067307390916284416/7g5Xikax?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 4,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 163,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-19T05:23:30.316Z",
+          "likes": 4,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 0,
+          "views": 163,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "ICE Houston",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1960040437302837248/9VrKQd_I_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official account for the @ICEgovERO field office in the Houston area.",
+        "location": "Houston, Texas",
+        "url": "https://t.co/b29U223Iat",
+        "followers_count": 5671,
+        "friends_count": 137,
+        "statuses_count": 627,
+        "account_created_at": "2020-09-02T01:19:30.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-resume2-20260619T020329Z-20260619T052328Z-3df4005f",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": "../../root/x-skim-worker/.skim/raw-core-2025-full-weekly-resume2-20260619T020329Z/x-com-search-20260619T052328Z-3df4005f.summary.json",
+    "jsonl": "../../root/x-skim-worker/.skim/raw-core-2025-full-weekly-resume2-20260619T020329Z/x-com-search-20260619T052328Z-3df4005f.jsonl",
+    "source_handle": "EROHouston"
+  }
+}

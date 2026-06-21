@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143859Z-126438cf-HSINewEngland",
+  "account_handle": "HSINewEngland",
+  "captured_at": "2026-06-17T14:39:16.185Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-06-03%20until%3A2026-06-10%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2064367131207090602",
+      "account_handle": "HSINewEngland",
+      "account_id": "1300797956455628801",
+      "posted_at": "2026-06-09T15:20:52.000Z",
+      "first_captured_at": "2026-06-17T14:39:05.819Z",
+      "last_seen_at": "2026-06-17T14:39:05.819Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/HSINewEngland/status/2064367131207090602",
+      "tweet_type": "original",
+      "conversation_id": "2064367131207090602",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "🚨BREAKING:\n\nMass communities are safer today after the arrests of 24 alleged members of the Trinitarios.\n\nHSI announcing results of early morning searches part of @HSTFNCC with @FBIBoston and @MassStatePolice \n\nWATCH: https://t.co/XvWSBuQOLn https://t.co/79S4ktPkIB",
+      "text_resolved": "🚨BREAKING:\n\nMass communities are safer today after the arrests of 24 alleged members of the Trinitarios.\n\nHSI announcing results of early morning searches part of @HSTFNCC with @FBIBoston and @MassStatePolice \n\nWATCH: http://facebook.com/usaoma https://t.co/79S4ktPkIB",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "HSTFNCC",
+        "FBIBoston",
+        "MassStatePolice"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/XvWSBuQOLn",
+          "expanded": "http://facebook.com/usaoma",
+          "display": "facebook.com/usaoma"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2064367124538167296",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HKYa9lgXkAA9Ue6.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 2048,
+          "height": 1536,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_2064367124550733825",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HKYa9ljXUAE9asC.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1600,
+          "height": 1204,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 380,
+      "retweet_count": 79,
+      "reply_count": 9,
+      "quote_count": 0,
+      "view_count": 16150,
+      "bookmark_count": 11,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:39:05.819Z",
+          "likes": 380,
+          "retweets": 79,
+          "replies": 9,
+          "quotes": 0,
+          "views": 16150,
+          "bookmarks": 11
+        }
+      ],
+      "author": {
+        "display_name": "HSI New England",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1689302326513725440/BlQc8UPG_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "HSI New England's criminal investigations preserve national security and public safety in MA, CT, RI, VT, NH, and ME \nPrivacy: https://t.co/4z5uWi4GwO",
+        "location": "Boston, MA",
+        "url": "https://t.co/LEGAWC5Q68",
+        "followers_count": 3750,
+        "friends_count": 417,
+        "statuses_count": 1377,
+        "account_created_at": "2020-09-01T14:09:47.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143859Z-126438cf",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143859Z-126438cf.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143859Z-126438cf.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

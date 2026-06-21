@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T175642Z-6abe2392-axios",
+  "account_handle": "axios",
+  "captured_at": "2026-06-17T17:58:56.513Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ARapidResponse47%20since%3A2026-04-01%20until%3A2026-04-08%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2041558715325673756",
+      "account_handle": "axios",
+      "account_id": "800707492346925056",
+      "posted_at": "2026-04-07T16:48:22.000Z",
+      "first_captured_at": "2026-06-17T17:56:46.453Z",
+      "last_seen_at": "2026-06-17T17:56:46.453Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/axios/status/2041558715325673756",
+      "tweet_type": "original",
+      "conversation_id": "2041558715325673756",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Trump's Iran post causes talk of his impeachment, removal to erupt among Hill Democrats https://t.co/XQ0nZOE5al",
+      "text_resolved": "Trump's Iran post causes talk of his impeachment, removal to erupt among Hill Democrats https://trib.al/Z0H3XcI",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/XQ0nZOE5al",
+          "expanded": "https://trib.al/Z0H3XcI",
+          "display": "trib.al/Z0H3XcI"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/XQ0nZOE5al",
+        "vendor_url": "axios.com",
+        "title": "Trump's Iran post causes talk of his impeachment, removal to erupt among Hill Democrats",
+        "description": "\"The President's enablers must wake up to the fact that he is becoming increasingly erratic,\" said one House Democrat.",
+        "image_url": "https://pbs.twimg.com/card_img/2064789120036253696/rCEe-eDl?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 490,
+      "retweet_count": 135,
+      "reply_count": 187,
+      "quote_count": 25,
+      "view_count": 267944,
+      "bookmark_count": 22,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T17:56:46.453Z",
+          "likes": 490,
+          "retweets": 135,
+          "replies": 187,
+          "quotes": 25,
+          "views": 267944,
+          "bookmarks": 22
+        }
+      ],
+      "author": {
+        "display_name": "Axios",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1641458976049995776/GtO-0zYe_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Business",
+        "description": "Smart Brevity worthy of people's time, attention and trust. Subscribe to our newsletters: https://t.co/uMitaJIcpz",
+        "location": null,
+        "url": "https://t.co/93DAtB3Ljt",
+        "followers_count": 843518,
+        "friends_count": 1049,
+        "statuses_count": 205576,
+        "account_created_at": "2016-11-21T14:28:37.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T175642Z-6abe2392",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T175642Z-6abe2392.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T175642Z-6abe2392.jsonl",
+    "source_handle": "RapidResponse47"
+  }
+}

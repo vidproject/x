@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T214907Z-405ef66a-USEEOC",
+  "account_handle": "USEEOC",
+  "captured_at": "2026-06-17T21:51:37.312Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ASonderling47%20since%3A2025-07-09%20until%3A2025-07-16%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1945166828948332775",
+      "account_handle": "USEEOC",
+      "account_id": "34682633",
+      "posted_at": "2025-07-15T17:01:26.000Z",
+      "first_captured_at": "2026-06-17T21:49:22.816Z",
+      "last_seen_at": "2026-06-17T21:49:22.816Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USEEOC/status/1945166828948332775",
+      "tweet_type": "original",
+      "conversation_id": "1945166828948332775",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Last week, former and current EEOC leaders celebrated the agency’s 60th anniversary and mission of advancing equal opportunity for all.  ​\n ​\nLearn more about how the EEOC has enforced federal civil rights laws through the decades:  https://t.co/33cRRhUJxt https://t.co/jiUPghRlc3",
+      "text_resolved": "Last week, former and current EEOC leaders celebrated the agency’s 60th anniversary and mission of advancing equal opportunity for all.  ​\n ​\nLearn more about how the EEOC has enforced federal civil rights laws through the decades:  https://www.eeoc.gov/history https://t.co/jiUPghRlc3",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/33cRRhUJxt",
+          "expanded": "https://www.eeoc.gov/history",
+          "display": "eeoc.gov/history"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1945166628351565825",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Gv6evhfW4AEe_6L.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1920,
+          "height": 1080,
+          "alt_text": "EEOC at 60: Honoring the past, defending the future. Graphic includes a group photo of current and former EEOC senior leadership.",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1,
+      "retweet_count": 1,
+      "reply_count": 3,
+      "quote_count": 1,
+      "view_count": 4791,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T21:49:22.816Z",
+          "likes": 1,
+          "retweets": 1,
+          "replies": 3,
+          "quotes": 1,
+          "views": 4791,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "U.S. EEOC",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2051777686167506944/-reaVDfg_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "EEOC enforces federal laws that prohibit workplace discrimination. RTs or shares are not endorsements. Comment & privacy notice: https://t.co/ITD7WoDIT2",
+        "location": "Washington, DC",
+        "url": "https://t.co/oIW3uV1l55",
+        "followers_count": 23408,
+        "friends_count": 391,
+        "statuses_count": 13063,
+        "account_created_at": "2009-04-23T18:10:29.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T214907Z-405ef66a",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T214907Z-405ef66a.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T214907Z-405ef66a.jsonl",
+    "source_handle": "Sonderling47"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145700Z-beac4950-TaskandPurpose",
+  "account_handle": "TaskandPurpose",
+  "captured_at": "2026-06-13T14:57:15.547Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APeteHegseth%20since%3A2026-04-01%20until%3A2026-06-13%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "2041519459664384053",
+      "account_handle": "TaskandPurpose",
+      "account_id": "2374466929",
+      "posted_at": "2026-04-07T14:12:23.000Z",
+      "first_captured_at": "2026-06-13T14:57:06.047Z",
+      "last_seen_at": "2026-06-13T14:57:06.047Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/TaskandPurpose/status/2041519459664384053",
+      "tweet_type": "original",
+      "conversation_id": "2041519459664384053",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Military’s new budget could give 7% pay raise to most junior troops https://t.co/8qcXwOBIzh",
+      "text_resolved": "Military’s new budget could give 7% pay raise to most junior troops https://trib.al/qDXLqKF",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/8qcXwOBIzh",
+          "expanded": "https://trib.al/qDXLqKF",
+          "display": "trib.al/qDXLqKF"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/8qcXwOBIzh",
+        "vendor_url": "taskandpurpose.com",
+        "title": "Military's new budget could give 7% pay raise to most junior troops",
+        "description": "The pay raise is part of the White House’s proposed $1.5 trillion national defense budget for next fiscal year, which starts on Oct. 1.",
+        "image_url": "https://pbs.twimg.com/card_img/2065495677434531840/t25ZF5NH?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 540,
+      "retweet_count": 66,
+      "reply_count": 51,
+      "quote_count": 16,
+      "view_count": 624566,
+      "bookmark_count": 26,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T14:57:06.047Z",
+          "likes": 540,
+          "retweets": 66,
+          "replies": 51,
+          "quotes": 16,
+          "views": 624566,
+          "bookmarks": 26
+        }
+      ],
+      "author": {
+        "display_name": "Task & Purpose",
+        "avatar_url": "https://pbs.twimg.com/profile_images/468484928095535104/-7y8-9Pu_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "News, culture, and analysis by and for the military community. Got a tip? Send it here → https://t.co/h5CFpC479C",
+        "location": "Global",
+        "url": "https://t.co/UjCspMo4Wi",
+        "followers_count": 94542,
+        "friends_count": 115,
+        "statuses_count": 77502,
+        "account_created_at": "2014-03-05T23:04:12.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass2-20260613T145700Z-beac4950",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145700Z-beac4950.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass2/x-com-search-20260613T145700Z-beac4950.jsonl",
+    "source_handle": "PeteHegseth"
+  }
+}

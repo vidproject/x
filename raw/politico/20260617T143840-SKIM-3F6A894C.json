@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143822Z-a25ab1ea-politico",
+  "account_handle": "politico",
+  "captured_at": "2026-06-17T14:38:40.302Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-04-22%20until%3A2026-04-29%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2048876738814542216",
+      "account_handle": "politico",
+      "account_id": "9300262",
+      "posted_at": "2026-04-27T21:27:35.000Z",
+      "first_captured_at": "2026-06-17T14:38:28.778Z",
+      "last_seen_at": "2026-06-17T14:38:28.778Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/politico/status/2048876738814542216",
+      "tweet_type": "original",
+      "conversation_id": "2048876738814542216",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Over 1,000 TSA officers have quit amid shutdown https://t.co/Fp3u78xBIx",
+      "text_resolved": "Over 1,000 TSA officers have quit amid shutdown http://dlvr.it/TSFr19",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://dlvrit.com/\" rel=\"nofollow\">dlvr.it</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/Fp3u78xBIx",
+          "expanded": "http://dlvr.it/TSFr19",
+          "display": "dlvr.it/TSFr19"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/Fp3u78xBIx",
+        "vendor_url": "politico.com",
+        "title": "Over 1,000 TSA officers have quit amid shutdown",
+        "description": "The increase, first reported by POLITICO, comes as Congress remains at a funding stalemate.",
+        "image_url": "https://pbs.twimg.com/card_img/2065133768130920448/kIw38usp?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 101,
+      "retweet_count": 42,
+      "reply_count": 38,
+      "quote_count": 14,
+      "view_count": 218608,
+      "bookmark_count": 10,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:38:28.778Z",
+          "likes": 101,
+          "retweets": 42,
+          "replies": 38,
+          "quotes": 14,
+          "views": 218608,
+          "bookmarks": 10
+        }
+      ],
+      "author": {
+        "display_name": "POLITICO",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1821642506800353280/xIpx4wIO_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Politics. Policy. Power.\nCongress nerds 👉 https://t.co/vg62iVhofj\nLongreads and opinions 👉 @politicomag\nGot a news tip? 👉 https://t.co/JBzpu588Hy",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/scdhnZnzfN",
+        "followers_count": 4927131,
+        "friends_count": 1262,
+        "statuses_count": 412258,
+        "account_created_at": "2007-10-08T00:29:38.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143822Z-a25ab1ea",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143822Z-a25ab1ea.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143822Z-a25ab1ea.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

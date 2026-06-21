@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T134627Z-b4cca96b-USCGHeartland",
+  "account_handle": "USCGHeartland",
+  "captured_at": "2026-06-13T13:46:49.362Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCG%20since%3A2021-09-01%20until%3A2021-10-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1441141960991916042",
+      "account_handle": "USCGHeartland",
+      "account_id": "46803597",
+      "posted_at": "2021-09-23T20:46:33.000Z",
+      "first_captured_at": "2026-06-13T13:46:40.322Z",
+      "last_seen_at": "2026-06-13T13:46:40.322Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USCGHeartland/status/1441141960991916042",
+      "tweet_type": "original",
+      "conversation_id": "1441141960991916042",
+      "reply_to_tweet_id": null,
+      "reply_to_account": "USCG",
+      "reply_to_account_id": "15113565",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@USCG Axe departed Morgan City and transited through the Bayou Boeuf Lock on the Gulf Intracoastal Waterway to help restore aids to navigation impacted by #HurricaneIda. The crew will construct two range marker towers, replacing aids in Houma and Port Fourchon.\n#storm21 #uscgida https://t.co/j0iVIIZXNT",
+      "text_resolved": "@USCG Axe departed Morgan City and transited through the Bayou Boeuf Lock on the Gulf Intracoastal Waterway to help restore aids to navigation impacted by #HurricaneIda. The crew will construct two range marker towers, replacing aids in Houma and Port Fourchon.\n#storm21 #uscgida https://t.co/j0iVIIZXNT",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "HurricaneIda",
+        "storm21",
+        "uscgida"
+      ],
+      "mentions": [
+        "USCG"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_1441140529811505156",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/1441140529811505156/pu/vid/1280x720/1kZ-G31VxbXVUw2C.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 28.867,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 26,
+      "retweet_count": 8,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": null,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T13:46:40.322Z",
+          "likes": 26,
+          "retweets": 8,
+          "replies": 0,
+          "quotes": 0,
+          "views": null,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "USCG Heartland",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1953519593097465856/nC1Pd6_n_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Official USCG Heartland Twitter account.  This is not an emergency communication channel.  If you are in distress, use VHF Ch. 16 or dial 911.",
+        "location": "New Orleans",
+        "url": "https://t.co/NRxxrwVeRj",
+        "followers_count": 11255,
+        "friends_count": 231,
+        "statuses_count": 5081,
+        "account_created_at": "2009-06-13T02:15:02.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T134627Z-b4cca96b",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T134627Z-b4cca96b.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T134627Z-b4cca96b.jsonl",
+    "source_handle": "USCG"
+  }
+}

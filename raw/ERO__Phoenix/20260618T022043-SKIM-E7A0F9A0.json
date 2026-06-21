@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260618T022027Z-e3d54f28-ERO__Phoenix",
+  "account_handle": "ERO__Phoenix",
+  "captured_at": "2026-06-18T02:20:43.144Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AERO__Phoenix%20since%3A2025-04-23%20until%3A2025-04-30%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1917341876853653918",
+      "account_handle": "ERO__Phoenix",
+      "account_id": "1303317569584222208",
+      "posted_at": "2025-04-29T22:15:00.000Z",
+      "first_captured_at": "2026-06-18T02:20:33.817Z",
+      "last_seen_at": "2026-06-18T02:20:33.817Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/ERO__Phoenix/status/1917341876853653918",
+      "tweet_type": "original",
+      "conversation_id": "1917341876853653918",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Arizona is safer today after the arrest of Nelson Rojas, a 48-year-old Venezuelan alien convicted of homicide in Colombia. ICE Phoenix is committed to removing those who pose a public safety risk. Visit our website to learn more about us at https://t.co/q99ehr0oXJ https://t.co/59YSyjsvlD",
+      "text_resolved": "Arizona is safer today after the arrest of Nelson Rojas, a 48-year-old Venezuelan alien convicted of homicide in Colombia. ICE Phoenix is committed to removing those who pose a public safety risk. Visit our website to learn more about us at http://ice.gov https://t.co/59YSyjsvlD",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/q99ehr0oXJ",
+          "expanded": "http://ice.gov",
+          "display": "ice.gov"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1917337768881184771",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GpvAitSaYAMqTf5.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 960,
+          "height": 960,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 17,
+      "retweet_count": 6,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 764,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-18T02:20:33.817Z",
+          "likes": 17,
+          "retweets": 6,
+          "replies": 0,
+          "quotes": 0,
+          "views": 764,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "ERO Phoenix",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1960041080679755776/H0l5cvcU_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "ICE’s Phoenix office enforces immigration laws to preserve national security and public safety in Arizona. Privacy policies: https://t.co/JqAmyBsSvG",
+        "location": null,
+        "url": null,
+        "followers_count": 1710,
+        "friends_count": 8,
+        "statuses_count": 135,
+        "account_created_at": "2020-09-08T13:01:47.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260618T022027Z-e3d54f28",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260618T022027Z-e3d54f28.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260618T022027Z-e3d54f28.jsonl",
+    "source_handle": "ERO__Phoenix"
+  }
+}

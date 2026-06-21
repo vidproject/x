@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-20260611-20260611T130848Z-bcb03983-NDILnews",
+  "account_handle": "NDILnews",
+  "captured_at": "2026-06-11T13:09:07.005Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCIS%20since%3A2025-03-12%20until%3A2025-03-19",
+  "tweets": [
+    {
+      "tweet_id": "1899201798360973529",
+      "account_handle": "NDILnews",
+      "account_id": "45662833",
+      "posted_at": "2025-03-10T20:52:48.000Z",
+      "first_captured_at": "2026-06-11T13:08:56.216Z",
+      "last_seen_at": "2026-06-11T13:08:56.216Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/NDILnews/status/1899201798360973529",
+      "tweet_type": "original",
+      "conversation_id": "1899201798360973529",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Suburban Chicago Businessman Indicted on Immigration Fraud Charges @HSIChicago @IRSCI_CHI @USPIS_CHI @USCIS \nhttps://t.co/0DMogq36je",
+      "text_resolved": "Suburban Chicago Businessman Indicted on Immigration Fraud Charges @HSIChicago @IRSCI_CHI @USPIS_CHI @USCIS \nhttps://www.justice.gov/usao-ndil/pr/suburban-chicago-businessman-indicted-immigration-fraud-charges",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "HSIChicago",
+        "IRSCI_CHI",
+        "USPIS_CHI",
+        "USCIS"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/0DMogq36je",
+          "expanded": "https://www.justice.gov/usao-ndil/pr/suburban-chicago-businessman-indicted-immigration-fraud-charges",
+          "display": "justice.gov/usao-ndil/pr/s…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/0DMogq36je",
+        "vendor_url": "justice.gov",
+        "title": "Suburban Chicago Businessman Indicted on Immigration Fraud Charges",
+        "description": "JOSE GREGORIO SOSA CARDONA allegedly provided false information to U.S. immigration authorities to obtain benefits for his foreign national clients.",
+        "image_url": "https://pbs.twimg.com/card_img/2063154527763603456/LKVlCoPt?format=png&name=orig"
+      },
+      "media": [],
+      "like_count": 16,
+      "retweet_count": 4,
+      "reply_count": 1,
+      "quote_count": 3,
+      "view_count": 21811,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T13:08:56.216Z",
+          "likes": 16,
+          "retweets": 4,
+          "replies": 1,
+          "quotes": 3,
+          "views": 21811,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Attorney’s Office (NDIL)",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2439200361/34qjapc3v6j2wtww1rg9_normal.gif",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official account of the U.S. Attorney’s Office, Northern District of Illinois. We do not collect comments or messages. Learn more: https://t.co/HQiNFKER5u",
+        "location": "Chicago, Illinois",
+        "url": "https://t.co/0sRJUi1uwj",
+        "followers_count": 7425,
+        "friends_count": 238,
+        "statuses_count": 2911,
+        "account_created_at": "2009-06-08T20:33:50.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-20260611-20260611T130848Z-bcb03983",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-import-20260611/x-com-search-20260611T130848Z-bcb03983.summary.json",
+    "jsonl": ".skim/raw-import-20260611/x-com-search-20260611T130848Z-bcb03983.jsonl",
+    "source_handle": "USCIS"
+  }
+}

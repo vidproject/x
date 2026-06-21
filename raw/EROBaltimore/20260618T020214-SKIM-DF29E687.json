@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260618T020157Z-99451758-EROBaltimore",
+  "account_handle": "EROBaltimore",
+  "captured_at": "2026-06-18T02:02:14.323Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEROBaltimore%20since%3A2025-09-10%20until%3A2025-09-17%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1967626963935531197",
+      "account_handle": "EROBaltimore",
+      "account_id": "1300490563595259906",
+      "posted_at": "2025-09-15T16:29:59.000Z",
+      "first_captured_at": "2026-06-18T02:02:05.837Z",
+      "last_seen_at": "2026-06-18T02:02:05.837Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/EROBaltimore/status/1967626963935531197",
+      "tweet_type": "original",
+      "conversation_id": "1967626963935531197",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "ICE @EROBaltimore arrested 45-year-old Honduran alien Jorge Antonio Garcia-Rodriguez. Garcia has been convicted of second-degree rape in Towson, Maryland. https://t.co/qXEHYpYibc",
+      "text_resolved": "ICE @EROBaltimore arrested 45-year-old Honduran alien Jorge Antonio Garcia-Rodriguez. Garcia has been convicted of second-degree rape in Towson, Maryland. https://t.co/qXEHYpYibc",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "EROBaltimore"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1967626889238917121",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G05qOxeXsAE9SND.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 1200,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 23,
+      "retweet_count": 4,
+      "reply_count": 10,
+      "quote_count": 2,
+      "view_count": 2246,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-18T02:02:05.837Z",
+          "likes": 23,
+          "retweets": 4,
+          "replies": 10,
+          "quotes": 2,
+          "views": 2246,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "ICE Baltimore",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1923917956292947968/IrfW4p6F_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official account for @ICEgov field office in Maryland",
+        "location": "Baltimore, Maryland",
+        "url": "https://t.co/sNoX4P2WFL",
+        "followers_count": 5721,
+        "friends_count": 94,
+        "statuses_count": 391,
+        "account_created_at": "2020-08-31T17:48:21.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260618T020157Z-99451758",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260618T020157Z-99451758.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260618T020157Z-99451758.jsonl",
+    "source_handle": "EROBaltimore"
+  }
+}

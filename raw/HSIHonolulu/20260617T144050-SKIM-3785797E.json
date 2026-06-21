@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T144036Z-334c41d7-HSIHonolulu",
+  "account_handle": "HSIHonolulu",
+  "captured_at": "2026-06-17T14:40:50.715Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AICEgov%20since%3A2025-03-12%20until%3A2025-03-19%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1896668691460501679",
+      "account_handle": "HSIHonolulu",
+      "account_id": "1304053174093967367",
+      "posted_at": "2025-03-03T21:07:09.000Z",
+      "first_captured_at": "2026-06-17T14:40:39.503Z",
+      "last_seen_at": "2026-06-17T14:40:39.503Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/HSIHonolulu/status/1896668691460501679",
+      "tweet_type": "original",
+      "conversation_id": "1896668691460501679",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "On March 3, HSI Saipan, ERO, and USMS arrested Shibu MALLICK, a citizen of India.  MALLICK has a criminal conviction for assault and battery in the Commonwealth of the Northern Mariana Islands. @HSI_HQ https://t.co/zAIAWupw9e",
+      "text_resolved": "On March 3, HSI Saipan, ERO, and USMS arrested Shibu MALLICK, a citizen of India.  MALLICK has a criminal conviction for assault and battery in the Commonwealth of the Northern Mariana Islands. @HSI_HQ https://t.co/zAIAWupw9e",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "HSI_HQ"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1896668656878379008",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GlJSGC3aYAA39kb.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1170,
+          "height": 872,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_1896668656882565120",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GlJSGC4aQAASMHG.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1170,
+          "height": 1550,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 63,
+      "retweet_count": 18,
+      "reply_count": 8,
+      "quote_count": 3,
+      "view_count": 59589,
+      "bookmark_count": 4,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:40:39.503Z",
+          "likes": 63,
+          "retweets": 18,
+          "replies": 8,
+          "quotes": 3,
+          "views": 59589,
+          "bookmarks": 4
+        }
+      ],
+      "author": {
+        "display_name": "HSI Honolulu",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1693654025328279552/Z5ROnkRi_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Protects America through criminal investigations to preserve national security and public safety.\nPrivacy: https://t.co/ihtFCnYB3R",
+        "location": "Honolulu",
+        "url": "https://t.co/vCeAlRM4of",
+        "followers_count": 2081,
+        "friends_count": 250,
+        "statuses_count": 626,
+        "account_created_at": "2020-09-10T13:44:43.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T144036Z-334c41d7",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T144036Z-334c41d7.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T144036Z-334c41d7.jsonl",
+    "source_handle": "ICEgov"
+  }
+}

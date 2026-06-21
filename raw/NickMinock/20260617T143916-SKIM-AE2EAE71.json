@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143859Z-126438cf-NickMinock",
+  "account_handle": "NickMinock",
+  "captured_at": "2026-06-17T14:39:16.185Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-06-03%20until%3A2026-06-10%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2064060201888616833",
+      "account_handle": "NickMinock",
+      "account_id": "500019957",
+      "posted_at": "2026-06-08T19:01:15.000Z",
+      "first_captured_at": "2026-06-17T14:39:05.819Z",
+      "last_seen_at": "2026-06-17T14:39:05.819Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/NickMinock/status/2064060201888616833",
+      "tweet_type": "original",
+      "conversation_id": "2064060201888616833",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "NEW: DHS is responding to news that a 49-year-old illegal immigrant was sentenced to 25 years in prison for sexually assaulting an 8-year-old girl in Loudoun County, Virginia. https://t.co/moBALwZBgW",
+      "text_resolved": "NEW: DHS is responding to news that a 49-year-old illegal immigrant was sentenced to 25 years in prison for sexually assaulting an 8-year-old girl in Loudoun County, Virginia. https://wjla.com/news/local/dhs-urges-virginia-hand-over-illegal-immigrant-child-molester-ice-after-prison-term-aroldo-santos-velasquez-loudoun-county-abigail-spanberger",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/moBALwZBgW",
+          "expanded": "https://wjla.com/news/local/dhs-urges-virginia-hand-over-illegal-immigrant-child-molester-ice-after-prison-term-aroldo-santos-velasquez-loudoun-county-abigail-spanberger",
+          "display": "wjla.com/news/local/dhs…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/moBALwZBgW",
+        "vendor_url": "wjla.com",
+        "title": "DHS urges Virginia to hand over illegal immigrant child molester to ICE after prison term",
+        "description": "Judge Fisher sentenced Santos-Velasquez to serve the statutory maximum of 25 years in the Virginia Department of Corrections.",
+        "image_url": "https://pbs.twimg.com/card_img/2066597003161669633/3KDfhTt1?format=png&name=orig"
+      },
+      "media": [],
+      "like_count": 626,
+      "retweet_count": 226,
+      "reply_count": 54,
+      "quote_count": 16,
+      "view_count": 85365,
+      "bookmark_count": 35,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:39:05.819Z",
+          "likes": 626,
+          "retweets": 226,
+          "replies": 54,
+          "quotes": 16,
+          "views": 85365,
+          "bookmarks": 35
+        }
+      ],
+      "author": {
+        "display_name": "Nick Minock",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1994142172304621568/_scxrpKO_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Reporter for WJLA @7NewsDC ABC in Washington, D.C. and Virginia. Fmr. TV news reporter for CBS, NBC, & FOX stations in Minnesota, South Carolina and Michigan.",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/vgl1aIszqk",
+        "followers_count": 26868,
+        "friends_count": 3023,
+        "statuses_count": 10174,
+        "account_created_at": "2012-02-22T18:29:40.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143859Z-126438cf",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143859Z-126438cf.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143859Z-126438cf.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

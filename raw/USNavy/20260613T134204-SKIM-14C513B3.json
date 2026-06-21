@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T134146Z-a9502785-USNavy",
+  "account_handle": "USNavy",
+  "captured_at": "2026-06-13T13:42:04.819Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCG%20since%3A2021-03-01%20until%3A2021-04-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1375966343594393604",
+      "account_handle": "USNavy",
+      "account_id": "54885400",
+      "posted_at": "2021-03-28T00:21:55.000Z",
+      "first_captured_at": "2026-06-13T13:41:56.474Z",
+      "last_seen_at": "2026-06-13T13:41:56.474Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USNavy/status/1375966343594393604",
+      "tweet_type": "original",
+      "conversation_id": "1375966343594393604",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "#USNavy joins @USCG to save a life!\n\nA rescue swimmer deployed from Helicopter Maritime Strike Squadron (HSM) 37 located and rescued an overdue boater in the waters off Oahu, March 26. #SoOthersMayLive\n\nDETAILS: https://t.co/mRFWJRzftn\n\nWATCH Video 📺 ⬇️ https://t.co/neisGeWQgK",
+      "text_resolved": "#USNavy joins @USCG to save a life!\n\nA rescue swimmer deployed from Helicopter Maritime Strike Squadron (HSM) 37 located and rescued an overdue boater in the waters off Oahu, March 26. #SoOthersMayLive\n\nDETAILS: https://go.usa.gov/xsJNF\n\nWATCH Video 📺 ⬇️ https://t.co/neisGeWQgK",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://prod1.sprinklr.com\" rel=\"nofollow\">Sprinklr Publishing</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "USNavy",
+        "SoOthersMayLive"
+      ],
+      "mentions": [
+        "USCG"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/mRFWJRzftn",
+          "expanded": "https://go.usa.gov/xsJNF",
+          "display": "go.usa.gov/xsJNF"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1375966256784941057",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1375966256784941057/vid/654x480/a_uB2BvzZt2ihIZj.mp4?tag=14",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 71.572,
+          "width": 720,
+          "height": 480,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 922,
+      "retweet_count": 190,
+      "reply_count": 40,
+      "quote_count": 20,
+      "view_count": null,
+      "bookmark_count": 9,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T13:41:56.474Z",
+          "likes": 922,
+          "retweets": 190,
+          "replies": 40,
+          "quotes": 20,
+          "views": null,
+          "bookmarks": 9
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Navy",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1907855411685822464/UoaDw_4U_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official X account of the #USNavy. Celebrating 250 years of service, strength and sea power. (Following, reposts and links ≠ endorsement)",
+        "location": "The 7 seas!",
+        "url": "https://t.co/VUxxtSTG5n",
+        "followers_count": 1927083,
+        "friends_count": 1177,
+        "statuses_count": 39400,
+        "account_created_at": "2009-07-08T12:51:11.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T134146Z-a9502785",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T134146Z-a9502785.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T134146Z-a9502785.jsonl",
+    "source_handle": "USCG"
+  }
+}

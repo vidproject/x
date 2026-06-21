@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T234149Z-3d68298c-HSI_HQ",
+  "account_handle": "HSI_HQ",
+  "captured_at": "2026-06-17T23:44:08.916Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AHSI_HQ%20since%3A2026-05-13%20until%3A2026-05-20%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2056752708560818543",
+      "account_handle": "HSI_HQ",
+      "account_id": "1339943881027313666",
+      "posted_at": "2026-05-19T15:03:52.000Z",
+      "first_captured_at": "2026-06-17T23:41:58.876Z",
+      "last_seen_at": "2026-06-17T23:41:58.876Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/HSI_HQ/status/2056752708560818543",
+      "tweet_type": "original",
+      "conversation_id": "2056752708560818543",
+      "reply_to_tweet_id": null,
+      "reply_to_account": "ICEgov",
+      "reply_to_account_id": "39384517",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@ICEgov and ICE @HSI_HQ will be working with local and federal partners to secure the @FIFAWorldCup.\n\nThey will play a pivotal role in combatting human trafficking as well as stopping counterfeit merchandise and counterfeit ticket sales. https://t.co/UJPN4Fl6Gx",
+      "text_resolved": "@ICEgov and ICE @HSI_HQ will be working with local and federal partners to secure the @FIFAWorldCup.\n\nThey will play a pivotal role in combatting human trafficking as well as stopping counterfeit merchandise and counterfeit ticket sales. https://t.co/UJPN4Fl6Gx",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "ICEgov",
+        "HSI_HQ",
+        "FIFAWorldCup"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_2056752633201774592",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/2056752633201774592/pu/vid/avc1/720x1280/rdikwBpkgTAZ5ChF.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 34.9,
+          "width": 720,
+          "height": 1280,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 11,
+      "retweet_count": 4,
+      "reply_count": 7,
+      "quote_count": 3,
+      "view_count": 1337,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T23:41:58.876Z",
+          "likes": 11,
+          "retweets": 4,
+          "replies": 7,
+          "quotes": 3,
+          "views": 1337,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "Homeland Security Investigations",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2031819826508021762/jLzZmzWl_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "@ICEgov HSI protects the U.S. by investigating global crimes that impact local communities. Privacy: https://t.co/aORjC5RLnf",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/BUaNOoNyCA",
+        "followers_count": 34522,
+        "friends_count": 106,
+        "statuses_count": 3688,
+        "account_created_at": "2020-12-18T14:41:53.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T234149Z-3d68298c",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T234149Z-3d68298c.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T234149Z-3d68298c.jsonl",
+    "source_handle": "HSI_HQ"
+  }
+}

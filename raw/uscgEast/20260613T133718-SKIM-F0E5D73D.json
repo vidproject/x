@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T133648Z-e600f93c-uscgEast",
+  "account_handle": "uscgEast",
+  "captured_at": "2026-06-13T13:37:18.589Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSCG%20since%3A2020-11-01%20until%3A2020-12-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1332217713368965121",
+      "account_handle": "uscgEast",
+      "account_id": "17519586",
+      "posted_at": "2020-11-27T07:00:28.000Z",
+      "first_captured_at": "2026-06-13T13:37:09.779Z",
+      "last_seen_at": "2026-06-13T13:37:09.779Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/uscgEast/status/1332217713368965121",
+      "tweet_type": "original",
+      "conversation_id": "1332217713368965121",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Looking for that perfect gift for your boater just in time for Black Friday? The Coast Guard has you covered! Check out the items thats made it to the top of our holiday wishlist this year.\n#HAPPYHOLIDAYS #VSC #USCG #HOLIDAY https://t.co/E0mwruy0IZ",
+      "text_resolved": "Looking for that perfect gift for your boater just in time for Black Friday? The Coast Guard has you covered! Check out the items thats made it to the top of our holiday wishlist this year.\n#HAPPYHOLIDAYS #VSC #USCG #HOLIDAY https://t.co/E0mwruy0IZ",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "HAPPYHOLIDAYS",
+        "VSC",
+        "USCG",
+        "HOLIDAY"
+      ],
+      "mentions": [],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1332217711364108288",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Enz88zlXcAAoctn.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 800,
+          "height": 2000,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 59,
+      "retweet_count": 13,
+      "reply_count": 0,
+      "quote_count": 2,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T13:37:09.779Z",
+          "likes": 59,
+          "retweets": 13,
+          "replies": 0,
+          "quotes": 2,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "USCG East District",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2010713674646695936/hDp63UXM_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Government Organization. Portsmouth: 757-650-1499. Baltimore: 410-536-3965. Media & After Hours: EastDistrictPublicAffairs@uscg.mil",
+        "location": "Portsmouth, Va",
+        "url": "https://t.co/sNS4iAuGwg",
+        "followers_count": 16942,
+        "friends_count": 289,
+        "statuses_count": 5467,
+        "account_created_at": "2008-11-20T19:37:37.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T133648Z-e600f93c",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T133648Z-e600f93c.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T133648Z-e600f93c.jsonl",
+    "source_handle": "USCG"
+  }
+}

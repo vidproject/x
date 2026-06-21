@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T163205Z-cf85ceb0-axios",
+  "account_handle": "axios",
+  "captured_at": "2026-06-17T16:32:35.991Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APressSec%20since%3A2025-10-01%20until%3A2025-10-08%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1975639037701439608",
+      "account_handle": "axios",
+      "account_id": "800707492346925056",
+      "posted_at": "2025-10-07T19:07:06.000Z",
+      "first_captured_at": "2026-06-17T16:32:13.010Z",
+      "last_seen_at": "2026-06-17T16:32:13.010Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/axios/status/1975639037701439608",
+      "tweet_type": "original",
+      "conversation_id": "1975639037701439608",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Scoop: White House says it has funding to save food aid program that had been threatened by the government shutdown https://t.co/CAaHpLy1YK",
+      "text_resolved": "Scoop: White House says it has funding to save food aid program that had been threatened by the government shutdown https://trib.al/O61xkIy",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/CAaHpLy1YK",
+          "expanded": "https://trib.al/O61xkIy",
+          "display": "trib.al/O61xkIy"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/CAaHpLy1YK",
+        "vendor_url": "axios.com",
+        "title": "Exclusive: White House says it has funding to save food aid program",
+        "description": "The administration will transfer funding derived from tariff revenue to keep WIC going for \"the foreseeable future.\"",
+        "image_url": "https://pbs.twimg.com/card_img/2067057621967020032/h8JLrP3H?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 337,
+      "retweet_count": 92,
+      "reply_count": 86,
+      "quote_count": 19,
+      "view_count": 1304156,
+      "bookmark_count": 31,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T16:32:13.010Z",
+          "likes": 337,
+          "retweets": 92,
+          "replies": 86,
+          "quotes": 19,
+          "views": 1304156,
+          "bookmarks": 31
+        }
+      ],
+      "author": {
+        "display_name": "Axios",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1641458976049995776/GtO-0zYe_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Business",
+        "description": "Smart Brevity worthy of people's time, attention and trust. Subscribe to our newsletters: https://t.co/uMitaJIcpz",
+        "location": null,
+        "url": "https://t.co/93DAtB3Ljt",
+        "followers_count": 843494,
+        "friends_count": 1049,
+        "statuses_count": 205573,
+        "account_created_at": "2016-11-21T14:28:37.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T163205Z-cf85ceb0",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T163205Z-cf85ceb0.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T163205Z-cf85ceb0.jsonl",
+    "source_handle": "PressSec"
+  }
+}

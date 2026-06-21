@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T173703Z-5093c436-RapidResponse47",
+  "account_handle": "RapidResponse47",
+  "captured_at": "2026-06-17T17:37:17.898Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AUSDOL%20since%3A2026-05-13%20until%3A2026-05-20%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2054569763448222083",
+      "account_handle": "RapidResponse47",
+      "account_id": "1881451105454002176",
+      "posted_at": "2026-05-13T14:29:38.000Z",
+      "first_captured_at": "2026-06-17T17:37:07.212Z",
+      "last_seen_at": "2026-06-17T17:37:07.212Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/RapidResponse47/status/2054569763448222083",
+      "tweet_type": "original",
+      "conversation_id": "2054569763448222083",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "\"@POTUS announced a new fertility benefit option for employers to offer to their workers.\" \n\n\"On Mother's Day, the Trump Administration also launched a new website: https://t.co/kG9RMVuxqG\" https://t.co/FXdcwrNqMF",
+      "text_resolved": "\"@POTUS announced a new fertility benefit option for employers to offer to their workers.\" \n\n\"On Mother's Day, the Trump Administration also launched a new website: http://Moms.gov\" https://t.co/FXdcwrNqMF",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "POTUS"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/kG9RMVuxqG",
+          "expanded": "http://Moms.gov",
+          "display": "Moms.gov"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_2054569005159985152",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2054569005159985152/vid/avc1/1920x1080/B3Y-SdPukRwMOfhv.mp4?tag=27",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 31.697,
+          "width": 1920,
+          "height": 1080,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 781,
+      "retweet_count": 173,
+      "reply_count": 41,
+      "quote_count": 4,
+      "view_count": 46939,
+      "bookmark_count": 27,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T17:37:07.212Z",
+          "likes": 781,
+          "retweets": 173,
+          "replies": 41,
+          "quotes": 4,
+          "views": 46939,
+          "bookmarks": 27
+        }
+      ],
+      "author": {
+        "display_name": "Rapid Response 47",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2062578057836142592/IYAK6I1p_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official White House Rapid Response account. Supporting @POTUS's America First agenda and holding the Fake News accountable. MAGA!",
+        "location": "🇺🇸🇺🇸🇺🇸",
+        "url": "https://t.co/8qhSUMpp7C",
+        "followers_count": 1963651,
+        "friends_count": 74,
+        "statuses_count": 27894,
+        "account_created_at": "2025-01-20T21:18:05.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T173703Z-5093c436",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T173703Z-5093c436.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T173703Z-5093c436.jsonl",
+    "source_handle": "USDOL"
+  }
+}

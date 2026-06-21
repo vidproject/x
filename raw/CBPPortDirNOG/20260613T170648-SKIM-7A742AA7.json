@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170632Z-b5414df1-CBPPortDirNOG",
+  "account_handle": "CBPPortDirNOG",
+  "captured_at": "2026-06-13T17:06:48.232Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AOFOEAC%20since%3A2020-10-01%20until%3A2020-11-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1313241450243452928",
+      "account_handle": "CBPPortDirNOG",
+      "account_id": "1211758151474663425",
+      "posted_at": "2020-10-05T22:15:35.000Z",
+      "first_captured_at": "2026-06-13T17:06:40.097Z",
+      "last_seen_at": "2026-06-13T17:06:40.097Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBPPortDirNOG/status/1313241450243452928",
+      "tweet_type": "original",
+      "conversation_id": "1313241450243452928",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": ".@CBP Officers at the #Nogales Commercial Facility discovered 800 lbs of methamphetamine &amp; 9 lbs of fentanyl in a floor compartment of a tractor trailer on Friday. Thank you #CBP Nogales for preventing these dangerous narcotics from reaching communities throughout the U.S. https://t.co/O36ZzEWUwI",
+      "text_resolved": ".@CBP Officers at the #Nogales Commercial Facility discovered 800 lbs of methamphetamine &amp; 9 lbs of fentanyl in a floor compartment of a tractor trailer on Friday. Thank you #CBP Nogales for preventing these dangerous narcotics from reaching communities throughout the U.S. https://t.co/O36ZzEWUwI",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/#!/download/ipad\" rel=\"nofollow\">Twitter for iPad</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "Nogales",
+        "CBP"
+      ],
+      "mentions": [
+        "CBP"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1313241437417304065",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/EjmSISWU8AE47V_.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1933,
+          "height": 1092,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 52,
+      "retweet_count": 12,
+      "reply_count": 2,
+      "quote_count": 6,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:06:40.097Z",
+          "likes": 52,
+          "retweets": 12,
+          "replies": 2,
+          "quotes": 6,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Sr. Official Performing Duties of Area PD J. Acuna",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1989041011948191744/dujNOm16_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "@CBP Area Port Director for the Port of Nogales, Arizona",
+        "location": "Nogales, AZ",
+        "url": "https://t.co/p7sZLLXs2e",
+        "followers_count": 7270,
+        "friends_count": 127,
+        "statuses_count": 942,
+        "account_created_at": "2019-12-30T21:17:25.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170632Z-b5414df1",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T170632Z-b5414df1.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T170632Z-b5414df1.jsonl",
+    "source_handle": "OFOEAC"
+  }
+}
