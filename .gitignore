@@ -47,6 +47,7 @@ skim/profile/
 # the CI runner; the metadata about each artifact lives in data/tags/*.parquet
 # but the bytes themselves are regenerable.
 data/derived/
+data/thumbnails/
 
 # Tag-audit read-only signal bundles — regenerable from catalog.parquet via
 # scripts/build_tag_audit_bundles.py. Only the decision JSONs + _suggestions.jsonl
