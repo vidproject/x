@@ -1,14 +1,12 @@
 {
-  "generated_at": "2026-06-23T17:18:20Z",
+  "generated_at": "2026-06-23T18:59:57Z",
   "layers": {
     "audio_music": {
-      "analyzed": 65,
-      "attempted": 71,
-      "cache_hits": 7470,
+      "cache_hits": 211,
       "cost_estimate_usd": 0.0,
       "detector": "ffmpeg-audio-heuristic",
       "detector_version": "ffmpeg-audio-heuristic-v1",
-      "generated_at": "2026-06-23T17:15:19Z",
+      "generated_at": "2026-06-23T18:59:47Z",
       "row_count": 7739,
       "rows": 7739,
       "status_counts": {
@@ -18,10 +16,6 @@
         "silent-audio": 164,
         "video-too-large": 5
       },
-      "status_fetch-failed": 1,
-      "status_no-audio-stream": 4,
-      "status_ok": 61,
-      "status_video-too-large": 5,
       "tag_frequency": {
         "audio:has-audio": 7395,
         "audio:music-likely": 9,
@@ -30,45 +24,43 @@
       }
     },
     "image_ocr": {
-      "analyzed": 320,
-      "attempted": 320,
-      "cache_hits": 21344,
+      "analyzed": 45,
+      "attempted": 45,
+      "cache_hits": 1581,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-23T17:12:07Z",
+      "generated_at": "2026-06-23T18:59:38Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.3.4",
-      "row_count": 31560,
-      "rows": 31560,
-      "skipped_max_items": 258,
+      "row_count": 31605,
+      "rows": 31605,
       "status_counts": {
         "fetch-failed": 1,
-        "no-text": 5685,
-        "ok": 25874
+        "no-text": 5688,
+        "ok": 25916
       },
-      "status_no-text": 2,
-      "status_ok": 318
+      "status_no-text": 3,
+      "status_ok": 42
     },
     "keyframes": {
-      "attempted": 71,
-      "cache_hits": 7470,
+      "attempted": 188,
+      "cache_hits": 22,
       "cost_estimate_usd": 0.0,
-      "extracted": 65,
+      "extracted": 188,
       "extractor_version": "ffmpeg-keyframes-v2",
-      "frame_count": 38051,
-      "generated_at": "2026-06-23T17:07:18Z",
-      "row_count": 7541,
-      "rows": 7541,
+      "frame_count": 38604,
+      "generated_at": "2026-06-23T18:51:14Z",
+      "intra_run_dedup": 1,
+      "row_count": 7603,
+      "rows": 7603,
       "status_counts": {
         "fetch-failed": 1,
-        "ok": 7535,
+        "ok": 7597,
         "video-too-large": 5
       },
-      "status_fetch-failed": 1,
-      "status_ok": 65,
-      "status_video-too-large": 5
+      "status_ok": 188
     },
     "lexical": {
-      "generated_at": "2026-06-23T17:18:20Z",
+      "generated_at": "2026-06-23T18:59:57Z",
       "parquets_scanned": {
         "AGPamBondi.parquet": 19,
         "ATFHQ.parquet": 3,
@@ -158,7 +150,7 @@
         "agency:FLETC": 240,
         "agency:HHSGov": 141,
         "agency:HSI_HQ": 171,
-        "agency:ICEgov": 31962,
+        "agency:ICEgov": 31963,
         "agency:IPRCenter": 19,
         "agency:NSAGov": 29,
         "agency:ODNIgov": 32,
@@ -711,28 +703,25 @@
       "web_tweets_scanned": 100
     },
     "photo_thumbnails": {
-      "attempted": 252,
-      "cache_hits": 20244,
+      "attempted": 1,
       "cost_estimate_usd": 0.0,
-      "extracted": 252,
+      "extracted": 1,
       "extractor_version": "photo-thumbnail-v1",
-      "generated_at": "2026-06-23T17:10:35Z",
+      "generated_at": "2026-06-23T18:59:36Z",
       "row_count": 20496,
       "rows": 20496,
       "status_counts": {
         "ok": 20496
       },
-      "status_ok": 252,
+      "status_ok": 1,
       "thumbnails": 20496
     },
     "transcripts": {
-      "attempted": 40,
-      "cache_hits": 4082,
+      "cache_hits": 211,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-06-23T17:16:14Z",
+      "generated_at": "2026-06-23T18:59:50Z",
       "row_count": 4316,
       "rows": 4316,
-      "skipped_max_items": 3419,
       "status_counts": {
         "empty-transcript": 955,
         "fetch-failed": 1,
@@ -740,11 +729,7 @@
         "ok": 3042,
         "video-too-large": 3
       },
-      "status_empty-transcript": 13,
-      "status_fetch-failed": 1,
-      "status_ok": 23,
-      "status_video-too-large": 3,
-      "transcribed": 36,
+      "transcribed": 3042,
       "transcriber": "faster-whisper",
       "transcriber_version": "faster-whisper-v1"
     }
@@ -838,7 +823,7 @@
     "agency:FLETC": 240,
     "agency:HHSGov": 141,
     "agency:HSI_HQ": 171,
-    "agency:ICEgov": 31962,
+    "agency:ICEgov": 31963,
     "agency:IPRCenter": 19,
     "agency:NSAGov": 29,
     "agency:ODNIgov": 32,
