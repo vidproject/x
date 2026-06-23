@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143858Z-62b886af-NickMinock",
+  "account_handle": "NickMinock",
+  "captured_at": "2026-06-17T14:39:16.003Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-05-27%20until%3A2026-06-03%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2061848331488276966",
+      "account_handle": "NickMinock",
+      "account_id": "500019957",
+      "posted_at": "2026-06-02T16:32:04.000Z",
+      "first_captured_at": "2026-06-17T14:39:07.516Z",
+      "last_seen_at": "2026-06-17T14:39:07.516Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/NickMinock/status/2061848331488276966",
+      "tweet_type": "original",
+      "conversation_id": "2061848331488276966",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "🚨 New: The U.S. Department of Homeland Security told me ICE lodged a detainer against an illegal immigrant who is accused of raping a girl under the age of 15-years-old in Prince William County, Virginia. https://t.co/KxsN9GdUVg",
+      "text_resolved": "🚨 New: The U.S. Department of Homeland Security told me ICE lodged a detainer against an illegal immigrant who is accused of raping a girl under the age of 15-years-old in Prince William County, Virginia. https://wjla.com/news/local/ice-lodges-detainer-illegal-immigrant-accused-raping-girl-prince-william-county-cristian-romario-saenz-argueta-homeland-security-abigail-spanberger-sanctuary-policies",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/KxsN9GdUVg",
+          "expanded": "https://wjla.com/news/local/ice-lodges-detainer-illegal-immigrant-accused-raping-girl-prince-william-county-cristian-romario-saenz-argueta-homeland-security-abigail-spanberger-sanctuary-policies",
+          "display": "wjla.com/news/local/ice…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/KxsN9GdUVg",
+        "vendor_url": "wjla.com",
+        "title": "ICE lodges detainer for illegal immigrant accused of raping girl in Prince William County",
+        "description": "DHS told 7News Reporter Nick Minock that ICE lodged a detainer against an illegal immigrant who is accused of raping a girl under the age of 15-years-old.",
+        "image_url": "https://pbs.twimg.com/card_img/2066921931702513664/KNAMrwzk?format=png&name=orig"
+      },
+      "media": [],
+      "like_count": 1001,
+      "retweet_count": 358,
+      "reply_count": 49,
+      "quote_count": 25,
+      "view_count": 184375,
+      "bookmark_count": 42,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:39:07.516Z",
+          "likes": 1001,
+          "retweets": 358,
+          "replies": 49,
+          "quotes": 25,
+          "views": 184375,
+          "bookmarks": 42
+        }
+      ],
+      "author": {
+        "display_name": "Nick Minock",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1994142172304621568/_scxrpKO_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Reporter for WJLA @7NewsDC ABC in Washington, D.C. and Virginia. Fmr. TV news reporter for CBS, NBC, & FOX stations in Minnesota, South Carolina and Michigan.",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/vgl1aIszqk",
+        "followers_count": 26869,
+        "friends_count": 3023,
+        "statuses_count": 10174,
+        "account_created_at": "2012-02-22T18:29:40.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143858Z-62b886af",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143858Z-62b886af.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143858Z-62b886af.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

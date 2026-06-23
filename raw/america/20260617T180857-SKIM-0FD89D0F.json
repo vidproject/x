@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T180843Z-eeca0842-america",
+  "account_handle": "america",
+  "captured_at": "2026-06-17T18:08:57.153Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AStephenM%20since%3A2025-03-19%20until%3A2025-03-26%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1903439660648407465",
+      "account_handle": "america",
+      "account_id": "1841988608825466880",
+      "posted_at": "2025-03-22T13:32:33.000Z",
+      "first_captured_at": "2026-06-17T18:08:45.796Z",
+      "last_seen_at": "2026-06-17T18:08:45.796Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/america/status/1903439660648407465",
+      "tweet_type": "original",
+      "conversation_id": "1903439660648407465",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Wisconsin Judge Susan Crawford on sentencing a repeat child molester who sexually assaulted a 7 year-old girl to only 4 years in prison:\n\n“I don't regret that sentence”\n\nDon’t put her on the Supreme Court\n\nFind your voting location &amp; VOTE Brad Schimel: https://t.co/cstFOkENfM https://t.co/iPtJK4RjgH",
+      "text_resolved": "Wisconsin Judge Susan Crawford on sentencing a repeat child molester who sexually assaulted a 7 year-old girl to only 4 years in prison:\n\n“I don't regret that sentence”\n\nDon’t put her on the Supreme Court\n\nFind your voting location &amp; VOTE Brad Schimel: http://votesafe.org https://t.co/iPtJK4RjgH",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/cstFOkENfM",
+          "expanded": "http://votesafe.org",
+          "display": "votesafe.org"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1903439609662738432",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1903439609662738432/vid/avc1/1152x720/Z_VXsAV9iFDm6eKt.mp4?tag=16",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 10.772,
+          "width": 1152,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 30984,
+      "retweet_count": 13114,
+      "reply_count": 1761,
+      "quote_count": 665,
+      "view_count": 4735829,
+      "bookmark_count": 780,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T18:08:45.796Z",
+          "likes": 30984,
+          "retweets": 13114,
+          "replies": 1761,
+          "quotes": 665,
+          "views": 4735829,
+          "bookmarks": 780
+        }
+      ],
+      "author": {
+        "display_name": "America",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1842003465448398848/U3EZmdUz_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": "PAC Founded by @ElonMusk to support candidates who champion Secure Borders, Sensible Spending, Safe Cities, Fair Justice System, Free Speech and Self-Protection",
+        "location": "USA",
+        "url": "https://t.co/PdGFm7qcgm",
+        "followers_count": 1199614,
+        "friends_count": 1,
+        "statuses_count": 4043,
+        "account_created_at": "2024-10-03T23:48:27.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T180843Z-eeca0842",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T180843Z-eeca0842.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T180843Z-eeca0842.jsonl",
+    "source_handle": "StephenM"
+  }
+}

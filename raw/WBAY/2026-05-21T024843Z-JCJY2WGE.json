@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "01KS47BEKMABJCJY2WGE",
+  "account_handle": "WBAY",
+  "captured_at": "2026-05-21T02:48:43.603Z",
+  "endpoint": "UserTweets",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+  "source_url": "https://x.com/i/api/graphql/36rb3Xj3iJ64Q-9wKDjCcQ/UserTweets?variables=%7B%22userId%22%3A%2215647676%22%2C%22count%22%3A20%2C%22cursor%22%3A%22DAAHCgABHIz336e__wALAAIAAAATMjA0OTgzMzYyODY0NTkzNzM0MwgAAwAAAAIAAA%22%2C%22includePromotedContent%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_video_screen_enabled%22%3Afalse%2C%22rweb_cashtags_enabled%22%3Atrue%2C%22profile_label_improvements_pcf_label_in_post_enabled%22%3Atrue%2C%22responsive_web_profile_redirect_enabled%22%3Afalse%2C%22rweb_tipjar_consumption_enabled%22%3Afalse%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22premium_content_api_read_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22responsive_web_grok_analyze_button_fetch_trends_enabled%22%3Afalse%2C%22responsive_web_grok_analyze_post_followups_enabled%22%3Atrue%2C%22rweb_cashtags_composer_attachment_enabled%22%3Atrue%2C%22responsive_web_jetfuel_frame%22%3Atrue%2C%22responsive_web_grok_share_attachment_enabled%22%3Atrue%2C%22responsive_web_grok_annotations_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22rweb_conversational_replies_downvote_enabled%22%3Afalse%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22content_disclosure_indicator_enabled%22%3Atrue%2C%22content_disclosure_ai_generated_indicator_enabled%22%3Atrue%2C%22responsive_web_grok_show_grok_translated_post%22%3Atrue%2C%22responsive_web_grok_analysis_button_from_backend%22%3Atrue%2C%22post_ctas_fetch_enabled%22%3Atrue%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Afalse%2C%22responsive_web_grok_image_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_imagine_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_community_note_auto_translation_is_enabled%22%3Atrue%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticlePlainText%22%3Afalse%7D",
+  "tweets": [
+    {
+      "account_handle": "WBAY",
+      "account_id": "25371684",
+      "author": {
+        "account_created_at": "2009-03-19T19:57:54.000Z",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1721485418330288128/tX5UCLuk_normal.jpg",
+        "description": "Your First Alert Station. Official account of WBAY-TV news@wbay.com || (920) 437-2222 || #wbay",
+        "display_name": "WBAY-TV 2",
+        "followers_count": 43194,
+        "friends_count": 1254,
+        "is_blue_verified": false,
+        "location": "Serving Northeast Wisconsin",
+        "protected": null,
+        "statuses_count": 137159,
+        "url": "https://t.co/fbeDAVd23h",
+        "verified": false,
+        "verified_type": null
+      },
+      "bookmark_count": 0,
+      "capture_run_id": "01KS47BEKMABJCJY2WGE",
+      "capture_source": "extension",
+      "card": {
+        "card_url": "https://t.co/BJLPypxLhP",
+        "description": "One of the victims identified the attacker as her ex-boyfriend, David Mairena-Garcia.",
+        "image_url": "https://pbs.twimg.com/card_img/2057219672844746752/MhqdXOEU?format=jpg&name=orig",
+        "name": "summary_large_image",
+        "title": "Green Bay man charged in machete attack injuring two",
+        "vendor_url": "wbay.com"
+      },
+      "community_note": null,
+      "conversation_id": "2047062774224662663",
+      "deletion_detected_at": null,
+      "engagement_history": [
+        {
+          "bookmarks": 0,
+          "captured_at": "2026-05-21T02:48:43.603Z",
+          "likes": 11,
+          "quotes": 4,
+          "replies": 128,
+          "retweets": 4,
+          "views": 80618
+        }
+      ],
+      "first_captured_at": "2026-05-21T02:48:43.603Z",
+      "hashtags": [],
+      "is_truncated": false,
+      "lang": "en",
+      "last_seen_at": "2026-05-21T02:48:43.603Z",
+      "like_count": 11,
+      "media": [],
+      "mentions": [],
+      "place_full_name": null,
+      "possibly_sensitive": false,
+      "posted_at": "2026-04-22T21:19:32.000Z",
+      "quote_count": 4,
+      "quoted_tweet_id": null,
+      "reply_count": 128,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "reply_to_tweet_id": null,
+      "retweet_count": 4,
+      "retweeted_tweet_id": null,
+      "schema_version": 1,
+      "source": "<a href=\"http://www.socialnewsdesk.com\" rel=\"nofollow\">SocialNewsDesk</a>",
+      "text": "Green Bay police say a 29-year-old man is now charged for a brutal machete attack that seriously injured two people on the city’s east side earlier this week. https://t.co/BJLPypxLhP",
+      "text_resolved": "Green Bay police say a 29-year-old man is now charged for a brutal machete attack that seriously injured two people on the city’s east side earlier this week. https://www.wbay.com/2026/04/22/green-bay-man-charged-machete-attack-injuring-two/?utm_source=twitter&utm_medium=social&utm_campaign=snd&utm_content=wbay",
+      "tweet_id": "2047062774224662663",
+      "tweet_type": "original",
+      "tweet_url": "https://x.com/WBAY/status/2047062774224662663",
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_source_url": null,
+      "unavailable_text": null,
+      "urls": [
+        {
+          "display": "wbay.com/2026/04/22/gre…",
+          "expanded": "https://www.wbay.com/2026/04/22/green-bay-man-charged-machete-attack-injuring-two/?utm_source=twitter&utm_medium=social&utm_campaign=snd&utm_content=wbay",
+          "short": "https://t.co/BJLPypxLhP"
+        }
+      ],
+      "view_count": 80618,
+      "wayback_submitted_at": null,
+      "wayback_url": null
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": []
+}

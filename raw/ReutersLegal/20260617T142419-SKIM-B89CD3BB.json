@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T142402Z-159889db-ReutersLegal",
+  "account_handle": "ReutersLegal",
+  "captured_at": "2026-06-17T14:24:19.947Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2025-06-25%20until%3A2025-07-02%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1939809955806171325",
+      "account_handle": "ReutersLegal",
+      "account_id": "334944709",
+      "posted_at": "2025-06-30T22:15:08.000Z",
+      "first_captured_at": "2026-06-17T14:24:08.570Z",
+      "last_seen_at": "2026-06-17T14:24:08.570Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/ReutersLegal/status/1939809955806171325",
+      "tweet_type": "original",
+      "conversation_id": "1939809955806171325",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Iran-linked hackers have threatened to disclose more emails stolen from U.S. President Donald Trump's circle, after distributing a prior batch to the media ahead of the 2024 U.S. election. https://t.co/Qb0vK9nnIb",
+      "text_resolved": "Iran-linked hackers have threatened to disclose more emails stolen from U.S. President Donald Trump's circle, after distributing a prior batch to the media ahead of the 2024 U.S. election. https://www.reuters.com/legal/government/iran-linked-hackers-threaten-release-trump-aides-emails-2025-06-30/?taid=68630c6b6360160001570bc6&utm_campaign=trueanthem&utm_medium=social&utm_source=twitter",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://trueanthem.com\" rel=\"nofollow\">trueanthem_pro2</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/Qb0vK9nnIb",
+          "expanded": "https://www.reuters.com/legal/government/iran-linked-hackers-threaten-release-trump-aides-emails-2025-06-30/?taid=68630c6b6360160001570bc6&utm_campaign=trueanthem&utm_medium=social&utm_source=twitter",
+          "display": "reuters.com/legal/governme…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/Qb0vK9nnIb",
+        "vendor_url": "reuters.com",
+        "title": "Iran-linked hackers threaten to release Trump aides' emails",
+        "description": "Iran-linked hackers have threatened to disclose more emails stolen from U.S. President Donald Trump's circle, after distributing a prior batch to the media ahead of the 2024 U.S. election.",
+        "image_url": null
+      },
+      "media": [],
+      "like_count": 91,
+      "retweet_count": 44,
+      "reply_count": 43,
+      "quote_count": 14,
+      "view_count": 421583,
+      "bookmark_count": 23,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:24:08.570Z",
+          "likes": 91,
+          "retweets": 44,
+          "replies": 43,
+          "quotes": 14,
+          "views": 421583,
+          "bookmarks": 23
+        }
+      ],
+      "author": {
+        "display_name": "Reuters Legal",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1880342703323389952/JfE-9dxP_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "The Reuters Legal team brings you the latest legal news and analysis from around the world.\n\nSubscribe to our newsletters: https://t.co/7YvXGotj9d",
+        "location": "New York",
+        "url": "https://t.co/M3Ax7tirgK",
+        "followers_count": 106835,
+        "friends_count": 536,
+        "statuses_count": 185147,
+        "account_created_at": "2011-07-13T22:28:32.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T142402Z-159889db",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T142402Z-159889db.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T142402Z-159889db.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-20260530T140745Z-0fd8c24f-RapidResponse47",
+  "account_handle": "RapidResponse47",
+  "captured_at": "2026-05-30T14:08:00.904Z",
+  "endpoint": "UserByScreenName,UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/WhiteHouse",
+  "tweets": [
+    {
+      "tweet_id": "2060439460387475769",
+      "account_handle": "RapidResponse47",
+      "account_id": "1881451105454002176",
+      "posted_at": "2026-05-29T19:13:43.000Z",
+      "first_captured_at": "2026-05-30T14:07:53.366Z",
+      "last_seen_at": "2026-05-30T14:07:53.366Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/RapidResponse47/status/2060439460387475769",
+      "tweet_type": "quote",
+      "conversation_id": "2060439460387475769",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": "2060127126611718214",
+      "retweeted_tweet_id": null,
+      "text": "Los Angeles resident: https://t.co/BkAx0Ptc4C shows people that ICE is doing the right thing by getting criminals out of their communities. https://t.co/EDIWaXFaeg",
+      "text_resolved": "Los Angeles resident: http://Aliens.gov shows people that ICE is doing the right thing by getting criminals out of their communities. https://t.co/EDIWaXFaeg",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/BkAx0Ptc4C",
+          "expanded": "http://Aliens.gov",
+          "display": "Aliens.gov"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_2060438877110771717",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2060438877110771717/vid/avc1/1280x720/ChgOSrKmm-Hw2jQ_.mp4?tag=27",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 10.026,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 3260,
+      "retweet_count": 709,
+      "reply_count": 198,
+      "quote_count": 22,
+      "view_count": 207610,
+      "bookmark_count": 68,
+      "engagement_history": [
+        {
+          "captured_at": "2026-05-30T14:07:53.366Z",
+          "likes": 3260,
+          "retweets": 709,
+          "replies": 198,
+          "quotes": 22,
+          "views": 207610,
+          "bookmarks": 68
+        }
+      ],
+      "author": {
+        "display_name": "Rapid Response 47",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1883970867215876096/HK4lwY1m_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official White House Rapid Response account. Supporting @POTUS's America First agenda and holding the Fake News accountable. MAGA!",
+        "location": "🇺🇸🇺🇸🇺🇸",
+        "url": "https://t.co/8qhSUMpp7C",
+        "followers_count": 1891885,
+        "friends_count": 74,
+        "statuses_count": 27303,
+        "account_created_at": "2025-01-20T21:18:05.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-20260530T140745Z-0fd8c24f",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw/whitehouse-20260530T140745Z-0fd8c24f.summary.json",
+    "jsonl": ".skim/raw/whitehouse-20260530T140745Z-0fd8c24f.jsonl",
+    "source_handle": "WhiteHouse"
+  }
+}

@@ -1,0 +1,1578 @@
+"""Build ready-only creative review JSON for the standalone swipe site.
+
+The PDF dossier is intentionally broad. This generator is stricter: it keeps
+only rows whose review media are fully prepared for Amy's yes/no/superlike
+pass. Prepared means archived media plus the relevant analysis sidecars:
+
+* photos: thumbnail, OCR, and a genuine visual description;
+* videos/GIFs: keyframes, keyframe OCR, audio detection, transcript when audio
+  is present, thumbnail, and a genuine visual description.
+
+Rows that match the creative-content rules but are missing any required sidecar
+are written to ``creative-not-ready.json`` instead of being mixed into the
+review queues.
+
+Run with:
+
+    uv run python -m scripts.build_creative_site_data
+"""
+
+from __future__ import annotations
+
+import csv
+import json
+import re
+import subprocess
+from collections import Counter
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
+
+import polars as pl
+
+from scripts._logging import configure
+
+LOG = configure()
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+DATA_DIR = REPO_ROOT / "data"
+TAGS_DIR = DATA_DIR / "tags"
+OUT_DIR = DATA_DIR / "creative"
+CATALOG_PATH = DATA_DIR / "catalog.parquet"
+ACCOUNT_CATEGORIES_PATH = DATA_DIR / "account_categories.json"
+PRODUCED_CSV = TAGS_DIR / "produced_videos.csv"
+MEME_CSV = TAGS_DIR / "meme_images.csv"
+MANUAL_REVIEW_QUEUE = TAGS_DIR / "manual_media_review_queue.json"
+CREATIVE_NOT_READY_TWEET_IDS = TAGS_DIR / "creative_not_ready_tweet_ids.txt"
+CREATIVE_NOT_READY_MEDIA_IDS = TAGS_DIR / "creative_not_ready_media_ids.txt"
+CREATIVE_MISSING_DESCRIPTION_TWEET_IDS = TAGS_DIR / "creative_missing_description_tweet_ids.txt"
+CREATIVE_MISSING_DESCRIPTION_MEDIA_IDS = TAGS_DIR / "creative_missing_description_media_ids.txt"
+CREATIVE_MISSING_ARCHIVE_TWEET_IDS = TAGS_DIR / "creative_missing_archive_tweet_ids.txt"
+CREATIVE_MISSING_ARCHIVE_MEDIA_IDS = TAGS_DIR / "creative_missing_archive_media_ids.txt"
+CREATIVE_MISSING_VIDEO_FRAMES_TWEET_IDS = TAGS_DIR / "creative_missing_video_frames_tweet_ids.txt"
+CREATIVE_MISSING_VIDEO_FRAMES_MEDIA_IDS = TAGS_DIR / "creative_missing_video_frames_media_ids.txt"
+CREATIVE_MISSING_OCR_TWEET_IDS = TAGS_DIR / "creative_missing_ocr_tweet_ids.txt"
+CREATIVE_MISSING_OCR_MEDIA_IDS = TAGS_DIR / "creative_missing_ocr_media_ids.txt"
+CREATIVE_MISSING_PHOTO_THUMBNAIL_TWEET_IDS = (
+    TAGS_DIR / "creative_missing_photo_thumbnail_tweet_ids.txt"
+)
+CREATIVE_MISSING_PHOTO_THUMBNAIL_MEDIA_IDS = (
+    TAGS_DIR / "creative_missing_photo_thumbnail_media_ids.txt"
+)
+CREATIVE_MISSING_AUDIO_TWEET_IDS = TAGS_DIR / "creative_missing_audio_tweet_ids.txt"
+CREATIVE_MISSING_AUDIO_MEDIA_IDS = TAGS_DIR / "creative_missing_audio_media_ids.txt"
+CREATIVE_MISSING_TRANSCRIPT_TWEET_IDS = TAGS_DIR / "creative_missing_transcript_tweet_ids.txt"
+CREATIVE_MISSING_TRANSCRIPT_MEDIA_IDS = TAGS_DIR / "creative_missing_transcript_media_ids.txt"
+
+VIDEO_TYPES = {"video", "animated_gif"}
+VISUAL_TYPES = {"photo", "video", "animated_gif"}
+VISION_REVIEW_MODEL = "opus-vision-review"
+HAS_ALT_TAG = "media-status:has-alt-text"
+
+OCR_COMPLETE_STATUSES = {"ok", "no-text"}
+KEYFRAME_COMPLETE_STATUSES = {"ok"}
+THUMB_COMPLETE_STATUSES = {"ok"}
+AUDIO_COMPLETE_STATUSES = {"ok", "silent-audio", "no-audio-stream"}
+TRANSCRIPT_COMPLETE_STATUSES = {"ok", "empty-transcript", "no-audio-stream"}
+
+WHOLLY_CREATIVE_RE = re.compile(
+    r"\b(?:ai-generated|synthetic|pixel[- ]art|animation|animated|cgi|poster|meme|"
+    r"animated gif|reaction gif|gif|parody|cartoon|illustration|illustrated|comic|"
+    r"collage|photoshop|vintage|"
+    r"wpa|wwii|propaganda|stylized|mirthnuke|nice agents|busted\s*&\s*booted|"
+    r"remigrate|wanted|booking card|rogues-gallery|trading card)\b",
+    re.I,
+)
+CREATIVE_USE_RE = re.compile(
+    r"\b(?:asmr|set to music|music bed|soundtrack|montage|rapid[- ]cut|fast cuts?|"
+    r"color[- ]graded|cinematic|trailer[- ]style|war[- ]movie|slow[- ]motion|"
+    r"title card|text overlay|lower-third|reticle|vhs|glitch|neon|gothic|"
+    r"motion[- ]blur|stylized|animated|reaction gif|animated gif|cgi|pixel[- ]art|"
+    r"voiceover|voice-over)\b",
+    re.I,
+)
+REAL_ENFORCEMENT_RE = re.compile(
+    r"\b(?:detainee|detainees|handcuff(?:ed|s)?|shackle(?:d|s)?|chain(?:ed|s)?|"
+    r"belly chains?|custody|detention|deport(?:ed|ation|ing)?|self-deport|"
+    r"illegal alien|illegal aliens|migrant|migrants|arrest(?:ed|s)?|raid|"
+    r"removal flight|deportation flight|ice air|ero|hsi|cbp|border patrol)\b",
+    re.I,
+)
+IMMIGRATION_CONTEXT_RE = re.compile(
+    r"\b(?:immigration|deport|ice|dhs|cbp|uscis|homeland security|illegal alien|"
+    r"illegal aliens|cbp home|self-deport|removal)\b",
+    re.I,
+)
+TEXTUAL_CRUELTY_RE = re.compile(
+    r"\b(?:do the funniest thing ever|made in heaven[^.\n]{0,120}made up|"
+    r"buying a spouse doesn't make you a citizen|walking out in handcuffs|"
+    r"ice said nah|no dress[^.\n]{0,120}no citizenship[^.\n]{0,120}just deported|"
+    r"adios\.?|nice city|have a nice day|"
+    r"you will be found and deported with zero chance of returning|"
+    r"found and deported with zero chance of returning|"
+    r"we will arrest you, deport you and you will never return|"
+    r"we will find you\.\s*we will arrest you\.\s*we will deport you|"
+    r"we will find you(?:,?[^.\n]{0,80})?we will arrest you(?:,?[^.\n]{0,80})?"
+    r"we will deport you|"
+    r"we will find you and deport you|"
+    r"if you are illegal[^.\n]{0,160}we will find you|"
+    r"leave on your terms or you will leave on ours|"
+    r"self-deport now or face consequences|"
+    r"last chance to leave the u\.?s\.? legally|"
+    r"avoid the humiliation|"
+    r"avoid the discomfort of not knowing when we(?:'re| are) going to arrest you)\b|"
+    r"👀[^.\n]{0,160}(?:illegal|border|deport|arrest|caught|removed|ice|cbp|ero|hsi)|"
+    r"(?:illegal|border|deport|arrest|caught|removed|ice|cbp|ero|hsi)[^.\n]{0,160}👀",
+    re.I,
+)
+ROUTINE_EXCLUDE_RE = re.compile(
+    r"\b(?:fox news|newsmax|cnn|msnbc|cbs news|abc news|nbc news|newsnation|"
+    r"rebroadcast|television segment|cable-news|interview|press briefing|"
+    r"press conference|speech excerpt|single continuous shot|last week at dhs|"
+    r"standard news package|ordinary statistics card|routine statistics card)\b",
+    re.I,
+)
+PLAIN_INFOGRAPHIC_RE = re.compile(
+    r"\b(?:infographic|statistics card|enforcement update|single-day statistics)\b",
+    re.I,
+)
+STRONG_CREATIVE_REVIEW_RE = re.compile(
+    r"\b(?:ai[- ]generated|synthetic|pixel[- ]art|animation|animated|cgi|parody|"
+    r"reaction gif|animated gif|cartoon|caricature|comic|meme[- ]style|"
+    r"tinder|swiped right|mirthnuke|nice agents|busted\s*&\s*booted|"
+    r"remigrate|set to music|music bed|soundtrack|montage|rapid[- ]cut|"
+    r"fast cuts?|color[- ]graded|cinematic|trailer[- ]style|war[- ]movie|"
+    r"slow[- ]motion|reticle|targeting reticle|vhs|glitch|neon|gothic|"
+    r"motion[- ]blur|wpa|wwii|art deco|vintage[- ]styled|"
+    r"pop[- ]culture|mandalorian|digitally composited|photorealistic ai|"
+    r"surreal|worst of the week[^.\n]{0,50}(?:graphic|card|collage)|"
+    r"worst of the worst[^.\n]{0,50}(?:graphic|card|collage)|"
+    r"rogues[- ]gallery|trading card)\b",
+    re.I,
+)
+LOW_VALUE_TRUMP_POST_RE = re.compile(
+    r"(?:@realdonaldtrump\b|\bdonald j\. trump\b[^.\n]{0,160}@realdonaldtrump\b|"
+    r"\b(?:truth social|x|social[- ]media)[^.\n]{0,140}\b(?:post|statement)\b"
+    r"[^.\n]{0,180}\b(?:donald j\. trump|donald trump|@realdonaldtrump)\b|"
+    r"\b(?:screenshot|screenshot[- ]style graphic|graphic in the form of a screenshot|"
+    r"plain screenshot|card on a plain white background|quote card)[^.\n]{0,240}"
+    r"\b(?:donald j\. trump|donald trump|trump statement|@realdonaldtrump|"
+    r"truth social)\b|\b(?:trump (?:tweet|post|statement) screenshot|"
+    r"quote card overlaying a trump statement)\b)",
+    re.I,
+)
+LOW_VALUE_NEWS_IMAGE_RE = re.compile(
+    r"\b(?:newspaper front page|tabloid front page|news[- ]article|article screenshot|"
+    r"headline[- ]card|headline[- ]cards|headline clipping|headline collage|"
+    r"clipped news headlines?|stacked headlines?|torn[- ]paper headlines?|"
+    r"news collage|press clipping|cable[- ]news clip|news clip|fox news segment|"
+    r"newsmax segment|cnn segment|msnbc segment|television segment|"
+    r"rebroadcast interview|talking[- ]head|press[- ]release|press[- ]conference|"
+    r"justice\.gov|local news segment|newswatch|news[- ]style video frame|"
+    r"new york post|wall street journal|politico|daily caller|breitbart|"
+    r"newsweek|associated press|ap news|washington post|kcra|ingraham angle|"
+    r"rob schmitt tonight)\b",
+    re.I,
+)
+LOW_VALUE_APPREHENSION_NOTICE_RE = re.compile(
+    r"\b(?:arrested and pending removal|arrest card|detainee card|"
+    r"booking[- ]style card|mugshot[- ]style|mugshot card|standardized template|"
+    r"standard template|single[- ]subject|criminal charges?|charges include|"
+    r"wanted for|['\"]?(?:wanted|deported|detained|arrested)['\"]?\s+card|"
+    r"wanted poster|fbi wanted poster|ten most wanted|apprehension notice|"
+    r"arrest notice|removal notice|for the record|enforcement update|"
+    r"single[- ]day statistics|detainers lodged|plain statistics|"
+    r"text[- ]only statement card|statement graphic|newsroom card|"
+    r"law enforcement bulletin|dangerous criminal alien|criminal alien arrested|"
+    r"booking(?:[-/ ]style)? (?:photo|portrait|mugshots?)|"
+    r"booking or intake portrait|booking/detainee photo|intake portrait|"
+    r"mugshots?|ice\.gov/newsroom|red banner[^.\n]{0,120}"
+    r"(?:arrested|detained|deported|wanted))\b|"
+    r"^\s*crimes\s*:",
+    re.I | re.M,
+)
+LOW_VALUE_ROUTINE_STATIC_CARD_RE = re.compile(
+    r"\b(?:quote[- ]card|news release|outreach (?:graphic|card)|"
+    r"voice program|statistics infographic|comparison[- ]style infographic|"
+    r"vertical (?:dhs )?infographic|vertical statistics infographic|"
+    r"ordinary infographic|headline graphic|recruitment graphic|program graphic|"
+    r"plain screenshot|standard press[- ]release layout|"
+    r"plain candid operational/arrest photograph|documentary rather than designed|"
+    r"no on-image text or graphic design|"
+    r"voice \(victims of immigration crime engagement\)|ice\.gov/voice|"
+    r"1-855-48-voice)\b",
+    re.I,
+)
+LOW_VALUE_EXCLUSION_RULES = [
+    ("trump-post-screenshot", LOW_VALUE_TRUMP_POST_RE),
+    ("news-image-or-clip", LOW_VALUE_NEWS_IMAGE_RE),
+    ("apprehension-notice-or-routine-card", LOW_VALUE_APPREHENSION_NOTICE_RE),
+    ("routine-static-card", LOW_VALUE_ROUTINE_STATIC_CARD_RE),
+]
+REVIEW_ACCOUNT_CATEGORIES = {"core", "government", "officials"}
+PREFERENCE_HIGH_CONFIDENCE_SCORE = 60
+PREFERENCE_CANDIDATE_SCORE = 28
+WEAK_STANDALONE_PREFERENCE_CATEGORIES = {
+    "aesthetic:nostalgia-americana",
+    "spectacle:holiday-or-celebration",
+}
+STRONG_PREFERENCE_CATEGORIES = {
+    "cruelty:personalized-deportation-threat",
+    "cruelty:mocking-deportation-joke",
+    "cruelty:public-humiliation",
+    "cruelty:surveillance-taunt",
+    "spectacle:asmr-deportation",
+    "spectacle:gamified-deportation",
+    "policy:self-deportation-ad",
+    "aesthetic:ai-synthetic-propaganda",
+    "aesthetic:dystopian-surreal",
+    "editorialized:annotated-news-crime",
+    "editorialized:dramatic-crime-composite",
+    "form:novel-interface-or-ticket",
+    "spectacle:brutality-normalized",
+    "spectacle:militarized-power-showreel",
+    "medium:produced-video-with-preference-signal",
+}
+DECISIVE_CREATIVE_CATEGORIES = {
+    "cruelty:personalized-deportation-threat",
+    "cruelty:mocking-deportation-joke",
+    "cruelty:surveillance-taunt",
+    "spectacle:asmr-deportation",
+    "spectacle:gamified-deportation",
+    "aesthetic:ai-synthetic-propaganda",
+    "editorialized:annotated-news-crime",
+    "editorialized:dramatic-crime-composite",
+    "form:novel-interface-or-ticket",
+    "spectacle:brutality-normalized",
+    "medium:produced-video-with-preference-signal",
+}
+PREFERENCE_RULES = [
+    (
+        "cruelty:personalized-deportation-threat",
+        78,
+        re.compile(
+            r"\b(?:opportunity to do the funniest thing ever|do the funniest thing ever|"
+            r"deport (?:him|her|them|you)|should deport|we(?:'ll| will| are going to) "
+            r"(?:find|deport|remove|arrest|catch) (?:you|him|her|them)|"
+            r"we(?:'ll| will| are going to) hunt you down|"
+            r"you(?:'re| are) next|you (?:can|will) be deported|"
+            r"you can and will be deported|"
+            r"you will be found and deported with zero chance of returning|"
+            r"found and deported with zero chance of returning|"
+            r"we will arrest you, deport you and you will never return|"
+            r"we will find you and deport you|"
+            r"if you are illegal[^.\n]{0,160}we will find you|"
+            r"leave on your terms or you will leave on ours|"
+            r"self-deport now or face consequences|"
+            r"last chance to leave the u\.?s\.? legally|"
+            r"last time (?:he|she|they) "
+            r"sees? (?:u\.?s\.? soil|america))\b",
+            re.I,
+        ),
+    ),
+    (
+        "cruelty:surveillance-taunt",
+        64,
+        re.compile(
+            r"\b(?:we(?:'re| are) watching you|we see you|eyes on you|"
+            r"zoom(?:ing)? in|surveillance[^.\n]{0,80}(?:gif|meme|taunt)|"
+            r"spy kids|zoom glasses|eyes emoji|side[- ]eye|side eye|"
+            r"target acquired)\b|"
+            r"👀[^.\n]{0,160}(?:illegal|border|deport|arrest|caught|removed|ice|cbp|ero|hsi)|"
+            r"(?:illegal|border|deport|arrest|caught|removed|ice|cbp|ero|hsi)[^.\n]{0,160}👀",
+            re.I,
+        ),
+    ),
+    (
+        "cruelty:mocking-deportation-joke",
+        56,
+        re.compile(
+            r"\b(?:have a nice day|ice\s*[-=]>?\s*nice|swiped right|it's a match|"
+            r"nice city|ice said nah|adios|"
+            r"made in heaven[^.\n]{0,120}made up|"
+            r"buying a spouse doesn't make you a citizen|"
+            r"no dress[^.\n]{0,120}no citizenship[^.\n]{0,120}just deported|"
+            r"avoid the deportation flight|hearts grow as our illegal population shrinks|"
+            r"go home comfortably|homesick\?|free ticket home|"
+            r"(?:one[- ]way|first[- ]class) ticket (?:home|out)|"
+            r"deportation[^.\n]{0,80}(?:christmas|holiday|joke|meme|gift))\b",
+            re.I,
+        ),
+    ),
+    (
+        "cruelty:public-humiliation",
+        48,
+        re.compile(
+            r"\b(?:fake news sob stories|sob stories|media lies|"
+            r"here'?s who (?:they|democrats|the media)(?:'re| are) defending|"
+            r"who they(?:'re| are) defending|criminal illegal alien abandoned his child|"
+            r"walking out in handcuffs|avoid the humiliation|"
+            r"murderers have no home here|worst of the worst|"
+            r"meet (?:the|our) (?:criminal|illegal|deportable))\b",
+            re.I,
+        ),
+    ),
+    (
+        "spectacle:asmr-deportation",
+        60,
+        re.compile(
+            r"\b(?:asmr|sounds? of chains?|ratcheting handcuffs?|footsteps on a tarmac)\b",
+            re.I,
+        ),
+    ),
+    (
+        "spectacle:holiday-or-celebration",
+        20,
+        re.compile(
+            r"\b(?:christmas|merry christmas|cinco de mayo|holiday|celebrat(?:e|ion)|"
+            r"hearts grow|snow-covered|falling snow|thanksgiving|halloween)\b",
+            re.I,
+        ),
+    ),
+    (
+        "spectacle:gamified-deportation",
+        42,
+        re.compile(
+            r"\b(?:tinder|swiped right|it's a match|dating[- ]app|gamif(?:y|ied)|"
+            r"first[- ]class ticket|souvenirs|exit bonus|free flight|"
+            r"free ticket home|free ticket|receive \$?2,600|paid \$?2,600|"
+            r"\$?3,000 for your family)\b",
+            re.I,
+        ),
+    ),
+    (
+        "policy:self-deportation-ad",
+        16,
+        re.compile(
+            r"\b(?:self[- ]deport|cbp home|remigrate|homesick|free ticket home|"
+            r"free ticket|leave now|leave on your own terms|avoid the deportation flight|"
+            r"go home comfortably|i'm ready to leave|download the cbp home app)\b",
+            re.I,
+        ),
+    ),
+    (
+        "aesthetic:ai-synthetic-propaganda",
+        36,
+        re.compile(
+            r"\b(?:ai[- ]generated|synthetic|cgi|pixel[- ]art|photorealistic ai|"
+            r"digitally composited|generated image|ai[- ]illustrated|painted or ai|"
+            r"illustrated poster)\b",
+            re.I,
+        ),
+    ),
+    (
+        "aesthetic:nostalgia-americana",
+        12,
+        re.compile(
+            r"\b(?:wpa|art deco|art nouveau|mid[- ]20th[- ]century|vintage|"
+            r"nostalgic|american dream|america first|american workers|"
+            r"native-born workers|project firewall|statue of liberty(?:'s head|"
+            r"[^.\n]{0,80}(?:misty|background|harbor|sky))|church pew|"
+            r"stained[- ]glass|harold anderson|period tones|steamship|"
+            r"ellis island)\b",
+            re.I,
+        ),
+    ),
+    (
+        "aesthetic:dystopian-surreal",
+        35,
+        re.compile(
+            r"\b(?:mirthnuke|dystopian|surreal|gothic|vhs|glitch|"
+            r"explosion blooming|night-lit earth|trailer[- ]style|war[- ]movie)\b",
+            re.I,
+        ),
+    ),
+    (
+        "editorialized:annotated-news-crime",
+        38,
+        re.compile(
+            r"\b(?:struck through|hand[- ]drawn red line|redline|blatant omission|"
+            r"shame on|red italic|dangerous repeat offenders|red annotation|"
+            r"words? [^.\n]{0,80}"
+            r"struck through)\b",
+            re.I,
+        ),
+    ),
+    (
+        "editorialized:dramatic-crime-composite",
+        35,
+        re.compile(
+            r"\b(?:darkened background photo[^.\n]{0,160}(?:booking|inset|arrested)|"
+            r"inset[^.\n]{0,120}booking photo|red rectangle[^.\n]{0,80}arrested|"
+            r"twice released|hammer in broad daylight|guilty)\b",
+            re.I,
+        ),
+    ),
+    (
+        "form:novel-interface-or-ticket",
+        18,
+        re.compile(
+            r"\b(?:boarding pass|airline ticket|ticket stub|smartphone|phone screen|"
+            r"app screen|profile card|mockups?|marquee[- ]bulb|dating[- ]app)\b",
+            re.I,
+        ),
+    ),
+    (
+        "spectacle:brutality-normalized",
+        24,
+        re.compile(
+            r"\b(?:deportation flight|shackled[^.\n]{0,120}airstairs|"
+            r"airstairs[^.\n]{0,120}chain|handcuffed[^.\n]{0,120}"
+            r"(?:bus|plane|aircraft)|chains?[^.\n]{0,120}(?:music|flight|tarmac))\b",
+            re.I,
+        ),
+    ),
+    (
+        "spectacle:militarized-power-showreel",
+        32,
+        re.compile(
+            r"\b(?:bearcat|bortac|gold hsi badge|black pistol|"
+            r"busy year[^.\n]{0,120}work is just getting started|"
+            r"1,000\+ signed partnerships)\b",
+            re.I,
+        ),
+    ),
+]
+
+
+def now_iso() -> str:
+    return datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def source_commit() -> str:
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=REPO_ROOT,
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+    except Exception:
+        return "unknown"
+
+
+def read_json(path: Path) -> Any:
+    with path.open("r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def load_account_categories() -> dict[str, dict[str, Any]]:
+    if not ACCOUNT_CATEGORIES_PATH.exists():
+        return {}
+    data = read_json(ACCOUNT_CATEGORIES_PATH)
+    return data.get("categories", {}) if isinstance(data, dict) else {}
+
+
+def account_handle_for(tweet: dict[str, Any], row: dict[str, Any] | None = None) -> str:
+    row = row or {}
+    return str(
+        tweet.get("account_handle") or row.get("account_handle") or row.get("handle") or ""
+    ).strip()
+
+
+def account_meta_for(handle: str, account_categories: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    return account_categories.get(handle, {})
+
+
+def is_review_source(handle: str, account_categories: dict[str, dict[str, Any]]) -> bool:
+    category = str(account_meta_for(handle, account_categories).get("category") or "").strip()
+    return category in REVIEW_ACCOUNT_CATEGORIES
+
+
+def load_catalog() -> dict[str, dict[str, Any]]:
+    df = pl.read_parquet(CATALOG_PATH)
+    return {str(row["tweet_id"]): row for row in df.to_dicts()}
+
+
+def csv_rows(path: Path) -> list[dict[str, str]]:
+    if not path.exists():
+        return []
+    with path.open("r", encoding="utf-8", newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def tag_names(values: Any) -> list[str]:
+    out: list[str] = []
+    for entry in values or []:
+        tag = entry.get("tag") if isinstance(entry, dict) else str(entry or "")
+        tag = str(tag or "").strip()
+        if tag and tag not in out:
+            out.append(tag)
+    return out
+
+
+def tag_name_set(values: Any) -> set[str]:
+    return set(tag_names(values))
+
+
+def sidecar_rows(path: Path) -> dict[tuple[str, str], list[dict[str, Any]]]:
+    if not path.exists():
+        return {}
+    df = pl.read_parquet(path)
+    out: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    for row in df.to_dicts():
+        key = (str(row.get("tweet_id") or ""), str(row.get("media_id") or ""))
+        if key[0] and key[1]:
+            out.setdefault(key, []).append(row)
+    return out
+
+
+def load_manual_observations() -> dict[tuple[str, str], str]:
+    if not MANUAL_REVIEW_QUEUE.exists():
+        return {}
+    data = read_json(MANUAL_REVIEW_QUEUE)
+    out: dict[tuple[str, str], str] = {}
+    for item in data.get("items", []) if isinstance(data, dict) else []:
+        if not isinstance(item, dict):
+            continue
+        observation = str(item.get("visual_observation") or "").strip()
+        if not observation:
+            continue
+        key = (str(item.get("tweet_id") or ""), str(item.get("media_id") or ""))
+        if key[0] and key[1]:
+            out[key] = observation
+    return out
+
+
+def text_blob(*parts: Any) -> str:
+    flat: list[str] = []
+    for part in parts:
+        if isinstance(part, list):
+            flat.extend(str(x or "") for x in part)
+        elif isinstance(part, dict):
+            flat.append(json.dumps(part, ensure_ascii=False, sort_keys=True))
+        else:
+            flat.append(str(part or ""))
+    return "\n".join(flat)
+
+
+def item_review_blob(item: dict[str, Any]) -> str:
+    evidence = item.get("evidence") if isinstance(item.get("evidence"), dict) else {}
+    media = item.get("media") if isinstance(item.get("media"), list) else []
+    return text_blob(
+        item.get("tweet_text"),
+        item.get("inclusion_basis"),
+        item.get("review_state"),
+        item.get("creative_forms"),
+        item.get("subjects"),
+        item.get("tags"),
+        evidence,
+        media,
+    )
+
+
+def preference_profile(item: dict[str, Any]) -> dict[str, Any]:
+    blob = item_review_blob(item)
+    categories: list[str] = []
+    reasons: list[str] = []
+    score = 0
+
+    def add(category: str, weight: int, reason: str) -> None:
+        nonlocal score
+        if category not in categories:
+            categories.append(category)
+            score += weight
+        reasons.append(reason)
+
+    for category, weight, pattern in PREFERENCE_RULES:
+        match = pattern.search(blob)
+        if match:
+            add(category, weight, f"{category}: {match.group(0)}")
+
+    tags = set(str(tag) for tag in item.get("tags") or [])
+    forms = set(str(form) for form in item.get("creative_forms") or [])
+    if "media:ai-generated" in tags and "aesthetic:ai-synthetic-propaganda" not in categories:
+        add("aesthetic:ai-synthetic-propaganda", 36, "media:ai-generated tag")
+    if "ai-or-synthetic" in forms and "aesthetic:ai-synthetic-propaganda" not in categories:
+        add("aesthetic:ai-synthetic-propaganda", 32, "ai-or-synthetic form")
+    if {"policy:cbp-home", "action:self-deportation"}.intersection(
+        tags
+    ) and "policy:self-deportation-ad" not in categories:
+        add("policy:self-deportation-ad", 20, "CBP Home/self-deportation tag")
+    if "genre:dystopian" in tags and "aesthetic:dystopian-surreal" not in categories:
+        add("aesthetic:dystopian-surreal", 32, "genre:dystopian tag")
+
+    has_video = any(str((media or {}).get("type")) == "video" for media in item.get("media") or [])
+    if score and has_video and {"video:produced", "review:produced-video"}.intersection(tags):
+        add(
+            "medium:produced-video-with-preference-signal",
+            16,
+            "produced video with preference signal",
+        )
+    if score and REAL_ENFORCEMENT_RE.search(blob):
+        add("subject:enforcement-linked", 5, "enforcement/detainee subject plus preference signal")
+
+    has_strong_signal = bool(set(categories).intersection(STRONG_PREFERENCE_CATEGORIES))
+    has_weak_standalone_signal = bool(
+        set(categories).intersection(WEAK_STANDALONE_PREFERENCE_CATEGORIES)
+    )
+    if has_weak_standalone_signal and not has_strong_signal:
+        score = min(score, PREFERENCE_CANDIDATE_SCORE - 1)
+        reasons.append(
+            "decision-signal penalty: holiday/nostalgia cue without stronger creative enforcement pattern"
+        )
+
+    return {
+        "score": score,
+        "categories": sorted(categories),
+        "reasons": reasons,
+    }
+
+
+def apply_preference_profile(item: dict[str, Any]) -> None:
+    profile = preference_profile(item)
+    score = int(profile["score"])
+    item["preference_score"] = score
+    item["preference_categories"] = profile["categories"]
+    evidence = item.get("evidence")
+    if isinstance(evidence, dict):
+        evidence["preference_reasons"] = profile["reasons"]
+    if item.get("era") == "2016_2020":
+        item["queue"] = "historical_2016_2020"
+        return
+    if score >= PREFERENCE_HIGH_CONFIDENCE_SCORE:
+        item["queue"] = "high_confidence"
+        item["confidence"] = "high"
+    elif score >= PREFERENCE_CANDIDATE_SCORE:
+        item["queue"] = "candidates"
+        if item.get("confidence") == "low":
+            item["confidence"] = "medium"
+
+
+def cruelty_category_count(item: dict[str, Any]) -> int:
+    return sum(
+        1
+        for category in item.get("preference_categories") or []
+        if str(category).startswith("cruelty:")
+    )
+
+
+def low_value_review_exclusion(item: dict[str, Any]) -> str | None:
+    categories = set(str(category) for category in item.get("preference_categories") or [])
+    forms = set(str(form) for form in item.get("creative_forms") or [])
+    has_decisive_creative_signal = bool(categories.intersection(DECISIVE_CREATIVE_CATEGORIES))
+    blob = item_review_blob(item)
+    for reason, pattern in LOW_VALUE_EXCLUSION_RULES:
+        if pattern.search(blob) and not has_decisive_creative_signal:
+            return reason
+    if (
+        "policy:self-deportation-ad" in categories
+        and not has_decisive_creative_signal
+        and forms.issubset({"poster-or-meme", "psa", "text-overlay"})
+    ):
+        return "generic-self-deportation-psa"
+    if (
+        "subject:enforcement-linked" in categories
+        and not has_decisive_creative_signal
+        and forms.issubset({"poster-or-meme", "psa", "text-overlay"})
+    ):
+        return "generic-enforcement-poster"
+    if int(item.get("preference_score") or 0) >= PREFERENCE_CANDIDATE_SCORE:
+        return None
+    return "outside-revealed-preference"
+
+
+def low_value_reason_counts(items: list[dict[str, Any]]) -> dict[str, int]:
+    return dict(
+        sorted(Counter(str(item.get("review_exclusion") or "unknown") for item in items).items())
+    )
+
+
+def item_year(value: str) -> int:
+    try:
+        return int(str(value)[:4])
+    except ValueError:
+        return 0
+
+
+def era_for(posted_at: str) -> str | None:
+    year = item_year(posted_at)
+    if year >= 2025:
+        return "2025_plus"
+    if 2016 <= year <= 2020:
+        return "2016_2020"
+    return None
+
+
+def relative_thumb(path: str | None) -> str | None:
+    if not path:
+        return None
+    clean = str(path).replace("\\", "/")
+    if clean.startswith("data/"):
+        return f"../{clean}"
+    return clean
+
+
+def first_matching(rows: list[dict[str, Any]], statuses: set[str]) -> dict[str, Any] | None:
+    for row in rows:
+        if str(row.get("status") or "") in statuses:
+            return row
+    return rows[0] if rows else None
+
+
+def intish(value: Any) -> int:
+    try:
+        return int(float(value or 0))
+    except (TypeError, ValueError):
+        return 0
+
+
+def status_counts(rows: list[dict[str, Any]]) -> dict[str, int]:
+    return dict(Counter(str(row.get("status") or "missing") for row in rows))
+
+
+def joined_text(rows: list[dict[str, Any]]) -> str:
+    parts = [str(row.get("text") or "") for row in rows if str(row.get("text") or "").strip()]
+    return "\n\n".join(parts)
+
+
+PLACEHOLDER_DESCRIPTION_PHRASES = (
+    "lacks a usable local frame",
+    "lacks a usable visual",
+    "no usable local frame",
+    "no usable visual",
+    "missing-visual placeholder",
+    "only the tweet text",
+    "not enough visual information",
+    "unusable visual",
+)
+
+
+def description_is_genuine(text: str) -> bool:
+    clean = " ".join(str(text or "").lower().split())
+    if not clean:
+        return False
+    return not any(phrase in clean for phrase in PLACEHOLDER_DESCRIPTION_PHRASES)
+
+
+def choose_description(
+    key: tuple[str, str],
+    *,
+    vision_rows: list[dict[str, Any]],
+    manual_observations: dict[tuple[str, str], str],
+    curated_description: str,
+) -> tuple[bool, str, str]:
+    """Return (has_genuine_description, source, full_text)."""
+    first_placeholder = ""
+    for row in vision_rows:
+        if str(row.get("model") or "") == VISION_REVIEW_MODEL:
+            desc = str(row.get("summary_text") or row.get("description") or "")
+            if description_is_genuine(desc):
+                return True, "opus-vision-review", desc
+            first_placeholder = first_placeholder or desc
+    curated = curated_description.strip()
+    if description_is_genuine(curated):
+        return True, "curated-review", curated
+    if curated:
+        first_placeholder = first_placeholder or curated
+    if key in manual_observations:
+        manual = manual_observations[key]
+        if description_is_genuine(manual):
+            return True, "manual-visual-observation", manual
+        first_placeholder = first_placeholder or manual
+    for row in vision_rows:
+        if HAS_ALT_TAG in tag_name_set(row.get("tags")):
+            desc = str(row.get("summary_text") or row.get("description") or "")
+            first_placeholder = first_placeholder or desc
+    for row in vision_rows:
+        desc = str(row.get("summary_text") or row.get("description") or "")
+        if desc.strip():
+            first_placeholder = first_placeholder or desc
+    if first_placeholder.strip():
+        return False, "metadata-placeholder", first_placeholder
+    return False, "missing", ""
+
+
+def media_ready_entry(
+    tweet: dict[str, Any],
+    media: dict[str, Any],
+    *,
+    indexes: dict[str, dict[tuple[str, str], list[dict[str, Any]]]],
+    manual_observations: dict[tuple[str, str], str],
+    curated_description: str,
+) -> dict[str, Any]:
+    tweet_id = str(tweet.get("tweet_id") or "")
+    media_id = str(media.get("media_id") or "")
+    media_type = str(media.get("media_type") or "")
+    key = (tweet_id, media_id)
+
+    archive_url = str(media.get("release_asset_url") or "")
+    checks: dict[str, bool | str | int | None] = {}
+    blockers: list[str] = []
+
+    def require(name: str, ok: bool, blocker: str) -> None:
+        checks[name] = ok
+        if not ok:
+            blockers.append(blocker)
+
+    require("archived", bool(archive_url), "missing archived media asset")
+
+    vision_rows = indexes["vision"].get(key, [])
+    has_desc, desc_source, description = choose_description(
+        key,
+        vision_rows=vision_rows,
+        manual_observations=manual_observations,
+        curated_description=curated_description,
+    )
+    require("description", has_desc, "missing genuine visual description")
+
+    ocr_rows = indexes["ocr"].get(key, [])
+    complete_ocr = [
+        row for row in ocr_rows if str(row.get("status") or "") in OCR_COMPLETE_STATUSES
+    ]
+    ocr_text = joined_text(complete_ocr)
+
+    thumb: str | None = None
+    keyframe_row: dict[str, Any] | None = None
+    audio_row: dict[str, Any] | None = None
+    transcript_row: dict[str, Any] | None = None
+
+    if media_type in VIDEO_TYPES:
+        keyframe_rows = indexes["keyframes"].get(key, [])
+        keyframe_row = first_matching(keyframe_rows, KEYFRAME_COMPLETE_STATUSES)
+        frame_count = intish((keyframe_row or {}).get("frame_count"))
+        keyframes_ok = bool(keyframe_row and keyframe_row.get("status") == "ok" and frame_count > 0)
+        require("keyframes", keyframes_ok, "missing extracted video keyframes")
+        checks["keyframe_count"] = frame_count
+        thumb = relative_thumb(str((keyframe_row or {}).get("thumbnail_path") or ""))
+        require("thumbnail", bool(thumb), "missing video thumbnail")
+        require(
+            "ocr",
+            bool(keyframes_ok and len(complete_ocr) >= frame_count),
+            "missing complete OCR for extracted keyframes",
+        )
+
+        audio_rows = indexes["audio"].get(key, [])
+        audio_row = first_matching(audio_rows, AUDIO_COMPLETE_STATUSES)
+        audio_status = str((audio_row or {}).get("status") or "")
+        require("audio_analysis", audio_status in AUDIO_COMPLETE_STATUSES, "missing audio analysis")
+        has_audio = audio_status == "ok" and intish((audio_row or {}).get("audio_stream_count")) > 0
+        checks["has_audio"] = has_audio
+
+        transcript_rows = indexes["transcripts"].get(key, [])
+        transcript_row = first_matching(transcript_rows, TRANSCRIPT_COMPLETE_STATUSES)
+        transcript_status = str((transcript_row or {}).get("status") or "")
+        transcript_ok = (not has_audio) or transcript_status in TRANSCRIPT_COMPLETE_STATUSES
+        require("transcript", transcript_ok, "missing transcript for video with audio")
+    elif media_type == "photo":
+        thumb_rows = indexes["photo_thumbnails"].get(key, [])
+        thumb_row = first_matching(thumb_rows, THUMB_COMPLETE_STATUSES)
+        thumb = relative_thumb(str((thumb_row or {}).get("thumbnail_path") or ""))
+        require("thumbnail", bool(thumb), "missing photo thumbnail")
+        require("ocr", bool(complete_ocr), "missing photo OCR")
+    else:
+        require("visual_media_type", False, f"unsupported media type {media_type}")
+
+    transcript_text = str((transcript_row or {}).get("text") or "")
+    audio_tags = tag_names((audio_row or {}).get("tags"))
+    ready = not blockers
+    return {
+        "media_id": media_id,
+        "type": "video" if media_type in VIDEO_TYPES else media_type,
+        "archive_url": archive_url or None,
+        "original_url": media.get("original_url"),
+        "thumbnail_url": thumb,
+        "sha256": media.get("sha256"),
+        "duration_sec": media.get("duration_sec"),
+        "playable": bool(archive_url),
+        "readiness": {
+            "ready": ready,
+            "blockers": sorted(set(blockers)),
+            "checks": checks,
+        },
+        "analysis": {
+            "description": {
+                "source": desc_source,
+                "text": description,
+                "sidecar_statuses": status_counts(vision_rows),
+            },
+            "ocr": {
+                "status_counts": status_counts(ocr_rows),
+                "complete_row_count": len(complete_ocr),
+                "text": ocr_text,
+            },
+            "keyframes": {
+                "status": (keyframe_row or {}).get("status"),
+                "frame_count": intish((keyframe_row or {}).get("frame_count")),
+            },
+            "audio": {
+                "status": (audio_row or {}).get("status"),
+                "audio_stream_count": intish((audio_row or {}).get("audio_stream_count")),
+                "duration_sec": (audio_row or {}).get("audio_duration_sec"),
+                "tags": audio_tags,
+            },
+            "transcript": {
+                "status": (transcript_row or {}).get("status"),
+                "segment_count": intish((transcript_row or {}).get("segment_count")),
+                "text": transcript_text,
+            },
+        },
+    }
+
+
+def media_entries(
+    tweet: dict[str, Any],
+    *,
+    preferred_media_id: str | None,
+    media_types: set[str],
+    indexes: dict[str, dict[tuple[str, str], list[dict[str, Any]]]],
+    manual_observations: dict[tuple[str, str], str],
+    curated_description: str,
+) -> list[dict[str, Any]]:
+    entries: list[dict[str, Any]] = []
+    for media in tweet.get("media") or []:
+        if not isinstance(media, dict):
+            continue
+        media_id = str(media.get("media_id") or "")
+        if preferred_media_id and media_id != preferred_media_id:
+            continue
+        media_type = str(media.get("media_type") or "")
+        if media_type not in media_types:
+            continue
+        entries.append(
+            media_ready_entry(
+                tweet,
+                media,
+                indexes=indexes,
+                manual_observations=manual_observations,
+                curated_description=curated_description,
+            )
+        )
+    return entries
+
+
+def engagement_from(tweet: dict[str, Any], row: dict[str, Any] | None = None) -> dict[str, int]:
+    row = row or {}
+    return {
+        "likes": int(float(row.get("like_count") or tweet.get("like_count") or 0)),
+        "retweets": int(float(row.get("retweet_count") or tweet.get("retweet_count") or 0)),
+        "quotes": int(float(tweet.get("quote_count") or 0)),
+        "views": int(float(tweet.get("view_count") or 0)),
+    }
+
+
+def classify_inclusion(
+    blob: str, *, allow_routine: bool = False
+) -> tuple[str | None, int, list[str]]:
+    creative = bool(WHOLLY_CREATIVE_RE.search(blob))
+    real = bool(REAL_ENFORCEMENT_RE.search(blob))
+    creative_use = bool(CREATIVE_USE_RE.search(blob))
+    cruelty = bool(TEXTUAL_CRUELTY_RE.search(blob))
+    routine = bool(ROUTINE_EXCLUDE_RE.search(blob))
+    plain_infographic = bool(PLAIN_INFOGRAPHIC_RE.search(blob)) and not creative
+    reasons: list[str] = []
+    if creative:
+        reasons.append("wholly creative media signal")
+    if real:
+        reasons.append("real enforcement/detainee subject signal")
+    if creative_use:
+        reasons.append("creative treatment signal")
+    if cruelty and IMMIGRATION_CONTEXT_RE.search(blob):
+        reasons.append("explicit cruelty, taunt, or threat signal")
+    if routine and not allow_routine:
+        reasons.append("routine news/speech signal")
+    if plain_infographic:
+        reasons.append("plain infographic/statistics signal")
+    if cruelty and IMMIGRATION_CONTEXT_RE.search(blob):
+        return "cruelty_taunting_enforcement", 86, reasons
+    if creative and not plain_infographic:
+        return "wholly_creative_media", 90 if not routine else 72, reasons
+    if real and creative_use and not (routine and not allow_routine):
+        return "real_footage_creative_use", 84, reasons
+    return None, 0, reasons
+
+
+def creative_forms(blob: str, tags: list[str]) -> list[str]:
+    forms: list[str] = []
+    checks = [
+        ("animation", r"\b(?:animation|animated|pixel[- ]art|cgi)\b"),
+        ("ai-or-synthetic", r"\b(?:ai-generated|synthetic|cgi)\b"),
+        ("poster-or-meme", r"\b(?:poster|meme|parody|cartoon|illustration|collage)\b"),
+        ("music-led", r"\b(?:set to music|music bed|soundtrack|music-video)\b"),
+        ("montage", r"\b(?:montage|rapid[- ]cut|fast cuts?|b-roll)\b"),
+        ("cinematic", r"\b(?:cinematic|trailer[- ]style|war[- ]movie|color[- ]graded)\b"),
+        ("text-overlay", r"\b(?:title card|text overlay|lower-third|caption|reticle)\b"),
+        ("asmr", r"\basmr\b"),
+    ]
+    for name, pattern in checks:
+        if re.search(pattern, blob, re.I) and name not in forms:
+            forms.append(name)
+    for tag in tags:
+        if tag.startswith("genre:"):
+            forms.append(tag.removeprefix("genre:"))
+        elif tag in {"video:montage", "video:text-overlay", "video:voiceover"}:
+            forms.append(tag.removeprefix("video:"))
+    return sorted(set(forms))
+
+
+def subjects(blob: str) -> list[str]:
+    checks = [
+        ("detainees", r"\b(?:detainee|detainees|handcuff|shackle|chain|custody|detention)\b"),
+        ("deportation", r"\b(?:deport|removal flight|ice air|self-deport)\b"),
+        ("arrest-or-raid", r"\b(?:arrest|raid|operation|hsi|ero|border patrol|cbp)\b"),
+        ("immigration-language", r"\b(?:illegal alien|migrant|cbp home)\b"),
+    ]
+    return [label for label, pattern in checks if re.search(pattern, blob, re.I)]
+
+
+def aggregate_readiness(media: list[dict[str, Any]]) -> dict[str, Any]:
+    blockers: list[str] = []
+    for entry in media:
+        blockers.extend(entry["readiness"]["blockers"])
+    return {
+        "ready": bool(media) and not blockers,
+        "blockers": sorted(set(blockers)),
+        "media_count": len(media),
+    }
+
+
+def queue_for_item(*, era: str | None, review_state: str, score: int, confidence: str) -> str:
+    if era == "2016_2020":
+        return "historical_2016_2020"
+    if review_state == "curated" or confidence == "high" or score >= 90:
+        return "high_confidence"
+    return "candidates"
+
+
+def base_item(
+    tweet: dict[str, Any],
+    *,
+    source_rows: list[str],
+    review_state: str,
+    confidence: str,
+    basis: str,
+    score: int,
+    reason_list: list[str],
+    evidence_summary: str,
+    notable_text: str,
+    account_categories: dict[str, dict[str, Any]],
+    media: list[dict[str, Any]],
+    tags: list[str],
+    row: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    handle = account_handle_for(tweet, row)
+    account_meta = account_meta_for(handle, account_categories)
+    blob = text_blob(
+        evidence_summary, notable_text, tweet.get("text_resolved") or tweet.get("text"), tags
+    )
+    era = era_for(str(tweet.get("posted_at") or (row or {}).get("posted_at") or ""))
+    readiness = aggregate_readiness(media)
+    queue = queue_for_item(era=era, review_state=review_state, score=score, confidence=confidence)
+    return {
+        "id": f"{tweet.get('tweet_id') or (row or {}).get('tweet_id')}:{','.join(m['media_id'] for m in media)}",
+        "tweet_id": str(tweet.get("tweet_id") or (row or {}).get("tweet_id") or ""),
+        "posted_at": str(tweet.get("posted_at") or (row or {}).get("posted_at") or ""),
+        "era": era,
+        "queue": queue,
+        "account": {
+            "handle": handle,
+            "category": account_meta.get("category"),
+            "label": account_meta.get("label") or handle,
+        },
+        "tweet_url": str(tweet.get("tweet_url") or (row or {}).get("tweet_url") or ""),
+        "tweet_text": str(tweet.get("text_resolved") or tweet.get("text") or ""),
+        "review_state": review_state,
+        "inclusion_basis": basis,
+        "confidence": confidence,
+        "score": score,
+        "creative_forms": creative_forms(blob, tags),
+        "subjects": subjects(blob),
+        "tags": sorted(set(tags)),
+        "media": media,
+        "readiness": readiness,
+        "evidence": {
+            "summary": evidence_summary,
+            "notable_text": notable_text,
+            "reasons": reason_list,
+            "source_sidecars": source_rows,
+        },
+        "engagement": engagement_from(tweet, row),
+    }
+
+
+def build_from_curated(
+    *,
+    catalog: dict[str, dict[str, Any]],
+    account_categories: dict[str, dict[str, Any]],
+    indexes: dict[str, dict[tuple[str, str], list[dict[str, Any]]]],
+    manual_observations: dict[tuple[str, str], str],
+) -> dict[str, dict[str, Any]]:
+    out: dict[str, dict[str, Any]] = {}
+    for row in csv_rows(PRODUCED_CSV):
+        tweet = catalog.get(str(row.get("tweet_id") or ""))
+        if not tweet:
+            continue
+        if not is_review_source(account_handle_for(tweet, row), account_categories):
+            continue
+        curated_description = text_blob(
+            row.get("summary"), row.get("script"), row.get("notable_text")
+        )
+        blob = text_blob(row, tweet.get("text_resolved") or tweet.get("text"), tweet.get("tags"))
+        basis, score, reasons = classify_inclusion(blob, allow_routine=True)
+        if not basis:
+            continue
+        tags = tag_names(tweet.get("tags")) + [t for t in row.get("genre_tags", "").split(";") if t]
+        media = media_entries(
+            tweet,
+            preferred_media_id=None,
+            media_types=VIDEO_TYPES,
+            indexes=indexes,
+            manual_observations=manual_observations,
+            curated_description=curated_description,
+        )
+        if not media:
+            continue
+        out[str(row["tweet_id"])] = base_item(
+            tweet,
+            source_rows=["produced_videos.csv"],
+            review_state="curated",
+            confidence="high",
+            basis=basis,
+            score=score + 20,
+            reason_list=reasons,
+            evidence_summary=row.get("summary", ""),
+            notable_text=row.get("notable_text", ""),
+            account_categories=account_categories,
+            media=media,
+            tags=tags,
+            row=row,
+        )
+    for row in csv_rows(MEME_CSV):
+        tweet = catalog.get(str(row.get("tweet_id") or ""))
+        if not tweet:
+            continue
+        if not is_review_source(account_handle_for(tweet, row), account_categories):
+            continue
+        curated_description = str(row.get("description") or "")
+        blob = text_blob(row, tweet.get("text_resolved") or tweet.get("text"), tweet.get("tags"))
+        basis, score, reasons = classify_inclusion(blob, allow_routine=True)
+        if not basis:
+            continue
+        media_id = str(row.get("media_id") or "")
+        tags = tag_names(tweet.get("tags"))
+        media = media_entries(
+            tweet,
+            preferred_media_id=media_id,
+            media_types=VISUAL_TYPES,
+            indexes=indexes,
+            manual_observations=manual_observations,
+            curated_description=curated_description,
+        )
+        if not media:
+            continue
+        out[f"{row['tweet_id']}:{media_id}"] = base_item(
+            tweet,
+            source_rows=["meme_images.csv"],
+            review_state="curated",
+            confidence="high",
+            basis=basis,
+            score=score + 15,
+            reason_list=reasons,
+            evidence_summary=row.get("description", ""),
+            notable_text=row.get("notable_text", ""),
+            account_categories=account_categories,
+            media=media,
+            tags=tags,
+            row={"account_handle": row.get("handle"), **row},
+        )
+    return out
+
+
+def build_computed_candidates(
+    *,
+    catalog: dict[str, dict[str, Any]],
+    account_categories: dict[str, dict[str, Any]],
+    indexes: dict[str, dict[tuple[str, str], list[dict[str, Any]]]],
+    manual_observations: dict[tuple[str, str], str],
+    existing_tweet_ids: set[str],
+) -> dict[str, dict[str, Any]]:
+    out: dict[str, dict[str, Any]] = {}
+    for tweet_id, tweet in catalog.items():
+        era = era_for(str(tweet.get("posted_at") or ""))
+        if era not in {"2025_plus", "2016_2020"} or tweet_id in existing_tweet_ids:
+            continue
+        if not is_review_source(account_handle_for(tweet), account_categories):
+            continue
+        tags = tag_names(tweet.get("tags"))
+        descriptions = []
+        for insight in tweet.get("media_insights") or []:
+            if isinstance(insight, dict):
+                descriptions.append(
+                    str(insight.get("summary_text") or insight.get("description") or "")
+                )
+        blob = text_blob(tweet.get("text_resolved") or tweet.get("text"), descriptions, tags)
+        basis, score, reasons = classify_inclusion(blob, allow_routine=False)
+        if not basis:
+            continue
+        media = media_entries(
+            tweet,
+            preferred_media_id=None,
+            media_types=VISUAL_TYPES,
+            indexes=indexes,
+            manual_observations=manual_observations,
+            curated_description="",
+        )
+        if not media:
+            continue
+        confidence = "medium" if era == "2025_plus" else "low"
+        if era == "2016_2020":
+            reasons.append("older-era candidate; annotations are thinner")
+        out[tweet_id] = base_item(
+            tweet,
+            source_rows=["catalog.parquet", "media_insights", "tags"],
+            review_state="candidate" if era == "2025_plus" else "needs_review",
+            confidence=confidence,
+            basis=basis,
+            score=score,
+            reason_list=reasons,
+            evidence_summary="\n\n".join(descriptions),
+            notable_text="",
+            account_categories=account_categories,
+            media=media,
+            tags=tags,
+        )
+    return out
+
+
+def sort_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return sorted(
+        items,
+        key=lambda item: (
+            item.get("era") != "2025_plus",
+            item.get("queue") != "high_confidence",
+            -cruelty_category_count(item),
+            -int(item.get("preference_score") or 0),
+            -int(item.get("score") or 0),
+            -int((item.get("engagement") or {}).get("likes") or 0)
+            - int((item.get("engagement") or {}).get("retweets") or 0),
+            item.get("posted_at") or "",
+        ),
+    )
+
+
+def queue_payload(
+    queue: str,
+    items: list[dict[str, Any]],
+    *,
+    commit: str,
+    source_total: int,
+    not_ready_total: int,
+    excluded_total: int,
+    excluded_reasons: dict[str, int],
+) -> dict[str, Any]:
+    counts = Counter(item["inclusion_basis"] for item in items)
+    accounts = Counter(item["account"]["handle"] for item in items)
+    preference_categories = Counter(
+        category for item in items for category in item.get("preference_categories") or []
+    )
+    return {
+        "metadata": {
+            "queue": queue,
+            "generated_at": now_iso(),
+            "source_commit": commit,
+            "item_count": len(items),
+            "source_candidate_count": source_total,
+            "not_ready_count": not_ready_total,
+            "review_scope_excluded_count": excluded_total,
+            "review_scope_excluded_reasons": excluded_reasons,
+            "all_items_ready": all(item["readiness"]["ready"] for item in items),
+            "basis_counts": dict(sorted(counts.items())),
+            "preference_category_counts": dict(preference_categories.most_common()),
+            "top_accounts": dict(accounts.most_common(12)),
+            "review_actions": ["yes", "no", "superlike", "back"],
+            "inclusion_rules": [
+                "limit swipe queues to core, government, and official-source accounts",
+                "prioritize aestheticized enforcement propaganda: personalized cruelty, deportation threats, taunting jokes, holiday/gamified treatment, ASMR, self-deportation ads, AI/nostalgic propaganda, and editorialized crime/news composites",
+                "de-prioritize generic posters, routine PR montages, statistics cards, plain news screenshots, plain Trump-post screenshots, and bare apprehension notices",
+            ],
+            "readiness_rules": [
+                "archived GitHub release media required",
+                "photos require thumbnail, OCR, and genuine visual description",
+                "videos require keyframes, keyframe OCR, audio analysis, thumbnail, and genuine visual description",
+                "videos with audio require a completed transcript or completed empty-transcript result",
+                "captured alt text alone does not satisfy the visual-description requirement",
+            ],
+        },
+        "items": items,
+    }
+
+
+def not_ready_payload(items: list[dict[str, Any]], *, commit: str) -> dict[str, Any]:
+    blockers: Counter[str] = Counter()
+    for item in items:
+        blockers.update(item["readiness"]["blockers"])
+    return {
+        "metadata": {
+            "queue": "not_ready",
+            "generated_at": now_iso(),
+            "source_commit": commit,
+            "item_count": len(items),
+            "blocker_counts": dict(blockers.most_common()),
+        },
+        "items": items,
+    }
+
+
+def write_json_stable(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    prior: dict[str, Any] | None = None
+    if path.exists():
+        try:
+            loaded = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            loaded = None
+        if isinstance(loaded, dict):
+            prior = loaded
+    if prior is not None:
+        old_meta_raw = prior.get("metadata")
+        old_meta: dict[str, Any] = old_meta_raw if isinstance(old_meta_raw, dict) else {}
+        new_meta_raw = payload.get("metadata")
+        new_meta: dict[str, Any] = new_meta_raw if isinstance(new_meta_raw, dict) else {}
+        comparable_prior = dict(prior)
+        comparable_prior["metadata"] = {**old_meta, "generated_at": None}
+        comparable_new = dict(payload)
+        comparable_new["metadata"] = {**new_meta, "generated_at": None}
+        if comparable_prior == comparable_new:
+            new_meta["generated_at"] = old_meta.get("generated_at") or new_meta.get("generated_at")
+            payload["metadata"] = new_meta
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def write_text_stable(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists() and path.read_text(encoding="utf-8") == text:
+        return
+    path.write_text(text, encoding="utf-8")
+
+
+def item_media_ids(item: dict[str, Any], *, blocker: str | None = None) -> list[str]:
+    out: list[str] = []
+    for media in item.get("media") or []:
+        if not isinstance(media, dict):
+            continue
+        if blocker and blocker not in (media.get("readiness") or {}).get("blockers", []):
+            continue
+        media_id = str(media.get("media_id") or "").strip()
+        if media_id:
+            out.append(media_id)
+    return out
+
+
+def id_file_text(ids: set[str]) -> str:
+    return "".join(f"{value}\n" for value in sorted(ids))
+
+
+def blocker_media_ids(item: dict[str, Any], blockers: set[str]) -> list[str]:
+    out: list[str] = []
+    for media in item.get("media") or []:
+        if not isinstance(media, dict):
+            continue
+        media_blockers = set((media.get("readiness") or {}).get("blockers", []))
+        if not blockers.intersection(media_blockers):
+            continue
+        media_id = str(media.get("media_id") or "").strip()
+        if media_id:
+            out.append(media_id)
+    return out
+
+
+def write_blocker_queue(
+    items: list[dict[str, Any]],
+    *,
+    blockers: set[str],
+    tweet_path: Path,
+    media_path: Path,
+) -> None:
+    matched = [item for item in items if blockers.intersection(item["readiness"]["blockers"])]
+    tweet_ids = {str(item.get("tweet_id") or "").strip() for item in matched}
+    tweet_ids.discard("")
+    media_ids = {media_id for item in matched for media_id in blocker_media_ids(item, blockers)}
+    write_text_stable(tweet_path, id_file_text(tweet_ids))
+    write_text_stable(media_path, id_file_text(media_ids))
+
+
+def write_not_ready_queues(items: list[dict[str, Any]]) -> None:
+    tweet_ids = {str(item.get("tweet_id") or "").strip() for item in items}
+    tweet_ids.discard("")
+    media_ids = {media_id for item in items for media_id in item_media_ids(item)}
+
+    write_text_stable(CREATIVE_NOT_READY_TWEET_IDS, id_file_text(tweet_ids))
+    write_text_stable(CREATIVE_NOT_READY_MEDIA_IDS, id_file_text(media_ids))
+
+    queue_defs = [
+        (
+            {"missing archived media asset"},
+            CREATIVE_MISSING_ARCHIVE_TWEET_IDS,
+            CREATIVE_MISSING_ARCHIVE_MEDIA_IDS,
+        ),
+        (
+            {
+                "missing extracted video keyframes",
+                "missing video thumbnail",
+                "missing complete OCR for extracted keyframes",
+            },
+            CREATIVE_MISSING_VIDEO_FRAMES_TWEET_IDS,
+            CREATIVE_MISSING_VIDEO_FRAMES_MEDIA_IDS,
+        ),
+        (
+            {"missing complete OCR for extracted keyframes", "missing photo OCR"},
+            CREATIVE_MISSING_OCR_TWEET_IDS,
+            CREATIVE_MISSING_OCR_MEDIA_IDS,
+        ),
+        (
+            {"missing photo thumbnail"},
+            CREATIVE_MISSING_PHOTO_THUMBNAIL_TWEET_IDS,
+            CREATIVE_MISSING_PHOTO_THUMBNAIL_MEDIA_IDS,
+        ),
+        (
+            {"missing audio analysis"},
+            CREATIVE_MISSING_AUDIO_TWEET_IDS,
+            CREATIVE_MISSING_AUDIO_MEDIA_IDS,
+        ),
+        (
+            {"missing transcript for video with audio"},
+            CREATIVE_MISSING_TRANSCRIPT_TWEET_IDS,
+            CREATIVE_MISSING_TRANSCRIPT_MEDIA_IDS,
+        ),
+        (
+            {"missing genuine visual description"},
+            CREATIVE_MISSING_DESCRIPTION_TWEET_IDS,
+            CREATIVE_MISSING_DESCRIPTION_MEDIA_IDS,
+        ),
+    ]
+    for blockers, tweet_path, media_path in queue_defs:
+        write_blocker_queue(
+            items,
+            blockers=blockers,
+            tweet_path=tweet_path,
+            media_path=media_path,
+        )
+
+
+def load_indexes() -> dict[str, dict[tuple[str, str], list[dict[str, Any]]]]:
+    return {
+        "vision": sidecar_rows(TAGS_DIR / "media_vision.parquet"),
+        "ocr": sidecar_rows(TAGS_DIR / "image_ocr.parquet"),
+        "keyframes": sidecar_rows(TAGS_DIR / "keyframes.parquet"),
+        "audio": sidecar_rows(TAGS_DIR / "audio_music.parquet"),
+        "transcripts": sidecar_rows(TAGS_DIR / "transcripts.parquet"),
+        "photo_thumbnails": sidecar_rows(TAGS_DIR / "photo_thumbnails.parquet"),
+    }
+
+
+def main() -> int:
+    catalog = load_catalog()
+    account_categories = load_account_categories()
+    indexes = load_indexes()
+    manual_observations = load_manual_observations()
+    curated = build_from_curated(
+        catalog=catalog,
+        account_categories=account_categories,
+        indexes=indexes,
+        manual_observations=manual_observations,
+    )
+    computed = build_computed_candidates(
+        catalog=catalog,
+        account_categories=account_categories,
+        indexes=indexes,
+        manual_observations=manual_observations,
+        existing_tweet_ids={key.split(":", 1)[0] for key in curated},
+    )
+    all_items = list(curated.values()) + list(computed.values())
+    for item in all_items:
+        apply_preference_profile(item)
+    all_items = sort_items(all_items)
+    review_items: list[dict[str, Any]] = []
+    excluded_items: list[dict[str, Any]] = []
+    for item in all_items:
+        exclusion = low_value_review_exclusion(item)
+        if exclusion:
+            item["review_exclusion"] = exclusion
+            excluded_items.append(item)
+        else:
+            review_items.append(item)
+    excluded_reasons = low_value_reason_counts(excluded_items)
+    ready_items = [item for item in review_items if item["readiness"]["ready"]]
+    not_ready = [item for item in review_items if not item["readiness"]["ready"]]
+    high_confidence = [item for item in ready_items if item["queue"] == "high_confidence"]
+    candidates = [item for item in ready_items if item["queue"] == "candidates"]
+    historical = [item for item in ready_items if item["queue"] == "historical_2016_2020"]
+    current_ready = [item for item in ready_items if item.get("era") == "2025_plus"]
+
+    commit = source_commit()
+    review_datasets = {
+        "high_confidence": ("creative-high-confidence.json", high_confidence),
+        "candidates": ("creative-candidates.json", candidates),
+        "historical_2016_2020": ("creative-2016-2020.json", historical),
+    }
+    all_datasets = {
+        **review_datasets,
+        "2025_plus": ("creative-2025-plus.json", current_ready),
+    }
+    for queue, (filename, items) in all_datasets.items():
+        write_json_stable(
+            OUT_DIR / filename,
+            queue_payload(
+                queue,
+                items,
+                commit=commit,
+                source_total=len(all_items),
+                not_ready_total=len(not_ready),
+                excluded_total=len(excluded_items),
+                excluded_reasons=excluded_reasons,
+            ),
+        )
+    write_json_stable(
+        OUT_DIR / "creative-not-ready.json", not_ready_payload(not_ready, commit=commit)
+    )
+    write_json_stable(
+        OUT_DIR / "manifest.json",
+        {
+            "metadata": {
+                "generated_at": now_iso(),
+                "source_commit": commit,
+                "source_candidate_count": len(all_items),
+                "review_scope_candidate_count": len(review_items),
+                "ready_count": len(ready_items),
+                "not_ready_count": len(not_ready),
+                "review_scope_excluded_count": len(excluded_items),
+                "review_scope_excluded_reasons": excluded_reasons,
+                "preference_profile": {
+                    "high_confidence_score": PREFERENCE_HIGH_CONFIDENCE_SCORE,
+                    "candidate_score": PREFERENCE_CANDIDATE_SCORE,
+                    "principles": [
+                        "review queues are limited to core, government, and official-source accounts",
+                        "personalized cruelty, deportation threats, surveillance taunts, or public humiliation",
+                        "state enforcement rendered as spectacle, entertainment, ad, lifestyle, holiday, or joke",
+                        "surreal, AI-generated, nostalgic, dystopian, or otherwise aestheticized propaganda",
+                        "self-deportation / CBP Home incentives and app-like gamification",
+                        "editorialized crime or news composites, including redline/omission graphics and dramatic arrest composites",
+                    ],
+                },
+                "datasets": {
+                    queue: filename for queue, (filename, _items) in review_datasets.items()
+                },
+                "additional_datasets": {
+                    "2025_plus": "creative-2025-plus.json",
+                },
+                "not_ready": "creative-not-ready.json",
+                "default_queue": "high_confidence",
+                "review_actions": ["yes", "no", "superlike", "back"],
+            }
+        },
+    )
+    write_not_ready_queues(not_ready)
+    LOG.info(
+        "creative site data built",
+        high_confidence=len(high_confidence),
+        candidates=len(candidates),
+        historical=len(historical),
+        excluded=len(excluded_items),
+        not_ready=len(not_ready),
+        output=str(OUT_DIR),
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

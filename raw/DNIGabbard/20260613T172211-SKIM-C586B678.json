@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T172155Z-824f437e-DNIGabbard",
+  "account_handle": "DNIGabbard",
+  "captured_at": "2026-06-13T17:22:11.090Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AGenFlynn%20since%3A2025-01-01%20until%3A2025-04-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1905756922332258711",
+      "account_handle": "DNIGabbard",
+      "account_id": "1889464666885382144",
+      "posted_at": "2025-03-28T23:00:32.000Z",
+      "first_captured_at": "2026-06-13T17:22:02.179Z",
+      "last_seen_at": "2026-06-13T17:22:02.179Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DNIGabbard/status/1905756922332258711",
+      "tweet_type": "original",
+      "conversation_id": "1905756922332258711",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Per @POTUS directive, I have revoked former President Joe Biden’s security clearance, and revoked clearances and access to classified information for Kamala Harris, Hillary Clinton, Liz Cheney, Adam Kinzinger, Fiona Hill, and Alexander Vindman.",
+      "text_resolved": "Per @POTUS directive, I have revoked former President Joe Biden’s security clearance, and revoked clearances and access to classified information for Kamala Harris, Hillary Clinton, Liz Cheney, Adam Kinzinger, Fiona Hill, and Alexander Vindman.",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "POTUS"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [],
+      "like_count": 171669,
+      "retweet_count": 24195,
+      "reply_count": 20650,
+      "quote_count": 3838,
+      "view_count": 13854737,
+      "bookmark_count": 3764,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:22:02.179Z",
+          "likes": 171669,
+          "retweets": 24195,
+          "replies": 20650,
+          "quotes": 3838,
+          "views": 13854737,
+          "bookmarks": 3764
+        }
+      ],
+      "author": {
+        "display_name": "DNI Tulsi Gabbard",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1899191036724822016/M8E0L_te_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Serving as the 8th Director of National Intelligence under the leadership of @POTUS Trump.",
+        "location": null,
+        "url": "https://t.co/P2l7PPi346",
+        "followers_count": 811086,
+        "friends_count": 36,
+        "statuses_count": 475,
+        "account_created_at": "2025-02-12T00:02:23.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T172155Z-824f437e",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T172155Z-824f437e.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T172155Z-824f437e.jsonl",
+    "source_handle": "GenFlynn"
+  }
+}

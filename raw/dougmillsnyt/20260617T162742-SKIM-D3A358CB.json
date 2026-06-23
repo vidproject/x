@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T162724Z-6f67d90f-dougmillsnyt",
+  "account_handle": "dougmillsnyt",
+  "captured_at": "2026-06-17T16:27:42.675Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APressSec%20since%3A2025-03-12%20until%3A2025-03-19%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1901627537026949550",
+      "account_handle": "dougmillsnyt",
+      "account_id": "87761810",
+      "posted_at": "2025-03-17T13:31:50.000Z",
+      "first_captured_at": "2026-06-17T16:27:28.961Z",
+      "last_seen_at": "2026-06-17T16:27:28.961Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/dougmillsnyt/status/1901627537026949550",
+      "tweet_type": "original",
+      "conversation_id": "1901627537026949550",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Ultimate Fighting Champion Conor McGregor speaks with reporters at the White House with White House Press Secretary Karoline Leavitt. @PressSec @TheNotoriousMMA https://t.co/OrVrEII4xF",
+      "text_resolved": "Ultimate Fighting Champion Conor McGregor speaks with reporters at the White House with White House Press Secretary Karoline Leavitt. @PressSec @TheNotoriousMMA https://t.co/OrVrEII4xF",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "PressSec",
+        "TheNotoriousMMA"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1901627493389672448",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GmPwIUaboAANwtp.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 4096,
+          "height": 2860,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1040,
+      "retweet_count": 139,
+      "reply_count": 188,
+      "quote_count": 57,
+      "view_count": 1512954,
+      "bookmark_count": 45,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T16:27:28.961Z",
+          "likes": 1040,
+          "retweets": 139,
+          "replies": 188,
+          "quotes": 57,
+          "views": 1512954,
+          "bookmarks": 45
+        }
+      ],
+      "author": {
+        "display_name": "Doug Mills",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1388914843/mills_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": null,
+        "location": "Washington, DC",
+        "url": null,
+        "followers_count": 94045,
+        "friends_count": 1193,
+        "statuses_count": 3132,
+        "account_created_at": "2009-11-05T19:25:12.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T162724Z-6f67d90f",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T162724Z-6f67d90f.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T162724Z-6f67d90f.jsonl",
+    "source_handle": "PressSec"
+  }
+}

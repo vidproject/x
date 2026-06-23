@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T232102Z-cb6a1ad0-HSISanFrancisco",
+  "account_handle": "HSISanFrancisco",
+  "captured_at": "2026-06-17T23:21:26.932Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AHSI_HQ%20since%3A2025-01-01%20until%3A2025-01-08%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1876328297354903623",
+      "account_handle": "HSISanFrancisco",
+      "account_id": "1304102096254447618",
+      "posted_at": "2025-01-06T18:01:41.000Z",
+      "first_captured_at": "2026-06-17T23:21:15.566Z",
+      "last_seen_at": "2026-06-17T23:21:15.566Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/HSISanFrancisco/status/1876328297354903623",
+      "tweet_type": "original",
+      "conversation_id": "1876328297354903623",
+      "reply_to_tweet_id": null,
+      "reply_to_account": "HSISanFrancisco",
+      "reply_to_account_id": "1304102096254447618",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@HSISanFrancisco Locks Away MS-13 Gang Members for Over 20 Years in Prison for Racketeering Conspiracy, Conspiracy to Commit Murder: https://t.co/QAHGGzXRzU",
+      "text_resolved": "@HSISanFrancisco Locks Away MS-13 Gang Members for Over 20 Years in Prison for Racketeering Conspiracy, Conspiracy to Commit Murder: https://www.dhs.gov/hsi/news/2025/01/06/ms-13-gang-members-sentenced-over-20-years-prison-racketeering-conspiracy",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "HSISanFrancisco"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/QAHGGzXRzU",
+          "expanded": "https://www.dhs.gov/hsi/news/2025/01/06/ms-13-gang-members-sentenced-over-20-years-prison-racketeering-conspiracy",
+          "display": "dhs.gov/hsi/news/2025/…"
+        }
+      ],
+      "card": null,
+      "media": [],
+      "like_count": 7,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 1,
+      "view_count": 4657,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T23:21:15.566Z",
+          "likes": 7,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 1,
+          "views": 4657,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "HSI NorCal",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1689716278334775296/rLUZ6LSr_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Protects America through criminal investigations to preserve national security and public safety.\nPrivacy: https://t.co/ws91KxeeKO",
+        "location": "Northern California",
+        "url": "https://t.co/W3jyTv0QBW",
+        "followers_count": 2296,
+        "friends_count": 552,
+        "statuses_count": 536,
+        "account_created_at": "2020-09-10T16:59:07.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T232102Z-cb6a1ad0",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T232102Z-cb6a1ad0.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T232102Z-cb6a1ad0.jsonl",
+    "source_handle": "HSI_HQ"
+  }
+}

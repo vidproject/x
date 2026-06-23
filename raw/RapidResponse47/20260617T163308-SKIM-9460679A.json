@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T163249Z-a0d68129-RapidResponse47",
+  "account_handle": "RapidResponse47",
+  "captured_at": "2026-06-17T16:33:08.568Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APressSec%20since%3A2025-11-05%20until%3A2025-11-12%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1987916390607495623",
+      "account_handle": "RapidResponse47",
+      "account_id": "1881451105454002176",
+      "posted_at": "2025-11-10T16:12:55.000Z",
+      "first_captured_at": "2026-06-17T16:32:56.847Z",
+      "last_seen_at": "2026-06-17T16:32:56.847Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/RapidResponse47/status/1987916390607495623",
+      "tweet_type": "original",
+      "conversation_id": "1987916390607495623",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": ".@SecVetAffairs: Honoring Veterans by Better Serving Them\nhttps://t.co/NmIyCVljlA",
+      "text_resolved": ".@SecVetAffairs: Honoring Veterans by Better Serving Them\nhttps://dcjournal.com/honoring-veterans-by-better-serving-them",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "SecVetAffairs"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/NmIyCVljlA",
+          "expanded": "https://dcjournal.com/honoring-veterans-by-better-serving-them",
+          "display": "dcjournal.com/honoring-veter…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/NmIyCVljlA",
+        "vendor_url": "dcjournal.com",
+        "title": "Honoring Veterans by Better Serving Them – DC Journal - InsideSources",
+        "description": "This Veterans Day, Americans will come together to honor the service, sacrifice and heroism of the millions of brave patriots who have served our nation.",
+        "image_url": "https://pbs.twimg.com/card_img/2065794064235028480/0mXoYCpt?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 840,
+      "retweet_count": 152,
+      "reply_count": 34,
+      "quote_count": 4,
+      "view_count": 163651,
+      "bookmark_count": 10,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T16:32:56.847Z",
+          "likes": 840,
+          "retweets": 152,
+          "replies": 34,
+          "quotes": 4,
+          "views": 163651,
+          "bookmarks": 10
+        }
+      ],
+      "author": {
+        "display_name": "Rapid Response 47",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2062578057836142592/IYAK6I1p_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": "Official White House Rapid Response account. Supporting @POTUS's America First agenda and holding the Fake News accountable. MAGA!",
+        "location": "🇺🇸🇺🇸🇺🇸",
+        "url": "https://t.co/8qhSUMpp7C",
+        "followers_count": 1963470,
+        "friends_count": 74,
+        "statuses_count": 27882,
+        "account_created_at": "2025-01-20T21:18:05.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T163249Z-a0d68129",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T163249Z-a0d68129.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T163249Z-a0d68129.jsonl",
+    "source_handle": "PressSec"
+  }
+}

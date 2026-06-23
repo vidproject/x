@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T170730Z-c64a25f5-DEANEWORLEANS",
+  "account_handle": "DEANEWORLEANS",
+  "captured_at": "2026-06-13T17:07:47.243Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AERONewOrleans%20since%3A2025-07-01%20until%3A2025-10-01%20filter%3Aquote",
+  "tweets": [
+    {
+      "tweet_id": "1945217607222628762",
+      "account_handle": "DEANEWORLEANS",
+      "account_id": "785992481418600448",
+      "posted_at": "2025-07-15T20:23:12.000Z",
+      "first_captured_at": "2026-06-13T17:07:37.995Z",
+      "last_seen_at": "2026-06-13T17:07:37.995Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DEANEWORLEANS/status/1945217607222628762",
+      "tweet_type": "original",
+      "conversation_id": "1945217607222628762",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "NEW: @USAO_MDAL announces 14 federal search warrants were executed this morning across six #Alabama counties. \n\nSEIZED: Distribution amounts of methamphetamine, powdered cocaine, crack cocaine, pills &amp; at least 20 guns.\n\nARRESTED: Nearly 50 persons in the country illegally. https://t.co/82gP3wg1aB",
+      "text_resolved": "NEW: @USAO_MDAL announces 14 federal search warrants were executed this morning across six #Alabama counties. \n\nSEIZED: Distribution amounts of methamphetamine, powdered cocaine, crack cocaine, pills &amp; at least 20 guns.\n\nARRESTED: Nearly 50 persons in the country illegally. https://t.co/82gP3wg1aB",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "Alabama"
+      ],
+      "mentions": [
+        "USAO_MDAL"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1945217369049120768",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Gv7M5BUXwAA86CA.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1907,
+          "height": 1014,
+          "alt_text": "a man speaks at a podium on the left and on the right, a man in handcuffs is being escorted by law enforcement into the back of a vehicle",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 9,
+      "retweet_count": 9,
+      "reply_count": 1,
+      "quote_count": 1,
+      "view_count": 3084,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:07:37.995Z",
+          "likes": 9,
+          "retweets": 9,
+          "replies": 1,
+          "quotes": 1,
+          "views": 3084,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "DEANewOrleans",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1887540525860843523/Vx7PyhTL_normal.png",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Official Drug Enforcement Administration - New Orleans Division account. Submit a tip: https://t.co/sXe8uH9UNv. Privacy policy: https://t.co/Y5chjW0tHy",
+        "location": "New Orleans (LA, AL, AR, MS)",
+        "url": "https://t.co/zifzTMsP0p",
+        "followers_count": 2837,
+        "friends_count": 175,
+        "statuses_count": 2970,
+        "account_created_at": "2016-10-11T23:56:25.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-quote-tweeters-pass3-20260613T170730Z-c64a25f5",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T170730Z-c64a25f5.summary.json",
+    "jsonl": ".skim/raw-core-quote-tweeters-pass3/x-com-search-20260613T170730Z-c64a25f5.jsonl",
+    "source_handle": "ERONewOrleans"
+  }
+}

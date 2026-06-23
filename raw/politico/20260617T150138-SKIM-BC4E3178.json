@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T145923Z-b3be37fe-politico",
+  "account_handle": "politico",
+  "captured_at": "2026-06-17T15:01:38.057Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AICEgov%20since%3A2026-05-06%20until%3A2026-05-13%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2054256114901152143",
+      "account_handle": "politico",
+      "account_id": "9300262",
+      "posted_at": "2026-05-12T17:43:18.000Z",
+      "first_captured_at": "2026-06-17T14:59:27.808Z",
+      "last_seen_at": "2026-06-17T14:59:27.808Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/politico/status/2054256114901152143",
+      "tweet_type": "original",
+      "conversation_id": "2054256114901152143",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "ICE: More than 10,000 potential fraud cases related to student job program https://t.co/bl6HL9rQw0",
+      "text_resolved": "ICE: More than 10,000 potential fraud cases related to student job program http://dlvr.it/TSVqwM",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://dlvrit.com/\" rel=\"nofollow\">dlvr.it</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/bl6HL9rQw0",
+          "expanded": "http://dlvr.it/TSVqwM",
+          "display": "dlvr.it/TSVqwM"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/bl6HL9rQw0",
+        "vendor_url": "politico.com",
+        "title": "ICE: More than 10,000 potential fraud cases related to student job program",
+        "description": "Immigration hard-liners have argued that companies have used the Optional Practical Training to avoid hiring higher-paid American college graduates.",
+        "image_url": null
+      },
+      "media": [],
+      "like_count": 184,
+      "retweet_count": 44,
+      "reply_count": 22,
+      "quote_count": 13,
+      "view_count": 92043,
+      "bookmark_count": 17,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:59:27.808Z",
+          "likes": 184,
+          "retweets": 44,
+          "replies": 22,
+          "quotes": 13,
+          "views": 92043,
+          "bookmarks": 17
+        }
+      ],
+      "author": {
+        "display_name": "POLITICO",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1821642506800353280/xIpx4wIO_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Politics. Policy. Power.\nCongress nerds 👉 https://t.co/vg62iVhofj\nLongreads and opinions 👉 @politicomag\nGot a news tip? 👉 https://t.co/JBzpu588Hy",
+        "location": "Washington, D.C.",
+        "url": "https://t.co/scdhnZnzfN",
+        "followers_count": 4927187,
+        "friends_count": 1262,
+        "statuses_count": 412259,
+        "account_created_at": "2007-10-08T00:29:38.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T145923Z-b3be37fe",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T145923Z-b3be37fe.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T145923Z-b3be37fe.jsonl",
+    "source_handle": "ICEgov"
+  }
+}

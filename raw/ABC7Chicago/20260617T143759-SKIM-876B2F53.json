@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143741Z-4e5466fc-ABC7Chicago",
+  "account_handle": "ABC7Chicago",
+  "captured_at": "2026-06-17T14:37:59.722Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-03-04%20until%3A2026-03-11%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2030765581268308178",
+      "account_handle": "ABC7Chicago",
+      "account_id": "17028405",
+      "posted_at": "2026-03-08T22:00:19.000Z",
+      "first_captured_at": "2026-06-17T14:37:49.536Z",
+      "last_seen_at": "2026-06-17T14:37:49.536Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/ABC7Chicago/status/2030765581268308178",
+      "tweet_type": "original",
+      "conversation_id": "2030765581268308178",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Sunny Naqvi, a 28-year-old U.S. citizen, is now back at home after spending about 43 hours in Department of Homeland Security custody. https://t.co/9Fm6BgzCYr https://t.co/lTqwe4BPOc",
+      "text_resolved": "Sunny Naqvi, a 28-year-old U.S. citizen, is now back at home after spending about 43 hours in Department of Homeland Security custody. https://bit.ly/4ro9Prk https://t.co/lTqwe4BPOc",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://trueanthem.com\" rel=\"nofollow\">trueanthem_pro2</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/9Fm6BgzCYr",
+          "expanded": "https://bit.ly/4ro9Prk",
+          "display": "bit.ly/4ro9Prk"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2030765577694806016",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HC66iJCXAAAFMBn.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1080,
+          "height": 1350,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1005,
+      "retweet_count": 320,
+      "reply_count": 1919,
+      "quote_count": 122,
+      "view_count": 2680049,
+      "bookmark_count": 135,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T14:37:49.536Z",
+          "likes": 1005,
+          "retweets": 320,
+          "replies": 1919,
+          "quotes": 122,
+          "views": 2680049,
+          "bookmarks": 135
+        }
+      ],
+      "author": {
+        "display_name": "ABC 7 Chicago",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1945961992746938369/Zleb1Fu-_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Business",
+        "description": "Follow ABC 7 Chicago news for Chicago news, weather, sports and the most experienced Chicago news team",
+        "location": "Chicago, Illinois",
+        "url": "https://t.co/L22loXfH4F",
+        "followers_count": 838926,
+        "friends_count": 826,
+        "statuses_count": 431986,
+        "account_created_at": "2008-10-28T20:47:08.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T143741Z-4e5466fc",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143741Z-4e5466fc.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T143741Z-4e5466fc.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

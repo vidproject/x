@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170632Z-b5414df1-EDNYnews",
+  "account_handle": "EDNYnews",
+  "captured_at": "2026-06-13T17:06:48.232Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AOFOEAC%20since%3A2020-10-01%20until%3A2020-11-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1318222677677690880",
+      "account_handle": "EDNYnews",
+      "account_id": "1534801405",
+      "posted_at": "2020-10-19T16:09:12.000Z",
+      "first_captured_at": "2026-06-13T17:06:40.097Z",
+      "last_seen_at": "2026-06-13T17:06:40.097Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/EDNYnews/status/1318222677677690880",
+      "tweet_type": "original",
+      "conversation_id": "1318222677677690880",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Ten Individuals Charged in $50 Million Russian Smuggling Scheme  https://t.co/wW2trKu72p (Announced with @NewYorkFBI @StateDept @DHSgov @CommerceGov @CBP and @NYPDnews)",
+      "text_resolved": "Ten Individuals Charged in $50 Million Russian Smuggling Scheme  https://www.justice.gov/usao-edny/pr/ten-individuals-charged-50-million-russian-smuggling-scheme (Announced with @NewYorkFBI @StateDept @DHSgov @CommerceGov @CBP and @NYPDnews)",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "NewYorkFBI",
+        "StateDept",
+        "DHSgov",
+        "CommerceGov",
+        "CBP",
+        "NYPDnews"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/wW2trKu72p",
+          "expanded": "https://www.justice.gov/usao-edny/pr/ten-individuals-charged-50-million-russian-smuggling-scheme",
+          "display": "justice.gov/usao-edny/pr/t…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/wW2trKu72p",
+        "vendor_url": "justice.gov",
+        "title": "Ten Individuals Charged in $50 Million Russian Smuggling Scheme",
+        "description": "An indictment and a complaint were unsealed today in federal court in Brooklyn variously charging 10 defendants with transportation of stolen property, failure to file export information, illegal...",
+        "image_url": "https://pbs.twimg.com/card_img/2063154527763603456/bEqSQh9B?format=png&name=orig"
+      },
+      "media": [],
+      "like_count": 501,
+      "retweet_count": 338,
+      "reply_count": 54,
+      "quote_count": 48,
+      "view_count": null,
+      "bookmark_count": 14,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-13T17:06:40.097Z",
+          "likes": 501,
+          "retweets": 338,
+          "replies": 54,
+          "quotes": 48,
+          "views": null,
+          "bookmarks": 14
+        }
+      ],
+      "author": {
+        "display_name": "US Attorney EDNY",
+        "avatar_url": "https://pbs.twimg.com/profile_images/378800000022213954/9efe6a31e6a2a04cfb933a7e2899de63_normal.jpeg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official account of the US Attorney's Office for the Eastern District of New York. We don't collect comments or messages. Learn more https://t.co/9JOoDOh3or…",
+        "location": "Brooklyn, New York",
+        "url": "https://t.co/gMcG3Tz2Tl",
+        "followers_count": 27286,
+        "friends_count": 317,
+        "statuses_count": 7509,
+        "account_created_at": "2013-06-20T19:29:06.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-core-through-20250101-pass1g-20260613T170632Z-b5414df1",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-core-through-20250101-pass1g-only/x-com-search-20260613T170632Z-b5414df1.summary.json",
+    "jsonl": ".skim/raw-core-through-20250101-pass1/x-com-search-20260613T170632Z-b5414df1.jsonl",
+    "source_handle": "OFOEAC"
+  }
+}

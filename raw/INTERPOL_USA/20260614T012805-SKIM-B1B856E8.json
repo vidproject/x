@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T012747Z-930589c6-INTERPOL_USA",
+  "account_handle": "INTERPOL_USA",
+  "captured_at": "2026-06-14T01:28:05.168Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AEROSaintPaul%20since%3A2024-01-01%20until%3A2025-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1814316171090444496",
+      "account_handle": "INTERPOL_USA",
+      "account_id": "738027664808759296",
+      "posted_at": "2024-07-19T15:07:38.000Z",
+      "first_captured_at": "2026-06-14T01:27:55.091Z",
+      "last_seen_at": "2026-06-14T01:27:55.091Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/INTERPOL_USA/status/1814316171090444496",
+      "tweet_type": "original",
+      "conversation_id": "1814316171090444496",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "🚨 #CaptureOfTheMonth! 🚨 \n\nWorking with @USMarshalsGov and @ICEgov, we found a dangerous international fugitive living in Tennessee who was wanted for sexual offenses against a minor. Three children were rescued at his residence. \n\nRead more: https://t.co/rCPP15qlUd https://t.co/esu8eAeDZb",
+      "text_resolved": "🚨 #CaptureOfTheMonth! 🚨 \n\nWorking with @USMarshalsGov and @ICEgov, we found a dangerous international fugitive living in Tennessee who was wanted for sexual offenses against a minor. Three children were rescued at his residence. \n\nRead more: https://www.justice.gov/interpol-washington/pr/usms-ice-and-interpol-washington-collaboration-leads-apprehension-fugitive https://t.co/esu8eAeDZb",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "CaptureOfTheMonth"
+      ],
+      "mentions": [
+        "USMarshalsGov",
+        "ICEgov"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/rCPP15qlUd",
+          "expanded": "https://www.justice.gov/interpol-washington/pr/usms-ice-and-interpol-washington-collaboration-leads-apprehension-fugitive",
+          "display": "justice.gov/interpol-washi…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1814313250546171904",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/GS28SeoWwAAYdYs.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1080,
+          "height": 1080,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 26,
+      "retweet_count": 11,
+      "reply_count": 16,
+      "quote_count": 6,
+      "view_count": 15780,
+      "bookmark_count": 3,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T01:27:55.091Z",
+          "likes": 26,
+          "retweets": 11,
+          "replies": 16,
+          "quotes": 6,
+          "views": 15780,
+          "bookmarks": 3
+        }
+      ],
+      "author": {
+        "display_name": "INTERPOL Washington",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1427280965278306308/R5xogwb4_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "Official INTERPOL Washington, USNCB, Twitter account. We follow DOJ’s privacy policy for third party websites: https://t.co/ZxOmLFDHvP…",
+        "location": "Washington, DC",
+        "url": "https://t.co/nOjQCTziL8",
+        "followers_count": 18748,
+        "friends_count": 1632,
+        "statuses_count": 2577,
+        "account_created_at": "2016-06-01T15:21:21.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T012747Z-930589c6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T012747Z-930589c6.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T012747Z-930589c6.jsonl",
+    "source_handle": "EROSaintPaul"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T202052Z-170467ca-USCGSoutheast",
+  "account_handle": "USCGSoutheast",
+  "captured_at": "2026-06-17T20:21:07.412Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBPAMO%20since%3A2025-03-19%20until%3A2025-03-26%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1904298155392311805",
+      "account_handle": "USCGSoutheast",
+      "account_id": "84382289",
+      "posted_at": "2025-03-24T22:23:55.000Z",
+      "first_captured_at": "2026-06-17T20:20:56.487Z",
+      "last_seen_at": "2026-06-17T20:20:56.487Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USCGSoutheast/status/1904298155392311805",
+      "tweet_type": "original",
+      "conversation_id": "1904298155392311805",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "#DrugBust A @USCG Station Fort Lauderdale LE crew seized over 550 lbs of cocaine, worth an est. $6.3M, from a suspected drug smuggling venture near @PortEverglades, Sat. \n\nThe suspected smuggler &amp; his vessel were taken into custody.\n@browardsheriff \n🔗 https://t.co/ZrnCOxzEJR https://t.co/jhN55gdSMs",
+      "text_resolved": "#DrugBust A @USCG Station Fort Lauderdale LE crew seized over 550 lbs of cocaine, worth an est. $6.3M, from a suspected drug smuggling venture near @PortEverglades, Sat. \n\nThe suspected smuggler &amp; his vessel were taken into custody.\n@browardsheriff \n🔗 https://tinyurl.com/49965n74 https://t.co/jhN55gdSMs",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "DrugBust"
+      ],
+      "mentions": [
+        "USCG",
+        "PortEverglades",
+        "browardsheriff"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/ZrnCOxzEJR",
+          "expanded": "https://tinyurl.com/49965n74",
+          "display": "tinyurl.com/49965n74"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1904298150611021824",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Gm1tFB2acAABWxf.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1016,
+          "height": 836,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        },
+        {
+          "media_id": "3_1904298150602702848",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Gm1tFB0bgAATl3M.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1170,
+          "height": 895,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 41,
+      "retweet_count": 9,
+      "reply_count": 1,
+      "quote_count": 2,
+      "view_count": 5868,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T20:20:56.487Z",
+          "likes": 41,
+          "retweets": 9,
+          "replies": 1,
+          "quotes": 2,
+          "views": 5868,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Coast Guard Southeast",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1946257516708364288/2EhLMA3L_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Official news from @USCG Southeast District.. HQ📍Miami",
+        "location": "Miami, FL",
+        "url": "https://t.co/G4P3I7MuGq",
+        "followers_count": 65328,
+        "friends_count": 991,
+        "statuses_count": 10736,
+        "account_created_at": "2009-10-22T17:58:42.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T202052Z-170467ca",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T202052Z-170467ca.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T202052Z-170467ca.jsonl",
+    "source_handle": "CBPAMO"
+  }
+}

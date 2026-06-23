@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-detail-20260611-20260611T143938Z-0dc9e4ef-EpicRageMedia",
+  "account_handle": "EpicRageMedia",
+  "captured_at": "2026-06-11T14:39:54.543Z",
+  "endpoint": "TweetDetail,TweetResultByRestId",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/DHSgov/status/2047108312831762934",
+  "tweets": [
+    {
+      "tweet_id": "2047119519987249316",
+      "account_handle": "EpicRageMedia",
+      "account_id": "1889881906596159491",
+      "posted_at": "2026-04-23T01:05:01.000Z",
+      "first_captured_at": "2026-06-11T14:39:44.914Z",
+      "last_seen_at": "2026-06-11T14:39:44.914Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/EpicRageMedia/status/2047119519987249316",
+      "tweet_type": "reply",
+      "conversation_id": "2047108312831762934",
+      "reply_to_tweet_id": "2047108312831762934",
+      "reply_to_account": "DHSgov",
+      "reply_to_account_id": "15647676",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@DHSgov https://t.co/5papNd7HA9",
+      "text_resolved": "@DHSgov https://t.co/5papNd7HA9",
+      "lang": "qme",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DHSgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2047119516472315904",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HGjUWqgaEAANEYV.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 917,
+          "height": 1177,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 4,
+      "retweet_count": 0,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 229,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T14:39:44.914Z",
+          "likes": 4,
+          "retweets": 0,
+          "replies": 0,
+          "quotes": 0,
+          "views": 229,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "Dr. D 🇺🇸",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2060506710956204032/0BqhlJjL_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": "Utah Utes Football.                                                   America = God, Guns, Freedom                              Mass deportations no exceptions!",
+        "location": "United States",
+        "url": null,
+        "followers_count": 332,
+        "friends_count": 283,
+        "statuses_count": 1600,
+        "account_created_at": "2025-02-13T03:39:03.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-detail-20260611-20260611T143938Z-0dc9e4ef",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-2047108312831762934-20260611T143938Z-0dc9e4ef.summary.json",
+    "jsonl": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-2047108312831762934-20260611T143938Z-0dc9e4ef.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

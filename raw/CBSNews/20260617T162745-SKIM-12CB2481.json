@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T162729Z-7aa6c48a-CBSNews",
+  "account_handle": "CBSNews",
+  "captured_at": "2026-06-17T16:27:45.456Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3APressSec%20since%3A2025-03-19%20until%3A2025-03-26%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1903208588384010528",
+      "account_handle": "CBSNews",
+      "account_id": "15012486",
+      "posted_at": "2025-03-21T22:14:22.000Z",
+      "first_captured_at": "2026-06-17T16:27:33.731Z",
+      "last_seen_at": "2026-06-17T16:27:33.731Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBSNews/status/1903208588384010528",
+      "tweet_type": "original",
+      "conversation_id": "1903208588384010528",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "BREAKING: The Trump administration is revoking the legal status of 530,000 Cubans, Haitians, Nicaraguans and Venezuelans. https://t.co/WZbCSv0U7b",
+      "text_resolved": "BREAKING: The Trump administration is revoking the legal status of 530,000 Cubans, Haitians, Nicaraguans and Venezuelans. https://cbsn.ws/4hzFYau",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.sprinklr.com\" rel=\"nofollow\">Sprinklr</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/WZbCSv0U7b",
+          "expanded": "https://cbsn.ws/4hzFYau",
+          "display": "cbsn.ws/4hzFYau"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/WZbCSv0U7b",
+        "vendor_url": "cbsnews.com",
+        "title": "U.S. to revoke legal status of more than a half-million migrants, urges them to self deport",
+        "description": "A total of 532,000 migrants from from Cuba, Haiti, Nicaragua and Venezuela entered the U.S. under the CHNV policy.",
+        "image_url": "https://pbs.twimg.com/card_img/2065799971425669120/JxTJF6SN?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 23818,
+      "retweet_count": 5984,
+      "reply_count": 4472,
+      "quote_count": 3554,
+      "view_count": 30056001,
+      "bookmark_count": 3525,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-17T16:27:33.731Z",
+          "likes": 23818,
+          "retweets": 5984,
+          "replies": 4472,
+          "quotes": 3554,
+          "views": 30056001,
+          "bookmarks": 3525
+        }
+      ],
+      "author": {
+        "display_name": "CBS News",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1617634745348661249/6YmPYpNd_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": "Your source for original reporting and trusted news.\n\n📺 CBS | Streaming on the CBS News app | @ParamountPlus",
+        "location": "New York, NY",
+        "url": "https://t.co/WWGo4zp06H",
+        "followers_count": 9546169,
+        "friends_count": 633,
+        "statuses_count": 467083,
+        "account_created_at": "2008-06-05T00:54:31.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "core-2025-full-weekly-20260617T142103Z-checkpoint-20260618T155231Z-20260617T162729Z-7aa6c48a",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T162729Z-7aa6c48a.summary.json",
+    "jsonl": ".skim/push-snapshot-20260618T155231Z/x-com-search-20260617T162729Z-7aa6c48a.jsonl",
+    "source_handle": "PressSec"
+  }
+}

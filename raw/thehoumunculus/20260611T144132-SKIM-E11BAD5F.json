@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-detail-20260611-20260611T144115Z-93287ef6-thehoumunculus",
+  "account_handle": "thehoumunculus",
+  "captured_at": "2026-06-11T14:41:32.111Z",
+  "endpoint": "TweetDetail,TweetResultByRestId",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/DHSgov/status/1981375156632133692",
+  "tweets": [
+    {
+      "tweet_id": "1981401775757283530",
+      "account_handle": "thehoumunculus",
+      "account_id": "1941959206044602368",
+      "posted_at": "2025-10-23T16:46:10.000Z",
+      "first_captured_at": "2026-06-11T14:41:22.893Z",
+      "last_seen_at": "2026-06-11T14:41:22.893Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/thehoumunculus/status/1981401775757283530",
+      "tweet_type": "reply",
+      "conversation_id": "1981375156632133692",
+      "reply_to_tweet_id": "1981375156632133692",
+      "reply_to_account": "DHSgov",
+      "reply_to_account_id": "15647676",
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "@DHSgov Sorry but you have just won the certificate of media illiteracy. https://t.co/BpC0C8vd1g",
+      "text_resolved": "@DHSgov Sorry but you have just won the certificate of media illiteracy. https://t.co/BpC0C8vd1g",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "DHSgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1981401769344204800",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/G39aaUsXgAAWqzr.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1125,
+          "height": 1443,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1124,
+      "retweet_count": 1,
+      "reply_count": 0,
+      "quote_count": 0,
+      "view_count": 32042,
+      "bookmark_count": 11,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-11T14:41:22.893Z",
+          "likes": 1124,
+          "retweets": 1,
+          "replies": 0,
+          "quotes": 0,
+          "views": 32042,
+          "bookmarks": 11
+        }
+      ],
+      "author": {
+        "display_name": "Based Wong Jawa ꦮꦺꦴꦁꦗꦮ",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2064538519146463232/SAjMjS_a_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": "Taqwah Muslim. Bang Bibisi of the esteemed Surasawa clan on great Java. All other Indonesians are subjects and the Dutch and Papuans must die and submit to BJC",
+        "location": "Jakarta Capital Region",
+        "url": null,
+        "followers_count": 157,
+        "friends_count": 117,
+        "statuses_count": 3969,
+        "account_created_at": "2025-07-06T20:35:48.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-detail-20260611-20260611T144115Z-93287ef6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-1981375156632133692-20260611T144115Z-93287ef6.summary.json",
+    "jsonl": ".skim/raw-detail-refresh-20260611/x-com-dhsgov-status-1981375156632133692-20260611T144115Z-93287ef6.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

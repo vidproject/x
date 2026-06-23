@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "vps-core-expansion-20250101-20260614T004159Z-719d393e-HSI_Nashville",
+  "account_handle": "HSI_Nashville",
+  "captured_at": "2026-06-14T00:42:15.957Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AHSI_HQ%20since%3A2024-01-01%20until%3A2025-01-01%20include%3Anativeretweets",
+  "tweets": [
+    {
+      "tweet_id": "1867296044582588716",
+      "account_handle": "HSI_Nashville",
+      "account_id": "1304055307149160451",
+      "posted_at": "2024-12-12T19:50:44.000Z",
+      "first_captured_at": "2026-06-14T00:42:06.616Z",
+      "last_seen_at": "2026-06-14T00:42:06.616Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/HSI_Nashville/status/1867296044582588716",
+      "tweet_type": "original",
+      "conversation_id": "1867296044582588716",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "BREAKING: A multi-agency investigation with @HSINashville &amp; #HSI Louisville has led to a 4-count indictment charging a Chinese national with conspiracy, wire fraud, smuggling &amp; violation of the Arms Export Control Act in a scheme to send defense-related tech data to China. https://t.co/7ABdQUrvyQ",
+      "text_resolved": "BREAKING: A multi-agency investigation with @HSINashville &amp; #HSI Louisville has led to a 4-count indictment charging a Chinese national with conspiracy, wire fraud, smuggling &amp; violation of the Arms Export Control Act in a scheme to send defense-related tech data to China. https://t.co/7ABdQUrvyQ",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "HSI"
+      ],
+      "mentions": [
+        "HSINashville"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1867295276181909504",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Gen3KQuWcAATJDq.png",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 587,
+          "height": 331,
+          "alt_text": "blob:https://x.com/4ac6603f-428d-42de-9dcb-9783bd565079",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 12,
+      "retweet_count": 8,
+      "reply_count": 1,
+      "quote_count": 1,
+      "view_count": 1899,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-06-14T00:42:06.616Z",
+          "likes": 12,
+          "retweets": 8,
+          "replies": 1,
+          "quotes": 1,
+          "views": 1899,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "HSI Nashville",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1692531392435900416/Rhu_UhX6_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": "HSI Nashville's criminal investigations preserve national security and public safety in TN and KY.",
+        "location": "Nashville, TN",
+        "url": "https://t.co/wwkQi89o4S",
+        "followers_count": 2424,
+        "friends_count": 202,
+        "statuses_count": 576,
+        "account_created_at": "2020-09-10T13:53:11.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "vps-core-expansion-20250101-20260614T004159Z-719d393e",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004159Z-719d393e.summary.json",
+    "jsonl": ".skim/raw-vps-core-expansion-through-20250101-yearly-20260614-allowzero/x-com-search-20260614T004159Z-719d393e.jsonl",
+    "source_handle": "HSI_HQ"
+  }
+}
