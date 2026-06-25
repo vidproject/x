@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T17:04:58Z",
+  "generated_at": "2026-06-25T20:55:52Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -1094,7 +1094,7 @@
       "label": "Federal Emergency Management Agency",
       "category": "government",
       "parquet": "data/fema.parquet",
-      "parquet_bytes": 283097,
+      "parquet_bytes": 285401,
       "row_count": 693,
       "post_count": 657,
       "reply_count": 36,
@@ -2737,7 +2737,7 @@
       "label": "Miscellaneous (replies / quotes / retweets of non-tracked accounts)",
       "category": "public",
       "parquet": "data/_misc.parquet",
-      "parquet_bytes": 3350538,
+      "parquet_bytes": 3365586,
       "row_count": 8554,
       "post_count": 4323,
       "reply_count": 4231,
