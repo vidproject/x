@@ -1,18 +1,18 @@
 {
   "metadata": {
     "queue": "2025_plus",
-    "generated_at": "2026-06-26T13:10:28Z",
-    "source_commit": "b370e9b2",
-    "item_count": 59,
-    "source_candidate_count": 1385,
+    "generated_at": "2026-06-26T16:51:12Z",
+    "source_commit": "cbc25c96",
+    "item_count": 60,
+    "source_candidate_count": 1388,
     "not_ready_count": 149,
-    "review_scope_excluded_count": 1177,
+    "review_scope_excluded_count": 1179,
     "review_scope_excluded_reasons": {
       "apprehension-notice-or-routine-card": 319,
       "generic-enforcement-poster": 13,
       "generic-self-deportation-psa": 14,
       "news-image-or-clip": 63,
-      "outside-revealed-preference": 689,
+      "outside-revealed-preference": 691,
       "routine-static-card": 49,
       "trump-post-screenshot": 30
     },
@@ -20,12 +20,12 @@
     "basis_counts": {
       "cruelty_taunting_enforcement": 4,
       "real_footage_creative_use": 16,
-      "wholly_creative_media": 39
+      "wholly_creative_media": 40
     },
     "preference_category_counts": {
-      "medium:produced-video-with-preference-signal": 55,
+      "medium:produced-video-with-preference-signal": 56,
       "subject:enforcement-linked": 35,
-      "aesthetic:nostalgia-americana": 20,
+      "aesthetic:nostalgia-americana": 21,
       "spectacle:holiday-or-celebration": 12,
       "policy:self-deportation-ad": 12,
       "aesthetic:dystopian-surreal": 9,
@@ -52,7 +52,8 @@
       "Sonderling47": 1,
       "VP": 1,
       "POTUS": 1,
-      "DeptofWar": 1
+      "DeptofWar": 1,
+      "SecretaryLCD": 1
     },
     "review_actions": [
       "yes",
@@ -7900,6 +7901,136 @@
         "retweets": 300,
         "quotes": 0,
         "views": 47185
+      },
+      "preference_score": 28,
+      "preference_categories": [
+        "aesthetic:nostalgia-americana",
+        "medium:produced-video-with-preference-signal"
+      ]
+    },
+    {
+      "id": "2006514121362255918:13_2006513976897609728",
+      "tweet_id": "2006514121362255918",
+      "posted_at": "2025-12-31T23:53:40.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "SecretaryLCD",
+        "category": "officials",
+        "label": "Secretary Lori Chavez-DeRemer"
+      },
+      "tweet_url": "https://x.com/SecretaryLCD/status/2006514121362255918",
+      "tweet_text": "As we close out 2025, I wanted to wish you all a Happy New Year! \n\nWe’re going to continue building on the momentum from this year and keep putting American Workers FIRST in 2026 🇺🇸 https://t.co/l13vHuLFJ0",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "advertisement"
+      ],
+      "subjects": [],
+      "tags": [
+        "audio:has-audio",
+        "genre:advertisement",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "theme:nativism",
+        "topic:economy",
+        "topic:immigration",
+        "video:medium",
+        "video:news-clip",
+        "video:produced"
+      ],
+      "media": [
+        {
+          "media_id": "13_2006513976897609728",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-_misc/13_2006513976897609728.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/fe74d419ed9752e1f49db7043bff650ff7f2e68ac76b5e4fad7c3286901dd0a9.jpg",
+          "sha256": "fe74d419ed9752e1f49db7043bff650ff7f2e68ac76b5e4fad7c3286901dd0a9",
+          "duration_sec": 74.908,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 8,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "The keyframes show a woman wearing glasses and a white blazer speaking at a podium or lectern. U.S. flags and a blue flag are visible behind her.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 13
+              },
+              "complete_row_count": 13,
+              "text": ""
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 8
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 74.977234,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 12,
+              "text": "Hi everyone, Secretary Laurie Chavez-Duremer here. As we close out 2025, I want to take a moment to wish you a happy new year. It has been an honor to serve all of you. America's workers and retirees, during my first year, as your Secretary of Labor. I'm grateful for your dedication and hard work. At the Department of Labor, we wasted no time fulfilling President Trump's goal of putting the American worker first. We fought to keep workers safe on the job, secure their hard earned benefits, expand access to training and employment opportunities, and so much more. For example, we registered almost 300,000 new apprentices, launched compliance assistant programs to help employers succeed and unveiled project firewall to ensure companies don't displace US workers with cheaper foreign labor. As we look ahead to 2026, the Department of Labor will build on this momentum and continue to put American workers first. On behalf of everyone here at the Department of Labor, I'm happy new year."
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": true,
+        "blockers": [],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "The keyframes show a woman wearing glasses and a white blazer speaking at a podium or lectern. U.S. flags and a blue flag are visible behind her.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:nostalgia-americana: American Workers",
+          "produced video with preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 441,
+        "retweets": 77,
+        "quotes": 2,
+        "views": 9205
       },
       "preference_score": 28,
       "preference_categories": [
