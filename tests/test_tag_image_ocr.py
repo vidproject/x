@@ -30,6 +30,7 @@ def tmp_corpus(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[Path
     monkeypatch.setattr(
         tag_image_ocr, "MANIFEST_PATH", tmp_path / "data" / "tags" / "manifest.json"
     )
+    monkeypatch.setattr(tag_image_ocr, "load_account_categories", lambda: {"DHSgov": "core"})
     monkeypatch.setattr(tag_image_ocr, "tesseract_available", lambda: True)
     monkeypatch.setattr(tag_image_ocr, "tesseract_version", lambda: OCR_VERSION)
     yield tmp_path
