@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-05T04:49:59Z",
+  "generated_at": "2026-07-05T09:58:41Z",
   "scope": "core-account videos",
   "core_handles": [
     "CBP",
@@ -56,8 +56,8 @@
     "bucket_counts": {
       "genre-experiment": 123,
       "missing-media": 16,
-      "needs-recognition": 570,
-      "ordinary-video": 3972,
+      "needs-recognition": 562,
+      "ordinary-video": 3980,
       "produced-video": 1399
     },
     "top_tags": {
@@ -65,17 +65,17 @@
       "media:video": 6022,
       "audio:has-audio": 5797,
       "media-status:needs-vision": 4985,
-      "topic:immigration": 4827,
+      "topic:immigration": 4828,
       "video:medium": 3563,
       "video:short": 1848,
-      "topic:economy": 1479,
+      "topic:economy": 1480,
       "video:produced": 1336,
       "agency:POTUS": 1129,
       "agency:DHSgov": 1104,
       "media-status:described": 1080,
       "topic:military": 1042,
       "agency:CBP": 1009,
-      "topic:general": 941,
+      "topic:general": 942,
       "agency:ICEgov": 921,
       "policy:border": 881,
       "theme:criminal": 826,
@@ -96,7 +96,7 @@
       "crime:homicide": 356,
       "agency:USCG": 345,
       "crime:murder": 331,
-      "genre:recruitment": 312,
+      "genre:recruitment": 313,
       "slogan:criminal-illegal-alien": 305,
       "genre:psa": 279,
       "crime:narcotics": 264,
@@ -106,7 +106,7 @@
       "theme:martyrdom": 234,
       "crime:weapon": 228,
       "crime:fraud": 228,
-      "crime:trafficking": 204,
+      "crime:trafficking": 205,
       "theme:directive": 200,
       "phrase:immigrant": 196,
       "format:statistics": 181,
@@ -118,7 +118,7 @@
       "describe-with-vision": 16,
       "detect-audio": 2,
       "extract-keyframes": 6,
-      "transcribe-audio": 659
+      "transcribe-audio": 625
     }
   },
   "items": [
@@ -49645,12 +49645,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1280x720; 57.8s; 11.02 MiB; archived; tweet context: High five ✋ You (almost) made it through the week! The #CoastGuard offers high-five worthy careers, bonuses and literal high-fives! Start your Coast Guard journey today: https://ow.ly/azJa50OOez0 #SemperParatus #GoCoastGuard #USA 🇺🇸⚓ https://t.co/6NHBLUeX8M; source URL: https://video.twimg.com/ext_tw_video/1669343189524946949/pu/vid/1280x720/YI21iXdXTWk5uTvB.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1669343189524946949.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 57.8s; 11.02 MiB; archived; tweet context: High five ✋ You (almost) made it through the week! The #CoastGuard offers high-five worthy careers, bonuses and literal high-fives! Start your Coast Guard journey today: https://ow.ly/azJa50OOez0 #SemperParatus #GoCoastGuard #USA 🇺🇸⚓ https://t.co/6NHBLUeX8M; source URL: https://video.twimg.com/ext_tw_video/1669343189524946949/pu/vid/1280x720/YI21iXdXTWk5uTvB.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1669343189524946949.mp4; needs OCR, transcript, or frame-level vision before content cl"
@@ -49739,12 +49737,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1280x720; 41.7s; 7.35 MiB; archived; tweet context: We had a question. 🤔 @USNavy had...\"answers\" 😂 #thursdaythoughts. Did you know the answer to the question?! Sound off in the comments and send us a DM or click here https://ow.ly/WSNv50OZhNw to start your Coast Guard journey 🇺🇸⚓️ 🎥: @USCoastGuardNortheast htt...; source URL: https://video.twimg.com/ext_tw_video/1674417045147115529/pu/vid/1280x720/I7RA4L0N-zt3gGe7.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1674417045147115529.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 41.7s; 7.35 MiB; archived; tweet context: We had a question. 🤔 @USNavy had...\"answers\" 😂 #thursdaythoughts. Did you know the answer to the question?! Sound off in the comments and send us a DM or click here https://ow.ly/WSNv50OZhNw to start your Coast Guard journey 🇺🇸⚓️ 🎥: @USCoastGuardNortheast htt...; source URL: https://video.twimg.com/ext_tw_video/1674417045147115529/pu/vid/1280x720/I7RA4L0N-zt3gGe7.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1674417045147115529.mp4; needs OCR, transcript, or frame-level vision before co"
@@ -49831,12 +49827,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1280x720; 34.8s; 4.84 MiB; archived; tweet context: \"I think things come into our lives to help us get from one place to a better one.\" ―Ted Lasso. The #CoastGuard is a pretty great place to be! Start your journey today to learn more about the USCG: https://ow.ly/IzUV50P4jEa #thursdaythoughts #SemperParatus #U...; source URL: https://video.twimg.com/ext_tw_video/1676938385431117825/pu/vid/1280x720/jBNL9nd487vDVgm2.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1676938385431117825.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 34.8s; 4.84 MiB; archived; tweet context: \"I think things come into our lives to help us get from one place to a better one.\" ―Ted Lasso. The #CoastGuard is a pretty great place to be! Start your journey today to learn more about the USCG: https://ow.ly/IzUV50P4jEa #thursdaythoughts #SemperParatus #U...; source URL: https://video.twimg.com/ext_tw_video/1676938385431117825/pu/vid/1280x720/jBNL9nd487vDVgm2.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1676938385431117825.mp4; needs OCR, transcript, or frame-level vision before co"
@@ -49879,12 +49873,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1280x720; 29.5s; 2.73 MiB; archived; tweet context: With views like these, how can you not be feelin' a career in the Coast Guard 🤩 Start your journey today to learn about career opportunities (and bonuses 💰) in the USCG: https://ow.ly/a6iE50P93UG #SemperParatus #USA 🇺🇸⚓ https://t.co/KvviJd4rqP; source URL: https://video.twimg.com/ext_tw_video/1679112278635888640/pu/vid/1280x720/Sojf8GgeYvMM-Ffo.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1679112278635888640.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 29.5s; 2.73 MiB; archived; tweet context: With views like these, how can you not be feelin' a career in the Coast Guard 🤩 Start your journey today to learn about career opportunities (and bonuses 💰) in the USCG: https://ow.ly/a6iE50P93UG #SemperParatus #USA 🇺🇸⚓ https://t.co/KvviJd4rqP; source URL: https://video.twimg.com/ext_tw_video/1679112278635888640/pu/vid/1280x720/Sojf8GgeYvMM-Ffo.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1679112278635888640.mp4; needs OCR, transcript, or frame-level vision before content claims. With views like these, h"
@@ -49927,12 +49919,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1280x720; 22.4s; 5.32 MiB; archived; tweet context: Marching into an amazing career in the #UnitedStatesCoastGuard 🇺🇸⚓️ Bravo Zulu to graduating class Uniform-203 🎊 Make a career with your friends a reality -- send us a DM to start your Coast Guard journey or visit https://ow.ly/Bwo150Pg7AK #SemperParatus #GoC...; source URL: https://video.twimg.com/ext_tw_video/1681664397914062849/pu/vid/1280x720/aAD6pX8VhAdN0EbM.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1681664397914062849.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 22.4s; 5.32 MiB; archived; tweet context: Marching into an amazing career in the #UnitedStatesCoastGuard 🇺🇸⚓️ Bravo Zulu to graduating class Uniform-203 🎊 Make a career with your friends a reality -- send us a DM to start your Coast Guard journey or visit https://ow.ly/Bwo150Pg7AK #SemperParatus #GoC...; source URL: https://video.twimg.com/ext_tw_video/1681664397914062849/pu/vid/1280x720/aAD6pX8VhAdN0EbM.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1681664397914062849.mp4; needs OCR, transcript, or frame-level vision before co"
@@ -49977,12 +49967,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1280x720; 15.3s; 2.93 MiB; archived; tweet context: Forget the coffee / energy drink, hop into a motor lifeboat for a wake-me-up! Check out this 🎥 of BM2 Melissa Hiat gettin' pitted! Start your Coast Guard journey to serve on one of these and to learn more about career opportunities and bonuses: http://gocoast...; source URL: https://video.twimg.com/ext_tw_video/1683461106608533506/pu/vid/1280x720/H0TPz01AUTa6A7hQ.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1683461106608533506.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 15.3s; 2.93 MiB; archived; tweet context: Forget the coffee / energy drink, hop into a motor lifeboat for a wake-me-up! Check out this 🎥 of BM2 Melissa Hiat gettin' pitted! Start your Coast Guard journey to serve on one of these and to learn more about career opportunities and bonuses: http://gocoast...; source URL: https://video.twimg.com/ext_tw_video/1683461106608533506/pu/vid/1280x720/H0TPz01AUTa6A7hQ.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1683461106608533506.mp4; needs OCR, transcript, or frame-level vision before co"
@@ -50025,12 +50013,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1280x720; 60.2s; 8.79 MiB; archived; tweet context: Study Abroad #CoastGuard style 🌏⚓ USCGC Stratton set sail alongside Japan and Philippine coast guard Vessels, marking the first trilateral at-sea engagements between the three 🇺🇸🇵🇭🇯🇵 See the world with a career in the USCG: https://ow.ly/HGzw50Pp0K5 https://t...; source URL: https://video.twimg.com/ext_tw_video/1686028151938244610/pu/vid/1280x720/OzI1orMK7UuBvnCb.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1686028151938244610.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 60.2s; 8.79 MiB; archived; tweet context: Study Abroad #CoastGuard style 🌏⚓ USCGC Stratton set sail alongside Japan and Philippine coast guard Vessels, marking the first trilateral at-sea engagements between the three 🇺🇸🇵🇭🇯🇵 See the world with a career in the USCG: https://ow.ly/HGzw50Pp0K5 https://t...; source URL: https://video.twimg.com/ext_tw_video/1686028151938244610/pu/vid/1280x720/OzI1orMK7UuBvnCb.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1686028151938244610.mp4; needs OCR, transcript, or frame-level vision before co"
@@ -50126,12 +50112,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1280x720; 30.3s; 3.97 MiB; archived; tweet context: We got some pretty cool tech aboard the new Fast Response Cutters. Check this out... 👀 #DYK you can drive a 154’ foot #CoastGuard cutter with a remote control!? Want to serve on one of these? Send us a DM to learn more about the Coast Guard or visit https://o...; source URL: https://video.twimg.com/ext_tw_video/1689636922946437120/pu/vid/1280x720/ZrF17PV8tMXVcuKX.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1689636922946437120.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 30.3s; 3.97 MiB; archived; tweet context: We got some pretty cool tech aboard the new Fast Response Cutters. Check this out... 👀 #DYK you can drive a 154’ foot #CoastGuard cutter with a remote control!? Want to serve on one of these? Send us a DM to learn more about the Coast Guard or visit https://o...; source URL: https://video.twimg.com/ext_tw_video/1689636922946437120/pu/vid/1280x720/ZrF17PV8tMXVcuKX.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1689636922946437120.mp4; needs OCR, transcript, or frame-level vision before co"
@@ -50221,12 +50205,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1080; 16.5s; 3.73 MiB; archived; tweet context: You can feel sore tomorrow or you can feel sorry tomorrow. The choice is yours #thursdaythoughts http://gocoastguard.com to start your adventure and to learn more about #career opportunities (and bonuses 📷) in the Coast Guard 📷📷️ 🎥: Coast Guard Barque Eagle h...; source URL: https://video.twimg.com/ext_tw_video/1694711495140294656/pu/vid/1280x720/MKjZIcch5J0S-aqx.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1694711495140294656.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 16.5s; 3.73 MiB; archived; tweet context: You can feel sore tomorrow or you can feel sorry tomorrow. The choice is yours #thursdaythoughts http://gocoastguard.com to start your adventure and to learn more about #career opportunities (and bonuses 📷) in the Coast Guard 📷📷️ 🎥: Coast Guard Barque Eagle h...; source URL: https://video.twimg.com/ext_tw_video/1694711495140294656/pu/vid/1280x720/MKjZIcch5J0S-aqx.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1694711495140294656.mp4; needs OCR, transcript, or frame-level vision before "
@@ -50268,12 +50250,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1080; 52.9s; 11.43 MiB; archived; tweet context: Perfection is not attainable, but if we chase perfection we can catch excellence. And excellence is what we do in the U.S. Coast Guard. Visit http://gocoastguard.com to learn more 🇺🇸⚓️️ #thursdaythoughts #SemperParatus #USCG https://t.co/p90cbJo5dT; source URL: https://video.twimg.com/ext_tw_video/1702300438211555330/pu/vid/avc1/1280x720/r8EFieaJryYiIE3N.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1702300438211555330.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 52.9s; 11.43 MiB; archived; tweet context: Perfection is not attainable, but if we chase perfection we can catch excellence. And excellence is what we do in the U.S. Coast Guard. Visit http://gocoastguard.com to learn more 🇺🇸⚓️️ #thursdaythoughts #SemperParatus #USCG https://t.co/p90cbJo5dT; source URL: https://video.twimg.com/ext_tw_video/1702300438211555330/pu/vid/avc1/1280x720/r8EFieaJryYiIE3N.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1702300438211555330.mp4; needs OCR, transcript, or frame-level vision before content claims. "
@@ -50317,12 +50297,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1080; 18.8s; 1.73 MiB; archived; tweet context: Aviation Survival Technicians do it all 📷 📷📷 Interested in learning more? Visit http://gocoastguard.com to learn about career opportunities and bonuses 📷📷️ Video remixed by U.S. Coast Guard Recruiter Boyd Original video: Rescue Swimmer Shop https://t.co/5dSq9...; source URL: https://video.twimg.com/ext_tw_video/1704881260932255744/pu/vid/avc1/1280x720/z4IQo8CJuk6jo-NT.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1704881260932255744.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 18.8s; 1.73 MiB; archived; tweet context: Aviation Survival Technicians do it all 📷 📷📷 Interested in learning more? Visit http://gocoastguard.com to learn about career opportunities and bonuses 📷📷️ Video remixed by U.S. Coast Guard Recruiter Boyd Original video: Rescue Swimmer Shop https://t.co/5dSq9...; source URL: https://video.twimg.com/ext_tw_video/1704881260932255744/pu/vid/avc1/1280x720/z4IQo8CJuk6jo-NT.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1704881260932255744.mp4; needs OCR, transcript, or frame-level visi"
@@ -50364,12 +50342,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1080; 28.7s; 4.20 MiB; archived; tweet context: What would you attempt to do if you knew you couldn't fail? We'll set you up for success. Visit http://gocoastguard.com to learn more 🇺🇸⚓️️ #motivation #SemperParatus #USCG https://t.co/cJUu6ur9en; source URL: https://video.twimg.com/ext_tw_video/1713918297383612416/pu/vid/avc1/1280x720/dwnGJJnU59DeAapn.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1713918297383612416.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 28.7s; 4.20 MiB; archived; tweet context: What would you attempt to do if you knew you couldn't fail? We'll set you up for success. Visit http://gocoastguard.com to learn more 🇺🇸⚓️️ #motivation #SemperParatus #USCG https://t.co/cJUu6ur9en; source URL: https://video.twimg.com/ext_tw_video/1713918297383612416/pu/vid/avc1/1280x720/dwnGJJnU59DeAapn.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1713918297383612416.mp4; needs OCR, transcript, or frame-level vision before content claims. What would you attempt to do if you knew you couldn't fail? We'll set you up for success. Visit http://goc"
@@ -50639,12 +50615,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1080; 18.8s; 1.91 MiB; archived; tweet context: Let's make waves this week 🌊💪 #motivationmonday A little Coast Guard motivation to kick off the week! Visit http://gocoastguard.com to make your move and start your Coast Guard career 🇺🇸⚓️ https://t.co/ZdAsbCH5Vw; source URL: https://video.twimg.com/ext_tw_video/1719013310559846400/pu/vid/avc1/1280x720/BKwEqK_P4eGMbh6q.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1719013310559846400.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 18.8s; 1.91 MiB; archived; tweet context: Let's make waves this week 🌊💪 #motivationmonday A little Coast Guard motivation to kick off the week! Visit http://gocoastguard.com to make your move and start your Coast Guard career 🇺🇸⚓️ https://t.co/ZdAsbCH5Vw; source URL: https://video.twimg.com/ext_tw_video/1719013310559846400/pu/vid/avc1/1280x720/BKwEqK_P4eGMbh6q.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1719013310559846400.mp4; needs OCR, transcript, or frame-level vision before content claims. Let's make waves this week 🌊💪 #motivationmonday A little Coast Guard motiv"
@@ -50972,12 +50946,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1080; 14.3s; 1.47 MiB; archived; tweet context: No better way to start a week than with a #shoutout from @NFL legend @AaronRodgers12 🏈 Want to learn more about a career in the U.S. Coast Guard? Visit http://gocoastguard.com 🇺🇸⚓️ #SemperParatus #USCG #USA 🎥 U.S. Coast Guard Heartland https://t.co/Jw14WFRcSl; source URL: https://video.twimg.com/ext_tw_video/1729152481903398912/pu/vid/avc1/1280x720/XSFQJJUodADiIdLq.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1729152481903398912.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 14.3s; 1.47 MiB; archived; tweet context: No better way to start a week than with a #shoutout from @NFL legend @AaronRodgers12 🏈 Want to learn more about a career in the U.S. Coast Guard? Visit http://gocoastguard.com 🇺🇸⚓️ #SemperParatus #USCG #USA 🎥 U.S. Coast Guard Heartland https://t.co/Jw14WFRcSl; source URL: https://video.twimg.com/ext_tw_video/1729152481903398912/pu/vid/avc1/1280x720/XSFQJJUodADiIdLq.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1729152481903398912.mp4; needs OCR, transcript, or frame-level vision bef"
@@ -51111,12 +51083,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1080; 28.8s; 4.77 MiB; archived; tweet context: What's cookin'? U.S. Coast Guard Culinary Specialists are always prepared to fuel the crew! Hungry to learn more about a #career in the USCG? Visit http://gocoastguard.com #SemperParatus #GoCoastGuard #USA https://t.co/fL9Y2PLLaV; source URL: https://video.twimg.com/ext_tw_video/1730254759070777344/pu/vid/avc1/1280x720/TUgRMAZt4QdcTCWu.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1730254759070777344.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 28.8s; 4.77 MiB; archived; tweet context: What's cookin'? U.S. Coast Guard Culinary Specialists are always prepared to fuel the crew! Hungry to learn more about a #career in the USCG? Visit http://gocoastguard.com #SemperParatus #GoCoastGuard #USA https://t.co/fL9Y2PLLaV; source URL: https://video.twimg.com/ext_tw_video/1730254759070777344/pu/vid/avc1/1280x720/TUgRMAZt4QdcTCWu.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1730254759070777344.mp4; needs OCR, transcript, or frame-level vision before content claims. What's cookin'? U.S. Coast Guard Culinar"
@@ -51143,6 +51113,7 @@
         "agency:USCG",
         "audio:has-audio",
         "genre:psa",
+        "genre:recruitment",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
@@ -51152,17 +51123,16 @@
         "video:short"
       ],
       "genre_tags": [
-        "genre:psa"
+        "genre:psa",
+        "genre:recruitment"
       ],
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1080; 29.9s; 4.64 MiB; archived; tweet context: We’re Always Ready | Semper Paratus for the call 🫡 (and the week...) Visit http://gocoastguard.com or call your Coast Guard recruiter to learn more 🇺🇸⚓️️ #motivation #USCG #USA 🎥 USCG Northeast 📸 by PA3 Jackson https://t.co/awNLdpVyEe; source URL: https://video.twimg.com/ext_tw_video/1731742620395642880/pu/vid/avc1/1280x720/abL_v_sxVsy2rTbG.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1731742620395642880.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 29.9s; 4.64 MiB; archived; tweet context: We’re Always Ready | Semper Paratus for the call 🫡 (and the week...) Visit http://gocoastguard.com or call your Coast Guard recruiter to learn more 🇺🇸⚓️️ #motivation #USCG #USA 🎥 USCG Northeast 📸 by PA3 Jackson https://t.co/awNLdpVyEe; source URL: https://video.twimg.com/ext_tw_video/1731742620395642880/pu/vid/avc1/1280x720/abL_v_sxVsy2rTbG.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1731742620395642880.mp4; needs OCR, transcript, or frame-level vision before content claims. We’re Always Ready | Semper Pa"
@@ -51247,12 +51217,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1080; 17.2s; 1.86 MiB; archived; tweet context: Never give up, for that is just the place and time that the tide will turn. Go Coast Guard today to start your adventure. Visit http://gocoastguard.com to learn more 🇺🇸⚓️️ #SemperParatus #thursdaythoughts #USCG 📽️AMT2 Melissa Miller, Aux Joey Feldman, USCG Ai...; source URL: https://video.twimg.com/ext_tw_video/1735323041033265152/pu/vid/avc1/1280x720/wqkqi0dkvhGZ4-8u.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1735323041033265152.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 17.2s; 1.86 MiB; archived; tweet context: Never give up, for that is just the place and time that the tide will turn. Go Coast Guard today to start your adventure. Visit http://gocoastguard.com to learn more 🇺🇸⚓️️ #SemperParatus #thursdaythoughts #USCG 📽️AMT2 Melissa Miller, Aux Joey Feldman, USCG Ai...; source URL: https://video.twimg.com/ext_tw_video/1735323041033265152/pu/vid/avc1/1280x720/wqkqi0dkvhGZ4-8u.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1735323041033265152.mp4; needs OCR, transcript, or frame-level visi"
@@ -51813,12 +51781,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1080; 13.8s; 2.09 MiB; archived; tweet context: New year, new you #mondaymotivation 📷📷📷 Are you ready to get after it?! Make 2024 YOUR year! Visit http://gocoastguard.com to learn more about how a career in the U.S. Coast Guard would fit you 📷📷 https://t.co/82WteLllXT; source URL: https://video.twimg.com/ext_tw_video/1744369510771998720/pu/vid/avc1/1280x720/bzIbbTK_rmbv8gyX.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1744369510771998720.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 13.8s; 2.09 MiB; archived; tweet context: New year, new you #mondaymotivation 📷📷📷 Are you ready to get after it?! Make 2024 YOUR year! Visit http://gocoastguard.com to learn more about how a career in the U.S. Coast Guard would fit you 📷📷 https://t.co/82WteLllXT; source URL: https://video.twimg.com/ext_tw_video/1744369510771998720/pu/vid/avc1/1280x720/bzIbbTK_rmbv8gyX.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1744369510771998720.mp4; needs OCR, transcript, or frame-level vision before content claims. New year, new you #mondaymotivation 📷📷📷 Are you ready to g"
@@ -51844,12 +51810,16 @@
       "tags": [
         "agency:USCG",
         "audio:has-audio",
+        "crime:trafficking",
         "genre:psa",
         "media-status:archived",
         "media-status:needs-vision",
         "media:video",
         "military:coast-guard",
         "theme:directive",
+        "topic:economy",
+        "topic:general",
+        "topic:immigration",
         "topic:military",
         "video:medium",
         "video:produced"
@@ -51860,12 +51830,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1200; 90.2s; 12.68 MiB; archived; tweet context: What does the USCG do?! It is the maritime security, SAR and law enforcement service branch of the Armed Forces. It is also a committed humanitarian service, helping people, animals+wildlife and the environment alike! Visit http://gocoastguard.com to learn mo...; source URL: https://video.twimg.com/ext_tw_video/1745475586351337472/pu/vid/avc1/1152x720/ARRBQoY21wsbwlQy.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1745475586351337472.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1200; 90.2s; 12.68 MiB; archived; tweet context: What does the USCG do?! It is the maritime security, SAR and law enforcement service branch of the Armed Forces. It is also a committed humanitarian service, helping people, animals+wildlife and the environment alike! Visit http://gocoastguard.com to learn mo...; source URL: https://video.twimg.com/ext_tw_video/1745475586351337472/pu/vid/avc1/1152x720/ARRBQoY21wsbwlQy.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1745475586351337472.mp4; needs OCR, transcript, or frame-level vi"
@@ -51909,12 +51877,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1080; 90.6s; 13.10 MiB; archived; tweet context: making waves this week 📷📷 A little Coast Guard motivation to kick off the week! Visit http://gocoastguard.com to make your move and start your Coast Guard career 📷📷 #USCG #CoastGuard #Joinnow https://t.co/EfBLry62IK; source URL: https://video.twimg.com/ext_tw_video/1747642150311874560/pu/vid/avc1/1280x720/PkTNQH5scSItka0Z.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1747642150311874560.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 90.6s; 13.10 MiB; archived; tweet context: making waves this week 📷📷 A little Coast Guard motivation to kick off the week! Visit http://gocoastguard.com to make your move and start your Coast Guard career 📷📷 #USCG #CoastGuard #Joinnow https://t.co/EfBLry62IK; source URL: https://video.twimg.com/ext_tw_video/1747642150311874560/pu/vid/avc1/1280x720/PkTNQH5scSItka0Z.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1747642150311874560.mp4; needs OCR, transcript, or frame-level vision before content claims. making waves this week 📷📷 A little Coast Guard motivation to kick "
@@ -51956,12 +51922,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1080; 12.8s; 2.44 MiB; archived; tweet context: Thinking about joining the United States Coast Guard?! You have questions, we have answers! Visit http://gocoastguard.com/chat-now to connect with a recruiter to learn more about opportunities (and bonuses 📷) in the USCG 📷📷️ 📷 U.S. Coast Guard Air Station Mia...; source URL: https://video.twimg.com/ext_tw_video/1748344337539198976/pu/vid/avc1/1280x720/aBc_k7NSPvxy0NXe.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1748344337539198976.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 12.8s; 2.44 MiB; archived; tweet context: Thinking about joining the United States Coast Guard?! You have questions, we have answers! Visit http://gocoastguard.com/chat-now to connect with a recruiter to learn more about opportunities (and bonuses 📷) in the USCG 📷📷️ 📷 U.S. Coast Guard Air Station Mia...; source URL: https://video.twimg.com/ext_tw_video/1748344337539198976/pu/vid/avc1/1280x720/aBc_k7NSPvxy0NXe.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1748344337539198976.mp4; needs OCR, transcript, or frame-level visi"
@@ -52007,12 +51971,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1080; 28.4s; 5.69 MiB; archived; tweet context: LOOK. AT. US. 📷 Want to learn more about a career in the U.S. Coast Guard?! Visit http://gocoastguard.com today 📷📷️ #SemperParatus #motivation #uscoastguard #USA 📷 USCG Air Station Clearwater, USCG Southeast, PA3 Santiago Gomez https://t.co/OHQxkryUG5; source URL: https://video.twimg.com/ext_tw_video/1751981428630253568/pu/vid/avc1/1280x720/JwBBeAhuST9iAulj.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1751981428630253568.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 28.4s; 5.69 MiB; archived; tweet context: LOOK. AT. US. 📷 Want to learn more about a career in the U.S. Coast Guard?! Visit http://gocoastguard.com today 📷📷️ #SemperParatus #motivation #uscoastguard #USA 📷 USCG Air Station Clearwater, USCG Southeast, PA3 Santiago Gomez https://t.co/OHQxkryUG5; source URL: https://video.twimg.com/ext_tw_video/1751981428630253568/pu/vid/avc1/1280x720/JwBBeAhuST9iAulj.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1751981428630253568.mp4; needs OCR, transcript, or frame-level vision before content clai"
@@ -52106,12 +52068,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1200; 59.4s; 4.22 MiB; archived; tweet context: Out-of-sight but definitely not out-of-mind... #DYK the USCG has uncrewed aircraft systems (UAS)?! This proof of concept has limitless applications to support our missions. Visit http://gocoastguard.com to learn more 📷📷️ #SemperParatus #USCG #USA https://t.co...; source URL: https://video.twimg.com/ext_tw_video/1757049018641784832/pu/vid/avc1/1152x720/-7u1VXgXe2ka9xkb.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1757049018641784832.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1200; 59.4s; 4.22 MiB; archived; tweet context: Out-of-sight but definitely not out-of-mind... #DYK the USCG has uncrewed aircraft systems (UAS)?! This proof of concept has limitless applications to support our missions. Visit http://gocoastguard.com to learn more 📷📷️ #SemperParatus #USCG #USA https://t.co...; source URL: https://video.twimg.com/ext_tw_video/1757049018641784832/pu/vid/avc1/1152x720/-7u1VXgXe2ka9xkb.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1757049018641784832.mp4; needs OCR, transcript, or frame-level visi"
@@ -52155,12 +52115,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1200; 21.4s; 3.08 MiB; archived; tweet context: You got to walk before you can fly 📷 (Seriously. You literally have to walk to the helicopter...) Fly to new heights with a career in the U.S. Coast Guard. Visit http://gocoastguard.com 📷📷️ #SemperParatus #flyuscg #motivation #USA 📷 USCG Air Station Clearwate...; source URL: https://video.twimg.com/ext_tw_video/1759938249622011904/pu/vid/avc1/1152x720/gMqU7nJPjYAcc3AQ.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1759938249622011904.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1200; 21.4s; 3.08 MiB; archived; tweet context: You got to walk before you can fly 📷 (Seriously. You literally have to walk to the helicopter...) Fly to new heights with a career in the U.S. Coast Guard. Visit http://gocoastguard.com 📷📷️ #SemperParatus #flyuscg #motivation #USA 📷 USCG Air Station Clearwate...; source URL: https://video.twimg.com/ext_tw_video/1759938249622011904/pu/vid/avc1/1152x720/gMqU7nJPjYAcc3AQ.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1759938249622011904.mp4; needs OCR, transcript, or frame-level visi"
@@ -52253,12 +52211,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1080; 14.9s; 1.69 MiB; archived; tweet context: You got to walk before you can fly 📷 (Seriously. You literally have to walk to the helicopter...) Fly to new heights with a career in the U.S. Coast Guard. Visit http://gocoastguard.com 📷📷️ #SemperParatus #flyuscg #motivation #USA 📷 USCG Air Station Clearwate...; source URL: https://video.twimg.com/ext_tw_video/1769773650918486016/pu/vid/avc1/1280x720/dugKz7E-btIArMqL.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1769773650918486016.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 14.9s; 1.69 MiB; archived; tweet context: You got to walk before you can fly 📷 (Seriously. You literally have to walk to the helicopter...) Fly to new heights with a career in the U.S. Coast Guard. Visit http://gocoastguard.com 📷📷️ #SemperParatus #flyuscg #motivation #USA 📷 USCG Air Station Clearwate...; source URL: https://video.twimg.com/ext_tw_video/1769773650918486016/pu/vid/avc1/1280x720/dugKz7E-btIArMqL.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1769773650918486016.mp4; needs OCR, transcript, or frame-level visi"
@@ -52302,12 +52258,10 @@
       "produced_video_tags": [
         "video:produced"
       ],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
+      "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1920x1200; 39.4s; 3.92 MiB; archived; tweet context: Volume up 📷 Meet LT Alyssa Fuller #WomensHistoryMonth 📷 LT Fuller is a Coast Guard helicopter pilot. Listen to her explain why she chose a career in military aviation! Feeling inspired? Visit http://gocoastguard.com to find one of our 11 missions that match y...; source URL: https://video.twimg.com/ext_tw_video/1770872445815136256/pu/vid/avc1/1152x720/tEP8_7w5DQPiZGKU.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1770872445815136256.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1200; 39.4s; 3.92 MiB; archived; tweet context: Volume up 📷 Meet LT Alyssa Fuller #WomensHistoryMonth 📷 LT Fuller is a Coast Guard helicopter pilot. Listen to her explain why she chose a career in military aviation! Feeling inspired? Visit http://gocoastguard.com to find one of our 11 missions that match y...; source URL: https://video.twimg.com/ext_tw_video/1770872445815136256/pu/vid/avc1/1152x720/tEP8_7w5DQPiZGKU.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1770872445815136256.mp4; needs OCR, transcript, or frame-level visi"
@@ -73927,46 +73881,6 @@
       "description": "video; 1280x720; 3617.3s; 522.79 MiB; archived; tweet context: President Trump saying WINNING for 1 hour. 🔁 Can't stop, won't stop. https://t.co/1RhnINVAKT; source URL: https://video.twimg.com/amplify_video/2049959689161445376/vid/avc1/1280x720/RkKZJCsB65dMK2tt.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2049959689161445376.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 3617.3s; 522.79 MiB; archived; tweet context: President Trump saying WINNING for 1 hour. 🔁 Can't stop, won't stop. https://t.co/1RhnINVAKT; source URL: https://video.twimg.com/amplify_video/2049959689161445376/vid/avc1/1280x720/RkKZJCsB65dMK2tt.mp4?tag=27; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse/13_2049959689161445376.mp4; needs OCR, transcript, or frame-level vision before content claims. President Trump saying WINNING for 1 hour. 🔁 Can't stop, won't stop. https://t.co/1RhnINVAKT"
     },
     {
-      "tweet_id": "1742981385454026752",
-      "account_handle": "USCG",
-      "posted_at": "2024-01-04T18:48:39.000Z",
-      "tweet_url": "https://x.com/USCG/status/1742981385454026752",
-      "tweet_text": "USCG Air Station Astoria started off 2024 with the rescue of Leo the dog that fell from a 300-ft cliff in Ecola State Park, near Cannon Beach, OR.\n\nHappily, it was a successful rescue with Leo reunited with his owners!\n#USCG #CoastGuard #dogrescue #helicopter #dog #rescue https://t.co/jWGQanqttd",
-      "media_id": "7_1742980885585022976",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1742980885585022976.mp4",
-      "duration_sec": 53.787,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 5118,
-      "retweet_count": 851,
-      "view_count": 907305,
-      "bucket": "needs-recognition",
-      "priority": 75,
-      "tags": [
-        "agency:USCG",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "military:coast-guard",
-        "topic:military",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": true,
-      "description": "video; 1920x1080; 53.8s; 10.88 MiB; archived; tweet context: USCG Air Station Astoria started off 2024 with the rescue of Leo the dog that fell from a 300-ft cliff in Ecola State Park, near Cannon Beach, OR. Happily, it was a successful rescue with Leo reunited with his owners! #USCG #CoastGuard #dogrescue #helicopter...; source URL: https://video.twimg.com/ext_tw_video/1742980885585022976/pu/vid/avc1/1280x720/igyKP910_eyTQHws.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1742980885585022976.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 53.8s; 10.88 MiB; archived; tweet context: USCG Air Station Astoria started off 2024 with the rescue of Leo the dog that fell from a 300-ft cliff in Ecola State Park, near Cannon Beach, OR. Happily, it was a successful rescue with Leo reunited with his owners! #USCG #CoastGuard #dogrescue #helicopter...; source URL: https://video.twimg.com/ext_tw_video/1742980885585022976/pu/vid/avc1/1280x720/igyKP910_eyTQHws.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1742980885585022976.mp4; needs OCR, transcript, or frame-level visi"
-    },
-    {
       "tweet_id": "1881396731486867964",
       "account_handle": "WhiteHouse",
       "posted_at": "2025-01-20T17:41:50.000Z",
@@ -93802,290 +93716,6 @@
       "description": "video; 1280x800; 39.1s; 4.19 MiB; archived; tweet context: Preparation ➡️ Readiness From start to finish, the Coast Guard is here to prepare you for your mission. To ensure you are Always Ready to fulfill your duty. Start your Coast Guard journey today: http://ow.ly/tK0450Ott0R #SemperParatus #GoCoastGuard #armedforc...; source URL: https://video.twimg.com/ext_tw_video/1660662228826071042/pu/vid/1152x720/vwM2joIg1Ye61ABg.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1660662228826071042.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x800; 39.1s; 4.19 MiB; archived; tweet context: Preparation ➡️ Readiness From start to finish, the Coast Guard is here to prepare you for your mission. To ensure you are Always Ready to fulfill your duty. Start your Coast Guard journey today: http://ow.ly/tK0450Ott0R #SemperParatus #GoCoastGuard #armedforc...; source URL: https://video.twimg.com/ext_tw_video/1660662228826071042/pu/vid/1152x720/vwM2joIg1Ye61ABg.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1660662228826071042.mp4; needs OCR, transcript, or frame-level vision before co"
     },
     {
-      "tweet_id": "1687494327977508864",
-      "account_handle": "USCG",
-      "posted_at": "2023-08-04T16:02:54.000Z",
-      "tweet_url": "https://x.com/USCG/status/1687494327977508864",
-      "tweet_text": "Saving lives. 🆘 🛟\n\nServing America. 🇺🇸 ⚓\n\n233 years strong. 💪\n\n#CGJoinUs #CGBirthday #233SemperParatus #USCG #semperparatus https://t.co/MA7yfrnNgJ",
-      "media_id": "7_1687493532762685440",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1687493532762685440.mp4",
-      "duration_sec": 40.74,
-      "width": 720,
-      "height": 1280,
-      "like_count": 873,
-      "retweet_count": 220,
-      "view_count": 292625,
-      "bucket": "needs-recognition",
-      "priority": 70,
-      "tags": [
-        "agency:USCG",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "military:coast-guard",
-        "topic:military",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": true,
-      "description": "video; 720x1280; 40.7s; 5.61 MiB; archived; tweet context: Saving lives. 🆘 🛟 Serving America. 🇺🇸 ⚓ 233 years strong. 💪 #CGJoinUs #CGBirthday #233SemperParatus #USCG #semperparatus https://t.co/MA7yfrnNgJ; source URL: https://video.twimg.com/ext_tw_video/1687493532762685440/pu/vid/720x1280/r3tbvQFetbFfi4aI.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1687493532762685440.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 720x1280; 40.7s; 5.61 MiB; archived; tweet context: Saving lives. 🆘 🛟 Serving America. 🇺🇸 ⚓ 233 years strong. 💪 #CGJoinUs #CGBirthday #233SemperParatus #USCG #semperparatus https://t.co/MA7yfrnNgJ; source URL: https://video.twimg.com/ext_tw_video/1687493532762685440/pu/vid/720x1280/r3tbvQFetbFfi4aI.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1687493532762685440.mp4; needs OCR, transcript, or frame-level vision before content claims. Saving lives. 🆘 🛟 Serving America. 🇺🇸 ⚓ 233 years strong. 💪 #CGJoinUs #CGBirthday #233SemperParatus #USCG #semperparatus https://t.co/MA7yfrnNgJ"
-    },
-    {
-      "tweet_id": "1688568122486165504",
-      "account_handle": "USCG",
-      "posted_at": "2023-08-07T15:09:47.000Z",
-      "tweet_url": "https://x.com/USCG/status/1688568122486165504",
-      "tweet_text": "The \"9 to 5-er\"...we hardly know 'er\n\nSign up for excitement! Go Coast Guard! Start your adventure today http://gocoastguard.com 🇺🇸⚓️ https://t.co/JbEz8AeuG6",
-      "media_id": "7_1688567920526344192",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1688567920526344192.mp4",
-      "duration_sec": 37.662,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 120,
-      "retweet_count": 25,
-      "view_count": 11678,
-      "bucket": "needs-recognition",
-      "priority": 70,
-      "tags": [
-        "agency:USCG",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "military:coast-guard",
-        "topic:military",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": true,
-      "description": "video; 1920x1080; 37.7s; 7.66 MiB; archived; tweet context: The \"9 to 5-er\"...we hardly know 'er Sign up for excitement! Go Coast Guard! Start your adventure today http://gocoastguard.com 🇺🇸⚓️ https://t.co/JbEz8AeuG6; source URL: https://video.twimg.com/ext_tw_video/1688567920526344192/pu/vid/1280x720/ZD7uyYtnanz4RCWk.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1688567920526344192.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 37.7s; 7.66 MiB; archived; tweet context: The \"9 to 5-er\"...we hardly know 'er Sign up for excitement! Go Coast Guard! Start your adventure today http://gocoastguard.com 🇺🇸⚓️ https://t.co/JbEz8AeuG6; source URL: https://video.twimg.com/ext_tw_video/1688567920526344192/pu/vid/1280x720/ZD7uyYtnanz4RCWk.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1688567920526344192.mp4; needs OCR, transcript, or frame-level vision before content claims. The \"9 to 5-er\"...we hardly know 'er Sign up for excitement! Go Coast Guard! Start your adventure today http://gocoastguard.com 🇺🇸⚓️ https://t.co/JbEz8AeuG6"
-    },
-    {
-      "tweet_id": "1721216962678673657",
-      "account_handle": "USCG",
-      "posted_at": "2023-11-05T17:24:37.000Z",
-      "tweet_url": "https://x.com/USCG/status/1721216962678673657",
-      "tweet_text": "The USCGC James works to offload approximately $445 million in illegal drugs in Port Everglades, FL, on Oct. 26.  The offload is a result of a joint task force consisting of four Coast Guard cutters and one U.S. Navy destroyer.\n#USCG #USNavy #counterdrug #interdiction #drugbust https://t.co/JcwkFv0tAI",
-      "media_id": "7_1721216811075579904",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1721216811075579904.mp4",
-      "duration_sec": 26.733,
-      "width": 1280,
-      "height": 720,
-      "like_count": 474,
-      "retweet_count": 114,
-      "view_count": 41382,
-      "bucket": "needs-recognition",
-      "priority": 70,
-      "tags": [
-        "agency:USCG",
-        "audio:has-audio",
-        "audio:silent",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "military:coast-guard",
-        "military:navy",
-        "topic:military",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": true,
-      "description": "video; 1280x720; 26.7s; 4.86 MiB; archived; tweet context: The USCGC James works to offload approximately $445 million in illegal drugs in Port Everglades, FL, on Oct. 26. The offload is a result of a joint task force consisting of four Coast Guard cutters and one U.S. Navy destroyer. #USCG #USNavy #counterdrug #inte...; source URL: https://video.twimg.com/ext_tw_video/1721216811075579904/pu/vid/avc1/1280x720/fNu4k-llGNgiTf53.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1721216811075579904.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 26.7s; 4.86 MiB; archived; tweet context: The USCGC James works to offload approximately $445 million in illegal drugs in Port Everglades, FL, on Oct. 26. The offload is a result of a joint task force consisting of four Coast Guard cutters and one U.S. Navy destroyer. #USCG #USNavy #counterdrug #inte...; source URL: https://video.twimg.com/ext_tw_video/1721216811075579904/pu/vid/avc1/1280x720/fNu4k-llGNgiTf53.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1721216811075579904.mp4; needs OCR, transcript, or frame-level vision"
-    },
-    {
-      "tweet_id": "1721520340017299788",
-      "account_handle": "USCG",
-      "posted_at": "2023-11-06T13:30:08.000Z",
-      "tweet_url": "https://x.com/USCG/status/1721520340017299788",
-      "tweet_text": "New week. GAME. ON. 🏈✈️🚁\n\nThe U.S. Coast Guard is Always Ready for gametime. Are you?! Send us a DM to chat with a recruiter or visit http://gocoastguard.com ⚓🇺🇸️\n\n#motivation #SemperParatus #USCG https://t.co/hGWwdfcMfa",
-      "media_id": "7_1721518368346288130",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1721518368346288130.mp4",
-      "duration_sec": 10.301,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 285,
-      "retweet_count": 61,
-      "view_count": 17417,
-      "bucket": "needs-recognition",
-      "priority": 70,
-      "tags": [
-        "agency:USCG",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "military:coast-guard",
-        "topic:military",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": true,
-      "description": "video; 1920x1080; 10.3s; 1.86 MiB; archived; tweet context: New week. GAME. ON. 🏈✈️🚁 The U.S. Coast Guard is Always Ready for gametime. Are you?! Send us a DM to chat with a recruiter or visit http://gocoastguard.com ⚓🇺🇸️ #motivation #SemperParatus #USCG https://t.co/hGWwdfcMfa; source URL: https://video.twimg.com/ext_tw_video/1721518368346288130/pu/vid/avc1/1280x720/lGQFdlW_7sFBWjBd.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1721518368346288130.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 10.3s; 1.86 MiB; archived; tweet context: New week. GAME. ON. 🏈✈️🚁 The U.S. Coast Guard is Always Ready for gametime. Are you?! Send us a DM to chat with a recruiter or visit http://gocoastguard.com ⚓🇺🇸️ #motivation #SemperParatus #USCG https://t.co/hGWwdfcMfa; source URL: https://video.twimg.com/ext_tw_video/1721518368346288130/pu/vid/avc1/1280x720/lGQFdlW_7sFBWjBd.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1721518368346288130.mp4; needs OCR, transcript, or frame-level vision before content claims. New week. GAME. ON. 🏈✈️🚁 The U.S. Coast Guard is Always Ready "
-    },
-    {
-      "tweet_id": "1727393821388865800",
-      "account_handle": "USCG",
-      "posted_at": "2023-11-22T18:29:15.000Z",
-      "tweet_url": "https://x.com/USCG/status/1727393821388865800",
-      "tweet_text": "Have you ever wondered what it takes for a Coast Guard rescue swimmer to respond to a capsized boat incident?\n\nCheck out the full video on our YouTube channel. https://youtu.be/r3jKWR3B5QI?si=2DClO8WoxH3bYtM0\n\n#Rescue #CoastGuard #bigwave #Rescueswimmer https://t.co/QDQHE3aOzc",
-      "media_id": "7_1727393339400437760",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1727393339400437760.mp4",
-      "duration_sec": 38.505,
-      "width": 1080,
-      "height": 1920,
-      "like_count": 297,
-      "retweet_count": 69,
-      "view_count": 25298,
-      "bucket": "needs-recognition",
-      "priority": 70,
-      "tags": [
-        "agency:USCG",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "military:coast-guard",
-        "topic:military",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": true,
-      "description": "video; 1080x1920; 38.5s; 4.86 MiB; archived; tweet context: Have you ever wondered what it takes for a Coast Guard rescue swimmer to respond to a capsized boat incident? Check out the full video on our YouTube channel. https://youtu.be/r3jKWR3B5QI?si=2DClO8WoxH3bYtM0 #Rescue #CoastGuard #bigwave #Rescueswimmer https:/...; source URL: https://video.twimg.com/ext_tw_video/1727393339400437760/pu/vid/avc1/720x1280/9NY8EpxLo-pnBdz8.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1727393339400437760.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1920; 38.5s; 4.86 MiB; archived; tweet context: Have you ever wondered what it takes for a Coast Guard rescue swimmer to respond to a capsized boat incident? Check out the full video on our YouTube channel. https://youtu.be/r3jKWR3B5QI?si=2DClO8WoxH3bYtM0 #Rescue #CoastGuard #bigwave #Rescueswimmer https:/...; source URL: https://video.twimg.com/ext_tw_video/1727393339400437760/pu/vid/avc1/720x1280/9NY8EpxLo-pnBdz8.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1727393339400437760.mp4; needs OCR, transcript, or frame-level visi"
-    },
-    {
-      "tweet_id": "1757820969538736537",
-      "account_handle": "USCG",
-      "posted_at": "2024-02-14T17:35:52.000Z",
-      "tweet_url": "https://x.com/USCG/status/1757820969538736537",
-      "tweet_text": "Happy Valentine's Day!\n\n#ValentinesDay #uscg #CoastGuard https://t.co/OMfvuevHFT",
-      "media_id": "7_1757820814513016832",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1757820814513016832.mp4",
-      "duration_sec": 5.282,
-      "width": 1080,
-      "height": 1080,
-      "like_count": 196,
-      "retweet_count": 49,
-      "view_count": 10186,
-      "bucket": "needs-recognition",
-      "priority": 70,
-      "tags": [
-        "agency:USCG",
-        "audio:has-audio",
-        "audio:silent",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "military:coast-guard",
-        "topic:military",
-        "video:short"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": true,
-      "description": "video; 1080x1080; 5.3s; 0.35 MiB; archived; tweet context: Happy Valentine's Day! #ValentinesDay #uscg #CoastGuard https://t.co/OMfvuevHFT; source URL: https://video.twimg.com/ext_tw_video/1757820814513016832/pu/vid/avc1/720x720/ZDvDoghg7BXvw_i9.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1757820814513016832.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1080; 5.3s; 0.35 MiB; archived; tweet context: Happy Valentine's Day! #ValentinesDay #uscg #CoastGuard https://t.co/OMfvuevHFT; source URL: https://video.twimg.com/ext_tw_video/1757820814513016832/pu/vid/avc1/720x720/ZDvDoghg7BXvw_i9.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1757820814513016832.mp4; needs OCR, transcript, or frame-level vision before content claims. Happy Valentine's Day! #ValentinesDay #uscg #CoastGuard https://t.co/OMfvuevHFT"
-    },
-    {
-      "tweet_id": "1763274211160670288",
-      "account_handle": "USCG",
-      "posted_at": "2024-02-29T18:45:06.000Z",
-      "tweet_url": "https://x.com/USCG/status/1763274211160670288",
-      "tweet_text": "Growing those #Pacificpartnerships!\nFijian maritime law enforcement and military members work alongside a boarding team from the USCGC Harriet Lane (WMEC 903) to conduct fishery boardings in the Fiji Exclusive Economic Zone, Feb. 16, 2024.\n\n#CGatSea #CoastGuard #USCG #Fiji https://t.co/yi1L7Zw12H",
-      "media_id": "7_1763273521113739264",
-      "media_type": "video",
-      "archive_status": "archived",
-      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1763273521113739264.mp4",
-      "duration_sec": 45.9,
-      "width": 1920,
-      "height": 1080,
-      "like_count": 131,
-      "retweet_count": 32,
-      "view_count": 11777,
-      "bucket": "needs-recognition",
-      "priority": 70,
-      "tags": [
-        "agency:USCG",
-        "audio:has-audio",
-        "media-status:archived",
-        "media-status:needs-vision",
-        "media:video",
-        "military:coast-guard",
-        "topic:economy",
-        "topic:military",
-        "video:medium"
-      ],
-      "genre_tags": [],
-      "produced_video_tags": [],
-      "missing_steps": [
-        "transcribe-audio"
-      ],
-      "has_keyframes": true,
-      "has_audio_analysis": true,
-      "has_transcript": false,
-      "has_vision_description": true,
-      "has_ocr": true,
-      "description": "video; 1920x1080; 45.9s; 12.16 MiB; archived; tweet context: Growing those #Pacificpartnerships! Fijian maritime law enforcement and military members work alongside a boarding team from the USCGC Harriet Lane (WMEC 903) to conduct fishery boardings in the Fiji Exclusive Economic Zone, Feb. 16, 2024. #CGatSea #CoastGuar...; source URL: https://video.twimg.com/ext_tw_video/1763273521113739264/pu/vid/avc1/1280x720/Gimg5CQ7T8eBZrEW.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1763273521113739264.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 45.9s; 12.16 MiB; archived; tweet context: Growing those #Pacificpartnerships! Fijian maritime law enforcement and military members work alongside a boarding team from the USCGC Harriet Lane (WMEC 903) to conduct fishery boardings in the Fiji Exclusive Economic Zone, Feb. 16, 2024. #CGatSea #CoastGuar...; source URL: https://video.twimg.com/ext_tw_video/1763273521113739264/pu/vid/avc1/1280x720/Gimg5CQ7T8eBZrEW.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1763273521113739264.mp4; needs OCR, transcript, or frame-level vi"
-    },
-    {
       "tweet_id": "1808833136027185361",
       "account_handle": "USCIS",
       "posted_at": "2024-07-04T12:00:00.000Z",
@@ -97847,6 +97477,44 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 27.4s; 1.66 MiB; archived; tweet context: In January 2025, we're going to take it back. http://border911.com Let's go! https://t.co/1O6e9KsIRC; source URL: https://video.twimg.com/ext_tw_video/1735104625681072128/pu/vid/avc1/1280x720/ghpCpdBfwPgyCPM8.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-RealTomHoman/7_1735104625681072128.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 27.4s; 1.66 MiB; archived; tweet context: In January 2025, we're going to take it back. http://border911.com Let's go! https://t.co/1O6e9KsIRC; source URL: https://video.twimg.com/ext_tw_video/1735104625681072128/pu/vid/avc1/1280x720/ghpCpdBfwPgyCPM8.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-RealTomHoman/7_1735104625681072128.mp4; needs OCR, transcript, or frame-level vision before content claims. In January 2025, we're going to take it back. http://border911.com Let's go! https://t.co/1O6e9KsIRC | You know, it's on this border, it's got to get fixed, it's absolutely unsustainable. You know, Jason, I wake up every day pissed off, you know, I started in Borg to 1984. I spent al"
+    },
+    {
+      "tweet_id": "1742981385454026752",
+      "account_handle": "USCG",
+      "posted_at": "2024-01-04T18:48:39.000Z",
+      "tweet_url": "https://x.com/USCG/status/1742981385454026752",
+      "tweet_text": "USCG Air Station Astoria started off 2024 with the rescue of Leo the dog that fell from a 300-ft cliff in Ecola State Park, near Cannon Beach, OR.\n\nHappily, it was a successful rescue with Leo reunited with his owners!\n#USCG #CoastGuard #dogrescue #helicopter #dog #rescue https://t.co/jWGQanqttd",
+      "media_id": "7_1742980885585022976",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1742980885585022976.mp4",
+      "duration_sec": 53.787,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 5118,
+      "retweet_count": 851,
+      "view_count": 907305,
+      "bucket": "ordinary-video",
+      "priority": 35,
+      "tags": [
+        "agency:USCG",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "military:coast-guard",
+        "topic:military",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "video; 1920x1080; 53.8s; 10.88 MiB; archived; tweet context: USCG Air Station Astoria started off 2024 with the rescue of Leo the dog that fell from a 300-ft cliff in Ecola State Park, near Cannon Beach, OR. Happily, it was a successful rescue with Leo reunited with his owners! #USCG #CoastGuard #dogrescue #helicopter...; source URL: https://video.twimg.com/ext_tw_video/1742980885585022976/pu/vid/avc1/1280x720/igyKP910_eyTQHws.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1742980885585022976.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 53.8s; 10.88 MiB; archived; tweet context: USCG Air Station Astoria started off 2024 with the rescue of Leo the dog that fell from a 300-ft cliff in Ecola State Park, near Cannon Beach, OR. Happily, it was a successful rescue with Leo reunited with his owners! #USCG #CoastGuard #dogrescue #helicopter...; source URL: https://video.twimg.com/ext_tw_video/1742980885585022976/pu/vid/avc1/1280x720/igyKP910_eyTQHws.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1742980885585022976.mp4; needs OCR, transcript, or frame-level visi"
     },
     {
       "tweet_id": "1812195474843029760",
@@ -201752,6 +201420,82 @@
       "description": "video; 720x1280; 60.5s; 8.06 MiB; archived; tweet context: Please join @CBP in celebrating the 234th Anniversary of the US Customs Service! For over two centuries, we've been at the forefront of protecting our borders and promoting lawful trade. We are forever grateful for the vigilance and dedication of our workforc...; source URL: https://video.twimg.com/ext_tw_video/1686006352496263170/pu/vid/720x1280/zJDflSS2vwE09XEV.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC/7_1686006352496263170.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 720x1280; 60.5s; 8.06 MiB; archived; tweet context: Please join @CBP in celebrating the 234th Anniversary of the US Customs Service! For over two centuries, we've been at the forefront of protecting our borders and promoting lawful trade. We are forever grateful for the vigilance and dedication of our workforc...; source URL: https://video.twimg.com/ext_tw_video/1686006352496263170/pu/vid/720x1280/zJDflSS2vwE09XEV.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC/7_1686006352496263170.mp4; needs OCR, transcript, or frame-level vision befor"
     },
     {
+      "tweet_id": "1687494327977508864",
+      "account_handle": "USCG",
+      "posted_at": "2023-08-04T16:02:54.000Z",
+      "tweet_url": "https://x.com/USCG/status/1687494327977508864",
+      "tweet_text": "Saving lives. 🆘 🛟\n\nServing America. 🇺🇸 ⚓\n\n233 years strong. 💪\n\n#CGJoinUs #CGBirthday #233SemperParatus #USCG #semperparatus https://t.co/MA7yfrnNgJ",
+      "media_id": "7_1687493532762685440",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1687493532762685440.mp4",
+      "duration_sec": 40.74,
+      "width": 720,
+      "height": 1280,
+      "like_count": 873,
+      "retweet_count": 220,
+      "view_count": 292625,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:USCG",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "military:coast-guard",
+        "topic:military",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "video; 720x1280; 40.7s; 5.61 MiB; archived; tweet context: Saving lives. 🆘 🛟 Serving America. 🇺🇸 ⚓ 233 years strong. 💪 #CGJoinUs #CGBirthday #233SemperParatus #USCG #semperparatus https://t.co/MA7yfrnNgJ; source URL: https://video.twimg.com/ext_tw_video/1687493532762685440/pu/vid/720x1280/r3tbvQFetbFfi4aI.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1687493532762685440.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 720x1280; 40.7s; 5.61 MiB; archived; tweet context: Saving lives. 🆘 🛟 Serving America. 🇺🇸 ⚓ 233 years strong. 💪 #CGJoinUs #CGBirthday #233SemperParatus #USCG #semperparatus https://t.co/MA7yfrnNgJ; source URL: https://video.twimg.com/ext_tw_video/1687493532762685440/pu/vid/720x1280/r3tbvQFetbFfi4aI.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1687493532762685440.mp4; needs OCR, transcript, or frame-level vision before content claims. Saving lives. 🆘 🛟 Serving America. 🇺🇸 ⚓ 233 years strong. 💪 #CGJoinUs #CGBirthday #233SemperParatus #USCG #semperparatus https://t.co/MA7yfrnNgJ"
+    },
+    {
+      "tweet_id": "1688568122486165504",
+      "account_handle": "USCG",
+      "posted_at": "2023-08-07T15:09:47.000Z",
+      "tweet_url": "https://x.com/USCG/status/1688568122486165504",
+      "tweet_text": "The \"9 to 5-er\"...we hardly know 'er\n\nSign up for excitement! Go Coast Guard! Start your adventure today http://gocoastguard.com 🇺🇸⚓️ https://t.co/JbEz8AeuG6",
+      "media_id": "7_1688567920526344192",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1688567920526344192.mp4",
+      "duration_sec": 37.662,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 120,
+      "retweet_count": 25,
+      "view_count": 11678,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:USCG",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "military:coast-guard",
+        "topic:military",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "video; 1920x1080; 37.7s; 7.66 MiB; archived; tweet context: The \"9 to 5-er\"...we hardly know 'er Sign up for excitement! Go Coast Guard! Start your adventure today http://gocoastguard.com 🇺🇸⚓️ https://t.co/JbEz8AeuG6; source URL: https://video.twimg.com/ext_tw_video/1688567920526344192/pu/vid/1280x720/ZD7uyYtnanz4RCWk.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1688567920526344192.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 37.7s; 7.66 MiB; archived; tweet context: The \"9 to 5-er\"...we hardly know 'er Sign up for excitement! Go Coast Guard! Start your adventure today http://gocoastguard.com 🇺🇸⚓️ https://t.co/JbEz8AeuG6; source URL: https://video.twimg.com/ext_tw_video/1688567920526344192/pu/vid/1280x720/ZD7uyYtnanz4RCWk.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1688567920526344192.mp4; needs OCR, transcript, or frame-level vision before content claims. The \"9 to 5-er\"...we hardly know 'er Sign up for excitement! Go Coast Guard! Start your adventure today http://gocoastguard.com 🇺🇸⚓️ https://t.co/JbEz8AeuG6 | You"
+    },
+    {
       "tweet_id": "1688657468102971397",
       "account_handle": "RealTomHoman",
       "posted_at": "2023-08-07T21:04:48.000Z",
@@ -203979,6 +203723,84 @@
       "description": "video; 848x466; 30.6s; 1.01 MiB; archived; tweet context: RT @Border911Live: https://t.co/pygRtnHTRB; source URL: https://video.twimg.com/ext_tw_video/1720976333738549248/pu/vid/avc1/848x466/O5gtgZVh-yYxqm-U.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-RealTomHoman/7_1720976333738549248.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 848x466; 30.6s; 1.01 MiB; archived; tweet context: RT @Border911Live: https://t.co/pygRtnHTRB; source URL: https://video.twimg.com/ext_tw_video/1720976333738549248/pu/vid/avc1/848x466/O5gtgZVh-yYxqm-U.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-RealTomHoman/7_1720976333738549248.mp4; needs OCR, transcript, or frame-level vision before content claims. RT @Border911Live: https://t.co/pygRtnHTRB | up. Tom, if Trump wins and goes back to the White House, would you go back? I promised President Trump when he announced that he goes back, I go back, and I'm going to run the biggest deportation operation this country's ever seen, because he's millions of people being released in this country. Nine out of ten will get order removal based on immigration cou"
     },
     {
+      "tweet_id": "1721216962678673657",
+      "account_handle": "USCG",
+      "posted_at": "2023-11-05T17:24:37.000Z",
+      "tweet_url": "https://x.com/USCG/status/1721216962678673657",
+      "tweet_text": "The USCGC James works to offload approximately $445 million in illegal drugs in Port Everglades, FL, on Oct. 26.  The offload is a result of a joint task force consisting of four Coast Guard cutters and one U.S. Navy destroyer.\n#USCG #USNavy #counterdrug #interdiction #drugbust https://t.co/JcwkFv0tAI",
+      "media_id": "7_1721216811075579904",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1721216811075579904.mp4",
+      "duration_sec": 26.733,
+      "width": 1280,
+      "height": 720,
+      "like_count": 474,
+      "retweet_count": 114,
+      "view_count": 41382,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:USCG",
+        "audio:has-audio",
+        "audio:silent",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "military:coast-guard",
+        "military:navy",
+        "topic:military",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "video; 1280x720; 26.7s; 4.86 MiB; archived; tweet context: The USCGC James works to offload approximately $445 million in illegal drugs in Port Everglades, FL, on Oct. 26. The offload is a result of a joint task force consisting of four Coast Guard cutters and one U.S. Navy destroyer. #USCG #USNavy #counterdrug #inte...; source URL: https://video.twimg.com/ext_tw_video/1721216811075579904/pu/vid/avc1/1280x720/fNu4k-llGNgiTf53.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1721216811075579904.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 26.7s; 4.86 MiB; archived; tweet context: The USCGC James works to offload approximately $445 million in illegal drugs in Port Everglades, FL, on Oct. 26. The offload is a result of a joint task force consisting of four Coast Guard cutters and one U.S. Navy destroyer. #USCG #USNavy #counterdrug #inte...; source URL: https://video.twimg.com/ext_tw_video/1721216811075579904/pu/vid/avc1/1280x720/fNu4k-llGNgiTf53.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1721216811075579904.mp4; needs OCR, transcript, or frame-level vision"
+    },
+    {
+      "tweet_id": "1721520340017299788",
+      "account_handle": "USCG",
+      "posted_at": "2023-11-06T13:30:08.000Z",
+      "tweet_url": "https://x.com/USCG/status/1721520340017299788",
+      "tweet_text": "New week. GAME. ON. 🏈✈️🚁\n\nThe U.S. Coast Guard is Always Ready for gametime. Are you?! Send us a DM to chat with a recruiter or visit http://gocoastguard.com ⚓🇺🇸️\n\n#motivation #SemperParatus #USCG https://t.co/hGWwdfcMfa",
+      "media_id": "7_1721518368346288130",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1721518368346288130.mp4",
+      "duration_sec": 10.301,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 285,
+      "retweet_count": 61,
+      "view_count": 17417,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:USCG",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "military:coast-guard",
+        "topic:military",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "video; 1920x1080; 10.3s; 1.86 MiB; archived; tweet context: New week. GAME. ON. 🏈✈️🚁 The U.S. Coast Guard is Always Ready for gametime. Are you?! Send us a DM to chat with a recruiter or visit http://gocoastguard.com ⚓🇺🇸️ #motivation #SemperParatus #USCG https://t.co/hGWwdfcMfa; source URL: https://video.twimg.com/ext_tw_video/1721518368346288130/pu/vid/avc1/1280x720/lGQFdlW_7sFBWjBd.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1721518368346288130.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 10.3s; 1.86 MiB; archived; tweet context: New week. GAME. ON. 🏈✈️🚁 The U.S. Coast Guard is Always Ready for gametime. Are you?! Send us a DM to chat with a recruiter or visit http://gocoastguard.com ⚓🇺🇸️ #motivation #SemperParatus #USCG https://t.co/hGWwdfcMfa; source URL: https://video.twimg.com/ext_tw_video/1721518368346288130/pu/vid/avc1/1280x720/lGQFdlW_7sFBWjBd.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1721518368346288130.mp4; needs OCR, transcript, or frame-level vision before content claims. New week. GAME. ON. 🏈✈️🚁 The U.S. Coast Guard is Always Ready "
+    },
+    {
       "tweet_id": "1722317375163289997",
       "account_handle": "RealTomHoman",
       "posted_at": "2023-11-08T18:17:16.000Z",
@@ -204325,6 +204147,44 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 1280x720; 52.0s; 5.03 MiB; archived; tweet context: https://t.co/uRj8hR2wpT; source URL: https://video.twimg.com/ext_tw_video/1727025006528405504/pu/vid/avc1/1280x720/PEkcjSL0jV6bzQxm.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-RealTomHoman/7_1727025006528405504.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 52.0s; 5.03 MiB; archived; tweet context: https://t.co/uRj8hR2wpT; source URL: https://video.twimg.com/ext_tw_video/1727025006528405504/pu/vid/avc1/1280x720/PEkcjSL0jV6bzQxm.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-RealTomHoman/7_1727025006528405504.mp4; needs OCR, transcript, or frame-level vision before content claims. https://t.co/uRj8hR2wpT | The devil bowed his head because he knew that he'd been beat, and he laid that golden fiddle on the ground at Johnny's feet. Johnny said, devil, just come on back if you ever want to try again. I don't tell you, once you son of a bitch, I'm the best that's ever been. And he played, found him out and run, run, run. There was in the house of the rising sun, chicken in the bread, and I'm picking out dough. And w"
+    },
+    {
+      "tweet_id": "1727393821388865800",
+      "account_handle": "USCG",
+      "posted_at": "2023-11-22T18:29:15.000Z",
+      "tweet_url": "https://x.com/USCG/status/1727393821388865800",
+      "tweet_text": "Have you ever wondered what it takes for a Coast Guard rescue swimmer to respond to a capsized boat incident?\n\nCheck out the full video on our YouTube channel. https://youtu.be/r3jKWR3B5QI?si=2DClO8WoxH3bYtM0\n\n#Rescue #CoastGuard #bigwave #Rescueswimmer https://t.co/QDQHE3aOzc",
+      "media_id": "7_1727393339400437760",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1727393339400437760.mp4",
+      "duration_sec": 38.505,
+      "width": 1080,
+      "height": 1920,
+      "like_count": 297,
+      "retweet_count": 69,
+      "view_count": 25298,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:USCG",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "military:coast-guard",
+        "topic:military",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "video; 1080x1920; 38.5s; 4.86 MiB; archived; tweet context: Have you ever wondered what it takes for a Coast Guard rescue swimmer to respond to a capsized boat incident? Check out the full video on our YouTube channel. https://youtu.be/r3jKWR3B5QI?si=2DClO8WoxH3bYtM0 #Rescue #CoastGuard #bigwave #Rescueswimmer https:/...; source URL: https://video.twimg.com/ext_tw_video/1727393339400437760/pu/vid/avc1/720x1280/9NY8EpxLo-pnBdz8.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1727393339400437760.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1920; 38.5s; 4.86 MiB; archived; tweet context: Have you ever wondered what it takes for a Coast Guard rescue swimmer to respond to a capsized boat incident? Check out the full video on our YouTube channel. https://youtu.be/r3jKWR3B5QI?si=2DClO8WoxH3bYtM0 #Rescue #CoastGuard #bigwave #Rescueswimmer https:/...; source URL: https://video.twimg.com/ext_tw_video/1727393339400437760/pu/vid/avc1/720x1280/9NY8EpxLo-pnBdz8.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1727393339400437760.mp4; needs OCR, transcript, or frame-level visi"
     },
     {
       "tweet_id": "1727673603737436584",
@@ -206442,10 +206302,49 @@
       "missing_steps": [],
       "has_keyframes": true,
       "has_audio_analysis": true,
-      "has_transcript": false,
+      "has_transcript": true,
       "has_vision_description": true,
       "has_ocr": true,
       "description": "video; 1280x720; 6.4s; 1.09 MiB; archived; tweet context: The USCGC Robert Yered (WPC-1104) rolls down a transfer track back toward the water as the cutter finishes its time in routine drydock at the Coast Guard Yard in Baltimore, MD. #USCG #RobertYered #FreshCoatofPaint https://t.co/4wdVBvzhqs; source URL: https://video.twimg.com/ext_tw_video/1754592060735205376/pu/vid/avc1/1280x720/fFhdpnsYEpphRHkA.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1754592060735205376.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1280x720; 6.4s; 1.09 MiB; archived; tweet context: The USCGC Robert Yered (WPC-1104) rolls down a transfer track back toward the water as the cutter finishes its time in routine drydock at the Coast Guard Yard in Baltimore, MD. #USCG #RobertYered #FreshCoatofPaint https://t.co/4wdVBvzhqs; source URL: https://video.twimg.com/ext_tw_video/1754592060735205376/pu/vid/avc1/1280x720/fFhdpnsYEpphRHkA.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1754592060735205376.mp4; needs OCR, transcript, or frame-level vision before content claims. The USCGC Robert Yered (WPC-"
+    },
+    {
+      "tweet_id": "1757820969538736537",
+      "account_handle": "USCG",
+      "posted_at": "2024-02-14T17:35:52.000Z",
+      "tweet_url": "https://x.com/USCG/status/1757820969538736537",
+      "tweet_text": "Happy Valentine's Day!\n\n#ValentinesDay #uscg #CoastGuard https://t.co/OMfvuevHFT",
+      "media_id": "7_1757820814513016832",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1757820814513016832.mp4",
+      "duration_sec": 5.282,
+      "width": 1080,
+      "height": 1080,
+      "like_count": 196,
+      "retweet_count": 49,
+      "view_count": 10186,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:USCG",
+        "audio:has-audio",
+        "audio:silent",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "military:coast-guard",
+        "topic:military",
+        "video:short"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "video; 1080x1080; 5.3s; 0.35 MiB; archived; tweet context: Happy Valentine's Day! #ValentinesDay #uscg #CoastGuard https://t.co/OMfvuevHFT; source URL: https://video.twimg.com/ext_tw_video/1757820814513016832/pu/vid/avc1/720x720/ZDvDoghg7BXvw_i9.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1757820814513016832.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1080x1080; 5.3s; 0.35 MiB; archived; tweet context: Happy Valentine's Day! #ValentinesDay #uscg #CoastGuard https://t.co/OMfvuevHFT; source URL: https://video.twimg.com/ext_tw_video/1757820814513016832/pu/vid/avc1/720x720/ZDvDoghg7BXvw_i9.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1757820814513016832.mp4; needs OCR, transcript, or frame-level vision before content claims. Happy Valentine's Day! #ValentinesDay #uscg #CoastGuard https://t.co/OMfvuevHFT"
     },
     {
       "tweet_id": "1757887674998731153",
@@ -206600,6 +206499,45 @@
       "has_vision_description": true,
       "has_ocr": false,
       "description": "video; 720x1280; 20.1s; 3.61 MiB; archived; tweet context: RT @OFODEAC: Do something today your future self will thank you for! #TrainingTuesday #SRT https://t.co/IgiC89NJZC; source URL: https://video.twimg.com/ext_tw_video/1762567519653498880/pu/vid/avc1/720x1280/PUmgg0XnwWL-DOwT.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC/7_1762567519653498880.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 720x1280; 20.1s; 3.61 MiB; archived; tweet context: RT @OFODEAC: Do something today your future self will thank you for! #TrainingTuesday #SRT https://t.co/IgiC89NJZC; source URL: https://video.twimg.com/ext_tw_video/1762567519653498880/pu/vid/avc1/720x1280/PUmgg0XnwWL-DOwT.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-OFOEAC/7_1762567519653498880.mp4; needs OCR, transcript, or frame-level vision before content claims. RT @OFODEAC: Do something today your future self will thank you for! #TrainingTuesday #SRT https://t.co/IgiC89NJZC | Because I've been weak, because I've been afraid, I am wise, because I've been foolish, life teaches us, and each experience helps us grow."
+    },
+    {
+      "tweet_id": "1763274211160670288",
+      "account_handle": "USCG",
+      "posted_at": "2024-02-29T18:45:06.000Z",
+      "tweet_url": "https://x.com/USCG/status/1763274211160670288",
+      "tweet_text": "Growing those #Pacificpartnerships!\nFijian maritime law enforcement and military members work alongside a boarding team from the USCGC Harriet Lane (WMEC 903) to conduct fishery boardings in the Fiji Exclusive Economic Zone, Feb. 16, 2024.\n\n#CGatSea #CoastGuard #USCG #Fiji https://t.co/yi1L7Zw12H",
+      "media_id": "7_1763273521113739264",
+      "media_type": "video",
+      "archive_status": "archived",
+      "release_asset_url": "https://github.com/vidproject/x/releases/download/media-USCG/7_1763273521113739264.mp4",
+      "duration_sec": 45.9,
+      "width": 1920,
+      "height": 1080,
+      "like_count": 131,
+      "retweet_count": 32,
+      "view_count": 11777,
+      "bucket": "ordinary-video",
+      "priority": 30,
+      "tags": [
+        "agency:USCG",
+        "audio:has-audio",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media:video",
+        "military:coast-guard",
+        "topic:economy",
+        "topic:military",
+        "video:medium"
+      ],
+      "genre_tags": [],
+      "produced_video_tags": [],
+      "missing_steps": [],
+      "has_keyframes": true,
+      "has_audio_analysis": true,
+      "has_transcript": true,
+      "has_vision_description": true,
+      "has_ocr": true,
+      "description": "video; 1920x1080; 45.9s; 12.16 MiB; archived; tweet context: Growing those #Pacificpartnerships! Fijian maritime law enforcement and military members work alongside a boarding team from the USCGC Harriet Lane (WMEC 903) to conduct fishery boardings in the Fiji Exclusive Economic Zone, Feb. 16, 2024. #CGatSea #CoastGuar...; source URL: https://video.twimg.com/ext_tw_video/1763273521113739264/pu/vid/avc1/1280x720/Gimg5CQ7T8eBZrEW.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1763273521113739264.mp4; needs OCR, transcript, or frame-level vision before content claims. | video; 1920x1080; 45.9s; 12.16 MiB; archived; tweet context: Growing those #Pacificpartnerships! Fijian maritime law enforcement and military members work alongside a boarding team from the USCGC Harriet Lane (WMEC 903) to conduct fishery boardings in the Fiji Exclusive Economic Zone, Feb. 16, 2024. #CGatSea #CoastGuar...; source URL: https://video.twimg.com/ext_tw_video/1763273521113739264/pu/vid/avc1/1280x720/Gimg5CQ7T8eBZrEW.mp4?tag=12; archive URL: https://github.com/vidproject/x/releases/download/media-USCG/7_1763273521113739264.mp4; needs OCR, transcript, or frame-level vi"
     },
     {
       "tweet_id": "1764385775431340542",
