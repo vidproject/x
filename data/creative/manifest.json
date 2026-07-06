@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "generated_at": "2026-07-06T16:34:51Z",
-    "source_commit": "d397392b",
+    "generated_at": "2026-07-06T18:45:39Z",
+    "source_commit": "5b6f8f14",
     "source_candidate_count": 1436,
     "review_scope_candidate_count": 209,
     "ready_count": 60,
@@ -29,12 +29,6 @@
       ]
     },
     "datasets": {
-      "stats_reviewed_set": "stats-reviewed-set.json",
-      "stats_excluded_latest_nos": "stats-excluded-latest-nos.json",
-      "possible_false_negatives": "agent-reviewed-possible-false-negatives.json",
-      "agent_reviewed": "agent-reviewed-strange-posts.json",
-      "agent_cuts": "agent-reviewed-cut-posts.json",
-      "agent_uncertain": "agent-reviewed-uncertain-posts.json",
       "high_confidence": "creative-high-confidence.json",
       "candidates": "creative-candidates.json",
       "historical_2016_2020": "creative-2016-2020.json"
@@ -43,40 +37,12 @@
       "2025_plus": "creative-2025-plus.json"
     },
     "not_ready": "creative-not-ready.json",
-    "default_queue": "stats_reviewed_set",
+    "default_queue": "high_confidence",
     "review_actions": [
       "yes",
       "no",
       "superlike",
       "back"
-    ],
-    "source": "existing creative queues plus agent precision review",
-    "decision_labels": {
-      "yes": "Like",
-      "superlike": "Superlike",
-      "no": "No"
-    },
-    "agent_review_counts": {
-      "stats_reviewed_set": 218,
-      "stats_excluded_latest_nos": 6,
-      "possible_false_negatives": 30,
-      "agent_reviewed": 224,
-      "agent_cuts": 411,
-      "agent_uncertain": 32,
-      "possible_false_negative_components": {
-        "agent_cut": 3,
-        "professional_report": 27,
-        "families": {
-          "nice_branding": 2,
-          "remigration_nativist": 4,
-          "gamified_cbp_home": 16,
-          "holiday_deportation_stunt": 1,
-          "stylized_operation": 2,
-          "recruitment_propaganda": 5
-        },
-        "deduped_exact_or_template_rows": 2,
-        "dropped_family_cap_rows": 4
-      }
-    }
+    ]
   }
 }
