@@ -297,6 +297,54 @@ h2 {
   color: #d9ecff;
 }
 
+.text-review-card {
+  width: min(760px, calc(100% - 32px));
+  max-height: calc(100vh - 270px);
+  overflow: auto;
+  padding: 22px;
+  border: 1px solid #bfcfc8;
+  border-radius: 8px;
+  background: #f8fbfa;
+  color: var(--ink);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+  text-align: left;
+}
+
+.text-review-meta {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 720;
+}
+
+.text-review-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 1.06rem;
+  line-height: 1.48;
+}
+
+.text-review-evidence {
+  margin: 18px 0 0;
+  padding: 12px;
+  border: 1px solid #d5dfdb;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #35413b;
+  font-family: inherit;
+  font-size: 0.9rem;
+  line-height: 1.42;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.text-review-card a {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--blue);
+  font-weight: 720;
+}
+
 .media-strip {
   display: flex;
   gap: 8px;

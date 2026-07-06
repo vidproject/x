@@ -1,0 +1,850 @@
+{
+  "metadata": {
+    "queue": "stats-excluded-nos",
+    "label": "Stats excluded latest nos",
+    "generated_at": "2026-07-06T17:06:26Z",
+    "item_count": 6,
+    "source": "agent-reviewed-strange-posts enriched with creative media; latest no overrides split into excluded queue",
+    "review_actions": [
+      "yes",
+      "no",
+      "superlike",
+      "back"
+    ],
+    "decision_labels": {
+      "yes": "Like",
+      "superlike": "Superlike",
+      "no": "No"
+    }
+  },
+  "items": [
+    {
+      "id": "1906823462124978614",
+      "item_key": "1906823462124978614",
+      "tweet_id": "1906823462124978614",
+      "posted_at": "2025-03-31T21:38:35.000Z",
+      "queue": "stats-excluded-nos",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1906823462124978614",
+      "tweet_text": "MAKING AMERICA SAFE AGAIN: Under the leadership of @POTUS Trump and @Sec_Noem, our ICE agents are removing criminal illegal aliens from American communities.\n\nIf you come to our country and break our laws, we will find you and, we will deport you. https://t.co/SgqoqCBB4G",
+      "review_state": "agent_keep",
+      "confidence": "high",
+      "inclusion_basis": "wholly_creative_media",
+      "score": 160,
+      "preference_score": 90,
+      "preference_categories": [
+        "aesthetic:dystopian-surreal",
+        "cruelty:personalized-deportation-threat",
+        "medium:produced-video-with-preference-signal",
+        "policy:self-deportation-ad",
+        "subject:enforcement-linked"
+      ],
+      "creative_forms": [
+        "animation",
+        "dystopian",
+        "montage"
+      ],
+      "tags": [
+        "action:deportation",
+        "agency:DHSgov",
+        "agency:ICEgov",
+        "agency:POTUS",
+        "audio:has-audio",
+        "crime:arson",
+        "crime:assault",
+        "crime:sexual",
+        "crime:trafficking",
+        "genre:dystopian",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "slogan:criminal-illegal-alien",
+        "slogan:illegal-alien",
+        "theme:criminal",
+        "theme:directive",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "evidence": {
+        "summary": "Vertical video (9:16) from DHS that opens on dark night-vision B-roll of an ICE raid under bold red-and-white animated captions ('Last week, ICE continued to capture criminal illegal aliens across the U.S.'), then runs a sequence of black-and-white arrestee mugshots each stamped with a red crime label (PREDATORY SEXUAL ASSAULT OF A CHILD, STALKING AND ASSAULT, SEXUAL OFFENSES AGAINST A CHILD, ATTEMPTED ARSON), with the DHS seal at the bottom. A voiceover speaks 'Leave now... we will find you, and we will deport you... America's borders are closed to lawbreakers'. There is no music track.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "cruelty:personalized-deportation-threat: we will find you",
+          "policy:self-deportation-ad: Leave now",
+          "aesthetic:dystopian-surreal: dystopian",
+          "produced video with preference signal",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 4449,
+        "retweets": 939,
+        "quotes": 40,
+        "views": 124278
+      },
+      "media": [
+        {
+          "media_id": "7_1906822190076411904",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/7_1906822190076411904.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/cd75a9739662ad23e274a2294f28608b2b0b26525dc6e915adf643a069bd498b.jpg",
+          "sha256": "cd75a9739662ad23e274a2294f28608b2b0b26525dc6e915adf643a069bd498b",
+          "duration_sec": 56.666,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Vertical video (9:16) from DHS that opens on dark night-vision B-roll of an ICE raid under bold red-and-white animated captions ('Last week, ICE continued to capture criminal illegal aliens across the U.S.'), then runs a sequence of black-and-white arrestee mugshots each stamped with a red crime label (PREDATORY SEXUAL ASSAULT OF A CHILD, STALKING AND ASSAULT, SEXUAL OFFENSES AGAINST A CHILD, ATTEMPTED ARSON), with the DHS seal at the bottom. A voiceover speaks 'Leave now... we will find you, and we will deport you... America's borders are closed to lawbreakers'. There is no music track.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5
+              },
+              "complete_row_count": 5,
+              "text": ""
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 56.725333,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 8,
+              "text": "President Trump has a clear message for those that are in our country illegally. Leave now. If you don't, we will find you, and we will deport you. You will never return. For too long, weak politicians left our borders wide open. They flooded our communities with drugs, human trafficking, and violent criminals. They put American lives at risk, while those days are over. America's borders are closed to lawbreakers."
+            }
+          }
+        }
+      ],
+      "stats_review_note": "Excluded from corrected stats by latest pasted no decision.",
+      "stats_scope": "agent-reviewed-corrected-stats"
+    },
+    {
+      "id": "1909999022460248093",
+      "item_key": "1909999022460248093",
+      "tweet_id": "1909999022460248093",
+      "posted_at": "2025-04-09T15:57:07.000Z",
+      "queue": "stats-excluded-nos",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1909999022460248093",
+      "tweet_text": "MAKE AMERICA SAFE AGAIN: This National Crime Victims’ Rights Week, @ICEgov continues to protect American lives from the dangerous criminal illegal aliens that are in our communities.\n\n@POTUS Trump and @Sec_Noem are standing up for Americans who have been victims of illegal alien crime.",
+      "review_state": "agent_keep",
+      "confidence": "medium",
+      "inclusion_basis": "wholly_creative_media",
+      "score": 130,
+      "preference_score": 90,
+      "preference_categories": [
+        "cruelty:personalized-deportation-threat",
+        "medium:produced-video-with-preference-signal",
+        "policy:self-deportation-ad",
+        "subject:enforcement-linked"
+      ],
+      "creative_forms": [
+        "animation"
+      ],
+      "tags": [
+        "action:deportation",
+        "agency:DHSgov",
+        "agency:ICEgov",
+        "agency:POTUS",
+        "audio:has-audio",
+        "crime:assault",
+        "crime:child",
+        "crime:child-sexual",
+        "crime:narcotics",
+        "crime:sexual",
+        "crime:trafficking",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "military:navy",
+        "review:screened-video",
+        "slogan:criminal-illegal-alien",
+        "slogan:illegal-alien",
+        "slogan:masa",
+        "theme:criminal",
+        "theme:directive",
+        "topic:general",
+        "topic:immigration",
+        "topic:military",
+        "video:medium",
+        "video:produced"
+      ],
+      "evidence": {
+        "summary": "Vertical video. A DHS motion-graphics spot with a Trump voiceover ('Leave now. If you don't, we will find you, and we will deport you') and animated 'LEAVE NOW' typography over a textured navy wall, followed by a sequence of grayscale criminal mugshots on red backgrounds, each captioned with charges (lewd acts with a minor, narcotics and assault, child pornography) and stamped with the DHS seal. It carries no music track and uses the spoken voiceover. On-screen text reads 'LEAVE NOW', 'LEWD AND LASCIVIOUS ACTS WITH A MINOR', 'NARCOTICS AND ASSAULT', '100 COUNTS OF POSSESSION OF CHILD PORNOGRAPHY', and 'U.S. DEPARTMENT OF HOMELAND SECURITY'.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "cruelty:personalized-deportation-threat: we will find you",
+          "policy:self-deportation-ad: Leave now",
+          "produced video with preference signal",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 1518,
+        "retweets": 316,
+        "quotes": 0,
+        "views": 116977
+      },
+      "media": [
+        {
+          "media_id": "7_1909989115761713152",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/7_1909989115761713152.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/c26c0cee0f0b610a7f4b3fe5c812a06ef2e3ccc375f726818211c9b663427673.jpg",
+          "sha256": "c26c0cee0f0b610a7f4b3fe5c812a06ef2e3ccc375f726818211c9b663427673",
+          "duration_sec": 71.066,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Vertical video. A DHS motion-graphics spot with a Trump voiceover ('Leave now. If you don't, we will find you, and we will deport you') and animated 'LEAVE NOW' typography over a textured navy wall, followed by a sequence of grayscale criminal mugshots on red backgrounds, each captioned with charges (lewd acts with a minor, narcotics and assault, child pornography) and stamped with the DHS seal. It carries no music track and uses the spoken voiceover. On-screen text reads 'LEAVE NOW', 'LEWD AND LASCIVIOUS ACTS WITH A MINOR', 'NARCOTICS AND ASSAULT', '100 COUNTS OF POSSESSION OF CHILD PORNOGRAPHY', and 'U.S. DEPARTMENT OF HOMELAND SECURITY'.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5
+              },
+              "complete_row_count": 5,
+              "text": ""
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 71.125333,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 8,
+              "text": "President Trump has a clear message for those that are in our country illegally. Leave now. If you don't, we will find you, and we will deport you. You will never return. For too long, weak politicians left our borders wide open. They flooded our communities with drugs, human trafficking, and violent criminals. They put American lives at risk, while those days are over. America's borders are closed to lawbreakers."
+            }
+          }
+        }
+      ],
+      "stats_review_note": "Excluded from corrected stats by latest pasted no decision.",
+      "stats_scope": "agent-reviewed-corrected-stats"
+    },
+    {
+      "id": "1928443447561597214",
+      "item_key": "1928443447561597214",
+      "tweet_id": "1928443447561597214",
+      "posted_at": "2025-05-30T13:28:41.000Z",
+      "queue": "stats-excluded-nos",
+      "account": {
+        "handle": "ICEgov",
+        "label": "ICEgov"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/1928443447561597214",
+      "tweet_text": "🎥Watch ICE San Antonio arrest Honduran illegal alien Jose Martinez-Ulloa.  If you don’t have legal status, it’s time to self-deport. By self-deporting, noncriminal illegal aliens can: \n• Skip the ICE arrest \n• Get a free flight home \n• Receive a $1,000 stipend https://t.co/YPigOZLhuB",
+      "review_state": "agent_keep",
+      "confidence": "high",
+      "inclusion_basis": "real_footage_creative_use",
+      "score": 130,
+      "preference_score": 84,
+      "preference_categories": [
+        "medium:produced-video-with-preference-signal",
+        "policy:self-deportation-ad",
+        "spectacle:gamified-deportation",
+        "subject:enforcement-linked"
+      ],
+      "creative_forms": [
+        "montage"
+      ],
+      "tags": [
+        "action:detention",
+        "action:self-deportation",
+        "agency:ICEgov",
+        "audio:has-audio",
+        "audio:silent",
+        "country:Honduras",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:video",
+        "policy:cbp-home",
+        "review:screened-video",
+        "slogan:free-ticket-home",
+        "slogan:illegal-alien",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:immigration",
+        "video:produced",
+        "video:short"
+      ],
+      "evidence": {
+        "summary": "Vertical handheld footage of a single ICE arrest: an agent in a tactical vest handcuffs a man in a teal shirt and paint-stained jeans beside a vehicle at golden hour, the detainee's face blurred. There are no added graphics or montage editing, and the music_score is very low (0.33). It is one continuous arrest clip. The self-deport stipend statements appear only in the tweet text. On-screen and tweet text includes (tweet only) 'it's time to self-deport', 'Skip the ICE arrest', 'Get a free flight home', and 'Receive a $1,000 stipend'.",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "spectacle:gamified-deportation: free flight",
+          "policy:self-deportation-ad: self-deport",
+          "produced video with preference signal",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0,
+        "views": 86170
+      },
+      "media": [
+        {
+          "media_id": "7_1928443371137228800",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-ICEgov/7_1928443371137228800.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/80d129e51e4ba2265972a87e127bd0ba9eb91aa974120efc7be7f951878aed2c.jpg",
+          "sha256": "80d129e51e4ba2265972a87e127bd0ba9eb91aa974120efc7be7f951878aed2c",
+          "duration_sec": 17.5,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Vertical handheld footage of a single ICE arrest: an agent in a tactical vest handcuffs a man in a teal shirt and paint-stained jeans beside a vehicle at golden hour, the detainee's face blurred. There are no added graphics or montage editing, and the music_score is very low (0.33). It is one continuous arrest clip. The self-deport stipend statements appear only in the tweet text. On-screen and tweet text includes (tweet only) 'it's time to self-deport', 'Skip the ICE arrest', 'Get a free flight home', and 'Receive a $1,000 stipend'.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5
+              },
+              "complete_row_count": 5,
+              "text": ""
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "silent-audio",
+              "audio_stream_count": 1,
+              "duration_sec": 17.554286,
+              "tags": [
+                "audio:has-audio",
+                "audio:silent"
+              ]
+            },
+            "transcript": {
+              "status": "empty-transcript",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "stats_review_note": "Excluded from corrected stats by latest pasted no decision.",
+      "stats_scope": "agent-reviewed-corrected-stats"
+    },
+    {
+      "id": "1965514384803061765",
+      "item_key": "1965514384803061765",
+      "tweet_id": "1965514384803061765",
+      "posted_at": "2025-09-09T20:35:21.000Z",
+      "queue": "stats-excluded-nos",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1965514384803061765",
+      "tweet_text": "ASMR: @USCG captures, burns, and sinks a drug boat.\n\nOver the weekend, as part of Operation Pacific Viper, the @USCG Cutter Stone conducted three interdictions in a single night—seizing nearly 13,000 pounds of cocaine and apprehending seven suspected drug smugglers. https://t.co/wHRGUGYtTw",
+      "review_state": "manual_seed",
+      "confidence": "high",
+      "inclusion_basis": "real_footage_creative_use",
+      "score": 125,
+      "preference_score": 84,
+      "preference_categories": [
+        "spectacle:asmr-deportation",
+        "subject:enforcement-linked"
+      ],
+      "creative_forms": [
+        "asmr"
+      ],
+      "tags": [
+        "action:detention",
+        "agency:USCG",
+        "audio:has-audio",
+        "crime:cocaine",
+        "crime:narcotics",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media:video",
+        "military:coast-guard",
+        "review:screened-video",
+        "topic:immigration",
+        "topic:military",
+        "video:medium"
+      ],
+      "evidence": {
+        "summary": "Dark video frame with a small bright fire or explosion isolated against a nearly black background, consistent with a night or low-light shot of a burning vessel or object on the water.",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "spectacle:asmr-deportation: ASMR",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 5215,
+        "retweets": 1140,
+        "quotes": 181,
+        "views": 204615
+      },
+      "media": [
+        {
+          "media_id": "13_1965514270424055808",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_1965514270424055808.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/24294411ca81374273e175c808ce0d6a39ddba6b2d2454c6e19388a7432ae618.jpg",
+          "sha256": "24294411ca81374273e175c808ce0d6a39ddba6b2d2454c6e19388a7432ae618",
+          "duration_sec": 47.26,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Dark video frame with a small bright fire or explosion isolated against a nearly black background, consistent with a night or low-light shot of a burning vessel or object on the water.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 3,
+                "no-text": 2
+              },
+              "complete_row_count": 5,
+              "text": "Se.\n\n~z\n\nrs"
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 47.322268,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "empty-transcript",
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "stats_review_note": "Excluded from corrected stats by latest pasted no decision.",
+      "stats_scope": "agent-reviewed-corrected-stats"
+    },
+    {
+      "id": "2008552276613353655",
+      "item_key": "2008552276613353655",
+      "tweet_id": "2008552276613353655",
+      "posted_at": "2026-01-06T14:52:34.000Z",
+      "queue": "stats-excluded-nos",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/2008552276613353655",
+      "tweet_text": "MURDERERS HAVE NO HOME IN MINNEAPOLIS.\n\n@Sec_Noem and our brave DHS law enforcement have taken Tomas Espin Tapia off the streets, an Ecuadorian illegal alien convicted of robbery and WANTED for MURDER and SEXUAL ASSAULT.\n\nTo the criminals living among us, you are NOT our neighbors. Leave now or we will find you.",
+      "review_state": "agent_keep",
+      "confidence": "high",
+      "inclusion_basis": "wholly_creative_media",
+      "score": 130,
+      "preference_score": 90,
+      "preference_categories": [
+        "cruelty:personalized-deportation-threat",
+        "medium:produced-video-with-preference-signal",
+        "policy:self-deportation-ad",
+        "subject:enforcement-linked"
+      ],
+      "creative_forms": [
+        "advertisement"
+      ],
+      "tags": [
+        "agency:DHSgov",
+        "audio:has-audio",
+        "country:Ecuador",
+        "crime:assault",
+        "crime:homicide",
+        "crime:murder",
+        "crime:robbery",
+        "crime:sexual",
+        "genre:advertisement",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "review:screened-video",
+        "slogan:illegal-alien",
+        "theme:criminal",
+        "theme:directive",
+        "topic:immigration",
+        "video:medium",
+        "video:produced"
+      ],
+      "evidence": {
+        "summary": "Vertical video frame inside a crowded office or room, with multiple people standing close together and several wearing tactical or law-enforcement style clothing.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "cruelty:personalized-deportation-threat: we will find you",
+          "policy:self-deportation-ad: Leave now",
+          "produced video with preference signal",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 19451,
+        "retweets": 3765,
+        "quotes": 218,
+        "views": 706996
+      },
+      "media": [
+        {
+          "media_id": "13_2008552165787287553",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0004/13_2008552165787287553.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/e679545c05210d743141f90951735dfc840ea2717bb4eee72990e94d86313302.jpg",
+          "sha256": "e679545c05210d743141f90951735dfc840ea2717bb4eee72990e94d86313302",
+          "duration_sec": 90.466,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "Vertical video frame inside a crowded office or room, with multiple people standing close together and several wearing tactical or law-enforcement style clothing.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 5
+              },
+              "complete_row_count": 5,
+              "text": "— TL wea gues aaah ee 4 7 ale A —= ey —— ab 7 ‘a (QG—- ZS. Ber ‘S : [Se 3 ee\n\n(hi +h » aot an . 889 {Ligp Lt\n\n{| Z A oy > j = Lis [ ag Goad ‘ tb = 'd = pS dil: CaS f . Ae ke xP A uM MT aay aan 1 + me it at Oe A . : ,, “Or Rw H \\ J ye} N Ny: ete) s i's. “Ain 2) bro A / a 4 >\n\n-. + “ yy : , = i i ‘ < . ) -\n\na cit ong iar se Wait Li Ne tow’ 5¥ May a Z is ii If ay J sy Oy oe = init Ak . } p78 Si %& ; - < ‘| of 3 =="
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 90.517333,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 14,
+              "text": "¿Verdad? Estan ahorita en dos puntos. ¿Verdad? ¿Le voy a saber quién estamos aquí? ¿¿No sé? ¿Hi? ¿Será les de la piel? ¿Qué tienes? Deje a él a la imagen. ¿Qué quieres? Hay unDDD, y no puedo pisar. Les deje a él a él a él a él a él a él a él. ¿Qué quieres? ¿Qué quieres?"
+            }
+          }
+        }
+      ],
+      "stats_review_note": "Excluded from corrected stats by latest pasted no decision.",
+      "stats_scope": "agent-reviewed-corrected-stats"
+    },
+    {
+      "id": "2039345471534055865",
+      "item_key": "2039345471534055865",
+      "tweet_id": "2039345471534055865",
+      "posted_at": "2026-04-01T14:13:44.000Z",
+      "queue": "stats-excluded-nos",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/2039345471534055865",
+      "tweet_text": "Open-border policies yet again have caused another preventable tragedy.\n\nAnibal Armando Chavarria Muy, a criminal illegal alien from Guatemala, is charged with second degree murder after repeatedly stabbing a man to death in Fairfax County WITH A MACHETE.\n\nIt is common sense. ICE is calling on Virginia Governor Abigail Spanberger and Virginia's sanctuary politicians to not release this murderer back into our communities.",
+      "review_state": "agent_keep",
+      "confidence": "medium",
+      "inclusion_basis": "real_footage_creative_use",
+      "score": 65,
+      "preference_score": 84,
+      "preference_categories": [
+        "cruelty:personalized-deportation-threat",
+        "subject:enforcement-linked"
+      ],
+      "creative_forms": [
+        "text-overlay"
+      ],
+      "tags": [
+        "action:deportation",
+        "action:detention",
+        "agency:DHSgov",
+        "agency:ICEgov",
+        "audio:has-audio",
+        "country:Guatemala",
+        "crime:homicide",
+        "crime:murder",
+        "legal:criminal-prosecution",
+        "media-status:archived",
+        "media-status:described",
+        "media-status:ocr-done",
+        "media-status:transcribed",
+        "media:video",
+        "origin:Guatemala",
+        "phrase:immigrant",
+        "policy:border",
+        "review:screened-video",
+        "slogan:criminal-illegal-alien",
+        "slogan:illegal-alien",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "theme:martyrdom",
+        "topic:general",
+        "topic:immigration",
+        "video:long"
+      ],
+      "evidence": {
+        "summary": "A clip from a local news segment. It shows the exterior of a three-story brick apartment building behind trees and a white picket fence, then a blonde reporter in a dark blue blazer reporting outdoors near a fence, with another woman standing behind her. The lower-third reads ILLEGAL IMMIGRANT CHARGED IN DEADLY STABBING, BAILEY'S CROSSROADS, VA.  [0:14] Exterior of a three-story brick apartment building behind trees and a picket fence.  [1:13] A blonde reporter reports outdoors near a fence; lower-third reads ILLEGAL IMMIGRANT CHARGED IN DEADLY STABBING.  [2:11] Continued reporting with the BAILEY'S CROSSROADS, VA location banner.",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "creative treatment signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "cruelty:personalized-deportation-threat: deport him",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 3688,
+        "retweets": 1357,
+        "quotes": 0,
+        "views": 58448
+      },
+      "media": [
+        {
+          "media_id": "13_2039344885640151040",
+          "type": "video",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov/13_2039344885640151040.mp4",
+          "original_url": null,
+          "thumbnail_url": "../data/thumbnails/video/28bccd33cbb440438cb5f4c4e6bf495524d8e1a7ecd861934b08b26d41fb33c3.jpg",
+          "sha256": "28bccd33cbb440438cb5f4c4e6bf495524d8e1a7ecd861934b08b26d41fb33c3",
+          "duration_sec": 146.513,
+          "playable": true,
+          "readiness": {
+            "ready": true,
+            "blockers": [],
+            "checks": {
+              "archived": true,
+              "description": true,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
+              "ocr": true,
+              "audio_analysis": true,
+              "has_audio": true,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "opus-vision-review",
+              "text": "A clip from a local news segment. It shows the exterior of a three-story brick apartment building behind trees and a white picket fence, then a blonde reporter in a dark blue blazer reporting outdoors near a fence, with another woman standing behind her. The lower-third reads ILLEGAL IMMIGRANT CHARGED IN DEADLY STABBING, BAILEY'S CROSSROADS, VA.  [0:14] Exterior of a three-story brick apartment building behind trees and a picket fence.  [1:13] A blonde reporter reports outdoors near a fence; lower-third reads ILLEGAL IMMIGRANT CHARGED IN DEADLY STABBING.  [2:11] Continued reporting with the BAILEY'S CROSSROADS, VA location banner.",
+              "sidecar_statuses": {
+                "manual-review": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 5
+              },
+              "complete_row_count": 5,
+              "text": ""
+            },
+            "keyframes": {
+              "status": "ok",
+              "frame_count": 5
+            },
+            "audio": {
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 146.564354,
+              "tags": [
+                "audio:has-audio"
+              ]
+            },
+            "transcript": {
+              "status": "ok",
+              "segment_count": 28,
+              "text": "pension. This one in Fairfax County and illegal immigrant is accused of stabbing a man multiple times with a machete in Billy's crossroads on Sunday night. Tonight, this man from Guatemala is in jail without bond. Here's our Nick Menach with more details that you'll see only on seven news. Law enforcement sources tell me that another illegal immigrant was arrested for a brutal murder in Fairfax County. The Department of Homeland Security tells seven news, Ani Bill, Armando Chavariya Muay is from Guatemala and he entered the United States illegally at an unknown place in time. This week, Fairfax County police charge Muay was second-degree murder for killing a man with a machete in Billy's crossroads. DHS has also sent an immigration detainer from Muay to Fairfax County sheriff Stacey Kincaid in order to deport him. And DHS acting assistant secretary Lauren Biss said, quote, ISIS calling on Virginia governor Abigail Spamberger and Virginia's sanctuary politicians to not release this murderer back into our communities. That in reference to the fact another illegal immigrant murder suspect in Fairfax County, Abdul Jalow, who was accused of killing Stephanie Mentor last month, was released by Fairfax County in spite of repeated warnings from police that he might kill someone. I had her for 41 years and I don't know what I'm going to do without her. Last week, Stephanie's mother called on governor Spamberger and Fairfax County officials to do more to protect Virginians from violent illegal immigrants. One of the governors, first official acts after being sworn in, was to prohibit state law enforcement from cooperating with ICE. And she has refused to answer our questions about whether she will sign a bill passed by the legislature, making it illegal for local law enforcement to do so. Nicole Kipperlove is the executive director of American Border Story, an advocacy group that works with victims of illegal immigrant crime. Immigration is not just a federal issue, but it's also a state and local issue to an extent. You see that playing out in Fairfax County. Obviously, the county has seen a lot of crime as a result of these policies. It operates under this trust policy that limits cooperation. I reached out to Sheriff Stacey Kinkade's office and I asked is her office going to honor the ICE detainers on the two murder suspects. Kinkade's office has not responded."
+            }
+          }
+        }
+      ],
+      "stats_review_note": "Excluded from corrected stats by latest pasted no decision.",
+      "stats_scope": "agent-reviewed-corrected-stats"
+    }
+  ]
+}

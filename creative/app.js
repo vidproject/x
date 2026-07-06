@@ -2,6 +2,12 @@ const MANIFEST_URL = '../data/creative/manifest.json';
 const STORAGE_KEY = 'vidproject:x:creative-review:decisions:v1';
 
 const QUEUE_DEFS = [
+  { id: 'stats-reviewed-set', label: 'Stats set' },
+  { id: 'stats-excluded-nos', label: 'Stats excluded' },
+  { id: 'possible-false-negatives', label: 'Possible false negatives' },
+  { id: 'agent-reviewed', label: 'Agent reviewed' },
+  { id: 'agent-cuts', label: 'Agent cuts' },
+  { id: 'agent-uncertain', label: 'Uncertain' },
   { id: 'high-confidence', label: 'High confidence' },
   { id: 'candidates', label: 'Candidates' },
   { id: '2016-2020', label: '2016-2020' },
@@ -14,7 +20,7 @@ const state = {
   explicitQueues: new Map(),
   sourceErrors: [],
   decisions: loadDecisions(),
-  activeQueue: 'high-confidence',
+  activeQueue: 'stats-reviewed-set',
   currentKey: null,
   mediaIndex: 0,
   history: [],
@@ -238,6 +244,7 @@ function addItemsFromPayload(ref, payload) {
       existing.sources = unique([...existing.sources, ...item.sources]);
       existing.media = existing.media.length ? existing.media : item.media;
       existing.tags = unique([...existing.tags, ...item.tags]);
+      existing.reasons = unique([...existing.reasons, ...item.reasons]);
     } else {
       state.items.set(item.key, item);
     }
@@ -283,6 +290,9 @@ function normalizeItem(raw, ref, metadata, index) {
     ...arrayValues(raw.genre_tags),
     ...arrayValues(raw.produced_video_tags),
     ...arrayValues(raw.candidate_visual_tags),
+    ...arrayValues(raw.narrow_categories),
+    ...arrayValues(raw.manual_pattern_categories),
+    ...arrayValues(raw.matched_tags),
     ...arrayValues(raw.creative_forms).map((value) => `form:${value}`),
     ...arrayValues(raw.subjects).map((value) => `subject:${value}`),
   ]);
@@ -303,7 +313,7 @@ function normalizeItem(raw, ref, metadata, index) {
       raw.tweet_text || raw.text_resolved || raw.text || raw.tweet_text_excerpt
     ),
     reviewState: stringValue(raw.review_state || raw.status),
-    confidence: stringValue(raw.confidence),
+    confidence: stringValue(raw.confidence || raw.agent_confidence),
     basis: stringValue(raw.inclusion_basis || raw.basis || raw.bucket),
     score: numberValue(raw.score || raw.priority),
     preferenceScore: numberValue(raw.preference_score),
@@ -312,7 +322,9 @@ function normalizeItem(raw, ref, metadata, index) {
     media,
     evidenceSummary: stringValue(
       evidence.summary ||
+        raw.false_negative_review_note ||
         raw.evidence_summary ||
+        raw.agent_reason ||
         raw.description ||
         raw.visual_observation ||
         raw.summary
@@ -323,6 +335,10 @@ function normalizeItem(raw, ref, metadata, index) {
       ...arrayValues(raw.preference_reasons),
       ...arrayValues(evidence.reasons),
       ...arrayValues(raw.reasons),
+      ...arrayValues(raw.agent_reason),
+      ...arrayValues(raw.false_negative_review_note),
+      ...arrayValues(raw.false_negative_review_basis).map((value) => `review basis: ${value}`),
+      ...arrayValues(raw.suggested_rule).map((value) => `rule: ${value}`),
     ]),
     sourceSidecars: unique([
       ...arrayValues(evidence.source_sidecars),
@@ -597,7 +613,7 @@ function renderDecision(key) {
   const record = state.decisions[key];
   const decision = record?.decision || 'undecided';
   els.decisionPill.className = `decision-pill ${decision === 'undecided' ? '' : decision}`;
-  els.decisionPill.textContent = humanize(decision);
+  els.decisionPill.textContent = decision === 'yes' ? 'Liked' : humanize(decision);
 }
 
 function renderMedia(item) {
@@ -605,7 +621,7 @@ function renderMedia(item) {
   els.mediaStrip.replaceChildren();
 
   if (!item.media.length) {
-    els.mediaStage.append(mediaFallback('No archived media URL is available for this candidate.'));
+    els.mediaStage.append(textReviewCard(item));
     return;
   }
 
@@ -687,6 +703,48 @@ function mediaFallback(message, href = '') {
   }
   box.append(inner);
   return box;
+}
+
+function textReviewCard(item) {
+  const card = document.createElement('article');
+  card.className = 'text-review-card';
+
+  const eyebrow = document.createElement('div');
+  eyebrow.className = 'text-review-meta';
+  eyebrow.textContent = [
+    item.accountHandle ? `@${item.accountHandle}` : item.accountLabel || 'Unknown account',
+    formatDate(item.postedAt),
+    item.confidence ? `${item.confidence} confidence` : '',
+  ]
+    .filter(Boolean)
+    .join(' / ');
+  card.append(eyebrow);
+
+  const text = document.createElement('p');
+  text.className = 'text-review-text';
+  text.textContent = item.tweetText || 'No tweet text captured.';
+  card.append(text);
+
+  const evidence = [item.evidenceSummary, ...item.reasons.slice(0, 4)]
+    .filter(Boolean)
+    .join('\n');
+  if (evidence) {
+    const note = document.createElement('pre');
+    note.className = 'text-review-evidence';
+    note.textContent = evidence;
+    card.append(note);
+  }
+
+  if (item.tweetUrl) {
+    const link = document.createElement('a');
+    link.href = item.tweetUrl;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = 'Open tweet';
+    card.append(link);
+  }
+
+  return card;
 }
 
 function renderDetails(item) {
@@ -1024,6 +1082,27 @@ function normalizeQueueId(value) {
   const clean = stringValue(value).toLowerCase().replace(/_/g, '-');
   if (clean.includes('super')) {
     return 'superlikes';
+  }
+  if (clean.includes('stats-excluded')) {
+    return 'stats-excluded-nos';
+  }
+  if (clean.includes('stats-reviewed') || clean.includes('stats-set')) {
+    return 'stats-reviewed-set';
+  }
+  if (clean.includes('false-negative')) {
+    return 'possible-false-negatives';
+  }
+  if (clean.includes('possible-false')) {
+    return 'possible-false-negatives';
+  }
+  if (clean.includes('uncertain')) {
+    return 'agent-uncertain';
+  }
+  if (clean.includes('cut')) {
+    return 'agent-cuts';
+  }
+  if (clean.includes('agent') || clean.includes('reviewed') || clean.includes('audited')) {
+    return 'agent-reviewed';
   }
   if (clean.includes('2016') || clean.includes('historical') || clean.includes('older')) {
     return '2016-2020';

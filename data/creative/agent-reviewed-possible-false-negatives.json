@@ -1,0 +1,1284 @@
+{
+  "metadata": {
+    "queue": "possible-false-negatives",
+    "label": "Possible false negatives",
+    "generated_at": "2026-07-06T13:29:44Z",
+    "item_count": 30,
+    "selection_rule": "user-calibrated false-negative queue, deduped by normalized post text and capped by repeated campaign family so review focuses on materially distinct missed patterns",
+    "components": {
+      "agent_cut": 3,
+      "professional_report": 27,
+      "families": {
+        "nice_branding": 2,
+        "remigration_nativist": 4,
+        "gamified_cbp_home": 16,
+        "holiday_deportation_stunt": 1,
+        "stylized_operation": 2,
+        "recruitment_propaganda": 5
+      },
+      "deduped_exact_or_template_rows": 2,
+      "dropped_family_cap_rows": 4
+    },
+    "review_actions": [
+      "yes",
+      "no",
+      "superlike",
+      "back"
+    ],
+    "decision_labels": {
+      "yes": "Like",
+      "superlike": "Superlike",
+      "no": "No"
+    }
+  },
+  "items": [
+    {
+      "id": "1998535638778343610",
+      "item_key": "1998535638778343610",
+      "tweet_id": "1998535638778343610",
+      "posted_at": "2025-12-09T23:30:01.000Z",
+      "account": {
+        "handle": "CBP",
+        "label": "CBP"
+      },
+      "tweet_url": "https://x.com/CBP/status/1998535638778343610",
+      "tweet_text": "Get on the nice list. If you are in the United States illegally, you may qualify to self deport now with the CBP Home app. Avoid arrest, receive a stipend, and have fines and fees forgiven. https://t.co/9dECXBVoqj",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 653,
+        "retweets": 172,
+        "quotes": 0
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 245,
+      "false_negative_review_family": "nice_branding",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "nice_branding",
+        "holiday_deportation_stunt",
+        "gamified_cbp_home"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "2005703951669473613",
+      "item_key": "2005703951669473613",
+      "tweet_id": "2005703951669473613",
+      "posted_at": "2025-12-29T18:14:20.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/2005703951669473613",
+      "tweet_text": "DON’T LET FRAUDSTERS INTO AMERICA. Join USCIS' critical mission as a Homeland Defender and protect America from criminal aliens that seek to exploit our nation. http://USCIS.GOV/JOIN https://t.co/pI4Od9bBlL",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [
+        "advertisement"
+      ],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "Professional report row with user-calibrated false-negative signal.",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 2749,
+        "retweets": 658,
+        "quotes": 38
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 169,
+      "false_negative_review_family": "remigration_nativist",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "remigration_nativist",
+        "recruitment_propaganda",
+        "supporting forms: advertisement"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1992246831175102655",
+      "item_key": "1992246831175102655",
+      "tweet_id": "1992246831175102655",
+      "posted_at": "2025-11-22T15:00:33.000Z",
+      "account": {
+        "handle": "CBP",
+        "label": "CBP"
+      },
+      "tweet_url": "https://x.com/CBP/status/1992246831175102655",
+      "tweet_text": "Turkeys aren't the only thing getting caught this week, use the CBP Home app to self deport. Learn more about CBP Home: https://go.dhs.gov/wBV https://t.co/0WoPt5FEtk",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [
+        "advertisement",
+        "psa"
+      ],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 1017,
+        "retweets": 226,
+        "quotes": 0
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 154,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "holiday_deportation_stunt",
+        "gamified_cbp_home",
+        "supporting forms: advertisement, psa"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1993043713883619542",
+      "item_key": "1993043713883619542",
+      "tweet_id": "1993043713883619542",
+      "posted_at": "2025-11-24T19:47:05.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1993043713883619542",
+      "tweet_text": "This holiday season, give yourself the gift of home with the CBP Home app. https://t.co/PGE8ijvuhi",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [
+        "advertisement"
+      ],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 5643,
+        "retweets": 1428,
+        "quotes": 129
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 151,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "holiday_deportation_stunt",
+        "gamified_cbp_home",
+        "supporting forms: advertisement"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "2003542033793974494",
+      "item_key": "2003542033793974494",
+      "tweet_id": "2003542033793974494",
+      "posted_at": "2025-12-23T19:03:39.000Z",
+      "account": {
+        "handle": "WhiteHouse",
+        "label": "WhiteHouse"
+      },
+      "tweet_url": "https://x.com/WhiteHouse/status/2003542033793974494",
+      "tweet_text": "🚨 Avoid the Nightmare Before Christmas! Self-deport voluntarily using the CBP Home app before Dec 31, 2025 — get up to $3,000, and have the opportunity to return the LEGAL way. https://t.co/CytuLHMqqU",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 18981,
+        "retweets": 3939,
+        "quotes": 306
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 140,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "holiday_deportation_stunt",
+        "gamified_cbp_home"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1994061551137918981",
+      "item_key": "1994061551137918981",
+      "tweet_id": "1994061551137918981",
+      "posted_at": "2025-11-27T15:11:36.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1994061551137918981",
+      "tweet_text": "Feeling extra Thankful for our Freedom and Homeland this Thanksgiving? Put your gratitude into action. BECOME A HOMELAND DEFENDER TODAY. https://t.co/07BuOf4Cbo",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "Professional report row with user-calibrated false-negative signal.",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 2602,
+        "retweets": 425,
+        "quotes": 49
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 140,
+      "false_negative_review_family": "remigration_nativist",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "remigration_nativist",
+        "holiday_deportation_stunt"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1994265291111477488",
+      "item_key": "1994265291111477488",
+      "tweet_id": "1994265291111477488",
+      "posted_at": "2025-11-28T04:41:11.000Z",
+      "account": {
+        "handle": "WhiteHouse",
+        "label": "WhiteHouse"
+      },
+      "tweet_url": "https://x.com/WhiteHouse/status/1994265291111477488",
+      "tweet_text": "“…Only REVERSE MIGRATION can fully cure this situation. Other than that, HAPPY THANKSGIVING TO ALL, except those that hate, steal, murder, and destroy everything that America stands for — You won’t be here for long!” https://t.co/WP0VqVmgSE",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 22122,
+        "retweets": 3884,
+        "quotes": 0
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 140,
+      "false_negative_review_family": "remigration_nativist",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "remigration_nativist",
+        "holiday_deportation_stunt"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1995511241885012210",
+      "item_key": "1995511241885012210",
+      "tweet_id": "1995511241885012210",
+      "posted_at": "2025-12-01T15:12:09.000Z",
+      "account": {
+        "handle": "ICEgov",
+        "label": "ICEgov"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/1995511241885012210",
+      "tweet_text": "Do your part this holiday season to defend your family, your neighborhood and your homeland. http://JOIN.ICE.GOV https://t.co/WwFF5tFtRt",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [
+        "advertisement",
+        "recruitment"
+      ],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "Professional report row with user-calibrated false-negative signal.",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 2840,
+        "retweets": 614,
+        "quotes": 36
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 136,
+      "false_negative_review_family": "holiday_deportation_stunt",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "recruitment_propaganda",
+        "holiday_deportation_stunt",
+        "supporting forms: advertisement, recruitment"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "2051810460865896871",
+      "item_key": "2051810460865896871",
+      "tweet_id": "2051810460865896871",
+      "posted_at": "2026-05-05T23:45:09.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/2051810460865896871",
+      "tweet_text": "ICE IS NOT SLOWING DOWN. “We haven’t missed a beat. We’re still on track — pushing as hard as we can. We just are doing it in a different way by using local law enforcement to work with us. \" @SecMullinDHS https://t.co/3r5Sr3Xz6g",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "creative_treatment_signal",
+      "score": 50,
+      "preference_score": 30,
+      "creative_forms": [
+        "dystopian",
+        "text-overlay"
+      ],
+      "tags": [
+        "genre:dystopian"
+      ],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal; creative treatment signal; routine news/speech signal; strange tag signal: genre:dystopian; professional signal: video:interview",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 17439,
+        "retweets": 3157,
+        "quotes": 107
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 133,
+      "false_negative_review_family": "stylized_operation",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "stylized_operation",
+        "strong creative forms: dystopian",
+        "strong creative tags: genre:dystopian",
+        "supporting forms: text-overlay"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "2045218248048672783",
+      "item_key": "2045218248048672783",
+      "tweet_id": "2045218248048672783",
+      "posted_at": "2026-04-17",
+      "queue": "possible-false-negatives",
+      "account": {
+        "handle": "CBP",
+        "label": "CBP"
+      },
+      "tweet_url": "https://x.com/CBP/status/2045218248048672783",
+      "tweet_text": "Every domain. Every day. One team securing the homeland. Border Security is National Security. https://t.co/74BhjTo1Ft",
+      "review_state": "agent_cut",
+      "confidence": "medium",
+      "inclusion_basis": "real_footage_creative_use",
+      "score": 0,
+      "preference_score": 84,
+      "preference_categories": [],
+      "creative_forms": [
+        "cinematic",
+        "montage"
+      ],
+      "tags": [],
+      "evidence": {
+        "summary": "Generic homeland-security montage slogan; ordinary agency branding.",
+        "reasons": [
+          "Generic homeland-security montage slogan; ordinary agency branding.",
+          "rule: cut:generic-agency-branding",
+          "source: agent_cut",
+          "agent: cut"
+        ],
+        "source_sidecars": [
+          "agent precision review"
+        ]
+      },
+      "engagement": {},
+      "media": [],
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 108,
+      "false_negative_review_family": "stylized_operation",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "stylized_operation",
+        "strong creative forms: cinematic",
+        "supporting forms: montage",
+        "agent cut medium confidence"
+      ],
+      "false_negative_source": "agent_cut"
+    },
+    {
+      "id": "2048770390474788984",
+      "item_key": "2048770390474788984",
+      "tweet_id": "2048770390474788984",
+      "posted_at": "2026-04-27T14:25:00.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/2048770390474788984",
+      "tweet_text": "RT @PressSec: President Trump endorses the idea of changing ICE to NICE https://www.foxnews.com/politics/trump-endorses-idea-changing-ice-nice",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "Professional report row with user-calibrated false-negative signal.",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 34157,
+        "retweets": 4449,
+        "quotes": 839
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 105,
+      "false_negative_review_family": "nice_branding",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "nice_branding"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1901977915882938715",
+      "item_key": "1901977915882938715",
+      "tweet_id": "1901977915882938715",
+      "posted_at": "2025-03-18T12:44:06.000Z",
+      "account": {
+        "handle": "WhiteHouse",
+        "label": "WhiteHouse"
+      },
+      "tweet_url": "https://x.com/WhiteHouse/status/1901977915882938715",
+      "tweet_text": "🚨ILLEGAL ALIENS: Download the CBP Home App – Now Available on All App Stores Do it the easy way, or get deported the hard way. https://t.co/Kb3GgAl7it",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [
+        "advertisement"
+      ],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 37600,
+        "retweets": 7373,
+        "quotes": 630
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 99,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "gamified_cbp_home",
+        "supporting forms: advertisement"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1919461921935294832",
+      "item_key": "1919461921935294832",
+      "tweet_id": "1919461921935294832",
+      "posted_at": "2025-05-05T18:39:18.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1919461921935294832",
+      "tweet_text": "DHS is now offering illegal aliens financial travel assistance and a stipend to return to their home country through the CBP Home App. If you are here illegally, self-deportation is the best, safest and most cost effective way to leave the United States to avoid arrest. https://t.co/IFBFYGB0jA",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [
+        "advertisement"
+      ],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 3095,
+        "retweets": 602,
+        "quotes": 44
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 99,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "gamified_cbp_home",
+        "supporting forms: advertisement"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1972239968744431901",
+      "item_key": "1972239968744431901",
+      "tweet_id": "1972239968744431901",
+      "posted_at": "2025-09-28",
+      "queue": "possible-false-negatives",
+      "account": {
+        "handle": "ICEgov",
+        "label": "ICEgov"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/1972239968744431901",
+      "tweet_text": "Answer the call to service! Defend your family. Defend your neighbor. Defend the Homeland. http://JOIN.ICE.GOV https://t.co/QNI4pyW2bQ",
+      "review_state": "agent_cut",
+      "confidence": "medium",
+      "inclusion_basis": "wholly_creative_media",
+      "score": 0,
+      "preference_score": 90,
+      "preference_categories": [],
+      "creative_forms": [
+        "advertisement",
+        "poster-or-meme",
+        "recruitment"
+      ],
+      "tags": [],
+      "evidence": {
+        "summary": "Recruitment ad is patriotic but still ordinary recruiting language.",
+        "reasons": [
+          "Recruitment ad is patriotic but still ordinary recruiting language.",
+          "source: agent_cut",
+          "agent: cut"
+        ],
+        "source_sidecars": [
+          "agent precision review"
+        ]
+      },
+      "engagement": {},
+      "media": [],
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 97,
+      "false_negative_review_family": "recruitment_propaganda",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "recruitment_propaganda",
+        "supporting forms: advertisement, poster-or-meme, recruitment",
+        "agent cut medium confidence"
+      ],
+      "false_negative_source": "agent_cut"
+    },
+    {
+      "id": "1909350604620640574",
+      "item_key": "1909350604620640574",
+      "tweet_id": "1909350604620640574",
+      "posted_at": "2025-04-07T21:00:32.000Z",
+      "account": {
+        "handle": "CBP",
+        "label": "CBP"
+      },
+      "tweet_url": "https://x.com/CBP/status/1909350604620640574",
+      "tweet_text": "Last chance to self-deport on your own terms. CBP Home is available now. If not, DHS will remove you and bar your return. CBP Home App: https://go.dhs.gov/wqh https://t.co/bxB8DRSyL0",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 1204,
+        "retweets": 402,
+        "quotes": 25
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 88,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "gamified_cbp_home"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1919565066472407141",
+      "item_key": "1919565066472407141",
+      "tweet_id": "1919565066472407141",
+      "posted_at": "2025-05-06T01:29:10.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1919565066472407141",
+      "tweet_text": "If you are here illegally, self-deportation is the best, safest and most cost-effective way to leave the United States to avoid arrest. DHS is now offering illegal aliens financial travel assistance and a stipend to return to their home country through the CBP Home App. This is the safest option for our law enforcement, aliens and is a 70% savings for US taxpayers. Download the CBP Home App TODAY and self-deport.",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal; professional signal: format:statistics",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 1247,
+        "retweets": 298,
+        "quotes": 29
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 88,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "gamified_cbp_home"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1922415388370854002",
+      "item_key": "1922415388370854002",
+      "tweet_id": "1922415388370854002",
+      "posted_at": "2025-05-13T22:15:19.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1922415388370854002",
+      "tweet_text": "The facts haven’t changed. Both father and daughter were in this country illegally and they have to face the consequences. The United States is offering aliens like this father and daughter $1,000 apiece and a free flight to self-deport now. We encourage every person here illegally to take advantage of this offer and reserve the chance to come back to the U.S. the right legal way to live the American dream. If not, you will be arrested and deported without a chance to return. Ximena Arias Cri...",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 2905,
+        "retweets": 604,
+        "quotes": 20
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 88,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "gamified_cbp_home"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1924896237653794822",
+      "item_key": "1924896237653794822",
+      "tweet_id": "1924896237653794822",
+      "posted_at": "2025-05-20T18:33:20.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1924896237653794822",
+      "tweet_text": "There is an EASY way, and there is a HARD way. Use the CBP Home App to take control of your departure and receive financial support to return home. If you don’t, you will be subjected to fines, arrest, deportation and will never be allowed to return. https://t.co/x8VXOqXVcj",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 2279,
+        "retweets": 480,
+        "quotes": 19
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 88,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "gamified_cbp_home"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1928071642606932158",
+      "item_key": "1928071642606932158",
+      "tweet_id": "1928071642606932158",
+      "posted_at": "2025-05-29T12:51:16.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1928071642606932158",
+      "tweet_text": "The media is force-feeding the public false information that U.S. citizen children are being deported. This is FALSE and irresponsible. Parents are asked if they want to be removed with their children or ICE will place the children with someone the parent designates. Parents, who are here illegally, can take control of their departure through the CBP Home app. The United States is offering illegal aliens $1,000 and a free flight to self-deport now.",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 12943,
+        "retweets": 3227,
+        "quotes": 169
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 88,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "gamified_cbp_home"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1928494016221372582",
+      "item_key": "1928494016221372582",
+      "tweet_id": "1928494016221372582",
+      "posted_at": "2025-05-30T16:49:37.000Z",
+      "account": {
+        "handle": "CBP",
+        "label": "CBP"
+      },
+      "tweet_url": "https://x.com/CBP/status/1928494016221372582",
+      "tweet_text": "1... 2... 3... 4... 5... WE GOT YA. Hide-and-seek is over. Ready or not—you will be found, arrested, and deported. Avoid this and self-deport today. https://x.com/DHSgov/status/1928426856493006957",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 88,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "gamified_cbp_home"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1928822573489414451",
+      "item_key": "1928822573489414451",
+      "tweet_id": "1928822573489414451",
+      "posted_at": "2025-05-31T14:35:11.000Z",
+      "account": {
+        "handle": "CBP",
+        "label": "CBP"
+      },
+      "tweet_url": "https://x.com/CBP/status/1928822573489414451",
+      "tweet_text": "The power is yours—self-deport. Aliens in the U.S. illegally may be eligible for incentives by self-deporting with the CBP Home App. It's safer, cost effective, and gives more hope of lawful reentry in the future. Avoid arrest and self-deport now. ➡️ http://www.dhs.gov/cbphome https://t.co/eQLcfP9M8B",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 0,
+        "retweets": 0,
+        "quotes": 0
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 88,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "gamified_cbp_home"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1955265511727526039",
+      "item_key": "1955265511727526039",
+      "tweet_id": "1955265511727526039",
+      "posted_at": "2025-08-12T13:49:59.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1955265511727526039",
+      "tweet_text": "DHS has made it abundantly clear that those who are in our country illegally have a CHOICE—they can leave the country voluntarily or be arrested and deported. If they choose the easy way, the United States taxpayer is generously offering illegal aliens who use the @CBP Home App free flights, the ability to control their departure, $1000, and the potential opportunity to come back the legal, right way. If they choose the hard way they will be arrested and deported.",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 5233,
+        "retweets": 1112,
+        "quotes": 39
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 88,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "gamified_cbp_home"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1957532514311950785",
+      "item_key": "1957532514311950785",
+      "tweet_id": "1957532514311950785",
+      "posted_at": "2025-08-18T19:58:15.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1957532514311950785",
+      "tweet_text": "Bye-bye 👋 Here illegally? Book your one-way ticket home on the CBP HOME app today! http://DHS.gov/CBPhome",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 4632,
+        "retweets": 758,
+        "quotes": 28
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 88,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "gamified_cbp_home"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1961880455793316312",
+      "item_key": "1961880455793316312",
+      "tweet_id": "1961880455793316312",
+      "posted_at": "2025-08-30T19:55:25.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1961880455793316312",
+      "tweet_text": "Illegal aliens can take control of their departure with the CBP Home App. The United States is offering illegal aliens $1,000 and a free flight to self-deport now. http://DHS.gov/CBPhome",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 736,
+        "retweets": 134,
+        "quotes": 10
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 88,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "gamified_cbp_home"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1980723541361525068",
+      "item_key": "1980723541361525068",
+      "tweet_id": "1980723541361525068",
+      "posted_at": "2025-10-21T19:51:06.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1980723541361525068",
+      "tweet_text": "It’s an easy choice: Leave voluntarily and receive $1,000 check or stay and wait till you are fined $1,000 a day, arrested, and deported without a possibility to return legally. https://www.breitbart.com/politics/2025/10/21/exclusive-trumps-dhs-issues-nearly-10-billion-fines-illegals-so-they-self-deport/",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 5778,
+        "retweets": 1488,
+        "quotes": 51
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 88,
+      "false_negative_review_family": "gamified_cbp_home",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "gamified_cbp_home"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1975678214656729532",
+      "item_key": "1975678214656729532",
+      "tweet_id": "1975678214656729532",
+      "posted_at": "2025-10-07T21:42:47.000Z",
+      "account": {
+        "handle": "DHSgov",
+        "label": "DHSgov"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/1975678214656729532",
+      "tweet_text": "Become a Homeland Defender and protect our sacred land. Decide who will enter our country: http://USCIS.GOV/JOIN https://t.co/xB2cGDnP15",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "Professional report row with user-calibrated false-negative signal.",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 2261,
+        "retweets": 310,
+        "quotes": 28
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 88,
+      "false_negative_review_family": "remigration_nativist",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "remigration_nativist"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1947666231881785394",
+      "item_key": "1947666231881785394",
+      "tweet_id": "1947666231881785394",
+      "posted_at": "2025-07-22",
+      "queue": "possible-false-negatives",
+      "account": {
+        "handle": "ICEgov",
+        "label": "ICEgov"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/1947666231881785394",
+      "tweet_text": "General attorneys wanted to join ICE’s Office of the Principal Legal Advisor — the largest legal program in the Department of Homeland Security! We are the exclusive DHS representative in removal proceedings litigating cases involving criminal aliens, terrorists, human rights violators and other priority aliens. We also provide a full range of legal services to all ICE programs and offices. Selected attorneys should immediately expect significant and meaningful responsibilities. Get more info...",
+      "review_state": "agent_cut",
+      "confidence": "high",
+      "inclusion_basis": "wholly_creative_media",
+      "score": 0,
+      "preference_score": 90,
+      "preference_categories": [],
+      "creative_forms": [
+        "advertisement",
+        "recruitment"
+      ],
+      "tags": [],
+      "evidence": {
+        "summary": "Ordinary legal job recruitment notice.",
+        "reasons": [
+          "Ordinary legal job recruitment notice.",
+          "rule: ordinary recruitment",
+          "source: agent_cut",
+          "agent: cut"
+        ],
+        "source_sidecars": [
+          "agent precision review"
+        ]
+      },
+      "engagement": {},
+      "media": [],
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 87,
+      "false_negative_review_family": "recruitment_propaganda",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "recruitment_propaganda",
+        "supporting forms: advertisement, recruitment",
+        "agent cut high confidence"
+      ],
+      "false_negative_source": "agent_cut"
+    },
+    {
+      "id": "2005663576095076394",
+      "item_key": "2005663576095076394",
+      "tweet_id": "2005663576095076394",
+      "posted_at": "2025-12-29T15:33:54.000Z",
+      "account": {
+        "handle": "ICEgov",
+        "label": "ICEgov"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/2005663576095076394",
+      "tweet_text": "The 1,150% increase in assaults against our ICE officers will not stop us from detaining and deporting criminal illegal aliens. Thanks to President @realDonaldTrump's One Big Beautiful Bill, over 220,000 Americans have applied to Defend the Homeland despite the rhetoric and attacks against this agency.",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [
+        "advertisement",
+        "montage",
+        "recruitment"
+      ],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "real enforcement/detainee subject signal; routine news/speech signal; professional signal: video:news-clip, routine news/speech wording",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 2188,
+        "retweets": 424,
+        "quotes": 13
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 87,
+      "false_negative_review_family": "recruitment_propaganda",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "recruitment_propaganda",
+        "supporting forms: advertisement, montage, recruitment"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1942676368904351846",
+      "item_key": "1942676368904351846",
+      "tweet_id": "1942676368904351846",
+      "posted_at": "2025-07-08T20:05:14.000Z",
+      "account": {
+        "handle": "ICEgov",
+        "label": "ICEgov"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/1942676368904351846",
+      "tweet_text": "Join ICE Homeland Security Investigations’ dynamic team as a criminal investigator. 📌This elite position is open to the public 📌Priority will be given to former federal workers whose jobs were eliminated 💻http://www.usajobs.gov/job/840035800 https://t.co/aRq89nV6xA",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [
+        "advertisement",
+        "recruitment"
+      ],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "Professional report row with user-calibrated false-negative signal.",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 310,
+        "retweets": 102,
+        "quotes": 11
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 84,
+      "false_negative_review_family": "recruitment_propaganda",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "recruitment_propaganda",
+        "supporting forms: advertisement, recruitment"
+      ],
+      "false_negative_source": "professional_report"
+    },
+    {
+      "id": "1950259593747320847",
+      "item_key": "1950259593747320847",
+      "tweet_id": "1950259593747320847",
+      "posted_at": "2025-07-29T18:18:15.000Z",
+      "account": {
+        "handle": "ICEgov",
+        "label": "ICEgov"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/1950259593747320847",
+      "tweet_text": "Be first in line and first in the field. Defend the homeland! https://join.ice.gov/ https://t.co/QZduqC9F4V",
+      "review_state": "report_professional_candidate",
+      "confidence": "candidate",
+      "inclusion_basis": "routine_official_or_news_post",
+      "score": 0,
+      "preference_score": 0,
+      "creative_forms": [
+        "advertisement",
+        "recruitment"
+      ],
+      "tags": [],
+      "preference_categories": [],
+      "evidence": {
+        "summary": "Professional report row with user-calibrated false-negative signal.",
+        "reasons": []
+      },
+      "engagement": {
+        "likes": 3052,
+        "retweets": 706,
+        "quotes": 54
+      },
+      "media": [],
+      "queue": "possible-false-negatives",
+      "false_negative_review_basis": "user_calibrated_false_negative_search",
+      "false_negative_review_score": 84,
+      "false_negative_review_family": "recruitment_propaganda",
+      "false_negative_review_note": "Matched the latest user selections: concrete stylized/gamified immigration-enforcement genre signal, not just routine professional threat/news/arrest content.",
+      "false_negative_review_signals": [
+        "recruitment_propaganda",
+        "supporting forms: advertisement, recruitment"
+      ],
+      "false_negative_source": "professional_report"
+    }
+  ]
+}
