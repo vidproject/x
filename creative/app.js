@@ -14,6 +14,14 @@ const QUEUE_DEFS = [
   { id: 'superlikes', label: 'Superlikes' },
 ];
 
+const REVIEW_FILTER_EXEMPT_QUEUES = new Set([
+  'stats-reviewed-set',
+  'stats-excluded-nos',
+  'agent-reviewed',
+  'agent-cuts',
+  'agent-uncertain',
+]);
+
 const state = {
   items: new Map(),
   queues: new Map(),
@@ -547,7 +555,7 @@ function selectQueue(queueId, options = {}) {
 
 function visibleKeys(queueId) {
   const keys = state.queues.get(queueId) || [];
-  if (!state.unreviewedOnly || queueId === 'superlikes') {
+  if (!state.unreviewedOnly || queueId === 'superlikes' || REVIEW_FILTER_EXEMPT_QUEUES.has(queueId)) {
     return keys.filter((key) => state.items.has(key));
   }
   return keys.filter((key) => state.items.has(key) && !state.decisions[key]);
