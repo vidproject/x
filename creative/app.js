@@ -22,6 +22,15 @@ const REVIEW_FILTER_EXEMPT_QUEUES = new Set([
   'agent-uncertain',
 ]);
 
+const FALLBACK_DATASETS = {
+  stats_reviewed_set: 'stats-reviewed-set.json',
+  stats_excluded_latest_nos: 'stats-excluded-latest-nos.json',
+  possible_false_negatives: 'agent-reviewed-possible-false-negatives.json',
+  agent_reviewed: 'agent-reviewed-strange-posts.json',
+  agent_cuts: 'agent-reviewed-cut-posts.json',
+  agent_uncertain: 'agent-reviewed-uncertain-posts.json',
+};
+
 const state = {
   items: new Map(),
   queues: new Map(),
@@ -153,6 +162,7 @@ function collectManifestRefs(manifest) {
   scanManifestMap(manifest?.metadata?.queues, 'queue', addRef);
   scanManifestMap(manifest?.datasets, 'dataset', addRef);
   scanManifestMap(manifest?.metadata?.datasets, 'dataset', addRef);
+  scanManifestMap(FALLBACK_DATASETS, 'dataset', addRef);
 
   if (Array.isArray(manifest?.items)) {
     refs.push({

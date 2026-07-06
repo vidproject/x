@@ -29,6 +29,12 @@
       ]
     },
     "datasets": {
+      "stats_reviewed_set": "stats-reviewed-set.json",
+      "stats_excluded_latest_nos": "stats-excluded-latest-nos.json",
+      "possible_false_negatives": "agent-reviewed-possible-false-negatives.json",
+      "agent_reviewed": "agent-reviewed-strange-posts.json",
+      "agent_cuts": "agent-reviewed-cut-posts.json",
+      "agent_uncertain": "agent-reviewed-uncertain-posts.json",
       "high_confidence": "creative-high-confidence.json",
       "candidates": "creative-candidates.json",
       "historical_2016_2020": "creative-2016-2020.json"
@@ -37,12 +43,26 @@
       "2025_plus": "creative-2025-plus.json"
     },
     "not_ready": "creative-not-ready.json",
-    "default_queue": "high_confidence",
+    "default_queue": "stats_reviewed_set",
     "review_actions": [
       "yes",
       "no",
       "superlike",
       "back"
-    ]
+    ],
+    "source": "existing creative queues plus agent precision review",
+    "decision_labels": {
+      "yes": "Like",
+      "superlike": "Superlike",
+      "no": "No"
+    },
+    "agent_review_counts": {
+      "stats_reviewed_set": 218,
+      "stats_excluded_latest_nos": 6,
+      "possible_false_negatives": 30,
+      "agent_reviewed": 224,
+      "agent_cuts": 411,
+      "agent_uncertain": 32
+    }
   }
 }
