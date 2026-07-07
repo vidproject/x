@@ -539,10 +539,14 @@ tags:
   theme:criminal:
     description: >-
       DHS templated "Name, a criminal illegal alien from X, convicted of
-      Y in Z, State" reply pattern. (merged from frame:criminal; frame: namespace retired)
+      Y in Z, State" reply pattern, or criminal-framing language such
+      as "criminal alien", "aggravated felon", or "convicted of".
+      Bare "illegal alien(s)" is intentionally excluded and is tracked
+      separately as slogan:illegal-alien. (merged from frame:criminal;
+      frame: namespace retired)
     classification: deterministic
     pattern: |
-      \b(criminal illegal alien|illegal alien|criminal alien|aggravated felon|convicted (?:for|of))\b
+      \b(criminal illegal alien|criminal alien|aggravated felon|convicted (?:for|of))\b
 
   theme:homeland:
     description: >-

@@ -513,7 +513,7 @@ AGENCY_TEXT_PATTERNS: tuple[tuple[re.Pattern[str], str], ...] = (
 
 
 PATTERN_FRAME_CRIMINAL = _compile(
-    r"\b(criminal illegal aliens?|illegal aliens?|criminal aliens?|aggravated felons?|convicted (?:for|of))\b"
+    r"\b(criminal illegal aliens?|criminal aliens?|aggravated felons?|convicted (?:for|of))\b"
 )
 PATTERN_ACTION_DETENTION = _compile(
     r"\b(arrest(?:ed|ing)?|detain(?:ed|ing)?|apprehend(?:ed|ing)?|in custody|nab(?:bed)?)\b"

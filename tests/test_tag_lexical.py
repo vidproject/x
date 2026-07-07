@@ -1275,6 +1275,22 @@ def test_criminal_illegal_alien_slogan_also_marks_generic_phrase() -> None:
     assert "topic:immigration" in tags
 
 
+def test_bare_illegal_alien_does_not_mark_criminal_theme_or_lineup() -> None:
+    out = tag_text(
+        "An illegal alien was arrested today.",
+        tweet_type="reply",
+        mentions=[],
+        media_count=1,
+        account_category="core",
+    )
+    tags = _tags(out)
+    assert "slogan:illegal-alien" in tags
+    assert "theme:criminal" not in tags
+    assert "subject:enforcement-op" not in tags
+    assert "genre:lineup" not in tags
+    assert "topic:immigration" in tags
+
+
 def test_migrant_and_immigrant_phrases_promote_immigration_topic() -> None:
     for text, expected in (
         ("Migrant workers were detained near the border.", "phrase:migrant"),
@@ -1727,7 +1743,8 @@ def test_ocr_text_confirms_immigration_and_emits_tags() -> None:
     )
     tags = _tags(out)
     assert "action:deportation" in tags
-    assert "theme:criminal" in tags  # "illegal aliens" — plural form now covered
+    assert "slogan:illegal-alien" in tags
+    assert "theme:criminal" not in tags
     assert "frame:criminal" not in tags
     assert "country:Mexico" in tags
     assert "state:Texas" in tags
