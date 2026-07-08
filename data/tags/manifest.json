@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-08T20:21:05Z",
+  "generated_at": "2026-07-08T21:38:06Z",
   "layers": {
     "audio_music": {
       "attempted": 6,
@@ -29,7 +29,7 @@
     "image_ocr": {
       "cache_hits": 26649,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-07-08T20:17:41Z",
+      "generated_at": "2026-07-08T21:37:00Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.3.4",
       "row_count": 37310,
@@ -46,7 +46,7 @@
       "cost_estimate_usd": 0.0,
       "extractor_version": "ffmpeg-keyframes-v2",
       "frame_count": 40636,
-      "generated_at": "2026-07-08T20:16:09Z",
+      "generated_at": "2026-07-08T21:35:37Z",
       "row_count": 8058,
       "rows": 8058,
       "status_counts": {
@@ -58,7 +58,7 @@
       "status_video-too-large": 5
     },
     "lexical": {
-      "generated_at": "2026-07-08T20:21:05Z",
+      "generated_at": "2026-07-08T21:38:06Z",
       "parquets_scanned": {
         "AGPamBondi.parquet": 19,
         "ATFHQ.parquet": 3,
@@ -144,7 +144,7 @@
         "agency:DeptofWar": 767,
         "agency:EPA": 155,
         "agency:FBI": 8784,
-        "agency:FEMA": 6378,
+        "agency:FEMA": 6387,
         "agency:FLETC": 240,
         "agency:HHSGov": 195,
         "agency:HSI_HQ": 171,
@@ -621,7 +621,7 @@
     "media_vision": {
       "cache_hits": 33608,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-07-08T20:15:59Z",
+      "generated_at": "2026-07-08T21:35:28Z",
       "model": "metadata",
       "model_version": "media-metadata-v4",
       "prompt_hash": "b18b19292ec51484",
@@ -716,26 +716,25 @@
       "thumbnails": 427
     },
     "transcripts": {
-      "attempted": 40,
-      "cache_hits": 8010,
+      "attempted": 14,
+      "cache_hits": 8044,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-07-08T20:18:00Z",
-      "row_count": 8246,
-      "rows": 8246,
-      "skipped_max_items": 8,
+      "generated_at": "2026-07-08T21:37:19Z",
+      "row_count": 8254,
+      "rows": 8254,
       "status_counts": {
-        "empty-transcript": 1491,
+        "empty-transcript": 1492,
         "fetch-failed": 1,
-        "no-audio-stream": 349,
-        "ok": 6400,
+        "no-audio-stream": 351,
+        "ok": 6405,
         "video-too-large": 5
       },
-      "status_empty-transcript": 9,
+      "status_empty-transcript": 1,
       "status_fetch-failed": 1,
-      "status_no-audio-stream": 3,
-      "status_ok": 22,
+      "status_no-audio-stream": 2,
+      "status_ok": 5,
       "status_video-too-large": 5,
-      "transcribed": 34,
+      "transcribed": 8,
       "transcriber": "faster-whisper",
       "transcriber_version": "faster-whisper-v1"
     }
@@ -825,7 +824,7 @@
     "agency:DeptofWar": 767,
     "agency:EPA": 155,
     "agency:FBI": 8784,
-    "agency:FEMA": 6378,
+    "agency:FEMA": 6387,
     "agency:FLETC": 240,
     "agency:HHSGov": 195,
     "agency:HSI_HQ": 171,
