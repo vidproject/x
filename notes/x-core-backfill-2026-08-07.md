@@ -183,3 +183,17 @@ The next 52 bounded WhiteHouse46 weeks, from 2023-01-18 through 2024-01-17, comp
 - 7,078 candidate IDs before author filtering
 - 3,181 unique authored WhiteHouse46 posts after normalization and deduplication
 - authored date range: 2023-01-18T16:03:42Z through 2024-01-16T19:00:01Z
+
+The remaining 53 bounded WhiteHouse46 windows, from 2024-01-17 through the 2025-01-20 administration handoff, completed and passed the audit:
+
+- 53 summaries and 53 expected windows
+- no missing or extra windows
+- no invalid summaries
+- 186 SearchTimeline pages
+- 4,564 candidate IDs before author filtering
+- 1,896 unique authored WhiteHouse46 posts after normalization and deduplication
+- authored date range: 2024-01-17T17:00:14Z through 2025-01-20T15:20:41Z
+
+The first attempt for 2024-04-24 through 2024-05-01 served only HomeTimeline and Bookmarks responses and never reached saturation. That diagnostic capture was isolated under `.skim/history-whitehouse-2016-2025/rejected` and excluded. A fresh attempt captured SearchTimeline, reached browser-bottom saturation, and replaced the missing window.
+
+This completes the White House lineage backfill. The final deep audit found exactly 473 expected weekly or terminal-partial windows, 2,156 SearchTimeline responses, no missing or duplicate windows, no invalid summaries, and no malformed SearchTimeline response bodies.
