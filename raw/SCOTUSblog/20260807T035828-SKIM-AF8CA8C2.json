@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "replies-wh45-20260807T035432Z-c8dd21bb-SCOTUSblog",
+  "account_handle": "SCOTUSblog",
+  "captured_at": "2026-08-07T03:58:28.154Z",
+  "endpoint": "UserByScreenName,UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/WhiteHouse45/with_replies",
+  "tweets": [
+    {
+      "tweet_id": "1331840656696877057",
+      "account_handle": "SCOTUSblog",
+      "account_id": "16228479",
+      "posted_at": "2020-11-26T06:02:11.000Z",
+      "first_captured_at": "2026-08-07T03:56:21.091Z",
+      "last_seen_at": "2026-08-07T03:56:21.091Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/SCOTUSblog/status/1331840656696877057",
+      "tweet_type": "quote",
+      "conversation_id": "1331840656696877057",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": "1331829071496491008",
+      "retweeted_tweet_id": null,
+      "text": "Just before midnight on the night before Thanksgiving, the Supreme Court blocked New York Gov. Andrew Cuomo from enforcing attendance limits at religious services. The vote is 5-4, with Roberts and the three liberals dissenting.\n\nHere is the ruling: https://t.co/AI8VgygAPx",
+      "text_resolved": "Just before midnight on the night before Thanksgiving, the Supreme Court blocked New York Gov. Andrew Cuomo from enforcing attendance limits at religious services. The vote is 5-4, with Roberts and the three liberals dissenting.\n\nHere is the ruling: https://www.supremecourt.gov/opinions/20pdf/20a87_4g15.pdf",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/AI8VgygAPx",
+          "expanded": "https://www.supremecourt.gov/opinions/20pdf/20a87_4g15.pdf",
+          "display": "supremecourt.gov/opinions/20pdf…"
+        }
+      ],
+      "card": null,
+      "media": [],
+      "like_count": 15971,
+      "retweet_count": 3671,
+      "reply_count": 3673,
+      "quote_count": 2755,
+      "view_count": null,
+      "bookmark_count": 167,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T03:56:21.091Z",
+          "likes": 15971,
+          "retweets": 3671,
+          "replies": 3673,
+          "quotes": 2755,
+          "views": null,
+          "bookmarks": 167
+        }
+      ],
+      "author": {
+        "display_name": "SCOTUSblog",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2050213809512390656/wAdse6QC_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": null,
+        "location": "Washington, D.C.",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2008-09-10T21:18:43.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "replies-wh45-20260807T035432Z-c8dd21bb",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-replies-whitehouse45/x-com-whitehouse45-with-replies-20260807T035432Z-c8dd21bb.summary.json",
+    "jsonl": ".skim/history-replies-whitehouse45/x-com-whitehouse45-with-replies-20260807T035432Z-c8dd21bb.jsonl",
+    "source_handle": "WhiteHouse45"
+  }
+}

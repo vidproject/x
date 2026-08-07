@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "replies-wh45-20260807T035432Z-c8dd21bb-MarshaBlackburn",
+  "account_handle": "MarshaBlackburn",
+  "captured_at": "2026-08-07T03:58:28.154Z",
+  "endpoint": "UserByScreenName,UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/WhiteHouse45/with_replies",
+  "tweets": [
+    {
+      "tweet_id": "1320913163836116992",
+      "account_handle": "MarshaBlackburn",
+      "account_id": "278145569",
+      "posted_at": "2020-10-27T02:20:14.000Z",
+      "first_captured_at": "2026-08-07T03:58:06.750Z",
+      "last_seen_at": "2026-08-07T03:58:06.750Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/MarshaBlackburn/status/1320913163836116992",
+      "tweet_type": "original",
+      "conversation_id": "1320913163836116992",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "#CONFIRMED\nhttps://t.co/0pyU4cseKV",
+      "text_resolved": "#CONFIRMED\nhttps://t.co/0pyU4cseKV",
+      "lang": "qme",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "CONFIRMED"
+      ],
+      "mentions": [],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1311765886320156672",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1311765886320156672/vid/1080x608/AliY2P1Jnut4iBX3.mp4?tag=13",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 47.381,
+          "width": 3130,
+          "height": 1655,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 2001,
+      "retweet_count": 227,
+      "reply_count": 123,
+      "quote_count": 25,
+      "view_count": null,
+      "bookmark_count": 6,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T03:58:06.750Z",
+          "likes": 2001,
+          "retweets": 227,
+          "replies": 123,
+          "quotes": 25,
+          "views": null,
+          "bookmarks": 6
+        }
+      ],
+      "author": {
+        "display_name": "Sen. Marsha Blackburn",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2026676418088726529/wS5kK41b_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": null,
+        "location": "Brentwood, TN",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2011-04-06T18:05:33.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "replies-wh45-20260807T035432Z-c8dd21bb",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-replies-whitehouse45/x-com-whitehouse45-with-replies-20260807T035432Z-c8dd21bb.summary.json",
+    "jsonl": ".skim/history-replies-whitehouse45/x-com-whitehouse45-with-replies-20260807T035432Z-c8dd21bb.jsonl",
+    "source_handle": "WhiteHouse45"
+  }
+}

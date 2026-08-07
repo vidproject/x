@@ -93,3 +93,23 @@ Additional saturated profile/media sources were collected while SearchTimeline w
 | WhiteHouse46 media   |                 800 | 2024-05-09T21:34:15Z | 2025-01-20T15:20:41Z | All 800 normalized posts have media                  |
 
 The WhiteHouse46 profile and media sources overlap on 471 IDs and have a union of 1,102 unique authored posts. Canonical ingest deduplicates these records by tweet ID while retaining capture provenance.
+
+The first 52 bounded WhiteHouse45 weeks, from 2017-01-20 through 2018-01-19, also completed:
+
+- 52 summaries and 52 expected windows
+- no missing or extra windows
+- no invalid summaries
+- 173 SearchTimeline pages
+- 3,327 candidate IDs before author filtering
+- 1,657 unique authored WhiteHouse45 posts after normalization and deduplication
+
+The normalized authored range is 2017-01-20T17:03:30Z through 2018-01-20T05:16:52Z. Thirteen records fall on January 19-20 UTC after the nominal `until:2018-01-19` query boundary, consistent with X applying search-date boundaries in the browser session timezone. Adjacent weekly windows overlap this boundary in practice, so these valid posts were retained.
+
+Saturated replies views added further coverage:
+
+| Source               | Pages | Unique authored IDs | Replies | Earliest             | Latest               |                         Additive IDs |
+| -------------------- | ----: | ------------------: | ------: | -------------------- | -------------------- | -----------------------------------: |
+| WhiteHouse45 replies |    55 |               1,100 |      53 | 2019-08-28T23:40:01Z | 2021-01-20T15:29:59Z |   213 beyond its profile/media union |
+| WhiteHouse46 replies |   161 |               3,068 |     238 | 2023-08-09T19:09:44Z | 2025-01-20T15:20:41Z | 1,972 beyond its profile/media union |
+
+Both replies traversals reached browser-bottom saturation with no response errors or 429 events. A collector reporting bug labeled the earlier WhiteHouse45 run as `UserTweets` because that substring was checked before `UserTweetsAndReplies`; the captured request URLs and response bodies identify the correct endpoint. The endpoint matching order was fixed before the WhiteHouse46 run.

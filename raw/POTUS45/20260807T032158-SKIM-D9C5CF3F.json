@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-whitehouse45-2017-20260807T032144Z-ee1c4930-POTUS45",
+  "account_handle": "POTUS45",
+  "captured_at": "2026-08-07T03:21:58.231Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AWhiteHouse45%20since%3A2017-04-14%20until%3A2017-04-21%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "852900033317842945",
+      "account_handle": "POTUS45",
+      "account_id": "822215679726100480",
+      "posted_at": "2017-04-14T15:03:08.000Z",
+      "first_captured_at": "2026-08-07T03:21:47.185Z",
+      "last_seen_at": "2026-08-07T03:21:47.185Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/POTUS45/status/852900033317842945",
+      "tweet_type": "original",
+      "conversation_id": "852900033317842945",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Weekly Address - tune in! #MAGA ➡️ https://t.co/S5WADLhP6o https://t.co/Kjc4TxwxGV",
+      "text_resolved": "Weekly Address - tune in! #MAGA ➡️ http://45.wh.gov/yaWaiv https://t.co/Kjc4TxwxGV",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://studio.twitter.com\" rel=\"nofollow\">Twitter Media Studio</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "MAGA"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/S5WADLhP6o",
+          "expanded": "http://45.wh.gov/yaWaiv",
+          "display": "45.wh.gov/yaWaiv"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_852897112295698434",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/852897112295698434/vid/1280x720/4nHwVXfrVFukW5ZM.mp4",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 9.076,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 7450,
+      "retweet_count": 1518,
+      "reply_count": 1346,
+      "quote_count": 133,
+      "view_count": null,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T03:21:47.185Z",
+          "likes": 7450,
+          "retweets": 1518,
+          "replies": 1346,
+          "quotes": 133,
+          "views": null,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "President Trump 45 Archived",
+        "avatar_url": "https://pbs.twimg.com/profile_images/859982100904148992/hv5soju7_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": null,
+        "location": null,
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2017-01-19T22:54:28.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-whitehouse45-2017-20260807T032144Z-ee1c4930",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-whitehouse45-2017-curated/x-com-search-20260807T032144Z-ee1c4930.summary.json",
+    "jsonl": ".skim/history-whitehouse-2016-2025/raw/x-com-search-20260807T032144Z-ee1c4930.jsonl",
+    "source_handle": "WhiteHouse45"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "replies-wh45-20260807T035432Z-c8dd21bb-SecretService",
+  "account_handle": "SecretService",
+  "captured_at": "2026-08-07T03:58:28.154Z",
+  "endpoint": "UserByScreenName,UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/WhiteHouse45/with_replies",
+  "tweets": [
+    {
+      "tweet_id": "1342127907221741570",
+      "account_handle": "SecretService",
+      "account_id": "115749048",
+      "posted_at": "2020-12-24T15:20:03.000Z",
+      "first_captured_at": "2026-08-07T03:54:47.709Z",
+      "last_seen_at": "2026-08-07T03:54:47.709Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/SecretService/status/1342127907221741570",
+      "tweet_type": "original",
+      "conversation_id": "1342127907221741570",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Big Red is in the house, over. #BigRedDetail https://t.co/Az7aRsRcFZ",
+      "text_resolved": "Big Red is in the house, over. #BigRedDetail https://t.co/Az7aRsRcFZ",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://studio.twitter.com\" rel=\"nofollow\">Twitter Media Studio</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "BigRedDetail"
+      ],
+      "mentions": [],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1342126489660223488",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1342126489660223488/vid/1280x720/-pH4xcYtQyubgBHl.mp4?tag=13",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 58.308,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 6638,
+      "retweet_count": 1643,
+      "reply_count": 558,
+      "quote_count": 665,
+      "view_count": null,
+      "bookmark_count": 76,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T03:54:47.709Z",
+          "likes": 6638,
+          "retweets": 1643,
+          "replies": 558,
+          "quotes": 665,
+          "views": null,
+          "bookmarks": 76
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Secret Service",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1887129652797300736/7n4geYcO_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": null,
+        "location": null,
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2010-02-19T20:07:37.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "replies-wh45-20260807T035432Z-c8dd21bb",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-replies-whitehouse45/x-com-whitehouse45-with-replies-20260807T035432Z-c8dd21bb.summary.json",
+    "jsonl": ".skim/history-replies-whitehouse45/x-com-whitehouse45-with-replies-20260807T035432Z-c8dd21bb.jsonl",
+    "source_handle": "WhiteHouse45"
+  }
+}

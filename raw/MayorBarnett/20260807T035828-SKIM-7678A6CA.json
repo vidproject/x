@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "replies-wh45-20260807T035432Z-c8dd21bb-MayorBarnett",
+  "account_handle": "MayorBarnett",
+  "captured_at": "2026-08-07T03:58:28.154Z",
+  "endpoint": "UserByScreenName,UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/WhiteHouse45/with_replies",
+  "tweets": [
+    {
+      "tweet_id": "1336367806565261315",
+      "account_handle": "MayorBarnett",
+      "account_id": "294292744",
+      "posted_at": "2020-12-08T17:51:28.000Z",
+      "first_captured_at": "2026-08-07T03:55:57.780Z",
+      "last_seen_at": "2026-08-07T03:55:57.780Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/MayorBarnett/status/1336367806565261315",
+      "tweet_type": "original",
+      "conversation_id": "1336367806565261315",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "I am honored to be invited by @realDonaldTrump to be among a small group of leaders from federal, state and local government invited to the White House COVID-19 Vaccine Summit today. Watch the Summit live today beginning at 2:00pm ET on https://t.co/xBLtkuADWi. @RochesterHills",
+      "text_resolved": "I am honored to be invited by @realDonaldTrump to be among a small group of leaders from federal, state and local government invited to the White House COVID-19 Vaccine Summit today. Watch the Summit live today beginning at 2:00pm ET on http://www.whitehouse.gov/live. @RochesterHills",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "realDonaldTrump",
+        "RochesterHills"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/xBLtkuADWi",
+          "expanded": "http://www.whitehouse.gov/live",
+          "display": "whitehouse.gov/live"
+        }
+      ],
+      "card": null,
+      "media": [],
+      "like_count": 597,
+      "retweet_count": 70,
+      "reply_count": 61,
+      "quote_count": 9,
+      "view_count": null,
+      "bookmark_count": 2,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T03:55:57.780Z",
+          "likes": 597,
+          "retweets": 70,
+          "replies": 61,
+          "quotes": 9,
+          "views": null,
+          "bookmarks": 2
+        }
+      ],
+      "author": {
+        "display_name": "Mayor Bryan Barnett",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1149473183222812673/gwOhryp5_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": null,
+        "location": "City of Rochester Hills",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2011-05-06T21:47:05.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "replies-wh45-20260807T035432Z-c8dd21bb",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-replies-whitehouse45/x-com-whitehouse45-with-replies-20260807T035432Z-c8dd21bb.summary.json",
+    "jsonl": ".skim/history-replies-whitehouse45/x-com-whitehouse45-with-replies-20260807T035432Z-c8dd21bb.jsonl",
+    "source_handle": "WhiteHouse45"
+  }
+}

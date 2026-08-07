@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "replies-wh46-20260807T040526Z-532a6a76-FCC",
+  "account_handle": "FCC",
+  "captured_at": "2026-08-07T04:18:06.275Z",
+  "endpoint": "UserByScreenName,UserTweetsAndReplies",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/WhiteHouse46/with_replies",
+  "tweets": [
+    {
+      "tweet_id": "1691119732500344833",
+      "account_handle": "FCC",
+      "account_id": "66369206",
+      "posted_at": "2023-08-14T16:08:58.000Z",
+      "first_captured_at": "2026-08-07T04:17:50.113Z",
+      "last_seen_at": "2026-08-07T04:17:50.113Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/FCC/status/1691119732500344833",
+      "tweet_type": "original",
+      "conversation_id": "1691119732500344833",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "The Affordable Connectivity Program has helped more than 20 million eligible households across the country get online and stay online. Learn more at https://t.co/0aTBbdST9L. https://t.co/tNsbX81aLb",
+      "text_resolved": "The Affordable Connectivity Program has helped more than 20 million eligible households across the country get online and stay online. Learn more at http://GetInternet.gov. https://t.co/tNsbX81aLb",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/0aTBbdST9L",
+          "expanded": "http://GetInternet.gov",
+          "display": "GetInternet.gov"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1691119629261778944",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/F3gQV8bWsAAVCAb.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1080,
+          "height": 1080,
+          "alt_text": "GetInternet.gov; 20 million + households enrolled; ~17 million urban households enrolled ; ~3 million rural households enrolled; FCC, ACP Affordable Connectivity Program ",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 77,
+      "retweet_count": 41,
+      "reply_count": 22,
+      "quote_count": 14,
+      "view_count": 284057,
+      "bookmark_count": 7,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T04:17:50.113Z",
+          "likes": 77,
+          "retweets": 41,
+          "replies": 22,
+          "quotes": 14,
+          "views": 284057,
+          "bookmarks": 7
+        }
+      ],
+      "author": {
+        "display_name": "FCC",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2067609215930081280/mWiGqlKI_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": null,
+        "location": "Washington, DC",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2009-08-17T14:43:05.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "replies-wh46-20260807T040526Z-532a6a76",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-replies-whitehouse46/x-com-whitehouse46-with-replies-20260807T040526Z-532a6a76.summary.json",
+    "jsonl": ".skim/history-replies-whitehouse46/x-com-whitehouse46-with-replies-20260807T040526Z-532a6a76.jsonl",
+    "source_handle": "WhiteHouse46"
+  }
+}

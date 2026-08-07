@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "replies-wh46-20260807T040526Z-532a6a76-CDCgov",
+  "account_handle": "CDCgov",
+  "captured_at": "2026-08-07T04:18:06.275Z",
+  "endpoint": "UserByScreenName,UserTweetsAndReplies",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/WhiteHouse46/with_replies",
+  "tweets": [
+    {
+      "tweet_id": "1701716153154834792",
+      "account_handle": "CDCgov",
+      "account_id": "146569971",
+      "posted_at": "2023-09-12T21:55:21.000Z",
+      "first_captured_at": "2026-08-07T04:16:48.576Z",
+      "last_seen_at": "2026-08-07T04:16:48.576Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CDCgov/status/1701716153154834792",
+      "tweet_type": "original",
+      "conversation_id": "1701716153154834792",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "CDC recommends that everyone ages 6 months and up get the updated #COVID19 #vaccine to protect against serious illness. The new vaccine targets the most common circulating variants and should be available later this week. \n\nFull details here: https://t.co/jqvxmjrlxI https://t.co/j5vcmrar1L",
+      "text_resolved": "CDC recommends that everyone ages 6 months and up get the updated #COVID19 #vaccine to protect against serious illness. The new vaccine targets the most common circulating variants and should be available later this week. \n\nFull details here: https://bit.ly/48oJqRY https://t.co/j5vcmrar1L",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://sproutsocial.com\" rel=\"nofollow\">Sprout Social</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "COVID19",
+        "vaccine"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/jqvxmjrlxI",
+          "expanded": "https://bit.ly/48oJqRY",
+          "display": "bit.ly/48oJqRY"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1701716149409292288",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/F5210mIWIAAFcdI.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1201,
+          "height": 676,
+          "alt_text": "Collage of people of various ages and races/ethnicities. Text overlay reads: COVID-19 Vaccine Update. Everyone ages 6 months and older should get an updated COVID-19 vaccine. Protection from previous vaccination or infection weakens over time. This vaccine is a better match to fight common variants circulating now. cdc.gov/coronavirus. CDC HHS logo bottom left.",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 678,
+      "retweet_count": 368,
+      "reply_count": 508,
+      "quote_count": 134,
+      "view_count": 794497,
+      "bookmark_count": 38,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T04:16:48.576Z",
+          "likes": 678,
+          "retweets": 368,
+          "replies": 508,
+          "quotes": 134,
+          "views": 794497,
+          "bookmarks": 38
+        }
+      ],
+      "author": {
+        "display_name": "CDC",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1775519665390772225/clcxou-0_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": null,
+        "location": "Atlanta, GA",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2010-05-21T19:40:40.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "replies-wh46-20260807T040526Z-532a6a76",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-replies-whitehouse46/x-com-whitehouse46-with-replies-20260807T040526Z-532a6a76.summary.json",
+    "jsonl": ".skim/history-replies-whitehouse46/x-com-whitehouse46-with-replies-20260807T040526Z-532a6a76.jsonl",
+    "source_handle": "WhiteHouse46"
+  }
+}

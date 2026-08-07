@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "replies-wh45-20260807T035432Z-c8dd21bb-RedCross",
+  "account_handle": "RedCross",
+  "captured_at": "2026-08-07T03:58:28.154Z",
+  "endpoint": "UserByScreenName,UserTweets",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/WhiteHouse45/with_replies",
+  "tweets": [
+    {
+      "tweet_id": "1341790879598690310",
+      "account_handle": "RedCross",
+      "account_id": "6519522",
+      "posted_at": "2020-12-23T17:00:49.000Z",
+      "first_captured_at": "2026-08-07T03:54:50.097Z",
+      "last_seen_at": "2026-08-07T03:54:50.097Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/RedCross/status/1341790879598690310",
+      "tweet_type": "original",
+      "conversation_id": "1341790879598690310",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Since WWI, we have supported deployed soldiers through the delivery of comfort kits. To this day, our rich tradition of sharing packages and messages of hope during the holidays continues with help from @FLOTUS Melania Trump and @SecondLady Karen Pence: https://t.co/6DWJSRAOPO https://t.co/13oNYG7jqR",
+      "text_resolved": "Since WWI, we have supported deployed soldiers through the delivery of comfort kits. To this day, our rich tradition of sharing packages and messages of hope during the holidays continues with help from @FLOTUS Melania Trump and @SecondLady Karen Pence: http://rdcrss.org/34DzODz https://t.co/13oNYG7jqR",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://sproutsocial.com\" rel=\"nofollow\">Sprout Social</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "FLOTUS"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/6DWJSRAOPO",
+          "expanded": "http://rdcrss.org/34DzODz",
+          "display": "rdcrss.org/34DzODz"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_1341790871008776194",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/Ep7_sCVXEAIqy-9.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 4032,
+          "height": 3024,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 4331,
+      "retweet_count": 681,
+      "reply_count": 402,
+      "quote_count": 55,
+      "view_count": null,
+      "bookmark_count": 14,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T03:54:50.097Z",
+          "likes": 4331,
+          "retweets": 681,
+          "replies": 402,
+          "quotes": 55,
+          "views": null,
+          "bookmarks": 14
+        }
+      ],
+      "author": {
+        "display_name": "American Red Cross",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1542533870008016899/HtPYMRjs_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": null,
+        "location": "Washington, DC",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2007-06-02T09:36:38.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "replies-wh45-20260807T035432Z-c8dd21bb",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-replies-whitehouse45/x-com-whitehouse45-with-replies-20260807T035432Z-c8dd21bb.summary.json",
+    "jsonl": ".skim/history-replies-whitehouse45/x-com-whitehouse45-with-replies-20260807T035432Z-c8dd21bb.jsonl",
+    "source_handle": "WhiteHouse45"
+  }
+}
