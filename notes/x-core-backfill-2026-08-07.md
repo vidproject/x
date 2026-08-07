@@ -123,3 +123,15 @@ The next 52 bounded WhiteHouse45 weeks, from 2018-01-19 through 2019-01-18, comp
 - 4,803 candidate IDs before author filtering
 - 2,394 unique authored WhiteHouse45 posts after normalization and deduplication
 - authored date range: 2018-01-19T16:14:45Z through 2019-01-18T19:36:01Z
+
+The following 52 bounded WhiteHouse45 weeks, from 2019-01-18 through 2020-01-17, also completed and passed the audit:
+
+- 52 summaries and 52 expected windows
+- no missing or extra windows
+- no invalid summaries
+- 258 SearchTimeline pages
+- 7,524 candidate IDs before author filtering
+- 3,216 unique authored WhiteHouse45 posts after normalization and deduplication
+- authored date range: 2019-01-18T19:36:01Z through 2020-01-18T01:54:45Z
+
+The normalized range again includes a small UTC spill beyond the nominal `until:` date because X applies search-date boundaries in the browser session timezone. Adjacent weekly searches overlap that boundary, and canonical ingest deduplicates the repeated tweet IDs.
