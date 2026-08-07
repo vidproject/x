@@ -173,3 +173,13 @@ The next 52 bounded WhiteHouse46 weeks, from 2022-01-19 through 2023-01-18, comp
 - authored date range: 2022-01-19T14:59:42Z through 2023-01-19T04:00:30Z
 
 The January 19 UTC endpoint reflects the same browser-session-timezone boundary behavior. It is retained and deduplicated against the adjacent window during ingest.
+
+The next 52 bounded WhiteHouse46 weeks, from 2023-01-18 through 2024-01-17, completed and passed the audit:
+
+- 52 summaries and 52 expected windows
+- no missing or extra windows
+- no invalid summaries
+- 267 SearchTimeline pages
+- 7,078 candidate IDs before author filtering
+- 3,181 unique authored WhiteHouse46 posts after normalization and deduplication
+- authored date range: 2023-01-18T16:03:42Z through 2024-01-16T19:00:01Z
