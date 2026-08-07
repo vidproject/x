@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T06:52:06Z",
+  "generated_at": "2026-08-07T07:46:25Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -7,7 +7,7 @@
       "label": "Department of Homeland Security",
       "category": "core",
       "parquet": "data/DHSgov.parquet",
-      "parquet_bytes": 2093493,
+      "parquet_bytes": 2093492,
       "row_count": 7026,
       "post_count": 5726,
       "reply_count": 1300,
@@ -140,7 +140,7 @@
       "label": "U.S. Immigration and Customs Enforcement",
       "category": "core",
       "parquet": "data/ICEgov.parquet",
-      "parquet_bytes": 1088976,
+      "parquet_bytes": 1089031,
       "row_count": 3132,
       "post_count": 2778,
       "reply_count": 354,
@@ -385,7 +385,7 @@
       "label": "Obama White House Archive",
       "category": "core",
       "parquet": "data/ObamaWhiteHouse.parquet",
-      "parquet_bytes": 658750,
+      "parquet_bytes": 672448,
       "row_count": 3547,
       "post_count": 3518,
       "reply_count": 29,
