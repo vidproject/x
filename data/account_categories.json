@@ -171,7 +171,7 @@
     "ActSecJulieSu": {
       "category": "officials",
       "label": "Acting Secretary Julie Su",
-      "observations": 20,
+      "observations": 22,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -3768,7 +3768,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 6835,
+      "observations": 6837,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -4822,7 +4822,7 @@
     "SecCardona": {
       "category": "officials",
       "label": "Secretary Miguel Cardona",
-      "observations": 39,
+      "observations": 41,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -6280,7 +6280,7 @@
     "USCG": {
       "category": "core",
       "label": "U.S. Coast Guard",
-      "observations": 1584,
+      "observations": 1588,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -6789,7 +6789,7 @@
     "WhiteHouse46": {
       "category": "core",
       "label": "Biden White House Archive (46th Administration)",
-      "observations": 11010,
+      "observations": 11094,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -8038,7 +8038,7 @@
     "public": 205,
     "public_figures": 239
   },
-  "generated_at": "2026-08-07T12:28:26Z",
+  "generated_at": "2026-08-07T13:27:18Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
