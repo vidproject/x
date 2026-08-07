@@ -161,6 +161,13 @@
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
+    "ActSecJulieSu": {
+      "category": "officials",
+      "label": "Acting Secretary Julie Su",
+      "observations": 2,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
     "AdmTonyRadakin_": {
       "category": "government",
       "label": "Admiral Sir Tony Radakin \ud83c\uddec\ud83c\udde7",
@@ -1312,7 +1319,7 @@
     "DHS_Wolf": {
       "category": "officials",
       "label": "Acting Secretary Chad Wolf",
-      "observations": 40,
+      "observations": 41,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -1998,7 +2005,7 @@
     "FEMA_Deanne": {
       "category": "officials",
       "label": "ARCHIVED: Deanne Criswell",
-      "observations": 20,
+      "observations": 26,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2043,7 +2050,7 @@
     "FLOTUS": {
       "category": "officials",
       "label": "First Lady Melania Trump",
-      "observations": 240,
+      "observations": 260,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2057,7 +2064,7 @@
     "FLSERT": {
       "category": "government",
       "label": "FL Division of Emergency Management",
-      "observations": 7,
+      "observations": 9,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2342,14 +2349,14 @@
     "HHSGov": {
       "category": "government",
       "label": "HHS",
-      "observations": 52,
+      "observations": 56,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HHS_ASH": {
       "category": "officials",
       "label": "Assistant Secretary for Health",
-      "observations": 4,
+      "observations": 8,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -3479,7 +3486,7 @@
     "NOAA": {
       "category": "government",
       "label": "NOAA",
-      "observations": 9,
+      "observations": 10,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3649,14 +3656,14 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 5689,
+      "observations": 5749,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "POTUS46Archive": {
       "category": "government",
       "label": "President Biden Archived",
-      "observations": 10,
+      "observations": 25,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3775,14 +3782,14 @@
     "PressSec": {
       "category": "core",
       "label": "White House Press Secretary",
-      "observations": 1662,
+      "observations": 1667,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "PressSec46": {
       "category": "government",
       "label": "Karine Jean-Pierre Archived",
-      "observations": 1,
+      "observations": 3,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3932,7 +3939,7 @@
     "RepAndyBiggsAZ": {
       "category": "public_figures",
       "label": "Rep Andy Biggs",
-      "observations": 4,
+      "observations": 5,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -3951,6 +3958,13 @@
       "label": "Rep. Brad Wenstrup",
       "observations": 5,
       "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "RepBuddyCarter": {
+      "category": "government",
+      "label": "Buddy Carter",
+      "observations": 1,
+      "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "RepCasar": {
@@ -4058,6 +4072,13 @@
       "category": "public_figures",
       "label": "Rep. Glenn Ivey",
       "observations": 3,
+      "reason": "elected/public-office language in profile",
+      "source": "data/users.json"
+    },
+    "RepGregSteube": {
+      "category": "public_figures",
+      "label": "Congressman Greg Steube",
+      "observations": 1,
       "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
@@ -4194,6 +4215,13 @@
       "label": "Mike Rogers",
       "observations": 2,
       "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "RepNancyMace": {
+      "category": "public_figures",
+      "label": "Rep. Nancy Mace",
+      "observations": 2,
+      "reason": "elected/public-office language in profile",
       "source": "data/users.json"
     },
     "RepOgles": {
@@ -4469,7 +4497,7 @@
     "SBAgov": {
       "category": "officials",
       "label": "SBA",
-      "observations": 21,
+      "observations": 35,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -4623,6 +4651,13 @@
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
+    "SecGranholm": {
+      "category": "officials",
+      "label": "Secretary Jennifer Granholm",
+      "observations": 2,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
     "SecKennedy": {
       "category": "officials",
       "label": "Secretary Kennedy",
@@ -4665,6 +4700,13 @@
       "category": "officials",
       "label": "Secretary Pompeo",
       "observations": 3,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "SecRaimondo": {
+      "category": "officials",
+      "label": "Secretary Gina Raimondo",
+      "observations": 4,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -4713,6 +4755,13 @@
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
+    "SecondGent46": {
+      "category": "government",
+      "label": "Douglas Emhoff Archived",
+      "observations": 1,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
     "SecretService": {
       "category": "government",
       "label": "U.S. Secret Service",
@@ -4738,6 +4787,13 @@
       "category": "officials",
       "label": "Secretary Lori Chavez-DeRemer",
       "observations": 264,
+      "reason": "federal executive official language in profile",
+      "source": "data/users.json"
+    },
+    "SecretaryPete": {
+      "category": "officials",
+      "label": "Secretary Pete Buttigieg",
+      "observations": 5,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -5239,7 +5295,7 @@
     "Surgeon_General": {
       "category": "government",
       "label": "U.S. Surgeon General",
-      "observations": 20,
+      "observations": 21,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -5385,7 +5441,7 @@
     "TheJusticeDept": {
       "category": "government",
       "label": "U.S. Department of Justice",
-      "observations": 873,
+      "observations": 875,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -5874,7 +5930,7 @@
     "USCG": {
       "category": "core",
       "label": "U.S. Coast Guard",
-      "observations": 1577,
+      "observations": 1579,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -5975,7 +6031,7 @@
     "USDOT": {
       "category": "government",
       "label": "U.S. Department of Transportation",
-      "observations": 29,
+      "observations": 35,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -6090,7 +6146,7 @@
       ],
       "category": "government",
       "label": "U.S. Navy",
-      "observations": 97,
+      "observations": 98,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -6145,7 +6201,7 @@
     "USTreasury": {
       "category": "government",
       "label": "Treasury Department",
-      "observations": 31,
+      "observations": 32,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -6159,7 +6215,7 @@
     "US_FDA": {
       "category": "government",
       "label": "U.S. FDA",
-      "observations": 51,
+      "observations": 52,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -6197,7 +6253,7 @@
     "VP": {
       "category": "government",
       "label": "Vice President JD Vance",
-      "observations": 379,
+      "observations": 403,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -6212,6 +6268,13 @@
       "category": "government",
       "label": "Vice President Mike Pence Archived",
       "observations": 1,
+      "reason": "government verified type or official agency/office language",
+      "source": "data/users.json"
+    },
+    "VP46Archive": {
+      "category": "government",
+      "label": "Vice President Kamala Harris Archived",
+      "observations": 3,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -6269,7 +6332,7 @@
     "WHCommsDir46": {
       "category": "government",
       "label": "Ben LaBolt Archived",
-      "observations": 1,
+      "observations": 2,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -6362,7 +6425,14 @@
     "WhiteHouse45": {
       "category": "core",
       "label": "Trump White House Archive (45th Administration)",
-      "observations": 838,
+      "observations": 1402,
+      "reason": "tracked-account override",
+      "source": "config/accounts.yaml"
+    },
+    "WhiteHouse46": {
+      "category": "core",
+      "label": "Biden White House Archive (46th Administration)",
+      "observations": 1153,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -6774,7 +6844,7 @@
     "fema": {
       "category": "government",
       "label": "Federal Emergency Management Agency",
-      "observations": 844,
+      "observations": 868,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -6791,7 +6861,7 @@
     "femaregion4": {
       "category": "government",
       "label": "FEMA Region 4",
-      "observations": 20,
+      "observations": 21,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -7267,7 +7337,7 @@
     "realDonaldTrump": {
       "category": "government",
       "label": "Donald J. Trump",
-      "observations": 531,
+      "observations": 754,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -7516,7 +7586,7 @@
       ],
       "category": "government",
       "label": "U.S. Air Force",
-      "observations": 60,
+      "observations": 61,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -7577,13 +7647,13 @@
     }
   },
   "category_counts": {
-    "core": 49,
-    "government": 298,
-    "officials": 191,
+    "core": 50,
+    "government": 301,
+    "officials": 195,
     "public": 205,
-    "public_figures": 208
+    "public_figures": 210
   },
-  "generated_at": "2026-08-07T03:15:28Z",
+  "generated_at": "2026-08-07T04:15:36Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
