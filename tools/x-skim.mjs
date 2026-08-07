@@ -8,8 +8,8 @@ import net from 'node:net';
 import path from 'node:path';
 
 const ENDPOINT_NEEDLES = [
-  'UserTweets',
   'UserTweetsAndReplies',
+  'UserTweets',
   'UserMedia',
   'UserHighlightsTweets',
   'TweetDetail',
