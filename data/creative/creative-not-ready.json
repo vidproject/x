@@ -1,12 +1,12 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-08-07T14:14:11Z",
-    "source_commit": "43cb0c6d",
-    "item_count": 152,
+    "generated_at": "2026-08-07T14:52:52Z",
+    "source_commit": "831d0b0c",
+    "item_count": 153,
     "blocker_counts": {
-      "missing photo thumbnail": 141,
-      "missing genuine visual description": 71,
+      "missing photo thumbnail": 142,
+      "missing genuine visual description": 72,
       "missing archived media asset": 1,
       "missing photo OCR": 1
     }
@@ -20315,6 +20315,129 @@
         "retweets": 8730,
         "quotes": 1641,
         "views": 4018285
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "2074983539464880330:3_2074983502433353728",
+      "tweet_id": "2074983539464880330",
+      "posted_at": "2026-07-08T22:26:41.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "WhiteHouse",
+        "category": "core",
+        "label": "The White House"
+      },
+      "tweet_url": "https://x.com/WhiteHouse/status/2074983539464880330",
+      "tweet_text": "\"We just landed and met up with our new Air Force One, which was sent earlier to RAF Mildenhall, so we could show the wonderful Servicemembers, as per the entire Base’s request. They were very excited, picture enclosed. It was on our way back to the States from Turkey, with virtually no deviation of flightpath.\" - President DONALD J. TRUMP",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "country:Turkey",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:ai-generated",
+        "media:photo",
+        "military:air-force",
+        "origin:Turkey",
+        "topic:immigration",
+        "topic:military"
+      ],
+      "media": [
+        {
+          "media_id": "3_2074983502433353728",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse-0003/3_2074983502433353728.jpg",
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "e021af1072284dc34ab481adbce545a63479690af8022e6f51445e06831f0aad",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing genuine visual description",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": true,
+              "description": false,
+              "thumbnail": false,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "metadata-placeholder",
+              "text": "photo; 924x693; 0.12 MiB; archived; tweet context: \"We just landed and met up with our new Air Force One, which was sent earlier to RAF Mildenhall, so we could show the wonderful Servicemembers, as per the entire Base’s request. They were very excited, picture enclosed. It was on our way back to the States fr...; source URL: https://pbs.twimg.com/media/HMvSgHFWAAA1aUU.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse-0003/3_2074983502433353728.jpg; needs OCR, transcript, or frame-level vision before content claims. \"We just landed and met up with our new Air Force One, which was sent earlier to RAF Mildenhall, so we could show the wonderful Servicemembers, as per the entire Base’s request. They were very excited, picture enclosed. It was on our way back to the States from Turkey, with virtually no deviation of flightpath.\" - President DONALD J. TRUMP",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "we ca nt or ae —— =a ——<—<—<—<—S= SS errr Ses igi LF ycacs nee par Se a eo Be Baar Denes DT ty case nb HM ra ee pres SET C—FE ail dalle oe,"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing genuine visual description",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "photo; 924x693; 0.12 MiB; archived; tweet context: \"We just landed and met up with our new Air Force One, which was sent earlier to RAF Mildenhall, so we could show the wonderful Servicemembers, as per the entire Base’s request. They were very excited, picture enclosed. It was on our way back to the States fr...; source URL: https://pbs.twimg.com/media/HMvSgHFWAAA1aUU.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse-0003/3_2074983502433353728.jpg; needs OCR, transcript, or frame-level vision before content claims. \"We just landed and met up with our new Air Force One, which was sent earlier to RAF Mildenhall, so we could show the wonderful Servicemembers, as per the entire Base’s request. They were very excited, picture enclosed. It was on our way back to the States from Turkey, with virtually no deviation of flightpath.\" - President DONALD J. TRUMP",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 12532,
+        "retweets": 1911,
+        "quotes": 103,
+        "views": 1186222
       },
       "preference_score": 36,
       "preference_categories": [

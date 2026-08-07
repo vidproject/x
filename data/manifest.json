@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T14:13:22Z",
+  "generated_at": "2026-08-07T14:52:02Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -7,7 +7,7 @@
       "label": "Department of Homeland Security",
       "category": "core",
       "parquet": "data/DHSgov.parquet",
-      "parquet_bytes": 2093513,
+      "parquet_bytes": 2093495,
       "row_count": 7026,
       "post_count": 5726,
       "reply_count": 1300,
@@ -346,7 +346,7 @@
       "label": "The White House",
       "category": "core",
       "parquet": "data/WhiteHouse.parquet",
-      "parquet_bytes": 1046311,
+      "parquet_bytes": 1062467,
       "row_count": 3503,
       "post_count": 2834,
       "reply_count": 669,
@@ -385,7 +385,7 @@
       "label": "Obama White House Archive",
       "category": "core",
       "parquet": "data/ObamaWhiteHouse.parquet",
-      "parquet_bytes": 712867,
+      "parquet_bytes": 712865,
       "row_count": 3547,
       "post_count": 3518,
       "reply_count": 29,
@@ -1165,7 +1165,7 @@
       "label": "El Centro Sector Border Patrol",
       "category": "core",
       "parquet": "data/USBPChiefELC.parquet",
-      "parquet_bytes": 390523,
+      "parquet_bytes": 390525,
       "row_count": 1722,
       "post_count": 317,
       "reply_count": 1405,
