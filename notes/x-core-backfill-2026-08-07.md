@@ -135,3 +135,17 @@ The following 52 bounded WhiteHouse45 weeks, from 2019-01-18 through 2020-01-17,
 - authored date range: 2019-01-18T19:36:01Z through 2020-01-18T01:54:45Z
 
 The normalized range again includes a small UTC spill beyond the nominal `until:` date because X applies search-date boundaries in the browser session timezone. Adjacent weekly searches overlap that boundary, and canonical ingest deduplicates the repeated tweet IDs.
+
+The remaining 53 bounded WhiteHouse45 windows, from 2020-01-17 through the 2021-01-20 administration handoff, completed and passed the audit:
+
+- 53 summaries and 53 expected windows
+- no missing or extra windows
+- no invalid summaries
+- 346 SearchTimeline pages
+- 10,836 candidate IDs before author filtering
+- 4,604 unique authored WhiteHouse45 posts dated within the requested period after normalization and deduplication
+- authored date range within the period: 2020-01-17T13:32:47Z through 2021-01-20T15:29:59Z
+
+One December 2019 WhiteHouse45 tweet was also embedded in a 2020 SearchTimeline response. It is retained in the raw capture for provenance but excluded from the 2020-period count above; canonical ingest deduplicates it against the earlier tranche.
+
+This completes all 209 expected bounded WhiteHouse45 windows from 2017-01-20 through 2021-01-20. Across the first 264 completed White House lineage windows, including ObamaWhiteHouse, a response-body audit found no malformed SearchTimeline responses and no duplicate calendar windows.
