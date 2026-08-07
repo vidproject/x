@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T011811Z-6866569c-nytimes",
+  "account_handle": "nytimes",
+  "captured_at": "2026-08-07T01:19:16.163Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-07-29%20until%3A2026-08-05%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2082200267181703275",
+      "account_handle": "nytimes",
+      "account_id": "807095",
+      "posted_at": "2026-07-28T20:23:23.000Z",
+      "first_captured_at": "2026-08-07T01:19:07.580Z",
+      "last_seen_at": "2026-08-07T01:19:07.580Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/nytimes/status/2082200267181703275",
+      "tweet_type": "original",
+      "conversation_id": "2082200267181703275",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "ICE is detaining foreign citizens at airports with expired U.S. visas, including spouses of Americans, according to documents obtained by The New York Times and interviews with immigration lawyers. https://t.co/gHPgFnhc6r",
+      "text_resolved": "ICE is detaining foreign citizens at airports with expired U.S. visas, including spouses of Americans, according to documents obtained by The New York Times and interviews with immigration lawyers. https://nyti.ms/4wwlaca",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/gHPgFnhc6r",
+          "expanded": "https://nyti.ms/4wwlaca",
+          "display": "nyti.ms/4wwlaca"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/gHPgFnhc6r",
+        "vendor_url": "nytimes.com",
+        "title": "ICE Arrests Surge at Airports, Opening New Front in Deportation Drive",
+        "description": "Federal agents are arresting spouses of Americans, tech workers and others whose visas have expired, including many who have active applications to stay in the country.",
+        "image_url": "https://pbs.twimg.com/card_img/2084952157347090432/1XUDOT1n?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 5144,
+      "retweet_count": 785,
+      "reply_count": 5423,
+      "quote_count": 454,
+      "view_count": 2676482,
+      "bookmark_count": 416,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:19:07.580Z",
+          "likes": 5144,
+          "retweets": 785,
+          "replies": 5423,
+          "quotes": 454,
+          "views": 2676482,
+          "bookmarks": 416
+        }
+      ],
+      "author": {
+        "display_name": "The New York Times",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1098244578472280064/gjkVMelR_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": null,
+        "location": "New York City",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2007-03-02T20:41:42.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T011811Z-6866569c",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T011811Z-6866569c.summary.json",
+    "jsonl": ".skim/current-retry/x-com-search-20260807T011811Z-6866569c.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

@@ -877,6 +877,7 @@ async function skimPage(client, options, stats) {
       );
     }
     await wait(options.scrollDelayMs);
+    const nearBottom = await isNearPageBottom(client);
 
     // Stop once the timeline stops yielding anything new: repeated scrolls with
     // no fresh tweet IDs mean we have reached the end (or already-loaded
@@ -887,7 +888,7 @@ async function skimPage(client, options, stats) {
     if (uniqueNow > lastUniqueCount) {
       lastUniqueCount = uniqueNow;
       stagnantScrolls = 0;
-    } else if (waitedMs > 0 || retryClicked) {
+    } else if (waitedMs > 0 || retryClicked || !nearBottom) {
       stagnantScrolls = 0;
     } else {
       stagnantScrolls += 1;
@@ -902,7 +903,7 @@ async function skimPage(client, options, stats) {
       if (stats.unknownNewCount > lastUnknownCount) {
         lastUnknownCount = stats.unknownNewCount;
         dryKnownScrolls = 0;
-      } else if (waitedMs > 0 || retryClicked) {
+      } else if (waitedMs > 0 || retryClicked || !nearBottom) {
         dryKnownScrolls = 0;
       } else {
         dryKnownScrolls += 1;
@@ -927,6 +928,32 @@ async function skimPage(client, options, stats) {
       );
       break;
     }
+  }
+}
+
+async function isNearPageBottom(client) {
+  const expression = `
+(() => {
+  const root = document.scrollingElement || document.documentElement;
+  const scrollHeight = Math.max(
+    root?.scrollHeight || 0,
+    document.body?.scrollHeight || 0,
+    document.documentElement?.scrollHeight || 0
+  );
+  const scrollTop = root?.scrollTop ?? window.scrollY ?? 0;
+  const viewport = window.innerHeight || root?.clientHeight || 0;
+  return scrollTop + viewport >= scrollHeight - Math.max(400, viewport * 0.25);
+})()
+`;
+  try {
+    const result = await client.send(
+      'Runtime.evaluate',
+      { expression, returnByValue: true },
+      8_000
+    );
+    return Boolean(result.result?.value);
+  } catch {
+    return false;
   }
 }
 

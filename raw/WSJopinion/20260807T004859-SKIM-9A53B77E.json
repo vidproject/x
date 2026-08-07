@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T004800Z-c367eee8-WSJopinion",
+  "account_handle": "WSJopinion",
+  "captured_at": "2026-08-07T00:48:59.739Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-06-17%20until%3A2026-06-24%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2067059930444472664",
+      "account_handle": "WSJopinion",
+      "account_id": "7228682",
+      "posted_at": "2026-06-17T01:41:06.000Z",
+      "first_captured_at": "2026-08-07T00:48:43.604Z",
+      "last_seen_at": "2026-08-07T00:48:43.604Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/WSJopinion/status/2067059930444472664",
+      "tweet_type": "original",
+      "conversation_id": "2067059930444472664",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Border enforcement does affect American workers’ wallets. Tighter immigration is yielding new data on an old debate, writes @ProsperityWonk\nhttps://t.co/0ZdyyEpX9X",
+      "text_resolved": "Border enforcement does affect American workers’ wallets. Tighter immigration is yielding new data on an old debate, writes @ProsperityWonk\nhttps://on.wsj.com/4edjhKK",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "ProsperityWonk"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/0ZdyyEpX9X",
+          "expanded": "https://on.wsj.com/4edjhKK",
+          "display": "on.wsj.com/4edjhKK"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/0ZdyyEpX9X",
+        "vendor_url": "wsj.com",
+        "title": "Opinion | Border Enforcement Does Affect American Workers’ Wallets",
+        "description": "Tighter immigration is yielding new data on an old debate.",
+        "image_url": "https://pbs.twimg.com/card_img/2082502197728735232/-sEGb_MW?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 39,
+      "retweet_count": 7,
+      "reply_count": 6,
+      "quote_count": 3,
+      "view_count": 42836,
+      "bookmark_count": 7,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T00:48:43.604Z",
+          "likes": 39,
+          "retweets": 7,
+          "replies": 6,
+          "quotes": 3,
+          "views": 42836,
+          "bookmarks": 7
+        }
+      ],
+      "author": {
+        "display_name": "Wall Street Journal Opinion",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1522643223230963715/JYkirmo4_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Business",
+        "description": null,
+        "location": "New York",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2007-07-03T13:39:08.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T004800Z-c367eee8",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T004800Z-c367eee8.summary.json",
+    "jsonl": ".skim/current-weekly/x-com-search-20260807T004800Z-c367eee8.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

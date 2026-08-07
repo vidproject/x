@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T010406Z-3ece3f6b-PressSec",
+  "account_handle": "PressSec",
+  "captured_at": "2026-08-07T01:04:39.627Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AWhiteHouse%20since%3A2026-08-05%20until%3A2026-08-08%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2085169594252013633",
+      "account_handle": "PressSec",
+      "account_id": "1879670389057474560",
+      "posted_at": "2026-08-06T01:02:26.000Z",
+      "first_captured_at": "2026-08-07T01:04:18.003Z",
+      "last_seen_at": "2026-08-07T01:04:18.003Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/PressSec/status/2085169594252013633",
+      "tweet_type": "original",
+      "conversation_id": "2085169594252013633",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "📺 President Trump discussed ‘No Tax on Tips, ’Nevada election security in @FOX5Vegas 1-ON-1\n\nhttps://t.co/blWANwAutd",
+      "text_resolved": "📺 President Trump discussed ‘No Tax on Tips, ’Nevada election security in @FOX5Vegas 1-ON-1\n\nhttps://www.fox5vegas.com/2026/08/05/exclusive-trump-discusses-no-tax-tips-nevada-election-security-fox5-1-on-1/",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "FOX5Vegas"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/blWANwAutd",
+          "expanded": "https://www.fox5vegas.com/2026/08/05/exclusive-trump-discusses-no-tax-tips-nevada-election-security-fox5-1-on-1/",
+          "display": "fox5vegas.com/2026/08/05/exc…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/blWANwAutd",
+        "vendor_url": "fox5vegas.com",
+        "title": "EXCLUSIVE: Trump discusses ‘No Tax on Tips, ’Nevada election security in FOX5 1-ON-1",
+        "description": "Watch the full exclusive interview with President Donald Trump as he shares his thoughts on local law enforcement and national issues with FOX5's Tom Durian.",
+        "image_url": "https://pbs.twimg.com/card_img/2085169072568700928/VYAu9Dpy?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 1108,
+      "retweet_count": 200,
+      "reply_count": 156,
+      "quote_count": 8,
+      "view_count": 89222,
+      "bookmark_count": 13,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:04:18.003Z",
+          "likes": 1108,
+          "retweets": 200,
+          "replies": 156,
+          "quotes": 8,
+          "views": 89222,
+          "bookmarks": 13
+        }
+      ],
+      "author": {
+        "display_name": "Karoline Leavitt",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1947447846317236225/rChs3LqV_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": null,
+        "location": null,
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2025-01-15T23:22:04.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T010406Z-3ece3f6b",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T010406Z-3ece3f6b.summary.json",
+    "jsonl": ".skim/current-retry/x-com-search-20260807T010406Z-3ece3f6b.jsonl",
+    "source_handle": "WhiteHouse"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T010653Z-faa945e1-enterprisenews",
+  "account_handle": "enterprisenews",
+  "captured_at": "2026-08-07T01:07:51.548Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-07-01%20until%3A2026-07-08%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2074191815977082972",
+      "account_handle": "enterprisenews",
+      "account_id": "15513778",
+      "posted_at": "2026-07-06T18:00:40.000Z",
+      "first_captured_at": "2026-08-07T01:07:05.963Z",
+      "last_seen_at": "2026-08-07T01:07:05.963Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/enterprisenews/status/2074191815977082972",
+      "tweet_type": "original",
+      "conversation_id": "2074191815977082972",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Brockton man held on $700K bail in Pennsylvania trooper death https://t.co/FxAToE7kbI",
+      "text_resolved": "Brockton man held on $700K bail in Pennsylvania trooper death https://www.enterprisenews.com/story/news/courts/2026/07/06/brockton-ma-michael-bon-charged-death-pennsylvania-trooper-michael-pahira-jr/90799611007/?taid=6a4bed4857b3960001506a4d&utm_campaign=trueanthem&utm_medium=social&utm_source=twitter",
+      "lang": "cy",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://trueanthem.com\" rel=\"nofollow\">trueanthem_pro2</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/FxAToE7kbI",
+          "expanded": "https://www.enterprisenews.com/story/news/courts/2026/07/06/brockton-ma-michael-bon-charged-death-pennsylvania-trooper-michael-pahira-jr/90799611007/?taid=6a4bed4857b3960001506a4d&utm_campaign=trueanthem&utm_medium=social&utm_source=twitter",
+          "display": "enterprisenews.com/story/news/cou…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/FxAToE7kbI",
+        "vendor_url": "enterprisenews.com",
+        "title": "Brockton man held on $700K bail in Pennsylvania trooper death",
+        "description": "Michael Bon, 33, of Brockton, MA, faces 10 charges after a crash killed veteran PA State Trooper Michael Pahira Jr. What court documents say happened.",
+        "image_url": "https://pbs.twimg.com/card_img/2084340193415311361/C64XtnWQ?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 70,
+      "retweet_count": 15,
+      "reply_count": 444,
+      "quote_count": 34,
+      "view_count": 451512,
+      "bookmark_count": 13,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:07:05.963Z",
+          "likes": 70,
+          "retweets": 15,
+          "replies": 444,
+          "quotes": 34,
+          "views": 451512,
+          "bookmarks": 13
+        }
+      ],
+      "author": {
+        "display_name": "The Enterprise",
+        "avatar_url": "https://pbs.twimg.com/profile_images/760837539016171520/L46AKbAi_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": null,
+        "location": "Brockton, Mass.",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2008-07-21T11:26:39.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T010653Z-faa945e1",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T010653Z-faa945e1.summary.json",
+    "jsonl": ".skim/current-retry/x-com-search-20260807T010653Z-faa945e1.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T010514Z-06c094ed-DHSBlueCampaign",
+  "account_handle": "DHSBlueCampaign",
+  "captured_at": "2026-08-07T01:05:47.055Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AICEgov%20since%3A2026-06-22%20until%3A2026-06-29%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2069841757710200949",
+      "account_handle": "DHSBlueCampaign",
+      "account_id": "931239693534093312",
+      "posted_at": "2026-06-24T17:55:05.000Z",
+      "first_captured_at": "2026-08-07T01:05:28.983Z",
+      "last_seen_at": "2026-08-07T01:05:28.983Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DHSBlueCampaign/status/2069841757710200949",
+      "tweet_type": "original",
+      "conversation_id": "2069841757710200949",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Some lives are filled with promise. Others are stolen by traffickers. During the World Cup, help us break the silence of Human Trafficking. \n\nLearn the facts and how to spot the signs: https://t.co/l7srWmrMqI\n\n#EndHumanTrafficking https://t.co/gq0ePrDgSJ",
+      "text_resolved": "Some lives are filled with promise. Others are stolen by traffickers. During the World Cup, help us break the silence of Human Trafficking. \n\nLearn the facts and how to spot the signs: http://bluecampaign.gov/WorldCup\n\n#EndHumanTrafficking https://t.co/gq0ePrDgSJ",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "EndHumanTrafficking"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/l7srWmrMqI",
+          "expanded": "http://bluecampaign.gov/WorldCup",
+          "display": "bluecampaign.gov/WorldCup"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_2069840539810234368",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/2069840539810234368/pu/vid/avc1/720x1280/5-ARdFBRu8uTiqct.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 15,
+          "width": 720,
+          "height": 1280,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 13,
+      "retweet_count": 6,
+      "reply_count": 1,
+      "quote_count": 2,
+      "view_count": 11550,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:05:28.983Z",
+          "likes": 13,
+          "retweets": 6,
+          "replies": 1,
+          "quotes": 2,
+          "views": 11550,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "DHS Blue Campaign",
+        "avatar_url": "https://pbs.twimg.com/profile_images/931270646344179712/yMjVt2dg_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": null,
+        "location": null,
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2017-11-16T19:16:59.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T010514Z-06c094ed",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T010514Z-06c094ed.summary.json",
+    "jsonl": ".skim/current-retry/x-com-search-20260807T010514Z-06c094ed.jsonl",
+    "source_handle": "ICEgov"
+  }
+}

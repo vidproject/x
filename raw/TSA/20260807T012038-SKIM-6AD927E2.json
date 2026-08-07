@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T012011Z-d8510a79-TSA",
+  "account_handle": "TSA",
+  "captured_at": "2026-08-07T01:20:38.785Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBP%20since%3A2026-06-24%20until%3A2026-07-01%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2069415434965717257",
+      "account_handle": "TSA",
+      "account_id": "414331122",
+      "posted_at": "2026-06-23T13:41:02.000Z",
+      "first_captured_at": "2026-08-07T01:20:23.757Z",
+      "last_seen_at": "2026-08-07T01:20:23.757Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/TSA/status/2069415434965717257",
+      "tweet_type": "original",
+      "conversation_id": "2069415434965717257",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "TSA Federal Air Marshals, working with state and federal partners, have seized over 300 drones during @FIFAWorldCup events thus far. Flying a drone in a restricted zone is a federal crime and can result in fines up to $100,000, prison time, and drone confiscation. https://t.co/hk9RrSCP0K",
+      "text_resolved": "TSA Federal Air Marshals, working with state and federal partners, have seized over 300 drones during @FIFAWorldCup events thus far. Flying a drone in a restricted zone is a federal crime and can result in fines up to $100,000, prison time, and drone confiscation. https://t.co/hk9RrSCP0K",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.sprinklr.com\" rel=\"nofollow\">Sprinklr Prod6/11/15</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "FIFAWorldCup"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2069415430813294592",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HLgKXr5WoAAeGc8.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 675,
+          "alt_text": "A soccer goalie glove swatting down a drone. No Drone Zone #FIFAWorldCup",
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 63,
+      "retweet_count": 27,
+      "reply_count": 5,
+      "quote_count": 7,
+      "view_count": 25101,
+      "bookmark_count": 4,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:20:23.757Z",
+          "likes": 63,
+          "retweets": 27,
+          "replies": 5,
+          "quotes": 7,
+          "views": 25101,
+          "bookmarks": 4
+        }
+      ],
+      "author": {
+        "display_name": "TSA",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1610389283604467715/ht3-XA2f_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": null,
+        "location": "Washington, DC",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2011-11-16T22:47:58.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T012011Z-d8510a79",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T012011Z-d8510a79.summary.json",
+    "jsonl": ".skim/current-retry/x-com-search-20260807T012011Z-d8510a79.jsonl",
+    "source_handle": "CBP"
+  }
+}

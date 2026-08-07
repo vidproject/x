@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T012039Z-38f704d6-CBPJobs",
+  "account_handle": "CBPJobs",
+  "captured_at": "2026-08-07T01:21:01.556Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBP%20since%3A2026-07-01%20until%3A2026-07-08%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2074131340530798726",
+      "account_handle": "CBPJobs",
+      "account_id": "878311662226468869",
+      "posted_at": "2026-07-06T14:00:21.000Z",
+      "first_captured_at": "2026-08-07T01:20:41.359Z",
+      "last_seen_at": "2026-08-07T01:20:41.359Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBPJobs/status/2074131340530798726",
+      "tweet_type": "original",
+      "conversation_id": "2074131340530798726",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "The mission to stop threats is accomplished by Border Patrol Agents who value teamwork, dedication, and vigilance. ​\n\nJoin our Talent Network to learn about our competitive pay, generous benefits, and incentives of up to $60,000: https://t.co/VpWPChnUN5\n\n#CBPCareers #USBP https://t.co/qD8JDq3xKg",
+      "text_resolved": "The mission to stop threats is accomplished by Border Patrol Agents who value teamwork, dedication, and vigilance. ​\n\nJoin our Talent Network to learn about our competitive pay, generous benefits, and incentives of up to $60,000: http://go.dhs.gov/oW5\n\n#CBPCareers #USBP https://t.co/qD8JDq3xKg",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "CBPCareers",
+        "USBP"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/VpWPChnUN5",
+          "expanded": "http://go.dhs.gov/oW5",
+          "display": "go.dhs.gov/oW5"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "7_2074130130662748160",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/ext_tw_video/2074130130662748160/pu/vid/avc1/720x720/rY1SYZ-uUvkhUPfa.mp4?tag=12",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 15.017,
+          "width": 1080,
+          "height": 1080,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 12,
+      "retweet_count": 2,
+      "reply_count": 0,
+      "quote_count": 1,
+      "view_count": 6373,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:20:41.359Z",
+          "likes": 12,
+          "retweets": 2,
+          "replies": 0,
+          "quotes": 1,
+          "views": 6373,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "CBP Jobs",
+        "avatar_url": "https://pbs.twimg.com/profile_images/900399198876700672/n6nYVIJ7_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": null,
+        "location": null,
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2017-06-23T17:59:53.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T012039Z-38f704d6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T012039Z-38f704d6.summary.json",
+    "jsonl": ".skim/current-retry/x-com-search-20260807T012039Z-38f704d6.jsonl",
+    "source_handle": "CBP"
+  }
+}

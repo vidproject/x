@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T013227Z-65e1b1e6-nypost",
+  "account_handle": "nypost",
+  "captured_at": "2026-08-07T01:33:18.535Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-07-15%20until%3A2026-07-22%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2077273501161992439",
+      "account_handle": "nypost",
+      "account_id": "17469289",
+      "posted_at": "2026-07-15T06:06:11.000Z",
+      "first_captured_at": "2026-08-07T01:33:03.417Z",
+      "last_seen_at": "2026-08-07T01:33:03.417Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/nypost/status/2077273501161992439",
+      "tweet_type": "original",
+      "conversation_id": "2077273501161992439",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Canadian woman slaps teen over Trump clothing on Jersey Shore boardwalk; now charged and in ICE custody https://t.co/dozeU9dsEE https://t.co/vfO8ReidMd",
+      "text_resolved": "Canadian woman slaps teen over Trump clothing on Jersey Shore boardwalk; now charged and in ICE custody https://trib.al/oKrp8sf https://t.co/vfO8ReidMd",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/dozeU9dsEE",
+          "expanded": "https://trib.al/oKrp8sf",
+          "display": "trib.al/oKrp8sf"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2077273492597166080",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HNP1PFOW0AAS0FU.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1200,
+          "height": 799,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 29226,
+      "retweet_count": 2444,
+      "reply_count": 2160,
+      "quote_count": 567,
+      "view_count": 4790515,
+      "bookmark_count": 1127,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:33:03.417Z",
+          "likes": 29226,
+          "retweets": 2444,
+          "replies": 2160,
+          "quotes": 567,
+          "views": 4790515,
+          "bookmarks": 1127
+        }
+      ],
+      "author": {
+        "display_name": "New York Post",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2073490215327715328/4wOfTM9__normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": null,
+        "location": "New York, NY",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2008-11-18T19:46:36.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T013227Z-65e1b1e6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T013227Z-65e1b1e6.summary.json",
+    "jsonl": ".skim/current-retry2/x-com-search-20260807T013227Z-65e1b1e6.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

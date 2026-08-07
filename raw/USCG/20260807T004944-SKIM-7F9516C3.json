@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T004900Z-b3290ec8-USCG",
+  "account_handle": "USCG",
+  "captured_at": "2026-08-07T00:49:44.907Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-07-08%20until%3A2026-07-15%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2077004294407033026",
+      "account_handle": "USCG",
+      "account_id": "15113565",
+      "posted_at": "2026-07-14T12:16:27.000Z",
+      "first_captured_at": "2026-08-07T00:49:10.871Z",
+      "last_seen_at": "2026-08-07T00:49:10.871Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USCG/status/2077004294407033026",
+      "tweet_type": "original",
+      "conversation_id": "2077004294407033026",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "On Friday, a @USCG MH-65 Dolphin aircrew from Air Station Port Angeles assisted @NatlParkService  with the 110-ft hoist medevac of a 15-year-old male from remote Shi Shi Beach in Olympic National Park. \n\nStrong agency partnerships ensure swift, lifesaving care when it matters most! \n\nRead more here: https://t.co/7vD7J8HHOz",
+      "text_resolved": "On Friday, a @USCG MH-65 Dolphin aircrew from Air Station Port Angeles assisted @NatlParkService  with the 110-ft hoist medevac of a 15-year-old male from remote Shi Shi Beach in Olympic National Park. \n\nStrong agency partnerships ensure swift, lifesaving care when it matters most! \n\nRead more here: https://www.news.uscg.mil/Press-Releases/Article/4540832/coast-guard-medevacs-15-year-old-from-shi-shi-beach/",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "USCG",
+        "NatlParkService"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/7vD7J8HHOz",
+          "expanded": "https://www.news.uscg.mil/Press-Releases/Article/4540832/coast-guard-medevacs-15-year-old-from-shi-shi-beach/",
+          "display": "news.uscg.mil/Press-Releases…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_2077004119605223424",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2077004119605223424/vid/avc1/1080x1920/kg46JPLxM8XkO8h7.mp4?tag=28",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 36.8,
+          "width": 1080,
+          "height": 1920,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 434,
+      "retweet_count": 65,
+      "reply_count": 7,
+      "quote_count": 4,
+      "view_count": 54704,
+      "bookmark_count": 8,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T00:49:10.871Z",
+          "likes": 434,
+          "retweets": 65,
+          "replies": 7,
+          "quotes": 4,
+          "views": 54704,
+          "bookmarks": 8
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Coast Guard",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1968704058094493696/SNfajkGd_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": null,
+        "location": "Washington, D.C.",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2008-06-14T02:09:38.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T004900Z-b3290ec8",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T004900Z-b3290ec8.summary.json",
+    "jsonl": ".skim/current-weekly/x-com-search-20260807T004900Z-b3290ec8.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

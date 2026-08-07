@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T012011Z-d8510a79-DFOSeattle",
+  "account_handle": "DFOSeattle",
+  "captured_at": "2026-08-07T01:20:38.785Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBP%20since%3A2026-06-24%20until%3A2026-07-01%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2069801511727841592",
+      "account_handle": "DFOSeattle",
+      "account_id": "1211767654626709504",
+      "posted_at": "2026-06-24T15:15:10.000Z",
+      "first_captured_at": "2026-08-07T01:20:23.757Z",
+      "last_seen_at": "2026-08-07T01:20:23.757Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/DFOSeattle/status/2069801511727841592",
+      "tweet_type": "original",
+      "conversation_id": "2069801511727841592",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "From the lane to the game, @cbp is here to protect and serve. ⚽️🇺🇸 @FIFAWorldCup 2026™ @fwc26seattle #OFOproud #cbpxfifa2026 https://t.co/tbnseuVU5w",
+      "text_resolved": "From the lane to the game, @cbp is here to protect and serve. ⚽️🇺🇸 @FIFAWorldCup 2026™ @fwc26seattle #OFOproud #cbpxfifa2026 https://t.co/tbnseuVU5w",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "OFOproud",
+        "cbpxfifa2026"
+      ],
+      "mentions": [
+        "CBP",
+        "FIFAWorldCup",
+        "FWC26Seattle"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2069801507269021696",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HLlpgSxWkAAJIl7.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1080,
+          "height": 566,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 9,
+      "retweet_count": 2,
+      "reply_count": 1,
+      "quote_count": 2,
+      "view_count": 5157,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:20:23.757Z",
+          "likes": 9,
+          "retweets": 2,
+          "replies": 1,
+          "quotes": 2,
+          "views": 5157,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "DFO Seattle Field Office",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2081398603864854528/jxV5Hxz3_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": null,
+        "location": null,
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2019-12-30T21:55:09.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T012011Z-d8510a79",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T012011Z-d8510a79.summary.json",
+    "jsonl": ".skim/current-retry/x-com-search-20260807T012011Z-d8510a79.jsonl",
+    "source_handle": "CBP"
+  }
+}

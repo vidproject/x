@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T013227Z-65e1b1e6-CBSNews",
+  "account_handle": "CBSNews",
+  "captured_at": "2026-08-07T01:33:18.535Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-07-15%20until%3A2026-07-22%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2077717383863513564",
+      "account_handle": "CBSNews",
+      "account_id": "15012486",
+      "posted_at": "2026-07-16T11:30:01.000Z",
+      "first_captured_at": "2026-08-07T01:33:03.417Z",
+      "last_seen_at": "2026-08-07T01:33:03.417Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/CBSNews/status/2077717383863513564",
+      "tweet_type": "original",
+      "conversation_id": "2077717383863513564",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Exclusive: The Trump administration is allowing immigration officers to consider whether some applicants have used taxpayer-funded benefits — including Medicaid, food stamps and housing assistance — when determining whether they qualify for permanent legal status.  https://t.co/GJ9On9x5XB",
+      "text_resolved": "Exclusive: The Trump administration is allowing immigration officers to consider whether some applicants have used taxpayer-funded benefits — including Medicaid, food stamps and housing assistance — when determining whether they qualify for permanent legal status.  https://cbsn.ws/44ts3i6",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"https://www.sprinklr.com\" rel=\"nofollow\">Sprinklr</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/GJ9On9x5XB",
+          "expanded": "https://cbsn.ws/44ts3i6",
+          "display": "cbsn.ws/44ts3i6"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/GJ9On9x5XB",
+        "vendor_url": "cbsnews.com",
+        "title": "DHS could weigh immigrants' use of Medicaid, food and housing help in green card decisions",
+        "description": "Immigration officers could weigh use of Medicaid, food aid and housing help in green card decisions after Trump administration rescinds Biden-era public charge rule.",
+        "image_url": "https://pbs.twimg.com/card_img/2085327608535715840/qN-RC8Ko?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 2883,
+      "retweet_count": 263,
+      "reply_count": 599,
+      "quote_count": 106,
+      "view_count": 3693999,
+      "bookmark_count": 316,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:33:03.417Z",
+          "likes": 2883,
+          "retweets": 263,
+          "replies": 599,
+          "quotes": 106,
+          "views": 3693999,
+          "bookmarks": 316
+        }
+      ],
+      "author": {
+        "display_name": "CBS News",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1617634745348661249/6YmPYpNd_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": null,
+        "location": "New York, NY",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2008-06-05T00:54:31.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T013227Z-65e1b1e6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T013227Z-65e1b1e6.summary.json",
+    "jsonl": ".skim/current-retry2/x-com-search-20260807T013227Z-65e1b1e6.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

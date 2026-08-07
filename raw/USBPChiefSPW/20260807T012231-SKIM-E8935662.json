@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T012207Z-cd2754a6-USBPChiefSPW",
+  "account_handle": "USBPChiefSPW",
+  "captured_at": "2026-08-07T01:22:31.796Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ACBP%20since%3A2026-07-29%20until%3A2026-08-05%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2082798527743250677",
+      "account_handle": "USBPChiefSPW",
+      "account_id": "1207067412392271874",
+      "posted_at": "2026-07-30T12:00:40.000Z",
+      "first_captured_at": "2026-08-07T01:22:18.927Z",
+      "last_seen_at": "2026-08-07T01:22:18.927Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/USBPChiefSPW/status/2082798527743250677",
+      "tweet_type": "original",
+      "conversation_id": "2082798527743250677",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "#OnPatrol #SpokaneSector The stunning landscape in Whitefish Station’s Area of Responsibility, just outside of #GlacierNationalPark, a scenery that looks as if it were hand-painted. #HonorFirst #BorderSecurity https://t.co/q6nxaeuP8h",
+      "text_resolved": "#OnPatrol #SpokaneSector The stunning landscape in Whitefish Station’s Area of Responsibility, just outside of #GlacierNationalPark, a scenery that looks as if it were hand-painted. #HonorFirst #BorderSecurity https://t.co/q6nxaeuP8h",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.hootsuite.com\" rel=\"nofollow\">Hootsuite Inc.</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "OnPatrol",
+        "SpokaneSector",
+        "GlacierNationalPark",
+        "HonorFirst",
+        "BorderSecurity"
+      ],
+      "mentions": [],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2082798523628609536",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HOeWONuXYAAsQ6q.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1920,
+          "height": 1920,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 17,
+      "retweet_count": 1,
+      "reply_count": 0,
+      "quote_count": 1,
+      "view_count": 9013,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:22:18.927Z",
+          "likes": 17,
+          "retweets": 1,
+          "replies": 0,
+          "quotes": 1,
+          "views": 9013,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Spokane Sector Chief Patrol Agent",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1892380245287981059/IHdIVqTG_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": null,
+        "location": "Spokane, WA",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2019-12-17T22:37:59.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T012207Z-cd2754a6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T012207Z-cd2754a6.summary.json",
+    "jsonl": ".skim/current-retry/x-com-search-20260807T012207Z-cd2754a6.jsonl",
+    "source_handle": "CBP"
+  }
+}

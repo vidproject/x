@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T011721Z-73091d8f-jbendery",
+  "account_handle": "jbendery",
+  "captured_at": "2026-08-07T01:18:11.231Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-07-22%20until%3A2026-07-29%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2082552455145955367",
+      "account_handle": "jbendery",
+      "account_id": "15837659",
+      "posted_at": "2026-07-29T19:42:51.000Z",
+      "first_captured_at": "2026-08-07T01:17:24.446Z",
+      "last_seen_at": "2026-08-07T01:17:24.446Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/jbendery/status/2082552455145955367",
+      "tweet_type": "original",
+      "conversation_id": "2082552455145955367",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "NEW from me: A senior Trump official is using his govt social media account to smear sitting federal judges, sparking accusations he's putting their safety at risk as judges already face a spike in threats.\n\nThis “puts a bullseye” on em, one judge told me. https://t.co/M0x2wKchLI",
+      "text_resolved": "NEW from me: A senior Trump official is using his govt social media account to smear sitting federal judges, sparking accusations he's putting their safety at risk as judges already face a spike in threats.\n\nThis “puts a bullseye” on em, one judge told me. https://www.huffpost.com/entry/james-percival-dhs-counsel-threatens-federal-judges-esther-salas-beth-bloom_n_6a6a44b6e4b098352c306ba7?nrq",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/M0x2wKchLI",
+          "expanded": "https://www.huffpost.com/entry/james-percival-dhs-counsel-threatens-federal-judges-esther-salas-beth-bloom_n_6a6a44b6e4b098352c306ba7?nrq",
+          "display": "huffpost.com/entry/james-pe…"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/M0x2wKchLI",
+        "vendor_url": "huffpost.com",
+        "title": "Senior Trump Official Using Government Account To Smear Sitting Federal Judges",
+        "description": "This “puts a bullseye” on judges already facing a spike in violent threats, warned U.S. District Judge Esther Salas, whose son was killed by a disgruntled litigant.",
+        "image_url": "https://pbs.twimg.com/card_img/2085089099547811840/nSbsyhLk?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 255,
+      "retweet_count": 191,
+      "reply_count": 676,
+      "quote_count": 70,
+      "view_count": 563853,
+      "bookmark_count": 43,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:17:24.446Z",
+          "likes": 255,
+          "retweets": 191,
+          "replies": 676,
+          "quotes": 70,
+          "views": 563853,
+          "bookmarks": 43
+        }
+      ],
+      "author": {
+        "display_name": "Jennifer Bendery",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1621193006488473601/k6bIPUIJ_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": null,
+        "location": "Washington, DC",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2008-08-13T15:05:39.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T011721Z-73091d8f",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T011721Z-73091d8f.summary.json",
+    "jsonl": ".skim/current-retry/x-com-search-20260807T011721Z-73091d8f.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

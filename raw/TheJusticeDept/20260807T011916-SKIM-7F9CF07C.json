@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T011811Z-6866569c-TheJusticeDept",
+  "account_handle": "TheJusticeDept",
+  "captured_at": "2026-08-07T01:19:16.163Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-07-29%20until%3A2026-08-05%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2084377121548337296",
+      "account_handle": "TheJusticeDept",
+      "account_id": "73181712",
+      "posted_at": "2026-08-03T20:33:26.000Z",
+      "first_captured_at": "2026-08-07T01:18:37.922Z",
+      "last_seen_at": "2026-08-07T01:18:37.922Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/TheJusticeDept/status/2084377121548337296",
+      "tweet_type": "original",
+      "conversation_id": "2084377121548337296",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Today in @NDNYnews: Federal officials announced the arrest of three individuals involved in a major international smuggling operation along the northern border thanks to the efforts of the Homeland Security Task Force.\n\nThrough a coordinated partnership involving U.S. and Canadian and Tribal law enforcement, investigators initiated a joint investigation into suspected cross-border drug trafficking activity operating through Akwesasne. As the investigation progressed, authorities identified an alleged smuggling network responsible for moving illicit drugs from Canada into the U.S. Investigators further determined that the defendants allegedly planned to exchange methamphetamine for multiple firearms.\n\nRead more: https://t.co/iU9LoZkoZl",
+      "text_resolved": "Today in @NDNYnews: Federal officials announced the arrest of three individuals involved in a major international smuggling operation along the northern border thanks to the efforts of the Homeland Security Task Force.\n\nThrough a coordinated partnership involving U.S. and Canadian and Tribal law enforcement, investigators initiated a joint investigation into suspected cross-border drug trafficking activity operating through Akwesasne. As the investigation progressed, authorities identified an alleged smuggling network responsible for moving illicit drugs from Canada into the U.S. Investigators further determined that the defendants allegedly planned to exchange methamphetamine for multiple firearms.\n\nRead more: https://www.justice.gov/usao-ndny/pr/federal-officials-announce-major-arrests-international-drug-smuggling-case",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "NDNYnews"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/iU9LoZkoZl",
+          "expanded": "https://www.justice.gov/usao-ndny/pr/federal-officials-announce-major-arrests-international-drug-smuggling-case",
+          "display": "justice.gov/usao-ndny/pr/f…"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_2084376241105199104",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2084376241105199104/vid/avc1/1280x720/TvqlWG9-O-mLtI3L.mp4?tag=29",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 58.958,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1943,
+      "retweet_count": 517,
+      "reply_count": 49,
+      "quote_count": 14,
+      "view_count": 101096,
+      "bookmark_count": 45,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:18:37.922Z",
+          "likes": 1943,
+          "retweets": 517,
+          "replies": 49,
+          "quotes": 14,
+          "views": 101096,
+          "bookmarks": 45
+        }
+      ],
+      "author": {
+        "display_name": "U.S. Department of Justice",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2052787304071102465/bOrp4Fv4_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Government",
+        "description": null,
+        "location": "United States of America",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2009-09-10T18:16:25.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T011811Z-6866569c",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T011811Z-6866569c.summary.json",
+    "jsonl": ".skim/current-retry/x-com-search-20260807T011811Z-6866569c.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

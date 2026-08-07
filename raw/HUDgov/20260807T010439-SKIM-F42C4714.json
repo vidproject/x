@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T010406Z-3ece3f6b-HUDgov",
+  "account_handle": "HUDgov",
+  "captured_at": "2026-08-07T01:04:39.627Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AWhiteHouse%20since%3A2026-08-05%20until%3A2026-08-08%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2085406266394833048",
+      "account_handle": "HUDgov",
+      "account_id": "19948202",
+      "posted_at": "2026-08-06T16:42:53.000Z",
+      "first_captured_at": "2026-08-07T01:04:08.568Z",
+      "last_seen_at": "2026-08-07T01:04:08.568Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/HUDgov/status/2085406266394833048",
+      "tweet_type": "quote",
+      "conversation_id": "2085406266394833048",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": "2085346721077293094",
+      "retweeted_tweet_id": null,
+      "text": "Fraudsters be warned, your downfall is on full display.\n\nSee https://t.co/fekiH19Hml for more.",
+      "text_resolved": "Fraudsters be warned, your downfall is on full display.\n\nSee http://Fraud.gov for more.",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/fekiH19Hml",
+          "expanded": "http://Fraud.gov",
+          "display": "Fraud.gov"
+        }
+      ],
+      "card": {
+        "name": "summary_large_image",
+        "card_url": "https://t.co/fekiH19Hml",
+        "vendor_url": "whitehouse.gov",
+        "title": "The Fraud Ledger",
+        "description": "A public record of the fraud, waste, and corruption identified by the Trump Administration’s Task Force to Eliminate Fraud since January 2025.",
+        "image_url": "https://pbs.twimg.com/card_img/2083548296392617984/ffxreMgS?format=jpg&name=orig"
+      },
+      "media": [],
+      "like_count": 824,
+      "retweet_count": 187,
+      "reply_count": 97,
+      "quote_count": 7,
+      "view_count": 65729,
+      "bookmark_count": 28,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:04:08.568Z",
+          "likes": 824,
+          "retweets": 187,
+          "replies": 97,
+          "quotes": 7,
+          "views": 65729,
+          "bookmarks": 28
+        }
+      ],
+      "author": {
+        "display_name": "Department of Housing and Urban Development",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2070499958919245824/CbmXzm4S_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": null,
+        "location": "Washington, D.C.",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2009-02-03T02:08:02.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T010406Z-3ece3f6b",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T010406Z-3ece3f6b.summary.json",
+    "jsonl": ".skim/current-retry/x-com-search-20260807T010406Z-3ece3f6b.jsonl",
+    "source_handle": "WhiteHouse"
+  }
+}

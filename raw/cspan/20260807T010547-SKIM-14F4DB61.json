@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T010514Z-06c094ed-cspan",
+  "account_handle": "cspan",
+  "captured_at": "2026-08-07T01:05:47.055Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AICEgov%20since%3A2026-06-22%20until%3A2026-06-29%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2070146529050980632",
+      "account_handle": "cspan",
+      "account_id": "15675138",
+      "posted_at": "2026-06-25T14:06:08.000Z",
+      "first_captured_at": "2026-08-07T01:05:28.983Z",
+      "last_seen_at": "2026-08-07T01:05:28.983Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/cspan/status/2070146529050980632",
+      "tweet_type": "original",
+      "conversation_id": "2070146529050980632",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "DHS Secretary Markwayne Mullin (@SecMullinDHS) testifies at @HouseAppropsGOP @AppropsDems – LIVE on C-SPAN3 https://t.co/XrhteDxTUI",
+      "text_resolved": "DHS Secretary Markwayne Mullin (@SecMullinDHS) testifies at @HouseAppropsGOP @AppropsDems – LIVE on C-SPAN3 https://youtube.com/live/lFsSZdY1YfM?feature=share",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "SecMullinDHS",
+        "HouseAppropsGOP",
+        "AppropsDems"
+      ],
+      "urls": [
+        {
+          "short": "https://t.co/XrhteDxTUI",
+          "expanded": "https://youtube.com/live/lFsSZdY1YfM?feature=share",
+          "display": "youtube.com/live/lFsSZdY1Y…"
+        }
+      ],
+      "card": {
+        "name": "player",
+        "card_url": "https://t.co/XrhteDxTUI",
+        "vendor_url": "youtube.com",
+        "title": "DHS Secretary Markwayne Mullin testifies before Senate",
+        "description": "Homeland Security Secretary Markwayne Mullin testifies on DHS overs...",
+        "image_url": null
+      },
+      "media": [],
+      "like_count": 12,
+      "retweet_count": 6,
+      "reply_count": 1,
+      "quote_count": 2,
+      "view_count": 25734,
+      "bookmark_count": 4,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:05:28.983Z",
+          "likes": 12,
+          "retweets": 6,
+          "replies": 1,
+          "quotes": 2,
+          "views": 25734,
+          "bookmarks": 4
+        }
+      ],
+      "author": {
+        "display_name": "CSPAN",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1107583584460857344/Ewo1E1vu_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": null,
+        "location": "Washington, D.C.",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2008-07-31T14:29:10.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T010514Z-06c094ed",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T010514Z-06c094ed.summary.json",
+    "jsonl": ".skim/current-retry/x-com-search-20260807T010514Z-06c094ed.jsonl",
+    "source_handle": "ICEgov"
+  }
+}

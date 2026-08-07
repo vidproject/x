@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T013227Z-65e1b1e6-ABC7",
+  "account_handle": "ABC7",
+  "captured_at": "2026-08-07T01:33:18.535Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3ADHSgov%20since%3A2026-07-15%20until%3A2026-07-22%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2077186290659803278",
+      "account_handle": "ABC7",
+      "account_id": "16374678",
+      "posted_at": "2026-07-15T00:19:38.000Z",
+      "first_captured_at": "2026-08-07T01:33:03.417Z",
+      "last_seen_at": "2026-08-07T01:33:03.417Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/ABC7/status/2077186290659803278",
+      "tweet_type": "original",
+      "conversation_id": "2077186290659803278",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "A semitruck driver was sentenced to four years and eight months in prison for an eight-vehicle crash that killed three people on the 10 Freeway in Ontario last year. U.S. Homeland Security officials said the driver, Jashanpreet Singh, was in the country illegally.\n\nEyewitness News obtained dash camera video of the violent crash, which shows the semitruck plowing into several vehicles along the 10 Freeway. https://t.co/x52TWgJBap",
+      "text_resolved": "A semitruck driver was sentenced to four years and eight months in prison for an eight-vehicle crash that killed three people on the 10 Freeway in Ontario last year. U.S. Homeland Security officials said the driver, Jashanpreet Singh, was in the country illegally.\n\nEyewitness News obtained dash camera video of the violent crash, which shows the semitruck plowing into several vehicles along the 10 Freeway. https://abc7ne.ws/FzErHM",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://www.sprinklr.com\" rel=\"nofollow\">Sprinklr</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/x52TWgJBap",
+          "expanded": "https://abc7ne.ws/FzErHM",
+          "display": "abc7ne.ws/FzErHM"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_2077186214478643200",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/2077186214478643200/vid/avc1/720x1280/b9sbmCza3jn3URTH.mp4?tag=14",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 29.845,
+          "width": 405,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 154,
+      "retweet_count": 52,
+      "reply_count": 112,
+      "quote_count": 14,
+      "view_count": 115221,
+      "bookmark_count": 30,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:33:03.417Z",
+          "likes": 154,
+          "retweets": 52,
+          "replies": 112,
+          "quotes": 14,
+          "views": 115221,
+          "bookmarks": 30
+        }
+      ],
+      "author": {
+        "display_name": "ABC7 Eyewitness News",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2018449684092821504/IdOS5_46_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": null,
+        "location": null,
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2008-09-20T04:22:30.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T013227Z-65e1b1e6",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T013227Z-65e1b1e6.summary.json",
+    "jsonl": ".skim/current-retry2/x-com-search-20260807T013227Z-65e1b1e6.jsonl",
+    "source_handle": "DHSgov"
+  }
+}

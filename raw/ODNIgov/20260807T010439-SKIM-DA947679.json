@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-current-20260807-20260807T010406Z-3ece3f6b-ODNIgov",
+  "account_handle": "ODNIgov",
+  "captured_at": "2026-08-07T01:04:39.627Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AWhiteHouse%20since%3A2026-08-05%20until%3A2026-08-08%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "2085119104982352287",
+      "account_handle": "ODNIgov",
+      "account_id": "56838279",
+      "posted_at": "2026-08-05T21:41:48.000Z",
+      "first_captured_at": "2026-08-07T01:04:18.003Z",
+      "last_seen_at": "2026-08-07T01:04:18.003Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/ODNIgov/status/2085119104982352287",
+      "tweet_type": "original",
+      "conversation_id": "2085119104982352287",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "🇺🇸 Congratulations to DNI Clayton on his confirmation as the next Director of National Intelligence!\n\nThe men and women of the Intelligence Community stand ready to serve under his leadership, advance @POTUS’ national security priorities, confront the threats facing our country, and deliver the best intelligence possible to America’s leaders. The mission continues.",
+      "text_resolved": "🇺🇸 Congratulations to DNI Clayton on his confirmation as the next Director of National Intelligence!\n\nThe men and women of the Intelligence Community stand ready to serve under his leadership, advance @POTUS’ national security priorities, confront the threats facing our country, and deliver the best intelligence possible to America’s leaders. The mission continues.",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "POTUS"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_2085119101412777984",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/HO_UxnoXIAAygzD.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1366,
+          "height": 2048,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 1661,
+      "retweet_count": 298,
+      "reply_count": 102,
+      "quote_count": 13,
+      "view_count": 68021,
+      "bookmark_count": 28,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T01:04:18.003Z",
+          "likes": 1661,
+          "retweets": 298,
+          "replies": 102,
+          "quotes": 13,
+          "views": 68021,
+          "bookmarks": 28
+        }
+      ],
+      "author": {
+        "display_name": "Office of the DNI",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2084316448176943104/6z0Ciz7-_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": "Government",
+        "description": null,
+        "location": "Washington, DC",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2009-07-14T22:29:11.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-current-20260807-20260807T010406Z-3ece3f6b",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/current-curated-files/x-com-search-20260807T010406Z-3ece3f6b.summary.json",
+    "jsonl": ".skim/current-retry/x-com-search-20260807T010406Z-3ece3f6b.jsonl",
+    "source_handle": "WhiteHouse"
+  }
+}
