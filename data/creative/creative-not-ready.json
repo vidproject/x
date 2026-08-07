@@ -1,12 +1,14 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-08-07T00:50:46Z",
-    "source_commit": "d8c61dad",
-    "item_count": 149,
+    "generated_at": "2026-08-07T02:30:01Z",
+    "source_commit": "54d86eb7",
+    "item_count": 151,
     "blocker_counts": {
-      "missing photo thumbnail": 138,
-      "missing genuine visual description": 68
+      "missing photo thumbnail": 140,
+      "missing genuine visual description": 70,
+      "missing archived media asset": 1,
+      "missing photo OCR": 1
     }
   },
   "items": [
@@ -7786,6 +7788,142 @@
       "preference_categories": [
         "cruelty:surveillance-taunt",
         "medium:produced-video-with-preference-signal",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
+      "id": "2079220160695574709:3_2079220155947606017",
+      "tweet_id": "2079220160695574709",
+      "posted_at": "2026-07-20T15:01:31.000Z",
+      "era": "2025_plus",
+      "queue": "high_confidence",
+      "account": {
+        "handle": "DHSgov",
+        "category": "core",
+        "label": "Department of Homeland Security"
+      },
+      "tweet_url": "https://x.com/DHSgov/status/2079220160695574709",
+      "tweet_text": "FUGITIVE ILLEGAL ALIEN WANTED FOR MURDER ARRESTED.\n\nJefferson Eduardo Acosta-Bravo, a Cuban illegal alien who has an active warrant in the US for homicide, has been ARRESTED through coordination between @HSITampa, @USMarshalsHQ, and the Government of Mexico.\n\nAcosta had fled to Mexico to evade arrest and was apprehended in Cancun. \n\nUnder @POTUS Trump and @SecMullinDHS, criminal illegal aliens have nowhere to hide: we will find them, arrest them, and bring them to JUSTICE.",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "high",
+      "score": 90,
+      "creative_forms": [],
+      "subjects": [
+        "detainees",
+        "arrest-or-raid",
+        "immigration-language"
+      ],
+      "tags": [
+        "action:detention",
+        "agency:POTUS",
+        "agency:SecMullinDHS",
+        "agency:USMarshalsHQ",
+        "country:Cuba",
+        "country:Mexico",
+        "crime:homicide",
+        "crime:murder",
+        "media-status:archived",
+        "media-status:needs-ocr",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "slogan:criminal-illegal-alien",
+        "slogan:illegal-alien",
+        "subject:enforcement-op",
+        "theme:criminal",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2079220155947606017",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-DHSgov-0005/3_2079220155947606017.jpg",
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "513788de93281a3bdc7a3e4ed0e0da557fcc57c722f0e825aa66957b2baaf965",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing genuine visual description",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": true,
+              "description": false,
+              "thumbnail": false,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "metadata-placeholder",
+              "text": "photo; 176x180; 0.01 MiB; archived; tweet context: FUGITIVE ILLEGAL ALIEN WANTED FOR MURDER ARRESTED. Jefferson Eduardo Acosta-Bravo, a Cuban illegal alien who has an active warrant in the US for homicide, has been ARRESTED through coordination between @HSITampa, @USMarshalsHQ, and the Government of Mexico. A...; source URL: https://pbs.twimg.com/media/HNrftzUW4AENjbL.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0005/3_2079220155947606017.jpg; needs OCR, transcript, or frame-level vision before content claims. FUGITIVE ILLEGAL ALIEN WANTED FOR MURDER ARRESTED. Jefferson Eduardo Acosta-Bravo, a Cuban illegal alien who has an active warrant in the US for homicide, has been ARRESTED through coordination between @HSITampa, @USMarshalsHQ, and the Government of Mexico. Acosta had fled to Mexico to evade arrest and was apprehended in Cancun. Under @POTUS Trump and @SecMullinDHS, criminal illegal aliens have nowhere to hide: we will find them, arrest them, and bring them to JUSTICE.",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "no-text": 1
+              },
+              "complete_row_count": 1,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing genuine visual description",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "photo; 176x180; 0.01 MiB; archived; tweet context: FUGITIVE ILLEGAL ALIEN WANTED FOR MURDER ARRESTED. Jefferson Eduardo Acosta-Bravo, a Cuban illegal alien who has an active warrant in the US for homicide, has been ARRESTED through coordination between @HSITampa, @USMarshalsHQ, and the Government of Mexico. A...; source URL: https://pbs.twimg.com/media/HNrftzUW4AENjbL.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-DHSgov-0005/3_2079220155947606017.jpg; needs OCR, transcript, or frame-level vision before content claims. FUGITIVE ILLEGAL ALIEN WANTED FOR MURDER ARRESTED. Jefferson Eduardo Acosta-Bravo, a Cuban illegal alien who has an active warrant in the US for homicide, has been ARRESTED through coordination between @HSITampa, @USMarshalsHQ, and the Government of Mexico. Acosta had fled to Mexico to evade arrest and was apprehended in Cancun. Under @POTUS Trump and @SecMullinDHS, criminal illegal aliens have nowhere to hide: we will find them, arrest them, and bring them to JUSTICE.",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "cruelty:personalized-deportation-threat: we will find them",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 1780,
+        "retweets": 411,
+        "quotes": 3,
+        "views": 30878
+      },
+      "preference_score": 83,
+      "preference_categories": [
+        "cruelty:personalized-deportation-threat",
         "subject:enforcement-linked"
       ]
     },
@@ -20860,6 +20998,129 @@
         "retweets": 649,
         "quotes": 46,
         "views": 57354
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "2068721913849909538:3_2068721910955782144",
+      "tweet_id": "2068721913849909538",
+      "posted_at": "2026-06-21T15:45:13.000Z",
+      "era": "2025_plus",
+      "queue": "candidates",
+      "account": {
+        "handle": "ICEgov",
+        "category": "core",
+        "label": "U.S. Immigration and Customs Enforcement"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/2068721913849909538",
+      "tweet_text": "In a TAKE IT DOWN ACT first, ICE @HSINewark and its Justice Department partners seized domain names June 12 that were publishing nude digital forgeries of famous women. \n\nThe domains CFAKE(.com) and SOCFAKE(.com) published hundreds of thousands of deepfake pornographic images and videos of women without their consent, including fake sexual images of female celebrities, including heads of state, first ladies of multiple countries, royalty, legislators, government officials, journalists, television presenters, athletes, entertainers and others.\n\nUsers browsed by tags that included topics like “rape,” “forced,” “degradation” and “slave.”\n\n“The TAKE IT DOWN Act was a priority for First Lady Melania Trump @FLOTUS to stop the abuse and exploitation of women and children,” said @SecMullinDHS. “This is the first of many wins to stop these deepfake pornographic websites.”",
+      "review_state": "candidate",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "medium",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:DOJgov",
+        "agency:ICEgov",
+        "agency:SecMullinDHS",
+        "crime:rape",
+        "crime:sexual",
+        "media-status:needs-ocr",
+        "media:ai-generated",
+        "speaker:First Lady Melania Trump",
+        "speaker:Secretary Mullin",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_2068721910955782144",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 915,
+        "retweets": 312,
+        "quotes": 7,
+        "views": 24084
       },
       "preference_score": 36,
       "preference_categories": [
