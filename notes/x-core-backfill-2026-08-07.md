@@ -83,3 +83,13 @@ A saturated direct-profile traversal was also retained as supplemental `WhiteHou
 - authored date range: 2019-08-28T23:40:01Z through 2021-01-20T15:29:59Z
 
 The WhiteHouse45 profile timeline stopped serving older posts at August 2019 even though browser-bottom saturation was reached. It is therefore supplemental coverage, not a replacement for bounded weekly searches back to 2017-01-20.
+
+Additional saturated profile/media sources were collected while SearchTimeline was rate-limited:
+
+| Source               | Unique authored IDs | Earliest             | Latest               | Notes                                                |
+| -------------------- | ------------------: | -------------------- | -------------------- | ---------------------------------------------------- |
+| WhiteHouse45 media   |                 796 | 2020-09-13T16:32:01Z | 2021-01-20T14:54:46Z | 548 IDs were absent from the general-profile capture |
+| WhiteHouse46 profile |                 773 | 2024-08-11T19:21:00Z | 2025-01-20T15:20:41Z | General profile timeline                             |
+| WhiteHouse46 media   |                 800 | 2024-05-09T21:34:15Z | 2025-01-20T15:20:41Z | All 800 normalized posts have media                  |
+
+The WhiteHouse46 profile and media sources overlap on 471 IDs and have a union of 1,102 unique authored posts. Canonical ingest deduplicates these records by tweet ID while retaining capture provenance.
