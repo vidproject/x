@@ -149,3 +149,15 @@ The remaining 53 bounded WhiteHouse45 windows, from 2020-01-17 through the 2021-
 One December 2019 WhiteHouse45 tweet was also embedded in a 2020 SearchTimeline response. It is retained in the raw capture for provenance but excluded from the 2020-period count above; canonical ingest deduplicates it against the earlier tranche.
 
 This completes all 209 expected bounded WhiteHouse45 windows from 2017-01-20 through 2021-01-20. Across the first 264 completed White House lineage windows, including ObamaWhiteHouse, a response-body audit found no malformed SearchTimeline responses and no duplicate calendar windows.
+
+The first 52 bounded WhiteHouse46 weeks, from 2021-01-20 through 2022-01-19, completed and passed the audit:
+
+- 52 summaries and 52 expected windows
+- no missing or extra windows
+- no invalid summaries
+- 213 SearchTimeline pages
+- 4,066 candidate IDs before author filtering
+- 2,203 unique authored WhiteHouse46 posts after normalization and deduplication
+- authored date range: 2021-01-20T17:14:04Z through 2022-01-20T07:00:17Z
+
+The January 20 UTC endpoint is another browser-session-timezone spill beyond the nominal `until:2022-01-19` query boundary. It is retained, and adjacent-window overlap is deduplicated during canonical ingest.
