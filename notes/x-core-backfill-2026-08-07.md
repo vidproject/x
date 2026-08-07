@@ -161,3 +161,15 @@ The first 52 bounded WhiteHouse46 weeks, from 2021-01-20 through 2022-01-19, com
 - authored date range: 2021-01-20T17:14:04Z through 2022-01-20T07:00:17Z
 
 The January 20 UTC endpoint is another browser-session-timezone spill beyond the nominal `until:2022-01-19` query boundary. It is retained, and adjacent-window overlap is deduplicated during canonical ingest.
+
+The next 52 bounded WhiteHouse46 weeks, from 2022-01-19 through 2023-01-18, completed and passed the audit:
+
+- 52 summaries and 52 expected windows
+- no missing or extra windows
+- no invalid summaries
+- 213 SearchTimeline pages
+- 4,222 candidate IDs before author filtering
+- 2,246 unique authored WhiteHouse46 posts after normalization and deduplication
+- authored date range: 2022-01-19T14:59:42Z through 2023-01-19T04:00:30Z
+
+The January 19 UTC endpoint reflects the same browser-session-timezone boundary behavior. It is retained and deduplicated against the adjacent window during ingest.
