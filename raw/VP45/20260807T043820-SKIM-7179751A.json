@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-whitehouse45-2018-20260807T043757Z-7b5a80ea-VP45",
+  "account_handle": "VP45",
+  "captured_at": "2026-08-07T04:38:20.194Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AWhiteHouse45%20since%3A2018-06-29%20until%3A2018-07-06%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "1015286228697010176",
+      "account_handle": "VP45",
+      "account_id": "818910970567344128",
+      "posted_at": "2018-07-06T17:27:54.000Z",
+      "first_captured_at": "2026-08-07T04:38:00.171Z",
+      "last_seen_at": "2026-08-07T04:38:00.171Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/VP45/status/1015286228697010176",
+      "tweet_type": "original",
+      "conversation_id": "1015286228697010176",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "The calls to abolish @ICEgov are not just outrageous - they're irresponsible. Abolishing ICE would mean more illegal immigration, more violent crime, more vicious gangs, more drugs, and more human trafficking. #IStandWithICE https://t.co/MWTF4x8PG4",
+      "text_resolved": "The calls to abolish @ICEgov are not just outrageous - they're irresponsible. Abolishing ICE would mean more illegal immigration, more violent crime, more vicious gangs, more drugs, and more human trafficking. #IStandWithICE https://t.co/MWTF4x8PG4",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"https://studio.twitter.com\" rel=\"nofollow\">Twitter Media Studio</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "IStandWithICE"
+      ],
+      "mentions": [
+        "ICEgov"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_1015276121137430528",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/1015276121137430528/vid/1280x720/SZOAntVWN3ZSsw6o.mp4?tag=3",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 153.333,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 3031,
+      "retweet_count": 759,
+      "reply_count": 615,
+      "quote_count": 141,
+      "view_count": null,
+      "bookmark_count": 3,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T04:38:00.171Z",
+          "likes": 3031,
+          "retweets": 759,
+          "replies": 615,
+          "quotes": 141,
+          "views": null,
+          "bookmarks": 3
+        }
+      ],
+      "author": {
+        "display_name": "Vice President Mike Pence Archived",
+        "avatar_url": "https://pbs.twimg.com/profile_images/951600999902281728/s-3S8iBE_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": null,
+        "location": "Washington, D.C.",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2017-01-10T20:02:44.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-whitehouse45-2018-20260807T043757Z-7b5a80ea",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-whitehouse45-2018-curated/x-com-search-20260807T043757Z-7b5a80ea.summary.json",
+    "jsonl": ".skim/history-whitehouse-2016-2025/raw/x-com-search-20260807T043757Z-7b5a80ea.jsonl",
+    "source_handle": "WhiteHouse45"
+  }
+}

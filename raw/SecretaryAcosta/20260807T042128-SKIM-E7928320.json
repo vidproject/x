@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-whitehouse45-2018-20260807T042103Z-a3abeef2-SecretaryAcosta",
+  "account_handle": "SecretaryAcosta",
+  "captured_at": "2026-08-07T04:21:28.258Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AWhiteHouse45%20since%3A2018-03-16%20until%3A2018-03-23%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "976861080331878401",
+      "account_handle": "SecretaryAcosta",
+      "account_id": "819980276570976256",
+      "posted_at": "2018-03-22T16:40:05.000Z",
+      "first_captured_at": "2026-08-07T04:21:11.071Z",
+      "last_seen_at": "2026-08-07T04:21:11.071Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/SecretaryAcosta/status/976861080331878401",
+      "tweet_type": "original",
+      "conversation_id": "976861080331878401",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Looking forward to today’s Generation Next event at the @WhiteHouse focused on how @POTUS administration is working to expand job opportunities for younger Americans.",
+      "text_resolved": "Looking forward to today’s Generation Next event at the @WhiteHouse focused on how @POTUS administration is working to expand job opportunities for younger Americans.",
+      "lang": "en",
+      "possibly_sensitive": null,
+      "source": "<a href=\"http://www.hootsuite.com\" rel=\"nofollow\">Hootsuite</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [
+        "WhiteHouse",
+        "POTUS"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [],
+      "like_count": 46,
+      "retweet_count": 14,
+      "reply_count": 8,
+      "quote_count": 7,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T04:21:11.071Z",
+          "likes": 46,
+          "retweets": 14,
+          "replies": 8,
+          "quotes": 7,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Secretary Acosta",
+        "avatar_url": "https://pbs.twimg.com/profile_images/884858573473370113/lsuNfJih_normal.jpg",
+        "verified": false,
+        "is_blue_verified": false,
+        "verified_type": null,
+        "description": null,
+        "location": "Washington, DC",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2017-01-13T18:51:47.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-whitehouse45-2018-20260807T042103Z-a3abeef2",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-whitehouse45-2018-curated/x-com-search-20260807T042103Z-a3abeef2.summary.json",
+    "jsonl": ".skim/history-whitehouse-2016-2025/raw/x-com-search-20260807T042103Z-a3abeef2.jsonl",
+    "source_handle": "WhiteHouse45"
+  }
+}

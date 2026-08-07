@@ -113,3 +113,13 @@ Saturated replies views added further coverage:
 | WhiteHouse46 replies |   161 |               3,068 |     238 | 2023-08-09T19:09:44Z | 2025-01-20T15:20:41Z | 1,972 beyond its profile/media union |
 
 Both replies traversals reached browser-bottom saturation with no response errors or 429 events. A collector reporting bug labeled the earlier WhiteHouse45 run as `UserTweets` because that substring was checked before `UserTweetsAndReplies`; the captured request URLs and response bodies identify the correct endpoint. The endpoint matching order was fixed before the WhiteHouse46 run.
+
+The next 52 bounded WhiteHouse45 weeks, from 2018-01-19 through 2019-01-18, completed and passed the same audit:
+
+- 52 summaries and 52 expected windows
+- no missing or extra windows
+- no invalid summaries
+- 220 SearchTimeline pages
+- 4,803 candidate IDs before author filtering
+- 2,394 unique authored WhiteHouse45 posts after normalization and deduplication
+- authored date range: 2018-01-19T16:14:45Z through 2019-01-18T19:36:01Z
