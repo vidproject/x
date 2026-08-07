@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-obamawhitehouse-2016-2017-20260807T023338Z-a3586a97-espn",
+  "account_handle": "espn",
+  "captured_at": "2026-08-07T02:34:01.127Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AObamaWhiteHouse%20since%3A2016-07-08%20until%3A2016-07-15%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "753400071304179712",
+      "account_handle": "espn",
+      "account_id": "2557521",
+      "posted_at": "2016-07-14T01:25:49.000Z",
+      "first_captured_at": "2026-08-07T02:33:45.999Z",
+      "last_seen_at": "2026-08-07T02:33:45.999Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/espn/status/753400071304179712",
+      "tweet_type": "original",
+      "conversation_id": "753400071304179712",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Zaevion Dobson showed the true meaning of sacrifice. He's this year's Arthur Ashe Courage Award honoree.\n\nHis story: https://t.co/1j2N9lZHBr",
+      "text_resolved": "Zaevion Dobson showed the true meaning of sacrifice. He's this year's Arthur Ashe Courage Award honoree.\n\nHis story: http://es.pn/29EjadE",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+      "place_full_name": null,
+      "hashtags": [],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/1j2N9lZHBr",
+          "expanded": "http://es.pn/29EjadE",
+          "display": "es.pn/29EjadE"
+        }
+      ],
+      "card": null,
+      "media": [],
+      "like_count": 9868,
+      "retweet_count": 8478,
+      "reply_count": 127,
+      "quote_count": 1271,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T02:33:45.999Z",
+          "likes": 9868,
+          "retweets": 8478,
+          "replies": 127,
+          "quotes": 1271,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "ESPN",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1170690523201527808/FriNRiir_normal.png",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": "Business",
+        "description": null,
+        "location": null,
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2007-03-27T20:46:16.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-obamawhitehouse-2016-2017-20260807T023338Z-a3586a97",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-whitehouse-obama-curated/x-com-search-20260807T023338Z-a3586a97.summary.json",
+    "jsonl": ".skim/history-whitehouse-2016-2025/raw/x-com-search-20260807T023338Z-a3586a97.jsonl",
+    "source_handle": "ObamaWhiteHouse"
+  }
+}

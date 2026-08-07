@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-obamawhitehouse-2016-2017-20260807T015136Z-6aa84c9c-StationCDRKelly",
+  "account_handle": "StationCDRKelly",
+  "captured_at": "2026-08-07T02:03:31.215Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AObamaWhiteHouse%20since%3A2016-02-26%20until%3A2016-03-04%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "704331894637199360",
+      "account_handle": "StationCDRKelly",
+      "account_id": "65647594",
+      "posted_at": "2016-02-29T15:46:24.000Z",
+      "first_captured_at": "2026-08-07T02:03:17.225Z",
+      "last_seen_at": "2026-08-07T02:03:17.225Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/StationCDRKelly/status/704331894637199360",
+      "tweet_type": "original",
+      "conversation_id": "704331894637199360",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Take a leap and explore new possibilities! #GoodMorning &amp; Happy #LeapDay from @space_station! #YearInSpace https://t.co/qWz7GeMNMo",
+      "text_resolved": "Take a leap and explore new possibilities! #GoodMorning &amp; Happy #LeapDay from @space_station! #YearInSpace https://t.co/qWz7GeMNMo",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "GoodMorning",
+        "LeapDay",
+        "YearInSpace"
+      ],
+      "mentions": [
+        "space_station"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_704331893873881088",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/CcZKIDJUsAAAe18.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 1024,
+          "height": 683,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 8317,
+      "retweet_count": 3263,
+      "reply_count": 268,
+      "quote_count": 1,
+      "view_count": null,
+      "bookmark_count": 1,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T02:03:17.225Z",
+          "likes": 8317,
+          "retweets": 3263,
+          "replies": 268,
+          "quotes": 1,
+          "views": null,
+          "bookmarks": 1
+        }
+      ],
+      "author": {
+        "display_name": "Scott Kelly",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2016272026621693952/3iHULms0_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": null,
+        "location": null,
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2009-08-14T14:31:39.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-obamawhitehouse-2016-2017-20260807T015136Z-6aa84c9c",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-whitehouse-obama-curated/x-com-search-20260807T015136Z-6aa84c9c.summary.json",
+    "jsonl": ".skim/history-whitehouse-2016-2025/raw/x-com-search-20260807T015136Z-6aa84c9c.jsonl",
+    "source_handle": "ObamaWhiteHouse"
+  }
+}

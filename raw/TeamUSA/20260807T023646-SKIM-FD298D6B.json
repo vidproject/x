@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-obamawhitehouse-2016-2017-20260807T023625Z-3958d322-TeamUSA",
+  "account_handle": "TeamUSA",
+  "captured_at": "2026-08-07T02:36:46.241Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AObamaWhiteHouse%20since%3A2016-09-02%20until%3A2016-09-09%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "773650100455219200",
+      "account_handle": "TeamUSA",
+      "account_id": "21870081",
+      "posted_at": "2016-09-07T22:32:12.000Z",
+      "first_captured_at": "2026-08-07T02:36:27.622Z",
+      "last_seen_at": "2026-08-07T02:36:27.622Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/TeamUSA/status/773650100455219200",
+      "tweet_type": "original",
+      "conversation_id": "773650100455219200",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "USA, USA, USA! 🇺🇸\n\nHere comes #TeamUSA at the #OpeningCeremony!\n\n Watch LIVE 💻: https://t.co/UOwQB3tfMj https://t.co/cuhAfgvyXZ",
+      "text_resolved": "USA, USA, USA! 🇺🇸\n\nHere comes #TeamUSA at the #OpeningCeremony!\n\n Watch LIVE 💻: http://go.teamusa.org/OpeningCeremony https://t.co/cuhAfgvyXZ",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://snappytv.com\" rel=\"nofollow\">SnappyTV.com</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "TeamUSA",
+        "OpeningCeremony"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/UOwQB3tfMj",
+          "expanded": "http://go.teamusa.org/OpeningCeremony",
+          "display": "go.teamusa.org/OpeningCeremony"
+        }
+      ],
+      "card": null,
+      "media": [
+        {
+          "media_id": "13_773650005441802240",
+          "media_type": "video",
+          "original_url": "https://video.twimg.com/amplify_video/773650005441802240/vid/1280x720/skoW7Og9LttetUqp.mp4",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": 14.973,
+          "width": 1280,
+          "height": 720,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 665,
+      "retweet_count": 267,
+      "reply_count": 7,
+      "quote_count": 28,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T02:36:27.622Z",
+          "likes": 665,
+          "retweets": 267,
+          "replies": 7,
+          "quotes": 28,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Team USA",
+        "avatar_url": "https://pbs.twimg.com/profile_images/2060127003320479744/iLJs-a3g_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": null,
+        "location": null,
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2009-02-25T14:25:28.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-obamawhitehouse-2016-2017-20260807T023625Z-3958d322",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-whitehouse-obama-curated/x-com-search-20260807T023625Z-3958d322.summary.json",
+    "jsonl": ".skim/history-whitehouse-2016-2025/raw/x-com-search-20260807T023625Z-3958d322.jsonl",
+    "source_handle": "ObamaWhiteHouse"
+  }
+}

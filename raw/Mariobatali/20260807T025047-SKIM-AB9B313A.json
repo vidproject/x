@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-obamawhitehouse-2016-2017-20260807T025020Z-fb0b3f28-Mariobatali",
+  "account_handle": "Mariobatali",
+  "captured_at": "2026-08-07T02:50:47.962Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AObamaWhiteHouse%20since%3A2016-10-14%20until%3A2016-10-21%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "788442254788747265",
+      "account_handle": "Mariobatali",
+      "account_id": "148496087",
+      "posted_at": "2016-10-18T18:10:56.000Z",
+      "first_captured_at": "2026-08-07T02:50:29.623Z",
+      "last_seen_at": "2026-08-07T02:50:29.623Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/Mariobatali/status/788442254788747265",
+      "tweet_type": "original",
+      "conversation_id": "788442254788747265",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Presidential braciole are almost ready !!  #wheeeeeestatedinner #yumbang @ The White House https://t.co/mP7dyT4e3s",
+      "text_resolved": "Presidential braciole are almost ready !!  #wheeeeeestatedinner #yumbang @ The White House https://www.instagram.com/p/BLtr48JD9A6/",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://instagram.com\" rel=\"nofollow\">Instagram</a>",
+      "place_full_name": "Washington, DC",
+      "hashtags": [
+        "wheeeeeestatedinner",
+        "yumbang"
+      ],
+      "mentions": [],
+      "urls": [
+        {
+          "short": "https://t.co/mP7dyT4e3s",
+          "expanded": "https://www.instagram.com/p/BLtr48JD9A6/",
+          "display": "instagram.com/p/BLtr48JD9A6/"
+        }
+      ],
+      "card": null,
+      "media": [],
+      "like_count": 103,
+      "retweet_count": 15,
+      "reply_count": 13,
+      "quote_count": 13,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T02:50:29.623Z",
+          "likes": 103,
+          "retweets": 15,
+          "replies": 13,
+          "quotes": 13,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Mario Batali",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1574379886/Mario_Radish_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": null,
+        "location": "NYC & Michigan",
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2010-05-26T21:19:41.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-obamawhitehouse-2016-2017-20260807T025020Z-fb0b3f28",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-whitehouse-obama-curated/x-com-search-20260807T025020Z-fb0b3f28.summary.json",
+    "jsonl": ".skim/history-whitehouse-2016-2025/raw/x-com-search-20260807T025020Z-fb0b3f28.jsonl",
+    "source_handle": "ObamaWhiteHouse"
+  }
+}

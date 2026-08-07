@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "capture_run_id": "skim-obamawhitehouse-2016-2017-20260807T030511Z-a63a3222-ReeseW",
+  "account_handle": "ReeseW",
+  "captured_at": "2026-08-07T03:05:33.172Z",
+  "endpoint": "SearchTimeline",
+  "user_agent": "x-skim",
+  "source_url": "https://x.com/search?q=from%3AObamaWhiteHouse%20since%3A2016-12-16%20until%3A2016-12-23%20include%3Anativeretweets&src=typed_query&f=live",
+  "tweets": [
+    {
+      "tweet_id": "812012438166142976",
+      "account_handle": "ReeseW",
+      "account_id": "1198406491",
+      "posted_at": "2016-12-22T19:10:26.000Z",
+      "first_captured_at": "2026-08-07T03:05:13.850Z",
+      "last_seen_at": "2026-08-07T03:05:13.850Z",
+      "deletion_detected_at": null,
+      "unavailable_detected_at": null,
+      "unavailable_reason": null,
+      "unavailable_text": null,
+      "unavailable_source_url": null,
+      "tweet_url": "https://x.com/ReeseW/status/812012438166142976",
+      "tweet_type": "original",
+      "conversation_id": "812012438166142976",
+      "reply_to_tweet_id": null,
+      "reply_to_account": null,
+      "reply_to_account_id": null,
+      "quoted_tweet_id": null,
+      "retweeted_tweet_id": null,
+      "text": "Thanks @POTUS for making #DiaperGap one of your final priorities. With @baby2baby, let’s continue the fight for all to access clean diapers! https://t.co/PwStgC04a8",
+      "text_resolved": "Thanks @POTUS for making #DiaperGap one of your final priorities. With @baby2baby, let’s continue the fight for all to access clean diapers! https://t.co/PwStgC04a8",
+      "lang": "en",
+      "possibly_sensitive": false,
+      "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+      "place_full_name": null,
+      "hashtags": [
+        "DiaperGap"
+      ],
+      "mentions": [
+        "POTUS",
+        "baby2baby"
+      ],
+      "urls": [],
+      "card": null,
+      "media": [
+        {
+          "media_id": "3_812012396499922944",
+          "media_type": "photo",
+          "original_url": "https://pbs.twimg.com/media/C0TY-O6XcAAGeKt.jpg",
+          "release_asset_url": null,
+          "sha256": null,
+          "bytes": null,
+          "duration_sec": null,
+          "width": 2000,
+          "height": 1000,
+          "alt_text": null,
+          "archive_status": "pending",
+          "archive_attempts": 0,
+          "last_attempt_at": null
+        }
+      ],
+      "like_count": 358,
+      "retweet_count": 57,
+      "reply_count": 9,
+      "quote_count": 9,
+      "view_count": null,
+      "bookmark_count": 0,
+      "engagement_history": [
+        {
+          "captured_at": "2026-08-07T03:05:13.850Z",
+          "likes": 358,
+          "retweets": 57,
+          "replies": 9,
+          "quotes": 9,
+          "views": null,
+          "bookmarks": 0
+        }
+      ],
+      "author": {
+        "display_name": "Reese Witherspoon",
+        "avatar_url": "https://pbs.twimg.com/profile_images/1526245983843065856/ZbhqmgXf_normal.jpg",
+        "verified": false,
+        "is_blue_verified": true,
+        "verified_type": null,
+        "description": null,
+        "location": null,
+        "url": null,
+        "followers_count": null,
+        "friends_count": null,
+        "statuses_count": null,
+        "account_created_at": "2013-02-19T19:22:38.000Z",
+        "protected": null
+      },
+      "community_note": null,
+      "is_truncated": false,
+      "wayback_url": null,
+      "wayback_submitted_at": null,
+      "capture_source": "extension",
+      "capture_run_id": "skim-obamawhitehouse-2016-2017-20260807T030511Z-a63a3222",
+      "schema_version": 1
+    }
+  ],
+  "unavailable_tweets": [],
+  "retweet_edges": [],
+  "converted_from": {
+    "kind": "x-skim",
+    "summary": ".skim/history-whitehouse-obama-curated/x-com-search-20260807T030511Z-a63a3222.summary.json",
+    "jsonl": ".skim/history-whitehouse-2016-2025/raw/x-com-search-20260807T030511Z-a63a3222.jsonl",
+    "source_handle": "ObamaWhiteHouse"
+  }
+}
