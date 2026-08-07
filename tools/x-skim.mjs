@@ -841,7 +841,7 @@ function stripTrackingQuery(raw) {
 }
 
 async function skimPage(client, options, stats) {
-  const stopAt = Date.now() + options.seconds * 1000;
+  let stopAt = Date.now() + options.seconds * 1000;
   if (options.seekYear) {
     await seekToYear(client, options, stopAt, stats);
   }
@@ -851,6 +851,7 @@ async function skimPage(client, options, stats) {
   let dryKnownScrolls = 0;
   for (let index = 0; index < options.scrolls && Date.now() < stopAt; index += 1) {
     const waitedMs = await respectRateLimit(options, stats);
+    stopAt += waitedMs;
     stats.showMoreClicks += await expandShowMore(client);
     const retryClicked = await clickRetryIfVisible(client);
     if (retryClicked) stats.retryClicks += 1;
