@@ -1,14 +1,18 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-08-08T03:14:39Z",
-    "source_commit": "a327cd86",
-    "item_count": 153,
+    "generated_at": "2026-08-08T04:16:23Z",
+    "source_commit": "d6e45791",
+    "item_count": 158,
     "blocker_counts": {
-      "missing photo thumbnail": 142,
-      "missing genuine visual description": 72,
-      "missing archived media asset": 1,
-      "missing photo OCR": 1
+      "missing photo thumbnail": 146,
+      "missing genuine visual description": 77,
+      "missing archived media asset": 6,
+      "missing photo OCR": 5,
+      "missing audio analysis": 1,
+      "missing complete OCR for extracted keyframes": 1,
+      "missing extracted video keyframes": 1,
+      "missing video thumbnail": 1
     }
   },
   "items": [
@@ -21788,6 +21792,257 @@
       ]
     },
     {
+      "id": "796382219908456448:3_796382059715592194",
+      "tweet_id": "796382219908456448",
+      "posted_at": "2016-11-09T16:01:31.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "ICEgov",
+        "category": "core",
+        "label": "U.S. Immigration and Customs Enforcement"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/796382219908456448",
+      "tweet_text": "Kingpin of Orange County synthetic drug ring pleads guilty to multiple federal charges https://www.ice.gov/news/releases/kingpin-orange-county-synthetic-drug-ring-pleads-guilty-multiple-federal-charges https://t.co/MbtkWJbd9p",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:ICEgov",
+        "legal:criminal-prosecution",
+        "media-status:needs-ocr",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_796382059715592194",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "editorialized:dramatic-crime-composite: guilty"
+        ]
+      },
+      "engagement": {
+        "likes": 11,
+        "retweets": 13,
+        "quotes": 1,
+        "views": 0
+      },
+      "preference_score": 71,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "editorialized:dramatic-crime-composite"
+      ]
+    },
+    {
+      "id": "918596464594563072:7_918596334499909632",
+      "tweet_id": "918596464594563072",
+      "posted_at": "2017-10-12T21:57:18.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "CBP",
+        "category": "core",
+        "label": "U.S. Customs and Border Protection"
+      },
+      "tweet_url": "https://x.com/CBP/status/918596464594563072",
+      "tweet_text": "CBP is committed to keeping drugs off our streets especially dangerous synthetic opioids.  “We’re going to stay after it.”—KM https://t.co/wAPq62r2vU",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "topic:immigration",
+        "video:medium"
+      ],
+      "media": [
+        {
+          "media_id": "7_918596334499909632",
+          "type": "video",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": 40.541,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing audio analysis",
+              "missing complete OCR for extracted keyframes",
+              "missing extracted video keyframes",
+              "missing genuine visual description",
+              "missing video thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "keyframes": false,
+              "keyframe_count": 0,
+              "thumbnail": false,
+              "ocr": false,
+              "audio_analysis": false,
+              "has_audio": false,
+              "transcript": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing audio analysis",
+          "missing complete OCR for extracted keyframes",
+          "missing extracted video keyframes",
+          "missing genuine visual description",
+          "missing video thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 38,
+        "retweets": 14,
+        "quotes": 1,
+        "views": 0
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
       "id": "952682499716546561:3_952682497514467328",
       "tweet_id": "952682499716546561",
       "posted_at": "2018-01-14T23:23:02.000Z",
@@ -21896,6 +22151,361 @@
         "likes": 2486,
         "retweets": 744,
         "quotes": 66,
+        "views": 0
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "1032409850616020992:3_1032409848825036800",
+      "tweet_id": "1032409850616020992",
+      "posted_at": "2018-08-22T23:31:04.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "ICEgov",
+        "category": "core",
+        "label": "U.S. Immigration and Customs Enforcement"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/1032409850616020992",
+      "tweet_text": "Southeast Texas teen sentenced to 19 years in prison for drive-by shooting, conspiracy to distribute synthetic narcotics https://www.ice.gov/news/releases/southeast-texas-teen-sentenced-19-years-prison-drive-shooting-conspiracy-distribute?utm_source=dlvr.it&utm_medium=twitter https://t.co/VYN6xpXUjS",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:ICEgov",
+        "crime:narcotics",
+        "legal:criminal-prosecution",
+        "media-status:needs-ocr",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1032409848825036800",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 375,
+        "retweets": 160,
+        "quotes": 10,
+        "views": 0
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "1032620975265738754:3_996756094876872704",
+      "tweet_id": "1032620975265738754",
+      "posted_at": "2018-08-23T13:30:00.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "ICEgov",
+        "category": "core",
+        "label": "U.S. Immigration and Customs Enforcement"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/1032620975265738754",
+      "tweet_text": "Southeast Texas teen sentenced to 19 years in prison for drive-by shooting, conspiracy to distribute synthetic narcotics https://www.ice.gov/news/releases/southeast-texas-teen-sentenced-19-years-prison-drive-shooting-conspiracy-distribute https://t.co/0ZmgLYvfqM",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:ICEgov",
+        "crime:narcotics",
+        "legal:criminal-prosecution",
+        "media-status:needs-ocr",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_996756094876872704",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 161,
+        "retweets": 65,
+        "quotes": 8,
+        "views": 0
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "879685782470053888:3_879685778518941696",
+      "tweet_id": "879685782470053888",
+      "posted_at": "2017-06-27T13:00:08.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "CBP",
+        "category": "core",
+        "label": "U.S. Customs and Border Protection"
+      },
+      "tweet_url": "https://x.com/CBP/status/879685782470053888",
+      "tweet_text": "Acting EAC Perez is testifying TODAY @11am before @HouseJudiciary on synthetic drug trafficking.  http://bit.ly/2tO3rOC https://t.co/bSMigG5fwi",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "crime:trafficking",
+        "media-status:needs-ocr",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_879685778518941696",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 15,
+        "retweets": 10,
+        "quotes": 1,
         "views": 0
       },
       "preference_score": 36,
