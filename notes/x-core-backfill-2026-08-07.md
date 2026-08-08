@@ -215,3 +215,7 @@ The 210 non-dense monthly leaves are complete and eligible for conversion:
 Only the file whose `account_handle` matches the bounded search's `source_handle` is retained from each conversion. Related-account and quoted-account files emitted by normalization are excluded from the publishing set.
 
 The first 18 dense `DHSgov` parent months completed as 89 weekly child windows. All 89 summaries passed the capture audit, with 314 parsed responses and 3,209 unique authored tweet IDs after normalization and deduplication. The corresponding parent-month captures contained 3,208 unique authored IDs; every parent ID was present in the weekly children, and the weekly children added one ID. The 18 parent files are therefore excluded and only the 89 weekly source-account files are retained.
+
+The first 31 dense `ICEgov` parent months completed as 155 weekly or terminal-partial child windows. All 155 summaries passed the capture audit, with 569 parsed responses and 5,958 unique authored tweet IDs after normalization and deduplication. The one-day 2020-02-29 terminal window correctly returned no ICE-authored posts, so 154 child source files were emitted.
+
+The corresponding parent-month captures also contained 5,958 unique authored IDs. Each level had one ID absent from the other. The additive parent ID is an ICEgov post at 2019-06-01T01:00:00Z, on X's search-date timezone boundary; its June 2019 parent source file is retained. The weekly children add a different boundary post at 2019-09-01T01:00:00Z. The other 30 parent files are excluded.
