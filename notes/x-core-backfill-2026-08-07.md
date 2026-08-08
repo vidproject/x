@@ -219,3 +219,17 @@ The first 18 dense `DHSgov` parent months completed as 89 weekly child windows. 
 The first 31 dense `ICEgov` parent months completed as 155 weekly or terminal-partial child windows. All 155 summaries passed the capture audit, with 569 parsed responses and 5,958 unique authored tweet IDs after normalization and deduplication. The one-day 2020-02-29 terminal window correctly returned no ICE-authored posts, so 154 child source files were emitted.
 
 The corresponding parent-month captures also contained 5,958 unique authored IDs. Each level had one ID absent from the other. The additive parent ID is an ICEgov post at 2019-06-01T01:00:00Z, on X's search-date timezone boundary; its June 2019 parent source file is retained. The weekly children add a different boundary post at 2019-09-01T01:00:00Z. The other 30 parent files are excluded.
+
+The final weekly refinement audit found exactly 580 expected and accepted windows:
+
+| Account | Weekly windows | Unique authored tweet IDs | Parent-month IDs | Parent-only IDs | Weekly-only IDs |
+| ------- | -------------: | ------------------------: | ---------------: | --------------: | --------------: |
+| DHSgov  |             94 |                     3,346 |            3,345 |               0 |               1 |
+| ICEgov  |            159 |                     6,108 |            6,108 |               1 |               1 |
+| CBP     |            327 |                    10,585 |           10,585 |               0 |               0 |
+
+There were no missing, extra, or duplicate calendar windows; all summaries reached browser-bottom saturation with SearchTimeline data; all 2,018 SearchTimeline responses were HTTP 200 and parsed; no response errors or 429 events were present; and no weekly window crossed the threshold for daily subdivision.
+
+One first-attempt CBP capture for 2021-10-08 through 2021-10-15 served only the page shell. It was isolated under `rejected/week`; the exact rerun captured three valid SearchTimeline responses and replaced it in the accepted set.
+
+The complete historical publishing set contains 790 source-account raw files: 210 non-dense monthly leaves, 579 weekly source files, and the one additive June 2019 ICEgov parent file. Across those files, normalization and tweet-ID deduplication recover 9,441 DHSgov IDs, 12,609 ICEgov IDs, and 13,503 CBP IDs from the historical search period. Search-date timezone spill is retained at adjacent boundaries and canonical ingest performs the final tweet-ID deduplication.
