@@ -213,3 +213,5 @@ The 210 non-dense monthly leaves are complete and eligible for conversion:
 | CBP     |             43 |                     2,945 |
 
 Only the file whose `account_handle` matches the bounded search's `source_handle` is retained from each conversion. Related-account and quoted-account files emitted by normalization are excluded from the publishing set.
+
+The first 18 dense `DHSgov` parent months completed as 89 weekly child windows. All 89 summaries passed the capture audit, with 314 parsed responses and 3,209 unique authored tweet IDs after normalization and deduplication. The corresponding parent-month captures contained 3,208 unique authored IDs; every parent ID was present in the weekly children, and the weekly children added one ID. The 18 parent files are therefore excluded and only the 89 weekly source-account files are retained.
