@@ -197,3 +197,19 @@ The remaining 53 bounded WhiteHouse46 windows, from 2024-01-17 through the 2025-
 The first attempt for 2024-04-24 through 2024-05-01 served only HomeTimeline and Bookmarks responses and never reached saturation. That diagnostic capture was isolated under `.skim/history-whitehouse-2016-2025/rejected` and excluded. A fresh attempt captured SearchTimeline, reached browser-bottom saturation, and replaced the missing window.
 
 This completes the White House lineage backfill. The final deep audit found exactly 473 expected weekly or terminal-partial windows, 2,156 SearchTimeline responses, no missing or duplicate windows, no invalid summaries, and no malformed SearchTimeline response bodies.
+
+## Enforcement-account historical backfill
+
+The first bounded pass covered `DHSgov`, `ICEgov`, and `CBP` from 2016-01-01 through the 2025-01-20 administration handoff in 327 monthly or terminal-partial windows, 109 per account. Three initial captures were isolated and rerun. The accepted set has exactly the expected 327 windows, 2,339 SearchTimeline responses, no missing or duplicate windows, no invalid summaries, and no malformed SearchTimeline response bodies.
+
+Monthly windows with at least 20 SearchTimeline responses or 300 candidate tweet IDs are treated as potentially truncated and split into weekly windows. This identified 117 dense parent months and 580 exact weekly or terminal-partial child windows. Parent-month captures remain available for an authored tweet-ID union comparison, but they are not converted while their weekly replacements are pending.
+
+The 210 non-dense monthly leaves are complete and eligible for conversion:
+
+| Account | Monthly leaves | Unique authored tweet IDs |
+| ------- | -------------: | ------------------------: |
+| DHSgov  |             90 |                     6,145 |
+| ICEgov  |             77 |                     6,594 |
+| CBP     |             43 |                     2,945 |
+
+Only the file whose `account_handle` matches the bounded search's `source_handle` is retained from each conversion. Related-account and quoted-account files emitted by normalization are excluded from the publishing set.
