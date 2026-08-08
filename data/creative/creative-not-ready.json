@@ -1,14 +1,14 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-08-08T05:53:17Z",
-    "source_commit": "b600567d",
-    "item_count": 158,
+    "generated_at": "2026-08-08T07:35:38Z",
+    "source_commit": "00b9caad",
+    "item_count": 160,
     "blocker_counts": {
-      "missing photo thumbnail": 146,
-      "missing genuine visual description": 77,
-      "missing archived media asset": 6,
-      "missing photo OCR": 5,
+      "missing photo thumbnail": 148,
+      "missing genuine visual description": 79,
+      "missing archived media asset": 8,
+      "missing photo OCR": 7,
       "missing audio analysis": 1,
       "missing complete OCR for extracted keyframes": 1,
       "missing extracted video keyframes": 1,
@@ -22389,6 +22389,245 @@
         "likes": 161,
         "retweets": 65,
         "quotes": 8,
+        "views": 0
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "1231966538971828227:3_1231966537466015744",
+      "tweet_id": "1231966538971828227",
+      "posted_at": "2020-02-24T15:38:06.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "ICEgov",
+        "category": "core",
+        "label": "U.S. Immigration and Customs Enforcement"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/1231966538971828227",
+      "tweet_text": "8 South Texas residents sentenced for trafficking synthetic cannabinoids https://www.ice.gov/news/releases/8-south-texas-residents-sentenced-trafficking-synthetic-cannabinoids?utm_source=dlvr.it&utm_medium=twitter https://t.co/G3uUCSaHbo",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:ICEgov",
+        "crime:trafficking",
+        "legal:criminal-prosecution",
+        "media-status:needs-ocr",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1231966537466015744",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 71,
+        "retweets": 30,
+        "quotes": 1,
+        "views": 0
+      },
+      "preference_score": 36,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "954024567516823552:3_954024458452459521",
+      "tweet_id": "954024567516823552",
+      "posted_at": "2018-01-18T16:15:56.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "ICEgov",
+        "category": "core",
+        "label": "U.S. Immigration and Customs Enforcement"
+      },
+      "tweet_url": "https://x.com/ICEgov/status/954024567516823552",
+      "tweet_text": "5 South Texas men sentenced to 11½ to 35 years in federal prison following their conviction on synthetic narcotics, firearms charges https://www.ice.gov/news/releases/5-south-texas-men-sentenced-11%C2%BD-35-years-federal-prison-following-their-conviction https://t.co/7YNkj2SQUt",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [],
+      "tags": [
+        "agency:ICEgov",
+        "crime:firearm",
+        "crime:narcotics",
+        "legal:criminal-prosecution",
+        "media-status:needs-ocr",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_954024458452459521",
+          "type": "photo",
+          "archive_url": null,
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": null,
+          "duration_sec": null,
+          "playable": false,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing archived media asset",
+              "missing genuine visual description",
+              "missing photo OCR",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": false,
+              "description": false,
+              "thumbnail": false,
+              "ocr": false
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "missing",
+              "text": "",
+              "sidecar_statuses": {}
+            },
+            "ocr": {
+              "status_counts": {},
+              "complete_row_count": 0,
+              "text": ""
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing archived media asset",
+          "missing genuine visual description",
+          "missing photo OCR",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic"
+        ]
+      },
+      "engagement": {
+        "likes": 43,
+        "retweets": 11,
+        "quotes": 2,
         "views": 0
       },
       "preference_score": 36,
