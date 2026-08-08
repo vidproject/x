@@ -130,7 +130,7 @@
     "ATFHQ": {
       "category": "government",
       "label": "ATF Headquarters",
-      "observations": 57,
+      "observations": 68,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -519,14 +519,14 @@
     "CBP": {
       "category": "core",
       "label": "U.S. Customs and Border Protection",
-      "observations": 7694,
+      "observations": 7803,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "CBPAMO": {
       "category": "core",
       "label": "CBP Air and Marine Operations",
-      "observations": 755,
+      "observations": 756,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -693,7 +693,7 @@
     "CBPMarkMorgan": {
       "category": "officials",
       "label": "CBP Mark Morgan",
-      "observations": 54,
+      "observations": 57,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -749,7 +749,7 @@
     "CBPRGV": {
       "category": "government",
       "label": "CBP RGV",
-      "observations": 20,
+      "observations": 22,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -842,7 +842,7 @@
     "CISAgov": {
       "category": "government",
       "label": "Cybersecurity and Infrastructure Security Agency",
-      "observations": 406,
+      "observations": 407,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1284,7 +1284,7 @@
     "DHSBlueCampaign": {
       "category": "government",
       "label": "DHS Blue Campaign",
-      "observations": 220,
+      "observations": 236,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1298,7 +1298,7 @@
     "DHSMcAleenan": {
       "category": "officials",
       "label": "Acting Sec. Kevin McAleenan",
-      "observations": 50,
+      "observations": 51,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -1326,7 +1326,7 @@
     "DHS_Wolf": {
       "category": "officials",
       "label": "Acting Secretary Chad Wolf",
-      "observations": 98,
+      "observations": 102,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -1340,7 +1340,7 @@
     "DHSgov": {
       "category": "core",
       "label": "Department of Homeland Security",
-      "observations": 20374,
+      "observations": 20606,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1396,7 +1396,7 @@
     "DOLOIG": {
       "category": "officials",
       "label": "DOL OIG",
-      "observations": 35,
+      "observations": 36,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -1570,7 +1570,7 @@
     "EDNYnews": {
       "category": "officials",
       "label": "US Attorney EDNY",
-      "observations": 4,
+      "observations": 9,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -1602,35 +1602,35 @@
     "EROAtlanta": {
       "category": "core",
       "label": "ICE Atlanta",
-      "observations": 72,
+      "observations": 73,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROBaltimore": {
       "category": "core",
       "label": "ICE Baltimore",
-      "observations": 165,
+      "observations": 183,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROBoston": {
       "category": "core",
       "label": "ICE ERO Boston",
-      "observations": 897,
+      "observations": 926,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROBuffalo": {
       "category": "core",
       "label": "ERO Buffalo",
-      "observations": 133,
+      "observations": 135,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROChicago": {
       "category": "government",
       "label": "ICE Chicago",
-      "observations": 31,
+      "observations": 35,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -1644,70 +1644,70 @@
     "ERODenver": {
       "category": "core",
       "label": "ICE Denver",
-      "observations": 408,
+      "observations": 411,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "ERODetroit": {
       "category": "core",
       "label": "ICE Detroit",
-      "observations": 85,
+      "observations": 86,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROElPaso": {
       "category": "core",
       "label": "ERO El Paso",
-      "observations": 96,
+      "observations": 101,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROHouston": {
       "category": "core",
       "label": "ICE Houston",
-      "observations": 474,
+      "observations": 477,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROLosAngeles": {
       "category": "core",
       "label": "ICE ERO Los Angeles",
-      "observations": 445,
+      "observations": 449,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROMiami": {
       "category": "core",
       "label": "ERO Miami",
-      "observations": 267,
+      "observations": 270,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "ERONewOrleans": {
       "category": "core",
       "label": "ICE ERO New Orleans",
-      "observations": 723,
+      "observations": 725,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "ERONewYork": {
       "category": "core",
       "label": "ERO New York City",
-      "observations": 95,
+      "observations": 114,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "ERONewark": {
       "category": "core",
       "label": "ICE ERO Newark",
-      "observations": 251,
+      "observations": 256,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROPhiladelphia": {
       "category": "core",
       "label": "ERO Philadelphia",
-      "observations": 188,
+      "observations": 197,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1721,14 +1721,14 @@
     "EROSaltLakeCity": {
       "category": "core",
       "label": "ICE ERO Salt Lake City",
-      "observations": 273,
+      "observations": 283,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROSanAntonio": {
       "category": "core",
       "label": "ICE San Antonio",
-      "observations": 158,
+      "observations": 161,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1742,21 +1742,21 @@
     "EROSanFrancisco": {
       "category": "core",
       "label": "ERO San Francisco",
-      "observations": 175,
+      "observations": 179,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROSeattle": {
       "category": "core",
       "label": "ICE Seattle",
-      "observations": 270,
+      "observations": 274,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
     "EROWashington": {
       "category": "core",
       "label": "ICE Washington D.C.",
-      "observations": 371,
+      "observations": 381,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1869,7 +1869,7 @@
     "FBI": {
       "category": "government",
       "label": "Federal Bureau of Investigation",
-      "observations": 874,
+      "observations": 911,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -1995,7 +1995,7 @@
     "FCC": {
       "category": "government",
       "label": "FCC",
-      "observations": 12,
+      "observations": 14,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2050,7 +2050,7 @@
       ],
       "category": "public",
       "label": "FLETC",
-      "observations": 90,
+      "observations": 93,
       "reason": "service-history badge only",
       "source": "data/users.json"
     },
@@ -2064,7 +2064,7 @@
     "FLOTUS": {
       "category": "officials",
       "label": "First Lady Melania Trump",
-      "observations": 672,
+      "observations": 674,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -2412,7 +2412,7 @@
     "HHSGov": {
       "category": "government",
       "label": "HHS",
-      "observations": 99,
+      "observations": 101,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2426,7 +2426,7 @@
     "HSIAtlanta": {
       "category": "government",
       "label": "HSI Atlanta",
-      "observations": 7,
+      "observations": 8,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2440,7 +2440,7 @@
     "HSIChicago": {
       "category": "government",
       "label": "HSI Chicago",
-      "observations": 11,
+      "observations": 13,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2454,42 +2454,42 @@
     "HSIDetroit": {
       "category": "government",
       "label": "HSI Detroit",
-      "observations": 21,
+      "observations": 22,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSIElPaso": {
       "category": "government",
       "label": "HSI El Paso",
-      "observations": 26,
+      "observations": 40,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSIHonolulu": {
       "category": "government",
       "label": "HSI Honolulu",
-      "observations": 5,
+      "observations": 7,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSIHouston": {
       "category": "government",
       "label": "HSI Houston",
-      "observations": 45,
+      "observations": 67,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSIKansasCity": {
       "category": "government",
       "label": "HSI Kansas City",
-      "observations": 52,
+      "observations": 58,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSILosAngeles": {
       "category": "government",
       "label": "HSI Los Angeles",
-      "observations": 90,
+      "observations": 94,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2503,21 +2503,21 @@
     "HSINewEngland": {
       "category": "government",
       "label": "HSI New England",
-      "observations": 29,
+      "observations": 31,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSINewOrleans": {
       "category": "government",
       "label": "HSI New Orleans",
-      "observations": 25,
+      "observations": 28,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSINewYork": {
       "category": "government",
       "label": "HSI New York",
-      "observations": 31,
+      "observations": 47,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2531,14 +2531,14 @@
     "HSIPhiladelphia": {
       "category": "government",
       "label": "HSI Philadelphia",
-      "observations": 22,
+      "observations": 24,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSISanDiego": {
       "category": "government",
       "label": "HSI San Diego",
-      "observations": 24,
+      "observations": 44,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2552,21 +2552,21 @@
     "HSISanJuan": {
       "category": "government",
       "label": "HSI San Juan",
-      "observations": 26,
+      "observations": 37,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSISeattle": {
       "category": "government",
       "label": "HSI Pacific Northwest",
-      "observations": 16,
+      "observations": 18,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSITampa": {
       "category": "government",
       "label": "HSI Tampa",
-      "observations": 79,
+      "observations": 84,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2580,21 +2580,21 @@
     "HSI_DC": {
       "category": "government",
       "label": "HSI Washington DC",
-      "observations": 39,
+      "observations": 47,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSI_Dallas": {
       "category": "government",
       "label": "HSI Dallas",
-      "observations": 25,
+      "observations": 28,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSI_HQ": {
       "category": "core",
       "label": "Homeland Security Investigations",
-      "observations": 876,
+      "observations": 948,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2608,21 +2608,21 @@
     "HSI_Nashville": {
       "category": "government",
       "label": "HSI Nashville",
-      "observations": 10,
+      "observations": 15,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSI_SanAntonio": {
       "category": "government",
       "label": "HSI San Antonio",
-      "observations": 40,
+      "observations": 52,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "HSTodayMag": {
       "category": "government",
       "label": "HSToday",
-      "observations": 3,
+      "observations": 4,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -2718,14 +2718,14 @@
     "ICEespanol": {
       "category": "government",
       "label": "ICE en Espa\u00f1ol",
-      "observations": 20,
+      "observations": 37,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "ICEgov": {
       "category": "core",
       "label": "U.S. Immigration and Customs Enforcement",
-      "observations": 13037,
+      "observations": 19463,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -2752,7 +2752,7 @@
     "INTERPOL_USA": {
       "category": "government",
       "label": "INTERPOL Washington",
-      "observations": 5,
+      "observations": 10,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3501,7 +3501,7 @@
       ],
       "category": "government",
       "label": "Minneapolis Police",
-      "observations": 2,
+      "observations": 5,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3612,7 +3612,7 @@
     "NWS": {
       "category": "government",
       "label": "National Weather Service",
-      "observations": 59,
+      "observations": 63,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -3768,7 +3768,7 @@
     "POTUS": {
       "category": "core",
       "label": "President of the United States",
-      "observations": 6996,
+      "observations": 7016,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -3782,7 +3782,7 @@
     "POTUS46Archive": {
       "category": "government",
       "label": "President Biden Archived",
-      "observations": 93,
+      "observations": 94,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -4665,7 +4665,7 @@
     "SBAgov": {
       "category": "officials",
       "label": "SBA",
-      "observations": 72,
+      "observations": 74,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -4871,7 +4871,7 @@
     "SecMayorkas": {
       "category": "officials",
       "label": "ARCHIVED: Secretary Alejandro Mayorkas",
-      "observations": 1052,
+      "observations": 1053,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -4895,7 +4895,7 @@
     "SecNielsen": {
       "category": "officials",
       "label": "Secretary Kirstjen M. Nielsen",
-      "observations": 177,
+      "observations": 179,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -5569,7 +5569,7 @@
     "StateDept": {
       "category": "government",
       "label": "Department of State",
-      "observations": 828,
+      "observations": 845,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -5579,7 +5579,7 @@
       ],
       "category": "government",
       "label": "Diplomatic Security Service",
-      "observations": 30,
+      "observations": 33,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -5791,7 +5791,7 @@
     "TheJusticeDept": {
       "category": "government",
       "label": "U.S. Department of Justice",
-      "observations": 955,
+      "observations": 1046,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -5952,7 +5952,7 @@
     "USAO_DC": {
       "category": "officials",
       "label": "U.S. Attorney DC",
-      "observations": 4,
+      "observations": 10,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -5966,7 +5966,7 @@
     "USAO_EDPA": {
       "category": "officials",
       "label": "U.S. Attorney EDPA",
-      "observations": 8,
+      "observations": 9,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -6043,7 +6043,7 @@
     "USAO_SDTX": {
       "category": "officials",
       "label": "US Attorney SDTX",
-      "observations": 11,
+      "observations": 12,
       "reason": "federal executive official language in profile",
       "source": "data/users.json"
     },
@@ -6252,7 +6252,7 @@
     "USBPChiefTCA": {
       "category": "government",
       "label": "Chief Patrol Agent - Tucson Sector",
-      "observations": 37,
+      "observations": 38,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -6280,7 +6280,7 @@
     "USCG": {
       "category": "core",
       "label": "U.S. Coast Guard",
-      "observations": 1863,
+      "observations": 1870,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -6343,7 +6343,7 @@
     "USCIS": {
       "category": "core",
       "label": "U.S. Citizenship and Immigration Services",
-      "observations": 1565,
+      "observations": 1588,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -6374,7 +6374,7 @@
     "USDOL": {
       "category": "core",
       "label": "U.S. Department of Labor",
-      "observations": 1618,
+      "observations": 1619,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -6409,7 +6409,7 @@
     "USEmbassyBogota": {
       "category": "government",
       "label": "US Embassy Bogota",
-      "observations": 3,
+      "observations": 4,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -6486,14 +6486,14 @@
       ],
       "category": "government",
       "label": "U.S. Marshals Service",
-      "observations": 73,
+      "observations": 83,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
     "USNationalGuard": {
       "category": "government",
       "label": "National Guard",
-      "observations": 30,
+      "observations": 31,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -6503,7 +6503,7 @@
       ],
       "category": "government",
       "label": "U.S. Navy",
-      "observations": 118,
+      "observations": 122,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -6558,7 +6558,7 @@
     "USTreasury": {
       "category": "government",
       "label": "Treasury Department",
-      "observations": 66,
+      "observations": 67,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -6572,7 +6572,7 @@
     "US_FDA": {
       "category": "government",
       "label": "U.S. FDA",
-      "observations": 78,
+      "observations": 80,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -6610,7 +6610,7 @@
     "VP": {
       "category": "government",
       "label": "Vice President JD Vance",
-      "observations": 683,
+      "observations": 684,
       "reason": "government verified type or official agency/office language",
       "source": "data/users.json"
     },
@@ -6775,7 +6775,7 @@
     "WhiteHouse": {
       "category": "core",
       "label": "The White House",
-      "observations": 4886,
+      "observations": 4895,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -7208,7 +7208,7 @@
     "fema": {
       "category": "government",
       "label": "Federal Emergency Management Agency",
-      "observations": 1019,
+      "observations": 1022,
       "reason": "tracked-account override",
       "source": "config/accounts.yaml"
     },
@@ -8038,7 +8038,7 @@
     "public": 205,
     "public_figures": 239
   },
-  "generated_at": "2026-08-08T04:17:54Z",
+  "generated_at": "2026-08-08T06:41:25Z",
   "schema_version": 1,
   "source": "config/accounts.yaml + data/users.json + data/*.parquet"
 }
