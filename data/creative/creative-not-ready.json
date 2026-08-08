@@ -1,18 +1,15 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-08-08T08:02:31Z",
-    "source_commit": "adc29ee2",
+    "generated_at": "2026-08-08T09:29:56Z",
+    "source_commit": "db9d0a04",
     "item_count": 160,
     "blocker_counts": {
       "missing photo thumbnail": 148,
       "missing genuine visual description": 79,
-      "missing archived media asset": 8,
+      "missing archived media asset": 7,
       "missing photo OCR": 7,
-      "missing audio analysis": 1,
-      "missing complete OCR for extracted keyframes": 1,
-      "missing extracted video keyframes": 1,
-      "missing video thumbnail": 1
+      "missing complete OCR for extracted keyframes": 1
     }
   },
   "items": [
@@ -21936,6 +21933,14 @@
       ],
       "tags": [
         "agency:CBP",
+        "audio:has-audio",
+        "crime:fentanyl",
+        "crime:narcotics",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:transcribed",
+        "media:video",
+        "policy:border",
         "topic:immigration",
         "video:medium"
       ],
@@ -21943,39 +21948,37 @@
         {
           "media_id": "7_918596334499909632",
           "type": "video",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP-0004/7_918596334499909632.mp4",
           "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
+          "thumbnail_url": "../data/thumbnails/video/61d940dc935f38a90aa8414d041ef47d369ee8d1880cd538baa3fe1ef74b2bb1.jpg",
+          "sha256": "61d940dc935f38a90aa8414d041ef47d369ee8d1880cd538baa3fe1ef74b2bb1",
           "duration_sec": 40.541,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
-              "missing audio analysis",
               "missing complete OCR for extracted keyframes",
-              "missing extracted video keyframes",
-              "missing genuine visual description",
-              "missing video thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
-              "keyframes": false,
-              "keyframe_count": 0,
-              "thumbnail": false,
+              "keyframes": true,
+              "keyframe_count": 5,
+              "thumbnail": true,
               "ocr": false,
-              "audio_analysis": false,
-              "has_audio": false,
+              "audio_analysis": true,
+              "has_audio": true,
               "transcript": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "video; 480x264; 40.5s; 0.57 MiB; archived; tweet context: CBP is committed to keeping drugs off our streets especially dangerous synthetic opioids. “We’re going to stay after it.”—KM https://t.co/wAPq62r2vU; source URL: https://video.twimg.com/ext_tw_video/918596334499909632/pu/vid/326x180/jeHzoECnrdwJqaW6.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP-0004/7_918596334499909632.mp4; needs OCR, transcript, or frame-level vision before content claims. CBP is committed to keeping drugs off our streets especially dangerous synthetic opioids. “We’re going to stay after it.”—KM https://t.co/wAPq62r2vU",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
               "status_counts": {},
@@ -21983,19 +21986,21 @@
               "text": ""
             },
             "keyframes": {
-              "status": null,
-              "frame_count": 0
+              "status": "ok",
+              "frame_count": 5
             },
             "audio": {
-              "status": null,
-              "audio_stream_count": 0,
-              "duration_sec": null,
-              "tags": []
+              "status": "ok",
+              "audio_stream_count": 1,
+              "duration_sec": 40.554667,
+              "tags": [
+                "audio:has-audio"
+              ]
             },
             "transcript": {
-              "status": null,
-              "segment_count": 0,
-              "text": ""
+              "status": "ok",
+              "segment_count": 11,
+              "text": "One of our most critical missions at CBP is canering narcotics, crossing our borders, and no one does it better than our San Diego field office where we have major ports of entry at San Yosidro, Otay Mesa, and Calexico. I'm here in the CBP vault where we have over 125,000 kilograms of drugs and hard narcotics seized. Right behind me are our packages of fentanyl, a synthetic opioid that's 30 to 50 times more potent than heroin, and it's something that we're committed to every day, our CBP officers to keep it off the streets and protect our communities. So I got a great briefing from our team here, it's a tremendous facility, but it's busier than we would like. But we're going to stay after it and keep these drugs off our streets."
             }
           }
         }
@@ -22003,17 +22008,13 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
-          "missing audio analysis",
           "missing complete OCR for extracted keyframes",
-          "missing extracted video keyframes",
-          "missing genuine visual description",
-          "missing video thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "video; 480x264; 40.5s; 0.57 MiB; archived; tweet context: CBP is committed to keeping drugs off our streets especially dangerous synthetic opioids. “We’re going to stay after it.”—KM https://t.co/wAPq62r2vU; source URL: https://video.twimg.com/ext_tw_video/918596334499909632/pu/vid/326x180/jeHzoECnrdwJqaW6.mp4; archive URL: https://github.com/vidproject/x/releases/download/media-CBP-0004/7_918596334499909632.mp4; needs OCR, transcript, or frame-level vision before content claims. CBP is committed to keeping drugs off our streets especially dangerous synthetic opioids. “We’re going to stay after it.”—KM https://t.co/wAPq62r2vU",
         "notable_text": "",
         "reasons": [
           "wholly creative media signal",
