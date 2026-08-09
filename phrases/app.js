@@ -23,8 +23,10 @@ const elements = {
   to: document.querySelector('#date-to'),
   search: document.querySelector('#text-filter'),
   reset: document.querySelector('#reset-filters'),
+  grain: document.querySelector('#grain-filter'),
   canvas: document.querySelector('#timeline-chart'),
   chartTooltip: document.querySelector('#chart-tooltip'),
+  chartTitle: document.querySelector('#chart-title'),
   caption: document.querySelector('#chart-caption'),
   legend: document.querySelector('#chart-legend'),
   sort: document.querySelector('#sort-order'),
@@ -44,6 +46,7 @@ const state = {
   from: '',
   to: '',
   q: '',
+  grain: 'day',
   sort: 'desc',
   page: 1,
 };
@@ -54,13 +57,19 @@ function readHash() {
     if (params.has(key)) state[key] = params.get(key);
   }
   state.page = Math.max(1, Number.parseInt(state.page, 10) || 1);
+  if (!['day', 'week', 'month'].includes(state.grain)) state.grain = 'day';
   if (!['asc', 'desc'].includes(state.sort)) state.sort = 'desc';
 }
 
 function writeHash() {
   const params = new URLSearchParams();
   for (const [key, value] of Object.entries(state)) {
-    if (value && !(key === 'sort' && value === 'desc') && !(key === 'page' && value === 1)) {
+    if (
+      value &&
+      !(key === 'grain' && value === 'day') &&
+      !(key === 'sort' && value === 'desc') &&
+      !(key === 'page' && value === 1)
+    ) {
       params.set(key, String(value));
     }
   }
@@ -343,6 +352,19 @@ function changePage(page) {
   document.querySelector('#results-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+function weekStart(value) {
+  const date = new Date(`${value}T00:00:00Z`);
+  const daysSinceMonday = (date.getUTCDay() + 6) % 7;
+  date.setUTCDate(date.getUTCDate() - daysSinceMonday);
+  return date.toISOString().slice(0, 10);
+}
+
+function bucketForDate(value) {
+  if (state.grain === 'month') return value.slice(0, 7);
+  if (state.grain === 'week') return weekStart(value);
+  return value.slice(0, 10);
+}
+
 function aggregateSeries(rows, phraseKey) {
   const counts = new Map();
   for (const tweet of rows) {
@@ -351,7 +373,7 @@ function aggregateSeries(rows, phraseKey) {
       (state.source && !hasEvidence(tweet, phraseKey, state.source))
     )
       continue;
-    const bucket = tweet.posted_at.slice(0, 10);
+    const bucket = bucketForDate(tweet.posted_at.slice(0, 10));
     counts.set(bucket, (counts.get(bucket) || 0) + 1);
   }
   return counts;
@@ -360,13 +382,20 @@ function aggregateSeries(rows, phraseKey) {
 function bucketRange(rows) {
   const dates = rows.map((tweet) => tweet.posted_at.slice(0, 10)).sort();
   if (!dates.length) return [];
-  const start = new Date(`${dates[0]}T00:00:00Z`);
-  const end = new Date(`${dates.at(-1)}T00:00:00Z`);
+  const firstBucket = bucketForDate(dates[0]);
+  const lastBucket = bucketForDate(dates.at(-1));
+  const start = new Date(
+    state.grain === 'month' ? `${firstBucket}-01T00:00:00Z` : `${firstBucket}T00:00:00Z`
+  );
+  const end = new Date(
+    state.grain === 'month' ? `${lastBucket}-01T00:00:00Z` : `${lastBucket}T00:00:00Z`
+  );
   const buckets = [];
   const cursor = new Date(start);
   while (cursor <= end) {
-    buckets.push(cursor.toISOString().slice(0, 10));
-    cursor.setUTCDate(cursor.getUTCDate() + 1);
+    buckets.push(cursor.toISOString().slice(0, state.grain === 'month' ? 7 : 10));
+    if (state.grain === 'month') cursor.setUTCMonth(cursor.getUTCMonth() + 1);
+    else cursor.setUTCDate(cursor.getUTCDate() + (state.grain === 'week' ? 7 : 1));
   }
   return buckets;
 }
@@ -453,7 +482,13 @@ function drawChart(rows) {
     });
     context.stroke();
   }
-  elements.caption.textContent = `Each point is one calendar day${state.account ? ` for ${state.account}` : ' across the requested accounts'}. Hover or tap for exact counts; click a day to show its tweets.`;
+  const intervalLabel =
+    state.grain === 'day'
+      ? 'day'
+      : state.grain === 'week'
+        ? 'Monday-Sunday week'
+        : 'calendar month';
+  elements.caption.textContent = `Each point is one ${intervalLabel}${state.account ? ` for ${state.account}` : ' across the requested accounts'}. Hover or tap for exact counts; click a point to show its tweets.`;
   elements.legend.replaceChildren();
   for (const key of phraseKeys) {
     const item = document.createElement('span');
@@ -471,9 +506,35 @@ function syncInputs() {
   elements.to.value = state.to;
   elements.search.value = state.q;
   elements.sort.value = state.sort;
+  elements.chartTitle.textContent =
+    state.grain === 'day' ? 'Daily hits' : state.grain === 'week' ? 'Weekly hits' : 'Monthly hits';
+  for (const button of elements.grain.querySelectorAll('button')) {
+    button.setAttribute('aria-pressed', String(button.dataset.value === state.grain));
+  }
 }
 
-function chartIndexAtEvent(event) {
+function bucketDateRange(bucket) {
+  let first;
+  let last;
+  if (state.grain === 'month') {
+    const [year, month] = bucket.split('-').map(Number);
+    first = `${bucket}-01`;
+    last = new Date(Date.UTC(year, month, 0)).toISOString().slice(0, 10);
+  } else if (state.grain === 'week') {
+    first = bucket;
+    const end = new Date(`${bucket}T00:00:00Z`);
+    end.setUTCDate(end.getUTCDate() + 6);
+    last = end.toISOString().slice(0, 10);
+  } else {
+    first = bucket;
+    last = bucket;
+  }
+  const scopeFirst = state.from || report.scope.earliest.slice(0, 10);
+  const scopeLast = state.to || report.scope.latest.slice(0, 10);
+  return [first < scopeFirst ? scopeFirst : first, last > scopeLast ? scopeLast : last];
+}
+
+function chartIndexAtEvent(event, snapToData = false) {
   if (!chartModel?.buckets.length) return null;
   const rect = elements.canvas.getBoundingClientRect();
   const x = event.clientX - rect.left;
@@ -487,14 +548,26 @@ function chartIndexAtEvent(event) {
   ) {
     return null;
   }
-  return Math.max(
+  const index = Math.max(
     0,
     Math.min(buckets.length - 1, Math.round(((x - margin.left) / plotWidth) * (buckets.length - 1)))
   );
+  if (!snapToData) return index;
+  const hasData = (candidate) =>
+    chartModel.series.some((item) => (item.counts.get(buckets[candidate]) || 0) > 0);
+  if (hasData(index)) return index;
+  const pixelRadius = Math.max(1, Math.ceil(buckets.length / plotWidth));
+  for (let distance = 1; distance <= pixelRadius; distance += 1) {
+    const before = index - distance;
+    const after = index + distance;
+    if (before >= 0 && hasData(before)) return before;
+    if (after < buckets.length && hasData(after)) return after;
+  }
+  return index;
 }
 
 function showChartTooltip(event) {
-  const index = chartIndexAtEvent(event);
+  const index = chartIndexAtEvent(event, true);
   if (index === null) {
     elements.chartTooltip.hidden = true;
     return;
@@ -505,7 +578,8 @@ function showChartTooltip(event) {
   const tooltip = elements.chartTooltip;
   tooltip.replaceChildren();
   const date = document.createElement('strong');
-  date.textContent = buckets[index];
+  const [first, last] = bucketDateRange(buckets[index]);
+  date.textContent = first === last ? first : `${first} to ${last}`;
   tooltip.append(date);
   for (const item of series) {
     const line = document.createElement('span');
@@ -520,11 +594,11 @@ function showChartTooltip(event) {
 }
 
 function selectChartDate(event) {
-  const index = chartIndexAtEvent(event);
+  const index = chartIndexAtEvent(event, true);
   if (index === null) return;
-  const day = chartModel.buckets[index];
-  state.from = day;
-  state.to = day;
+  const [first, last] = bucketDateRange(chartModel.buckets[index]);
+  state.from = first;
+  state.to = last;
   state.page = 1;
   render();
   requestAnimationFrame(() => {
@@ -563,6 +637,13 @@ function bindControls() {
   elements.canvas.addEventListener('pointermove', showChartTooltip);
   elements.canvas.addEventListener('pointerdown', showChartTooltip);
   elements.canvas.addEventListener('click', selectChartDate);
+  elements.grain.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-value]');
+    if (!button) return;
+    state.grain = button.dataset.value;
+    state.page = 1;
+    render();
+  });
   elements.canvas.addEventListener('pointerleave', () => {
     elements.chartTooltip.hidden = true;
   });
@@ -574,6 +655,7 @@ function bindControls() {
       from: '',
       to: '',
       q: '',
+      grain: 'day',
       sort: 'desc',
       page: 1,
     });

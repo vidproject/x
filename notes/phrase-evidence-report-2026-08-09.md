@@ -58,3 +58,7 @@ loaded all 4,106 records, drew a nonblank daily timeline, displayed an exact
 date/count tooltip, collapsed the totals table to the selected account on
 mobile, applied a phrase/account URL filter, and expanded an archived image
 from the result list.
+
+The chart can also group the same records by Monday-Sunday week or calendar
+month. Clicking a point sets the date filters to that day, week, or month and
+opens the matching tweet list.

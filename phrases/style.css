@@ -546,6 +546,15 @@ select:focus-visible {
     flex: 1 1 auto;
   }
 
+  .chart-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .chart-grain {
+    width: 100%;
+  }
+
   .chart-wrap {
     height: 270px;
   }
