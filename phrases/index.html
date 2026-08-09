@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Phrase Evidence | Immigration Social Media Archive</title>
+    <link rel="stylesheet" href="style.css?v=1" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Phrase Evidence</h1>
+        <p id="scope-line">Loading archive evidence...</p>
+      </div>
+      <nav>
+        <a class="button secondary" href="../">Archive</a>
+        <a class="button secondary" href="tweets.csv">CSV</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="summary-band" aria-labelledby="summary-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="summary-title">Unique tweet totals</h2>
+            <p>Phrase and evidence-source totals overlap.</p>
+          </div>
+          <div class="total-readout">
+            <span id="filtered-total">0</span>
+            <small>matching tweets</small>
+          </div>
+        </div>
+        <div class="summary-grid" id="summary-grid"></div>
+      </section>
+
+      <section class="controls" aria-label="Report filters">
+        <div class="control-row">
+          <div class="segmented" id="phrase-filter" aria-label="Phrase family"></div>
+        </div>
+        <div class="control-row fields">
+          <label>
+            Account
+            <select id="account-filter">
+              <option value="">All accounts</option>
+              <option value="DHS">DHS</option>
+              <option value="ICE">ICE</option>
+              <option value="CBP">CBP</option>
+              <option value="White House">White House</option>
+            </select>
+          </label>
+          <label>
+            Evidence
+            <select id="source-filter">
+              <option value="">Any evidence</option>
+              <option value="tweet-text">Post text</option>
+              <option value="image-ocr">Image OCR</option>
+              <option value="video-frame-ocr">Video-frame OCR</option>
+              <option value="transcript">Transcript</option>
+            </select>
+          </label>
+          <label>
+            From
+            <input id="date-from" type="date" />
+          </label>
+          <label>
+            To
+            <input id="date-to" type="date" />
+          </label>
+          <label class="search-label">
+            Search results
+            <input id="text-filter" type="search" placeholder="Text or handle" />
+          </label>
+          <button type="button" class="button reset" id="reset-filters">Reset</button>
+        </div>
+      </section>
+
+      <section class="chart-section" aria-labelledby="chart-title">
+        <div class="section-heading chart-heading">
+          <div>
+            <h2 id="chart-title">Hits across time</h2>
+            <p id="chart-caption"></p>
+          </div>
+          <div class="segmented compact" id="interval-filter" aria-label="Chart interval">
+            <button type="button" data-value="month">Month</button>
+            <button type="button" data-value="year" aria-pressed="true">Year</button>
+          </div>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="timeline-chart" role="img" aria-label="Phrase hits over time"></canvas>
+        </div>
+        <div class="legend" id="chart-legend"></div>
+      </section>
+
+      <section class="results-section" aria-labelledby="results-title">
+        <div class="section-heading results-heading">
+          <div>
+            <h2 id="results-title">Matching tweets</h2>
+            <p id="result-count"></p>
+          </div>
+          <label>
+            Order
+            <select id="sort-order">
+              <option value="desc">Newest first</option>
+              <option value="asc">Oldest first</option>
+            </select>
+          </label>
+        </div>
+        <div id="results" class="results" aria-live="polite"></div>
+        <div class="pager" id="pager"></div>
+      </section>
+    </main>
+
+    <template id="tweet-template">
+      <article class="tweet-row">
+        <div class="tweet-meta"></div>
+        <div class="tweet-tags"></div>
+        <p class="tweet-text"></p>
+        <div class="evidence-list"></div>
+        <div class="tweet-actions"></div>
+        <div class="media-area" hidden></div>
+      </article>
+    </template>
+
+    <script type="module" src="app.js?v=1"></script>
+  </body>
+</html>
