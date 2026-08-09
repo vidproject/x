@@ -398,7 +398,7 @@ function drawChart(rows) {
   const buckets = bucketRange(rows);
   const phraseKeys = state.phrase ? [state.phrase] : report.phrases.map((phrase) => phrase.key);
   const series = phraseKeys.map((key) => ({ key, counts: aggregateSeries(rows, key) }));
-  chartModel = { buckets, series, margin, plotWidth };
+  chartModel = { buckets, series, margin, plotWidth, plotHeight };
   const maxValue = Math.max(
     1,
     ...series.flatMap((item) => buckets.map((bucket) => item.counts.get(bucket) || 0))
@@ -453,7 +453,7 @@ function drawChart(rows) {
     });
     context.stroke();
   }
-  elements.caption.textContent = `Each point is one calendar day${state.account ? ` for ${state.account}` : ' across the requested accounts'}. Hover or tap the chart for exact counts.`;
+  elements.caption.textContent = `Each point is one calendar day${state.account ? ` for ${state.account}` : ' across the requested accounts'}. Hover or tap for exact counts; click a day to show its tweets.`;
   elements.legend.replaceChildren();
   for (const key of phraseKeys) {
     const item = document.createElement('span');
@@ -473,19 +473,35 @@ function syncInputs() {
   elements.sort.value = state.sort;
 }
 
-function showChartTooltip(event) {
-  if (!chartModel?.buckets.length) return;
+function chartIndexAtEvent(event) {
+  if (!chartModel?.buckets.length) return null;
   const rect = elements.canvas.getBoundingClientRect();
   const x = event.clientX - rect.left;
-  const { buckets, series, margin, plotWidth } = chartModel;
-  if (x < margin.left || x > margin.left + plotWidth) {
-    elements.chartTooltip.hidden = true;
-    return;
+  const y = event.clientY - rect.top;
+  const { buckets, margin, plotWidth, plotHeight } = chartModel;
+  if (
+    x < margin.left ||
+    x > margin.left + plotWidth ||
+    y < margin.top ||
+    y > margin.top + plotHeight
+  ) {
+    return null;
   }
-  const index = Math.max(
+  return Math.max(
     0,
     Math.min(buckets.length - 1, Math.round(((x - margin.left) / plotWidth) * (buckets.length - 1)))
   );
+}
+
+function showChartTooltip(event) {
+  const index = chartIndexAtEvent(event);
+  if (index === null) {
+    elements.chartTooltip.hidden = true;
+    return;
+  }
+  const rect = elements.canvas.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const { buckets, series } = chartModel;
   const tooltip = elements.chartTooltip;
   tooltip.replaceChildren();
   const date = document.createElement('strong');
@@ -501,6 +517,19 @@ function showChartTooltip(event) {
   }
   tooltip.style.left = `${Math.max(92, Math.min(rect.width - 92, x))}px`;
   tooltip.hidden = false;
+}
+
+function selectChartDate(event) {
+  const index = chartIndexAtEvent(event);
+  if (index === null) return;
+  const day = chartModel.buckets[index];
+  state.from = day;
+  state.to = day;
+  state.page = 1;
+  render();
+  requestAnimationFrame(() => {
+    document.querySelector('#results-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 }
 
 function render() {
@@ -533,6 +562,7 @@ function bindControls() {
   }
   elements.canvas.addEventListener('pointermove', showChartTooltip);
   elements.canvas.addEventListener('pointerdown', showChartTooltip);
+  elements.canvas.addEventListener('click', selectChartDate);
   elements.canvas.addEventListener('pointerleave', () => {
     elements.chartTooltip.hidden = true;
   });
