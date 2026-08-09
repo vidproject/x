@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>Phrase Evidence | Immigration Social Media Archive</title>
-    <link rel="stylesheet" href="style.css?v=3" />
+    <link rel="stylesheet" href="style.css?v=4" />
   </head>
   <body>
     <header class="topbar">
@@ -106,6 +106,27 @@
           <canvas id="timeline-chart" role="img" aria-label="Daily phrase hits over time"></canvas>
           <div class="chart-tooltip" id="chart-tooltip" hidden></div>
         </div>
+        <div class="range-control" aria-label="Chart date range">
+          <div class="range-values">
+            <output id="range-start-label" for="range-start">2016-01-01</output>
+            <button type="button" id="range-reset">Full range</button>
+            <output id="range-end-label" for="range-end">2026-08-06</output>
+          </div>
+          <div class="dual-range">
+            <div class="range-track" aria-hidden="true">
+              <span id="range-selection"></span>
+            </div>
+            <input
+              id="range-start"
+              type="range"
+              min="0"
+              max="1"
+              value="0"
+              aria-label="Start date"
+            />
+            <input id="range-end" type="range" min="0" max="1" value="1" aria-label="End date" />
+          </div>
+        </div>
         <div class="legend" id="chart-legend"></div>
       </section>
 
@@ -139,6 +160,6 @@
       </article>
     </template>
 
-    <script type="module" src="app.js?v=4"></script>
+    <script type="module" src="app.js?v=5"></script>
   </body>
 </html>

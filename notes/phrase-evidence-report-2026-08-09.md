@@ -62,3 +62,7 @@ from the result list.
 The chart can also group the same records by Monday-Sunday week or calendar
 month. Clicking a point sets the date filters to that day, week, or month and
 opens the matching tweet list.
+
+Chart positions with zero hits resolve to the nearest nonzero interval. The
+resolved bar is enlarged in place before selection. A two-handle slider below
+the chart adjusts the same date range as the From and To fields.

@@ -29,6 +29,12 @@ const elements = {
   chartTitle: document.querySelector('#chart-title'),
   caption: document.querySelector('#chart-caption'),
   legend: document.querySelector('#chart-legend'),
+  rangeStart: document.querySelector('#range-start'),
+  rangeEnd: document.querySelector('#range-end'),
+  rangeStartLabel: document.querySelector('#range-start-label'),
+  rangeEndLabel: document.querySelector('#range-end-label'),
+  rangeSelection: document.querySelector('#range-selection'),
+  rangeReset: document.querySelector('#range-reset'),
   sort: document.querySelector('#sort-order'),
   resultCount: document.querySelector('#result-count'),
   results: document.querySelector('#results'),
@@ -39,6 +45,8 @@ const elements = {
 let report;
 let resizeTimer;
 let chartModel;
+let chartSelection;
+let rangeMax = 1;
 const state = {
   phrase: '',
   account: '',
@@ -148,6 +156,7 @@ function renderPhraseControls() {
     button.setAttribute('aria-pressed', String(state.phrase === phrase.key));
     if (phrase.key) button.classList.add(phraseClass(phrase.key));
     button.addEventListener('click', () => {
+      chartSelection = null;
       state.phrase = phrase.key;
       state.page = 1;
       render();
@@ -173,6 +182,7 @@ function renderSummary(rows) {
     button.setAttribute('aria-pressed', String(state.phrase === phrase.key));
     button.textContent = phrase.label;
     button.addEventListener('click', () => {
+      chartSelection = null;
       state.phrase = state.phrase === phrase.key ? '' : phrase.key;
       state.page = 1;
       render();
@@ -427,11 +437,25 @@ function drawChart(rows) {
   const buckets = bucketRange(rows);
   const phraseKeys = state.phrase ? [state.phrase] : report.phrases.map((phrase) => phrase.key);
   const series = phraseKeys.map((key) => ({ key, counts: aggregateSeries(rows, key) }));
-  chartModel = { buckets, series, margin, plotWidth, plotHeight };
+  const populatedIndices = buckets.flatMap((bucket, index) =>
+    series.some((item) => (item.counts.get(bucket) || 0) > 0) ? [index] : []
+  );
+  chartModel = {
+    buckets,
+    series,
+    populatedIndices,
+    margin,
+    plotWidth,
+    plotHeight,
+    context,
+    ratio,
+    maxValue: 1,
+  };
   const maxValue = Math.max(
     1,
     ...series.flatMap((item) => buckets.map((bucket) => item.counts.get(bucket) || 0))
   );
+  chartModel.maxValue = maxValue;
   const textColor = getComputedStyle(document.documentElement).getPropertyValue('--muted').trim();
   const gridColor = getComputedStyle(document.documentElement).getPropertyValue('--border').trim();
   context.clearRect(0, 0, width, height);
@@ -482,13 +506,15 @@ function drawChart(rows) {
     });
     context.stroke();
   }
+  chartModel.baseImage = context.getImageData(0, 0, canvas.width, canvas.height);
+  restoreChartHighlight();
   const intervalLabel =
     state.grain === 'day'
       ? 'day'
       : state.grain === 'week'
         ? 'Monday-Sunday week'
         : 'calendar month';
-  elements.caption.textContent = `Each point is one ${intervalLabel}${state.account ? ` for ${state.account}` : ' across the requested accounts'}. Hover or tap for exact counts; click a point to show its tweets.`;
+  elements.caption.textContent = `Each point is one ${intervalLabel}${state.account ? ` for ${state.account}` : ' across the requested accounts'}. Empty positions resolve to the closest interval with hits; click to show its tweets.`;
   elements.legend.replaceChildren();
   for (const key of phraseKeys) {
     const item = document.createElement('span');
@@ -497,6 +523,67 @@ function drawChart(rows) {
     item.lastElementChild.textContent = phraseLabel(key);
     elements.legend.append(item);
   }
+}
+
+function dateIndex(value) {
+  const scopeStart = new Date(`${report.scope.earliest.slice(0, 10)}T00:00:00Z`);
+  const date = new Date(`${value}T00:00:00Z`);
+  return Math.round((date - scopeStart) / 86_400_000);
+}
+
+function dateAtIndex(index) {
+  const date = new Date(`${report.scope.earliest.slice(0, 10)}T00:00:00Z`);
+  date.setUTCDate(date.getUTCDate() + index);
+  return date.toISOString().slice(0, 10);
+}
+
+function syncRangeControls() {
+  const start = state.from ? dateIndex(state.from) : 0;
+  const end = state.to ? dateIndex(state.to) : rangeMax;
+  elements.rangeStart.value = String(start);
+  elements.rangeEnd.value = String(end);
+  elements.rangeStartLabel.value = dateAtIndex(start);
+  elements.rangeEndLabel.value = dateAtIndex(end);
+  const startPercent = (start / rangeMax) * 100;
+  const endPercent = (end / rangeMax) * 100;
+  elements.rangeSelection.style.left = `${startPercent}%`;
+  elements.rangeSelection.style.width = `${endPercent - startPercent}%`;
+}
+
+function updateRange(source) {
+  let start = Number(elements.rangeStart.value);
+  let end = Number(elements.rangeEnd.value);
+  if (start > end) {
+    if (source === 'start') {
+      end = start;
+      elements.rangeEnd.value = String(end);
+    } else {
+      start = end;
+      elements.rangeStart.value = String(start);
+    }
+  }
+  chartSelection = null;
+  state.from = start === 0 ? '' : dateAtIndex(start);
+  state.to = end === rangeMax ? '' : dateAtIndex(end);
+  state.page = 1;
+  render();
+}
+
+function configureRangeControls() {
+  rangeMax = dateIndex(report.scope.latest.slice(0, 10));
+  for (const input of [elements.rangeStart, elements.rangeEnd]) {
+    input.max = String(rangeMax);
+    input.step = '1';
+  }
+  elements.rangeStart.addEventListener('input', () => updateRange('start'));
+  elements.rangeEnd.addEventListener('input', () => updateRange('end'));
+  elements.rangeReset.addEventListener('click', () => {
+    chartSelection = null;
+    state.from = '';
+    state.to = '';
+    state.page = 1;
+    render();
+  });
 }
 
 function syncInputs() {
@@ -511,6 +598,7 @@ function syncInputs() {
   for (const button of elements.grain.querySelectorAll('button')) {
     button.setAttribute('aria-pressed', String(button.dataset.value === state.grain));
   }
+  syncRangeControls();
 }
 
 function bucketDateRange(bucket) {
@@ -534,6 +622,76 @@ function bucketDateRange(bucket) {
   return [first < scopeFirst ? scopeFirst : first, last > scopeLast ? scopeLast : last];
 }
 
+function chartXAtIndex(index) {
+  const { buckets, margin, plotWidth } = chartModel;
+  return (
+    margin.left +
+    (buckets.length === 1 ? plotWidth / 2 : (index / (buckets.length - 1)) * plotWidth)
+  );
+}
+
+function restoreChartBase() {
+  if (!chartModel?.baseImage) return;
+  const { context, baseImage } = chartModel;
+  context.save();
+  context.setTransform(1, 0, 0, 1, 0, 0);
+  context.putImageData(baseImage, 0, 0);
+  context.restore();
+}
+
+function highlightChartIndex(index) {
+  restoreChartBase();
+  if (index === null || !chartModel.populatedIndices.includes(index)) return;
+  const { buckets, series, context, margin, plotHeight, maxValue } = chartModel;
+  const bucket = buckets[index];
+  const activeSeries = series.filter((item) => (item.counts.get(bucket) || 0) > 0);
+  const barWidth = activeSeries.length === 1 ? 8 : 5;
+  const spacing = activeSeries.length === 1 ? 0 : 6;
+  const baseline = margin.top + plotHeight;
+  const center = chartXAtIndex(index);
+  context.save();
+  activeSeries.forEach((item, seriesIndex) => {
+    const value = item.counts.get(bucket) || 0;
+    const top = margin.top + plotHeight - (value / maxValue) * plotHeight;
+    const displayHeight = Math.max(baseline - top + 3, 18);
+    const offset = (seriesIndex - (activeSeries.length - 1) / 2) * spacing;
+    context.fillStyle = chartColor(item.key);
+    context.fillRect(
+      center + offset - barWidth / 2,
+      baseline - displayHeight,
+      barWidth,
+      displayHeight
+    );
+  });
+  context.restore();
+}
+
+function restoreChartHighlight() {
+  if (!chartSelection || chartSelection.grain !== state.grain || !chartModel?.buckets.length) {
+    restoreChartBase();
+    return;
+  }
+  const index = chartModel.buckets.indexOf(chartSelection.bucket);
+  highlightChartIndex(index === -1 ? null : index);
+}
+
+function nearestPopulatedIndex(index) {
+  const populated = chartModel.populatedIndices;
+  if (!populated.length) return null;
+  let low = 0;
+  let high = populated.length;
+  while (low < high) {
+    const middle = Math.floor((low + high) / 2);
+    if (populated[middle] < index) low = middle + 1;
+    else high = middle;
+  }
+  const after = populated[low];
+  const before = populated[low - 1];
+  if (before === undefined) return after;
+  if (after === undefined) return before;
+  return index - before <= after - index ? before : after;
+}
+
 function chartIndexAtEvent(event, snapToData = false) {
   if (!chartModel?.buckets.length) return null;
   const rect = elements.canvas.getBoundingClientRect();
@@ -553,17 +711,7 @@ function chartIndexAtEvent(event, snapToData = false) {
     Math.min(buckets.length - 1, Math.round(((x - margin.left) / plotWidth) * (buckets.length - 1)))
   );
   if (!snapToData) return index;
-  const hasData = (candidate) =>
-    chartModel.series.some((item) => (item.counts.get(buckets[candidate]) || 0) > 0);
-  if (hasData(index)) return index;
-  const pixelRadius = Math.max(1, Math.ceil(buckets.length / plotWidth));
-  for (let distance = 1; distance <= pixelRadius; distance += 1) {
-    const before = index - distance;
-    const after = index + distance;
-    if (before >= 0 && hasData(before)) return before;
-    if (after < buckets.length && hasData(after)) return after;
-  }
-  return index;
+  return nearestPopulatedIndex(index);
 }
 
 function showChartTooltip(event) {
@@ -573,8 +721,9 @@ function showChartTooltip(event) {
     return;
   }
   const rect = elements.canvas.getBoundingClientRect();
-  const x = event.clientX - rect.left;
   const { buckets, series } = chartModel;
+  const x = chartXAtIndex(index);
+  highlightChartIndex(index);
   const tooltip = elements.chartTooltip;
   tooltip.replaceChildren();
   const date = document.createElement('strong');
@@ -596,6 +745,7 @@ function showChartTooltip(event) {
 function selectChartDate(event) {
   const index = chartIndexAtEvent(event, true);
   if (index === null) return;
+  chartSelection = { grain: state.grain, bucket: chartModel.buckets[index] };
   const [first, last] = bucketDateRange(chartModel.buckets[index]);
   state.from = first;
   state.to = last;
@@ -629,6 +779,7 @@ function bindControls() {
   ];
   for (const [element, key, event] of bindings) {
     element.addEventListener(event, () => {
+      chartSelection = null;
       state[key] = element.value;
       state.page = 1;
       render();
@@ -640,14 +791,17 @@ function bindControls() {
   elements.grain.addEventListener('click', (event) => {
     const button = event.target.closest('button[data-value]');
     if (!button) return;
+    chartSelection = null;
     state.grain = button.dataset.value;
     state.page = 1;
     render();
   });
   elements.canvas.addEventListener('pointerleave', () => {
     elements.chartTooltip.hidden = true;
+    restoreChartHighlight();
   });
   elements.reset.addEventListener('click', () => {
+    chartSelection = null;
     Object.assign(state, {
       phrase: '',
       account: '',
@@ -673,6 +827,7 @@ async function start() {
   if (!response.ok) throw new Error(`Unable to load report data (${response.status})`);
   report = await response.json();
   elements.scope.textContent = `${report.scope.earliest.slice(0, 10)} to ${report.scope.latest.slice(0, 10)} | ${report.coverage.catalog_tweets.toLocaleString()} posts searched | text, OCR, and transcripts`;
+  configureRangeControls();
   bindControls();
   render();
 }
