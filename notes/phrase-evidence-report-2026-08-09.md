@@ -39,6 +39,8 @@ python3 -m scripts.build_phrase_report
 ```
 
 Outputs are under `phrases/`: `data.json`, `tweets.csv`, and `timeseries.csv`.
+The time-series export contains one row per phrase for every calendar day in
+the report range, including days with zero hits.
 The GitHub Pages viewer is published at `/phrases/` and links each match to the
 main archive record, the original X URL, and any archived media.
 
@@ -51,6 +53,8 @@ uv run mypy scripts/build_phrase_report.py
 node --check phrases/app.js
 ```
 
-Headless Chrome was also used at 1440x1100 and 390x844. The report loaded all
-4,106 records, drew a nonblank timeline canvas, applied a phrase/account URL
-filter, and expanded an archived image from the result list.
+Headless Chrome was also used at desktop and 390x844 phone sizes. The report
+loaded all 4,106 records, drew a nonblank daily timeline, displayed an exact
+date/count tooltip, collapsed the totals table to the selected account on
+mobile, applied a phrase/account URL filter, and expanded an archived image
+from the result list.

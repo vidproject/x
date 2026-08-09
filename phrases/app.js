@@ -15,7 +15,7 @@ const SOURCE_LABELS = {
 const elements = {
   scope: document.querySelector('#scope-line'),
   filteredTotal: document.querySelector('#filtered-total'),
-  summary: document.querySelector('#summary-grid'),
+  summary: document.querySelector('#summary-body'),
   phrase: document.querySelector('#phrase-filter'),
   account: document.querySelector('#account-filter'),
   source: document.querySelector('#source-filter'),
@@ -23,8 +23,8 @@ const elements = {
   to: document.querySelector('#date-to'),
   search: document.querySelector('#text-filter'),
   reset: document.querySelector('#reset-filters'),
-  interval: document.querySelector('#interval-filter'),
   canvas: document.querySelector('#timeline-chart'),
+  chartTooltip: document.querySelector('#chart-tooltip'),
   caption: document.querySelector('#chart-caption'),
   legend: document.querySelector('#chart-legend'),
   sort: document.querySelector('#sort-order'),
@@ -36,6 +36,7 @@ const elements = {
 
 let report;
 let resizeTimer;
+let chartModel;
 const state = {
   phrase: '',
   account: '',
@@ -43,7 +44,6 @@ const state = {
   from: '',
   to: '',
   q: '',
-  interval: 'year',
   sort: 'desc',
   page: 1,
 };
@@ -54,19 +54,13 @@ function readHash() {
     if (params.has(key)) state[key] = params.get(key);
   }
   state.page = Math.max(1, Number.parseInt(state.page, 10) || 1);
-  if (!['month', 'year'].includes(state.interval)) state.interval = 'year';
   if (!['asc', 'desc'].includes(state.sort)) state.sort = 'desc';
 }
 
 function writeHash() {
   const params = new URLSearchParams();
   for (const [key, value] of Object.entries(state)) {
-    if (
-      value &&
-      !(key === 'interval' && value === 'year') &&
-      !(key === 'sort' && value === 'desc') &&
-      !(key === 'page' && value === 1)
-    ) {
+    if (value && !(key === 'sort' && value === 'desc') && !(key === 'page' && value === 1)) {
       params.set(key, String(value));
     }
   }
@@ -155,28 +149,44 @@ function renderPhraseControls() {
 
 function renderSummary(rows) {
   elements.summary.replaceChildren();
+  for (const header of document.querySelectorAll('.summary-table th[data-account]')) {
+    header.hidden = Boolean(state.account && header.dataset.account !== state.account);
+  }
   for (const phrase of report.phrases) {
-    const count = countForPhrase(rows, phrase.key);
-    const accountParts = report.scope.account_groups
-      .map(
-        (account) =>
-          `${account} ${rows.filter((tweet) => tweet.account_group === account && tweet.phrases.includes(phrase.key) && (!state.source || hasEvidence(tweet, phrase.key, state.source))).length.toLocaleString()}`
-      )
-      .filter((part) => !part.endsWith(' 0'));
+    const row = document.createElement('tr');
+    row.className = phraseClass(phrase.key);
+    if (state.phrase === phrase.key) row.classList.add('selected');
+    const labelCell = document.createElement('th');
+    labelCell.scope = 'row';
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = `summary-item ${phraseClass(phrase.key)}`;
+    button.className = 'summary-phrase';
     button.setAttribute('aria-pressed', String(state.phrase === phrase.key));
-    button.innerHTML = `<span class="summary-label"></span><span class="summary-count"></span><span class="summary-detail"></span>`;
-    button.querySelector('.summary-label').textContent = phrase.label;
-    button.querySelector('.summary-count').textContent = count.toLocaleString();
-    button.querySelector('.summary-detail').textContent = accountParts.join(' | ') || 'No matches';
+    button.textContent = phrase.label;
     button.addEventListener('click', () => {
       state.phrase = state.phrase === phrase.key ? '' : phrase.key;
       state.page = 1;
       render();
     });
-    elements.summary.append(button);
+    labelCell.append(button);
+    row.append(labelCell);
+
+    const totalCell = document.createElement('td');
+    totalCell.textContent = countForPhrase(rows, phrase.key).toLocaleString();
+    row.append(totalCell);
+    for (const account of report.scope.account_groups) {
+      const count = rows.filter(
+        (tweet) =>
+          tweet.account_group === account &&
+          tweet.phrases.includes(phrase.key) &&
+          (!state.source || hasEvidence(tweet, phrase.key, state.source))
+      ).length;
+      const cell = document.createElement('td');
+      cell.textContent = count.toLocaleString();
+      cell.hidden = Boolean(state.account && account !== state.account);
+      row.append(cell);
+    }
+    elements.summary.append(row);
   }
 }
 
@@ -341,8 +351,7 @@ function aggregateSeries(rows, phraseKey) {
       (state.source && !hasEvidence(tweet, phraseKey, state.source))
     )
       continue;
-    const bucket =
-      state.interval === 'year' ? tweet.posted_at.slice(0, 4) : tweet.posted_at.slice(0, 7);
+    const bucket = tweet.posted_at.slice(0, 10);
     counts.set(bucket, (counts.get(bucket) || 0) + 1);
   }
   return counts;
@@ -354,16 +363,10 @@ function bucketRange(rows) {
   const start = new Date(`${dates[0]}T00:00:00Z`);
   const end = new Date(`${dates.at(-1)}T00:00:00Z`);
   const buckets = [];
-  let cursor =
-    state.interval === 'year'
-      ? new Date(Date.UTC(start.getUTCFullYear(), 0, 1))
-      : new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), 1));
+  const cursor = new Date(start);
   while (cursor <= end) {
-    buckets.push(
-      state.interval === 'year' ? String(cursor.getUTCFullYear()) : cursor.toISOString().slice(0, 7)
-    );
-    if (state.interval === 'year') cursor.setUTCFullYear(cursor.getUTCFullYear() + 1);
-    else cursor.setUTCMonth(cursor.getUTCMonth() + 1);
+    buckets.push(cursor.toISOString().slice(0, 10));
+    cursor.setUTCDate(cursor.getUTCDate() + 1);
   }
   return buckets;
 }
@@ -395,6 +398,7 @@ function drawChart(rows) {
   const buckets = bucketRange(rows);
   const phraseKeys = state.phrase ? [state.phrase] : report.phrases.map((phrase) => phrase.key);
   const series = phraseKeys.map((key) => ({ key, counts: aggregateSeries(rows, key) }));
+  chartModel = { buckets, series, margin, plotWidth };
   const maxValue = Math.max(
     1,
     ...series.flatMap((item) => buckets.map((bucket) => item.counts.get(bucket) || 0))
@@ -449,7 +453,7 @@ function drawChart(rows) {
     });
     context.stroke();
   }
-  elements.caption.textContent = `${state.interval === 'year' ? 'Annual' : 'Monthly'} unique tweet counts${state.account ? ` for ${state.account}` : ' across requested accounts'}.`;
+  elements.caption.textContent = `Each point is one calendar day${state.account ? ` for ${state.account}` : ' across the requested accounts'}. Hover or tap the chart for exact counts.`;
   elements.legend.replaceChildren();
   for (const key of phraseKeys) {
     const item = document.createElement('span');
@@ -467,8 +471,36 @@ function syncInputs() {
   elements.to.value = state.to;
   elements.search.value = state.q;
   elements.sort.value = state.sort;
-  for (const button of elements.interval.querySelectorAll('button'))
-    button.setAttribute('aria-pressed', String(button.dataset.value === state.interval));
+}
+
+function showChartTooltip(event) {
+  if (!chartModel?.buckets.length) return;
+  const rect = elements.canvas.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const { buckets, series, margin, plotWidth } = chartModel;
+  if (x < margin.left || x > margin.left + plotWidth) {
+    elements.chartTooltip.hidden = true;
+    return;
+  }
+  const index = Math.max(
+    0,
+    Math.min(buckets.length - 1, Math.round(((x - margin.left) / plotWidth) * (buckets.length - 1)))
+  );
+  const tooltip = elements.chartTooltip;
+  tooltip.replaceChildren();
+  const date = document.createElement('strong');
+  date.textContent = buckets[index];
+  tooltip.append(date);
+  for (const item of series) {
+    const line = document.createElement('span');
+    line.className = `tooltip-line ${phraseClass(item.key)}`;
+    line.innerHTML = '<i></i><span></span><b></b>';
+    line.querySelector('span').textContent = phraseLabel(item.key);
+    line.querySelector('b').textContent = (item.counts.get(buckets[index]) || 0).toLocaleString();
+    tooltip.append(line);
+  }
+  tooltip.style.left = `${Math.max(92, Math.min(rect.width - 92, x))}px`;
+  tooltip.hidden = false;
 }
 
 function render() {
@@ -499,11 +531,10 @@ function bindControls() {
       render();
     });
   }
-  elements.interval.addEventListener('click', (event) => {
-    const button = event.target.closest('button[data-value]');
-    if (!button) return;
-    state.interval = button.dataset.value;
-    render();
+  elements.canvas.addEventListener('pointermove', showChartTooltip);
+  elements.canvas.addEventListener('pointerdown', showChartTooltip);
+  elements.canvas.addEventListener('pointerleave', () => {
+    elements.chartTooltip.hidden = true;
   });
   elements.reset.addEventListener('click', () => {
     Object.assign(state, {
@@ -513,7 +544,6 @@ function bindControls() {
       from: '',
       to: '',
       q: '',
-      interval: 'year',
       sort: 'desc',
       page: 1,
     });

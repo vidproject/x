@@ -18,7 +18,7 @@ import json
 import re
 from collections import Counter, defaultdict
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any, cast
 
@@ -384,19 +384,29 @@ def write_report(report: dict[str, Any], out_dir: Path = OUT_DIR) -> None:
                     ]
                 )
 
-    monthly: Counter[tuple[str, str, str]] = Counter()
+    daily: Counter[tuple[str, str, str]] = Counter()
     for tweet in report["tweets"]:
-        month = tweet["posted_at"][:7]
+        day = tweet["posted_at"][:10]
         for phrase_key in tweet["phrases"]:
-            monthly[(month, phrase_key, tweet["account_group"])] += 1
+            daily[(day, phrase_key, tweet["account_group"])] += 1
     with (out_dir / "timeseries.csv").open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.writer(handle)
-        writer.writerow(["month", "phrase", *ACCOUNT_GROUP_ORDER, "all_accounts"])
-        months = sorted({key[0] for key in monthly})
-        for month in months:
+        writer = csv.writer(handle, lineterminator="\n")
+        writer.writerow(["date", "phrase", *ACCOUNT_GROUP_ORDER, "all_accounts"])
+        first_day = datetime.fromisoformat(
+            report["scope"]["earliest"].replace("Z", "+00:00")
+        ).date()
+        last_day = datetime.fromisoformat(
+            report["scope"]["latest"].replace("Z", "+00:00")
+        ).date()
+        days: list[str] = []
+        cursor = first_day
+        while cursor <= last_day:
+            days.append(cursor.isoformat())
+            cursor += timedelta(days=1)
+        for day in days:
             for phrase in PHRASES:
-                counts = [monthly[(month, phrase.key, group)] for group in ACCOUNT_GROUP_ORDER]
-                writer.writerow([month, phrase.key, *counts, sum(counts)])
+                counts = [daily[(day, phrase.key, group)] for group in ACCOUNT_GROUP_ORDER]
+                writer.writerow([day, phrase.key, *counts, sum(counts)])
 
 
 def parse_args() -> argparse.Namespace:
