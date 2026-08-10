@@ -1,12 +1,12 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-08-10T22:03:16Z",
-    "source_commit": "8c4159fd",
-    "item_count": 160,
+    "generated_at": "2026-08-10T23:27:55Z",
+    "source_commit": "16a629a0",
+    "item_count": 161,
     "blocker_counts": {
-      "missing photo thumbnail": 148,
-      "missing genuine visual description": 79,
+      "missing photo thumbnail": 149,
+      "missing genuine visual description": 80,
       "missing archived media asset": 7,
       "missing photo OCR": 7,
       "missing complete OCR for extracted keyframes": 1
@@ -21786,6 +21786,129 @@
       "preference_score": 36,
       "preference_categories": [
         "aesthetic:ai-synthetic-propaganda"
+      ]
+    },
+    {
+      "id": "1320456103835172865:3_1320456100530036740",
+      "tweet_id": "1320456103835172865",
+      "posted_at": "2020-10-25T20:04:02.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "CBP",
+        "category": "core",
+        "label": "U.S. Customs and Border Protection"
+      },
+      "tweet_url": "https://x.com/CBP/status/1320456103835172865",
+      "tweet_text": "👀 GARBAGE TRUCK SMUGGLING ATTEMPT\n\nLast Sunday night, CBP officers at the Blue Water Bridge in Michigan found over 1,000lbs of marijuana concealed in trash bags in the rear of a garbage truck.\n\nMore via @CBPGreatLakes: https://go.usa.gov/x7g3r https://t.co/nxTX3NCO1i",
+      "review_state": "needs_review",
+      "inclusion_basis": "cruelty_taunting_enforcement",
+      "confidence": "low",
+      "score": 86,
+      "creative_forms": [],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_1320456100530036740",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP-0013/3_1320456100530036740.jpg",
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "f786b25c0b954342acc49e625efec6ccc7171e77aa8b14aecc8709152c32a00c",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing genuine visual description",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": true,
+              "description": false,
+              "thumbnail": false,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "metadata-placeholder",
+              "text": "photo; 1200x675; 0.37 MiB; archived; tweet context: 👀 GARBAGE TRUCK SMUGGLING ATTEMPT Last Sunday night, CBP officers at the Blue Water Bridge in Michigan found over 1,000lbs of marijuana concealed in trash bags in the rear of a garbage truck. More via @CBPGreatLakes: https://go.usa.gov/x7g3r https://t.co/nxTX...; source URL: https://pbs.twimg.com/media/ElMz082XIAQ8ZlN.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-CBP-0013/3_1320456100530036740.jpg; needs OCR, transcript, or frame-level vision before content claims. 👀 GARBAGE TRUCK SMUGGLING ATTEMPT Last Sunday night, CBP officers at the Blue Water Bridge in Michigan found over 1,000lbs of marijuana concealed in trash bags in the rear of a garbage truck. More via @CBPGreatLakes: https://go.usa.gov/x7g3r https://t.co/nxTX3NCO1i",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "} Ml ° =, Lie Fm AE Bog Be i P Op, rt 3 oa fo ee ff — N ¥ y . eA ’ ie oe ee ‘ fea Ce as ee oe oun aa 7 aa meee)"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing genuine visual description",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "photo; 1200x675; 0.37 MiB; archived; tweet context: 👀 GARBAGE TRUCK SMUGGLING ATTEMPT Last Sunday night, CBP officers at the Blue Water Bridge in Michigan found over 1,000lbs of marijuana concealed in trash bags in the rear of a garbage truck. More via @CBPGreatLakes: https://go.usa.gov/x7g3r https://t.co/nxTX...; source URL: https://pbs.twimg.com/media/ElMz082XIAQ8ZlN.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-CBP-0013/3_1320456100530036740.jpg; needs OCR, transcript, or frame-level vision before content claims. 👀 GARBAGE TRUCK SMUGGLING ATTEMPT Last Sunday night, CBP officers at the Blue Water Bridge in Michigan found over 1,000lbs of marijuana concealed in trash bags in the rear of a garbage truck. More via @CBPGreatLakes: https://go.usa.gov/x7g3r https://t.co/nxTX3NCO1i",
+        "notable_text": "",
+        "reasons": [
+          "real enforcement/detainee subject signal",
+          "explicit cruelty, taunt, or threat signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "cruelty:surveillance-taunt: 👀 GARBAGE TRUCK SMUGGLING ATTEMPT Last Sunday night, CBP office",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 118,
+        "retweets": 36,
+        "quotes": 13,
+        "views": 0
+      },
+      "preference_score": 69,
+      "preference_categories": [
+        "cruelty:surveillance-taunt",
+        "subject:enforcement-linked"
       ]
     },
     {
