@@ -1,14 +1,14 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-08-11T23:56:09Z",
-    "source_commit": "08dab185",
+    "generated_at": "2026-08-12T03:19:55Z",
+    "source_commit": "180be07e",
     "item_count": 161,
     "blocker_counts": {
       "missing photo thumbnail": 149,
       "missing genuine visual description": 80,
-      "missing archived media asset": 7,
-      "missing photo OCR": 7,
+      "missing archived media asset": 6,
+      "missing photo OCR": 6,
       "missing complete OCR for extracted keyframes": 1
     }
   },
@@ -22167,6 +22167,132 @@
       ]
     },
     {
+      "id": "879685782470053888:3_879685778518941696",
+      "tweet_id": "879685782470053888",
+      "posted_at": "2017-06-27T13:00:08.000Z",
+      "era": "2016_2020",
+      "queue": "historical_2016_2020",
+      "account": {
+        "handle": "CBP",
+        "category": "core",
+        "label": "U.S. Customs and Border Protection"
+      },
+      "tweet_url": "https://x.com/CBP/status/879685782470053888",
+      "tweet_text": "Acting EAC Perez is testifying TODAY @11am before @HouseJudiciary on synthetic drug trafficking.  http://bit.ly/2tO3rOC https://t.co/bSMigG5fwi",
+      "review_state": "needs_review",
+      "inclusion_basis": "wholly_creative_media",
+      "confidence": "low",
+      "score": 90,
+      "creative_forms": [
+        "ai-or-synthetic"
+      ],
+      "subjects": [
+        "arrest-or-raid"
+      ],
+      "tags": [
+        "agency:CBP",
+        "crime:trafficking",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
+        "topic:immigration"
+      ],
+      "media": [
+        {
+          "media_id": "3_879685778518941696",
+          "type": "photo",
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP-0017/3_879685778518941696.jpg",
+          "original_url": null,
+          "thumbnail_url": null,
+          "sha256": "1c43757b29da6f795fa06e1b1a72146ec5c7cedc91ac6dd91afd504de568db30",
+          "duration_sec": null,
+          "playable": true,
+          "readiness": {
+            "ready": false,
+            "blockers": [
+              "missing genuine visual description",
+              "missing photo thumbnail"
+            ],
+            "checks": {
+              "archived": true,
+              "description": false,
+              "thumbnail": false,
+              "ocr": true
+            }
+          },
+          "analysis": {
+            "description": {
+              "source": "metadata-placeholder",
+              "text": "photo; 1267x1342; 0.22 MiB; archived; tweet context: Acting EAC Perez is testifying TODAY @11am before @HouseJudiciary on synthetic drug trafficking. http://bit.ly/2tO3rOC https://t.co/bSMigG5fwi; source URL: https://pbs.twimg.com/media/DDVFjgaVoAAoHJu.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-CBP-0017/3_879685778518941696.jpg; needs OCR, transcript, or frame-level vision before content claims. Acting EAC Perez is testifying TODAY @11am before @HouseJudiciary on synthetic drug trafficking. http://bit.ly/2tO3rOC https://t.co/bSMigG5fwi",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
+            },
+            "ocr": {
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "cUSTOMS O-2ER PROTERMo Ee C7, ae tO =~ ZN [ ‘4 4 q A ¥ P ¥ \\ \\ i A _\\ ae a ¥ , Wil KKK AE e, zy, Nee * KON WES TD » * > Ea os hg, 5 1 1 1 12 2 452 947 225 17 0.000000 peas 5 1 1 1 12 3 777 970 94 81 29.649170 NO 5 1 1 1 12 4 885 940 43 43 0.000000 y 4 1 1 1 13 0 347 1010 439 94 -1 5 1 1 1 13 1 347 1010 85 69 53.221745 {D 5 1 1 1 13 2 456 1013 330 91 46.007557 OpERATO"
+            },
+            "keyframes": {
+              "status": null,
+              "frame_count": 0
+            },
+            "audio": {
+              "status": null,
+              "audio_stream_count": 0,
+              "duration_sec": null,
+              "tags": []
+            },
+            "transcript": {
+              "status": null,
+              "segment_count": 0,
+              "text": ""
+            }
+          }
+        }
+      ],
+      "readiness": {
+        "ready": false,
+        "blockers": [
+          "missing genuine visual description",
+          "missing photo thumbnail"
+        ],
+        "media_count": 1
+      },
+      "evidence": {
+        "summary": "photo; 1267x1342; 0.22 MiB; archived; tweet context: Acting EAC Perez is testifying TODAY @11am before @HouseJudiciary on synthetic drug trafficking. http://bit.ly/2tO3rOC https://t.co/bSMigG5fwi; source URL: https://pbs.twimg.com/media/DDVFjgaVoAAoHJu.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-CBP-0017/3_879685778518941696.jpg; needs OCR, transcript, or frame-level vision before content claims. Acting EAC Perez is testifying TODAY @11am before @HouseJudiciary on synthetic drug trafficking. http://bit.ly/2tO3rOC https://t.co/bSMigG5fwi",
+        "notable_text": "",
+        "reasons": [
+          "wholly creative media signal",
+          "real enforcement/detainee subject signal",
+          "older-era candidate; annotations are thinner"
+        ],
+        "source_sidecars": [
+          "catalog.parquet",
+          "media_insights",
+          "tags"
+        ],
+        "preference_reasons": [
+          "aesthetic:ai-synthetic-propaganda: synthetic",
+          "enforcement/detainee subject plus preference signal"
+        ]
+      },
+      "engagement": {
+        "likes": 15,
+        "retweets": 10,
+        "quotes": 1,
+        "views": 0
+      },
+      "preference_score": 41,
+      "preference_categories": [
+        "aesthetic:ai-synthetic-propaganda",
+        "subject:enforcement-linked"
+      ]
+    },
+    {
       "id": "952682499716546561:3_952682497514467328",
       "tweet_id": "952682499716546561",
       "posted_at": "2018-01-14T23:23:02.000Z",
@@ -22752,123 +22878,6 @@
         "likes": 43,
         "retweets": 11,
         "quotes": 2,
-        "views": 0
-      },
-      "preference_score": 36,
-      "preference_categories": [
-        "aesthetic:ai-synthetic-propaganda"
-      ]
-    },
-    {
-      "id": "879685782470053888:3_879685778518941696",
-      "tweet_id": "879685782470053888",
-      "posted_at": "2017-06-27T13:00:08.000Z",
-      "era": "2016_2020",
-      "queue": "historical_2016_2020",
-      "account": {
-        "handle": "CBP",
-        "category": "core",
-        "label": "U.S. Customs and Border Protection"
-      },
-      "tweet_url": "https://x.com/CBP/status/879685782470053888",
-      "tweet_text": "Acting EAC Perez is testifying TODAY @11am before @HouseJudiciary on synthetic drug trafficking.  http://bit.ly/2tO3rOC https://t.co/bSMigG5fwi",
-      "review_state": "needs_review",
-      "inclusion_basis": "wholly_creative_media",
-      "confidence": "low",
-      "score": 90,
-      "creative_forms": [
-        "ai-or-synthetic"
-      ],
-      "subjects": [],
-      "tags": [
-        "crime:trafficking",
-        "media-status:needs-ocr",
-        "topic:immigration"
-      ],
-      "media": [
-        {
-          "media_id": "3_879685778518941696",
-          "type": "photo",
-          "archive_url": null,
-          "original_url": null,
-          "thumbnail_url": null,
-          "sha256": null,
-          "duration_sec": null,
-          "playable": false,
-          "readiness": {
-            "ready": false,
-            "blockers": [
-              "missing archived media asset",
-              "missing genuine visual description",
-              "missing photo OCR",
-              "missing photo thumbnail"
-            ],
-            "checks": {
-              "archived": false,
-              "description": false,
-              "thumbnail": false,
-              "ocr": false
-            }
-          },
-          "analysis": {
-            "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
-            },
-            "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
-            },
-            "keyframes": {
-              "status": null,
-              "frame_count": 0
-            },
-            "audio": {
-              "status": null,
-              "audio_stream_count": 0,
-              "duration_sec": null,
-              "tags": []
-            },
-            "transcript": {
-              "status": null,
-              "segment_count": 0,
-              "text": ""
-            }
-          }
-        }
-      ],
-      "readiness": {
-        "ready": false,
-        "blockers": [
-          "missing archived media asset",
-          "missing genuine visual description",
-          "missing photo OCR",
-          "missing photo thumbnail"
-        ],
-        "media_count": 1
-      },
-      "evidence": {
-        "summary": "",
-        "notable_text": "",
-        "reasons": [
-          "wholly creative media signal",
-          "older-era candidate; annotations are thinner"
-        ],
-        "source_sidecars": [
-          "catalog.parquet",
-          "media_insights",
-          "tags"
-        ],
-        "preference_reasons": [
-          "aesthetic:ai-synthetic-propaganda: synthetic"
-        ]
-      },
-      "engagement": {
-        "likes": 15,
-        "retweets": 10,
-        "quotes": 1,
         "views": 0
       },
       "preference_score": 36,
