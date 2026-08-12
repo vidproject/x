@@ -1,11 +1,11 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-08-12T21:27:08Z",
-    "source_commit": "637e7f11",
+    "generated_at": "2026-08-12T22:13:45Z",
+    "source_commit": "f5278d18",
     "item_count": 161,
     "blocker_counts": {
-      "missing photo thumbnail": 154,
+      "missing photo thumbnail": 149,
       "missing genuine visual description": 80,
       "missing archived media asset": 6,
       "missing photo OCR": 6,
@@ -4064,20 +4064,19 @@
           "type": "photo",
           "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP/3_2003519790070018048.jpg",
           "original_url": null,
-          "thumbnail_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/ecf105d53c3aceaf5ccb826fec546bf0dd19c3df710a6aa8a46c0bb4453554ad.jpg",
           "sha256": "ecf105d53c3aceaf5ccb826fec546bf0dd19c3df710a6aa8a46c0bb4453554ad",
           "duration_sec": null,
           "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing genuine visual description",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
               "archived": true,
               "description": false,
-              "thumbnail": false,
+              "thumbnail": true,
               "ocr": true
             }
           },
@@ -4117,8 +4116,7 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing genuine visual description",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
@@ -4194,20 +4192,19 @@
           "type": "photo",
           "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP/3_1993741792223629312.png",
           "original_url": null,
-          "thumbnail_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/945a1826afbd360411efaad1e145817c98fb23a10c20fee2587039f17ef56362.jpg",
           "sha256": "945a1826afbd360411efaad1e145817c98fb23a10c20fee2587039f17ef56362",
           "duration_sec": null,
           "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing genuine visual description",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
               "archived": true,
               "description": false,
-              "thumbnail": false,
+              "thumbnail": true,
               "ocr": true
             }
           },
@@ -4247,8 +4244,7 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing genuine visual description",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
@@ -4642,20 +4638,19 @@
           "type": "photo",
           "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP/3_2000201659008331778.png",
           "original_url": null,
-          "thumbnail_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/945a1826afbd360411efaad1e145817c98fb23a10c20fee2587039f17ef56362.jpg",
           "sha256": "945a1826afbd360411efaad1e145817c98fb23a10c20fee2587039f17ef56362",
           "duration_sec": null,
           "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing genuine visual description",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
               "archived": true,
               "description": false,
-              "thumbnail": false,
+              "thumbnail": true,
               "ocr": true
             }
           },
@@ -4695,8 +4690,7 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing genuine visual description",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
@@ -4771,20 +4765,19 @@
           "type": "photo",
           "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP/3_1991301758249787392.png",
           "original_url": null,
-          "thumbnail_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/945a1826afbd360411efaad1e145817c98fb23a10c20fee2587039f17ef56362.jpg",
           "sha256": "945a1826afbd360411efaad1e145817c98fb23a10c20fee2587039f17ef56362",
           "duration_sec": null,
           "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing genuine visual description",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
               "archived": true,
               "description": false,
-              "thumbnail": false,
+              "thumbnail": true,
               "ocr": true
             }
           },
@@ -4824,8 +4817,7 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing genuine visual description",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
@@ -4900,20 +4892,19 @@
           "type": "photo",
           "archive_url": "https://github.com/vidproject/x/releases/download/media-CBP/3_1991869576238297088.png",
           "original_url": null,
-          "thumbnail_url": null,
+          "thumbnail_url": "../data/thumbnails/photo/945a1826afbd360411efaad1e145817c98fb23a10c20fee2587039f17ef56362.jpg",
           "sha256": "945a1826afbd360411efaad1e145817c98fb23a10c20fee2587039f17ef56362",
           "duration_sec": null,
           "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing genuine visual description",
-              "missing photo thumbnail"
+              "missing genuine visual description"
             ],
             "checks": {
               "archived": true,
               "description": false,
-              "thumbnail": false,
+              "thumbnail": true,
               "ocr": true
             }
           },
@@ -4953,8 +4944,7 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing genuine visual description",
-          "missing photo thumbnail"
+          "missing genuine visual description"
         ],
         "media_count": 1
       },
