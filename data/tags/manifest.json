@@ -25,7 +25,7 @@
     "image_ocr": {
       "cache_hits": 1563,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-08-12T20:03:03Z",
+      "generated_at": "2026-08-12T21:11:21Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.3.4",
       "row_count": 59222,
@@ -37,21 +37,17 @@
       }
     },
     "keyframes": {
-      "attempted": 59,
-      "cache_hits": 151,
+      "cache_hits": 211,
       "cost_estimate_usd": 0.0,
-      "extracted": 59,
       "extractor_version": "ffmpeg-keyframes-v2",
       "frame_count": 56260,
-      "generated_at": "2026-08-12T20:00:26Z",
-      "intra_run_dedup": 1,
+      "generated_at": "2026-08-12T21:11:15Z",
       "row_count": 11344,
       "rows": 11344,
       "status_counts": {
         "fetch-failed": 187,
         "ok": 11157
-      },
-      "status_ok": 59
+      }
     },
     "lexical": {
       "generated_at": "2026-08-12T19:37:36Z",
