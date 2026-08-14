@@ -1,14 +1,14 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-08-14T20:16:25Z",
-    "source_commit": "36718e83",
+    "generated_at": "2026-08-14T21:22:29Z",
+    "source_commit": "40da6d9b",
     "item_count": 161,
     "blocker_counts": {
       "missing photo thumbnail": 149,
       "missing genuine visual description": 80,
-      "missing archived media asset": 6,
-      "missing photo OCR": 6,
+      "missing archived media asset": 5,
+      "missing photo OCR": 5,
       "missing complete OCR for extracted keyframes": 1
     }
   },
@@ -22671,44 +22671,49 @@
         "agency:ICEgov",
         "crime:trafficking",
         "legal:criminal-prosecution",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "topic:immigration"
       ],
       "media": [
         {
           "media_id": "3_1231966537466015744",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-ICEgov-0007/3_1231966537466015744.jpg",
           "original_url": null,
           "thumbnail_url": null,
-          "sha256": null,
+          "sha256": "84cca0733c15062c4b71c62d4d46ab4d7182cefe27c548fb9ab77c5891dd6adf",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
               "missing genuine visual description",
-              "missing photo OCR",
               "missing photo thumbnail"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
               "thumbnail": false,
-              "ocr": false
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 1200x630; 0.05 MiB; archived; tweet context: 8 South Texas residents sentenced for trafficking synthetic cannabinoids https://www.ice.gov/news/releases/8-south-texas-residents-sentenced-trafficking-synthetic-cannabinoids?utm_source=dlvr.it&utm_medium=twitter https://t.co/G3uUCSaHbo; source URL: https://pbs.twimg.com/media/ERjTCeDUcAA9dLt.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0007/3_1231966537466015744.jpg; needs OCR, transcript, or frame-level vision before content claims. 8 South Texas residents sentenced for trafficking synthetic cannabinoids https://www.ice.gov/news/releases/8-south-texas-residents-sentenced-trafficking-synthetic-cannabinoids?utm_source=dlvr.it&utm_medium=twitter https://t.co/G3uUCSaHbo",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": ": o> i 2 5KO 2 ONE I< ES AND st U.S. Immigration and Customs Enforcement"
             },
             "keyframes": {
               "status": null,
@@ -22731,15 +22736,13 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
           "missing genuine visual description",
-          "missing photo OCR",
           "missing photo thumbnail"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 1200x630; 0.05 MiB; archived; tweet context: 8 South Texas residents sentenced for trafficking synthetic cannabinoids https://www.ice.gov/news/releases/8-south-texas-residents-sentenced-trafficking-synthetic-cannabinoids?utm_source=dlvr.it&utm_medium=twitter https://t.co/G3uUCSaHbo; source URL: https://pbs.twimg.com/media/ERjTCeDUcAA9dLt.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0007/3_1231966537466015744.jpg; needs OCR, transcript, or frame-level vision before content claims. 8 South Texas residents sentenced for trafficking synthetic cannabinoids https://www.ice.gov/news/releases/8-south-texas-residents-sentenced-trafficking-synthetic-cannabinoids?utm_source=dlvr.it&utm_medium=twitter https://t.co/G3uUCSaHbo",
         "notable_text": "",
         "reasons": [
           "wholly creative media signal",
