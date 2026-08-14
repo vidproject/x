@@ -2,13 +2,11 @@
   "generated_at": "2026-08-14T14:04:05Z",
   "layers": {
     "audio_music": {
-      "analyzed": 25,
-      "attempted": 32,
-      "cache_hits": 12471,
+      "cache_hits": 211,
       "cost_estimate_usd": 0.0,
       "detector": "ffmpeg-audio-heuristic",
       "detector_version": "ffmpeg-audio-heuristic-v1",
-      "generated_at": "2026-08-14T14:01:43Z",
+      "generated_at": "2026-08-14T14:32:05Z",
       "row_count": 12706,
       "rows": 12706,
       "status_counts": {
@@ -18,10 +16,6 @@
         "silent-audio": 487,
         "video-too-large": 6
       },
-      "status_fetch-failed": 1,
-      "status_ok": 16,
-      "status_silent-audio": 9,
-      "status_video-too-large": 6,
       "tag_frequency": {
         "audio:has-audio": 11862,
         "audio:music-likely": 11,
@@ -30,45 +24,37 @@
       }
     },
     "image_ocr": {
-      "analyzed": 320,
-      "attempted": 320,
-      "cache_hits": 49940,
+      "cache_hits": 1563,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-08-14T13:58:35Z",
+      "generated_at": "2026-08-14T14:32:01Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.3.4",
       "row_count": 65078,
       "rows": 65078,
-      "skipped_max_items": 99,
       "status_counts": {
         "fetch-failed": 1,
         "no-text": 6126,
         "ok": 58951
-      },
-      "status_no-text": 3,
-      "status_ok": 317
+      }
     },
     "keyframes": {
-      "attempted": 37,
-      "cache_hits": 12465,
+      "attempted": 59,
+      "cache_hits": 151,
       "cost_estimate_usd": 0.0,
-      "extracted": 25,
+      "extracted": 59,
       "extractor_version": "ffmpeg-keyframes-v2",
-      "frame_count": 62741,
-      "generated_at": "2026-08-14T13:55:02Z",
+      "frame_count": 63231,
+      "generated_at": "2026-08-14T14:29:12Z",
       "intra_run_dedup": 1,
-      "row_count": 12503,
-      "rows": 12503,
+      "row_count": 12565,
+      "rows": 12565,
       "status_counts": {
         "extractor-error": 6,
         "fetch-failed": 1,
-        "ok": 12490,
+        "ok": 12552,
         "video-too-large": 6
       },
-      "status_extractor-error": 5,
-      "status_fetch-failed": 1,
-      "status_ok": 25,
-      "status_video-too-large": 6
+      "status_ok": 59
     },
     "lexical": {
       "generated_at": "2026-08-14T14:04:05Z",
@@ -738,29 +724,25 @@
       "web_tweets_scanned": 100
     },
     "photo_thumbnails": {
-      "attempted": 320,
-      "cache_hits": 532,
+      "attempted": 1,
       "cost_estimate_usd": 0.0,
-      "extracted": 320,
+      "extracted": 1,
       "extractor_version": "photo-thumbnail-v1",
-      "generated_at": "2026-08-14T13:56:43Z",
-      "row_count": 852,
-      "rows": 852,
-      "skipped_max_items": 48281,
+      "generated_at": "2026-08-14T14:31:58Z",
+      "row_count": 853,
+      "rows": 853,
       "status_counts": {
-        "ok": 852
+        "ok": 853
       },
-      "status_ok": 320,
-      "thumbnails": 852
+      "status_ok": 1,
+      "thumbnails": 853
     },
     "transcripts": {
-      "attempted": 40,
-      "cache_hits": 11200,
+      "cache_hits": 211,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-08-14T14:02:31Z",
+      "generated_at": "2026-08-14T14:32:09Z",
       "row_count": 11441,
       "rows": 11441,
-      "skipped_max_items": 1263,
       "status_counts": {
         "empty-transcript": 2286,
         "fetch-failed": 1,
@@ -768,12 +750,7 @@
         "ok": 8375,
         "video-too-large": 6
       },
-      "status_empty-transcript": 30,
-      "status_fetch-failed": 1,
-      "status_no-audio-stream": 1,
-      "status_ok": 5,
-      "status_video-too-large": 3,
-      "transcribed": 36,
+      "transcribed": 8375,
       "transcriber": "faster-whisper",
       "transcriber_version": "faster-whisper-v1"
     }
