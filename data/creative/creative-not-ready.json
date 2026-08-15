@@ -1,14 +1,14 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-08-15T11:42:28Z",
-    "source_commit": "91f59b53",
+    "generated_at": "2026-08-15T13:34:52Z",
+    "source_commit": "c9596bca",
     "item_count": 161,
     "blocker_counts": {
       "missing photo thumbnail": 149,
       "missing genuine visual description": 80,
-      "missing archived media asset": 5,
-      "missing photo OCR": 5,
+      "missing archived media asset": 3,
+      "missing photo OCR": 3,
       "missing complete OCR for extracted keyframes": 1
     }
   },
@@ -22433,44 +22433,49 @@
         "agency:ICEgov",
         "crime:narcotics",
         "legal:criminal-prosecution",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "topic:immigration"
       ],
       "media": [
         {
           "media_id": "3_1032409848825036800",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-ICEgov-0009/3_1032409848825036800.jpg",
           "original_url": null,
           "thumbnail_url": null,
-          "sha256": null,
+          "sha256": "358ae8f84a03132becdb8c05baa0a57b1832161cd6c40aa6c1154f7437b64350",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
               "missing genuine visual description",
-              "missing photo OCR",
               "missing photo thumbnail"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
               "thumbnail": false,
-              "ocr": false
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 1200x630; 0.05 MiB; archived; tweet context: Southeast Texas teen sentenced to 19 years in prison for drive-by shooting, conspiracy to distribute synthetic narcotics https://www.ice.gov/news/releases/southeast-texas-teen-sentenced-19-years-prison-drive-shooting-conspiracy-distribute?utm_source=dlvr.it&u...; source URL: https://pbs.twimg.com/media/DlPbSZ3UwAAieae.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0009/3_1032409848825036800.jpg; needs OCR, transcript, or frame-level vision before content claims. Southeast Texas teen sentenced to 19 years in prison for drive-by shooting, conspiracy to distribute synthetic narcotics https://www.ice.gov/news/releases/southeast-texas-teen-sentenced-19-years-prison-drive-shooting-conspiracy-distribute?utm_source=dlvr.it&utm_medium=twitter https://t.co/VYN6xpXUjS",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": ". ~< SZ i 2 5KO 2 ONE 7 /< ey LX <4np st U.S. Immigration and Customs Enforcement"
             },
             "keyframes": {
               "status": null,
@@ -22493,15 +22498,13 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
           "missing genuine visual description",
-          "missing photo OCR",
           "missing photo thumbnail"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 1200x630; 0.05 MiB; archived; tweet context: Southeast Texas teen sentenced to 19 years in prison for drive-by shooting, conspiracy to distribute synthetic narcotics https://www.ice.gov/news/releases/southeast-texas-teen-sentenced-19-years-prison-drive-shooting-conspiracy-distribute?utm_source=dlvr.it&u...; source URL: https://pbs.twimg.com/media/DlPbSZ3UwAAieae.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0009/3_1032409848825036800.jpg; needs OCR, transcript, or frame-level vision before content claims. Southeast Texas teen sentenced to 19 years in prison for drive-by shooting, conspiracy to distribute synthetic narcotics https://www.ice.gov/news/releases/southeast-texas-teen-sentenced-19-years-prison-drive-shooting-conspiracy-distribute?utm_source=dlvr.it&utm_medium=twitter https://t.co/VYN6xpXUjS",
         "notable_text": "",
         "reasons": [
           "wholly creative media signal",
@@ -22552,44 +22555,49 @@
         "agency:ICEgov",
         "crime:narcotics",
         "legal:criminal-prosecution",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "topic:immigration"
       ],
       "media": [
         {
           "media_id": "3_996756094876872704",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-ICEgov-0008/3_996756094876872704.jpg",
           "original_url": null,
           "thumbnail_url": null,
-          "sha256": null,
+          "sha256": "2056a4456c5fc2ab4fe836d6eab00227298720f03543708e92fb2e6a1c4be922",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
               "missing genuine visual description",
-              "missing photo OCR",
               "missing photo thumbnail"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
               "thumbnail": false,
-              "ocr": false
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 2111x1420; 0.10 MiB; archived; tweet context: Southeast Texas teen sentenced to 19 years in prison for drive-by shooting, conspiracy to distribute synthetic narcotics https://www.ice.gov/news/releases/southeast-texas-teen-sentenced-19-years-prison-drive-shooting-conspiracy-distribute https://t.co/0ZmgLYv...; source URL: https://pbs.twimg.com/media/DdUwYyLXcAAa7zb.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0008/3_996756094876872704.jpg; needs OCR, transcript, or frame-level vision before content claims. Southeast Texas teen sentenced to 19 years in prison for drive-by shooting, conspiracy to distribute synthetic narcotics https://www.ice.gov/news/releases/southeast-texas-teen-sentenced-19-years-prison-drive-shooting-conspiracy-distribute https://t.co/0ZmgLYvfqM",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "— ; : 4 = » s %\\ ’ <u i / ge"
             },
             "keyframes": {
               "status": null,
@@ -22612,15 +22620,13 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
           "missing genuine visual description",
-          "missing photo OCR",
           "missing photo thumbnail"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 2111x1420; 0.10 MiB; archived; tweet context: Southeast Texas teen sentenced to 19 years in prison for drive-by shooting, conspiracy to distribute synthetic narcotics https://www.ice.gov/news/releases/southeast-texas-teen-sentenced-19-years-prison-drive-shooting-conspiracy-distribute https://t.co/0ZmgLYv...; source URL: https://pbs.twimg.com/media/DdUwYyLXcAAa7zb.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0008/3_996756094876872704.jpg; needs OCR, transcript, or frame-level vision before content claims. Southeast Texas teen sentenced to 19 years in prison for drive-by shooting, conspiracy to distribute synthetic narcotics https://www.ice.gov/news/releases/southeast-texas-teen-sentenced-19-years-prison-drive-shooting-conspiracy-distribute https://t.co/0ZmgLYvfqM",
         "notable_text": "",
         "reasons": [
           "wholly creative media signal",
