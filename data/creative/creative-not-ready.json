@@ -1,14 +1,14 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-08-15T19:55:38Z",
-    "source_commit": "4fc47423",
+    "generated_at": "2026-08-15T21:16:50Z",
+    "source_commit": "053d895d",
     "item_count": 161,
     "blocker_counts": {
       "missing photo thumbnail": 149,
       "missing genuine visual description": 80,
-      "missing archived media asset": 3,
-      "missing photo OCR": 3,
+      "missing archived media asset": 2,
+      "missing photo OCR": 2,
       "missing complete OCR for extracted keyframes": 1
     }
   },
@@ -22800,44 +22800,49 @@
         "crime:firearm",
         "crime:narcotics",
         "legal:criminal-prosecution",
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "topic:immigration"
       ],
       "media": [
         {
           "media_id": "3_954024458452459521",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-ICEgov-0009/3_954024458452459521.jpg",
           "original_url": null,
           "thumbnail_url": null,
-          "sha256": null,
+          "sha256": "794317eb1c1ddf4aecf4d94218207a9026af4b6df5e24530d47cc659f56025a4",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
               "missing genuine visual description",
-              "missing photo OCR",
               "missing photo thumbnail"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
               "thumbnail": false,
-              "ocr": false
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 2008x1493; 0.18 MiB; archived; tweet context: 5 South Texas men sentenced to 11½ to 35 years in federal prison following their conviction on synthetic narcotics, firearms charges https://www.ice.gov/news/releases/5-south-texas-men-sentenced-11%C2%BD-35-years-federal-prison-following-their-conviction http...; source URL: https://pbs.twimg.com/media/DT1gMLkX4AEzS1s.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0009/3_954024458452459521.jpg; needs OCR, transcript, or frame-level vision before content claims. 5 South Texas men sentenced to 11½ to 35 years in federal prison following their conviction on synthetic narcotics, firearms charges https://www.ice.gov/news/releases/5-south-texas-men-sentenced-11%C2%BD-35-years-federal-prison-following-their-conviction https://t.co/7YNkj2SQUt",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "TMT ne vee Maly eal 4 aa"
             },
             "keyframes": {
               "status": null,
@@ -22860,15 +22865,13 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
           "missing genuine visual description",
-          "missing photo OCR",
           "missing photo thumbnail"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 2008x1493; 0.18 MiB; archived; tweet context: 5 South Texas men sentenced to 11½ to 35 years in federal prison following their conviction on synthetic narcotics, firearms charges https://www.ice.gov/news/releases/5-south-texas-men-sentenced-11%C2%BD-35-years-federal-prison-following-their-conviction http...; source URL: https://pbs.twimg.com/media/DT1gMLkX4AEzS1s.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-ICEgov-0009/3_954024458452459521.jpg; needs OCR, transcript, or frame-level vision before content claims. 5 South Texas men sentenced to 11½ to 35 years in federal prison following their conviction on synthetic narcotics, firearms charges https://www.ice.gov/news/releases/5-south-texas-men-sentenced-11%C2%BD-35-years-federal-prison-following-their-conviction https://t.co/7YNkj2SQUt",
         "notable_text": "",
         "reasons": [
           "wholly creative media signal",
