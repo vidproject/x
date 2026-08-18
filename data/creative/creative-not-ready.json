@@ -1,15 +1,13 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-08-18T08:12:06Z",
-    "source_commit": "5d90b93b",
+    "generated_at": "2026-08-18T09:29:54Z",
+    "source_commit": "955b2f3b",
     "item_count": 161,
     "blocker_counts": {
       "missing photo thumbnail": 149,
       "missing genuine visual description": 80,
-      "missing complete OCR for extracted keyframes": 1,
-      "missing archived media asset": 1,
-      "missing photo OCR": 1
+      "missing complete OCR for extracted keyframes": 1
     }
   },
   "items": [
@@ -22319,44 +22317,49 @@
       ],
       "subjects": [],
       "tags": [
-        "media-status:needs-ocr",
+        "media-status:archived",
+        "media-status:needs-vision",
+        "media-status:ocr-done",
+        "media:photo",
         "topic:immigration"
       ],
       "media": [
         {
           "media_id": "3_952682497514467328",
           "type": "photo",
-          "archive_url": null,
+          "archive_url": "https://github.com/vidproject/x/releases/download/media-WhiteHouse45-0009/3_952682497514467328.jpg",
           "original_url": null,
           "thumbnail_url": null,
-          "sha256": null,
+          "sha256": "e0c1020f35b7c18537a762c15bd9de0fe96438a5e4ad4be4c9c281d1345c97d9",
           "duration_sec": null,
-          "playable": false,
+          "playable": true,
           "readiness": {
             "ready": false,
             "blockers": [
-              "missing archived media asset",
               "missing genuine visual description",
-              "missing photo OCR",
               "missing photo thumbnail"
             ],
             "checks": {
-              "archived": false,
+              "archived": true,
               "description": false,
               "thumbnail": false,
-              "ocr": false
+              "ocr": true
             }
           },
           "analysis": {
             "description": {
-              "source": "missing",
-              "text": "",
-              "sidecar_statuses": {}
+              "source": "metadata-placeholder",
+              "text": "photo; 1024x512; 0.09 MiB; archived; tweet context: By signing the INTERDICT Act, President Trump will be taking an aggressive step to prevent the flow of synthetic opioid drugs that hollow out our communities. More: http://45.wh.gov/r3caVT https://t.co/KleD3I1aAQ; source URL: https://pbs.twimg.com/media/DTibrxgU8AAwPGM.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse45-0009/3_952682497514467328.jpg; needs OCR, transcript, or frame-level vision before content claims. By signing the INTERDICT Act, President Trump will be taking an aggressive step to prevent the flow of synthetic opioid drugs that hollow out our communities. More: http://45.wh.gov/r3caVT https://t.co/KleD3I1aAQ",
+              "sidecar_statuses": {
+                "metadata-context": 1
+              }
             },
             "ocr": {
-              "status_counts": {},
-              "complete_row_count": 0,
-              "text": ""
+              "status_counts": {
+                "ok": 1
+              },
+              "complete_row_count": 1,
+              "text": "PEPPPPPPEPEEEEEE EEE EEEEEEEEEEEEE EEE PPPPEPPEPEEEEPE PEEP EREEEEE EEE CEEE PEEEEPEPPPEEP EEE EE EEEEE EEE TEPER EEE FREPPEPEPPEEEEEEEEEEEETEEEEE ERE E EE PEPEEEPPEPEEEEEEEEEEEEEEEE TEEPE EEE 175 AMERICANS DIED FROM A DRUG OVERDOSE PER DAY"
             },
             "keyframes": {
               "status": null,
@@ -22379,15 +22382,13 @@
       "readiness": {
         "ready": false,
         "blockers": [
-          "missing archived media asset",
           "missing genuine visual description",
-          "missing photo OCR",
           "missing photo thumbnail"
         ],
         "media_count": 1
       },
       "evidence": {
-        "summary": "",
+        "summary": "photo; 1024x512; 0.09 MiB; archived; tweet context: By signing the INTERDICT Act, President Trump will be taking an aggressive step to prevent the flow of synthetic opioid drugs that hollow out our communities. More: http://45.wh.gov/r3caVT https://t.co/KleD3I1aAQ; source URL: https://pbs.twimg.com/media/DTibrxgU8AAwPGM.jpg; archive URL: https://github.com/vidproject/x/releases/download/media-WhiteHouse45-0009/3_952682497514467328.jpg; needs OCR, transcript, or frame-level vision before content claims. By signing the INTERDICT Act, President Trump will be taking an aggressive step to prevent the flow of synthetic opioid drugs that hollow out our communities. More: http://45.wh.gov/r3caVT https://t.co/KleD3I1aAQ",
         "notable_text": "",
         "reasons": [
           "wholly creative media signal",
