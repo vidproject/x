@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T15:44:01Z",
+  "generated_at": "2026-08-20T17:39:16Z",
   "schema_version": 1,
   "accounts": [
     {
@@ -641,7 +641,7 @@
       "label": "Biden White House Archive (46th Administration)",
       "category": "core",
       "parquet": "data/WhiteHouse46.parquet",
-      "parquet_bytes": 2582390,
+      "parquet_bytes": 2593841,
       "row_count": 9706,
       "post_count": 8312,
       "reply_count": 1394,
@@ -3113,7 +3113,7 @@
       "label": "Miscellaneous (replies / quotes / retweets of non-tracked accounts)",
       "category": "public",
       "parquet": "data/_misc.parquet",
-      "parquet_bytes": 3812341,
+      "parquet_bytes": 3814995,
       "row_count": 9765,
       "post_count": 5487,
       "reply_count": 4278,
