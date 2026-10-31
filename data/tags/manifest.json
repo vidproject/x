@@ -1,12 +1,13 @@
 {
-  "generated_at": "2026-10-30T20:01:03Z",
+  "generated_at": "2026-10-31T00:06:32Z",
   "layers": {
     "audio_music": {
-      "cache_hits": 211,
+      "attempted": 7,
+      "cache_hits": 17505,
       "cost_estimate_usd": 0.0,
       "detector": "ffmpeg-audio-heuristic",
       "detector_version": "ffmpeg-audio-heuristic-v1",
-      "generated_at": "2026-10-30T20:00:41Z",
+      "generated_at": "2026-10-31T00:04:39Z",
       "row_count": 17715,
       "rows": 17715,
       "status_counts": {
@@ -16,6 +17,8 @@
         "silent-audio": 740,
         "video-too-large": 6
       },
+      "status_fetch-failed": 1,
+      "status_video-too-large": 6,
       "tag_frequency": {
         "audio:has-audio": 16685,
         "audio:music-likely": 12,
@@ -24,45 +27,47 @@
       }
     },
     "image_ocr": {
-      "analyzed": 240,
-      "attempted": 240,
+      "analyzed": 320,
+      "attempted": 320,
+      "cache_hits": 480,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-10-30T20:00:00Z",
+      "generated_at": "2026-10-31T00:02:01Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.5.0",
-      "preserved_after_max_items": 843,
+      "preserved_after_max_items": 65503,
       "row_count": 86771,
       "rows": 86771,
-      "skipped_max_items": 1323,
+      "skipped_max_items": 65503,
       "status_counts": {
         "fetch-failed": 1,
-        "no-text": 6418,
-        "ok": 80352
+        "no-text": 6442,
+        "ok": 80328
       },
-      "status_no-text": 37,
-      "status_ok": 203
+      "status_no-text": 32,
+      "status_ok": 288
     },
     "keyframes": {
-      "attempted": 59,
-      "cache_hits": 151,
+      "attempted": 13,
+      "cache_hits": 17498,
       "cost_estimate_usd": 0.0,
-      "extracted": 59,
       "extractor_version": "ffmpeg-keyframes-v2",
-      "frame_count": 88258,
-      "generated_at": "2026-10-30T19:57:31Z",
+      "frame_count": 87768,
+      "generated_at": "2026-10-30T23:58:40Z",
       "intra_run_dedup": 1,
-      "row_count": 17574,
-      "rows": 17574,
+      "row_count": 17512,
+      "rows": 17512,
       "status_counts": {
         "fetch-failed": 1,
         "ffmpeg-failed": 7,
-        "ok": 17560,
+        "ok": 17498,
         "video-too-large": 6
       },
-      "status_ok": 59
+      "status_fetch-failed": 1,
+      "status_ffmpeg-failed": 6,
+      "status_video-too-large": 6
     },
     "lexical": {
-      "generated_at": "2026-10-30T20:01:03Z",
+      "generated_at": "2026-10-31T00:06:32Z",
       "parquets_scanned": {
         "AGPamBondi.parquet": 19,
         "ATFHQ.parquet": 3,
@@ -386,13 +391,13 @@
         "crime:weapon": 6794,
         "event:los-angeles-disturbance": 109,
         "event:minneapolis-disturbance": 62,
-        "event:palestine": 402,
+        "event:palestine": 401,
         "event:portland-disturbance": 72,
         "format:quote": 8104,
         "format:reply": 14809,
         "format:retweet": 4034,
         "format:statistics": 2050,
-        "genre:advertisement": 4211,
+        "genre:advertisement": 4205,
         "genre:dystopian": 29,
         "genre:lineup": 947,
         "genre:music-video": 126,
@@ -408,7 +413,7 @@
         "media-status:described": 14607,
         "media-status:graphic-content": 6,
         "media-status:has-alt-text": 11792,
-        "media-status:needs-ocr": 2045,
+        "media-status:needs-ocr": 2059,
         "media-status:needs-vision": 54357,
         "media:ai-generated": 28,
         "media:animated-gif": 381,
@@ -417,7 +422,7 @@
         "military:air-force": 1916,
         "military:army": 3662,
         "military:coast-guard": 17078,
-        "military:marines": 2306,
+        "military:marines": 2305,
         "military:national-guard": 980,
         "military:navy": 4333,
         "military:space-force": 188,
@@ -623,7 +628,7 @@
         "theme:martyrdom": 1431,
         "theme:nativism": 237,
         "theme:pop-culture-reference": 59,
-        "theme:religion": 3055,
+        "theme:religion": 3054,
         "theme:transgender": 171,
         "topic:economy": 15980,
         "topic:general": 5332,
@@ -649,7 +654,7 @@
     "media_vision": {
       "cache_hits": 82716,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-10-30T19:34:10Z",
+      "generated_at": "2026-10-30T23:58:24Z",
       "model": "metadata",
       "model_version": "media-metadata-v4",
       "prompt_hash": "b18b19292ec51484",
@@ -730,23 +735,26 @@
       "web_tweets_scanned": 100
     },
     "photo_thumbnails": {
-      "attempted": 1,
+      "attempted": 320,
+      "cache_hits": 532,
       "cost_estimate_usd": 0.0,
-      "extracted": 1,
+      "extracted": 320,
       "extractor_version": "photo-thumbnail-v1",
-      "generated_at": "2026-10-30T19:59:56Z",
-      "row_count": 853,
-      "rows": 853,
+      "generated_at": "2026-10-31T00:00:17Z",
+      "row_count": 852,
+      "rows": 852,
+      "skipped_max_items": 64350,
       "status_counts": {
-        "ok": 853
+        "ok": 852
       },
-      "status_ok": 1,
-      "thumbnails": 853
+      "status_ok": 320,
+      "thumbnails": 852
     },
     "transcripts": {
-      "cache_hits": 211,
+      "attempted": 7,
+      "cache_hits": 17505,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-10-30T20:00:45Z",
+      "generated_at": "2026-10-31T00:05:41Z",
       "row_count": 17710,
       "rows": 17710,
       "status_counts": {
@@ -756,6 +764,8 @@
         "ok": 13417,
         "video-too-large": 6
       },
+      "status_fetch-failed": 1,
+      "status_video-too-large": 6,
       "transcribed": 13417,
       "transcriber": "faster-whisper",
       "transcriber_version": "faster-whisper-v1"
@@ -1084,13 +1094,13 @@
     "crime:weapon": 6794,
     "event:los-angeles-disturbance": 109,
     "event:minneapolis-disturbance": 62,
-    "event:palestine": 402,
+    "event:palestine": 401,
     "event:portland-disturbance": 72,
     "format:quote": 8104,
     "format:reply": 14809,
     "format:retweet": 4034,
     "format:statistics": 2050,
-    "genre:advertisement": 4211,
+    "genre:advertisement": 4205,
     "genre:dystopian": 29,
     "genre:lineup": 947,
     "genre:music-video": 126,
@@ -1106,7 +1116,7 @@
     "media-status:described": 14607,
     "media-status:graphic-content": 6,
     "media-status:has-alt-text": 11792,
-    "media-status:needs-ocr": 2045,
+    "media-status:needs-ocr": 2059,
     "media-status:needs-vision": 54357,
     "media:ai-generated": 28,
     "media:animated-gif": 381,
@@ -1115,7 +1125,7 @@
     "military:air-force": 1916,
     "military:army": 3662,
     "military:coast-guard": 17078,
-    "military:marines": 2306,
+    "military:marines": 2305,
     "military:national-guard": 980,
     "military:navy": 4333,
     "military:space-force": 188,
@@ -1321,7 +1331,7 @@
     "theme:martyrdom": 1431,
     "theme:nativism": 237,
     "theme:pop-culture-reference": 59,
-    "theme:religion": 3055,
+    "theme:religion": 3054,
     "theme:transgender": 171,
     "topic:economy": 15980,
     "topic:general": 5332,
