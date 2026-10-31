@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T18:47:29Z",
+  "generated_at": "2026-10-31T23:33:31Z",
   "layers": {
     "audio_music": {
       "cache_hits": 211,
@@ -26,32 +26,29 @@
     "image_ocr": {
       "analyzed": 240,
       "attempted": 240,
-      "cache_hits": 636,
+      "cache_hits": 837,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-10-31T19:18:27Z",
+      "generated_at": "2026-10-31T23:32:36Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.5.0",
-      "preserved_after_max_items": 207,
-      "row_count": 86771,
-      "rows": 86771,
-      "skipped_max_items": 687,
+      "preserved_after_max_items": 10,
+      "row_count": 86775,
+      "rows": 86775,
+      "skipped_max_items": 486,
       "status_counts": {
         "fetch-failed": 1,
-        "no-text": 6571,
-        "ok": 80199
+        "no-text": 6592,
+        "ok": 80182
       },
-      "status_no-text": 44,
-      "status_ok": 196
+      "status_no-text": 32,
+      "status_ok": 208
     },
     "keyframes": {
-      "attempted": 59,
-      "cache_hits": 151,
+      "cache_hits": 211,
       "cost_estimate_usd": 0.0,
-      "extracted": 59,
       "extractor_version": "ffmpeg-keyframes-v2",
       "frame_count": 88258,
-      "generated_at": "2026-10-31T19:16:11Z",
-      "intra_run_dedup": 1,
+      "generated_at": "2026-10-31T23:32:30Z",
       "row_count": 17574,
       "rows": 17574,
       "status_counts": {
@@ -59,11 +56,10 @@
         "ffmpeg-failed": 7,
         "ok": 17560,
         "video-too-large": 6
-      },
-      "status_ok": 59
+      }
     },
     "lexical": {
-      "generated_at": "2026-10-31T18:47:29Z",
+      "generated_at": "2026-10-31T23:33:31Z",
       "parquets_scanned": {
         "AGPamBondi.parquet": 19,
         "ATFHQ.parquet": 3,
@@ -156,7 +152,7 @@
         "agency:FLETC": 741,
         "agency:HHSGov": 534,
         "agency:HSI_HQ": 740,
-        "agency:ICEgov": 93290,
+        "agency:ICEgov": 93291,
         "agency:IPRCenter": 147,
         "agency:NSAGov": 71,
         "agency:ODNIgov": 56,
@@ -393,7 +389,7 @@
         "format:reply": 14809,
         "format:retweet": 4034,
         "format:statistics": 2050,
-        "genre:advertisement": 4175,
+        "genre:advertisement": 4173,
         "genre:dystopian": 29,
         "genre:lineup": 947,
         "genre:music-video": 126,
@@ -421,7 +417,7 @@
         "military:marines": 2305,
         "military:national-guard": 980,
         "military:navy": 4333,
-        "military:space-force": 188,
+        "military:space-force": 187,
         "origin:Afghanistan": 137,
         "origin:Angola": 7,
         "origin:Argentina": 31,
@@ -854,7 +850,7 @@
     "agency:FLETC": 741,
     "agency:HHSGov": 534,
     "agency:HSI_HQ": 740,
-    "agency:ICEgov": 93290,
+    "agency:ICEgov": 93291,
     "agency:IPRCenter": 147,
     "agency:NSAGov": 71,
     "agency:ODNIgov": 56,
@@ -1091,7 +1087,7 @@
     "format:reply": 14809,
     "format:retweet": 4034,
     "format:statistics": 2050,
-    "genre:advertisement": 4175,
+    "genre:advertisement": 4173,
     "genre:dystopian": 29,
     "genre:lineup": 947,
     "genre:music-video": 126,
@@ -1119,7 +1115,7 @@
     "military:marines": 2305,
     "military:national-guard": 980,
     "military:navy": 4333,
-    "military:space-force": 188,
+    "military:space-force": 187,
     "origin:Afghanistan": 137,
     "origin:Angola": 7,
     "origin:Argentina": 31,
