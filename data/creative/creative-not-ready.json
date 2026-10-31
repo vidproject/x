@@ -1,8 +1,8 @@
 {
   "metadata": {
     "queue": "not_ready",
-    "generated_at": "2026-10-31T13:44:38Z",
-    "source_commit": "6d9e1a7b",
+    "generated_at": "2026-10-31T19:12:07Z",
+    "source_commit": "7fc30ee0",
     "item_count": 161,
     "blocker_counts": {
       "missing photo thumbnail": 149,
@@ -17216,6 +17216,7 @@
         "crime:narcotics",
         "media-status:archived",
         "media-status:described",
+        "media-status:needs-ocr",
         "media-status:ocr-done",
         "media:photo",
         "review:screened-photo",
@@ -17253,10 +17254,10 @@
             },
             "ocr": {
               "status_counts": {
-                "ok": 1
+                "no-text": 1
               },
               "complete_row_count": 1,
-              "text": ". an"
+              "text": ""
             },
             "keyframes": {
               "status": null,
