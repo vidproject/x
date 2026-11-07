@@ -1,12 +1,13 @@
 {
-  "generated_at": "2026-11-06T22:19:44Z",
+  "generated_at": "2026-11-07T02:11:31Z",
   "layers": {
     "audio_music": {
-      "cache_hits": 211,
+      "attempted": 7,
+      "cache_hits": 17505,
       "cost_estimate_usd": 0.0,
       "detector": "ffmpeg-audio-heuristic",
       "detector_version": "ffmpeg-audio-heuristic-v1",
-      "generated_at": "2026-11-06T22:43:19Z",
+      "generated_at": "2026-11-07T02:10:01Z",
       "row_count": 17715,
       "rows": 17715,
       "status_counts": {
@@ -16,6 +17,8 @@
         "silent-audio": 740,
         "video-too-large": 6
       },
+      "status_fetch-failed": 1,
+      "status_video-too-large": 6,
       "tag_frequency": {
         "audio:has-audio": 16685,
         "audio:music-likely": 12,
@@ -24,44 +27,47 @@
       }
     },
     "image_ocr": {
-      "analyzed": 21,
-      "attempted": 21,
-      "cache_hits": 1542,
+      "analyzed": 320,
+      "attempted": 320,
+      "cache_hits": 8732,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-11-06T22:43:13Z",
+      "generated_at": "2026-11-07T02:07:13Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.5.0",
+      "preserved_after_max_items": 57251,
       "row_count": 87251,
       "rows": 87251,
+      "skipped_max_items": 57251,
       "status_counts": {
         "fetch-failed": 1,
-        "no-text": 7037,
-        "ok": 80213
+        "no-text": 7066,
+        "ok": 80184
       },
-      "status_no-text": 5,
-      "status_ok": 16
+      "status_no-text": 31,
+      "status_ok": 289
     },
     "keyframes": {
-      "attempted": 59,
-      "cache_hits": 151,
+      "attempted": 13,
+      "cache_hits": 17498,
       "cost_estimate_usd": 0.0,
-      "extracted": 59,
       "extractor_version": "ffmpeg-keyframes-v2",
-      "frame_count": 88258,
-      "generated_at": "2026-11-06T22:40:56Z",
+      "frame_count": 87768,
+      "generated_at": "2026-11-07T02:04:33Z",
       "intra_run_dedup": 1,
-      "row_count": 17574,
-      "rows": 17574,
+      "row_count": 17512,
+      "rows": 17512,
       "status_counts": {
         "fetch-failed": 1,
         "ffmpeg-failed": 7,
-        "ok": 17560,
+        "ok": 17498,
         "video-too-large": 6
       },
-      "status_ok": 59
+      "status_fetch-failed": 1,
+      "status_ffmpeg-failed": 6,
+      "status_video-too-large": 6
     },
     "lexical": {
-      "generated_at": "2026-11-06T22:19:44Z",
+      "generated_at": "2026-11-07T02:11:31Z",
       "parquets_scanned": {
         "AGPamBondi.parquet": 19,
         "ATFHQ.parquet": 3,
@@ -154,7 +160,7 @@
         "agency:FLETC": 741,
         "agency:HHSGov": 534,
         "agency:HSI_HQ": 740,
-        "agency:ICEgov": 93280,
+        "agency:ICEgov": 93278,
         "agency:IPRCenter": 147,
         "agency:NSAGov": 63,
         "agency:ODNIgov": 56,
@@ -391,7 +397,7 @@
         "format:reply": 14809,
         "format:retweet": 4034,
         "format:statistics": 2051,
-        "genre:advertisement": 4047,
+        "genre:advertisement": 4034,
         "genre:dystopian": 29,
         "genre:lineup": 947,
         "genre:music-video": 126,
@@ -407,7 +413,7 @@
         "media-status:described": 14607,
         "media-status:graphic-content": 6,
         "media-status:has-alt-text": 11792,
-        "media-status:needs-ocr": 2337,
+        "media-status:needs-ocr": 2350,
         "media-status:needs-vision": 54357,
         "media:ai-generated": 28,
         "media:animated-gif": 381,
@@ -648,7 +654,7 @@
     "media_vision": {
       "cache_hits": 82716,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-11-06T22:12:21Z",
+      "generated_at": "2026-11-07T02:04:17Z",
       "model": "metadata",
       "model_version": "media-metadata-v4",
       "prompt_hash": "b18b19292ec51484",
@@ -729,23 +735,26 @@
       "web_tweets_scanned": 100
     },
     "photo_thumbnails": {
-      "attempted": 1,
+      "attempted": 320,
+      "cache_hits": 532,
       "cost_estimate_usd": 0.0,
-      "extracted": 1,
+      "extracted": 320,
       "extractor_version": "photo-thumbnail-v1",
-      "generated_at": "2026-11-06T22:43:09Z",
-      "row_count": 853,
-      "rows": 853,
+      "generated_at": "2026-11-07T02:05:33Z",
+      "row_count": 852,
+      "rows": 852,
+      "skipped_max_items": 64350,
       "status_counts": {
-        "ok": 853
+        "ok": 852
       },
-      "status_ok": 1,
-      "thumbnails": 853
+      "status_ok": 320,
+      "thumbnails": 852
     },
     "transcripts": {
-      "cache_hits": 211,
+      "attempted": 7,
+      "cache_hits": 17505,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-11-06T22:43:26Z",
+      "generated_at": "2026-11-07T02:10:42Z",
       "row_count": 17710,
       "rows": 17710,
       "status_counts": {
@@ -755,6 +764,8 @@
         "ok": 13417,
         "video-too-large": 6
       },
+      "status_fetch-failed": 1,
+      "status_video-too-large": 6,
       "transcribed": 13417,
       "transcriber": "faster-whisper",
       "transcriber_version": "faster-whisper-v1"
@@ -852,7 +863,7 @@
     "agency:FLETC": 741,
     "agency:HHSGov": 534,
     "agency:HSI_HQ": 740,
-    "agency:ICEgov": 93280,
+    "agency:ICEgov": 93278,
     "agency:IPRCenter": 147,
     "agency:NSAGov": 63,
     "agency:ODNIgov": 56,
@@ -1089,7 +1100,7 @@
     "format:reply": 14809,
     "format:retweet": 4034,
     "format:statistics": 2051,
-    "genre:advertisement": 4047,
+    "genre:advertisement": 4034,
     "genre:dystopian": 29,
     "genre:lineup": 947,
     "genre:music-video": 126,
@@ -1105,7 +1116,7 @@
     "media-status:described": 14607,
     "media-status:graphic-content": 6,
     "media-status:has-alt-text": 11792,
-    "media-status:needs-ocr": 2337,
+    "media-status:needs-ocr": 2350,
     "media-status:needs-vision": 54357,
     "media:ai-generated": 28,
     "media:animated-gif": 381,
