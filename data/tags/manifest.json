@@ -28,7 +28,7 @@
       "attempted": 21,
       "cache_hits": 1542,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-11-12T19:05:46Z",
+      "generated_at": "2026-11-12T23:46:29Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.5.0",
       "row_count": 87251,
@@ -42,14 +42,11 @@
       "status_ok": 16
     },
     "keyframes": {
-      "attempted": 59,
-      "cache_hits": 151,
+      "cache_hits": 211,
       "cost_estimate_usd": 0.0,
-      "extracted": 59,
       "extractor_version": "ffmpeg-keyframes-v2",
       "frame_count": 88258,
-      "generated_at": "2026-11-12T19:04:11Z",
-      "intra_run_dedup": 1,
+      "generated_at": "2026-11-12T23:46:22Z",
       "row_count": 17574,
       "rows": 17574,
       "status_counts": {
@@ -57,8 +54,7 @@
         "ffmpeg-failed": 7,
         "ok": 17560,
         "video-too-large": 6
-      },
-      "status_ok": 59
+      }
     },
     "lexical": {
       "generated_at": "2026-11-12T18:39:10Z",
