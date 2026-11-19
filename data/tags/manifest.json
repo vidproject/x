@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T00:44:47Z",
+  "generated_at": "2026-11-19T10:43:11Z",
   "layers": {
     "audio_music": {
       "attempted": 7,
@@ -29,22 +29,22 @@
     "image_ocr": {
       "analyzed": 320,
       "attempted": 320,
-      "cache_hits": 19612,
+      "cache_hits": 19932,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-11-19T00:41:23Z",
+      "generated_at": "2026-11-19T10:38:32Z",
       "ocr_engine": "tesseract",
       "ocr_version": "tesseract 5.5.0",
-      "preserved_after_max_items": 46371,
+      "preserved_after_max_items": 46051,
       "row_count": 87251,
       "rows": 87251,
-      "skipped_max_items": 46371,
+      "skipped_max_items": 46051,
       "status_counts": {
         "fetch-failed": 1,
-        "no-text": 7732,
-        "ok": 79518
+        "no-text": 7747,
+        "ok": 79503
       },
-      "status_no-text": 32,
-      "status_ok": 288
+      "status_no-text": 26,
+      "status_ok": 294
     },
     "keyframes": {
       "attempted": 13,
@@ -52,7 +52,7 @@
       "cost_estimate_usd": 0.0,
       "extractor_version": "ffmpeg-keyframes-v2",
       "frame_count": 87768,
-      "generated_at": "2026-11-19T00:39:11Z",
+      "generated_at": "2026-11-19T10:34:43Z",
       "intra_run_dedup": 1,
       "row_count": 17512,
       "rows": 17512,
@@ -67,7 +67,7 @@
       "status_video-too-large": 6
     },
     "lexical": {
-      "generated_at": "2026-11-19T00:44:47Z",
+      "generated_at": "2026-11-19T10:43:11Z",
       "parquets_scanned": {
         "AGPamBondi.parquet": 19,
         "ATFHQ.parquet": 3,
@@ -397,7 +397,7 @@
         "format:reply": 14809,
         "format:retweet": 4034,
         "format:statistics": 2047,
-        "genre:advertisement": 3807,
+        "genre:advertisement": 3804,
         "genre:dystopian": 29,
         "genre:lineup": 947,
         "genre:music-video": 126,
@@ -413,7 +413,7 @@
         "media-status:described": 14607,
         "media-status:graphic-content": 6,
         "media-status:has-alt-text": 11792,
-        "media-status:needs-ocr": 2719,
+        "media-status:needs-ocr": 2730,
         "media-status:needs-vision": 54357,
         "media:ai-generated": 28,
         "media:animated-gif": 381,
@@ -643,7 +643,7 @@
         "video:medium": 11138,
         "video:montage": 4,
         "video:news-clip": 779,
-        "video:produced": 2675,
+        "video:produced": 2674,
         "video:short": 5306,
         "video:speech": 912,
         "video:text-overlay": 117,
@@ -654,7 +654,7 @@
     "media_vision": {
       "cache_hits": 82716,
       "cost_estimate_usd": 0.0,
-      "generated_at": "2026-11-19T00:38:53Z",
+      "generated_at": "2026-11-19T10:34:22Z",
       "model": "metadata",
       "model_version": "media-metadata-v4",
       "prompt_hash": "b18b19292ec51484",
@@ -1100,7 +1100,7 @@
     "format:reply": 14809,
     "format:retweet": 4034,
     "format:statistics": 2047,
-    "genre:advertisement": 3807,
+    "genre:advertisement": 3804,
     "genre:dystopian": 29,
     "genre:lineup": 947,
     "genre:music-video": 126,
@@ -1116,7 +1116,7 @@
     "media-status:described": 14607,
     "media-status:graphic-content": 6,
     "media-status:has-alt-text": 11792,
-    "media-status:needs-ocr": 2719,
+    "media-status:needs-ocr": 2730,
     "media-status:needs-vision": 54357,
     "media:ai-generated": 28,
     "media:animated-gif": 381,
@@ -1346,7 +1346,7 @@
     "video:medium": 11138,
     "video:montage": 4,
     "video:news-clip": 779,
-    "video:produced": 2675,
+    "video:produced": 2674,
     "video:short": 5306,
     "video:speech": 912,
     "video:text-overlay": 117,
